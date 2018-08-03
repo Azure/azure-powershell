@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDnsAvailability"), OutputType(typeof(bool))]
+    [Cmdlet("Test","DnsAvailability"), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Test-AzureRmDnsAvailability")]
+#endif
     public class TestAzureDnsAvailabilityCmdlet : NetworkBaseCmdlet
     {
         [Alias("DomainQualifiedName")]
@@ -44,3 +47,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

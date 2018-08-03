@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Set, Constants.DataSource, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
+    [Cmdlet("Set","OperationalInsightsDataSource", DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmOperationalInsightsDataSource")]
+#endif
     public class SetAzureOperationalInsightsDataSourceCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
@@ -40,3 +43,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
+

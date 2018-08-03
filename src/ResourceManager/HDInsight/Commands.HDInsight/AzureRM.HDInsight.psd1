@@ -76,36 +76,36 @@ NestedModules = @('.\Microsoft.Azure.Commands.HDInsight.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmHDInsightJob', 'New-AzureRmHDInsightSqoopJobDefinition', 
-               'Wait-AzureRmHDInsightJob', 
-               'New-AzureRmHDInsightStreamingMapReduceJobDefinition', 
-               'New-AzureRmHDInsightMapReduceJobDefinition', 
-               'New-AzureRmHDInsightPigJobDefinition', 
-               'New-AzureRmHDInsightHiveJobDefinition', 
-               'Get-AzureRmHDInsightJobOutput', 'Invoke-AzureRmHDInsightHiveJob', 
-               'Use-AzureRmHDInsightCluster', 'Stop-AzureRmHDInsightJob', 
-               'Start-AzureRmHDInsightJob', 'Add-AzureRmHDInsightComponentVersion', 
-               'Add-AzureRmHDInsightSecurityProfile', 
-               'Set-AzureRmHDInsightDefaultStorage', 'Add-AzureRmHDInsightStorage', 
-               'Add-AzureRmHDInsightScriptAction', 'Add-AzureRmHDInsightMetastore', 
-               'Add-AzureRmHDInsightConfigValues', 
-               'Get-AzureRmHDInsightProperties', 
-               'Revoke-AzureRmHDInsightRdpServicesAccess', 
-               'Revoke-AzureRmHDInsightHttpServicesAccess', 
-               'Grant-AzureRmHDInsightRdpServicesAccess', 
-               'Grant-AzureRmHDInsightHttpServicesAccess', 
-               'New-AzureRmHDInsightClusterConfig', 
-               'Remove-AzureRmHDInsightCluster', 'Set-AzureRmHDInsightClusterSize', 
-               'Get-AzureRmHDInsightPersistedScriptAction', 
-               'Get-AzureRmHDInsightScriptActionHistory', 
-               'Remove-AzureRmHDInsightPersistedScriptAction', 
-               'Set-AzureRmHDInsightPersistedScriptAction', 
-               'Submit-AzureRmHDInsightScriptAction', 
-               'Get-AzureRmHDInsightCluster', 'New-AzureRmHDInsightCluster', 
-               'Add-AzureRmHDInsightClusterIdentity', 
-               'Enable-AzureRmHDInsightOperationsManagementSuite', 
-               'Disable-AzureRmHDInsightOperationsManagementSuite', 
-               'Get-AzureRmHDInsightOperationsManagementSuite'
+CmdletsToExport = 'Get-HDInsightJob', 'New-HDInsightSqoopJobDefinition', 
+               'Wait-HDInsightJob', 
+               'New-HDInsightStreamingMapReduceJobDefinition', 
+               'New-HDInsightMapReduceJobDefinition', 
+               'New-HDInsightPigJobDefinition', 
+               'New-HDInsightHiveJobDefinition', 
+               'Get-HDInsightJobOutput', 'Invoke-HDInsightHiveJob', 
+               'Use-HDInsightCluster', 'Stop-HDInsightJob', 
+               'Start-HDInsightJob', 'Add-HDInsightComponentVersion', 
+               'Add-HDInsightSecurityProfile', 
+               'Set-HDInsightDefaultStorage', 'Add-HDInsightStorage', 
+               'Add-HDInsightScriptAction', 'Add-HDInsightMetastore', 
+               'Add-HDInsightConfigValues', 
+               'Get-HDInsightProperties', 
+               'Revoke-HDInsightRdpServicesAccess', 
+               'Revoke-HDInsightHttpServicesAccess', 
+               'Grant-HDInsightRdpServicesAccess', 
+               'Grant-HDInsightHttpServicesAccess', 
+               'New-HDInsightClusterConfig', 
+               'Remove-HDInsightCluster', 'Set-HDInsightClusterSize', 
+               'Get-HDInsightPersistedScriptAction', 
+               'Get-HDInsightScriptActionHistory', 
+               'Remove-HDInsightPersistedScriptAction', 
+               'Set-HDInsightPersistedScriptAction', 
+               'Submit-HDInsightScriptAction', 
+               'Get-HDInsightCluster', 'New-HDInsightCluster', 
+               'Add-HDInsightClusterIdentity', 
+               'Enable-HDInsightOperationsManagementSuite', 
+               'Disable-HDInsightOperationsManagementSuite', 
+               'Get-HDInsightOperationsManagementSuite'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -160,7 +160,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

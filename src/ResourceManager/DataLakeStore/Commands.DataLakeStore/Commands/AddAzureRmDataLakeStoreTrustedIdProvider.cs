@@ -22,8 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeStoreTrustedIdProvider", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreTrustedIdProvider))]
+    [Cmdlet("Add","DataLakeStoreTrustedIdProvider", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreTrustedIdProvider))]
     [Alias("Add-AdlStoreTrustedIdProvider")]
+#if NETSTANDARD
+    [Alias("Add-AzureRmDataLakeStoreTrustedIdProvider")]
+#endif
     public class AddAzureRmDataLakeStoreTrustedIdProvider : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -61,3 +64,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

@@ -31,7 +31,10 @@ namespace Microsoft.Azure.Commands.Network
         Secondary		
      }		
  		
-     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitARPTable"),OutputType(typeof(PSExpressRouteCircuitArpTable))]
+     [Cmdlet("Get","ExpressRouteCircuitARPTable"),OutputType(typeof(PSExpressRouteCircuitArpTable))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmExpressRouteCircuitARPTable")]
+#endif
      public class GetAzureExpressRouteCircuitARPTableCommand : NetworkBaseCmdlet		
      {
         [Parameter(		
@@ -82,3 +85,5 @@ namespace Microsoft.Azure.Commands.Network
      }		
  		
  }
+
+

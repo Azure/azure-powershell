@@ -23,8 +23,11 @@ namespace Microsoft.Azure.Commands.MachineLearning
     using Common.Authentication.Abstractions;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Remove, CommitmentPlansCmdletBase.CommitmentPlanCommandletSuffix, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","MlCommitmentPlan", SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmMlCommitmentPlan")]
+#endif
     public class RemoveAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {
         protected const string RemoveByNameGroupParameterSet = "RemoveByNameAndResourceGroup";
@@ -95,3 +98,5 @@ namespace Microsoft.Azure.Commands.MachineLearning
         }
     }
 }
+
+

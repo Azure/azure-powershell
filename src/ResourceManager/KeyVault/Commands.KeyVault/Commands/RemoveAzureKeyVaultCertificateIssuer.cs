@@ -18,10 +18,11 @@ using System.Globalization;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificateIssuer,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificateIssuer", SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateIssuer))]
+#if NETSTANDARD
+    [Alias("Remove-AzureKeyVaultCertificateIssuer")]
+#endif
     public class RemoveAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -110,3 +111,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
+

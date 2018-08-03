@@ -72,16 +72,16 @@ NestedModules = @('.\Microsoft.Azure.Commands.MachineLearning.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Move-AzureRmMlCommitmentAssociation', 
-               'Get-AzureRmMlCommitmentAssociation', 
-               'Get-AzureRmMlCommitmentPlanUsageHistory', 
-               'Remove-AzureRmMlCommitmentPlan', 'Update-AzureRmMlCommitmentPlan', 
-               'Get-AzureRmMlCommitmentPlan', 'Remove-AzureRmMlWebService', 
-               'Get-AzureRmMlWebService', 'Update-AzureRmMlWebService', 
-               'Export-AzureRmMlWebService', 'Get-AzureRmMlWebServiceKeys', 
-               'Import-AzureRmMlWebService', 'New-AzureRmMlCommitmentPlan', 
-               'New-AzureRmMlWebService', 
-               'Add-AzureRmMlWebServiceRegionalProperty'
+CmdletsToExport = 'Move-MlCommitmentAssociation', 
+               'Get-MlCommitmentAssociation', 
+               'Get-MlCommitmentPlanUsageHistory', 
+               'Remove-MlCommitmentPlan', 'Update-MlCommitmentPlan', 
+               'Get-MlCommitmentPlan', 'Remove-MlWebService', 
+               'Get-MlWebService', 'Update-MlWebService', 
+               'Export-MlWebService', 'Get-MlWebServiceKeys', 
+               'Import-MlWebService', 'New-MlCommitmentPlan', 
+               'New-MlWebService', 
+               'Add-MlWebServiceRegionalProperty'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -135,7 +135,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

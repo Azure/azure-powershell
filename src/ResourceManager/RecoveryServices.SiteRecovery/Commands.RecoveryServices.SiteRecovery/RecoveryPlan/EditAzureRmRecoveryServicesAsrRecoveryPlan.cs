@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,15 +24,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Edits a ASR Recovery plan in memory.
     /// </summary>
-    [Cmdlet(
-        VerbsData.Edit,
-        "AzureRmRecoveryServicesAsrRecoveryPlan",
-        DefaultParameterSetName = ASRParameterSets.AppendGroup,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Edit","RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.AppendGroup,SupportsShouldProcess = true)]
     [Alias(
         "Edit-ASRRP",
         "Edit-ASRRecoveryPlan")]
     [OutputType(typeof(ASRRecoveryPlan))]
+#if NETSTANDARD
+    [Alias("Edit-AzureRmRecoveryServicesAsrRecoveryPlan")]
+#endif
     public class EditAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -264,3 +263,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

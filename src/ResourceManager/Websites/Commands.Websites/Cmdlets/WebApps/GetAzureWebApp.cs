@@ -31,8 +31,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you get a new Azure Websites using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebApp")]
+    [Cmdlet("Get","WebApp")]
     [OutputType(typeof(Site))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmWebApp")]
+#endif
     public class GetAzureWebAppCmdlet : WebAppBaseClientCmdLet
     {
         private const string ParameterSet1 = "S1";
@@ -224,3 +227,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+
+

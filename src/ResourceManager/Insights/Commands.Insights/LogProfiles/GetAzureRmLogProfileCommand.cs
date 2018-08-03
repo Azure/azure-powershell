@@ -25,7 +25,10 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
     /// <summary>
     /// Gets the log profiles.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmLogProfile"), OutputType(typeof(PSLogProfileCollection))]
+    [Cmdlet("Get","LogProfile"), OutputType(typeof(PSLogProfileCollection))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmLogProfile")]
+#endif
     public class GetAzureRmLogProfileCommand : ManagementCmdletBase
     {
 
@@ -59,3 +62,5 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         }
     }
 }
+
+

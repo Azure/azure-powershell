@@ -23,8 +23,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineUsage)]
+    [Cmdlet("Get","VMUsage")]
     [OutputType(typeof(PSUsage))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMUsage")]
+#endif
     public class GetAzureVMUsageCommand : VirtualMachineUsageBaseCmdlet
     {
         [Parameter(
@@ -57,3 +60,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

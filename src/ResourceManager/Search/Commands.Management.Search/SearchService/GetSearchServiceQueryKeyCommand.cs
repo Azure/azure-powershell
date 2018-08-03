@@ -20,7 +20,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.Get, SearchServiceQueryKeyNounStr, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(PSSearchQueryKey))]
+    [Cmdlet("Get","SearchQueryKey", DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(PSSearchQueryKey))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSearchQueryKey")]
+#endif
     public class GetSearchServiceQueryKeyCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
@@ -80,3 +83,5 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         }
     }
 }
+
+

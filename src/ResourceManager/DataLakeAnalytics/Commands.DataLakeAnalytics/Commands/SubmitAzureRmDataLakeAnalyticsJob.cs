@@ -24,8 +24,11 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsLifecycle.Submit, "AzureRmDataLakeAnalyticsJob"), OutputType(typeof(JobInformation))]
+    [Cmdlet("Submit","DataLakeAnalyticsJob"), OutputType(typeof(JobInformation))]
     [Alias("Submit-AdlJob")]
+#if NETSTANDARD
+    [Alias("Submit-AzureRmDataLakeAnalyticsJob")]
+#endif
     public class SubmitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
         internal const string USqlJobWithScriptPath = "SubmitUSqlJobWithScriptPath";
@@ -635,3 +638,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
+

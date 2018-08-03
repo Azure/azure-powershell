@@ -26,8 +26,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to create a new sync group
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlSyncGroup", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
+    [Cmdlet("New","SqlSyncGroup", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
+#if NETSTANDARD
+    [Alias("New-AzureRmSqlSyncGroup")]
+#endif
     public class NewAzureSqlSyncGroup : AzureSqlSyncGroupCmdletBase
     {
         /// <summary>
@@ -188,3 +190,5 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+
+

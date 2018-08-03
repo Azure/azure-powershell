@@ -19,10 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        Constants.CommandNames.AzureHDInsightDefaultStorage),
-    OutputType(typeof(AzureHDInsightConfig))]
+    [Cmdlet("Set","HDInsightDefaultStorage"),OutputType(typeof(AzureHDInsightConfig))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmHDInsightDefaultStorage")]
+#endif
     public class SetAzureHDInsightDefaultStorageCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -59,3 +59,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

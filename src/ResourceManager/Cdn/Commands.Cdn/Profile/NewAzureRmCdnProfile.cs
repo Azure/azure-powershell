@@ -31,7 +31,10 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
     /// <summary>
     /// Defines the New-AzureRmCdnProfile cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmCdnProfile", SupportsShouldProcess = true), OutputType(typeof(PSProfile))]
+    [Cmdlet("New","CdnProfile", SupportsShouldProcess = true), OutputType(typeof(PSProfile))]
+#if NETSTANDARD
+    [Alias("New-AzureRmCdnProfile")]
+#endif
     public class NewAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>
@@ -107,3 +110,5 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         }
     }
 }
+
+

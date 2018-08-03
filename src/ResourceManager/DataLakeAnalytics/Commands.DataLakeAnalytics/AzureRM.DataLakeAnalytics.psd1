@@ -72,40 +72,40 @@ NestedModules = @('.\Microsoft.Azure.Commands.DataLakeAnalytics.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmDataLakeAnalyticsDataSource', 
-               'New-AzureRmDataLakeAnalyticsCatalogCredential', 
-               'Remove-AzureRmDataLakeAnalyticsCatalogCredential', 
-               'Remove-AzureRmDataLakeAnalyticsCatalogSecret', 
-               'Set-AzureRmDataLakeAnalyticsCatalogCredential', 
-               'Set-AzureRmDataLakeAnalyticsCatalogSecret', 
-               'New-AzureRmDataLakeAnalyticsCatalogSecret', 
-               'Test-AzureRmDataLakeAnalyticsCatalogItem', 
-               'Get-AzureRmDataLakeAnalyticsCatalogItem', 
-               'Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry', 
-               'Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry', 
-               'Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry', 
-               'Set-AzureRmDataLakeAnalyticsDataSource', 
-               'Wait-AzureRmDataLakeAnalyticsJob', 
-               'Test-AzureRmDataLakeAnalyticsAccount', 
-               'Remove-AzureRmDataLakeAnalyticsDataSource', 
-               'Add-AzureRmDataLakeAnalyticsDataSource', 
-               'Stop-AzureRmDataLakeAnalyticsJob', 
-               'Get-AzureRmDataLakeAnalyticsJob', 
-               'Get-AzureRmDataLakeAnalyticsAccount', 
-               'Submit-AzureRmDataLakeAnalyticsJob', 
-               'New-AzureRmDataLakeAnalyticsAccount', 
-               'Remove-AzureRmDataLakeAnalyticsAccount', 
-               'Set-AzureRmDataLakeAnalyticsAccount', 
-               'Add-AzureRmDataLakeAnalyticsFirewallRule', 
-               'Get-AzureRmDataLakeAnalyticsFirewallRule', 
-               'Set-AzureRmDataLakeAnalyticsFirewallRule', 
-               'Remove-AzureRmDataLakeAnalyticsFirewallRule', 
-               'New-AzureRmDataLakeAnalyticsComputePolicy', 
-               'Get-AzureRmDataLakeAnalyticsComputePolicy', 
-               'Update-AzureRmDataLakeAnalyticsComputePolicy', 
-               'Remove-AzureRmDataLakeAnalyticsComputePolicy', 
-               'Get-AzureRmDataLakeAnalyticsJobPipeline', 
-               'Get-AzureRmDataLakeAnalyticsJobRecurrence'
+CmdletsToExport = 'Get-DataLakeAnalyticsDataSource', 
+               'New-DataLakeAnalyticsCatalogCredential', 
+               'Remove-DataLakeAnalyticsCatalogCredential', 
+               'Remove-DataLakeAnalyticsCatalogSecret', 
+               'Set-DataLakeAnalyticsCatalogCredential', 
+               'Set-DataLakeAnalyticsCatalogSecret', 
+               'New-DataLakeAnalyticsCatalogSecret', 
+               'Test-DataLakeAnalyticsCatalogItem', 
+               'Get-DataLakeAnalyticsCatalogItem', 
+               'Get-DataLakeAnalyticsCatalogItemAclEntry', 
+               'Set-DataLakeAnalyticsCatalogItemAclEntry', 
+               'Remove-DataLakeAnalyticsCatalogItemAclEntry', 
+               'Set-DataLakeAnalyticsDataSource', 
+               'Wait-DataLakeAnalyticsJob', 
+               'Test-DataLakeAnalyticsAccount', 
+               'Remove-DataLakeAnalyticsDataSource', 
+               'Add-DataLakeAnalyticsDataSource', 
+               'Stop-DataLakeAnalyticsJob', 
+               'Get-DataLakeAnalyticsJob', 
+               'Get-DataLakeAnalyticsAccount', 
+               'Submit-DataLakeAnalyticsJob', 
+               'New-DataLakeAnalyticsAccount', 
+               'Remove-DataLakeAnalyticsAccount', 
+               'Set-DataLakeAnalyticsAccount', 
+               'Add-DataLakeAnalyticsFirewallRule', 
+               'Get-DataLakeAnalyticsFirewallRule', 
+               'Set-DataLakeAnalyticsFirewallRule', 
+               'Remove-DataLakeAnalyticsFirewallRule', 
+               'New-DataLakeAnalyticsComputePolicy', 
+               'Get-DataLakeAnalyticsComputePolicy', 
+               'Update-DataLakeAnalyticsComputePolicy', 
+               'Remove-DataLakeAnalyticsComputePolicy', 
+               'Get-DataLakeAnalyticsJobPipeline', 
+               'Get-DataLakeAnalyticsJobRecurrence'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -174,7 +174,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

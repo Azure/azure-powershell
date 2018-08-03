@@ -22,9 +22,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsCommon.Get,
-        Constants.CommandNames.AzureHDInsightJob),
-    OutputType(typeof(AzureHDInsightJob))]
+    [Cmdlet("Get","HDInsightJob"),OutputType(typeof(AzureHDInsightJob))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmHDInsightJob")]
+#endif
     public class GetAzureHDInsightJobCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -100,3 +101,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

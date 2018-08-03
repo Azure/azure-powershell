@@ -19,7 +19,10 @@ using Microsoft.Azure.Management.MarketplaceOrdering;
 
 namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmMarketplaceTerms", DefaultParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAgreementTerms))]
+    [Cmdlet("Set","MarketplaceTerms", DefaultParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSAgreementTerms))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmMarketplaceTerms")]
+#endif
     public class SetAzureRmMarketplaceTerms : AzureMarketplaceOrderingCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Publisher identifier string of image being deployed.", ParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet)]
@@ -120,3 +123,5 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
         }
     }
 }
+
+

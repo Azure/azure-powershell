@@ -20,11 +20,10 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.New,
-        Constants.IntegrationRuntimeKey,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
-        SupportsShouldProcess = true),
-        OutputType(typeof(PSIntegrationRuntimeKeys))]
+    [Cmdlet("New","DataFactoryV2IntegrationRuntimeKey",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSIntegrationRuntimeKeys))]
+#if NETSTANDARD
+    [Alias("New-AzureRmDataFactoryV2IntegrationRuntimeKey")]
+#endif
     public class NewAzureDataFactoryIntegrationRuntimeKeyCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(
@@ -83,3 +82,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
+

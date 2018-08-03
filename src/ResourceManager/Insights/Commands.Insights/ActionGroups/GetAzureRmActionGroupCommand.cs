@@ -26,8 +26,11 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// <summary>
     /// Gets an Azure Action Group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmActionGroup", DefaultParameterSetName = BySubscriptionOrResourceGroup)]
+    [Cmdlet("Get","ActionGroup", DefaultParameterSetName = BySubscriptionOrResourceGroup)]
     [OutputType(typeof(PSActionGroupResource))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmActionGroup")]
+#endif
     public class GetAzureRmActionGroupCommand : ManagementCmdletBase
     {
         private const string ByName = "ByName";
@@ -91,3 +94,5 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         }
     }
 }
+
+

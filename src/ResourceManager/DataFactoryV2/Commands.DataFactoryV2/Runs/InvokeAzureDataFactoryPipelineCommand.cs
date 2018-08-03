@@ -26,8 +26,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsLifecycle.Invoke, Constants.Pipeline, DefaultParameterSetName = ParameterSetNames.ByFactoryNameByParameterFile,
-        SupportsShouldProcess = true), OutputType(typeof(PSPipeline))]
+    [Cmdlet("Invoke","DataFactoryV2Pipeline", DefaultParameterSetName = ParameterSetNames.ByFactoryNameByParameterFile,SupportsShouldProcess = true), OutputType(typeof(PSPipeline))]
+#if NETSTANDARD
+    [Alias("Invoke-AzureRmDataFactoryV2Pipeline")]
+#endif
     public class InvokeAzureDataFactoryPipelineCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterFile, Position = 0, Mandatory = true, ValueFromPipeline = true,
@@ -120,3 +122,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
+

@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     /// <summary>
     /// Deletes existing job.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSchedulerJob", SupportsShouldProcess = true), OutputType(typeof(string))]
+    [Cmdlet("Remove","SchedulerJob", SupportsShouldProcess = true), OutputType(typeof(string))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSchedulerJob")]
+#endif
     public class RemoveAzureSchedulerJobCommand : SchedulerBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job.")]
@@ -65,3 +68,5 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
         }
     }
 }
+
+

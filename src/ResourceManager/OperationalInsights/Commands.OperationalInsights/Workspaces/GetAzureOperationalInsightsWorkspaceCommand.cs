@@ -19,7 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.Workspace), OutputType(typeof(PSWorkspace))]
+    [Cmdlet("Get","OperationalInsightsWorkspace"), OutputType(typeof(PSWorkspace))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmOperationalInsightsWorkspace")]
+#endif
     public class GetAzureOperationalInsightsWorkspaceCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -39,3 +42,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
+

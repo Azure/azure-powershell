@@ -21,8 +21,10 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsCommon.New, Constants.StreamAnalyticsFunction, SupportsShouldProcess = true), 
-        OutputType(typeof(PSFunction))]
+    [Cmdlet("New","StreamAnalyticsFunction", SupportsShouldProcess = true), OutputType(typeof(PSFunction))]
+#if NETSTANDARD
+    [Alias("New-AzureRmStreamAnalyticsFunction")]
+#endif
     public class NewAzureStreamAnalyticsFunctionCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics job name.")]
@@ -81,3 +83,5 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         }
     }
 }
+
+

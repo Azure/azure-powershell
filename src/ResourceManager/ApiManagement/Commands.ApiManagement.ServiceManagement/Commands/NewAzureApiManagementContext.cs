@@ -18,7 +18,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementContext"), OutputType(typeof(PsApiManagementContext))]
+    [Cmdlet("New","ApiManagementContext"), OutputType(typeof(PsApiManagementContext))]
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementContext")]
+#endif
     public class NewAzureApiManagementContext : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -47,3 +50,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.LinkTargets), OutputType(typeof(PSAccount))]
+    [Cmdlet("Get","OperationalInsightsLinkTargets"), OutputType(typeof(PSAccount))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmOperationalInsightsLinkTargets")]
+#endif
     public class GetAzureOperationalInsightsLinkTargetsCommand : OperationalInsightsBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -27,3 +30,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
+

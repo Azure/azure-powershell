@@ -19,11 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsSecurity.Revoke,
-        Constants.CommandNames.AzureHDInsightHttpServicesAccess),
-    OutputType(
-        typeof(HttpConnectivitySettings))]
+    [Cmdlet("Revoke","HDInsightHttpServicesAccess"),OutputType(typeof(HttpConnectivitySettings))]
+#if NETSTANDARD
+    [Alias("Revoke-AzureRmHDInsightHttpServicesAccess")]
+#endif
     public class RevokeAzureHDInsightHttpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -58,3 +57,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

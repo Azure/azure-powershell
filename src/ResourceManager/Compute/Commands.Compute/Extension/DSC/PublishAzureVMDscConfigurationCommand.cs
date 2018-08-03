@@ -1,4 +1,4 @@
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -15,13 +15,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
     /// later can be applied to Azure Virtual Machines using the 
     /// Set-AzureRmVMDscExtension cmdlet.
     /// </summary>
-    [Cmdlet(
-        VerbsData.Publish,
-        ProfileNouns.VirtualMachineDscConfiguration,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = UploadArchiveParameterSetName),
-    OutputType(
-         typeof(String))]
+    [Cmdlet("Publish","VMDscConfiguration",SupportsShouldProcess = true,DefaultParameterSetName = UploadArchiveParameterSetName),OutputType(typeof(String))]
+#if NETSTANDARD
+    [Alias("Publish-AzureRmVMDscConfiguration")]
+#endif
     public class PublishAzureVMDscConfigurationCommand : DscExtensionPublishCmdletCommonBase
     {
         private const string CreateArchiveParameterSetName = "CreateArchive";
@@ -206,4 +203,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         }
     }
 }
+
 

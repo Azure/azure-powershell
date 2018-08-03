@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.Relay.Commands
     /// <summary>
     /// 'Set-AzureRmRelayAuthorizationRule' Cmdlet updates the specified AuthorizationRule
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, RelayAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(AuthorizationRuleAttributes))]
+    [Cmdlet("Set","RelayAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(AuthorizationRuleAttributes))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmRelayAuthorizationRule")]
+#endif
     public class SetAzureRelayAuthorizationRule : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -129,3 +132,5 @@ namespace Microsoft.Azure.Commands.Relay.Commands
         }
     }
 }
+
+

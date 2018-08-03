@@ -24,8 +24,11 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Reservation
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionReservationSummary")]
+    [Cmdlet("Get","ConsumptionReservationSummary")]
     [OutputType(typeof(PSReservationSummary))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmConsumptionReservationSummary")]
+#endif
     public class GetAzureRmConsumptionReservationSummary : AzureConsumptionCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The time grain of the reservation summaryy, can be daily or monthly.")]
@@ -90,3 +93,5 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Reservation
         }
     }
 }
+
+

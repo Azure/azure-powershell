@@ -17,8 +17,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsDiagnostic.Test, ContainerRegistryNameAvailabilityNoun)]
+    [Cmdlet("Test","ContainerRegistryNameAvailability")]
     [OutputType(typeof(RegistryNameStatus))]
+#if NETSTANDARD
+    [Alias("Test-AzureRmContainerRegistryNameAvailability")]
+#endif
     public class TestAzureContainerRegistryNameAvailability : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Container Registry Name.")]
@@ -32,3 +35,5 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+
+

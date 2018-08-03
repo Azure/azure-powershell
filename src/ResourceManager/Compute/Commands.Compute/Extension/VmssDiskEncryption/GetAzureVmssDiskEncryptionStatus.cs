@@ -28,11 +28,10 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ProfileNouns.AzureVmssDiskEncryption),
-        Alias(ProfileNouns.GetAzureRmVmssDiskEncryptionAlias),
-        OutputType(typeof(PSVmssDiskEncryptionStatusContext))]
+    [Cmdlet("Get","VmssDiskEncryption"),Alias(ProfileNouns.GetAzureRmVmssDiskEncryptionAlias),OutputType(typeof(PSVmssDiskEncryptionStatusContext))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVmssDiskEncryption")]
+#endif
     public class GetAzureVmssDiskEncryptionStatusCommand : VirtualMachineScaleSetExtensionBaseCmdlet
     {
         [Parameter(
@@ -219,3 +218,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         }
     }
 }
+
+

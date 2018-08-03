@@ -19,8 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApiRevision)]
+    [Cmdlet("Get","ApiManagementApiRevision")]
     [OutputType(typeof(PsApiManagementApiRevision))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementApiRevision")]
+#endif
     public class GetAzureApiManagementApiRevision : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -56,3 +59,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

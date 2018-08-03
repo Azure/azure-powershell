@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql FailoverGroup
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseFailoverGroup"), OutputType(typeof(AzureSqlFailoverGroupModel))]
+    [Cmdlet("New","SqlDatabaseFailoverGroup"), OutputType(typeof(AzureSqlFailoverGroupModel))]
+#if NETSTANDARD
+    [Alias("New-AzureRmSqlDatabaseFailoverGroup")]
+#endif
     public class NewAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
@@ -154,3 +157,5 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
     }
 }
+
+

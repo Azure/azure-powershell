@@ -25,8 +25,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Fetches containers registered to the vault according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupContainer"),
-        OutputType(typeof(ContainerBase))]
+    [Cmdlet("Get","RecoveryServicesBackupContainer"),OutputType(typeof(ContainerBase))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesBackupContainer")]
+#endif
     public class GetAzureRmRecoveryServicesBackupContainer : RSBackupVaultCmdletBase
     {
         /// <summary>
@@ -121,3 +123,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
+

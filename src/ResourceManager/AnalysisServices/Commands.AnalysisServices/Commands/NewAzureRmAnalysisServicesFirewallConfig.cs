@@ -24,7 +24,10 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesFirewallConfig"), OutputType(typeof(PsAzureAnalysisServicesFirewallConfig))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesFirewallConfig"), OutputType(typeof(PsAzureAnalysisServicesFirewallConfig))]
+#if NETSTANDARD
+    [Alias("New-AzureRmAnalysisServicesFirewallConfig")]
+#endif
     public class NewAzureRmAnalysisServicesFirewallConfig : AnalysisServicesCmdletBase
     {       
         [Parameter(Mandatory = false,
@@ -42,3 +45,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         }
     }
 }
+
+

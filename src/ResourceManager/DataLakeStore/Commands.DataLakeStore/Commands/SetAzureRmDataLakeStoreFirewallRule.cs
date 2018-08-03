@@ -22,8 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreFirewallRule", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreFirewallRule))]
+    [Cmdlet("Set","DataLakeStoreFirewallRule", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreFirewallRule))]
     [Alias("Set-AdlStoreFirewallRule")]
+#if NETSTANDARD
+    [Alias("Set-AzureRmDataLakeStoreFirewallRule")]
+#endif
     public class SetAzureRmDataLakeStoreFirewallRule : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -75,3 +78,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

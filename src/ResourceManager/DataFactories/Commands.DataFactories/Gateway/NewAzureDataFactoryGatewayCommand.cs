@@ -21,7 +21,10 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.Gateway, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGateway))]
+    [Cmdlet("New","DataFactoryGateway", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGateway))]
+#if NETSTANDARD
+    [Alias("New-AzureRmDataFactoryGateway")]
+#endif
     public class NewAzureDataFactoryGatewayCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -81,3 +84,5 @@ HelpMessage = "The data factory object.")]
         }
     }
 }
+
+

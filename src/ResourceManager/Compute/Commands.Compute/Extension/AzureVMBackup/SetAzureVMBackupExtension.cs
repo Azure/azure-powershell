@@ -21,10 +21,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.AzureVMBackupExtension)]
+    [Cmdlet("Set","VMBackupExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMBackupExtension")]
+#endif
     public class SetAzureVMBackupExtension : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -77,3 +78,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         }
     }
 }
+
+

@@ -20,8 +20,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsLifecycle.Restart, ProfileNouns.VirtualMachine, DefaultParameterSetName = RestartResourceGroupNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Restart","VM", DefaultParameterSetName = RestartResourceGroupNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
+#if NETSTANDARD
+    [Alias("Restart-AzureRmVM")]
+#endif
     public class RestartAzureVMCommand : VirtualMachineBaseCmdlet
     {
         protected const string RestartResourceGroupNameParameterSet = "RestartResourceGroupNameParameterSetName";
@@ -127,3 +130,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

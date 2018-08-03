@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,11 @@ using Microsoft.Azure.Commands.Aks.Properties;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [Cmdlet("Stop", KubeNounStr + "Dashboard")]
+    [Cmdlet("Stop","AksDashboard")]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Stop-AzureRmAksDashboard")]
+#endif
     public class StopAzureRmAksDashboard : KubeCmdletBase
     {
         [Parameter(Mandatory = false)]
@@ -51,3 +54,5 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 }
+
+

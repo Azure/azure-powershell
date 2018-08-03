@@ -20,7 +20,10 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Commands.RedisCache.Properties;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsData.Import, "AzureRmRedisCache", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Import","RedisCache", SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Import-AzureRmRedisCache")]
+#endif
     public class ImportAzureRedisCache : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]
@@ -64,3 +67,5 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+
+

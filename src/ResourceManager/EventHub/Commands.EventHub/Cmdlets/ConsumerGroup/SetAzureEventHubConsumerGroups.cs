@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
     /// <summary>
     /// 'Set-AzureRmEventHubConsumerGroup' Cmdlet updates the specified of Consumer Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ConsumerGroupVerb, SupportsShouldProcess = true), OutputType(typeof(PSConsumerGroupAttributes))]
+    [Cmdlet("Set","EventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(PSConsumerGroupAttributes))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmEventHubConsumerGroup")]
+#endif
     public class SetAzureEventHubConsumerGroup : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -65,3 +68,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         }
     }
 }
+
+

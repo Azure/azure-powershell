@@ -20,8 +20,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Management.ApiManagement.Models;
     using Models;
 
-    [Cmdlet(VerbsCommon.New, Constants.ApiManagementLogger, DefaultParameterSetName = EventHubLoggerSet)]
+    [Cmdlet("New","ApiManagementLogger", DefaultParameterSetName = EventHubLoggerSet)]
     [OutputType(typeof(PsApiManagementLogger), ParameterSetName = new[] { EventHubLoggerSet, ApplicationInsightsLoggerSet })]
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementLogger")]
+#endif
     public class NewAzureApiManagementLogger : AzureApiManagementCmdletBase
     {
         private const string EventHubLoggerSet = "EventHubLoggerSet";
@@ -115,3 +118,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

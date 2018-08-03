@@ -30,12 +30,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineCustomScriptExtension,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName)]
+    [Cmdlet("Set","VMCustomScriptExtension",SupportsShouldProcess = true,DefaultParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMCustomScriptExtension")]
+#endif
     public class SetAzureVMCustomScriptExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         protected const string SetCustomScriptExtensionByContainerBlobsParamSetName = "SetCustomScriptExtensionByContainerAndFileNames";
@@ -263,3 +262,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

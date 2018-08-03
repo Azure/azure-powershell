@@ -23,7 +23,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.New, StorageNouns.QueueStoredAccessPolicy), OutputType(typeof(String))]
+    [Cmdlet("New","AzureStorageQueueStoredAccessPolicy"), OutputType(typeof(String))]
+#if NETSTANDARD
+    [Alias("New-AzureStorageQueueStoredAccessPolicy")]
+#endif
     public class NewAzureStorageQueueStoredAccessPolicyCommand : StorageQueueBaseCmdlet
     {
         [Alias("N", "Name")]
@@ -107,3 +110,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
     }
 }
+
+

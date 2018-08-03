@@ -20,8 +20,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementSubscription, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","ApiManagementSubscription", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApiManagementSubscription")]
+#endif
     public class RemoveAzureApiManagementSubscription : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -67,3 +70,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

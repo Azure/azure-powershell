@@ -26,7 +26,10 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     /// <summary>
     /// Updates existing job.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSchedulerHttpJob", SupportsShouldProcess = true), OutputType(typeof(PSSchedulerJobDefinition))]
+    [Cmdlet("Set","SchedulerHttpJob", SupportsShouldProcess = true), OutputType(typeof(PSSchedulerJobDefinition))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmSchedulerHttpJob")]
+#endif
     public class UpdateAzureSchedulerHttpJobCommand : JobBaseCmdlet, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job.")]
@@ -221,3 +224,5 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
         }
     }
 }
+
+

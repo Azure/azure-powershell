@@ -20,8 +20,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkWatcherPacketCapture", SupportsShouldProcess = true, 
-        DefaultParameterSetName = "SetByResource"), OutputType(typeof(bool))]
+    [Cmdlet("Remove","NetworkWatcherPacketCapture", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmNetworkWatcherPacketCapture")]
+#endif
     public class RemoveAzureNetworkWatcherPacketCaptureCommand : PacketCaptureBaseCmdlet
     {
         [Parameter(
@@ -108,3 +110,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

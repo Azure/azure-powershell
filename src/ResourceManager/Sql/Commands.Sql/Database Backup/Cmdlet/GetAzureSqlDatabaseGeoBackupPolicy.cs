@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,11 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseGeoBackupPolicy")]
+    [Cmdlet("Get","SqlDatabaseGeoBackupPolicy")]
     [OutputType(typeof(AzureSqlDatabaseGeoBackupPolicyModel))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseGeoBackupPolicy")]
+#endif
     public class GetAzureSqlDatabaseGeoBackupPolicy : AzureSqlDatabaseGeoBackupPolicyCmdletBase
     {
         /// <summary>
@@ -64,3 +67,5 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+
+

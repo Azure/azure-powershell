@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -111,8 +111,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.New, "AzureRmImage", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("New","Image", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
+#if NETSTANDARD
+    [Alias("New-AzureRmImage")]
+#endif
     public partial class NewAzureRmImage : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -162,8 +165,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 
-    [Cmdlet(VerbsData.Update, "AzureRmImage", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("Update","Image", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
+#if NETSTANDARD
+    [Alias("Update-AzureRmImage")]
+#endif
     public partial class UpdateAzureRmImage : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -213,3 +219,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
+
+
+

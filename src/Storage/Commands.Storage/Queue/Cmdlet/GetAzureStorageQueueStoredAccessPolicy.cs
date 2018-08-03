@@ -24,7 +24,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
     using System.Security.Permissions;
     using System.Threading.Tasks;
 
-    [Cmdlet(VerbsCommon.Get, StorageNouns.QueueStoredAccessPolicy), OutputType(typeof(SharedAccessQueuePolicy))]
+    [Cmdlet("Get","AzureStorageQueueStoredAccessPolicy"), OutputType(typeof(SharedAccessQueuePolicy))]
+#if NETSTANDARD
+    [Alias("Get-AzureStorageQueueStoredAccessPolicy")]
+#endif
     public class GetAzureStorageQueueStoredAccessPolicyCommand : StorageQueueBaseCmdlet
     {
         [Alias("N", "Name")]
@@ -102,3 +105,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
     }
 }
+
+

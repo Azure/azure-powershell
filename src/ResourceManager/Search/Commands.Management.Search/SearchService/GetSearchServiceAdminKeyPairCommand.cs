@@ -20,7 +20,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.Get, SearchServiceAdminKeyPairNounStr, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(PSSearchAdminKey))]
+    [Cmdlet("Get","SearchAdminKeyPair", DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(PSSearchAdminKey))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSearchAdminKeyPair")]
+#endif
     public class GetSearchServiceAdminKeyPairCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
@@ -80,3 +83,5 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         }
     }
 }
+
+

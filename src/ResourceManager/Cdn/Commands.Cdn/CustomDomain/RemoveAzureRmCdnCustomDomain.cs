@@ -25,11 +25,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet(VerbsCommon.Remove, 
-        "AzureRmCdnCustomDomain", 
-        DefaultParameterSetName = FieldsParameterSet, 
-        SupportsShouldProcess = true), 
-        OutputType(typeof(bool))]
+    [Cmdlet("Remove","CdnCustomDomain",DefaultParameterSetName = FieldsParameterSet,SupportsShouldProcess = true),OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmCdnCustomDomain")]
+#endif
     public class RemoveAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN custom domain display name.")]
@@ -95,3 +94,5 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
         }
     }
 }
+
+

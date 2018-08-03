@@ -26,7 +26,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureRmBackupContainer"), OutputType(typeof(AzureRMBackupJob))]
+    [Cmdlet("Register","BackupContainer"), OutputType(typeof(AzureRMBackupJob))]
+#if NETSTANDARD
+    [Alias("Register-AzureRmBackupContainer")]
+#endif
     public class RegisterAzureRMBackupContainer : AzureBackupVaultCmdletBase
     {
         internal const string V1VMParameterSet = "V1VM";
@@ -183,3 +186,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+
+

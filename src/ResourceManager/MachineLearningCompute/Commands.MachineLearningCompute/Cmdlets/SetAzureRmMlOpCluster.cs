@@ -21,8 +21,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Set, CmdletSuffix, SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersParameterSet)]
+    [Cmdlet("Set","MlOpCluster", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersParameterSet)]
     [OutputType(typeof(PSOperationalizationCluster))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmMlOpCluster")]
+#endif
     public class SetAzureRmMlOpCluster : MachineLearningComputeCmdletBase
     {
         protected const string ObjectParameterSet = "SetByInputObject";
@@ -217,3 +220,5 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         }
     }
 }
+
+

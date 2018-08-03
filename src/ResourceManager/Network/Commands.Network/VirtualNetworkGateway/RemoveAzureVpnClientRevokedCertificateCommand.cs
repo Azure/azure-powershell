@@ -23,7 +23,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmVpnClientRevokedCertificate"), OutputType(typeof(bool))]
+    [Cmdlet("Remove","VpnClientRevokedCertificate"), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVpnClientRevokedCertificate")]
+#endif
     public class RemoveAzureVpnClientRevokedCertificateCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -92,3 +95,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

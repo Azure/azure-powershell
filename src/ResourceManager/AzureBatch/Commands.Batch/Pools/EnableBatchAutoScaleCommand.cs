@@ -20,7 +20,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Enable, Constants.AzureBatchAutoScale), OutputType(typeof(void))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchAutoScale"), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Enable-AzureBatchAutoScale")]
+#endif
     public class EnableBatchAutoScaleCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
@@ -49,3 +52,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
+

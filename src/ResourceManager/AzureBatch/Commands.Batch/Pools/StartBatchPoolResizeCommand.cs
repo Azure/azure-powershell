@@ -21,7 +21,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Start, Constants.AzureBatchPoolResize), OutputType(typeof(void))]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchPoolResize"), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Start-AzureBatchPoolResize")]
+#endif
     public class StartBatchPoolResizeCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
@@ -60,3 +63,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
+

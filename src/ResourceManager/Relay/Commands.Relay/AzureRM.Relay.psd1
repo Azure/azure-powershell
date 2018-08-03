@@ -72,18 +72,18 @@ NestedModules = @('.\Microsoft.Azure.Commands.Relay.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmRelayNamespace', 'Get-AzureRmRelayNamespace', 
-               'Set-AzureRmRelayNamespace', 'Remove-AzureRmRelayNamespace', 
-               'New-AzureRmWcfRelay', 'Get-AzureRmWcfRelay', 'Set-AzureRmWcfRelay', 
-               'Remove-AzureRmWcfRelay', 'New-AzureRmRelayHybridConnection', 
-               'Get-AzureRmRelayHybridConnection', 
-               'Set-AzureRmRelayHybridConnection', 
-               'Remove-AzureRmRelayHybridConnection', 'Test-AzureRmRelayName', 
-               'Get-AzureRmRelayOperation', 'New-AzureRmRelayKey', 
-               'Get-AzureRmRelayKey', 'New-AzureRmRelayAuthorizationRule', 
-               'Get-AzureRmRelayAuthorizationRule', 
-               'Set-AzureRmRelayAuthorizationRule', 
-               'Remove-AzureRmRelayAuthorizationRule'
+CmdletsToExport = 'New-RelayNamespace', 'Get-RelayNamespace', 
+               'Set-RelayNamespace', 'Remove-RelayNamespace', 
+               'New-WcfRelay', 'Get-WcfRelay', 'Set-WcfRelay', 
+               'Remove-WcfRelay', 'New-RelayHybridConnection', 
+               'Get-RelayHybridConnection', 
+               'Set-RelayHybridConnection', 
+               'Remove-RelayHybridConnection', 'Test-RelayName', 
+               'Get-RelayOperation', 'New-RelayKey', 
+               'Get-RelayKey', 'New-RelayAuthorizationRule', 
+               'Get-RelayAuthorizationRule', 
+               'Set-RelayAuthorizationRule', 
+               'Remove-RelayAuthorizationRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -137,7 +137,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

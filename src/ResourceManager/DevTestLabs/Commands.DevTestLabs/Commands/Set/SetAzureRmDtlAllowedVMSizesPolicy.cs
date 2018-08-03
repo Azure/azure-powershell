@@ -25,11 +25,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDtlAllowedVMSizesPolicy",
-        HelpUri = Constants.DevTestLabsHelpUri,
-        DefaultParameterSetName = ParameterSetEnable,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set","DtlAllowedVMSizesPolicy",HelpUri = Constants.DevTestLabsHelpUri,DefaultParameterSetName = ParameterSetEnable,SupportsShouldProcess = true)]
     [OutputType(typeof(PSPolicy))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmDtlAllowedVMSizesPolicy")]
+#endif
     public class SetAzureRmDtlAllowedVMSizesPolicy : DtlPolicyCmdletBase
     {
         #region Input Parameter Definitions
@@ -134,3 +134,5 @@ namespace Microsoft.Azure.Commands.DevTestLabs
         }
     }
 }
+
+

@@ -17,8 +17,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsDiagnostic.Test, ContainerRegistryWebhookNoun, DefaultParameterSetName = ResourceIdParameterSet)]
+    [Cmdlet("Test","ContainerRegistryWebhook", DefaultParameterSetName = ResourceIdParameterSet)]
     [OutputType(typeof(PSContainerRegistryEventInfo))]
+#if NETSTANDARD
+    [Alias("Test-AzureRmContainerRegistryWebhook")]
+#endif
     public class TestAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Webhook Name.")]
@@ -71,3 +74,5 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+
+

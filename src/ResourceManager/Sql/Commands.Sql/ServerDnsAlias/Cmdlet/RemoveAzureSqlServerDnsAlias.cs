@@ -19,8 +19,11 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 {
-	[Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerDnsAlias", SupportsShouldProcess = true)]
+	[Cmdlet("Remove","SqlServerDnsAlias", SupportsShouldProcess = true)]
 	[OutputType(typeof(Model.AzureSqlServerDnsAliasModel))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlServerDnsAlias")]
+#endif
 	public class RemoveAzureSqlServerDNSAlias : AzureSqlServerDnsAliasCmdletBase
 	{
 		protected const string RemoveByNameAndResourceGroupParameterSet =
@@ -164,3 +167,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		}
 	}
 }
+
+

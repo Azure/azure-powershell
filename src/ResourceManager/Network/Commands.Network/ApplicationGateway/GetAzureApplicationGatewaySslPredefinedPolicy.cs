@@ -20,9 +20,11 @@ namespace Microsoft.Azure.Commands.Network
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewaySslPredefinedPolicy"), 
-        OutputType(typeof(PSApplicationGatewaySslPredefinedPolicy))]
+    [Cmdlet("Get","ApplicationGatewaySslPredefinedPolicy"), OutputType(typeof(PSApplicationGatewaySslPredefinedPolicy))]
     [Alias("List-AzureRmApplicationGatewaySslPredefinedPolicy")]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationGatewaySslPredefinedPolicy")]
+#endif
     public class GetAzureApplicationGatewaySslPredefinedPolicy : ApplicationGatewayBaseCmdlet
     {
         [Parameter(
@@ -54,4 +56,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

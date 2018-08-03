@@ -21,10 +21,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Management.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.Remove,
-        Constants.ApiManagementApiRevision, 
-        SupportsShouldProcess = true, DefaultParameterSetName = ByApiIdParameterSet)]
+    [Cmdlet("Remove","ApiManagementApiRevision",SupportsShouldProcess = true, DefaultParameterSetName = ByApiIdParameterSet)]
     [OutputType(typeof(bool), ParameterSetName = new [] { ByApiIdParameterSet, ByInputObjectParameterSet })]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApiManagementApiRevision")]
+#endif
     public class RemoveAzureApiManagementApiRevision : AzureApiManagementCmdletBase
     {
         #region Parameter Set Names
@@ -113,3 +114,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

@@ -29,9 +29,11 @@ namespace Microsoft.Azure.Commands.Profile.Default
     /// <summary>
     /// Cmdlet to set default options. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmDefault", DefaultParameterSetName = ResourceGroupNameParameterSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Default", DefaultParameterSetName = ResourceGroupNameParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(PSResourceGroup))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmDefault")]
+#endif
     public class SetAzureRMDefaultCommand : AzureContextModificationCmdlet
     {
         private const string ResourceGroupNameParameterSet = "ResourceGroupName";
@@ -83,3 +85,5 @@ namespace Microsoft.Azure.Commands.Profile.Default
         }
     }
 }
+
+

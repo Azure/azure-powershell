@@ -21,8 +21,10 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.Pipeline, DefaultParameterSetName = ByFactoryName, 
-        SupportsShouldProcess = true), OutputType(typeof(PSPipeline))]
+    [Cmdlet("New","DataFactoryPipeline", DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSPipeline))]
+#if NETSTANDARD
+    [Alias("New-AzureRmDataFactoryPipeline")]
+#endif
     public class NewAzureDataFactoryPipelineCommand : DataFactoryBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The pipeline name.")]
@@ -76,3 +78,5 @@ HelpMessage = "The data factory object.")]
         }
     }
 }
+
+

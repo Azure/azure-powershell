@@ -18,10 +18,10 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get,
-        Constants.IntegrationRuntimeMetric,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),
-        OutputType(typeof(PSIntegrationRuntimeMetrics))]
+    [Cmdlet("Get","DataFactoryV2IntegrationRuntimeMetric",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),OutputType(typeof(PSIntegrationRuntimeMetrics))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryV2IntegrationRuntimeMetric")]
+#endif
     public class GetAzureDataFactoryIntegrationRuntimeMetricCommand : IntegrationRuntimeCmdlet
     {
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
@@ -39,3 +39,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
+

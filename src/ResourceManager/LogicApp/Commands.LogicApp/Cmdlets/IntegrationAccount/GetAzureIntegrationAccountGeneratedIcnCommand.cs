@@ -24,8 +24,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Gets the integration account generated interchange control number by agreement name
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountGeneratedIcn")]
+    [Cmdlet("Get","IntegrationAccountGeneratedIcn")]
     [OutputType(typeof(IntegrationAccountControlNumber))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmIntegrationAccountGeneratedIcn")]
+#endif
     public class GetAzureIntegrationAccountGeneratedIcnCommand : LogicAppBaseCmdlet
     {
         #region Input Parameters
@@ -91,3 +94,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
+

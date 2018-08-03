@@ -21,8 +21,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Remove, ProfileNouns.VirtualMachineExtension, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","VMExtension", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMExtension")]
+#endif
     public class RemoveAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -77,3 +80,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

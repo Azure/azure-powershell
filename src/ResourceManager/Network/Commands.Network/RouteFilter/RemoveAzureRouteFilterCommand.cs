@@ -19,7 +19,10 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Network;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRouteFilter", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove","RouteFilter", SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmRouteFilter")]
+#endif
     public class RemoveAzureRouteFilterCommand : RouteFilterBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -65,3 +68,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

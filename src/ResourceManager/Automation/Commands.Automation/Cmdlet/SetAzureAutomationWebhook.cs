@@ -22,8 +22,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Update a Webhook for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmAutomationWebhook")]
+    [Cmdlet("Set","AutomationWebhook")]
     [OutputType(typeof(Webhook))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmAutomationWebhook")]
+#endif
     public class SetAzureAutomationWebhook : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -65,3 +68,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

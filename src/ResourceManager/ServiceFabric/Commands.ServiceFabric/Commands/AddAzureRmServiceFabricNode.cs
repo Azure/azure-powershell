@@ -19,7 +19,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricNode, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    [Cmdlet("Add","ServiceFabricNode", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+#if NETSTANDARD
+    [Alias("Add-AzureRmServiceFabricNode")]
+#endif
     public class AddAzureRmServiceFabricNode : UpdateAzureRmServiceFabricNodeBase
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true,
@@ -50,3 +53,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+
+

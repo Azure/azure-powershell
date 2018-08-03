@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDdosProtectionPlan", SupportsShouldProcess = true), OutputType(typeof(PSDdosProtectionPlan))]
+    [Cmdlet("New","DdosProtectionPlan", SupportsShouldProcess = true), OutputType(typeof(PSDdosProtectionPlan))]
+#if NETSTANDARD
+    [Alias("New-AzureRmDdosProtectionPlan")]
+#endif
     public partial class NewAzureRmDdosProtectionPlan : NetworkBaseCmdlet
     {
         [Parameter(
@@ -113,3 +116,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

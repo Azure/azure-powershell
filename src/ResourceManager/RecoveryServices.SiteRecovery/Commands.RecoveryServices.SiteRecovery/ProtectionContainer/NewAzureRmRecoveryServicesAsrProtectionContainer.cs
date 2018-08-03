@@ -25,13 +25,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///    Creates an Azure Site Recovery Protection Container within the specified fabric.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.New,
-        "AzureRmRecoveryServicesAsrProtectionContainer",
-        DefaultParameterSetName = ASRParameterSets.AzureToAzure,
-        SupportsShouldProcess = true)]
+    [Cmdlet("New","RecoveryServicesAsrProtectionContainer",DefaultParameterSetName = ASRParameterSets.AzureToAzure,SupportsShouldProcess = true)]
     [Alias("New-ASRProtectionContainer")]
     [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("New-AzureRmRecoveryServicesAsrProtectionContainer")]
+#endif
     public class NewAzureRmRecoveryServicesAsrProtectionContainer : SiteRecoveryCmdletBase
     {
         #region Parameters
@@ -93,3 +92,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

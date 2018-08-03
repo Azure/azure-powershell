@@ -17,7 +17,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancerBackendAddressPoolConfig"), OutputType(typeof(PSBackendAddressPool))]
+    [Cmdlet("New","LoadBalancerBackendAddressPoolConfig"), OutputType(typeof(PSBackendAddressPool))]
+#if NETSTANDARD
+    [Alias("New-AzureRmLoadBalancerBackendAddressPoolConfig")]
+#endif
     public class NewAzureLoadBalancerBackendAddressPoolConfigCommand : AzureLoadBalancerBackendAddressPoolConfigBase
     {
         [Parameter(
@@ -43,3 +46,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

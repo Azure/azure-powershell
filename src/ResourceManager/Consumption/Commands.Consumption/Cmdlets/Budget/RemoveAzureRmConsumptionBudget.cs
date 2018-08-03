@@ -24,8 +24,11 @@ using ParameterSetNames = Microsoft.Azure.Commands.Consumption.Common.Constants.
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmConsumptionBudget", DefaultParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","ConsumptionBudget", DefaultParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmConsumptionBudget")]
+#endif
     public class RemoveAzureRmConsumptionBudget : AzureConsumptionCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.Name)]
@@ -92,3 +95,5 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
         }
     }
 }
+
+

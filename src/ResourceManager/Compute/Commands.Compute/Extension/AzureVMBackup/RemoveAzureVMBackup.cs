@@ -23,10 +23,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 {
-    [Cmdlet(
-    VerbsCommon.Remove,
-    ProfileNouns.AzureVMBackup)]
+    [Cmdlet("Remove","VMBackup")]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMBackup")]
+#endif
     public class RemoveAzureVMBackup : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -80,3 +81,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         }
     }
 }
+
+

@@ -21,11 +21,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ProfileNouns.VirtualMachineCustomScriptExtension)]
+    [Cmdlet("Get","VMCustomScriptExtension")]
     [OutputType(
         typeof(VirtualMachineCustomScriptExtensionContext))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMCustomScriptExtension")]
+#endif
     public class GetAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -102,3 +103,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

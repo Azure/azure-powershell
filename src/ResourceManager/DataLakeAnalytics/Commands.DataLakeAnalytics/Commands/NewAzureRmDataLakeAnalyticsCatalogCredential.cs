@@ -20,13 +20,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(
-        VerbsCommon.New,
-        "AzureRmDataLakeAnalyticsCatalogCredential",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = HostAndPortParameterSetName),
-        OutputType(typeof(USqlCredential))]
+    [Cmdlet("New","DataLakeAnalyticsCatalogCredential",SupportsShouldProcess = true,DefaultParameterSetName = HostAndPortParameterSetName),OutputType(typeof(USqlCredential))]
     [Alias("New-AdlCatalogCredential")]
+#if NETSTANDARD
+    [Alias("New-AzureRmDataLakeAnalyticsCatalogCredential")]
+#endif
     public class NewAzureDataLakeAnalyticsCatalogCredential : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "CreateByFullURI";
@@ -94,3 +92,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
+

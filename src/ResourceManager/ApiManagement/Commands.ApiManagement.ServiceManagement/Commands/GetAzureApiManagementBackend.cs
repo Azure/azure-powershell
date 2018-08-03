@@ -19,8 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementBackend, DefaultParameterSetName = GetAll)]
+    [Cmdlet("Get","ApiManagementBackend", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementBackend))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementBackend")]
+#endif
     public class GetAzureApiManagementBackend : AzureApiManagementCmdletBase
     {
         private const string GetAll = "GetAllBackends";
@@ -59,3 +62,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

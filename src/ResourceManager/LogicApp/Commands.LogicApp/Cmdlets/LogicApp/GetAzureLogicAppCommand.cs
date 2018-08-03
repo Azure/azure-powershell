@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new LogicApp workflow 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmLogicApp"), OutputType(typeof(Workflow), typeof(WorkflowVersion))]
+    [Cmdlet("Get","LogicApp"), OutputType(typeof(Workflow), typeof(WorkflowVersion))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmLogicApp")]
+#endif
     public class GetAzureLogicAppCommand : LogicAppBaseCmdlet
     {
 
@@ -62,3 +65,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
+

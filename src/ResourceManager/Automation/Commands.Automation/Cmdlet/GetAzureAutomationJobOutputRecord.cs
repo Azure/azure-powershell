@@ -22,8 +22,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>  
     /// Gets azure automation job stream record for a given job.  
     /// </summary>  
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationJobOutputRecord")]
+    [Cmdlet("Get","AutomationJobOutputRecord")]
     [OutputType(typeof(JobStreamRecord))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationJobOutputRecord")]
+#endif
     public class GetAzureAutomationJobOutputRecord : AzureAutomationBaseCmdlet
     {
         /// <summary>  
@@ -51,3 +54,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

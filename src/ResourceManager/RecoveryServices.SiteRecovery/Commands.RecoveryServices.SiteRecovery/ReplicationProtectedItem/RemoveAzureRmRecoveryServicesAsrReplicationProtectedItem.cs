@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,13 +21,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Stops/Disables replication for an Azure Site Recovery replication protected item.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Remove,
-        "AzureRmRecoveryServicesAsrReplicationProtectedItem",
-        DefaultParameterSetName = ASRParameterSets.DisableDR,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove","RecoveryServicesAsrReplicationProtectedItem",DefaultParameterSetName = ASRParameterSets.DisableDR,SupportsShouldProcess = true)]
     [Alias("Remove-ASRReplicationProtectedItem")]
     [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem")]
+#endif
     public class RemoveAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -134,3 +133,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

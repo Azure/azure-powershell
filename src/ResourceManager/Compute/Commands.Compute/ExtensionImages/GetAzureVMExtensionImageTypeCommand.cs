@@ -20,8 +20,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtensionImageType)]
+    [Cmdlet("Get","VMExtensionImageType")]
     [OutputType(typeof(PSVirtualMachineExtensionImageType))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMExtensionImageType")]
+#endif
     public class GetAzureVMExtensionImageTypeCommand : VirtualMachineExtensionImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty, LocationCompleter("Microsoft.Compute/locations/publishers")]
@@ -56,3 +59,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

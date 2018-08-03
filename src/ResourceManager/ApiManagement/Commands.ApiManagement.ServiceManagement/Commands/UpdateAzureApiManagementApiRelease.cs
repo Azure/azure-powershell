@@ -19,11 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Models;
     using Properties;
 
-    [Cmdlet(VerbsData.Update, 
-        Constants.ApiManagementApiRelease, 
-        DefaultParameterSetName = ExpandedParameterSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Update","ApiManagementApiRelease",DefaultParameterSetName = ExpandedParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementApiRelease), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet })]
+#if NETSTANDARD
+    [Alias("Update-AzureRmApiManagementApiRelease")]
+#endif
     public class UpdateAzureApiManagementApiRelease : AzureApiManagementCmdletBase
     {
         #region Parameter Set Names
@@ -120,3 +120,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

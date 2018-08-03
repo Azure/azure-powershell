@@ -22,8 +22,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmOperationalInsightsLinuxPerformanceObjectDataSource", SupportsShouldProcess = true, 
-        DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
+    [Cmdlet("New","OperationalInsightsLinuxPerformanceObjectDataSource", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
+#if NETSTANDARD
+    [Alias("New-AzureRmOperationalInsightsLinuxPerformanceObjectDataSource")]
+#endif
     public class NewAzureOperationalInsightsLinuxPerformanceObjectDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
@@ -96,3 +98,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
+

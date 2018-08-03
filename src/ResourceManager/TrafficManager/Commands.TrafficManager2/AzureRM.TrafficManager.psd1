@@ -72,20 +72,20 @@ NestedModules = @('.\Microsoft.Azure.Commands.TrafficManager.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Disable-AzureRmTrafficManagerEndpoint', 
-               'Enable-AzureRmTrafficManagerEndpoint', 
-               'Set-AzureRmTrafficManagerEndpoint', 
-               'Get-AzureRmTrafficManagerEndpoint', 
-               'Remove-AzureRmTrafficManagerEndpoint', 
-               'New-AzureRmTrafficManagerEndpoint', 
-               'Remove-AzureRmTrafficManagerEndpointConfig', 
-               'Add-AzureRmTrafficManagerEndpointConfig', 
-               'Disable-AzureRmTrafficManagerProfile', 
-               'Enable-AzureRmTrafficManagerProfile', 
-               'Remove-AzureRmTrafficManagerProfile', 
-               'Set-AzureRmTrafficManagerProfile', 
-               'Get-AzureRmTrafficManagerProfile', 
-               'New-AzureRmTrafficManagerProfile'
+CmdletsToExport = 'Disable-TrafficManagerEndpoint', 
+               'Enable-TrafficManagerEndpoint', 
+               'Set-TrafficManagerEndpoint', 
+               'Get-TrafficManagerEndpoint', 
+               'Remove-TrafficManagerEndpoint', 
+               'New-TrafficManagerEndpoint', 
+               'Remove-TrafficManagerEndpointConfig', 
+               'Add-TrafficManagerEndpointConfig', 
+               'Disable-TrafficManagerProfile', 
+               'Enable-TrafficManagerProfile', 
+               'Remove-TrafficManagerProfile', 
+               'Set-TrafficManagerProfile', 
+               'Get-TrafficManagerProfile', 
+               'New-TrafficManagerProfile'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -139,7 +139,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

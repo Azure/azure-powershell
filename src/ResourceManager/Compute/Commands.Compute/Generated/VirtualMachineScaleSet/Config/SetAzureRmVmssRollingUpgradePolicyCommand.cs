@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,8 +29,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmVmssRollingUpgradePolicy", SupportsShouldProcess = true)]
+    [Cmdlet("Set","VmssRollingUpgradePolicy", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVmssRollingUpgradePolicy")]
+#endif
     public partial class SetAzureRmVmssRollingUpgradePolicyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -137,4 +140,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

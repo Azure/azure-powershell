@@ -24,8 +24,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     /// <summary>
     /// remove an azure table
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.Table, SupportsShouldProcess = true),
-        OutputType(typeof(Boolean))]
+    [Cmdlet("Remove","AzureStorageTable", SupportsShouldProcess = true),OutputType(typeof(Boolean))]
+#if NETSTANDARD
+    [Alias("Remove-AzureStorageTable")]
+#endif
     public class RemoveAzureStorageTableCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Table")]
@@ -137,3 +139,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         }
     }
 }
+
+

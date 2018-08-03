@@ -1,4 +1,4 @@
-// 
+﻿// 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +35,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationSecurityGroup"), OutputType(typeof(PSApplicationSecurityGroup))]
+    [Cmdlet("Get","ApplicationSecurityGroup"), OutputType(typeof(PSApplicationSecurityGroup))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationSecurityGroup")]
+#endif
     public partial class GetAzureRmApplicationSecurityGroup : NetworkBaseCmdlet
     {
         [Parameter(
@@ -93,3 +96,5 @@ namespace Microsoft.Azure.Commands.Network.Automation
         }
     }
 }
+
+

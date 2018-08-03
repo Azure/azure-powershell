@@ -18,8 +18,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemPermission", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Set","DataLakeStoreItemPermission", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Set-AdlStoreItemPermission")]
+#if NETSTANDARD
+    [Alias("Set-AzureRmDataLakeStoreItemPermission")]
+#endif
     public class SetAzureDataLakeStoreItemPermission : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -56,3 +59,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

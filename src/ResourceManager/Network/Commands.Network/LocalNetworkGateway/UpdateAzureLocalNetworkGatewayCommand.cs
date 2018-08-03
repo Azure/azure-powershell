@@ -23,7 +23,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmLocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
+    [Cmdlet("Set","LocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmLocalNetworkGateway")]
+#endif
     public class SetAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
     {
         [Parameter(
@@ -110,3 +113,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

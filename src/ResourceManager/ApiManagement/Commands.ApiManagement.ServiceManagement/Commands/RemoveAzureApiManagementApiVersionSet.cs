@@ -20,11 +20,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, 
-        Constants.ApiManagementApiVersionSet,
-        DefaultParameterSetName = ExpandedParameterSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove","ApiManagementApiVersionSet",DefaultParameterSetName = ExpandedParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApiManagementApiVersionSet")]
+#endif
     public class RemoveAzureApiManagementApiVersionSet : AzureApiManagementCmdletBase
     {
         #region Parameter Set Names
@@ -103,3 +103,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

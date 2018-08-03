@@ -22,8 +22,11 @@ namespace Microsoft.Azure.Commands.Network
 
     using AutoMapper;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmBgpServiceCommunity"), OutputType(typeof(PSBgpServiceCommunity))]
-    public class GetAzureBgpServiceCommunityCommand: NetworkBaseCmdlet
+    [Cmdlet("Get","BgpServiceCommunity"), OutputType(typeof(PSBgpServiceCommunity))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmBgpServiceCommunity")]
+#endif
+    public class GetAzureBgpServiceCommunityCommand : NetworkBaseCmdlet
     {
         public override void Execute()
         {
@@ -43,3 +46,5 @@ namespace Microsoft.Azure.Commands.Network
 
     }
 }
+
+

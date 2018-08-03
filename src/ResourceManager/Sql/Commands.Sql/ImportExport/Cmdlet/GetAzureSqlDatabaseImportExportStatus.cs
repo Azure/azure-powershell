@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,11 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     /// <summary>
     /// Defines the AzureRmSqlDatabaseImportExportStatus cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseImportExportStatus", SupportsShouldProcess = true)]
+    [Cmdlet("Get","SqlDatabaseImportExportStatus", SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlDatabaseImportExportStatusModel))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseImportExportStatus")]
+#endif
     public class GetAzureSqlDatabaseImportExportStatus : AzureRMCmdlet
     {
         /// <summary>
@@ -84,3 +87,5 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         }
     }
 }
+
+

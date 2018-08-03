@@ -25,8 +25,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account schema.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountSchema", SupportsShouldProcess = true)]
+    [Cmdlet("Set","IntegrationAccountSchema", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccountSchema))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmIntegrationAccountSchema")]
+#endif
     public class UpdateAzureIntegrationAccountSchemaCommand : LogicAppBaseCmdlet
     {
 
@@ -170,3 +173,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
+

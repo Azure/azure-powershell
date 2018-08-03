@@ -18,8 +18,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementIdentityProvider, SupportsShouldProcess = true)]
+    [Cmdlet("Set","ApiManagementIdentityProvider", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementIdentityProvider))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmApiManagementIdentityProvider")]
+#endif
     public class SetAzureApiManagementIdentityProvider : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -77,3 +80,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

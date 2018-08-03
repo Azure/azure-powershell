@@ -27,7 +27,10 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Creates a new zone.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = IdsParameterSetName), OutputType(typeof(DnsZone))]
+    [Cmdlet("New","DnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = IdsParameterSetName), OutputType(typeof(DnsZone))]
+#if NETSTANDARD
+    [Alias("New-AzureRmDnsZone")]
+#endif
     public class NewAzureDnsZone : DnsBaseCmdlet
     {
         private const string IdsParameterSetName = "Ids";
@@ -108,3 +111,5 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 }
+
+

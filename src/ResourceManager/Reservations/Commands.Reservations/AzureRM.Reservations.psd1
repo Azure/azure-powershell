@@ -72,10 +72,10 @@ NestedModules = @('.\Microsoft.Azure.Commands.Reservations.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmReservationOrder', 'Get-AzureRmReservation', 
-               'Get-AzureRmReservationHistory', 'Update-AzureRmReservation', 
-               'Merge-AzureRmReservation', 'Split-AzureRmReservation', 
-               'Get-AzureRmReservationOrderId', 'Get-AzureRmReservationCatalog'
+CmdletsToExport = 'Get-ReservationOrder', 'Get-Reservation', 
+               'Get-ReservationHistory', 'Update-Reservation', 
+               'Merge-Reservation', 'Split-Reservation', 
+               'Get-ReservationOrderId', 'Get-ReservationCatalog'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -129,7 +129,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

@@ -25,7 +25,10 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionUsageDetail", DefaultParameterSetName = Constants.ParameterSetNames.SubscriptionItemParameterSet), OutputType(typeof(PSUsageDetail))]
+    [Cmdlet("Get","ConsumptionUsageDetail", DefaultParameterSetName = Constants.ParameterSetNames.SubscriptionItemParameterSet), OutputType(typeof(PSUsageDetail))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmConsumptionUsageDetail")]
+#endif
     public class GetAzureRmConsumptionUsageDetail : AzureConsumptionCmdletBase
     {
         const int MaxNumberToFetch = 1000;
@@ -251,3 +254,5 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
         }
     }
 }
+
+

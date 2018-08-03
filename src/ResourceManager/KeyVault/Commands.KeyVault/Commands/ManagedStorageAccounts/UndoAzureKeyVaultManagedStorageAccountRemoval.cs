@@ -17,10 +17,11 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Undo, "AzureKeyVaultManagedStorageAccountRemoval",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultManagedStorageAccountRemoval", SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultManagedStorageAccount))]
+#if NETSTANDARD
+    [Alias("Undo-AzureKeyVaultManagedStorageAccountRemoval")]
+#endif
     public class UndoAzureKeyVaultManagedStorageAccountRemoval : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -83,3 +84,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
+

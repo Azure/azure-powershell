@@ -22,7 +22,10 @@ using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnEndpointNameAvailability"), OutputType(typeof(PSCheckNameAvailabilityOutput))]
+    [Cmdlet("Get","CdnEndpointNameAvailability"), OutputType(typeof(PSCheckNameAvailabilityOutput))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmCdnEndpointNameAvailability")]
+#endif
     public class GetAzureRmCdnEndpointNameAvailability : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Proposed Azure CDN endpoint name to check.")]
@@ -38,3 +41,5 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+
+

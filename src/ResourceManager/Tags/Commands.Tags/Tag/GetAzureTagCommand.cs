@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     /// <summary>
     /// Creates a new tag with the specified values
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmTag"), OutputType(typeof(PSTag))]
+    [Cmdlet("Get","Tag"), OutputType(typeof(PSTag))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmTag")]
+#endif
     public class GetAzureTagCommand : TagBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag. If not specified, return all the tags of the subscription.")]
@@ -62,3 +65,5 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         }
     }
 }
+
+

@@ -20,9 +20,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsOther.Use,
-        Constants.CommandNames.AzureHDInsightCluster),
-    OutputType(typeof(string))]
+    [Cmdlet("Use","HDInsightCluster"),OutputType(typeof(string))]
+#if NETSTANDARD
+    [Alias("Use-AzureRmHDInsightCluster")]
+#endif
     public class UseAzureHDInsightClusterCommand : HDInsightCmdletBase
     {
         internal const string CurrentCluster = "CurrentHDInsightCluster";
@@ -84,3 +85,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

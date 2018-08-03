@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Sets the auditing settings properties for a specific database server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerAuditing", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(ServerBlobAuditingSettingsModel))]
+    [Cmdlet("Set","SqlServerAuditing", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(ServerBlobAuditingSettingsModel))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlServerAuditing")]
+#endif
     public class SetAzureSqlServerAuditing : SqlServerAuditingSettingsCmdletBase
     {
         /// <summary>
@@ -128,3 +131,5 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         private const string DefaultParameterSetName = "DefaultParameterSet";
     }
 }
+
+

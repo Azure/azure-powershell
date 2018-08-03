@@ -17,7 +17,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementSsoToken"), OutputType(typeof(string))]
+    [Cmdlet("Get","ApiManagementSsoToken"), OutputType(typeof(string))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementSsoToken")]
+#endif
     public class GetAzureApiManagementSsoToken : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -43,3 +46,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
+

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,10 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     /// <summary>
     /// Disables the Advanced Threat Protection of a specific server.
     /// </summary>
-    [Cmdlet("Disable", "AzureRmSqlServerAdvancedThreatProtection", SupportsShouldProcess = true), 
-        OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
+    [Cmdlet("Disable","SqlServerAdvancedThreatProtection", SupportsShouldProcess = true), OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
+#if NETSTANDARD
+    [Alias("Disable-AzureRmSqlServerAdvancedThreatProtection")]
+#endif
     public class DisableAzureSqlServerAdvancedThreatProtection : SqlServerAdvancedThreatProtectionCmdletBase
     {
         /// <summary>
@@ -37,3 +39,5 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         }
     }
 }
+
+

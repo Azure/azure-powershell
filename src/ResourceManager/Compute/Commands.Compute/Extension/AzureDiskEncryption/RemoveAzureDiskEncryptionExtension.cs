@@ -22,11 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet(
-        VerbsCommon.Remove,
-        ProfileNouns.AzureDiskEncryptionExtension,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove","VMDiskEncryptionExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMDiskEncryptionExtension")]
+#endif
     public class RemoveAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -93,3 +93,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         }
     }
 }
+
+

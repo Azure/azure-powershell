@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
+    [Cmdlet("Get","NetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmNetworkSecurityRuleConfig")]
+#endif
     public class GetAzureNetworkSecurityRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -60,3 +63,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

@@ -22,8 +22,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// <summary>
     /// Show Azure Storage service properties
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, StorageNouns.StorageServiceProperty),
-        OutputType(typeof(PSSeriviceProperties))]
+    [Cmdlet("Get","AzureStorageServiceProperty"),OutputType(typeof(PSSeriviceProperties))]
+#if NETSTANDARD
+    [Alias("Get-AzureStorageServiceProperty")]
+#endif
     public class GetAzureStorageServicePropertyCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]
@@ -50,3 +52,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
     }
 }
+
+

@@ -24,7 +24,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    [Cmdlet(VerbsCommon.Reset, Nouns.WorkspaceCollectionAccessKeys, SupportsShouldProcess = true), OutputType(typeof(PSWorkspaceCollectionAccessKey))]
+    [Cmdlet("Reset","PowerBIWorkspaceCollectionAccessKeys", SupportsShouldProcess = true), OutputType(typeof(PSWorkspaceCollectionAccessKey))]
+#if NETSTANDARD
+    [Alias("Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys")]
+#endif
     public class ResetWorkspaceCollectionAccessKeys : WorkspaceCollectionBaseCmdlet
     {
         [Parameter(
@@ -95,3 +98,5 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
         }
     }
 }
+
+

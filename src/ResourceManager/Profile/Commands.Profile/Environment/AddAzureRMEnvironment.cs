@@ -30,8 +30,11 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to add Azure Environment to Profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmEnvironment", SupportsShouldProcess = true, DefaultParameterSetName = EnvironmentPropertiesParameterSet)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Environment", SupportsShouldProcess = true, DefaultParameterSetName = EnvironmentPropertiesParameterSet)]
     [OutputType(typeof(PSAzureEnvironment))]
+#if NETSTANDARD
+    [Alias("Add-AzureRmEnvironment")]
+#endif
     public class AddAzureRMEnvironmentCommand : AzureContextModificationCmdlet
     {
         // Currently, this is the only resource endpoint used for both AzureCloud and all dogfood for Data Lake
@@ -341,3 +344,5 @@ namespace Microsoft.Azure.Commands.Profile
 
     }
 }
+
+

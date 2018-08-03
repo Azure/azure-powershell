@@ -28,8 +28,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Captures the specifies resource group as a template and saves it to a file on disk.
     /// </summary>
-    [Cmdlet(VerbsData.Export, "AzureRmResourceGroup", SupportsShouldProcess = true), 
-        OutputType(typeof(PSObject))]
+    [Cmdlet("Export","ResourceGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+#if NETSTANDARD
+    [Alias("Export-AzureRmResourceGroup")]
+#endif
     public class ExportAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -164,3 +166,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
+

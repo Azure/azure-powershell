@@ -18,8 +18,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementProperty)]
+    [Cmdlet("Set","ApiManagementProperty")]
     [OutputType(typeof(PsApiManagementProperty))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmApiManagementProperty")]
+#endif
     public class SetAzureApiManagementProperty : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -90,3 +93,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

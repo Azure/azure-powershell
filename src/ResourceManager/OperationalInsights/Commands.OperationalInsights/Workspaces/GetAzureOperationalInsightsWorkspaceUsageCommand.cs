@@ -19,7 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.WorkspaceUsage), OutputType(typeof(PSUsageMetric))]
+    [Cmdlet("Get","OperationalInsightsWorkspaceUsage"), OutputType(typeof(PSUsageMetric))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmOperationalInsightsWorkspaceUsage")]
+#endif
     public class GetAzureOperationalInsightsWorkspaceUsageCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -39,3 +42,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
+

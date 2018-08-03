@@ -21,9 +21,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(PSDataLakeStoreAccount))]
+    [Cmdlet("Get","DataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(PSDataLakeStoreAccount))]
     [Alias("Get-AdlStore")]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataLakeStoreAccount")]
+#endif
     public class GetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
         internal const string BaseParameterSetName = "GetAllInSubscription";
@@ -61,3 +63,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

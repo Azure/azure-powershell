@@ -18,8 +18,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementUserFromGroup)]
+    [Cmdlet("Remove","ApiManagementUserFromGroup")]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApiManagementUserFromGroup")]
+#endif
     public class RemoveAzureApiManagementUserFromGroup : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -60,3 +63,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

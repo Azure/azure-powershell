@@ -19,8 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Set, ProfileNouns.SourceImage, DefaultParameterSetName = ImageReferenceSkuParameterSet),
-    OutputType(typeof(PSVirtualMachine))]
+    [Cmdlet("Set","VMSourceImage", DefaultParameterSetName = ImageReferenceSkuParameterSet),OutputType(typeof(PSVirtualMachine))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMSourceImage")]
+#endif
     public class SetAzureVMSourceImageCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string ImageReferenceSkuParameterSet = "ImageReferenceSkuParameterSet";
@@ -80,3 +82,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

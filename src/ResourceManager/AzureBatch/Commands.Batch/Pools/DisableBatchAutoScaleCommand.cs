@@ -19,7 +19,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Disable, Constants.AzureBatchAutoScale), OutputType(typeof(void))]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchAutoScale"), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Disable-AzureBatchAutoScale")]
+#endif
     public class DisableBatchAutoScaleCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
@@ -34,3 +37,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
+

@@ -22,7 +22,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmLoadBalancer"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet("Get","LoadBalancer"), OutputType(typeof(PSLoadBalancer))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmLoadBalancer")]
+#endif
     public class GetAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -100,4 +103,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

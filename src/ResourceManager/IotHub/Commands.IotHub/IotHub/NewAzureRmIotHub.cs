@@ -22,8 +22,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceProperties = Microsoft.Azure.Commands.Management.IotHub.Properties;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmIotHub", SupportsShouldProcess = true)]
+    [Cmdlet("New","IotHub", SupportsShouldProcess = true)]
     [OutputType(typeof(PSIotHub))]
+#if NETSTANDARD
+    [Alias("New-AzureRmIotHub")]
+#endif
     public class NewAzureRmIotHub : IotHubBaseCmdlet
     {
         [Parameter(
@@ -92,3 +95,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
+

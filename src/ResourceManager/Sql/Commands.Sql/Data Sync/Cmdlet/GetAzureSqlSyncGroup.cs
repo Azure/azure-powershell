@@ -23,8 +23,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// server and database or list all the sync groups which is doing synchronization for this database 
     /// which is either as primary or member
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlSyncGroup",
-        ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncGroupModel))]
+    [Cmdlet("Get","SqlSyncGroup",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncGroupModel))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlSyncGroup")]
+#endif
     public class GetAzureSqlSyncGroup : AzureSqlSyncGroupCmdletBase
     {
         /// <summary>
@@ -67,3 +69,5 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+
+

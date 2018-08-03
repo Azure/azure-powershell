@@ -20,10 +20,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Remove,
-        ProfileNouns.VirtualMachineSqlServerExtension)]
+    [Cmdlet("Remove","VMSqlServerExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMSqlServerExtension")]
+#endif
     public class RemoveAzureVMSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -78,3 +79,5 @@ namespace Microsoft.Azure.Commands.Compute
 
     }
 }
+
+

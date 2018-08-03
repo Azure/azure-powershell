@@ -24,8 +24,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.New, ProfileNouns.AvailabilitySet)]
+    [Cmdlet("New","AvailabilitySet")]
     [OutputType(typeof(PSAvailabilitySet))]
+#if NETSTANDARD
+    [Alias("New-AzureRmAvailabilitySet")]
+#endif
     public class NewAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         [Parameter(
@@ -122,3 +125,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

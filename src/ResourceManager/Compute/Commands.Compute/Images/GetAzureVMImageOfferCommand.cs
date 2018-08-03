@@ -20,8 +20,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageOffer)]
+    [Cmdlet("Get","VMImageOffer")]
     [OutputType(typeof(PSVirtualMachineImageOffer))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMImageOffer")]
+#endif
     public class GetAzureVMImageOfferCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty, LocationCompleter("Microsoft.Compute/locations/publishers")]
@@ -56,3 +59,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

@@ -19,8 +19,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmContextAutosaveSetting")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContextAutosaveSetting")]
     [OutputType(typeof(ContextAutosaveSettings))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmContextAutosaveSetting")]
+#endif
     public class GetzureRmContextAutosaveSetting : AzureContextModificationCmdlet
     {
         const string NoDirectory = "None";
@@ -72,3 +75,5 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
     }
 }
+
+

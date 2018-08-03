@@ -19,8 +19,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreChildItem"), OutputType(typeof(DataLakeStoreItem))]
+    [Cmdlet("Get","DataLakeStoreChildItem"), OutputType(typeof(DataLakeStoreItem))]
     [Alias("Get-AdlStoreChildItem")]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataLakeStoreChildItem")]
+#endif
     public class GetAzureDataLakeStoreChildItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -44,3 +47,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

@@ -20,7 +20,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.Set, ApplicationInsightsDailyCapNounStr, DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSPricingPlan))]
+    [Cmdlet("Set","ApplicationInsightsDailyCap", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSPricingPlan))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmApplicationInsightsDailyCap")]
+#endif
     public class SetApplicationInsightsDailyCapCommand : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
@@ -126,3 +129,5 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+
+

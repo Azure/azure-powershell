@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,12 +19,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Deletes the specified ASR network mapping from the Recovery Services vault.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Remove,
-        "AzureRmRecoveryServicesAsrNetworkMapping",
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove","RecoveryServicesAsrNetworkMapping",SupportsShouldProcess = true)]
     [Alias("Remove-ASRNetworkMapping")]
     [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmRecoveryServicesAsrNetworkMapping")]
+#endif
     public class RemoveAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -67,3 +67,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Create an autoscale profile
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutoscaleProfile"), OutputType(typeof(Management.Monitor.Management.Models.AutoscaleProfile))]
+    [Cmdlet("New","AutoscaleProfile"), OutputType(typeof(Management.Monitor.Management.Models.AutoscaleProfile))]
+#if NETSTANDARD
+    [Alias("New-AzureRmAutoscaleProfile")]
+#endif
     public class NewAzureRmAutoscaleProfileCommand : MonitorCmdletBase
     {
         private const string AddAutoscaleProfileNoScheduleParamGroup = "CreateWithoutScheduledTimes";
@@ -205,3 +208,5 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         }
     }
 }
+
+

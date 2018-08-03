@@ -19,7 +19,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, Constants.AzureRmBatchAccountKey), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchAccountKey"), OutputType(typeof(BatchAccountContext))]
+#if NETSTANDARD
+    [Alias("New-AzureRmBatchAccountKey")]
+#endif
     public class RegenBatchAccountKeyCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -59,3 +62,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
+

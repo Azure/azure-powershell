@@ -22,7 +22,10 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmExpressRouteCircuitConnectionConfig", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet("Remove","ExpressRouteCircuitConnectionConfig", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCircuit))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmExpressRouteCircuitConnectionConfig")]
+#endif
     public class RemoveAzureExpressRouteCircuitConnectionConfigCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Parameter(
@@ -65,3 +68,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

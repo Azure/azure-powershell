@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,11 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [Cmdlet(VerbsCommon.Set, KubeNounStr, DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
+    [Cmdlet("Set","Aks", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSKubernetesCluster))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmAks")]
+#endif
     public class SetAzureRmAks : CreateOrUpdateKubeBase
     {
         private const string IdParameterSet = "IdParameterSet";
@@ -186,3 +189,5 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 }
+
+

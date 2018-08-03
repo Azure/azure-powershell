@@ -22,8 +22,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets a Credential for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet("Set","AutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(CredentialInfo))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmAutomationCredential")]
+#endif
     public class SetAzureAutomationCredential : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -68,3 +71,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

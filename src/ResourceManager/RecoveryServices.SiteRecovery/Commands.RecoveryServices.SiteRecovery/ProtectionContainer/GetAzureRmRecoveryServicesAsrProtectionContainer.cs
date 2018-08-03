@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,12 +25,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure Site Recovery Protection Container.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrProtectionContainer",
-        DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
+    [Cmdlet("Get","RecoveryServicesAsrProtectionContainer",DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
     [Alias("Get-ASRProtectionContainer")]
     [OutputType(typeof(ASRProtectionContainer))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesAsrProtectionContainer")]
+#endif
     public class GetAzureRmRecoveryServicesAsrProtectionContainer : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -307,3 +307,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

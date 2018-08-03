@@ -23,8 +23,10 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.PowerBI
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true), 
-        OutputType(typeof(PSPowerBIEmbeddedCapacity))]
+    [Cmdlet("New","PowerBIEmbeddedCapacity", SupportsShouldProcess = true), OutputType(typeof(PSPowerBIEmbeddedCapacity))]
+#if NETSTANDARD
+    [Alias("New-AzureRmPowerBIEmbeddedCapacity")]
+#endif
     public class NewPowerBIEmbeddedCapacity : PowerBICmdletBase
     {
         [Parameter(
@@ -111,3 +113,5 @@ namespace Microsoft.Azure.Commands.PowerBI
         }
     }
 }
+
+

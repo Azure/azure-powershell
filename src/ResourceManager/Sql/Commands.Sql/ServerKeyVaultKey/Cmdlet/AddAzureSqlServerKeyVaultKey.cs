@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,10 +23,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
     /// <summary>
     /// Defines the Add-AzureRmSqlServerKeyVaultKey cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmSqlServerKeyVaultKey", 
-        ConfirmImpact = ConfirmImpact.Low, 
-        SupportsShouldProcess = true)]
+    [Cmdlet("Add","SqlServerKeyVaultKey", ConfirmImpact = ConfirmImpact.Low,SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerKeyVaultKeyModel))]
+#if NETSTANDARD
+    [Alias("Add-AzureRmSqlServerKeyVaultKey")]
+#endif
     public class AddAzureSqlServerKeyVaultKey : AzureSqlServerKeyVaultKeyCmdletBase
     {
         /// <summary>
@@ -88,3 +89,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
         }
     }
 }
+
+

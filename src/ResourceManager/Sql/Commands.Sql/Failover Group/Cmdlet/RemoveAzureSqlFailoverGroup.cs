@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,10 @@ using System;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseFailoverGroup",
-        SupportsShouldProcess = true), OutputType(typeof(AzureSqlFailoverGroupModel))]
+    [Cmdlet("Remove","SqlDatabaseFailoverGroup",SupportsShouldProcess = true), OutputType(typeof(AzureSqlFailoverGroupModel))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlDatabaseFailoverGroup")]
+#endif
     public class RemoveAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
@@ -99,3 +101,5 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
     }
 }
+
+

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,12 +19,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Deletes the specified ASR replication policy from the Recovery Services vault.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Remove,
-        "AzureRmRecoveryServicesAsrPolicy",
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove","RecoveryServicesAsrPolicy",SupportsShouldProcess = true)]
     [Alias("Remove-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmRecoveryServicesAsrPolicy")]
+#endif
     public class RemoveAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -57,3 +57,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

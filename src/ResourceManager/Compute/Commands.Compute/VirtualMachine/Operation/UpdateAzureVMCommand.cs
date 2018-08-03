@@ -22,11 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsData.Update,
-        ProfileNouns.VirtualMachine,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ResourceGroupNameParameterSet)]
+    [Cmdlet("Update","VM",SupportsShouldProcess = true,DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Update-AzureRmVM")]
+#endif
     public class UpdateAzureVMCommand : VirtualMachineBaseCmdlet
     {
         private const string ResourceGroupNameParameterSet = "ResourceGroupNameParameterSetName";
@@ -167,3 +167,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

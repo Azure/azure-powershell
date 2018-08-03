@@ -25,7 +25,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Gets the resource lock.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmResourceLock"), OutputType(typeof(PSObject))]
+    [Cmdlet("Get","ResourceLock"), OutputType(typeof(PSObject))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmResourceLock")]
+#endif
     public class GetAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
         /// <summary>
@@ -160,3 +163,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
+

@@ -17,8 +17,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayConnectionDraining"), 
-        OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
+    [Cmdlet("Remove","ApplicationGatewayConnectionDraining"), OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationGatewayConnectionDraining")]
+#endif
     public class RemoveAzureApplicationGatewayConnectionDrainingCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -37,3 +39,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

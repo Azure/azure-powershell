@@ -24,7 +24,10 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     /// <summary>
     /// Creates a new tag with the specified values
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmTag", SupportsShouldProcess = true), OutputType(typeof(PSTag))]
+    [Cmdlet("Remove","Tag", SupportsShouldProcess = true), OutputType(typeof(PSTag))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmTag")]
+#endif
     public class RemoveAzureTagCommand : TagBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag to remove.")]
@@ -57,3 +60,5 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         }
     }
 }
+
+

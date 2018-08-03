@@ -29,10 +29,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Remove,
-        ProfileNouns.VirtualMachineAEMExtension)]
+    [Cmdlet("Remove","VMAEMExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMAEMExtension")]
+#endif
     public class RemoveAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
     {
         private AEMHelper _Helper = null;
@@ -121,3 +122,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

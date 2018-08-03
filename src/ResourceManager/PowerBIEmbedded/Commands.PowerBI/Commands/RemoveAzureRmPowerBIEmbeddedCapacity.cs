@@ -23,8 +23,10 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.PowerBI
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet), 
-        OutputType(typeof(PSPowerBIEmbeddedCapacity))]
+    [Cmdlet("Remove","PowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet), OutputType(typeof(PSPowerBIEmbeddedCapacity))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmPowerBIEmbeddedCapacity")]
+#endif
     public class RemovePowerBIEmbeddedCapacity : PowerBICmdletBase
     {
         protected const string CmdletParametersSet = "ByNameAndResourceGroup";
@@ -105,3 +107,5 @@ namespace Microsoft.Azure.Commands.PowerBI
         }
     }
 }
+
+

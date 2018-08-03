@@ -25,10 +25,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
     using Interfaces;
     using Models;
 
-    [Cmdlet(
-        VerbsLifecycle.Invoke, "AzureRmStorageSyncCompatibilityCheck", 
-        DefaultParameterSetName="PathBased")]
+    [Cmdlet("Invoke","StorageSyncCompatibilityCheck",DefaultParameterSetName="PathBased")]
     [OutputType(typeof(PSValidationResult))]
+#if NETSTANDARD
+    [Alias("Invoke-AzureRmStorageSyncCompatibilityCheck")]
+#endif
     public class InvokeCompatibilityCheckCmdlet : Cmdlet, ICmdlet
     {
         #region Fields and Properties
@@ -339,3 +340,5 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         #endregion
     }
 }
+
+

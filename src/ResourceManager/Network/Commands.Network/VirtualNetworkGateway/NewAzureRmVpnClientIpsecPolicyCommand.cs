@@ -19,7 +19,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVpnClientIpsecPolicy"), OutputType(typeof(PSIpsecPolicy))]
+    [Cmdlet("New","VpnClientIpsecPolicy"), OutputType(typeof(PSIpsecPolicy))]
+#if NETSTANDARD
+    [Alias("New-AzureRmVpnClientIpsecPolicy")]
+#endif
     public class NewAzureRmVpnClientIpsecPolicyCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -130,3 +133,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

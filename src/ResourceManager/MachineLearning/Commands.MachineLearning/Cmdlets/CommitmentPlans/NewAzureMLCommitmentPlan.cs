@@ -21,8 +21,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
 
-    [Cmdlet(VerbsCommon.New, CommitmentPlansCmdletBase.CommitmentPlanCommandletSuffix, SupportsShouldProcess = true)]
+    [Cmdlet("New","MlCommitmentPlan", SupportsShouldProcess = true)]
     [OutputType(typeof(CommitmentPlan))]
+#if NETSTANDARD
+    [Alias("New-AzureRmMlCommitmentPlan")]
+#endif
     public class NewAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML commitment plan.")]
@@ -81,3 +84,5 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         }
     }
 }
+
+

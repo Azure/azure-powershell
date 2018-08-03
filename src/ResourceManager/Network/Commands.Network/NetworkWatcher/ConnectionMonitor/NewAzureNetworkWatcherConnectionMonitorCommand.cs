@@ -26,8 +26,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmNetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"),
-        OutputType(typeof(PSConnectionMonitorResult))]
+    [Cmdlet("New","NetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"),OutputType(typeof(PSConnectionMonitorResult))]
+#if NETSTANDARD
+    [Alias("New-AzureRmNetworkWatcherConnectionMonitor")]
+#endif
     public class NewAzureNetworkWatcherConnectionMonitorCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
@@ -217,3 +219,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

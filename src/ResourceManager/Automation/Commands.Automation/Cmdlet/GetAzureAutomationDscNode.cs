@@ -24,8 +24,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation dsc node.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationDscNode", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Get","AutomationDscNode", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DscNode))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationDscNode")]
+#endif
     public class GetAzureAutomationDscNode : AzureAutomationBaseCmdlet
     {
         /// <summary> 
@@ -148,3 +151,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

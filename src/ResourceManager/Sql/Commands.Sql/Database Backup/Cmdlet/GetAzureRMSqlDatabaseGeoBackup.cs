@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseGeoBackup", SupportsShouldProcess = true)]
+    [Cmdlet("Get","SqlDatabaseGeoBackup", SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlDatabaseGeoBackupModel))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseGeoBackup")]
+#endif
     public class GetAzureRMSqlDatabaseGeoBackup : AzureSqlDatabaseGeoBackupCmdletBase
     {
         /// <summary>
@@ -64,3 +67,5 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+
+

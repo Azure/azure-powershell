@@ -18,8 +18,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeStoreAccount"), OutputType(typeof(bool))]
+    [Cmdlet("Test","DataLakeStoreAccount"), OutputType(typeof(bool))]
     [Alias("Test-AdlStore")]
+#if NETSTANDARD
+    [Alias("Test-AzureRmDataLakeStoreAccount")]
+#endif
     public class TestAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -39,3 +42,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

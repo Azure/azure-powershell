@@ -21,11 +21,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineAccessExtension,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set","VMAccessExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMAccessExtension")]
+#endif
     public class SetAzureVMAccessExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         private const string userNameKey = "UserName";
@@ -84,3 +84,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

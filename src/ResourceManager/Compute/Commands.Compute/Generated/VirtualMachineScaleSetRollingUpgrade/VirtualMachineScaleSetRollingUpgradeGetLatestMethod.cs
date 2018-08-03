@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -97,8 +97,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmVmssRollingUpgrade", DefaultParameterSetName = "DefaultParameter")]
+    [Cmdlet("Get","VmssRollingUpgrade", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSRollingUpgradeStatusInfo))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVmssRollingUpgrade")]
+#endif
     public partial class GetAzureRmVmssRollingUpgrade : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -133,3 +136,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string VMScaleSetName { get; set; }
     }
 }
+
+

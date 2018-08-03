@@ -23,8 +23,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Gets the integration account partner by name 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountPartner")]
+    [Cmdlet("Get","IntegrationAccountPartner")]
     [OutputType(typeof(IntegrationAccountPartner))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmIntegrationAccountPartner")]
+#endif
     public class GetAzureIntegrationAccountPartnerCommand : LogicAppBaseCmdlet
     {
 
@@ -65,3 +68,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
+

@@ -21,9 +21,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIotHubCertificateVerificationCode", DefaultParameterSetName = ResourceParameterSet)]
+    [Cmdlet("Get","IotHubCertificateVerificationCode", DefaultParameterSetName = ResourceParameterSet)]
     [OutputType(typeof(PSCertificateWithNonceDescription))]
     [Alias("Get-AzureRmIotHubCVC")]
+#if NETSTANDARD
+    [Alias("Get-AzureRmIotHubCertificateVerificationCode")]
+#endif
     public class GetAzureRmIotHubCertificateVerificationCode : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
@@ -110,4 +113,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
 

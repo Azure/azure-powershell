@@ -23,11 +23,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.DataDisk),
-    OutputType(
-        typeof(PSVirtualMachine))]
+    [Cmdlet("Set","VMDataDisk"),OutputType(typeof(PSVirtualMachine))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMDataDisk")]
+#endif
     public class SetAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private const string NameParameterSet = "ChangeWithName";
@@ -157,3 +156,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

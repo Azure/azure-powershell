@@ -6,9 +6,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmUserAssignedIdentity", DefaultParameterSetName = Constants.SubscriptionParameterSet
-        )]
+    [Cmdlet("Get","UserAssignedIdentity", DefaultParameterSetName = Constants.SubscriptionParameterSet)]
     [OutputType(typeof (PsUserAssignedIdentity))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmUserAssignedIdentity")]
+#endif
     public class GetAzureRmUserAssignedIdentityCmdlet : MsiBaseCmdlet
     {
         [Parameter(
@@ -81,3 +83,5 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
         }
     }
 }
+
+

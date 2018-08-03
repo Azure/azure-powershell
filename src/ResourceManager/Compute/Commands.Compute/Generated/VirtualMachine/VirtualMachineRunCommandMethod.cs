@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -111,8 +111,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Invoke, "AzureRmVMRunCommand", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("Invoke","VMRunCommand", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSRunCommandResult))]
+#if NETSTANDARD
+    [Alias("Invoke-AzureRmVMRunCommand")]
+#endif
     public partial class InvokeAzureRmVMRunCommand : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -205,3 +208,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
+

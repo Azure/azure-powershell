@@ -22,7 +22,10 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Get, Constants.LinkedService, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSLinkedService))]
+    [Cmdlet("Get","DataFactoryLinkedService", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSLinkedService))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryLinkedService")]
+#endif
     public class GetAzureDataFactoryLinkedServiceCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -84,3 +87,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
+

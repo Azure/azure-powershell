@@ -23,7 +23,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureRmServiceFabricCluster, DefaultParameterSetName = "BySubscription"), OutputType(typeof(PSCluster))]
+    [Cmdlet("Get","ServiceFabricCluster", DefaultParameterSetName = "BySubscription"), OutputType(typeof(PSCluster))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmServiceFabricCluster")]
+#endif
     public class GetAzureRmServiceFabricCluster : ServiceFabricClusterCmdlet
     {
         private const string ByResourceGroup = "ByResourceGroup";
@@ -72,3 +75,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+
+

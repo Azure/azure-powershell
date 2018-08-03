@@ -19,7 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet("Remove","ExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSExpressRouteCircuit))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmExpressRouteCircuitPeeringConfig")]
+#endif
     public class RemoveAzureExpressRouteCircuitPeeringConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -97,3 +100,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

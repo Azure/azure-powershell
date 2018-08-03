@@ -26,11 +26,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ProfileNouns.AzureVmssVMDiskEncryption),
-        Alias(ProfileNouns.GetAzureRmVmssVMDiskEncryptionAlias),
-        OutputType(typeof(PSVmssVMDiskEncryptionStatusContext))]
+    [Cmdlet("Get","VmssVMDiskEncryption"),Alias(ProfileNouns.GetAzureRmVmssVMDiskEncryptionAlias),OutputType(typeof(PSVmssVMDiskEncryptionStatusContext))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVmssVMDiskEncryption")]
+#endif
     public class GetAzureVmssVMDiskEncryptionStatusCommand : VirtualMachineScaleSetExtensionBaseCmdlet
     {
         [Parameter(
@@ -235,3 +234,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         }
     }
 }
+
+

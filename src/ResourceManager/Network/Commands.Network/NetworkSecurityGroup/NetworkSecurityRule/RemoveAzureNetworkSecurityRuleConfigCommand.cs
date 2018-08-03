@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityGroup))]
+    [Cmdlet("Remove","NetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityGroup))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmNetworkSecurityRuleConfig")]
+#endif
     public class RemoveAzureNetworkSecurityRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -49,3 +52,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

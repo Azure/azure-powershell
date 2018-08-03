@@ -19,8 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementSubscription, DefaultParameterSetName = GetAll)]
+    [Cmdlet("Get","ApiManagementSubscription", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementSubscription))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementSubscription")]
+#endif
     public class GetAzureApiManagementSubscription : AzureApiManagementCmdletBase
     {
         private const string GetAll = "GetAllSubscriptions";
@@ -85,3 +88,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

@@ -23,8 +23,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets a connection for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationConnection", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Get","AutomationConnection", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Connection))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationConnection")]
+#endif
     public class GetAzureAutomationConnection : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -75,3 +78,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

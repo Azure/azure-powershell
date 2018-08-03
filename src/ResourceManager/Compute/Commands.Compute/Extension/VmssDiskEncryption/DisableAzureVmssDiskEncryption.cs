@@ -24,11 +24,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet(
-        VerbsLifecycle.Disable,
-        ProfileNouns.AzureVmssDiskEncryption,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Disable","VmssDiskEncryption",SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
+#if NETSTANDARD
+    [Alias("Disable-AzureRmVmssDiskEncryption")]
+#endif
     public class RemoveAzureVmssDiskEncryptionCommand : VirtualMachineScaleSetExtensionBaseCmdlet
     {
         [Parameter(
@@ -169,3 +169,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         }
     }
 }
+
+

@@ -22,8 +22,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets an azure automation schedule.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet("Set","AutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(Schedule))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmAutomationSchedule")]
+#endif
     public class SetAzureAutomationSchedule : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -60,3 +63,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

@@ -20,10 +20,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, 
-        Constants.ApiManagementApi,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove","ApiManagementApi",SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApiManagementApi")]
+#endif
     public class RemoveAzureApiManagementApi : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -69,3 +70,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

@@ -26,7 +26,10 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     /// <summary>
     /// List key information for accessing the REST endpoint associated with the media service.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, MediaServiceKeysNounStr), OutputType(typeof(PSServiceKeys))]
+    [Cmdlet("Get","MediaServiceKeys"), OutputType(typeof(PSServiceKeys))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmMediaServiceKeys")]
+#endif
     public class GetAzureRmMediaServiceKeys : AzureMediaServiceCmdletBase
     {
         [Parameter(
@@ -70,3 +73,5 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
         }
     }
 }
+
+

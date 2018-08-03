@@ -26,11 +26,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet(
-        VerbsLifecycle.Disable,
-        ProfileNouns.AzureDiskEncryption,
-        SupportsShouldProcess =  true)]
+    [Cmdlet("Disable","VMDiskEncryption",SupportsShouldProcess =  true)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Disable-AzureRmVMDiskEncryption")]
+#endif
     public class DisableAzureDiskEncryptionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -358,3 +358,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         }
     }
 }
+
+

@@ -22,9 +22,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new Module for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutomationModule")]
+    [Cmdlet("New","AutomationModule")]
     [OutputType(typeof(Module))]
     [Alias("Import-AzureRmAutomationModule")]
+#if NETSTANDARD
+    [Alias("New-AzureRmAutomationModule")]
+#endif
     public class NewAzureAutomationModule : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -55,3 +58,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

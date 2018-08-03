@@ -19,9 +19,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsCatalogItem"),
-     OutputType(typeof(CatalogItem))]
+    [Cmdlet("Get","DataLakeAnalyticsCatalogItem"),OutputType(typeof(CatalogItem))]
     [Alias("Get-AdlCatalogItem")]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataLakeAnalyticsCatalogItem")]
+#endif
     public class GetAzureDataLakeAnalyticsCatalogItem : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -56,3 +58,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
+

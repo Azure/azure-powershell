@@ -25,8 +25,11 @@ namespace Microsoft.Azure.Commands.MachineLearning
     using System.Collections.Generic;
     using System.Linq;
 
-    [Cmdlet(VerbsData.Update, CommitmentPlansCmdletBase.CommitmentPlanCommandletSuffix, SupportsShouldProcess = true)]
+    [Cmdlet("Update","MlCommitmentPlan", SupportsShouldProcess = true)]
     [OutputType(typeof(CommitmentPlan))]
+#if NETSTANDARD
+    [Alias("Update-AzureRmMlCommitmentPlan")]
+#endif
     public class UpdateAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML commitment plan.")]
@@ -88,3 +91,5 @@ namespace Microsoft.Azure.Commands.MachineLearning
         }
     }
 }
+
+

@@ -20,8 +20,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Management.ApiManagement.Models;
     using Models;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementPolicy, DefaultParameterSetName = TenantLevel)]
+    [Cmdlet("Set","ApiManagementPolicy", DefaultParameterSetName = TenantLevel)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmApiManagementPolicy")]
+#endif
     public class SetAzureApiManagementPolicy : AzureApiManagementCmdletBase
     {
         private const string DefaultFormat = "application/vnd.ms-azure-apim.policy+xml";
@@ -190,3 +193,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

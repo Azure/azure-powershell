@@ -20,7 +20,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.New, StorageNouns.AccountSas), OutputType(typeof(String))]
+    [Cmdlet("New","AzureStorageAccountSASToken"), OutputType(typeof(String))]
+#if NETSTANDARD
+    [Alias("New-AzureStorageAccountSASToken")]
+#endif
     public class NewAzureStorageAccountSasTokenCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Service type that this SAS token applies to.")]
@@ -146,3 +149,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
     }
 }
+
+

@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,8 +32,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmImageOsDisk", SupportsShouldProcess = true)]
+    [Cmdlet("Set","ImageOsDisk", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmImageOsDisk")]
+#endif
     public partial class SetAzureRmImageOsDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -233,4 +236,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

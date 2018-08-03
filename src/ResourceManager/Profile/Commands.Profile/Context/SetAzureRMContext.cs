@@ -28,10 +28,12 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to change current Azure context.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmContext", DefaultParameterSetName = ContextParameterSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", DefaultParameterSetName = ContextParameterSet,SupportsShouldProcess = true)]
     [Alias("Select-AzureRmSubscription")]
     [OutputType(typeof(PSAzureContext))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmContext")]
+#endif
     public class SetAzureRMContextCommand : AzureContextModificationCmdlet
     {
         private const string SubscriptionParameterSet = "Subscription";
@@ -201,3 +203,5 @@ namespace Microsoft.Azure.Commands.Profile
         }
     }
 }
+
+

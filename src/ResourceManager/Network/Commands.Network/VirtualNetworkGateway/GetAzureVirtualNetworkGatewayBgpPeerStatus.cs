@@ -21,7 +21,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkGatewayBGPPeerStatus"), OutputType(typeof(PSBGPPeerStatus))]
+    [Cmdlet("Get","VirtualNetworkGatewayBGPPeerStatus"), OutputType(typeof(PSBGPPeerStatus))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVirtualNetworkGatewayBGPPeerStatus")]
+#endif
     public class GetAzureVirtualNetworkGatewayBGPPeerStatus : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -63,3 +66,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

@@ -23,9 +23,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Text;
     using Management.ApiManagement.Models;
 
-    [Cmdlet(VerbsData.Export, Constants.ApiManagementApi, DefaultParameterSetName = ExportContentToPipeline, 
-        SupportsShouldProcess = true)]
+    [Cmdlet("Export","ApiManagementApi", DefaultParameterSetName = ExportContentToPipeline, SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
+#if NETSTANDARD
+    [Alias("Export-AzureRmApiManagementApi")]
+#endif
     public class ExportAzureApiManagementApi : AzureApiManagementCmdletBase
     {
         private const string ExportContentToPipeline = "ExportToPipeline";
@@ -134,3 +136,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

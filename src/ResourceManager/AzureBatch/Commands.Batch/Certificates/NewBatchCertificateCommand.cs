@@ -21,7 +21,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, Constants.AzureBatchCertificate, DefaultParameterSetName = FileParameterSet), OutputType(typeof(void))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchCertificate", DefaultParameterSetName = FileParameterSet), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("New-AzureBatchCertificate")]
+#endif
     public class NewBatchCertificateCommand : BatchObjectModelCmdletBase
     {
         internal const string FileParameterSet = "File";
@@ -53,3 +56,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
+

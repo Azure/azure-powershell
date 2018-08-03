@@ -19,8 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementAuthorizationServer, DefaultParameterSetName = GetAll)]
+    [Cmdlet("Get","ApiManagementAuthorizationServer", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementOAuth2AuthrozationServer))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementAuthorizationServer")]
+#endif
     public class GetAzureApiManagementAuthorizationServer : AzureApiManagementCmdletBase
     {
         private const string GetAll = "GetAllAuthorizationServers";
@@ -56,3 +59,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

@@ -22,8 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
     /// <summary>
     /// Defines the New-AzureRmSqlServerVirtualNetworkRule cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlServerVirtualNetworkRule", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true),
-        OutputType(typeof(Model.AzureSqlServerVirtualNetworkRuleModel))]
+    [Cmdlet("New","SqlServerVirtualNetworkRule", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true),OutputType(typeof(Model.AzureSqlServerVirtualNetworkRuleModel))]
+#if NETSTANDARD
+    [Alias("New-AzureRmSqlServerVirtualNetworkRule")]
+#endif
     public class NewAzureSqlServerVirtualNetworkRule : AzureSqlServerVirtualNetworkRuleCmdletBase
     {
         /// <summary>
@@ -116,3 +118,5 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         }
     }
 }
+
+

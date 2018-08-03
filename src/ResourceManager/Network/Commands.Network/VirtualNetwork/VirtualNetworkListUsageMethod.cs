@@ -1,4 +1,4 @@
-// 
+﻿// 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkUsageList"), OutputType(typeof(PSVirtualNetworkUsage))]
+    [Cmdlet("Get","VirtualNetworkUsageList"), OutputType(typeof(PSVirtualNetworkUsage))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVirtualNetworkUsageList")]
+#endif
     public partial class GetAzureRmVirtualNetworkUsageList : NetworkBaseCmdlet
     {
         [Parameter(
@@ -66,3 +69,5 @@ namespace Microsoft.Azure.Commands.Network.Automation
         }
     }
 }
+
+

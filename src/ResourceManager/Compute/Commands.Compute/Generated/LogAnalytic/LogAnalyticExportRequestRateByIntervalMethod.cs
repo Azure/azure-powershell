@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -183,8 +183,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsData.Export, "AzureRmLogAnalyticRequestRateByInterval", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("Export","LogAnalyticRequestRateByInterval", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSLogAnalyticsOperationResult))]
+#if NETSTANDARD
+    [Alias("Export-AzureRmLogAnalyticRequestRateByInterval")]
+#endif
     public partial class ExportAzureRmLogAnalyticRequestRateByInterval : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -263,3 +266,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
+

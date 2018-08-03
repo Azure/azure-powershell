@@ -21,7 +21,10 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRMExpressRouteCrossConnectionPeering", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCrossConnection))]
+    [Cmdlet("Remove","ExpressRouteCrossConnectionPeering", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCrossConnection))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRMExpressRouteCrossConnectionPeering")]
+#endif
     public class RemoveAzureRMExpressRouteCrossConnectionPeeringCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -138,3 +141,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

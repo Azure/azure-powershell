@@ -20,8 +20,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementIdentityProvider, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","ApiManagementIdentityProvider", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApiManagementIdentityProvider")]
+#endif
     public class RemoveAzureApiManagementIdentityProvider : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -65,3 +68,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

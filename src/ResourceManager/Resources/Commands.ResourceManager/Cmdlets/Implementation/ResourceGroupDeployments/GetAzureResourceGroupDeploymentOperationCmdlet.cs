@@ -27,7 +27,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Gets the deployment operation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroupDeploymentOperation"), OutputType(typeof(PSObject))]
+    [Cmdlet("Get","ResourceGroupDeploymentOperation"), OutputType(typeof(PSObject))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmResourceGroupDeploymentOperation")]
+#endif
     public class GetAzureResourceGroupDeploymentOperationCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -122,3 +125,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
+

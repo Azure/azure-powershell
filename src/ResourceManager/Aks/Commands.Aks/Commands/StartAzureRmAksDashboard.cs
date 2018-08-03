@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,8 +31,11 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [Cmdlet("Start", KubeNounStr + "Dashboard", DefaultParameterSetName = GroupNameParameterSet)]
+    [Cmdlet("Start","AksDashboard", DefaultParameterSetName = GroupNameParameterSet)]
     [OutputType(typeof(KubeTunnelJob))]
+#if NETSTANDARD
+    [Alias("Start-AzureRmAksDashboard")]
+#endif
     public class StartAzureRmAksDashboard : KubeCmdletBase
     {
 
@@ -331,3 +334,5 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 }
+
+

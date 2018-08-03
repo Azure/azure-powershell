@@ -18,7 +18,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureRmBatchAccountKeys), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchAccountKeys"), OutputType(typeof(BatchAccountContext))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmBatchAccountKeys")]
+#endif
     public class GetBatchAccountKeysCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -43,3 +46,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
+

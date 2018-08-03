@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -133,8 +133,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmDisk", DefaultParameterSetName = "DefaultParameter")]
+    [Cmdlet("Get","Disk", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSDisk))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDisk")]
+#endif
     public partial class GetAzureRmDisk : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -212,3 +215,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string DiskName { get; set; }
     }
 }
+
+

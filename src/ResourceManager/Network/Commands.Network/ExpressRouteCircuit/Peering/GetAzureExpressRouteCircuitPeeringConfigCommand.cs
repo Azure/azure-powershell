@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSPeering))]
+    [Cmdlet("Get","ExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSPeering))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmExpressRouteCircuitPeeringConfig")]
+#endif
     public class GetAzureExpressRouteCircuitPeeringConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -52,3 +55,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

@@ -28,8 +28,11 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.DevSpaces.Commands
 {
-    [Cmdlet(VerbsCommon.New, DevSpacesControllerNoun, SupportsShouldProcess = true)]
+    [Cmdlet("New","DevSpacesController", SupportsShouldProcess = true)]
     [OutputType(typeof(PSController))]
+#if NETSTANDARD
+    [Alias("New-AzureRmDevSpacesController")]
+#endif
     public class NewAzureRmDevSpacesController : DevSpacesCmdletBase
     {
         [Parameter(
@@ -111,3 +114,5 @@ namespace Microsoft.Azure.Commands.DevSpaces.Commands
         }
     }
 }
+
+

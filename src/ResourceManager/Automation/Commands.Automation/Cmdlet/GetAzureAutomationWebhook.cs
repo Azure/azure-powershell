@@ -23,8 +23,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Get Webhook for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationWebhook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Get","AutomationWebhook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Webhook))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationWebhook")]
+#endif
     public class GetAzureAutomationWebhook : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -84,3 +87,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

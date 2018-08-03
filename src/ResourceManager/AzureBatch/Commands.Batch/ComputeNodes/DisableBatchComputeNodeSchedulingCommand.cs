@@ -20,7 +20,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Disable, Constants.AzureBatchComputeNodeScheduling, DefaultParameterSetName = Constants.IdParameterSet), OutputType(typeof(void))]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchComputeNodeScheduling", DefaultParameterSetName = Constants.IdParameterSet), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Disable-AzureBatchComputeNodeScheduling")]
+#endif
     public class DisableBatchComputeNodeSchedulingCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
@@ -53,3 +56,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
+

@@ -23,8 +23,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation schedules for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Get","AutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Schedule))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationSchedule")]
+#endif
     public class GetAzureAutomationSchedule : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -66,3 +69,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

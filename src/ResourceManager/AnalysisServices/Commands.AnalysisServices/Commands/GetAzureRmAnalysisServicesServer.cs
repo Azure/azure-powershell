@@ -21,9 +21,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmAnalysisServicesServer"),
-     OutputType(typeof(AzureAnalysisServicesServer))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer"),OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("Get-AzureAs")]
+#if NETSTANDARD
+    [Alias("Get-AzureRmAnalysisServicesServer")]
+#endif
     public class GetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         [Parameter(Position = 0,
@@ -55,3 +57,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         }
     }
 }
+
+

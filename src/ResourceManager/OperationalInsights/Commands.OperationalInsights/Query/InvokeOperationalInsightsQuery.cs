@@ -23,8 +23,10 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Query
 {
-    [Cmdlet(VerbsLifecycle.Invoke, "AzureRmOperationalInsightsQuery", DefaultParameterSetName = ParamSetNameByWorkspaceId),
-        OutputType(typeof(PSQueryResponse))]
+    [Cmdlet("Invoke","OperationalInsightsQuery", DefaultParameterSetName = ParamSetNameByWorkspaceId),OutputType(typeof(PSQueryResponse))]
+#if NETSTANDARD
+    [Alias("Invoke-AzureRmOperationalInsightsQuery")]
+#endif
     public class InvokeOperationalInsightsQuery : ResourceManager.Common.AzureRmLongRunningCmdlet
     {
         private const string ParamSetNameByWorkspaceId = "ByWorkspaceId";
@@ -123,3 +125,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Query
         }
     }
 }
+
+

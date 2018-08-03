@@ -19,8 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayRedirectConfiguration"),
-        OutputType(typeof(PSApplicationGatewayRedirectConfiguration))]
+    [Cmdlet("Get","ApplicationGatewayRedirectConfiguration"),OutputType(typeof(PSApplicationGatewayRedirectConfiguration))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationGatewayRedirectConfiguration")]
+#endif
     public class GetAzureApplicationGatewayRedirectConfigurationCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -57,3 +59,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

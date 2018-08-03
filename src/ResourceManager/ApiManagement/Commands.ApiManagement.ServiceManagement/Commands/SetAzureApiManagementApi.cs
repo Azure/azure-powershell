@@ -19,8 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Linq;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementApi, DefaultParameterSetName = ExpandedParameterSet)]
+    [Cmdlet("Set","ApiManagementApi", DefaultParameterSetName = ExpandedParameterSet)]
     [OutputType(typeof(PsApiManagementApi), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet })]
+#if NETSTANDARD
+    [Alias("Set-AzureRmApiManagementApi")]
+#endif
     public class SetAzureApiManagementApi : AzureApiManagementCmdletBase
     {
         #region Parameter Set Names
@@ -167,3 +170,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

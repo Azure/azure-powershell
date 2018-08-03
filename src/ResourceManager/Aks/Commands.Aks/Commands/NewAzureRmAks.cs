@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,11 @@ using Microsoft.Azure.Commands.Aks.Properties;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [Cmdlet(VerbsCommon.New, KubeNounStr, DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
+    [Cmdlet("New","Aks", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSKubernetesCluster))]
+#if NETSTANDARD
+    [Alias("New-AzureRmAks")]
+#endif
     public class NewAzureRmAks : CreateOrUpdateKubeBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Create cluster even if it already exists")]
@@ -63,3 +66,5 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 }
+
+

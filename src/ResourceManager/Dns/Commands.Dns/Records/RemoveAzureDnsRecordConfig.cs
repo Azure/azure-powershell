@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Removes a record from a record set object.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet("Remove","DnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDnsRecordConfig")]
+#endif
     public class RemoveAzureDnsRecordConfig : DnsBaseCmdlet
     {
         private const string ParameterSetCaa = "Caa";
@@ -190,3 +193,5 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 }
+
+

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServer", SupportsShouldProcess = true), OutputType(typeof(Model.AzureSqlServerModel))]
+    [Cmdlet("Remove","SqlServer", SupportsShouldProcess = true), OutputType(typeof(Model.AzureSqlServerModel))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlServer")]
+#endif
     public class RemoveAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>
@@ -90,3 +93,5 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         }
     }
 }
+
+

@@ -18,7 +18,10 @@ using Microsoft.Azure.Management.ManagementPartner;
 
 namespace Microsoft.Azure.Commands.ManagementPartner
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmManagementPartner"), OutputType(typeof(PSManagementPartner))]
+    [Cmdlet("Get","ManagementPartner"), OutputType(typeof(PSManagementPartner))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmManagementPartner")]
+#endif
     public class GetManagementPartner : AzureManagementPartnerCmdletsBase
     {
         [Parameter(Position = 0, Mandatory = false)]
@@ -40,3 +43,5 @@ namespace Microsoft.Azure.Commands.ManagementPartner
         }
     }
 }
+
+

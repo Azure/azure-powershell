@@ -18,8 +18,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Add, Constants.ApiManagementApiToProduct)]
+    [Cmdlet("Add","ApiManagementApiToProduct")]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Add-AzureRmApiManagementApiToProduct")]
+#endif
     public class AddAzureApiManagementApiToProduct : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -60,3 +63,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

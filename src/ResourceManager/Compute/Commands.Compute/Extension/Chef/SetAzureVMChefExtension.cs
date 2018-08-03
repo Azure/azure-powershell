@@ -25,9 +25,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 {
-    [Cmdlet(
-        VerbsCommon.Set, ProfileNouns.VirtualMachineChefExtension, SupportsShouldProcess = true)]
+    [Cmdlet("Set","VMChefExtension", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMChefExtension")]
+#endif
     public class SetAzureVMChefExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string LinuxParameterSetName = "Linux";
@@ -472,3 +474,5 @@ validation_client_name 	'{1}'
         }
     }
 }
+
+

@@ -24,8 +24,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new integration account map.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccountMap", SupportsShouldProcess = true)]
+    [Cmdlet("New","IntegrationAccountMap", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccountMap))]
+#if NETSTANDARD
+    [Alias("New-AzureRmIntegrationAccountMap")]
+#endif
     public class NewAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {
 
@@ -124,3 +127,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
+

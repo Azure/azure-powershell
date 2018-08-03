@@ -18,9 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsCommon.Set,
-        Constants.CommandNames.AzureHDInsightPersistedScriptAction),
-    OutputType(typeof(void))]
+    [Cmdlet("Set","HDInsightPersistedScriptAction"),OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmHDInsightPersistedScriptAction")]
+#endif
     public class SetAzureHDInsightPersistedScriptActionCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -53,3 +54,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

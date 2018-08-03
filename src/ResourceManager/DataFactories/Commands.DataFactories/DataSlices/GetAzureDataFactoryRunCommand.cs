@@ -22,7 +22,10 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Get, Constants.Run, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataSliceRun))]
+    [Cmdlet("Get","DataFactoryRun", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataSliceRun))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryRun")]
+#endif
     public class GetAzureDataFactoryRunCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -80,3 +83,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
+

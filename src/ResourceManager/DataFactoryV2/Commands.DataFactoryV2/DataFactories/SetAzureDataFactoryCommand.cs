@@ -20,8 +20,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Set, Constants.DataFactory, SupportsShouldProcess = true), OutputType(typeof(PSDataFactory))]
+    [Cmdlet("Set","DataFactoryV2", SupportsShouldProcess = true), OutputType(typeof(PSDataFactory))]
     [Alias(VerbsCommon.New + "-" + Constants.DataFactory)]
+#if NETSTANDARD
+    [Alias("Set-AzureRmDataFactoryV2")]
+#endif
     public class SetAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -66,3 +69,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
+

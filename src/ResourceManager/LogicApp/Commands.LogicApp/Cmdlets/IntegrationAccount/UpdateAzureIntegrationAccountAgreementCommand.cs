@@ -26,8 +26,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account agreement.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountAgreement", SupportsShouldProcess = true)]
+    [Cmdlet("Set","IntegrationAccountAgreement", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccountAgreement))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmIntegrationAccountAgreement")]
+#endif
     public class UpdateAzureIntegrationAccountAgreementCommand : LogicAppBaseCmdlet
     {
 
@@ -207,3 +210,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
+

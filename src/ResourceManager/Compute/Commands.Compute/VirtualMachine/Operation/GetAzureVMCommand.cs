@@ -25,8 +25,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachine, DefaultParameterSetName = ListAllVirtualMachinesParamSet)]
+    [Cmdlet("Get","VM", DefaultParameterSetName = ListAllVirtualMachinesParamSet)]
     [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVM")]
+#endif
     public class GetAzureVMCommand : VirtualMachineBaseCmdlet
     {
         protected const string GetVirtualMachineInResourceGroupParamSet = "GetVirtualMachineInResourceGroupParamSet";
@@ -229,3 +232,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,13 +22,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///    Creates an Azure Site Recovery Protection Container mapping by associating the specified replication policy to the specified ASR protection container.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.New,
-        "AzureRmRecoveryServicesAsrProtectionContainerMapping",
-        DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure,
-        SupportsShouldProcess = true)]
+    [Cmdlet("New","RecoveryServicesAsrProtectionContainerMapping",DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure,SupportsShouldProcess = true)]
     [Alias("New-ASRProtectionContainerMapping")]
     [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("New-AzureRmRecoveryServicesAsrProtectionContainerMapping")]
+#endif
     public class NewAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -193,3 +192,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

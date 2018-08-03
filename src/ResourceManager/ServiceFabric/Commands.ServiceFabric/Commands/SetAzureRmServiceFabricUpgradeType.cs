@@ -20,7 +20,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureRmServiceFabricUpgradeType, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    [Cmdlet("Set","ServiceFabricUpgradeType", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmServiceFabricUpgradeType")]
+#endif
     public class SetAzureRmServiceFabricUpgradeType : ServiceFabricClusterCmdlet
     {
         private const string AutomaticSet = "Automatic";
@@ -74,3 +77,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+
+

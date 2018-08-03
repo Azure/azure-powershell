@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.Schema), OutputType(typeof(PSSearchGetSchemaResponse))]
+    [Cmdlet("Get","OperationalInsightsSchema"), OutputType(typeof(PSSearchGetSchemaResponse))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmOperationalInsightsSchema")]
+#endif
     public class GetAzureOperationalInsightsSchemaCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -40,3 +43,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
     }
 }
+
+

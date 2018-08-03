@@ -20,8 +20,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Linq;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, Constants.ApiManagementApiRelease, SupportsShouldProcess = true)]
+    [Cmdlet("New","ApiManagementApiRelease", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementApiRelease))]
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementApiRelease")]
+#endif
     public class NewAzureApiManagementApiRelease : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -72,3 +75,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

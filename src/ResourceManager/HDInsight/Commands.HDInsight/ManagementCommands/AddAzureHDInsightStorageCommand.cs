@@ -18,10 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.Add,
-        Constants.CommandNames.AzureHDInsightStorage),
-    OutputType(typeof(AzureHDInsightConfig))]
+    [Cmdlet("Add","HDInsightStorage"),OutputType(typeof(AzureHDInsightConfig))]
+#if NETSTANDARD
+    [Alias("Add-AzureRmHDInsightStorage")]
+#endif
     public class AddAzureHDInsightStorageCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -51,3 +51,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

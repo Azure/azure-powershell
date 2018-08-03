@@ -23,8 +23,11 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmNetworkWatcherIPFlow", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSIPFlowVerifyResult))]
+    [Cmdlet("Test","NetworkWatcherIPFlow", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSIPFlowVerifyResult))]
 
+#if NETSTANDARD
+    [Alias("Test-AzureRmNetworkWatcherIPFlow")]
+#endif
     public class TestAzureNetworkWatcherIPFlowCommand : NetworkWatcherBaseCmdlet
     {
         [Parameter(
@@ -162,3 +165,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

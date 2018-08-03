@@ -24,8 +24,11 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreAccount"), OutputType(typeof(PSDataLakeStoreAccount))]
+    [Cmdlet("Set","DataLakeStoreAccount"), OutputType(typeof(PSDataLakeStoreAccount))]
     [Alias("Set-AdlStore")]
+#if NETSTANDARD
+    [Alias("Set-AzureRmDataLakeStoreAccount")]
+#endif
     public class SetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -146,3 +149,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

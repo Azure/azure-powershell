@@ -23,8 +23,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation dsc onboarding meta configuration information for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationDscOnboardingMetaconfig", SupportsShouldProcess = true)]
+    [Cmdlet("Get","AutomationDscOnboardingMetaconfig", SupportsShouldProcess = true)]
     [OutputType(typeof(DscOnboardingMetaconfig))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationDscOnboardingMetaconfig")]
+#endif
     public class GetAzureAutomationDscOnboardingMetaconfig : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -73,3 +76,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

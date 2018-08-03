@@ -22,11 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineADDomainExtension,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set","VMADDomainExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMADDomainExtension")]
+#endif
     public class SetAzureVMADDomainExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         private const string nameKey = "Name";
@@ -131,4 +131,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

@@ -23,8 +23,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Gets the integration account callback URL. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountCallbackUrl")]
+    [Cmdlet("Get","IntegrationAccountCallbackUrl")]
     [OutputType(typeof(CallbackUrl))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmIntegrationAccountCallbackUrl")]
+#endif
     public class GetAzureIntegrationAccountCallbackUrlCommand : LogicAppBaseCmdlet
     {
 
@@ -69,3 +72,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
+

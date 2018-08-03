@@ -25,8 +25,11 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to get current Azure Environment from Profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmEnvironment")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Environment")]
     [OutputType(typeof(PSAzureEnvironment))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmEnvironment")]
+#endif
     public class GetAzureRMEnvironmentCommand : AzureRMCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The environment name")]
@@ -46,3 +49,5 @@ namespace Microsoft.Azure.Commands.Profile
         }
     }
 }
+
+

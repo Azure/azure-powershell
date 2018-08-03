@@ -20,11 +20,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineBgInfoExtension,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set","VMBginfoExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMBginfoExtension")]
+#endif
     public class SetAzureVMBGInfoExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         protected override void ProcessRecord()
@@ -63,3 +63,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

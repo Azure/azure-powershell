@@ -25,7 +25,10 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Gets one or more existing record sets.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmDnsRecordSet"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet("Get","DnsRecordSet"), OutputType(typeof(DnsRecordSet))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDnsRecordSet")]
+#endif
     public class GetAzureDnsRecordSet : DnsBaseCmdlet
     {
         [Parameter(Mandatory = false, ParameterSetName = "Fields", ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
@@ -103,3 +106,5 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 }
+
+
