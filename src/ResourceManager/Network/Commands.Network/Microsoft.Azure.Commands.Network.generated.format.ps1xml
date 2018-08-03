@@ -22,7 +22,27 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Tags</Label>
+            <Label>Sku Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Policy Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EnableHttp2</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EnableFips</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>OperationalState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -42,7 +62,27 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <ScriptBlock>$_.Sku.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.SslPolicy.PolicyName</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnableHttp2</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnableFips</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>OperationalState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -58,12 +98,20 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
@@ -82,12 +130,20 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
@@ -106,7 +162,47 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>Port</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Protocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>CookieBasedAffinity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>RequestTimeout</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>HostName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PickHostNameFromBackendAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AffinityCookieName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProbeEnabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Path</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -114,7 +210,47 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>Port</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Protocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>CookieBasedAffinity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>RequestTimeout</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>HostName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PickHostNameFromBackendAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AffinityCookieName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProbeEnabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Path</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -154,6 +290,54 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallConfiguration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>FirewallMode</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>RuleSetType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>RuleSetVersion</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Enabled</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>FirewallMode</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>RuleSetType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>RuleSetVersion</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableSslOptions</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAvailableSslOptions</TypeName>
@@ -176,10 +360,6 @@
             <Alignment>Left</Alignment>
             <Label>DefaultPolicy</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>Tags</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -199,10 +379,6 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>DefaultPolicy</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -250,7 +426,19 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>PrivateIPAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PrivateIPAllocationMethod</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -258,7 +446,19 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>PrivateIPAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PrivateIPAllocationMethod</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -274,7 +474,15 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>Port</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -282,7 +490,15 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>Port</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -298,12 +514,20 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
@@ -322,7 +546,23 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>Protocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>HostName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>RequireServerNameIndication</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -330,7 +570,23 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>Protocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>HostName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>RequireServerNameIndication</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -394,7 +650,43 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>Protocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Host</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Path</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Interval</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Timeout</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>UnhealthyThreshold</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PickHostNameFromBackendHttpSettings</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>MinServers</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -402,7 +694,43 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>Protocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Host</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Path</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Interval</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Timeout</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>UnhealthyThreshold</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PickHostNameFromBackendHttpSettings</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>MinServers</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -418,7 +746,23 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>RedirectType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>TargetUrl</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IncludePath</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IncludeQueryString</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -426,7 +770,23 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>RedirectType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>TargetUrl</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IncludePath</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IncludeQueryString</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -442,7 +802,55 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>RuleType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>RuleType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySku</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySku</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Tier</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Capacity</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -451,6 +859,14 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Tier</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Capacity</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -466,12 +882,20 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
@@ -530,12 +954,20 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
@@ -568,10 +1000,6 @@
             <Alignment>Left</Alignment>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>Tags</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -591,10 +1019,6 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -622,7 +1046,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Tags</Label>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -642,7 +1066,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -696,10 +1120,6 @@
             <Alignment>Left</Alignment>
             <Label>ServiceProviderProperties ServiceProviderName</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>Tags</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -743,10 +1163,6 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <ScriptBlock>$_.ServiceProviderProperties.ServiceProviderName</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1100,10 +1516,6 @@
             <Alignment>Left</Alignment>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>Tags</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -1152,10 +1564,6 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
-              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -1170,7 +1578,43 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>PeeringType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>State</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AzureASN</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PeerASN</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PrimaryPeerAddressPrefix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SecondaryPeerAddressPrefix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PrimaryAzurePort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SecondaryAzurePort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1178,7 +1622,43 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>PeeringType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>State</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AzureASN</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PeerASN</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PrimaryPeerAddressPrefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SecondaryPeerAddressPrefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PrimaryAzurePort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SecondaryAzurePort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1206,7 +1686,11 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Tags</Label>
+            <Label>Sku Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1226,7 +1710,11 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <ScriptBlock>$_.Sku.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1242,7 +1730,27 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>FrontendPortRangeStart</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>FrontendPortRangeEnd</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>BackendPort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Protocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1250,7 +1758,27 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>FrontendPortRangeStart</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>FrontendPortRangeEnd</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>BackendPort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Protocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1266,7 +1794,115 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>PeeringType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>State</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AzureASN</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PeerASN</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PrimaryPeerAddressPrefix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SecondaryPeerAddressPrefix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PrimaryAzurePort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SecondaryAzurePort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PeeringType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>State</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AzureASN</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PeerASN</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PrimaryPeerAddressPrefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SecondaryPeerAddressPrefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PrimaryAzurePort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SecondaryAzurePort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSEffectiveRoute</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSEffectiveRoute</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>State</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Source</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>NextHopType</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1275,6 +1911,18 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>State</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Source</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>NextHopType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1302,7 +1950,23 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Tags</Label>
+            <Label>MacAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Primary</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EnableAcceleratedNetworking</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EnableIPForwarding</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1322,7 +1986,23 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <PropertyName>MacAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Primary</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnableAcceleratedNetworking</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnableIPForwarding</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1338,7 +2018,35 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>PrivateIpAddressVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Primary</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PrivateIpAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PrivateIpAllocationMethod</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Subnet Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PublicIpAddress Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1346,7 +2054,35 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>PrivateIpAddressVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Primary</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PrivateIpAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PrivateIpAllocationMethod</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Subnet.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.PublicIpAddress.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1362,7 +2098,147 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Location</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AutoStart</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>MonitoringIntervalInSeconds</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>StartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>MonitoringStatus</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AutoStart</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>MonitoringIntervalInSeconds</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>StartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>MonitoringStatus</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSConnectivityInformation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSConnectivityInformation</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ConnectionStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AvgLatencyInMs</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>MinLatencyInMs</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>MaxLatencyInMs</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProbesSent</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProbesFailed</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ConnectionStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AvgLatencyInMs</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>MinLatencyInMs</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>MaxLatencyInMs</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProbesSent</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProbesFailed</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSBgpServiceCommunity</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSBgpServiceCommunity</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ServiceName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1371,6 +2247,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ServiceName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1400,10 +2280,6 @@
             <Alignment>Left</Alignment>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>Tags</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -1424,9 +2300,29 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSFlowLog</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSFlowLog</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Enabled</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <PropertyName>Enabled</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1454,7 +2350,15 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Tags</Label>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EndTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>StartTime</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1474,7 +2378,15 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EndTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>StartTime</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1554,6 +2466,38 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSTopology</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSTopology</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>CreatedDateTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>LastModified</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>CreatedDateTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>LastModified</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSGetPacketCaptureResult</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSGetPacketCaptureResult</TypeName>
@@ -1562,7 +2506,39 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Target</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>BytesToCapturePerPacket</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>TotalBytesPerSession</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>TimeLimitInSeconds</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>CaptureStartTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PacketCaptureStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>StopReason</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1570,7 +2546,39 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>BytesToCapturePerPacket</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>TotalBytesPerSession</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>TimeLimitInSeconds</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>CaptureStartTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PacketCaptureStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>StopReason</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1586,7 +2594,123 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>BytesToCapturePerPacket</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>TotalBytesPerSession</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>TimeLimitInSeconds</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>BytesToCapturePerPacket</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>TotalBytesPerSession</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>TimeLimitInSeconds</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSPacketCaptureFilter</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSPacketCaptureFilter</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Protocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>RemoteIPAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>LocalIPAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>LocalPort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>RemotePort</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Protocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>RemoteIPAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>LocalIPAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>LocalPort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>RemotePort</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRouteServiceProvider</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRouteServiceProvider</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1595,6 +2719,10 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1622,7 +2750,11 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Tags</Label>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>DisableBgpRoutePropagation</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1642,7 +2774,11 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>DisableBgpRoutePropagation</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1706,6 +2842,86 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SALifeTimeSeconds</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SADataSizeKilobytes</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IpsecEncryption</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IpsecIntegrity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IkeEncryption</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IkeIntegrity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>DhGroup</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PfsGroup</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SALifeTimeSeconds</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SADataSizeKilobytes</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IpsecEncryption</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IpsecIntegrity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IkeEncryption</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IkeIntegrity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>DhGroup</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PfsGroup</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSRouteFilter</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSRouteFilter</TypeName>
@@ -1726,7 +2942,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Tags</Label>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1746,7 +2962,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1762,7 +2978,15 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>Access</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>RouteFilterRuleType</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1770,7 +2994,15 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>Access</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>RouteFilterRuleType</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1930,6 +3162,54 @@
       </TableControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVpnProfile</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVpnProfile</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>VpnProfileSASUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>VpnProfileSASUrl</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSIPAddressAvailabilityResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSIPAddressAvailabilityResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Available</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Available</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress</TypeName>
@@ -1950,7 +3230,23 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Tags</Label>
+            <Label>PublicIpAllocationMethod</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IpAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PublicIpAddressVersion</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IdleTimeoutInMinutes</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -1970,7 +3266,23 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <PropertyName>PublicIpAllocationMethod</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IpAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PublicIpAddressVersion</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IdleTimeoutInMinutes</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2022,7 +3334,27 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Tags</Label>
+            <Label>GatewayType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>VpnType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EnableBgp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ActiveActive</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Sku Name</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2042,7 +3374,27 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <PropertyName>GatewayType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>VpnType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnableBgp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ActiveActive</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Sku.Name</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2138,7 +3490,15 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>PrivateIpAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PrivateIpAllocationMethod</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2146,7 +3506,95 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>PrivateIpAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PrivateIpAllocationMethod</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SaLifeTimeSeconds</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>SaDataSizeKilobytes</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IpsecEncryption</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IpsecIntegrity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IkeEncryption</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IkeIntegrity</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>DhGroup</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PfsGroup</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SaLifeTimeSeconds</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>SaDataSizeKilobytes</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IpsecEncryption</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IpsecIntegrity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IkeEncryption</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IkeIntegrity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>DhGroup</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PfsGroup</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2174,7 +3622,11 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Tags</Label>
+            <Label>GatewayIpAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2194,7 +3646,11 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <PropertyName>GatewayIpAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2222,7 +3678,35 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Tags</Label>
+            <Label>ConnectionType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>RoutingWeight</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EnableBgp</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ConnectionStatus</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EgressBytesTransferred</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IngressBytesTransferred</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>UsePolicyBasedTrafficSelectors</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2242,7 +3726,35 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <PropertyName>ConnectionType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>RoutingWeight</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnableBgp</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ConnectionStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EgressBytesTransferred</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IngressBytesTransferred</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>UsePolicyBasedTrafficSelectors</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2258,12 +3770,20 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
@@ -2282,7 +3802,27 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>PrivateIpAddress</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PrivateIpAllocationMethod</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Subnet Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PublicIpAddress Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2290,7 +3830,27 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>PrivateIpAddress</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PrivateIpAllocationMethod</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Subnet.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.PublicIpAddress.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2306,7 +3866,31 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>FrontendPort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IdleTimeoutInMinutes</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EnableFloatingIP</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>BackendPort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Protocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2314,7 +3898,31 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>FrontendPort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IdleTimeoutInMinutes</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnableFloatingIP</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>BackendPort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Protocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2330,7 +3938,39 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>FrontendPort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IdleTimeoutInMinutes</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>LoadDistribution</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EnableFloatingIP</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>DisableOutboundSNAT</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>BackendPort</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Protocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2338,7 +3978,39 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>FrontendPort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IdleTimeoutInMinutes</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>LoadDistribution</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnableFloatingIP</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>DisableOutboundSNAT</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>BackendPort</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Protocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2354,7 +4026,31 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>Protocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Port</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>IntervalInSeconds</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>NumberOfProbes</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>RequestPath</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2362,7 +4058,31 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>Protocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Port</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>IntervalInSeconds</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>NumberOfProbes</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>RequestPath</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2390,7 +4110,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Tags</Label>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2410,7 +4130,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2426,7 +4146,27 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>Protocol</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Access</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Priority</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Direction</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2434,7 +4174,27 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>Protocol</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Access</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Priority</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Direction</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2450,7 +4210,35 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>ResourceGroupName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>VirtualNetworkName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AllowVirtualNetworkAccess</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AllowForwardedTraffic</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AllowGatewayTransit</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>UseRemoteGateways</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2458,7 +4246,35 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>VirtualNetworkName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AllowVirtualNetworkAccess</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AllowForwardedTraffic</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AllowGatewayTransit</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>UseRemoteGateways</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2486,7 +4302,15 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Tags</Label>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EnableDdosProtection</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>EnableVmProtection</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2506,7 +4330,15 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>foreach($item in $_.Tag.Keys) { "$item =$($_.Tag[$item])" }</ScriptBlock>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnableDdosProtection</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>EnableVmProtection</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2522,7 +4354,67 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>AddressPrefix</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>NetworkSecurityGroup Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>RouteTable Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AddressPrefix</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.NetworkSecurityGroup.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.RouteTable.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSEndpointServiceResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSEndpointServiceResult</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Type</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -2531,6 +4423,114 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureReachabilityReport</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureReachabilityReport</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AggregationLevel</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AggregationLevel</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSUsage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSUsage</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>CurrentValue</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Limit</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>CurrentValue</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Limit</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name.LocalizedValue</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkUsage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkUsage</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>CurrentValue</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Limit</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>CurrentValue</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Limit</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name.LocalizedValue</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

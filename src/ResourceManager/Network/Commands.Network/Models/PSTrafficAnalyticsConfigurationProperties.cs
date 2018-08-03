@@ -13,6 +13,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
+    using WindowsAzure.Commands.Common.Attributes;
 
     /// <summary>
     /// Parameters that define the configuration of traffic analytics.
@@ -24,18 +25,21 @@ namespace Microsoft.Azure.Commands.Network.Models
         /// Gets or sets flag to enable/disable traffic analytics.
         /// </summary>
         [JsonProperty(PropertyName = "enabled")]
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool Enabled { get; set; }
 
         /// <summary>
         /// Gets or sets the resource guid of the attached workspace
         /// </summary>
         [JsonProperty(PropertyName = "workspaceId")]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string WorkspaceId { get; set; }
 
         /// <summary>
         /// Gets or sets the location of the attached workspace
         /// </summary>
         [JsonProperty(PropertyName = "workspaceRegion")]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string WorkspaceRegion { get; set; }
 
         /// <summary>

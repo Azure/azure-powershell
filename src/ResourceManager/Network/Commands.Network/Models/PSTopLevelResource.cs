@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string Type { get; set; }
 
-        [Ps1Xml(Label = "Tags", Target = ViewControl.Table, ScriptBlock = "foreach($item in $_.Tag.Keys) { \"$item =$($_.Tag[$item])\" }")]
         public Hashtable Tag { get; set; }
 
         public string TagsTable
