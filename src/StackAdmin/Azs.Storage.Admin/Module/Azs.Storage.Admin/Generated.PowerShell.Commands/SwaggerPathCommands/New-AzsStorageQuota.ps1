@@ -64,10 +64,10 @@ function New-AzsStorageQuota {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSCmdlet.ShouldProcess("$Name", "Create a storage quota")) {
-            
+
             if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
@@ -84,7 +84,7 @@ function New-AzsStorageQuota {
                     throw "A storage quota with name $Name at location $Location already exists."
                 }
             }
-            
+
             $flattenedParameters = @('NumberOfStorageAccounts', 'CapacityInGb')
             $utilityCmdParams = @{}
             $flattenedParameters | ForEach-Object {
