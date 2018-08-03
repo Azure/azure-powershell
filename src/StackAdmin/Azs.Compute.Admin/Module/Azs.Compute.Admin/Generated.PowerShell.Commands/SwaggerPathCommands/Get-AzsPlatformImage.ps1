@@ -123,39 +123,10 @@ function Get-AzsPlatformImage {
             $offer = $ArmResourceIdParameterValues['offer']
             $sku = $ArmResourceIdParameterValues['sku']
             $version = $ArmResourceIdParameterValues['version']
-        } elseif ( -not $PSBoundParameters.ContainsKey('Location')) {
+        } elseif ( [System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
         }
 
-        $filterInfos = @(
-            @{
-                'Type'     = 'powershellWildcard'
-                'Value'    = $Version
-                'Property' = 'Name'
-            })
-        $applicableFilters = Get-ApplicableFilters -Filters $filterInfos
-        if ($applicableFilters | Where-Object { $_.Strict }) {
-            Write-Verbose -Message 'Performing server-side call ''Get-AzsPlatformImage -'''
-            $serverSideCall_params = @{
-
-            }
-
-            $serverSideResults = Get-AzsPlatformImage @serverSideCall_params
-            foreach ($serverSideResult in $serverSideResults) {
-                $valid = $true
-                foreach ($applicableFilter in $applicableFilters) {
-                    if (-not (Test-FilteredResult -Result $serverSideResult -Filter $applicableFilter.Filter)) {
-                        $valid = $false
-                        break
-                    }
-                }
-
-                if ($valid) {
-                    $serverSideResult
-                }
-            }
-            return
-        }
         if ('List' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $ComputeAdminClient.'
             $TaskResult = $ComputeAdminClient.PlatformImages.ListWithHttpMessagesAsync($Location)
