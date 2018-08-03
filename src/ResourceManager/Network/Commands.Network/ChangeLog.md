@@ -24,6 +24,7 @@
 * Added examples for Remove-AzureRmVirtualNetworkGatewayIpConfig and Reset-AzureRmVirtualNetworkGateway
 * Added example for Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey
 * Added example for Set-AzureRmVirtualNetworkGatewayConnectionSharedKey
+* Added example for Set-AzureRmVirtualNetworkGatewayConnection
 
 ## Version 6.4.1
 * Updated all help files to include full parameter types and correct input/output types.
