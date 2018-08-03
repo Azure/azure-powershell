@@ -124,9 +124,12 @@ function Add-AzsPlatformImage {
 
         if ($PSCmdlet.ShouldProcess("$Publisher/$Offer/$Sku/$Version" , "Add new virtual machine image")) {
 
+	        if ( [System.String]::IsNullOrEmpty($Location)) {
+				$Location = (Get-AzureRMLocation).Location
+            }
             $dontCheck = $true
             try {
-                $result = Get-AzsPlatformImage -Publisher $Publisher -Offer $Offer -Sku $Sku -Version $Version
+                $result = Get-AzsPlatformImage -Publisher $Publisher -Offer $Offer -Sku $Sku -Version $Version -Location $Location
                 $dontCheck = $result -eq $null
             } catch {
                 # No-op
@@ -161,10 +164,6 @@ function Add-AzsPlatformImage {
                     }
                 }
                 $NewImage = New-PlatformImageParametersObject @utilityCmdParams
-
-                if ( -not $PSBoundParameters.ContainsKey('Location')) {
-                    $Location = (Get-AzureRMLocation).Location
-                }
 
                 Write-Verbose -Message 'Performing operation add on $ComputeAdminClient.'
                 $TaskResult = $ComputeAdminClient.PlatformImages.CreateWithHttpMessagesAsync($Location, $Publisher, $Offer, $Sku, $Version, $NewImage)
