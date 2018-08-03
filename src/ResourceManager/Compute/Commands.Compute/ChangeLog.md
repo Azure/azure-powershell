@@ -20,6 +20,7 @@
 -->
 ## Current Release
 * Updated to the latest version of the Azure ClientRuntime.
+* Add EvictionPolicy parameter to New-AzureRmVmssConfig
 * Use default location in the `DiskFileParameterSet` of New-AzureRmVm if no Location is specified.
 * Fix parameter description in Save-AzureRmVMImage
 
