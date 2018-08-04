@@ -16,7 +16,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Common.Test.Resources;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Resources;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {

@@ -162,10 +162,7 @@
     <EmbeddedResource Include="Resources\PowershellTestClientCert.pfx">
       <LogicalName>PowershellTestClientCert.pfx</LogicalName>
     </EmbeddedResource>
-    <None Include="Resources\SqlDatabaseSettings.xml">
-      <Link>SqlDatabaseSettings.xml</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources\SqlDatabaseSettings.xml" />
     <Content Include="Resources\MockSessions.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -179,5 +176,4 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
 </Project>

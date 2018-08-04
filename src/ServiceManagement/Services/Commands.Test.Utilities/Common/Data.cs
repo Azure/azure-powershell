@@ -60,10 +60,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         public static string TestResultDirectory { get; private set; }
         public static string AzureAppDir { get; private set; }
 
-        public static string NodeWebRoleScaffoldingPath = Path.Combine(Resources.NodeScaffolding, RoleType.WebRole.ToString());
-        public static string NodeWorkerRoleScaffoldingPath = Path.Combine(Resources.NodeScaffolding, RoleType.WorkerRole.ToString());
-        public static string PHPWebRoleScaffoldingPath = Path.Combine(Resources.PHPScaffolding, RoleType.WebRole.ToString());
-        public static string PHPWorkerRoleScaffoldingPath = Path.Combine(Resources.PHPScaffolding, RoleType.WorkerRole.ToString());
+        public static string NodeWebRoleScaffoldingPath = Path.Combine(Commands.Common.Properties.Resources.NodeScaffolding, RoleType.WebRole.ToString());
+        public static string NodeWorkerRoleScaffoldingPath = Path.Combine(Commands.Common.Properties.Resources.NodeScaffolding, RoleType.WorkerRole.ToString());
+        public static string PHPWebRoleScaffoldingPath = Path.Combine(Commands.Common.Properties.Resources.PHPScaffolding, RoleType.WebRole.ToString());
+        public static string PHPWorkerRoleScaffoldingPath = Path.Combine(Commands.Common.Properties.Resources.PHPScaffolding, RoleType.WorkerRole.ToString());
 
         static Data()
         {

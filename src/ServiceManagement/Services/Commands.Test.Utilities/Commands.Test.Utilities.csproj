@@ -51,6 +51,7 @@
     <Compile Include="CloudService\SimpleServiceManagement.cs" />
     <Compile Include="Common\ClientMocks.cs" />
     <Compile Include="Common\Data.cs" />
+    <Compile Include="Common\DirStack.cs" />
     <Compile Include="Common\EmbeddedFileWriter.cs" />
     <Compile Include="Common\FileSystemHelper.cs" />
     <Compile Include="Common\MockServicesHost.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Common\PSTestTracingInterceptor.cs" />
     <Compile Include="Common\RemoveAzurePublishSettings.cs" />
     <Compile Include="Common\SimpleServiceManagementAsyncResult.cs" />
+    <Compile Include="Common\TestExecutionHelpers.cs" />
     <Compile Include="Common\Testing.cs" />
     <Compile Include="Common\XUnitHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,11 +90,83 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Azure.publishsettings">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\GB18030ServiceDefinition.csdef" />
+    <EmbeddedResource Include="Resources\InvalidProfile.PublishSettings" />
+    <EmbeddedResource Include="Resources\ValidProfile.PublishSettings">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ValidProfile2.PublishSettings" />
+    <EmbeddedResource Include="Resources\ValidProfile3.PublishSettings">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ValidProfileChina.PublishSettings">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ValidProfileChinaOld.PublishSettings">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\invalidsubscriptions.xml" />
+    <EmbeddedResource Include="Resources\subscriptions.xml" />
+    <EmbeddedResource Include="Resources\testruntimemanifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DSC\Configurations\CorporateClientConfiguration.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\DomainControllerConfiguration.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\Dummy\ModuleImportListInsideNode.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\Dummy\ModuleImportListOutsideNode.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\Dummy\ModuleImportSingleInsideNode.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\Dummy\ModuleImportSingleOutsideNode.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\Dummy\NameImportListInsideNode.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\Dummy\NameImportListOutsideNode.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\Dummy\NameImportSingleInsideNode.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\Dummy\NameImportSingleOutsideNode.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\Dummy\NameModuleImportSingleInsideNode.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\IEEScBad.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\IEEScGood.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\SHMulptiConfigurations.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\DSC\Configurations\VisualStudio.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Resources\DSC\DSC Resource Kit Wave 6 08282014.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
 </Project>
