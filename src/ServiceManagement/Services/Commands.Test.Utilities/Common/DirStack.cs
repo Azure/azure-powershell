@@ -1,4 +1,5 @@
 ﻿// ----------------------------------------------------------------------------------
+//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,12 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Resources
+using System;
+using System.IO;
+
+namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
     /// <summary>
-    /// A dummy class used to located the resources in this folder/namespace.
+    /// A little helper object to do the equivalent of
+    /// pushd/popd in C# code
     /// </summary>
-    public class ResourceLocator
+    public sealed class DirStack : IDisposable
     {
+        private readonly string originalDirectory;
+
+        public DirStack(string newDir)
+        {
+            originalDirectory = Directory.GetCurrentDirectory();
+            Directory.SetCurrentDirectory(newDir);
+        }
+
+        public void Dispose()
+        {
+            Directory.SetCurrentDirectory(originalDirectory);
+        }
     }
 }
