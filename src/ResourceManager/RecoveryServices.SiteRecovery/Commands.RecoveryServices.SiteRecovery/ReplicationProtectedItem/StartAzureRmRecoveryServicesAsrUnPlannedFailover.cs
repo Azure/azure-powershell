@@ -25,9 +25,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///    Starts a unplanned failover operation.
     /// </summary>
     [Cmdlet("Start","RecoveryServicesAsrUnplannedFailoverJob",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
-    [Alias(
-        "Start-ASRFO",
-        "Start-ASRUnplannedFailoverJob")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
     [Alias("Start-ASRFO",
