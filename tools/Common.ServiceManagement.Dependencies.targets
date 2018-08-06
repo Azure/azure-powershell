@@ -119,7 +119,7 @@
       <HintPath>$(LibraryNugetPackageFolder)\Microsoft.WindowsAzure.Management.ServiceBus.0.18.0-preview\lib\net40\Microsoft.WindowsAzure.Management.ServiceBus.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Storage">
+    <Reference Include="Microsoft.WindowsAzure.Management.Storage" Condition="'$(UseStorageManagement)' != 'false'">
       <HintPath>$(LibraryNugetPackageFolder)\Microsoft.WindowsAzure.Management.Storage.6.0.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
