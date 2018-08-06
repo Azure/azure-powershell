@@ -195,6 +195,7 @@
     <Compile Include="SdkModels\Deployments\PSDeploymentObject.cs" />
     <Compile Include="SdkModels\Deployments\PSDeploymentOperation.cs" />
     <Compile Include="SdkModels\Deployments\PSResourceGroupDeployment.cs" />
+    <Compile Include="SdkModels\Deployments\PSTemplatePath.cs" />
     <Compile Include="SdkModels\Deployments\TemplateFile.cs" />
     <Compile Include="SdkModels\Deployments\TemplateFileParameterV1.cs" />
     <Compile Include="SdkModels\Deployments\TemplateFileParameterv2.cs" />
