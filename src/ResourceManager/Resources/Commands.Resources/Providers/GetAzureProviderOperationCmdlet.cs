@@ -28,9 +28,10 @@ namespace Microsoft.Azure.Commands.Resources
     /// Get an existing resource.
     /// </summary>
     [Cmdlet("Get","ProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
-    [Alias("Get-AzureRmResourceProviderAction")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmProviderOperation")]
+    [Alias("Get-AzureRmResourceProviderAction", "Get-AzureRmProviderOperation")]
+#else
+    [Alias("Get-AzureRmResourceProviderAction")]
 #endif
     public class GetAzureProviderOperationCommand : ResourcesBaseCmdlet
     {

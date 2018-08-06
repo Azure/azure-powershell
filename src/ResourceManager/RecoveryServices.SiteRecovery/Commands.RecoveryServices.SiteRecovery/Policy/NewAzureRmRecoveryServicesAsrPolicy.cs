@@ -25,10 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Creates an Azure Site Recovery replication policy.
     /// </summary>
     [Cmdlet("New","RecoveryServicesAsrPolicy",DefaultParameterSetName = ASRParameterSets.HyperVToAzure,SupportsShouldProcess = true)]
-    [Alias("New-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("New-AzureRmRecoveryServicesAsrPolicy")]
+    [Alias("New-ASRPolicy", "New-AzureRmRecoveryServicesAsrPolicy")]
+#else
+    [Alias("New-ASRPolicy")]
 #endif
     public class NewAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {

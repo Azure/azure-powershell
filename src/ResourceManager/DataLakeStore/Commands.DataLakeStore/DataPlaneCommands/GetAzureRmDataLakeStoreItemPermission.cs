@@ -18,9 +18,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Get","DataLakeStoreItemPermission"), OutputType(typeof(string))]
-    [Alias("Get-AdlStoreItemPermission")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmDataLakeStoreItemPermission")]
+    [Alias("Get-AdlStoreItemPermission", "Get-AzureRmDataLakeStoreItemPermission")]
+#else
+    [Alias("Get-AdlStoreItemPermission")]
 #endif
     public class GetAzureDataLakeStoreItemPermission : DataLakeStoreFileSystemCmdletBase
     {

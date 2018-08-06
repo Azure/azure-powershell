@@ -23,9 +23,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
     [Cmdlet("Get","IotHubCertificateVerificationCode", DefaultParameterSetName = ResourceParameterSet)]
     [OutputType(typeof(PSCertificateWithNonceDescription))]
-    [Alias("Get-AzureRmIotHubCVC")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmIotHubCertificateVerificationCode")]
+    [Alias("Get-AzureRmIotHubCVC", "Get-AzureRmIotHubCertificateVerificationCode")]
+#else
+    [Alias("Get-AzureRmIotHubCVC")]
 #endif
     public class GetAzureRmIotHubCertificateVerificationCode : IotHubBaseCmdlet
     {

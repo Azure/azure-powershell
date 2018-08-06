@@ -20,10 +20,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Deletes the specified ASR replication policy from the Recovery Services vault.
     /// </summary>
     [Cmdlet("Remove","RecoveryServicesAsrPolicy",SupportsShouldProcess = true)]
-    [Alias("Remove-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmRecoveryServicesAsrPolicy")]
+    [Alias("Remove-ASRPolicy", "Remove-AzureRmRecoveryServicesAsrPolicy")]
+#else
+    [Alias("Remove-ASRPolicy")]
 #endif
     public class RemoveAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {

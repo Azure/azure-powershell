@@ -24,9 +24,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet("Suspend", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer", SupportsShouldProcess = true),OutputType(typeof(AzureAnalysisServicesServer))]
-    [Alias("Suspend-AzureAs")]
 #if NETSTANDARD
-    [Alias("Suspend-AzureRmAnalysisServicesServer")]
+    [Alias("Suspend-AzureAs", "Suspend-AzureRmAnalysisServicesServer")]
+#else
+    [Alias("Suspend-AzureAs")]
 #endif
     public class SuspendAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {

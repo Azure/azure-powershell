@@ -23,10 +23,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Creates an Azure Site Recovery Fabric.
     /// </summary>
     [Cmdlet("New","RecoveryServicesAsrFabric",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
-    [Alias("New-ASRFabric")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("New-AzureRmRecoveryServicesAsrFabric")]
+    [Alias("New-ASRFabric", "New-AzureRmRecoveryServicesAsrFabric")]
+#else
+    [Alias("New-ASRFabric")]
 #endif
     public class NewAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase
     {

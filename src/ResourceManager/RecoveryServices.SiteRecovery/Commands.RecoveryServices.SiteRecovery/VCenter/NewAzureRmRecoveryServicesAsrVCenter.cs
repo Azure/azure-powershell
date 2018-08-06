@@ -25,10 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Adds a vCenter server to discover protectable items from.
     /// </summary>
     [Cmdlet("New","RecoveryServicesAsrvCenter",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
-    [Alias("New-ASRvCenter")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("New-AzureRmRecoveryServicesAsrvCenter")]
+    [Alias("New-ASRvCenter", "New-AzureRmRecoveryServicesAsrvCenter")]
+#else
+    [Alias("New-ASRvCenter")]
 #endif
     public class NewAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
     {

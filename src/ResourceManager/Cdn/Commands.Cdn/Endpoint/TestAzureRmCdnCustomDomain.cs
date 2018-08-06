@@ -23,9 +23,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
     [Cmdlet("Test","CdnCustomDomain", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSValidateCustomDomainOutput))]
-    [Alias("Validate-AzureRmCdnCustomDomain")]
 #if NETSTANDARD
-    [Alias("Test-AzureRmCdnCustomDomain")]
+    [Alias("Validate-AzureRmCdnCustomDomain", "Test-AzureRmCdnCustomDomain")]
+#else
+    [Alias("Validate-AzureRmCdnCustomDomain")]
 #endif
     public class TestAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {

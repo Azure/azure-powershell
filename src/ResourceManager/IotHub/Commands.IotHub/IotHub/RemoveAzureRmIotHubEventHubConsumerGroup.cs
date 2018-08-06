@@ -23,9 +23,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Remove","IotHubEventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(string))]
-    [Alias("Remove-AzureRmIotHubEHCG")]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmIotHubEventHubConsumerGroup")]
+    [Alias("Remove-AzureRmIotHubEHCG", "Remove-AzureRmIotHubEventHubConsumerGroup")]
+#else
+    [Alias("Remove-AzureRmIotHubEHCG")]
 #endif
     public class RemoveAzureRmIotHubEventHubConsumerGroup : IotHubBaseCmdlet
     {

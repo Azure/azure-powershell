@@ -22,13 +22,14 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Errors
 {
-    [Alias("Resolve-Error")]
     [Cmdlet("Resolve", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Error", DefaultParameterSetName = ResolveError.AnyErrorParameterSet)]
     [OutputType(typeof(AzureErrorRecord))]
     [OutputType(typeof(AzureExceptionRecord))]
     [OutputType(typeof(AzureRestExceptionRecord))]
 #if NETSTANDARD
-    [Alias("Resolve-AzureRmError")]
+    [Alias("Resolve-Error", "Resolve-AzureRmError")]
+#else
+    [Alias("Resolve-Error")]
 #endif
     public class ResolveError : AzureRMCmdlet
     {

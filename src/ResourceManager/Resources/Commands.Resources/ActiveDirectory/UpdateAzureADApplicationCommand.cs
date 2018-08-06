@@ -24,9 +24,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// Creates a new AD application.
     /// </summary>
     [Cmdlet("Update","ADApplication", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams), OutputType(typeof(PSADApplication))]
-    [Alias("Set-AzureRmADApplication")]
 #if NETSTANDARD
-    [Alias("Update-AzureRmADApplication")]
+    [Alias("Set-AzureRmADApplication", "Update-AzureRmADApplication")]
+#else
+    [Alias("Set-AzureRmADApplication")]
 #endif
     public class UpdateAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {

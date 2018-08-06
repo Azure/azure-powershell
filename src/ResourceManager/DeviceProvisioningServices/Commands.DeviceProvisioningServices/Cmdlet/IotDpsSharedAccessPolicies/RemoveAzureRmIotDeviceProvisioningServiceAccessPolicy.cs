@@ -24,10 +24,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
     [Cmdlet("Remove","IoTDeviceProvisioningServiceAccessPolicy", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [Alias("Remove-AzureRmIoTDpsAccessPolicy")]
     [OutputType(typeof(bool))]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmIoTDeviceProvisioningServiceAccessPolicy")]
+    [Alias("Remove-AzureRmIoTDpsAccessPolicy", "Remove-AzureRmIoTDeviceProvisioningServiceAccessPolicy")]
+#else
+    [Alias("Remove-AzureRmIoTDpsAccessPolicy")]
 #endif
     public class RemoveAzureRmIoTDeviceProvisioningServiceAccessPolicy : IotDpsBaseCmdlet
     {

@@ -25,9 +25,10 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// Cmdlet for getting Data Migration Service resource
     /// </summary>
     [Cmdlet("Get","DataMigrationService", DefaultParameterSetName = ResourceGroupSet), OutputType(typeof(PSDataMigrationService))]
-    [Alias("Get-AzureRmDms")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmDataMigrationService")]
+    [Alias("Get-AzureRmDms", "Get-AzureRmDataMigrationService")]
+#else
+    [Alias("Get-AzureRmDms")]
 #endif
     public class GetAzureDataMigrationService : DataMigrationCmdlet
     {

@@ -24,9 +24,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AzureAnalysisServicesServer))]
-    [Alias("Remove-AzureAs")]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmAnalysisServicesServer")]
+    [Alias("Remove-AzureAs", "Remove-AzureRmAnalysisServicesServer")]
+#else
+    [Alias("Remove-AzureAs")]
 #endif
     public class RemoveAnalysisServicesServer : AnalysisServicesCmdletBase
     {

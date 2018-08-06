@@ -25,9 +25,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Remove","DataLakeAnalyticsComputePolicy", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Remove-AdlAnalyticsComputePolicy")]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmDataLakeAnalyticsComputePolicy")]
+    [Alias("Remove-AdlAnalyticsComputePolicy", "Remove-AzureRmDataLakeAnalyticsComputePolicy")]
+#else
+    [Alias("Remove-AdlAnalyticsComputePolicy")]
 #endif
     public class RemoveAzureDataLakeAnalyticsComputePolicy : DataLakeAnalyticsCmdletBase
     {

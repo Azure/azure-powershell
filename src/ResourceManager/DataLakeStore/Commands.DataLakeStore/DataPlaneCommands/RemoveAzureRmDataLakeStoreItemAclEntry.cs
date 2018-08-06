@@ -24,9 +24,10 @@ using Microsoft.Azure.DataLake.Store.AclTools;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Remove","DataLakeStoreItemAclEntry", SupportsShouldProcess = true,DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(bool))]
-    [Alias("Remove-AdlStoreItemAclEntry")]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmDataLakeStoreItemAclEntry")]
+    [Alias("Remove-AdlStoreItemAclEntry", "Remove-AzureRmDataLakeStoreItemAclEntry")]
+#else
+    [Alias("Remove-AdlStoreItemAclEntry")]
 #endif
     public class RemoveAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {

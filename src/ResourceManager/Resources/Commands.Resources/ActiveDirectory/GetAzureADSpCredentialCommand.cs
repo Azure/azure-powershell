@@ -23,9 +23,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// Gets AD service principal credentials.
     /// </summary>
     [Cmdlet("Get","ADSpCredential", DefaultParameterSetName = ParameterSet.ObjectId), OutputType(typeof(PSADCredential))]
-    [Alias("Get-AzureRmADServicePrincipalCredential")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmADSpCredential")]
+    [Alias("Get-AzureRmADServicePrincipalCredential", "Get-AzureRmADSpCredential")]
+#else
+    [Alias("Get-AzureRmADServicePrincipalCredential")]
 #endif
     public class GetAzureADSpCredentialCommand : ActiveDirectoryBaseCmdlet
     {

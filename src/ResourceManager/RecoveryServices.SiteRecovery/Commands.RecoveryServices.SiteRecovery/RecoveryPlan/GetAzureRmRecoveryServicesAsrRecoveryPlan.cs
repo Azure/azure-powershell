@@ -27,12 +27,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Gets a recovery plan or all the recovery plans in the Recovery Services vault
     /// </summary>
     [Cmdlet("Get","RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.Default)]
+    [OutputType(typeof(ASRRecoveryPlan))]
+#if NETSTANDARD
+    [Alias("Get-ASRRP",
+        "Get-ASRRecoveryPlan",
+        "Get-AzureRmRecoveryServicesAsrRecoveryPlan")]
+#else
     [Alias(
         "Get-ASRRP",
         "Get-ASRRecoveryPlan")]
-    [OutputType(typeof(ASRRecoveryPlan))]
-#if NETSTANDARD
-    [Alias("Get-AzureRmRecoveryServicesAsrRecoveryPlan")]
 #endif
     public class GetAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {

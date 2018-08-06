@@ -20,9 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Remove","DataLakeAnalyticsFirewallRule", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Remove-AdlAnalyticsFirewallRule")]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmDataLakeAnalyticsFirewallRule")]
+    [Alias("Remove-AdlAnalyticsFirewallRule", "Remove-AzureRmDataLakeAnalyticsFirewallRule")]
+#else
+    [Alias("Remove-AdlAnalyticsFirewallRule")]
 #endif
     public class RemoveAzureRmDataLakeAnalyticsFirewallRule : DataLakeAnalyticsCmdletBase
     {

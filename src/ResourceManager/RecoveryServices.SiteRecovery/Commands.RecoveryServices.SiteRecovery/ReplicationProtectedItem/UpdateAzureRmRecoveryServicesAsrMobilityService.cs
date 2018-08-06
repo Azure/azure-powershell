@@ -23,10 +23,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Push mobility service agent updates to protected machines.
     /// </summary>
     [Cmdlet("Update","RecoveryServicesAsrMobilityService",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
-    [Alias("Update-ASRMobilityService")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Update-AzureRmRecoveryServicesAsrMobilityService")]
+    [Alias("Update-ASRMobilityService", "Update-AzureRmRecoveryServicesAsrMobilityService")]
+#else
+    [Alias("Update-ASRMobilityService")]
 #endif
     public class UpdateAzureRmRecoveryServicesAsrMobilityService : SiteRecoveryCmdletBase
     {

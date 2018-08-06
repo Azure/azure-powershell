@@ -21,9 +21,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Add","DataLakeAnalyticsDataSource")]
-    [Alias("Add-AdlAnalyticsDataSource")]
 #if NETSTANDARD
-    [Alias("Add-AzureRmDataLakeAnalyticsDataSource")]
+    [Alias("Add-AdlAnalyticsDataSource", "Add-AzureRmDataLakeAnalyticsDataSource")]
+#else
+    [Alias("Add-AdlAnalyticsDataSource")]
 #endif
     public class AddAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {

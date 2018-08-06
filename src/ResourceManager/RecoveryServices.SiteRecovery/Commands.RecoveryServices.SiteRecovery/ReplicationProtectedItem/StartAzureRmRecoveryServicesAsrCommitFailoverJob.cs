@@ -22,12 +22,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Starts the commit failover action for a site recovery object.
     /// </summary>
     [Cmdlet("Start","RecoveryServicesAsrCommitFailoverJob",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
+    [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Start-ASRCommitFailover",
+        "Start-ASRCommitFailoverJob",
+        "Start-AzureRmRecoveryServicesAsrCommitFailoverJob")]
+#else
     [Alias(
         "Start-ASRCommitFailover",
         "Start-ASRCommitFailoverJob")]
-    [OutputType(typeof(ASRJob))]
-#if NETSTANDARD
-    [Alias("Start-AzureRmRecoveryServicesAsrCommitFailoverJob")]
 #endif
     public class StartAzureRmRecoveryServicesAsrCommitFailoverJob : SiteRecoveryCmdletBase
     {

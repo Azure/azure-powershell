@@ -21,10 +21,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Pairs storage classification
     /// </summary>
     [Cmdlet("New","RecoveryServicesAsrStorageClassificationMapping",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
-    [Alias("New-ASRStorageClassificationMapping")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("New-AzureRmRecoveryServicesAsrStorageClassificationMapping")]
+    [Alias("New-ASRStorageClassificationMapping", "New-AzureRmRecoveryServicesAsrStorageClassificationMapping")]
+#else
+    [Alias("New-ASRStorageClassificationMapping")]
 #endif
     public class NewAzureRmRecoveryServicesAsrStorageClassificationMapping : SiteRecoveryCmdletBase
     {

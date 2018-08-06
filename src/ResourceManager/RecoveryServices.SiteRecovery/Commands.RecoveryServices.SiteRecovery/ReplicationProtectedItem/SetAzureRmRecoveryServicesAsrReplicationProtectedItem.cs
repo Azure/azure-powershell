@@ -25,10 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Sets recovery properties such as target network and virtual machine size for the specified replication protected item.
     /// </summary>
     [Cmdlet("Set","RecoveryServicesAsrReplicationProtectedItem",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
-    [Alias("Set-ASRReplicationProtectedItem")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Set-AzureRmRecoveryServicesAsrReplicationProtectedItem")]
+    [Alias("Set-ASRReplicationProtectedItem", "Set-AzureRmRecoveryServicesAsrReplicationProtectedItem")]
+#else
+    [Alias("Set-ASRReplicationProtectedItem")]
 #endif
     public class SetAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
     {

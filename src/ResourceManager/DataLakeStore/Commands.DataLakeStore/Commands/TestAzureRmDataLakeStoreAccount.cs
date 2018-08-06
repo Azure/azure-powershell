@@ -19,9 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Test","DataLakeStoreAccount"), OutputType(typeof(bool))]
-    [Alias("Test-AdlStore")]
 #if NETSTANDARD
-    [Alias("Test-AzureRmDataLakeStoreAccount")]
+    [Alias("Test-AdlStore", "Test-AzureRmDataLakeStoreAccount")]
+#else
+    [Alias("Test-AdlStore")]
 #endif
     public class TestAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {

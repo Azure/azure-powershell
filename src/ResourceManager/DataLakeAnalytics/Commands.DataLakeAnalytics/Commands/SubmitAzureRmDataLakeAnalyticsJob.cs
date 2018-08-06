@@ -25,9 +25,10 @@ using System.Text;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Submit","DataLakeAnalyticsJob"), OutputType(typeof(JobInformation))]
-    [Alias("Submit-AdlJob")]
 #if NETSTANDARD
-    [Alias("Submit-AzureRmDataLakeAnalyticsJob")]
+    [Alias("Submit-AdlJob", "Submit-AzureRmDataLakeAnalyticsJob")]
+#else
+    [Alias("Submit-AdlJob")]
 #endif
     public class SubmitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {

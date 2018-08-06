@@ -23,10 +23,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Resumes Azure Site Recovery Job.
     /// </summary>
     [Cmdlet("Resume","RecoveryServicesAsrJob",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
-    [Alias("Resume-ASRJob")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Resume-AzureRmRecoveryServicesAsrJob")]
+    [Alias("Resume-ASRJob", "Resume-AzureRmRecoveryServicesAsrJob")]
+#else
+    [Alias("Resume-ASRJob")]
 #endif
     public class ResumeAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
     {

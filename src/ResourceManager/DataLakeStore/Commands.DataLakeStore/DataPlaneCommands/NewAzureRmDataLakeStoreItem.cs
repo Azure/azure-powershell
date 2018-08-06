@@ -21,9 +21,10 @@ using Microsoft.Azure.DataLake.Store;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("New","DataLakeStoreItem", SupportsShouldProcess = true),OutputType(typeof(string))]
-    [Alias("New-AdlStoreItem")]
 #if NETSTANDARD
-    [Alias("New-AzureRmDataLakeStoreItem")]
+    [Alias("New-AdlStoreItem", "New-AzureRmDataLakeStoreItem")]
+#else
+    [Alias("New-AdlStoreItem")]
 #endif
     public class NewAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {

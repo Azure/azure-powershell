@@ -21,13 +21,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     [Cmdlet("Get","RecoveryServicesAsrVaultContext")]
     [OutputType(typeof(ASRVaultSettings))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesAsrVaultSettings",
+        "Get-ASRVaultContext",
+        "Get-ASRVaultSettings",
+        "Get-AzureRmRecoveryServicesAsrVaultContext")]
+#else
     [Alias(
         "Get-AzureRmRecoveryServicesAsrVaultSettings",
         "Get-ASRVaultContext",
         "Get-ASRVaultSettings"
         )]
-#if NETSTANDARD
-    [Alias("Get-AzureRmRecoveryServicesAsrVaultContext")]
 #endif
     public class GetAzureRmRecoveryServicesAsrVaultSettings : SiteRecoveryCmdletBase
     {

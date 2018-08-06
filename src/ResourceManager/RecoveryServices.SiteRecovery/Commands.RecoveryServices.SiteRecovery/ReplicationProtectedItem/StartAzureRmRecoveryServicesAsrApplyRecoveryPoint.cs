@@ -24,10 +24,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///    Changes a recovery point for a failed over protected item before commiting the failover operation.
     /// </summary>
     [Cmdlet("Start","RecoveryServicesAsrApplyRecoveryPoint",DefaultParameterSetName = ASRParameterSets.ByPEObject,SupportsShouldProcess = true)]
-    [Alias("Start-ASRApplyRecoveryPoint")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint")]
+    [Alias("Start-ASRApplyRecoveryPoint", "Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint")]
+#else
+    [Alias("Start-ASRApplyRecoveryPoint")]
 #endif
     public class StartAzureRmRecoveryServicesAsrApplyRecoveryPoint : SiteRecoveryCmdletBase
     {

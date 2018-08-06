@@ -22,9 +22,10 @@ using Microsoft.Azure.DataLake.Store;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Export","DataLakeStoreItem", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(string))]
-    [Alias("Export-AdlStoreItem")]
 #if NETSTANDARD
-    [Alias("Export-AzureRmDataLakeStoreItem")]
+    [Alias("Export-AdlStoreItem", "Export-AzureRmDataLakeStoreItem")]
+#else
+    [Alias("Export-AdlStoreItem")]
 #endif
     public class ExportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {

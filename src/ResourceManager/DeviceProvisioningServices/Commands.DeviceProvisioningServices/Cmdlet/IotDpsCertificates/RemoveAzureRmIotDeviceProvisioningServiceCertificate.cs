@@ -22,10 +22,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
     [Cmdlet("Remove","IoTDeviceProvisioningServiceCertificate", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [Alias("Remove-AzureRmIoTDpsCertificate")]
     [OutputType(typeof(bool))]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmIoTDeviceProvisioningServiceCertificate")]
+    [Alias("Remove-AzureRmIoTDpsCertificate", "Remove-AzureRmIoTDeviceProvisioningServiceCertificate")]
+#else
+    [Alias("Remove-AzureRmIoTDpsCertificate")]
 #endif
     public class RemoveAzureRmIoTDeviceProvisioningServiceCertificate : IotDpsBaseCmdlet
     {

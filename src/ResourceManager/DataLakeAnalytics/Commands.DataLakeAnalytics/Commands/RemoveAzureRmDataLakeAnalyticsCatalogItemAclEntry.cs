@@ -22,9 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
 {
     [Cmdlet("Remove","DataLakeAnalyticsCatalogItemAclEntry", DefaultParameterSetName = UserCatalogParameterSetName, SupportsShouldProcess = true),OutputType(typeof(bool))]
-    [Alias("Remove-AdlCatalogItemAclEntry")]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry")]
+    [Alias("Remove-AdlCatalogItemAclEntry", "Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry")]
+#else
+    [Alias("Remove-AdlCatalogItemAclEntry")]
 #endif
     public class RemoveAzureRmDataLakeAnalyticsCatalogItemAclEntry : DataLakeAnalyticsCmdletBase
     {

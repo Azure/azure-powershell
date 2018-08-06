@@ -26,9 +26,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// Updates an existing AD user.
     /// </summary>
     [Cmdlet("Update","ADUser", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.UPNOrObjectId), OutputType(typeof(PSADUser))]
-    [Alias("Set-AzureRmADUser")]
 #if NETSTANDARD
-    [Alias("Update-AzureRmADUser")]
+    [Alias("Set-AzureRmADUser", "Update-AzureRmADUser")]
+#else
+    [Alias("Set-AzureRmADUser")]
 #endif
     public class UpdateAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {

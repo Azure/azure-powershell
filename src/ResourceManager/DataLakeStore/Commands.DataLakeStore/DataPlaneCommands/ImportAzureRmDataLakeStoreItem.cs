@@ -22,9 +22,10 @@ using Microsoft.Rest.Azure;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Import","DataLakeStoreItem", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(string))]
-    [Alias("Import-AdlStoreItem")]
 #if NETSTANDARD
-    [Alias("Import-AzureRmDataLakeStoreItem")]
+    [Alias("Import-AdlStoreItem", "Import-AzureRmDataLakeStoreItem")]
+#else
+    [Alias("Import-AdlStoreItem")]
 #endif
     public class ImportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {

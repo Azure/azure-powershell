@@ -20,9 +20,10 @@ using Microsoft.Azure.DataLake.Store;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Join","DataLakeStoreItem", SupportsShouldProcess = true), OutputType(typeof(string))]
-    [Alias("Join-AdlStoreItem")]
 #if NETSTANDARD
-    [Alias("Join-AzureRmDataLakeStoreItem")]
+    [Alias("Join-AdlStoreItem", "Join-AzureRmDataLakeStoreItem")]
+#else
+    [Alias("Join-AdlStoreItem")]
 #endif
     public class JoinAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {

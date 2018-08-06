@@ -24,9 +24,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
     [Cmdlet("New","IoTDeviceProvisioningServiceCertificateVerificationCode", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSVerificationCodeResponse))]
-    [Alias("New-AzureRmIoTDpsCVC")]
 #if NETSTANDARD
-    [Alias("New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode")]
+    [Alias("New-AzureRmIoTDpsCVC", "New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode")]
+#else
+    [Alias("New-AzureRmIoTDpsCVC")]
 #endif
     public class NewAzureRmIoTDeviceProvisioningServiceCertificateVerificationCode : IotDpsBaseCmdlet
     {

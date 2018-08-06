@@ -21,9 +21,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer"), OutputType(typeof(bool))]
-    [Alias("Test-AzureAs")]
 #if NETSTANDARD
-    [Alias("Test-AzureRmAnalysisServicesServer")]
+    [Alias("Test-AzureAs", "Test-AzureRmAnalysisServicesServer")]
+#else
+    [Alias("Test-AzureAs")]
 #endif
     public class TestAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {

@@ -20,10 +20,11 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Get","HDInsightOperationsManagementSuite")]
-    [Alias("Get-AzureRmHDInsightOMS")]
     [OutputType(typeof(AzureHDInsightOMS))]
 #if NETSTANDARD
-    [Alias("Get-AzureRmHDInsightOperationsManagementSuite")]
+    [Alias("Get-AzureRmHDInsightOMS", "Get-AzureRmHDInsightOperationsManagementSuite")]
+#else
+    [Alias("Get-AzureRmHDInsightOMS")]
 #endif
     public class GetAzureHDInsightOMSCommand : HDInsightCmdletBase
     {

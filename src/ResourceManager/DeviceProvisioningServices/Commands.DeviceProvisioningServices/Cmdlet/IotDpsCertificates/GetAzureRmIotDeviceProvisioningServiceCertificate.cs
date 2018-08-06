@@ -22,10 +22,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
 
     [Cmdlet("Get","IoTDeviceProvisioningServiceCertificate", DefaultParameterSetName = ResourceParameterSet)]
-    [Alias("Get-AzureRmIoTDpsCertificate")]
     [OutputType(typeof(PSCertificateResponse))]
 #if NETSTANDARD
-    [Alias("Get-AzureRmIoTDeviceProvisioningServiceCertificate")]
+    [Alias("Get-AzureRmIoTDpsCertificate", "Get-AzureRmIoTDeviceProvisioningServiceCertificate")]
+#else
+    [Alias("Get-AzureRmIoTDpsCertificate")]
 #endif
     public class GetAzureRmIoTDeviceProvisioningServiceCertificate : IotDpsBaseCmdlet
     {

@@ -30,7 +30,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Start-ASRUnplannedFailoverJob")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob")]
+    [Alias("Start-ASRFO",
+        "Start-ASRUnplannedFailoverJob",
+        "Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob")]
+#else
+    [Alias(
+        "Start-ASRFO",
+        "Start-ASRUnplannedFailoverJob")]
 #endif
     public class StartAzureRmRecoveryServicesAsrUnplannedFailoverJob : SiteRecoveryCmdletBase
     {

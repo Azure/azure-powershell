@@ -23,10 +23,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///    Creates an Azure Site Recovery Protection Container mapping by associating the specified replication policy to the specified ASR protection container.
     /// </summary>
     [Cmdlet("New","RecoveryServicesAsrProtectionContainerMapping",DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure,SupportsShouldProcess = true)]
-    [Alias("New-ASRProtectionContainerMapping")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("New-AzureRmRecoveryServicesAsrProtectionContainerMapping")]
+    [Alias("New-ASRProtectionContainerMapping", "New-AzureRmRecoveryServicesAsrProtectionContainerMapping")]
+#else
+    [Alias("New-ASRProtectionContainerMapping")]
 #endif
     public class NewAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
     {

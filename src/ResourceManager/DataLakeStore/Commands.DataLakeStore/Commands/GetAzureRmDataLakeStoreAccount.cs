@@ -22,9 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Get","DataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(PSDataLakeStoreAccount))]
-    [Alias("Get-AdlStore")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmDataLakeStoreAccount")]
+    [Alias("Get-AdlStore", "Get-AzureRmDataLakeStoreAccount")]
+#else
+    [Alias("Get-AdlStore")]
 #endif
     public class GetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {

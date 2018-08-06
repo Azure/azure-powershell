@@ -24,9 +24,10 @@ using System.Reflection;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGatewayAvailableSslOptions"), OutputType(typeof(PSApplicationGatewayAvailableSslOptions))]
-    [Alias("List-AzureRmApplicationGatewayAvailableSslOptions")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmApplicationGatewayAvailableSslOptions")]
+    [Alias("List-AzureRmApplicationGatewayAvailableSslOptions", "Get-AzureRmApplicationGatewayAvailableSslOptions")]
+#else
+    [Alias("List-AzureRmApplicationGatewayAvailableSslOptions")]
 #endif
     public class GetAzureApplicationGatewayAvailableSslOptions : ApplicationGatewayBaseCmdlet
     {

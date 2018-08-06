@@ -21,9 +21,10 @@ namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchLocationQuotas"), OutputType(typeof(PSBatchLocationQuotas))]
     // This alias was added in 10/2016 for backwards compatibility
-    [Alias("Get-AzureRmBatchSubscriptionQuotas")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmBatchLocationQuotas")]
+    [Alias("Get-AzureRmBatchSubscriptionQuotas", "Get-AzureRmBatchLocationQuotas")]
+#else
+    [Alias("Get-AzureRmBatchSubscriptionQuotas")]
 #endif
     public class GetBatchLocationQuotasCommand : BatchCmdletBase
     {

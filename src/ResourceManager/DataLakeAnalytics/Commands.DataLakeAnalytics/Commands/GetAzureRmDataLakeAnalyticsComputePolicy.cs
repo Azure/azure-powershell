@@ -25,9 +25,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Get","DataLakeAnalyticsComputePolicy"), OutputType(typeof(PSDataLakeAnalyticsComputePolicy))]
-    [Alias("Get-AdlAnalyticsComputePolicy")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmDataLakeAnalyticsComputePolicy")]
+    [Alias("Get-AdlAnalyticsComputePolicy", "Get-AzureRmDataLakeAnalyticsComputePolicy")]
+#else
+    [Alias("Get-AdlAnalyticsComputePolicy")]
 #endif
     public class GetAzureDataLakeAnalyticsComputePolicy : DataLakeAnalyticsCmdletBase
     {

@@ -25,12 +25,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///    Starts a planned failover operation.
     /// </summary>
     [Cmdlet("Start","RecoveryServicesAsrPlannedFailoverJob",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
+    [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Start-ASRPFO",
+        "Start-ASRPlannedFailoverJob",
+        "Start-AzureRmRecoveryServicesAsrPlannedFailoverJob")]
+#else
     [Alias(
         "Start-ASRPFO",
         "Start-ASRPlannedFailoverJob")]
-    [OutputType(typeof(ASRJob))]
-#if NETSTANDARD
-    [Alias("Start-AzureRmRecoveryServicesAsrPlannedFailoverJob")]
 #endif
     public class StartAzureRmRecoveryServicesAsrPlannedFailoverJob : SiteRecoveryCmdletBase
     {

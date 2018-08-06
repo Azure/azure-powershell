@@ -23,10 +23,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Retrieves Azure Site Recovery storage classification.
     /// </summary>
     [Cmdlet("Get","RecoveryServicesAsrStorageClassificationMapping",DefaultParameterSetName = ASRParameterSets.ByObject)]
-    [Alias("Get-ASRStorageClassificationMapping")]
     [OutputType(typeof(ASRStorageClassificationMapping))]
 #if NETSTANDARD
-    [Alias("Get-AzureRmRecoveryServicesAsrStorageClassificationMapping")]
+    [Alias("Get-ASRStorageClassificationMapping", "Get-AzureRmRecoveryServicesAsrStorageClassificationMapping")]
+#else
+    [Alias("Get-ASRStorageClassificationMapping")]
 #endif
     public class GetAzureRmRecoveryServicesAsrStorageClassificationMapping : SiteRecoveryCmdletBase
     {

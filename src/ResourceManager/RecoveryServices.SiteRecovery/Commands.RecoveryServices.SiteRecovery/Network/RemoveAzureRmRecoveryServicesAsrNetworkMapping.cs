@@ -20,10 +20,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Deletes the specified ASR network mapping from the Recovery Services vault.
     /// </summary>
     [Cmdlet("Remove","RecoveryServicesAsrNetworkMapping",SupportsShouldProcess = true)]
-    [Alias("Remove-ASRNetworkMapping")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmRecoveryServicesAsrNetworkMapping")]
+    [Alias("Remove-ASRNetworkMapping", "Remove-AzureRmRecoveryServicesAsrNetworkMapping")]
+#else
+    [Alias("Remove-ASRNetworkMapping")]
 #endif
     public class RemoveAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {

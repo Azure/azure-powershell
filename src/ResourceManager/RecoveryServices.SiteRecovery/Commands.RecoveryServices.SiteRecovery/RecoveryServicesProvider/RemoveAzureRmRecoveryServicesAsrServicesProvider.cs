@@ -20,10 +20,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Deletes/unregister the specified Azure Site Recovery recovery services provider from the recovery services vault.
     /// </summary>
     [Cmdlet("Remove","RecoveryServicesAsrServicesProvider",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
-    [Alias("Remove-ASRServicesProvider")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmRecoveryServicesAsrServicesProvider")]
+    [Alias("Remove-ASRServicesProvider", "Remove-AzureRmRecoveryServicesAsrServicesProvider")]
+#else
+    [Alias("Remove-ASRServicesProvider")]
 #endif
     public class RemoveAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
     {

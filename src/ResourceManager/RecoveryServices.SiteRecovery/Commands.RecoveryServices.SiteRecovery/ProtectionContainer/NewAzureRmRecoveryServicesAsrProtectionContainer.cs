@@ -26,10 +26,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///    Creates an Azure Site Recovery Protection Container within the specified fabric.
     /// </summary>
     [Cmdlet("New","RecoveryServicesAsrProtectionContainer",DefaultParameterSetName = ASRParameterSets.AzureToAzure,SupportsShouldProcess = true)]
-    [Alias("New-ASRProtectionContainer")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("New-AzureRmRecoveryServicesAsrProtectionContainer")]
+    [Alias("New-ASRProtectionContainer", "New-AzureRmRecoveryServicesAsrProtectionContainer")]
+#else
+    [Alias("New-ASRProtectionContainer")]
 #endif
     public class NewAzureRmRecoveryServicesAsrProtectionContainer : SiteRecoveryCmdletBase
     {

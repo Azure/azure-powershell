@@ -21,9 +21,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Set","DataFactoryV2", SupportsShouldProcess = true), OutputType(typeof(PSDataFactory))]
-    [Alias(VerbsCommon.New + "-" + Constants.DataFactory)]
 #if NETSTANDARD
-    [Alias("Set-AzureRmDataFactoryV2")]
+    [Alias(VerbsCommon.New + "-" + Constants.DataFactory, "Set-AzureRmDataFactoryV2")]
+#else
+    [Alias(VerbsCommon.New + "-" + Constants.DataFactory)]
 #endif
     public class SetAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {

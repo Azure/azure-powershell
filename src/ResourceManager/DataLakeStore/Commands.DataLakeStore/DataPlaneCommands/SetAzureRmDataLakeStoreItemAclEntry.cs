@@ -24,9 +24,10 @@ using Microsoft.Azure.DataLake.Store.AclTools;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Set","DataLakeStoreItemAclEntry", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(DataLakeStoreItemAce))]
-    [Alias("Set-AdlStoreItemAclEntry")]
 #if NETSTANDARD
-    [Alias("Set-AzureRmDataLakeStoreItemAclEntry")]
+    [Alias("Set-AdlStoreItemAclEntry", "Set-AzureRmDataLakeStoreItemAclEntry")]
+#else
+    [Alias("Set-AdlStoreItemAclEntry")]
 #endif
     public class SetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {

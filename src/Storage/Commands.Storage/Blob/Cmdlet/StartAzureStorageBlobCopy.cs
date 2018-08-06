@@ -35,9 +35,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Threading.Tasks;
 
     [Cmdlet("Start","AzureStorageBlobCopy", SupportsShouldProcess = true, DefaultParameterSetName = ContainerNameParameterSet),OutputType(typeof(AzureStorageBlob))]
-    [Alias("Start-CopyAzureStorageBlob")]
 #if NETSTANDARD
-    [Alias("Start-AzureStorageBlobCopy")]
+    [Alias("Start-CopyAzureStorageBlob", "Start-AzureStorageBlobCopy")]
+#else
+    [Alias("Start-CopyAzureStorageBlob")]
 #endif
     public class StartAzureStorageBlobCopy : StorageDataMovementCmdletBase, IModuleAssemblyInitializer
     {

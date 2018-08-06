@@ -26,9 +26,10 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AzureAnalysisServicesServer))]
-    [Alias("New-AzureAs")]
 #if NETSTANDARD
-    [Alias("New-AzureRmAnalysisServicesServer")]
+    [Alias("New-AzureAs", "New-AzureRmAnalysisServicesServer")]
+#else
+    [Alias("New-AzureAs")]
 #endif
     public class NewAnalysisServicesServer : AnalysisServicesCmdletBase
     {

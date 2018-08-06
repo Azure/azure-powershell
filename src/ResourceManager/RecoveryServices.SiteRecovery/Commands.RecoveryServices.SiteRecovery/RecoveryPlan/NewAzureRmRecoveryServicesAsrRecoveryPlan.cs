@@ -26,12 +26,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Creates Azure Site Recovery Recovery Plan object.
     /// </summary>
     [Cmdlet("New","RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise,SupportsShouldProcess = true)]
+    [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("New-ASRRP",
+        "New-ASRRecoveryPlan",
+        "New-AzureRmRecoveryServicesAsrRecoveryPlan")]
+#else
     [Alias(
         "New-ASRRP",
         "New-ASRRecoveryPlan")]
-    [OutputType(typeof(ASRJob))]
-#if NETSTANDARD
-    [Alias("New-AzureRmRecoveryServicesAsrRecoveryPlan")]
 #endif
     public class NewAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {

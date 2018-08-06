@@ -20,9 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Stop","DataLakeAnalyticsJob", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Stop-AdlJob")]
 #if NETSTANDARD
-    [Alias("Stop-AzureRmDataLakeAnalyticsJob")]
+    [Alias("Stop-AdlJob", "Stop-AzureRmDataLakeAnalyticsJob")]
+#else
+    [Alias("Stop-AdlJob")]
 #endif
     public class StopAzureDataLakeAnalyticsJobInfo : DataLakeAnalyticsCmdletBase
     {

@@ -24,9 +24,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Get","DataLakeStoreTrustedIdProvider"), OutputType(typeof(DataLakeStoreTrustedIdProvider))]
-    [Alias("Get-AdlStoreTrustedIdProvider")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmDataLakeStoreTrustedIdProvider")]
+    [Alias("Get-AdlStoreTrustedIdProvider", "Get-AzureRmDataLakeStoreTrustedIdProvider")]
+#else
+    [Alias("Get-AdlStoreTrustedIdProvider")]
 #endif
     public class GetAzureRmDataLakeStoreTrustedIdProvider : DataLakeStoreCmdletBase
     {

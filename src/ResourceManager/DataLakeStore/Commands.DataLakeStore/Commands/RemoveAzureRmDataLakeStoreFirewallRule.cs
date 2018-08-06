@@ -24,9 +24,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Remove","DataLakeStoreFirewallRule", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Remove-AdlStoreFirewallRule")]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmDataLakeStoreFirewallRule")]
+    [Alias("Remove-AdlStoreFirewallRule", "Remove-AzureRmDataLakeStoreFirewallRule")]
+#else
+    [Alias("Remove-AdlStoreFirewallRule")]
 #endif
     public class RemoveAzureRmDataLakeStoreFirewallRule : DataLakeStoreCmdletBase
     {

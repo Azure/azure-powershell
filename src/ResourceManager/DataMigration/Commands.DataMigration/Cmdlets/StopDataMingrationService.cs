@@ -20,9 +20,10 @@ using Microsoft.Azure.Management.DataMigration.Models;
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
     [Cmdlet("Stop","DataMigrationService", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Stop-AzureRmDmsService")]
 #if NETSTANDARD
-    [Alias("Stop-AzureRmDataMigrationService")]
+    [Alias("Stop-AzureRmDmsService", "Stop-AzureRmDataMigrationService")]
+#else
+    [Alias("Stop-AzureRmDmsService")]
 #endif
     public class StopDataMingrationService : DataMigrationCmdlet
     {

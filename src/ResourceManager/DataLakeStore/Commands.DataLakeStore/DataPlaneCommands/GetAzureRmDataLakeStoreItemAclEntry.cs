@@ -20,9 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Get","DataLakeStoreItemAclEntry"), OutputType(typeof(DataLakeStoreItemAce))]
-    [Alias("Get-AdlStoreItemAclEntry")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmDataLakeStoreItemAclEntry")]
+    [Alias("Get-AdlStoreItemAclEntry", "Get-AzureRmDataLakeStoreItemAclEntry")]
+#else
+    [Alias("Get-AdlStoreItemAclEntry")]
 #endif
     public class GetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {

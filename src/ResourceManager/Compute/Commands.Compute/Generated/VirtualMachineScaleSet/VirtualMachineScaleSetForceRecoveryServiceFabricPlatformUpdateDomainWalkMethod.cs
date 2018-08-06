@@ -112,10 +112,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     }
 
     [Cmdlet("Repair","VmssServiceFabricUpdateDomain", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [Alias("Repair-AzureRmVmssServiceFabricUD")]
     [OutputType(typeof(PSRecoveryWalkResponse))]
 #if NETSTANDARD
-    [Alias("Repair-AzureRmVmssServiceFabricUpdateDomain")]
+    [Alias("Repair-AzureRmVmssServiceFabricUD", "Repair-AzureRmVmssServiceFabricUpdateDomain")]
+#else
+    [Alias("Repair-AzureRmVmssServiceFabricUD")]
 #endif
     public partial class RepairAzureRmVmssServiceFabricUpdateDomain : ComputeAutomationBaseCmdlet
     {

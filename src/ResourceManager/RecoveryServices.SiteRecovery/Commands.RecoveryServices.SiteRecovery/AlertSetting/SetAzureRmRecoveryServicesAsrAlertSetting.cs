@@ -24,13 +24,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///    Configure Azure Site Recovery notification settings (email notification) for the vault.
     /// </summary>
     [Cmdlet("Set","RecoveryServicesAsrAlertSetting",DefaultParameterSetName = ASRParameterSets.Set,SupportsShouldProcess = true)]
+    [OutputType(typeof(ASRAlertSetting))]
+#if NETSTANDARD
+    [Alias("Set-ASRNotificationSetting",
+        "Set-AzureRmRecoveryServicesAsrNotificationSetting",
+        "Set-ASRAlertSetting",
+        "Set-AzureRmRecoveryServicesAsrAlertSetting")]
+#else
     [Alias(
         "Set-ASRNotificationSetting",
         "Set-AzureRmRecoveryServicesAsrNotificationSetting",
         "Set-ASRAlertSetting")]
-    [OutputType(typeof(ASRAlertSetting))]
-#if NETSTANDARD
-    [Alias("Set-AzureRmRecoveryServicesAsrAlertSetting")]
 #endif
     public class SetAzureRmRecoveryServicesAsrAlertSetting : SiteRecoveryCmdletBase
     {

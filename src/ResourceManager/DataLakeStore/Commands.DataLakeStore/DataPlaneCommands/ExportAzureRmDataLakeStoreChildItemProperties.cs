@@ -4,9 +4,10 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Export","DataLakeStoreChildItemProperties", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Export-AdlStoreChildItemProperties")]
 #if NETSTANDARD
-    [Alias("Export-AzureRmDataLakeStoreChildItemProperties")]
+    [Alias("Export-AdlStoreChildItemProperties", "Export-AzureRmDataLakeStoreChildItemProperties")]
+#else
+    [Alias("Export-AdlStoreChildItemProperties")]
 #endif
     public class ExportAzureRmDataLakeStoreChildItemProperties : DataLakeStoreFileSystemCmdletBase
     {

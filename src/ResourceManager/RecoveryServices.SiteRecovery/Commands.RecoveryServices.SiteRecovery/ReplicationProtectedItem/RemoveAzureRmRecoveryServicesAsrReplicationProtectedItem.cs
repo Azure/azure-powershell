@@ -22,10 +22,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Stops/Disables replication for an Azure Site Recovery replication protected item.
     /// </summary>
     [Cmdlet("Remove","RecoveryServicesAsrReplicationProtectedItem",DefaultParameterSetName = ASRParameterSets.DisableDR,SupportsShouldProcess = true)]
-    [Alias("Remove-ASRReplicationProtectedItem")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem")]
+    [Alias("Remove-ASRReplicationProtectedItem", "Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem")]
+#else
+    [Alias("Remove-ASRReplicationProtectedItem")]
 #endif
     public class RemoveAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
     {

@@ -20,9 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Get","DataLakeAnalyticsCatalogItem"),OutputType(typeof(CatalogItem))]
-    [Alias("Get-AdlCatalogItem")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmDataLakeAnalyticsCatalogItem")]
+    [Alias("Get-AdlCatalogItem", "Get-AzureRmDataLakeAnalyticsCatalogItem")]
+#else
+    [Alias("Get-AdlCatalogItem")]
 #endif
     public class GetAzureDataLakeAnalyticsCatalogItem : DataLakeAnalyticsCmdletBase
     {

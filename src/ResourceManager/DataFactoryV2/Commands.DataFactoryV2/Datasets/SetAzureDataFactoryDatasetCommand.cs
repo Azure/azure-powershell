@@ -21,9 +21,10 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Set","DataFactoryV2Dataset", DefaultParameterSetName = ParameterSetNames.ByFactoryName,SupportsShouldProcess = true), OutputType(typeof(PSDataset))]
-    [Alias(VerbsCommon.New + "-" + Constants.Dataset)]
 #if NETSTANDARD
-    [Alias("Set-AzureRmDataFactoryV2Dataset")]
+    [Alias(VerbsCommon.New + "-" + Constants.Dataset, "Set-AzureRmDataFactoryV2Dataset")]
+#else
+    [Alias(VerbsCommon.New + "-" + Constants.Dataset)]
 #endif
     public class SetAzureDataFactoryDatasetCommand : DataFactoryContextBaseSetCmdlet
     {

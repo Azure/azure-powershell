@@ -21,10 +21,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Removes the vCenter server from the ASR fabric and stops discovery of virtual machines from the vCenter server.
     /// </summary>
     [Cmdlet("Remove","RecoveryServicesAsrvCenter",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
-    [Alias("Remove-ASRvCenter")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmRecoveryServicesAsrvCenter")]
+    [Alias("Remove-ASRvCenter", "Remove-AzureRmRecoveryServicesAsrvCenter")]
+#else
+    [Alias("Remove-ASRvCenter")]
 #endif
     public class RemoveAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
     {

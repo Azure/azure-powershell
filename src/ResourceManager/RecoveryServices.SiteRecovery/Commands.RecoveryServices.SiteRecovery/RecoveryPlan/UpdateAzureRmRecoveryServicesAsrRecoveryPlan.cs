@@ -27,10 +27,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Updates the contents of an Azure Site recovery plan.
     /// </summary>
     [Cmdlet("Update","RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.ByRPObject,SupportsShouldProcess = true)]
-    [Alias("Update-ASRRecoveryPlan")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Update-AzureRmRecoveryServicesAsrRecoveryPlan")]
+    [Alias("Update-ASRRecoveryPlan", "Update-AzureRmRecoveryServicesAsrRecoveryPlan")]
+#else
+    [Alias("Update-ASRRecoveryPlan")]
 #endif
     public class UpdateAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {

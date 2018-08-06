@@ -25,12 +25,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Edits a ASR Recovery plan in memory.
     /// </summary>
     [Cmdlet("Edit","RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.AppendGroup,SupportsShouldProcess = true)]
+    [OutputType(typeof(ASRRecoveryPlan))]
+#if NETSTANDARD
+    [Alias("Edit-ASRRP",
+        "Edit-ASRRecoveryPlan",
+        "Edit-AzureRmRecoveryServicesAsrRecoveryPlan")]
+#else
     [Alias(
         "Edit-ASRRP",
         "Edit-ASRRecoveryPlan")]
-    [OutputType(typeof(ASRRecoveryPlan))]
-#if NETSTANDARD
-    [Alias("Edit-AzureRmRecoveryServicesAsrRecoveryPlan")]
 #endif
     public class EditAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {

@@ -23,10 +23,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Retrieves Azure Site Recovery Network.
     /// </summary>
     [Cmdlet("Get","RecoveryServicesAsrNetwork",DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
-    [Alias("Get-ASRNetwork")]
     [OutputType(typeof(ASRNetwork))]
 #if NETSTANDARD
-    [Alias("Get-AzureRmRecoveryServicesAsrNetwork")]
+    [Alias("Get-ASRNetwork", "Get-AzureRmRecoveryServicesAsrNetwork")]
+#else
+    [Alias("Get-ASRNetwork")]
 #endif
     public class GetAzureRmRecoveryServicesAsrNetwork : SiteRecoveryCmdletBase
     {

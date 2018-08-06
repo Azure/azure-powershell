@@ -21,9 +21,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Get","DataLakeAnalyticsFirewallRule"), OutputType(typeof(DataLakeAnalyticsFirewallRule))]
-    [Alias("Get-AdlAnalyticsFirewallRule")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmDataLakeAnalyticsFirewallRule")]
+    [Alias("Get-AdlAnalyticsFirewallRule", "Get-AzureRmDataLakeAnalyticsFirewallRule")]
+#else
+    [Alias("Get-AdlAnalyticsFirewallRule")]
 #endif
     public class GetAzureRmDataLakeAnalyticsFirewallRule : DataLakeAnalyticsCmdletBase
     {

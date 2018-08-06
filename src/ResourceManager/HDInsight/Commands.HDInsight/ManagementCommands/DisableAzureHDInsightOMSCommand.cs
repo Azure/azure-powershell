@@ -20,10 +20,11 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Disable","HDInsightOperationsManagementSuite",SupportsShouldProcess = true)]
-    [Alias("Disable-AzureRmHDInsightOMS")]
     [OutputType(typeof(OperationResource))]
 #if NETSTANDARD
-    [Alias("Disable-AzureRmHDInsightOperationsManagementSuite")]
+    [Alias("Disable-AzureRmHDInsightOMS", "Disable-AzureRmHDInsightOperationsManagementSuite")]
+#else
+    [Alias("Disable-AzureRmHDInsightOMS")]
 #endif
     public class DisableAzureHDInsightOMSCommand : HDInsightCmdletBase
     {

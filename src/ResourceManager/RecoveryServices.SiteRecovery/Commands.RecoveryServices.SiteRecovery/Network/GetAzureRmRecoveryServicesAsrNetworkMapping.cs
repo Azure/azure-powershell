@@ -25,10 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Gets information about Site Recovery network mappings for the current vault.
     /// </summary>
     [Cmdlet("Get","RecoveryServicesAsrNetworkMapping",DefaultParameterSetName = ASRParameterSets.ByObject)]
-    [Alias("Get-ASRNetworkMapping")]
     [OutputType(typeof(ASRNetworkMapping))]
 #if NETSTANDARD
-    [Alias("Get-AzureRmRecoveryServicesAsrNetworkMapping")]
+    [Alias("Get-ASRNetworkMapping", "Get-AzureRmRecoveryServicesAsrNetworkMapping")]
+#else
+    [Alias("Get-ASRNetworkMapping")]
 #endif
     public class GetAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {

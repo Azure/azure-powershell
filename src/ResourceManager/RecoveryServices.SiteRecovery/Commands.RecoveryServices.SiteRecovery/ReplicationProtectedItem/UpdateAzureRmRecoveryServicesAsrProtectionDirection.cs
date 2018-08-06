@@ -25,10 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Used to re-protect/reverse replicate a failed over replicated item or recovery plan.
     /// </summary>
     [Cmdlet("Update","RecoveryServicesAsrProtectionDirection",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
-    [Alias("Update-ASRProtectionDirection")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Update-AzureRmRecoveryServicesAsrProtectionDirection")]
+    [Alias("Update-ASRProtectionDirection", "Update-AzureRmRecoveryServicesAsrProtectionDirection")]
+#else
+    [Alias("Update-ASRProtectionDirection")]
 #endif
     public class UpdateAzureRmRecoveryServicesAsrProtection : SiteRecoveryCmdletBase
     {

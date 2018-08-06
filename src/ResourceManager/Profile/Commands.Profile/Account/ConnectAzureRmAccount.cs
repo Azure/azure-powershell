@@ -32,10 +32,11 @@ namespace Microsoft.Azure.Commands.Profile
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
     [Cmdlet("Connect", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
-    [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-AzureRmAccount")]
     [OutputType(typeof(PSAzureProfile))]
 #if NETSTANDARD
-    [Alias("Connect-AzureRmAccount")]
+    [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-AzureRmAccount", "Connect-AzureRmAccount")]
+#else
+    Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-AzureRmAccount")]
 #endif
     public class ConnectAzureRmAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
     {

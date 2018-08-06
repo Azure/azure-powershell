@@ -18,9 +18,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Get","DataLakeStoreItemOwner"), OutputType(typeof(string))]
-    [Alias("Get-AdlStoreItemOwner")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmDataLakeStoreItemOwner")]
+    [Alias("Get-AdlStoreItemOwner", "Get-AzureRmDataLakeStoreItemOwner")]
+#else
+    [Alias("Get-AdlStoreItemOwner")]
 #endif
     public class GetAzureDataLakeStoreItemOwner : DataLakeStoreFileSystemCmdletBase
     {

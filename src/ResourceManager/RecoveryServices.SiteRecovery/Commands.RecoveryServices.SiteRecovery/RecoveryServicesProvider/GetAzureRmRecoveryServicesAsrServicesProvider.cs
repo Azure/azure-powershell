@@ -25,10 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Gets the details of the ASR recovery services providers registered to the Recovery Services vault.
     /// </summary>
     [Cmdlet("Get","RecoveryServicesAsrServicesProvider",DefaultParameterSetName = ASRParameterSets.Default)]
-    [Alias("Get-ASRServicesProvider")]
     [OutputType(typeof(ASRRecoveryServicesProvider))]
 #if NETSTANDARD
-    [Alias("Get-AzureRmRecoveryServicesAsrServicesProvider")]
+    [Alias("Get-ASRServicesProvider", "Get-AzureRmRecoveryServicesAsrServicesProvider")]
+#else
+    [Alias("Get-ASRServicesProvider")]
 #endif
     public class GetAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
     {

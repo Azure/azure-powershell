@@ -25,10 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Enables replication for an ASR protectable item by creating a replication protected item.
     /// </summary>
     [Cmdlet("New","RecoveryServicesAsrReplicationProtectedItem",DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise,SupportsShouldProcess = true)]
-    [Alias("New-ASRReplicationProtectedItem")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("New-AzureRmRecoveryServicesAsrReplicationProtectedItem")]
+    [Alias("New-ASRReplicationProtectedItem", "New-AzureRmRecoveryServicesAsrReplicationProtectedItem")]
+#else
+    [Alias("New-ASRReplicationProtectedItem")]
 #endif
     public class NewAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
     {

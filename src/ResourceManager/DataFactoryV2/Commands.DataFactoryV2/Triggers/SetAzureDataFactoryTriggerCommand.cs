@@ -20,9 +20,10 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Set","DataFactoryV2Trigger", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSTrigger))]
-    [Alias(VerbsCommon.New + "-" + Constants.Trigger)]
 #if NETSTANDARD
-    [Alias("Set-AzureRmDataFactoryV2Trigger")]
+    [Alias(VerbsCommon.New + "-" + Constants.Trigger, "Set-AzureRmDataFactoryV2Trigger")]
+#else
+    [Alias(VerbsCommon.New + "-" + Constants.Trigger)]
 #endif
     public class SetAzureDataFactoryTriggerCommand : DataFactoryContextBaseSetCmdlet
     {

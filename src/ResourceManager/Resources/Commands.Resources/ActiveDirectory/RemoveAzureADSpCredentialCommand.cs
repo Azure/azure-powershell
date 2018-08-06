@@ -25,9 +25,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// Removes AD SP credentials.
     /// </summary>
     [Cmdlet("Remove","ADSpCredential", DefaultParameterSetName = ParameterSet.ObjectIdWithKeyId, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Remove-AzureRmADServicePrincipalCredential")]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmADSpCredential")]
+    [Alias("Remove-AzureRmADServicePrincipalCredential", "Remove-AzureRmADSpCredential")]
+#else
+    [Alias("Remove-AzureRmADServicePrincipalCredential")]
 #endif
     public class RemoveAzureADSpCredentialCommand : ActiveDirectoryBaseCmdlet
     {

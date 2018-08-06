@@ -26,10 +26,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Gets Azure Site Recovery Protection Container mappings.
     /// </summary>
     [Cmdlet("Get","RecoveryServicesAsrProtectionContainerMapping",DefaultParameterSetName = ASRParameterSets.ByObject)]
-    [Alias("Get-ASRProtectionContainerMapping")]
     [OutputType(typeof(ASRProtectionContainerMapping))]
 #if NETSTANDARD
-    [Alias("Get-AzureRmRecoveryServicesAsrProtectionContainerMapping")]
+    [Alias("Get-ASRProtectionContainerMapping", "Get-AzureRmRecoveryServicesAsrProtectionContainerMapping")]
+#else
+    [Alias("Get-ASRProtectionContainerMapping")]
 #endif
     public class GetAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
     {

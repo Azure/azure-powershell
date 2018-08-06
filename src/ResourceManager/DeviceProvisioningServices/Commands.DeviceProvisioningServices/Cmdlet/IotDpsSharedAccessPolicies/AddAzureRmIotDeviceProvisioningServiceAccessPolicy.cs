@@ -24,10 +24,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
     [Cmdlet("Add","IoTDeviceProvisioningServiceAccessPolicy", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [Alias("Add-AzureRmIoTDpsAccessPolicy")]
     [OutputType(typeof(PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription))]
 #if NETSTANDARD
-    [Alias("Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy")]
+    [Alias("Add-AzureRmIoTDpsAccessPolicy", "Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy")]
+#else
+    [Alias("Add-AzureRmIoTDpsAccessPolicy")]
 #endif
     public class AddAzureRmIoTDeviceProvisioningServiceAccessPolicy : IotDpsBaseCmdlet
     {

@@ -27,10 +27,11 @@ namespace Microsoft.Azure.Commands.Profile
     /// Cmdlet to log out of an environment
     /// </summary>
     [Cmdlet("Disconnect", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = ContextNameParameterSet, SupportsShouldProcess=true)]
-    [Alias("Logout-AzAccount", "Logout-AzureRmAccount", "Remove-AzureRmAccount")]
     [OutputType(typeof(PSAzureRmAccount))]
 #if NETSTANDARD
-    [Alias("Disconnect-AzureRmAccount")]
+    [Alias("Logout-AzAccount", "Logout-AzureRmAccount", "Remove-AzureRmAccount", "Disconnect-AzureRmAccount")]
+#else
+    [Alias("Logout-AzAccount", "Logout-AzureRmAccount", "Remove-AzureRmAccount")]
 #endif
     public class DisconnectAzureRmAccountCommand : AzureContextModificationCmdlet
     {

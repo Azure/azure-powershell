@@ -23,10 +23,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Gets details of the vCenter servers registered for discovery on the Configuration server specified by the ASR fabric.
     /// </summary>
     [Cmdlet("Get","RecoveryServicesAsrvCenter",DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
-    [Alias("Get-ASRvCenter")]
     [OutputType(typeof(ASRvCenter))]
 #if NETSTANDARD
-    [Alias("Get-AzureRmRecoveryServicesAsrvCenter")]
+    [Alias("Get-ASRvCenter", "Get-AzureRmRecoveryServicesAsrvCenter")]
+#else
+    [Alias("Get-ASRvCenter")]
 #endif
     public class GetAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
     {

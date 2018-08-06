@@ -25,9 +25,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     /// Cmdlet to create or update a new Azure Sql Database backup archival policy
     /// </summary>
     [Cmdlet("Set","SqlDatabaseBackupLongTermRetentionPolicy",DefaultParameterSetName = WeeklyRetentionRequiredSet,SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Low),OutputType(typeof(AzureSqlDatabaseBackupLongTermRetentionPolicyModel))]
-    [Alias("Set-AzureRmSqlDatabaseLongTermRetentionPolicy")]
 #if NETSTANDARD
-    [Alias("Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy")]
+    [Alias("Set-AzureRmSqlDatabaseLongTermRetentionPolicy", "Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy")]
+#else
+    [Alias("Set-AzureRmSqlDatabaseLongTermRetentionPolicy")]
 #endif
     public class SetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {

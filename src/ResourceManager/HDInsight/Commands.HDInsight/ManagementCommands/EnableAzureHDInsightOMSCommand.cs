@@ -24,10 +24,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Enable","HDInsightOperationsManagementSuite",SupportsShouldProcess = true)]
-    [Alias("Enable-AzureRmHDInsightOMS")]
     [OutputType(typeof(OperationResource))]
 #if NETSTANDARD
-    [Alias("Enable-AzureRmHDInsightOperationsManagementSuite")]
+    [Alias("Enable-AzureRmHDInsightOMS", "Enable-AzureRmHDInsightOperationsManagementSuite")]
+#else
+    [Alias("Enable-AzureRmHDInsightOMS")]
 #endif
     public class EnableAzureHDInsightOMSCommand : HDInsightCmdletBase
     {

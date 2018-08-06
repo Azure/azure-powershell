@@ -23,9 +23,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Get","DataLakeAnalyticsAccount", DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(PSDataLakeAnalyticsAccount))]
-    [Alias("Get-AdlAnalyticsAccount")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmDataLakeAnalyticsAccount")]
+    [Alias("Get-AdlAnalyticsAccount", "Get-AzureRmDataLakeAnalyticsAccount")]
+#else
+    [Alias("Get-AdlAnalyticsAccount")]
 #endif
     public class GetAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {

@@ -21,10 +21,11 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("New","DataLakeAnalyticsCatalogSecret"), OutputType(typeof(USqlSecret))]
-    [Alias("New-AdlCatalogSecret")]
     [Obsolete("Catalog secrets are being deprecated in a future release. Please use New-AzureRmDataLakeAnalyticsCatalogCredential directly instead.")]
 #if NETSTANDARD
-    [Alias("New-AzureRmDataLakeAnalyticsCatalogSecret")]
+    [Alias("New-AdlCatalogSecret", "New-AzureRmDataLakeAnalyticsCatalogSecret")]
+#else
+    [Alias("New-AdlCatalogSecret")]
 #endif
     public class NewAzureDataLakeAnalyticsCatalogSecret : DataLakeAnalyticsCmdletBase
     {

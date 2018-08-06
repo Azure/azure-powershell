@@ -24,9 +24,10 @@ using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Get","DataLakeAnalyticsJob", DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(JobInformation))]
-    [Alias("Get-AdlJob")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmDataLakeAnalyticsJob")]
+    [Alias("Get-AdlJob", "Get-AzureRmDataLakeAnalyticsJob")]
+#else
+    [Alias("Get-AdlJob")]
 #endif
     public class GetAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {

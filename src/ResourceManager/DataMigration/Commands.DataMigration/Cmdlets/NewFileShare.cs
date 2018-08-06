@@ -18,9 +18,10 @@ using Microsoft.Azure.Management.DataMigration.Models;
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
     [Cmdlet("New","DataMigrationFileShare"), OutputType(typeof(MigrateSqlServerSqlDbDatabaseInput))]
-    [Alias("New-AzureRmDmsFileShare")]
 #if NETSTANDARD
-    [Alias("New-AzureRmDataMigrationFileShare")]
+    [Alias("New-AzureRmDmsFileShare", "New-AzureRmDataMigrationFileShare")]
+#else
+    [Alias("New-AzureRmDmsFileShare")]
 #endif
     public class NewFileShare : DataMigrationCmdlet
     {

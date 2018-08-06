@@ -26,10 +26,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Gets the available recovery points for a replication protected item.
     /// </summary>
     [Cmdlet("Get","RecoveryServicesAsrRecoveryPoint",DefaultParameterSetName = ASRParameterSets.ByObject)]
-    [Alias("Get-ASRRecoveryPoint")]
     [OutputType(typeof(ASRRecoveryPoint))]
 #if NETSTANDARD
-    [Alias("Get-AzureRmRecoveryServicesAsrRecoveryPoint")]
+    [Alias("Get-ASRRecoveryPoint", "Get-AzureRmRecoveryServicesAsrRecoveryPoint")]
+#else
+    [Alias("Get-ASRRecoveryPoint")]
 #endif
     public class GetAzureRmRecoveryServicesAsrRecoveryPoint : SiteRecoveryCmdletBase
     {

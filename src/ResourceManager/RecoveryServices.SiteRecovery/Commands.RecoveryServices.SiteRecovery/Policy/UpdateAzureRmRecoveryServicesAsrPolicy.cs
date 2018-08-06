@@ -25,10 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Updates Azure Site Recovery Policy.
     /// </summary>
     [Cmdlet("Update","RecoveryServicesAsrPolicy",SupportsShouldProcess = true,DefaultParameterSetName = ASRParameterSets.Default)]
-    [Alias("Update-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Update-AzureRmRecoveryServicesAsrPolicy")]
+    [Alias("Update-ASRPolicy", "Update-AzureRmRecoveryServicesAsrPolicy")]
+#else
+    [Alias("Update-ASRPolicy")]
 #endif
     public class UpdateAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {

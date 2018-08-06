@@ -22,9 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Set","DataLakeAnalyticsDataSource"), OutputType(typeof(void))]
-    [Alias("Set-AdlAnalyticsDataSource")]
 #if NETSTANDARD
-    [Alias("Set-AzureRmDataLakeAnalyticsDataSource")]
+    [Alias("Set-AdlAnalyticsDataSource", "Set-AzureRmDataLakeAnalyticsDataSource")]
+#else
+    [Alias("Set-AdlAnalyticsDataSource")]
 #endif
     public class SetAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {

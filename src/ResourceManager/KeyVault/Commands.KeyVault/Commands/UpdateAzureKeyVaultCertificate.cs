@@ -20,10 +20,11 @@ using Microsoft.Azure.KeyVault.Models;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificate", SupportsShouldProcess = true,DefaultParameterSetName = ByNameParameterSet)]
-    [Alias("Set-AzureKeyVaultCertificateAttribute")]
     [OutputType(typeof(PSKeyVaultCertificate))]
 #if NETSTANDARD
-    [Alias("Update-AzureKeyVaultCertificate")]
+    [Alias("Set-AzureKeyVaultCertificateAttribute", "Update-AzureKeyVaultCertificate")]
+#else
+    [Alias("Set-AzureKeyVaultCertificateAttribute")]
 #endif
     public class UpdateAzureKeyVaultCertificate : KeyVaultCmdletBase
     {

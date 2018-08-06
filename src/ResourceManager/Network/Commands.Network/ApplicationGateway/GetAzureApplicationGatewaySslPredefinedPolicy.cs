@@ -21,9 +21,10 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
 
     [Cmdlet("Get","ApplicationGatewaySslPredefinedPolicy"), OutputType(typeof(PSApplicationGatewaySslPredefinedPolicy))]
-    [Alias("List-AzureRmApplicationGatewaySslPredefinedPolicy")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmApplicationGatewaySslPredefinedPolicy")]
+    [Alias("List-AzureRmApplicationGatewaySslPredefinedPolicy", "Get-AzureRmApplicationGatewaySslPredefinedPolicy")]
+#else
+    [Alias("List-AzureRmApplicationGatewaySslPredefinedPolicy")]
 #endif
     public class GetAzureApplicationGatewaySslPredefinedPolicy : ApplicationGatewayBaseCmdlet
     {

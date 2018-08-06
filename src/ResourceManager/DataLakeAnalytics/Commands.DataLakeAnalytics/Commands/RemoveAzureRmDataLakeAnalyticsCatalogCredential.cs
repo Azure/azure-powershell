@@ -19,9 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Remove","DataLakeAnalyticsCatalogCredential", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Remove-AdlCatalogCredential")]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmDataLakeAnalyticsCatalogCredential")]
+    [Alias("Remove-AdlCatalogCatalogCredential", "Remove-AzureRmDataLakeAnalyticsCatalogCredential")]
+#else
+    [Alias("Remove-AdlCatalogCatalogCredential")]
 #endif
     public class RemoveAzureDataLakeAnalyticsCredential : DataLakeAnalyticsCmdletBase
     {

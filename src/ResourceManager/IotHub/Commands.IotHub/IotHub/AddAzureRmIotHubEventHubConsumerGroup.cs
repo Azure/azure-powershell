@@ -22,9 +22,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Common;
 
     [Cmdlet("Add","IotHubEventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(string))]
-    [Alias("Add-AzureRmIotHubEHCG")]
 #if NETSTANDARD
-    [Alias("Add-AzureRmIotHubEventHubConsumerGroup")]
+    [Alias("Add-AzureRmIotHubEHCG", "Add-AzureRmIotHubEventHubConsumerGroup")]
+#else
+    [Alias("Add-AzureRmIotHubEHCG")]
 #endif
     public class AddAzureRmIotHubEventHubConsumerGroup : IotHubBaseCmdlet
     {

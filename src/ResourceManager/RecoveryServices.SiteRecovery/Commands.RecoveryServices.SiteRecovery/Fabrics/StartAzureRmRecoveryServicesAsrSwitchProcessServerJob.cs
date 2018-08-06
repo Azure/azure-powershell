@@ -22,10 +22,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Switch replication from one Process server to another for load balancing.
     /// </summary>
     [Cmdlet("Start","RecoveryServicesAsrSwitchProcessServerJob",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
-    [Alias("Start-ASRSwitchProcessServerJob")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob")]
+    [Alias("Start-ASRSwitchProcessServerJob", "Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob")]
+#else
+    [Alias("Start-ASRSwitchProcessServerJob")]
 #endif
     public class StartAzureRmRecoveryServicesAsrSwitchProcessServerJob : SiteRecoveryCmdletBase
     {

@@ -28,9 +28,10 @@ namespace Microsoft.Azure.Commands.Profile
     /// Saves Microsoft Azure profile.
     /// </summary>
     [Cmdlet("Save", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", SupportsShouldProcess = true), OutputType(typeof(PSAzureProfile))]
-    [Alias("Save-AzureRmProfile")]
 #if NETSTANDARD
-    [Alias("Save-AzureRmContext")]
+    [Alias("Save-AzureRmProfile", "Save-AzureRmContext")]
+#else
+    [Alias("Save-AzureRmProfile")]
 #endif
     public class SaveAzureRMContextCommand : AzureRMCmdlet
     {

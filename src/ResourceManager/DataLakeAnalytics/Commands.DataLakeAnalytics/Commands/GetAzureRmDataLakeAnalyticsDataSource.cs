@@ -22,9 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Get","DataLakeAnalyticsDataSource", DefaultParameterSetName = ListStorageParameterSetName), OutputType(typeof(PSStorageAccountInfo), typeof(PSDataLakeStoreAccountInfo), typeof(AdlDataSource))]
-    [Alias("Get-AdlAnalyticsDataSource")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmDataLakeAnalyticsDataSource")]
+    [Alias("Get-AdlAnalyticsDataSource", "Get-AzureRmDataLakeAnalyticsDataSource")]
+#else
+    [Alias("Get-AdlAnalyticsDataSource")]
 #endif
     public class GetAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {

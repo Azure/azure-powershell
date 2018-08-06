@@ -20,10 +20,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Refreshes (Refresh server) the information received from the Azure Site Recovery Services Provider.
     /// </summary>
     [Cmdlet("Update","RecoveryServicesAsrServicesProvider",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
-    [Alias("Update-ASRServicesProvider")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Update-AzureRmRecoveryServicesAsrServicesProvider")]
+    [Alias("Update-ASRServicesProvider", "Update-AzureRmRecoveryServicesAsrServicesProvider")]
+#else
+    [Alias("Update-ASRServicesProvider")]
 #endif
     public class UpdateAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
     {

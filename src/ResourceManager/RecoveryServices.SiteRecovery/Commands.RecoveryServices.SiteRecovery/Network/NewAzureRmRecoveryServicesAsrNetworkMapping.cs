@@ -21,10 +21,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Creates an ASR network mapping between two networks.
     /// </summary>
     [Cmdlet("New","RecoveryServicesAsrNetworkMapping",DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise,SupportsShouldProcess = true)]
-    [Alias("New-ASRNetworkMapping")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("New-AzureRmRecoveryServicesAsrNetworkMapping")]
+    [Alias("New-ASRNetworkMapping", "New-AzureRmRecoveryServicesAsrNetworkMapping")]
+#else
+    [Alias("New-ASRNetworkMapping")]
 #endif
     public class NewAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {

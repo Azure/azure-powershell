@@ -21,9 +21,10 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultSecret", DefaultParameterSetName = DefaultParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultSecret))]
-    [Alias("Set-AzureKeyVaultSecretAttribute")]
 #if NETSTANDARD
-    [Alias("Update-AzureKeyVaultSecret")]
+    [Alias("Set-AzureKeyVaultSecretAttribute", "Update-AzureKeyVaultSecret")]
+#else
+    [Alias("Set-AzureKeyVaultSecretAttribute")]
 #endif
     public class UpdateAzureKeyVaultSecret : KeyVaultCmdletBase
     {

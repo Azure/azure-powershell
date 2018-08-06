@@ -21,12 +21,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Deletes the specified ASR recovery plan from Recovery Services vault.
     /// </summary>
     [Cmdlet("Remove","RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
+    [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Remove-ASRRP",
+        "Remove-ASRRecoveryPlan",
+        "Remove-AzureRmRecoveryServicesAsrRecoveryPlan")]
+#else
     [Alias(
         "Remove-ASRRP",
         "Remove-ASRRecoveryPlan")]
-    [OutputType(typeof(ASRJob))]
-#if NETSTANDARD
-    [Alias("Remove-AzureRmRecoveryServicesAsrRecoveryPlan")]
 #endif
     public class RemoveAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {

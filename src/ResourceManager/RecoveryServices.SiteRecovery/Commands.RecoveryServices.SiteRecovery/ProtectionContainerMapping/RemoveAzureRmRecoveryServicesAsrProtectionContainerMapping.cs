@@ -21,10 +21,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Deletes the specified Azure Site Recovery protection container mapping.
     /// </summary>
     [Cmdlet("Remove","RecoveryServicesAsrProtectionContainerMapping",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
-    [Alias("Remove-ASRProtectionContainerMapping")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping")]
+    [Alias("Remove-ASRProtectionContainerMapping", "Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping")]
+#else
+    [Alias("Remove-ASRProtectionContainerMapping")]
 #endif
     public class RemoveAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
     {

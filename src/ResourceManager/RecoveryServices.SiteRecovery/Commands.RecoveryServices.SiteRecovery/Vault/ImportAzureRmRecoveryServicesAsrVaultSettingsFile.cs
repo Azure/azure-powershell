@@ -29,10 +29,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     [Cmdlet("Import","RecoveryServicesAsrVaultSettingsFile",SupportsShouldProcess = true)]
     [OutputType(typeof(ASRVaultSettings))]
+#if NETSTANDARD
+    [Alias("Import-ASRVaultSettingsFile", "Import-AzureRmRecoveryServicesAsrVaultSettingsFile")]
+#else
     [Alias(
         "Import-ASRVaultSettingsFile")]
-#if NETSTANDARD
-    [Alias("Import-AzureRmRecoveryServicesAsrVaultSettingsFile")]
 #endif
     public class ImportAzureRmRecoveryServicesAsrVaultSettingsFile : SiteRecoveryCmdletBase
     {

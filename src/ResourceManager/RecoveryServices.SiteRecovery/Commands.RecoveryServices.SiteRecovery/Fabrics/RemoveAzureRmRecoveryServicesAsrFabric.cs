@@ -20,10 +20,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Deletes the specified Azure Site Recovery Fabric from the Recovery Services vault.
     /// </summary>
     [Cmdlet("Remove","RecoveryServicesAsrFabric",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
-    [Alias("Remove-ASRFabric")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("Remove-AzureRmRecoveryServicesAsrFabric")]
+    [Alias("Remove-ASRFabric", "Remove-AzureRmRecoveryServicesAsrFabric")]
+#else
+    [Alias("Remove-ASRFabric")]
 #endif
     public class RemoveAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase
     {

@@ -25,9 +25,10 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("New","DataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSDataLakeStoreAccount))]
-    [Alias("New-AdlStore")]
 #if NETSTANDARD
-    [Alias("New-AzureRmDataLakeStoreAccount")]
+    [Alias("New-AdlStore", "New-AzureRmDataLakeStoreAccount")]
+#else
+    [Alias("New-AdlStore")]
 #endif
     public class NewAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {

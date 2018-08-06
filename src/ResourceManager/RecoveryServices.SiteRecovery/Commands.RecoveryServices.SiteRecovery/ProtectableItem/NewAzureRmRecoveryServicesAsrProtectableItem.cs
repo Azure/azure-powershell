@@ -23,10 +23,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///    Add(Discover) a physical server to the list of protectable items.
     /// </summary>
     [Cmdlet("New","RecoveryServicesAsrProtectableItem",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
-    [Alias("New-ASRProtectableItem")]
     [OutputType(typeof(ASRJob))]
 #if NETSTANDARD
-    [Alias("New-AzureRmRecoveryServicesAsrProtectableItem")]
+    [Alias("New-ASRProtectableItem", "New-AzureRmRecoveryServicesAsrProtectableItem")]
+#else
+    [Alias("New-ASRProtectableItem")]
 #endif
     public class NewAzureRmRecoveryServicesAsrProtectableItem : SiteRecoveryCmdletBase
     {

@@ -4,9 +4,10 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Get","DataLakeStoreChildItemSummary", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreChildItemSummary))]
-    [Alias("Get-AdlStoreChildItemSummary")]
 #if NETSTANDARD
-    [Alias("Get-AzureRmDataLakeStoreChildItemSummary")]
+    [Alias("Get-AdlStoreChildItemSummary", "Get-AzureRmDataLakeStoreChildItemSummary")]
+#else
+    [Alias("Get-AdlStoreChildItemSummary")]
 #endif
     public class GetAzureRmDataLakeStoreChildItemSummary : DataLakeStoreFileSystemCmdletBase
     {
