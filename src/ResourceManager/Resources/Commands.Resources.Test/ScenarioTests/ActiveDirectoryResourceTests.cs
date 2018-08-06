@@ -23,11 +23,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ActiveDirectoryTests: ResourcesTestRunner
+    public class ActiveDirectoryResourceTests: ResourceTestRunner
     {
         XunitTracingInterceptor interceptor { get; set; }
 
-        public ActiveDirectoryTests(ITestOutputHelper output) : base(output)
+        public ActiveDirectoryResourceTests(ITestOutputHelper output) : base(output)
         {
             interceptor = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(interceptor);

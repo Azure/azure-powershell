@@ -17,9 +17,9 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ManagementGroupsTests : ResourcesTestRunner
+    public class ManagementGroupsResourceTests : ResourceTestRunner
     {
-        public ManagementGroupsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
+        public ManagementGroupsResourceTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
         }
 

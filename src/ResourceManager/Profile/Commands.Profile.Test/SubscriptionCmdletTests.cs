@@ -19,43 +19,39 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class SubscriptionCmdletTests
+    public class SubscriptionCmdletTests : TestRunnerBase
     {
-        private readonly ITestRunnable _testManager;
-
-        public SubscriptionCmdletTests(ITestOutputHelper output)
+        public SubscriptionCmdletTests(ITestOutputHelper output) 
+            : base(output)
         {
-            _testManager = TestManager.CreateInstance()
-                .WithTestOutputHelper(output)
-                .Build();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AllParameterSetsSucceed()
         {
-            _testManager.RunTestScript("Test-GetSubscriptionsEndToEnd");
+            TestRunner.RunTestScript("Test-GetSubscriptionsEndToEnd");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureRmContextWorks()
         {
-            _testManager.RunTestScript("Test-SetAzureRmContextEndToEnd");
+            TestRunner.RunTestScript("Test-SetAzureRmContextEndToEnd");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PipingWithRmContextWorks()
         {
-            _testManager.RunTestScript("Test-PipingWithContext");
+            TestRunner.RunTestScript("Test-PipingWithContext");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureRmContextWithoutSubscription()
         {
-            _testManager.RunTestScript("Test-SetAzureRmContextWithoutSubscription");
+            TestRunner.RunTestScript("Test-SetAzureRmContextWithoutSubscription");
         }
     }
 }

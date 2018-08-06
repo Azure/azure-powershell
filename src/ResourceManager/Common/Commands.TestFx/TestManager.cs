@@ -28,11 +28,11 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit.Abstractions;
 
-namespace  Microsoft.Azure.Commands.TestFx
+namespace Microsoft.Azure.Commands.TestFx
 {
     public delegate IRecordMatcher BuildMatcherDelegate (bool ignoreResourcesClient, Dictionary<string, string> resourceProviders, Dictionary<string, string> userAgentsToIgnore);
 
-    public class TestManager : IPreBuildable, IBuildable, ITestRunnable
+    public class TestManager : ITestRunnerFactory, ITestRunner
     {
         private readonly string _callingClassName;
         private string _projectSubfolderForTestsName = null;
@@ -49,14 +49,15 @@ namespace  Microsoft.Azure.Commands.TestFx
         /// <summary>
         /// Factory method
         /// </summary>
+        /// <param name="output"></param>
         /// <param name="callerFilePath"></param>
         /// <returns></returns>
-        public static IPreBuildable CreateInstance([CallerFilePath] string callerFilePath = null)
+        public static ITestRunnerFactory CreateInstance(ITestOutputHelper output, [CallerFilePath] string callerFilePath = null)
         {
             var callingClassName = string.IsNullOrEmpty(callerFilePath) 
                 ? null
                 : Path.GetFileNameWithoutExtension(callerFilePath);
-            return new TestManager(callingClassName);
+            return new TestManager(callingClassName).WithTestOutputHelper(output);
         }
 
         /// <summary>
@@ -85,7 +86,7 @@ namespace  Microsoft.Azure.Commands.TestFx
         /// </summary>
         /// <param name="folderName"></param>
         /// <returns>self</returns>
-        public IBuildable WithProjectSubfolderForTests(string folderName)
+        public ITestRunnerFactory WithProjectSubfolderForTests(string folderName)
         {
             _projectSubfolderForTestsName = folderName ?? "ScenarioTests";
             return this;
@@ -96,7 +97,7 @@ namespace  Microsoft.Azure.Commands.TestFx
         /// </summary>
         /// <param name="psScriptList"></param>
         /// <returns>self</returns>
-        public IBuildable WithCommonPsScripts(string[] psScriptList)
+        public ITestRunnerFactory WithCommonPsScripts(string[] psScriptList)
         {
             CommonPsScripts.AddRange(psScriptList);
             return this;
@@ -107,7 +108,7 @@ namespace  Microsoft.Azure.Commands.TestFx
         /// </summary>
         /// <param name="psScriptName"></param>
         /// <returns>self</returns>
-        public IBuildable WithNewPsScriptFilename(string psScriptName)
+        public ITestRunnerFactory WithNewPsScriptFilename(string psScriptName)
         {
             _newPsScriptFilename = psScriptName;
             return this;
@@ -119,7 +120,7 @@ namespace  Microsoft.Azure.Commands.TestFx
         /// </summary>
         /// <param name="buildModuleList"></param>
         /// <returns></returns>
-        public IBuildable WithExtraRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList)
+        public ITestRunnerFactory WithExtraRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList)
         {
             var moduleList = buildModuleList(Helper);
             RmModules.AddRange(moduleList);
@@ -131,7 +132,7 @@ namespace  Microsoft.Azure.Commands.TestFx
         /// </summary>
         /// <param name="buildModuleList"></param>
         /// <returns></returns>
-        public IBuildable WithNewRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList)
+        public ITestRunnerFactory WithNewRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList)
         {
             RmModules.Clear();
             var moduleList = buildModuleList(Helper);
@@ -144,7 +145,7 @@ namespace  Microsoft.Azure.Commands.TestFx
         /// </summary>
         /// <param name="buildMatcher">delegate</param>
         /// <returns>self</returns>
-        public IBuildable WithBuildMatcher(BuildMatcherDelegate buildMatcher)
+        public ITestRunnerFactory WithBuildMatcher(BuildMatcherDelegate buildMatcher)
         {
             BuildMatcher = buildMatcher;
             return this;
@@ -158,13 +159,13 @@ namespace  Microsoft.Azure.Commands.TestFx
         /// Initial pair is {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
         /// </param>
         /// <returns>self</returns>
-        public IBuildable WithExtraUserAgentsToIgnore(Dictionary<string, string> userAgentsToIgnore)
+        public ITestRunnerFactory WithExtraUserAgentsToIgnore(Dictionary<string, string> userAgentsToIgnore)
         {
             _userAgentsToIgnore = userAgentsToIgnore;
             return this;
         }
 
-        public IBuildable WithTestOutputHelper(ITestOutputHelper output)
+        public ITestRunnerFactory WithTestOutputHelper(ITestOutputHelper output)
         {
             Logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(Logger);
@@ -172,7 +173,7 @@ namespace  Microsoft.Azure.Commands.TestFx
             return this;
         }
 
-        public ITestRunnable Build()
+        public ITestRunner Build()
         {
             SetupSessionAndProfile();
             SetupMockServerMatcher();
@@ -292,30 +293,4 @@ namespace  Microsoft.Azure.Commands.TestFx
 
         #endregion
     }
-
-    #region Builder interfaces
-
-    public interface IPreBuildable
-    {
-        IBuildable WithTestOutputHelper(ITestOutputHelper output);
-    }
-
-    public interface IBuildable
-    {
-        ITestRunnable Build();
-        IBuildable WithProjectSubfolderForTests(string folderName);
-        IBuildable WithCommonPsScripts(string[] psScriptList);
-        IBuildable WithNewPsScriptFilename(string psScriptName);
-        IBuildable WithExtraRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList);
-        IBuildable WithNewRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList);
-        IBuildable WithExtraUserAgentsToIgnore(Dictionary<string, string> userAgentsToIgnore);
-        IBuildable WithBuildMatcher(BuildMatcherDelegate buildMatcher);
-    }
-
-    public interface ITestRunnable
-    {
-        void RunTestScript(params string[] scripts);
-    }
-
-    #endregion
 }

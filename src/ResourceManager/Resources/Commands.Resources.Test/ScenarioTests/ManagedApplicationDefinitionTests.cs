@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ManagedApplicationDefinitionTests : TestManagerBuilder
+    public class ManagedApplicationDefinitionTests : ResourcesTestRunner
     {
         public ManagedApplicationDefinitionTests(ITestOutputHelper output) : base(output)
         {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedApplicationDefinitionCRUD()
         {
-            TestManager.RunTestScript("Test-ManagedApplicationDefinitionCRUD");
+            TestRunner.RunTestScript("Test-ManagedApplicationDefinitionCRUD");
         }
     }
 }

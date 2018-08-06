@@ -12,23 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-using Xunit.Abstractions;
-
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class LocationTests: ResourcesTestRunner
+    using WindowsAzure.Commands.ScenarioTest;
+    using Xunit;
+    using Xunit.Abstractions;
+    public class MoveResourceResourceTest : ResourceTestRunner
     {
-        public LocationTests(ITestOutputHelper output) : base(output)
+        public MoveResourceResourceTest(ITestOutputHelper output) : base(output)
         {
         }
 
-        [Fact]
+        [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureLocation()
+        public void TestMoveAzureResource()
         {
-            TestRunner.RunTestScript("Test-AzureLocation");
+            TestRunner.RunTestScript("Test-MoveAzureResource");
         }
     }
 }

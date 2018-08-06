@@ -29,11 +29,11 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourcesTestRunner
+    public class ResourceTestRunner
     {
         protected readonly ITestRunner TestRunner;
 
-        protected ResourcesTestRunner(ITestOutputHelper output)
+        protected ResourceTestRunner(ITestOutputHelper output)
         {
             TestRunner = TestFx.TestManager.CreateInstance(output)
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     helper.RMInsightsModule,
                 })
                 .WithBuildMatcher(
-                    (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => 
+                    (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) =>
                         new ResourcesRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore))
                 .WithExtraUserAgentsToIgnore(new Dictionary<string, string>
                 {

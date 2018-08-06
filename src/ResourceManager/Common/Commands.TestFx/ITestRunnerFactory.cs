@@ -12,23 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-using Xunit.Abstractions;
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.TestFx
 {
-    public class LocationTests: ResourcesTestRunner
+    public interface ITestRunnerFactory
     {
-        public LocationTests(ITestOutputHelper output) : base(output)
-        {
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureLocation()
-        {
-            TestRunner.RunTestScript("Test-AzureLocation");
-        }
+        ITestRunner Build();
+        ITestRunnerFactory WithProjectSubfolderForTests(string folderName);
+        ITestRunnerFactory WithCommonPsScripts(string[] psScriptList);
+        ITestRunnerFactory WithNewPsScriptFilename(string psScriptName);
+        ITestRunnerFactory WithExtraRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList);
+        ITestRunnerFactory WithNewRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList);
+        ITestRunnerFactory WithExtraUserAgentsToIgnore(Dictionary<string, string> userAgentsToIgnore);
+        ITestRunnerFactory WithBuildMatcher(BuildMatcherDelegate buildMatcher);
     }
 }

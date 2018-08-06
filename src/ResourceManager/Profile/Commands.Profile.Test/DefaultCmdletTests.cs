@@ -19,22 +19,18 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class DefaultCmdletTests
+    public class DefaultCmdletTests : TestRunnerBase
     {
-        private readonly ITestRunnable _testManager;
-
         public DefaultCmdletTests(ITestOutputHelper output)
+            : base(output)
         {
-            _testManager = TestManager.CreateInstance()
-                .WithTestOutputHelper(output)
-                .Build();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DefaultResourceGroup()
         {
-            _testManager.RunTestScript("Test-DefaultResourceGroup");
+            TestRunner.RunTestScript("Test-DefaultResourceGroup");
         }
     }
 }

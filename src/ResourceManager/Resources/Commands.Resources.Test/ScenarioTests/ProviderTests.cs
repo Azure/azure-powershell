@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     using Xunit;
     using Xunit.Abstractions;
 
-    public class ProviderTests : TestManagerBuilder
+    public class ProviderTests : ResourcesTestRunner
     {
         public ProviderTests(ITestOutputHelper output) : base(output)
         {
@@ -28,28 +28,28 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProvider()
         {
-            TestManager.RunTestScript("Test-AzureProvider");
+            TestRunner.RunTestScript("Test-AzureProvider");
         }
 
         [Fact(Skip = "ZoneMapping removed.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProvider_WithZoneMappings()
         {
-            TestManager.RunTestScript("Test-AzureProvider-WithZoneMappings");
+            TestRunner.RunTestScript("Test-AzureProvider-WithZoneMappings");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProviderOperation()
         {
-            TestManager.RunTestScript("Test-AzureProviderOperation");
+            TestRunner.RunTestScript("Test-AzureProviderOperation");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProviderOperationDataActions()
         {
-            TestManager.RunTestScript("Test-AzureProviderOperationDataActions");
+            TestRunner.RunTestScript("Test-AzureProviderOperationDataActions");
         }
     }
 }

@@ -29,11 +29,12 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class RoleAssignmentTests : ResourcesTestRunner
+    public class RoleAssignmentResourceTests : ResourceTestRunner
     {
         public XunitTracingInterceptor _logger;
 
-        public RoleAssignmentTests(ITestOutputHelper output) : base(output)
+        public RoleAssignmentResourceTests(ITestOutputHelper output) 
+            : base(output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);

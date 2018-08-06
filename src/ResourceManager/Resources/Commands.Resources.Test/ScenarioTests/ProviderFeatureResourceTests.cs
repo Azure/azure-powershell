@@ -12,23 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-using Xunit.Abstractions;
-
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class LocationTests: ResourcesTestRunner
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Xunit;
+    using Xunit.Abstractions;
+
+    public class ProviderFeatureResourceTests : ResourceTestRunner
     {
-        public LocationTests(ITestOutputHelper output) : base(output)
+        public ProviderFeatureResourceTests(ITestOutputHelper output) : base(output)
         {
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureLocation()
+        public void TestAzureProviderFeature()
         {
-            TestRunner.RunTestScript("Test-AzureLocation");
+            TestRunner.RunTestScript("Test-AzureProviderFeature");
         }
     }
 }

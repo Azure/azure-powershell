@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
     using Xunit.Abstractions;
-    public class MoveResourceTest : TestManagerBuilder
+    public class MoveResourceTest : ResourcesTestRunner
     {
         public MoveResourceTest(ITestOutputHelper output) : base(output)
         {
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMoveAzureResource()
         {
-            TestManager.RunTestScript("Test-MoveAzureResource");
+            TestRunner.RunTestScript("Test-MoveAzureResource");
         }
     }
 }

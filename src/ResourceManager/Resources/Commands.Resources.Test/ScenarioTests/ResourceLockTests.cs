@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceLockTests : TestManagerBuilder
+    public class ResourceLockTests : ResourcesTestRunner
     {
         public ResourceLockTests(ITestOutputHelper output) : base(output)
         {
@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceLockCRUDTest()
         {
-            TestManager.RunTestScript("Test-ResourceLockCRUD");
+            TestRunner.RunTestScript("Test-ResourceLockCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceLockNonExisting()
         {
-            TestManager.RunTestScript("Test-ResourceLockNonExisting");
+            TestRunner.RunTestScript("Test-ResourceLockNonExisting");
         }
     }
 }

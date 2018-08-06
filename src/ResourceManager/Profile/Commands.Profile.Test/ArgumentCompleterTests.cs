@@ -19,36 +19,32 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class ArgumentCompleterTests
+    public class ArgumentCompleterTests : TestRunnerBase
     {
-        private readonly ITestRunnable _testManager;
-
-        public ArgumentCompleterTests(ITestOutputHelper output)
+        public ArgumentCompleterTests(ITestOutputHelper output) 
+            : base(output)
         {
-            _testManager = TestManager.CreateInstance()
-                .WithTestOutputHelper(output)
-                .Build();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLocationCompleter()
         {
-            _testManager.RunTestScript("Test-LocationCompleter");
+            TestRunner.RunTestScript("Test-LocationCompleter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceGroupCompleter()
         {
-            _testManager.RunTestScript("Test-ResourceGroupCompleter");
+            TestRunner.RunTestScript("Test-ResourceGroupCompleter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceIdCompleter()
         {
-            _testManager.RunTestScript("Test-ResourceIdCompleter");
+            TestRunner.RunTestScript("Test-ResourceIdCompleter");
         }
     }
 }
