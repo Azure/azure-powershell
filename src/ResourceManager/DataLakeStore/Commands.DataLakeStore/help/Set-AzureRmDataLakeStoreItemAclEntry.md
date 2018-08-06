@@ -47,7 +47,7 @@ PS C:\>Set-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -A
 
 ### Example 3: Modify permissions for an ACE recursively using Acl object
 ```
-PS C:\>$fullAcl="user:userid1:--x,default:user:userid1:--x
+PS C:\>$fullAcl="user:userid1:--x,default:user:userid1:--x"
 PS C:\>$newFullAcl = $fullAcl.Split("{,}")
 PS C:\>Set-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -Acl $newFullAcl -Recurse -Concurrency 128
 ```
