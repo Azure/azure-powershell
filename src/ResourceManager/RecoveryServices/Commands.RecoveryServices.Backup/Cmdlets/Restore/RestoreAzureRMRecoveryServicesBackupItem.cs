@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 PsBackupProviderManager providerManager =
-                       new PsBackupProviderManager(providerParameters, ServiceClientAdapter);
+                    new PsBackupProviderManager(providerParameters, ServiceClientAdapter);
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
                     RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
                 var jobResponse = psBackupProvider.TriggerRestore();
