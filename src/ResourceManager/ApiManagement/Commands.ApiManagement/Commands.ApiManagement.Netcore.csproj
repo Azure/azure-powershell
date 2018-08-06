@@ -38,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Az.ApiManagement" Link="Az.ApiManagement">
+    <None Include="Az.ApiManagement.psd1" Link="Az.ApiManagement.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

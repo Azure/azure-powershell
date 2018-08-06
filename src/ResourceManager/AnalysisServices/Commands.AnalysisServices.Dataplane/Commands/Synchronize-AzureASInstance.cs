@@ -36,10 +36,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
     [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureAnalysisServicesInstance", SupportsShouldProcess = true)]
-    [Alias("Sync-AzureAsInstance")]
     [OutputType(typeof(ScaleOutServerDatabaseSyncDetails))]
 #if NETSTANDARD
-    [Alias("Sync-AzureAnalysisServicesInstance")]
+    [Alias("Sync-AzureAsInstance", "Sync-AzureAnalysisServicesInstance")]
+#else
+    [Alias("Sync-AzureAsInstance")]
 #endif
     public class SynchronizeAzureAzureAnalysisServer : AzurePSCmdlet
     {

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Profile
 #if NETSTANDARD
     [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-AzureRmAccount", "Connect-AzureRmAccount")]
 #else
-    Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-AzureRmAccount")]
+    [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-AzureRmAccount")]
 #endif
     public class ConnectAzureRmAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
     {

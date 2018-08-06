@@ -26,10 +26,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
     [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureAnalysisServicesInstance", SupportsShouldProcess=true)]
-    [Alias("Restart-AzureAsInstance")]
     [OutputType(typeof(bool))]
 #if NETSTANDARD
-    [Alias("Restart-AzureAnalysisServicesInstance")]
+    [Alias("Restart-AzureAsInstance", "Restart-AzureAnalysisServicesInstance")]
+#else
+    [Alias("Restart-AzureAsInstance")]
 #endif
     public class RestartAzureAnalysisServer : AzurePSCmdlet
     {

@@ -32,7 +32,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Az.Compute.ManagedService" Link="Az.Compute.ManagedService">
+    <None Include="Az.Compute.ManagedService.psd1" Link="Az.Compute.ManagedService.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

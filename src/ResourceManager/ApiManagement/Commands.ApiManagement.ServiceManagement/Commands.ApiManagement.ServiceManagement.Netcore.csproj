@@ -37,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\Commands.ApiManagement\AAz.ApiManagement.psd1" Link="Az.ApiManagement.psd1">
+    <None Include="..\Commands.ApiManagement\Az.ApiManagement.psd1" Link="Az.ApiManagement.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
