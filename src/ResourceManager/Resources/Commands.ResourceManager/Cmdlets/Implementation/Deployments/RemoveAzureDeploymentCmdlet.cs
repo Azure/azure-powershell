@@ -57,6 +57,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             ValueFromPipeline = true, HelpMessage = "The deployment object.")]
         public PSDeployment InputObject { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ConfirmAction(
