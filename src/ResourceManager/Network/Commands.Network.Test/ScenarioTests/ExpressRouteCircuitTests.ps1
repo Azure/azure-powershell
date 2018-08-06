@@ -154,7 +154,7 @@ function Test-ExpressRouteCircuitCRUD
       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
       
       # Create the ExpressRouteCircuit
-		$circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 500;
+		$circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 500 -AllowGlobalReach;
       
       # get Circuit
       $getCircuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
@@ -171,6 +171,7 @@ function Test-ExpressRouteCircuitCRUD
       Assert-AreEqual "equinix" $getCircuit.ServiceProviderProperties.ServiceProviderName
       Assert-AreEqual "Silicon Valley" $getCircuit.ServiceProviderProperties.PeeringLocation
       Assert-AreEqual "500" $getCircuit.ServiceProviderProperties.BandwidthInMbps
+      Assert-AreEqual $True $getCircuit.AllowGlobalReach
 
       # list
       $list = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname
