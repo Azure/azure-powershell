@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System;
 using System.Linq;
 using System.Management.Automation;
 
@@ -39,9 +40,14 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var subnet =
-                    this.VirtualNetwork.Subnets.First(
+                    this.VirtualNetwork.Subnets.FirstOrDefault(
                         resource =>
-                            string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+                            string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
+
+                if (subnet == null)
+                {
+                    throw new ArgumentException("Subnet with the specified name does not exist");
+                }
 
                 WriteObject(subnet);
             }
@@ -50,7 +56,6 @@ namespace Microsoft.Azure.Commands.Network
                 var subnets = this.VirtualNetwork.Subnets;
                 WriteObject(subnets, true);
             }
-
         }
     }
 }
