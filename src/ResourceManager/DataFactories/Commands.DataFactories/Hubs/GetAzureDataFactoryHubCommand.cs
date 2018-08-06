@@ -22,7 +22,10 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Get, Constants.Hub, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSHub))]
+    [Cmdlet("Get","DataFactoryHub", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSHub))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryHub")]
+#endif
     public class GetAzureDataFactoryHubCommand : HubContextBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -75,3 +78,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
+

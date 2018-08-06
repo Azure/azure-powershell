@@ -8,7 +8,10 @@ using Microsoft.Azure.Commands.Reservations.Models;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmReservationHistory", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet), OutputType(typeof(PSReservationPage))]
+    [Cmdlet("Get","ReservationHistory", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet), OutputType(typeof(PSReservationPage))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmReservationHistory")]
+#endif
     public class GetReservationHistory : AzureReservationsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet, 
@@ -48,3 +51,5 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         }
     }
 }
+
+

@@ -49,12 +49,11 @@ using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.New,
-        ProfileNouns.VirtualMachine,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = "SimpleParameterSet")]
+    [Cmdlet("New","VM",SupportsShouldProcess = true,DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
+#if NETSTANDARD
+    [Alias("New-AzureRmVM")]
+#endif
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         public const string DefaultParameterSet = "DefaultParameterSet";
@@ -777,3 +776,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

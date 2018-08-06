@@ -25,7 +25,10 @@ using SdkQueryStringCachingBehavior = Microsoft.Azure.Management.Cdn.Models.Quer
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmCdnEndpoint", SupportsShouldProcess = true), OutputType(typeof(PSEndpoint))]
+    [Cmdlet("Set","CdnEndpoint", SupportsShouldProcess = true), OutputType(typeof(PSEndpoint))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmCdnEndpoint")]
+#endif
     public class SetAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN endpoint object.")]
@@ -67,3 +70,5 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+
+

@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -115,8 +115,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsData.Update, "AzureRmVmssInstance", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("Update","VmssInstance", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
+#if NETSTANDARD
+    [Alias("Update-AzureRmVmssInstance")]
+#endif
     public partial class UpdateAzureRmVmssInstance : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -174,3 +177,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
+

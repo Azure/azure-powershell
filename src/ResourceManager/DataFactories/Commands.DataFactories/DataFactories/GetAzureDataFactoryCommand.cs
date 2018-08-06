@@ -20,7 +20,10 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Get, Constants.DataFactory), OutputType(typeof(PSDataFactory))]
+    [Cmdlet("Get","DataFactory"), OutputType(typeof(PSDataFactory))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactory")]
+#endif
     public class GetAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -61,3 +64,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
+

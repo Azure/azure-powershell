@@ -22,8 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmContext", SupportsShouldProcess = true, DefaultParameterSetName = InputObjectParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", SupportsShouldProcess = true, DefaultParameterSetName = InputObjectParameterSet)]
     [OutputType(typeof(PSAzureContext))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmContext")]
+#endif
     public class RemoveAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
     {
         const string NamedContextParameterSet = "RemoveByName", InputObjectParameterSet = "RemoveByInputObject";
@@ -89,3 +92,5 @@ namespace Microsoft.Azure.Commands.Profile.Context
         }
     }
 }
+
+

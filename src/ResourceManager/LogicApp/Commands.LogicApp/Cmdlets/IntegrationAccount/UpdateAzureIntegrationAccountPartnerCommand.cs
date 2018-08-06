@@ -24,8 +24,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Update the integration account partner.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountPartner", SupportsShouldProcess = true)]
+    [Cmdlet("Set","IntegrationAccountPartner", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccountPartner))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmIntegrationAccountPartner")]
+#endif
     public class UpdateAzureIntegrationAccountPartnerCommand : LogicAppBaseCmdlet
     {
 
@@ -129,3 +132,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
+

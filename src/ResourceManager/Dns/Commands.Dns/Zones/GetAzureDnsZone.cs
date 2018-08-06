@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Gets one or more existing zones.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmDnsZone", DefaultParameterSetName = "Default"), OutputType(typeof(DnsZone))]
+    [Cmdlet("Get","DnsZone", DefaultParameterSetName = "Default"), OutputType(typeof(DnsZone))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDnsZone")]
+#endif
     public class GetAzureDnsZone : DnsBaseCmdlet
     {
         private const string ParameterSetResourceGroup = "ResourceGroup";
@@ -58,3 +61,5 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 }
+
+

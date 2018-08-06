@@ -18,8 +18,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Get, ContainerRegistryReplicationNoun, DefaultParameterSetName = ListReplicationByNameResourceGroupParameterSet)]
+    [Cmdlet("Get","ContainerRegistryReplication", DefaultParameterSetName = ListReplicationByNameResourceGroupParameterSet)]
     [OutputType(typeof(PSContainerRegistryReplication))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmContainerRegistryReplication")]
+#endif
     public class GetAzureContainerRegistryReplication : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ShowReplicationByNameResourceGroupParameterSet, HelpMessage = "Container Registry Replication Name.")]
@@ -111,3 +114,5 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+
+

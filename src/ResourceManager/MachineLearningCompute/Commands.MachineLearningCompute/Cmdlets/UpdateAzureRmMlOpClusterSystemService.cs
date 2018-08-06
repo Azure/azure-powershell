@@ -22,8 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
-    [Cmdlet(VerbsData.Update, CmdletSuffix + "SystemService", SupportsShouldProcess = true)]
+    [Cmdlet("Update","MlOpClusterSystemService", SupportsShouldProcess = true)]
     [OutputType(typeof(PSUpdateSystemServicesResponse))]
+#if NETSTANDARD
+    [Alias("Update-AzureRmMlOpClusterSystemService")]
+#endif
     public class UpdateAzureRmMlOpClusterSystemService : MachineLearningComputeCmdletBase
     {
         protected const string CmdletParametersParameterSet = "StartUpdateWithNameAndResourceGroup";
@@ -87,3 +90,5 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         }
     }
 }
+
+

@@ -19,7 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmLoadBalancerInboundNatPoolConfig"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet("Add","LoadBalancerInboundNatPoolConfig"), OutputType(typeof(PSLoadBalancer))]
+#if NETSTANDARD
+    [Alias("Add-AzureRmLoadBalancerInboundNatPoolConfig")]
+#endif
     public class AddAzureLoadBalancerInboundNatPoolConfigCommand : AzureLoadBalancerInboundNatPoolConfigBase
     {
         [Parameter(
@@ -71,3 +74,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

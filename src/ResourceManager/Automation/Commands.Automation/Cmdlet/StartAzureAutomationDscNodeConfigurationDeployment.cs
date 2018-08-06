@@ -20,9 +20,11 @@ using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmAutomationDscNodeConfigurationDeployment", SupportsShouldProcess = true, 
-        DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Start","AutomationDscNodeConfigurationDeployment", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(NodeConfigurationDeployment))]
+#if NETSTANDARD
+    [Alias("Start-AzureRmAutomationDscNodeConfigurationDeployment")]
+#endif
     public class StartAzureAutomationDscNodeConfigurationDeployment : AzureAutomationBaseCmdlet
     {
 
@@ -112,3 +114,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

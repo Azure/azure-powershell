@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Delete a Cognitive Services.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, CognitiveServicesAccountNounStr, SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove","CognitiveServicesAccount", SupportsShouldProcess = true), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmCognitiveServicesAccount")]
+#endif
     public class RemoveAzureCognitiveServicesAccountCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
@@ -66,3 +69,5 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         }
     }
 }
+
+

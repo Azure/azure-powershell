@@ -19,8 +19,12 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmDataMigrationService", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Start","DataMigrationService", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Start-AzureRmDmsService", "Start-AzureRmDataMigrationService")]
+#else
     [Alias("Start-AzureRmDmsService")]
+#endif
     public class StartDataMigrationService : DataMigrationCmdlet
     {
         [Parameter(
@@ -97,3 +101,5 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+
+

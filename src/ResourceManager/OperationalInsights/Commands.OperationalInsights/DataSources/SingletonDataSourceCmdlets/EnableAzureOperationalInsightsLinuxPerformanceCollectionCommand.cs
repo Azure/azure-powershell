@@ -22,8 +22,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmOperationalInsightsLinuxPerformanceCollection", SupportsShouldProcess = true, 
-        DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
+    [Cmdlet("Enable","OperationalInsightsLinuxPerformanceCollection", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
+#if NETSTANDARD
+    [Alias("Enable-AzureRmOperationalInsightsLinuxPerformanceCollection")]
+#endif
     public class EnableAzureOperationalInsightsLinuxPerformanceCollectionCommand : AzureOperationalInsightsDataSourceBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
@@ -73,3 +75,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
+

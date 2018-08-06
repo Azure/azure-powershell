@@ -21,7 +21,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmNotificationHub", SupportsShouldProcess = true), OutputType(typeof(NotificationHubAttributes))]
+    [Cmdlet("Set","NotificationHub", SupportsShouldProcess = true), OutputType(typeof(NotificationHubAttributes))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmNotificationHub")]
+#endif
     public class SetAzureNotificationHub : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -93,3 +96,5 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         }
     }
 }
+
+

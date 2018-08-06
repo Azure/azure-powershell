@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -169,8 +169,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsData.Export, "AzureRmLogAnalyticThrottledRequests", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("Export","LogAnalyticThrottledRequests", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSLogAnalyticsOperationResult))]
+#if NETSTANDARD
+    [Alias("Export-AzureRmLogAnalyticThrottledRequests")]
+#endif
     public partial class ExportAzureRmLogAnalyticThrottledRequests : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -242,3 +245,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
+

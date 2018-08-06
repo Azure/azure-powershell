@@ -23,8 +23,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation variables for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationJobOutput")]
+    [Cmdlet("Get","AutomationJobOutput")]
     [OutputType(typeof(JobStream))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationJobOutput")]
+#endif
     public class GetAzureAutomationJobOutput : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -57,3 +60,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

@@ -22,7 +22,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Resize, "AzureRmVirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet("Resize","VirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
+#if NETSTANDARD
+    [Alias("Resize-AzureRmVirtualNetworkGateway")]
+#endif
     public class ResizeAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
@@ -83,3 +86,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

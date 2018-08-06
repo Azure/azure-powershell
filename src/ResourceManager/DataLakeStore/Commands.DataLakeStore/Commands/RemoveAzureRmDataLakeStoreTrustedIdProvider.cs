@@ -23,8 +23,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreTrustedIdProvider", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove","DataLakeStoreTrustedIdProvider", SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AdlStoreTrustedIdProvider", "Remove-AzureRmDataLakeStoreTrustedIdProvider")]
+#else
     [Alias("Remove-AdlStoreTrustedIdProvider")]
+#endif
     public class RemoveAzureRmDataLakeStoreAccountTrustedIdProvider : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -67,3 +71,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

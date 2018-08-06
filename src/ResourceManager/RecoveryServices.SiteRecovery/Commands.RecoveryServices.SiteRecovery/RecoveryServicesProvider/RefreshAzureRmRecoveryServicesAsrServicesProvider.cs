@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Refreshes (Refresh server) the information received from the Azure Site Recovery Services Provider.
     /// </summary>
-    [Cmdlet(
-        VerbsData.Update,
-        "AzureRmRecoveryServicesAsrServicesProvider",
-        DefaultParameterSetName = ASRParameterSets.Default,
-        SupportsShouldProcess = true)]
-    [Alias("Update-ASRServicesProvider")]
+    [Cmdlet("Update","RecoveryServicesAsrServicesProvider",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Update-ASRServicesProvider", "Update-AzureRmRecoveryServicesAsrServicesProvider")]
+#else
+    [Alias("Update-ASRServicesProvider")]
+#endif
     public class UpdateAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -73,3 +73,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

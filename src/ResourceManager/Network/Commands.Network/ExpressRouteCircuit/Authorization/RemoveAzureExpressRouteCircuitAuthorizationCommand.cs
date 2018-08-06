@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmExpressRouteCircuitAuthorization"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet("Remove","ExpressRouteCircuitAuthorization"), OutputType(typeof(PSExpressRouteCircuit))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmExpressRouteCircuitAuthorization")]
+#endif
     public class RemoveAzureExpressRouteCircuitAuthorizationCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -47,3 +50,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

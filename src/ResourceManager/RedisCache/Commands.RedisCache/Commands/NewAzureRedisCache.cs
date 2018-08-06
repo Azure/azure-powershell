@@ -24,7 +24,10 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Management.Automation;
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmRedisCache", SupportsShouldProcess = true), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
+    [Cmdlet("New","RedisCache", SupportsShouldProcess = true), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
+#if NETSTANDARD
+    [Alias("New-AzureRmRedisCache")]
+#endif
     public class NewAzureRedisCache : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which you want to create cache.")]
@@ -138,3 +141,5 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+
+

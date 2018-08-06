@@ -24,7 +24,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Removes AD application credentials.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADAppCredential", DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithKeyId, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove","ADAppCredential", DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithKeyId, SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmADAppCredential")]
+#endif
     public class RemoveAzureADAppCredentialCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithKeyId, HelpMessage = "The application object id.")]
@@ -98,3 +101,5 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+
+

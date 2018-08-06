@@ -20,9 +20,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",        
-        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultKey", DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultKeyIdentityItem), typeof(PSKeyVaultKey), typeof(PSDeletedKeyVaultKeyIdentityItem), typeof(PSDeletedKeyVaultKey))]
+#if NETSTANDARD
+    [Alias("Get-AzureKeyVaultKey")]
+#endif
     public class GetAzureKeyVaultKey : KeyVaultCmdletBase
     {
 
@@ -270,3 +272,5 @@ namespace Microsoft.Azure.Commands.KeyVault
                 (options) => DataServiceClient.GetKeyVersions(options).Where(k => k.Version != currentKeyVersion));
     }
 }
+
+

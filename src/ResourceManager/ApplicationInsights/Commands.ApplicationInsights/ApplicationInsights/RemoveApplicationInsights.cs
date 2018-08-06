@@ -19,8 +19,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.Remove, ApplicationInsightsNounStr, DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","ApplicationInsights", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationInsights")]
+#endif
     public class RemoveApplicationInsightsComponent : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
@@ -97,3 +100,5 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+
+

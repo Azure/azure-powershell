@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,11 +28,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New,
-         "AzureRmVirtualNetworkGateway",
-         SupportsShouldProcess = true,
-         DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default),
-     OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet("New","VirtualNetworkGateway",SupportsShouldProcess = true,DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default),OutputType(typeof(PSVirtualNetworkGateway))]
+#if NETSTANDARD
+    [Alias("New-AzureRmVirtualNetworkGateway")]
+#endif
     public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -412,3 +411,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

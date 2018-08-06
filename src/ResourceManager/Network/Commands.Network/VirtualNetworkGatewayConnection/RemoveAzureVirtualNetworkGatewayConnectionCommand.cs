@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmVirtualNetworkGatewayConnection", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove","VirtualNetworkGatewayConnection", SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVirtualNetworkGatewayConnection")]
+#endif
     public class RemoveAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -64,3 +67,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

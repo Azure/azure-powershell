@@ -26,7 +26,10 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
     /// <para> If Namespace name provided, a single Namespace detials will be returned</para>
     /// <para> If Namespace name not provided, list of Namespace will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, RelayNamespaceVerb), OutputType(typeof(RelayNamespaceAttributes))]
+    [Cmdlet("Get","RelayNamespace"), OutputType(typeof(RelayNamespaceAttributes))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmRelayNamespace")]
+#endif
     public class GetAzureRmRelayNamespace : AzureRelayCmdletBase
     {
         [Parameter(
@@ -67,3 +70,5 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
         }
     }
 }
+
+

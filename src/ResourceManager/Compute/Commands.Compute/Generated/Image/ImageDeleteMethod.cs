@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -96,8 +96,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmImage", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("Remove","Image", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmImage")]
+#endif
     public partial class RemoveAzureRmImage : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -155,3 +158,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
+

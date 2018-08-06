@@ -18,8 +18,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, Constants.ApiManagementOpenIdConnectProvider)]
+    [Cmdlet("New","ApiManagementOpenIdConnectProvider")]
     [OutputType(typeof(PsApiManagementOpenIdConnectProvider))]
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementOpenIdConnectProvider")]
+#endif
     public class NewAzureApiManagementOpenIdConnectProvider : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -91,3 +94,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

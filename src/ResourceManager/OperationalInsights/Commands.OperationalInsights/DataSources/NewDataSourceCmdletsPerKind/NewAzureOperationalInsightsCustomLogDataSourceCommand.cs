@@ -23,8 +23,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmOperationalInsightsCustomLogDataSource", SupportsShouldProcess = true, 
-        DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
+    [Cmdlet("New","OperationalInsightsCustomLogDataSource", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
+#if NETSTANDARD
+    [Alias("New-AzureRmOperationalInsightsCustomLogDataSource")]
+#endif
     public class NewAzureOperationalInsightsCustomLogDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
@@ -70,3 +72,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
+

@@ -20,7 +20,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
     using Models;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIotHubCertificate", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove","IotHubCertificate", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmIotHubCertificate")]
+#endif
     public class RemoveAzureRmIotHubCertificate : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
@@ -126,4 +129,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
 

@@ -20,7 +20,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.Set, ApplicationInsightsContinuousExportNounStr, DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSExportConfiguration))]
+    [Cmdlet("Set","ApplicationInsightsContinuousExport", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSExportConfiguration))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmApplicationInsightsContinuousExport")]
+#endif
     public class SetApplicationInsightsContinuousExportCommand : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
@@ -155,3 +158,5 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+
+

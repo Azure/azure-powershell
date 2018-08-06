@@ -24,11 +24,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
-    [Cmdlet(
-        VerbsData.Update, 
-        WebServicesCmdletBase.CommandletSuffix, 
-        SupportsShouldProcess = true)]
+    [Cmdlet("Update","MlWebService",SupportsShouldProcess = true)]
     [OutputType(typeof(WebService))]
+#if NETSTANDARD
+    [Alias("Update-AzureRmMlWebService")]
+#endif
     public class UpdateAzureMLWebService : WebServicesCmdletBase
     {
         protected const string UpdateFromArgumentsParameterSet = "UpdateFromParameters";
@@ -205,3 +205,5 @@ namespace Microsoft.Azure.Commands.MachineLearning
         }
     }
 }
+
+

@@ -3,8 +3,12 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreChildItemSummary", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreChildItemSummary))]
+    [Cmdlet("Get","DataLakeStoreChildItemSummary", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreChildItemSummary))]
+#if NETSTANDARD
+    [Alias("Get-AdlStoreChildItemSummary", "Get-AzureRmDataLakeStoreChildItemSummary")]
+#else
     [Alias("Get-AdlStoreChildItemSummary")]
+#endif
     public class GetAzureRmDataLakeStoreChildItemSummary : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -34,3 +38,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

@@ -23,8 +23,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsComputePolicy", SupportsShouldProcess = true), OutputType(typeof(PSDataLakeAnalyticsComputePolicy))]
-    [Alias("New-AdlAnalyticsComputePolicy")]
+    [Cmdlet("New","DataLakeAnalyticsComputePolicy", SupportsShouldProcess = true), OutputType(typeof(PSDataLakeAnalyticsComputePolicy))]
+#if NETSTANDARD
+    [Alias("New-AdlAnalyticsCatalogComputePolicy", "New-AzureRmDataLakeAnalyticsComputePolicy")]
+#else
+    [Alias("New-AdlAnalyticsCatalogComputePolicy")]
+#endif
     public class NewAzureDataLakeAnalyticsComputePolicy : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
@@ -97,3 +101,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
+

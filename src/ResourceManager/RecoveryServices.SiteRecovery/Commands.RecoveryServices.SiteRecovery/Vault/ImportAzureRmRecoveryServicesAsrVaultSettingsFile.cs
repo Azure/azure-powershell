@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,13 +27,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Imports the specified ASR vault settings file to set the vault context(PowerShell session context)
     ///     for subsequent ASR operations in the PowerShell session. 
     /// </summary>
-    [Cmdlet(
-        VerbsData.Import,
-        "AzureRmRecoveryServicesAsrVaultSettingsFile",
-        SupportsShouldProcess = true)]
+    [Cmdlet("Import","RecoveryServicesAsrVaultSettingsFile",SupportsShouldProcess = true)]
     [OutputType(typeof(ASRVaultSettings))]
+#if NETSTANDARD
+    [Alias("Import-ASRVaultSettingsFile", "Import-AzureRmRecoveryServicesAsrVaultSettingsFile")]
+#else
     [Alias(
         "Import-ASRVaultSettingsFile")]
+#endif
     public class ImportAzureRmRecoveryServicesAsrVaultSettingsFile : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -163,3 +164,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

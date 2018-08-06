@@ -21,7 +21,10 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricClusterCertificate, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    [Cmdlet("Remove","ServiceFabricClusterCertificate", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmServiceFabricClusterCertificate")]
+#endif
     public class RemoveAzureRmServiceFabricClusterCertificate : ServiceFabricClusterCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true,
@@ -83,3 +86,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+
+

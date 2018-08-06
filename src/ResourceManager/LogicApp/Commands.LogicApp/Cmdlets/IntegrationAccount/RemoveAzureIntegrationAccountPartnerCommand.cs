@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Removes the integration account partner. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIntegrationAccountPartner", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove","IntegrationAccountPartner", SupportsShouldProcess = true), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmIntegrationAccountPartner")]
+#endif
     public class RemoveAzureIntegrationAccountPartnerCommand : LogicAppBaseCmdlet
     {
 
@@ -64,3 +67,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
+

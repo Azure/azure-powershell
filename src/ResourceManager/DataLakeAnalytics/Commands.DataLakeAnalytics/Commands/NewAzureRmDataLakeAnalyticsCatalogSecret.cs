@@ -20,9 +20,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof(USqlSecret))]
-    [Alias("New-AdlCatalogSecret")]
+    [Cmdlet("New","DataLakeAnalyticsCatalogSecret"), OutputType(typeof(USqlSecret))]
     [Obsolete("Catalog secrets are being deprecated in a future release. Please use New-AzureRmDataLakeAnalyticsCatalogCredential directly instead.")]
+#if NETSTANDARD
+    [Alias("New-AdlCatalogSecret", "New-AzureRmDataLakeAnalyticsCatalogSecret")]
+#else
+    [Alias("New-AdlCatalogSecret")]
+#endif
     public class NewAzureDataLakeAnalyticsCatalogSecret : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "CreateByFullURI";
@@ -78,3 +82,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
+

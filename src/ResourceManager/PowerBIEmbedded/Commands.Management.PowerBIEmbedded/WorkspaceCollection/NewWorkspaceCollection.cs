@@ -21,7 +21,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    [Cmdlet(VerbsCommon.New, Nouns.WorkspaceCollection, SupportsShouldProcess = true), OutputType(typeof(PSWorkspaceCollection))]
+    [Cmdlet("New","PowerBIWorkspaceCollection", SupportsShouldProcess = true), OutputType(typeof(PSWorkspaceCollection))]
+#if NETSTANDARD
+    [Alias("New-AzureRmPowerBIWorkspaceCollection")]
+#endif
     public class NewWorkspaceCollection : WorkspaceCollectionBaseCmdlet
     {
         [Parameter(
@@ -76,3 +79,5 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
         }
     }
 }
+
+

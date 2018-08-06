@@ -72,24 +72,24 @@ NestedModules = @('.\Microsoft.Azure.Commands.StreamAnalytics.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmStreamAnalyticsFunction', 
-               'Get-AzureRmStreamAnalyticsDefaultFunctionDefinition', 
-               'New-AzureRmStreamAnalyticsFunction', 
-               'Remove-AzureRmStreamAnalyticsFunction', 
-               'Test-AzureRmStreamAnalyticsFunction', 
-               'Get-AzureRmStreamAnalyticsInput', 
-               'New-AzureRmStreamAnalyticsInput', 
-               'Remove-AzureRmStreamAnalyticsInput', 
-               'Test-AzureRmStreamAnalyticsInput', 'Get-AzureRmStreamAnalyticsJob', 
-               'New-AzureRmStreamAnalyticsJob', 'Remove-AzureRmStreamAnalyticsJob', 
-               'Start-AzureRmStreamAnalyticsJob', 'Stop-AzureRmStreamAnalyticsJob', 
-               'Get-AzureRmStreamAnalyticsOutput', 
-               'New-AzureRmStreamAnalyticsOutput', 
-               'Remove-AzureRmStreamAnalyticsOutput', 
-               'Test-AzureRmStreamAnalyticsOutput', 
-               'Get-AzureRmStreamAnalyticsQuota', 
-               'Get-AzureRmStreamAnalyticsTransformation', 
-               'New-AzureRmStreamAnalyticsTransformation'
+CmdletsToExport = 'Get-StreamAnalyticsFunction', 
+               'Get-StreamAnalyticsDefaultFunctionDefinition', 
+               'New-StreamAnalyticsFunction', 
+               'Remove-StreamAnalyticsFunction', 
+               'Test-StreamAnalyticsFunction', 
+               'Get-StreamAnalyticsInput', 
+               'New-StreamAnalyticsInput', 
+               'Remove-StreamAnalyticsInput', 
+               'Test-StreamAnalyticsInput', 'Get-StreamAnalyticsJob', 
+               'New-StreamAnalyticsJob', 'Remove-StreamAnalyticsJob', 
+               'Start-StreamAnalyticsJob', 'Stop-StreamAnalyticsJob', 
+               'Get-StreamAnalyticsOutput', 
+               'New-StreamAnalyticsOutput', 
+               'Remove-StreamAnalyticsOutput', 
+               'Test-StreamAnalyticsOutput', 
+               'Get-StreamAnalyticsQuota', 
+               'Get-StreamAnalyticsTransformation', 
+               'New-StreamAnalyticsTransformation'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -143,7 +143,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

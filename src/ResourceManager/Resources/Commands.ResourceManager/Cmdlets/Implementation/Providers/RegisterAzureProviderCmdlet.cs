@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Register the previewed features of a certain azure resource provider.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureRmResourceProvider", SupportsShouldProcess = true), OutputType(typeof(PSResourceProvider))]
+    [Cmdlet("Register","ResourceProvider", SupportsShouldProcess = true), OutputType(typeof(PSResourceProvider))]
+#if NETSTANDARD
+    [Alias("Register-AzureRmResourceProvider")]
+#endif
     public class RegisterAzureProviderCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -45,3 +48,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
+

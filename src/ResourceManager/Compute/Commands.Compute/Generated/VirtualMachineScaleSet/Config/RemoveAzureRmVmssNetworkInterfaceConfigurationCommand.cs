@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,8 +29,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Remove", "AzureRmVmssNetworkInterfaceConfiguration", SupportsShouldProcess = true)]
+    [Cmdlet("Remove","VmssNetworkInterfaceConfiguration", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVmssNetworkInterfaceConfiguration")]
+#endif
     public partial class RemoveAzureRmVmssNetworkInterfaceConfigurationCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -95,4 +98,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

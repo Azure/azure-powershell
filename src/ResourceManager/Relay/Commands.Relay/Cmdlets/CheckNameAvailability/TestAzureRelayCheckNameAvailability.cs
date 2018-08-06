@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
     /// <summary>
     /// 'Test-AzureRmCheckNameAvailability' Cmdlet Check Availability of the NameSpace Name
     /// </summary>
-    [Cmdlet("Test", "AzureRmRelayName"), OutputType(typeof(CheckNameAvailabilityResultAttributes))]
+    [Cmdlet("Test","RelayName"), OutputType(typeof(CheckNameAvailabilityResultAttributes))]
+#if NETSTANDARD
+    [Alias("Test-AzureRmRelayName")]
+#endif
     public class TestAzureRmRelayName : AzureRelayCmdletBase
     {
         [Parameter(
@@ -41,3 +44,5 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
         }
     }
 }
+
+

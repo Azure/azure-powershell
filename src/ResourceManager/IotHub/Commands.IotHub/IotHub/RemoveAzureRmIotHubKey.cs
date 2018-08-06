@@ -26,8 +26,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using PSIotHubProperties = Microsoft.Azure.Commands.Management.IotHub.Properties;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIotHubKey", SupportsShouldProcess = true)]
+    [Cmdlet("Remove","IotHubKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSharedAccessSignatureAuthorizationRule))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmIotHubKey")]
+#endif
     public class RemoveAzureRmIotHubKey : IotHubBaseCmdlet
     {
 
@@ -81,3 +84,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
+

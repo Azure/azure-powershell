@@ -17,7 +17,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkGatewayConnectionSharedKey"), OutputType(typeof(string))]
+    [Cmdlet("Get","VirtualNetworkGatewayConnectionSharedKey"), OutputType(typeof(string))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVirtualNetworkGatewayConnectionSharedKey")]
+#endif
     public class GetAzureVirtualNetworkGatewayConnectionSharedKeyCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -48,4 +51,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

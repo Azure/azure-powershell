@@ -21,9 +21,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// <summary>
     /// New-AzureKeyVaultOrganizationDetails creates an in-memory organization details object
     /// </summary>
-    [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificateOrganizationDetails,
-        SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificateOrganizationDetails", SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultCertificateOrganizationDetails))]
+#if NETSTANDARD
+    [Alias("New-AzureKeyVaultCertificateOrganizationDetails")]
+#endif
     public class NewAzureKeyVaultCertificateOrganizationDetails : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -61,3 +63,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         }
     }
 }
+
+

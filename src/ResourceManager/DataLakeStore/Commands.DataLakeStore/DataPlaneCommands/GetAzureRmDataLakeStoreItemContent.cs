@@ -20,9 +20,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemContent", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(byte), typeof(string))]
+    [Cmdlet("Get","DataLakeStoreItemContent", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(byte), typeof(string))]
+#if NETSTANDARD
+    [Alias("Get-AdlStoreItemContent", "Get-AzureRmDataLakeStoreItemContent")]
+#else
     [Alias("Get-AdlStoreItemContent")]
+#endif
     public class GetAzureDataLakeStoreContent : DataLakeStoreFileSystemCmdletBase
     {
         internal const string BaseParameterSetName = "PreviewFileContent";
@@ -157,3 +160,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

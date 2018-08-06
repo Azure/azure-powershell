@@ -19,7 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmExpressRouteCircuitPeeringConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet("Set","ExpressRouteCircuitPeeringConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCircuit))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmExpressRouteCircuitPeeringConfig")]
+#endif
     public class SetAzureExpressRouteCircuitPeeringConfigCommand : AzureExpressRouteCircuitPeeringConfigBase
     {
         [Parameter(
@@ -79,3 +82,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

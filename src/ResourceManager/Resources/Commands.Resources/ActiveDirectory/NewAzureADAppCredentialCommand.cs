@@ -25,7 +25,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD application Credential.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmADAppCredential", DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithPassword, SupportsShouldProcess = true), OutputType(typeof(PSADCredential))]
+    [Cmdlet("New","ADAppCredential", DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithPassword, SupportsShouldProcess = true), OutputType(typeof(PSADCredential))]
+#if NETSTANDARD
+    [Alias("New-AzureRmADAppCredential")]
+#endif
     public class NewAzureADAppCredentialCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithCertValue, HelpMessage = "The application object id.")]
@@ -145,3 +148,5 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+
+

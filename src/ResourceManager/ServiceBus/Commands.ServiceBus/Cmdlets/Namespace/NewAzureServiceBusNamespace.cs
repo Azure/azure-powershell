@@ -24,7 +24,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// <summary>
     /// 'New-AzureRmServiceBusNamespace' cmdlet creates a new Servicebus NameSpace
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServiceBusNamespaceVerb, SupportsShouldProcess = true), OutputType(typeof(PSNamespaceAttributes))]
+    [Cmdlet("New","ServiceBusNamespace", SupportsShouldProcess = true), OutputType(typeof(PSNamespaceAttributes))]
+#if NETSTANDARD
+    [Alias("New-AzureRmServiceBusNamespace")]
+#endif
     public class NewAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
     {
         /// <summary>
@@ -87,3 +90,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         }
     }
 }
+
+

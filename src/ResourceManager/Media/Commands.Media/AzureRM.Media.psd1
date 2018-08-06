@@ -72,12 +72,12 @@ NestedModules = @('.\Microsoft.Azure.Commands.Media.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Sync-AzureRmMediaServiceStorageKeys', 'Set-AzureRmMediaServiceKey', 
-               'Get-AzureRmMediaServiceKeys', 
-               'Get-AzureRmMediaServiceNameAvailability', 
-               'New-AzureRmMediaServiceStorageConfig', 
-               'Remove-AzureRmMediaService', 'New-AzureRmMediaService', 
-               'Get-AzureRmMediaService', 'Set-AzureRmMediaService'
+CmdletsToExport = 'Sync-MediaServiceStorageKeys', 'Set-MediaServiceKey', 
+               'Get-MediaServiceKeys', 
+               'Get-MediaServiceNameAvailability', 
+               'New-MediaServiceStorageConfig', 
+               'Remove-MediaService', 'New-MediaService', 
+               'Get-MediaService', 'Set-MediaService'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -131,7 +131,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

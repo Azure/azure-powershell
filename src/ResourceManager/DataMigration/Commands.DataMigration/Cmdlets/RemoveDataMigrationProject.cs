@@ -19,9 +19,13 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataMigrationProject", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","DataMigrationProject", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDmsProject", "Remove-AzureRmDataMigrationProject")]
+#else
     [Alias("Remove-AzureRmDmsProject")]
+#endif
     public class RemoveDataMigrationProject : DataMigrationCmdlet
     {
         [Parameter(
@@ -117,3 +121,5 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+
+

@@ -19,7 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.SearchResults), OutputType(typeof(PSSearchGetSearchResultsResponse))]
+    [Cmdlet("Get","OperationalInsightsSearchResults"), OutputType(typeof(PSSearchGetSearchResultsResponse))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmOperationalInsightsSearchResults")]
+#endif
     public class GetAzureOperationalInsightsSearchResultsCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -101,3 +104,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
     }
 }
+
+

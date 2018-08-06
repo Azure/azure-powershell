@@ -18,11 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.Add,
-        Constants.CommandNames.AzureHDInsightMetastore),
-    OutputType(
-        typeof(AzureHDInsightConfig))]
+    [Cmdlet("Add","HDInsightMetastore"),OutputType(typeof(AzureHDInsightConfig))]
+#if NETSTANDARD
+    [Alias("Add-AzureRmHDInsightMetastore")]
+#endif
     public class AddAzureHDInsightMetastoreCommand : HDInsightCmdletBase
     {
         private AzureHDInsightMetastore _metastore;
@@ -90,3 +89,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

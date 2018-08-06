@@ -23,9 +23,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsLifecycle.Submit,
-        Constants.CommandNames.AzureHDInsightScriptAction),
-    OutputType(typeof(AzureHDInsightRuntimeScriptActionOperationResource))]
+    [Cmdlet("Submit","HDInsightScriptAction"),OutputType(typeof(AzureHDInsightRuntimeScriptActionOperationResource))]
+#if NETSTANDARD
+    [Alias("Submit-AzureRmHDInsightScriptAction")]
+#endif
     public class SubmitAzureHDInsightScriptActionCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -109,3 +110,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

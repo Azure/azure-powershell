@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,12 +24,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Gets information about Site Recovery network mappings for the current vault.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrNetworkMapping",
-        DefaultParameterSetName = ASRParameterSets.ByObject)]
-    [Alias("Get-ASRNetworkMapping")]
+    [Cmdlet("Get","RecoveryServicesAsrNetworkMapping",DefaultParameterSetName = ASRParameterSets.ByObject)]
     [OutputType(typeof(ASRNetworkMapping))]
+#if NETSTANDARD
+    [Alias("Get-ASRNetworkMapping", "Get-AzureRmRecoveryServicesAsrNetworkMapping")]
+#else
+    [Alias("Get-ASRNetworkMapping")]
+#endif
     public class GetAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -170,3 +171,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

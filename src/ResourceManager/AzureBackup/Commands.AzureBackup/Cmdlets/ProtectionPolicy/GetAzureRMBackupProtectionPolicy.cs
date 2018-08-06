@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of protection policies
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmBackupProtectionPolicy"), OutputType(typeof(AzureRMBackupProtectionPolicy))]
+    [Cmdlet("Get","BackupProtectionPolicy"), OutputType(typeof(AzureRMBackupProtectionPolicy))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmBackupProtectionPolicy")]
+#endif
     public class GetAzureRMBackupProtectionPolicy : AzureBackupVaultCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
@@ -49,4 +52,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+
 

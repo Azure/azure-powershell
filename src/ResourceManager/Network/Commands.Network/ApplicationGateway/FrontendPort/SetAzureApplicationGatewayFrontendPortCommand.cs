@@ -19,7 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Set","ApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGateway))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmApplicationGatewayFrontendPort")]
+#endif
     public class SetAzureApplicationGatewayFrontendPortCommand : AzureApplicationGatewayFrontendPortBase
     {
 
@@ -49,3 +52,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

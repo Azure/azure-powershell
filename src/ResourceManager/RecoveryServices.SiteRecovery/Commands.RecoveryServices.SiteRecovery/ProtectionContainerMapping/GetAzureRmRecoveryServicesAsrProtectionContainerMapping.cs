@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,12 +25,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Gets Azure Site Recovery Protection Container mappings.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrProtectionContainerMapping",
-        DefaultParameterSetName = ASRParameterSets.ByObject)]
-    [Alias("Get-ASRProtectionContainerMapping")]
+    [Cmdlet("Get","RecoveryServicesAsrProtectionContainerMapping",DefaultParameterSetName = ASRParameterSets.ByObject)]
     [OutputType(typeof(ASRProtectionContainerMapping))]
+#if NETSTANDARD
+    [Alias("Get-ASRProtectionContainerMapping", "Get-AzureRmRecoveryServicesAsrProtectionContainerMapping")]
+#else
+    [Alias("Get-ASRProtectionContainerMapping")]
+#endif
     public class GetAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -151,3 +152,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

@@ -20,8 +20,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.MachineLearning
 {
 
-    [Cmdlet(VerbsCommon.Get, CommitmentPlansCmdletBase.CommitmentAssociationCommandletSuffix)]
+    [Cmdlet("Get","MlCommitmentAssociation")]
     [OutputType(typeof(CommitmentPlan))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmMlCommitmentAssociation")]
+#endif
     public class GetAzureMLCommitmentAssociation : CommitmentPlansCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML commitment association.")]
@@ -64,3 +67,5 @@ namespace Microsoft.Azure.Commands.MachineLearning
         }
     }
 }
+
+

@@ -23,8 +23,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIotHubJob")]
+    [Cmdlet("Get","IotHubJob")]
     [OutputType(typeof(PSIotHubJobResponse))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmIotHubJob")]
+#endif
     public class GetAzureRmIotHubJob : IotHubBaseCmdlet
     {
         [Parameter(
@@ -66,3 +69,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
+

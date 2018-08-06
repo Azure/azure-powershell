@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDdosProtectionPlan"), OutputType(typeof(PSDdosProtectionPlan))]
+    [Cmdlet("Get","DdosProtectionPlan"), OutputType(typeof(PSDdosProtectionPlan))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDdosProtectionPlan")]
+#endif
     public partial class GetAzureRmDdosProtectionPlan : NetworkBaseCmdlet
     {
         internal const string GetByNameGroupParameterSet = "GetByNameAndGroup";
@@ -96,3 +99,5 @@ namespace Microsoft.Azure.Commands.Network.Automation
         }
     }
 }
+
+

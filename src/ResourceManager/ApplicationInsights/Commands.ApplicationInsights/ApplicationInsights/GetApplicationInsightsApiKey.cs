@@ -19,7 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.Get, ApplicationInsightsApiKeyNounStr, DefaultParameterSetName = ComponentNameParameterSet), OutputType(typeof(PSApiKey))]
+    [Cmdlet("Get","ApplicationInsightsApiKey", DefaultParameterSetName = ComponentNameParameterSet), OutputType(typeof(PSApiKey))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationInsightsApiKey")]
+#endif
     public class GetApplicationInsightsApiKeyCommand : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
@@ -110,3 +113,5 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+
+

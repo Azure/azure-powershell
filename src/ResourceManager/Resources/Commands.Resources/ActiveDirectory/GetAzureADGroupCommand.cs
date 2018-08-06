@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Get AD groups.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmADGroup", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(PSADGroup))]
+    [Cmdlet("Get","ADGroup", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(PSADGroup))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmADGroup")]
+#endif
     public class GetAzureADGroupCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
@@ -60,3 +63,5 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+
+

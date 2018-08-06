@@ -21,8 +21,12 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Import, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(string))]
+    [Cmdlet("Import","DataLakeStoreItem", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(string))]
+#if NETSTANDARD
+    [Alias("Import-AdlStoreItem", "Import-AzureRmDataLakeStoreItem")]
+#else
     [Alias("Import-AdlStoreItem")]
+#endif
     public class ImportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         // define parameter sets.
@@ -150,3 +154,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
     /// <summary>
     /// Defines the Remove-AzureRmSqlServerKeyVaultKey cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerKeyVaultKey", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerKeyVaultKeyModel))]
+    [Cmdlet("Remove","SqlServerKeyVaultKey", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerKeyVaultKeyModel))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlServerKeyVaultKey")]
+#endif
     public class RemoveAzureSqlServerKeyVaultKey : AzureSqlServerKeyVaultKeyCmdletBase
     {
         /// <summary>
@@ -75,3 +78,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
         }
     }
 }
+
+

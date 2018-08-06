@@ -20,8 +20,10 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmTrafficManagerProfile", SupportsShouldProcess = true),
-        OutputType(typeof(bool))]
+    [Cmdlet("Disable","TrafficManagerProfile", SupportsShouldProcess = true),OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Disable-AzureRmTrafficManagerProfile")]
+#endif
     public class DisableAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
@@ -77,3 +79,5 @@ namespace Microsoft.Azure.Commands.TrafficManager
         }
     }
 }
+
+

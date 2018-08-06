@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,11 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlDatabaseTransparentDataEncryption cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseTransparentDataEncryption", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get","SqlDatabaseTransparentDataEncryption", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlDatabaseTransparentDataEncryptionModel))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseTransparentDataEncryption")]
+#endif
     public class GetAzureSqlDatabaseTransparentDataEncryption : AzureSqlDatabaseTransparentDataEncryptionCmdletBase
     {
         /// <summary>
@@ -60,3 +63,5 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         }
     }
 }
+
+

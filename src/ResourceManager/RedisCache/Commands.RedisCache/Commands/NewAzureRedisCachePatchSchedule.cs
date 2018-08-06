@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Management.Automation;
     using DayOfWeekEnum = Management.Redis.Models.DayOfWeek;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmRedisCachePatchSchedule", SupportsShouldProcess = true), OutputType(typeof(PSScheduleEntry))]
+    [Cmdlet("New","RedisCachePatchSchedule", SupportsShouldProcess = true), OutputType(typeof(PSScheduleEntry))]
+#if NETSTANDARD
+    [Alias("New-AzureRmRedisCachePatchSchedule")]
+#endif
     public class NewAzureRedisCachePatchSchedule : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group in which cache exists.")]
@@ -77,3 +80,5 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+
+

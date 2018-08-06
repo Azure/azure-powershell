@@ -21,8 +21,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to refresh the schema of member database
     /// </summary>
-    [Cmdlet(VerbsData.Update, "AzureRmSqlSyncSchema", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
+    [Cmdlet("Update","SqlSyncSchema", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
+#if NETSTANDARD
+    [Alias("Update-AzureRmSqlSyncSchema")]
+#endif
     public class UpdateAzureSqlSyncSchema : AzureSqlSyncGroupCmdletBase
     {
         /// <summary>
@@ -88,3 +90,5 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+
+

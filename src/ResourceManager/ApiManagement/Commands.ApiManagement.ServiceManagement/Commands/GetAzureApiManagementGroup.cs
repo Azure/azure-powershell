@@ -19,8 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementGroup, DefaultParameterSetName = GetAll)]
+    [Cmdlet("Get","ApiManagementGroup", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementGroup))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementGroup")]
+#endif
     public class GetAzureApiManagementGroup : AzureApiManagementCmdletBase
     {
         private const string GetAll = "GetAllGroups";
@@ -93,3 +96,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

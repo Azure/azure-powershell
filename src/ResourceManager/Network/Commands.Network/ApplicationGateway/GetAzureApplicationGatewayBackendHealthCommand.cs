@@ -21,7 +21,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayBackendHealth"), OutputType(typeof(PSApplicationGatewayBackendHealth))]
+    [Cmdlet("Get","ApplicationGatewayBackendHealth"), OutputType(typeof(PSApplicationGatewayBackendHealth))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationGatewayBackendHealth")]
+#endif
     public class GetAzureApplicationGatewayBackendHealthCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -61,4 +64,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

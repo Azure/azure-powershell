@@ -20,11 +20,10 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Helper cmdlet to construct instance of AutoPatching settings class
     /// </summary>
-    [Cmdlet(
-         VerbsCommon.New,
-         ProfileNouns.VirtualMachineSqlServerAutoPatchingConfig),
-     OutputType(
-         typeof(AutoPatchingSettings))]
+    [Cmdlet("New","VMSqlServerAutoPatchingConfig"),OutputType(typeof(AutoPatchingSettings))]
+#if NETSTANDARD
+    [Alias("New-AzureRmVMSqlServerAutoPatchingConfig")]
+#endif
     public class NewAzureVMSqlServerAutoPatchingConfigCommand : PSCmdlet
     {
         [Parameter]
@@ -61,3 +60,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

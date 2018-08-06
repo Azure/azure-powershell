@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
     /// <summary>
     /// Lists all storage services underneath the subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, SupportsShouldProcess = true, DefaultParameterSetName = StorageEncryptionParameterSet), OutputType(typeof(PSStorageAccount))]
+    [Cmdlet("Set","StorageAccount", SupportsShouldProcess = true, DefaultParameterSetName = StorageEncryptionParameterSet), OutputType(typeof(PSStorageAccount))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmStorageAccount")]
+#endif
     public class SetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
 
@@ -265,3 +268,5 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
     }
 }
+
+

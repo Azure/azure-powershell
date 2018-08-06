@@ -25,7 +25,10 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Regnerate Cognitive Services Account Key (Key1 or Key2)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, CognitiveServicesAccountKeyNounStr, SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.CognitiveServicesAccountKeys))]
+    [Cmdlet("New","CognitiveServicesAccountKey", SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.CognitiveServicesAccountKeys))]
+#if NETSTANDARD
+    [Alias("New-AzureRmCognitiveServicesAccountKey")]
+#endif
     public class NewAzureCognitiveServicesAccountKeyCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
@@ -79,3 +82,5 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         }
     }
 }
+
+

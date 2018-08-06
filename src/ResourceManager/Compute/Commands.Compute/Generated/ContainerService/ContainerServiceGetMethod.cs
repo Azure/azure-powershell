@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -133,8 +133,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmContainerService", DefaultParameterSetName = "DefaultParameter")]
+    [Cmdlet("Get","ContainerService", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSContainerService))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmContainerService")]
+#endif
     public partial class GetAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -211,3 +214,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Name { get; set; }
     }
 }
+
+

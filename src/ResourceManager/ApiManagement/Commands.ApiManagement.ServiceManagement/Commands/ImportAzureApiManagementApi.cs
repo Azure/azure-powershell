@@ -19,8 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Management.ApiManagement.Models;
 
-    [Cmdlet(VerbsData.Import, Constants.ApiManagementApi, DefaultParameterSetName = FromLocalFile)]
+    [Cmdlet("Import","ApiManagementApi", DefaultParameterSetName = FromLocalFile)]
     [OutputType(typeof(PsApiManagementApi))]
+#if NETSTANDARD
+    [Alias("Import-AzureRmApiManagementApi")]
+#endif
     public class ImportAzureApiManagementApi : AzureApiManagementCmdletBase
     {
         private const string FromLocalFile = "ImportFromLocalFile";
@@ -145,3 +148,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

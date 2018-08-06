@@ -19,9 +19,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsData.Update, CmdletNoun.AzureKeyVaultManagedStorageAccount,
-        DefaultParameterSetName = ByDefinitionNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultManagedStorageAccount", DefaultParameterSetName = ByDefinitionNameParameterSet, SupportsShouldProcess = true)]
     [OutputType( typeof( PSKeyVaultManagedStorageAccount ) )]
+#if NETSTANDARD
+    [Alias("Update-AzureKeyVaultManagedStorageAccount")]
+#endif
     public class UpdateAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -123,3 +125,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
+

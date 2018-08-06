@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.New, ApplicationInsightsApiKeyNounStr, DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSApiKey))]
+    [Cmdlet("New","ApplicationInsightsApiKey", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSApiKey))]
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationInsightsApiKey")]
+#endif
     public class NewAzureApplicationInsightsApiKeyCommand : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
@@ -117,3 +120,5 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+
+

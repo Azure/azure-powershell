@@ -20,8 +20,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Management.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementOperation, DefaultParameterSetName = AllApiOperations)]
+    [Cmdlet("Get","ApiManagementOperation", DefaultParameterSetName = AllApiOperations)]
     [OutputType(typeof(PsApiManagementOperation))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementOperation")]
+#endif
     public class GetAzureApiManagementOperation : AzureApiManagementCmdletBase
     {
         private const string FindById = "GetById";
@@ -91,3 +94,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

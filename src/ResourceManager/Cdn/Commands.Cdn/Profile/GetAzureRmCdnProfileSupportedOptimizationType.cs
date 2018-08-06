@@ -25,7 +25,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnProfileSupportedOptimizationType", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSOptimizationType))]
+    [Cmdlet("Get","CdnProfileSupportedOptimizationType", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSOptimizationType))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmCdnProfileSupportedOptimizationType")]
+#endif
     public class GetAzureRmCdnProfileSupportedOptimizationType : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the profile.")]
@@ -57,3 +60,5 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         }
     }
 }
+
+

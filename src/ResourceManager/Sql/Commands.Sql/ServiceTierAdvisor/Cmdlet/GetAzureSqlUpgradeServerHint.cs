@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,8 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerUpgradeHint", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get","SqlServerUpgradeHint", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(UpgradeServerHint))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlServerUpgradeHint")]
+#endif
     public class GetAzureSqlServerUpgradeHint : AzureSqlCmdletBase<UpgradeServerHint, AzureSqlServiceTierAdvisorAdapter>
     {
         /// <summary>
@@ -83,3 +86,5 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
         }
     }
 }
+
+

@@ -25,7 +25,10 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
     /// <para> If WcfRelay name provided, a single WcfRelay detials will be returned</para>
     /// <para> If WcfRelay name not provided, list of WcfRelay will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, RelayWcfRelayVerb), OutputType(typeof(WcfRelayAttributes))]
+    [Cmdlet("Get","WcfRelay"), OutputType(typeof(WcfRelayAttributes))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmWcfRelay")]
+#endif
     public class GetAzureRmRelayWcfRelay : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -67,3 +70,5 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
         }
     }
 }
+
+

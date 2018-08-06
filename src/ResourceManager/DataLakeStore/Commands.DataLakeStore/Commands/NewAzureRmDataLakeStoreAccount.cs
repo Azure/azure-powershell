@@ -24,8 +24,12 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSDataLakeStoreAccount))]
+    [Cmdlet("New","DataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSDataLakeStoreAccount))]
+#if NETSTANDARD
+    [Alias("New-AdlStore", "New-AzureRmDataLakeStoreAccount")]
+#else
     [Alias("New-AdlStore")]
+#endif
     public class NewAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
         internal const string BaseParameterSetName = "UserOrSystemAssignedEncryption";
@@ -216,3 +220,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

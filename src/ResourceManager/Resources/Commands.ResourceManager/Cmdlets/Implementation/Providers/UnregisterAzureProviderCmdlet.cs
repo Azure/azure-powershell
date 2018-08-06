@@ -24,8 +24,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Un-registers the resource provider from the current subscription.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmResourceProvider", SupportsShouldProcess = true), 
-        OutputType(typeof(PSResourceProvider))]
+    [Cmdlet("Unregister","ResourceProvider", SupportsShouldProcess = true), OutputType(typeof(PSResourceProvider))]
+#if NETSTANDARD
+    [Alias("Unregister-AzureRmResourceProvider")]
+#endif
     public class UnregisterAzureProviderCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -47,3 +49,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
+

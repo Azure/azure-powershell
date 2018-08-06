@@ -17,8 +17,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Get, ContainerRegistryCredentialNoun, DefaultParameterSetName = NameResourceGroupParameterSet)]
+    [Cmdlet("Get","ContainerRegistryCredential", DefaultParameterSetName = NameResourceGroupParameterSet)]
     [OutputType(typeof(PSContainerRegistryCredential))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmContainerRegistryCredential")]
+#endif
     public class GetAzureContainerRegistryCredential : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
@@ -65,3 +68,5 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+
+

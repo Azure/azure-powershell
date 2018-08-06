@@ -74,39 +74,39 @@ NestedModules = @('.\Microsoft.Azure.Commands.DataLakeStore.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmDataLakeStoreTrustedIdProvider', 
-               'Remove-AzureRmDataLakeStoreTrustedIdProvider', 
-               'Remove-AzureRmDataLakeStoreFirewallRule', 
-               'Set-AzureRmDataLakeStoreTrustedIdProvider', 
-               'Add-AzureRmDataLakeStoreTrustedIdProvider', 
-               'Get-AzureRmDataLakeStoreFirewallRule', 
-               'Set-AzureRmDataLakeStoreFirewallRule', 
-               'Add-AzureRmDataLakeStoreFirewallRule', 
-               'Add-AzureRmDataLakeStoreItemContent', 
-               'Enable-AzureRmDataLakeStoreKeyVault', 
-               'Export-AzureRmDataLakeStoreItem', 
-               'Get-AzureRmDataLakeStoreChildItem', 'Get-AzureRmDataLakeStoreItem', 
-               'Get-AzureRmDataLakeStoreItemAclEntry', 
-               'Get-AzureRmDataLakeStoreItemContent', 
-               'Get-AzureRmDataLakeStoreItemOwner', 
-               'Get-AzureRmDataLakeStoreItemPermission', 
-               'Import-AzureRmDataLakeStoreItem', 
-               'Get-AzureRmDataLakeStoreAccount', 'Join-AzureRmDataLakeStoreItem', 
-               'Move-AzureRmDataLakeStoreItem', 'New-AzureRmDataLakeStoreAccount', 
-               'New-AzureRmDataLakeStoreItem', 
-               'Remove-AzureRmDataLakeStoreAccount', 
-               'Remove-AzureRmDataLakeStoreItem', 
-               'Remove-AzureRmDataLakeStoreItemAcl', 
-               'Remove-AzureRmDataLakeStoreItemAclEntry', 
-               'Set-AzureRmDataLakeStoreItemAclEntry', 
-               'Set-AzureRmDataLakeStoreAccount', 
-               'Set-AzureRmDataLakeStoreItemAcl', 
-               'Set-AzureRmDataLakeStoreItemExpiry', 
-               'Set-AzureRmDataLakeStoreItemOwner', 
-               'Set-AzureRmDataLakeStoreItemPermission', 
-               'Test-AzureRmDataLakeStoreAccount', 'Test-AzureRmDataLakeStoreItem', 
-               'Export-AzureRmDataLakeStoreChildItemProperties', 
-               'Get-AzureRmDataLakeStoreChildItemSummary'
+CmdletsToExport = 'Get-DataLakeStoreTrustedIdProvider', 
+               'Remove-DataLakeStoreTrustedIdProvider', 
+               'Remove-DataLakeStoreFirewallRule', 
+               'Set-DataLakeStoreTrustedIdProvider', 
+               'Add-DataLakeStoreTrustedIdProvider', 
+               'Get-DataLakeStoreFirewallRule', 
+               'Set-DataLakeStoreFirewallRule', 
+               'Add-DataLakeStoreFirewallRule', 
+               'Add-DataLakeStoreItemContent', 
+               'Enable-DataLakeStoreKeyVault', 
+               'Export-DataLakeStoreItem', 
+               'Get-DataLakeStoreChildItem', 'Get-DataLakeStoreItem', 
+               'Get-DataLakeStoreItemAclEntry', 
+               'Get-DataLakeStoreItemContent', 
+               'Get-DataLakeStoreItemOwner', 
+               'Get-DataLakeStoreItemPermission', 
+               'Import-DataLakeStoreItem', 
+               'Get-DataLakeStoreAccount', 'Join-DataLakeStoreItem', 
+               'Move-DataLakeStoreItem', 'New-DataLakeStoreAccount', 
+               'New-DataLakeStoreItem', 
+               'Remove-DataLakeStoreAccount', 
+               'Remove-DataLakeStoreItem', 
+               'Remove-DataLakeStoreItemAcl', 
+               'Remove-DataLakeStoreItemAclEntry', 
+               'Set-DataLakeStoreItemAclEntry', 
+               'Set-DataLakeStoreAccount', 
+               'Set-DataLakeStoreItemAcl', 
+               'Set-DataLakeStoreItemExpiry', 
+               'Set-DataLakeStoreItemOwner', 
+               'Set-DataLakeStoreItemPermission', 
+               'Test-DataLakeStoreAccount', 'Test-DataLakeStoreItem', 
+               'Export-DataLakeStoreChildItemProperties', 
+               'Get-DataLakeStoreChildItemSummary'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -177,7 +177,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

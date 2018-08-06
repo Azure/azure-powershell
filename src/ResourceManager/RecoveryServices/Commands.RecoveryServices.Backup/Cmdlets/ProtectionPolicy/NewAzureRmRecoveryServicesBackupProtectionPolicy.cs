@@ -27,8 +27,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Creates a new protection policy based on the parameters provided in to the recovery services vault.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesBackupProtectionPolicy",
-        SupportsShouldProcess = true), OutputType(typeof(PolicyBase))]
+    [Cmdlet("New","RecoveryServicesBackupProtectionPolicy",SupportsShouldProcess = true), OutputType(typeof(PolicyBase))]
+#if NETSTANDARD
+    [Alias("New-AzureRmRecoveryServicesBackupProtectionPolicy")]
+#endif
     public class NewAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
     {
         /// <summary>
@@ -130,3 +132,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
+

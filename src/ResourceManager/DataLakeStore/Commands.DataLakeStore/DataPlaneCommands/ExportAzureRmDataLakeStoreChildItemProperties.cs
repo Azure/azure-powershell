@@ -3,8 +3,12 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreChildItemProperties", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Export","DataLakeStoreChildItemProperties", SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Export-AdlStoreChildItemProperties", "Export-AzureRmDataLakeStoreChildItemProperties")]
+#else
     [Alias("Export-AdlStoreChildItemProperties")]
+#endif
     public class ExportAzureRmDataLakeStoreChildItemProperties : DataLakeStoreFileSystemCmdletBase
     {
         internal const string BaseParameterSetName = "GetDiskUsage";
@@ -95,3 +99,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
     }
 }
+
+

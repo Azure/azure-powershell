@@ -22,9 +22,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsAccount", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(PSDataLakeAnalyticsAccount))]
+    [Cmdlet("Get","DataLakeAnalyticsAccount", DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(PSDataLakeAnalyticsAccount))]
+#if NETSTANDARD
+    [Alias("Get-AdlAnalyticsAccount", "Get-AzureRmDataLakeAnalyticsAccount")]
+#else
     [Alias("Get-AdlAnalyticsAccount")]
+#endif
     public class GetAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "GetAllInSubscription";
@@ -63,3 +66,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
+

@@ -22,8 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
-    [Cmdlet(VerbsCommon.New, SignalRKeyNoun, SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
+    [Cmdlet("New","SignalRKey", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("New-AzureRmSignalRKey")]
+#endif
     public class NewAzureRmSignalRKey : SignalRCmdletBase, IWithInputObject, IWithResourceId
     {
         [Parameter(
@@ -97,3 +100,5 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         }
     }
 }
+
+

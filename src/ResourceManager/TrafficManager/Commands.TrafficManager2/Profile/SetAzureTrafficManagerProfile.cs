@@ -19,7 +19,10 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
+    [Cmdlet("Set","TrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmTrafficManagerProfile")]
+#endif
     public class SetAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.")]
@@ -35,3 +38,5 @@ namespace Microsoft.Azure.Commands.TrafficManager
         }
     }
 }
+
+

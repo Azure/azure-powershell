@@ -23,9 +23,10 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
     /// <summary>
     /// Remove-AzureRmManagementGroupSubscription Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmManagementGroupSubscription",
-         DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,
-         SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove","ManagementGroupSubscription",DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmManagementGroupSubscription")]
+#endif
     public class RemoveAzureRmManagementGroupSubscription : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
@@ -68,3 +69,5 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
         }
     }
 }
+
+

@@ -20,8 +20,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Set, ProfileNouns.VirtualMachine, DefaultParameterSetName = GeneralizeResourceGroupNameParameterSet)]
+    [Cmdlet("Set","VM", DefaultParameterSetName = GeneralizeResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVM")]
+#endif
     public class SetAzureVMCommand : VirtualMachineBaseCmdlet
     {
         protected const string GeneralizeResourceGroupNameParameterSet = "GeneralizeResourceGroupNameParameterSetName";
@@ -132,3 +135,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

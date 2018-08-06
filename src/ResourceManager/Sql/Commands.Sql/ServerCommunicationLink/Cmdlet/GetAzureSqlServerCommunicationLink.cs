@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,9 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerCommunicationLink",
-        ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true), 
-        OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
+    [Cmdlet("Get","SqlServerCommunicationLink",ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true),OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlServerCommunicationLink")]
+#endif
     public class GetAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
     {
         /// <summary>
@@ -75,3 +76,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
         }
     }
 }
+
+

@@ -20,7 +20,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkPeering"), OutputType(typeof(PSVirtualNetworkPeering))]
+    [Cmdlet("Get","VirtualNetworkPeering"), OutputType(typeof(PSVirtualNetworkPeering))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVirtualNetworkPeering")]
+#endif
     public class GetAzureVirtualNetworkPeeringCommand : VirtualNetworkPeeringBase
     {
         [Parameter(
@@ -72,3 +75,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

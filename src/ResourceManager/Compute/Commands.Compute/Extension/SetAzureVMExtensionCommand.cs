@@ -22,12 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineExtension,
-        DefaultParameterSetName = SettingsParamSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set","VMExtension",DefaultParameterSetName = SettingsParamSet,SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMExtension")]
+#endif
     public class SetAzureVMExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         protected const string SettingStringParamSet = "SettingString";
@@ -122,3 +121,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

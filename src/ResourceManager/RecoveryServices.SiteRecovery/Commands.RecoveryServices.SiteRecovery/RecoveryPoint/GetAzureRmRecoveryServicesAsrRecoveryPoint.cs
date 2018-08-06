@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,12 +25,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Gets the available recovery points for a replication protected item.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrRecoveryPoint",
-        DefaultParameterSetName = ASRParameterSets.ByObject)]
-    [Alias("Get-ASRRecoveryPoint")]
+    [Cmdlet("Get","RecoveryServicesAsrRecoveryPoint",DefaultParameterSetName = ASRParameterSets.ByObject)]
     [OutputType(typeof(ASRRecoveryPoint))]
+#if NETSTANDARD
+    [Alias("Get-ASRRecoveryPoint", "Get-AzureRmRecoveryServicesAsrRecoveryPoint")]
+#else
+    [Alias("Get-ASRRecoveryPoint")]
+#endif
     public class GetAzureRmRecoveryServicesAsrRecoveryPoint : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -160,3 +161,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

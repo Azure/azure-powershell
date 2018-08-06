@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,10 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsLifecycle.Resume, Constants.Pipeline, DefaultParameterSetName = ByFactoryName, 
-        SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Resume","DataFactoryPipeline", DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Resume-AzureRmDataFactoryPipeline")]
+#endif
     public class ResumeAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
     {
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
@@ -51,3 +53,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
+

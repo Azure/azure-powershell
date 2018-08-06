@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,8 +29,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmVmssVaultCertificateConfig", SupportsShouldProcess = true)]
+    [Cmdlet("New","VmssVaultCertificateConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(Microsoft.Azure.Management.Compute.Models.VaultCertificate))]
+#if NETSTANDARD
+    [Alias("New-AzureRmVmssVaultCertificateConfig")]
+#endif
     public partial class NewAzureRmVmssVaultCertificateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -64,4 +67,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

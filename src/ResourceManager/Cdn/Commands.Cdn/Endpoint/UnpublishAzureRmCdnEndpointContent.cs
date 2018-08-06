@@ -21,7 +21,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsData.Unpublish, "AzureRmCdnEndpointContent", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
+    [Cmdlet("Unpublish","CdnEndpointContent", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Unpublish-AzureRmCdnEndpointContent")]
+#endif
     public class UnpublishAzureRmCdnEndpointContent : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
@@ -70,3 +73,5 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+
+

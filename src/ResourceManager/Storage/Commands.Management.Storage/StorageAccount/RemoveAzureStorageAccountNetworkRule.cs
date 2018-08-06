@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,9 +25,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Remove, StorageAccountRuleNounStr, SupportsShouldProcess = true, DefaultParameterSetName = NetWorkRuleStringParameterSet)]
+    [Cmdlet("Remove","StorageAccountNetworkRule", SupportsShouldProcess = true, DefaultParameterSetName = NetWorkRuleStringParameterSet)]
     [OutputType(typeof(PSVirtualNetworkRule), ParameterSetName = new string[] { NetWorkRuleStringParameterSet, NetworkRuleObjectParameterSet })]
     [OutputType(typeof(PSIpRule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet })]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmStorageAccountNetworkRule")]
+#endif
     public class RemoveAzureStorageAccountNetworkRuleCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
@@ -217,3 +220,5 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
     }
 }
+
+

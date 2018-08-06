@@ -7,8 +7,11 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmUserAssignedIdentity", DefaultParameterSetName = Constants.ResourceGroupAndNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","UserAssignedIdentity", DefaultParameterSetName = Constants.ResourceGroupAndNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmUserAssignedIdentity")]
+#endif
     public class RemoveAzureRmUserAssignedIdentityCmdlet : MsiBaseCmdlet
     {
         [Parameter(
@@ -94,3 +97,5 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
         }
     }
 }
+
+

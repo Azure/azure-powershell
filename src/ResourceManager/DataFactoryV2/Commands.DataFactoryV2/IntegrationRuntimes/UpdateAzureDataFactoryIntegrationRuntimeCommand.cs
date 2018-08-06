@@ -23,12 +23,10 @@ using Microsoft.Rest.Serialization;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(
-        VerbsData.Update,
-        Constants.IntegrationRuntime,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
-        SupportsShouldProcess = true),
-     OutputType(typeof(PSSelfHostedIntegrationRuntimeStatus))]
+    [Cmdlet("Update","DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSSelfHostedIntegrationRuntimeStatus))]
+#if NETSTANDARD
+    [Alias("Update-AzureRmDataFactoryV2IntegrationRuntime")]
+#endif
     public class UpdateAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(
@@ -101,3 +99,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
+

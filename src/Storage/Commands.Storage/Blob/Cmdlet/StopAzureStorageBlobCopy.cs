@@ -27,9 +27,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Security.Permissions;
     using System.Threading.Tasks;
 
-    [Cmdlet(VerbsLifecycle.Stop, StorageNouns.CopyBlob, SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet),
-       OutputType(typeof(AzureStorageBlob))]
+    [Cmdlet("Stop","AzureStorageBlobCopy", SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageBlob))]
+#if NETSTANDARD
+    [Alias("Stop-CopyAzureStorageBlob", "Stop-AzureStorageBlobCopy")]
+#else
     [Alias("Stop-CopyAzureStorageBlob")]
+#endif
     public class StopAzureStorageBlobCopy : StorageCloudBlobCmdletBase
     {
         /// <summary>
@@ -235,3 +238,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
     }
 }
+
+

@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayRedirectConfiguration"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Remove","ApplicationGatewayRedirectConfiguration"), OutputType(typeof(PSApplicationGateway))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationGatewayRedirectConfiguration")]
+#endif
     public class RemoveAzureApplicationGatewayRedirectConfigurationCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -49,3 +52,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

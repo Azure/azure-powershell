@@ -20,7 +20,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementRegion"), OutputType(typeof(PsApiManagementRegion))]
+    [Cmdlet("New","ApiManagementRegion"), OutputType(typeof(PsApiManagementRegion))]
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementRegion")]
+#endif
     public class NewAzureApiManagementRegion : AzureRMCmdlet
     {
         [Parameter(
@@ -56,3 +59,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
+

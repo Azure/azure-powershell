@@ -19,8 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementOpenIdConnectProvider, DefaultParameterSetName = GetAll)]
+    [Cmdlet("Get","ApiManagementOpenIdConnectProvider", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementOpenIdConnectProvider))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementOpenIdConnectProvider")]
+#endif
     public class GetAzureApiManagementOpenIdConnectProvider : AzureApiManagementCmdletBase
     {
         private const string GetAll = "GetAllOpenIdConnectProviders";
@@ -76,3 +79,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

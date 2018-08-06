@@ -18,11 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.New,
-        Constants.JobDefinitions.AzureHDInsightSqoopJobDefinition),
-    OutputType(
-        typeof(AzureHDInsightSqoopJobDefinition))]
+    [Cmdlet("New","HDInsightSqoopJobDefinition"),OutputType(typeof(AzureHDInsightSqoopJobDefinition))]
+#if NETSTANDARD
+    [Alias("New-AzureRmHDInsightSqoopJobDefinition")]
+#endif
     public class NewAzureHDInsightSqoopJobDefinitionCommand : HDInsightCmdletBase
     {
         private AzureHDInsightSqoopJobDefinition job;
@@ -85,3 +84,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

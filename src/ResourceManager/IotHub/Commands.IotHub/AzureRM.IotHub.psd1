@@ -72,20 +72,20 @@ NestedModules = @('.\Microsoft.Azure.Commands.IotHub.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Add-AzureRmIotHubKey', 'Get-AzureRmIotHubEventHubConsumerGroup', 
-               'Get-AzureRmIotHubConnectionString', 'Get-AzureRmIotHubJob', 
-               'Get-AzureRmIotHubKey', 'Get-AzureRmIotHubQuotaMetric', 
-               'Get-AzureRmIotHub', 'Get-AzureRmIotHubRegistryStatistic', 
-               'Get-AzureRmIotHubValidSku', 
-               'Add-AzureRmIotHubEventHubConsumerGroup', 'New-AzureRmIotHub', 
-               'New-AzureRmIotHubExportDevices', 'New-AzureRmIotHubImportDevices', 
-               'Remove-AzureRmIotHub', 'Remove-AzureRmIotHubEventHubConsumerGroup', 
-               'Remove-AzureRmIotHubKey', 'Set-AzureRmIotHub', 
-               'Update-AzureRmIotHub', 'Add-AzureRmIotHubCertificate', 
-               'Get-AzureRmIotHubCertificate', 
-               'Get-AzureRmIotHubCertificateVerificationCode', 
-               'Set-AzureRmIotHubVerifiedCertificate', 
-               'Remove-AzureRmIotHubCertificate'
+CmdletsToExport = 'Add-IotHubKey', 'Get-IotHubEventHubConsumerGroup', 
+               'Get-IotHubConnectionString', 'Get-IotHubJob', 
+               'Get-IotHubKey', 'Get-IotHubQuotaMetric', 
+               'Get-IotHub', 'Get-IotHubRegistryStatistic', 
+               'Get-IotHubValidSku', 
+               'Add-IotHubEventHubConsumerGroup', 'New-IotHub', 
+               'New-IotHubExportDevices', 'New-IotHubImportDevices', 
+               'Remove-IotHub', 'Remove-IotHubEventHubConsumerGroup', 
+               'Remove-IotHubKey', 'Set-IotHub', 
+               'Update-IotHub', 'Add-IotHubCertificate', 
+               'Get-IotHubCertificate', 
+               'Get-IotHubCertificateVerificationCode', 
+               'Set-IotHubVerifiedCertificate', 
+               'Remove-IotHubCertificate'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -141,7 +141,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

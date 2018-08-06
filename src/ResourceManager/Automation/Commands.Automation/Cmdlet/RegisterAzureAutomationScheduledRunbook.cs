@@ -23,8 +23,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Registers an azure automation scheduled runbook.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureRmAutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
+    [Cmdlet("Register","AutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(JobSchedule))]
+#if NETSTANDARD
+    [Alias("Register-AzureRmAutomationScheduledRunbook")]
+#endif
     public class RegisterAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -74,3 +77,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

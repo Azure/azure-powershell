@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +22,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmKeyVault",
-        DefaultParameterSetName = ListVaultsBySubParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault", DefaultParameterSetName = ListVaultsBySubParameterSet)]
     [OutputType(typeof(PSKeyVault), typeof(PSKeyVaultIdentityItem), typeof(PSDeletedKeyVault))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmKeyVault")]
+#endif
     public class GetAzureKeyVault : KeyVaultManagementCmdletBase
     {
         #region Parameter Set Names
@@ -135,3 +137,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
+

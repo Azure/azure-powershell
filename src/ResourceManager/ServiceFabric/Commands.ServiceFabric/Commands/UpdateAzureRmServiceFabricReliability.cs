@@ -27,7 +27,10 @@ using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsData.Update, CmdletNoun.AzureRmServiceFabricReliability, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    [Cmdlet("Update","ServiceFabricReliability", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+#if NETSTANDARD
+    [Alias("Update-AzureRmServiceFabricReliability")]
+#endif
     public class UpdateAzureRmServiceFabricReliability : ServiceFabricClusterCmdlet
     {
         /// <summary>
@@ -130,3 +133,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+
+

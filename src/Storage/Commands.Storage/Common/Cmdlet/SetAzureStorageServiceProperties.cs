@@ -23,7 +23,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// <summary>
     /// Modify Azure Storage service properties
     /// </summary>
-    [Cmdlet(VerbsData.Update, StorageNouns.StorageServiceProperty, SupportsShouldProcess = true), OutputType(typeof(PSSeriviceProperties))]
+    [Cmdlet("Update","AzureStorageServiceProperty", SupportsShouldProcess = true), OutputType(typeof(PSSeriviceProperties))]
+#if NETSTANDARD
+    [Alias("Update-AzureStorageServiceProperty")]
+#endif
     public class UpdateAzureStorageServicePropertyCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]
@@ -69,3 +72,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
     }
 }
+
+

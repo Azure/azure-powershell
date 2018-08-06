@@ -72,26 +72,26 @@ NestedModules = @('.\Microsoft.Azure.Commands.NotificationHubs.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmNotificationHub', 
-               'Get-AzureRmNotificationHubAuthorizationRules', 
-               'Get-AzureRmNotificationHubListKeys', 
-               'Get-AzureRmNotificationHubPNSCredentials', 
-               'New-AzureRmNotificationHub', 
-               'New-AzureRmNotificationHubAuthorizationRules', 
-               'New-AzureRmNotificationHubKey', 'Remove-AzureRmNotificationHub', 
-               'Remove-AzureRmNotificationHubAuthorizationRules', 
-               'Set-AzureRmNotificationHub', 
-               'Set-AzureRmNotificationHubAuthorizationRules', 
-               'Get-AzureRmNotificationHubsNamespaceAuthorizationRules', 
-               'Get-AzureRmNotificationHubsNamespaceListKeys', 
-               'New-AzureRmNotificationHubsNamespaceAuthorizationRules', 
-               'New-AzureRmNotificationHubsNamespaceKey', 
-               'Remove-AzureRmNotificationHubsNamespaceAuthorizationRules', 
-               'Set-AzureRmNotificationHubsNamespaceAuthorizationRules', 
-               'Get-AzureRmNotificationHubsNamespace', 
-               'New-AzureRmNotificationHubsNamespace', 
-               'Remove-AzureRmNotificationHubsNamespace', 
-               'Set-AzureRmNotificationHubsNamespace'
+CmdletsToExport = 'Get-NotificationHub', 
+               'Get-NotificationHubAuthorizationRules', 
+               'Get-NotificationHubListKeys', 
+               'Get-NotificationHubPNSCredentials', 
+               'New-NotificationHub', 
+               'New-NotificationHubAuthorizationRules', 
+               'New-NotificationHubKey', 'Remove-NotificationHub', 
+               'Remove-NotificationHubAuthorizationRules', 
+               'Set-NotificationHub', 
+               'Set-NotificationHubAuthorizationRules', 
+               'Get-NotificationHubsNamespaceAuthorizationRules', 
+               'Get-NotificationHubsNamespaceListKeys', 
+               'New-NotificationHubsNamespaceAuthorizationRules', 
+               'New-NotificationHubsNamespaceKey', 
+               'Remove-NotificationHubsNamespaceAuthorizationRules', 
+               'Set-NotificationHubsNamespaceAuthorizationRules', 
+               'Get-NotificationHubsNamespace', 
+               'New-NotificationHubsNamespace', 
+               'Remove-NotificationHubsNamespace', 
+               'Set-NotificationHubsNamespace'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -145,7 +145,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

@@ -19,8 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementIdentityProvider, DefaultParameterSetName = AllIdentityProviders)]
+    [Cmdlet("Get","ApiManagementIdentityProvider", DefaultParameterSetName = AllIdentityProviders)]
     [OutputType(typeof(PsApiManagementIdentityProvider))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementIdentityProvider")]
+#endif
     public class GetAzureApiManagementIdentityProvider : AzureApiManagementCmdletBase
     {
         private const string AllIdentityProviders = "AllIdentityProviders";
@@ -59,3 +62,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

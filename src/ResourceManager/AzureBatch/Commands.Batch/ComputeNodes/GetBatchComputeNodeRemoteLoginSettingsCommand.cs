@@ -19,8 +19,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchRemoteLoginSettings, DefaultParameterSetName = Constants.IdParameterSet),
-        OutputType(typeof(PSRemoteLoginSettings))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchRemoteLoginSettings", DefaultParameterSetName = Constants.IdParameterSet),OutputType(typeof(PSRemoteLoginSettings))]
+#if NETSTANDARD
+    [Alias("Get-AzureBatchRemoteLoginSettings")]
+#endif
     public class GetBatchComputeNodeRemoteLoginSettingsCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
@@ -47,3 +49,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
+

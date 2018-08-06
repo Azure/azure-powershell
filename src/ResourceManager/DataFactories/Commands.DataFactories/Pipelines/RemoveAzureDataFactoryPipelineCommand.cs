@@ -20,8 +20,10 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Pipeline, DefaultParameterSetName = ByFactoryName, 
-        SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove","DataFactoryPipeline", DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDataFactoryPipeline")]
+#endif
     public class RemoveAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
@@ -70,3 +72,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
+

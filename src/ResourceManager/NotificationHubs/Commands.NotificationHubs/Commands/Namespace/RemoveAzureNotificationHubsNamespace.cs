@@ -19,7 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNotificationHubsNamespace", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove","NotificationHubsNamespace", SupportsShouldProcess = true), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmNotificationHubsNamespace")]
+#endif
     public class RemoveAzureNotificationHubsNamespace : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -59,3 +62,5 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         }
     }
 }
+
+

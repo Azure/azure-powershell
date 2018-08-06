@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,10 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// <summary>
     /// Defines the Set-AzureRmSqlServerTransparentDataEncryptionProtector cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerTransparentDataEncryptionProtector", SupportsShouldProcess = true), 
-        OutputType(typeof(AzureSqlServerTransparentDataEncryptionProtectorModel))]
+    [Cmdlet("Set","SqlServerTransparentDataEncryptionProtector", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerTransparentDataEncryptionProtectorModel))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlServerTransparentDataEncryptionProtector")]
+#endif
     public class SetAzureSqlServerTransparentDataEncryptionProtector : AzureSqlServerTransparentDataEncryptionProtectorCmdletBase
     {
         /// <summary>
@@ -117,3 +119,5 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         }
     }
 }
+
+

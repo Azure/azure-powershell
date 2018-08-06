@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSInboundNatRule))]
+    [Cmdlet("Get","LoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSInboundNatRule))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmLoadBalancerInboundNatRuleConfig")]
+#endif
     public class GetAzureLoadBalancerInboundNatRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -54,3 +57,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

@@ -73,42 +73,42 @@ NestedModules = @('.\Microsoft.Azure.Commands.DataFactoryV2.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Set-AzureRmDataFactoryV2', 'Update-AzureRmDataFactoryV2', 
-               'Get-AzureRmDataFactoryV2', 'Remove-AzureRmDataFactoryV2', 
-               'Set-AzureRmDataFactoryV2LinkedService', 
-               'New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential', 
-               'Get-AzureRmDataFactoryV2LinkedService', 
-               'Remove-AzureRmDataFactoryV2LinkedService', 
-               'Set-AzureRmDataFactoryV2Dataset', 
-               'Get-AzureRmDataFactoryV2Dataset', 
-               'Remove-AzureRmDataFactoryV2Dataset', 
-               'Set-AzureRmDataFactoryV2Trigger', 
-               'Get-AzureRmDataFactoryV2Trigger', 
-               'Remove-AzureRmDataFactoryV2Trigger', 
-               'Start-AzureRmDataFactoryV2Trigger', 
-               'Stop-AzureRmDataFactoryV2Trigger', 
-               'Set-AzureRmDataFactoryV2Pipeline', 
-               'Get-AzureRmDataFactoryV2Pipeline', 
-               'Remove-AzureRmDataFactoryV2Pipeline', 
-               'Invoke-AzureRmDataFactoryV2Pipeline', 
-               'Get-AzureRmDataFactoryV2PipelineRun', 
-               'Stop-AzureRmDataFactoryV2PipelineRun', 
-               'Get-AzureRmDataFactoryV2ActivityRun', 
-               'Get-AzureRmDataFactoryV2IntegrationRuntimeKey', 
-               'Get-AzureRmDataFactoryV2IntegrationRuntime', 
-               'New-AzureRmDataFactoryV2IntegrationRuntimeKey', 
-               'Remove-AzureRmDataFactoryV2IntegrationRuntime', 
-               'Set-AzureRmDataFactoryV2IntegrationRuntime', 
-               'Start-AzureRmDataFactoryV2IntegrationRuntime', 
-               'Stop-AzureRmDataFactoryV2IntegrationRuntime', 
-               'Get-AzureRmDataFactoryV2IntegrationRuntimeMetric', 
-               'Remove-AzureRmDataFactoryV2IntegrationRuntimeNode', 
-               'Update-AzureRmDataFactoryV2IntegrationRuntimeNode', 
-               'Get-AzureRmDataFactoryV2IntegrationRuntimeNode', 
-               'Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade', 
-               'Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential', 
-               'Update-AzureRmDataFactoryV2IntegrationRuntime', 
-               'Get-AzureRmDataFactoryV2TriggerRun'
+CmdletsToExport = 'Set-DataFactoryV2', 'Update-DataFactoryV2', 
+               'Get-DataFactoryV2', 'Remove-DataFactoryV2', 
+               'Set-DataFactoryV2LinkedService', 
+               'New-DataFactoryV2LinkedServiceEncryptedCredential', 
+               'Get-DataFactoryV2LinkedService', 
+               'Remove-DataFactoryV2LinkedService', 
+               'Set-DataFactoryV2Dataset', 
+               'Get-DataFactoryV2Dataset', 
+               'Remove-DataFactoryV2Dataset', 
+               'Set-DataFactoryV2Trigger', 
+               'Get-DataFactoryV2Trigger', 
+               'Remove-DataFactoryV2Trigger', 
+               'Start-DataFactoryV2Trigger', 
+               'Stop-DataFactoryV2Trigger', 
+               'Set-DataFactoryV2Pipeline', 
+               'Get-DataFactoryV2Pipeline', 
+               'Remove-DataFactoryV2Pipeline', 
+               'Invoke-DataFactoryV2Pipeline', 
+               'Get-DataFactoryV2PipelineRun', 
+               'Stop-DataFactoryV2PipelineRun', 
+               'Get-DataFactoryV2ActivityRun', 
+               'Get-DataFactoryV2IntegrationRuntimeKey', 
+               'Get-DataFactoryV2IntegrationRuntime', 
+               'New-DataFactoryV2IntegrationRuntimeKey', 
+               'Remove-DataFactoryV2IntegrationRuntime', 
+               'Set-DataFactoryV2IntegrationRuntime', 
+               'Start-DataFactoryV2IntegrationRuntime', 
+               'Stop-DataFactoryV2IntegrationRuntime', 
+               'Get-DataFactoryV2IntegrationRuntimeMetric', 
+               'Remove-DataFactoryV2IntegrationRuntimeNode', 
+               'Update-DataFactoryV2IntegrationRuntimeNode', 
+               'Get-DataFactoryV2IntegrationRuntimeNode', 
+               'Invoke-DataFactoryV2IntegrationRuntimeUpgrade', 
+               'Sync-DataFactoryV2IntegrationRuntimeCredential', 
+               'Update-DataFactoryV2IntegrationRuntime', 
+               'Get-DataFactoryV2TriggerRun'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -149,8 +149,8 @@ PrivateData = @{
         ReleaseNotes = '* Updated all help files to include full parameter types and correct input/output types.
 * Updated the ADF .Net SDK version to 1.1.0.
 * Support self-hosted integration runtime sharing across data factories.
-     - Add new parameter -SharedIntegrationRuntimeResourceId to Set-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
-     - Add new optional parameter -LinkedDataFactoryName to Remove-AzureRmDataFactoryV2IntegrationRuntime cmdlet.'
+     - Add new parameter -SharedIntegrationRuntimeResourceId to Set-DataFactoryV2IntegrationRuntime cmdlet.
+     - Add new optional parameter -LinkedDataFactoryName to Remove-DataFactoryV2IntegrationRuntime cmdlet.'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -169,7 +169,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

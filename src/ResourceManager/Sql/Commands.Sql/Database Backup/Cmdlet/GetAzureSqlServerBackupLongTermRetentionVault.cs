@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,11 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerBackupLongTermRetentionVault", SupportsShouldProcess = true)]
+    [Cmdlet("Get","SqlServerBackupLongTermRetentionVault", SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerBackupLongTermRetentionVaultModel))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlServerBackupLongTermRetentionVault")]
+#endif
     public class GetAzureSqlServerBackupLongTermRetentionVault : AzureSqlServerBackupLongTermRetentionVaultCmdletBase
     {
         /// <summary>
@@ -61,3 +64,5 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+
+

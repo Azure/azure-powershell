@@ -19,9 +19,12 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Set, Constants.Trigger, DefaultParameterSetName = ParameterSetNames.ByFactoryName, 
-        SupportsShouldProcess = true), OutputType(typeof(PSTrigger))]
+    [Cmdlet("Set","DataFactoryV2Trigger", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSTrigger))]
+#if NETSTANDARD
+    [Alias(VerbsCommon.New + "-" + Constants.Trigger, "Set-AzureRmDataFactoryV2Trigger")]
+#else
     [Alias(VerbsCommon.New + "-" + Constants.Trigger)]
+#endif
     public class SetAzureDataFactoryTriggerCommand : DataFactoryContextBaseSetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -51,3 +54,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
+

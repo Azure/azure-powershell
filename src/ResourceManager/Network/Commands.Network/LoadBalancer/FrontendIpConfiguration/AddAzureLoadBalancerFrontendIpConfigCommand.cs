@@ -19,7 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmLoadBalancerFrontendIpConfig"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet("Add","LoadBalancerFrontendIpConfig"), OutputType(typeof(PSLoadBalancer))]
+#if NETSTANDARD
+    [Alias("Add-AzureRmLoadBalancerFrontendIpConfig")]
+#endif
     public class AddAzureLoadBalancerFrontendIpConfigCommand : AzureLoadBalancerFrontendIpConfigBase
     {
         [Parameter(
@@ -86,3 +89,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

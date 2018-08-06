@@ -22,12 +22,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get,
-        ProfileNouns.VirtualMachineImage)]
+    [Cmdlet("Get","VMImage")]
     [OutputType(typeof(PSVirtualMachineImage),
         ParameterSetName = new[] { ListVMImageParamSetName })]
     [OutputType(typeof(PSVirtualMachineImageDetail),
         ParameterSetName = new[] { GetVMImageDetailParamSetName })]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMImage")]
+#endif
     public class GetAzureVMImageCommand : VirtualMachineImageBaseCmdlet
     {
         protected const string ListVMImageParamSetName = "ListVMImage";
@@ -145,3 +147,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

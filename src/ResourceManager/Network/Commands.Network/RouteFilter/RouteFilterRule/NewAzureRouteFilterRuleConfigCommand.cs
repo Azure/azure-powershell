@@ -18,7 +18,10 @@ namespace Microsoft.Azure.Commands.Network
 
     using Microsoft.Azure.Commands.Network.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmRouteFilterRuleConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteFilterRule))]
+    [Cmdlet("New","RouteFilterRuleConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteFilterRule))]
+#if NETSTANDARD
+    [Alias("New-AzureRmRouteFilterRuleConfig")]
+#endif
     public class NewAzureRouteFilterRuleConfigCommand : AzureRouteFilterRuleConfigBase
     {
         [Parameter(
@@ -49,3 +52,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

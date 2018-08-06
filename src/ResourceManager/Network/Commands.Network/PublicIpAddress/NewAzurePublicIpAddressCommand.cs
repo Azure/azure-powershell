@@ -1,4 +1,4 @@
-
+﻿
 
 // ----------------------------------------------------------------------------------
 //
@@ -26,8 +26,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmPublicIpAddress", SupportsShouldProcess = true),
-        OutputType(typeof(PSPublicIpAddress))]
+    [Cmdlet("New","PublicIpAddress", SupportsShouldProcess = true),OutputType(typeof(PSPublicIpAddress))]
+#if NETSTANDARD
+    [Alias("New-AzureRmPublicIpAddress")]
+#endif
     public class NewAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -193,4 +195,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

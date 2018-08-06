@@ -20,8 +20,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementBackend, SupportsShouldProcess = true)]
+    [Cmdlet("Set","ApiManagementBackend", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementBackend))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmApiManagementBackend")]
+#endif
     public class SetAzureApiManagementBackend : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -138,3 +141,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

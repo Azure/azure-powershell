@@ -21,7 +21,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets a Credential for automation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmAutomationJob"), OutputType(typeof(void))]
+    [Cmdlet("Stop","AutomationJob"), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Stop-AzureRmAutomationJob")]
+#endif
     public class StopAzureAutomationJob : AzureAutomationBaseCmdlet
     {
         /// <summary> 
@@ -42,3 +45,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayFrontendIPConfig"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Remove","ApplicationGatewayFrontendIPConfig"), OutputType(typeof(PSApplicationGateway))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationGatewayFrontendIPConfig")]
+#endif
     public class RemoveAzureApplicationGatewayFrontendIPConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -49,3 +52,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

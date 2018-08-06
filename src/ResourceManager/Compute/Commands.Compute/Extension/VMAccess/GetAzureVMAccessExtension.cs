@@ -21,10 +21,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ProfileNouns.VirtualMachineAccessExtension),
-    OutputType(typeof(VirtualMachineAccessExtensionContext))]
+    [Cmdlet("Get","VMAccessExtension"),OutputType(typeof(VirtualMachineAccessExtensionContext))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMAccessExtension")]
+#endif
     public class GetAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -102,3 +102,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

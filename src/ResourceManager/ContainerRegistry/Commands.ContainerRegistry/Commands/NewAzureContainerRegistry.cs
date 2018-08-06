@@ -22,8 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.New, ContainerRegistryNoun, SupportsShouldProcess = true)]
+    [Cmdlet("New","ContainerRegistry", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistry))]
+#if NETSTANDARD
+    [Alias("New-AzureRmContainerRegistry")]
+#endif
     public class NewAzureContainerRegistry : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Group Name.")]
@@ -112,3 +115,5 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+
+

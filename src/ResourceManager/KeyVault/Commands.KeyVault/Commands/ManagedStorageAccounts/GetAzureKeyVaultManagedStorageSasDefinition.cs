@@ -20,8 +20,11 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsCommon.Get, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition, DefaultParameterSetName = ByDefinitionNameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultManagedStorageSasDefinition", DefaultParameterSetName = ByDefinitionNameParameterSet)]
     [OutputType( typeof(PSKeyVaultManagedStorageSasDefinitionIdentityItem), typeof(PSKeyVaultManagedStorageSasDefinition), typeof(PSDeletedKeyVaultManagedStorageSasDefinition), typeof(PSDeletedKeyVaultManagedStorageSasDefinitionIdentityItem) )]
+#if NETSTANDARD
+    [Alias("Get-AzureKeyVaultManagedStorageSasDefinition")]
+#endif
     public class GetAzureKeyVaultManagedStorageSasDefinition : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -140,3 +143,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
+

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.QueueStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(Boolean))]
+    [Cmdlet("Remove","AzureStorageQueueStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
+#if NETSTANDARD
+    [Alias("Remove-AzureStorageQueueStoredAccessPolicy")]
+#endif
     public class RemoveAzureStorageQueueStoredAccessPolicyCommand : StorageQueueBaseCmdlet
     {
         [Alias("N", "Name")]
@@ -115,4 +118,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
     }
 }
+
 

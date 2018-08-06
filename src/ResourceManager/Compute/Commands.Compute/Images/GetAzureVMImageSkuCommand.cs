@@ -20,8 +20,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImageSku)]
+    [Cmdlet("Get","VMImageSku")]
     [OutputType(typeof(PSVirtualMachineImageSku))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMImageSku")]
+#endif
     public class GetAzureVMImageSkuCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty, LocationCompleter("Microsoft.Compute/locations/publishers")]
@@ -61,3 +64,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

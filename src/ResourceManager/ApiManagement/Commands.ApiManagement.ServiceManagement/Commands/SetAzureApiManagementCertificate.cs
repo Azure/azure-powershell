@@ -20,8 +20,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using System.Security.Cryptography.X509Certificates;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementCertificate, DefaultParameterSetName = FromFile)]
+    [Cmdlet("Set","ApiManagementCertificate", DefaultParameterSetName = FromFile)]
     [OutputType(typeof(PsApiManagementCertificate))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmApiManagementCertificate")]
+#endif
     public class SetAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
         private const string FromFile = "LoadFromFile";
@@ -103,3 +106,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

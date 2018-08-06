@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,10 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// Sets the auditing policy properties for a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerThreatDetectionPolicy", SupportsShouldProcess = true), OutputType(typeof(ServerThreatDetectionPolicyModel))]
+    [Cmdlet("Set","SqlServerThreatDetectionPolicy", SupportsShouldProcess = true), OutputType(typeof(ServerThreatDetectionPolicyModel))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlServerThreatDetectionPolicy")]
+#endif
     public class SetAzureSqlServerThreatDetection : SqlServerThreatDetectionCmdletBase
     {
         /// <summary>
@@ -109,3 +112,5 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         }
     }
 }
+
+

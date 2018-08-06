@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, Constants.AzureRmBatchAccount), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchAccount"), OutputType(typeof(BatchAccountContext))]
+#if NETSTANDARD
+    [Alias("New-AzureRmBatchAccount")]
+#endif
     public class NewBatchAccountCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -73,3 +76,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
+

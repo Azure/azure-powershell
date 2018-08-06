@@ -30,8 +30,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// <summary>
     /// New storage context
     /// </summary>
-    [Cmdlet(VerbsCommon.New, StorageNouns.StorageContext, DefaultParameterSetName = AccountNameKeyParameterSet),
-        OutputType(typeof(AzureStorageContext))]
+    [Cmdlet("New","AzureStorageContext", DefaultParameterSetName = AccountNameKeyParameterSet),OutputType(typeof(AzureStorageContext))]
+#if NETSTANDARD
+    [Alias("New-AzureStorageContext")]
+#endif
     public class NewAzureStorageContext : AzureDataCmdlet
     {
         /// <summary>
@@ -443,3 +445,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
     }
 }
+
+

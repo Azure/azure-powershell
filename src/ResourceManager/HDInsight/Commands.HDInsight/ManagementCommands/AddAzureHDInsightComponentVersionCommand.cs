@@ -18,11 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.Add,
-        Constants.CommandNames.AzureHDInsightComponentVersion,
-        SupportsShouldProcess = true),
-    OutputType(typeof(AzureHDInsightConfig))]
+    [Cmdlet("Add","HDInsightComponentVersion",SupportsShouldProcess = true),OutputType(typeof(AzureHDInsightConfig))]
+#if NETSTANDARD
+    [Alias("Add-AzureRmHDInsightComponentVersion")]
+#endif
     public class AddAzureHDInsightComponentVersionCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -56,3 +55,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

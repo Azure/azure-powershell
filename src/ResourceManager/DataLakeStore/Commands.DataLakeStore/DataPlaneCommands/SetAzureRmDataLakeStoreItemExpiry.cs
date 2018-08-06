@@ -20,8 +20,12 @@ using Microsoft.Azure.DataLake.Store;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemExpiry", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(DataLakeStoreItem))]
+    [Cmdlet("Set","DataLakeStoreItemExpiry", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(DataLakeStoreItem))]
+#if NETSTANDARD
+    [Alias("Set-AdlStoreItemExpiry", "Set-AzureRmDataLakeStoreItemExpiry")]
+#else
     [Alias("Set-AdlStoreItemExpiry")]
+#endif
     public class SetAzureRmDataLakeStoreItemExpiry : DataLakeStoreFileSystemCmdletBase
     {
         internal const string BaseParameterSetName = "SetAbsoluteNeverExpireExpiry";
@@ -91,3 +95,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

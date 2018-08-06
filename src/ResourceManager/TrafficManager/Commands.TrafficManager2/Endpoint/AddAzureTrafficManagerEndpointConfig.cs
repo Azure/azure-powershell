@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using System.Collections.Generic;
     using System.Linq;
 
-    [Cmdlet(VerbsCommon.Add, "AzureRmTrafficManagerEndpointConfig"), OutputType(typeof(TrafficManagerProfile))]
+    [Cmdlet("Add","TrafficManagerEndpointConfig"), OutputType(typeof(TrafficManagerProfile))]
+#if NETSTANDARD
+    [Alias("Add-AzureRmTrafficManagerEndpointConfig")]
+#endif
     public class AddAzureTrafficManagerEndpointConfig : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.")]
@@ -105,3 +108,5 @@ namespace Microsoft.Azure.Commands.TrafficManager
         }
     }
 }
+
+

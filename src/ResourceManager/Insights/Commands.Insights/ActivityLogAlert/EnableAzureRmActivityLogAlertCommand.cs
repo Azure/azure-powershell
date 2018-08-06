@@ -24,7 +24,10 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// <summary>
     /// Enable an activity log alert
     /// </summary>
-    [Cmdlet("Enable", "AzureRmActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(PSActivityLogAlertResource))]
+    [Cmdlet("Enable","ActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(PSActivityLogAlertResource))]
+#if NETSTANDARD
+    [Alias("Enable-AzureRmActivityLogAlert")]
+#endif
     public class EnableAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
         internal const string EnableActivityLogAlertDefaultParamGroup = "EnableByNameAndResourceGroup";
@@ -111,3 +114,5 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         }
     }
 }
+
+

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,9 +24,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Add, StorageAccountRuleNounStr, SupportsShouldProcess = true, DefaultParameterSetName = NetWorkRuleStringParameterSet)]
+    [Cmdlet("Add","StorageAccountNetworkRule", SupportsShouldProcess = true, DefaultParameterSetName = NetWorkRuleStringParameterSet)]
     [OutputType(typeof(PSVirtualNetworkRule), ParameterSetName = new string[] { NetWorkRuleStringParameterSet, NetworkRuleObjectParameterSet })]
     [OutputType(typeof(PSIpRule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet})]
+#if NETSTANDARD
+    [Alias("Add-AzureRmStorageAccountNetworkRule")]
+#endif
     public class AddAzureStorageAccountNetworkRuleCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
@@ -175,3 +178,5 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
     }
 }
+
+

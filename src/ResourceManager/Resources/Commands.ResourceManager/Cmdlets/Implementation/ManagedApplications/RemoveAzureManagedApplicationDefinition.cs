@@ -21,9 +21,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Removes the managed application definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmManagedApplicationDefinition", SupportsShouldProcess = true,
-        DefaultParameterSetName = RemoveAzureManagedApplicationDefinitionCmdlet.ManagedApplicationDefinitionNameParameterSet), 
-        OutputType(typeof(bool))]
+    [Cmdlet("Remove","ManagedApplicationDefinition", SupportsShouldProcess = true,DefaultParameterSetName = RemoveAzureManagedApplicationDefinitionCmdlet.ManagedApplicationDefinitionNameParameterSet),OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmManagedApplicationDefinition")]
+#endif
     public class RemoveAzureManagedApplicationDefinitionCmdlet : ManagedApplicationCmdletBase
     {
         /// <summary>
@@ -128,3 +129,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
+

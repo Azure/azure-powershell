@@ -19,9 +19,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsCommon.Get, Constants.CommandNames.AzureHDInsightOMS)]
-    [Alias("Get-AzureRmHDInsightOMS")]
+    [Cmdlet("Get","HDInsightOperationsManagementSuite")]
     [OutputType(typeof(AzureHDInsightOMS))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmHDInsightOMS", "Get-AzureRmHDInsightOperationsManagementSuite")]
+#else
+    [Alias("Get-AzureRmHDInsightOMS")]
+#endif
     public class GetAzureHDInsightOMSCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -55,3 +59,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

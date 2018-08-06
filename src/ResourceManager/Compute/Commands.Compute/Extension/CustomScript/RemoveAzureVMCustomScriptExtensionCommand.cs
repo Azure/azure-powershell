@@ -20,11 +20,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Remove,
-        ProfileNouns.VirtualMachineCustomScriptExtension,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove","VMCustomScriptExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMCustomScriptExtension")]
+#endif
     public class RemoveAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -81,3 +81,5 @@ namespace Microsoft.Azure.Commands.Compute
 
     }
 }
+
+

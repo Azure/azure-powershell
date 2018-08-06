@@ -24,7 +24,10 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseLongTermRetentionBackup", DefaultParameterSetName = RemoveBackupDefaultSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLongTermRetentionBackupModel))]
+    [Cmdlet("Remove","SqlDatabaseLongTermRetentionBackup", DefaultParameterSetName = RemoveBackupDefaultSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLongTermRetentionBackupModel))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlDatabaseLongTermRetentionBackup")]
+#endif
     public class RemoveAzureRmSqlDatabaseLongTermRetentionBackup : AzureSqlDatabaseLongTermRetentionBackupCmdletBase
     {
         /// <summary>
@@ -195,3 +198,5 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         }
     }
 }
+
+

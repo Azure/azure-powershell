@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,15 +20,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Deletes the specified ASR recovery plan from Recovery Services vault.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Remove,
-        "AzureRmRecoveryServicesAsrRecoveryPlan",
-        DefaultParameterSetName = ASRParameterSets.ByObject,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove","RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
+    [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Remove-ASRRP",
+        "Remove-ASRRecoveryPlan",
+        "Remove-AzureRmRecoveryServicesAsrRecoveryPlan")]
+#else
     [Alias(
         "Remove-ASRRP",
         "Remove-ASRRecoveryPlan")]
-    [OutputType(typeof(ASRJob))]
+#endif
     public class RemoveAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -85,3 +87,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

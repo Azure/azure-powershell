@@ -22,9 +22,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsCatalogItemAclEntry", DefaultParameterSetName = BaseCatalogParameterSetName),
-     OutputType(typeof(PSDataLakeAnalyticsAcl))]
+    [Cmdlet("Get","DataLakeAnalyticsCatalogItemAclEntry", DefaultParameterSetName = BaseCatalogParameterSetName),OutputType(typeof(PSDataLakeAnalyticsAcl))]
+#if NETSTANDARD
+    [Alias("Get-AdlCatalogItemAclEntry", "Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry")]
+#else
     [Alias("Get-AdlCatalogItemAclEntry")]
+#endif
     public class GetAzureRmDataLakeAnalyticsCatalogItemAclEntry : DataLakeAnalyticsCmdletBase
     {
         private const string BaseCatalogParameterSetName = "GetCatalogAclEntry";
@@ -114,3 +117,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
         }
     }
 }
+
+

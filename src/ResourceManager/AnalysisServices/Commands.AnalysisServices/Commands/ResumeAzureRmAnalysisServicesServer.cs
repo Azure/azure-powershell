@@ -23,10 +23,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsLifecycle.Resume, "AzureRmAnalysisServicesServer", 
-        SupportsShouldProcess = true),
-        OutputType(typeof(AzureAnalysisServicesServer))]
+    [Cmdlet("Resume", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer", SupportsShouldProcess = true),OutputType(typeof(AzureAnalysisServicesServer))]
+#if NETSTANDARD
+    [Alias("Resume-AzureAs", "Resume-AzureRmAnalysisServicesServer")]
+#else
     [Alias("Resume-AzureAs")]
+#endif
     public class ResumeAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = true,
@@ -68,3 +70,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         }
     }
 }
+
+

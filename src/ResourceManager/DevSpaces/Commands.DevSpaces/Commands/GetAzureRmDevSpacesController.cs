@@ -21,8 +21,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DevSpaces.Commands
 {
-    [Cmdlet(VerbsCommon.Get, DevSpacesControllerNoun, DefaultParameterSetName = ListDevSpacesControllerParameterSet)]
+    [Cmdlet("Get","DevSpacesController", DefaultParameterSetName = ListDevSpacesControllerParameterSet)]
     [OutputType(typeof(PSController))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDevSpacesController")]
+#endif
     public class GetAzureRmDevSpacesController : DevSpacesCmdletBase
     {
         [Parameter(
@@ -80,3 +83,5 @@ namespace Microsoft.Azure.Commands.DevSpaces.Commands
         }
     }
 }
+
+

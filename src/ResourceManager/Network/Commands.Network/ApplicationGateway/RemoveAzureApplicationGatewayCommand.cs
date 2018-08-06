@@ -20,7 +20,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGateway", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove","ApplicationGateway", SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationGateway")]
+#endif
     public class RemoveAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -69,4 +72,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

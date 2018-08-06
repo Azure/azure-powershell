@@ -27,7 +27,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Moves existing resources to a new resource group or subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, "AzureRmResource", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Move","Resource", SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Move-AzureRmResource")]
+#endif
     public class MoveAzureResourceCommand : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -175,3 +178,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
+

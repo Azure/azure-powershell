@@ -25,9 +25,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Gets recovery points created for the provided item protected by the recovery services vault
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRecoveryPoint",
-        DefaultParameterSetName = NoFilterParameterSet),
-        OutputType(typeof(RecoveryPointBase))]
+    [Cmdlet("Get","RecoveryServicesBackupRecoveryPoint",DefaultParameterSetName = NoFilterParameterSet),OutputType(typeof(RecoveryPointBase))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesBackupRecoveryPoint")]
+#endif
     public class GetAzureRmRecoveryServicesBackupRecoveryPoint : RSBackupVaultCmdletBase
     {
         internal const string DateTimeFilterParameterSet = "DateTimeFilter";
@@ -192,3 +193,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
+

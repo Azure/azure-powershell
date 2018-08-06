@@ -22,7 +22,10 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Get, Constants.GatewayAuthKey, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGatewayAuthKey))]
+    [Cmdlet("Get","DataFactoryGatewayAuthKey", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGatewayAuthKey))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryGatewayAuthKey")]
+#endif
     public class GetAzureDataFactoryGatewayAuthKeyCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
@@ -55,3 +58,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
+

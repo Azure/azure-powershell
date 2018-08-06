@@ -20,11 +20,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsSecurity.Grant,
-        Constants.CommandNames.AzureHDInsightHttpServicesAccess),
-    OutputType(
-        typeof(HttpConnectivitySettings))]
+    [Cmdlet("Grant","HDInsightHttpServicesAccess"),OutputType(typeof(HttpConnectivitySettings))]
+#if NETSTANDARD
+    [Alias("Grant-AzureRmHDInsightHttpServicesAccess")]
+#endif
     public class GrantAzureHDInsightHttpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -65,3 +64,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

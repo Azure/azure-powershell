@@ -19,9 +19,12 @@ using Microsoft.Azure.DataLake.Store;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Join, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true), 
-        OutputType(typeof(string))]
+    [Cmdlet("Join","DataLakeStoreItem", SupportsShouldProcess = true), OutputType(typeof(string))]
+#if NETSTANDARD
+    [Alias("Join-AdlStoreItem", "Join-AzureRmDataLakeStoreItem")]
+#else
     [Alias("Join-AdlStoreItem")]
+#endif
     public class JoinAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -68,3 +71,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

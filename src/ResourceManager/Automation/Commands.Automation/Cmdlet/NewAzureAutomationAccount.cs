@@ -25,8 +25,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Creates azure automation accounts based on automation account name and location.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutomationAccount")]
+    [Cmdlet("New","AutomationAccount")]
     [OutputType(typeof(AutomationAccount))]
+#if NETSTANDARD
+    [Alias("New-AzureRmAutomationAccount")]
+#endif
     public class NewAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
     {
         /// <summary>
@@ -98,3 +101,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

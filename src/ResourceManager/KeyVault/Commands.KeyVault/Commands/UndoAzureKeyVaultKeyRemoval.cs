@@ -17,10 +17,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Undo, "AzureKeyVaultKeyRemoval",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultKeyRemoval", SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
+#if NETSTANDARD
+    [Alias("Undo-AzureKeyVaultKeyRemoval")]
+#endif
     public class UndoAzureKeyVaultKeyRemoval : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -83,3 +84,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
+

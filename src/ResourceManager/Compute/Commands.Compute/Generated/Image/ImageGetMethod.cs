@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -147,8 +147,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmImage", DefaultParameterSetName = "DefaultParameter")]
+    [Cmdlet("Get","Image", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSImage))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmImage")]
+#endif
     public partial class GetAzureRmImage : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -233,3 +236,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Expand { get; set; }
     }
 }
+
+

@@ -23,8 +23,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation schedules for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
+    [Cmdlet("New","AutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(Runbook))]
+#if NETSTANDARD
+    [Alias("New-AzureRmAutomationRunbook")]
+#endif
     public class NewAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -97,3 +100,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

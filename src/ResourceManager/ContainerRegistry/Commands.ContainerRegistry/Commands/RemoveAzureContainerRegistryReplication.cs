@@ -17,8 +17,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Remove, ContainerRegistryReplicationNoun, DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","ContainerRegistryReplication", DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmContainerRegistryReplication")]
+#endif
     public class RemoveAzureContainerRegistryReplication : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Container Registry Replication Name. Default to the location name.")]
@@ -80,3 +83,5 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+
+

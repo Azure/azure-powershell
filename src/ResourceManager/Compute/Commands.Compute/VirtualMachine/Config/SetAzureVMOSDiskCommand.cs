@@ -21,12 +21,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.OSDisk,
-        DefaultParameterSetName = DefaultParamSet),
-    OutputType(
-        typeof(PSVirtualMachine))]
+    [Cmdlet("Set","VMOSDisk",DefaultParameterSetName = DefaultParamSet),OutputType(typeof(PSVirtualMachine))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMOSDisk")]
+#endif
     public class SetAzureVMOSDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string DefaultParamSet = "DefaultParamSet";
@@ -266,3 +264,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

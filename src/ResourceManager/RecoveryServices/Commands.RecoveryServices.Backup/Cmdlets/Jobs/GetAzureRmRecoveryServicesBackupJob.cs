@@ -26,8 +26,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Gets the list of jobs associated with this recovery services vault 
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"),
-        OutputType(typeof(JobBase))]
+    [Cmdlet("Get","RecoveryServicesBackupJob"),OutputType(typeof(JobBase))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesBackupJob")]
+#endif
     public class GetAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
     {
         /// <summary>
@@ -173,3 +175,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
+

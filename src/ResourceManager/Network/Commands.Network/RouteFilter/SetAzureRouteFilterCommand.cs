@@ -24,7 +24,10 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmRouteFilter", SupportsShouldProcess = true), OutputType(typeof(PSRouteFilter))]
+    [Cmdlet("Set","RouteFilter", SupportsShouldProcess = true), OutputType(typeof(PSRouteFilter))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmRouteFilter")]
+#endif
     public class SetAzureRouteFilterCommand : RouteFilterBaseCmdlet
     {
         [Parameter(
@@ -66,3 +69,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

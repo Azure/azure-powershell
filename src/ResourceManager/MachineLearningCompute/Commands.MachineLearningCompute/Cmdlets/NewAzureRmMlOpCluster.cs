@@ -23,8 +23,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
-    [Cmdlet(VerbsCommon.New, CmdletSuffix, SupportsShouldProcess = true)]
+    [Cmdlet("New","MlOpCluster", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationalizationCluster))]
+#if NETSTANDARD
+    [Alias("New-AzureRmMlOpCluster")]
+#endif
     public class NewAzureRmMlOpCluster : MachineLearningComputeCmdletBase
     {
         protected const string CreateFromObjectParameterSet = "CreateWithInputObject";
@@ -260,3 +263,5 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         }
     }
 }
+
+

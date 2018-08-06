@@ -18,7 +18,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Enable, Constants.AzureBatchComputeNodeScheduling, DefaultParameterSetName = Constants.IdParameterSet), OutputType(typeof(void))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchComputeNodeScheduling", DefaultParameterSetName = Constants.IdParameterSet), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Enable-AzureBatchComputeNodeScheduling")]
+#endif
     public class EnableBatchComputeNodeSchedulingCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
@@ -44,3 +47,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
+

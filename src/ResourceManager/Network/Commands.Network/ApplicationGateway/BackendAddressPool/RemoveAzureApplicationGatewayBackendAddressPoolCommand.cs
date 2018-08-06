@@ -18,8 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), 
-        OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
+    [Cmdlet("Remove","ApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationGatewayBackendAddressPool")]
+#endif
     public class RemoveAzureApplicationGatewayBackendAddressPoolCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -53,3 +55,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

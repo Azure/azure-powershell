@@ -17,8 +17,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Remove, ContainerRegistryWebhookNoun, DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","ContainerRegistryWebhook", DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmContainerRegistryWebhook")]
+#endif
     public class RemoveAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Webhook Name.")]
@@ -80,3 +83,5 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+
+

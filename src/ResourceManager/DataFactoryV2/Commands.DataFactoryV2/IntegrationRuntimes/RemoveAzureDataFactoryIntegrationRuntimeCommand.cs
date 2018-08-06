@@ -21,10 +21,10 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Remove,
-        Constants.IntegrationRuntime,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName, 
-        SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove","DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDataFactoryV2IntegrationRuntime")]
+#endif
     public class RemoveAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(Mandatory = false,
@@ -84,3 +84,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
+

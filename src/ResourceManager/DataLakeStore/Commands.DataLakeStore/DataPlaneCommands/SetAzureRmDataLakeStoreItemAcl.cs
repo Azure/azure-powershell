@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +20,12 @@ using Microsoft.Azure.DataLake.Store.AclTools;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAcl", SupportsShouldProcess = true), 
-        OutputType(typeof(DataLakeStoreItemAce))]
+    [Cmdlet("Set","DataLakeStoreItemAcl", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreItemAce))]
+#if NETSTANDARD
+    [Alias("Set-AdlStoreItemAcl", "Set-AzureRmDataLakeStoreItemAcl")]
+#else
     [Alias("Set-AdlStoreItemAcl")]
+#endif
     public class SetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
 
@@ -102,3 +105,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

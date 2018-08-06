@@ -29,9 +29,13 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     /// <summary>
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
-    [Cmdlet("Add", "AzureAnalysisServicesAccount", DefaultParameterSetName = "UserParameterSetName", SupportsShouldProcess =true)]
-    [Alias("Login-AzureAsAccount")]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureAnalysisServicesAccount", DefaultParameterSetName = "UserParameterSetName", SupportsShouldProcess =true)]
     [OutputType(typeof(AsAzureProfile))]
+#if NETSTANDARD
+    [Alias("Login-AzureAsAccount", "Add-AzureAnalysisServicesAccount")]
+#else
+    [Alias("Login-AzureAsAccount")]
+#endif
     public class AddAzureASAccountCommand : AzurePSCmdlet
     {
         private const string UserParameterSet = "UserParameterSetName";
@@ -194,3 +198,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         }
     }
 }
+
+

@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Creates Azure Site Recovery Disk replication configuration for A2A replication.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.New,
-        "AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig",
-        DefaultParameterSetName = ASRParameterSets.AzureToAzure,
-        SupportsShouldProcess = true)]
-    [Alias("New-ASRAzureToAzureDiskReplicationConfig")]
+    [Cmdlet("New","RecoveryServicesAsrAzureToAzureDiskReplicationConfig",DefaultParameterSetName = ASRParameterSets.AzureToAzure,SupportsShouldProcess = true)]
     [OutputType(typeof(ASRAzuretoAzureDiskReplicationConfig))]
+#if NETSTANDARD
+    [Alias("New-ASRAzureToAzureDiskReplicationConfig", "New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig")]
+#else
+    [Alias("New-ASRAzureToAzureDiskReplicationConfig")]
+#endif
     public class AzureRmAsrAzureToAzureDiskReplicationConfig : SiteRecoveryCmdletBase
     {
         #region Parameters
@@ -83,3 +83,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

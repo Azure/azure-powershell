@@ -21,7 +21,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.Set, SearchServiceNounStr, SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(PSSearchService))]
+    [Cmdlet("Set","SearchService", SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(PSSearchService))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmSearchService")]
+#endif
     public class SetSearchServiceCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
@@ -102,3 +105,5 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         }
     }
 }
+
+

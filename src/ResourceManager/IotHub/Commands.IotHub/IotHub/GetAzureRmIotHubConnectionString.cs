@@ -23,8 +23,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIotHubConnectionString")]
+    [Cmdlet("Get","IotHubConnectionString")]
     [OutputType(typeof(PSSharedAccessSignatureAuthorizationRule))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmIotHubConnectionString")]
+#endif
     public class GetAzureRmIotHubConnectionString : IotHubBaseCmdlet
     {
         [Parameter(
@@ -69,3 +72,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
+

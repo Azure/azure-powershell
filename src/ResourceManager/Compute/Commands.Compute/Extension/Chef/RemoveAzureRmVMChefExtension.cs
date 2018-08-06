@@ -25,9 +25,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 {
-    [Cmdlet(
-        VerbsCommon.Remove, ProfileNouns.VirtualMachineChefExtension, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","VMChefExtension", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMChefExtension")]
+#endif
     public class RemoveAzureRmVMChefExtension : VirtualMachineExtensionBaseCmdlet
     {
         private string ExtensionDefaultPublisher = "Chef.Bootstrap.WindowsAzure";
@@ -132,3 +134,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
         }
     }
 }
+
+

@@ -22,8 +22,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
-    [Cmdlet(VerbsCommon.Get, WebServicesCmdletBase.CommandletSuffix)]
+    [Cmdlet("Get","MlWebService")]
     [OutputType(typeof(WebService))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmMlWebService")]
+#endif
     public class GetAzureMLWebService : WebServicesCmdletBase
     {
         [Parameter(
@@ -88,3 +91,5 @@ namespace Microsoft.Azure.Commands.MachineLearning
         }
     }
 }
+
+

@@ -23,8 +23,12 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// <summary>
     /// Class that creates a new instance of the Data Migration Service.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationService", SupportsShouldProcess = true), OutputType(typeof(PSDataMigrationService))]
+    [Cmdlet("New","DataMigrationService", SupportsShouldProcess = true), OutputType(typeof(PSDataMigrationService))]
+#if NETSTANDARD
+    [Alias("New-AzureRmDms", "New-AzureRmDataMigrationService")]
+#else
     [Alias("New-AzureRmDms")]
+#endif
     public sealed class NewAzureRmDataMigrationService : DataMigrationCmdlet
     {
         [Parameter(
@@ -107,3 +111,5 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+
+

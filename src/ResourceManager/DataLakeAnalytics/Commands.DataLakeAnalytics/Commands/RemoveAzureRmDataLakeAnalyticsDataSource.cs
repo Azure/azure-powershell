@@ -20,9 +20,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsDataSource",
-        SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove","DataLakeAnalyticsDataSource",SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AdlAnalyticsDataSource", "Remove-AzureRmDataLakeAnalyticsDataSource")]
+#else
     [Alias("Remove-AdlAnalyticsDataSource")]
+#endif
     public class RemoveAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
         internal const string DataLakeParameterSetName = "RemoveDataLakeStorageAccount";
@@ -109,3 +112,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
+

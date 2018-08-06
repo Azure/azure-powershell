@@ -23,7 +23,10 @@ using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    [Cmdlet("Wait", "AzureRmBackupJob"), OutputType(typeof(AzureRMBackupJob))]
+    [Cmdlet("Wait","BackupJob"), OutputType(typeof(AzureRMBackupJob))]
+#if NETSTANDARD
+    [Alias("Wait-AzureRmBackupJob")]
+#endif
     public class WaitAzureRMBackupJob : AzureBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.WaitJobFilterJobHelpMessage, ValueFromPipeline = true)]
@@ -154,3 +157,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+
+

@@ -22,8 +22,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmOperationalInsightsIISLogCollection", SupportsShouldProcess = true,
-        DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
+    [Cmdlet("Disable","OperationalInsightsIISLogCollection", SupportsShouldProcess = true,DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
+#if NETSTANDARD
+    [Alias("Disable-AzureRmOperationalInsightsIISLogCollection")]
+#endif
     public class DisableAzureOperationalInsightsIISLogCollectionCommand : AzureOperationalInsightsDataSourceBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
@@ -73,3 +75,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
+

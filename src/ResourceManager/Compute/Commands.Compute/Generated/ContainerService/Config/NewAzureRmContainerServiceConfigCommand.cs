@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,8 +29,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmContainerServiceConfig", SupportsShouldProcess = true)]
+    [Cmdlet("New","ContainerServiceConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerService))]
+#if NETSTANDARD
+    [Alias("New-AzureRmContainerServiceConfig")]
+#endif
     public partial class NewAzureRmContainerServiceConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -279,4 +282,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

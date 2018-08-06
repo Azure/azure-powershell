@@ -18,8 +18,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Get, ContainerRegistryWebhookNoun, DefaultParameterSetName = ListWebhookByNameResourceGroupParameterSet)]
+    [Cmdlet("Get","ContainerRegistryWebhook", DefaultParameterSetName = ListWebhookByNameResourceGroupParameterSet)]
     [OutputType(typeof(PSContainerRegistryWebhook))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmContainerRegistryWebhook")]
+#endif
     public class GetAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ShowWebhookByNameResourceGroupParameterSet, HelpMessage = "Webhook Name.")]
@@ -133,3 +136,5 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+
+

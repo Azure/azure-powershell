@@ -25,9 +25,13 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to get user tenant information. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmTenant")]
-    [Alias("Get-AzureRmDomain")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Tenant")]
     [OutputType(typeof(PSAzureTenant))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDomain", "Get-AzureRmTenant")]
+#else
+    [Alias("Get-AzureRmDomain")]
+#endif
     public class GetAzureRMTenantCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true)]
@@ -43,3 +47,5 @@ namespace Microsoft.Azure.Commands.Profile
         }
     }
 }
+
+

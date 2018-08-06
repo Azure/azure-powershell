@@ -22,8 +22,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, Constants.AzureRmBatchApplication)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchApplication")]
     [OutputType(typeof(PSApplication))]
+#if NETSTANDARD
+    [Alias("New-AzureRmBatchApplication")]
+#endif
     public class NewBatchApplicationCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true,
@@ -55,3 +58,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
+

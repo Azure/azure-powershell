@@ -19,11 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
 {
-    [Cmdlet(
-       VerbsCommon.Add,
-       Constants.CommandNames.AzureHDInsightClusterIdentity,
-       DefaultParameterSetName = CertificateFilePathSet),
-    OutputType(typeof(AzureHDInsightConfig))]
+    [Cmdlet("Add","HDInsightClusterIdentity",DefaultParameterSetName = CertificateFilePathSet),OutputType(typeof(AzureHDInsightConfig))]
+#if NETSTANDARD
+    [Alias("Add-AzureRmHDInsightClusterIdentity")]
+#endif
     public class AddAzureHDInsightClusterIdentity : HDInsightCmdletBase
     {
         private const string CertificateFilePathSet = "CertificateFilePath";
@@ -93,3 +92,5 @@ namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
         }
     }
 }
+
+

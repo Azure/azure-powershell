@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,10 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     /// <summary>
     /// Sets the data masking policy properties for a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseDataMaskingPolicy", SupportsShouldProcess = true), OutputType(typeof(DatabaseDataMaskingPolicyModel))]
+    [Cmdlet("Set","SqlDatabaseDataMaskingPolicy", SupportsShouldProcess = true), OutputType(typeof(DatabaseDataMaskingPolicyModel))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlDatabaseDataMaskingPolicy")]
+#endif
     public class SetAzureSqlDatabaseDataMaskingPolicy : SqlDatabaseDataMaskingPolicyCmdletBase
     {
         /// <summary>
@@ -84,3 +87,5 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         }
     }
 }
+
+

@@ -22,8 +22,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you get Azure Web App metrics
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppMetrics")]
+    [Cmdlet("Get","WebAppMetrics")]
     [OutputType(typeof(ResourceMetric))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmWebAppMetrics")]
+#endif
     public class GetAzureWebAppMetricsCmdlet : WebAppBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "Names of web app metrics")]
@@ -53,3 +56,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+
+

@@ -29,7 +29,10 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     /// <summary>
     /// Create a media service.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, MediaServiceNounStr, SupportsShouldProcess = true), OutputType(typeof(PSMediaService))]
+    [Cmdlet("New","MediaService", SupportsShouldProcess = true), OutputType(typeof(PSMediaService))]
+#if NETSTANDARD
+    [Alias("New-AzureRmMediaService")]
+#endif
     public class NewAzureRmMediaService : AzureMediaServiceCmdletBase
     {
         protected const string PrimaryStorageAccountParamSet = "StorageAccountIdParamSet";
@@ -179,3 +182,5 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         }
     }
 }
+
+

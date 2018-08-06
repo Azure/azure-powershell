@@ -72,8 +72,8 @@ NestedModules = @('.\Microsoft.Azure.Commands.Billing.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmBillingInvoice', 'Get-AzureRmBillingPeriod', 
-               'Get-AzureRmEnrollmentAccount'
+CmdletsToExport = 'Get-BillingInvoice', 'Get-BillingPeriod', 
+               'Get-EnrollmentAccount'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -127,7 +127,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

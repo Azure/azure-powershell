@@ -22,8 +22,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ShareCmdletName, DefaultParameterSetName = Constants.MatchingPrefixParameterSetName)]
+    [Cmdlet("Get","AzureStorageShare", DefaultParameterSetName = Constants.MatchingPrefixParameterSetName)]
     [OutputType(typeof(CloudFileShare))]
+#if NETSTANDARD
+    [Alias("Get-AzureStorageShare")]
+#endif
     public class GetAzureStorageShare : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -93,3 +96,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+
+

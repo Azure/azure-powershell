@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets an azure automation runbook definition.
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureRmAutomationRunbook", SupportsShouldProcess = true)]
+    [Cmdlet("Import","AutomationRunbook", SupportsShouldProcess = true)]
     [OutputType(typeof(Runbook))]
+#if NETSTANDARD
+    [Alias("Import-AzureRmAutomationRunbook")]
+#endif
     public class ImportAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
 
@@ -121,3 +124,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

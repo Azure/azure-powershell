@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseFailoverGroup")]
+    [Cmdlet("Get","SqlDatabaseFailoverGroup")]
     [OutputType(typeof(AzureSqlFailoverGroupModel))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseFailoverGroup")]
+#endif
     public class GetAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
@@ -84,3 +87,5 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
     }
 }
+
+

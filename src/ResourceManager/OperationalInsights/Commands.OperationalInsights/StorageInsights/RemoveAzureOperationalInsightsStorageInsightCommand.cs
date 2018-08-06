@@ -21,8 +21,10 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.StorageInsight, SupportsShouldProcess = true,
-        DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(void))]
+    [Cmdlet("Remove","OperationalInsightsStorageInsight", SupportsShouldProcess = true,DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmOperationalInsightsStorageInsight")]
+#endif
     public class RemoveAzureOperationalInsightsStorageInsightCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
@@ -84,3 +86,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
+

@@ -19,7 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmNotificationHubListKeys"), OutputType(typeof(ResourceListKeys))]
+    [Cmdlet("Get","NotificationHubListKeys"), OutputType(typeof(ResourceListKeys))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmNotificationHubListKeys")]
+#endif
     public class GetAzureNotificationHubListKeys : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -59,3 +62,5 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         }
     }
 }
+
+

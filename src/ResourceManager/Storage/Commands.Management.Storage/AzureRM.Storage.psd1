@@ -76,16 +76,16 @@ NestedModules = @('.\Microsoft.Azure.Commands.Management.Storage.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmStorageAccount', 'Get-AzureRmStorageAccountKey', 
-               'New-AzureRmStorageAccount', 'New-AzureRmStorageAccountKey', 
-               'Remove-AzureRmStorageAccount', 'Set-AzureRmCurrentStorageAccount', 
-               'Set-AzureRmStorageAccount', 
-               'Get-AzureRmStorageAccountNameAvailability', 
-               'Get-AzureRmStorageUsage', 
-               'Update-AzureRmStorageAccountNetworkRuleSet', 
-               'Get-AzureRmStorageAccountNetworkRuleSet', 
-               'Add-AzureRmStorageAccountNetworkRule', 
-               'Remove-AzureRmStorageAccountNetworkRule'
+CmdletsToExport = 'Get-StorageAccount', 'Get-StorageAccountKey', 
+               'New-StorageAccount', 'New-StorageAccountKey', 
+               'Remove-StorageAccount', 'Set-CurrentStorageAccount', 
+               'Set-StorageAccount', 
+               'Get-StorageAccountNameAvailability', 
+               'Get-StorageUsage', 
+               'Update-StorageAccountNetworkRuleSet', 
+               'Get-StorageAccountNetworkRuleSet', 
+               'Add-StorageAccountNetworkRule', 
+               'Remove-StorageAccountNetworkRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -144,7 +144,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

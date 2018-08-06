@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.WorkspaceSharedKeys), OutputType(typeof(PSWorkspaceKeys))]
+    [Cmdlet("Get","OperationalInsightsWorkspaceSharedKeys"), OutputType(typeof(PSWorkspaceKeys))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmOperationalInsightsWorkspaceSharedKeys")]
+#endif
     public class GetAzureOperationalInsightsWorkspaceSharedKeysCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -38,3 +41,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
+

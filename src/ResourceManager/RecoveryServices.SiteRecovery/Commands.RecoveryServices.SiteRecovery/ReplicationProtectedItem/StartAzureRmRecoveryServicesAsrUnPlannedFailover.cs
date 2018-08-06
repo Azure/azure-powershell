@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,15 +24,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///    Starts a unplanned failover operation.
     /// </summary>
-    [Cmdlet(
-        VerbsLifecycle.Start,
-        "AzureRmRecoveryServicesAsrUnplannedFailoverJob",
-        DefaultParameterSetName = ASRParameterSets.ByRPIObject,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Start","RecoveryServicesAsrUnplannedFailoverJob",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
+    [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Start-ASRFO",
+        "Start-ASRUnplannedFailoverJob",
+        "Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob")]
+#else
     [Alias(
         "Start-ASRFO",
         "Start-ASRUnplannedFailoverJob")]
-    [OutputType(typeof(ASRJob))]
+#endif
     public class StartAzureRmRecoveryServicesAsrUnplannedFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -519,3 +521,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
 }
+
+

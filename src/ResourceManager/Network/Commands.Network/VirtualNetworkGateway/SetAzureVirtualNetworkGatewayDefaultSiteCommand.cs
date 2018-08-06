@@ -22,7 +22,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkGatewayDefaultSite"), OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet("Set","VirtualNetworkGatewayDefaultSite"), OutputType(typeof(PSVirtualNetworkGateway))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVirtualNetworkGatewayDefaultSite")]
+#endif
     public class SetAzureVirtualNetworkGatewayDefaultSiteCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
@@ -63,4 +66,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

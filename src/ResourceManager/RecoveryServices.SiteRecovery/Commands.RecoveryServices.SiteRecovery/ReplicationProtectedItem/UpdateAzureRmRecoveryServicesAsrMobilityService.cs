@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Push mobility service agent updates to protected machines.
     /// </summary>
-    [Cmdlet(
-        VerbsData.Update,
-        "AzureRmRecoveryServicesAsrMobilityService",
-        DefaultParameterSetName = ASRParameterSets.Default,
-        SupportsShouldProcess = true)]
-    [Alias("Update-ASRMobilityService")]
+    [Cmdlet("Update","RecoveryServicesAsrMobilityService",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Update-ASRMobilityService", "Update-AzureRmRecoveryServicesAsrMobilityService")]
+#else
+    [Alias("Update-ASRMobilityService")]
+#endif
     public class UpdateAzureRmRecoveryServicesAsrMobilityService : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -145,3 +145,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion
     }
 }
+
+

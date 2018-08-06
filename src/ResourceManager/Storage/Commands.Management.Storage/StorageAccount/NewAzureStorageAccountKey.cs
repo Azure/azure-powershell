@@ -19,7 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.New, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKey))]
+    [Cmdlet("New","StorageAccountKey"), OutputType(typeof(StorageAccountKey))]
+#if NETSTANDARD
+    [Alias("New-AzureRmStorageAccountKey")]
+#endif
     public class NewAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
     {
         private const string Key1 = "key1";
@@ -65,3 +68,5 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
     }
 }
+
+

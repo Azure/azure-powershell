@@ -22,11 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDtlVMsPerUserPolicy",
-        HelpUri = Constants.DevTestLabsHelpUri,
-        DefaultParameterSetName = ParameterSetEnable,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set","DtlVMsPerUserPolicy",HelpUri = Constants.DevTestLabsHelpUri,DefaultParameterSetName = ParameterSetEnable,SupportsShouldProcess = true)]
     [OutputType(typeof(PSPolicy))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmDtlVMsPerUserPolicy")]
+#endif
     public class SetAzureRmDtlVMsPerUserPolicy : DtlPolicyCmdletBase
     {
         protected override string PolicyName
@@ -132,3 +132,5 @@ namespace Microsoft.Azure.Commands.DevTestLabs
         }
     }
 }
+
+

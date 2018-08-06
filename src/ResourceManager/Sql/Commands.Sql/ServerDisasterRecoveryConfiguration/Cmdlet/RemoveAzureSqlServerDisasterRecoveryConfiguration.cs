@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerDisasterRecoveryConfiguration", SupportsShouldProcess = true), 
-        OutputType(typeof(AzureSqlServerDisasterRecoveryConfigurationModel))]
+    [Cmdlet("Remove","SqlServerDisasterRecoveryConfiguration", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerDisasterRecoveryConfigurationModel))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlServerDisasterRecoveryConfiguration")]
+#endif
     public class RemoveAzureSqlServerDisasterRecoveryConfiguration : AzureSqlServerDisasterRecoveryConfigurationCmdletBase
     {
         /// <summary>
@@ -88,3 +90,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         }
     }
 }
+
+

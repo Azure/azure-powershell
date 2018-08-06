@@ -17,8 +17,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementTenantGitAccess)]
+    [Cmdlet("Get","ApiManagementTenantGitAccess")]
     [OutputType(typeof(PsApiManagementAccessInformation))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementTenantGitAccess")]
+#endif
     public class GetAzureRmApiManagementTenantGitAccess : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -34,3 +37,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Removes the integration account schema. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIntegrationAccountSchema", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove","IntegrationAccountSchema", SupportsShouldProcess = true), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmIntegrationAccountSchema")]
+#endif
     public class RemoveAzureIntegrationAccountSchemaCommand : LogicAppBaseCmdlet
     {
 
@@ -64,3 +67,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
+

@@ -20,8 +20,12 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// <summary>
     /// Class that creates a new instance of the Sql Server Connection Info.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationDatabaseInfo"), OutputType(typeof(DatabaseInfo))]
+    [Cmdlet("New","DataMigrationDatabaseInfo"), OutputType(typeof(DatabaseInfo))]
+#if NETSTANDARD
+    [Alias("New-AzureRmDmsDBInfo", "New-AzureRmDataMigrationDatabaseInfo")]
+#else
     [Alias("New-AzureRmDmsDBInfo")]
+#endif
     public class NewDatabaseInfoCmdlet : DataMigrationCmdlet
     {
         [Parameter(
@@ -44,3 +48,5 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+
+

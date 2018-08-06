@@ -28,7 +28,10 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     /// <summary>
     /// Get the list of events for at a subscription level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmDiagnosticSetting", SupportsShouldProcess = true, DefaultParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup), OutputType(typeof(PSServiceDiagnosticSettings))]
+    [Cmdlet("Set","DiagnosticSetting", SupportsShouldProcess = true, DefaultParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup), OutputType(typeof(PSServiceDiagnosticSettings))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmDiagnosticSetting")]
+#endif
     public class SetAzureRmDiagnosticSettingCommand : ManagementCmdletBase
     {
         internal const string SetAzureRmDiagnosticSettingOldParamGroup = "OldSetDiagnosticSetting";
@@ -431,3 +434,5 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         }
     }
 }
+
+

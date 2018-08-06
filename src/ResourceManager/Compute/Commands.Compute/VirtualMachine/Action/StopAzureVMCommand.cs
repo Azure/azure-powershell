@@ -22,9 +22,11 @@ using Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsLifecycle.Stop, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet, 
-        SupportsShouldProcess = true)]
+    [Cmdlet("Stop","VM", DefaultParameterSetName = ResourceGroupNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
+#if NETSTANDARD
+    [Alias("Stop-AzureRmVM")]
+#endif
     public class StopAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Parameter(
@@ -82,3 +84,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

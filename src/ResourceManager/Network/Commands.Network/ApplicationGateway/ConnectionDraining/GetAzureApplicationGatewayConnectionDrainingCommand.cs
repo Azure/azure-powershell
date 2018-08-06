@@ -17,8 +17,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayConnectionDraining"),
-        OutputType(typeof(PSApplicationGatewayConnectionDraining))]
+    [Cmdlet("Get","ApplicationGatewayConnectionDraining"),OutputType(typeof(PSApplicationGatewayConnectionDraining))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationGatewayConnectionDraining")]
+#endif
     public class GetAzureApplicationGatewayConnectionDrainingCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -34,3 +36,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

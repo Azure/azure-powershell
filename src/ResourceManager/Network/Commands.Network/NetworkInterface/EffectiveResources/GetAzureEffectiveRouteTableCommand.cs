@@ -21,7 +21,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmEffectiveRouteTable"), OutputType(typeof(PSEffectiveRoute))]
+    [Cmdlet("Get","EffectiveRouteTable"), OutputType(typeof(PSEffectiveRoute))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmEffectiveRouteTable")]
+#endif
     public class GetAzureEffectiveRouteTableCommand : NetworkInterfaceBaseCmdlet
     {
         [Parameter(
@@ -54,3 +57,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

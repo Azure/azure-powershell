@@ -19,15 +19,10 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get,
-        Constants.IntegrationRuntime,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),
-        OutputType(
-            typeof(PSIntegrationRuntime),
-            typeof(PSManagedIntegrationRuntime),
-            typeof(PSSelfHostedIntegrationRuntime),
-            typeof(PSLinkedIntegrationRuntime)
-        )]
+    [Cmdlet("Get","DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),OutputType(typeof(PSIntegrationRuntime),typeof(PSManagedIntegrationRuntime),typeof(PSSelfHostedIntegrationRuntime),typeof(PSLinkedIntegrationRuntime))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryV2IntegrationRuntime")]
+#endif
     public class GetAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(
@@ -85,3 +80,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
+

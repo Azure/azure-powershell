@@ -23,8 +23,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmPacketCaptureFilterConfig"),
-        OutputType(typeof(PSPacketCaptureFilter))]
+    [Cmdlet("New","PacketCaptureFilterConfig"),OutputType(typeof(PSPacketCaptureFilter))]
+#if NETSTANDARD
+    [Alias("New-AzureRmPacketCaptureFilterConfig")]
+#endif
     public class NewPacketCaptureFilterCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -83,3 +85,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

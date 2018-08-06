@@ -20,8 +20,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementBackendCredential")]
+    [Cmdlet("New","ApiManagementBackendCredential")]
     [OutputType(typeof(PsApiManagementBackendCredential))]
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementBackendCredential")]
+#endif
     public class NewAzureApiManagementBackendCredential : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -88,3 +91,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

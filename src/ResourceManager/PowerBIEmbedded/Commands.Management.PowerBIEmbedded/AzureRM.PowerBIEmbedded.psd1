@@ -74,19 +74,19 @@ NestedModules = @('.\Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll',
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Remove-AzureRmPowerBIWorkspaceCollection', 
-               'Get-AzureRmPowerBIWorkspaceCollection', 
-               'Get-AzureRmPowerBIWorkspaceCollectionAccessKeys', 
-               'Get-AzureRmPowerBIWorkspace', 
-               'New-AzureRmPowerBIWorkspaceCollection', 
-               'Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys', 
-               'Resume-AzureRmPowerBIEmbeddedCapacity', 
-               'Suspend-AzureRmPowerBIEmbeddedCapacity', 
-               'Get-AzureRmPowerBIEmbeddedCapacity', 
-               'Remove-AzureRmPowerBIEmbeddedCapacity', 
-               'Update-AzureRmPowerBIEmbeddedCapacity', 
-               'Test-AzureRmPowerBIEmbeddedCapacity', 
-               'New-AzureRmPowerBIEmbeddedCapacity'
+CmdletsToExport = 'Remove-PowerBIWorkspaceCollection', 
+               'Get-PowerBIWorkspaceCollection', 
+               'Get-PowerBIWorkspaceCollectionAccessKeys', 
+               'Get-PowerBIWorkspace', 
+               'New-PowerBIWorkspaceCollection', 
+               'Reset-PowerBIWorkspaceCollectionAccessKeys', 
+               'Resume-PowerBIEmbeddedCapacity', 
+               'Suspend-PowerBIEmbeddedCapacity', 
+               'Get-PowerBIEmbeddedCapacity', 
+               'Remove-PowerBIEmbeddedCapacity', 
+               'Update-PowerBIEmbeddedCapacity', 
+               'Test-PowerBIEmbeddedCapacity', 
+               'New-PowerBIEmbeddedCapacity'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -140,7 +140,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

@@ -19,11 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        Constants.CommandNames.AzureHDInsightProperties),
-    OutputType(
-        typeof(CapabilitiesResponse))]
+    [Cmdlet("Get","HDInsightProperties"),OutputType(typeof(CapabilitiesResponse))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmHDInsightProperties")]
+#endif
     public class GetAzureHDInsightPropertiesCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -45,3 +44,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

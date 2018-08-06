@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,10 +25,11 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlCapability cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlCapability",
-        ConfirmImpact = ConfirmImpact.None,
-        DefaultParameterSetName = _filtered, SupportsShouldProcess = true)]
+    [Cmdlet("Get","SqlCapability",ConfirmImpact = ConfirmImpact.None,DefaultParameterSetName = _filtered, SupportsShouldProcess = true)]
     [OutputType(typeof(LocationCapabilityModel))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlCapability")]
+#endif
     public class GetAzureSqlCapability : AzureRMCmdlet
     {
         /// <summary>
@@ -314,3 +315,5 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
         }
     }
 }
+
+

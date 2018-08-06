@@ -23,9 +23,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets node report for a given node and report id
     /// </summary>
-    [Cmdlet(VerbsData.Export, "AzureRmAutomationDscNodeReportContent", SupportsShouldProcess = true,
-        DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Export","AutomationDscNodeReportContent", SupportsShouldProcess = true,DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DirectoryInfo))]
+#if NETSTANDARD
+    [Alias("Export-AzureRmAutomationDscNodeReportContent")]
+#endif
     public class ExportAzureAutomationDscNodeReportContent : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -78,3 +80,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

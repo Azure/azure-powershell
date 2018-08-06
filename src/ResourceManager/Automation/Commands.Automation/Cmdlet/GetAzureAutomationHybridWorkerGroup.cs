@@ -8,8 +8,11 @@ using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMAutomationHybridWorkerGroup", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Get","AutomationHybridWorkerGroup", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(HybridRunbookWorkerGroup))]
+#if NETSTANDARD
+    [Alias("Get-AzureRMAutomationHybridWorkerGroup")]
+#endif
     public class GetAzureAutomationHybridWorkerGroup : AzureAutomationBaseCmdlet
     {
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName,Position = 2,  Mandatory = false, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker Group name")]
@@ -39,3 +42,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

@@ -72,11 +72,11 @@ NestedModules = @('.\Microsoft.Azure.Commands.Dns.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmDnsRecordSet', 'New-AzureRmDnsRecordConfig', 
-               'Remove-AzureRmDnsRecordSet', 'Set-AzureRmDnsRecordSet', 
-               'Remove-AzureRmDnsRecordConfig', 'Add-AzureRmDnsRecordConfig', 
-               'New-AzureRmDnsRecordSet', 'Get-AzureRmDnsZone', 
-               'Remove-AzureRmDnsZone', 'Set-AzureRmDnsZone', 'New-AzureRmDnsZone'
+CmdletsToExport = 'Get-DnsRecordSet', 'New-DnsRecordConfig', 
+               'Remove-DnsRecordSet', 'Set-DnsRecordSet', 
+               'Remove-DnsRecordConfig', 'Add-DnsRecordConfig', 
+               'New-DnsRecordSet', 'Get-DnsZone', 
+               'Remove-DnsZone', 'Set-DnsZone', 'New-DnsZone'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -130,7 +130,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

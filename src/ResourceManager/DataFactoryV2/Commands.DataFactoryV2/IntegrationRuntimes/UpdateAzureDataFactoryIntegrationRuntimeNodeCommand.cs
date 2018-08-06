@@ -22,12 +22,10 @@ using Microsoft.Azure.Management.DataFactory.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(
-        VerbsData.Update,
-        Constants.IntegrationRuntimeNode,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
-        SupportsShouldProcess = true),
-     OutputType(typeof(PSSelfHostedIntegrationRuntimeNode))]
+    [Cmdlet("Update","DataFactoryV2IntegrationRuntimeNode",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSSelfHostedIntegrationRuntimeNode))]
+#if NETSTANDARD
+    [Alias("Update-AzureRmDataFactoryV2IntegrationRuntimeNode")]
+#endif
     public class UpdateAzureDataFactoryIntegrationRuntimeNodeCommand : IntegrationRuntimeContextBaseCmdlet
     {
         [Parameter(
@@ -78,3 +76,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
+

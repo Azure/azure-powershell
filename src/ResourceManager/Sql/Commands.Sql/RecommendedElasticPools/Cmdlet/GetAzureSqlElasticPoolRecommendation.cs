@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolRecommendation",
-        ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get","SqlElasticPoolRecommendation",ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(UpgradeRecommendedElasticPoolProperties))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlElasticPoolRecommendation")]
+#endif
     public class GetAzureSqlElasticPoolRecommendation : AzureSqlCmdletBase<IEnumerable<UpgradeRecommendedElasticPoolProperties>, AzureSqlElasticPoolRecommendationAdapter>
     {
 
@@ -58,3 +60,5 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
         }
     }
 }
+
+

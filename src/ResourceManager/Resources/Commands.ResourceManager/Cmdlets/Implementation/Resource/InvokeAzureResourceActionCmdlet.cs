@@ -24,7 +24,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that invokes a resource action.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Invoke, "AzureRmResourceAction", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet("Invoke","ResourceAction", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
+#if NETSTANDARD
+    [Alias("Invoke-AzureRmResourceAction")]
+#endif
     public sealed class InvokAzureResourceActionCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>
@@ -96,3 +99,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
+

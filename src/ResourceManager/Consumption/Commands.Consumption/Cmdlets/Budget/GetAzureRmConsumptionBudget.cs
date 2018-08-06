@@ -26,8 +26,11 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 {
     using Budget = Management.Consumption.Models.Budget;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionBudget")]
+    [Cmdlet("Get","ConsumptionBudget")]
     [OutputType(typeof(PSBudget))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmConsumptionBudget")]
+#endif
     public class GetAzureRmConsumptionBudget : AzureConsumptionCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
@@ -86,3 +89,5 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
         }
     }
 }
+
+

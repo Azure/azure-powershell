@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitAuthorization"), OutputType(typeof(PSExpressRouteCircuitAuthorization))]
+    [Cmdlet("Get","ExpressRouteCircuitAuthorization"), OutputType(typeof(PSExpressRouteCircuitAuthorization))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmExpressRouteCircuitAuthorization")]
+#endif
     public class GetAzureExpressRouteCircuitAuthorizationCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -56,3 +59,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

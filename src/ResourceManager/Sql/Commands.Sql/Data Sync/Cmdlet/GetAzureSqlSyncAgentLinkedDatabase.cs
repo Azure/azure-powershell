@@ -25,8 +25,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to list all the databases connected by a specified sync agent.  
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlSyncAgentLinkedDatabase",
-        ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncAgentLinkedDatabaseModel))]
+    [Cmdlet("Get","SqlSyncAgentLinkedDatabase",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncAgentLinkedDatabaseModel))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlSyncAgentLinkedDatabase")]
+#endif
     public class GetAzureSqlSyncAgentSqlServerDatabase : AzureSqlCmdletBase<IEnumerable<AzureSqlSyncAgentLinkedDatabaseModel>, AzureSqlDataSyncAdapter>
     {
         /// <summary>
@@ -81,3 +83,5 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+
+

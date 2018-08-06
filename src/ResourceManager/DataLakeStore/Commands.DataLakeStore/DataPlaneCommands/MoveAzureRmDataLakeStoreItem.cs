@@ -20,8 +20,12 @@ using Microsoft.Azure.DataLake.Store;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Move, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true), OutputType(typeof(string))]
+    [Cmdlet("Move","DataLakeStoreItem", SupportsShouldProcess = true), OutputType(typeof(string))]
+#if NETSTANDARD
+    [Alias("Move-AdlStoreItem", "Move-AzureRmDataLakeStoreItem")]
+#else
     [Alias("Move-AdlStoreItem")]
+#endif
     public class MoveAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -72,3 +76,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

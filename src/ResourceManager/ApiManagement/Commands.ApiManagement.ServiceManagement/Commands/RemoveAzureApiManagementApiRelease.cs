@@ -20,11 +20,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove,
-        Constants.ApiManagementApiRelease,
-        DefaultParameterSetName = ByApiReleaseIdParameterSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove","ApiManagementApiRelease",DefaultParameterSetName = ByApiReleaseIdParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApiManagementApiRelease")]
+#endif
     public class RemoveAzureApiManagementApiRelease : AzureApiManagementCmdletBase
     {
         #region Parameter Set Names
@@ -115,3 +115,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

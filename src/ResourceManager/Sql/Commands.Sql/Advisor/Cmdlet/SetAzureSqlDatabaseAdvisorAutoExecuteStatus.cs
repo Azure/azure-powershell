@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,10 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
     /// <summary>
     /// Defines the Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAdvisorAutoExecuteStatus",
-        SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseAdvisorModel))]
+    [Cmdlet("Set","SqlDatabaseAdvisorAutoExecuteStatus",SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseAdvisorModel))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus")]
+#endif
     public class SetAzureSqlDatabaseAdvisorAutoExecuteStatus : AzureSqlDatabaseAdvisorCmdletBase
     {
         /// <summary>
@@ -105,3 +107,5 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         }
     }
 }
+
+

@@ -19,7 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayProbeConfig"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Add","ApplicationGatewayProbeConfig"), OutputType(typeof(PSApplicationGateway))]
+#if NETSTANDARD
+    [Alias("Add-AzureRmApplicationGatewayProbeConfig")]
+#endif
     public class AddAzureApplicationGatewayProbeConfigCommand : AzureApplicationGatewayProbeConfigBase
     {
         [Parameter(
@@ -46,3 +49,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

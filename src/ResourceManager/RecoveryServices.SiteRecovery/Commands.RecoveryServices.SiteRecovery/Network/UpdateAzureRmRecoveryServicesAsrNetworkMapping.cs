@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,12 +20,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Updates Azure Site Recovery Network mapping.
     /// </summary>
-    [Cmdlet(
-        VerbsData.Update,
-        "AzureRmRecoveryServicesAsrNetworkMapping",
-        DefaultParameterSetName = ASRParameterSets.ByNetworkObject,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Update","RecoveryServicesAsrNetworkMapping",DefaultParameterSetName = ASRParameterSets.ByNetworkObject,SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Update-AzureRmRecoveryServicesAsrNetworkMapping")]
+#endif
     public class UpdateAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -191,3 +190,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

@@ -23,9 +23,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// <summary>
     /// Disable azure storage service DeleteRetentionPolicy, currently only available on Blob service
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Disable, StorageNouns.ServiceDeleteRetentionPolicy, SupportsShouldProcess = true),
-        OutputType(typeof(PSDeleteRetentionPolicy))]
+    [Cmdlet("Disable","AzureStorageDeleteRetentionPolicy", SupportsShouldProcess = true),OutputType(typeof(PSDeleteRetentionPolicy))]
+#if NETSTANDARD
+    [Alias("Disable-AzureStorageSoftDelete", "Disable-AzureStorageDeleteRetentionPolicy")]
+#else
     [Alias("Disable-AzureStorageSoftDelete")]
+#endif
     public class DisableAzureStorageServiceDeleteRetentionPolicyCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Display DeleteRetentionPolicyProperties")]
@@ -81,3 +84,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
     }
 }
+
+

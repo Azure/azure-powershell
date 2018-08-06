@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,15 +21,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Starts the commit failover action for a site recovery object.
     /// </summary>
-    [Cmdlet(
-        VerbsLifecycle.Start,
-        "AzureRmRecoveryServicesAsrCommitFailoverJob",
-        DefaultParameterSetName = ASRParameterSets.ByRPIObject,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Start","RecoveryServicesAsrCommitFailoverJob",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
+    [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Start-ASRCommitFailover",
+        "Start-ASRCommitFailoverJob",
+        "Start-AzureRmRecoveryServicesAsrCommitFailoverJob")]
+#else
     [Alias(
         "Start-ASRCommitFailover",
         "Start-ASRCommitFailoverJob")]
-    [OutputType(typeof(ASRJob))]
+#endif
     public class StartAzureRmRecoveryServicesAsrCommitFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -200,3 +202,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion
     }
 }
+
+

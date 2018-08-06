@@ -22,7 +22,10 @@ using Microsoft.Azure.Management.Cdn.Models;
 
 namespace Microsoft.Azure.Commands.Cdn.Origin
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmCdnOrigin"), OutputType(typeof(PSOrigin))]
+    [Cmdlet("Set","CdnOrigin"), OutputType(typeof(PSOrigin))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmCdnOrigin")]
+#endif
     public class SetAzureRmCdnOrigin : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN origin object.")]
@@ -53,3 +56,5 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
         }
     }
 }
+
+

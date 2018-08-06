@@ -27,8 +27,11 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     /// <summary>
     /// Get-AzureRmContainerGroup.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ContainerGroupNoun, DefaultParameterSetName = ListContainerGroupParamSet)]
+    [Cmdlet("Get","ContainerGroup", DefaultParameterSetName = ListContainerGroupParamSet)]
     [OutputType(typeof(PSContainerGroup))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmContainerGroup")]
+#endif
     public class GetAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {
         protected const string GetContainerGroupInResourceGroupParamSet = "GetContainerGroupInResourceGroupParamSet";
@@ -123,3 +126,5 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         }
     }
 }
+
+

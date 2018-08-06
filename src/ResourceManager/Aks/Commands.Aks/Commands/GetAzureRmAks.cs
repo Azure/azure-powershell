@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,11 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [Cmdlet(VerbsCommon.Get, KubeNounStr, DefaultParameterSetName = ResourceGroupParameterSet)]
+    [Cmdlet("Get","Aks", DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSKubernetesCluster))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmAks")]
+#endif
     public class GetAzureRmAks : KubeCmdletBase
     {
         private const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
@@ -98,3 +101,5 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 }
+
+

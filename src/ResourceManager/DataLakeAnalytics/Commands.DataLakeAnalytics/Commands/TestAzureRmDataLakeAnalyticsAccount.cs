@@ -18,8 +18,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof(bool))]
+    [Cmdlet("Test","DataLakeAnalyticsAccount"), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Test-AdlAnalyticsAccount", "Test-AzureRmDataLakeAnalyticsAccount")]
+#else
     [Alias("Test-AdlAnalyticsAccount")]
+#endif
     public class TestAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -39,3 +43,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
+

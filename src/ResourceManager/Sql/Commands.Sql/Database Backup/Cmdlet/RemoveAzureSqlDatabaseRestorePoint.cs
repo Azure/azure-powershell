@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,10 @@ using System;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseRestorePoint", SupportsShouldProcess = true),
-        OutputType(typeof(AzureSqlDatabaseRestorePointModel))]
+    [Cmdlet("Remove","SqlDatabaseRestorePoint", SupportsShouldProcess = true),OutputType(typeof(AzureSqlDatabaseRestorePointModel))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlDatabaseRestorePoint")]
+#endif
     public class RemoveAzureSqlDatabaseRestorePoint : AzureSqlDatabaseRestorePointCmdletBase
     {
         /// <summary>
@@ -76,3 +78,5 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+
+

@@ -17,8 +17,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeStoreItemContent"), OutputType(typeof(bool))]
+    [Cmdlet("Add","DataLakeStoreItemContent"), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Add-AdlStoreItemContent", "Add-AzureRmDataLakeStoreItemContent")]
+#else
     [Alias("Add-AdlStoreItemContent")]
+#endif
     public class AddAzureDataLakeStoreItemContent : DataLakeStoreFileSystemCmdletBase
     {
 
@@ -53,3 +57,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

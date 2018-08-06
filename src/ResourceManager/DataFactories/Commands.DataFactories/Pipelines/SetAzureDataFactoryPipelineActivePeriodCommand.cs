@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,10 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Set, Constants.PipelineActivePeriod, DefaultParameterSetName = ByFactoryName,
-        SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Set","DataFactoryPipelineActivePeriod", DefaultParameterSetName = ByFactoryName,SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmDataFactoryPipelineActivePeriod")]
+#endif
     public class SetAzureDataFactoryPipelineActivePeriodCommand : DataFactoryBaseCmdlet
     {
         private DateTime _endDateTime;
@@ -99,3 +101,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
+

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,9 +18,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerDisasterRecoveryConfigurationActivity",
-        ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get","SqlServerDisasterRecoveryConfigurationActivity",ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerDisasterRecoveryConfigurationActivityModel))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlServerDisasterRecoveryConfigurationActivity")]
+#endif
     public class GetAzureSqlServerDisasterRecoveryConfigurationActivity : AzureSqlServerDisasterRecoveryConfigurationActivityCmdletBase
     {
         /// <summary>
@@ -53,3 +55,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         }
     }
 }
+
+

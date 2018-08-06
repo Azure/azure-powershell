@@ -17,7 +17,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGatewayFrontendPort))]
+    [Cmdlet("New","ApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGatewayFrontendPort))]
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationGatewayFrontendPort")]
+#endif
     public class NewAzureApplicationGatewayFrontendPortCommand : AzureApplicationGatewayFrontendPortBase
     {
         public override void ExecuteCmdlet()
@@ -27,3 +30,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

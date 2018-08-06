@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -133,8 +133,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter")]
+    [Cmdlet("Get","Vmss", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVmss")]
+#endif
     public partial class GetAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -251,3 +254,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter OSUpgradeHistory { get; set; }
     }
 }
+
+

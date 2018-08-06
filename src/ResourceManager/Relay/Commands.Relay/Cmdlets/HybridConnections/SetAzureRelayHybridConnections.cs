@@ -21,7 +21,10 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
     /// <summary>
     /// 'Set-AzureRmRelayHybridConnection' Cmdlet updates the specified WcfRelay
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, RelayHybridConnectionVerb, SupportsShouldProcess = true), OutputType(typeof(HybridConnectionAttibutes))]
+    [Cmdlet("Set","RelayHybridConnection", SupportsShouldProcess = true), OutputType(typeof(HybridConnectionAttibutes))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmRelayHybridConnection")]
+#endif
     public class SetAzureRelayHybridConnections : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -81,3 +84,5 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
         }
     }
 }
+
+

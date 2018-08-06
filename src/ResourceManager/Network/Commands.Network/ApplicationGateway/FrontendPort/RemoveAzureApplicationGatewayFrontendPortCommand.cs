@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Remove","ApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGateway))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationGatewayFrontendPort")]
+#endif
     public class RemoveAzureApplicationGatewayFrontendPortCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -49,3 +52,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

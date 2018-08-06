@@ -25,8 +25,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"),
-        OutputType(typeof(bool))]
+    [Cmdlet("Remove","NetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"),OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmNetworkWatcherConnectionMonitor")]
+#endif
     public class RemoveAzureNetworkWatcherConnectionMonitorCommand : ConnectionMonitorBaseCmdlet
     {
         [Parameter(
@@ -157,3 +159,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

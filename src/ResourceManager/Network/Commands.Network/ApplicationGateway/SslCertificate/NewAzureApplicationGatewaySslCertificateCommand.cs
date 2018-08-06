@@ -17,7 +17,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGatewaySslCertificate))]
+    [Cmdlet("New","ApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGatewaySslCertificate))]
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationGatewaySslCertificate")]
+#endif
     public class NewAzureApplicationGatewaySslCertificateCommand : AzureApplicationGatewaySslCertificateBase
     {
         public override void ExecuteCmdlet()
@@ -27,3 +30,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     ///     Gets the status of an Azure Web App backup
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppBackupList"), OutputType(typeof(AzureWebAppBackup))]
+    [Cmdlet("Get","WebAppBackupList"), OutputType(typeof(AzureWebAppBackup))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmWebAppBackupList")]
+#endif
     public class GetAzureWebAppBackupList : WebAppOptionalSlotBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -38,3 +41,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+
+

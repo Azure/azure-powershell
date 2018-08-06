@@ -25,7 +25,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     /// <para> If AuthorizationRule name provided, a single AuthorizationRule detials will be returned</para>
     /// <para> If AuthorizationRule name not provided, list of AuthorizationRules will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServiceBusAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
+    [Cmdlet("Get","ServiceBusAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmServiceBusAuthorizationRule")]
+#endif
     public class GetAzureServiceBusAuthorizationRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -124,3 +127,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         }
     }
 }
+
+

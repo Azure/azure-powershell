@@ -25,7 +25,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Gets the AD application.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmADApplication", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(PSADApplication))]
+    [Cmdlet("Get","ADApplication", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(PSADApplication))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmADApplication")]
+#endif
     public class GetAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectId, HelpMessage = "The application object id.")]
@@ -85,3 +88,5 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+
+

@@ -24,8 +24,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new Certificate for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmAutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
+    [Cmdlet("Set","AutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
     [OutputType(typeof(CertificateInfo))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmAutomationCertificate")]
+#endif
     public class SetAzureAutomationCertificate : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -76,3 +79,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

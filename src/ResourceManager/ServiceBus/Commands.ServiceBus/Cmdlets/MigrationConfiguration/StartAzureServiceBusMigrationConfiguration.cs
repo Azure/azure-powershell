@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
     /// <summary>
     /// 'Start-AzureRmServicebusMigration' Cmdlet Creates an new Migration configuration of Standard to Premium
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, ServicebusMigrationConfigurationVerb, DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServiceBusDRConfigurationAttributes))]
+    [Cmdlet("Start","ServiceBusMigration", DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServiceBusDRConfigurationAttributes))]
+#if NETSTANDARD
+    [Alias("Start-AzureRmServiceBusMigration")]
+#endif
     public class StartAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -57,3 +60,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
         }
     }
 }
+
+

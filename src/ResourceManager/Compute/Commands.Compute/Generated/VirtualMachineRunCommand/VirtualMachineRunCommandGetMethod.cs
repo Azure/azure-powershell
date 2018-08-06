@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -117,8 +117,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmVMRunCommandDocument", DefaultParameterSetName = "DefaultParameter")]
+    [Cmdlet("Get","VMRunCommandDocument", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSRunCommandDocument))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMRunCommandDocument")]
+#endif
     public partial class GetAzureRmVMRunCommandDocument : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -175,3 +178,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string CommandId { get; set; }
     }
 }
+
+

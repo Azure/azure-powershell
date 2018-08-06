@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmNetworkSecurityGroup", SupportsShouldProcess = true),
-        OutputType(typeof(PSNetworkSecurityGroup))]
+    [Cmdlet("New","NetworkSecurityGroup", SupportsShouldProcess = true),OutputType(typeof(PSNetworkSecurityGroup))]
+#if NETSTANDARD
+    [Alias("New-AzureRmNetworkSecurityGroup")]
+#endif
     public class NewAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -114,3 +116,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

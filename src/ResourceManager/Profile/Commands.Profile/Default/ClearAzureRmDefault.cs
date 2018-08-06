@@ -24,9 +24,11 @@ namespace Microsoft.Azure.Commands.Profile.Default
     /// <summary>
     /// Cmdlet to clear default options. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Clear, "AzureRmDefault", DefaultParameterSetName = ResourceGroupParameterSet,
-         SupportsShouldProcess = true)]
+    [Cmdlet("Clear", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Default", DefaultParameterSetName = ResourceGroupParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Clear-AzureRmDefault")]
+#endif
     public class ClearAzureRMDefaultCommand : AzureContextModificationCmdlet
     {
         private const string ResourceGroupParameterSet = "ResourceGroup";
@@ -104,3 +106,5 @@ namespace Microsoft.Azure.Commands.Profile.Default
         }
     }
 }
+
+

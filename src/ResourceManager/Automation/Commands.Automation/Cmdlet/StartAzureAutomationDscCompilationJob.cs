@@ -25,8 +25,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// starts azure automation compilation job
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmAutomationDscCompilationJob", SupportsShouldProcess = true)]
+    [Cmdlet("Start","AutomationDscCompilationJob", SupportsShouldProcess = true)]
     [OutputType(typeof(CompilationJob))]
+#if NETSTANDARD
+    [Alias("Start-AzureRmAutomationDscCompilationJob")]
+#endif
     public class StartAzureAutomationDscCompilationJob : AzureAutomationBaseCmdlet
     {
 
@@ -84,3 +87,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

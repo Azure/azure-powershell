@@ -18,9 +18,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDtlVMsPerUserPolicy",
-        HelpUri = Constants.DevTestLabsHelpUri)]
+    [Cmdlet("Get","DtlVMsPerUserPolicy",HelpUri = Constants.DevTestLabsHelpUri)]
     [OutputType(typeof(PSPolicy))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmDtlVMsPerUserPolicy")]
+#endif
     public class GetAzureRmDtlVMsPerUserPolicy : DevTestLabsCmdletBase
     {
         public override void ExecuteCmdlet()
@@ -34,3 +36,5 @@ namespace Microsoft.Azure.Commands.DevTestLabs
         }
     }
 }
+
+

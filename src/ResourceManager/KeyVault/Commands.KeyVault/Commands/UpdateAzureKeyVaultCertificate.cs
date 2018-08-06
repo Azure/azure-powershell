@@ -19,11 +19,13 @@ using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsData.Update, "AzureKeyVaultCertificate",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ByNameParameterSet)]
-    [Alias("Set-AzureKeyVaultCertificateAttribute")]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificate", SupportsShouldProcess = true,DefaultParameterSetName = ByNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificate))]
+#if NETSTANDARD
+    [Alias("Set-AzureKeyVaultCertificateAttribute", "Update-AzureKeyVaultCertificate")]
+#else
+    [Alias("Set-AzureKeyVaultCertificateAttribute")]
+#endif
     public class UpdateAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -132,3 +134,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
+

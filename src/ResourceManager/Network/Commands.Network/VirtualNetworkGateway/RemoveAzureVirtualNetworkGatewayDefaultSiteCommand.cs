@@ -22,7 +22,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmVirtualNetworkGatewayDefaultSite"), OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet("Remove","VirtualNetworkGatewayDefaultSite"), OutputType(typeof(PSVirtualNetworkGateway))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVirtualNetworkGatewayDefaultSite")]
+#endif
     public class RemoveAzureVirtualNetworkGatewayDefaultSiteCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
@@ -54,4 +57,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Deletes/unregister the specified Azure Site Recovery recovery services provider from the recovery services vault.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Remove,
-        "AzureRmRecoveryServicesAsrServicesProvider",
-        DefaultParameterSetName = ASRParameterSets.Default,
-        SupportsShouldProcess = true)]
-    [Alias("Remove-ASRServicesProvider")]
+    [Cmdlet("Remove","RecoveryServicesAsrServicesProvider",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Remove-ASRServicesProvider", "Remove-AzureRmRecoveryServicesAsrServicesProvider")]
+#else
+    [Alias("Remove-ASRServicesProvider")]
+#endif
     public class RemoveAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -92,3 +92,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

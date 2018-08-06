@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,15 +19,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Gets ASR vault settings information for the Recovery Services vault.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrVaultContext")]
+    [Cmdlet("Get","RecoveryServicesAsrVaultContext")]
     [OutputType(typeof(ASRVaultSettings))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesAsrVaultSettings",
+        "Get-ASRVaultContext",
+        "Get-ASRVaultSettings",
+        "Get-AzureRmRecoveryServicesAsrVaultContext")]
+#else
     [Alias(
         "Get-AzureRmRecoveryServicesAsrVaultSettings",
         "Get-ASRVaultContext",
         "Get-ASRVaultSettings"
         )]
+#endif
     public class GetAzureRmRecoveryServicesAsrVaultSettings : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -41,3 +46,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

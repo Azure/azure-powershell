@@ -24,10 +24,11 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Restores a certificate from a backup file into a vault 
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureKeyVaultCertificate",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificate", SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificate))]
+#if NETSTANDARD
+    [Alias("Restore-AzureKeyVaultCertificate")]
+#endif
     public class RestoreAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -111,3 +112,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
+

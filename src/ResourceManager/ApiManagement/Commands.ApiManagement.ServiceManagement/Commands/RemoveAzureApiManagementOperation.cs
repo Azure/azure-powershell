@@ -21,8 +21,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Models;
     using Properties;
 
-    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementOperation, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","ApiManagementOperation", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApiManagementOperation")]
+#endif
     public class RemoveAzureApiManagementOperation : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -89,3 +92,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

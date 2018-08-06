@@ -22,11 +22,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        EventGridEventSubscriptionVerb,
-        DefaultParameterSetName = EventSubscriptionTopicNameParameterSet),
-     OutputType(typeof(PSEventSubscription))]
+    [Cmdlet("Get","EventGridSubscription",DefaultParameterSetName = EventSubscriptionTopicNameParameterSet),OutputType(typeof(PSEventSubscription))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmEventGridSubscription")]
+#endif
     public class GetAzureRmEventGridSubscription : AzureEventGridCmdletBase
     {
         [Parameter(Mandatory = false,
@@ -263,3 +262,5 @@ namespace Microsoft.Azure.Commands.EventGrid
         }
     }
 }
+
+

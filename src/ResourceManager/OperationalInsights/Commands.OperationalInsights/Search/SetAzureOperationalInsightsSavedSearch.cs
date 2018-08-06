@@ -20,7 +20,10 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Set, Constants.SavedSearch), OutputType(typeof(HttpStatusCode))]
+    [Cmdlet("Set","OperationalInsightsSavedSearch"), OutputType(typeof(HttpStatusCode))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmOperationalInsightsSavedSearch")]
+#endif
     public class SetAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -86,3 +89,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
     }
 }
+
+

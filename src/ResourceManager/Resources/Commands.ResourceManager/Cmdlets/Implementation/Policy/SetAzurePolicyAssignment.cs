@@ -29,7 +29,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Sets the policy assignment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmPolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet("Set","PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PSObject))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmPolicyAssignment")]
+#endif
     public class SetAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -159,3 +162,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
+

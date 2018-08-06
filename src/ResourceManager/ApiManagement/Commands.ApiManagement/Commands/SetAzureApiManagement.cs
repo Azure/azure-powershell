@@ -19,7 +19,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmApiManagement", SupportsShouldProcess = true), OutputType(typeof(PsApiManagement))]
+    [Cmdlet("Set","ApiManagement", SupportsShouldProcess = true), OutputType(typeof(PsApiManagement))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmApiManagement")]
+#endif
     public class SetAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -56,3 +59,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
+

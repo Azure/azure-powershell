@@ -19,7 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmNotificationHubPNSCredentials"), OutputType(typeof(NotificationHubAttributes))]
+    [Cmdlet("Get","NotificationHubPNSCredentials"), OutputType(typeof(NotificationHubAttributes))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmNotificationHubPNSCredentials")]
+#endif
     public class GetAzureNotificationHubPNSCredentials : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -52,3 +55,5 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         }
     }
 }
+
+

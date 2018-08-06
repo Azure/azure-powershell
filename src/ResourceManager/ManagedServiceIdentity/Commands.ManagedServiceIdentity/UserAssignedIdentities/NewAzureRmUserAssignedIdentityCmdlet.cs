@@ -11,8 +11,11 @@ using Identity = Microsoft.Azure.Management.ManagedServiceIdentity.Models.Identi
 
 namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmUserAssignedIdentity", SupportsShouldProcess = true)]
+    [Cmdlet("New","UserAssignedIdentity", SupportsShouldProcess = true)]
     [OutputType(typeof (PsUserAssignedIdentity))]
+#if NETSTANDARD
+    [Alias("New-AzureRmUserAssignedIdentity")]
+#endif
     public class NewAzureRmUserAssignedIdentityCmdlet : MsiBaseCmdlet
     {
         [Parameter(
@@ -87,3 +90,5 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
         }
     }
 }
+
+

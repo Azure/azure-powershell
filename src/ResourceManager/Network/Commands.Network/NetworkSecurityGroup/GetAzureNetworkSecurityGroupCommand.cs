@@ -22,7 +22,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
+    [Cmdlet("Get","NetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmNetworkSecurityGroup")]
+#endif
     public class GetAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -99,3 +102,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

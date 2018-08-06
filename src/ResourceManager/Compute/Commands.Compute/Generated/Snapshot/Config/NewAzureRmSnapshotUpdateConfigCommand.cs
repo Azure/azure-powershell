@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,8 +31,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmSnapshotUpdateConfig", SupportsShouldProcess = true)]
+    [Cmdlet("New","SnapshotUpdateConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
+#if NETSTANDARD
+    [Alias("New-AzureRmSnapshotUpdateConfig")]
+#endif
     public partial class NewAzureRmSnapshotUpdateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -143,4 +146,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

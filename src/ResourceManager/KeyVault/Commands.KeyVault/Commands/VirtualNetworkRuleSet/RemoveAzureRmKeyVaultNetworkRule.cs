@@ -24,10 +24,11 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Remove network rule 
     /// NOTE: Define VaultName & ResourceGroupName in this class instead of base one because TAB order for input.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVaultNetworkRule",
-        DefaultParameterSetName = ByVaultNameParameterSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultNetworkRule", DefaultParameterSetName = ByVaultNameParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVault))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmKeyVaultNetworkRule")]
+#endif
     public class RemoveAzureRmKeyVaultNetworkRule : KeyVaultNetworkRuleSetBase
     {
         private const string ByVaultNameParameterSet = "ByVaultName";
@@ -156,3 +157,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
+

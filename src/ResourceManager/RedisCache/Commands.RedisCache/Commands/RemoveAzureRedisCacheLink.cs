@@ -18,7 +18,10 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Management.Automation;
     using Properties;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRedisCacheLink", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove","RedisCacheLink", SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmRedisCacheLink")]
+#endif
     public class RemoveAzureRedisCacheLink : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of primary redis cache in link.")]
@@ -52,3 +55,5 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+
+

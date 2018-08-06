@@ -21,7 +21,10 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
     /// <summary>
     /// 'Set-AzureRmWcfRelay' Cmdlet updates the specified WcfRelay
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, RelayWcfRelayVerb, SupportsShouldProcess = true), OutputType(typeof(WcfRelayAttributes))]
+    [Cmdlet("Set","WcfRelay", SupportsShouldProcess = true), OutputType(typeof(WcfRelayAttributes))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmWcfRelay")]
+#endif
     public class SetAzureWcfRelay : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -81,3 +84,5 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
         }
     }
 }
+
+

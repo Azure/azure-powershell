@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,8 +29,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmSnapshotUpdateKeyEncryptionKey", SupportsShouldProcess = true)]
+    [Cmdlet("Set","SnapshotUpdateKeyEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmSnapshotUpdateKeyEncryptionKey")]
+#endif
     public partial class SetAzureRmSnapshotUpdateKeyEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -101,4 +104,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

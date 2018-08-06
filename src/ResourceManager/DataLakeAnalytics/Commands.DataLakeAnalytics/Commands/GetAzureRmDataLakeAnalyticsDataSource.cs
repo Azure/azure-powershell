@@ -21,8 +21,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsDataSource", DefaultParameterSetName = ListStorageParameterSetName), OutputType(typeof(PSStorageAccountInfo), typeof(PSDataLakeStoreAccountInfo), typeof(AdlDataSource))]
+    [Cmdlet("Get","DataLakeAnalyticsDataSource", DefaultParameterSetName = ListStorageParameterSetName), OutputType(typeof(PSStorageAccountInfo), typeof(PSDataLakeStoreAccountInfo), typeof(AdlDataSource))]
+#if NETSTANDARD
+    [Alias("Get-AdlAnalyticsDataSource", "Get-AzureRmDataLakeAnalyticsDataSource")]
+#else
     [Alias("Get-AdlAnalyticsDataSource")]
+#endif
     public class GetAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
         internal const string DataLakeParameterSetName = "GetDataLakeStoreAccount";
@@ -85,3 +89,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
+

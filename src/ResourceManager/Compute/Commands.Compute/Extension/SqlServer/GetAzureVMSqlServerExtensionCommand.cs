@@ -26,12 +26,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ProfileNouns.VirtualMachineSqlServerExtension,
-        DefaultParameterSetName = GetSqlServerExtensionParamSetName),
-    OutputType(
-        typeof(VirtualMachineSqlServerExtensionContext))]
+    [Cmdlet("Get","VMSqlServerExtension",DefaultParameterSetName = GetSqlServerExtensionParamSetName),OutputType(typeof(VirtualMachineSqlServerExtensionContext))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMSqlServerExtension")]
+#endif
     public class GetAzureVMSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string GetSqlServerExtensionParamSetName = "GetSqlServerExtension";
@@ -211,3 +209,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

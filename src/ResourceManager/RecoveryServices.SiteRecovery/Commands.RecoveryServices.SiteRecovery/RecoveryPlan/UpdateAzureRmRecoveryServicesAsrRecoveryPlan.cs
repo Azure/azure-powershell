@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,13 +26,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Updates the contents of an Azure Site recovery plan.
     /// </summary>
-    [Cmdlet(
-        VerbsData.Update,
-        "AzureRmRecoveryServicesAsrRecoveryPlan",
-        DefaultParameterSetName = ASRParameterSets.ByRPObject,
-        SupportsShouldProcess = true)]
-    [Alias("Update-ASRRecoveryPlan")]
+    [Cmdlet("Update","RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.ByRPObject,SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Update-ASRRecoveryPlan", "Update-AzureRmRecoveryServicesAsrRecoveryPlan")]
+#else
+    [Alias("Update-ASRRecoveryPlan")]
+#endif
     public class UpdateAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -218,3 +218,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

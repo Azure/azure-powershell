@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,8 +30,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmVmssIpTagConfig")]
+    [Cmdlet("New","VmssIpTagConfig")]
     [OutputType(typeof(Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIpTag))]
+#if NETSTANDARD
+    [Alias("New-AzureRmVmssIpTagConfig")]
+#endif
     public partial class NewAzureRmVmssIpTagConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -62,4 +65,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     /// <summary>
     /// Defines the AzureRmSqlDatabaseImport cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseImport", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
+    [Cmdlet("New","SqlDatabaseImport", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
+#if NETSTANDARD
+    [Alias("New-AzureRmSqlDatabaseImport")]
+#endif
     public class NewAzureSqlDatabaseImport : ImportExportCmdletBase
     {
         /// <summary>
@@ -112,3 +115,5 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         }
     }
 }
+
+

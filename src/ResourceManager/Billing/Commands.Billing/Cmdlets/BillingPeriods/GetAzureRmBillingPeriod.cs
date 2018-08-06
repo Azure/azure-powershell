@@ -22,7 +22,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmBillingPeriod", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSBillingPeriod))]
+    [Cmdlet("Get","BillingPeriod", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSBillingPeriod))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmBillingPeriod")]
+#endif
     public class GetAzureRmBillingPeriod : AzureBillingCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Name of a specific billing period to get.", ParameterSetName = Constants.ParameterSetNames.SingleItemParameterSet)]
@@ -68,3 +71,5 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
         }
     }
 }
+
+

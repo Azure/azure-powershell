@@ -24,8 +24,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Returns a schedule policy PS object which can be modified in the PS shell 
     /// and fed to other cmdlets which accept it.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupSchedulePolicyObject"),
-    OutputType(typeof(SchedulePolicyBase))]
+    [Cmdlet("Get","RecoveryServicesBackupSchedulePolicyObject"),OutputType(typeof(SchedulePolicyBase))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesBackupSchedulePolicyObject")]
+#endif
     public class GetAzureRmRecoveryServicesBackupSchedulePolicyObject : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
@@ -60,3 +62,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
+

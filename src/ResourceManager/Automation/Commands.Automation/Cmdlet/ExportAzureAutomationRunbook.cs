@@ -24,8 +24,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation runbook definitions for a given account.
     /// </summary>
-    [Cmdlet(VerbsData.Export, "AzureRmAutomationRunbook", SupportsShouldProcess = true)]
+    [Cmdlet("Export","AutomationRunbook", SupportsShouldProcess = true)]
     [OutputType(typeof(DirectoryInfo))]
+#if NETSTANDARD
+    [Alias("Export-AzureRmAutomationRunbook")]
+#endif
     public class ExportAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -92,3 +95,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
+

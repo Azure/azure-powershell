@@ -24,11 +24,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDtlAutoStartPolicy",
-        HelpUri = Constants.DevTestLabsHelpUri,
-        DefaultParameterSetName = ParameterSetEnable,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set","DtlAutoStartPolicy",HelpUri = Constants.DevTestLabsHelpUri,DefaultParameterSetName = ParameterSetEnable,SupportsShouldProcess = true)]
     [OutputType(typeof(PSSchedule))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmDtlAutoStartPolicy")]
+#endif
     public class SetAzureRmDtlAutoStartPolicy : DtlPolicyCmdletBase
     {
         protected override string PolicyName
@@ -148,3 +148,5 @@ namespace Microsoft.Azure.Commands.DevTestLabs
         }
     }
 }
+
+

@@ -20,7 +20,10 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
+    [Cmdlet("Get","TrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmTrafficManagerEndpoint")]
+#endif
     public class GetAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
@@ -71,3 +74,5 @@ namespace Microsoft.Azure.Commands.TrafficManager
         }
     }
 }
+
+

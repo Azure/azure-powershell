@@ -22,7 +22,10 @@ using Microsoft.Azure.Commands.Cdn.EdgeNodes;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnEdgeNodes"), OutputType(typeof(PSEdgeNode))]
+    [Cmdlet("Get","CdnEdgeNodes"), OutputType(typeof(PSEdgeNode))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmCdnEdgeNodes")]
+#endif
     public class GetAzureRmCdnEdgeNodes : AzureCdnCmdletBase
     {
 
@@ -35,3 +38,5 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+
+

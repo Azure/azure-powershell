@@ -19,8 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), 
-        OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Add","ApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
+#if NETSTANDARD
+    [Alias("Add-AzureRmApplicationGatewayAuthenticationCertificate")]
+#endif
     public class AddAzureApplicationGatewayAuthenticationCertificateCommand : AzureApplicationGatewayAuthenticationCertificateBase
     {
         [Parameter(
@@ -50,3 +52,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

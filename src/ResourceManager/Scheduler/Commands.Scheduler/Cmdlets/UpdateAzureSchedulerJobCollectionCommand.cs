@@ -24,7 +24,10 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     /// <summary>
     /// Updates existing job collection.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSchedulerJobCollection", SupportsShouldProcess = true), OutputType(typeof(PSJobCollectionDefinition))]
+    [Cmdlet("Set","SchedulerJobCollection", SupportsShouldProcess = true), OutputType(typeof(PSJobCollectionDefinition))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmSchedulerJobCollection")]
+#endif
     public class UpdateAzureSchedulerJobCollectionCommand : SchedulerBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job collection.")]
@@ -85,3 +88,5 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
         }
     }
 }
+
+

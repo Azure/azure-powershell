@@ -31,7 +31,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates a policy assignment.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmPolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet("New","PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PSObject))]
+#if NETSTANDARD
+    [Alias("New-AzureRmPolicyAssignment")]
+#endif
     public class NewAzurePolicyAssignmentCmdlet : PolicyCmdletBase, IDynamicParameters
     {
         private readonly RuntimeDefinedParameterDictionary dynamicParameters = new RuntimeDefinedParameterDictionary();
@@ -276,3 +279,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
+

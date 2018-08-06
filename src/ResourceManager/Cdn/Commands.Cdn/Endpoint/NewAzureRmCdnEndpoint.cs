@@ -29,7 +29,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmCdnEndpoint", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSEndpoint))]
+    [Cmdlet("New","CdnEndpoint", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSEndpoint))]
+#if NETSTANDARD
+    [Alias("New-AzureRmCdnEndpoint")]
+#endif
     public class NewAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN endpoint name.")]
@@ -157,3 +160,5 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+
+

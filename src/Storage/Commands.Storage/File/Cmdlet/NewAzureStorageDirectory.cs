@@ -18,7 +18,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, Constants.FileDirectoryCmdletName, DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(CloudFileDirectory))]
+    [Cmdlet("New","AzureStorageDirectory", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(CloudFileDirectory))]
+#if NETSTANDARD
+    [Alias("New-AzureStorageDirectory")]
+#endif
     public class NewAzureStorageDirectory : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -89,3 +92,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+
+

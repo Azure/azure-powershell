@@ -21,8 +21,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, SignalRNoun, DefaultParameterSetName = ListSignalRServiceParameterSet)]
+    [Cmdlet("Get","SignalR", DefaultParameterSetName = ListSignalRServiceParameterSet)]
     [OutputType(typeof(PSSignalRResource))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSignalR")]
+#endif
     public class GetAzureRmSignalR : SignalRCmdletBase, IWithResourceId
     {
         [Parameter(
@@ -86,3 +89,5 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         }
     }
 }
+
+

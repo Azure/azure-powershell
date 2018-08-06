@@ -72,39 +72,39 @@ NestedModules = @('.\Microsoft.Azure.Commands.LogicApp.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmIntegrationAccountAgreement', 
-               'Get-AzureRmIntegrationAccountCallbackUrl', 
-               'Get-AzureRmIntegrationAccountCertificate', 
-               'Get-AzureRmIntegrationAccount', 'Get-AzureRmIntegrationAccountMap', 
-               'Get-AzureRmIntegrationAccountPartner', 
-               'Get-AzureRmIntegrationAccountSchema', 
-               'Get-AzureRmIntegrationAccountGeneratedIcn', 
-               'Get-AzureRmIntegrationAccountReceivedIcn', 
-               'New-AzureRmIntegrationAccountAgreement', 
-               'New-AzureRmIntegrationAccountCertificate', 
-               'New-AzureRmIntegrationAccount', 'New-AzureRmIntegrationAccountMap', 
-               'New-AzureRmIntegrationAccountPartner', 
-               'New-AzureRmIntegrationAccountSchema', 
-               'Remove-AzureRmIntegrationAccountAgreement', 
-               'Remove-AzureRmIntegrationAccountCertificate', 
-               'Remove-AzureRmIntegrationAccount', 
-               'Remove-AzureRmIntegrationAccountMap', 
-               'Remove-AzureRmIntegrationAccountPartner', 
-               'Remove-AzureRmIntegrationAccountSchema', 
-               'Remove-AzureRmIntegrationAccountReceivedIcn', 
-               'Set-AzureRmIntegrationAccountAgreement', 
-               'Set-AzureRmIntegrationAccountCertificate', 
-               'Set-AzureRmIntegrationAccount', 'Set-AzureRmIntegrationAccountMap', 
-               'Set-AzureRmIntegrationAccountPartner', 
-               'Set-AzureRmIntegrationAccountSchema', 'Stop-AzureRmLogicAppRun', 
-               'Set-AzureRmIntegrationAccountGeneratedIcn', 
-               'Set-AzureRmIntegrationAccountReceivedIcn', 'Get-AzureRmLogicApp', 
-               'Get-AzureRmLogicAppRunAction', 'Get-AzureRmLogicAppRunHistory', 
-               'Get-AzureRmLogicAppTriggerCallbackUrl', 
-               'Get-AzureRmLogicAppTrigger', 'Get-AzureRmLogicAppTriggerHistory', 
-               'Get-AzureRmLogicAppUpgradedDefinition', 'New-AzureRmLogicApp', 
-               'Remove-AzureRmLogicApp', 'Start-AzureRmLogicApp', 
-               'Set-AzureRmLogicApp', 'Test-AzureRmLogicApp'
+CmdletsToExport = 'Get-IntegrationAccountAgreement', 
+               'Get-IntegrationAccountCallbackUrl', 
+               'Get-IntegrationAccountCertificate', 
+               'Get-IntegrationAccount', 'Get-IntegrationAccountMap', 
+               'Get-IntegrationAccountPartner', 
+               'Get-IntegrationAccountSchema', 
+               'Get-IntegrationAccountGeneratedIcn', 
+               'Get-IntegrationAccountReceivedIcn', 
+               'New-IntegrationAccountAgreement', 
+               'New-IntegrationAccountCertificate', 
+               'New-IntegrationAccount', 'New-IntegrationAccountMap', 
+               'New-IntegrationAccountPartner', 
+               'New-IntegrationAccountSchema', 
+               'Remove-IntegrationAccountAgreement', 
+               'Remove-IntegrationAccountCertificate', 
+               'Remove-IntegrationAccount', 
+               'Remove-IntegrationAccountMap', 
+               'Remove-IntegrationAccountPartner', 
+               'Remove-IntegrationAccountSchema', 
+               'Remove-IntegrationAccountReceivedIcn', 
+               'Set-IntegrationAccountAgreement', 
+               'Set-IntegrationAccountCertificate', 
+               'Set-IntegrationAccount', 'Set-IntegrationAccountMap', 
+               'Set-IntegrationAccountPartner', 
+               'Set-IntegrationAccountSchema', 'Stop-LogicAppRun', 
+               'Set-IntegrationAccountGeneratedIcn', 
+               'Set-IntegrationAccountReceivedIcn', 'Get-LogicApp', 
+               'Get-LogicAppRunAction', 'Get-LogicAppRunHistory', 
+               'Get-LogicAppTriggerCallbackUrl', 
+               'Get-LogicAppTrigger', 'Get-LogicAppTriggerHistory', 
+               'Get-LogicAppUpgradedDefinition', 'New-LogicApp', 
+               'Remove-LogicApp', 'Start-LogicApp', 
+               'Set-LogicApp', 'Test-LogicApp'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -158,7 +158,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

@@ -33,8 +33,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     /// <summary>
     /// download blob from azure
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageNouns.BlobContent, SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet),
-        OutputType(typeof(AzureStorageBlob))]
+    [Cmdlet("Set","AzureStorageBlobContent", SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet),OutputType(typeof(AzureStorageBlob))]
+#if NETSTANDARD
+    [Alias("Set-AzureStorageBlobContent")]
+#endif
     public class SetAzureBlobContentCommand : StorageDataMovementCmdletBase
     {
         /// <summary>
@@ -544,3 +546,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
     }
 }
+
+

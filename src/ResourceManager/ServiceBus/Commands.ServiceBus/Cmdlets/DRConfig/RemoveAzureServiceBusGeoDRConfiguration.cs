@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// <summary>
     /// 'Remove-AzureRmServicebusGeoDRConfiguration' Cmdlet Deletes an Alias(Disaster Recovery configuration)
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusDRConfigurationVerb, DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove","ServiceBusGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmServiceBusGeoDRConfiguration")]
+#endif
     public class RemoveServicBusGeoDRConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -108,3 +111,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         }
     }
 }
+
+

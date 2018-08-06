@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsData.Restore, "AzureRmSqlDatabase",
-        ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlDatabaseModel))]
+    [Cmdlet("Restore","SqlDatabase",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlDatabaseModel))]
+#if NETSTANDARD
+    [Alias("Restore-AzureRmSqlDatabase")]
+#endif
     public class RestoreAzureRmSqlDatabase
         : AzureSqlCmdletBase<Database.Model.AzureSqlDatabaseModel, AzureSqlDatabaseBackupAdapter>
     {
@@ -358,3 +360,5 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+
+

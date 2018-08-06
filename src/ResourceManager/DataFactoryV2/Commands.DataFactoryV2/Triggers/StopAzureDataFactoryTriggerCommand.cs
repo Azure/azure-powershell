@@ -21,8 +21,10 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsLifecycle.Stop, Constants.Trigger, DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),
-        OutputType(typeof(PSTrigger))]
+    [Cmdlet("Stop","DataFactoryV2Trigger", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),OutputType(typeof(PSTrigger))]
+#if NETSTANDARD
+    [Alias("Stop-AzureRmDataFactoryV2Trigger")]
+#endif
     public class StopAzureDataFactoryTriggerCommand : DataFactoryContextActionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -61,3 +63,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
+

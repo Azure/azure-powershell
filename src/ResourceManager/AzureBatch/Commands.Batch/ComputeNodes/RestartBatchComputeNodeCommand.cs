@@ -20,7 +20,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Restart, Constants.AzureBatchComputeNode, DefaultParameterSetName = Constants.IdParameterSet), OutputType(typeof(void))]
+    [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchComputeNode", DefaultParameterSetName = Constants.IdParameterSet), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Restart-AzureBatchComputeNode")]
+#endif
     public class RestartBatchComputeNodeCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
@@ -52,3 +55,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
+

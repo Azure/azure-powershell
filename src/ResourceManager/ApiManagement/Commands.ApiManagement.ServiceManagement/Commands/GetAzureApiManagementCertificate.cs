@@ -19,9 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementCertificate, DefaultParameterSetName = GetAll, 
-        SupportsShouldProcess= true)]
+    [Cmdlet("Get","ApiManagementCertificate", DefaultParameterSetName = GetAll, SupportsShouldProcess= true)]
     [OutputType(typeof(PsApiManagementCertificate))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementCertificate")]
+#endif
     public class GetAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
         private const string GetAll = "GetAllCertificates";
@@ -59,3 +61,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

@@ -21,9 +21,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsLifecycle.Stop,
-        Constants.CommandNames.AzureHDInsightJob),
-    OutputType(typeof(AzureHDInsightJob))]
+    [Cmdlet("Stop","HDInsightJob"),OutputType(typeof(AzureHDInsightJob))]
+#if NETSTANDARD
+    [Alias("Stop-AzureRmHDInsightJob")]
+#endif
     public class StopAzureHDInsightJobCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -80,3 +81,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

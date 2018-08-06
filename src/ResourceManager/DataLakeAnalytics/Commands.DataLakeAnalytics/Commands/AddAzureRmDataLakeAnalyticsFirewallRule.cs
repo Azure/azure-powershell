@@ -19,8 +19,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeAnalyticsFirewallRule", SupportsShouldProcess = true), OutputType(typeof(DataLakeAnalyticsFirewallRule))]
+    [Cmdlet("Add","DataLakeAnalyticsFirewallRule", SupportsShouldProcess = true), OutputType(typeof(DataLakeAnalyticsFirewallRule))]
+#if NETSTANDARD
+    [Alias("Add-AdlAnalyticsFirewallRule", "Add-AzureRmDataLakeAnalyticsFirewallRule")]
+#else
     [Alias("Add-AdlAnalyticsFirewallRule")]
+#endif
     public class AddAzureRmDataLakeAnalyticsFirewallRule : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -62,3 +66,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
+

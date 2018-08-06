@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
 {
-    [Cmdlet(VerbsCommon.Get, StorageUsageNounStr), OutputType(typeof(PSUsage))]
+    [Cmdlet("Get","StorageUsage"), OutputType(typeof(PSUsage))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmStorageUsage")]
+#endif
     public class GetAzureStorageUsageCommand : StorageAccountBaseCmdlet
     {
         public override void ExecuteCmdlet()
@@ -39,3 +42,5 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
         }
     }
 }
+
+

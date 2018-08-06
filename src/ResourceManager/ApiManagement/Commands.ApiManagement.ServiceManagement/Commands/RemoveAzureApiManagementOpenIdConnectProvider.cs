@@ -20,8 +20,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementOpenIdConnectProvider, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","ApiManagementOpenIdConnectProvider", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApiManagementOpenIdConnectProvider")]
+#endif
     public class RemoveAzureApiManagementOpenIdConnectProvider : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -67,3 +70,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
+

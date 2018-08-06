@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,10 @@ namespace Microsoft.Azure.Commands.RedisCache
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRedisCacheDiagnostics", SupportsShouldProcess = true),
-        OutputType(typeof(void))]
+    [Cmdlet("Remove","RedisCacheDiagnostics", SupportsShouldProcess = true),OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmRedisCacheDiagnostics")]
+#endif
     public class RemoveAzureRedisCacheDiagnostics : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]
@@ -47,3 +49,5 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+
+

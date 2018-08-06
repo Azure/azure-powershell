@@ -24,10 +24,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineSqlServerExtension)]
+    [Cmdlet("Set","VMSqlServerExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMSqlServerExtension")]
+#endif
     public class SetAzureSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         /// <summary>
@@ -206,3 +207,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

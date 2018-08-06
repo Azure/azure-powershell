@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,13 +20,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Creates an ASR network mapping between two networks.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.New,
-        "AzureRmRecoveryServicesAsrNetworkMapping",
-        DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
-        SupportsShouldProcess = true)]
-    [Alias("New-ASRNetworkMapping")]
+    [Cmdlet("New","RecoveryServicesAsrNetworkMapping",DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise,SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("New-ASRNetworkMapping", "New-AzureRmRecoveryServicesAsrNetworkMapping")]
+#else
+    [Alias("New-ASRNetworkMapping")]
+#endif
     public class NewAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -225,3 +225,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

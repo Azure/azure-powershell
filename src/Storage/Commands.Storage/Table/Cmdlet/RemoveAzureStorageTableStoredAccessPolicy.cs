@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.TableStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(Boolean))]
+    [Cmdlet("Remove","AzureStorageTableStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
+#if NETSTANDARD
+    [Alias("Remove-AzureStorageTableStoredAccessPolicy")]
+#endif
     public class RemoveAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Name")]
@@ -113,4 +116,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         }
     }
 }
+
 

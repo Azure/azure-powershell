@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,8 +29,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmDiskImageReference", SupportsShouldProcess = true)]
+    [Cmdlet("Set","DiskImageReference", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDisk))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmDiskImageReference")]
+#endif
     public partial class SetAzureRmDiskImageReferenceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
@@ -96,4 +99,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

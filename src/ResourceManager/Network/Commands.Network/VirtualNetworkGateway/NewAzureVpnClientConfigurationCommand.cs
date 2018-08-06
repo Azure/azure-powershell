@@ -25,7 +25,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVpnClientConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSVpnProfile))]
+    [Cmdlet("New","VpnClientConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSVpnProfile))]
+#if NETSTANDARD
+    [Alias("New-AzureRmVpnClientConfiguration")]
+#endif
     public class NewAzureVpnClientConfigurationCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -163,3 +166,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

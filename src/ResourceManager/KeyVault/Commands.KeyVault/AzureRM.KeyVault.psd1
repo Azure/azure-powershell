@@ -155,7 +155,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fix piping issue in Set-AzureRmKeyVaultAccessPolicy
+        ReleaseNotes = '* Fix piping issue in Set-KeyVaultAccessPolicy
 * Updated help files to include full parameter types and correct input/output types.'
 
         # Prerelease string of this module

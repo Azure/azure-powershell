@@ -27,12 +27,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.AzureDiskEncryptionExtension,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet)]
+    [Cmdlet("Set","VMDiskEncryptionExtension",SupportsShouldProcess = true,DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.singlePassParameterSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMDiskEncryptionExtension")]
+#endif
     public class SetAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -606,3 +605,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         }
     }
 }
+
+

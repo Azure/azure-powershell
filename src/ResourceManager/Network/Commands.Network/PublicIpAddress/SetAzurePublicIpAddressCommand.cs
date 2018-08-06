@@ -22,7 +22,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmPublicIpAddress"), OutputType(typeof(PSPublicIpAddress))]
+    [Cmdlet("Set","PublicIpAddress"), OutputType(typeof(PSPublicIpAddress))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmPublicIpAddress")]
+#endif
     public class SetAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Parameter(
@@ -55,3 +58,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

@@ -70,10 +70,10 @@ RequiredAssemblies = '.\Microsoft.Data.Edm.dll', '.\Microsoft.Data.OData.dll',
 NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'ConvertTo-AzureRmVhd'
+FunctionsToExport = 'ConvertTo-Vhd'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'ConvertTo-AzureRmVhd'
+CmdletsToExport = 'ConvertTo-Vhd'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -127,7 +127,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

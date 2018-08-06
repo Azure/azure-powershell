@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.Relay.Commands
     /// <summary>
     /// 'Get-AzureRmRelayKey' Cmdlet gives key detials for the given Authorization Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, RelayKeyVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(AuthorizationRuleKeysAttributes))]
+    [Cmdlet("Get","RelayKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(AuthorizationRuleKeysAttributes))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmRelayKey")]
+#endif
     public class GetAzureRelayKey : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -90,3 +93,5 @@ namespace Microsoft.Azure.Commands.Relay.Commands
         }
     }
 }
+
+

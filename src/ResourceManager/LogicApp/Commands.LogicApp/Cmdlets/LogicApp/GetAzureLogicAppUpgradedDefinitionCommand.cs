@@ -21,7 +21,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Gets the upgraded definition for a workflow.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmLogicAppUpgradedDefinition"), OutputType(typeof(object))]
+    [Cmdlet("Get","LogicAppUpgradedDefinition"), OutputType(typeof(object))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmLogicAppUpgradedDefinition")]
+#endif
     public class GetAzureLogicAppUpgradedDefinitionCommand : LogicAppBaseCmdlet
     {
 
@@ -54,3 +57,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
+

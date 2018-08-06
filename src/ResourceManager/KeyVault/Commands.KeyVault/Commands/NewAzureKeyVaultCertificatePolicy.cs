@@ -24,10 +24,11 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// New-AzureKeyVaultCertificatePolicy creates an in-memory Certificate Policy object
     /// </summary>
-    [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificatePolicy,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = SubjectNameParameterSet)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificatePolicy", SupportsShouldProcess = true,DefaultParameterSetName = SubjectNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificatePolicy))]
+#if NETSTANDARD
+    [Alias("New-AzureKeyVaultCertificatePolicy")]
+#endif
     public class NewAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -280,3 +281,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
+

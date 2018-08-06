@@ -24,9 +24,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsLifecycle.Wait,
-        Constants.CommandNames.AzureHDInsightJob),
-    OutputType(typeof(AzureHDInsightJob))]
+    [Cmdlet("Wait","HDInsightJob"),OutputType(typeof(AzureHDInsightJob))]
+#if NETSTANDARD
+    [Alias("Wait-AzureRmHDInsightJob")]
+#endif
     public class WaitAzureHDInsightJobCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
@@ -125,3 +126,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
+

@@ -22,14 +22,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     /// Gets Azure Site Recovery Notification / Alert Settings.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get, 
-        "AzureRmRecoveryServicesAsrAlertSetting")]
+    [Cmdlet("Get","RecoveryServicesAsrAlertSetting")]
+    [OutputType(typeof(ASRAlertSetting))]
+#if NETSTANDARD
+    [Alias("Get-ASRNotificationSetting",
+        "Get-AzureRmRecoveryServicesAsrNotificationSetting",
+        "Get-ASRAlertSetting",
+        "Get-AzureRmRecoveryServicesAsrAlertSetting")]
+#else
     [Alias(
         "Get-ASRNotificationSetting",
         "Get-AzureRmRecoveryServicesAsrNotificationSetting",
         "Get-ASRAlertSetting")]
-    [OutputType(typeof(ASRAlertSetting))]
+#endif
     public class GetAzureRmRecoveryServicesAsrAlertSetting : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -44,3 +49,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

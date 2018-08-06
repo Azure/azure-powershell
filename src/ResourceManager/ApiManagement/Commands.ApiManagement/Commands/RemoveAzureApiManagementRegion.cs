@@ -18,7 +18,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagementRegion"), OutputType(typeof(PsApiManagement))]
+    [Cmdlet("Remove","ApiManagementRegion"), OutputType(typeof(PsApiManagement))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApiManagementRegion")]
+#endif
     public class RemoveAzureApiManagementRegion : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -49,3 +52,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
+

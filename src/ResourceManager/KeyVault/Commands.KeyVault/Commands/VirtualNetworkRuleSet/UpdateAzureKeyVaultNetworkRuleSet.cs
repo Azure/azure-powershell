@@ -24,10 +24,11 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Update network rule set
     /// NOTE: Define VaultName & ResourceGroupName in this class instead of base one because TAB order for input.
     /// </summary>
-    [Cmdlet(VerbsData.Update, "AzureRmKeyVaultNetworkRuleSet",
-        DefaultParameterSetName = ByVaultNameParameterSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultNetworkRuleSet", DefaultParameterSetName = ByVaultNameParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVault))]
+#if NETSTANDARD
+    [Alias("Update-AzureRmKeyVaultNetworkRuleSet")]
+#endif
     public class UpdateAzureKeyVaultNetworkRuleSet : KeyVaultNetworkRuleSetBase
     {
         private const string ByVaultNameParameterSet = "ByVaultName";
@@ -181,3 +182,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
+

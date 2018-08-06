@@ -76,29 +76,29 @@ NestedModules = @('.\Microsoft.Azure.Commands.DataFactories.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Remove-AzureRmDataFactory', 'Get-AzureRmDataFactoryRun', 
-               'Get-AzureRmDataFactorySlice', 'Save-AzureRmDataFactoryLog', 
-               'Set-AzureRmDataFactorySliceStatus', 
-               'New-AzureRmDataFactoryEncryptValue', 
-               'Get-AzureRmDataFactoryGateway', 'New-AzureRmDataFactoryGateway', 
-               'New-AzureRmDataFactoryGatewayKey', 
-               'Get-AzureRmDataFactoryGatewayAuthkey', 
-               'New-AzureRmDataFactoryGatewayAuthkey', 
-               'Remove-AzureRmDataFactoryGateway', 'Set-AzureRmDataFactoryGateway', 
-               'Get-AzureRmDataFactoryHub', 'New-AzureRmDataFactoryHub', 
-               'Remove-AzureRmDataFactoryHub', 
-               'Get-AzureRmDataFactoryLinkedService', 
-               'Get-AzureRmDataFactoryActivityWindow', 
-               'New-AzureRmDataFactoryLinkedService', 
-               'Remove-AzureRmDataFactoryLinkedService', 'Get-AzureRmDataFactory', 
-               'New-AzureRmDataFactory', 'Get-AzureRmDataFactoryPipeline', 
-               'New-AzureRmDataFactoryPipeline', 
-               'Remove-AzureRmDataFactoryPipeline', 
-               'Resume-AzureRmDataFactoryPipeline', 
-               'Set-AzureRmDataFactoryPipelineActivePeriod', 
-               'Suspend-AzureRmDataFactoryPipeline', 
-               'Get-AzureRmDataFactoryDataset', 'New-AzureRmDataFactoryDataset', 
-               'Remove-AzureRmDataFactoryDataset'
+CmdletsToExport = 'Remove-DataFactory', 'Get-DataFactoryRun', 
+               'Get-DataFactorySlice', 'Save-DataFactoryLog', 
+               'Set-DataFactorySliceStatus', 
+               'New-DataFactoryEncryptValue', 
+               'Get-DataFactoryGateway', 'New-DataFactoryGateway', 
+               'New-DataFactoryGatewayKey', 
+               'Get-DataFactoryGatewayAuthkey', 
+               'New-DataFactoryGatewayAuthkey', 
+               'Remove-DataFactoryGateway', 'Set-DataFactoryGateway', 
+               'Get-DataFactoryHub', 'New-DataFactoryHub', 
+               'Remove-DataFactoryHub', 
+               'Get-DataFactoryLinkedService', 
+               'Get-DataFactoryActivityWindow', 
+               'New-DataFactoryLinkedService', 
+               'Remove-DataFactoryLinkedService', 'Get-DataFactory', 
+               'New-DataFactory', 'Get-DataFactoryPipeline', 
+               'New-DataFactoryPipeline', 
+               'Remove-DataFactoryPipeline', 
+               'Resume-DataFactoryPipeline', 
+               'Set-DataFactoryPipelineActivePeriod', 
+               'Suspend-DataFactoryPipeline', 
+               'Get-DataFactoryDataset', 'New-DataFactoryDataset', 
+               'Remove-DataFactoryDataset'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -152,7 +152,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

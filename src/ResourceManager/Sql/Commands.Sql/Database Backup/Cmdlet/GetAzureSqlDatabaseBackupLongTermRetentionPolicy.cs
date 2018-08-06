@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,12 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseBackupLongTermRetentionPolicyModel))]
+    [Cmdlet("Get","SqlDatabaseBackupLongTermRetentionPolicy", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseBackupLongTermRetentionPolicyModel))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseLongTermRetentionPolicy", "Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy")]
+#else
     [Alias("Get-AzureRmSqlDatabaseLongTermRetentionPolicy")]
+#endif
     public class GetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
         /// <summary>
@@ -70,3 +74,5 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+
+

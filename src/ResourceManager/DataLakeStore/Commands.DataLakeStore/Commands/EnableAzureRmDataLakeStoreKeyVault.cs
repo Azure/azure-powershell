@@ -19,8 +19,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmDataLakeStoreKeyVault", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Enable","DataLakeStoreKeyVault", SupportsShouldProcess = true), OutputType(typeof(void))]
+#if NETSTANDARD
+    [Alias("Enable-AdlStoreKeyVault", "Enable-AzureRmDataLakeStoreKeyVault")]
+#else
     [Alias("Enable-AdlStoreKeyVault")]
+#endif
     public class EnableAzureDataLakeStoreKeyVault : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -44,3 +48,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
+

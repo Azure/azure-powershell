@@ -27,12 +27,10 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        Constants.IntegrationRuntime,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
-        SupportsShouldProcess = true),
-        OutputType(typeof(PSIntegrationRuntime))]
+    [Cmdlet("Set","DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSIntegrationRuntime))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmDataFactoryV2IntegrationRuntime")]
+#endif
     public class SetAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(
@@ -694,3 +692,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
+

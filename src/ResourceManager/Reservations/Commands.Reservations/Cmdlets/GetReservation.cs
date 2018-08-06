@@ -11,7 +11,10 @@ using Microsoft.Azure.Management.Reservations;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmReservation", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet), OutputType(typeof(PSReservationPage), typeof(PSReservation))]
+    [Cmdlet("Get","Reservation", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet), OutputType(typeof(PSReservationPage), typeof(PSReservation))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmReservation")]
+#endif
     public class GetReservation : AzureReservationsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet,
@@ -94,3 +97,5 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         }
     }
 }
+
+

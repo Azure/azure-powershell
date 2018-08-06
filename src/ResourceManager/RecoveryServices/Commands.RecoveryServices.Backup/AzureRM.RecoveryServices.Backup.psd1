@@ -81,29 +81,29 @@ NestedModules = @('.\Microsoft.Azure.Commands.RecoveryServices.Backup.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Backup-AzureRmRecoveryServicesBackupItem', 
-               'Get-AzureRmRecoveryServicesBackupManagementServer', 
-               'Get-AzureRmRecoveryServicesBackupContainer', 
-               'Unregister-AzureRmRecoveryServicesBackupContainer', 
-               'Disable-AzureRmRecoveryServicesBackupProtection', 
-               'Enable-AzureRmRecoveryServicesBackupProtection', 
-               'Get-AzureRmRecoveryServicesBackupItem', 
-               'Get-AzureRmRecoveryServicesBackupJob', 
-               'Get-AzureRmRecoveryServicesBackupJobDetails', 
-               'Stop-AzureRmRecoveryServicesBackupJob', 
-               'Wait-AzureRmRecoveryServicesBackupJob', 
-               'Get-AzureRmRecoveryServicesBackupProtectionPolicy', 
-               'Get-AzureRmRecoveryServicesBackupRetentionPolicyObject', 
-               'Get-AzureRmRecoveryServicesBackupSchedulePolicyObject', 
-               'New-AzureRmRecoveryServicesBackupProtectionPolicy', 
-               'Remove-AzureRmRecoveryServicesBackupProtectionPolicy', 
-               'Set-AzureRmRecoveryServicesBackupProtectionPolicy', 
-               'Get-AzureRmRecoveryServicesBackupRecoveryPoint', 
-               'Restore-AzureRmRecoveryServicesBackupItem', 
-               'Unregister-AzureRmRecoveryServicesBackupManagementServer', 
-               'Get-AzureRmRecoveryServicesBackupRPMountScript', 
-               'Disable-AzureRmRecoveryServicesBackupRPMountScript', 
-               'Get-AzureRmRecoveryServicesBackupStatus'
+CmdletsToExport = 'Backup-RecoveryServicesBackupItem', 
+               'Get-RecoveryServicesBackupManagementServer', 
+               'Get-RecoveryServicesBackupContainer', 
+               'Unregister-RecoveryServicesBackupContainer', 
+               'Disable-RecoveryServicesBackupProtection', 
+               'Enable-RecoveryServicesBackupProtection', 
+               'Get-RecoveryServicesBackupItem', 
+               'Get-RecoveryServicesBackupJob', 
+               'Get-RecoveryServicesBackupJobDetails', 
+               'Stop-RecoveryServicesBackupJob', 
+               'Wait-RecoveryServicesBackupJob', 
+               'Get-RecoveryServicesBackupProtectionPolicy', 
+               'Get-RecoveryServicesBackupRetentionPolicyObject', 
+               'Get-RecoveryServicesBackupSchedulePolicyObject', 
+               'New-RecoveryServicesBackupProtectionPolicy', 
+               'Remove-RecoveryServicesBackupProtectionPolicy', 
+               'Set-RecoveryServicesBackupProtectionPolicy', 
+               'Get-RecoveryServicesBackupRecoveryPoint', 
+               'Restore-RecoveryServicesBackupItem', 
+               'Unregister-RecoveryServicesBackupManagementServer', 
+               'Get-RecoveryServicesBackupRPMountScript', 
+               'Disable-RecoveryServicesBackupRPMountScript', 
+               'Get-RecoveryServicesBackupStatus'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -157,7 +157,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

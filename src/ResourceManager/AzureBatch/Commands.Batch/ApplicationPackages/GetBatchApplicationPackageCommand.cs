@@ -20,7 +20,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureRmBatchApplicationPackage), OutputType(typeof(PSApplicationPackage))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchApplicationPackage"), OutputType(typeof(PSApplicationPackage))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmBatchApplicationPackage")]
+#endif
     public class GetBatchApplicationPackageCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the Batch account.")]
@@ -47,3 +50,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
+

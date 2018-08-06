@@ -19,7 +19,10 @@ using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitConnectionConfig"), OutputType(typeof(PSExpressRouteCircuitConnection))]
+    [Cmdlet("Get","ExpressRouteCircuitConnectionConfig"), OutputType(typeof(PSExpressRouteCircuitConnection))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmExpressRouteCircuitConnectionConfig")]
+#endif
     public class GetAzureExpressRouteCircuitConnectionConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -66,3 +69,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

@@ -19,9 +19,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsCommon.Add, CmdletNoun.AzureKeyVaultManagedStorageAccount,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultManagedStorageAccount", SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultManagedStorageAccount))]
+#if NETSTANDARD
+    [Alias("Add-AzureKeyVaultManagedStorageAccount")]
+#endif
     public class AddAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -98,3 +100,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
+

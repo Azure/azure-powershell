@@ -22,7 +22,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
     /// <summary>
     /// 'Set-AzureRmServiceBusRule' Cmdlet updates the specified ServiceBus Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServicebusRuleVerb, SupportsShouldProcess = true), OutputType(typeof(PSRulesAttributes))]
+    [Cmdlet("Set","ServiceBusRule", SupportsShouldProcess = true), OutputType(typeof(PSRulesAttributes))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmServiceBusRule")]
+#endif
     public class SetAzureRmServiceBusRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
@@ -69,3 +72,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
         }
     }
 }
+
+

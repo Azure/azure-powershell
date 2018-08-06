@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,8 +27,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabase", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = UpdateParameterSetName), OutputType(typeof(AzureSqlDatabaseModel))]
+    [Cmdlet("Set","SqlDatabase", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = UpdateParameterSetName), OutputType(typeof(AzureSqlDatabaseModel))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlDatabase")]
+#endif
     public class SetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
     {
         private const string UpdateParameterSetName = "Update";
@@ -297,3 +299,5 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         }
     }
 }
+
+

@@ -25,7 +25,10 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
     /// <summary>
     /// Create a new Maps Account, specify it's type (resource kind)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, MapsAccountNounStr, SupportsShouldProcess = true), OutputType(typeof(PSMapsAccount))]
+    [Cmdlet("New","MapsAccount", SupportsShouldProcess = true), OutputType(typeof(PSMapsAccount))]
+#if NETSTANDARD
+    [Alias("New-AzureRmMapsAccount")]
+#endif
     public class NewAzureMapsAccount : MapsAccountBaseCmdlet
     {
         [Parameter(
@@ -108,3 +111,5 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
         }
     }
 }
+
+

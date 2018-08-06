@@ -29,10 +29,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineDiagnosticsExtension)]
+    [Cmdlet("Set","VMDiagnosticsExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMDiagnosticsExtension")]
+#endif
     public class SetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         private Hashtable publicConfiguration;
@@ -307,3 +308,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

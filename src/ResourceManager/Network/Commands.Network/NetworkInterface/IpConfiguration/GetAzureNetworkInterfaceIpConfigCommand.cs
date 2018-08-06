@@ -18,7 +18,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkInterfaceIpConfig"), OutputType(typeof(PSNetworkInterfaceIPConfiguration))]
+    [Cmdlet("Get","NetworkInterfaceIpConfig"), OutputType(typeof(PSNetworkInterfaceIPConfiguration))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmNetworkInterfaceIpConfig")]
+#endif
     public class GetAzureNetworkInterfaceIpConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -55,3 +58,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

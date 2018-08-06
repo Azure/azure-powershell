@@ -17,7 +17,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGatewayIpConfig"), OutputType(typeof(PSVirtualNetworkGatewayIpConfiguration))]
+    [Cmdlet("New","VirtualNetworkGatewayIpConfig"), OutputType(typeof(PSVirtualNetworkGatewayIpConfiguration))]
+#if NETSTANDARD
+    [Alias("New-AzureRmVirtualNetworkGatewayIpConfig")]
+#endif
     public class NewAzureVirtualNetworkGatewayIpConfigCommand : AzureVirtualNetworkGatewayIpConfigBase
     {
         [Parameter(
@@ -78,3 +81,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

@@ -22,7 +22,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.New, SearchServiceAdminKeyNounStr, SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(PSSearchAdminKey))]
+    [Cmdlet("New","SearchAdminKey", SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(PSSearchAdminKey))]
+#if NETSTANDARD
+    [Alias("New-AzureRmSearchAdminKey")]
+#endif
     public class NewSearchServiceAdminKeyCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
@@ -99,3 +102,5 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         }
     }
 }
+
+

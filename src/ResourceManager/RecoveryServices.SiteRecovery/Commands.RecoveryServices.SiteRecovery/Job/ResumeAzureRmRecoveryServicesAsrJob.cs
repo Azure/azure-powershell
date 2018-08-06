@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Resumes Azure Site Recovery Job.
     /// </summary>
-    [Cmdlet(
-        VerbsLifecycle.Resume,
-        "AzureRmRecoveryServicesAsrJob",
-        DefaultParameterSetName = ASRParameterSets.ByObject,
-        SupportsShouldProcess = true)]
-    [Alias("Resume-ASRJob")]
+    [Cmdlet("Resume","RecoveryServicesAsrJob",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
+#if NETSTANDARD
+    [Alias("Resume-ASRJob", "Resume-AzureRmRecoveryServicesAsrJob")]
+#else
+    [Alias("Resume-ASRJob")]
+#endif
     public class ResumeAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -122,3 +122,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

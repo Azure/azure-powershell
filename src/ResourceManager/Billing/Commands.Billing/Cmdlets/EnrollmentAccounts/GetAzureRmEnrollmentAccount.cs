@@ -22,7 +22,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Billing.Cmdlets.EnrollmentAccounts
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmEnrollmentAccount", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSBillingPeriod))]
+    [Cmdlet("Get","EnrollmentAccount", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSBillingPeriod))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmEnrollmentAccount")]
+#endif
     public class GetAzureRmEnrollmentAccount : AzureBillingCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = "ObjectId of the enrollment account to get.", ParameterSetName = Constants.ParameterSetNames.SingleItemParameterSet)]
@@ -50,3 +53,5 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.EnrollmentAccounts
         }
     }
 }
+
+

@@ -23,7 +23,10 @@ namespace Microsoft.Azure.Commands.Insights.Events
     /// <summary>
     /// Get the list of events for at a subscription level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmLog"), OutputType(typeof(PSEventData))]
+    [Cmdlet("Get","Log"), OutputType(typeof(PSEventData))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmLog")]
+#endif
     public class GetAzureRmLogCommand : LogsCmdletBase
     {
         /// <summary>
@@ -118,3 +121,5 @@ namespace Microsoft.Azure.Commands.Insights.Events
         }
     }
 }
+
+

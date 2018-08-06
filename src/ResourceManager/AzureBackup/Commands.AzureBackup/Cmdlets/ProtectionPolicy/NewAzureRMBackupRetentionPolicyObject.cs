@@ -24,7 +24,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Create new retention policy object.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmBackupRetentionPolicyObject"), OutputType(typeof(AzureRMBackupRetentionPolicy))]
+    [Cmdlet("New","BackupRetentionPolicyObject"), OutputType(typeof(AzureRMBackupRetentionPolicy))]
+#if NETSTANDARD
+    [Alias("New-AzureRmBackupRetentionPolicyObject")]
+#endif
     public class NewAzureRMBackupRetentionPolicyObject : AzureBackupCmdletBase
     {
         protected const string DailyRetentionParamSet = "DailyRetentionParamSet";
@@ -191,3 +194,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+
+

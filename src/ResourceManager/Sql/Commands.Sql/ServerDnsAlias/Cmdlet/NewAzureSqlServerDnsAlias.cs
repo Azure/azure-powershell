@@ -22,8 +22,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 	/// <summary>
 	/// Defines the New-AzureRmSqlServerDnsAlias cmdlet
 	/// </summary>
-	[Cmdlet(VerbsCommon.New, "AzureRmSqlServerDnsAlias", SupportsShouldProcess = true)]
+	[Cmdlet("New","SqlServerDnsAlias", SupportsShouldProcess = true)]
 	[OutputType(typeof(Model.AzureSqlServerDnsAliasModel))]
+#if NETSTANDARD
+    [Alias("New-AzureRmSqlServerDnsAlias")]
+#endif
 	public class NewAzureSqlServerDNSAlias : AzureSqlServerDnsAliasCmdletBase
 	{
 		/// <summary>
@@ -102,3 +105,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		}
 	}
 }
+
+

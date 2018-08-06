@@ -18,7 +18,10 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// <summary>
     /// Create a metric dimension filter
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmMetricFilter"), OutputType(typeof(string))]
+    [Cmdlet("New","MetricFilter"), OutputType(typeof(string))]
+#if NETSTANDARD
+    [Alias("New-AzureRmMetricFilter")]
+#endif
     public class NewAzureRmMetricFilterCommand : MonitorCmdletBase
     {
         /// <summary>
@@ -66,3 +69,5 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         }
     }
 }
+
+

@@ -22,7 +22,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Start","ApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
+#if NETSTANDARD
+    [Alias("Start-AzureRmApplicationGateway")]
+#endif
     public class StartAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Parameter(
@@ -52,3 +55,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
+

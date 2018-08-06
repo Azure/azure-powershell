@@ -23,11 +23,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
-    [Cmdlet(
-        VerbsCommon.New, 
-        WebServicesCmdletBase.CommandletSuffix,
-        SupportsShouldProcess = true)]
+    [Cmdlet("New","MlWebService",SupportsShouldProcess = true)]
     [OutputType(typeof(WebService))]
+#if NETSTANDARD
+    [Alias("New-AzureRmMlWebService")]
+#endif
     public class NewAzureMLWebService : WebServicesCmdletBase
     {
         protected const string CreateFromFileParameterSet = "CreateFromFile";
@@ -112,3 +112,5 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         }
     }
 }
+
+

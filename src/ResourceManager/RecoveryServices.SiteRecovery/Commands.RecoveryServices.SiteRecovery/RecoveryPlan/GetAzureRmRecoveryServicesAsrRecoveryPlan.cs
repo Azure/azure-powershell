@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,14 +26,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Gets a recovery plan or all the recovery plans in the Recovery Services vault
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrRecoveryPlan",
-        DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet("Get","RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.Default)]
+    [OutputType(typeof(ASRRecoveryPlan))]
+#if NETSTANDARD
+    [Alias("Get-ASRRP",
+        "Get-ASRRecoveryPlan",
+        "Get-AzureRmRecoveryServicesAsrRecoveryPlan")]
+#else
     [Alias(
         "Get-ASRRP",
         "Get-ASRRecoveryPlan")]
-    [OutputType(typeof(ASRRecoveryPlan))]
+#endif
     public class GetAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -244,3 +247,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
+

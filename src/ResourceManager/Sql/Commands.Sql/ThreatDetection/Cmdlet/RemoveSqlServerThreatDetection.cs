@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +20,11 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// Disables auditing on a specific server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerThreatDetectionPolicy", SupportsShouldProcess = true), 
-        OutputType(typeof(ServerThreatDetectionPolicyModel))]
+    [Cmdlet("Remove","SqlServerThreatDetectionPolicy", SupportsShouldProcess = true), OutputType(typeof(ServerThreatDetectionPolicyModel))]
 
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlServerThreatDetectionPolicy")]
+#endif
     public class AzureRmSqlServerThreatDetection : SqlServerThreatDetectionCmdletBase
     {
         /// <summary>
@@ -49,3 +51,5 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         }
     }
 }
+
+

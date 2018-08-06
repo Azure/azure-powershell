@@ -20,11 +20,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Remove,
-        ProfileNouns.VirtualMachineAccessExtension,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove","VMAccessExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMAccessExtension")]
+#endif
     public class RemoveAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -78,3 +78,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
+

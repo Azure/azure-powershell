@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,8 +27,11 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServer", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet("Get","SqlServer", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerModel))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlServer")]
+#endif
     public class GetAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>
@@ -103,3 +106,5 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         }
     }
 }
+
+

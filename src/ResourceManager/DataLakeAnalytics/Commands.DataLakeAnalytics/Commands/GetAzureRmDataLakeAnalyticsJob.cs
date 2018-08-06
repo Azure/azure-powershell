@@ -23,9 +23,12 @@ using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsJob", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(JobInformation))]
+    [Cmdlet("Get","DataLakeAnalyticsJob", DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(JobInformation))]
+#if NETSTANDARD
+    [Alias("Get-AdlJob", "Get-AzureRmDataLakeAnalyticsJob")]
+#else
     [Alias("Get-AdlJob")]
+#endif
     public class GetAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "GetAllInResourceGroupAndAccount";
@@ -207,3 +210,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
+

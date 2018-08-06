@@ -21,8 +21,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Remove, SignalRNoun, SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
+    [Cmdlet("Remove","SignalR", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(bool))]
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSignalR")]
+#endif
     public class RemoveAzureRmSignalR : SignalRCmdletBase, IWithInputObject, IWithResourceId
     {
         [Parameter(
@@ -94,3 +97,5 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         }
     }
 }
+
+

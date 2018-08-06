@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +22,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseExpanded", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet("Get","SqlDatabaseExpanded", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.None)]
     [OutputType(typeof(AzureSqlDatabaseModelExpanded))]
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseExpanded")]
+#endif
     public class GetAzureSqlDatabaseExpanded : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseModelExpanded>, AzureSqlDatabaseAdapter>
     {
         /// <summary>
@@ -79,3 +81,5 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         }
     }
 }
+
+
