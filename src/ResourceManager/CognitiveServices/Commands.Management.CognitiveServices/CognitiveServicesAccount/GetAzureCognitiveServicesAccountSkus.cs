@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Get Available Skus for Cognitive Services Account
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CognitiveServicesAccountSkusNounStr), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesSkus))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountSkus"), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesSkus))]
     public class GetAzureCognitiveServicesAccountSkusCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(

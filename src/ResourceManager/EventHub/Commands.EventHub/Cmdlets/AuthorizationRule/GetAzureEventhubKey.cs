@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     /// <summary>
     /// 'Get-AzureRmRelayKey' Cmdlet gives key detials for the given Authorization Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, EventHubKeyVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSListKeysAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSListKeysAttributes))]
     public class GetAzureEventhubKey : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
