@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you get an existing web app Ssl binding using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSSLBinding")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSSLBinding")]
     [OutputType(typeof(HostNameSslState))]
     public class GetAzureWebAppSSLBinding : WebAppSSLBindingBaseCmdlet
     {

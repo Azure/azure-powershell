@@ -60,6 +60,7 @@
     <Compile Include="ArgumentCompleters\ResourceTypeCompleter.cs" />
     <Compile Include="ArgumentCompleters\ScopeCompleter.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
+    <Compile Include="AzureRMConstants.cs" />
     <Compile Include="AzureRmLongRunningCmdlet.cs" />
     <Compile Include="Generated\DeploymentOperations.cs" />
     <Compile Include="Generated\DeploymentOperationsExtensions.cs" />
