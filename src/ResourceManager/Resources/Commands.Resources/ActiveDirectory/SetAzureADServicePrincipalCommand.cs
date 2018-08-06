@@ -18,6 +18,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Resources.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             ExecutionBlock(() =>
             {
                 // At max 1 SP can be returned with SPN and Id options
-                var sp = ActiveDirectoryClient.FilterServicePrincipals(options).FirstOrDefault();
+                var sp = ActiveDirectoryClient.ListServicePrincipals(options).FirstOrDefault();
 
                 if (sp == null)
                 {
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
 
                 // Get AppObjectId
-                string applicationObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(sp.ApplicationId.ToString());
+                string applicationObjectId = ActiveDirectoryClient.ListAppObjectIdFromApplicationId(sp.ApplicationId).ToString();
 
                 if (!string.IsNullOrEmpty(DisplayName))
                 {
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                     if (ShouldProcess(target: sp.Id.ToString(), action: string.Format("Updating properties on application associated with a service principal with object id '{0}'", sp.Id)))
                     {
-                        ActiveDirectoryClient.UpdateApplication(applicationObjectId, parameters);
+                        ActiveDirectoryClient.UpdateApplication(new Guid(applicationObjectId), parameters);
                     }
                 }
             });

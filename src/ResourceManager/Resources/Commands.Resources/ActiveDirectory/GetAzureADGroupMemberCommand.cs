@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     Paging = true
                 };
 
-                PSADObject group = ActiveDirectoryClient.FilterGroups(options).FirstOrDefault();
+                PSADObject group = ActiveDirectoryClient.ListGroups(options).FirstOrDefault();
                 if (group == null)
                 {
                     throw new KeyNotFoundException(string.Format(ProjectResources.GroupDoesntExist, GroupObjectId));
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                 do
                 {
-                    WriteObject(ActiveDirectoryClient.GetGroupMembers(options), true);
+                    WriteObject(ActiveDirectoryClient.ListGroupMembers(options), true);
                 } while (!string.IsNullOrEmpty(options.NextLink));
             });
         }

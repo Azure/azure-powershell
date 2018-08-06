@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -37,10 +38,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (!string.IsNullOrEmpty(ServicePrincipalName))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName);
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName).ToString();
                 }
 
-                WriteObject(ActiveDirectoryClient.GetSpCredentials(ObjectId), enumerateCollection: true);
+                WriteObject(ActiveDirectoryClient.GetSpCredentials(new Guid(ObjectId)), enumerateCollection: true);
             });
         }
     }

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                string.Format(ProjectResources.RemovingApplication, ObjectId.ToString()),
                ProjectResources.RemoveApplication,
                ObjectId.ToString(),
-               () => ActiveDirectoryClient.RemoveApplication(ObjectId.ToString()));
+               () => ActiveDirectoryClient.RemoveApplication(ObjectId));
             });
         }
     }

@@ -410,9 +410,9 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return principalId;
         }
 
-        public void UpdateApplication(string appObjectId, ApplicationUpdateParameters parameters)
+        public void UpdateApplication(Guid appObjectId, ApplicationUpdateParameters parameters)
         {
-            GraphClient.Applications.Patch(appObjectId, parameters);
+            GraphClient.Applications.Patch(appObjectId.ToString(), parameters);
         }
 
         public PSADApplication CreateApplication(CreatePSApplicationParameters createParameters)
@@ -473,37 +473,37 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             }
         }
 
-        private List<KeyCredential> GetAppKeyCredentials(string appObjectId)
+        private List<KeyCredential> GetAppKeyCredentials(Guid appObjectId)
         {
-            return GraphClient.Applications.ListKeyCredentials(appObjectId).ToList();
+            return GraphClient.Applications.ListKeyCredentials(appObjectId.ToString()).ToList();
         }
 
-        private List<PasswordCredential> GetAppPasswordCredentials(string appObjectId)
+        private List<PasswordCredential> GetAppPasswordCredentials(Guid appObjectId)
         {
-            return GraphClient.Applications.ListPasswordCredentials(appObjectId).ToList();
+            return GraphClient.Applications.ListPasswordCredentials(appObjectId.ToString()).ToList();
         }
 
-        private void PatchAppKeyCredentials(string appObjectId, List<KeyCredential> keyCredentails)
+        private void PatchAppKeyCredentials(Guid appObjectId, List<KeyCredential> keyCredentails)
         {
             if (keyCredentails == null)
             {
                 keyCredentails = new List<KeyCredential>();
             }
 
-            GraphClient.Applications.UpdateKeyCredentials(appObjectId, new KeyCredentialsUpdateParameters(keyCredentails));
+            GraphClient.Applications.UpdateKeyCredentials(appObjectId.ToString(), new KeyCredentialsUpdateParameters(keyCredentails));
         }
 
-        private void PatchAppPasswordCredentials(string appObjectId, List<PasswordCredential> passwordCredentials)
+        private void PatchAppPasswordCredentials(Guid appObjectId, List<PasswordCredential> passwordCredentials)
         {
             if (passwordCredentials == null)
             {
                 passwordCredentials = new List<PasswordCredential>();
             }
 
-            GraphClient.Applications.UpdatePasswordCredentials(appObjectId, new PasswordCredentialsUpdateParameters(passwordCredentials));
+            GraphClient.Applications.UpdatePasswordCredentials(appObjectId.ToString(), new PasswordCredentialsUpdateParameters(passwordCredentials));
         }
 
-        public PSADCredential CreateAppKeyCredential(string appObjectId, KeyCredential credential)
+        public PSADCredential CreateAppKeyCredential(Guid appObjectId, KeyCredential credential)
         {
             ValidateKeyCredential(credential);
 
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return credential.ToPSADCredential();
         }
 
-        public PSADCredential CreateAppPasswordCredential(string appObjectId, PasswordCredential credential)
+        public PSADCredential CreateAppPasswordCredential(Guid appObjectId, PasswordCredential credential)
         {
             ValidatePasswordCredential(credential);
 
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return credential.ToPSADCredential();
         }
 
-        public List<PSADCredential> GetAppCredentials(string appObjectId)
+        public List<PSADCredential> GetAppCredentials(Guid appObjectId)
         {
             List<PSADCredential> CredentialList = new List<PSADCredential>();
 
@@ -544,8 +544,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return CredentialList;
         }
 
-
-        public void RemoveAppCredentialByKeyId(string appObjectId, Guid keyId)
+        public void RemoveAppCredentialByKeyId(Guid appObjectId, Guid keyId)
         {
             var keyCredsList = GetAppKeyCredentials(appObjectId);
 
@@ -569,7 +568,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             }
         }
 
-        public void RemoveAllAppCredentials(string appObjectId)
+        public void RemoveAllAppCredentials(Guid appObjectId)
         {
             PatchAppKeyCredentials(appObjectId, keyCredentails: null);
             PatchAppPasswordCredentials(appObjectId, passwordCredentials: null);
@@ -586,39 +585,37 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return app.ObjectId.ToString();
         }
 
-
-        private List<KeyCredential> GetSpKeyCredentials(string spObjectId)
+        private List<KeyCredential> GetSpKeyCredentials(Guid spObjectId)
         {
-            return GraphClient.ServicePrincipals.ListKeyCredentials(spObjectId).ToList();
+            return GraphClient.ServicePrincipals.ListKeyCredentials(spObjectId.ToString()).ToList();
         }
 
-        private List<PasswordCredential> GetSpPasswordCredentials(string spObjectId)
+        private List<PasswordCredential> GetSpPasswordCredentials(Guid spObjectId)
         {
-            return GraphClient.ServicePrincipals.ListPasswordCredentials(spObjectId).ToList();
+            return GraphClient.ServicePrincipals.ListPasswordCredentials(spObjectId.ToString()).ToList();
         }
 
-        private void PatchSpKeyCredentials(string spObjectId, List<KeyCredential> keyCredentails)
+        private void PatchSpKeyCredentials(Guid spObjectId, List<KeyCredential> keyCredentails)
         {
             if (keyCredentails == null)
             {
                 keyCredentails = new List<KeyCredential>();
             }
 
-            GraphClient.ServicePrincipals.UpdateKeyCredentials(spObjectId, new KeyCredentialsUpdateParameters(keyCredentails));
+            GraphClient.ServicePrincipals.UpdateKeyCredentials(spObjectId.ToString(), new KeyCredentialsUpdateParameters(keyCredentails));
         }
 
-        private void PatchSpPasswordCredentials(string spObjectId, List<PasswordCredential> passwordCredentials)
+        private void PatchSpPasswordCredentials(Guid spObjectId, List<PasswordCredential> passwordCredentials)
         {
             if (passwordCredentials == null)
             {
                 passwordCredentials = new List<PasswordCredential>();
             }
 
-            GraphClient.ServicePrincipals.UpdatePasswordCredentials(spObjectId, new PasswordCredentialsUpdateParameters(passwordCredentials));
+            GraphClient.ServicePrincipals.UpdatePasswordCredentials(spObjectId.ToString(), new PasswordCredentialsUpdateParameters(passwordCredentials));
         }
 
-
-        public PSADCredential CreateSpKeyCredential(string spObjectId, KeyCredential credential)
+        public PSADCredential CreateSpKeyCredential(Guid spObjectId, KeyCredential credential)
         {
             ValidateKeyCredential(credential);
 
@@ -632,7 +629,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return credential.ToPSADCredential();
         }
 
-        public PSADCredential CreateSpPasswordCredential(string spObjectId, PasswordCredential credential)
+        public PSADCredential CreateSpPasswordCredential(Guid spObjectId, PasswordCredential credential)
         {
             ValidatePasswordCredential(credential);
 
@@ -646,7 +643,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return credential.ToPSADCredential();
         }
 
-        public List<PSADCredential> GetSpCredentials(string spObjectId)
+        public List<PSADCredential> GetSpCredentials(Guid spObjectId)
         {
             List<PSADCredential> CredentialList = new List<PSADCredential>();
 
@@ -659,7 +656,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return CredentialList;
         }
 
-        public void RemoveSpCredentialByKeyId(string spObjectId, Guid keyId)
+        public void RemoveSpCredentialByKeyId(Guid spObjectId, Guid keyId)
         {
             var keyCredsList = GetSpKeyCredentials(spObjectId);
 
@@ -683,13 +680,13 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             }
         }
 
-        public void RemoveAllSpCredentials(string spObjectId)
+        public void RemoveAllSpCredentials(Guid spObjectId)
         {
             PatchSpKeyCredentials(spObjectId, keyCredentails: null);
             PatchSpPasswordCredentials(spObjectId, passwordCredentials: null);
         }
 
-        public string GetObjectIdFromSPN(string spn)
+        public Guid GetObjectIdFromSPN(string spn)
         {
             var odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(spn));
             var sp = GraphClient.ServicePrincipals.List(odataQueryFilter.ToString()).SingleOrDefault();
@@ -698,15 +695,15 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                 throw new InvalidOperationException(String.Format(ProjectResources.ServicePrincipalWithSPNDoesntExist, spn));
             }
 
-            return sp.ObjectId;
+            return new Guid(sp.ObjectId);
         }
 
-        public void RemoveApplication(string applicationObjectId)
+        public void RemoveApplication(Guid applicationObjectId)
         {
             GraphClient.Applications.Delete(applicationObjectId.ToString());
         }
 
-        public PSADApplication GetApplication(string applicationObjectId)
+        public PSADApplication GetApplication(Guid applicationObjectId)
         {
             return GraphClient.Applications.Get(applicationObjectId.ToString()).ToPSADApplication();
         }
@@ -753,7 +750,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             }
         }
 
-        public PSADServicePrincipal RemoveServicePrincipal(string objectId)
+        public PSADServicePrincipal RemoveServicePrincipal(Guid objectId)
         {
             ADObjectFilterOptions options = new ADObjectFilterOptions
             {
@@ -763,7 +760,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             PSADServicePrincipal servicePrincipal = FilterServicePrincipals(options).FirstOrDefault();
             if (servicePrincipal != null)
             {
-                GraphClient.ServicePrincipals.Delete(objectId);
+                GraphClient.ServicePrincipals.Delete(objectId.ToString());
             }
             else
             {

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Removes the service principal.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADServicePrincipal", SupportsShouldProcess = true), 
+    [Cmdlet(VerbsCommon.Remove, "AzureRmADServicePrincipal", SupportsShouldProcess = true),
         OutputType(typeof(PSADServicePrincipal))]
     public class RemoveAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
-        
+
         [Parameter(Mandatory = false)]
         public SwitchParameter Force { get; set; }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     string.Format(ProjectResources.RemovingServicePrincipal, ObjectId.ToString()),
                     ProjectResources.RemoveServicePrincipal,
                     ObjectId.ToString(),
-                    () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId.ToString()));
+                    () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId));
 
                 if (PassThru)
                 {

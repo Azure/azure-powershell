@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (!string.IsNullOrEmpty(ApplicationId))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ActiveDirectoryClient.ListAppObjectIdFromApplicationId(new Guid(ApplicationId)).ToString();
                 }
 
                 bool deleteAllCredentials = false;
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                   string.Format(ProjectResources.RemovingAppCredentialWithId, KeyId, ObjectId),
                   ProjectResources.RemoveCredential,
                   ObjectId,
-                  () => ActiveDirectoryClient.RemoveAppCredentialByKeyId(ObjectId, KeyId));
+                  () => ActiveDirectoryClient.RemoveAppCredentialByKeyId(new Guid(ObjectId), KeyId));
                 }
                 else if (deleteAllCredentials)
                 {
@@ -79,7 +80,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                   string.Format(ProjectResources.RemovingAllAppCredentials, ObjectId.ToString()),
                   ProjectResources.RemoveCredential,
                   ObjectId,
-                  () => ActiveDirectoryClient.RemoveAllAppCredentials(ObjectId));
+                  () => ActiveDirectoryClient.RemoveAllAppCredentials(new Guid(ObjectId)));
                 }
             });
         }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
         public string CertValue { get; set; }
-        
+
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The start date after which password or key would be valid. Default value is current time.")]
         public DateTime StartDate { get; set; }
 
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (!string.IsNullOrEmpty(ApplicationId))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ActiveDirectoryClient.ListAppObjectIdFromApplicationId(new Guid(ApplicationId)).ToString();
                 }
 
                 if (Password != null && Password.Length > 0)
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     };
                     if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
                     {
-                        WriteObject(ActiveDirectoryClient.CreateAppPasswordCredential(ObjectId, passwordCredential));
+                        WriteObject(ActiveDirectoryClient.CreateAppPasswordCredential(new Guid(ObjectId), passwordCredential));
                     }
                 }
                 else if (!string.IsNullOrEmpty(CertValue))
@@ -103,7 +104,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     };
                     if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new certificate to application with objectId {0}", ObjectId)))
                     {
-                        WriteObject(ActiveDirectoryClient.CreateAppKeyCredential(ObjectId, keyCredential));
+                        WriteObject(ActiveDirectoryClient.CreateAppKeyCredential(new Guid(ObjectId), keyCredential));
                     }
                 }
                 else

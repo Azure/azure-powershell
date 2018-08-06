@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.0.0'
+ModuleVersion = '5.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceManager.dll',
@@ -64,7 +64,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceManager.dll',
 TypesToProcess = 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Resources.format.ps1xml', 
+FormatsToProcess = '.\Microsoft.Azure.Commands.Resources.format.ps1xml',
                '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
@@ -74,50 +74,50 @@ NestedModules = @('.\Microsoft.Azure.Commands.Resources.dll', '.\Microsoft.Azure
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment', 
-               'Get-AzureRmRoleAssignment', 'New-AzureRmRoleAssignment', 
-               'Get-AzureRmRoleDefinition', 'New-AzureRmRoleDefinition', 
-               'Set-AzureRmRoleDefinition', 'Remove-AzureRmRoleDefinition', 
-               'Get-AzureRmADAppCredential', 'Get-AzureRmADApplication', 
-               'Get-AzureRmADGroupMember', 'Get-AzureRmADGroup', 
-               'Get-AzureRmADServicePrincipal', 'Get-AzureRmADSpCredential', 
-               'Get-AzureRmADUser', 'New-AzureRmADAppCredential', 
-               'New-AzureRmADSpCredential', 'New-AzureRmADUser', 
-               'Remove-AzureRmADAppCredential', 'Remove-AzureRmADApplication', 
-               'New-AzureRmADApplication', 'Remove-AzureRmADServicePrincipal', 
-               'New-AzureRmADServicePrincipal', 'Remove-AzureRmADSpCredential', 
-               'Remove-AzureRmADUser', 'Set-AzureRmADApplication', 
-               'Set-AzureRmADServicePrincipal', 'Set-AzureRmADUser', 
-               'Remove-AzureRmResourceGroup', 'Get-AzureRmProviderFeature', 
-               'Register-AzureRmProviderFeature', 'Get-AzureRmLocation', 
-               'Find-AzureRmResourceGroup', 'Export-AzureRmResourceGroup', 
-               'Get-AzureRmResourceProvider', 'Register-AzureRmResourceProvider', 
-               'Unregister-AzureRmResourceProvider', 
-               'Get-AzureRmResourceGroupDeployment', 
-               'New-AzureRmResourceGroupDeployment', 
-               'Remove-AzureRmResourceGroupDeployment', 
-               'Stop-AzureRmResourceGroupDeployment', 
-               'Test-AzureRmResourceGroupDeployment', 'Set-AzureRmResourceGroup', 
-               'New-AzureRmResourceGroup', 'Get-AzureRmResourceGroup', 
-               'Save-AzureRmResourceGroupDeploymentTemplate', 
-               'Get-AzureRmResourceGroupDeploymentOperation', 
-               'Get-AzureRmResourceLock', 'Invoke-AzureRmResourceAction', 
-               'Find-AzureRmResource', 'Move-AzureRmResource', 
-               'New-AzureRmResourceLock', 'Get-AzureRmPolicyAssignment', 
-               'Get-AzureRmPolicyDefinition', 'Get-AzureRmPolicySetDefinition', 
-               'New-AzureRmPolicyAssignment', 'New-AzureRmPolicyDefinition', 
-               'New-AzureRmPolicySetDefinition', 'Remove-AzureRmPolicyAssignment', 
-               'Remove-AzureRmPolicyDefinition', 
-               'Remove-AzureRmPolicySetDefinition', 'Set-AzureRmPolicyAssignment', 
-               'Set-AzureRmPolicyDefinition', 'Set-AzureRmPolicySetDefinition', 
-               'Remove-AzureRmResource', 'Remove-AzureRmResourceLock', 
-               'Set-AzureRmResource', 'New-AzureRmResource', 
-               'Set-AzureRmResourceLock', 'Get-AzureRmResource', 
-               'Get-AzureRmManagedApplicationDefinition', 
-               'New-AzureRmManagedApplicationDefinition', 
-               'Set-AzureRmManagedApplicationDefinition', 
-               'Remove-AzureRmManagedApplicationDefinition', 
-               'Get-AzureRmManagedApplication', 'New-AzureRmManagedApplication', 
+CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment',
+               'Get-AzureRmRoleAssignment', 'New-AzureRmRoleAssignment',
+               'Get-AzureRmRoleDefinition', 'New-AzureRmRoleDefinition',
+               'Set-AzureRmRoleDefinition', 'Remove-AzureRmRoleDefinition',
+               'Get-AzureRmADAppCredential', 'Get-AzureRmADApplication',
+               'Get-AzureRmADGroupMember', 'Get-AzureRmADGroup',
+               'Get-AzureRmADServicePrincipal', 'Get-AzureRmADSpCredential',
+               'Get-AzureRmADUser', 'New-AzureRmADAppCredential',
+               'New-AzureRmADSpCredential', 'New-AzureRmADUser',
+               'Remove-AzureRmADAppCredential', 'Remove-AzureRmADApplication',
+               'New-AzureRmADApplication', 'Remove-AzureRmADServicePrincipal',
+               'New-AzureRmADServicePrincipal', 'Remove-AzureRmADSpCredential',
+               'Remove-AzureRmADUser', 'Set-AzureRmADApplication',
+               'Set-AzureRmADServicePrincipal', 'Set-AzureRmADUser',
+               'Remove-AzureRmResourceGroup', 'Get-AzureRmProviderFeature',
+               'Register-AzureRmProviderFeature', 'Get-AzureRmLocation',
+               'Find-AzureRmResourceGroup', 'Export-AzureRmResourceGroup',
+               'Get-AzureRmResourceProvider', 'Register-AzureRmResourceProvider',
+               'Unregister-AzureRmResourceProvider',
+               'Get-AzureRmResourceGroupDeployment',
+               'New-AzureRmResourceGroupDeployment',
+               'Remove-AzureRmResourceGroupDeployment',
+               'Stop-AzureRmResourceGroupDeployment',
+               'Test-AzureRmResourceGroupDeployment', 'Set-AzureRmResourceGroup',
+               'New-AzureRmResourceGroup', 'Get-AzureRmResourceGroup',
+               'Save-AzureRmResourceGroupDeploymentTemplate',
+               'Get-AzureRmResourceGroupDeploymentOperation',
+               'Get-AzureRmResourceLock', 'Invoke-AzureRmResourceAction',
+               'Find-AzureRmResource', 'Move-AzureRmResource',
+               'New-AzureRmResourceLock', 'Get-AzureRmPolicyAssignment',
+               'Get-AzureRmPolicyDefinition', 'Get-AzureRmPolicySetDefinition',
+               'New-AzureRmPolicyAssignment', 'New-AzureRmPolicyDefinition',
+               'New-AzureRmPolicySetDefinition', 'Remove-AzureRmPolicyAssignment',
+               'Remove-AzureRmPolicyDefinition',
+               'Remove-AzureRmPolicySetDefinition', 'Set-AzureRmPolicyAssignment',
+               'Set-AzureRmPolicyDefinition', 'Set-AzureRmPolicySetDefinition',
+               'Remove-AzureRmResource', 'Remove-AzureRmResourceLock',
+               'Set-AzureRmResource', 'New-AzureRmResource',
+               'Set-AzureRmResourceLock', 'Get-AzureRmResource',
+               'Get-AzureRmManagedApplicationDefinition',
+               'New-AzureRmManagedApplicationDefinition',
+               'Set-AzureRmManagedApplicationDefinition',
+               'Remove-AzureRmManagedApplicationDefinition',
+               'Get-AzureRmManagedApplication', 'New-AzureRmManagedApplication',
                'Set-AzureRmManagedApplication', 'Remove-AzureRmManagedApplication'
 
 # Variables to export from this module
@@ -153,14 +153,13 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
+        ReleaseNotes = '* Fix backward compatibility issue with AD cmdlets'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module

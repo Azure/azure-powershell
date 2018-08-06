@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using System;
 using System.Collections.Generic;
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 do
                 {
-                    WriteObject(ActiveDirectoryClient.FilterUsers(options), true);
+                    WriteObject(ActiveDirectoryClient.ListUsers(options), true);
 
                 } while (!string.IsNullOrEmpty(options.NextLink));
             });

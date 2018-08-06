@@ -72,29 +72,29 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (!string.IsNullOrEmpty(ServicePrincipalName))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName);
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName).ToString();
                 }
 
-                if (Password != null && Password.Length > 0) 
+                if (Password != null && Password.Length > 0)
                 {
                     string decodedPassword = SecureStringExtensions.ConvertToString(Password);
                     // Create object for password credential
-                    var passwordCredential = new PasswordCredential() 
+                    var passwordCredential = new PasswordCredential()
                     {
                         EndDate = EndDate,
                         StartDate = StartDate,
                         KeyId = Guid.NewGuid().ToString(),
                         Value = decodedPassword
                     };
-                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId))) 
+                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to service principal with objectId {0}", ObjectId)))
                     {
-                        WriteObject(ActiveDirectoryClient.CreateSpPasswordCredential(ObjectId, passwordCredential));
+                        WriteObject(ActiveDirectoryClient.CreateSpPasswordCredential(new Guid(ObjectId), passwordCredential));
                     }
-                } 
-                else if (!string.IsNullOrEmpty(CertValue)) 
+                }
+                else if (!string.IsNullOrEmpty(CertValue))
                 {
                     // Create object for key credential
-                    var keyCredential = new KeyCredential() 
+                    var keyCredential = new KeyCredential()
                     {
                         EndDate = EndDate,
                         StartDate = StartDate,
@@ -104,12 +104,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         Usage = "Verify"
                     };
 
-                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new caertificate to service principal with objectId {0}", ObjectId))) 
+                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new caertificate to service principal with objectId {0}", ObjectId)))
                     {
-                        WriteObject(ActiveDirectoryClient.CreateSpKeyCredential(ObjectId, keyCredential));
+                        WriteObject(ActiveDirectoryClient.CreateSpKeyCredential(new Guid(ObjectId), keyCredential));
                     }
                 }
-                else 
+                else
                 {
                     throw new InvalidOperationException("No valid keyCredential or passwordCredential to update!!");
                 }
