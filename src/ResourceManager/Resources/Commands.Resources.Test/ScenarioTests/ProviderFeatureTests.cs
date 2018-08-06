@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     using Xunit;
     using Xunit.Abstractions;
 
-    public class ProviderFeatureTests : ResourcesTestRunner
+    public class ProviderFeatureTests : ResourceTestRunner
     {
         public ProviderFeatureTests(ITestOutputHelper output) : base(output)
         {

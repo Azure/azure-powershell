@@ -177,7 +177,6 @@
     <Compile Include="ResourceGroups\SetAzureResourceGroupCommandTests.cs" />
     <Compile Include="RoleAssignment\RoleAssignmentUnitTests.cs" />
     <Compile Include="ScenarioTests\ActiveDirectoryTests.cs" />
-    <Compile Include="ScenarioTests\TestManagerBuilder.cs" />
     <Content Include="ScenarioTests\ProviderFeatureTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -197,6 +196,7 @@
     <Compile Include="ScenarioTests\PolicyTests.cs" />
     <Compile Include="ScenarioTests\ResourceLockTests.cs" />
     <Compile Include="ScenarioTests\ResourcesRecordMatcher.cs" />
+    <Compile Include="ScenarioTests\ResourceTestRunner.cs" />
     <Compile Include="ScenarioTests\ResourceTests.cs" />
     <Compile Include="ScenarioTests\RoleAssignmentTests.cs" />
     <Compile Include="ScenarioTests\RoleDefinitionTests.cs" />

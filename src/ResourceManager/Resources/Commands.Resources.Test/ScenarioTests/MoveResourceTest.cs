@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
     using Xunit.Abstractions;
-    public class MoveResourceTest : ResourcesTestRunner
+    public class MoveResourceTest : ResourceTestRunner
     {
         public MoveResourceTest(ITestOutputHelper output) : base(output)
         {
