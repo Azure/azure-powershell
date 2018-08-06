@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string storageAccountType =
                 ProviderData[RestoreBackupItemParams.StorageAccountType].ToString();
             string targetResourceGroupName =
-                ProviderData.ContainsKey(RestoreBackupItemParams.TargetResourceGroupName) != false ?
+                ProviderData.ContainsKey(RestoreBackupItemParams.TargetResourceGroupName) ?
                 ProviderData[RestoreBackupItemParams.TargetResourceGroupName].ToString() : null;
             bool osaOption = (bool)ProviderData[RestoreBackupItemParams.OsaOption];
 
