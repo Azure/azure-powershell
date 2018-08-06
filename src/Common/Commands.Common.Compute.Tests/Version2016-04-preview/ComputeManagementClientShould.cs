@@ -12,64 +12,76 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-
 namespace Microsoft.Azure.Commands.Common.Compute.Tests
 {
     using Compute.Version2016_04_preview;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
+    using System;
     using System.Linq;
+    using System.IO;
+    using Microsoft.Azure.Test.HttpRecorder;
+    using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
     namespace Version2016_04_preview
     {
         public class ComputeManagementClientShould
         {
-            private IComputeManagementClient Client {get;} 
-
             public ComputeManagementClientShould()
             {
-                var credManager = CredentialManager.FromServicePrincipalEnvVariable();
-                Client = new ComputeManagementClient(credManager.TokenCredentials)
-                {
-                    SubscriptionId = credManager.SubscriptionId
-                };
+                HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             }
 
             [Fact]
-            [Trait(Category.RunType, Category.LiveOnly)]
+            [Trait(Category.RunType, Category.CheckIn)]
             public void ListVirtualMachine()
             {
-                var vmClient = Client.VirtualMachines;
-                var vms = vmClient.ListAll().ToList();
-                Assert.True(vms.Count > 0);
+                using (var context = MockContext.Start(this.GetType().FullName))
+                {
+                    var client = context.GetServiceClient<ComputeManagementClient>();
+                    var vmClient = client.VirtualMachines;
+                    var vms = vmClient.ListAll().ToList();
+                    Assert.True(vms.Count > 0);
+                }
             }
 
             [Fact]
-            [Trait(Category.RunType, Category.LiveOnly)]
+            [Trait(Category.RunType, Category.CheckIn)]
             public void ListVirtualMachineSizes()
             {
-                var vmSizeClient = Client.VirtualMachineSizes;
-                var vmSizes = vmSizeClient.List("WestUs").ToList();
-                Assert.True(vmSizes.Count > 0);
+                using (var context = MockContext.Start(this.GetType().FullName))
+                {
+                    var client = context.GetServiceClient<ComputeManagementClient>();
+                    var vmSizeClient = client.VirtualMachineSizes;
+                    var vmSizes = vmSizeClient.List("WestUs").ToList();
+                    Assert.True(vmSizes.Count > 0);
+                }
             }
 
             [Fact]
-            [Trait(Category.RunType, Category.LiveOnly)]
+            [Trait(Category.RunType, Category.CheckIn)]
             public void ListVirtualMachineImagePublishers()
             {
-                var vmImagesClient = Client.VirtualMachineImages;
-                var vmImagePublisers = vmImagesClient.ListPublishers("WestUs").ToList();
-                Assert.True(vmImagePublisers.Count > 0);
+                using (var context = MockContext.Start(this.GetType().FullName))
+                {
+                    var client = context.GetServiceClient<ComputeManagementClient>();
+                    var vmImagesClient = client.VirtualMachineImages;
+                    var vmImagePublisers = vmImagesClient.ListPublishers("WestUs").ToList();
+                    Assert.True(vmImagePublisers.Count > 0);
+                }
             }
 
             [Fact]
-            [Trait(Category.RunType, Category.LiveOnly)]
+            [Trait(Category.RunType, Category.CheckIn)]
             public void ListDisks()
             {
-                var disksClient = Client.Disks;
-                var disks = disksClient.List().ToList();
-                Assert.True(disks.Count > 0);
+                using (var context = MockContext.Start(this.GetType().FullName))
+                {
+                    var client = context.GetServiceClient<ComputeManagementClient>();
+                    var disksClient = client.Disks;
+                    var disks = disksClient.List().ToList();
+                    Assert.True(disks.Count > 0);
+                }
             }
         }
     }

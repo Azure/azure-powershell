@@ -12,23 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.TestFx
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-    using Xunit.Abstractions;
-
-    public class ProviderFeatureTests : ResourceTestRunner
+    public interface ITestRunner
     {
-        public ProviderFeatureTests(ITestOutputHelper output) : base(output)
-        {
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureProviderFeature()
-        {
-            TestRunner.RunTestScript("Test-AzureProviderFeature");
-        }
+        void RunTestScript(params string[] scripts);
     }
 }

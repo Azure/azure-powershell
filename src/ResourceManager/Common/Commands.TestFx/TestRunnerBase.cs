@@ -12,23 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
+using Xunit.Abstractions;
+
+namespace Microsoft.Azure.Commands.TestFx
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
-    using Xunit.Abstractions;
-
-    public class ProviderFeatureTests : ResourceTestRunner
+    public class TestRunnerBase
     {
-        public ProviderFeatureTests(ITestOutputHelper output) : base(output)
-        {
-        }
+        protected readonly ITestRunner TestRunner;
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureProviderFeature()
+        protected TestRunnerBase(ITestOutputHelper output)
         {
-            TestRunner.RunTestScript("Test-AzureProviderFeature");
+            TestRunner = TestManager
+                .CreateInstance(output)
+                .WithNewPsScriptFilename($"{GetType().Name}.ps1")
+                .Build();
         }
     }
 }
