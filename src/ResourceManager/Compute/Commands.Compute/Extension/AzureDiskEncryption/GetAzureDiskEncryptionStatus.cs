@@ -245,12 +245,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private EncryptionStatus AreWindowsDataVolumesEncryptedDualPass(VirtualMachine vmParameters)
         {
-            if (vmParameters == null || vmParameters.Resources == null)
+            VirtualMachineExtension vmExtension = this.FindEncryptionExtension(vmParameters);
+            if (vmExtension == null)
             {
                 return EncryptionStatus.Unknown;
             }
 
-            VirtualMachineExtension vmExtension = this.FindEncryptionExtension(vmParameters);
             AzureDiskEncryptionExtensionContext adeExtension =
                 new AzureDiskEncryptionExtensionContext(vmExtension.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
 
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             string extensionPublisher = "";
             string extensionType = "";
 
-            if (vm.Resources == null) return null;
+            if (vm == null || vm.Resources == null) return null;
 
             switch(vm.StorageProfile.OsDisk.OsType)
             {
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             AzureDiskEncryptionStatusContext status = this.GetStatusFromInstanceView(vm);
 
             // Get Data Disk status from extension for Native Disk VMs
-            if (isNativeDiskVM(vm))
+            if ( status.DataVolumesEncrypted != EncryptionStatus.NoDiskFound && isNativeDiskVM(vm))
             {
                 // We use logic that's otherwise only used for Windows VMs in Dual Pass
                 status.DataVolumesEncrypted = this.AreWindowsDataVolumesEncryptedDualPass(vm);
