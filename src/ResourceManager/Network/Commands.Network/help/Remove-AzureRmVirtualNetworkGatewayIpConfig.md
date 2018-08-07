@@ -66,7 +66,7 @@ Sku                    : {
 VpnClientConfiguration : null
 BgpSettings            : {
                            "Asn": 65515,
-                           "BgpPeeringAddress": "10.8.255.4,10.8.255.5",
+                           "BgpPeeringAddress": "192.0.2.4,192.0.2.5",
                            "PeerWeight": 0
                          }
 
