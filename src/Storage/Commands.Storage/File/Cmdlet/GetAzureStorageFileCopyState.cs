@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopyState")]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopyState")]
     [OutputType(typeof(CloudFile))]
     public class GetAzureStorageFileCopyStateCommand : AzureStorageFileCmdletBase
     {

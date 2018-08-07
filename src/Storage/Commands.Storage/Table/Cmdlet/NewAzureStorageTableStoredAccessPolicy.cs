@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableStoredAccessPolicy"), OutputType(typeof(String))]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTableStoredAccessPolicy"), OutputType(typeof(String))]
     public class NewAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Name")]
