@@ -18,7 +18,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Microsoft Azure PowerShell Common")]
-[assembly: AssemblyDescription("Microsoft Azure PowerShell Common library")]
+[assembly: AssemblyDescription("Microsoft Azure PowerShell Common library. Only for use with the Azure PowerShell runtime. Not intended for general development use.")]
 [assembly: AssemblyProduct("Microsoft Azure PowerShell")]
 [assembly: AssemblyCompany("Microsoft Corporation")]
 [assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]

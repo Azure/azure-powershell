@@ -15,11 +15,11 @@
 
   <PropertyGroup>
     <Title>Microsoft Azure PowerShell Common</Title>
-    <Description>Microsoft Azure PowerShell Common library</Description>
+    <Description>Microsoft Azure PowerShell Common library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</Description>
     <PackageTags>azure;powershell;common</PackageTags>
     <Authors>Microsoft Corporation</Authors>
     <Copyright>Copyright © Microsoft Corporation</Copyright>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell-common/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Azure/azure-powershell-common</PackageProjectUrl>
     <PackageOutputPath>$(ProjectDir)..\..\artifacts\Package\$(Configuration)</PackageOutputPath>
   </PropertyGroup>

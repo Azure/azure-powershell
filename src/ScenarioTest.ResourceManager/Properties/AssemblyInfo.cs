@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Microsoft Azure PowerShell ScenarioTest ResourceManager")]
-[assembly: AssemblyDescription("Microsoft Azure PowerShell ScenarioTest ResourceManager library")]
+[assembly: AssemblyDescription("Microsoft Azure PowerShell ScenarioTest ResourceManager library. Only for use with the Azure PowerShell runtime. Not intended for general development use.")]
 [assembly: AssemblyProduct("Microsoft Azure PowerShell")]
 [assembly: AssemblyCompany("Microsoft Corporation")]
 [assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]

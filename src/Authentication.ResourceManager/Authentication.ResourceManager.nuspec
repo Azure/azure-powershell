@@ -7,9 +7,9 @@
     <authors>Microsoft Corporation</authors>
     <owners>Microsoft Corporation</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell-common/master/LICENSE.txt</licenseUrl>
+    <licenseUrl>https://aka.ms/azps-common-license</licenseUrl>
     <projectUrl>https://github.com/Azure/azure-powershell-common</projectUrl>
-    <description>Microsoft Azure PowerShell Authentication ResourceManager library</description>
+    <description>Microsoft Azure PowerShell Authentication ResourceManager library. Only for use with the Azure PowerShell runtime. Not intended for general development use.</description>
     <copyright>Copyright © Microsoft Corporation</copyright>
     <tags>azure powershell authentication resourcemanager</tags>
   </metadata>

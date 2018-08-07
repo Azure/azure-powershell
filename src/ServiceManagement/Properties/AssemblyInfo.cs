@@ -18,7 +18,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Microsoft Azure PowerShell ServiceManagement")]
-[assembly: AssemblyDescription("Microsoft Azure PowerShell ServiceManagement library")]
+[assembly: AssemblyDescription("Microsoft Azure PowerShell ServiceManagement library. Only for use with the Azure PowerShell runtime. Not intended for general development use.")]
 [assembly: AssemblyProduct("Microsoft Azure PowerShell")]
 [assembly: AssemblyCompany("Microsoft Corporation")]
 [assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]
