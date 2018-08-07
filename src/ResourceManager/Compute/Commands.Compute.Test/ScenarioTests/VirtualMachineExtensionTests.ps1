@@ -1068,6 +1068,46 @@ function Test-AzureDiskEncryptionExtensionSinglePass
 
 <#
 .SYNOPSIS
+Test the Get-AzureRmVmDiskEncryptionStatus single pass remove scenario
+#>
+function Test-AzureDiskEncryptionExtensionSinglePassRemove
+{
+	$resourceGroupName = Get-ComputeTestResourceName
+	try
+	{
+		# create virtual machine and key vault prerequisites
+		$vm = Create-VirtualMachine $resourceGroupName
+		$kv = Create-KeyVault $vm.ResourceGroupName $vm.Location
+
+		# enable encryption with single pass syntax (omits AD parameters)
+		Set-AzureRmVMDiskEncryptionExtension `
+			-ResourceGroupName $vm.ResourceGroupName `
+			-VMName $vm.Name `
+			-DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl `
+			-DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId `
+			-Force
+
+		# verify encryption state
+		$status = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+		Assert-NotNull $status
+		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+		Assert-AreEqual $status.DataVolumesEncrypted NoDiskFound
+
+		# remove extension
+		$status = Remove-AzureRmVmDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+		Assert-NotNull $status
+		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+		Assert-AreEqual $status.DataVolumesEncrypted NoDiskFound
+
+	}
+	finally
+	{
+		Clean-ResourceGroup($resourceGroupName)
+	}
+}
+
+<#
+.SYNOPSIS
 Test the Set-AzureRmVMDiskEncryptionExtension single pass disable and remove scenario
 #>
 function Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove
