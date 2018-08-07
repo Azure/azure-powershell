@@ -61,35 +61,84 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll'
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = '.\Microsoft.WindowsAzure.Commands.Storage.types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Management.Storage.format.ps1xml'
+FormatsToProcess = '.\Microsoft.Azure.Commands.Management.Storage.format.ps1xml', 
+    '.\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',  '.\Microsoft.WindowsAzure.Commands.Storage.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.Management.Storage.dll', 
-    '.\Microsoft.WindowsAzure.Storage.dll')
+    '.\Microsoft.WindowsAzure.Storage.dll', '.\Microsoft.WindowsAzure.Commands.Storage.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey', 
-    'New-AzStorageAccount', 'New-AzStorageAccountKey', 
-    'Remove-AzStorageAccount', 'Set-AzCurrentStorageAccount', 
-    'Set-AzStorageAccount', 
-    'Get-AzStorageAccountNameAvailability', 
-    'Get-AzStorageUsage', 
-    'Update-AzStorageAccountNetworkRuleSet', 
-    'Get-AzStorageAccountNetworkRuleSet', 
-    'Add-AzStorageAccountNetworkRule', 
-    'Remove-AzStorageAccountNetworkRule'
+CmdletsToExport = 'Get-AzRmStorageAccount', 'Get-AzRmStorageAccountKey', 
+    'New-AzRmStorageAccount', 'New-AzRmStorageAccountKey', 
+    'Remove-AzRmStorageAccount', 'Set-AzRmCurrentStorageAccount', 
+    'Set-AzRmStorageAccount', 
+    'Get-AzRmStorageAccountNameAvailability', 
+    'Get-AzRmStorageUsage', 
+    'Update-AzRmStorageAccountNetworkRuleSet', 
+    'Get-AzRmStorageAccountNetworkRuleSet', 
+    'Add-AzRmStorageAccountNetworkRule', 
+    'Remove-AzRmStorageAccountNetworkRule',
+    'Get-AzStorageTable', 'New-AzStorageTableSASToken', 
+    'New-AzStorageTableStoredAccessPolicy', 'New-AzStorageTable', 
+    'Remove-AzStorageTableStoredAccessPolicy', 
+    'Remove-AzStorageTable', 
+    'Get-AzStorageTableStoredAccessPolicy', 
+    'Set-AzStorageTableStoredAccessPolicy', 'Get-AzStorageQueue', 
+    'New-AzStorageQueue', 'Remove-AzStorageQueue', 
+    'Get-AzStorageQueueStoredAccessPolicy', 
+    'New-AzStorageQueueSASToken', 
+    'New-AzStorageQueueStoredAccessPolicy', 
+    'Remove-AzStorageQueueStoredAccessPolicy', 
+    'Set-AzStorageQueueStoredAccessPolicy', 'Get-AzStorageFile', 
+    'Get-AzStorageFileContent', 'Get-AzStorageFileCopyState', 
+    'Get-AzStorageShare', 'Get-AzStorageShareStoredAccessPolicy', 
+    'New-AzStorageDirectory', 'New-AzStorageFileSASToken', 
+    'New-AzStorageShare', 'New-AzStorageShareSASToken', 
+    'New-AzStorageShareStoredAccessPolicy', 
+    'Remove-AzStorageDirectory', 'Remove-AzStorageFile', 
+    'Remove-AzStorageShare', 
+    'Remove-AzStorageShareStoredAccessPolicy', 
+    'Set-AzStorageFileContent', 'Set-AzStorageShareQuota', 
+    'Set-AzStorageShareStoredAccessPolicy', 
+    'Start-AzStorageFileCopy', 'Stop-AzStorageFileCopy', 
+    'New-AzStorageAccountSASToken', 'Set-AzStorageCORSRule', 
+    'Get-AzStorageCORSRule', 'Get-AzStorageServiceLoggingProperty', 
+    'Get-AzStorageServiceMetricsProperty', 
+    'Remove-AzStorageCORSRule', 
+    'Set-AzStorageServiceLoggingProperty', 
+    'Set-AzStorageServiceMetricsProperty', 'New-AzStorageContext', 
+    'Set-AzStorageContainerAcl', 'Remove-AzStorageBlob', 
+    'Set-AzStorageBlobContent', 'Get-AzStorageBlob', 
+    'Get-AzStorageBlobContent', 'Get-AzStorageBlobCopyState', 
+    'Get-AzStorageContainer', 
+    'Get-AzStorageContainerStoredAccessPolicy', 
+    'New-AzStorageBlobSASToken', 'New-AzStorageContainer', 
+    'New-AzStorageContainerSASToken', 
+    'New-AzStorageContainerStoredAccessPolicy', 
+    'Remove-AzStorageContainer', 
+    'Remove-AzStorageContainerStoredAccessPolicy', 
+    'Set-AzStorageContainerStoredAccessPolicy', 
+    'Start-AzStorageBlobCopy', 
+    'Start-AzStorageBlobIncrementalCopy', 'Stop-AzStorageBlobCopy', 
+    'Update-AzStorageServiceProperty', 
+    'Get-AzStorageServiceProperty', 
+    'Enable-AzStorageDeleteRetentionPolicy', 
+    'Disable-AzStorageDeleteRetentionPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = 'Get-AzureStorageContainerAcl', 'Start-CopyAzureStorageBlob', 
+    'Stop-CopyAzureStorageBlob', 'Enable-AzureStorageSoftDelete', 
+    'Disable-AzureStorageSoftDelete'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

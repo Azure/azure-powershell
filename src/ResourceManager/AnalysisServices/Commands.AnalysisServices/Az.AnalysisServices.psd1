@@ -66,7 +66,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Analysis.dll'
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.AnalysisServices.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.AnalysisServices.dll', '.\Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -80,7 +80,11 @@ CmdletsToExport = 'Resume-AzAnalysisServicesServer',
     'Test-AzAnalysisServicesServer', 
     'New-AzAnalysisServicesServer', 
     'New-AzAnalysisServicesFirewallRule', 
-    'New-AzAnalysisServicesFirewallConfig'
+    'New-AzAnalysisServicesFirewallConfig',
+    'Add-AzAnalysisServicesAccount', 
+    'Restart-AzAnalysisServicesInstance', 
+    'Export-AzAnalysisServicesInstanceLog', 
+    'Sync-AzAnalysisServicesInstance'
 
 # Variables to export from this module
 # VariablesToExport = @()
