@@ -429,7 +429,6 @@
 
     <!-- Update module manifests. -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope Netcore &quot; "
-          Condition="'$(Scope)' == 'Netcore'"
           ContinueOnError="false" />
     <!-- Generate the Help -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
