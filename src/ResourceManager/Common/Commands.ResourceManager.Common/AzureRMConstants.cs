@@ -19,11 +19,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 #if NETSTANDARD
         public const string AzurePrefix = "Az";
         public const string AzureRMPrefix = "Az";
-        public const string AzureRMStoragePrefix = "AzRm"
+        public const string AzureRMStoragePrefix = "AzRm";
 #else
         public const string AzurePrefix = "Azure";
         public const string AzureRMPrefix = "AzureRM";
-        public const string AzureRMStoragePrefix = "AzureRm"
+        public const string AzureRMStoragePrefix = "AzureRm";
 #endif
     }
 }
