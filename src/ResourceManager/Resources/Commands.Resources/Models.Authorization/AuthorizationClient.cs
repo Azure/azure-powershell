@@ -29,28 +29,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
     public class AuthorizationClient
     {
-        /// <summary>
-        /// This queue is used by the tests to assign fixed role assignment
-        /// names every time the test runs.
-        /// </summary>
-        public static Queue<Guid> RoleAssignmentNames { get; set; }
-
-        /// <summary>
-        /// This queue is used by the tests to assign fixed role definition
-        /// names every time the test runs.
-        /// </summary>
-        public static Queue<Guid> RoleDefinitionNames { get; set; }
-
-
         public IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
 
         public ActiveDirectoryClient ActiveDirectoryClient { get; set; }
 
-        static AuthorizationClient()
-        {
-            RoleAssignmentNames = new Queue<Guid>();
-            RoleDefinitionNames = new Queue<Guid>();
-        }
+        static AuthorizationClient() {}
 
         /// <summary>
         /// Creates AuthorizationClient using AzureContext instance.
@@ -142,10 +125,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// </summary>
         /// <param name="parameters">The create parameters</param>
         /// <returns>The created role assignment object</returns>
-        public PSRoleAssignment CreateRoleAssignment(FilterRoleAssignmentsOptions parameters)
+        public PSRoleAssignment CreateRoleAssignment(FilterRoleAssignmentsOptions parameters, Guid roleAssignmentId = default(Guid))
         {
             Guid principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
-            Guid roleAssignmentId = RoleAssignmentNames.Count == 0 ? Guid.NewGuid() : RoleAssignmentNames.Dequeue();
+            roleAssignmentId = roleAssignmentId == default(Guid) ? Guid.NewGuid() : roleAssignmentId;
             string scope = parameters.Scope;
             string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)
                 ? AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, GetSingleRoleDefinitionByName(parameters.RoleDefinitionName, scope).Id)
@@ -419,12 +402,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// </summary>
         /// <param name="roleDefinition">The role definition to create.</param>
         /// <returns>The created role definition.</returns>
-        public PSRoleDefinition CreateRoleDefinition(PSRoleDefinition roleDefinition)
+        public PSRoleDefinition CreateRoleDefinition(PSRoleDefinition roleDefinition, Guid roleDefinitionId = default(Guid))
         {
             ValidateRoleDefinition(roleDefinition);
 
-            Guid newRoleDefinitionId = RoleDefinitionNames.Count == 0 ? Guid.NewGuid() : RoleDefinitionNames.Dequeue();
-            return this.CreateOrUpdateRoleDefinition(newRoleDefinitionId, roleDefinition);
+            roleDefinitionId = roleDefinitionId == default(Guid) ? Guid.NewGuid() : roleDefinitionId;
+            return this.CreateOrUpdateRoleDefinition(roleDefinitionId, roleDefinition);
         }
 
         private PSRoleDefinition CreateOrUpdateRoleDefinition(Guid roleDefinitionId, PSRoleDefinition roleDefinition)
