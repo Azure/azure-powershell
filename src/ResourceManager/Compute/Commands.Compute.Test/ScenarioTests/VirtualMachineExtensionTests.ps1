@@ -1052,7 +1052,7 @@ function Test-AzureDiskEncryptionExtensionSinglePass
 		$status = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
 		Assert-NotNull $status
 		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
-		Assert-AreEqual $status.DataVolumesEncrypted Unknown
+		Assert-AreEqual $status.DataVolumesEncrypted NoDiskFound
 
 		# verify encryption settings 
 		$settings = $status.OsVolumeEncryptionSettings
@@ -1091,6 +1091,7 @@ function Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove
 		$status = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
 		Assert-NotNull $status
 		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+		Assert-AreEqual $status.DataVolumesEncrypted NoDiskFound
 
 		# disable encryption
 		$status = Disable-AzureRmVmDiskEncryption -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
@@ -1100,6 +1101,7 @@ function Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove
 		$status = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
 		Assert-NotNull $status
 		Assert-AreEqual $status.OsVolumeEncrypted NotEncrypted
+		Assert-AreEqual $status.DataVolumesEncrypted NoDiskFound
 
 		# remove extension
 		$status = Remove-AzureRmVmDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
