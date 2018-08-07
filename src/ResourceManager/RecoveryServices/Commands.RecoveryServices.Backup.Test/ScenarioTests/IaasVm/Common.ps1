@@ -48,9 +48,14 @@ function Get-RandomSuffix(
 }
 
 function Create-ResourceGroup(
-	[string] $location)
+	[string] $location,
+	[int] $nick = -1)
 {
 	$name = "PSTestRG" + @(Get-RandomSuffix)
+	if($nick -gt -1)
+	{
+		$name += $nick
+	}
 
 	$resourceGroup = Get-AzureRmResourceGroup -Name $name -ErrorAction Ignore
 	

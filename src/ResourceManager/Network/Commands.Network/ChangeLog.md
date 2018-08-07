@@ -21,10 +21,12 @@
 ## Current Release
 * Added example for Set-AzureRmLocalNetworkGateway
 * Added examples and descriptions for Add-AzureRmVirtualNetworkGatewayIpConfig, Get-AzureRmVirtualNetworkGatewayConnectionSharedKey and New-AzureRmVirtualNetworkGatewayConnection
-* Clarified error message for Get-AzureRmVirtualNetworkSubnetConfig when attempting to get a subnet that does not exit
+* Re-generated cmdlets for ApplicationSecurityGroup, RouteTable and Usage using latest code generator
+* Clarified error message for Get-AzureRmVirtualNetworkSubnetConfig when attempting to get a subnet that does not exitc
 
 ## Version 6.4.1
 * Updated all help files to include full parameter types and correct input/output types.
+* Updated to the latest version of the Azure ClientRuntime.
 * Added examples for LoadBalancerInboundNatPoolConfig cmdlets.
 
 ## Version 6.4.0

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime.
 * Add user id to default context name to avoid context clashing
     - https://github.com/Azure/azure-powershell/issues/6489
 * Fix issues with Clear-AzureRmContext that caused issues with selecting a context #6398
