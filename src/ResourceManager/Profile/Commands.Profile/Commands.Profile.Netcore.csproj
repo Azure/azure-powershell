@@ -7,6 +7,7 @@
     <AssemblyName>Microsoft.Azure.Commands.Profile</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Profile</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -38,20 +39,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authorization\Common.Authorization.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Common.Rbac.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Compute\Common.Compute.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Common.Network.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage.Management\Common.Storage.Management.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.KeyVault\Common.KeyVault.Netcore.csproj" />
-    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj" />
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Websites\Common.Websites.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Aks\Commands.Common.Aks.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authorization\Common.Authorization.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Common.Rbac.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Compute\Common.Compute.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Common.Network.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage.Management\Common.Storage.Management.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.KeyVault\Common.KeyVault.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Websites\Common.Websites.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Aks\Commands.Common.Aks.Netcore.csproj" PrivateAssets="all"/>
   </ItemGroup>
 
   <ItemGroup>
@@ -80,9 +81,19 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
+  
   <ItemGroup>
     <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.ps1xml" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.Netcore.psd1" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.psm1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
+  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+    <Message Text="1. Including File in package:%0D%0A%09@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)', '%0D%0A%09')" Importance="high"/>   
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths)" Condition="! ($([System.String]::Copy(%(Filename)).Contains('System.')) Or $([System.String]::Copy(%(Filename)).Contains('Microsoft.CSharp')))"/>
+    </ItemGroup>
+  </Target>
 </Project>
