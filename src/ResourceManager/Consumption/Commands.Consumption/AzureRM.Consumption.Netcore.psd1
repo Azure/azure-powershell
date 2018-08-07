@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Consumption.dll'
@@ -72,12 +72,12 @@ NestedModules = @('.\Microsoft.Azure.Commands.Consumption.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmConsumptionBudget', 'Get-AzureRmConsumptionMarketplace', 
-    'Get-AzureRmConsumptionPriceSheet', 
-    'Get-AzureRmConsumptionReservationDetail', 
-    'Get-AzureRmConsumptionReservationSummary', 
-    'Get-AzureRmConsumptionUsageDetail', 'New-AzureRmConsumptionBudget', 
-    'Remove-AzureRmConsumptionBudget', 'Set-AzureRmConsumptionBudget'
+CmdletsToExport = 'Get-AzConsumptionBudget', 'Get-AzConsumptionMarketplace', 
+    'Get-AzConsumptionPriceSheet', 
+    'Get-AzConsumptionReservationDetail', 
+    'Get-AzConsumptionReservationSummary', 
+    'Get-AzConsumptionUsageDetail', 'New-AzConsumptionBudget', 
+    'Remove-AzConsumptionBudget', 'Set-AzConsumptionBudget'
 
 # Variables to export from this module
 # VariablesToExport = @()

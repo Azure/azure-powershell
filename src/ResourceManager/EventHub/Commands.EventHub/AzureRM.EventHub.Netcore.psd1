@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.EventHub.dll'
@@ -72,24 +72,24 @@ NestedModules = @('.\Microsoft.Azure.Commands.EventHub.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmEventHubNamespace', 'Get-AzureRmEventHubNamespace', 
-    'Set-AzureRmEventHubNamespace', 'Remove-AzureRmEventHubNamespace', 
-    'New-AzureRmEventHubAuthorizationRule', 
-    'Get-AzureRmEventHubAuthorizationRule', 
-    'Set-AzureRmEventHubAuthorizationRule', 
-    'Remove-AzureRmEventHubAuthorizationRule', 'Get-AzureRmEventHubKey', 
-    'New-AzureRmEventHubKey', 'New-AzureRmEventHub', 
-    'Get-AzureRmEventHub', 'Set-AzureRmEventHub', 
-    'Remove-AzureRmEventHub', 'New-AzureRmEventHubConsumerGroup', 
-    'Get-AzureRmEventHubConsumerGroup', 
-    'Set-AzureRmEventHubConsumerGroup', 
-    'Remove-AzureRmEventHubConsumerGroup', 
-    'New-AzureRmEventHubGeoDRConfiguration', 
-    'Get-AzureRmEventHubGeoDRConfiguration', 
-    'Remove-AzureRmEventHubGeoDRConfiguration', 
-    'Set-AzureRmEventHubGeoDRConfigurationBreakPair', 
-    'Set-AzureRmEventHubGeoDRConfigurationFailOver', 
-    'Test-AzureRmEventHubName'
+CmdletsToExport = 'New-AzEventHubNamespace', 'Get-AzEventHubNamespace', 
+    'Set-AzEventHubNamespace', 'Remove-AzEventHubNamespace', 
+    'New-AzEventHubAuthorizationRule', 
+    'Get-AzEventHubAuthorizationRule', 
+    'Set-AzEventHubAuthorizationRule', 
+    'Remove-AzEventHubAuthorizationRule', 'Get-AzEventHubKey', 
+    'New-AzEventHubKey', 'New-AzEventHub', 
+    'Get-AzEventHub', 'Set-AzEventHub', 
+    'Remove-AzEventHub', 'New-AzEventHubConsumerGroup', 
+    'Get-AzEventHubConsumerGroup', 
+    'Set-AzEventHubConsumerGroup', 
+    'Remove-AzEventHubConsumerGroup', 
+    'New-AzEventHubGeoDRConfiguration', 
+    'Get-AzEventHubGeoDRConfiguration', 
+    'Remove-AzEventHubGeoDRConfiguration', 
+    'Set-AzEventHubGeoDRConfigurationBreakPair', 
+    'Set-AzEventHubGeoDRConfigurationFailOver', 
+    'Test-AzEventHubName'
 
 # Variables to export from this module
 # VariablesToExport = @()

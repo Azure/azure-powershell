@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Monitor.dll'
@@ -72,25 +72,25 @@ NestedModules = @('.\Microsoft.Azure.Commands.Insights.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmMetricDefinition', 'Get-AzureRmMetric', 
-    'Remove-AzureRmLogProfile', 'Get-AzureRmLogProfile', 
-    'Add-AzureRmLogProfile', 'Get-AzureRmLog', 
-    'Set-AzureRmDiagnosticSetting', 'Get-AzureRmDiagnosticSetting', 
-    'Remove-AzureRmDiagnosticSetting',
-    'New-AzureRmAutoscaleNotification', 'New-AzureRmAutoscaleProfile', 
-    'New-AzureRmAutoscaleRule', 'Add-AzureRmAutoscaleSetting', 
-    'Get-AzureRmAutoscaleHistory', 'Get-AzureRmAutoscaleSetting', 
-    'New-AzureRmAutoscaleWebhook', 'Remove-AzureRmAutoscaleSetting', 
-    'Add-AzureRmMetricAlertRule', 'Add-AzureRmWebtestAlertRule', 
-    'Get-AzureRmAlertHistory', 'Get-AzureRmAlertRule', 
-    'New-AzureRmAlertRuleEmail', 'New-AzureRmAlertRuleWebhook', 
-    'Remove-AzureRmAlertRule', 'Set-AzureRmActivityLogAlert', 
-    'Get-AzureRmActivityLogAlert', 'New-AzureRmActionGroup', 
-    'New-AzureRmActivityLogAlertCondition', 
-    'Enable-AzureRmActivityLogAlert', 'Disable-AzureRmActivityLogAlert', 
-    'Remove-AzureRmActivityLogAlert', 'New-AzureRmActionGroupReceiver', 
-    'Set-AzureRmActionGroup', 'Get-AzureRmActionGroup', 
-    'Remove-AzureRmActionGroup', 'New-AzureRmMetricFilter'
+CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 
+    'Remove-AzLogProfile', 'Get-AzLogProfile', 
+    'Add-AzLogProfile', 'Get-AzLog', 
+    'Set-AzDiagnosticSetting', 'Get-AzDiagnosticSetting', 
+    'Remove-AzDiagnosticSetting',
+    'New-AzAutoscaleNotification', 'New-AzAutoscaleProfile', 
+    'New-AzAutoscaleRule', 'Add-AzAutoscaleSetting', 
+    'Get-AzAutoscaleHistory', 'Get-AzAutoscaleSetting', 
+    'New-AzAutoscaleWebhook', 'Remove-AzAutoscaleSetting', 
+    'Add-AzMetricAlertRule', 'Add-AzWebtestAlertRule', 
+    'Get-AzAlertHistory', 'Get-AzAlertRule', 
+    'New-AzAlertRuleEmail', 'New-AzAlertRuleWebhook', 
+    'Remove-AzAlertRule', 'Set-AzActivityLogAlert', 
+    'Get-AzActivityLogAlert', 'New-AzActionGroup', 
+    'New-AzActivityLogAlertCondition', 
+    'Enable-AzActivityLogAlert', 'Disable-AzActivityLogAlert', 
+    'Remove-AzActivityLogAlert', 'New-AzActionGroupReceiver', 
+    'Set-AzActionGroup', 'Get-AzActionGroup', 
+    'Remove-AzActionGroup', 'New-AzMetricFilter'
 
 # Variables to export from this module
 # VariablesToExport = @()

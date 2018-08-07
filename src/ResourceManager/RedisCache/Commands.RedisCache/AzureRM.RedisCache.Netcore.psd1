@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Insights.dll', 
@@ -74,20 +74,20 @@ NestedModules = @('.\Microsoft.Azure.Commands.RedisCache.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Remove-AzureRmRedisCachePatchSchedule', 
-    'New-AzureRmRedisCacheScheduleEntry', 
-    'Get-AzureRmRedisCachePatchSchedule', 
-    'New-AzureRmRedisCachePatchSchedule', 'Reset-AzureRmRedisCache', 
-    'Export-AzureRmRedisCache', 'Import-AzureRmRedisCache', 
-    'Remove-AzureRmRedisCacheDiagnostics', 
-    'Set-AzureRmRedisCacheDiagnostics', 'Set-AzureRmRedisCache', 
-    'New-AzureRmRedisCacheKey', 'Get-AzureRmRedisCacheKey', 
-    'Get-AzureRmRedisCache', 'Remove-AzureRmRedisCache', 
-    'New-AzureRmRedisCache', 'New-AzureRmRedisCacheLink', 
-    'Remove-AzureRmRedisCacheLink', 'Get-AzureRmRedisCacheLink', 
-    'New-AzureRmRedisCacheFirewallRule', 
-    'Remove-AzureRmRedisCacheFirewallRule', 
-    'Get-AzureRmRedisCacheFirewallRule'
+CmdletsToExport = 'Remove-AzRedisCachePatchSchedule', 
+    'New-AzRedisCacheScheduleEntry', 
+    'Get-AzRedisCachePatchSchedule', 
+    'New-AzRedisCachePatchSchedule', 'Reset-AzRedisCache', 
+    'Export-AzRedisCache', 'Import-AzRedisCache', 
+    'Remove-AzRedisCacheDiagnostics', 
+    'Set-AzRedisCacheDiagnostics', 'Set-AzRedisCache', 
+    'New-AzRedisCacheKey', 'Get-AzRedisCacheKey', 
+    'Get-AzRedisCache', 'Remove-AzRedisCache', 
+    'New-AzRedisCache', 'New-AzRedisCacheLink', 
+    'Remove-AzRedisCacheLink', 'Get-AzRedisCacheLink', 
+    'New-AzRedisCacheFirewallRule', 
+    'Remove-AzRedisCacheFirewallRule', 
+    'Get-AzRedisCacheFirewallRule'
 
 # Variables to export from this module
 # VariablesToExport = @()

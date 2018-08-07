@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -95,18 +95,18 @@ NestedModules = @('.\Microsoft.Azure.Commands.Profile.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Disable-AzureRmDataCollection', 'Disable-AzureRmContextAutosave', 
-    'Enable-AzureRmDataCollection', 'Enable-AzureRmContextAutosave', 
-    'Remove-AzureRmEnvironment', 'Get-AzureRmEnvironment', 
-    'Set-AzureRmEnvironment', 'Add-AzureRmEnvironment', 
-    'Get-AzureRmSubscription', 'Connect-AzureRmAccount', 
-    'Get-AzureRmContext', 'Set-AzureRmContext', 'Import-AzureRmContext', 
-    'Save-AzureRmContext', 'Get-AzureRmTenant', 'Send-Feedback', 
-    'Resolve-AzureRmError', 'Select-AzureRmContext', 
-    'Rename-AzureRmContext', 'Remove-AzureRmContext', 
-    'Clear-AzureRmContext', 'Disconnect-AzureRmAccount', 
-    'Get-AzureRmContextAutosaveSetting', 'Set-AzureRmDefault', 
-    'Get-AzureRmDefault', 'Clear-AzureRmDefault'
+CmdletsToExport = 'Disable-AzDataCollection', 'Disable-AzContextAutosave', 
+    'Enable-AzDataCollection', 'Enable-AzContextAutosave', 
+    'Remove-AzEnvironment', 'Get-AzEnvironment', 
+    'Set-AzEnvironment', 'Add-AzEnvironment', 
+    'Get-AzSubscription', 'Connect-AzAccount', 
+    'Get-AzContext', 'Set-AzContext', 'Import-AzContext', 
+    'Save-AzContext', 'Get-AzTenant', 'Send-Feedback', 
+    'Resolve-AzError', 'Select-AzContext', 
+    'Rename-AzContext', 'Remove-AzContext', 
+    'Clear-AzContext', 'Disconnect-AzAccount', 
+    'Get-AzContextAutosaveSetting', 'Set-AzDefault', 
+    'Get-AzDefault', 'Clear-AzDefault'
 
 # Variables to export from this module
 # VariablesToExport = @()

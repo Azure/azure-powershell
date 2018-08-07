@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Cdn.dll'
@@ -72,22 +72,22 @@ NestedModules = @('.\Microsoft.Azure.Commands.Cdn.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmCdnProfile', 'Get-AzureRmCdnProfileSsoUrl', 
-    'New-AzureRmCdnProfile', 'Remove-AzureRmCdnProfile', 
-    'Set-AzureRmCdnProfile', 'Get-AzureRmCdnOrigin', 
-    'Set-AzureRmCdnOrigin', 'Get-AzureRmCdnEndpointNameAvailability', 
-    'Get-AzureRmCdnEndpoint', 'Publish-AzureRmCdnEndpointContent', 
-    'New-AzureRmCdnEndpoint', 'Unpublish-AzureRmCdnEndpointContent', 
-    'Remove-AzureRmCdnEndpoint', 'Set-AzureRmCdnEndpoint', 
-    'Start-AzureRmCdnEndpoint', 'Stop-AzureRmCdnEndpoint', 
-    'Test-AzureRmCdnCustomDomain', 'Get-AzureRmCdnCustomDomain', 
-    'New-AzureRmCdnCustomDomain', 'Remove-AzureRmCdnCustomDomain', 
-    'Enable-AzureRmCdnCustomDomain', 'Disable-AzureRmCdnCustomDomain', 
-    'Get-AzureRmCdnProfileResourceUsage', 
-    'Confirm-AzureRmCdnEndpointProbeUrl', 
-    'Get-AzureRmCdnEndpointResourceUsage', 
-    'Get-AzureRmCdnProfileSupportedOptimizationType', 
-    'Get-AzureRmCdnSubscriptionResourceUsage', 'Get-AzureRmCdnEdgeNodes'
+CmdletsToExport = 'Get-AzCdnProfile', 'Get-AzCdnProfileSsoUrl', 
+    'New-AzCdnProfile', 'Remove-AzCdnProfile', 
+    'Set-AzCdnProfile', 'Get-AzCdnOrigin', 
+    'Set-AzCdnOrigin', 'Get-AzCdnEndpointNameAvailability', 
+    'Get-AzCdnEndpoint', 'Publish-AzCdnEndpointContent', 
+    'New-AzCdnEndpoint', 'Unpublish-AzCdnEndpointContent', 
+    'Remove-AzCdnEndpoint', 'Set-AzCdnEndpoint', 
+    'Start-AzCdnEndpoint', 'Stop-AzCdnEndpoint', 
+    'Test-AzCdnCustomDomain', 'Get-AzCdnCustomDomain', 
+    'New-AzCdnCustomDomain', 'Remove-AzCdnCustomDomain', 
+    'Enable-AzCdnCustomDomain', 'Disable-AzCdnCustomDomain', 
+    'Get-AzCdnProfileResourceUsage', 
+    'Confirm-AzCdnEndpointProbeUrl', 
+    'Get-AzCdnEndpointResourceUsage', 
+    'Get-AzCdnProfileSupportedOptimizationType', 
+    'Get-AzCdnSubscriptionResourceUsage', 'Get-AzCdnEdgeNodes'
 
 # Variables to export from this module
 # VariablesToExport = @()

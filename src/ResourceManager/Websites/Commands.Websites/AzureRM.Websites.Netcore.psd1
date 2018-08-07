@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Websites.dll', 
@@ -73,29 +73,29 @@ NestedModules = @('.\Microsoft.Azure.Commands.Websites.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmAppServicePlan', 'Set-AzureRmAppServicePlan', 
-    'New-AzureRmAppServicePlan', 'Remove-AzureRmAppServicePlan', 
-    'Get-AzureRmWebAppSlot', 'Get-AzureRmWebAppSlotConfigName', 
-    'Get-AzureRmWebAppSlotMetrics', 
-    'Get-AzureRmWebAppSlotPublishingProfile', 'New-AzureRmWebAppSlot', 
-    'Remove-AzureRmWebAppSlot', 
-    'Reset-AzureRmWebAppSlotPublishingProfile', 
-    'Restart-AzureRmWebAppSlot', 'Set-AzureRmWebAppSlot', 
-    'Set-AzureRmWebAppSlotConfigName', 'Start-AzureRmWebAppSlot', 
-    'Stop-AzureRmWebAppSlot', 'Switch-AzureRmWebAppSlot', 
-    'New-AzureRmWebAppDatabaseBackupSetting', 
-    'Restore-AzureRmWebAppBackup', 'Get-AzureRmAppServicePlanMetrics', 
-    'Get-AzureRmWebAppCertificate', 'Get-AzureRmWebAppSSLBinding', 
-    'New-AzureRmWebAppSSLBinding', 'Remove-AzureRmWebAppSSLBinding', 
-    'Edit-AzureRmWebAppBackupConfiguration', 'Get-AzureRmWebAppBackup', 
-    'Get-AzureRmWebAppBackupConfiguration', 
-    'Get-AzureRmWebAppBackupList', 'Get-AzureRmWebAppMetrics', 
-    'Get-AzureRmWebAppPublishingProfile', 'Get-AzureRmWebApp', 
-    'New-AzureRmWebAppBackup', 'Remove-AzureRmWebApp', 
-    'New-AzureRmWebApp', 'Remove-AzureRmWebAppBackup', 
-    'Reset-AzureRmWebAppPublishingProfile', 'Restart-AzureRmWebApp', 
-    'Set-AzureRmWebApp', 'Start-AzureRmWebApp', 'Stop-AzureRmWebApp', 
-    'Get-AzureRmWebAppSnapshot', 'Restore-AzureRmWebAppSnapshot'
+CmdletsToExport = 'Get-AzAppServicePlan', 'Set-AzAppServicePlan', 
+    'New-AzAppServicePlan', 'Remove-AzAppServicePlan', 
+    'Get-AzWebAppSlot', 'Get-AzWebAppSlotConfigName', 
+    'Get-AzWebAppSlotMetrics', 
+    'Get-AzWebAppSlotPublishingProfile', 'New-AzWebAppSlot', 
+    'Remove-AzWebAppSlot', 
+    'Reset-AzWebAppSlotPublishingProfile', 
+    'Restart-AzWebAppSlot', 'Set-AzWebAppSlot', 
+    'Set-AzWebAppSlotConfigName', 'Start-AzWebAppSlot', 
+    'Stop-AzWebAppSlot', 'Switch-AzWebAppSlot', 
+    'New-AzWebAppDatabaseBackupSetting', 
+    'Restore-AzWebAppBackup', 'Get-AzAppServicePlanMetrics', 
+    'Get-AzWebAppCertificate', 'Get-AzWebAppSSLBinding', 
+    'New-AzWebAppSSLBinding', 'Remove-AzWebAppSSLBinding', 
+    'Edit-AzWebAppBackupConfiguration', 'Get-AzWebAppBackup', 
+    'Get-AzWebAppBackupConfiguration', 
+    'Get-AzWebAppBackupList', 'Get-AzWebAppMetrics', 
+    'Get-AzWebAppPublishingProfile', 'Get-AzWebApp', 
+    'New-AzWebAppBackup', 'Remove-AzWebApp', 
+    'New-AzWebApp', 'Remove-AzWebAppBackup', 
+    'Reset-AzWebAppPublishingProfile', 'Restart-AzWebApp', 
+    'Set-AzWebApp', 'Start-AzWebApp', 'Stop-AzWebApp', 
+    'Get-AzWebAppSnapshot', 'Restore-AzWebAppSnapshot'
 
 # Variables to export from this module
 # VariablesToExport = @()

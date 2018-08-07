@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.BackupServicesManagement.dll', 
@@ -74,22 +74,22 @@ NestedModules = @('.\Microsoft.Azure.Commands.AzureBackup.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Backup-AzureRmBackupItem', 
-    'Enable-AzureRmBackupContainerReregistration', 
-    'Get-AzureRmBackupContainer', 'Register-AzureRmBackupContainer', 
-    'Unregister-AzureRmBackupContainer', 
-    'Enable-AzureRmBackupProtection', 'Get-AzureRmBackupItem', 
-    'Get-AzureRmBackupJob', 'Get-AzureRmBackupJobDetails', 
-    'Stop-AzureRmBackupJob', 'Wait-AzureRmBackupJob', 
-    'Get-AzureRmBackupProtectionPolicy', 
-    'New-AzureRmBackupProtectionPolicy', 
-    'New-AzureRmBackupRetentionPolicyObject', 
-    'Remove-AzureRmBackupProtectionPolicy', 
-    'Set-AzureRmBackupProtectionPolicy', 
-    'Get-AzureRmBackupRecoveryPoint', 'Restore-AzureRmBackupItem', 
-    'Get-AzureRmBackupVaultCredentials', 'Get-AzureRmBackupVault', 
-    'New-AzureRmBackupVault', 'Remove-AzureRmBackupVault', 
-    'Set-AzureRmBackupVault', 'Disable-AzureRmBackupProtection'
+CmdletsToExport = 'Backup-AzBackupItem', 
+    'Enable-AzBackupContainerReregistration', 
+    'Get-AzBackupContainer', 'Register-AzBackupContainer', 
+    'Unregister-AzBackupContainer', 
+    'Enable-AzBackupProtection', 'Get-AzBackupItem', 
+    'Get-AzBackupJob', 'Get-AzBackupJobDetails', 
+    'Stop-AzBackupJob', 'Wait-AzBackupJob', 
+    'Get-AzBackupProtectionPolicy', 
+    'New-AzBackupProtectionPolicy', 
+    'New-AzBackupRetentionPolicyObject', 
+    'Remove-AzBackupProtectionPolicy', 
+    'Set-AzBackupProtectionPolicy', 
+    'Get-AzBackupRecoveryPoint', 'Restore-AzBackupItem', 
+    'Get-AzBackupVaultCredentials', 'Get-AzBackupVault', 
+    'New-AzBackupVault', 'Remove-AzBackupVault', 
+    'Set-AzBackupVault', 'Disable-AzBackupProtection'
 
 # Variables to export from this module
 # VariablesToExport = @()

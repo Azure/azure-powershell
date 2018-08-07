@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataFactories.dll', 
@@ -73,29 +73,29 @@ NestedModules = @('.\Microsoft.Azure.Commands.DataFactories.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Remove-AzureRmDataFactory', 'Get-AzureRmDataFactoryRun', 
-    'Get-AzureRmDataFactorySlice', 'Save-AzureRmDataFactoryLog', 
-    'Set-AzureRmDataFactorySliceStatus', 
-    'New-AzureRmDataFactoryEncryptValue', 
-    'Get-AzureRmDataFactoryGateway', 'New-AzureRmDataFactoryGateway', 
-    'New-AzureRmDataFactoryGatewayKey', 
-    'Get-AzureRmDataFactoryGatewayAuthkey', 
-    'New-AzureRmDataFactoryGatewayAuthkey', 
-    'Remove-AzureRmDataFactoryGateway', 'Set-AzureRmDataFactoryGateway', 
-    'Get-AzureRmDataFactoryHub', 'New-AzureRmDataFactoryHub', 
-    'Remove-AzureRmDataFactoryHub', 
-    'Get-AzureRmDataFactoryLinkedService', 
-    'Get-AzureRmDataFactoryActivityWindow', 
-    'New-AzureRmDataFactoryLinkedService', 
-    'Remove-AzureRmDataFactoryLinkedService', 'Get-AzureRmDataFactory', 
-    'New-AzureRmDataFactory', 'Get-AzureRmDataFactoryPipeline', 
-    'New-AzureRmDataFactoryPipeline', 
-    'Remove-AzureRmDataFactoryPipeline', 
-    'Resume-AzureRmDataFactoryPipeline', 
-    'Set-AzureRmDataFactoryPipelineActivePeriod', 
-    'Suspend-AzureRmDataFactoryPipeline', 
-    'Get-AzureRmDataFactoryDataset', 'New-AzureRmDataFactoryDataset', 
-    'Remove-AzureRmDataFactoryDataset'
+CmdletsToExport = 'Remove-AzDataFactory', 'Get-AzDataFactoryRun', 
+    'Get-AzDataFactorySlice', 'Save-AzDataFactoryLog', 
+    'Set-AzDataFactorySliceStatus', 
+    'New-AzDataFactoryEncryptValue', 
+    'Get-AzDataFactoryGateway', 'New-AzDataFactoryGateway', 
+    'New-AzDataFactoryGatewayKey', 
+    'Get-AzDataFactoryGatewayAuthkey', 
+    'New-AzDataFactoryGatewayAuthkey', 
+    'Remove-AzDataFactoryGateway', 'Set-AzDataFactoryGateway', 
+    'Get-AzDataFactoryHub', 'New-AzDataFactoryHub', 
+    'Remove-AzDataFactoryHub', 
+    'Get-AzDataFactoryLinkedService', 
+    'Get-AzDataFactoryActivityWindow', 
+    'New-AzDataFactoryLinkedService', 
+    'Remove-AzDataFactoryLinkedService', 'Get-AzDataFactory', 
+    'New-AzDataFactory', 'Get-AzDataFactoryPipeline', 
+    'New-AzDataFactoryPipeline', 
+    'Remove-AzDataFactoryPipeline', 
+    'Resume-AzDataFactoryPipeline', 
+    'Set-AzDataFactoryPipelineActivePeriod', 
+    'Suspend-AzDataFactoryPipeline', 
+    'Get-AzDataFactoryDataset', 'New-AzDataFactoryDataset', 
+    'Remove-AzDataFactoryDataset'
 
 # Variables to export from this module
 # VariablesToExport = @()

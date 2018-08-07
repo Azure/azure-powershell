@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.MachineLearning.dll'
@@ -72,15 +72,15 @@ NestedModules = @('.\Microsoft.Azure.Commands.MachineLearning.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Move-AzureRmMlCommitmentAssociation', 
-    'Get-AzureRmMlCommitmentAssociation', 
-    'Get-AzureRmMlCommitmentPlanUsageHistory', 
-    'Remove-AzureRmMlCommitmentPlan', 'Update-AzureRmMlCommitmentPlan', 
-    'Get-AzureRmMlCommitmentPlan', 'Remove-AzureRmMlWebService', 
-    'Get-AzureRmMlWebService', 'Update-AzureRmMlWebService', 
-    'Export-AzureRmMlWebService', 'Get-AzureRmMlWebServiceKeys', 
-    'Import-AzureRmMlWebService', 'New-AzureRmMlCommitmentPlan', 
-    'New-AzureRmMlWebService', 'Add-AzureRmMlWebServiceRegionalProperty'
+CmdletsToExport = 'Move-AzMlCommitmentAssociation', 
+    'Get-AzMlCommitmentAssociation', 
+    'Get-AzMlCommitmentPlanUsageHistory', 
+    'Remove-AzMlCommitmentPlan', 'Update-AzMlCommitmentPlan', 
+    'Get-AzMlCommitmentPlan', 'Remove-AzMlWebService', 
+    'Get-AzMlWebService', 'Update-AzMlWebService', 
+    'Export-AzMlWebService', 'Get-AzMlWebServiceKeys', 
+    'Import-AzMlWebService', 'New-AzMlCommitmentPlan', 
+    'New-AzMlWebService', 'Add-AzMlWebServiceRegionalProperty'
 
 # Variables to export from this module
 # VariablesToExport = @()

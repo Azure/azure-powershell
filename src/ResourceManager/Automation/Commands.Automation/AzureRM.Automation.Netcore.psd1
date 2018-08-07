@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Automation.dll'
@@ -72,62 +72,62 @@ NestedModules = @('.\Microsoft.Azure.Commands.ResourceManager.Automation.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRMAutomationHybridWorkerGroup', 
-    'Get-AzureRmAutomationJobOutputRecord', 
-    'Import-AzureRmAutomationDscNodeConfiguration', 
-    'Export-AzureRmAutomationDscConfiguration', 
-    'Export-AzureRmAutomationDscNodeReportContent', 
-    'Get-AzureRmAutomationCertificate', 
-    'Get-AzureRmAutomationConnection', 'Get-AzureRmAutomationCredential', 
-    'Get-AzureRmAutomationDscCompilationJob', 
-    'Get-AzureRmAutomationDscCompilationJobOutput', 
-    'Get-AzureRmAutomationDscNodeConfiguration', 
-    'Get-AzureRmAutomationDscNodeReport', 'Get-AzureRmAutomationJob', 
-    'Get-AzureRmAutomationJobOutput', 'Get-AzureRmAutomationModule', 
-    'Get-AzureRmAutomationRunbook', 'Export-AzureRmAutomationRunbook', 
-    'Get-AzureRmAutomationSchedule', 
-    'Get-AzureRmAutomationScheduledRunbook', 
-    'Get-AzureRmAutomationVariable', 'Get-AzureRmAutomationWebhook', 
-    'New-AzureRmAutomationCertificate', 
-    'New-AzureRmAutomationConnection', 'New-AzureRmAutomationCredential', 
-    'New-AzureRmAutomationModule', 'New-AzureRmAutomationRunbook', 
-    'New-AzureRmAutomationSchedule', 'New-AzureRmAutomationVariable', 
-    'New-AzureRmAutomationWebhook', 'Publish-AzureRmAutomationRunbook', 
-    'Register-AzureRmAutomationDscNode', 
-    'Register-AzureRmAutomationScheduledRunbook', 
-    'Remove-AzureRmAutomationCertificate', 
-    'Remove-AzureRmAutomationConnectionType', 
-    'Remove-AzureRmAutomationConnection', 
-    'Remove-AzureRmAutomationCredential', 
-    'Remove-AzureRmAutomationDscNodeConfiguration', 
-    'Remove-AzureRmAutomationModule', 'Remove-AzureRmAutomationRunbook', 
-    'Remove-AzureRmAutomationSchedule', 
-    'Remove-AzureRmAutomationVariable', 
-    'Remove-AzureRmAutomationDscConfiguration', 
-    'Remove-AzureRmAutomationWebhook', 'Resume-AzureRmAutomationJob', 
-    'Set-AzureRmAutomationCertificate', 
-    'Set-AzureRmAutomationConnectionFieldValue', 
-    'Set-AzureRmAutomationCredential', 'Set-AzureRmAutomationModule', 
-    'Set-AzureRmAutomationRunbook', 'Import-AzureRmAutomationRunbook', 
-    'Set-AzureRmAutomationSchedule', 'Set-AzureRmAutomationVariable', 
-    'Set-AzureRmAutomationWebhook', 
-    'Start-AzureRmAutomationDscCompilationJob', 
-    'Get-AzureRmAutomationRegistrationInfo', 
-    'Get-AzureRmAutomationDscConfiguration', 
-    'Get-AzureRmAutomationDscNode', 
-    'Get-AzureRmAutomationDscOnboardingMetaconfig', 
-    'Import-AzureRmAutomationDscConfiguration', 
-    'New-AzureRmAutomationKey', 'Start-AzureRmAutomationRunbook', 
-    'Stop-AzureRmAutomationJob', 'Suspend-AzureRmAutomationJob', 
-    'Unregister-AzureRmAutomationDscNode', 
-    'Set-AzureRmAutomationAccount', 'Remove-AzureRmAutomationAccount', 
-    'New-AzureRmAutomationAccount', 'Get-AzureRmAutomationAccount', 
-    'Set-AzureRmAutomationDscNode', 
-    'Unregister-AzureRmAutomationScheduledRunbook', 
-    'Start-AzureRmAutomationDscNodeConfigurationDeployment', 
-    'Stop-AzureRmAutomationDscNodeConfigurationDeployment', 
-    'Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule', 
-    'Get-AzureRmAutomationDscNodeConfigurationDeployment'
+CmdletsToExport = 'Get-AzAutomationHybridWorkerGroup', 
+    'Get-AzAutomationJobOutputRecord', 
+    'Import-AzAutomationDscNodeConfiguration', 
+    'Export-AzAutomationDscConfiguration', 
+    'Export-AzAutomationDscNodeReportContent', 
+    'Get-AzAutomationCertificate', 
+    'Get-AzAutomationConnection', 'Get-AzAutomationCredential', 
+    'Get-AzAutomationDscCompilationJob', 
+    'Get-AzAutomationDscCompilationJobOutput', 
+    'Get-AzAutomationDscNodeConfiguration', 
+    'Get-AzAutomationDscNodeReport', 'Get-AzAutomationJob', 
+    'Get-AzAutomationJobOutput', 'Get-AzAutomationModule', 
+    'Get-AzAutomationRunbook', 'Export-AzAutomationRunbook', 
+    'Get-AzAutomationSchedule', 
+    'Get-AzAutomationScheduledRunbook', 
+    'Get-AzAutomationVariable', 'Get-AzAutomationWebhook', 
+    'New-AzAutomationCertificate', 
+    'New-AzAutomationConnection', 'New-AzAutomationCredential', 
+    'New-AzAutomationModule', 'New-AzAutomationRunbook', 
+    'New-AzAutomationSchedule', 'New-AzAutomationVariable', 
+    'New-AzAutomationWebhook', 'Publish-AzAutomationRunbook', 
+    'Register-AzAutomationDscNode', 
+    'Register-AzAutomationScheduledRunbook', 
+    'Remove-AzAutomationCertificate', 
+    'Remove-AzAutomationConnectionType', 
+    'Remove-AzAutomationConnection', 
+    'Remove-AzAutomationCredential', 
+    'Remove-AzAutomationDscNodeConfiguration', 
+    'Remove-AzAutomationModule', 'Remove-AzAutomationRunbook', 
+    'Remove-AzAutomationSchedule', 
+    'Remove-AzAutomationVariable', 
+    'Remove-AzAutomationDscConfiguration', 
+    'Remove-AzAutomationWebhook', 'Resume-AzAutomationJob', 
+    'Set-AzAutomationCertificate', 
+    'Set-AzAutomationConnectionFieldValue', 
+    'Set-AzAutomationCredential', 'Set-AzAutomationModule', 
+    'Set-AzAutomationRunbook', 'Import-AzAutomationRunbook', 
+    'Set-AzAutomationSchedule', 'Set-AzAutomationVariable', 
+    'Set-AzAutomationWebhook', 
+    'Start-AzAutomationDscCompilationJob', 
+    'Get-AzAutomationRegistrationInfo', 
+    'Get-AzAutomationDscConfiguration', 
+    'Get-AzAutomationDscNode', 
+    'Get-AzAutomationDscOnboardingMetaconfig', 
+    'Import-AzAutomationDscConfiguration', 
+    'New-AzAutomationKey', 'Start-AzAutomationRunbook', 
+    'Stop-AzAutomationJob', 'Suspend-AzAutomationJob', 
+    'Unregister-AzAutomationDscNode', 
+    'Set-AzAutomationAccount', 'Remove-AzAutomationAccount', 
+    'New-AzAutomationAccount', 'Get-AzAutomationAccount', 
+    'Set-AzAutomationDscNode', 
+    'Unregister-AzAutomationScheduledRunbook', 
+    'Start-AzAutomationDscNodeConfigurationDeployment', 
+    'Stop-AzAutomationDscNodeConfigurationDeployment', 
+    'Get-AzAutomationDscNodeConfigurationDeploymentSchedule', 
+    'Get-AzAutomationDscNodeConfigurationDeployment'
 
 # Variables to export from this module
 # VariablesToExport = @()

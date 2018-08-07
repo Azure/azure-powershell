@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataMigration.dll'
@@ -72,18 +72,18 @@ NestedModules = @('.\Microsoft.Azure.Commands.DataMigration.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmDataMigrationDatabaseInfo', 
-    'New-AzureRmDataMigrationConnectionInfo', 
-    'New-AzureRmDataMigrationProject', 
-    'Remove-AzureRmDataMigrationProject', 
-    'Get-AzureRmDataMigrationProject', 'Get-AzureRmDataMigrationService', 
-    'New-AzureRmDataMigrationService', 
-    'Remove-AzureRmDataMigrationService', 'New-AzureRmDataMigrationTask', 
-    'Get-AzureRmDataMigrationTask', 'Remove-AzureRmDataMigrationTask', 
-    'Start-AzureRmDataMigrationService', 
-    'Stop-AzureRmDataMigrationService', 'Stop-AzureRmDataMigrationTask', 
-    'New-AzureRmDataMigrationSelectedDB', 
-    'New-AzureRmDataMigrationFileShare'
+CmdletsToExport = 'New-AzDataMigrationDatabaseInfo', 
+    'New-AzDataMigrationConnectionInfo', 
+    'New-AzDataMigrationProject', 
+    'Remove-AzDataMigrationProject', 
+    'Get-AzDataMigrationProject', 'Get-AzDataMigrationService', 
+    'New-AzDataMigrationService', 
+    'Remove-AzDataMigrationService', 'New-AzDataMigrationTask', 
+    'Get-AzDataMigrationTask', 'Remove-AzDataMigrationTask', 
+    'Start-AzDataMigrationService', 
+    'Stop-AzDataMigrationService', 'Stop-AzDataMigrationTask', 
+    'New-AzDataMigrationSelectedDB', 
+    'New-AzDataMigrationFileShare'
 
 # Variables to export from this module
 # VariablesToExport = @()

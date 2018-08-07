@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', 
@@ -73,8 +73,8 @@ NestedModules = @('.\Microsoft.Azure.Commands.ContainerInstance.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmContainerGroup', 'Get-AzureRmContainerGroup', 
-    'Remove-AzureRmContainerGroup', 'Get-AzureRmContainerInstanceLog'
+CmdletsToExport = 'New-AzContainerGroup', 'Get-AzContainerGroup', 
+    'Remove-AzContainerGroup', 'Get-AzContainerInstanceLog'
 
 # Variables to export from this module
 # VariablesToExport = @()

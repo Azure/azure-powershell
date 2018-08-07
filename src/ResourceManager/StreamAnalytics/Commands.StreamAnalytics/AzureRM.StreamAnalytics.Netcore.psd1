@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.StreamAnalytics.dll'
@@ -72,23 +72,23 @@ NestedModules = @('.\Microsoft.Azure.Commands.StreamAnalytics.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmStreamAnalyticsFunction', 
-    'Get-AzureRmStreamAnalyticsDefaultFunctionDefinition', 
-    'New-AzureRmStreamAnalyticsFunction', 
-    'Remove-AzureRmStreamAnalyticsFunction', 
-    'Test-AzureRmStreamAnalyticsFunction', 
-    'Get-AzureRmStreamAnalyticsInput', 'New-AzureRmStreamAnalyticsInput', 
-    'Remove-AzureRmStreamAnalyticsInput', 
-    'Test-AzureRmStreamAnalyticsInput', 'Get-AzureRmStreamAnalyticsJob', 
-    'New-AzureRmStreamAnalyticsJob', 'Remove-AzureRmStreamAnalyticsJob', 
-    'Start-AzureRmStreamAnalyticsJob', 'Stop-AzureRmStreamAnalyticsJob', 
-    'Get-AzureRmStreamAnalyticsOutput', 
-    'New-AzureRmStreamAnalyticsOutput', 
-    'Remove-AzureRmStreamAnalyticsOutput', 
-    'Test-AzureRmStreamAnalyticsOutput', 
-    'Get-AzureRmStreamAnalyticsQuota', 
-    'Get-AzureRmStreamAnalyticsTransformation', 
-    'New-AzureRmStreamAnalyticsTransformation'
+CmdletsToExport = 'Get-AzStreamAnalyticsFunction', 
+    'Get-AzStreamAnalyticsDefaultFunctionDefinition', 
+    'New-AzStreamAnalyticsFunction', 
+    'Remove-AzStreamAnalyticsFunction', 
+    'Test-AzStreamAnalyticsFunction', 
+    'Get-AzStreamAnalyticsInput', 'New-AzStreamAnalyticsInput', 
+    'Remove-AzStreamAnalyticsInput', 
+    'Test-AzStreamAnalyticsInput', 'Get-AzStreamAnalyticsJob', 
+    'New-AzStreamAnalyticsJob', 'Remove-AzStreamAnalyticsJob', 
+    'Start-AzStreamAnalyticsJob', 'Stop-AzStreamAnalyticsJob', 
+    'Get-AzStreamAnalyticsOutput', 
+    'New-AzStreamAnalyticsOutput', 
+    'Remove-AzStreamAnalyticsOutput', 
+    'Test-AzStreamAnalyticsOutput', 
+    'Get-AzStreamAnalyticsQuota', 
+    'Get-AzStreamAnalyticsTransformation', 
+    'New-AzStreamAnalyticsTransformation'
 
 # Variables to export from this module
 # VariablesToExport = @()

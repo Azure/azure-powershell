@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Logic.dll'
@@ -72,39 +72,39 @@ NestedModules = @('.\Microsoft.Azure.Commands.LogicApp.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmIntegrationAccountAgreement', 
-    'Get-AzureRmIntegrationAccountCallbackUrl', 
-    'Get-AzureRmIntegrationAccountCertificate', 
-    'Get-AzureRmIntegrationAccount', 'Get-AzureRmIntegrationAccountMap', 
-    'Get-AzureRmIntegrationAccountPartner', 
-    'Get-AzureRmIntegrationAccountSchema', 
-    'Get-AzureRmIntegrationAccountGeneratedIcn', 
-    'Get-AzureRmIntegrationAccountReceivedIcn', 
-    'New-AzureRmIntegrationAccountAgreement', 
-    'New-AzureRmIntegrationAccountCertificate', 
-    'New-AzureRmIntegrationAccount', 'New-AzureRmIntegrationAccountMap', 
-    'New-AzureRmIntegrationAccountPartner', 
-    'New-AzureRmIntegrationAccountSchema', 
-    'Remove-AzureRmIntegrationAccountAgreement', 
-    'Remove-AzureRmIntegrationAccountCertificate', 
-    'Remove-AzureRmIntegrationAccount', 
-    'Remove-AzureRmIntegrationAccountMap', 
-    'Remove-AzureRmIntegrationAccountPartner', 
-    'Remove-AzureRmIntegrationAccountSchema', 
-    'Remove-AzureRmIntegrationAccountReceivedIcn', 
-    'Set-AzureRmIntegrationAccountAgreement', 
-    'Set-AzureRmIntegrationAccountCertificate', 
-    'Set-AzureRmIntegrationAccount', 'Set-AzureRmIntegrationAccountMap', 
-    'Set-AzureRmIntegrationAccountPartner', 
-    'Set-AzureRmIntegrationAccountSchema', 'Stop-AzureRmLogicAppRun', 
-    'Set-AzureRmIntegrationAccountGeneratedIcn', 
-    'Set-AzureRmIntegrationAccountReceivedIcn', 'Get-AzureRmLogicApp', 
-    'Get-AzureRmLogicAppRunAction', 'Get-AzureRmLogicAppRunHistory', 
-    'Get-AzureRmLogicAppTriggerCallbackUrl', 
-    'Get-AzureRmLogicAppTrigger', 'Get-AzureRmLogicAppTriggerHistory', 
-    'Get-AzureRmLogicAppUpgradedDefinition', 'New-AzureRmLogicApp', 
-    'Remove-AzureRmLogicApp', 'Start-AzureRmLogicApp', 
-    'Set-AzureRmLogicApp', 'Test-AzureRmLogicApp'
+CmdletsToExport = 'Get-AzIntegrationAccountAgreement', 
+    'Get-AzIntegrationAccountCallbackUrl', 
+    'Get-AzIntegrationAccountCertificate', 
+    'Get-AzIntegrationAccount', 'Get-AzIntegrationAccountMap', 
+    'Get-AzIntegrationAccountPartner', 
+    'Get-AzIntegrationAccountSchema', 
+    'Get-AzIntegrationAccountGeneratedIcn', 
+    'Get-AzIntegrationAccountReceivedIcn', 
+    'New-AzIntegrationAccountAgreement', 
+    'New-AzIntegrationAccountCertificate', 
+    'New-AzIntegrationAccount', 'New-AzIntegrationAccountMap', 
+    'New-AzIntegrationAccountPartner', 
+    'New-AzIntegrationAccountSchema', 
+    'Remove-AzIntegrationAccountAgreement', 
+    'Remove-AzIntegrationAccountCertificate', 
+    'Remove-AzIntegrationAccount', 
+    'Remove-AzIntegrationAccountMap', 
+    'Remove-AzIntegrationAccountPartner', 
+    'Remove-AzIntegrationAccountSchema', 
+    'Remove-AzIntegrationAccountReceivedIcn', 
+    'Set-AzIntegrationAccountAgreement', 
+    'Set-AzIntegrationAccountCertificate', 
+    'Set-AzIntegrationAccount', 'Set-AzIntegrationAccountMap', 
+    'Set-AzIntegrationAccountPartner', 
+    'Set-AzIntegrationAccountSchema', 'Stop-AzLogicAppRun', 
+    'Set-AzIntegrationAccountGeneratedIcn', 
+    'Set-AzIntegrationAccountReceivedIcn', 'Get-AzLogicApp', 
+    'Get-AzLogicAppRunAction', 'Get-AzLogicAppRunHistory', 
+    'Get-AzLogicAppTriggerCallbackUrl', 
+    'Get-AzLogicAppTrigger', 'Get-AzLogicAppTriggerHistory', 
+    'Get-AzLogicAppUpgradedDefinition', 'New-AzLogicApp', 
+    'Remove-AzLogicApp', 'Start-AzLogicApp', 
+    'Set-AzLogicApp', 'Test-AzLogicApp'
 
 # Variables to export from this module
 # VariablesToExport = @()

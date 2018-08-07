@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.ContainerRegistry.dll'
@@ -72,20 +72,20 @@ NestedModules = @('.\Microsoft.Azure.Commands.ContainerRegistry.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmContainerRegistry', 'Get-AzureRmContainerRegistry', 
-    'Update-AzureRmContainerRegistry', 'Remove-AzureRmContainerRegistry', 
-    'Get-AzureRmContainerRegistryCredential', 
-    'Update-AzureRmContainerRegistryCredential', 
-    'Test-AzureRmContainerRegistryNameAvailability', 
-    'Get-AzureRmContainerRegistryReplication', 
-    'New-AzureRmContainerRegistryReplication', 
-    'Remove-AzureRmContainerRegistryReplication', 
-    'New-AzureRmContainerRegistryWebhook', 
-    'Get-AzureRmContainerRegistryWebhook', 
-    'Update-AzureRmContainerRegistryWebhook', 
-    'Test-AzureRmContainerRegistryWebhook', 
-    'Remove-AzureRmContainerRegistryWebhook', 
-    'Get-AzureRmContainerRegistryWebhookEvent'
+CmdletsToExport = 'New-AzContainerRegistry', 'Get-AzContainerRegistry', 
+    'Update-AzContainerRegistry', 'Remove-AzContainerRegistry', 
+    'Get-AzContainerRegistryCredential', 
+    'Update-AzContainerRegistryCredential', 
+    'Test-AzContainerRegistryNameAvailability', 
+    'Get-AzContainerRegistryReplication', 
+    'New-AzContainerRegistryReplication', 
+    'Remove-AzContainerRegistryReplication', 
+    'New-AzContainerRegistryWebhook', 
+    'Get-AzContainerRegistryWebhook', 
+    'Update-AzContainerRegistryWebhook', 
+    'Test-AzContainerRegistryWebhook', 
+    'Remove-AzContainerRegistryWebhook', 
+    'Get-AzContainerRegistryWebhookEvent'
 
 # Variables to export from this module
 # VariablesToExport = @()

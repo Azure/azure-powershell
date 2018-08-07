@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.HDInsight.dll', 
@@ -74,34 +74,34 @@ NestedModules = @('.\Microsoft.Azure.Commands.HDInsight.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmHDInsightJob', 'New-AzureRmHDInsightSqoopJobDefinition', 
-    'Wait-AzureRmHDInsightJob', 
-    'New-AzureRmHDInsightStreamingMapReduceJobDefinition', 
-    'New-AzureRmHDInsightMapReduceJobDefinition', 
-    'New-AzureRmHDInsightPigJobDefinition', 
-    'New-AzureRmHDInsightHiveJobDefinition', 
-    'Get-AzureRmHDInsightJobOutput', 'Invoke-AzureRmHDInsightHiveJob', 
-    'Use-AzureRmHDInsightCluster', 'Stop-AzureRmHDInsightJob', 
-    'Start-AzureRmHDInsightJob', 'Add-AzureRmHDInsightComponentVersion', 
-    'Add-AzureRmHDInsightSecurityProfile', 
-    'Set-AzureRmHDInsightDefaultStorage', 'Add-AzureRmHDInsightStorage', 
-    'Add-AzureRmHDInsightScriptAction', 'Add-AzureRmHDInsightMetastore', 
-    'Add-AzureRmHDInsightConfigValues', 'Get-AzureRmHDInsightProperties', 
-    'Revoke-AzureRmHDInsightRdpServicesAccess', 
-    'Revoke-AzureRmHDInsightHttpServicesAccess', 
-    'Grant-AzureRmHDInsightRdpServicesAccess', 
-    'Grant-AzureRmHDInsightHttpServicesAccess', 
-    'New-AzureRmHDInsightClusterConfig', 
-    'Remove-AzureRmHDInsightCluster', 'Set-AzureRmHDInsightClusterSize', 
-    'Get-AzureRmHDInsightPersistedScriptAction', 
-    'Get-AzureRmHDInsightScriptActionHistory', 
-    'Remove-AzureRmHDInsightPersistedScriptAction', 
-    'Set-AzureRmHDInsightPersistedScriptAction', 
-    'Submit-AzureRmHDInsightScriptAction', 'Get-AzureRmHDInsightCluster', 
-    'New-AzureRmHDInsightCluster', 'Add-AzureRmHDInsightClusterIdentity', 
-    'Enable-AzureRmHDInsightOperationsManagementSuite', 
-    'Disable-AzureRmHDInsightOperationsManagementSuite', 
-    'Get-AzureRmHDInsightOperationsManagementSuite'
+CmdletsToExport = 'Get-AzHDInsightJob', 'New-AzHDInsightSqoopJobDefinition', 
+    'Wait-AzHDInsightJob', 
+    'New-AzHDInsightStreamingMapReduceJobDefinition', 
+    'New-AzHDInsightMapReduceJobDefinition', 
+    'New-AzHDInsightPigJobDefinition', 
+    'New-AzHDInsightHiveJobDefinition', 
+    'Get-AzHDInsightJobOutput', 'Invoke-AzHDInsightHiveJob', 
+    'Use-AzHDInsightCluster', 'Stop-AzHDInsightJob', 
+    'Start-AzHDInsightJob', 'Add-AzHDInsightComponentVersion', 
+    'Add-AzHDInsightSecurityProfile', 
+    'Set-AzHDInsightDefaultStorage', 'Add-AzHDInsightStorage', 
+    'Add-AzHDInsightScriptAction', 'Add-AzHDInsightMetastore', 
+    'Add-AzHDInsightConfigValues', 'Get-AzHDInsightProperties', 
+    'Revoke-AzHDInsightRdpServicesAccess', 
+    'Revoke-AzHDInsightHttpServicesAccess', 
+    'Grant-AzHDInsightRdpServicesAccess', 
+    'Grant-AzHDInsightHttpServicesAccess', 
+    'New-AzHDInsightClusterConfig', 
+    'Remove-AzHDInsightCluster', 'Set-AzHDInsightClusterSize', 
+    'Get-AzHDInsightPersistedScriptAction', 
+    'Get-AzHDInsightScriptActionHistory', 
+    'Remove-AzHDInsightPersistedScriptAction', 
+    'Set-AzHDInsightPersistedScriptAction', 
+    'Submit-AzHDInsightScriptAction', 'Get-AzHDInsightCluster', 
+    'New-AzHDInsightCluster', 'Add-AzHDInsightClusterIdentity', 
+    'Enable-AzHDInsightOperationsManagementSuite', 
+    'Disable-AzHDInsightOperationsManagementSuite', 
+    'Get-AzHDInsightOperationsManagementSuite'
 
 # Variables to export from this module
 # VariablesToExport = @()

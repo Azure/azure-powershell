@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Relay.dll'
@@ -72,18 +72,18 @@ NestedModules = @('.\Microsoft.Azure.Commands.Relay.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmRelayNamespace', 'Get-AzureRmRelayNamespace', 
-    'Set-AzureRmRelayNamespace', 'Remove-AzureRmRelayNamespace', 
-    'New-AzureRmWcfRelay', 'Get-AzureRmWcfRelay', 'Set-AzureRmWcfRelay', 
-    'Remove-AzureRmWcfRelay', 'New-AzureRmRelayHybridConnection', 
-    'Get-AzureRmRelayHybridConnection', 
-    'Set-AzureRmRelayHybridConnection', 
-    'Remove-AzureRmRelayHybridConnection', 'Test-AzureRmRelayName', 
-    'Get-AzureRmRelayOperation', 'New-AzureRmRelayKey', 
-    'Get-AzureRmRelayKey', 'New-AzureRmRelayAuthorizationRule', 
-    'Get-AzureRmRelayAuthorizationRule', 
-    'Set-AzureRmRelayAuthorizationRule', 
-    'Remove-AzureRmRelayAuthorizationRule'
+CmdletsToExport = 'New-AzRelayNamespace', 'Get-AzRelayNamespace', 
+    'Set-AzRelayNamespace', 'Remove-AzRelayNamespace', 
+    'New-AzWcfRelay', 'Get-AzWcfRelay', 'Set-AzWcfRelay', 
+    'Remove-AzWcfRelay', 'New-AzRelayHybridConnection', 
+    'Get-AzRelayHybridConnection', 
+    'Set-AzRelayHybridConnection', 
+    'Remove-AzRelayHybridConnection', 'Test-AzRelayName', 
+    'Get-AzRelayOperation', 'New-AzRelayKey', 
+    'Get-AzRelayKey', 'New-AzRelayAuthorizationRule', 
+    'Get-AzRelayAuthorizationRule', 
+    'Set-AzRelayAuthorizationRule', 
+    'Remove-AzRelayAuthorizationRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
