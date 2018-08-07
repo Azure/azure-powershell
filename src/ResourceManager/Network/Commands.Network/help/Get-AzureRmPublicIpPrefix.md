@@ -1,49 +1,52 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-ms.assetid: 0CD03BF8-8DB6-44BC-91F0-D863949DBD17
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermpublicipprefix
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzureRmPublicIpPrefix
 
 ## SYNOPSIS
-Gets a public IP prefix.
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
 ### NoExpandStandAloneIp (Default)
 ```
-Get-AzureRmPublicIpPrefix [-Name <String>] [-ResourceGroupName <String>]
+Get-AzureRmPublicIpPrefix [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetByNameParameterSet
+```
+Get-AzureRmPublicIpPrefix [-Name <String>] -ResourceGroupName <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ExpandStandAloneIp
+### GetByResourceIdParameterSet
 ```
-Get-AzureRmPublicIpPrefix -Name <String> -ResourceGroupName <String> -ExpandResource <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmPublicIpPrefix -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmPublicIPPrefix** cmdlet gets one or more public IP prefixes in a resource group.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
-### 1: Get a public IP Prefix resource
-```
-$publicIpPrefix = Get-AzureRmPublicIpPrefix -Name $publicIpName -ResourceGroupName $rgName
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command gets a public IP prefix resource with name $publicIPName in the resource group $rgName.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -54,40 +57,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpandResource
-```yaml
-Type: System.String
-Parameter Sets: ExpandStandAloneIp
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
-Specifies the name of the public IP prefix that this cmdlet gets.
+The resource name.
 
 ```yaml
-Type: System.String
-Parameter Sets: NoExpandStandAloneIp
+Type: String
+Parameter Sets: GetByNameParameterSet
 Aliases: ResourceName
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ExpandStandAloneIp
-Aliases: ResourceName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -95,23 +73,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the public IP prefix that this cmdlet gets.
+The resource group name.
 
 ```yaml
-Type: System.String
-Parameter Sets: NoExpandStandAloneIp
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ExpandStandAloneIp
+Type: String
+Parameter Sets: GetByNameParameterSet
 Aliases:
 
 Required: True
@@ -120,26 +86,36 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### -ResourceId
+{{Fill ResourceId Description}}
+
+```yaml
+Type: String
+Parameter Sets: GetByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix
 
+
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzureRmPublicIpPrefix](./New-AzureRmPublicIpPrefix.md)
-
-[Remove-AzureRmPublicIpPrefix](./Remove-AzureRmPublicIpPrefix.md)
-
-[Set-AzureRmPublicIpPrefix](./Set-AzureRmPublicIpPrefix.md)
-
-

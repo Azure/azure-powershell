@@ -1,34 +1,46 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-ms.assetid: 00236BC2-61D8-49C2-91BE-923C567153F3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermpublicipprefix
+online version:
 schema: 2.0.0
 ---
 
 # Remove-AzureRmPublicIpPrefix
 
 ## SYNOPSIS
-Removes a public IP prefix.
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
+### RemoveByNameParameterSet
 ```
 Remove-AzureRmPublicIpPrefix -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DeleteByResourceIdParameterSet
+```
+Remove-AzureRmPublicIpPrefix -ResourceId <String> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteByInputObjectParameterSet
+```
+Remove-AzureRmPublicIpPrefix -InputObject <PSPublicIpPrefix> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Remove-AzureRmPublicIpPrefix** cmdlet removes an Azure public IP prefix.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
-### 1: Remove a public IP prefix resource
-```
-Remove-AzureRmPublicIpPrefix -Name $publicIpPrefixName -ResourceGroupName $rgName
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command removes the public IP prefix resource named $publicIpPrefixName in the resource group $rgName.
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -36,7 +48,7 @@ This command removes the public IP prefix resource named $publicIpPrefixName in 
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -48,10 +60,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,10 +75,10 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Forces the command to run without asking for user confirmation.
+Do not ask for confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -77,12 +89,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of the public IP prefix that this cmdlet removes.
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: PSPublicIpPrefix
+Parameter Sets: DeleteByInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The resource name.
+
+```yaml
+Type: String
+Parameter Sets: RemoveByNameParameterSet
 Aliases: ResourceName
 
 Required: True
@@ -93,11 +120,10 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+{{Fill PassThru Description}}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -109,11 +135,26 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the public IP prefix that this cmdlet removes.
+The resource group name.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: RemoveByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+{{Fill ResourceId Description}}
+
+```yaml
+Type: String
+Parameter Sets: DeleteByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -127,13 +168,13 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -143,35 +184,31 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix
+
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzureRmPublicIpPrefix](./Get-AzureRmPublicIpPrefix.md)
-
-[New-AzureRmPublicIpPrefix](./New-AzureRmPublicIpPrefix.md)
-
-[Set-AzureRmPublicIpPrefix](./Set-AzureRmPublicIpPrefix.md)
-
-
