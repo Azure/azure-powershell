@@ -125,6 +125,10 @@
         {
             "file": "\\src\\ResourceManager\\Compute\\Stack\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem", 
             "_justification": "Legitimate test certificate file"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\ScenarioTests\\TDECertificateTests.ps1", 
+            "_justification": "Test passwords only valid for the duration of the test"
         }
     ]
 }
