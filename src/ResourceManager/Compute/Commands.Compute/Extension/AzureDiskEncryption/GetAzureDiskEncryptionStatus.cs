@@ -477,6 +477,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
         }
 
+        private bool isVMRunning (VirtualMachine vm)
+        {
+            string lastCode = "";
+            foreach (InstanceViewStatus ivs in vm.InstanceView.Statuses)
+            {
+                if (ivs.Code.StartsWith("PowerState/"))
+                    lastCode = ivs.Code;
+            }
+
+            return lastCode == "PowerState/running";
+        }
+
         private AzureDiskEncryptionStatusContext getStatusDualPass(VirtualMachine vm)
         {
             DiskEncryptionSettings osVolumeEncryptionSettings = GetOsVolumeEncryptionSettingsDualPass(vm);
@@ -496,7 +508,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     };
                     break;
                 case OperatingSystemTypes.Linux:
-                    if (!IsExtensionInstalled(vm))
+                    if (!this.IsExtensionInstalled(vm) && this.isVMRunning(vm))
                     {
                         VirtualMachineExtension parameters = GetDualPassQueryVmExtensionParameters(vm);
 
