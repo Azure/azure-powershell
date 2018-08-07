@@ -20,6 +20,7 @@
 ## Current Release
 * Added policy filter to Get-AzureRmRecoveryServicesBackItem cmdlet. The command returns the list of backup items protected by the given policy id.
 * Updated Microsoft.Azure.Management.RecoveryServices.Backup to version 3.0.0-preview.
+* Updated to the latest version of the Azure ClientRuntime.
 * Added TargetResourceGroupName parameter to Restore-AzureRmRecoveryServicesBackupItem. The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks.
 
 ## Version 4.3.1
