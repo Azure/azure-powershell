@@ -42,8 +42,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         internal const string InputObjectParameterSet = "RemoveByInputObject";
 
         [Alias("DeploymentName")]
-        [Parameter(Position = 0, ParameterSetName = RemoveAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true,
-            ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the deployment.")]
+        [Parameter(Position = 0, ParameterSetName = RemoveAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, HelpMessage = "The name of the deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

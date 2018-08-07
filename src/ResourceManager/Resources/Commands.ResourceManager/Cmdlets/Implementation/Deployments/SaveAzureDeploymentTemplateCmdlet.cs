@@ -40,8 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the deployment name parameter.
         /// </summary>
         [Alias("Name")]
-        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.DeploymentNameParameterSet, Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment name.")]
+        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.DeploymentNameParameterSet, Mandatory = true, HelpMessage = "The deployment name.")]
         [ValidateNotNullOrEmpty]
         public string DeploymentName { get; set; }
 

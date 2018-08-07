@@ -14,19 +14,19 @@ Removes a deployment and any associated operations
 
 ### RemoveByDeploymentName (Default)
 ```
-Remove-AzureRmDeployment [-Name] <String> [-ApiVersion <String>] [-Pre]
+Remove-AzureRmDeployment [-Name] <String> [-AsJob] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByDeploymentId
 ```
-Remove-AzureRmDeployment -Id <String> [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmDeployment -Id <String> [-AsJob] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByInputObject
 ```
-Remove-AzureRmDeployment -InputObject <PSDeployment> [-ApiVersion <String>] [-Pre]
+Remove-AzureRmDeployment -InputObject <PSDeployment> [-AsJob] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -57,6 +57,21 @@ If not specified, the API version is automatically determined as the latest avai
 
 ```yaml
 Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +139,7 @@ Aliases: DeploymentName
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
