@@ -56,7 +56,7 @@ function Remove-AzsGalleryItem {
     }
 
     Process {
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSCmdlet.ParameterSetName -eq "ResourceId") {
             $GetArmResourceIdParameterValue_params = @{

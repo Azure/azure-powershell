@@ -5,7 +5,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-	
+
 
 .DESCRIPTION
 	Validate that user subscriptions can be moved between delegated provider offers.
@@ -35,7 +35,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 function Test-AzsMoveSubscription
 {
 	[CmdletBinding(DefaultParameterSetName='Subscriptions_ValidateMoveSubscriptions')]
-	param(    
+	param(
 		[Parameter(Mandatory = $false)]
 		[System.String]
 		$DestinationDelegatedProviderOffer,
@@ -50,7 +50,7 @@ function Test-AzsMoveSubscription
 		$AsJob
 	)
 
-	Begin 
+	Begin
 	{
 		Initialize-PSSwaggerDependencies -Azure
 		$tracerObject = $null
@@ -63,8 +63,8 @@ function Test-AzsMoveSubscription
 	}
 
 	Process {
-	
-	$ErrorActionPreference = 'Stop'
+
+
 
 	$NewServiceClient_params = @{
 		FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
@@ -72,14 +72,14 @@ function Test-AzsMoveSubscription
 
 	$GlobalParameterHashtable = @{}
 	$NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-	 
+
 	$GlobalParameterHashtable['SubscriptionId'] = $null
 	if($PSBoundParameters.ContainsKey('SubscriptionId')) {
 		$GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
 	}
-	
+
 	$MoveSubscriptionsDefinition = New-MoveSubscriptionsDefinitionObject -Resources $ResourceId -TargetDelegatedProviderOffer $DestinationDelegatedProviderOffer
-	
+
 	$SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
 
 	if ('Subscriptions_ValidateMoveSubscriptions' -eq $PsCmdlet.ParameterSetName) {
@@ -94,7 +94,7 @@ function Test-AzsMoveSubscription
 
 	$PSSwaggerJobScriptBlock = {
 		[CmdletBinding()]
-		param(    
+		param(
 			[Parameter(Mandatory = $true)]
 			[System.Threading.Tasks.Task]
 			$TaskResult,
@@ -108,9 +108,9 @@ function Test-AzsMoveSubscription
 			$GetTaskResult_params = @{
 				TaskResult = $TaskResult
 			}
-			
+
 			Get-TaskResult @GetTaskResult_params
-			
+
 		}
 	}
 
