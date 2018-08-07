@@ -269,13 +269,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private AzureDiskEncryptionStatusContext GetStatusFromInstanceView(VirtualMachine vm)
         {
-            AzureDiskEncryptionStatusContext result = null;
+            AzureDiskEncryptionStatusContext result = new AzureDiskEncryptionStatusContext();
+            result.OsVolumeEncrypted = EncryptionStatus.Unknown;
+            result.DataVolumesEncrypted = EncryptionStatus.Unknown;
 
             StorageProfile storageProfile = vm.StorageProfile;
             VirtualMachineInstanceView iv = vm.InstanceView;
             if (iv != null)
             {
-                result = new AzureDiskEncryptionStatusContext();
                 result.OsVolumeEncrypted = EncryptionStatus.NoDiskFound;
                 result.DataVolumesEncrypted = EncryptionStatus.NoDiskFound;
 
