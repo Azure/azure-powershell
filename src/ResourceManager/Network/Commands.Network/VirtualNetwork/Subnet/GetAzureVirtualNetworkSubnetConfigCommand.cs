@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (subnet == null)
                 {
-                    throw new ArgumentException("Subnet with the specified name does not exist");
+                    throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.Name));
                 }
 
                 WriteObject(subnet);
