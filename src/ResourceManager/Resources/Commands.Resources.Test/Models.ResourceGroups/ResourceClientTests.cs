@@ -1391,13 +1391,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         public void SerializeHashtableProperlyHandlesAllDataTypes()
         {
             Hashtable hashtable = new Hashtable();
-            var password = "pass";
+            var pass = "pass";
             hashtable.Add("key1", "string");
             hashtable.Add("key2", 1);
             hashtable.Add("key3", true);
             hashtable.Add("key4", new DateTime(2014, 05, 08));
             hashtable.Add("key5", null);
-            hashtable.Add("key6", password);
+            hashtable.Add("key6", pass);
 
             string resultWithoutAddedLayer = resourcesClient.SerializeHashtable(hashtable, false);
             Assert.NotEmpty(resultWithoutAddedLayer);
