@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Authorization.dll', 
@@ -82,57 +82,57 @@ NestedModules = @('.\Microsoft.Azure.Commands.Resources.dll',
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment', 
-    'Get-AzureRmRoleAssignment', 'New-AzureRmRoleAssignment', 
-    'Get-AzureRmRoleDefinition', 'New-AzureRmRoleDefinition', 
-    'Set-AzureRmRoleDefinition', 'Remove-AzureRmRoleDefinition', 
-    'Get-AzureRmADAppCredential', 'Get-AzureRmADApplication', 
-    'Add-AzureRmADGroupMember', 'Get-AzureRmADGroupMember', 
-    'Remove-AzureRmADGroupMember', 'Get-AzureRmADGroup', 
-    'New-AzureRmADGroup', 'Remove-AzureRmADGroup', 
-    'Get-AzureRmADServicePrincipal', 'Get-AzureRmADSpCredential', 
-    'Get-AzureRmADUser', 'New-AzureRmADAppCredential', 
-    'New-AzureRmADSpCredential', 'New-AzureRmADUser', 
-    'Remove-AzureRmADAppCredential', 'Remove-AzureRmADApplication', 
-    'New-AzureRmADApplication', 'Remove-AzureRmADServicePrincipal', 
-    'New-AzureRmADServicePrincipal', 'Remove-AzureRmADSpCredential', 
-    'Remove-AzureRmADUser', 'Update-AzureRmADApplication', 
-    'Update-AzureRmADServicePrincipal', 'Update-AzureRmADUser', 
-    'Remove-AzureRmResourceGroup', 'Get-AzureRmProviderFeature', 
-    'Register-AzureRmProviderFeature', 'Get-AzureRmLocation', 
-    'Export-AzureRmResourceGroup', 
-    'Get-AzureRmResourceProvider', 'Register-AzureRmResourceProvider', 
-    'Unregister-AzureRmResourceProvider', 
-    'Get-AzureRmResourceGroupDeployment', 
-    'New-AzureRmResourceGroupDeployment', 
-    'Remove-AzureRmResourceGroupDeployment', 
-    'Stop-AzureRmResourceGroupDeployment', 
-    'Test-AzureRmResourceGroupDeployment', 'Set-AzureRmResourceGroup', 
-    'New-AzureRmResourceGroup', 'Get-AzureRmResourceGroup', 
-    'Save-AzureRmResourceGroupDeploymentTemplate', 
-    'Get-AzureRmResourceGroupDeploymentOperation', 
-    'Get-AzureRmResourceLock', 'Invoke-AzureRmResourceAction', 
-    'Move-AzureRmResource', 
-    'New-AzureRmResourceLock', 'Get-AzureRmPolicyAssignment', 
-    'Get-AzureRmPolicyDefinition', 'Get-AzureRmPolicySetDefinition', 
-    'New-AzureRmPolicyAssignment', 'New-AzureRmPolicyDefinition', 
-    'New-AzureRmPolicySetDefinition', 'Remove-AzureRmPolicyAssignment', 
-    'Remove-AzureRmPolicyDefinition', 
-    'Remove-AzureRmPolicySetDefinition', 'Set-AzureRmPolicyAssignment', 
-    'Set-AzureRmPolicyDefinition', 'Set-AzureRmPolicySetDefinition', 
-    'Remove-AzureRmResource', 'Remove-AzureRmResourceLock', 
-    'Set-AzureRmResource', 'New-AzureRmResource', 
-    'Set-AzureRmResourceLock', 'Get-AzureRmResource', 
-    'Get-AzureRmManagedApplicationDefinition', 
-    'New-AzureRmManagedApplicationDefinition', 
-    'Set-AzureRmManagedApplicationDefinition', 
-    'Remove-AzureRmManagedApplicationDefinition', 
-    'Get-AzureRmManagedApplication', 'New-AzureRmManagedApplication', 
-    'Set-AzureRmManagedApplication', 'Remove-AzureRmManagedApplication', 
-    'Get-AzureRmManagementGroup', 'New-AzureRmManagementGroup', 
-    'Update-AzureRmManagementGroup', 'Remove-AzureRmManagementGroup', 
-    'New-AzureRmManagementGroupSubscription', 
-    'Remove-AzureRmManagementGroupSubscription'
+CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment', 
+    'Get-AzRoleAssignment', 'New-AzRoleAssignment', 
+    'Get-AzRoleDefinition', 'New-AzRoleDefinition', 
+    'Set-AzRoleDefinition', 'Remove-AzRoleDefinition', 
+    'Get-AzADAppCredential', 'Get-AzADApplication', 
+    'Add-AzADGroupMember', 'Get-AzADGroupMember', 
+    'Remove-AzADGroupMember', 'Get-AzADGroup', 
+    'New-AzADGroup', 'Remove-AzADGroup', 
+    'Get-AzADServicePrincipal', 'Get-AzADSpCredential', 
+    'Get-AzADUser', 'New-AzADAppCredential', 
+    'New-AzADSpCredential', 'New-AzADUser', 
+    'Remove-AzADAppCredential', 'Remove-AzADApplication', 
+    'New-AzADApplication', 'Remove-AzADServicePrincipal', 
+    'New-AzADServicePrincipal', 'Remove-AzADSpCredential', 
+    'Remove-AzADUser', 'Update-AzADApplication', 
+    'Update-AzADServicePrincipal', 'Update-AzADUser', 
+    'Remove-AzResourceGroup', 'Get-AzProviderFeature', 
+    'Register-AzProviderFeature', 'Get-AzLocation', 
+    'Export-AzResourceGroup', 
+    'Get-AzResourceProvider', 'Register-AzResourceProvider', 
+    'Unregister-AzResourceProvider', 
+    'Get-AzResourceGroupDeployment', 
+    'New-AzResourceGroupDeployment', 
+    'Remove-AzResourceGroupDeployment', 
+    'Stop-AzResourceGroupDeployment', 
+    'Test-AzResourceGroupDeployment', 'Set-AzResourceGroup', 
+    'New-AzResourceGroup', 'Get-AzResourceGroup', 
+    'Save-AzResourceGroupDeploymentTemplate', 
+    'Get-AzResourceGroupDeploymentOperation', 
+    'Get-AzResourceLock', 'Invoke-AzResourceAction', 
+    'Move-AzResource', 
+    'New-AzResourceLock', 'Get-AzPolicyAssignment', 
+    'Get-AzPolicyDefinition', 'Get-AzPolicySetDefinition', 
+    'New-AzPolicyAssignment', 'New-AzPolicyDefinition', 
+    'New-AzPolicySetDefinition', 'Remove-AzPolicyAssignment', 
+    'Remove-AzPolicyDefinition', 
+    'Remove-AzPolicySetDefinition', 'Set-AzPolicyAssignment', 
+    'Set-AzPolicyDefinition', 'Set-AzPolicySetDefinition', 
+    'Remove-AzResource', 'Remove-AzResourceLock', 
+    'Set-AzResource', 'New-AzResource', 
+    'Set-AzResourceLock', 'Get-AzResource', 
+    'Get-AzManagedApplicationDefinition', 
+    'New-AzManagedApplicationDefinition', 
+    'Set-AzManagedApplicationDefinition', 
+    'Remove-AzManagedApplicationDefinition', 
+    'Get-AzManagedApplication', 'New-AzManagedApplication', 
+    'Set-AzManagedApplication', 'Remove-AzManagedApplication', 
+    'Get-AzManagementGroup', 'New-AzManagementGroup', 
+    'Update-AzManagementGroup', 'Remove-AzManagementGroup', 
+    'New-AzManagementGroupSubscription', 
+    'Remove-AzManagementGroupSubscription'
 
 # Variables to export from this module
 # VariablesToExport = @()

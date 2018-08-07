@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataFactory.dll', 
@@ -73,40 +73,40 @@ NestedModules = @('.\Microsoft.Azure.Commands.DataFactoryV2.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Set-AzureRmDataFactoryV2', 'Update-AzureRmDataFactoryV2', 
-    'Get-AzureRmDataFactoryV2', 'Remove-AzureRmDataFactoryV2', 
-    'Set-AzureRmDataFactoryV2LinkedService', 
-    'New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential', 
-    'Get-AzureRmDataFactoryV2LinkedService', 
-    'Remove-AzureRmDataFactoryV2LinkedService', 
-    'Set-AzureRmDataFactoryV2Dataset', 'Get-AzureRmDataFactoryV2Dataset', 
-    'Remove-AzureRmDataFactoryV2Dataset', 
-    'Set-AzureRmDataFactoryV2Trigger', 'Get-AzureRmDataFactoryV2Trigger', 
-    'Remove-AzureRmDataFactoryV2Trigger', 
-    'Start-AzureRmDataFactoryV2Trigger', 
-    'Stop-AzureRmDataFactoryV2Trigger', 
-    'Set-AzureRmDataFactoryV2Pipeline', 
-    'Get-AzureRmDataFactoryV2Pipeline', 
-    'Remove-AzureRmDataFactoryV2Pipeline', 
-    'Invoke-AzureRmDataFactoryV2Pipeline', 
-    'Get-AzureRmDataFactoryV2PipelineRun', 
-    'Stop-AzureRmDataFactoryV2PipelineRun', 
-    'Get-AzureRmDataFactoryV2ActivityRun', 
-    'Get-AzureRmDataFactoryV2IntegrationRuntimeKey', 
-    'Get-AzureRmDataFactoryV2IntegrationRuntime', 
-    'New-AzureRmDataFactoryV2IntegrationRuntimeKey', 
-    'Remove-AzureRmDataFactoryV2IntegrationRuntime', 
-    'Set-AzureRmDataFactoryV2IntegrationRuntime', 
-    'Start-AzureRmDataFactoryV2IntegrationRuntime', 
-    'Stop-AzureRmDataFactoryV2IntegrationRuntime', 
-    'Get-AzureRmDataFactoryV2IntegrationRuntimeMetric', 
-    'Remove-AzureRmDataFactoryV2IntegrationRuntimeNode', 
-    'Update-AzureRmDataFactoryV2IntegrationRuntimeNode', 
-    'Get-AzureRmDataFactoryV2IntegrationRuntimeNode', 
-    'Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade', 
-    'Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential', 
-    'Update-AzureRmDataFactoryV2IntegrationRuntime', 
-    'Get-AzureRmDataFactoryV2TriggerRun'
+CmdletsToExport = 'Set-AzDataFactoryV2', 'Update-AzDataFactoryV2', 
+    'Get-AzDataFactoryV2', 'Remove-AzDataFactoryV2', 
+    'Set-AzDataFactoryV2LinkedService', 
+    'New-AzDataFactoryV2LinkedServiceEncryptedCredential', 
+    'Get-AzDataFactoryV2LinkedService', 
+    'Remove-AzDataFactoryV2LinkedService', 
+    'Set-AzDataFactoryV2Dataset', 'Get-AzDataFactoryV2Dataset', 
+    'Remove-AzDataFactoryV2Dataset', 
+    'Set-AzDataFactoryV2Trigger', 'Get-AzDataFactoryV2Trigger', 
+    'Remove-AzDataFactoryV2Trigger', 
+    'Start-AzDataFactoryV2Trigger', 
+    'Stop-AzDataFactoryV2Trigger', 
+    'Set-AzDataFactoryV2Pipeline', 
+    'Get-AzDataFactoryV2Pipeline', 
+    'Remove-AzDataFactoryV2Pipeline', 
+    'Invoke-AzDataFactoryV2Pipeline', 
+    'Get-AzDataFactoryV2PipelineRun', 
+    'Stop-AzDataFactoryV2PipelineRun', 
+    'Get-AzDataFactoryV2ActivityRun', 
+    'Get-AzDataFactoryV2IntegrationRuntimeKey', 
+    'Get-AzDataFactoryV2IntegrationRuntime', 
+    'New-AzDataFactoryV2IntegrationRuntimeKey', 
+    'Remove-AzDataFactoryV2IntegrationRuntime', 
+    'Set-AzDataFactoryV2IntegrationRuntime', 
+    'Start-AzDataFactoryV2IntegrationRuntime', 
+    'Stop-AzDataFactoryV2IntegrationRuntime', 
+    'Get-AzDataFactoryV2IntegrationRuntimeMetric', 
+    'Remove-AzDataFactoryV2IntegrationRuntimeNode', 
+    'Update-AzDataFactoryV2IntegrationRuntimeNode', 
+    'Get-AzDataFactoryV2IntegrationRuntimeNode', 
+    'Invoke-AzDataFactoryV2IntegrationRuntimeUpgrade', 
+    'Sync-AzDataFactoryV2IntegrationRuntimeCredential', 
+    'Update-AzDataFactoryV2IntegrationRuntime', 
+    'Get-AzDataFactoryV2TriggerRun'
 
 # Variables to export from this module
 # VariablesToExport = @()

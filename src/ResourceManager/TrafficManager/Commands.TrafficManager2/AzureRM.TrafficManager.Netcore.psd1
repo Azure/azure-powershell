@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.TrafficManager.dll'
@@ -72,19 +72,19 @@ NestedModules = @('.\Microsoft.Azure.Commands.TrafficManager.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Disable-AzureRmTrafficManagerEndpoint', 
-    'Enable-AzureRmTrafficManagerEndpoint', 
-    'Set-AzureRmTrafficManagerEndpoint', 
-    'Get-AzureRmTrafficManagerEndpoint', 
-    'Remove-AzureRmTrafficManagerEndpoint', 
-    'New-AzureRmTrafficManagerEndpoint', 
-    'Remove-AzureRmTrafficManagerEndpointConfig', 
-    'Add-AzureRmTrafficManagerEndpointConfig', 
-    'Disable-AzureRmTrafficManagerProfile', 
-    'Enable-AzureRmTrafficManagerProfile', 
-    'Remove-AzureRmTrafficManagerProfile', 
-    'Set-AzureRmTrafficManagerProfile', 
-    'Get-AzureRmTrafficManagerProfile', 'New-AzureRmTrafficManagerProfile'
+CmdletsToExport = 'Disable-AzTrafficManagerEndpoint', 
+    'Enable-AzTrafficManagerEndpoint', 
+    'Set-AzTrafficManagerEndpoint', 
+    'Get-AzTrafficManagerEndpoint', 
+    'Remove-AzTrafficManagerEndpoint', 
+    'New-AzTrafficManagerEndpoint', 
+    'Remove-AzTrafficManagerEndpointConfig', 
+    'Add-AzTrafficManagerEndpointConfig', 
+    'Disable-AzTrafficManagerProfile', 
+    'Enable-AzTrafficManagerProfile', 
+    'Remove-AzTrafficManagerProfile', 
+    'Set-AzTrafficManagerProfile', 
+    'Get-AzTrafficManagerProfile', 'New-AzTrafficManagerProfile'
 
 # Variables to export from this module
 # VariablesToExport = @()

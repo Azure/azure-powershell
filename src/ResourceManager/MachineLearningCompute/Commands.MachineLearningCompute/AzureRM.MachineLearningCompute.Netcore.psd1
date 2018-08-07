@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.MachineLearningCompute.dll'
@@ -72,10 +72,10 @@ NestedModules = @('.\Microsoft.Azure.Commands.MachineLearningCompute.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmMlOpCluster', 'Get-AzureRmMlOpClusterKey', 
-    'Test-AzureRmMlOpClusterSystemServicesUpdateAvailability', 
-    'Update-AzureRmMlOpClusterSystemService', 'New-AzureRmMlOpCluster', 
-    'Remove-AzureRmMlOpCluster', 'Set-AzureRmMlOpCluster'
+CmdletsToExport = 'Get-AzMlOpCluster', 'Get-AzMlOpClusterKey', 
+    'Test-AzMlOpClusterSystemServicesUpdateAvailability', 
+    'Update-AzMlOpClusterSystemService', 'New-AzMlOpCluster', 
+    'Remove-AzMlOpCluster', 'Set-AzMlOpCluster'
 
 # Variables to export from this module
 # VariablesToExport = @()

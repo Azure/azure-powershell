@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.KeyVault.dll', 
@@ -74,48 +74,48 @@ NestedModules = @('.\Microsoft.Azure.Commands.KeyVault.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Add-AzureKeyVaultCertificate', 'Update-AzureKeyVaultCertificate', 
-    'Stop-AzureKeyVaultCertificateOperation', 
-    'Get-AzureKeyVaultCertificateOperation', 
-    'Import-AzureKeyVaultCertificate', 
-    'Add-AzureKeyVaultCertificateContact', 
-    'Get-AzureKeyVaultCertificate', 
-    'Get-AzureKeyVaultCertificateContact', 
-    'Get-AzureKeyVaultCertificateIssuer', 
-    'New-AzureKeyVaultCertificatePolicy', 
-    'Remove-AzureKeyVaultCertificate', 
-    'Remove-AzureKeyVaultCertificateContact', 
-    'Remove-AzureKeyVaultCertificateIssuer', 
-    'Remove-AzureKeyVaultCertificateOperation', 
-    'Set-AzureKeyVaultCertificateIssuer', 
-    'Set-AzureKeyVaultCertificatePolicy', 'Get-AzureRmKeyVault', 
-    'New-AzureRmKeyVault', 'Remove-AzureRmKeyVault', 
-    'Undo-AzureRmKeyVaultRemoval', 'Remove-AzureRmKeyVaultAccessPolicy', 
-    'Set-AzureRmKeyVaultAccessPolicy', 'Backup-AzureKeyVaultKey', 
-    'Get-AzureKeyVaultKey', 'Get-AzureKeyVaultSecret', 
-    'Undo-AzureKeyVaultKeyRemoval', 'Undo-AzureKeyVaultSecretRemoval', 
-    'Add-AzureKeyVaultKey', 'Remove-AzureKeyVaultKey', 
-    'Remove-AzureKeyVaultSecret', 'Restore-AzureKeyVaultKey', 
-    'Update-AzureKeyVaultKey', 'Set-AzureKeyVaultSecret', 
-    'Update-AzureKeyVaultSecret', 'Get-AzureKeyVaultCertificatePolicy', 
-    'New-AzureKeyVaultCertificateAdministratorDetails', 
-    'New-AzureKeyVaultCertificateOrganizationDetails', 
-    'Backup-AzureKeyVaultSecret', 'Restore-AzureKeyVaultSecret', 
-    'Get-AzureKeyVaultManagedStorageAccount', 
-    'Add-AzureKeyVaultManagedStorageAccount', 
-    'Remove-AzureKeyVaultManagedStorageAccount', 
-    'Update-AzureKeyVaultManagedStorageAccount', 
-    'Update-AzureKeyVaultManagedStorageAccountKey', 
-    'Get-AzureKeyVaultManagedStorageSasDefinition', 
-    'Set-AzureKeyVaultManagedStorageSasDefinition', 
-    'Remove-AzureKeyVaultManagedStorageSasDefinition', 
-    'Undo-AzureKeyVaultCertificateRemoval', 
-    'Backup-AzureKeyVaultCertificate', 
-    'Restore-AzureKeyVaultCertificate', 
-    'Backup-AzureKeyVaultManagedStorageAccount', 
-    'Restore-AzureKeyVaultManagedStorageAccount', 
-    'Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval', 
-    'Undo-AzureKeyVaultManagedStorageAccountRemoval'
+CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate', 
+    'Stop-AzKeyVaultCertificateOperation', 
+    'Get-AzKeyVaultCertificateOperation', 
+    'Import-AzKeyVaultCertificate', 
+    'Add-AzKeyVaultCertificateContact', 
+    'Get-AzKeyVaultCertificate', 
+    'Get-AzKeyVaultCertificateContact', 
+    'Get-AzKeyVaultCertificateIssuer', 
+    'New-AzKeyVaultCertificatePolicy', 
+    'Remove-AzKeyVaultCertificate', 
+    'Remove-AzKeyVaultCertificateContact', 
+    'Remove-AzKeyVaultCertificateIssuer', 
+    'Remove-AzKeyVaultCertificateOperation', 
+    'Set-AzKeyVaultCertificateIssuer', 
+    'Set-AzKeyVaultCertificatePolicy', 'Get-AzKeyVault', 
+    'New-AzKeyVault', 'Remove-AzKeyVault', 
+    'Undo-AzKeyVaultRemoval', 'Remove-AzKeyVaultAccessPolicy', 
+    'Set-AzKeyVaultAccessPolicy', 'Backup-AzKeyVaultKey', 
+    'Get-AzKeyVaultKey', 'Get-AzKeyVaultSecret', 
+    'Undo-AzKeyVaultKeyRemoval', 'Undo-AzKeyVaultSecretRemoval', 
+    'Add-AzKeyVaultKey', 'Remove-AzKeyVaultKey', 
+    'Remove-AzKeyVaultSecret', 'Restore-AzKeyVaultKey', 
+    'Update-AzKeyVaultKey', 'Set-AzKeyVaultSecret', 
+    'Update-AzKeyVaultSecret', 'Get-AzKeyVaultCertificatePolicy', 
+    'New-AzKeyVaultCertificateAdministratorDetails', 
+    'New-AzKeyVaultCertificateOrganizationDetails', 
+    'Backup-AzKeyVaultSecret', 'Restore-AzKeyVaultSecret', 
+    'Get-AzKeyVaultManagedStorageAccount', 
+    'Add-AzKeyVaultManagedStorageAccount', 
+    'Remove-AzKeyVaultManagedStorageAccount', 
+    'Update-AzKeyVaultManagedStorageAccount', 
+    'Update-AzKeyVaultManagedStorageAccountKey', 
+    'Get-AzKeyVaultManagedStorageSasDefinition', 
+    'Set-AzKeyVaultManagedStorageSasDefinition', 
+    'Remove-AzKeyVaultManagedStorageSasDefinition', 
+    'Undo-AzKeyVaultCertificateRemoval', 
+    'Backup-AzKeyVaultCertificate', 
+    'Restore-AzKeyVaultCertificate', 
+    'Backup-AzKeyVaultManagedStorageAccount', 
+    'Restore-AzKeyVaultManagedStorageAccount', 
+    'Undo-AzKeyVaultManagedStorageSasDefinitionRemoval', 
+    'Undo-AzKeyVaultManagedStorageAccountRemoval'
 
 # Variables to export from this module
 # VariablesToExport = @()

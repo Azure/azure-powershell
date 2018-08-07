@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.ServiceBus.dll'
@@ -72,34 +72,34 @@ NestedModules = @('.\Microsoft.Azure.Commands.ServiceBus.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmServiceBusNamespace', 'Get-AzureRmServiceBusNamespace', 
-    'Set-AzureRmServiceBusNamespace', 
-    'Remove-AzureRmServiceBusNamespace', 'New-AzureRmServiceBusQueue', 
-    'Get-AzureRmServiceBusQueue', 'Set-AzureRmServiceBusQueue', 
-    'Remove-AzureRmServiceBusQueue', 'New-AzureRmServiceBusTopic', 
-    'Get-AzureRmServiceBusTopic', 'Set-AzureRmServiceBusTopic', 
-    'Remove-AzureRmServiceBusTopic', 'New-AzureRmServiceBusSubscription', 
-    'Get-AzureRmServiceBusSubscription', 
-    'Set-AzureRmServiceBusSubscription', 
-    'Remove-AzureRmServiceBusSubscription', 
-    'New-AzureRmServiceBusAuthorizationRule', 
-    'Get-AzureRmServiceBusAuthorizationRule', 
-    'Set-AzureRmServiceBusAuthorizationRule', 
-    'Remove-AzureRmServiceBusAuthorizationRule', 
-    'New-AzureRmServiceBusKey', 'Get-AzureRmServiceBusKey', 
-    'Get-AzureRmServiceBusOperation', 'New-AzureRmServiceBusRule', 
-    'Get-AzureRmServiceBusRule', 'Set-AzureRmServiceBusRule', 
-    'Remove-AzureRmServiceBusRule', 
-    'New-AzureRmServiceBusGeoDRConfiguration', 
-    'Get-AzureRmServiceBusGeoDRConfiguration', 
-    'Remove-AzureRmServiceBusGeoDRConfiguration', 
-    'Set-AzureRmServiceBusGeoDRConfigurationBreakPair', 
-    'Set-AzureRmServiceBusGeoDRConfigurationFailOver', 
-    'Test-AzureRmServiceBusName', 'Get-AzureRmServiceBusMigration', 
-    'Stop-AzureRmServiceBusMigration', 
-    'Start-AzureRmServiceBusMigration', 
-    'Complete-AzureRmServiceBusMigration', 
-    'Remove-AzureRmServiceBusMigration'
+CmdletsToExport = 'New-AzServiceBusNamespace', 'Get-AzServiceBusNamespace', 
+    'Set-AzServiceBusNamespace', 
+    'Remove-AzServiceBusNamespace', 'New-AzServiceBusQueue', 
+    'Get-AzServiceBusQueue', 'Set-AzServiceBusQueue', 
+    'Remove-AzServiceBusQueue', 'New-AzServiceBusTopic', 
+    'Get-AzServiceBusTopic', 'Set-AzServiceBusTopic', 
+    'Remove-AzServiceBusTopic', 'New-AzServiceBusSubscription', 
+    'Get-AzServiceBusSubscription', 
+    'Set-AzServiceBusSubscription', 
+    'Remove-AzServiceBusSubscription', 
+    'New-AzServiceBusAuthorizationRule', 
+    'Get-AzServiceBusAuthorizationRule', 
+    'Set-AzServiceBusAuthorizationRule', 
+    'Remove-AzServiceBusAuthorizationRule', 
+    'New-AzServiceBusKey', 'Get-AzServiceBusKey', 
+    'Get-AzServiceBusOperation', 'New-AzServiceBusRule', 
+    'Get-AzServiceBusRule', 'Set-AzServiceBusRule', 
+    'Remove-AzServiceBusRule', 
+    'New-AzServiceBusGeoDRConfiguration', 
+    'Get-AzServiceBusGeoDRConfiguration', 
+    'Remove-AzServiceBusGeoDRConfiguration', 
+    'Set-AzServiceBusGeoDRConfigurationBreakPair', 
+    'Set-AzServiceBusGeoDRConfigurationFailOver', 
+    'Test-AzServiceBusName', 'Get-AzServiceBusMigration', 
+    'Stop-AzServiceBusMigration', 
+    'Start-AzServiceBusMigration', 
+    'Complete-AzServiceBusMigration', 
+    'Remove-AzServiceBusMigration'
 
 # Variables to export from this module
 # VariablesToExport = @()

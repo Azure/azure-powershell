@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,8 +51,8 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; }, 
-    @{ModuleName = 'Azure.Storage.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.1.0'; }, 
+    @{ModuleName = 'Azure.Storage.Netcore'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll'
@@ -74,16 +74,16 @@ NestedModules = @('.\Microsoft.Azure.Commands.Management.Storage.dll',
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmStorageAccount', 'Get-AzureRmStorageAccountKey', 
-    'New-AzureRmStorageAccount', 'New-AzureRmStorageAccountKey', 
-    'Remove-AzureRmStorageAccount', 'Set-AzureRmCurrentStorageAccount', 
-    'Set-AzureRmStorageAccount', 
-    'Get-AzureRmStorageAccountNameAvailability', 
-    'Get-AzureRmStorageUsage', 
-    'Update-AzureRmStorageAccountNetworkRuleSet', 
-    'Get-AzureRmStorageAccountNetworkRuleSet', 
-    'Add-AzureRmStorageAccountNetworkRule', 
-    'Remove-AzureRmStorageAccountNetworkRule'
+CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey', 
+    'New-AzStorageAccount', 'New-AzStorageAccountKey', 
+    'Remove-AzStorageAccount', 'Set-AzCurrentStorageAccount', 
+    'Set-AzStorageAccount', 
+    'Get-AzStorageAccountNameAvailability', 
+    'Get-AzStorageUsage', 
+    'Update-AzStorageAccountNetworkRuleSet', 
+    'Get-AzStorageAccountNetworkRuleSet', 
+    'Add-AzStorageAccountNetworkRule', 
+    'Remove-AzStorageAccountNetworkRule'
 
 # Variables to export from this module
 # VariablesToExport = @()

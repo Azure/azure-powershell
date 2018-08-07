@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.PowerBIEmbedded.dll', 
@@ -74,19 +74,19 @@ NestedModules = @('.\Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll',
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Remove-AzureRmPowerBIWorkspaceCollection', 
-    'Get-AzureRmPowerBIWorkspaceCollection', 
-    'Get-AzureRmPowerBIWorkspaceCollectionAccessKeys', 
-    'Get-AzureRmPowerBIWorkspace', 
-    'New-AzureRmPowerBIWorkspaceCollection', 
-    'Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys', 
-    'Resume-AzureRmPowerBIEmbeddedCapacity', 
-    'Suspend-AzureRmPowerBIEmbeddedCapacity', 
-    'Get-AzureRmPowerBIEmbeddedCapacity', 
-    'Remove-AzureRmPowerBIEmbeddedCapacity', 
-    'Update-AzureRmPowerBIEmbeddedCapacity', 
-    'Test-AzureRmPowerBIEmbeddedCapacity', 
-    'New-AzureRmPowerBIEmbeddedCapacity'
+CmdletsToExport = 'Remove-AzPowerBIWorkspaceCollection', 
+    'Get-AzPowerBIWorkspaceCollection', 
+    'Get-AzPowerBIWorkspaceCollectionAccessKeys', 
+    'Get-AzPowerBIWorkspace', 
+    'New-AzPowerBIWorkspaceCollection', 
+    'Reset-AzPowerBIWorkspaceCollectionAccessKeys', 
+    'Resume-AzPowerBIEmbeddedCapacity', 
+    'Suspend-AzPowerBIEmbeddedCapacity', 
+    'Get-AzPowerBIEmbeddedCapacity', 
+    'Remove-AzPowerBIEmbeddedCapacity', 
+    'Update-AzPowerBIEmbeddedCapacity', 
+    'Test-AzPowerBIEmbeddedCapacity', 
+    'New-AzPowerBIEmbeddedCapacity'
 
 # Variables to export from this module
 # VariablesToExport = @()

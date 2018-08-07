@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.ApplicationInsights.dll'
@@ -72,17 +72,17 @@ NestedModules = @('.\Microsoft.Azure.Commands.ApplicationInsights.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmApplicationInsights', 'New-AzureRmApplicationInsights', 
-    'Remove-AzureRmApplicationInsights', 
-    'Set-AzureRmApplicationInsightsPricingPlan', 
-    'Set-AzureRmApplicationInsightsDailyCap', 
-    'Get-AzureRmApplicationInsightsContinuousExport', 
-    'Set-AzureRmApplicationInsightsContinuousExport', 
-    'New-AzureRmApplicationInsightsContinuousExport', 
-    'Remove-AzureRmApplicationInsightsContinuousExport', 
-    'Get-AzureRmApplicationInsightsApiKey', 
-    'New-AzureRmApplicationInsightsApiKey', 
-    'Remove-AzureRmApplicationInsightsApiKey'
+CmdletsToExport = 'Get-AzApplicationInsights', 'New-AzApplicationInsights', 
+    'Remove-AzApplicationInsights', 
+    'Set-AzApplicationInsightsPricingPlan', 
+    'Set-AzApplicationInsightsDailyCap', 
+    'Get-AzApplicationInsightsContinuousExport', 
+    'Set-AzApplicationInsightsContinuousExport', 
+    'New-AzApplicationInsightsContinuousExport', 
+    'Remove-AzApplicationInsightsContinuousExport', 
+    'Get-AzApplicationInsightsApiKey', 
+    'New-AzApplicationInsightsApiKey', 
+    'Remove-AzApplicationInsightsApiKey'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DevTestLabs.dll'
@@ -72,12 +72,12 @@ NestedModules = @('.\Microsoft.Azure.Commands.DevTestLabs.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmDtlAllowedVMSizesPolicy', 
-    'Get-AzureRmDtlAutoShutdownPolicy', 'Get-AzureRmDtlAutoStartPolicy', 
-    'Get-AzureRmDtlVMsPerLabPolicy', 'Get-AzureRmDtlVMsPerUserPolicy', 
-    'Set-AzureRmDtlAutoStartPolicy', 'Set-AzureRmDtlAutoShutdownPolicy', 
-    'Set-AzureRmDtlVMsPerUserPolicy', 
-    'Set-AzureRmDtlAllowedVMSizesPolicy', 'Set-AzureRmDtlVMsPerLabPolicy'
+CmdletsToExport = 'Get-AzDtlAllowedVMSizesPolicy', 
+    'Get-AzDtlAutoShutdownPolicy', 'Get-AzDtlAutoStartPolicy', 
+    'Get-AzDtlVMsPerLabPolicy', 'Get-AzDtlVMsPerUserPolicy', 
+    'Set-AzDtlAutoStartPolicy', 'Set-AzDtlAutoShutdownPolicy', 
+    'Set-AzDtlVMsPerUserPolicy', 
+    'Set-AzDtlAllowedVMSizesPolicy', 'Set-AzDtlVMsPerLabPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()

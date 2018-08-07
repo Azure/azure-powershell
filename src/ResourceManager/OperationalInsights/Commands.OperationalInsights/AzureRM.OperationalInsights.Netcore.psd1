@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.OperationalInsights.dll', 
@@ -73,46 +73,46 @@ NestedModules = @('.\Microsoft.Azure.Commands.OperationalInsights.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmOperationalInsightsAzureActivityLogDataSource', 
-    'New-AzureRmOperationalInsightsCustomLogDataSource', 
-    'Disable-AzureRmOperationalInsightsLinuxCustomLogCollection', 
-    'Disable-AzureRmOperationalInsightsIISLogCollection', 
-    'Enable-AzureRmOperationalInsightsLinuxCustomLogCollection', 
-    'Enable-AzureRmOperationalInsightsIISLogCollection', 
-    'Enable-AzureRmOperationalInsightsLinuxSyslogCollection', 
-    'Enable-AzureRmOperationalInsightsLinuxPerformanceCollection', 
-    'Disable-AzureRmOperationalInsightsLinuxPerformanceCollection', 
-    'New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource', 
-    'New-AzureRmOperationalInsightsLinuxPerformanceObjectDataSource', 
-    'New-AzureRmOperationalInsightsLinuxSyslogDataSource', 
-    'Disable-AzureRmOperationalInsightsLinuxSyslogCollection', 
-    'New-AzureRmOperationalInsightsWindowsEventDataSource', 
-    'Get-AzureRmOperationalInsightsSavedSearch', 
-    'Get-AzureRmOperationalInsightsSavedSearchResults', 
-    'Get-AzureRmOperationalInsightsSchema', 
-    'Get-AzureRmOperationalInsightsSearchResults', 
-    'New-AzureRmOperationalInsightsComputerGroup', 
-    'New-AzureRmOperationalInsightsSavedSearch', 
-    'Set-AzureRmOperationalInsightsSavedSearch', 
-    'Remove-AzureRmOperationalInsightsSavedSearch', 
-    'Get-AzureRmOperationalInsightsDataSource', 
-    'Remove-AzureRmOperationalInsightsDataSource', 
-    'Set-AzureRmOperationalInsightsDataSource', 
-    'Get-AzureRmOperationalInsightsStorageInsight', 
-    'Set-AzureRmOperationalInsightsStorageInsight', 
-    'New-AzureRmOperationalInsightsStorageInsight', 
-    'Remove-AzureRmOperationalInsightsStorageInsight', 
-    'Set-AzureRmOperationalInsightsIntelligencePack', 
-    'Get-AzureRmOperationalInsightsIntelligencePacks', 
-    'Get-AzureRmOperationalInsightsWorkspaceManagementGroups', 
-    'Get-AzureRmOperationalInsightsLinkTargets', 
-    'Get-AzureRmOperationalInsightsWorkspaceUsage', 
-    'Get-AzureRmOperationalInsightsWorkspaceSharedKeys', 
-    'Get-AzureRmOperationalInsightsWorkspace', 
-    'New-AzureRmOperationalInsightsWorkspace', 
-    'Remove-AzureRmOperationalInsightsWorkspace', 
-    'Set-AzureRmOperationalInsightsWorkspace', 
-    'Invoke-AzureRmOperationalInsightsQuery'
+CmdletsToExport = 'New-AzOperationalInsightsAzureActivityLogDataSource', 
+    'New-AzOperationalInsightsCustomLogDataSource', 
+    'Disable-AzOperationalInsightsLinuxCustomLogCollection', 
+    'Disable-AzOperationalInsightsIISLogCollection', 
+    'Enable-AzOperationalInsightsLinuxCustomLogCollection', 
+    'Enable-AzOperationalInsightsIISLogCollection', 
+    'Enable-AzOperationalInsightsLinuxSyslogCollection', 
+    'Enable-AzOperationalInsightsLinuxPerformanceCollection', 
+    'Disable-AzOperationalInsightsLinuxPerformanceCollection', 
+    'New-AzOperationalInsightsWindowsPerformanceCounterDataSource', 
+    'New-AzOperationalInsightsLinuxPerformanceObjectDataSource', 
+    'New-AzOperationalInsightsLinuxSyslogDataSource', 
+    'Disable-AzOperationalInsightsLinuxSyslogCollection', 
+    'New-AzOperationalInsightsWindowsEventDataSource', 
+    'Get-AzOperationalInsightsSavedSearch', 
+    'Get-AzOperationalInsightsSavedSearchResults', 
+    'Get-AzOperationalInsightsSchema', 
+    'Get-AzOperationalInsightsSearchResults', 
+    'New-AzOperationalInsightsComputerGroup', 
+    'New-AzOperationalInsightsSavedSearch', 
+    'Set-AzOperationalInsightsSavedSearch', 
+    'Remove-AzOperationalInsightsSavedSearch', 
+    'Get-AzOperationalInsightsDataSource', 
+    'Remove-AzOperationalInsightsDataSource', 
+    'Set-AzOperationalInsightsDataSource', 
+    'Get-AzOperationalInsightsStorageInsight', 
+    'Set-AzOperationalInsightsStorageInsight', 
+    'New-AzOperationalInsightsStorageInsight', 
+    'Remove-AzOperationalInsightsStorageInsight', 
+    'Set-AzOperationalInsightsIntelligencePack', 
+    'Get-AzOperationalInsightsIntelligencePacks', 
+    'Get-AzOperationalInsightsWorkspaceManagementGroups', 
+    'Get-AzOperationalInsightsLinkTargets', 
+    'Get-AzOperationalInsightsWorkspaceUsage', 
+    'Get-AzOperationalInsightsWorkspaceSharedKeys', 
+    'Get-AzOperationalInsightsWorkspace', 
+    'New-AzOperationalInsightsWorkspace', 
+    'Remove-AzOperationalInsightsWorkspace', 
+    'Set-AzOperationalInsightsWorkspace', 
+    'Invoke-AzOperationalInsightsQuery'
 
 # Variables to export from this module
 # VariablesToExport = @()

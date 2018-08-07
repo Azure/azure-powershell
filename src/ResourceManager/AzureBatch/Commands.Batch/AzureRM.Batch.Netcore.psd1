@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Batch.dll', 
@@ -76,43 +76,43 @@ NestedModules = @('.\Microsoft.Azure.Commands.Batch.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Remove-AzureRmBatchAccount', 'Get-AzureRmBatchAccount', 
-    'Get-AzureRmBatchAccountKeys', 'New-AzureRmBatchAccount', 
-    'New-AzureRmBatchAccountKey', 'Set-AzureRmBatchAccount', 
-    'New-AzureRmBatchApplicationPackage', 'Get-AzureBatchJobStatistics', 
-    'Remove-AzureRmBatchApplication', 
-    'Remove-AzureRmBatchApplicationPackage', 
-    'Get-AzureRmBatchApplicationPackage', 'Get-AzureRmBatchApplication', 
-    'Set-AzureRmBatchApplication', 'New-AzureRmBatchApplication', 
-    'Get-AzureBatchCertificate', 'Remove-AzureBatchCertificate', 
-    'New-AzureBatchCertificate', 'Stop-AzureBatchCertificateDeletion', 
-    'Disable-AzureBatchComputeNodeScheduling', 
-    'Enable-AzureBatchComputeNodeScheduling', 
-    'Get-AzureBatchRemoteLoginSettings', 'Remove-AzureBatchComputeNode', 
-    'Reset-AzureBatchComputeNode', 'Restart-AzureBatchComputeNode', 
-    'Set-AzureBatchComputeNodeUser', 'Get-AzureBatchNodeFile', 
-    'Get-AzureBatchNodeFileContent', 
-    'Get-AzureBatchRemoteDesktopProtocolFile', 
-    'Remove-AzureBatchNodeFile', 'Disable-AzureBatchJobSchedule', 
-    'Enable-AzureBatchJobSchedule', 'Set-AzureBatchJobSchedule', 
-    'Stop-AzureBatchJobSchedule', 'Disable-AzureBatchJob', 
-    'Enable-AzureBatchJob', 'New-AzureBatchJob', 'Remove-AzureBatchJob', 
-    'Set-AzureBatchJob', 'Stop-AzureBatchJob', 'Get-AzureBatchJob', 
-    'Get-AzureBatchJobPreparationAndReleaseTaskStatus', 
-    'Disable-AzureBatchAutoScale', 'Enable-AzureBatchAutoScale', 
-    'Get-AzureBatchPoolStatistics', 'Get-AzureBatchPoolUsageMetrics', 
-    'Get-AzureBatchPool', 'Get-AzureBatchNodeAgentSku', 
-    'New-AzureBatchPool', 'Remove-AzureBatchPool', 'Set-AzureBatchPool', 
-    'Set-AzureBatchPoolOSVersion', 'Start-AzureBatchPoolResize', 
-    'Stop-AzureBatchPoolResize', 'Test-AzureBatchAutoScale', 
-    'Get-AzureRmBatchLocationQuotas', 'Get-AzureBatchSubtask', 
-    'Get-AzureBatchTask', 'New-AzureBatchTask', 'Remove-AzureBatchTask', 
-    'New-AzureBatchComputeNodeUser', 'Remove-AzureBatchComputeNodeUser', 
-    'Enable-AzureBatchTask', 'Set-AzureBatchTask', 'Stop-AzureBatchTask', 
-    'Get-AzureBatchComputeNode', 'Get-AzureBatchJobSchedule', 
-    'New-AzureBatchJobSchedule', 'Remove-AzureBatchJobSchedule', 
-    'Get-AzureBatchTaskCounts', 'Get-AzureBatchPoolNodeCounts', 
-    'Start-AzureBatchComputeNodeServiceLogUpload'
+CmdletsToExport = 'Remove-AzBatchAccount', 'Get-AzBatchAccount', 
+    'Get-AzBatchAccountKeys', 'New-AzBatchAccount', 
+    'New-AzBatchAccountKey', 'Set-AzBatchAccount', 
+    'New-AzBatchApplicationPackage', 'Get-AzBatchJobStatistics', 
+    'Remove-AzBatchApplication', 
+    'Remove-AzBatchApplicationPackage', 
+    'Get-AzBatchApplicationPackage', 'Get-AzBatchApplication', 
+    'Set-AzBatchApplication', 'New-AzBatchApplication', 
+    'Get-AzBatchCertificate', 'Remove-AzBatchCertificate', 
+    'New-AzBatchCertificate', 'Stop-AzBatchCertificateDeletion', 
+    'Disable-AzBatchComputeNodeScheduling', 
+    'Enable-AzBatchComputeNodeScheduling', 
+    'Get-AzBatchRemoteLoginSettings', 'Remove-AzBatchComputeNode', 
+    'Reset-AzBatchComputeNode', 'Restart-AzBatchComputeNode', 
+    'Set-AzBatchComputeNodeUser', 'Get-AzBatchNodeFile', 
+    'Get-AzBatchNodeFileContent', 
+    'Get-AzBatchRemoteDesktopProtocolFile', 
+    'Remove-AzBatchNodeFile', 'Disable-AzBatchJobSchedule', 
+    'Enable-AzBatchJobSchedule', 'Set-AzBatchJobSchedule', 
+    'Stop-AzBatchJobSchedule', 'Disable-AzBatchJob', 
+    'Enable-AzBatchJob', 'New-AzBatchJob', 'Remove-AzBatchJob', 
+    'Set-AzBatchJob', 'Stop-AzBatchJob', 'Get-AzBatchJob', 
+    'Get-AzBatchJobPreparationAndReleaseTaskStatus', 
+    'Disable-AzBatchAutoScale', 'Enable-AzBatchAutoScale', 
+    'Get-AzBatchPoolStatistics', 'Get-AzBatchPoolUsageMetrics', 
+    'Get-AzBatchPool', 'Get-AzBatchNodeAgentSku', 
+    'New-AzBatchPool', 'Remove-AzBatchPool', 'Set-AzBatchPool', 
+    'Set-AzBatchPoolOSVersion', 'Start-AzBatchPoolResize', 
+    'Stop-AzBatchPoolResize', 'Test-AzBatchAutoScale', 
+    'Get-AzBatchLocationQuotas', 'Get-AzBatchSubtask', 
+    'Get-AzBatchTask', 'New-AzBatchTask', 'Remove-AzBatchTask', 
+    'New-AzBatchComputeNodeUser', 'Remove-AzBatchComputeNodeUser', 
+    'Enable-AzBatchTask', 'Set-AzBatchTask', 'Stop-AzBatchTask', 
+    'Get-AzBatchComputeNode', 'Get-AzBatchJobSchedule', 
+    'New-AzBatchJobSchedule', 'Remove-AzBatchJobSchedule', 
+    'Get-AzBatchTaskCounts', 'Get-AzBatchPoolNodeCounts', 
+    'Start-AzBatchComputeNodeServiceLogUpload'
 
 # Variables to export from this module
 # VariablesToExport = @()

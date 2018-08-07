@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Analytics.dll'
@@ -72,40 +72,40 @@ NestedModules = @('.\Microsoft.Azure.Commands.DataLakeAnalytics.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmDataLakeAnalyticsDataSource', 
-    'New-AzureRmDataLakeAnalyticsCatalogCredential', 
-    'Remove-AzureRmDataLakeAnalyticsCatalogCredential', 
-    'Remove-AzureRmDataLakeAnalyticsCatalogSecret', 
-    'Set-AzureRmDataLakeAnalyticsCatalogCredential', 
-    'Set-AzureRmDataLakeAnalyticsCatalogSecret', 
-    'New-AzureRmDataLakeAnalyticsCatalogSecret', 
-    'Test-AzureRmDataLakeAnalyticsCatalogItem', 
-    'Get-AzureRmDataLakeAnalyticsCatalogItem', 
-    'Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry', 
-    'Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry', 
-    'Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry', 
-    'Set-AzureRmDataLakeAnalyticsDataSource', 
-    'Wait-AzureRmDataLakeAnalyticsJob', 
-    'Test-AzureRmDataLakeAnalyticsAccount', 
-    'Remove-AzureRmDataLakeAnalyticsDataSource', 
-    'Add-AzureRmDataLakeAnalyticsDataSource', 
-    'Stop-AzureRmDataLakeAnalyticsJob', 
-    'Get-AzureRmDataLakeAnalyticsJob', 
-    'Get-AzureRmDataLakeAnalyticsAccount', 
-    'Submit-AzureRmDataLakeAnalyticsJob', 
-    'New-AzureRmDataLakeAnalyticsAccount', 
-    'Remove-AzureRmDataLakeAnalyticsAccount', 
-    'Set-AzureRmDataLakeAnalyticsAccount', 
-    'Add-AzureRmDataLakeAnalyticsFirewallRule', 
-    'Get-AzureRmDataLakeAnalyticsFirewallRule', 
-    'Set-AzureRmDataLakeAnalyticsFirewallRule', 
-    'Remove-AzureRmDataLakeAnalyticsFirewallRule', 
-    'New-AzureRmDataLakeAnalyticsComputePolicy', 
-    'Get-AzureRmDataLakeAnalyticsComputePolicy', 
-    'Update-AzureRmDataLakeAnalyticsComputePolicy', 
-    'Remove-AzureRmDataLakeAnalyticsComputePolicy', 
-    'Get-AzureRmDataLakeAnalyticsJobPipeline', 
-    'Get-AzureRmDataLakeAnalyticsJobRecurrence'
+CmdletsToExport = 'Get-AzDataLakeAnalyticsDataSource', 
+    'New-AzDataLakeAnalyticsCatalogCredential', 
+    'Remove-AzDataLakeAnalyticsCatalogCredential', 
+    'Remove-AzDataLakeAnalyticsCatalogSecret', 
+    'Set-AzDataLakeAnalyticsCatalogCredential', 
+    'Set-AzDataLakeAnalyticsCatalogSecret', 
+    'New-AzDataLakeAnalyticsCatalogSecret', 
+    'Test-AzDataLakeAnalyticsCatalogItem', 
+    'Get-AzDataLakeAnalyticsCatalogItem', 
+    'Get-AzDataLakeAnalyticsCatalogItemAclEntry', 
+    'Set-AzDataLakeAnalyticsCatalogItemAclEntry', 
+    'Remove-AzDataLakeAnalyticsCatalogItemAclEntry', 
+    'Set-AzDataLakeAnalyticsDataSource', 
+    'Wait-AzDataLakeAnalyticsJob', 
+    'Test-AzDataLakeAnalyticsAccount', 
+    'Remove-AzDataLakeAnalyticsDataSource', 
+    'Add-AzDataLakeAnalyticsDataSource', 
+    'Stop-AzDataLakeAnalyticsJob', 
+    'Get-AzDataLakeAnalyticsJob', 
+    'Get-AzDataLakeAnalyticsAccount', 
+    'Submit-AzDataLakeAnalyticsJob', 
+    'New-AzDataLakeAnalyticsAccount', 
+    'Remove-AzDataLakeAnalyticsAccount', 
+    'Set-AzDataLakeAnalyticsAccount', 
+    'Add-AzDataLakeAnalyticsFirewallRule', 
+    'Get-AzDataLakeAnalyticsFirewallRule', 
+    'Set-AzDataLakeAnalyticsFirewallRule', 
+    'Remove-AzDataLakeAnalyticsFirewallRule', 
+    'New-AzDataLakeAnalyticsComputePolicy', 
+    'Get-AzDataLakeAnalyticsComputePolicy', 
+    'Update-AzDataLakeAnalyticsComputePolicy', 
+    'Remove-AzDataLakeAnalyticsComputePolicy', 
+    'Get-AzDataLakeAnalyticsJobPipeline', 
+    'Get-AzDataLakeAnalyticsJobRecurrence'
 
 # Variables to export from this module
 # VariablesToExport = @()

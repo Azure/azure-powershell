@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.NotificationHubs.dll'
@@ -72,26 +72,26 @@ NestedModules = @('.\Microsoft.Azure.Commands.NotificationHubs.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmNotificationHub', 
-    'Get-AzureRmNotificationHubAuthorizationRules', 
-    'Get-AzureRmNotificationHubListKeys', 
-    'Get-AzureRmNotificationHubPNSCredentials', 
-    'New-AzureRmNotificationHub', 
-    'New-AzureRmNotificationHubAuthorizationRules', 
-    'New-AzureRmNotificationHubKey', 'Remove-AzureRmNotificationHub', 
-    'Remove-AzureRmNotificationHubAuthorizationRules', 
-    'Set-AzureRmNotificationHub', 
-    'Set-AzureRmNotificationHubAuthorizationRules', 
-    'Get-AzureRmNotificationHubsNamespaceAuthorizationRules', 
-    'Get-AzureRmNotificationHubsNamespaceListKeys', 
-    'New-AzureRmNotificationHubsNamespaceAuthorizationRules', 
-    'New-AzureRmNotificationHubsNamespaceKey', 
-    'Remove-AzureRmNotificationHubsNamespaceAuthorizationRules', 
-    'Set-AzureRmNotificationHubsNamespaceAuthorizationRules', 
-    'Get-AzureRmNotificationHubsNamespace', 
-    'New-AzureRmNotificationHubsNamespace', 
-    'Remove-AzureRmNotificationHubsNamespace', 
-    'Set-AzureRmNotificationHubsNamespace'
+CmdletsToExport = 'Get-AzNotificationHub', 
+    'Get-AzNotificationHubAuthorizationRules', 
+    'Get-AzNotificationHubListKeys', 
+    'Get-AzNotificationHubPNSCredentials', 
+    'New-AzNotificationHub', 
+    'New-AzNotificationHubAuthorizationRules', 
+    'New-AzNotificationHubKey', 'Remove-AzNotificationHub', 
+    'Remove-AzNotificationHubAuthorizationRules', 
+    'Set-AzNotificationHub', 
+    'Set-AzNotificationHubAuthorizationRules', 
+    'Get-AzNotificationHubsNamespaceAuthorizationRules', 
+    'Get-AzNotificationHubsNamespaceListKeys', 
+    'New-AzNotificationHubsNamespaceAuthorizationRules', 
+    'New-AzNotificationHubsNamespaceKey', 
+    'Remove-AzNotificationHubsNamespaceAuthorizationRules', 
+    'Set-AzNotificationHubsNamespaceAuthorizationRules', 
+    'Get-AzNotificationHubsNamespace', 
+    'New-AzNotificationHubsNamespace', 
+    'Remove-AzNotificationHubsNamespace', 
+    'Set-AzNotificationHubsNamespace'
 
 # Variables to export from this module
 # VariablesToExport = @()

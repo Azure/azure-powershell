@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Scheduler.dll'
@@ -72,19 +72,19 @@ NestedModules = @('.\Microsoft.Azure.Commands.Scheduler.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Disable-AzureRmSchedulerJobCollection', 
-    'Enable-AzureRmSchedulerJobCollection', 
-    'Get-AzureRmSchedulerJobCollection', 'Get-AzureRmSchedulerJob', 
-    'Get-AzureRmSchedulerJobHistory', 
-    'New-AzureRmSchedulerJobCollection', 'New-AzureRmSchedulerHttpJob', 
-    'New-AzureRmSchedulerServiceBusQueueJob', 
-    'New-AzureRmSchedulerServiceBusTopicJob', 
-    'New-AzureRmSchedulerStorageQueueJob', 
-    'Remove-AzureRmSchedulerJobCollection', 'Remove-AzureRmSchedulerJob', 
-    'Set-AzureRmSchedulerHttpJob', 'Set-AzureRmSchedulerJobCollection', 
-    'Set-AzureRmSchedulerServiceBusQueueJob', 
-    'Set-AzureRmSchedulerServiceBusTopicJob', 
-    'Set-AzureRmSchedulerStorageQueueJob'
+CmdletsToExport = 'Disable-AzSchedulerJobCollection', 
+    'Enable-AzSchedulerJobCollection', 
+    'Get-AzSchedulerJobCollection', 'Get-AzSchedulerJob', 
+    'Get-AzSchedulerJobHistory', 
+    'New-AzSchedulerJobCollection', 'New-AzSchedulerHttpJob', 
+    'New-AzSchedulerServiceBusQueueJob', 
+    'New-AzSchedulerServiceBusTopicJob', 
+    'New-AzSchedulerStorageQueueJob', 
+    'Remove-AzSchedulerJobCollection', 'Remove-AzSchedulerJob', 
+    'Set-AzSchedulerHttpJob', 'Set-AzSchedulerJobCollection', 
+    'Set-AzSchedulerServiceBusQueueJob', 
+    'Set-AzSchedulerServiceBusTopicJob', 
+    'Set-AzSchedulerStorageQueueJob'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.13.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Store.dll', 
@@ -73,37 +73,37 @@ NestedModules = @('.\Microsoft.Azure.Commands.DataLakeStore.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmDataLakeStoreTrustedIdProvider', 
-    'Remove-AzureRmDataLakeStoreTrustedIdProvider', 
-    'Remove-AzureRmDataLakeStoreFirewallRule', 
-    'Set-AzureRmDataLakeStoreTrustedIdProvider', 
-    'Add-AzureRmDataLakeStoreTrustedIdProvider', 
-    'Get-AzureRmDataLakeStoreFirewallRule', 
-    'Set-AzureRmDataLakeStoreFirewallRule', 
-    'Add-AzureRmDataLakeStoreFirewallRule', 
-    'Add-AzureRmDataLakeStoreItemContent', 
-    'Enable-AzureRmDataLakeStoreKeyVault', 
-    'Export-AzureRmDataLakeStoreItem', 
-    'Get-AzureRmDataLakeStoreChildItem', 'Get-AzureRmDataLakeStoreItem', 
-    'Get-AzureRmDataLakeStoreItemAclEntry', 
-    'Get-AzureRmDataLakeStoreItemContent', 
-    'Get-AzureRmDataLakeStoreItemOwner', 
-    'Get-AzureRmDataLakeStoreItemPermission', 
-    'Import-AzureRmDataLakeStoreItem', 'Get-AzureRmDataLakeStoreAccount', 
-    'Join-AzureRmDataLakeStoreItem', 'Move-AzureRmDataLakeStoreItem', 
-    'New-AzureRmDataLakeStoreAccount', 'New-AzureRmDataLakeStoreItem', 
-    'Remove-AzureRmDataLakeStoreAccount', 
-    'Remove-AzureRmDataLakeStoreItem', 
-    'Remove-AzureRmDataLakeStoreItemAcl', 
-    'Remove-AzureRmDataLakeStoreItemAclEntry', 
-    'Set-AzureRmDataLakeStoreItemAclEntry', 
-    'Set-AzureRmDataLakeStoreAccount', 'Set-AzureRmDataLakeStoreItemAcl', 
-    'Set-AzureRmDataLakeStoreItemExpiry', 
-    'Set-AzureRmDataLakeStoreItemOwner', 
-    'Set-AzureRmDataLakeStoreItemPermission', 
-    'Test-AzureRmDataLakeStoreAccount', 'Test-AzureRmDataLakeStoreItem', 
-    'Export-AzureRmDataLakeStoreChildItemProperties', 
-    'Get-AzureRmDataLakeStoreChildItemSummary'
+CmdletsToExport = 'Get-AzDataLakeStoreTrustedIdProvider', 
+    'Remove-AzDataLakeStoreTrustedIdProvider', 
+    'Remove-AzDataLakeStoreFirewallRule', 
+    'Set-AzDataLakeStoreTrustedIdProvider', 
+    'Add-AzDataLakeStoreTrustedIdProvider', 
+    'Get-AzDataLakeStoreFirewallRule', 
+    'Set-AzDataLakeStoreFirewallRule', 
+    'Add-AzDataLakeStoreFirewallRule', 
+    'Add-AzDataLakeStoreItemContent', 
+    'Enable-AzDataLakeStoreKeyVault', 
+    'Export-AzDataLakeStoreItem', 
+    'Get-AzDataLakeStoreChildItem', 'Get-AzDataLakeStoreItem', 
+    'Get-AzDataLakeStoreItemAclEntry', 
+    'Get-AzDataLakeStoreItemContent', 
+    'Get-AzDataLakeStoreItemOwner', 
+    'Get-AzDataLakeStoreItemPermission', 
+    'Import-AzDataLakeStoreItem', 'Get-AzDataLakeStoreAccount', 
+    'Join-AzDataLakeStoreItem', 'Move-AzDataLakeStoreItem', 
+    'New-AzDataLakeStoreAccount', 'New-AzDataLakeStoreItem', 
+    'Remove-AzDataLakeStoreAccount', 
+    'Remove-AzDataLakeStoreItem', 
+    'Remove-AzDataLakeStoreItemAcl', 
+    'Remove-AzDataLakeStoreItemAclEntry', 
+    'Set-AzDataLakeStoreItemAclEntry', 
+    'Set-AzDataLakeStoreAccount', 'Set-AzDataLakeStoreItemAcl', 
+    'Set-AzDataLakeStoreItemExpiry', 
+    'Set-AzDataLakeStoreItemOwner', 
+    'Set-AzDataLakeStoreItemPermission', 
+    'Test-AzDataLakeStoreAccount', 'Test-AzDataLakeStoreItem', 
+    'Export-AzDataLakeStoreChildItemProperties', 
+    'Get-AzDataLakeStoreChildItemSummary'
 
 # Variables to export from this module
 # VariablesToExport = @()
