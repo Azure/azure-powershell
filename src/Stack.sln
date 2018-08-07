@@ -47,8 +47,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sync", "ResourceManager\Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Network", "ResourceManager\Network\Stack\Commands.Network\Commands.Network.csproj", "{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute", "ResourceManager\Compute\Stack\Commands.Compute\Commands.Compute.csproj", "{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.Common", "Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj", "{C1BDA476-A5CC-4394-914D-48B0EC31A710}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Common", "ServiceManagement\Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj", "{CFF09E81-1E31-444E-B4D4-A21E946C29E2}"
@@ -353,18 +351,6 @@ Global
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}.Release|x64.Build.0 = Release|Any CPU
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}.Release|x86.ActiveCfg = Release|Any CPU
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}.Release|x86.Build.0 = Release|Any CPU
-		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Debug|x64.Build.0 = Debug|Any CPU
-		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Debug|x86.Build.0 = Debug|Any CPU
-		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Release|x64.ActiveCfg = Release|Any CPU
-		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Release|x64.Build.0 = Release|Any CPU
-		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Release|x86.ActiveCfg = Release|Any CPU
-		{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}.Release|x86.Build.0 = Release|Any CPU
 		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1BDA476-A5CC-4394-914D-48B0EC31A710}.Debug|x64.ActiveCfg = Debug|Any CPU
