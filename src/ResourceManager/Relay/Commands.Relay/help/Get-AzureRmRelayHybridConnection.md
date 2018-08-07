@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Relay
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/get-azurermrelayhybridconnection
 schema: 2.0.0
 ---
@@ -25,9 +25,19 @@ The **Get-AzureRmRelayHybridConnection** cmdlet gets a description for the speci
 ### Example 1
 ```
 PS C:\>Get-AzureRmRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection
+
+CreatedAt                   : 4/12/2017 3:17:02 AM
+UpdatedAt                   : 4/12/2017 3:17:02 AM
+ListenerCount               : 0
+RequiresClientAuthorization : True
+UserMetadata                : User Meta data
+Id                          : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/H
+                              ybridConnections/TestHybridConnection
+Name                        : TestHybridConnection
+Type                        : Microsoft.Relay/HybridConnections
 ```
 
-Returns the description of the HybridConnection. 
+Returns the description of the HybridConnection.
 
 ## PARAMETERS
 
@@ -35,7 +45,7 @@ Returns the description of the HybridConnection.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,9 +60,9 @@ Accept wildcard characters: False
 HybridConnections Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -65,9 +75,9 @@ Accept wildcard characters: False
 Namespace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -80,9 +90,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -97,21 +107,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
-CreatedAt                   : 4/12/2017 3:17:02 AM
-UpdatedAt                   : 4/12/2017 3:17:02 AM
-ListenerCount               : 0
-RequiresClientAuthorization : True
-UserMetadata                : User Meta data
-Id                          : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/H
-                              ybridConnections/TestHybridConnection
-Name                        : TestHybridConnection
-Type                        : Microsoft.Relay/HybridConnections
 
 ## NOTES
 
 ## RELATED LINKS
-
