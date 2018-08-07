@@ -35,4 +35,9 @@ if ($Env:ACC_CLOUD -eq $null)
 
 # Add conditionals for alias import
 
-%ALIASMAPPING%
+$mappings = %ALIASMAPPING%
+
+foreach ($cmdlet in $mappings.Keys)
+{
+    Set-Alias -Name $mappings[$cmdlet] -Value $cmdlet -Scope Global
+}
