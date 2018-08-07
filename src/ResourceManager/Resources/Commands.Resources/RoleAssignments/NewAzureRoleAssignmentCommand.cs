@@ -150,6 +150,8 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public SwitchParameter AllowDelegation { get; set; }
 
+        public Guid RoleAssignmentId { get; set; } = default(Guid);
+
         public override void ExecuteCmdlet()
         {
             FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
@@ -176,7 +178,7 @@ namespace Microsoft.Azure.Commands.Resources
 
             AuthorizationClient.ValidateScope(parameters.Scope, false);
 
-            WriteObject(PoliciesClient.CreateRoleAssignment(parameters));
+            WriteObject(PoliciesClient.CreateRoleAssignment(parameters, RoleAssignmentId));
         }
     }
 }

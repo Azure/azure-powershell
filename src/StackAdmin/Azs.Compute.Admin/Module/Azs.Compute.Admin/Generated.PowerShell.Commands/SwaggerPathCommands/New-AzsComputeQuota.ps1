@@ -81,7 +81,7 @@ function New-AzsComputeQuota {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSCmdlet.ShouldProcess("$Name", "Create a new compute quota.")) {
 
@@ -110,7 +110,7 @@ function New-AzsComputeQuota {
                 $utilityCmdParams[$_] = Get-Variable -Name $_ -ValueOnly
             }
             $NewQuota = New-QuotaObject @utilityCmdParams
-            
+
             $NewServiceClient_params = @{
                 FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
             }
