@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public const string AzureRMStoragePrefix = "AzRm";
 #else
         public const string AzurePrefix = "Azure";
-        public const string AzureRMPrefix = "AzureRM";
+        public const string AzureRMPrefix = "AzureRm";
         public const string AzureRMStoragePrefix = "AzureRm";
 #endif
     }
