@@ -21,6 +21,10 @@
 ## Current Release
 * Added example for Set-AzureRmLocalNetworkGateway
 * Added examples and descriptions for Add-AzureRmVirtualNetworkGatewayIpConfig, Get-AzureRmVirtualNetworkGatewayConnectionSharedKey and New-AzureRmVirtualNetworkGatewayConnection
+* Added examples for Remove-AzureRmVirtualNetworkGatewayIpConfig and Reset-AzureRmVirtualNetworkGateway
+* Added example for Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey
+* Added example for Set-AzureRmVirtualNetworkGatewayConnectionSharedKey
+* Added example for Set-AzureRmVirtualNetworkGatewayConnection
 * Re-generated cmdlets for ApplicationSecurityGroup, RouteTable and Usage using latest code generator
 
 ## Version 6.4.1
