@@ -356,7 +356,7 @@ Create these environment variables for the AD scenario tests:
 ### Recording/Running Tests 
 
 - Set up environment variables using New-TestCredential as described [here](../testing-docs/using-azure-test-framework.md#new-testcredential)
-- [Run the test](#running-tests) and make sure you got a generated JSON file that matches the test name in the bin folder under the `SessionRecords` folder
+- Run the test in Visual Studio in the Test Explorer window and make sure you got a generated JSON file that matches the test name in the bin folder under the `SessionRecords` folder
 - Copy this `SessionRecords` folder and place it inside the test project
     - Inside Visual Studio, add all of the generated JSON files, making sure to change the "Copy to Output Directory" property for each one to "Copy if newer"
     -  Make sure that all of these JSON files appear in your `Commands.SERVICE.Test.csproj` file
