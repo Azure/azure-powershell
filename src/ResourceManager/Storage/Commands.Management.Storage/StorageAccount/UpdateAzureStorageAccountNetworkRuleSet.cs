@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + "StorageAccountNetworkRuleSet", SupportsShouldProcess = true), OutputType(typeof(PSNetworkRuleSet))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountNetworkRuleSet", SupportsShouldProcess = true), OutputType(typeof(PSNetworkRuleSet))]
     public class UpdateAzureStorageAccountRuleSetCommand : StorageAccountBaseCmdlet
     {
         [Parameter(

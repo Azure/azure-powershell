@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + "StorageUsage"), OutputType(typeof(PSUsage))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageUsage"), OutputType(typeof(PSUsage))]
     public class GetAzureStorageUsageCommand : StorageAccountBaseCmdlet
     {
         public override void ExecuteCmdlet()
