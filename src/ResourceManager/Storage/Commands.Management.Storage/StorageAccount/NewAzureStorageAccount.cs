@@ -24,7 +24,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + "StorageAccount"), OutputType(typeof(PSStorageAccount))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccount"), OutputType(typeof(PSStorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(

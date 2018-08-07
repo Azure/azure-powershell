@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + "StorageAccountKey"), OutputType(typeof(StorageAccountKey))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountKey"), OutputType(typeof(StorageAccountKey))]
     public class NewAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
     {
         private const string Key1 = "key1";

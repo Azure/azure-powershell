@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + "StorageAccountNetworkRuleSet"), OutputType(typeof(PSNetworkRuleSet))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountNetworkRuleSet"), OutputType(typeof(PSNetworkRuleSet))]
     public class GetAzureStorageAccountNetworkRuleSetCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
