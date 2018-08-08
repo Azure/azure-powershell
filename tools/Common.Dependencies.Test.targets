@@ -68,7 +68,7 @@
   <PropertyGroup>
     <ScenarioTestPs1Path>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.0-preview\tools\</ScenarioTestPs1Path>
   </PropertyGroup>
-  <ItemGroup Condition="Exists('$(ScenarioTestPs1Path)')">
+  <ItemGroup>
     <None Include="$(ScenarioTestPs1Path)Assert.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
