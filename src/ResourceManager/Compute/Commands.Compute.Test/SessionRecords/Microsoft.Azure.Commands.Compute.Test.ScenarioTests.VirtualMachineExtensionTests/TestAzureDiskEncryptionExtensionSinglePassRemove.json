@@ -1428,7 +1428,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"8vuzcIW4+p8rRYOk36sqyRVyzzBdgTgHR5Cggx5bj4CnEdk5t+CoySL23eimqmlLUFz1LNJxh66IXVpKx+qIyA==\",\r\n  \"key2\": \"pWezvFbDyX83mq8WzmXbR5/UGh3AnXLj5GzNbcZ4GEKxVNh/x4GF8Ksdz/jIARi/56whaT9NgHpxCIUySkwlgA==\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"REDACTED\",\r\n  \"key2\": \"REDACTED\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
