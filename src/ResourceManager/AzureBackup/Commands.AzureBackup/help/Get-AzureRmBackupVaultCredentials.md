@@ -84,7 +84,6 @@ Parameters: Vault (ByValue)
 ## OUTPUTS
 
 ### System.String
-This cmdlet returns the name of the vault credential file.
 
 ## NOTES
 

@@ -145,21 +145,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[]
-Parameters: Paths (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
-Parameters: Destination (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Force (ByPropertyName)
 
 ## OUTPUTS
 
 ### System.String
-The full path to the resulting file from the joined files.
 
 ## NOTES
 
