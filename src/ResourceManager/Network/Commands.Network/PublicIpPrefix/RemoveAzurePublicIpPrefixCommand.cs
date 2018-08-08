@@ -14,8 +14,11 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Network;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmPublicIpPrefix", SupportsShouldProcess = true)]
@@ -25,17 +28,36 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The resource name.",
+            ParameterSetName = "RemoveByNameParameterSet")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = "RemoveByNameParameterSet")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, 
+            ParameterSetName = "DeleteByResourceIdParameterSet")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true, 
+            ValueFromPipeline = true, 
+            ParameterSetName = "DeleteByInputObjectParameterSet")]
+        [ValidateNotNull]
+        public PSPublicIpPrefix InputObject
+        {
+            get; set;
+        }
 
         [Parameter(
             Mandatory = false,
@@ -51,6 +73,20 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
+            }
+
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.RemovingResource, Name),
@@ -58,10 +94,13 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    this.PublicIpPrefixClient.Delete(this.ResourceGroupName, this.Name);
-                    if (PassThru)
+                    if (this.ShouldProcess(this.Name, $"Deleting PublicIpPrefix {this.Name} in ResourceGroup {this.ResourceGroupName}"))
                     {
-                        WriteObject(true);
+                        this.PublicIpPrefixClient.Delete(this.ResourceGroupName, this.Name);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
                     }
                 });
         }
