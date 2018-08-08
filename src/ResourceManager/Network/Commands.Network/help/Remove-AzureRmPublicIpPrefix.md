@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmPublicIpPrefix
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a public IP prefix
 
 ## SYNTAX
 
@@ -31,16 +31,16 @@ Remove-AzureRmPublicIpPrefix -InputObject <PSPublicIpPrefix> [-Force] [-PassThru
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmPublicIpPrefix cmdlet removes an Azure public IP prefix as long as there are no public IP addresses allocated from it.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmPublicIpPrefix -Name $prefixName -ResourceGroupName $rgName
 ```
 
-{{ Add example description here }}
+Removes the public IP prefix with Name $prefixName from resource group $rgName
 
 ## PARAMETERS
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-{{Fill InputObject Description}}
+A PublicIpPrefix object
 
 ```yaml
 Type: PSPublicIpPrefix
@@ -120,7 +120,8 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: SwitchParameter
@@ -150,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{Fill ResourceId Description}}
+The resourceId for the resource to remove
 
 ```yaml
 Type: String

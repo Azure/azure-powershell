@@ -8,11 +8,11 @@ schema: 2.0.0
 # Get-AzureRmPublicIpPrefix
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a public IP prefix
 
 ## SYNTAX
 
-### NoExpandStandAloneIp (Default)
+### (Default)
 ```
 Get-AzureRmPublicIpPrefix [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -29,16 +29,16 @@ Get-AzureRmPublicIpPrefix -ResourceId <String> [-DefaultProfile <IAzureContextCo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmPublicIpPrefix** cmdlet gets one or more public IP prefixes in a resource group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $publicIpPrefix = Get-AzureRmPublicIpPrefix -ResourceGroupName $rgname -Name $prefixName
 ```
 
-{{ Add example description here }}
+This command gets a public IP prefix resource with $prefixName in resource group $rgName
 
 ## PARAMETERS
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{Fill ResourceId Description}}
+The resource Id.
 
 ```yaml
 Type: String

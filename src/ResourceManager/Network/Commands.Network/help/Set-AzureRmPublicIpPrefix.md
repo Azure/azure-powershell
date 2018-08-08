@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmPublicIpPrefix
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Sets the Tags for an existing PublicIpPrefix
 
 ## SYNTAX
 
@@ -18,16 +18,20 @@ Set-AzureRmPublicIpPrefix -PublicIpPrefix <PSPublicIpPrefix> [-AsJob]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmPublicIpPrefix** cmdlet sets the Tags for a public IP prefix.
 
 ## EXAMPLES
 
-### Example 1
+### Set the tags for public ip prefix
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $publicIpPrefix = Get-AzureRmPublicIpPrefix -Name $prefixName -ResourceGroupName $rgName
+
+PS C:\> $publicIpPrefix.Tags = "TestTag"
+
+PS C:\> Set-AzureRmPublicIpPrefix -PublicIpPrefix $publicIpPrefix
 ```
 
-{{ Add example description here }}
+The first command gets an existing public IP Prefix, the second command sets the Tags Property and the third command updates the existing object.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmPublicIpPrefix
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a Public IP Prefix
 
 ## SYNTAX
 
@@ -21,16 +21,16 @@ New-AzureRmPublicIpPrefix -Name <String> -ResourceGroupName <String> [-Location 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmPublicIpPrefix** cmdlet creates a public IP prefix.
 
 ## EXAMPLES
 
-### Example 1
+### 1: Create a new public Ip prefix
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $publicIpPrefix = New-AzureRmPublicIpPrefix -Name $prefixName -ResourceGroupName $rgName -PrefixLength 30
 ```
 
-{{ Add example description here }}
+This command creates a new public IP prefix resource. 
 
 ## PARAMETERS
 
