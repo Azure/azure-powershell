@@ -467,6 +467,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             {
                 errorString = "retreived virtual machine does not have an OS type in the storage profile's OS Disk";
             }
+            else if (vm.InstanceView == null)
+            {
+                errorString = "could not retreive VM Instance View";
+            }
 
             if (errorString != "")
             {
@@ -480,9 +484,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         private bool isVMRunning (VirtualMachine vm)
         {
             string lastCode = "";
+            if (vm.InstanceView.Statuses == null)
+            {
+                ThrowTerminatingError(new ErrorRecord(new ApplicationFailedException(string.Format(CultureInfo.CurrentUICulture, "VM instance view statuses array was null. Could not get VM status.")),
+                                                      "InvalidResult",
+                                                      ErrorCategory.InvalidResult,
+                                                      null));
+            }
             foreach (InstanceViewStatus ivs in vm.InstanceView.Statuses)
             {
-                if (ivs.Code.StartsWith("PowerState/"))
+                if (ivs != null && ivs.Code != null && ivs.Code.StartsWith("PowerState/"))
                     lastCode = ivs.Code;
             }
 
