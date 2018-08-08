@@ -1,4 +1,238 @@
-﻿## 6.6.0 - July 2018
+﻿## 6.7.0 - August 2018
+#### AzureRM.Profile
+* Updated to the latest version of the Azure ClientRuntime.
+* Add user id to default context name to avoid context clashing
+    - https://github.com/Azure/azure-powershell/issues/6489
+* Fix issues with Clear-AzureRmContext that caused issues with selecting a context #6398
+* Enable tenant domain to be passed to '-TenantId' parameter for 'Connect-AzureRmAccount'
+    - https://github.com/Azure/azure-powershell/issues/3974
+    - https://github.com/Azure/azure-powershell/issues/6709
+
+#### Azure.Storage
+* Updated all help files to include full parameter types and correct input/output types.
+* Support get Storage Context from DefaulfProfile
+* Add Ps1XmlAttribute to cmdlets output types properties.
+
+#### AzureRM.AnalysisServices
+* Updated help files to include full parameter types and correct input/output types.
+
+#### Azure.AnalysisServices
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.ApplicationInsights
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Automation
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Backup
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Batch
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Billing
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Cdn
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.CognitiveServices
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Compute
+* Fix issue with creating a vm using 'DiskFileParameterSet' in 'New-AzureRmVm' failing because of 'PremiumLRS' storage account type renaming.
+        * Fix Invoke-AzureRmVMRunCommand cmdlet
+* Update Get-AzureRmAvailabilitySet to enable list all availability sets in a subscription.  (ResouceGroupName parameter is now optional.)
+* Update SimpleParameterSet of 'New-AzureRmVm' to enable Accelerated Network on qualifying vms.
+* Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
+* Update example for New-AzureRmDisk
+* Add example for 'New-AzureRmVM'
+* Updated all help files to include full parameter types and correct input/output types.
+* Update description for Set-AzureRmVMOSDisk
+* Update Example 1 for Set-AzureRmVMBginfoExtension to correct spelling and prefix. 
+
+#### AzureRM.Consumption
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.ContainerInstance
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.ContainerRegistry
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.DataFactories
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.DataFactoryV2
+* Updated all help files to include full parameter types and correct input/output types.
+* Updated the ADF .Net SDK version to 1.1.0.
+* Support self-hosted integration runtime sharing across data factories.
+     - Add new parameter -SharedIntegrationRuntimeResourceId to Set-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
+     - Add new optional parameter -LinkedDataFactoryName to Remove-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
+
+#### AzureRM.DataLakeAnalytics
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.DataLakeStore
+* Updated all help files to include full parameter types and correct input/output types.
+* Updated the DataPlane SDK (Microsoft.Azure.DataLake.Store) version to 1.1.9
+
+#### AzureRM.DevTestLabs
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Dns
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.EventGrid
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.EventHub
+* Updated piping for InputObject and ResourceId in remove cmdlets
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.HDInsight
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Insights
+* Fixed formatting of OutputType in help files
+* Updated help files to include full parameter types and correct input/output types.
+* Using Microsoft.Azure.Management.Monitor SDK 0.19.1-preview
+    - The namespace of the Model classes changed from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models. This breaking change is just announced in this release. It is temporarily hidden from the customers.
+    - The SDK includes support for multi-named diagnostic settings.
+    - The SDK also supports the most recent Metrics API: multi-dimension metrics.
+* **Set-AzureRmDiagnosticSetting**
+    - Added new optional Name argument. It defaults to 'service' for backward compatibility.
+    - The argument ServiceBusRuleId has been added an alias 'EventHubName' which will replace it in the future.
+    - The response also includes a new field: EventHubName, but keeps the previous one 'ServiceBusRuleId.'
+    - The arguments Categories and Timegrains now have aliases Category and Timegrain respectively.
+    - One more argument has been added: MetricCategory to operate the same way the current Categories operates, but on Metrics Categories
+    - This cmdlet now supports pipelining and the InputObject argument.  When the InputObject is used, no other parameter is accepted.
+* **Remove-AzureRmDiagnosticSetting**
+    - This cmdlet allows the deletion of Diagnostic Setting, since now multi-named settings are possible. For this a new parameter was added (Name) that defaults to 'service'. If the cmdlet is called using 'service' as name the cmdlet will only disable metrics and logs instead of removing the diagnostic setting.
+* **Get-AzureRmDiagnosticSetting**
+    - Added new optional Name argument. It defaults to 'service' for backward compatibility.
+    - The response also includes a new field: EventHubName, but keeps the previous one 'ServiceBusRuleId.'
+* **Get-AzureRmMetric**
+    - Added new optional parameter 'Top'. It is the maximum number of records to retrieve and defaults to '10', to be specified with .
+    - Added new optional parameter 'OrderBy'. It is the aggregation to use for sorting results and the direction of the sort (Example: sum asc).
+    - Added new optional parameter 'MetricNamespace'. It is the metric namespace to query metrics for.
+    - Added new optional parameter 'ResultType'. It is the result type to be returned (metadata or data).
+    - Added new optional parameter 'MetricFilter'. It is the metric dimension filter to query metrics for.
+* **Get-AzureRmMetricDefinition**
+    - Added new optional parameter 'MetricNamespace'. It is the metric namespace to query metric definitions for.
+* **New-AzureRmMetricFilter**
+    - This cmdlet is used to create a new metric dimension filter, which can then be used to query metrics.
+
+#### AzureRM.IotHub
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.KeyVault
+* Fix piping issue in Set-AzureRmKeyVaultAccessPolicy
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.LogicApp
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.MachineLearning
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.MachineLearningCompute
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.MarketplaceOrdering
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Media
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Network
+* Updated all help files to include full parameter types and correct input/output types.
+* Added examples for LoadBalancerInboundNatPoolConfig cmdlets.
+
+#### AzureRM.NotificationHubs
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.OperationalInsights
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.PolicyInsights
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.PowerBIEmbedded
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.RecoveryServices
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.RecoveryServices.Backup
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.RedisCache
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Relay
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Resources
+* Updated help files to include full parameter types and correct input/output types.
+* Fix issue when providing both tag name and value for 'Get-AzureRmResource'
+    - https://github.com/Azure/azure-powershell/issues/6765
+* Fix piping scenario with 'Set-AzureRmResource'
+
+#### AzureRM.Scheduler
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.ServiceBus
+* Updated piping for InputObject and ResourceId in remove cmdlets
+* fixed few issues
+	- https://github.com/Azure/azure-powershell/issues/3780
+	- https://github.com/Azure/azure-powershell/issues/4340
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.ServiceFabric
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Sql
+* Adding Server Advanced Threat Protection support with the following cmdlets:
+	- Enable-AzureRmSqlServerAdvancedThreatProtection; Disable-AzureRmSqlServerAdvancedThreatProtection; Get-AzureRmSqlServerAdvancedThreatProtectionPolicy
+* Adding Vulnerability Assessment support with the following cmdlets:
+	- Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings
+	- Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline; Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline; Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline
+	- Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan; Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord; Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan
+* Fixed example in Remove-AzureRmSqlServerFirewallRule
+* Fix datetime handling incorrectly for non-us base culture in Get-AzureSqlSyncGroupLog
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Storage
+* Updated all help files to include full parameter types and correct input/output types.
+* Add Ps1XmlAttribute to cmdlets output types properties
+* Show StorageAccount cmdlet output in table view
+    - Get-AzureRmStorageAccount
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+#### AzureRM.StreamAnalytics
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Tags
+* Updated help files to include full parameter types and correct input/output types.
+* Remove incorrect statement from Tag cmdlet help
+    - https://github.com/Azure/azure-powershell/issues/3878
+
+#### AzureRM.TrafficManager
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.UsageAggregates
+* Updated help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Websites
+* Updated all help files to include full parameter types and correct input/output types.
+
+## 6.6.0 - July 2018
 #### General
 * Updated all help files to include full parameter types and correct input/output types.
 
