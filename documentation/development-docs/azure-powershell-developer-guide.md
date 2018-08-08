@@ -57,6 +57,12 @@ The following prerequisites should be completed before contributing to the Azure
     - `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
     - `C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
     
+**Note** The PowerShell Build requires the 64-bit version of MSBuild that ships with visual studio, so ensure that this version is the first version in your cmd path.  64-bit MSBuild could be installed in a couple of places on your machine:
+- ```%programfiles%\MSBuild\14.0\bin```
+- ```%programfiles(x86)%\MSBuild\14.0\bin\amd64```
+
+The MSBuild version in ```%windir%\Microsoft.Net\Framework\v4.0.30319``` **cannot** be used with the build.
+    
 # Environment Setup
 
 ## GitHub Basics
