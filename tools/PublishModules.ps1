@@ -268,7 +268,7 @@ function Get-ClientModules {
 
             # Get all module directories
             if ($IsNetCore) {
-                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.Name -like "Az."}
+                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.Name -like "*Az.*"}
             } else {
                 $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.Name -like "*Azure*"}
             }
