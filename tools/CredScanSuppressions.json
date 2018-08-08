@@ -2,7 +2,7 @@
     "tool": "Credential Scanner",
         "suppressions": [
         {
-            "file": "\\src\\documentation\\development-docs\\azure-powershell-developer-guide.md", 
+            "file": "\\documentation\\development-docs\\azure-powershell-developer-guide.md", 
             "_justification": "Documentation with non-live passwords in sample connection strings"
         },
         {
