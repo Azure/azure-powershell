@@ -44,8 +44,7 @@ function Test-DeploymentEndToEnd
 		$operations = Get-AzureRmDeploymentOperation -DeploymentName $deploymentName
 		Assert-AreEqual 4 @($operations).Count
 
-		$result = Remove-AzureRmDeployment -Name $deploymentName
-		Assert-AreEqual True $result 
+		Remove-AzureRmDeployment -Name $deploymentName
 	}
 	finally
 	{
@@ -87,8 +86,7 @@ function Test-DeploymentAsJob
 		$operations = Get-AzureRmDeploymentOperation -DeploymentName $deploymentName
 		Assert-AreEqual 4 @($operations).Count
 
-		$result = Remove-AzureRmDeployment -Name $deploymentName
-		Assert-AreEqual True $result 
+		Remove-AzureRmDeployment -Name $deploymentName
 	}
 	finally
 	{
@@ -118,8 +116,7 @@ function Test-StopDeployment
 
 		#Start-Sleep -s 1
 
-		$result = Stop-AzureRmDeployment -Name $deploymentName
-		Assert-AreEqual True $result
+		Stop-AzureRmDeployment -Name $deploymentName
 
 		$job = $job | Wait-Job
 		Assert-AreEqual Completed $job[0].State
@@ -129,8 +126,7 @@ function Test-StopDeployment
 
 		#Start-Sleep -s 1
 
-		$result = Remove-AzureRmDeployment -Name $deploymentName
-		Assert-AreEqual True $result 
+		Remove-AzureRmDeployment -Name $deploymentName
 	}
 	finally
 	{

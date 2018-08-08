@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Cancel a running deployment.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, "AzureRmDeployment", SupportsShouldProcess = true,
-        DefaultParameterSetName = StopAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
+        DefaultParameterSetName = StopAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(void))]
     public class StopAzureDeploymentCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>

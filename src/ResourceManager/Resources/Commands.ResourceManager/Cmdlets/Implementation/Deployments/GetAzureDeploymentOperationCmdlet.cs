@@ -30,21 +30,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     public class GetAzureDeploymentOperationCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
+        /// The deployment name parameter set.
+        /// </summary>
+        internal const string DeploymentNameParameterSet = "GetByDeploymentName";
+
+        /// <summary>
+        /// The deployment object parameter set.
+        /// </summary>
+        internal const string DeploymentObjectParameterSet = "GetByDeploymentObject";
+
+        /// <summary>
         /// Gets or sets the deployment name parameter.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment name.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentNameParameterSet, Mandatory = true, HelpMessage = "The deployment name.")]
         [ValidateNotNullOrEmpty]
         public string DeploymentName { get; set; }
 
         /// <summary>
         /// Gets or sets the deployment operation Id.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment operation Id.")]
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentNameParameterSet, Mandatory = false, HelpMessage = "The deployment operation Id.")]
         public string OperationId { get; set; }
+
+        [Parameter(ParameterSetName = GetAzureDeploymentOperationCmdlet.DeploymentObjectParameterSet, Mandatory = true,
+            ValueFromPipeline = true, HelpMessage = "The deployment object.")]
+        public PSDeployment DeploymentObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(ResourceManagerSdkClient.GetDeploymentOperations(this.DeploymentName, this.OperationId), true);
+            var deploymentName = !string.IsNullOrEmpty(this.DeploymentName) ? this.DeploymentName : this.DeploymentObject.DeploymentName;
+
+            WriteObject(ResourceManagerSdkClient.GetDeploymentOperations(deploymentName, this.OperationId), true);
         }
     }
 }
