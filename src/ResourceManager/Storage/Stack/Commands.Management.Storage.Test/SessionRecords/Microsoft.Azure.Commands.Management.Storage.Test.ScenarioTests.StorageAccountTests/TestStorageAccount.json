@@ -1021,7 +1021,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/5.0.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"VT/slzwSoAFWs2gzZzqVqOK1CK+z6Rd6hQcIHiMN16fdczGauO5KpLiMzsC2kaFXMigUhlvR4E3fpRsuIBX4gA==\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"7uH2IlWZVgZXMeCkeikO3HeZq7xD+kCTJxVEW7oUv9j3UWuPMz2Mh5f5T94k/2n8uQXuNH+xVgMtsojAD2bPTg==\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"VT/uIBX4gA==\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"7uHD2bPTg==\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "289"
@@ -1079,7 +1079,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/5.0.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"FLN4R2GbHjGUsM/MG+czBAmYfMLXWKCmVu+SrnzvENsGu+lNd90R8gQ0jzT8XHOgcijm1vGRWdiWYT/jzSIEkA==\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"7uH2IlWZVgZXMeCkeikO3HeZq7xD+kCTJxVEW7oUv9j3UWuPMz2Mh5f5T94k/2n8uQXuNH+xVgMtsojAD2bPTg==\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"FLN4EkA==\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"7uH2IlTg==\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "289"
@@ -1137,7 +1137,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/5.0.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"FLN4R2GbHjGUsM/MG+czBAmYfMLXWKCmVu+SrnzvENsGu+lNd90R8gQ0jzT8XHOgcijm1vGRWdiWYT/jzSIEkA==\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"kQXYePLicFHXwA+1lB7nskNX8GBQlnxlD0w1+wVTkzzhKoKFh+wZRd38l+lurOeZFcJ4kY1Rc7Ugtpc4s8BPQA==\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"FLNSIEkA==\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"kQXYe8BPQA==\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "289"
@@ -1201,7 +1201,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/5.0.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"FLN4R2GbHjGUsM/MG+czBAmYfMLXWKCmVu+SrnzvENsGu+lNd90R8gQ0jzT8XHOgcijm1vGRWdiWYT/jzSIEkA==\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"7uH2IlWZVgZXMeCkeikO3HeZq7xD+kCTJxVEW7oUv9j3UWuPMz2Mh5f5T94k/2n8uQXuNH+xVgMtsojAD2bPTg==\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"FLN4R2/jzSIEkA==\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"7uH2IbPTg==\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "289"
@@ -1265,7 +1265,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/5.0.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"FLN4R2GbHjGUsM/MG+czBAmYfMLXWKCmVu+SrnzvENsGu+lNd90R8gQ0jzT8XHOgcijm1vGRWdiWYT/jzSIEkA==\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"kQXYePLicFHXwA+1lB7nskNX8GBQlnxlD0w1+wVTkzzhKoKFh+wZRd38l+lurOeZFcJ4kY1Rc7Ugtpc4s8BPQA==\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"FLN4R2G/jzSIEkA==\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"kQXYe8BPQA==\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "289"

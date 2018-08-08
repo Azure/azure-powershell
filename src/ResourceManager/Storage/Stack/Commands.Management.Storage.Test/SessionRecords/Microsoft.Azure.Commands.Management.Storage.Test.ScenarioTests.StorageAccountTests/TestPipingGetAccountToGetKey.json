@@ -429,7 +429,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/5.0.0-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"6cZUw1VHk4z7que+GTlrwO9Fh70XkutZv4+siP9wAKhYpI75bUf0Nmm/GAz37BXeugN2BytsaxkEPhcaLIYSSg==\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"DczJ0xNEesBxERLYikwhtVYeKzglSUipqw0bxesbxE869WEDp7hmjgIhSA9ltxVeizNInWN6F/dkcO4sOuEwxQ==\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"6cZUSg==\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"permissions\": \"Full\",\r\n      \"value\": \"DczJ0xQ==\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "289"
