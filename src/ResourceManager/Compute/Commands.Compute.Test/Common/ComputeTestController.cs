@@ -125,7 +125,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 #if !NETSTANDARD
                     _helper.RMStorageDataPlaneModule,
 #endif
-                    _helper.RMStorageModule,
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"),
                     "AzureRM.Storage.ps1",
