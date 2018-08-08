@@ -181,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
-System.Management.Automation.SwitchParameter
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

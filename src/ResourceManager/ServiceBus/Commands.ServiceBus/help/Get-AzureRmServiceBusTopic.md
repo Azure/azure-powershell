@@ -16,6 +16,7 @@ Returns a description for the specified Service Bus topic.
 Get-AzureRmServiceBusTopic [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
  [-MaxCount <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
+
 ## DESCRIPTION
 The **Get-AzureRmServiceBusTopic** cmdlet returns a topic description for the specified Service Bus namespace.
 
@@ -52,15 +53,15 @@ Returns the description of the specified topic for the given Service Bus namespa
 ### Example 2
 ```
 PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
-
 ```
+
 Returns list of topic for given Service Bus namespace.
 
 ### Example 3
 ```
 PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -MaxCount 30
-
 ```
+
 Returns list of first 30 topic for given Service Bus namespace.
 
 ## PARAMETERS
@@ -84,7 +85,7 @@ Accept wildcard characters: False
 Determine the maximum number of Topics to return.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -141,18 +142,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
+Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
-
 
 ## NOTES
 

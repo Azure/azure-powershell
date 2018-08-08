@@ -39,7 +39,6 @@ PS C:\>$OILinkTargets[0] | New-AzureRmOperationalInsightsWorkspace -ResourceGrou
 ```
 
 The first command uses the Get-AzureRmOperationalInsightsLinkTargets cmdlet to get Operational Insights account link targets, and then stores them in the $OILinkTargets variable.
-
 The second command passes the first account link target in $OILinkTargets to the **New-AzureRmOperationalInsightsWorkspace** cmdlet by using the pipeline operator.
 The command creates a standard SKU workspace named MyWorkspace that is linked to the first Operational Insights account in $OILinkTargets.
 
@@ -155,7 +154,6 @@ Accept wildcard characters: False
 ### -Sku
 Specifies the service tier of the workspace.
 Valid values are: 
-
 - free
 - standard
 - premium
@@ -224,8 +222,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Sku (ByPropertyName)
+
+### System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

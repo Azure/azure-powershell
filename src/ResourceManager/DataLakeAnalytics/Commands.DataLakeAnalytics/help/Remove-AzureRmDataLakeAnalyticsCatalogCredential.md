@@ -191,13 +191,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName), DatabaseName (ByPropertyName), Name (ByPropertyName)
+
+### System.Management.Automation.PSCredential
+Parameters: Password (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: Recurse (ByPropertyName)
 
 ## OUTPUTS
 
-### bool
-If PassThru is specified, returns true upon completion of the operation.
+### System.Boolean
 
 ## NOTES
 

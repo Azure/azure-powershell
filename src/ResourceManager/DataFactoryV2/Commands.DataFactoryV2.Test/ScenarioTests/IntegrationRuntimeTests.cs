@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
     {
         public XunitTracingInterceptor _logger;
 
-        public IntegrationRuntimeTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IntegrationRuntimeTests(ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSelfHosedIntegrationRuntime()
+        public void TestSelfHostedIntegrationRuntime()
         {
             RunPowerShellTest(_logger, "Test-SelfHosted-IntegrationRuntime");
         }
@@ -50,12 +50,18 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
             RunPowerShellTest(_logger, "Test-IntegrationRuntime-Piping");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestSsisAzureIntegrationRuntime()
         {
             RunPowerShellTest(_logger, "Test-SsisAzure-IntegrationRuntime");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSharedIntegrationRuntime()
+        {
+            RunPowerShellTest(_logger, "Test-Shared-IntegrationRuntime");
         }
     }
 }

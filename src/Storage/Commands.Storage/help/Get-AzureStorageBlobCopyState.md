@@ -69,7 +69,7 @@ Specifies the name of a blob.
 This cmdlet gets the state of the blob copy operation for the Azure Storage blob that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NamePipeline, ContainerPipeline
 Aliases:
 
@@ -86,7 +86,7 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,7 @@ Specifies a **CloudBlob** object from Azure Storage Client library.
 To obtain a **CloudBlob** object, use the Get-AzureStorageBlob cmdlet.
 
 ```yaml
-Type: CloudBlob
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlob
 Parameter Sets: BlobPipeline
 Aliases: ICloudBlob
 
@@ -119,7 +119,7 @@ This cmdlet gets the copy status of a blob in the container that this parameter 
 To obtain a **CloudBlobContainer** object, use the Get-AzureStorageContainer cmdlet.
 
 ```yaml
-Type: CloudBlobContainer
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
 Parameter Sets: ContainerPipeline
 Aliases:
 
@@ -138,7 +138,7 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +154,7 @@ Specifies the name of a container.
 This cmdlet gets the copy status for a blob in the container that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NamePipeline
 Aliases:
 
@@ -170,7 +170,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -201,7 +201,7 @@ Specifies the service side time-out interval, in seconds, for a request.
 If the specified interval elapses before the service processes the request, the storage service returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +217,7 @@ Indicates that this cmdlet waits for the copy to finish.
 If you do not specify this parameter, this cmdlet returns a result immediately.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -233,8 +233,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.WindowsAzure.Storage.Blob.CloudBlob
+Parameters: CloudBlob (ByPropertyName)
+
+### Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
+Parameters: CloudBlobContainer (ByPropertyName)
+
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

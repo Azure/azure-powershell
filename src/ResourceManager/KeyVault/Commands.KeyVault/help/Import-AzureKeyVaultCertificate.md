@@ -36,9 +36,7 @@ Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String>
 
 ## DESCRIPTION
 The **Import-AzureKeyVaultCertificate** cmdlet imports a certificate into a key vault.
-
 You can create the certificate to import by using one of the following methods:
-
 - Use the New-AzureKeyVaultCertificateSigningRequest cmdlet to create a certificate signing request and submit it to a certificate authority.
 - Use an existing certificate package file, such as a .pfx or .p12 file, which contains both the certificate and private key.
 
@@ -77,7 +75,6 @@ Updated     : 2/8/2016 11:50:43 PM
 
 The first command uses the ConvertTo-SecureString cmdlet to create a secure password, and then
 stores it in the $Password variable.
-
 The second command imports the certificate named ImportCert01 into the CosotosoKV01 key vault.
 
 ## PARAMETERS
@@ -175,7 +172,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -242,7 +238,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+Parameters: Name (ByPropertyName), VaultName (ByPropertyName)
+
 ### System.Security.Cryptography.X509Certificates.X509Certificate2Collection
+Parameters: CertificateCollection (ByValue)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

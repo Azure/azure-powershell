@@ -164,6 +164,9 @@
   "src/ResourceManager/Scheduler/": [
     ".\\src\\ResourceManager\\Scheduler\\Commands.Scheduler.Test\\bin\\Debug\\Microsoft.Azure.Commands.Scheduler.Test.dll"
   ],
+  "src/ResourceManager/Search/": [
+    ".\\src\\ResourceManager\\Search\\Commands.Management.Search.Test\\bin\\Debug\\Microsoft.Azure.Commands.Management.Search.Test.dll"
+  ],
   "src/ResourceManager/ServiceBus/": [
     ".\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\bin\\Debug\\Microsoft.Azure.Commands.ServiceBus.Test.dll"
   ],
@@ -175,6 +178,9 @@
   ],
   "src/ResourceManager/Storage/Commands.Management.Storage.Test/": [
     ".\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\bin\\Debug\\Microsoft.Azure.Commands.Management.Storage.Test.dll"
+  ],
+  "src/ResourceManager/StorageSync": [
+    ".\\src\\ResourceManager\\StorageSync\\Commands.StorageSync.Test\\bin\\Debug\\Microsoft.Azure.Commands.StorageSync.Test.dll"  
   ],
   "src/ResourceManager/StreamAnalytics/": [
     ".\\src\\ResourceManager\\StreamAnalytics\\Commands.StreamAnalytics.Test\\bin\\Debug\\Microsoft.Azure.Commands.StreamAnalytics.Test.dll"
@@ -192,6 +198,9 @@
   "src/ResourceManager/Websites/": [
     ".\\src\\ResourceManager\\LogicApp\\Commands.LogicApp.Test\\bin\\Debug\\Microsoft.Azure.Commands.LogicApp.Test.dll",
     ".\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\bin\\Debug\\Microsoft.Azure.Commands.Websites.Test.dll"
+  ],
+   "src/ResourceManager/ManagementPartner/": [
+    ".\\src\\ResourceManager\\ManagementPartner\\Commands.Partner.Test\\bin\\Debug\\Microsoft.Azure.Commands.ManagementPartner.Test.dll"
   ],
   "src/ServiceManagement/": [
     ".\\src\\ServiceManagement\\Common\\Commands.Common.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.Common.Test.dll",

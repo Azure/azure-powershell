@@ -34,7 +34,6 @@ Restore-AzureKeyVaultManagedStorageAccount [-ResourceId] <String> [-InputFile] <
 The **Restore-AzureKeyVaultManagedStorageAccount** cmdlet creates a managed storage account in the specified key vault from a backup file.
 This managed storage account is a replica of the backed-up managed storage account in the input file and has the same name as the original.
 If the key vault already contains a managed storage account by the same name, this cmdlet fails instead of overwriting the original.
-
 The key vault that you restore the managed storage account into can be different from the key vault that you backed up the managed storage account from.
 However, the key vault must use the same subscription and be in an Azure region in the same geography (for example, North America).
 See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-center/) for the mapping of Azure regions to geographies.
@@ -177,6 +176,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

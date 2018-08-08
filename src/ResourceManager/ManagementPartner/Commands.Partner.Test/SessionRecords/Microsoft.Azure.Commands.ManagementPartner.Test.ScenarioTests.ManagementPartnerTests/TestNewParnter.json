@@ -1,28 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "/providers/Microsoft.ManagementPartner/partners/123457?api-version=2018-02-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudFBhcnRuZXIvcGFydG5lcnMvMTIzNDU3P2FwaS12ZXJzaW9uPTIwMTgtMDItMDE=",
+      "RequestUri": "/providers/Microsoft.ManagementPartner/partners/5127255?api-version=2018-02-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudFBhcnRuZXIvcGFydG5lcnMvNTEyNzI1NT9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
       "RequestMethod": "PUT",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8d5c5434-b4b8-4f7b-be36-4388c57e0ffb"
+          "e4286e45-09df-4297-b0b2-c8c4be0c69c8"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.3131.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.16299",
+          "OSVersion/6.3.17134",
           "Microsoft.Azure.Management.ManagementPartner.ACEProvisioningManagementPartnerAPIClient/0.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/microsoft.managementpartner/partners/123457\",\r\n  \"type\": \"Microsoft.ManagementPartner/partners\",\r\n  \"name\": \"123457\",\r\n  \"etag\": 49,\r\n  \"properties\": {\r\n    \"partnerId\": \"123457\",\r\n    \"tenantId\": \"1b1121dd-6900-412a-af73-e8d44f81e1c1\",\r\n    \"objectId\": \"2119ba66-2042-49a1-bc31-940691d21bf4\",\r\n    \"version\": 49,\r\n    \"updatedTime\": \"2018-02-07T23:48:54.5314745Z\",\r\n    \"createdTime\": \"2018-01-20T05:36:32.6851653Z\",\r\n    \"state\": \"Active\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/microsoft.managementpartner/partners/5127255\",\r\n  \"type\": \"Microsoft.ManagementPartner/partners\",\r\n  \"name\": \"5127255\",\r\n  \"etag\": 16,\r\n  \"properties\": {\r\n    \"partnerId\": \"5127255\",\r\n    \"partnerName\": \"Test_Test_DhirajTesting\",\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"objectId\": \"ac9a0626-3ff0-46e2-9974-bbfba246f6dc\",\r\n    \"version\": 16,\r\n    \"updatedTime\": \"2018-07-30T21:10:59.8754095Z\",\r\n    \"createdTime\": \"2018-02-21T20:07:21.1341292Z\",\r\n    \"state\": \"Active\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "391"
+          "434"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -37,34 +37,34 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-tenant-writes": [
-          "1198"
+          "1197"
         ],
         "request-id": [
-          "49f2bca8-347f-4135-bf0a-2da63c9485b9"
+          "1b329d01-439a-424d-b947-ad3a20397f94"
         ],
         "x-gsm": [
-          "8.1.0.50 (AD-CAB-Provisioning:stage.ef4dadac6.180207-2231)"
+          "8.6.0.6 (AD-CAB-Provisioning:master.4ee42e748.180717-2225)"
         ],
-        "x-content-type-options": [
+        "X-Content-Type-Options": [
           "nosniff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d5816938-84fb-472c-bf84-ccdc942f3a58"
+          "6ce248af-97bb-4b7b-820f-871e4fa6c857"
         ],
         "x-ms-correlation-request-id": [
-          "d5816938-84fb-472c-bf84-ccdc942f3a58"
+          "6ce248af-97bb-4b7b-820f-871e4fa6c857"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20180207T234854Z:d5816938-84fb-472c-bf84-ccdc942f3a58"
+          "WESTUS2:20180730T211100Z:6ce248af-97bb-4b7b-820f-871e4fa6c857"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 07 Feb 2018 23:48:54 GMT"
+          "Mon, 30 Jul 2018 21:11:00 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -73,21 +73,21 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.ManagementPartner/partners/123457?api-version=2018-02-01",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudFBhcnRuZXIvcGFydG5lcnMvMTIzNDU3P2FwaS12ZXJzaW9uPTIwMTgtMDItMDE=",
+      "RequestUri": "/providers/Microsoft.ManagementPartner/partners/5127255?api-version=2018-02-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudFBhcnRuZXIvcGFydG5lcnMvNTEyNzI1NT9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "14705f57-fbc9-40f2-80eb-bf893d08a3f0"
+          "aab24ddd-a4bd-4822-a4d0-00383a5fb645"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2600.0",
+          "FxVersion/4.7.3131.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.16299",
+          "OSVersion/6.3.17134",
           "Microsoft.Azure.Management.ManagementPartner.ACEProvisioningManagementPartnerAPIClient/0.0.0.0"
         ]
       },
@@ -103,34 +103,34 @@
           "no-cache"
         ],
         "request-id": [
-          "77b23ecb-f30e-4b28-acc1-ee953c8fc991"
+          "0e345613-2fa0-4e41-9308-9f8dcdf5fb54"
         ],
         "x-gsm": [
-          "8.1.0.50 (AD-CAB-Provisioning:stage.ef4dadac6.180207-2231)"
+          "8.6.0.6 (AD-CAB-Provisioning:master.4ee42e748.180717-2225)"
         ],
-        "x-content-type-options": [
+        "X-Content-Type-Options": [
           "nosniff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-tenant-writes": [
-          "1197"
+          "1196"
         ],
         "x-ms-request-id": [
-          "762a840b-3e60-4e34-943a-214fbe534d8f"
+          "5d063bbe-f378-416b-b58d-aaddeb5167bf"
         ],
         "x-ms-correlation-request-id": [
-          "762a840b-3e60-4e34-943a-214fbe534d8f"
+          "5d063bbe-f378-416b-b58d-aaddeb5167bf"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20180207T234854Z:762a840b-3e60-4e34-943a-214fbe534d8f"
+          "WESTUS2:20180730T211100Z:5d063bbe-f378-416b-b58d-aaddeb5167bf"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 07 Feb 2018 23:48:54 GMT"
+          "Mon, 30 Jul 2018 21:11:00 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -141,8 +141,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "d14e8666-b43e-4f12-aa78-06c49c4859de",
-    "TenantId": "1b1121dd-6900-412a-af73-e8d44f81e1c1",
-    "Domain": ""
+    "SubscriptionId": "5f706f09-5aaf-41ca-9e05-1f1950e6df41"
   }
 }

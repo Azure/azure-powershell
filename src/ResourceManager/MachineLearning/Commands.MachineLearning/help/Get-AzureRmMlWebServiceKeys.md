@@ -109,7 +109,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
-Parameter 'MlWebService' accepts value of type 'WebService' from the pipeline
+Parameters: MlWebService (ByValue)
 
 ## OUTPUTS
 
