@@ -32,7 +32,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestVirtualNetworkCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkCRUD");
@@ -40,7 +40,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestVirtualNetworkCRUDWithDDoSProtection()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkCRUDWithDDoSProtection");
@@ -48,7 +48,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestVirtualNetworkSubnetCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-subnetCRUD");
@@ -56,7 +56,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestVirtualNetworkPeeringCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkPeeringCRUD");
@@ -64,7 +64,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip ="We need to update the way tokens are aquired, as of now aquiring tokens for multiple tenants is broken")]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestMultiTenantVNetPCRUD()
         {
             //this test is special, it requires 2 vnets, one of them created in a tenant other than the current context
@@ -80,7 +80,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "test is timing out , ahmed salma to fix")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestResourceNavigationLinksOnSubnetCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ResourceNavigationLinksCRUD");
@@ -88,7 +88,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestVirtualNetworkUsage()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkUsage");
@@ -96,7 +96,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.brooklynft)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestVirtualNetworkSubnetServiceEndpoint()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkSubnetServiceEndpoint");
@@ -104,6 +104,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestVirtualNetworkSubnetServiceEndpointPolicies()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkSubnetServiceEndpointPolicies");
