@@ -155,6 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.String
+The full path to the resulting file from the joined files.
 
 ## NOTES
 

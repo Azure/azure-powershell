@@ -254,8 +254,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.Byte
+The byte stream representation of the file contents retrieved.
 
 ### System.String
+The string representation (in the specified encoding) of the file contents retrieved.
 
 ## NOTES
 

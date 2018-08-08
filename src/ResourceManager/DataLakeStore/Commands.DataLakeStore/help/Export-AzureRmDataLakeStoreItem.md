@@ -243,6 +243,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.String
+The path where the file or folder was downloaded to.
 
 ## NOTES
 

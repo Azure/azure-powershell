@@ -211,6 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.String
+This cmdlet returns the exported API content as a string.
 
 ## NOTES
 

@@ -89,6 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.String
+The string representation of the ownership octal
 
 ## NOTES
 * Alias: Get-AdlStoreItemPermission

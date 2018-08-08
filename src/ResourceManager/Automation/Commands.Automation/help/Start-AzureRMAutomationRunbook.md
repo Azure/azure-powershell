@@ -175,6 +175,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Automation.Model.Job
+-This cmdlet returns a **Job** object, unless you specify the _Wait_ parameter.
+-If you do not specify _Wait_, Azure PowerShell returns a **Job** object immediately.
+-If you specify _Wait_, Azure PowerShell completes the job, and then returns the result.
+-The result is not a **Job** object.
 
 ### System.Management.Automation.PSObject
 
