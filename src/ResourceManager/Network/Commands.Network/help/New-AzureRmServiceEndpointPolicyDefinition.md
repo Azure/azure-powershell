@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermserviceendpointpolicydefinition
 schema: 2.0.0
 ---
 
@@ -19,16 +19,17 @@ New-AzureRmServiceEndpointPolicyDefinition -Name <String> [-Description <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmServiceEndpointPolicyDefinition** cmdlet create a service endpoint policy definition.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Creates a service endpoint policy
+```
+$policydef= New-AzureRmServiceEndpointPolicyDefinition -Name "ServiceEndpointPolicyDefinition1" -ResourceGroupName "ResourceGroup01" -Service "Microsoft.Storage" -ServiceResources "subscriptions/sub1" -Description "New Definition"
 ```
 
-{{ Add example description here }}
+This command creates the service endpoint policy definition with name ServiceEndpointPolicyDefinition1,  service Microsoft.Storage, service resources subscriptions/sub1 and 
+description "New Definition" that belongs to the resource group named ResourceGroup01 and stores it in the $policydef variable.
 
 ## PARAMETERS
 

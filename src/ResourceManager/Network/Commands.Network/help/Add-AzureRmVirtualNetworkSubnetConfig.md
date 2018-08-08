@@ -169,7 +169,9 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceEndpointPolicies
-Service Endpoint Policies```yaml
+Service Endpoint Policies
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]
 Parameter Sets: (All)
 Aliases:

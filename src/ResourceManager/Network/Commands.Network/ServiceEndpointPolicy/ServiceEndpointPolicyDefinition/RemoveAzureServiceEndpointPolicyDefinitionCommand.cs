@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
 
@@ -23,9 +26,27 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "RemoveByNameParameterSet",
             HelpMessage = "The name of the service endpoint definition")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "DeleteByResourceIdParameterSet")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = "DeleteByInputObjectParameterSet")]
+        [ValidateNotNullOrEmpty]
+        public PSServiceEndpointPolicyDefinition InputObject
+        {
+            get; set;
+        }
 
         [Parameter(
              Mandatory = true,
@@ -36,6 +57,17 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                this.Name = this.InputObject.Name;
+            }
+
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.Name = resourceIdentifier.ResourceName;
+            }
 
             // Verify if the rule exists in the NetworkSecurityGroup
             var serviceEndpointPolicyDefinition = this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinition.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));

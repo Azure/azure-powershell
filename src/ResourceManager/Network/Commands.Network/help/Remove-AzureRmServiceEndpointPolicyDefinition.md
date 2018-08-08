@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermserviceendpointpolicydefinition
 schema: 2.0.0
 ---
 
@@ -18,16 +18,16 @@ Remove-AzureRmServiceEndpointPolicyDefinition [-Name <String>] -ServiceEndpointP
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmServiceEndpointPolicy** cmdlet removes a service endpoint policy.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Removes a service endpoint policy using name
+```
+Remove-AzureRmServiceEndpointPolicyDefinition -Name "PolicyDef1"
 ```
 
-{{ Add example description here }}
+This command removes a service endpoint policy with name PolicyDef1
 
 ## PARAMETERS
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermserviceendpointpolicy
 schema: 2.0.0
 ---
 
@@ -18,16 +18,22 @@ Get-AzureRmServiceEndpointPolicy -Name <String> -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmServiceEndpointPolicy** cmdlet gets a service endpoint policy.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get a specified service endpoint policy
+```
+$policy = Get-AzureRmServiceEndpointPolicy -Name "ServiceEndpointPolicy1" -ResourceGroupName "ResourceGroup01"
 ```
 
-{{ Add example description here }}
+This command gets the service endpoint policy named ServiceEndpointPolicy1 that belongs to the resource group named ResourceGroup01 and stores it in the $policy variable.
+
+### Example 2: Get a list of service endpointpolicies
+```
+$policyList = Get-AzureRmServiceEndpointPolicy -ResourceGroupName "ResourceGroup01"
+
+This command gets a list of all the service endpoint policies in the resource group named ResourceGroup01 and stores it in the $policyList variable.
 
 ## PARAMETERS
 

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermserviceendpointpolicydefinition
 schema: 2.0.0
 ---
 
@@ -19,16 +19,16 @@ Set-AzureRmServiceEndpointPolicyDefinition -Name <String> -ServiceEndpointPolicy
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmServiceEndpointPolicyDefinition** cmdlet create a service endpoint policy definition.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Updates a service endpoint policy definition in a service endpoint policy
+```
+$serviceEndpointPolicy = Set-AzureRmServiceEndpointPolicyDefinition -Name "Policydef1" -ServiceEndpointPolicy $serviceEndpointPolicy
 ```
 
-{{ Add example description here }}
+This command updates a service endpoint policy definition named Policydef1 in the service endpoint policy defined by the object $ServiceEndpointPolicy.
 
 ## PARAMETERS
 

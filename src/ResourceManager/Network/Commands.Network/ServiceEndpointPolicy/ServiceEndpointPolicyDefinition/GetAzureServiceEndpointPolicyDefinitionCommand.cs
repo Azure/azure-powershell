@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
 
@@ -32,12 +34,25 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The Service endpoint policy")]
         public PSServiceEndpointPolicy ServiceEndpointPolicy { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "GetByResourceIdParameterSet")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceId { get; set; }
+
 
         [Parameter(Mandatory = false)]
         public SwitchParameter DefaultRules { get; set; }
 
         public override void Execute()
         {
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
             base.Execute();
             var definitions =  this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinition;
 

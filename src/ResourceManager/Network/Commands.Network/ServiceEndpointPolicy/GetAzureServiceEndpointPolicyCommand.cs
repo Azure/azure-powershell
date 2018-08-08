@@ -16,13 +16,17 @@ namespace Microsoft.Azure.Commands.Network
 {
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System.Collections.Generic;
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmServiceEndpointPolicy"), OutputType(typeof(PSServiceEndpointPolicy))]
     public class GetAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
+            ParameterSetName = "GetByNameParameterSet",
             HelpMessage = "The name of the service endpoint policy")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -31,20 +35,44 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.",
-           ParameterSetName = "ExpandScaleSetIp")]
+           ParameterSetName = "GetByNameParameterSet")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "GetByResourceIdParameterSet")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceId { get; set; }
+
         public override void Execute()
         {
             base.Execute();
+
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
+            }
 
             if (!string.IsNullOrEmpty(this.Name))
             {
                 PSServiceEndpointPolicy serviceEndpointPolicy;
                 serviceEndpointPolicy = this.GetServiceEndpointPolicy(this.ResourceGroupName, this.Name);
                 WriteObject(serviceEndpointPolicy);
+            }
+            else
+            {
+                IEnumerable<PSServiceEndpointPolicy> serviceEndpointPolicies = null;
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    serviceEndpointPolicies = ListServiceEndpointPolicies(this.ResourceGroupName);
+                }
+
+                WriteObject(serviceEndpointPolicies, true);
             }
         }
     }
