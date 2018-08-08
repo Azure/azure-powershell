@@ -120,8 +120,21 @@ function Test-GetTopology
         # Deploy resources
         Get-TestResourcesDeployment -rgn "$resourceGroupName"
         
-        # Create Resource group for Network Watcher
-        New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
+        # Get Network Watcher
+		$nwlist = Get-AzureRmNetworkWatcher
+		foreach ($i in $nwlist)
+		{
+			if($i.Location.equals("$location")) 
+			{
+				$nw=$i
+			}
+		}
+
+		# Create Network Watcher if no existing nw
+        if (!$nw) 
+		{
+			$nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+		}
         
         # Create Network Watcher
         $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
@@ -173,8 +186,21 @@ function Test-GetSecurityGroupView
         # Create Resource group for Network Watcher
         New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
         
-        # Create Network Watcher
-        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+        # Get Network Watcher
+		$nwlist = Get-AzureRmNetworkWatcher
+		foreach ($i in $nwlist)
+		{
+			if($i.Location.equals("$location")) 
+			{
+				$nw=$i
+			}
+		}
+
+		# Create Network Watcher if no existing nw
+        if (!$nw) 
+		{
+			$nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+		}
         
         #Get Vm
         $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
@@ -236,8 +262,21 @@ function Test-GetNextHop
         # Create Resource group for Network Watcher
         New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
         
-        # Create Network Watcher
-        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+        # Get Network Watcher
+		$nwlist = Get-AzureRmNetworkWatcher
+		foreach ($i in $nwlist)
+		{
+			if($i.Location.equals("$location")) 
+			{
+				$nw=$i
+			}
+		}
+
+		# Create Network Watcher if no existing nw
+        if (!$nw) 
+		{
+			$nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+		}
         
         #Get Vm
         $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
@@ -292,8 +331,21 @@ function Test-VerifyIPFlow
         # Create Resource group for Network Watcher
         New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
         
-        # Create Network Watcher
-        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+        # Get Network Watcher
+		$nwlist = Get-AzureRmNetworkWatcher
+		foreach ($i in $nwlist)
+		{
+			if($i.Location.equals("$location")) 
+			{
+				$nw=$i
+			}
+		}
+
+		# Create Network Watcher if no existing nw
+        if (!$nw) 
+		{
+			$nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+		}
         
         #Get network security group
         $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroupName
@@ -361,8 +413,21 @@ function Test-PacketCapture
         # Create Resource group for Network Watcher
         New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
         
-        # Create Network Watcher
-        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+        # Get Network Watcher
+		$nwlist = Get-AzureRmNetworkWatcher
+		foreach ($i in $nwlist)
+		{
+			if($i.Location.equals("$location")) 
+			{
+				$nw=$i
+			}
+		}
+
+		# Create Network Watcher if no existing nw
+        if (!$nw) 
+		{
+			$nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+		}
 
         #Get Vm
         $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
@@ -467,8 +532,21 @@ function Test-Troubleshoot
         # Create Resource group for Network Watcher
         New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
         
-        # Create Network Watcher
-        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+        # Get Network Watcher
+		$nwlist = Get-AzureRmNetworkWatcher
+		foreach ($i in $nwlist)
+		{
+			if($i.Location.equals("$location")) 
+			{
+				$nw=$i
+			}
+		}
+
+		# Create Network Watcher if no existing nw
+        if (!$nw) 
+		{
+			$nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+		}
 
         # Create storage
         $stoname = 'sto' + $resourceGroupName
@@ -484,7 +562,11 @@ function Test-Troubleshoot
         $sto = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname;
 
         Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher $nw -TargetResourceId $gw.Id -StorageId $sto.Id -StoragePath $container.CloudBlobContainer.StorageUri.PrimaryUri.AbsoluteUri;
-        Get-AzureRmNetworkWatcherTroubleshootingResult -NetworkWatcher $nw -TargetResourceId $gw.Id
+		$result = Get-AzureRmNetworkWatcherTroubleshootingResult -NetworkWatcher $nw -TargetResourceId $gw.Id
+
+		# Validation
+        Assert-AreEqual $result.code "UnHealthy"
+		Assert-AreEqual $result.results[0].id "NoConnectionsFoundForGateway"
     }
     finally
     {
@@ -529,8 +611,21 @@ function Test-FlowLog
         # Create Resource group for Network Watcher
         New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
         
-        # Create Network Watcher
-        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+        # Get Network Watcher
+		$nwlist = Get-AzureRmNetworkWatcher
+		foreach ($i in $nwlist)
+		{
+			if($i.Location.equals("$location")) 
+			{
+				$nw=$i
+			}
+		}
+
+		# Create Network Watcher if no existing nw
+        if (!$nw) 
+		{
+			$nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+		}
  
         # Create storage
 		$stoname = 'sto' + $stoname
@@ -610,8 +705,21 @@ function Test-ConnectivityCheck
         # Create Resource group for Network Watcher
         New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
         
-        # Create Network Watcher
-        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+        # Get Network Watcher
+		$nwlist = Get-AzureRmNetworkWatcher
+		foreach ($i in $nwlist)
+		{
+			if($i.Location.equals("$location")) 
+			{
+				$nw=$i
+			}
+		}
+
+		# Create Network Watcher if no existing nw
+        if (!$nw) 
+		{
+			$nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+		}
 
         # Get Vm
         $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
@@ -752,18 +860,31 @@ function Test-ConnectionMonitor
 
         # Deploy resources
         Get-TestResourcesDeployment -rgn "$resourceGroupName"
-        
-        # Create Resource group for Network Watcher
+
+		# Create Resource group for Network Watcher
         New-AzureRmResourceGroup -Name $nwRgName -Location "$location"
         
-        # Create Network Watcher
-        $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+		# Get Network Watcher
+		$nwlist = Get-AzureRmNetworkWatcher
+		foreach ($i in $nwlist)
+		{
+			if($i.Location.equals("$location")) 
+			{
+				$nw=$i
+			}
+		}
+
+		# Create Network Watcher if no existing nw
+        if (!$nw) 
+		{
+			$nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
+		}
 
         #Get Vm
         $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
         
         #Install networkWatcherAgent on Vm
-        Set-AzureRmVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
+		Set-AzureRmVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
 
         #Create connection monitor
         $job1 = New-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -AsJob
