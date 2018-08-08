@@ -67,10 +67,8 @@ $nic | Set-AzureRmNetworkInterface
 ```
 
 The first command gets the network interface NetworkInterface1 and stores it in the $nic variable. The second command gets the virtual network associated with the subnet that the network interface is going to be associated with. The second command gets the subnet and stores it in the $subnet2 variable. The third command associated the primary private IP address of the network interface with the new subnet. Finally the last command applied these changes on the network interface.
-
 >[!NOTE] 
 >The IP configurations must be dynamic before you can change the subnet. If you have static IP configurations, change then to dynamic before proceeding. 
-
 >[!NOTE]
 >If the network interface has multiple IP configurations, the forth command must be done for all these IP configurations before the final Set-AzureRmNetworkInterface command is executed. This can be done as in the forth command but by replacing "0" with the appropriate number. If a network interface has N IP configurations, then N-1 of these commands must exist.
 
@@ -136,8 +134,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSNetworkInterface
-Parameter 'NetworkInterface' accepts value of type 'PSNetworkInterface' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSNetworkInterface
+Parameters: NetworkInterface (ByValue)
 
 ## OUTPUTS
 

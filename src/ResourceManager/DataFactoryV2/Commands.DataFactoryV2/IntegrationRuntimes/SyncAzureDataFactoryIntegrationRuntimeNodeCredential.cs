@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         VerbsData.Sync,
         Constants.IntegrationRuntimeCredential,
         DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true), OutputType(typeof(void))]
     public class SyncAzureDataFactoryIntegrationRuntimeNodeCredential : IntegrationRuntimeContextBaseCmdlet
     {
         [Parameter(

@@ -33,12 +33,9 @@ PS C:\> Set-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -Name
 ```
 
 The first command assigns a user name to the $User variable.
-
 The second command converts a plain text password into a secure string by using the ConvertTo-SecureString cmdlet.
 The command stores that object in the $Password variable.
-
 The third command creates a credential based on $User and $Password, and then stores it in the $Credential variable.
-
 The final command modifies the Automation credential named ContosoCredential to use the credential in $Credential.
 
 ## PARAMETERS
@@ -138,8 +135,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), Description (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Management.Automation.PSCredential
+Parameters: Value (ByPropertyName)
 
 ## OUTPUTS
 

@@ -56,14 +56,11 @@ New-AzureRmBackupRetentionPolicyObject [-YearlyRetentionInWeeklyFormat] -DaysOfW
 The **New-AzureRmBackupRetentionPolicyObject** cmdlet creates an Azure Backup retention policy.
 A retention policy defines how long Backup keeps a recovery point.
 The types of retention are the following: 
-
 - Daily 
 - Weekly 
 - Monthly 
 - Yearly 
-
 Create one retention policy for each type of retention that you plan to use.
-
 A backup policy is associated with at least one retention policy.
 To create a backup policy, use the New-AzureRmBackupProtectionPolicy cmdlet.
 You can instead provide a retention policy to the Enable-AzureRmBackupProtection cmdlet.
@@ -80,7 +77,6 @@ Daily              30
 ```
 
 The first command creates a retention policy for 30 days of daily retention, and then stores it in the $Daily variable.
-
 The second command displays the contents of $Daily.
 
 ### Example 2: Create a monthly retention policy
@@ -98,7 +94,6 @@ RetentionTimes  :
 
 The first command creates a retention policy that keeps the backup on the tenth and the twentieth of each month for twelve months.
 The command stores the retention policy in the $Monthly variable.
-
 The second command displays the contents of $Monthly.
 
 ## PARAMETERS
@@ -140,7 +135,6 @@ Accept wildcard characters: False
 Specifies an array of days of the week.
 The days that this cmdlet specifies identify which recovery points that Backup retains and for how long.
 The acceptable values for this parameter are:
-
 - Monday 
 - Tuesday 
 - Wednesday 
@@ -148,9 +142,7 @@ The acceptable values for this parameter are:
 - Friday 
 - Saturday 
 - Sunday
-
 Specify this parameter if you specify the *WeeklyRetention*, *MonthlyRetentionInWeeklyFormat*, and *YearlyRetentionInWeeklyFormat* parameters.
-
 Be sure that the days of the week you select for backup and for retention are aligned.
 For example, if your backup is set for Saturdays, the retention policies must also use Saturday.
 
@@ -264,7 +256,6 @@ Accept wildcard characters: False
 ### -WeekNumber
 Specifies the weeks of the month that identify which recovery points Backup retains and for how long.
 The acceptable values for this parameter are:
-
 - First 
 - Second 
 - Third 
@@ -323,7 +314,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### AzureRmBackupRetentionPolicy
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy
 
 ## NOTES
 * None

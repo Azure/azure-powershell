@@ -35,6 +35,16 @@ function Test-AvailabilitySet
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
 
+        for($i = 0; $i -lt 200; $i++)
+        {
+            $avsetname = $asetName + $i;
+            New-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $avsetname -Location $loc -PlatformUpdateDomainCount $nonDefaultUD -PlatformFaultDomainCount $nonDefaultFD -Sku 'Classic' -Tag @{"a"="b"};
+        }
+
+        $asets = Get-AzureRmAvailabilitySet;
+        Assert-NotNull $asets;
+        Assert-True {$asets.Count -gt 200}
+
         $asets = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname;
         Assert-NotNull $asets;
         Assert-AreEqual $asetName $asets[0].Name;
@@ -46,7 +56,7 @@ function Test-AvailabilitySet
         Assert-AreEqual $nonDefaultFD $aset.PlatformFaultDomainCount;
         Assert-False {$aset.Managed};
         Assert-AreEqual 'Classic' $aset.Sku;
-		Assert-AreEqual "b" $aset.Tags["a"];
+        Assert-AreEqual "b" $aset.Tags["a"];
 
         $job = $aset | Update-AzureRmAvailabilitySet -Managed -AsJob;
         $result = $job | Wait-Job;
@@ -79,7 +89,8 @@ function Test-AvailabilitySet
         Assert-True { $st.IsSuccessStatusCode };
         
         $asets = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname;
-        Assert-AreEqual $asets $null;
+        $avset = $asets | ? {$_.Name -eq $asetName};
+        Assert-Null $avset;
     }
     finally
     {

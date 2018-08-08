@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet(VerbsCommon.Remove, Constants.Pipeline, DefaultParameterSetName = ParameterSetNames.ByFactoryName, 
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureDataFactoryPipelineCommand : DataFactoryContextActionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true,

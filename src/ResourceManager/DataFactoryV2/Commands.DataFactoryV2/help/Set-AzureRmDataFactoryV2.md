@@ -20,9 +20,7 @@ Set-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Locati
 
 ## DESCRIPTION
 The **Set-AzureRmDataFactoryV2** cmdlet creates a data factory with the specified resource group name and location.
-
 Perform these operations in the following order:
-
         -- Create a data factory.
         -- Create linked services.
         -- Create datasets.
@@ -173,7 +171,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Collections.Hashtable
+Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

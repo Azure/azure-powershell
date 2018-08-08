@@ -38,10 +38,8 @@ co03-vm         ConfigureBackup  Completed       26-Aug-15 12:19:49 PM  26-Aug-1
 
 The first command gets the vault named Vault03 by using the **Get-AzureRmBackupVault** cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets the Backup protection policy named DefaultPolicy for the vault in $Vault.
 The command stores that object in the $Policy variable.
-
 The final command uses the pipeline operator to pass values from one cmdlet to the next.
 It gets a container, by using the Get-AzureRmBackupContainer cmdlet.
 The command gets the backup item from that container by using the Get-AzureRmBackupItem cmdlet.
@@ -101,11 +99,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupItem
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainerContextObject
+Parameters: Item (ByValue)
 
 ## OUTPUTS
 
-### AzureRmBackupJob
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
 
 ## NOTES
 

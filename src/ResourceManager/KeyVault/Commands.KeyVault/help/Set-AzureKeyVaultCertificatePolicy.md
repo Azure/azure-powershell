@@ -248,7 +248,6 @@ Accept wildcard characters: False
 ### -KeyType
 Specifies the key type of the key that backs the certificate.
 The acceptable values for this parameter are:
-
 - RSA
 - RSA-HSM
 
@@ -360,7 +359,6 @@ Accept wildcard characters: False
 ### -SecretContentType
 Specifies the content type of the new key vault secret.
 The acceptable values for this parameter are:
-
 - application/x-pkcs12
 - application/x-pem-file
 
@@ -459,6 +457,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
+Parameters: InputObject (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

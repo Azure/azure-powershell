@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmLoadBalancer", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmLoadBalancer", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
     {
         [Alias("ResourceName")]

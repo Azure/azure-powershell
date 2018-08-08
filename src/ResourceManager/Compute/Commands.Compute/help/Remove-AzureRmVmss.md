@@ -168,8 +168,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), VMScaleSetName (ByPropertyName)
+
+### System.String[]
+Parameters: InstanceId (ByPropertyName)
 
 ## OUTPUTS
 

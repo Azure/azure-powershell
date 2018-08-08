@@ -22,11 +22,9 @@ Restore-AzureRmRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPo
 ## DESCRIPTION
 The **Restore-AzureRmRecoveryServicesBackupItem** cmdlet restores the data and configuration for an Azure Backup item to a specified recovery point.
 This cmdlet starts the restore from the Recovery Services vault to customer's storage account.
-
 The restore operation does not restore the full virtual machine.
 It restores the disk data and configuration information.
 After the restore operation is finished, you must create the virtual machine and start it.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -45,16 +43,11 @@ PS C:\> $RestoreJob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $
 ```
 
 The first command gets the Backup container of type AzureVM, and then stores it in the $Container variable.
-
 The second command gets the Backup item named V2VM from $Container, and then stores it in the $BackupItem variable.
-
 The third command gets the date from seven days earlier, and then stores it in the $StartDate variable.
-
 The fourth command gets the current date, and then stores it in the $EndDate variable.
-
 The fifth command gets a list of recovery points for the specific backup item filtered by $StartDate and $EndDate.
 The date range specified is the last 7 days.
-
 The last command restores the disks to the target storage account DestAccount in the DestRG resource group.
 
 ## PARAMETERS
@@ -202,8 +195,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### RecoveryPointBase
-Parameter 'RecoveryPoint' accepts value of type 'RecoveryPointBase' from the pipeline
+### System.String
+Parameters: VaultId (ByValue), VaultLocation (ByValue)
+
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase
+Parameters: RecoveryPoint (ByValue)
 
 ## OUTPUTS
 

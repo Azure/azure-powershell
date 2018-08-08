@@ -141,13 +141,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: PassThru (ByPropertyName)
 
 ## OUTPUTS
 
-### bool
-If PassThru is specified, returns true upon successful completion.
+### System.Boolean
 
 ## NOTES
 

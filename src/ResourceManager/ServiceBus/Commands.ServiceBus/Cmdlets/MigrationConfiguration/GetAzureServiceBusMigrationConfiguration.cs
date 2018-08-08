@@ -47,17 +47,17 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 
         public override void ExecuteCmdlet()
         {
-            ResourceIdentifier getParamMigrationconfig = new ResourceIdentifier();
+            
             if (ParameterSetName == NamespaceInputObjectParameterSet)
             {
-                getParamMigrationconfig = GetResourceDetailsFromId(InputObject.Id);
+                LocalResourceIdentifier getParamMigrationconfig = new LocalResourceIdentifier(InputObject.Id);
 
                 ResourceGroupName = getParamMigrationconfig.ResourceGroupName;
                 Name = getParamMigrationconfig.ResourceName;
             }
             else if (ParameterSetName == ResourceIdParameterSet)
             {
-                getParamMigrationconfig = GetResourceDetailsFromId(ResourceId);
+                LocalResourceIdentifier getParamMigrationconfig = new LocalResourceIdentifier(ResourceId);
 
                 ResourceGroupName = getParamMigrationconfig.ResourceGroupName;
                 Name = getParamMigrationconfig.ResourceName;

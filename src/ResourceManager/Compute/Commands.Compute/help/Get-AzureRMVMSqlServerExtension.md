@@ -51,7 +51,6 @@ AutoBackupSettings   : Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Ex
 
 This command gets the virtual machine named ContosoVM22 on the service Service08 by using the Get-AzureRmVM cmdlet.
 The command passes the results to the current cmdlet by using the pipeline operator.
-
 The current command gets the settings of the SQL Server IaaS Agent on that virtual machine.
 
 ### Example 3: Get the settings of specific SQL Server version
@@ -135,8 +134,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), VMName (ByPropertyName)
 
 ## OUTPUTS
 
