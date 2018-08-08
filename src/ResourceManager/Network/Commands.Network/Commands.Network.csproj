@@ -216,6 +216,17 @@
     <Compile Include="LoadBalancer\InboundNatPool\NewAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\RemoveAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\SetAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
+	<Compile Include="ExpressRouteCircuit\GetAzureExpressRouteCircuitCommand.cs" /> 
+    <Compile Include="ExpressRouteCircuit\NewAzureExpressRouteCircuitCommand.cs" /> 
+    <Compile Include="ExpressRouteCircuit\Peering\AddAzureExpressRouteCircuitPeeringConfigCommand.cs" /> 
+    <Compile Include="ExpressRouteCircuit\Peering\AzureExpressRouteCircuitPeeringConfigBase.cs" /> 
+    <Compile Include="ExpressRouteCircuit\Peering\GetAzureExpressRouteCircuitPeeringConfigCommand.cs" /> 
+    <Compile Include="ExpressRouteCircuit\Peering\NewAzureExpressRouteCircuitPeeringConfigCommand.cs" /> 
+    <Compile Include="ExpressRouteCircuit\Peering\RemoveAzureExpressRouteCircuitPeeringConfigCommand.cs" /> 
+    <Compile Include="ExpressRouteCircuit\Peering\SetAzureExpressRouteCircuitPeeringConfigCommand.cs" /> 
+    <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" /> 
+    <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" /> 
+    <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" /> 
     <Compile Include="Models\PSApplicationGatewayBackendAddress.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddressPool.cs" />
     <Compile Include="Models\PSApplicationGatewayProbeHealthResponseMatch.cs" />
