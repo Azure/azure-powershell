@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Updated help files to include full parameter types and correct input/output types.
+
+## Version 5.0.1
+* Updated all help files to include full parameter types and correct input/output types.
 * Add Ps1XmlAttribute to cmdlets output types properties
 * Show StorageAccount cmdlet output in table view
     - Get-AzureRmStorageAccount

@@ -213,7 +213,7 @@ Parameters: ColumnName (ByPropertyName), DatabaseName (ByPropertyName), Resource
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel
 
 ## NOTES
 

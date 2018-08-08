@@ -256,7 +256,7 @@ Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), S
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ImportExport.Model.AzureSqlDatabaseImportExportBaseModel
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql

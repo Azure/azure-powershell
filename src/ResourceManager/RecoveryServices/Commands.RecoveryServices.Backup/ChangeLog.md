@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Updated help files to include full parameter types and correct input/output types.
+* Added policy filter to Get-AzureRmRecoveryServicesBackItem cmdlet. The command returns the list of backup items protected by the given policy id.
+* Updated Microsoft.Azure.Management.RecoveryServices.Backup to version 3.0.0-preview.
+
+## Version 4.3.1
+* Updated all help files to include full parameter types and correct input/output types.
 
 ## Version 4.3.0
 * Fixed formatting of OutputType in help files

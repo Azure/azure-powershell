@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,8 +19,13 @@
 -->
 
 ## Current Release
-* Updated help files to include full parameter types and correct input/output types.
-* Updated the ADF .Net SDK version to 1.1.0.
+
+## Version 0.5.7
+* Updated all help files to include full parameter types and correct input/output types.
+* Updated the ADF .Net SDK version to 2.0.0.
+* Support self-hosted integration runtime sharing across data factories.
+     - Add new parameter ``SharedIntegrationRuntimeResourceId`` to Set-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
+     - Add new optional parameter ``LinkedDataFactoryName`` to Remove-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
 
 ## Version 0.5.6
 * Fixed formatting of OutputType in help files

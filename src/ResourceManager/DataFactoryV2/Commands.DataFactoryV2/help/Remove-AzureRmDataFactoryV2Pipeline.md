@@ -200,7 +200,7 @@ Parameters: DataFactoryName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories

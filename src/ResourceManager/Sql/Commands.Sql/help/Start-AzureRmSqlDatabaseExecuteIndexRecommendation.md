@@ -118,7 +118,7 @@ Parameters: DatabaseName (ByPropertyName), IndexRecommendationName (ByPropertyNa
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Model.IndexRecommendation
 
 ## NOTES
 

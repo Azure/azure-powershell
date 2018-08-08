@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
     /// Defines the Set-AzureRmSqlDatabaseRecommendedActionState cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseRecommendedActionState",
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseRecommendedActionModel))]
     public class SetAzureSqlDatabaseRecommendedActionState : AzureSqlDatabaseRecommendedActionCmdletBase
     {
         /// <summary>

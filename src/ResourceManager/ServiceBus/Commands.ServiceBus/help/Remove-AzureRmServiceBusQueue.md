@@ -12,8 +12,21 @@ Removes the queue from the specified Service Bus namespace.
 
 ## SYNTAX
 
+### QueuePropertiesSet (Default)
 ```
-Remove-AzureRmServiceBusQueue [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+Remove-AzureRmServiceBusQueue [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PassThru]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### QueueInputObjectSet
+```
+Remove-AzureRmServiceBusQueue [-InputObject] <PSQueueAttributes> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### QueueResourceIdSet
+```
+Remove-AzureRmServiceBusQueue [-ResourceId] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,15 +40,54 @@ The **Remove-AzureRmServiceBusQueue** cmdlet removes the queue from the specifie
 PS C:\> Remove-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_exampl1
 ```
 
-Removes the queue `SB-Queue_exampl1` from the namespace `SB-Example1`.
+Removes the Service Bus queue `SB-Queue_exampl1` from the namespace `SB-Example1`.
+
+### Example 2.1 - InputObject - Using variable: 
+```
+PS C:\> $inputobject = Get-AzureRmServiceBusQueue <params>
+PS C:\> Remove-AzureRmServiceBusQueue -InputObject $inputobject 
+```
+Removes the Service Bus queue provided in the $inputobject for -InputObject parameter
+
+### Example 2.1 - InputObject - Using Piping: 
+```
+PS C:\>  Get-AzureRmServiceBusQueue <params> | Remove-AzureRmServiceBusQueue
+```
+
+### Example 3.1 - ResourceId - Using variable:
+```
+PS c:\> $resourceid = Get-AzureRmServiceBusQueue <params>
+PS C:\> Remove-AzureRmServiceBusQueue -ResourceId $resourceid.Id
+```
+Removes the Service Bus queue provided in the ARM id in $resourceid/string for -ResourceId parameter
+
+### Example 3.2 - ResourceId - passign as string:
+```
+PS C:\> Remove-AzureRmServiceBusQueue -ResourceId "/subscriptions/xxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/queues/QueueName"
+```
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -46,12 +98,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Queue Name.
+### -InputObject
+Service Bus Queue Object
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: PSQueueAttributes
+Parameter Sets: QueueInputObjectSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Queue Name
+
+```yaml
+Type: String
+Parameter Sets: QueuePropertiesSet
 Aliases: QueueName
 
 Required: True
@@ -62,11 +129,11 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+Namespace Name
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: QueuePropertiesSet
 Aliases: NamespaceName
 
 Required: True
@@ -76,13 +143,43 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Specifying this will return true if the command was successful.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: QueuePropertiesSet
 Aliases: ResourceGroup
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Service Bus Queue Resource Id
+
+```yaml
+Type: String
+Parameter Sets: QueueResourceIdSet
+Aliases:
 
 Required: True
 Position: 0
@@ -95,13 +192,13 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -111,28 +208,32 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName)
 
+### Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes
+Parameters: InputObject (ByValue)
+
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 
