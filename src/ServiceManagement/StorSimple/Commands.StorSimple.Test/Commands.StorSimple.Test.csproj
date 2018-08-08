@@ -44,10 +44,6 @@
     <Compile Include="ScenarioTests\StorSimpleTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Storage\Commands.Storage\Commands.Storage.csproj">
-      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
-      <Name>Commands.Storage</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Commands.StorSimple\Commands.StorSimple.csproj">
       <Project>{11524d98-6c40-4091-a8e1-86463fee607c}</Project>
       <Name>Commands.StorSimple</Name>

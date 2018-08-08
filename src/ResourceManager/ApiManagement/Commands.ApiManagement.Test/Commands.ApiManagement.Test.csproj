@@ -49,14 +49,6 @@
     <Compile Include="UnitTests\PsApiManagementTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Storage\Commands.Storage\Commands.Storage.csproj">
-      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
-      <Name>Commands.Storage</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Storage\Commands.Management.Storage\Commands.Management.Storage.csproj">
-      <Project>{a50ab133-5c04-4a17-9054-f8343683ec23}</Project>
-      <Name>Commands.Management.Storage</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Commands.ApiManagement\Commands.ApiManagement.csproj">
       <Project>{dc0a9742-df36-48c9-bd2f-68d01aed6257}</Project>
       <Name>Commands.ApiManagement</Name>

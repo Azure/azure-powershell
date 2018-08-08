@@ -111,10 +111,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Storage\Commands.Storage\Commands.Storage.csproj">
-      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
-      <Name>Commands.Storage</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Commands.RecoveryServices\Commands.RecoveryServicesRdfe.csproj">
       <Project>{98b10548-df97-4fb1-8d82-2a12945d4f21}</Project>
       <Name>Commands.RecoveryServices</Name>
