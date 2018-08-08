@@ -12,10 +12,17 @@ Removes the speficied rule of a given subscription .
 
 ## SYNTAX
 
+### RulePropertiesSet (Default)
 ```
 Remove-AzureRmServiceBusRule [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [-Subscription] <String> [-Name] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Subscription] <String> [-Name] <String> [-PassThru] [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RuleResourceIdSet
+```
+Remove-AzureRmServiceBusRule [-InputObject] <PSTopicAttributes> [-ResourceId] <String> [-PassThru] [-AsJob]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,13 +37,54 @@ PS C:\> Remove-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -N
 
 Removes the rule `SBRule` of subscription `SBSubscription` of specified topic `SBTopic`.
 
+### Example 2.1 - InputObject - Using Variable: 
+```
+PS C:\> $inputobject = Get-AzureRmServiceBusRule <params>
+PS C:\> Remove-AzureRmServiceBusRule -InputObject $inputobject
+```
+
+Removes the rule provided through $inputobject for -InputObject parameter
+
+### Example 2.2 - InputObject - Using Piping: 
+```
+PS C:\> Get-AzureRmServiceBusRule <params> | Remove-AzureRmServiceBusRule
+```
+
+### Example 3.1 - ResourceId - Using Variable
+```
+PS C:\> $resourceid = Get-AzureRmServiceBusRule <params>
+PS C:\> Remove-AzureRmServiceBusRule -ResourceId $resourceid.Id
+```
+
+### Example 3.1 - ResourceId - Using string value
+```
+PS C:\> Remove-AzureRmServiceBusRule -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName/subscriptions/SubscriptionName/rules/RuleName"
+```
+
+Removes the rule provided through ARM Id in $resourceid/string for -ResourceId parameter 
+
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,7 +99,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -62,12 +110,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Rule Name.
+### -InputObject
+Service Bus Rule Object
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: PSTopicAttributes
+Parameter Sets: RuleResourceIdSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Rule Name
+
+```yaml
+Type: String
+Parameter Sets: RulePropertiesSet
 Aliases:
 
 Required: True
@@ -78,11 +141,11 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+Namespace Name
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: RulePropertiesSet
 Aliases: NamespaceName
 
 Required: True
@@ -96,7 +159,7 @@ Accept wildcard characters: False
 Specifying this will return true if the command was successful.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -111,8 +174,8 @@ Accept wildcard characters: False
 The name of the resource group
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: RulePropertiesSet
 Aliases: ResourceGroup
 
 Required: True
@@ -122,12 +185,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Subscription
-Subscription Name.
+### -ResourceId
+Service Bus Rule Resource Id
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: RuleResourceIdSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Subscription
+Subscription Name
+
+```yaml
+Type: String
+Parameter Sets: RulePropertiesSet
 Aliases: SubscriptionName
 
 Required: True
@@ -138,11 +216,11 @@ Accept wildcard characters: False
 ```
 
 ### -Topic
-Topic Name.
+Topic Name
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: RulePropertiesSet
 Aliases: TopicName
 
 Required: True
@@ -156,7 +234,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -172,7 +250,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -184,16 +262,21 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), Subscription (ByPropertyName), Topic (ByPropertyName)
 
+### Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
+Parameters: InputObject (ByValue)
+
 ## OUTPUTS
 
 ### System.Boolean
+
 
 ## NOTES
 

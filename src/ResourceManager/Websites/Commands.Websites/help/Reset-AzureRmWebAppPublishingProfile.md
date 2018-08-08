@@ -111,7 +111,7 @@ Parameters: WebApp (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.String
 
 ## NOTES
 

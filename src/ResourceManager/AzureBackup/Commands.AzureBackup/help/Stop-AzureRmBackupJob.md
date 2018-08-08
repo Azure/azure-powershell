@@ -130,7 +130,7 @@ Parameters: Job (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.11.0
 * Adding Server Advanced Threat Protection support with the following cmdlets:
 	- Enable-AzureRmSqlServerAdvancedThreatProtection; Disable-AzureRmSqlServerAdvancedThreatProtection; Get-AzureRmSqlServerAdvancedThreatProtectionPolicy
 * Adding Vulnerability Assessment support with the following cmdlets:
@@ -26,7 +28,7 @@
 	- Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan; Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord; Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan
 * Fixed example in Remove-AzureRmSqlServerFirewallRule
 * Fix datetime handling incorrectly for non-us base culture in Get-AzureSqlSyncGroupLog
-* Updated help files to include full parameter types and correct input/output types.
+* Updated all help files to include full parameter types and correct input/output types.
 
 ## Version 4.10.0
 * Adding new Cmdlets for Management.Sql to allow customers to add TDE Certificate to Sql Server instance or a Managed Instance

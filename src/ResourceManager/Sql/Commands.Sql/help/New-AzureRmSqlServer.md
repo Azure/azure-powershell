@@ -220,7 +220,7 @@ Parameters: ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
 
 ## NOTES
 

@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,7 +19,11 @@
 --->
 
 ## Current Release
-* Updated help files to include full parameter types and correct input/output types.
+* Added example for Set-AzureRmLocalNetworkGateway
+* Added examples and descriptions for Add-AzureRmVirtualNetworkGatewayIpConfig, Get-AzureRmVirtualNetworkGatewayConnectionSharedKey and New-AzureRmVirtualNetworkGatewayConnection
+
+## Version 6.4.1
+* Updated all help files to include full parameter types and correct input/output types.
 * Added examples for LoadBalancerInboundNatPoolConfig cmdlets.
 
 ## Version 6.4.0

@@ -138,7 +138,7 @@ Parameters: PublicCertData (ByPropertyName), ResourceGroupName (ByPropertyName),
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

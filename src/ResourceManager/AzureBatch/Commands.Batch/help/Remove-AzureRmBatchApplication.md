@@ -103,7 +103,7 @@ Parameters: AccountName (ByPropertyName), ApplicationId (ByPropertyName), Resour
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

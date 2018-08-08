@@ -148,7 +148,7 @@ Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

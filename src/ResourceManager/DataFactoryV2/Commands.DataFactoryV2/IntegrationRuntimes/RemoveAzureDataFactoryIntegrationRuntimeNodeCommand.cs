@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
     [Cmdlet(VerbsCommon.Remove,
         Constants.IntegrationRuntimeNode,
         DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureDataFactoryIntegrationRuntimeNodeCommand : IntegrationRuntimeContextBaseCmdlet
     {
         [Parameter(Mandatory = true,

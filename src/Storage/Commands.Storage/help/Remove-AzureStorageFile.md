@@ -298,7 +298,7 @@ Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.WindowsAzure.Storage.File.CloudFile
 
 ## NOTES
 
