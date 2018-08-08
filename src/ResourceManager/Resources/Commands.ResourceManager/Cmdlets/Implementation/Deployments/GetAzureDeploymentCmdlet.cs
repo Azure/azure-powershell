@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         [Alias("DeploymentName")]
         [Parameter(Position = 0, ParameterSetName = GetAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = false,
-            ValueFromPipelineByPropertyName = true, HelpMessage = "The name of deployment.")]
+            HelpMessage = "The name of deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

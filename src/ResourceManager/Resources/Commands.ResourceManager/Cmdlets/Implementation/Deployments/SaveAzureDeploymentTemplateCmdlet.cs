@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the file path.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The output path of the template file.")]
+        [Parameter(Mandatory = false, HelpMessage = "The output path of the template file.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 

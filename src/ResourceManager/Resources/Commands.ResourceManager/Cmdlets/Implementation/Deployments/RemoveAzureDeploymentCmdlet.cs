@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Deletes a deployment.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmDeployment", SupportsShouldProcess = true,
-        DefaultParameterSetName = RemoveAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
+        DefaultParameterSetName = RemoveAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(void))]
     public class RemoveAzureDeploymentCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -71,7 +71,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetResourceName(this.Id) : this.InputObject.DeploymentName;
 
                     ResourceManagerSdkClient.DeleteDeploymentAtSubscriptionScope(deploymentName);
-                    WriteObject(true);
                 });
         }
     }
