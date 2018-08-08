@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.12.0'
+ModuleVersion = '0.13.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -76,7 +76,7 @@ RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.d
     '.\Microsoft.Rest.ClientRuntime.Azure.dll', 
     '.\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll', 
     '.\Microsoft.WindowsAzure.Storage.dll', 
-    '.\Microsoft.Azure.Management.Storage.dll', '.\Newtonsoft.Json.dll',
+    '.\Microsoft.Azure.Management.Storage.dll', '.\Newtonsoft.Json.dll', 
     '.\Microsoft.Azure.PowerShell.Aks.dll', 
     '.\Microsoft.Azure.PowerShell.Strategies.dll'
 

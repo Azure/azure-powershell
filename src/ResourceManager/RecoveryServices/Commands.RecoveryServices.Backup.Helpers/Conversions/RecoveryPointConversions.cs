@@ -63,8 +63,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     }
 
                     bool isInstantILRSessionActive =
-                        recPoint.IsInstantILRSessionActive.HasValue ?
-                            (bool)recPoint.IsInstantILRSessionActive : false;
+                        recPoint.IsInstantIlrSessionActive.HasValue ?
+                            (bool)recPoint.IsInstantIlrSessionActive : false;
 
                     AzureVmRecoveryPoint rpBase = new AzureVmRecoveryPoint()
                     {
@@ -83,6 +83,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ?
                             recPoint.IsSourceVMEncrypted.Value : false,
                         IlrSessionActive = isInstantILRSessionActive,
+                        IsManagedVirtualMachine = recPoint.IsManagedVirtualMachine.HasValue ?
+                            recPoint.IsManagedVirtualMachine.Value : false,
                         OriginalSAEnabled = recPoint.OriginalStorageAccountOption.HasValue ?
                             recPoint.OriginalStorageAccountOption.Value : false,
                     };
@@ -163,8 +165,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
 
                 bool isInstantILRSessionActive =
-                    recPoint.IsInstantILRSessionActive.HasValue ?
-                        (bool)recPoint.IsInstantILRSessionActive : false;
+                    recPoint.IsInstantIlrSessionActive.HasValue ?
+                        (bool)recPoint.IsInstantIlrSessionActive : false;
                 AzureVmRecoveryPoint vmResult = new AzureVmRecoveryPoint()
                 {
                     RecoveryPointId = rpResponse.Name,

@@ -152,7 +152,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
                 );
         }
 
-
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
             return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);

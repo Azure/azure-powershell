@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 4.1.2
+* Updated all help files to include full parameter types and correct input/output types.
 
 ## Version 4.1.1
 * Fixed formatting of OutputType in help files
@@ -106,9 +110,9 @@
     - For existing accounts or for new accounts created with `PoolAllocationMode = BatchService`, you may continue to use shared key authentication by retrieving a `BatchAccountContext` object using the `Get-AzureRmBatchAccoutKeys` cmdlet.
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 3.4.1
- - Marked cmdlet parameters and type properties obsolete in 
+ - Marked cmdlet parameters and type properties obsolete in
    preparation for upcoming breaking change release (Version 4.0.0)
 
 ## Version 3.4.0
