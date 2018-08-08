@@ -1,0 +1,567 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/resourcegroups/psbottestname?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzVmYTc0NjEtZDQ4YS00MDUzLTlhYTItNTZjMDE0NDk1ZTg5L3Jlc291cmNlZ3JvdXBzL3BzYm90dGVzdG5hbWU/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ],
+        "x-ms-client-request-id": [
+          "9b8492d3-0342-4ec6-9054-68079498f7cf"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2671.0",
+          "OSName/Windows10Pro",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/resourceGroups/psbottestname\",\r\n  \"name\": \"psbottestname\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "179"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "55654939-37d9-48ed-abb0-56289457dd03"
+        ],
+        "x-ms-correlation-request-id": [
+          "55654939-37d9-48ed-abb0-56289457dd03"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180802T183357Z:55654939-37d9-48ed-abb0-56289457dd03"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 02 Aug 2018 18:33:57 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/resourceGroups/psbottestname/providers/Microsoft.BotService/botServices/psbottestname?api-version=2017-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzVmYTc0NjEtZDQ4YS00MDUzLTlhYTItNTZjMDE0NDk1ZTg5L3Jlc291cmNlR3JvdXBzL3BzYm90dGVzdG5hbWUvcHJvdmlkZXJzL01pY3Jvc29mdC5Cb3RTZXJ2aWNlL2JvdFNlcnZpY2VzL3BzYm90dGVzdG5hbWU/YXBpLXZlcnNpb249MjAxNy0xMi0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Test bot\",\r\n    \"description\": \"Bot Description\",\r\n    \"endpoint\": \"https://testbot.net\",\r\n    \"msaAppId\": \"481b737a-50a3-4d11-a30f-e377b87e74ef\",\r\n    \"location\": \"global\",\r\n    \"sku\": {\r\n      \"name\": \"F0\"\r\n    },\r\n    \"kind\": \"sdk\"\r\n  },\r\n  \"location\": \"global\",\r\n  \"sku\": {\r\n    \"name\": \"F0\"\r\n  },\r\n  \"kind\": \"sdk\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "363"
+        ],
+        "x-ms-client-request-id": [
+          "8a0c58cf-4369-4859-a3e4-4f1b95a6907d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2671.0",
+          "OSName/Windows10Pro",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.BotService.AzureBotServiceClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/resourceGroups/psbottestname/providers/Microsoft.BotService/botServices/psbottestname\",\r\n  \"name\": \"psbottestname\",\r\n  \"type\": \"Microsoft.BotService/botServices\",\r\n  \"etag\": \"W/\\\"datetime'2018-08-02T18%3A34%3A00.2136616Z'\\\"\",\r\n  \"location\": \"global\",\r\n  \"sku\": {\r\n    \"name\": \"F0\"\r\n  },\r\n  \"kind\": \"sdk\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"displayName\": \"Test bot\",\r\n    \"description\": \"Bot Description\",\r\n    \"iconUrl\": \"//intercom-scratch.azureedge.net/bot-icons-v1/bot-framework-default.png\",\r\n    \"endpoint\": \"https://testbot.net\",\r\n    \"msaAppId\": \"481b737a-50a3-4d11-a30f-e377b87e74ef\",\r\n    \"developerAppInsightKey\": \"\",\r\n    \"developerAppInsightsApplicationId\": \"\",\r\n    \"luisAppIds\": [],\r\n    \"endpointVersion\": \"3.0\",\r\n    \"configuredChannels\": [\r\n      \"webchat\"\r\n    ],\r\n    \"enabledChannels\": [\r\n      \"webchat\",\r\n      \"directline\"\r\n    ],\r\n    \"isDeveloperAppInsightsApiKeySet\": false,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "826"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "59f32eb8-13b0-4603-aafc-2b04f6de4b79"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:bb9497da-769a-4aa5-9960-4ba1cbfd7df7"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Request-Context"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "9694df2d-49d2-43fc-a67b-260751039881"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180802T183400Z:9694df2d-49d2-43fc-a67b-260751039881"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 02 Aug 2018 18:34:00 GMT"
+        ],
+        "ETag": [
+          "W/\"datetime'2018-08-02T18%3A34%3A00.2136616Z'\""
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/resourceGroups/psbottestname/providers/Microsoft.BotService/botServices/psbottestname?api-version=2017-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzVmYTc0NjEtZDQ4YS00MDUzLTlhYTItNTZjMDE0NDk1ZTg5L3Jlc291cmNlR3JvdXBzL3BzYm90dGVzdG5hbWUvcHJvdmlkZXJzL01pY3Jvc29mdC5Cb3RTZXJ2aWNlL2JvdFNlcnZpY2VzL3BzYm90dGVzdG5hbWU/YXBpLXZlcnNpb249MjAxNy0xMi0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "051803d9-a7cf-4e4e-8288-d0406d0efb19"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2671.0",
+          "OSName/Windows10Pro",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.BotService.AzureBotServiceClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Request-Context": [
+          "appId=cid-v1:bb9497da-769a-4aa5-9960-4ba1cbfd7df7"
+        ],
+        "Access-Control-Expose-Headers": [
+          "Request-Context"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "e2a64249-a2e4-4f1f-b805-530a5e674f8f"
+        ],
+        "x-ms-correlation-request-id": [
+          "e2a64249-a2e4-4f1f-b805-530a5e674f8f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180802T183405Z:e2a64249-a2e4-4f1f-b805-530a5e674f8f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 02 Aug 2018 18:34:05 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/resourceGroups/psbottestname/providers/Microsoft.BotService/botServices/psbottestname?api-version=2017-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzVmYTc0NjEtZDQ4YS00MDUzLTlhYTItNTZjMDE0NDk1ZTg5L3Jlc291cmNlR3JvdXBzL3BzYm90dGVzdG5hbWUvcHJvdmlkZXJzL01pY3Jvc29mdC5Cb3RTZXJ2aWNlL2JvdFNlcnZpY2VzL3BzYm90dGVzdG5hbWU/YXBpLXZlcnNpb249MjAxNy0xMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "381bb036-ad19-42d7-b24f-a8402e2f3091"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2671.0",
+          "OSName/Windows10Pro",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.BotService.AzureBotServiceClient/0.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.BotService/botServices/psbottestname' under resource group 'psbottestname' was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "163"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "68318909-1c33-4073-b039-acc78832f338"
+        ],
+        "x-ms-correlation-request-id": [
+          "68318909-1c33-4073-b039-acc78832f338"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180802T183405Z:68318909-1c33-4073-b039-acc78832f338"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 02 Aug 2018 18:34:05 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/resourcegroups/psbottestname?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzVmYTc0NjEtZDQ4YS00MDUzLTlhYTItNTZjMDE0NDk1ZTg5L3Jlc291cmNlZ3JvdXBzL3BzYm90dGVzdG5hbWU/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "63cc9e26-c2d2-4c78-93fb-a61c3e1870e5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2671.0",
+          "OSName/Windows10Pro",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "096d5c36-cee5-45fd-a856-9c1c8f97f5f6"
+        ],
+        "x-ms-correlation-request-id": [
+          "096d5c36-cee5-45fd-a856-9c1c8f97f5f6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180802T183906Z:096d5c36-cee5-45fd-a856-9c1c8f97f5f6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 02 Aug 2018 18:39:06 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU0JPVFRFU1ROQU1FLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU0JPVFRFU1ROQU1FLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzVmYTc0NjEtZDQ4YS00MDUzLTlhYTItNTZjMDE0NDk1ZTg5L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTBKUFZGUkZVMVJPUVUxRkxWZEZVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2671.0",
+          "OSName/Windows10Pro",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "ac55bb91-11ed-44bb-89fd-0fc78b6ed5d8"
+        ],
+        "x-ms-correlation-request-id": [
+          "ac55bb91-11ed-44bb-89fd-0fc78b6ed5d8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180802T183922Z:ac55bb91-11ed-44bb-89fd-0fc78b6ed5d8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 02 Aug 2018 18:39:21 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU0JPVFRFU1ROQU1FLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU0JPVFRFU1ROQU1FLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzVmYTc0NjEtZDQ4YS00MDUzLTlhYTItNTZjMDE0NDk1ZTg5L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTBKUFZGUkZVMVJPUVUxRkxWZEZVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2671.0",
+          "OSName/Windows10Pro",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "07955f3e-9529-49ea-b3ae-f7b4cab07193"
+        ],
+        "x-ms-correlation-request-id": [
+          "07955f3e-9529-49ea-b3ae-f7b4cab07193"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180802T183937Z:07955f3e-9529-49ea-b3ae-f7b4cab07193"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 02 Aug 2018 18:39:36 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU0JPVFRFU1ROQU1FLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU0JPVFRFU1ROQU1FLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzVmYTc0NjEtZDQ4YS00MDUzLTlhYTItNTZjMDE0NDk1ZTg5L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTBKUFZGUkZVMVJPUVUxRkxWZEZVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2671.0",
+          "OSName/Windows10Pro",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "a4860689-330e-41ed-b30a-3cf9e07ce5bc"
+        ],
+        "x-ms-correlation-request-id": [
+          "a4860689-330e-41ed-b30a-3cf9e07ce5bc"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180802T183952Z:a4860689-330e-41ed-b30a-3cf9e07ce5bc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 02 Aug 2018 18:39:52 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/35fa7461-d48a-4053-9aa2-56c014495e89/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QU0JPVFRFU1ROQU1FLVdFU1RVUyIsImpvYkxvY2F0aW9uIjoid2VzdHVzIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzVmYTc0NjEtZDQ4YS00MDUzLTlhYTItNTZjMDE0NDk1ZTg5L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVTBKUFZGUkZVMVJPUVUxRkxWZEZVMVJWVXlJc0ltcHZZa3h2WTJGMGFXOXVJam9pZDJWemRIVnpJbjA/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2671.0",
+          "OSName/Windows10Pro",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "2569354f-4a60-407b-98d8-cb60cce34d2c"
+        ],
+        "x-ms-correlation-request-id": [
+          "2569354f-4a60-407b-98d8-cb60cce34d2c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180802T183952Z:2569354f-4a60-407b-98d8-cb60cce34d2c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 02 Aug 2018 18:39:52 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-RemoveAzureRmBot": [
+      "pstestrg4559"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "35fa7461-d48a-4053-9aa2-56c014495e89"
+  }
+}
