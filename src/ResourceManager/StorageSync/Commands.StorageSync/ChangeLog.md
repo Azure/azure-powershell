@@ -19,6 +19,8 @@
 -->
 
 ## Current Release
+
+## Version 0.1.0
 * Add Azure File Sync evaluation cmdlet
     - Invoke-AzureRmStorageSyncCompatibilityCheck
 
