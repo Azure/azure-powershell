@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             Certificate = certificate;
         }
 
-        public IRenewableToken Authenticate(
+        public IAccessToken Authenticate(
             IAzureAccount account,
             IAzureEnvironment environment,
             string tenant,
@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return token;
         }
 
-        public IRenewableToken Authenticate(
+        public IAccessToken Authenticate(
             IAzureAccount account,
             IAzureEnvironment environment,
             string tenant,

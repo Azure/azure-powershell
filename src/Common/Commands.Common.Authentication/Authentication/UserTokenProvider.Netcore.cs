@@ -27,13 +27,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// tokens from Azure Active Directory for user
     /// credentials.
     /// </summary>
-    internal class UserTokenProvider : IRenewableTokenProvider
+    internal class UserTokenProvider : ITokenProvider
     {
         public UserTokenProvider()
         {
         }
 
-        public IRenewableToken GetAccessToken(
+        public IAccessToken GetAccessToken(
             AdalConfiguration config,
             string promptBehavior,
             Action<string> promptAction,

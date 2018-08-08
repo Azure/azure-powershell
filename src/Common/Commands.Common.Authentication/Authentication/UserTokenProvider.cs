@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// tokens from Azure Active Directory for user
     /// credentials.
     /// </summary>
-    internal class UserTokenProvider : IRenewableTokenProvider
+    internal class UserTokenProvider : ITokenProvider
     {
         private readonly IWin32Window parentWindow;
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             this.parentWindow = parentWindow;
         }
 
-        public IRenewableToken GetAccessToken(
+        public IAccessToken GetAccessToken(
             AdalConfiguration config,
             string promptBehavior,
             Action<string> promptAction,
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             public DateTimeOffset ExpiresOn { get { return AuthResult.ExpiresOn; } }
         }
 
-        public IRenewableToken GetAccessTokenWithCertificate(
+        public IAccessToken GetAccessTokenWithCertificate(
             AdalConfiguration config,
             string clientId,
             string certificate,

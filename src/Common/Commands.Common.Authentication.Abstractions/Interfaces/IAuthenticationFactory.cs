@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="tokenCache">Token Cache</param>
         /// <param name="resourceId">Optional, the AD resource id</param>
         /// <returns></returns>
-        IRenewableToken Authenticate(
+        IAccessToken Authenticate(
             IAzureAccount account,
             IAzureEnvironment environment,
             string tenant,
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <param name="promptAction">The prompt action used in DeviceFlow authentication</param>
         /// <param name="resourceId">Optional, the AD resource id</param>
         /// <returns></returns>
-        IRenewableToken Authenticate(
+        IAccessToken Authenticate(
             IAzureAccount account,
             IAzureEnvironment environment,
             string tenant,
