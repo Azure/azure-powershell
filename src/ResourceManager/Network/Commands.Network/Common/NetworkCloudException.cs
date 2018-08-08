@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network.Common
                     sb.AppendLine().AppendFormat("ErrorCode: {0}", errorReturned.Error.Code);
                 }
 
-                if (errorReturned.Error.Code != null)
+                if (errorReturned.Error.Target != null)
                 {
                     sb.AppendLine().AppendFormat("Target: {0}", errorReturned.Error.Target);
                 }
