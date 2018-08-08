@@ -8,9 +8,7 @@
   "LICENSE.txt": [],
   "README.md": [],
   "appveyor.yml": [],
-  "src/Common/Commands.Common.Authentication.Test/": [
-    ".\\src\\Common\\Commands.Common.Authentication.Test\\bin\\Debug\\Microsoft.Azure.Commands.Common.Authentication.Test.dll"
-  ],
+  "src/Common/Commands.Common.Authentication.Test/": [],
   "src/ResourceManager/Aks/": [
     ".\\src\\ResourceManager\\Aks\\Commands.Aks.Test\\bin\\Debug\\Microsoft.Azure.Commands.Aks.Test.dll"
   ],
