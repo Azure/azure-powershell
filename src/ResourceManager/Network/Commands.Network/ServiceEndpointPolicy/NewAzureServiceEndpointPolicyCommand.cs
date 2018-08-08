@@ -14,15 +14,12 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Management.Automation;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using MNM = Microsoft.Azure.Management.Network.Models;
+    using Management.Network;
 
     [Cmdlet(VerbsCommon.New, "AzureRmServiceEndpointPolicy", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicy))]
     public class NewAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
@@ -91,7 +88,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var  serviceEndpointPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ServiceEndpointPolicy>(serviceEndpointPolicy);
 
-            this.ServiceEndpointPolicyClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, serviceEndpointPolicyModel).GetAwaiter().GetResult();
+            this.ServiceEndpointPolicyClient.CreateOrUpdate(this.ResourceGroupName, this.Name, serviceEndpointPolicyModel);
 
             var getServiceEndpointPolicy = this.GetServiceEndpointPolicy(this.ResourceGroupName, this.Name);
 

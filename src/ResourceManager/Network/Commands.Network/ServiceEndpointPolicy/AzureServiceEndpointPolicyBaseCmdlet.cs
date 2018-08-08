@@ -16,10 +16,11 @@
 namespace Microsoft.Azure.Commands.Network
 {
     using Microsoft.Azure.Commands.Network.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using System.Net;
     using Microsoft.Azure.Management.Network;
     using Microsoft.Azure.Management.Network.Models;
+    using System.Collections.Generic;
+    using Microsoft.Rest.Azure;
 
     public abstract class ServiceEndpointPolicyBaseCmdlet : NetworkBaseCmdlet
     {
@@ -59,6 +60,21 @@ namespace Microsoft.Azure.Commands.Network
             pSServiceEndpointPolicy.ResourceGroupName = resourceGroupName;
 
             return pSServiceEndpointPolicy;
+        }
+
+        public IEnumerable<PSServiceEndpointPolicy> ListServiceEndpointPolicies(string resourceGroupName)
+        {
+            var serviceEndpointPolicies = this.ServiceEndpointPolicyClient.ListByResourceGroup(resourceGroupName);
+
+            List<PSServiceEndpointPolicy> psserviceEndpointPolicies = new List<PSServiceEndpointPolicy>();
+            foreach (var policy in serviceEndpointPolicies)
+            {
+                var pSServiceEndpointPolicy = ToServiceEndpointPolicy(policy);
+                pSServiceEndpointPolicy.ResourceGroupName = resourceGroupName;
+                psserviceEndpointPolicies.Add(pSServiceEndpointPolicy);
+            }
+            
+            return psserviceEndpointPolicies;
         }
 
         public PSServiceEndpointPolicy ToServiceEndpointPolicy(ServiceEndpointPolicy serviceEndpointPolicy)

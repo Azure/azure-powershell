@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.Network
     using System;
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
+    using Management.Network;
 
     [Cmdlet(VerbsCommon.Set, "AzureRmServiceEndpointPolicy"), OutputType(typeof(PSServiceEndpointPolicy))]
     public class SetAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var serviceEndpointPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ServiceEndpointPolicy>(this.ServiceEndpointPolicy);
 
-            this.ServiceEndpointPolicyClient.CreateOrUpdateWithHttpMessagesAsync(this.ServiceEndpointPolicy.ResourceGroupName, this.ServiceEndpointPolicy.Name, serviceEndpointPolicyModel);
+            this.ServiceEndpointPolicyClient.CreateOrUpdate(this.ServiceEndpointPolicy.ResourceGroupName, this.ServiceEndpointPolicy.Name, serviceEndpointPolicyModel);
 
             var getServiceEndpointPolicy = this.GetServiceEndpointPolicy(this.ServiceEndpointPolicy.ResourceGroupName, this.ServiceEndpointPolicy.Name);
 

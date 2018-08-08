@@ -15,13 +15,19 @@
 namespace Microsoft.Azure.Commands.Network
 {
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Management.Network;
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmServiceEndpointPolicy", SupportsShouldProcess = true)]
     public class RemoveAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "RemoveByNameParameterSet",
             HelpMessage = "The name of the service endpoint policy")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -29,10 +35,28 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "RemoveByNameParameterSet",
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "DeleteByResourceIdParameterSet")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = "DeleteByInputObjectParameterSet")]
+        [ValidateNotNullOrEmpty]
+        public PSServiceEndpointPolicy InputObject
+        {
+            get; set;
+        }
 
         [Parameter(
             Mandatory = false,
@@ -44,6 +68,19 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
+            }
+
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
             base.Execute();
             ConfirmAction(
                 Force.IsPresent,
@@ -52,13 +89,12 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    this.ServiceEndpointPolicyClient.DeleteWithHttpMessagesAsync(this.ResourceGroupName, this.Name);
+                    this.ServiceEndpointPolicyClient.Delete(this.ResourceGroupName, this.Name);
                     if (PassThru)
                     {
                         WriteObject(true);
                     }
                 });
-
         }
     }
 }

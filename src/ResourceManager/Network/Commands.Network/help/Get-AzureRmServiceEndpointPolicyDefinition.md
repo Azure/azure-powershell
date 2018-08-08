@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermserviceendpointpolicydefinition
 schema: 2.0.0
 ---
 
@@ -18,16 +18,15 @@ Get-AzureRmServiceEndpointPolicyDefinition [-Name <String>] -ServiceEndpointPoli
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmServiceEndpointPolicyDefinition** cmdlet gets a service endpoint policy definition.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get a specified service endpoint policy
 ```
+$policydef= Get-AzureRmServiceEndpointPolicyDefinition -Name "ServiceEndpointPolicyDefinition1"
 
-{{ Add example description here }}
+This command gets the service endpoint policy definition named ServiceEndpointPolicyDefinition1 stores it in the $policydef variable.
 
 ## PARAMETERS
 
