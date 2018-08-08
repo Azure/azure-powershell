@@ -21,6 +21,8 @@
     <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Azure/azure-powershell-common</PackageProjectUrl>
     <PackageOutputPath>$(ProjectDir)..\..\artifacts\Package\$(Configuration)</PackageOutputPath>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <ContentTargetFolders>tools</ContentTargetFolders>
     <PackageVersion>1.0.0-preview</PackageVersion>
   </PropertyGroup>
 
@@ -43,9 +45,11 @@
 
   <ItemGroup>
     <Compile Remove="Adapters\**" />
-    <Content Remove="Adapters\**" />
     <EmbeddedResource Remove="Adapters\**" />
     <None Remove="Adapters\**" />
+    <Content Include="Adapters\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

@@ -13,4 +13,8 @@
     <copyright>Copyright © Microsoft Corporation</copyright>
     <tags>azure powershell scenariotest</tags>
   </metadata>
+    <files>
+    <file src="Assert.ps1" target="tools" />
+    <file src="Common.ps1" target="tools" />
+  </files>
 </package>
