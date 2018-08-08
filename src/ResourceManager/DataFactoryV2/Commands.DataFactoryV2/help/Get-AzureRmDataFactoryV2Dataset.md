@@ -26,7 +26,7 @@ Get-AzureRmDataFactoryV2Dataset [[-Name] <String>] [-DataFactory] <PSDataFactory
 
 ### ByResourceId
 ```
-Get-AzureRmDataFactoryV2Dataset -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmDataFactoryV2Dataset [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -81,11 +81,10 @@ This command gets information about the dataset named DAWikipediaClickEvents in 
 Specifies a PSDataFactory object.
 This cmdlet gets datasets that belong to the data factory that this parameter specifies.
 
-
 ```yaml
-Type: PSDataFactory
+Type: Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
 Parameter Sets: ByFactoryObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -99,9 +98,9 @@ Specifies the name of a data factory.
 This cmdlet gets datasets that belong to the data factory that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -114,7 +113,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -129,7 +128,7 @@ Accept wildcard characters: False
 Specifies the name of the dataset about which to get information.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName, ByFactoryObject
 Aliases: DatasetName
 
@@ -145,9 +144,9 @@ Specifies the name of an Azure resource group.
 This cmdlet gets datasets that belong to the group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -160,12 +159,12 @@ Accept wildcard characters: False
 The Azure resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
-Aliases: 
+Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -177,7 +176,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: DataFactoryName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
+
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
+Parameters: DataFactory (ByValue)
 
 ## OUTPUTS
 

@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 0.9.7
+* Updated all help files to include full parameter types and correct input/output types.
 
 ## Version 0.9.6
 * Update examples for CognitiveServices cmdlets
@@ -44,7 +48,7 @@
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
-    
+
 ## Version 0.8.7
 
 ## Version 0.8.6

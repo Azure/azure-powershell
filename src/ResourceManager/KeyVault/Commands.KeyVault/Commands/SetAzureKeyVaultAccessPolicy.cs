@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectForVault,
             HelpMessage = "Key Vault Object")]
         [ValidateNotNullOrEmpty]
-        public PSKeyVault InputObject { get; set; }
+        public PSKeyVaultIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// Vault ResourceId
@@ -475,6 +475,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
                 VaultName = resourceIdentifier.ResourceName;
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
             if (ShouldProcess(VaultName, Properties.Resources.SetVaultAccessPolicy))

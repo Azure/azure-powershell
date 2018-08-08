@@ -28,14 +28,11 @@ Stop-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
 ## DESCRIPTION
 The **Stop-AzureRmResourceGroupDeployment** cmdlet cancels an Azure resource group deployment that has started but not completed.
 To stop a deployment, the deployment must have an incomplete provisioning state, such as Provisioning, and not a completed state, such as Provisioned or Failed.
-
 An Azure resource is a user-managed entity, such as a website, database, or database server.
 A resource group is a collection of resources that are deployed as a unit.
 To deploy a resource group, use the New-AzureRmResourceGroupDeployment cmdlet.
-
 The New-AzureRmResource cmdlet creates a new resource, but it does not trigger a resource group deployment operation that this cmdlet can stop.
 This cmdlet stops only one running deployment.
-
 Use the *Name* parameter to stop a specific deployment.
 If you omit the *Name* parameter, **Stop-AzureRmResourceGroupDeployment** searches for a running deployment and stops it.
 If the cmdlet finds more than one running deployment, the command fails.
@@ -68,7 +65,7 @@ Specifies the API version that is supported by the resource Provider.
 You can specify a different version than the default version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,7 +95,7 @@ Accept wildcard characters: False
 Specifies the ID of the resource group deployment to stop.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StopByResourceGroupDeploymentId
 Aliases: DeploymentId, ResourceId
 
@@ -111,13 +108,12 @@ Accept wildcard characters: False
 
 ### -Name
 Specifies the name of the resource group deployment to stop.
-
 If you do not specify this parameter, this cmdlet searches for a running deployment in the resource group and stops it.
 If it finds more than one running deployment, the command fails.
 To get the deployment name, use the Get-AzureRmResourceGroupDeployment cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StopByResourceGroupDeploymentName
 Aliases: DeploymentName
 
@@ -132,7 +128,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +144,7 @@ Specifies the name of the resource group.
 This cmdlet stops the deployment of the resource group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: StopByResourceGroupDeploymentName
 Aliases:
 
@@ -163,7 +159,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -179,7 +175,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -199,7 +195,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Boolean
+### System.Boolean
 
 ## NOTES
 

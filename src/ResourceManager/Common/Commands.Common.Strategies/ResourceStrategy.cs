@@ -29,11 +29,18 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> CreateOrUpdateAsync
         { get; }
 
+        public Func<TModel, bool> EvaluatePreexistingConfiguration { get; }
+
         public Property<TModel, string> Location { get; }
 
         public Func<TModel, int> CreateTime { get; }
 
         public bool CompulsoryLocation { get; }
+
+        public bool DefaultEvaluator(TModel configToCompare)
+        {
+            return true;
+        }
 
         public ResourceStrategy(
             ResourceType type,
@@ -41,7 +48,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Property<TModel, string> location,
             Func<TModel, int> createTime,
-            bool compulsoryLocation)
+            bool compulsoryLocation,
+            Func<TModel, bool> evaluatePreexistingConfiguration = null
+            )
         {
             Type = type;
             GetAsync = getAsync;
@@ -49,6 +58,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Location = location;
             CreateTime = createTime;
             CompulsoryLocation = compulsoryLocation;
+            EvaluatePreexistingConfiguration = evaluatePreexistingConfiguration ?? DefaultEvaluator;
         }
     }
 
@@ -62,7 +72,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Func<TModel, string> getLocation,
             Action<TModel, string> setLocation,
             Func<TModel, int> createTime,
-            bool compulsoryLocation)
+            bool compulsoryLocation,
+            Func<TModel, bool> evaluatePreexistingConfiguration = null)
             where TModel : class
             where TClient : ServiceClient<TClient>
         {
@@ -73,7 +84,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 (client, p) => createOrUpdateAsync(toOperations(client), p),
                 Property.Create(getLocation, setLocation),
                 createTime,
-                compulsoryLocation);
+                compulsoryLocation,
+                evaluatePreexistingConfiguration);
         }
     }
 }

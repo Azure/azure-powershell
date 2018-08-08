@@ -18,13 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 5.1.1
+* Updated all help files to include full parameter types and correct input/output types.
 
 ## Version 5.1.0
 * Add support for Catalog ACLs through the following commands:
     - Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry
     - Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry
     - Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry
-* Fixed formatting of OutputType in help files 
+* Fixed formatting of OutputType in help files
 
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
@@ -96,7 +100,7 @@
     - Get-AzureRMDataLakeAnalyticsJobRecurrence
     - Get-AzureRMDataLakeAnalyticsJobPipeline
 * Updated the token audience for job and catalog APIs to use the correct Data Lake specific audience instead of the Azure Resource audience.
-    
+
 ## Version 3.1.0
 
 ## Version 3.0.1
