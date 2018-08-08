@@ -133,13 +133,13 @@ function New-ModulePsm1 {
             {
                 $template = $template -replace "%ALIASMAPPING%", "@{}"
             }
+
+            Add-PSM1Dependency -Path $manifestPath
         }
 
         Write-Host "Writing psm1 manifest to $templateOutputPath"
         $template | Out-File -FilePath $templateOutputPath -Force
         $file = Get-Item -Path $templateOutputPath
-
-        Add-PSM1Dependency -Path $manifestPath
     }
 }
 
