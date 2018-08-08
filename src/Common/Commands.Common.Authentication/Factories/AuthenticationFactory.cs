@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             TokenProvider = new AdalTokenProvider();
         }
 
-        public IRenewableTokenProvider TokenProvider { get; set; }
+        public ITokenProvider TokenProvider { get; set; }
 
-        public IRenewableToken Authenticate(
+        public IAccessToken Authenticate(
             IAzureAccount account,
             IAzureEnvironment environment,
             string tenant,
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             IAzureTokenCache tokenCache,
             string resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
-            IRenewableToken token;
+            IAccessToken token;
             var cache = tokenCache as TokenCache;
             if (cache == null)
             {
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return token;
         }
 
-        public IRenewableToken Authenticate(
+        public IAccessToken Authenticate(
             IAzureAccount account,
             IAzureEnvironment environment,
             string tenant,
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
-        private IRenewableToken GetManagedServiceToken(IAzureAccount account, IAzureEnvironment environment, string tenant, string resourceId)
+        private IAccessToken GetManagedServiceToken(IAzureAccount account, IAzureEnvironment environment, string tenant, string resourceId)
         {
             if (environment == null)
             {

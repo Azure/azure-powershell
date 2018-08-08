@@ -27,11 +27,11 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    internal class ServicePrincipalTokenProvider : IRenewableTokenProvider
+    internal class ServicePrincipalTokenProvider : ITokenProvider
     {
         private static readonly TimeSpan expirationThreshold = TimeSpan.FromMinutes(5);
 
-        public IRenewableToken GetAccessToken(
+        public IAccessToken GetAccessToken(
             AdalConfiguration config,
             string promptBehavior,
 			Action<string> promptAction,
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return new ServicePrincipalAccessToken(config, AcquireTokenWithSecret(config, userId, password), this.RenewWithSecret, userId);
         }
 
-        public IRenewableToken GetAccessTokenWithCertificate(
+        public IAccessToken GetAccessTokenWithCertificate(
             AdalConfiguration config,
             string clientId,
             string certificateThumbprint,

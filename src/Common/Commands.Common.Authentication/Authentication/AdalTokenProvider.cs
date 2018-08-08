@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// A token provider that uses ADAL to retrieve
     /// tokens from Azure Active Directory
     /// </summary>
-    public class AdalTokenProvider : IRenewableTokenProvider
+    public class AdalTokenProvider : ITokenProvider
     {
-        private readonly IRenewableTokenProvider userTokenProvider;
-        private readonly IRenewableTokenProvider servicePrincipalTokenProvider;
+        private readonly ITokenProvider userTokenProvider;
+        private readonly ITokenProvider servicePrincipalTokenProvider;
 #if !NETSTANDARD
         public AdalTokenProvider()
             : this(new ConsoleParentWindow())
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             this.servicePrincipalTokenProvider = new ServicePrincipalTokenProvider();
         }
 
-        public IRenewableToken GetAccessToken(
+        public IAccessToken GetAccessToken(
             AdalConfiguration config,
             string promptBehavior,
             Action<string> promptAction,
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        public IRenewableToken GetAccessTokenWithCertificate(
+        public IAccessToken GetAccessTokenWithCertificate(
             AdalConfiguration config,
             string clientId,
             string certificate,
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             this.servicePrincipalTokenProvider = new ServicePrincipalTokenProvider();
         }
 		
-		public IRenewableToken GetAccessToken(
+		public IAccessToken GetAccessToken(
             AdalConfiguration config,
             string promptBehavior,
             Action<string> promptAction,
