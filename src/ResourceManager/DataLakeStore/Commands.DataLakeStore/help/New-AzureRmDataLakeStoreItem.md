@@ -189,24 +189,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
-Parameters: Path (ByPropertyName)
 
 ### System.Object
-Parameters: Value (ByPropertyName, ByValue)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.FileSystemCmdletProviderEncoding
-Parameters: Encoding (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Folder (ByPropertyName), Force (ByPropertyName)
 
 ## OUTPUTS
 
 ### System.String
-The full path to the created file or folder.
 
 ## NOTES
 

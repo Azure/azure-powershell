@@ -145,18 +145,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
-Parameters: Destination (ByPropertyName), Path (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Force (ByPropertyName)
 
 ## OUTPUTS
 
 ### System.String
-The full path to the moved file or folder.
 
 ## NOTES
 

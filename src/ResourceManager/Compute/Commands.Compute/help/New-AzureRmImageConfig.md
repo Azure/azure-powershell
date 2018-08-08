@@ -187,16 +187,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Location (ByPropertyName), SourceVirtualMachineId (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
 ### Microsoft.Azure.Management.Compute.Models.ImageOSDisk
-Parameters: OsDisk (ByPropertyName)
 
 ### Microsoft.Azure.Management.Compute.Models.ImageDataDisk[]
-Parameters: DataDisk (ByPropertyName)
 
 ## OUTPUTS
 

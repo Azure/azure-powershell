@@ -100,18 +100,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
-Parameters: Path (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Owner
-Parameters: Type (ByPropertyName)
 
 ## OUTPUTS
 
 ### System.String
-The owner of the specified item.
 
 ## NOTES
 
