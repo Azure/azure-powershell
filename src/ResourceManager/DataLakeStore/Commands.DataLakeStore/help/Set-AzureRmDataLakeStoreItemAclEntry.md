@@ -306,6 +306,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce
+If PassThru is specified, will return the resulting list of ACL entries.
 
 ## NOTES
 

@@ -131,7 +131,7 @@ The name of the context
 Type: System.String
 Parameter Sets: RenameByName
 Aliases:
-Accepted values: Node CLI Test - 2c224e7e-3ef5-431d-a57b-e71f4662e3a6, VS Telemetry - Data Catalog - a7bb576c-291e-4553-965a-1c588b3f29d8, Azure SDK Powershell Test - Manual - 9e223dbe-3399-4e19-88eb-0975f02ac87f, Core-ES-BLD - 54e18c35-3863-4a17-8e52-b5aa1e65847e, Cosmos_WDG_Core_BnB_100348 - dae41bd3-9db4-4b9b-943e-832b57cac828, Scottph Internal Consumption - 8bc48661-1801-4b7a-8ca1-6a3cadfb4870, DDXLABDTL-01 - e2dc3810-f8e5-4337-a41c-8b9ec7d954ee, Azure SDK Powershell Test - c9cbd920-c00c-427c-852b-8aaf38badaeb, Pay-As-You-Go - 92ad8d84-3287-4990-b83d-5e983832f7ce, Azure SDK Infrastructure - 6b085460-5f21-477e-ba44-1035046e9101, DevDiv Key Vault - bd62906c-0a81-43c3-a2f8-126e4cf66ada, Key Vault Engineering Subscription - 33f39d49-6173-49bf-9789-db5548ee6d73
+Accepted values: Default
 
 Required: True
 Position: 0

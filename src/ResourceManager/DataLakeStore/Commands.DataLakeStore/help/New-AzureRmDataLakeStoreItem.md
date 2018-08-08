@@ -201,6 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.String
+The full path to the created file or folder.
 
 ## NOTES
 
