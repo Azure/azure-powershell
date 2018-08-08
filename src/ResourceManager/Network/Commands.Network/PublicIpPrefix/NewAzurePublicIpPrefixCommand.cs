@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -120,7 +120,10 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     var publicIpPrefix = CreatePublicIpPrefix();
-                    WriteObject(publicIpPrefix);
+                    if (publicIpPrefix != null)
+                    {
+                        WriteObject(publicIpPrefix);
+                    }
                 },
                 () => present);
         }
@@ -130,7 +133,12 @@ namespace Microsoft.Azure.Commands.Network
             var publicIpPrefix = new PSPublicIpPrefix();
             publicIpPrefix.Name = this.Name;
             publicIpPrefix.Location = this.Location;
-            publicIpPrefix.PublicIpAddressVersion = this.IpAddressVersion;
+            publicIpPrefix.PublicIpAddressVersion = MNM.IPVersion.IPv4;
+            if (!string.IsNullOrEmpty(this.IpAddressVersion))
+            {
+                publicIpPrefix.PublicIpAddressVersion = this.IpAddressVersion;
+            }
+
             publicIpPrefix.Zones = this.Zone;
             publicIpPrefix.PrefixLength = this.PrefixLength;
 
@@ -150,11 +158,16 @@ namespace Microsoft.Azure.Commands.Network
 
             theModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-            this.PublicIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, theModel);
+            if (this.ShouldProcess(this.Name, $"Creating a new PublicIpPrefix in ResourceGroup {this.ResourceGroupName} with Name {this.Name}"))
+            {
+                this.PublicIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, theModel);
 
-            var getPublicIpPrefix = this.GetPublicIpPrefix(this.ResourceGroupName, this.Name);
+                var getPublicIpPrefix = this.GetPublicIpPrefix(this.ResourceGroupName, this.Name);
 
-            return getPublicIpPrefix;
+                return getPublicIpPrefix;
+            }
+
+            return null;
         }
     }
 }

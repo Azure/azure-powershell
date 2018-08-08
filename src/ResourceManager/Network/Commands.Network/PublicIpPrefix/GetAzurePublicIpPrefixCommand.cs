@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Network.Models;
     using Microsoft.Rest.Azure;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmPublicIpPrefix", DefaultParameterSetName = "NoExpandStandAloneIp"), OutputType(typeof(PSPublicIpPrefix))]
     public class GetAzurePublicIpPrefixCommand : PublicIpPrefixBaseCmdlet
@@ -31,45 +33,42 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = "NoExpandStandAloneIp")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.",
-            ParameterSetName = "ExpandStandAloneIp")]
+            ParameterSetName = "GetByNameParameterSet")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.",
-            ParameterSetName = "NoExpandStandAloneIp")]
-        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = "ExpandStandAloneIp")]
+            ParameterSetName = "GetByNameParameterSet")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource reference to be expanded.",
-            ParameterSetName = "ExpandStandAloneIp")]
+            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, 
+            ParameterSetName = "GetByResourceIdParameterSet")]
         [ValidateNotNullOrEmpty]
-        public string ExpandResource { get; set; }
+        public virtual string ResourceId { get; set; }
 
         public override void Execute()
         {
             base.Execute();
+
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
             if (!string.IsNullOrEmpty(this.Name))
             {
                 PSPublicIpPrefix publicIpPrefix;
 
-                publicIpPrefix = this.GetPublicIpPrefix(this.ResourceGroupName, this.Name, this.ExpandResource);
+                publicIpPrefix = this.GetPublicIpPrefix(this.ResourceGroupName, this.Name);
 
                 WriteObject(publicIpPrefix);
             }
