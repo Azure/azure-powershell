@@ -213,10 +213,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Force (ByPropertyName), RecoverConfiguration (ByPropertyName)
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), Slot (ByPropertyName)
 
 ### Microsoft.Azure.Management.WebSites.Models.Site
 Parameters: WebApp (ByValue)

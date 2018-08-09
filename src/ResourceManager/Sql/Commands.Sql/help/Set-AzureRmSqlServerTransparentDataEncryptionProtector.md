@@ -189,10 +189,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType
-Parameters: Type (ByPropertyName)
 
 ### System.String
-Parameters: KeyId (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
