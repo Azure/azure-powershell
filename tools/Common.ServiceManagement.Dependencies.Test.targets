@@ -50,13 +50,13 @@
     </Reference>
   </ItemGroup>
   <PropertyGroup>
-    <ScenarioTestPs1Path>$(LibraryRoot)\src\Common\Commands.ScenarioTests.Common\</ScenarioTestPs1Path>
+    <ScenarioTestToolsPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.1.0.0-preview\tools\</ScenarioTestToolsPath>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="$(ScenarioTestPs1Path)Assert.ps1">
+    <None Include="$(ScenarioTestToolsPath)Assert.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="$(ScenarioTestPs1Path)Common.ps1">
+    <None Include="$(ScenarioTestToolsPath)Common.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

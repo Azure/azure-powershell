@@ -153,4 +153,7 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
+  <PropertyGroup>
+    <StorageToolsPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Storage.1.0.0-preview\tools\</StorageToolsPath>
+  </PropertyGroup>
  </Project>

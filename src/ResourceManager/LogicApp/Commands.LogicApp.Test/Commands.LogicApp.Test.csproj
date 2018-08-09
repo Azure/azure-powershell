@@ -64,7 +64,7 @@
     <Compile Include="UnitTests\LogicAppUnitTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(ScenarioTestPs1Path)AzureRM.Resources.ps1">
+    <None Include="$(ScenarioTestToolsPath)AzureRM.Resources.ps1">
       <Link>ScenarioTests\AzureRM.Resources.ps1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

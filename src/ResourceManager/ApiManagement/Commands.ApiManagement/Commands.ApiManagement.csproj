@@ -76,10 +76,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">
       <Link>AzureContextAdapterExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs">
       <Link>AzureStorageContext.cs</Link>
     </Compile>
     <Compile Include="ApiManagementClient.cs" />
