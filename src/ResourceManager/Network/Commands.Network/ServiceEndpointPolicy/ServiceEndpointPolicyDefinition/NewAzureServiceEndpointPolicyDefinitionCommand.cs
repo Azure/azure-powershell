@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmServiceEndpointPolicyDefinition", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSServiceEndpointPolicyDefinition))]
+    [Cmdlet(VerbsCommon.New, "AzureRmServiceEndpointPolicyDefinition", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicyDefinition))]
     public class NewAzureServiceEndpointPolicyDefinitionCommand : AzureServiceEndpointPolicyDefinitionBase
     {
         [Parameter(
@@ -30,20 +30,23 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            base.Execute();
-
-            PSServiceEndpointPolicyDefinition serviceEndpointPolicyDefinition = new PSServiceEndpointPolicyDefinition();
-            serviceEndpointPolicyDefinition.Name = this.Name;
-            serviceEndpointPolicyDefinition.Description = this.Description;
-            serviceEndpointPolicyDefinition.Service = this.Service;
-            serviceEndpointPolicyDefinition.serviceResources = new List<string>();
-
-            foreach (string resource in this.ServiceResource)
+            if (this.ShouldProcess(Name, VerbsLifecycle.Restart))
             {
-                serviceEndpointPolicyDefinition.serviceResources.Add(resource);
-            }
+                base.Execute();
 
-            WriteObject(serviceEndpointPolicyDefinition);
+                PSServiceEndpointPolicyDefinition serviceEndpointPolicyDefinition = new PSServiceEndpointPolicyDefinition();
+                serviceEndpointPolicyDefinition.Name = this.Name;
+                serviceEndpointPolicyDefinition.Description = this.Description;
+                serviceEndpointPolicyDefinition.Service = this.Service;
+                serviceEndpointPolicyDefinition.serviceResources = new List<string>();
+
+                foreach (string resource in this.ServiceResource)
+                {
+                    serviceEndpointPolicyDefinition.serviceResources.Add(resource);
+                }
+
+                WriteObject(serviceEndpointPolicyDefinition);
+            }
         }
 
     }

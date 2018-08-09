@@ -336,6 +336,7 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Remove-AzureRmServiceEndpointPolicyDefinition', 
                'Get-AzureRmServiceEndpointPolicyDefinition',
                'Set-AzureRmServiceEndpointPolicyDefinition',
+               'Add-AzureRmServiceEndpointPolicyDefinition',
                'Set-AzureRmServiceEndpointPolicy'
 
 # Variables to export from this module

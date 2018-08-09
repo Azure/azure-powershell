@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Management.Network;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmServiceEndpointPolicy", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmServiceEndpointPolicy", SupportsShouldProcess = true, DefaultParameterSetName = "RemoveByNameParameterSet"), OutputType(typeof(bool))]
     public class RemoveAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
     {
         [Parameter(

@@ -20,47 +20,50 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmServiceEndpointPolicyDefinition", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSServiceEndpointPolicy))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmServiceEndpointPolicyDefinition", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicy))]
     public class SetAzureServiceEndpointPolicyDefinitionCommand : AzureServiceEndpointPolicyDefinitionBase
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the rule")]
+            HelpMessage = "The name of the policy definition")]
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The NetworkSecurityGroup")]
+            HelpMessage = "The ServiceEndpointPolicy")]
         public PSServiceEndpointPolicy ServiceEndpointPolicy { get; set; }
 
         public override void Execute()
         {
-            base.Execute();
-
-            // Verify if the subnet exists in the NetworkSecurityGroup
-            var serviceEndpointPolicyDefinition = this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinition.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-            if (serviceEndpointPolicyDefinition != null)
+            if (this.ShouldProcess(Name, VerbsLifecycle.Restart))
             {
-                throw new ArgumentException("serviceEndpointPolicyDefinition with the specified name already exists");
+                base.Execute();
+
+                // Verify if the subnet exists in the NetworkSecurityGroup
+                var serviceEndpointPolicyDefinition = this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinitions.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+                if (serviceEndpointPolicyDefinition != null)
+                {
+                    throw new ArgumentException("serviceEndpointPolicyDefinition with the specified name already exists");
+                }
+
+                serviceEndpointPolicyDefinition = new PSServiceEndpointPolicyDefinition();
+                serviceEndpointPolicyDefinition.Name = this.Name;
+                serviceEndpointPolicyDefinition.Description = this.Description;
+                serviceEndpointPolicyDefinition.Service = this.Service;
+                serviceEndpointPolicyDefinition.serviceResources = new List<string>();
+
+                foreach (string resource in this.ServiceResource)
+                {
+                    serviceEndpointPolicyDefinition.serviceResources.Add(resource);
+                }
+
+                this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinitions.Add(serviceEndpointPolicyDefinition);
+
+                WriteObject(this.ServiceEndpointPolicy);
             }
-
-            serviceEndpointPolicyDefinition = new PSServiceEndpointPolicyDefinition();
-            serviceEndpointPolicyDefinition.Name = this.Name;
-            serviceEndpointPolicyDefinition.Description = this.Description;
-            serviceEndpointPolicyDefinition.Service = this.Service;
-            serviceEndpointPolicyDefinition.serviceResources = new List<string>();
-
-            foreach (string resource in this.ServiceResource)
-            {
-                serviceEndpointPolicyDefinition.serviceResources.Add(resource);
-            }
-
-            this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinition.Add(serviceEndpointPolicyDefinition);
-
-            WriteObject(this.ServiceEndpointPolicy);
         }
     }
 }

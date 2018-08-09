@@ -70,6 +70,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Endpoint Policies")]
-        public List<PSServiceEndpointPolicy> ServiceEndpointPolicies { get; set; }
+        public List<PSServiceEndpointPolicy> ServiceEndpointPolicy { get; set; }
     }
 }
