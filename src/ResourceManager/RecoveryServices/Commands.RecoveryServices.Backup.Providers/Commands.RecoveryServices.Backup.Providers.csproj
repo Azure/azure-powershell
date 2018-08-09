@@ -52,8 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureWorkloadProviderHelper.cs" />
     <Compile Include="IPsBackupProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\AzureFilesPsBackupBackupProvider.cs" />
     <Compile Include="Providers\AzureSqlPsBackupProvider.cs" />
     <Compile Include="Providers\DpmPsBackupProvider.cs" />
     <Compile Include="Providers\MabPsBackupProvider.cs" />

@@ -84,6 +84,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         DeleteBackupData,
         BackupManagementType,
         ExpiryDateTimeUTC,
+        AzureFileShareName,
+        StorageAccountName,
+        StorageAccountResourceGroupName,
     }
 
     public enum ProtectionCheckParams

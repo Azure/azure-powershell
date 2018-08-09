@@ -191,6 +191,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 sqlPolicyModel.RetentionPolicy =
                     PolicyHelpers.GetPSSimpleRetentionPolicy(azureSqlRetentionPolicy, null);
             }
+            else if (serviceClientResponse.Properties.GetType() ==
+                typeof(ServiceClientModel.AzureFileShareProtectionPolicy))
+            {
+                ServiceClientModel.AzureFileShareProtectionPolicy azureFileSharePolicy =
+                    (ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties;
+
+                if (azureFileSharePolicy.RetentionPolicy.GetType() !=
+                    typeof(ServiceClientModel.LongTermRetentionPolicy))
+                {
+                    Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
+                        azureFileSharePolicy.RetentionPolicy.GetType());
+                    Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                    return null;
+                }
+
+                policyModel = new AzureFileSharePolicy();
+                AzureFileSharePolicy fileSharePolicyModel = policyModel as AzureFileSharePolicy;
+                fileSharePolicyModel.WorkloadType = WorkloadType.AzureFiles;
+                fileSharePolicyModel.BackupManagementType = BackupManagementType.AzureStorage;
+
+                ServiceClientModel.LongTermRetentionPolicy azureFileShareRetentionPolicy =
+                    (ServiceClientModel.LongTermRetentionPolicy)azureFileSharePolicy.RetentionPolicy;
+                fileSharePolicyModel.RetentionPolicy =
+                    PolicyHelpers.GetPSLongTermRetentionPolicy(azureFileShareRetentionPolicy, null);
+            }
             else
             {
                 // we will enter this case when service supports new workload and customer 
