@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Cancel a running deployment.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, "AzureRmDeployment", SupportsShouldProcess = true,
-        DefaultParameterSetName = StopAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(void))]
+        DefaultParameterSetName = StopAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
     public class StopAzureDeploymentCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -56,6 +56,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             ValueFromPipeline = true, HelpMessage = "The deployment object.")]
         public PSDeployment InputObject { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var deploymentName = !string.IsNullOrEmpty(this.Name)
@@ -67,7 +70,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 this.Name,
                 () => ResourceManagerSdkClient.CancelDeploymentAtSubscriptionScope(deploymentName));
 
-            WriteObject(true);
+            if (this.PassThru.IsPresent)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

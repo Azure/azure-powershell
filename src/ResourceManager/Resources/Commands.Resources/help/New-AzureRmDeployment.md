@@ -155,12 +155,11 @@ The deployment debug log level.
 Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: RequestContent, ResponseContent, All, None
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -175,7 +174,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -192,7 +191,7 @@ Aliases: DeploymentName
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
