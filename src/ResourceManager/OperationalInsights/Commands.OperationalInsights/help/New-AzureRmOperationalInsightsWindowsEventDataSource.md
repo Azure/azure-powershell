@@ -224,7 +224,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: Workspace (ByValue)
 
 ### System.String
-Parameters: EventLogName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), WorkspaceName (ByPropertyName)
 
 ## OUTPUTS
 

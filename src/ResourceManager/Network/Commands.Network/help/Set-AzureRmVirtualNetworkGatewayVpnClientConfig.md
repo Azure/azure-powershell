@@ -174,10 +174,8 @@ Parameters: VirtualNetworkGateway (ByValue)
 ### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.String
-Parameters: RadiusServerAddress (ByPropertyName)
 
 ### System.Security.SecureString
-Parameters: RadiusServerSecret (ByPropertyName)
 
 ## OUTPUTS
 

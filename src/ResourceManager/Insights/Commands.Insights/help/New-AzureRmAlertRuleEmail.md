@@ -97,10 +97,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String[]
-Parameters: CustomEmail (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: SendToServiceOwner (ByPropertyName)
 
 ## OUTPUTS
 
