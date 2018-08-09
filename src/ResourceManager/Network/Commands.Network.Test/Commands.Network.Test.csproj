@@ -533,14 +533,15 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpStandardSku.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-<!-- AAI - Something needs to be done here but i dont understand what
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUDPublicIpPrefix.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpPrefixCRUD.json">
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpPrefixTests\TestPublicIpPrefixCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
--->
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpPrefixTests\TestPublicIpPrefixAllocatePublicIpAddress.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteTableTestsGenerated\TestRouteCRUDAllParameters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
