@@ -218,13 +218,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Int32
-Parameters: Lun (ByPropertyName)
 
 ### System.String
-Parameters: CreateOption (ByPropertyName), ManagedDiskId (ByPropertyName), Name (ByPropertyName), SourceImageUri (ByPropertyName), StorageAccountType (ByPropertyName), VhdUri (ByPropertyName)
 
 ### Microsoft.Azure.Management.Compute.Models.CachingTypes
-Parameters: Caching (ByPropertyName)
 
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
