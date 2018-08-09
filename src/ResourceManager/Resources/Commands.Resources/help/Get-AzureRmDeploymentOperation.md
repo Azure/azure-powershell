@@ -12,8 +12,15 @@ Get deployment operation
 
 ## SYNTAX
 
+### GetByDeploymentName (Default)
 ```
 Get-AzureRmDeploymentOperation -DeploymentName <String> [-OperationId <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetByDeploymentObject
+```
+Get-AzureRmDeploymentOperation -DeploymentObject <PSDeployment> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -80,13 +87,28 @@ The deployment name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GetByDeploymentName
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeploymentObject
+The deployment object.
+
+```yaml
+Type: PSDeployment
+Parameter Sets: GetByDeploymentObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -95,13 +117,13 @@ The deployment operation Id.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GetByDeploymentName
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -130,7 +152,7 @@ System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, Publ
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeploymentOperation
 
 ## NOTES
 

@@ -14,19 +14,19 @@ Removes a deployment and any associated operations
 
 ### RemoveByDeploymentName (Default)
 ```
-Remove-AzureRmDeployment [-Name] <String> [-AsJob] [-ApiVersion <String>] [-Pre]
+Remove-AzureRmDeployment [-Name] <String> [-AsJob] [-PassThru] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByDeploymentId
 ```
-Remove-AzureRmDeployment -Id <String> [-AsJob] [-ApiVersion <String>] [-Pre]
+Remove-AzureRmDeployment -Id <String> [-AsJob] [-PassThru] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByInputObject
 ```
-Remove-AzureRmDeployment -InputObject <PSDeployment> [-AsJob] [-ApiVersion <String>] [-Pre]
+Remove-AzureRmDeployment -InputObject <PSDeployment> [-AsJob] [-PassThru] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -138,6 +138,21 @@ Aliases: DeploymentName
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
