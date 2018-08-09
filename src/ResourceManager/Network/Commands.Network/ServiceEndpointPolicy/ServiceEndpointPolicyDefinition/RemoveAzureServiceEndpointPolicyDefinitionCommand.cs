@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmServiceEndpointPolicyDefinition"), OutputType(typeof(PSServiceEndpointPolicy))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmServiceEndpointPolicyDefinition", DefaultParameterSetName = "RemoveByNameParameterSet", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicy))]
     public class RemoveAzureServiceEndpointPolicyDefinitionCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -56,28 +56,31 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            base.Execute();
-
-            if (this.IsParameterBound(c => c.InputObject))
+            if (this.ShouldProcess(Name, VerbsLifecycle.Restart))
             {
-                this.Name = this.InputObject.Name;
+                base.Execute();
+
+                if (this.IsParameterBound(c => c.InputObject))
+                {
+                    this.Name = this.InputObject.Name;
+                }
+
+                if (this.IsParameterBound(c => c.ResourceId))
+                {
+                    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                    this.Name = resourceIdentifier.ResourceName;
+                }
+
+                // Verify if the rule exists in the NetworkSecurityGroup
+                var serviceEndpointPolicyDefinition = this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinitions.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+                if (serviceEndpointPolicyDefinition != null)
+                {
+                    this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinitions.Remove(serviceEndpointPolicyDefinition);
+                }
+
+                WriteObject(this.ServiceEndpointPolicy);
             }
-
-            if (this.IsParameterBound(c => c.ResourceId))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                this.Name = resourceIdentifier.ResourceName;
-            }
-
-            // Verify if the rule exists in the NetworkSecurityGroup
-            var serviceEndpointPolicyDefinition = this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinition.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-            if (serviceEndpointPolicyDefinition != null)
-            {
-                this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinition.Remove(serviceEndpointPolicyDefinition);
-            }
-
-            WriteObject(this.ServiceEndpointPolicy);
         }
     }
 }

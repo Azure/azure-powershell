@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "location.")]
         [ValidateNotNullOrEmpty]
+        [LocationCompleter("Microsoft.Network/connections")]
         public virtual string Location { get; set; }
 
         [Parameter(

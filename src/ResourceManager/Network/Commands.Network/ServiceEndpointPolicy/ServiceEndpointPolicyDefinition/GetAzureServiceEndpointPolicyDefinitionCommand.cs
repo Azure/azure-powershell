@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmServiceEndpointPolicyDefinition"), OutputType(typeof(PSServiceEndpointPolicyDefinition))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmServiceEndpointPolicyDefinition", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicyDefinition))]
     public class GetAzureServiceEndpointPolicyDefinitionCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -41,33 +41,32 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceId { get; set; }
 
-
-        [Parameter(Mandatory = false)]
-        public SwitchParameter DefaultRules { get; set; }
-
         public override void Execute()
         {
-            if (this.IsParameterBound(c => c.ResourceId))
+            if (this.ShouldProcess(Name, VerbsLifecycle.Restart))
             {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                this.Name = resourceIdentifier.ResourceName;
-            }
+                if (this.IsParameterBound(c => c.ResourceId))
+                {
+                    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                    this.Name = resourceIdentifier.ResourceName;
+                }
 
-            base.Execute();
-            var definitions =  this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinition;
+                base.Execute();
+                var definitions = this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinitions;
 
-            if (!string.IsNullOrEmpty(this.Name))
-            {
-                var definition =
-                    definitions.First(
-                        resource =>
-                            string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+                if (!string.IsNullOrEmpty(this.Name))
+                {
+                    var definition =
+                        definitions.First(
+                            resource =>
+                                string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-                WriteObject(definition);
-            }
-            else
-            {
-                WriteObject(definitions, true);
+                    WriteObject(definition);
+                }
+                else
+                {
+                    WriteObject(definitions, true);
+                }
             }
         }
     }

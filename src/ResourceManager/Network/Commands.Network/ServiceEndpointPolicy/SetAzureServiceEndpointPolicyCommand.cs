@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Network
     using MNM = Microsoft.Azure.Management.Network.Models;
     using Management.Network;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmServiceEndpointPolicy"), OutputType(typeof(PSServiceEndpointPolicy))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmServiceEndpointPolicy", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicy))]
     public class SetAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
     {
         [Parameter(
@@ -31,20 +31,23 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            base.Execute();
-            if (!this.IsServiceEndpointPolicyPresent(this.ServiceEndpointPolicy.ResourceGroupName, this.ServiceEndpointPolicy.Name))
+            if (this.ShouldProcess(ServiceEndpointPolicy.Name, VerbsLifecycle.Restart))
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                base.Execute();
+                if (!this.IsServiceEndpointPolicyPresent(this.ServiceEndpointPolicy.ResourceGroupName, this.ServiceEndpointPolicy.Name))
+                {
+                    throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                }
+
+                // Map to the sdk object
+                var serviceEndpointPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ServiceEndpointPolicy>(this.ServiceEndpointPolicy);
+
+                this.ServiceEndpointPolicyClient.CreateOrUpdate(this.ServiceEndpointPolicy.ResourceGroupName, this.ServiceEndpointPolicy.Name, serviceEndpointPolicyModel);
+
+                var getServiceEndpointPolicy = this.GetServiceEndpointPolicy(this.ServiceEndpointPolicy.ResourceGroupName, this.ServiceEndpointPolicy.Name);
+
+                WriteObject(getServiceEndpointPolicy);
             }
-
-            // Map to the sdk object
-            var serviceEndpointPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ServiceEndpointPolicy>(this.ServiceEndpointPolicy);
-
-            this.ServiceEndpointPolicyClient.CreateOrUpdate(this.ServiceEndpointPolicy.ResourceGroupName, this.ServiceEndpointPolicy.Name, serviceEndpointPolicyModel);
-
-            var getServiceEndpointPolicy = this.GetServiceEndpointPolicy(this.ServiceEndpointPolicy.ResourceGroupName, this.ServiceEndpointPolicy.Name);
-
-            WriteObject(getServiceEndpointPolicy);
         }
     }
 }

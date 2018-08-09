@@ -695,7 +695,16 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
         # Create the Virtual Network
         $serviceEndpointDefinition = New-AzureRmServiceEndpointPolicyDefinition -Name $serviceEndpointPolicyDefinitionName -Service $serviceEndpoint -ServiceResource $serviceEndpointPolicyDefinitionResourceName -Description $serviceEndpointPolicyDefinitionDescription;
         $serviceEndpointPolicy = New-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ServiceEndpointPolicyDefinition $serviceEndpointDefinition -ResourceGroupName $rgname -Location $rglocation;
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $serviceEndpoint -ServiceEndpointPolicies $serviceEndpointPolicy;
+
+        $getserviceEndpointPolicy = Get-AzureRmServiceEndpointPolicy -Name $serviceEndpointPolicyName -ResourceGroupName $rgname;
+
+        Assert-AreEqual $getserviceEndpointPolicy[0].Name $serviceEndpointPolicyName;
+        Assert-AreEqual $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].Service $serviceEndpoint;
+        Assert-AreEqual $serviceEndpointPolicyDefinitionName $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].Name;
+        Assert-AreEqual $serviceEndpointPolicyDefinitionDescription $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].Description;
+        Assert-AreEqual $serviceEndpointPolicyDefinitionResourceName $getserviceEndpointPolicy[0].ServiceEndpointPolicyDefinitions[0].ServiceResources[0];
+
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $serviceEndpoint -ServiceEndpointPolicy $serviceEndpointPolicy;
         New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet;
         $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname;
 
@@ -704,12 +713,9 @@ function Test-VirtualNetworkSubnetServiceEndpointPolicies
 
         $subnet = $vnet.Subnets[0];
         Assert-AreEqual $serviceEndpoint $subnet.serviceEndpoints[0].Service;
-        Assert-AreEqual $serviceEndpoint $subnet.serviceEndpointPolicies[0].ServiceEndpointPolicyDefinition.Service;
-        Assert-AreEqual $serviceEndpointPolicyDefinitionName $subnet.serviceEndpointPolicies[0].ServiceEndpointPolicyDefinition.Name;
-        Assert-AreEqual $serviceEndpointPolicyDefinitionDescription $subnet.serviceEndpointPolicies[0].ServiceEndpointPolicyDefinition.Description;
-        Assert-AreEqual $serviceEndpointPolicyDefinitionResourceName $subnet.serviceEndpointPolicies[0].ServiceEndpointPolicyDefinition.ServiceResource[0];
+        Assert-AreEqual $getserviceEndpointPolicy[0].Id $subnet.serviceEndpointPolicies[0].Id;
 
-        Set-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $null -ServiceEndpointPolicies $null;
+        Set-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet -AddressPrefix 10.0.1.0/24 -ServiceEndpoint $null -ServiceEndpointPolicy $null;
         $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet;
         $subnet = $vnet.Subnets[0];
 
