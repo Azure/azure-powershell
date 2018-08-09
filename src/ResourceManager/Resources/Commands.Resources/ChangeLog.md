@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.4.0
 * Support template deployment at subscription scope. Add new Cmdlets:
     - New-AzureRmDeployment
     - Get-AzureRmDeployment
