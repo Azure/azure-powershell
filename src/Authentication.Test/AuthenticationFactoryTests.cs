@@ -174,9 +174,10 @@ namespace Common.Authentication.Test
             };
             AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
             var authFactory = new AuthenticationFactory();
-            var token = authFactory.Authenticate(account, environment, tenant, null, null, null);
+            IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
+            Assert.Equal(3600, Math.Round(token.ExpiresOn.DateTime.Subtract(DateTime.UtcNow).TotalSeconds));
             var account2 = new AzureAccount
             {
                 Id = userId,
@@ -223,9 +224,10 @@ namespace Common.Authentication.Test
             };
             AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
             var authFactory = new AuthenticationFactory();
-            var token = authFactory.Authenticate(account, environment, tenant, null, null, null);
+            IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
+            Assert.Equal(3600, Math.Round(token.ExpiresOn.DateTime.Subtract(DateTime.UtcNow).TotalSeconds));
             var account2 = new AzureAccount
             {
                 Id = userId,
@@ -271,9 +273,10 @@ namespace Common.Authentication.Test
             };
             AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
             var authFactory = new AuthenticationFactory();
-            var token = authFactory.Authenticate(account, environment, tenant, null, null, null);
+            IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
+            Assert.Equal(3600, Math.Round(token.ExpiresOn.DateTime.Subtract(DateTime.UtcNow).TotalSeconds));
             var account2 = new AzureAccount
             {
                 Id = userId,
@@ -319,9 +322,10 @@ namespace Common.Authentication.Test
             };
             AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
             var authFactory = new AuthenticationFactory();
-            var token = authFactory.Authenticate(account, environment, tenant, null, null, null);
+            IRenewableToken token = (IRenewableToken) authFactory.Authenticate(account, environment, tenant, null, null, null);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
+            Assert.Equal(3600, Math.Round(token.ExpiresOn.DateTime.Subtract(DateTime.UtcNow).TotalSeconds));
             var account2 = new AzureAccount
             {
                 Id = userId,
