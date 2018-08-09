@@ -60,19 +60,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\AzureContextAdapterExtensions.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\AzureContextAdapterExtensions.cs">
       <Link>Common\Cmdlet\AzureContextAdapterExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageBlob.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageBlob.cs">
       <Link>Common\AzureStorageBlob.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageContainer.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageContainer.cs">
       <Link>Common\AzureStorageContainer.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageQueue.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageQueue.cs">
       <Link>Common\AzureStorageQueue.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageTable.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageTable.cs">
       <Link>Common\AzureStorageTable.cs</Link>
     </Compile>
     <Compile Include="Blob\Cmdlet\GetAzureStorageBlob.cs" />

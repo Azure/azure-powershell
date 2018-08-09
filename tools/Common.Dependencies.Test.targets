@@ -66,19 +66,19 @@
     </Reference>
   </ItemGroup>
   <PropertyGroup>
-    <ScenarioTestPs1Path>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.0-preview\tools\</ScenarioTestPs1Path>
+    <ScenarioTestToolsPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.0-preview\tools\</ScenarioTestToolsPath>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="$(ScenarioTestPs1Path)Assert.ps1">
+    <None Include="$(ScenarioTestToolsPath)Assert.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="$(ScenarioTestPs1Path)Common.ps1">
+    <None Include="$(ScenarioTestToolsPath)Common.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="$(ScenarioTestPs1Path)AzureRM.Resources.ps1">
+    <None Include="$(ScenarioTestToolsPath)AzureRM.Resources.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="$(ScenarioTestPs1Path)AzureRM.Storage.ps1">
+    <None Include="$(ScenarioTestToolsPath)AzureRM.Storage.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

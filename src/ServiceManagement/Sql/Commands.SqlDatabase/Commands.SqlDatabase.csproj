@@ -62,10 +62,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="MSSharedLibKey.snk" />
-    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\RDFE.Storage\CloudStorageService.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\RDFE.Storage\CloudStorageService.cs">
       <Link>Services\Common\CloudStorageService.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageContainer.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\ResourceModel\AzureStorageContainer.cs">
       <Link>Services\Common\AzureStorageContainer.cs</Link>
     </Compile>
     <Compile Include="Database\Cmdlet\CmdletCommon.cs" />

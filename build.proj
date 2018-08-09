@@ -673,9 +673,9 @@
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
 
-    <CallTarget Targets="BinScopeCheck" />
+    <CallTarget Targets="BinScopeCheck" Condition="'$(OnPremiseBuild)'" />
 
-    <CallTarget Targets="RunPoliCheck" />
+    <CallTarget Targets="RunPoliCheck" Condition="'$(OnPremiseBuild)'" />
 
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\Modules\Run-UnitTests.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
           ContinueOnError="ErrorAndContinue"/>
