@@ -26,7 +26,7 @@ function Get-TestResourcesDeployment([string]$rgn)
     $networkSecurityGroupName = Get-ResourceName
     $diagnosticsStorageAccountName = Get-ResourceName
     
-        $paramFile = ".\TestData\DeploymentParameters.json"
+        $paramFile = (Resolve-Path ".\TestData\DeploymentParameters.json").Path
         $paramContent =
 @"
 {
@@ -94,7 +94,7 @@ function Get-TestResourcesDeployment([string]$rgn)
 "@;
 
         $st = Set-Content -Path $paramFile -Value $paramContent -Force;
-        New-AzureRmResourceGroupDeployment -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
+        New-AzureRmResourceGroupDeployment -Name "${rgn}" -ResourceGroupName "${rgn}" -TemplateFile "${templateFile}" -TemplateParameterFile "${paramFile}";
 }
 
 <#
@@ -110,7 +110,7 @@ function Test-GetTopology
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
-    $templateFile = ".\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     
     try 
     {
@@ -160,7 +160,7 @@ function Test-GetSecurityGroupView
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityRuleName = Get-ResourceName
-    $templateFile = ".\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     
     try 
     {
@@ -223,7 +223,7 @@ function Test-GetNextHop
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityRuleName = Get-ResourceName
-    $templateFile = ".\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     
     try 
     {
@@ -279,7 +279,7 @@ function Test-VerifyIPFlow
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityGroupName = Get-ResourceName
-    $templateFile = ".\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     
     try 
     {
@@ -346,7 +346,7 @@ function Test-PacketCapture
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityGroupName = Get-ResourceName
-    $templateFile = ".\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     $pcName1 = Get-ResourceName
     $pcName2 = Get-ResourceName
     
@@ -595,7 +595,7 @@ function Test-ConnectivityCheck
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityGroupName = Get-ResourceName
-    $templateFile = ".\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     $pcName1 = Get-ResourceName
     $pcName2 = Get-ResourceName
     
@@ -741,7 +741,7 @@ function Test-ConnectionMonitor
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityGroupName = Get-ResourceName
-    $templateFile = "..\..\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     $cmName1 = Get-ResourceName
     $cmName2 = Get-ResourceName
     
