@@ -56,6 +56,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.11\lib\net45\Microsoft.Hadoop.Client.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.HDInsight.Net.Http.Formatting, Version=1.5.11.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.11\lib\net45\Microsoft.HDInsight.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.HDInsight, Version=1.5.11.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.5.11\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.dll</HintPath>

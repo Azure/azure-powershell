@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <UseTestFramework>false</UseTestFramework>
+  </PropertyGroup>
   <Import Project="..\..\..\..\tools\Common.ServiceManagement.Dependencies.Test.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -42,6 +45,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.11\lib\net45\Microsoft.Hadoop.Client.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.HDInsight.Net.Http.Formatting, Version=1.5.11.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.11\lib\net45\Microsoft.HDInsight.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.HDInsight, Version=1.5.11.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.HDInsight.1.5.11\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.dll</HintPath>
@@ -58,6 +65,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Hadoop.Client.1.5.11\lib\net45\Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HDInsight\CmdLetTests\AddConfigValuesCmdletTests.cs" />

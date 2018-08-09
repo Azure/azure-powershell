@@ -223,10 +223,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Storage\Commands.Storage\Commands.Storage.csproj">
-      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
-      <Name>Commands.Storage</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Network\Commands.Network\Commands.Network.csproj">
       <Project>{98cfd96b-a6bc-4f15-ae2c-603fc2b58981}</Project>
       <Name>Commands.Network</Name>
