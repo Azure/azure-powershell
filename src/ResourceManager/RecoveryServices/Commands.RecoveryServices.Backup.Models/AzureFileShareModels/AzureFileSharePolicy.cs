@@ -12,23 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// Some constants to be used with the tests.
+    /// Azure FileShare specific backup policy class.
     /// </summary>
-    public class TestConstants
+    public class AzureFileSharePolicy : PolicyBase
     {
-        public const string Workload = "Workload";
+        /// <summary>
+        /// Object defining the retention behavior of this policy.
+        /// </summary>
+        public RetentionPolicyBase RetentionPolicy { get; set; }
 
-        public const string AzureVM = "AzureVM";
-
-        public const string DPM = "DPM";
-
-        public const string AzureSql = "AzureSql";
-
-        public const string MAB = "MAB";
-
-        public const string AzureFile = "AzureFile";
+        public override void Validate()
+        {
+            base.Validate();
+            RetentionPolicy.Validate();
+        }
     }
 }

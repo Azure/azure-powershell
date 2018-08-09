@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureFileShareModels\AzureFileSharePolicy.cs" />
     <Compile Include="AzureSqlModels\AzureSqlContainer.cs" />
     <Compile Include="AzureSqlModels\AzureSqlItem.cs" />
     <Compile Include="AzureSqlModels\AzureSqlPolicy.cs" />
@@ -91,6 +92,9 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AzureWorkloadModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -95,7 +95,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("ArgumentException", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to BackupManagementType value should be empty for WorkloadType AzureFiles.
+        /// </summary>
+        public static string AzureFileUnsupportedBackupManagementTypeException
+        {
+            get
+            {
+                return ResourceManager.GetString("AzureFileUnsupportedBackupManagementTypeException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Azure Sql does not support disable protection with retain data.
         /// </summary>

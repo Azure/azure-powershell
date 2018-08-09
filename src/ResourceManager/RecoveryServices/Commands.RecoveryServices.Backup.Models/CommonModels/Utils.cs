@@ -215,6 +215,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                     return BackupManagementType.AzureBackupServer;
                 case ServiceClientModel.BackupManagementType.AzureSql:
                     return BackupManagementType.AzureSQL;
+                case ServiceClientModel.BackupManagementType.AzureStorage:
+                    return BackupManagementType.AzureStorage;
                 default:
                     throw new Exception("Unsupported BackupManagmentType: " + backupManagementType);
             }
@@ -240,6 +242,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return ContainerType.AzureSQL;
             }
+            else if (containerType ==
+                ServiceClientModel.BackupManagementType.AzureStorage)
+            {
+                return ContainerType.AzureStorage;
+            }
             else
             {
                 throw new Exception("Unsupported ContainerType: " + containerType);
@@ -260,6 +267,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             if (workloadType == ServiceClientModel.WorkloadType.AzureSqlDb.ToString())
             {
                 return WorkloadType.AzureSQLDatabase;
+            }
+            if (workloadType == ServiceClientModel.WorkloadType.AzureFileShare)
+            {
+                return WorkloadType.AzureFiles;
             }
             else
             {

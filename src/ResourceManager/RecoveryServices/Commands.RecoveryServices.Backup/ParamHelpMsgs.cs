@@ -80,6 +80,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ExpiryDateTimeUTC = "Date and time specified in UTC after which" +
                 " the recovery points created by this backup will no longer be available for restore";
             public const string ProtectionPolicy = "The id of the backup policy which is used to protect the backup items";
+            public const string AzureFileShareName = "Azure FileShare Name.";
+            public const string AzureFileStorageAccountName = "Azure file share storage account name";
+            public const string AzureFileStorageAccountResourceGroupName = "Azure file share storage account resource group name";
         }
 
         internal static class RecoveryPoint
