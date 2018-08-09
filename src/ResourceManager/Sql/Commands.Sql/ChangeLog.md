@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.11.1
+* Fixed issue with Transparent Data Encryption using certificates with passwords
 * Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 4.11.0

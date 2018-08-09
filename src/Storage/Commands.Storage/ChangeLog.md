@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.5.0
 * Remove the 5TB limitation for Azure File Share quota
 - Set-AzureStorageShareQuota
 
