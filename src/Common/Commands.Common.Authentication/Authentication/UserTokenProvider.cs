@@ -122,9 +122,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         // We have to run this in a separate thread to guarantee that it's STA. This method
         // handles the threading details.
         private AuthenticationResult AcquireToken(
-            AdalConfiguration config, 
-            string promptBehavior, 
-            Action<string> promptAction, 
+            AdalConfiguration config,
+            string promptBehavior,
+            Action<string> promptAction,
             string userId,
             SecureString password)
         {
@@ -238,6 +238,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 if (promptBehavior != PromptBehavior.Never)
                 {
                     AdalTokenCache.ClearCookies();
+                }
+
+                Guid tempGuid = Guid.Empty;
+                if (!string.Equals(config.AdDomain, "Common", StringComparison.OrdinalIgnoreCase) && !Guid.TryParse(config.AdDomain, out tempGuid))
+                {
+                    var tempResult = context.AcquireToken(
+                            config.ResourceClientUri,
+                            config.ClientId,
+                            config.ClientRedirectUri,
+                            promptBehavior,
+                            UserIdentifier.AnyUser,
+                            AdalConfiguration.EnableEbdMagicCookie);
+                    config.AdDomain = tempResult.TenantId;
+                    context = CreateContext(config);
+                    promptBehavior = PromptBehavior.Never;
                 }
 
                 result = context.AcquireToken(

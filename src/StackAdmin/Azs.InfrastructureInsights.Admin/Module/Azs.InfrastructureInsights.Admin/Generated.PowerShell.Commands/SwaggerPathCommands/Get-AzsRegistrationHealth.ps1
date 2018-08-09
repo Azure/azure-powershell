@@ -108,7 +108,7 @@ function Get-AzsRegistrationHealth {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient'
@@ -221,7 +221,7 @@ function Get-AzsRegistrationHealth {
             Get-TaskResult @GetTaskResult_params
 
             Write-Verbose -Message 'Flattening paged results.'
-            while ($PageResult -and (Get-Member -InputObject $PageResult -Name Page) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
+            while ($PageResult -and ($PageResult.ContainsKey('Page')) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
                 Write-Debug -Message "Retrieving next page: $($PageResult.Page.'nextPageLink')"
                 $TaskResult = $InfrastructureInsightsAdminClient.ResourceHealths.ListNextWithHttpMessagesAsync($PageResult.Page.'nextPageLink')
                 $PageResult.Page = $null

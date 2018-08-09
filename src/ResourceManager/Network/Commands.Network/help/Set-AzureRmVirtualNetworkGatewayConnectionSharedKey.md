@@ -22,7 +22,15 @@ Set-AzureRmVirtualNetworkGatewayConnectionSharedKey -Name <String> -ResourceGrou
 The **Set-AzureRmVirtualNetworkGatewayConnectionSharedKey** cmdlet configures the shared key of the virtual network gateway connection.
 
 ## EXAMPLES
+### Example 1:
+```
+PS C:\Users\alzam> Set-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName VPNGatewayV3 -Name VNet1toVNet2 -Value abcd1234
 
+Confirm
+Are you sure you want to overwrite resource 'VNet1toVNet2'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+abcd1234
+```
 ## PARAMETERS
 
 ### -DefaultProfile

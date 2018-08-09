@@ -58,7 +58,7 @@ function Get-AzsUpdateLocation {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient'
