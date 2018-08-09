@@ -9,7 +9,7 @@ schema: 2.0.0
 # Reset-AzureRmVirtualNetworkGateway
 
 ## SYNOPSIS
-
+Resets the Virtual Network Gateway
 ## SYNTAX
 
 ```
@@ -18,8 +18,13 @@ Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGatew
 ```
 
 ## DESCRIPTION
-
+Resets the Virtual Network Gateway
 ## EXAMPLES
+### Example 1:
+```
+$Gateway = Get-AzureRmVirtualNetworkGateway -Name "ContosoVirtualGateway"
+Reset-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway
+```
 
 ## PARAMETERS
 

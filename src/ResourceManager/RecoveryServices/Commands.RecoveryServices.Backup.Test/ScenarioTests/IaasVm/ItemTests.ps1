@@ -235,6 +235,7 @@ function Test-AzureVMFullRestore
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location
+	$targetResourceGroupName = Create-ResourceGroup $location 1
 
 	try
 	{
@@ -245,7 +246,7 @@ function Test-AzureVMFullRestore
 		$item = Enable-Protection $vault $vm
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
-		
+
 		Assert-ThrowsContains { Restore-AzureRmRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
@@ -255,7 +256,7 @@ function Test-AzureVMFullRestore
 			-UseOriginalStorageAccount } `
 			"This recovery point doesn’t have the capability to restore disks to their original storage account. Re-run the restore command without the UseOriginalStorageAccountForDisks parameter.";
 
-		$restoreJob = Restore-AzureRmRecoveryServicesBackupItem `
+		$restoreJob1 = Restore-AzureRmRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
 			-VaultLocation $vault.Location `
 			-RecoveryPoint $rp `
@@ -263,12 +264,24 @@ function Test-AzureVMFullRestore
 			-StorageAccountResourceGroupName $resourceGroupName | `
 				Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
 
-		Assert-True { $restoreJob.Status -eq "Completed" }
+		Assert-True { $restoreJob1.Status -eq "Completed" }   
+
+		$restoreJob2 = Restore-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $rp `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $resourceGroupName `
+			-TargetResourceGroupName $targetResourceGroupName | `
+				Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob2.Status -eq "Completed" }
 	}
 	finally
 	{
 		# Cleanup
 		Cleanup-ResourceGroup $resourceGroupName
+		Cleanup-ResourceGroup $targetResourceGroupName
 	}
 }
 
