@@ -22,9 +22,10 @@ The **Get-AzureRmServiceEndpointPolicyDefinition** cmdlet gets a service endpoin
 
 ## EXAMPLES
 
-### Example 1: Get a specified service endpoint policy
+### Example 1
 ```
 $policydef= Get-AzureRmServiceEndpointPolicyDefinition -Name "ServiceEndpointPolicyDefinition1"
+```
 
 This command gets the service endpoint policy definition named ServiceEndpointPolicyDefinition1 stores it in the $policydef variable.
 
@@ -34,7 +35,7 @@ This command gets the service endpoint policy definition named ServiceEndpointPo
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -64,7 +65,7 @@ Accept wildcard characters: False
 The name of the service endpoint policy definition
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +80,7 @@ Accept wildcard characters: False
 The Service endpoint policy
 
 ```yaml
-Type: PSServiceEndpointPolicy
+Type: Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy
 Parameter Sets: (All)
 Aliases:
 

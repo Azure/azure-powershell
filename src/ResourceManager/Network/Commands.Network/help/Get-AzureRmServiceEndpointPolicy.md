@@ -13,8 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-AzureRmServiceEndpointPolicy -Name <String> -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmServiceEndpointPolicy -Name <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,16 +21,17 @@ The **Get-AzureRmServiceEndpointPolicy** cmdlet gets a service endpoint policy.
 
 ## EXAMPLES
 
-### Example 1: Get a specified service endpoint policy
+### Example 1
 ```
 $policy = Get-AzureRmServiceEndpointPolicy -Name "ServiceEndpointPolicy1" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command gets the service endpoint policy named ServiceEndpointPolicy1 that belongs to the resource group named ResourceGroup01 and stores it in the $policy variable.
 
-### Example 2: Get a list of service endpointpolicies
+### Example 2
 ```
 $policyList = Get-AzureRmServiceEndpointPolicy -ResourceGroupName "ResourceGroup01"
+```
 
 This command gets a list of all the service endpoint policies in the resource group named ResourceGroup01 and stores it in the $policyList variable.
 
@@ -41,7 +41,7 @@ This command gets a list of all the service endpoint policies in the resource gr
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 The name of the service endpoint policy
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
