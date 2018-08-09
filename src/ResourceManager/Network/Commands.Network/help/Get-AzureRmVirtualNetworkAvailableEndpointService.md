@@ -25,6 +25,7 @@ Get-AzureRmVirtualNetworkAvailableEndpointService lists endpoint services availa
 ### Example 1
 ```
 PS C:\> Get-AzureRmVirtualNetworkAvailableEndpointService -Location westus
+```
 
 -Name              Id                                                                                             Type
 -----              --                                                                                             ----
