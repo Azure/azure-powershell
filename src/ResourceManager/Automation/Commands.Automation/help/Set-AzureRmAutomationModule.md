@@ -140,10 +140,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), ContentLinkVersion (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Uri
-Parameters: ContentLinkUri (ByPropertyName)
 
 ## OUTPUTS
 
