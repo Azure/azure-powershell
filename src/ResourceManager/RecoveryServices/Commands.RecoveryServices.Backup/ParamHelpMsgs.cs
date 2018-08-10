@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             public const string Vault = "The Azure Backup vault object which is the parent resource.";
             public const string VaultId = "Resource ID of the Recovery Services Vault.";
-            public const string WorkloadType = "Workload type of the resource (for example: AzureVM, WindowsServer, AzureFile).";
+            public const string WorkloadType = "Workload type of the resource (for example: AzureVM, WindowsServer, AzureFiles).";
             public const string BackupManagementType = "Backup Management type of the resource (for example: MAB, DPM).";
             public const string ConfirmationMessage = "Don't ask for confirmation.";
         }

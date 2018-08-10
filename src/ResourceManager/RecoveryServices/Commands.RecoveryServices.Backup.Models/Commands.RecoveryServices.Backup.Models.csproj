@@ -48,10 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureFileShareModels\AzureFileShareContainer.cs" />
     <Compile Include="AzureFileShareModels\AzureFileSharePolicy.cs" />
     <Compile Include="AzureFileShareModels\AzureFileShareItem.cs" />
-    <Compile Include="AzureFileShareModels\AzureFileShareContainer.cs" />
     <Compile Include="AzureModels\AzureContainer.cs" />
+    <Compile Include="AzureModels\AzureItem.cs" />
+    <Compile Include="AzureModels\AzurePolicy.cs" />
     <Compile Include="AzureSqlModels\AzureSqlContainer.cs" />
     <Compile Include="AzureSqlModels\AzureSqlItem.cs" />
     <Compile Include="AzureSqlModels\AzureSqlPolicy.cs" />

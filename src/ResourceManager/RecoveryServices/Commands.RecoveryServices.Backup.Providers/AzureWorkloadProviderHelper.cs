@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using SystemNet = System.Net;
@@ -37,32 +38,62 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ServiceClientAdapter = serviceClientAdapter;
         }
 
-        public void RefreshContainer(string vaultName = null, string resourceGroupName = null)
+        public void RefreshContainer(string vaultName = null, string vaultResourceGroupName = null,
+            ODataQuery<BMSRefreshContainersQueryObject> queryParam = null)
         {
-            string errorMessage = string.Empty;
             var refreshContainerJobResponse = ServiceClientAdapter.RefreshContainers(
                 vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
+                resourceGroupName: vaultResourceGroupName,
+                queryParam: queryParam);
 
             var operationStatus = TrackingHelpers.GetOperationResult(
                 refreshContainerJobResponse,
                 operationId =>
-                    ServiceClientAdapter.GetRefreshContainerOperationResult(
+                    ServiceClientAdapter.GetContainerRefreshOrInquiryOperationResult(
                         operationId,
                         vaultName: vaultName,
-                        resourceGroupName: resourceGroupName));
+                        resourceGroupName: vaultResourceGroupName));
 
             //Now wait for the operation to Complete
             if (refreshContainerJobResponse.Response.StatusCode
                     != SystemNet.HttpStatusCode.NoContent)
             {
-                errorMessage = string.Format(Resources.DiscoveryFailureErrorCode,
+                string errorMessage = string.Format(Resources.DiscoveryFailureErrorCode,
                     refreshContainerJobResponse.Response.StatusCode);
                 Logger.Instance.WriteDebug(errorMessage);
             }
         }
 
-        public List<ServiceClientModel.ProtectedItemResource> ListProtectedItemsByContainer(
+        public void RegisterContainer(string storageAccountName,
+            ProtectionContainerResource protectionContainerResource,
+            string vaultName, string vaultResourceGroupName)
+        {
+            var registerResponse = ServiceClientAdapter.RegisterContainer(
+                            storageAccountName,
+                            protectionContainerResource,
+                            vaultName,
+                            vaultResourceGroupName);
+
+            var operationStatus = TrackingHelpers.GetOperationResult(
+                registerResponse,
+                operationId =>
+                    ServiceClientAdapter.GetRegisterContainerOperationResult(
+                        operationId,
+                        storageAccountName,
+                        vaultName: vaultName,
+                        resourceGroupName: vaultResourceGroupName));
+
+            //Now wait for the operation to Complete
+            if (registerResponse.Response.StatusCode
+                    != SystemNet.HttpStatusCode.NoContent)
+            {
+                string errorMessage = string.Format(Resources.RegisterFailureErrorCode,
+                    registerResponse.Response.StatusCode);
+                Logger.Instance.WriteDebug(errorMessage);
+            }
+        }
+
+        public List<ProtectedItemResource> ListProtectedItemsByContainer(
             string vaultName,
             string resourceGroupName,
             CmdletModel.ContainerBase container,
@@ -70,18 +101,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string backupManagementType,
             string dataSourceType)
         {
-            ODataQuery<ServiceClientModel.ProtectedItemQueryObject> queryParams = policy != null ?
-                new ODataQuery<ServiceClientModel.ProtectedItemQueryObject>(
+            ODataQuery<ProtectedItemQueryObject> queryParams = policy != null ?
+                new ODataQuery<ProtectedItemQueryObject>(
                     q => q.BackupManagementType
                             == backupManagementType &&
                          q.ItemType == dataSourceType &&
                          q.PolicyName == policy.Name) :
-                new ODataQuery<ServiceClientModel.ProtectedItemQueryObject>(
+                new ODataQuery<ProtectedItemQueryObject>(
                     q => q.BackupManagementType
                             == backupManagementType &&
                          q.ItemType == dataSourceType);
 
-            List<ServiceClientModel.ProtectedItemResource> protectedItems = new List<ServiceClientModel.ProtectedItemResource>();
+            List<ProtectedItemResource> protectedItems = new List<ProtectedItemResource>();
             string skipToken = null;
             var listResponse = ServiceClientAdapter.ListProtectedItem(
                 queryParams,
@@ -107,14 +138,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         public List<CmdletModel.ItemBase> ListProtectedItemsByItemName(
-            List<ServiceClientModel.ProtectedItemResource> protectedItems,
+            List<ProtectedItemResource> protectedItems,
             string itemName,
             string vaultName,
             string resourceGroupName,
-            Action<CmdletModel.ItemBase, ServiceClientModel.ProtectedItemResource> extendedInfoProcessor)
+            Action<CmdletModel.ItemBase, ProtectedItemResource> extendedInfoProcessor)
         {
-            List<ServiceClientModel.ProtectedItemResource> protectedItemGetResponses =
-                new List<ServiceClientModel.ProtectedItemResource>();
+            List<ProtectedItemResource> protectedItemGetResponses =
+                new List<ProtectedItemResource>();
 
             if (!string.IsNullOrEmpty(itemName))
             {
@@ -125,8 +156,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     return protectedItemUri.ToLower().Contains(itemName.ToLower());
                 }).ToList();
 
-                ODataQuery<ServiceClientModel.GetProtectedItemQueryObject> getItemQueryParams =
-                    new ODataQuery<ServiceClientModel.GetProtectedItemQueryObject>(q => q.Expand == "extendedinfo");
+                ODataQuery<GetProtectedItemQueryObject> getItemQueryParams =
+                    new ODataQuery<GetProtectedItemQueryObject>(q => q.Expand == "extendedinfo");
 
                 for (int i = 0; i < protectedItems.Count; i++)
                 {

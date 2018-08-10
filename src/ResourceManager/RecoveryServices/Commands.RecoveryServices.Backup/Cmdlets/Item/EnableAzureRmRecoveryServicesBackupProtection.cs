@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         internal const string AzureVMClassicComputeParameterSet = "AzureVMClassicComputeEnableProtection";
         internal const string AzureVMComputeParameterSet = "AzureVMComputeEnableProtection";
+        internal const string AzureFileShareParameterSet = "AzureFileShareEnableProtection";
         internal const string ModifyProtectionParameterSet = "ModifyProtection";
 
         /// <summary>
@@ -48,6 +49,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.ItemName)]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.ItemName)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AzureFileShareParameterSet, HelpMessage = ParamHelpMsgs.Item.ItemName)]
         public string Name { get; set; }
 
         /// <summary>
@@ -66,6 +69,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.Item.AzureVMResourceGroupName)]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Storage account name of the Azure Files whose representative item needs to be protected.
+        /// </summary>
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AzureFileShareParameterSet,
+            HelpMessage = ParamHelpMsgs.Item.AzureFileStorageAccountName)]
+        [ResourceGroupCompleter]
+        public string StorageAccountName { get; set; }
 
         /// <summary>
         /// Item whose protection needs to be modified.
@@ -98,6 +110,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         {
                             { VaultParams.VaultName, vaultName },
                             { VaultParams.ResourceGroupName, resourceGroupName },
+                            { ItemParams.StorageAccountName, StorageAccountName },
                             { ItemParams.ItemName, Name },
                             { ItemParams.AzureVMCloudServiceName, ServiceName },
                             { ItemParams.AzureVMResourceGroupName, ResourceGroupName },
