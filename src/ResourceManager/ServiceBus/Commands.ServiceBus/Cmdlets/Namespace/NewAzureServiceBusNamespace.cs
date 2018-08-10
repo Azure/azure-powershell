@@ -60,6 +60,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         public string SkuName { get; set; }
 
         /// <summary>
+        /// The Service Bus Premium namespace throughput units.
+        /// </summary>        
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Service Bus premium namespace throughput units, allowed values 1 or 2 or 4")]
+        [PSArgumentCompleter("1", "2", "4")]
+        public int? SkuCapacity { get; set; }
+
+        /// <summary>
         /// Hashtables which represents resource Tags.
         /// </summary>
         [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Hashtables which represents resource Tags")]
@@ -75,7 +82,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamesapce, Name, ResourceGroupName)))
             {
-                WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary));
+                WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, SkuCapacity));
             }
         }
     }

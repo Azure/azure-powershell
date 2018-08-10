@@ -70,7 +70,7 @@ function Start-AzsBackup {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ( 'CreateBackup_FromResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{

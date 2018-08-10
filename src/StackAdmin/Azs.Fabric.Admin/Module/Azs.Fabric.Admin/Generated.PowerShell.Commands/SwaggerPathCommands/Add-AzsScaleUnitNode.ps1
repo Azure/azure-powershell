@@ -5,7 +5,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    
+
 
 .DESCRIPTION
     Scale out a scale unit.
@@ -25,30 +25,38 @@ Licensed under the MIT License. See License.txt in the project root for license 
 #>
 function Add-AzsScaleUnitNode
 {
-    [CmdletBinding(DefaultParameterSetName='ScaleUnits_ScaleOut')]
-    param(    
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnits_ScaleOut')]
-        [Microsoft.AzureStack.Management.Fabric.Admin.Models.ScaleOutScaleUnitParametersList]
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNull()]
+        [Microsoft.AzureStack.Management.Fabric.Admin.Models.ScaleOutScaleUnitParameters[]]
         $NodeList,
-    
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnits_ScaleOut')]
+
+        [Parameter(Mandatory = $false)]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         $ResourceGroupName,
-    
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnits_ScaleOut')]
+
+        [Parameter(Mandatory = $true)]
+        [ValidateNotNullOrEmpty()]
         [System.String]
         $ScaleUnit,
-    
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnits_ScaleOut')]
+
+        [Parameter(Mandatory = $false)]
         [System.String]
+        [ValidateNotNullOrEmpty()]
         $Location,
+
+        [Parameter(Mandatory = $false)]
+        [switch]
+        $AwaitStorageConvergence,
 
         [Parameter(Mandatory = $false)]
         [switch]
         $AsJob
     )
 
-    Begin 
+    Begin
     {
 	    Initialize-PSSwaggerDependencies -Azure
         $tracerObject = $null
@@ -61,8 +69,8 @@ function Add-AzsScaleUnitNode
 	}
 
     Process {
-    
-    $ErrorActionPreference = 'Stop'
+
+
 
     $NewServiceClient_params = @{
         FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
@@ -70,7 +78,7 @@ function Add-AzsScaleUnitNode
 
     $GlobalParameterHashtable = @{}
     $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-     
+
     $GlobalParameterHashtable['SubscriptionId'] = $null
     if($PSBoundParameters.ContainsKey('SubscriptionId')) {
         $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
@@ -78,20 +86,24 @@ function Add-AzsScaleUnitNode
 
     $FabricAdminClient = New-ServiceClient @NewServiceClient_params
 
+    $ParamList = New-ScaleOutScaleUnitParametersListObject -NodeList $NodeList -AwaitStorageConvergence:$AwaitStorageConvergence:IsPresent
 
-    if ('ScaleUnits_ScaleOut' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation ScaleOutWithHttpMessagesAsync on $FabricAdminClient.'
-        $TaskResult = $FabricAdminClient.ScaleUnits.ScaleOutWithHttpMessagesAsync($ResourceGroupName, $Location, $ScaleUnit, $NodeList)
-    } else {
-        Write-Verbose -Message 'Failed to map parameter set to operation method.'
-        throw 'Module failed to find operation to execute.'
+    if ([System.String]::IsNullOrEmpty($Location)) {
+        $Location = (Get-AzureRmLocation).Location
     }
+
+    if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
+        $ResourceGroupName = "System.$Location"
+    }
+
+    Write-Verbose -Message 'Performing operation ScaleOutWithHttpMessagesAsync on $FabricAdminClient.'
+    $TaskResult = $FabricAdminClient.ScaleUnits.ScaleOutWithHttpMessagesAsync($ResourceGroupName, $Location, $ScaleUnit, $ParamList)
 
     Write-Verbose -Message "Waiting for the operation to complete."
 
     $PSSwaggerJobScriptBlock = {
         [CmdletBinding()]
-        param(    
+        param(
             [Parameter(Mandatory = $true)]
             [System.Threading.Tasks.Task]
             $TaskResult,
@@ -105,9 +117,9 @@ function Add-AzsScaleUnitNode
             $GetTaskResult_params = @{
                 TaskResult = $TaskResult
             }
-            
+
             Get-TaskResult @GetTaskResult_params
-            
+
         }
     }
 

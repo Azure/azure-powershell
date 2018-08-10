@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 0.2.7
 * Updated help files to include full parameter types and correct input/output types.
 
 ## Version 0.2.6
@@ -47,7 +50,7 @@
 ## Version 0.1.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 0.0.2
 
 ## Version 0.0.1

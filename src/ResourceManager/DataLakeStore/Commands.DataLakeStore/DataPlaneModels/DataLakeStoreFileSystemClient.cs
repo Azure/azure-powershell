@@ -89,7 +89,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
             else
             {
-                var debugPreference = cmdlet.GetVariableValue("DebugPreference") as string;
+                // The return type of cmdlet.GetVariableValue("DebugPreference") is string when run from a script
+                // return type is System.Management.Automation.ActionPreference when run from commandline
+                var debugPreference = cmdlet.GetVariableValue("DebugPreference").ToString();
                 if (debugPreference != null)
                 {
                     _isDebugEnabled = !debugPreference.Equals("SilentlyContinue");

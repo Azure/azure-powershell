@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Subscriptions.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.1.1'
+    ModuleVersion     = '0.2.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -80,6 +80,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     'Set-AzsUserSubscription',
     'Get-AzsPlanMetric', 'Get-AzsDelegatedProvider',
     'Remove-AzsUserSubscription', 'New-AzsUserSubscription',
+    'Move-AzsSubscription', 'Test-AzsMoveSubscription',
     'Remove-AzsSubscriptionPlan', 'New-AzsOffer',
     'New-AzsOfferDelegation',
     'Remove-AzsOffer', 'Get-AzsOfferMetric', 'Get-AzsManagedOffer',

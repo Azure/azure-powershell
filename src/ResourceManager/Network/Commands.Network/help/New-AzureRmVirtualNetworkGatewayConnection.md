@@ -40,7 +40,7 @@ Creates the Site-to-Site VPN connection between the virtual network gateway and 
 
 ## EXAMPLES
 
-### 1:
+### Example 1
 ```
 New-AzureRmVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location $loc1 -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5'
 ```

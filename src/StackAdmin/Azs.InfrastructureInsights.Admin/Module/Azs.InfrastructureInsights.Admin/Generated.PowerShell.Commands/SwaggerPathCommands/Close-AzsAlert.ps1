@@ -87,7 +87,7 @@ function Close-AzsAlert {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $Alert = $null
 
