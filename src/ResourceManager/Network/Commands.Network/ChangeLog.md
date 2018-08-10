@@ -26,7 +26,8 @@
 * Added example for Set-AzureRmVirtualNetworkGatewayConnectionSharedKey
 * Added example for Set-AzureRmVirtualNetworkGatewayConnection
 * Re-generated cmdlets for ApplicationSecurityGroup, RouteTable and Usage using latest code generator
-* Clarified error message for Get-AzureRmVirtualNetworkSubnetConfig when attempting to get a subnet that does not exitc
+* Clarified error message for Get-AzureRmVirtualNetworkSubnetConfig when attempting to get a subnet that does not exist
+* Improved exception messages: added more details to output
 
 ## Version 6.4.1
 * Updated all help files to include full parameter types and correct input/output types.
