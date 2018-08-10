@@ -34,12 +34,12 @@ namespace Microsoft.Azure.Commands.Network.Models
     public partial class PSExpressRouteCircuitStats
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public long? PrimarybytesIn { get; set; }
+        public long? PrimaryBytesIn { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
-        public long? PrimarybytesOut { get; set; }
+        public long? PrimaryBytesOut { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
-        public long? SecondarybytesIn { get; set; }
+        public long? SecondaryBytesIn { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
-        public long? SecondarybytesOut { get; set; }
+        public long? SecondaryBytesOut { get; set; }
     }
 }
