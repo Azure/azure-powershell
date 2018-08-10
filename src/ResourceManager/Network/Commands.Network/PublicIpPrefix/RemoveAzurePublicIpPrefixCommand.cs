@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmPublicIpPrefix", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmPublicIpPrefix", SupportsShouldProcess = true, DefaultParameterSetName = RemoveAzurePublicIpPrefixParameterSetNames.Default), OutputType(typeof(bool))]
     public class RemoveAzurePublicIpPrefixCommand : PublicIpPrefixBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = "RemoveByNameParameterSet")]
+            ParameterSetName = RemoveAzurePublicIpPrefixParameterSetNames.RemoveByName)]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = "RemoveByNameParameterSet")]
+            ParameterSetName = RemoveAzurePublicIpPrefixParameterSetNames.RemoveByName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true, 
             ValueFromPipelineByPropertyName = true, 
-            ParameterSetName = "DeleteByResourceIdParameterSet")]
+            ParameterSetName = RemoveAzurePublicIpPrefixParameterSetNames.DeleteByResourceId)]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = true, 
             ValueFromPipeline = true, 
-            ParameterSetName = "DeleteByInputObjectParameterSet")]
+            ParameterSetName = RemoveAzurePublicIpPrefixParameterSetNames.DeleteByInputObject)]
         [ValidateNotNull]
         public PSPublicIpPrefix InputObject
         {
@@ -104,5 +104,15 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 });
         }
+    }
+
+    public static class RemoveAzurePublicIpPrefixParameterSetNames
+    {
+        public const string RemoveByName = "RemoveByNameParameterSet";
+        public const string DeleteByResourceId = "DeleteByResourceIdParameterSet";
+        public const string DeleteByInputObject = "DeleteByInputObjectParameterSet";
+
+        // The Default
+        public const string Default = RemoveAzurePublicIpPrefixParameterSetNames.RemoveByName;
     }
 }

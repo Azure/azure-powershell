@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmPublicIpPrefix", DefaultParameterSetName = "NoExpandStandAloneIp"), OutputType(typeof(PSPublicIpPrefix))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmPublicIpPrefix", DefaultParameterSetName = GetAzurePublicIpPrefixParameterSetNames.Default), OutputType(typeof(PSPublicIpPrefix))]
     public class GetAzurePublicIpPrefixCommand : PublicIpPrefixBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.",
-            ParameterSetName = "GetByNameParameterSet")]
+            ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.GetByName)]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.",
-            ParameterSetName = "GetByNameParameterSet")]
+            ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.GetByName)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true, 
             ValueFromPipelineByPropertyName = true, 
-            ParameterSetName = "GetByResourceIdParameterSet")]
+            ParameterSetName = GetAzurePublicIpPrefixParameterSetNames.GetByResourceId)]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceId { get; set; }
 
@@ -102,5 +102,14 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(psPublicIpPrefixes, true);
             }
         }
+    }
+
+    public static class GetAzurePublicIpPrefixParameterSetNames
+    {
+        public const string GetByName = "GetByNameParameterSet";
+        public const string GetByResourceId = "GetByResourceIdParameterSet";
+
+        // The Default
+        public const string Default = GetByName;
     }
 }
