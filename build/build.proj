@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Root>$(MSBuildThisFileDirectory)..\</Root>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -54,5 +54,5 @@
     <Move Condition=" '$(Configuration)' == 'Debug' " SourceFiles="@(TestResults)" DestinationFolder="$(TestOutput)" />
   </Target>
 
-  <Target Name="Build" DependsOnTargets="net452;netstandard20" />
+  <Target Name="All" DependsOnTargets="net452;netstandard20" />
 </Project>
