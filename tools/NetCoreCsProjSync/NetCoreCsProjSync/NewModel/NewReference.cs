@@ -13,36 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace NetCoreCsProjSync.NewModel
 {
     [Serializable]
-    public class NewItemGroup
+    public class NewReference
     {
-        [XmlAttribute("Condition")]
-        public string Condition { get; set; }
+        [XmlAttribute("Include")]
+        public string Include { get; set; }
 
-        [XmlElement("PackageReference")]
-        public List<NewPackageReference> PackageReferences { get; set; }
-
-        [XmlElement("Compile")]
-        public List<NewCompile> CompileItems { get; set; }
-
-        [XmlElement("ProjectReference")]
-        public List<NewProjectReference> ProjectReferences { get; set; }
-
-        [XmlElement("None")]
-        public List<NewNone> NoneItems { get; set; }
-
-        [XmlElement("EmbeddedResource")]
-        public List<NewEmbeddedResource> EmbeddedResources { get; set; }
-
-        [XmlElement("Content")]
-        public List<NewContent> ContentItems { get; set; }
-
-        [XmlElement("Reference")]
-        public List<NewReference> References { get; set; }
+        [XmlElement("HintPath")]
+        public string HintPath { get; set; }
     }
 }
