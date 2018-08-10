@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -33,6 +32,8 @@
     <Compile Remove="Mocks\MockDeploymentClientFactory.cs" />
     <Compile Remove="ProfileClient.cs" />
   </ItemGroup>
+  
+  <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />

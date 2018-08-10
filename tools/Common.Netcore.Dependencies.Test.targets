@@ -14,6 +14,8 @@
     <PackageReference Include="xunit" Version="2.4.0" />
   </ItemGroup>
  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+   <PackageReference Include="Hyak.Common" Version="1.2.0"/>
+   <PackageReference Include="Microsoft.Azure.Common" Version="2.2.0" />
    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0-preview-06" PrivateAssets="All" />
    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.9.0" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.4.0" />

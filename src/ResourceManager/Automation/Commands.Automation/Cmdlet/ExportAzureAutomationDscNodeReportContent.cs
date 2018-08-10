@@ -65,9 +65,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
-#if !NETSTANDARD
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-#endif
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(ReportId.ToString(), VerbsData.Export))
