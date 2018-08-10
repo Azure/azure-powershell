@@ -843,9 +843,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             templateParameters.Add("allowModuleOverwrite", moduleOverwriteFlag);
             templateParameters.Add("timestamp", DateTimeOffset.UtcNow.ToString("o"));
 
-#if !NETSTANDARD
             // invoke the New-AzureRmResourceGroupDeployment cmdlet
-            using (Pipeline pipe = Runspace.DefaultRunspace.CreateNestedPipeline())
+            using (var pipe = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
             {
                 Command invokeCommand = new Command("New-AzureRmResourceGroupDeployment");
                 invokeCommand.Parameters.Add("Name", deploymentName);
@@ -853,13 +852,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 invokeCommand.Parameters.Add("TemplateParameterObject", templateParameters);
                 invokeCommand.Parameters.Add("TemplateFile", Constants.TemplateFile);
 
-                pipe.Commands.Add(invokeCommand);
+                pipe.AddCommand(invokeCommand.ToString());
 
-                pipe.Commands.Add("Out-Default");
+                pipe.AddCommand("Out-Default");
 
                 Collection<PSObject> results = pipe.Invoke();
             }
-#endif
         }
 
 #endregion
