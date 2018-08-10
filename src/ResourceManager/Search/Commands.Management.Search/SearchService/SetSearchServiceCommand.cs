@@ -85,16 +85,19 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
             if (ShouldProcess(Name, Resources.UpdateSearchService))
             {
-                // GET
-                var service = SearchClient.Services.GetWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body;
+                CatchThrowInnerException(() =>
+                {
+                    // GET
+                    var service = SearchClient.Services.GetWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body;
 
-                // UPDATE
-                service.PartitionCount = PartitionCount;
-                service.ReplicaCount = ReplicaCount;
-                service = SearchClient.Services.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, service).Result.Body;
+                    // UPDATE
+                    service.PartitionCount = PartitionCount;
+                    service.ReplicaCount = ReplicaCount;
+                    service = SearchClient.Services.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, service).Result.Body;
 
-                // OUTPUT
-                WriteSearchService(service);
+                    // OUTPUT
+                    WriteSearchService(service);
+                });
             }
         }
     }
