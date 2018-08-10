@@ -35,20 +35,48 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         public static string DefaultRolloutEnvironmentKey = "asazure.windows.net";
 
         public static Dictionary<string, AsAzureAuthInfo> AsAzureRolloutEnvironmentMapping = new Dictionary<string, AsAzureAuthInfo>()
+        {
             {
-             { "asazure.windows.net", new AsAzureAuthInfo()
+                "asazure.windows.net",
+                new AsAzureAuthInfo()
                 {
-                 AuthorityUrl = "https://login.windows.net" ,
-                 DefaultResourceUriSuffix = "*.asazure.windows.net"
+                    AuthorityUrl = "https://login.windows.net",
+                    DefaultResourceUriSuffix = "*.asazure.windows.net"
                 }
-             },
-             { "asazure-int.windows.net", new AsAzureAuthInfo()
+            },
+            {
+                "asazure-int.windows.net",
+                new AsAzureAuthInfo()
                 {
-                    AuthorityUrl = "https://login.windows-ppe.net" ,
+                    AuthorityUrl = "https://login.windows-ppe.net",
                     DefaultResourceUriSuffix = "*.asazure-int.windows.net"
                 }
-             }
-            };
+            },
+            {
+                "asazure.cloudapi.de",
+                new AsAzureAuthInfo()
+                {
+                    AuthorityUrl = "https://login.microsoftonline.de",
+                    DefaultResourceUriSuffix = "*.asazure.cloudapi.de"
+                }
+            },
+            {
+                "asazure.usgovcloudapi.net",
+                new AsAzureAuthInfo()
+                {
+                    AuthorityUrl = "https://login.microsoftonline.us",
+                    DefaultResourceUriSuffix = "*.asazure.usgovcloudapi.net"
+                }
+            },
+            {
+                "asazure.chinacloudapi.cn",
+                new AsAzureAuthInfo()
+                {
+                    AuthorityUrl = "https://login.chinacloudapi.cn",
+                    DefaultResourceUriSuffix = "*.asazure.chinacloudapi.cn"
+                }
+            }
+        };
 
         /// <summary>
         /// Gets or sets the token cache store.
