@@ -504,4 +504,32 @@ Password to run the file: {1}</value>
   <data name="UnsupportedResourceTypeException" xml:space="preserve">
     <value>The resource type {0} is currently not supported.</value>
   </data>
+  <data name="RegisterFailureErrorCode" xml:space="preserve">
+    <value>Register operation failed with ErrorCode: {0}</value>
+  </data>
+  <data name="AzureFileShareNotFound" xml:space="preserve">
+    <value>Looks like File Shares similar to specified Azure File Share are not found. Possible causes are
+1. The Azure File Share does not exist
+2. The Azure File Share is already protected with same Vault. Please unprotect the Azure File Shares first and then try to protect it again.
+3. The Azure File Share is already protected with another Vault. Please unprotect the Azure File Share first, unregister the Storage Account from that Vault and protect it again. 
+Please contact Microsoft for further assistance.</value>
+  </data>
+  <data name="StorageAccountNameShouldNotBeEmpty" xml:space="preserve">
+    <value>For Azure File share, Storage account  name can not be empty</value>
+  </data>
+  <data name="FileShareNotDiscovered" xml:space="preserve">
+    <value>File share is not discovered</value>
+  </data>
+  <data name="InvalidFileShareName" xml:space="preserve">
+    <value>Azure file share name cannot be null or empty</value>
+  </data>
+  <data name="AzureFileUnsupportedBackupManagementTypeException" xml:space="preserve">
+    <value>BackupManagementType value should be empty for WorkloadType AzureFiles.</value>
+  </data>
+  <data name="UnManagedBackupVmWarning" xml:space="preserve">
+    <value>The backup VM is unmanaged and hence the disks will be restored to the storage account provided.</value>
+  </data>
+  <data name="TriggerEnquiryFailureErrorCode" xml:space="preserve">
+    <value>Trigger Enquiry operation failed with ErrorCode: {0}</value>
+  </data>
 </root>

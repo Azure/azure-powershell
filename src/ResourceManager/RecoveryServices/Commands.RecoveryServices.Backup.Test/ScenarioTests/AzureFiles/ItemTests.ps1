@@ -31,23 +31,28 @@ function Test-AzureFileItem
 
 function Test-AzureFileShareBackup
 {
-	$location = "westus"
+	$location = Get-ResourceGroupLocation
 	$resourceGroupName = "sisi-RSV"
+	$name = 'sisisa'
 
 	try
 	{
 		# Setup
+		#$sa = Create-SA $resourceGroupName $location
+		$sa = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $name
+		$fileshare = Create-FileShare $sa
+		
 		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName 'sisi-RSV' -Name 'sisi-RSV-29-6'
 		Get-AzureRmRecoveryServicesVault -ResourceGroupName 'sisi-RSV' -Name 'sisi-RSV-29-6' | Set-AzureRmRecoveryServicesVaultContext
-		$FSContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType “AzureStorage” -FriendlyName "sisisa"
-		$FSItem = Get-AzureRmRecoveryServicesBackupItem -Container $FSContainer[14] -WorkloadType “AzureFiles” -Name "test2"
+		
+		$item = Enable-Protection $vault $fileShare $sa.StorageAccountName
+		#$FSContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType “AzureStorage” -FriendlyName $saName
+		#$FSItem = Get-AzureRmRecoveryServicesBackupItem -Container $FSContainer[0] -WorkloadType “AzureFiles” -Name $fileshare.Name
 		
 		# Trigger backup and wait for completion
 		$backupJob = Backup-AzureRmRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
-			-Item $FSItem[0] | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
-
-		Assert-True { $backupJob.Status -eq "Completed" }
+			-Item $FSItem[0]
 	}
 	finally
 	{

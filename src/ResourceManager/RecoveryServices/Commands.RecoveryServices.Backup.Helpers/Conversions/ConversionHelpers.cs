@@ -128,6 +128,115 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #region policy
 
         /// <summary>
+        /// Helper function to convert ps backup policy model for AzureVM from service response.
+        /// </summary>
+        public static PolicyBase GetPolicyModelForAzureIaaSVM(ServiceClientModel.ProtectionPolicyResource serviceClientResponse,
+           PolicyBase policyModel)
+        {
+            if (((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType() !=
+                                                                       typeof(ServiceClientModel.LongTermRetentionPolicy))
+            {
+                Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
+                           ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType());
+                Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                return null;
+            }
+
+            if (((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy.GetType() !=
+                                                                        typeof(ServiceClientModel.SimpleSchedulePolicy))
+            {
+                Logger.Instance.WriteDebug("Unknown SchedulePolicy object received: " +
+                           ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy.GetType());
+                Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                return null;
+            }
+
+            policyModel = new AzureVmPolicy();
+            AzureVmPolicy iaasPolicyModel = policyModel as AzureVmPolicy;
+            iaasPolicyModel.WorkloadType = WorkloadType.AzureVM;
+            iaasPolicyModel.BackupManagementType = BackupManagementType.AzureVM;
+            iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((ServiceClientModel.LongTermRetentionPolicy)
+                                              ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy,
+                                              ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone);
+            iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
+                                             ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy,
+                                             ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone);
+            return policyModel;
+        }
+
+        /// <summary>
+        /// Helper function to convert ps backup policy model for AzureSql from service response.
+        /// </summary>
+        public static PolicyBase GetPolicyModelForAzureSql(ServiceClientModel.ProtectionPolicyResource serviceClientResponse,
+           PolicyBase policyModel)
+        {
+            ServiceClientModel.AzureSqlProtectionPolicy azureSqlPolicy =
+                    (ServiceClientModel.AzureSqlProtectionPolicy)serviceClientResponse.Properties;
+
+            if (azureSqlPolicy.RetentionPolicy.GetType() !=
+                typeof(ServiceClientModel.SimpleRetentionPolicy))
+            {
+                Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
+                    azureSqlPolicy.RetentionPolicy.GetType());
+                Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                return null;
+            }
+
+            policyModel = new AzureSqlPolicy();
+            AzureSqlPolicy sqlPolicyModel = policyModel as AzureSqlPolicy;
+            sqlPolicyModel.WorkloadType = WorkloadType.AzureSQLDatabase;
+            sqlPolicyModel.BackupManagementType = BackupManagementType.AzureSQL;
+
+            ServiceClientModel.SimpleRetentionPolicy azureSqlRetentionPolicy =
+                (ServiceClientModel.SimpleRetentionPolicy)azureSqlPolicy.RetentionPolicy;
+            sqlPolicyModel.RetentionPolicy =
+                PolicyHelpers.GetPSSimpleRetentionPolicy(azureSqlRetentionPolicy, null);
+            return policyModel;
+        }
+
+        /// <summary>
+        /// Helper function to convert ps backup policy model for Azure FileShare from service response.
+        /// </summary>
+        public static PolicyBase GetPolicyModelForAzureFileShare(ServiceClientModel.ProtectionPolicyResource serviceClientResponse,
+           PolicyBase policyModel)
+        {
+            ServiceClientModel.AzureFileShareProtectionPolicy azureFileSharePolicy =
+                    (ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties;
+
+            if (azureFileSharePolicy.RetentionPolicy.GetType() !=
+                typeof(ServiceClientModel.LongTermRetentionPolicy))
+            {
+                Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
+                    azureFileSharePolicy.RetentionPolicy.GetType());
+                Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                return null;
+            }
+
+            if (azureFileSharePolicy.SchedulePolicy.GetType() !=
+                typeof(ServiceClientModel.SimpleSchedulePolicy))
+            {
+                Logger.Instance.WriteDebug("Unknown SchedulePolicy object received: " +
+                    azureFileSharePolicy.SchedulePolicy.GetType());
+                Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                return null;
+            }
+
+
+            policyModel = new AzureFileSharePolicy();
+            AzureFileSharePolicy fileSharePolicyModel = policyModel as AzureFileSharePolicy;
+            fileSharePolicyModel.WorkloadType = WorkloadType.AzureFiles;
+            fileSharePolicyModel.BackupManagementType = BackupManagementType.AzureStorage;
+            fileSharePolicyModel.RetentionPolicy =
+                PolicyHelpers.GetPSLongTermRetentionPolicy((ServiceClientModel.LongTermRetentionPolicy)((ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy,
+                  ((ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties).TimeZone);
+            fileSharePolicyModel.SchedulePolicy =
+                PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
+                 ((ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy,
+                 ((ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties).TimeZone);
+            return policyModel;
+        }
+
+        /// <summary>
         /// Helper function to convert ps backup policy model from service response.
         /// </summary>
         public static PolicyBase GetPolicyModel(ServiceClientModel.ProtectionPolicyResource serviceClientResponse)
@@ -142,84 +251,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             if (serviceClientResponse.Properties.GetType() == typeof(ServiceClientModel.AzureIaaSVMProtectionPolicy))
             {
-                if (((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType() !=
-                                                                           typeof(ServiceClientModel.LongTermRetentionPolicy))
-                {
-                    Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
-                               ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType());
-                    Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
-                    return null;
-                }
-
-                if (((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy.GetType() !=
-                                                                            typeof(ServiceClientModel.SimpleSchedulePolicy))
-                {
-                    Logger.Instance.WriteDebug("Unknown SchedulePolicy object received: " +
-                               ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy.GetType());
-                    Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
-                    return null;
-                }
-
-                policyModel = new AzureVmPolicy();
-                AzureVmPolicy iaasPolicyModel = policyModel as AzureVmPolicy;
-                iaasPolicyModel.WorkloadType = WorkloadType.AzureVM;
-                iaasPolicyModel.BackupManagementType = BackupManagementType.AzureVM;
-                iaasPolicyModel.RetentionPolicy = PolicyHelpers.GetPSLongTermRetentionPolicy((ServiceClientModel.LongTermRetentionPolicy)
-                                                  ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy,
-                                                  ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone);
-                iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
-                                                 ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy,
-                                                 ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).TimeZone);
+                policyModel = GetPolicyModelForAzureIaaSVM(serviceClientResponse, policyModel);
             }
             else if (serviceClientResponse.Properties.GetType() ==
                 typeof(ServiceClientModel.AzureSqlProtectionPolicy))
             {
-                ServiceClientModel.AzureSqlProtectionPolicy azureSqlPolicy =
-                    (ServiceClientModel.AzureSqlProtectionPolicy)serviceClientResponse.Properties;
-
-                if (azureSqlPolicy.RetentionPolicy.GetType() !=
-                    typeof(ServiceClientModel.SimpleRetentionPolicy))
-                {
-                    Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
-                        azureSqlPolicy.RetentionPolicy.GetType());
-                    Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
-                    return null;
-                }
-
-                policyModel = new AzureSqlPolicy();
-                AzureSqlPolicy sqlPolicyModel = policyModel as AzureSqlPolicy;
-                sqlPolicyModel.WorkloadType = WorkloadType.AzureSQLDatabase;
-                sqlPolicyModel.BackupManagementType = BackupManagementType.AzureSQL;
-
-                ServiceClientModel.SimpleRetentionPolicy azureSqlRetentionPolicy =
-                    (ServiceClientModel.SimpleRetentionPolicy)azureSqlPolicy.RetentionPolicy;
-                sqlPolicyModel.RetentionPolicy =
-                    PolicyHelpers.GetPSSimpleRetentionPolicy(azureSqlRetentionPolicy, null);
+                policyModel = GetPolicyModelForAzureSql(serviceClientResponse, policyModel);
             }
             else if (serviceClientResponse.Properties.GetType() ==
                 typeof(ServiceClientModel.AzureFileShareProtectionPolicy))
             {
-                ServiceClientModel.AzureFileShareProtectionPolicy azureFileSharePolicy =
-                    (ServiceClientModel.AzureFileShareProtectionPolicy)serviceClientResponse.Properties;
-
-                if (azureFileSharePolicy.RetentionPolicy.GetType() !=
-                    typeof(ServiceClientModel.LongTermRetentionPolicy))
-                {
-                    Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
-                        azureFileSharePolicy.RetentionPolicy.GetType());
-                    Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
-                    return null;
-                }
-
-                policyModel = new AzureFileSharePolicy();
-                AzureFileSharePolicy fileSharePolicyModel = policyModel as AzureFileSharePolicy;
-                fileSharePolicyModel.WorkloadType = WorkloadType.AzureFiles;
-                fileSharePolicyModel.BackupManagementType = BackupManagementType.AzureStorage;
-
-                ServiceClientModel.LongTermRetentionPolicy azureFileShareRetentionPolicy =
-                    (ServiceClientModel.LongTermRetentionPolicy)azureFileSharePolicy.RetentionPolicy;
-                fileSharePolicyModel.RetentionPolicy =
-                    PolicyHelpers.GetPSLongTermRetentionPolicy(azureFileShareRetentionPolicy, null);
+                policyModel = GetPolicyModelForAzureFileShare(serviceClientResponse, policyModel);
             }
             else
             {

@@ -144,7 +144,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
                 var testFolderName = providerType.ToString();
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
-                var commonPsFile = "ScenarioTests\\" + testFolderName + "\\Common.ps1";
+                var workloadCommonPsFile = "ScenarioTests\\" + testFolderName + "\\Common.ps1";
+                var commonPsFile = "ScenarioTests\\Common.ps1";
 
                 var modules = new List<string>
                 {
@@ -166,6 +167,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, commonPsFile)))
                 {
                     modules.Add(commonPsFile);
+                }
+
+                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, workloadCommonPsFile)))
+                {
+                    modules.Add(workloadCommonPsFile);
                 }
 
 

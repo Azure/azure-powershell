@@ -36,3 +36,27 @@ function Test-AzureFilePolicy
 		# Cleanup
 	}
 }
+
+function Test-AzureFileProtection
+{
+	$location = "westus"
+	$resourceGroupName = "sisi-RSV"
+
+	try
+	{
+		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
+		$policyName = "AFSBackupPolicy";
+		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-WorkloadType "AzureFiles"
+		$enableJob = Enable-AzureRmRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $Policy `
+			-Name "test" `
+			-StorageAccountName "sisitestaccount"
+	}
+	finally
+	{
+		# Cleanup
+	}
+}
