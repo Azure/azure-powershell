@@ -7,7 +7,6 @@
     <AssemblyName>Microsoft.Azure.Commands.Profile</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Profile</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -89,11 +88,4 @@
     <Content Include="*.Netcore.psd1" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.psm1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
-
-  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
-    <Message Text="1. Including File in package:%0D%0A%09@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)', '%0D%0A%09')" Importance="high"/>   
-    <ItemGroup>
-      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths)" Condition="! ($([System.String]::Copy(%(Filename)).Contains('System.')) Or $([System.String]::Copy(%(Filename)).Contains('Microsoft.CSharp')))"/>
-    </ItemGroup>
-  </Target>
 </Project>
