@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Test", "Commands.ServiceManagement.Test\Commands.ServiceManagement.Test.csproj", "{58A78F29-8C0C-4A5E-893E-3953C0F29C8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{C60342B1-47D3-4A0E-8081-9B97CE60B7AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Profile", "..\Profile\Commands.Profile\Commands.ServiceManagement.Profile.csproj", "{C60342B1-47D3-4A0E-8081-9B97CE60B7AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Network", "..\Network\Commands.Network\Commands.ServiceManagement.Network.csproj", "{40FEE0BB-FD45-4EFC-85BC-0D602A6892C4}"
 EndProject
