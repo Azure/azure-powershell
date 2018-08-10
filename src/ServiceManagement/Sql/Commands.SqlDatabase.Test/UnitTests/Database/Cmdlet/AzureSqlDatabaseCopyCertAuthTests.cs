@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
 
             // Create a new server
             HttpSession testSession = MockServerHelper.DefaultSessionCollection.GetSession(
-                string.Format("UnitTest.{0}.{1}", FullyQualifiedTestClassName, TestName));
+                string.Format("UnitTest.{0}.{1}", TestContext.FullyQualifiedTestClassName, TestContext.TestName));
 
             ServerTestHelper.SetDefaultTestSessionSettings(testSession);
 

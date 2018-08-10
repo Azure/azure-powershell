@@ -80,10 +80,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         /// </summary>
         public TestContext TestContext { get; set; }
 
-        public string FullyQualifiedTestClassName => TestContext?.FullyQualifiedTestClassName;
-
-        public string TestName => TestContext?.TestName;
-
         /// <summary>
         /// Log a message with the test framework.
         /// </summary>
