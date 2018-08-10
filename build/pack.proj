@@ -20,35 +20,35 @@
     <Exec Command="$(NuGet) pack %(Net452Projects.FullPath) -OutputDirectory $(Net452PackDir) -Properties Configuration=$(Configuration) -IncludeReferencedProjects"/>
   </Target>
 
-  <Target Name="netcoreapp20">
+  <Target Name="netstandard20">
     <ItemGroup>
-      <NetCoreApp20Projects Include="$(Src)**\*.Netcore.csproj" Exclude="$(Src)**\*.Tests.Netcore.csproj;$(Src)**\*.Test.Netcore.csproj;$(Src)**\*.UnitTest.Netcore.csproj"/>
+      <NetStandard20Projects Include="$(Src)**\*.Netcore.csproj" Exclude="$(Src)**\*.Tests.Netcore.csproj;$(Src)**\*.Test.Netcore.csproj;$(Src)**\*.UnitTest.Netcore.csproj"/>
     </ItemGroup>
-    <Exec Command="dotnet pack %(NetCoreApp20Projects.FullPath) -c $(Configuration) --no-build"/>
+    <Exec Command="dotnet pack %(NetStandard20Projects.FullPath) -c $(Configuration) --no-build"/>
   </Target>
 
-  <Target Name="Build" DependsOnTargets="net452;netcoreapp20">
+  <Target Name="Build" DependsOnTargets="net452;netstandard20">
     <PropertyGroup>
       <NupkgMerge>$(Tools)NupkgMerge\NupkgMerge.exe</NupkgMerge>
-      <NetCoreApp20PackDir>$(Artifacts)Package\$(Configuration)\</NetCoreApp20PackDir>
+      <NetStandard20PackDir>$(Artifacts)Package\$(Configuration)\</NetStandard20PackDir>
     </PropertyGroup>
 
     <!-- https://philcupp.wordpress.com/2009/10/12/msbuild-tricks-i-don%E2%80%99t-want-to-forget/ -->
     <ItemGroup>
       <Net452Paths Include="$(Net452PackDir)*.nupkg"/>
-      <NetCoreApp20Paths Include="$(NetCoreApp20PackDir)*.nupkg"/>
+      <NetStandard20Paths Include="$(NetStandard20PackDir)*.nupkg"/>
     </ItemGroup>
 
     <!-- https://stackoverflow.com/a/2012178/294804 -->
     <CreateItem Include="@(Net452Paths->'%(Filename)%(Extension)')" AdditionalMetadata="TargetPath=%(FullPath)">
       <Output TaskParameter="Include" ItemName="Net452Packages"/>
     </CreateItem>
-    <CreateItem Include="@(NetCoreApp20Paths->'%(Filename)%(Extension)')" AdditionalMetadata="TargetPath=%(FullPath)">
-      <Output TaskParameter="Include" ItemName="NetCoreApp20Packages"/>
+    <CreateItem Include="@(NetStandard20Paths->'%(Filename)%(Extension)')" AdditionalMetadata="TargetPath=%(FullPath)">
+      <Output TaskParameter="Include" ItemName="NetStandard20Packages"/>
     </CreateItem>
 
     <ItemGroup>
-      <Packs Include="@(NetCoreApp20Packages)" Condition=" '@(Net452Packages)' == '@(NetCoreApp20Packages)' and %(Identity) != '' " />
+      <Packs Include="@(NetStandard20Packages)" Condition=" '@(Net452Packages)' == '@(NetStandard20Packages)' and %(Identity) != '' " />
     </ItemGroup>
 
     <Exec Command="$(NupkgMerge) -P %(Packs.TargetPath) -S $(Net452PackDir)@(Packs) -O %(Packs.TargetPath)"/>
@@ -56,6 +56,6 @@
     <ItemGroup>
       <Net452OnlyPackages Include="$(Net452PackDir)Microsoft.Azure.PowerShell.ScenarioTest.*.nupkg;$(Net452PackDir)Microsoft.Azure.PowerShell.ServiceManagement.*.nupkg" Exclude="$(Net452PackDir)Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.*.nupkg" />
     </ItemGroup>
-    <Copy SourceFiles="@(Net452OnlyPackages)" DestinationFolder="$(NetCoreApp20PackDir)" />
+    <Copy SourceFiles="@(Net452OnlyPackages)" DestinationFolder="$(NetStandard20PackDir)" />
   </Target>
 </Project>

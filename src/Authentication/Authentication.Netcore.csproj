@@ -3,7 +3,7 @@
   <Import Project="$(ProjectDir)..\Dependencies.Netcore.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.Authentication</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>

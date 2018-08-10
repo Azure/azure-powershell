@@ -3,7 +3,7 @@
   <Import Project="$(ProjectDir)..\Dependencies.Netcore.targets" />
   
    <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.Aks</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Aks</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
