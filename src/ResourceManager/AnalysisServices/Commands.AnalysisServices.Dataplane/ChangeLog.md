@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Support sovereign clouds
 
 ## Version 0.5.4
 * Updated to the latest version of the Azure ClientRuntime.
