@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// <summary>
     /// 'Set-AzureRmServicebusGeoDRConfigurationFailOver' Cmdlet invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServicebusDRConfigurationFailoverVerb, DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusGeoDRConfigurationFailOver", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetAzureServiceBusGeoDRConfigurationFailOver : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]

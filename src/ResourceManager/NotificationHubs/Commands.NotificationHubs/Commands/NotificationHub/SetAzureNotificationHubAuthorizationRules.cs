@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmNotificationHubAuthorizationRules", SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubAuthorizationRules", SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
     public class SetAzureNotificationHubAuthorizationRules : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
+* Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 5.1.0
 * Fix piping issue in Set-AzureRmKeyVaultAccessPolicy
@@ -74,7 +76,7 @@
 ## Version 4.0.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 3.4.1
 * Deprecating the PurgeDisabled flag from Key, Secret and Certificate attributes, respectively.
   * The flag is being superseded by the RecoveryLevel attribute.

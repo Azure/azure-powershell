@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmImageDataDisk", SupportsShouldProcess = true)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ImageDataDisk", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
     public partial class AddAzureRmImageDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -128,4 +128,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

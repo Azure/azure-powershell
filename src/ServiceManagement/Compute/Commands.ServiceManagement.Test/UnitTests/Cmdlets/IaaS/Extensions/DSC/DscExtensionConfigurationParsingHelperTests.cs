@@ -72,6 +72,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact (Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetModuleNameForDscResourceXComputer()
         {
             string moduleName = ConfigurationParsingHelper.GetModuleNameForDscResource("MSFT_xComputer");
@@ -80,6 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact (Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetModuleNameForDscResourceXadDomain()
         {
             string moduleName = ConfigurationParsingHelper.GetModuleNameForDscResource("MSFT_xADDomain");
@@ -88,6 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExtractConfigurationNames1()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(CorporateClientConfigurationPath);
@@ -98,6 +101,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExtractConfigurationNames2()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(DomainControllerConfigurationPath);
@@ -109,6 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExtractConfigurationNames3()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(VisualStudioPath);
@@ -119,6 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExtractConfigurationNamesMulti()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(ShMulptiConfigurationsPath);
@@ -131,6 +137,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNameImportListInsideNode()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(NameImportListInsideNodeConfigurationPath);
@@ -142,6 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNameImportListOutsideNode()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(NameImportListOutsideNodeConfigurationPath);
@@ -153,6 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNameImportSingleInsideNode()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(NameImportSingleInsideNodeConfigurationPath);
@@ -163,6 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNameImportSingleOutsideNode()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(NameImportSingleOutsideNodeConfigurationPath);
@@ -173,6 +183,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNameModuleImportSingleInsideNode()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(NameModuleImportSingleInsideNodeConfigurationPath);
@@ -183,6 +194,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModuleImportListInsideNode()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(ModuleImportListInsideNodeConfigurationPath);
@@ -194,6 +206,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModuleImportListOutsideNode()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(ModuleImportListOutsideNodeConfigurationPath);
@@ -205,6 +218,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModuleImportSingleInsideNode()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(ModuleImportSingleInsideNodeConfigurationPath);
@@ -215,6 +229,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestModuleImportSingleOutsideNode()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(ModuleImportSingleOutsideNodeConfigurationPath);
@@ -225,6 +240,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestIeeScGood()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(IeeScGoodConfigurationPath);
@@ -235,6 +251,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact(Skip = "Tests fail in build system. Disable temporarily")]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestIeeScBad()
         {
             ConfigurationParseResult results = ConfigurationParsingHelper.ParseConfiguration(IeeScBadConfigurationPath);

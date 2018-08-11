@@ -20,7 +20,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchTask, SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchTask", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveBatchTaskCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,

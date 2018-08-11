@@ -21,11 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.New,
-        Constants.CommandNames.AzureHDInsightClusterConfig),
-    OutputType(
-        typeof(AzureHDInsightConfig))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightClusterConfig"),OutputType(typeof(AzureHDInsightConfig))]
     public class NewAzureHDInsightClusterConfigCommand : HDInsightCmdletBase
     {
         private readonly AzureHDInsightConfig _config;

@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Remove, ContainerRegistryWebhookNoun, DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryWebhook", DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
     {

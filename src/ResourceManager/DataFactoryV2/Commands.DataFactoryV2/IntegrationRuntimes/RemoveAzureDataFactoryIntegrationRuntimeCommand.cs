@@ -21,10 +21,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Remove,
-        Constants.IntegrationRuntime,
-        DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName, 
-        SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(Mandatory = false,

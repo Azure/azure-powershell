@@ -23,8 +23,7 @@ using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayAvailableSslOptions"), 
-        OutputType(typeof(PSApplicationGatewayAvailableSslOptions))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableSslOptions"), OutputType(typeof(PSApplicationGatewayAvailableSslOptions))]
     [Alias("List-AzureRmApplicationGatewayAvailableSslOptions")]
     public class GetAzureApplicationGatewayAvailableSslOptions : ApplicationGatewayBaseCmdlet
     {
@@ -38,4 +37,3 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
-

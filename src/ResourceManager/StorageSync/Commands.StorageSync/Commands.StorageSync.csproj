@@ -112,6 +112,12 @@
     </None>
     <EmbeddedResource Include="Config.json" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
+      <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">

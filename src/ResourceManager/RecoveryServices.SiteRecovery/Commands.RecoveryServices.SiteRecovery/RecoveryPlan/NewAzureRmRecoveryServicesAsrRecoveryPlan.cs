@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,11 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Creates Azure Site Recovery Recovery Plan object.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.New,
-        "AzureRmRecoveryServicesAsrRecoveryPlan",
-        DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
-        SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise,SupportsShouldProcess = true)]
     [Alias(
         "New-ASRRP",
         "New-ASRRecoveryPlan")]

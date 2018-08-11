@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "TrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class NewAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.")]
