@@ -34,9 +34,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        "Test",
-        ProfileNouns.VirtualMachineAEMExtension)]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAEMExtension")]
     [OutputType(typeof(AEMTestResult))]
     public class TestAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
     {

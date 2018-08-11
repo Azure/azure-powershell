@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Set, Constants.StorageInsight, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSStorageInsight))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsStorageInsight", DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSStorageInsight))]
     public class SetAzureOperationalInsightsStorageInsightCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,

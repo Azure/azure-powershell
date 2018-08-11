@@ -22,8 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get,
-        ProfileNouns.VirtualMachineImage)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMImage")]
     [OutputType(typeof(PSVirtualMachineImage),
         ParameterSetName = new[] { ListVMImageParamSetName })]
     [OutputType(typeof(PSVirtualMachineImageDetail),

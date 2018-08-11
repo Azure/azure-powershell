@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// <summary>
     /// this commandlet will let you swap two web app slots using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Switch, "AzureRmWebAppSlot", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Switch", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlot", SupportsShouldProcess = true), OutputType(typeof(void))]
     [Alias("Swap-AzureRmWebAppSlot")]
     public class SwitchAzureWebAppSlot : WebAppBaseCmdlet
     {

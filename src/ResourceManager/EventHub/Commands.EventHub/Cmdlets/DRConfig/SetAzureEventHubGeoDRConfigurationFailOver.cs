@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     /// <summary>
     /// 'Set-AzureRmEventHubDRConfigurationFailOver' Cmdlet envokes Geo DR failover and reconfigure the alias to point to the secondary namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, EventhubDRConfigurationFailoverVerb, DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubGeoDRConfigurationFailOver", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetAzureEventHubGeoDRConfigurationFailOver : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
