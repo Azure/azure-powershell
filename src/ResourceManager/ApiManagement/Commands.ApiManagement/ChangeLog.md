@@ -19,8 +19,12 @@
 -->
 ## Current Release
 
+## Version 6.1.3
+* Updated to the latest version of the Azure ClientRuntime.
+
 ## Version 6.1.2
 * Updated help files to include full parameter types and correct input/output types.
+* Updated to the latest version of the Azure ClientRuntime.
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6370
     - Fixed bug in Automapper to translate PsApiManagementApi to ApiContract
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6515

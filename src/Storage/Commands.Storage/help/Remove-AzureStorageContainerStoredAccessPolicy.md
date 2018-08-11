@@ -201,10 +201,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Container (ByPropertyName), Policy (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

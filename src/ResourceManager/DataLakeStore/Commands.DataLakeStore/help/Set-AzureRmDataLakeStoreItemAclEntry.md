@@ -47,7 +47,7 @@ PS C:\>Set-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -A
 
 ### Example 3: Modify permissions for an ACE recursively using Acl object
 ```
-PS C:\>$fullAcl="user:userid1:--x,default:user:userid1:--x
+PS C:\>$fullAcl="user:userid1:--x,default:user:userid1:--x"
 PS C:\>$newFullAcl = $fullAcl.Split("{,}")
 PS C:\>Set-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -Acl $newFullAcl -Recurse -Concurrency 128
 ```
@@ -288,28 +288,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
-Parameters: Path (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[]
-Parameters: Acl (ByPropertyName, ByValue)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType
-Parameters: AceType (ByPropertyName)
 
 ### System.Guid
-Parameters: Id (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Permission
-Parameters: Permissions (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Default (ByPropertyName), PassThru (ByPropertyName), Recurse (ByPropertyName)
 
 ### System.Int32
-Parameters: Concurrency (ByPropertyName)
 
 ## OUTPUTS
 

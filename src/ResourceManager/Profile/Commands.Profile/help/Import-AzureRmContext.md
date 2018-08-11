@@ -157,10 +157,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile
-Parameters: AzureContext (ByPropertyName)
 
 ### System.String
-Parameters: Path (ByPropertyName)
 
 ## OUTPUTS
 

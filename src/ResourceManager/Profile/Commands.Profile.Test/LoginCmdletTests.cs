@@ -182,6 +182,26 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
+        public void LoginWithNoSubscriptionAndTenantDomain()
+        {
+            var cmdlt = new ConnectAzureRmAccountCommand();
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.TenantId = "microsoft.onmicrosoft.com";
+            cmdlt.SetParameterSet("UserWithSubscriptionId");
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.DefaultContext);
+            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Directory);
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id);
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithSubscriptionname()
         {
             var cmdlt = new ConnectAzureRmAccountCommand();

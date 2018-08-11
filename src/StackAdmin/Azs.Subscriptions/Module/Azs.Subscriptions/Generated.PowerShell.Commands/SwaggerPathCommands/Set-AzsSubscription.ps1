@@ -113,7 +113,7 @@ function Set-AzsSubscription {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSBoundParameters.ContainsKey('Location')) {
             if ( $MyInvocation.Line -match "\s-ArmLocation\s") {

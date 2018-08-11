@@ -100,7 +100,7 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
     'Update-AzureRmADServicePrincipal', 'Update-AzureRmADUser', 
     'Remove-AzureRmResourceGroup', 'Get-AzureRmProviderFeature', 
     'Register-AzureRmProviderFeature', 'Get-AzureRmLocation', 
-    'Find-AzureRmResourceGroup', 'Export-AzureRmResourceGroup', 
+    'Export-AzureRmResourceGroup', 
     'Get-AzureRmResourceProvider', 'Register-AzureRmResourceProvider', 
     'Unregister-AzureRmResourceProvider', 
     'Get-AzureRmResourceGroupDeployment', 
@@ -112,7 +112,7 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
     'Save-AzureRmResourceGroupDeploymentTemplate', 
     'Get-AzureRmResourceGroupDeploymentOperation', 
     'Get-AzureRmResourceLock', 'Invoke-AzureRmResourceAction', 
-    'Find-AzureRmResource', 'Move-AzureRmResource', 
+    'Move-AzureRmResource', 
     'New-AzureRmResourceLock', 'Get-AzureRmPolicyAssignment', 
     'Get-AzureRmPolicyDefinition', 'Get-AzureRmPolicySetDefinition', 
     'New-AzureRmPolicyAssignment', 'New-AzureRmPolicyDefinition', 
@@ -132,7 +132,11 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
     'Get-AzureRmManagementGroup', 'New-AzureRmManagementGroup', 
     'Update-AzureRmManagementGroup', 'Remove-AzureRmManagementGroup', 
     'New-AzureRmManagementGroupSubscription', 
-    'Remove-AzureRmManagementGroupSubscription'
+    'Remove-AzureRmManagementGroupSubscription',
+    'New-AzureRmDeployment', 'Get-AzureRmDeployment', 'Test-AzureRmDeployment',
+    'Remove-AzureRmDeployment', 'Stop-AzureRmDeployment',
+    'Save-AzureRmDeploymentTemplate',
+    'Get-AzureRmDeploymentOperation'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.0.2
+* Updated to the latest version of the Azure ClientRuntime.
+
 ## Version 5.0.1
 * Updated all help files to include full parameter types and correct input/output types.
 * Add Ps1XmlAttribute to cmdlets output types properties
@@ -63,7 +66,7 @@
 ## Version 4.0.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 3.4.1
 
 ## Version 3.4.0
