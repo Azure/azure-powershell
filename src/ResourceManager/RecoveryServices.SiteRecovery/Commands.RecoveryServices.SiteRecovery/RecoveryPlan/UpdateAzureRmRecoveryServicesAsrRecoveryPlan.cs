@@ -112,9 +112,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 var recoveryPlanGroup = new RecoveryPlanGroup
                 {
-                    GroupType = (RecoveryPlanGroupType)Enum.Parse(
-                        typeof(RecoveryPlanGroupType),
-                        asrRecoveryPlanGroup.GroupType),
+                    GroupType = asrRecoveryPlanGroup.GroupType,
 
                     // Initialize ReplicationProtectedItems with empty List if asrRecoveryPlanGroup.ReplicationProtectedItems is null
                     // otherwise assign respective values

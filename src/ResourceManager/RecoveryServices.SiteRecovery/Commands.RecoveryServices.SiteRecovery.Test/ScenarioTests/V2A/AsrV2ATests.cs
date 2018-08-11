@@ -23,13 +23,10 @@ namespace RecoveryServices.SiteRecovery.Test
 {
     public class AsrV2ATests : AsrTestsBase
     {
-        public XunitTracingInterceptor _logger;
-
         public AsrV2ATests(
             ITestOutputHelper output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             this.vaultSettingsFilePath = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
                 "ScenarioTests\\V2A\\V2A.VaultCredentials");
@@ -44,7 +41,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2AvCenterTest()
         {
             this.RunPowerShellTest(
-                _logger,
               Constants.NewModel,
               "Test-vCenter -vaultSettingsFilePath \"" +
               this.vaultSettingsFilePath +
@@ -58,7 +54,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2AFabricTests()
         {
             this.RunPowerShellTest(
-               _logger,
              Constants.NewModel,
              "Test-SiteRecoveryFabricTest -vaultSettingsFilePath \"" +
              this.vaultSettingsFilePath +
@@ -72,7 +67,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2APCMappingTest()
         {
             this.RunPowerShellTest(
-                _logger,
              Constants.NewModel,
              "Test-PCM -vaultSettingsFilePath \"" +
              this.vaultSettingsFilePath +
@@ -86,7 +80,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2APCTest()
         {
             this.RunPowerShellTest(
-                _logger,
              Constants.NewModel,
              "Test-PC -vaultSettingsFilePath \"" +
              this.vaultSettingsFilePath +
@@ -100,7 +93,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2APolicyTest()
         {
             this.RunPowerShellTest(
-                _logger,
              Constants.NewModel,
              "Test-SiteRecoveryPolicy -vaultSettingsFilePath \"" +
              this.vaultSettingsFilePath +
@@ -112,7 +104,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2AAddPI()
         {
             this.RunPowerShellTest(
-                _logger,
              Constants.NewModel,
              "Test-V2AAddPI -vaultSettingsFilePath \"" +
              this.vaultSettingsFilePath +
@@ -124,7 +115,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2ACreateRPI()
         {
             this.RunPowerShellTest(
-                _logger,
              Constants.NewModel,
              "V2ACreateRPI -vaultSettingsFilePath \"" +
              this.vaultSettingsFilePath +
@@ -138,7 +128,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2ATestResync()
         {
             this.RunPowerShellTest(
-                _logger,
              Constants.NewModel,
              "V2ATestResync -vaultSettingsFilePath \"" +
              this.vaultSettingsFilePath +
@@ -152,7 +141,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2AUpdateMS()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "V2AUpdateMobilityService -vaultSettingsFilePath \"" +
                 this.vaultSettingsFilePath +
@@ -166,7 +154,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2AUpdateSP()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "V2AUpdateServiceProvider -vaultSettingsFilePath \"" +
                 this.vaultSettingsFilePath +
@@ -178,7 +165,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2ATFOJob()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "V2ATestFailoverJob -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
@@ -188,7 +174,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2AFailoverJob()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "V2AFailoverJob -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
@@ -200,7 +185,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2ATestReprotect()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "V2ATestReprotect -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
@@ -212,7 +196,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2APSSwitch()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "V2ASwitchProcessServer -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
@@ -224,7 +207,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2AUpdatePolicy()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "V2AUpdatePolicy -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
@@ -236,7 +218,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void SetRPI()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "Test-SetRPI -vaultSettingsFilePath \"" +
                 this.vaultSettingsFilePath +

@@ -200,9 +200,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var createRecoveryPlanInputProperties = new CreateRecoveryPlanInputProperties
             {
-                FailoverDeploymentModel = (FailoverDeploymentModel)Enum.Parse(
-                    typeof(FailoverDeploymentModel),
-                    this.failoverDeploymentModel),
+                FailoverDeploymentModel = this.failoverDeploymentModel,
                 Groups = new List<RecoveryPlanGroup>(),
                 PrimaryFabricId = this.primaryserver,
                 RecoveryFabricId = this.recoveryserver
@@ -312,9 +310,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var createRecoveryPlanInputProperties = new CreateRecoveryPlanInputProperties
             {
-                FailoverDeploymentModel = (FailoverDeploymentModel)Enum.Parse(
-                    typeof(FailoverDeploymentModel),
-                    recoveryPlan.Properties.FailoverDeploymentModel),
+                FailoverDeploymentModel = recoveryPlan.Properties.FailoverDeploymentModel,
                 Groups = recoveryPlan.Properties.Groups,
                 PrimaryFabricId = recoveryPlan.Properties.PrimaryFabricId,
                 RecoveryFabricId = recoveryPlan.Properties.RecoveryFabricId

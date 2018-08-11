@@ -52,9 +52,8 @@ Lists all replication protected items in the specified ASR protection container.
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
-
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,7 +68,7 @@ Accept wildcard characters: False
 Specifies the friendly name of the replication protected item to get.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByObjectWithFriendlyName
 Aliases:
 
@@ -84,7 +83,7 @@ Accept wildcard characters: False
 Specifies the name of the replication protected item to get.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByObjectWithName
 Aliases:
 
@@ -99,7 +98,7 @@ Accept wildcard characters: False
 Specifies an ASR protectable item object. The cmdlet gets the ASR replication protected item corresponding to the specified ASR protectable item if the item is protected.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem
+Type: ASRProtectableItem
 Parameter Sets: ByProtectableItemObject
 Aliases:
 
@@ -114,7 +113,7 @@ Accept wildcard characters: False
 Specifies the ASR protection container object of the ASR protection container corresponding to the replication protected item. 
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer
+Type: ASRProtectionContainer
 Parameter Sets: ByObject, ByObjectWithName, ByObjectWithFriendlyName
 Aliases:
 
@@ -131,14 +130,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer
-Parameters: ProtectionContainer (ByValue)
-
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem
-Parameters: ProtectableItem (ByValue)
+Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
+### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 

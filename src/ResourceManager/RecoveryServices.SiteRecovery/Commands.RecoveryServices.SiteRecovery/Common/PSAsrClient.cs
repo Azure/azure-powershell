@@ -30,6 +30,8 @@ using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Newtonsoft.Json;
+using Microsoft.Rest.Azure;
+using rpError = Microsoft.Azure.Commands.RecoveryServices.RestApiInfra;
 using Formatting = System.Xml.Formatting;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
@@ -178,12 +180,43 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <returns>VaultExtendedInfo Resource Object</returns>
         public VaultExtendedInfoResource GetVaultExtendedInfo(String vaultResourceGroupName, String vaultName)
         {
-            return this.recoveryServicesVaultClient
-                .VaultExtendedInfo
-                .GetWithHttpMessagesAsync(vaultResourceGroupName, vaultName, this.GetRequestHeaders(false))
-                .GetAwaiter()
-                .GetResult()
-                .Body;
+            VaultExtendedInfoResource extendedInformation = null;
+
+            try
+            {
+                extendedInformation = this.recoveryServicesVaultClient
+                                         .VaultExtendedInfo
+                                         .GetWithHttpMessagesAsync(vaultResourceGroupName, vaultName, this.GetRequestHeaders(false))
+                                         .GetAwaiter()
+                                         .GetResult()
+                                         .Body;
+            }
+            catch (Exception exception)
+            {
+                CloudException cloudException = exception as CloudException;
+
+                if (cloudException != null && cloudException.Response != null
+                    && !string.IsNullOrEmpty(cloudException.Response.Content))
+                {
+                    rpError.Error error = JsonConvert.DeserializeObject<rpError.Error>(cloudException.Response.Content);
+
+                    if (error.ErrorCode.Equals(
+                        RpErrorCode.ResourceExtendedInfoNotFound.ToString(),
+                        StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        extendedInformation = new VaultExtendedInfoResource();
+                        extendedInformation.IntegrityKey = Utilities.GenerateRandomKey(128);
+                        extendedInformation.Algorithm = CryptoAlgorithm.None.ToString();
+                        extendedInformation = this.recoveryServicesVaultClient.VaultExtendedInfo.CreateOrUpdateWithHttpMessagesAsync(
+                                                vaultResourceGroupName,
+                                                vaultName,
+                                                extendedInformation,
+                                                GetRequestHeaders(false)).Result.Body;
+                    }
+                }
+            }
+
+            return extendedInformation;
         }
 
         public static string GetJobIdFromReponseLocation(

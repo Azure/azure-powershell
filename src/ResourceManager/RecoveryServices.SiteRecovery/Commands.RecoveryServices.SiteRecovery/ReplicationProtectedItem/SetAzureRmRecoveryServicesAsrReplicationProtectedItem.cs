@@ -128,6 +128,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryAvailabilitySet { get; set; }
 
         /// <summary>
+        ///     Gets or sets the recovery boot diagnostics storageAccountId for replication protected item after failover.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryBootDiagStorageAccountId { get; set; }
+
+        /// <summary>
+        ///    Gets or sets  the list of virtual machine disks to replicated 
+        ///    and the cache storage account and recovery storage account to be used to replicate the disk.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRAzuretoAzureDiskReplicationConfig[] AzureToAzureUpdateReplicationConfiguration { get; set; }
+
+        /// <summary>
         ///     Gets or sets if the Azure virtual machine that is created on failover should use managed disks.
         /// </summary>
         [Parameter]
@@ -160,7 +175,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                 var provider = replicationProtectedItemResponse.Properties.ProviderSpecificDetails;
 
-                // Check for Replication Provider type HyperVReplicaAzure/InMageAzureV2
+                // Check for Replication Provider type HyperVReplicaAzure/InMageAzureV2/A2A
                 if (!(provider is HyperVReplicaAzureReplicationDetails) &&
                     !(provider is InMageAzureV2ReplicationDetails) &&
                     !(provider is A2AReplicationDetails))
@@ -179,7 +194,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.IsNullOrEmpty(this.RecoveryAvailabilitySet) &&
                     string.IsNullOrEmpty(this.RecoveryCloudServiceId) &&
                     string.IsNullOrEmpty(this.RecoveryResourceGroupId) &&
-                    string.IsNullOrEmpty(this.LicenseType))
+                    string.IsNullOrEmpty(this.LicenseType) &&
+                    string.IsNullOrEmpty(this.RecoveryBootDiagStorageAccountId) &&
+                    this.AzureToAzureUpdateReplicationConfiguration == null)
                 {
                     this.WriteWarning(Resources.ArgumentsMissingForUpdateVmProperties);
                     return;
@@ -212,7 +229,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                     if (string.IsNullOrEmpty(this.Name))
                     {
-                        vmName = providerSpecificDetails.RecoveryAzureVMName;
+                        vmName = providerSpecificDetails.RecoveryAzureVmName;
                     }
 
                     if (string.IsNullOrEmpty(this.Size))
@@ -359,15 +376,54 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                             providerSpecificDetails.RecoveryCloudService;
                     }
 
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.RecoveryBootDiagStorageAccountId)))
+                    {
+                        this.RecoveryBootDiagStorageAccountId = providerSpecificDetails.RecoveryBootDiagStorageAccountId;
+                    }
+
+                    List<A2AVmManagedDiskUpdateDetails> managedDiskUpdateDetails = null;
+
+                    // ManagedDisk case
+                    if (this.AzureToAzureUpdateReplicationConfiguration == null && providerSpecificDetails.ProtectedManagedDisks != null)
+                    {
+                        managedDiskUpdateDetails = new List<A2AVmManagedDiskUpdateDetails>();
+                        foreach (var managedDisk in providerSpecificDetails.ProtectedManagedDisks)
+                        {
+                            managedDiskUpdateDetails.Add(
+                                new A2AVmManagedDiskUpdateDetails(
+                                    managedDisk.DiskId,
+                                    managedDisk.RecoveryTargetDiskAccountType,
+                                    managedDisk.RecoveryReplicaDiskAccountType));
+                        }
+                    }
+                    else if (this.AzureToAzureUpdateReplicationConfiguration != null && this.AzureToAzureUpdateReplicationConfiguration[0].IsManagedDisk)
+                    {
+                        managedDiskUpdateDetails = new List<A2AVmManagedDiskUpdateDetails>();
+                        foreach (var managedDisk in this.AzureToAzureUpdateReplicationConfiguration)
+                        {
+                            managedDiskUpdateDetails.Add(
+                                new A2AVmManagedDiskUpdateDetails(
+                                    managedDisk.DiskId,
+                                    managedDisk.RecoveryTargetDiskAccountType,
+                                    managedDisk.RecoveryReplicaDiskAccountType));
+                        }
+                    }
+
                     providerSpecificInput = new A2AUpdateReplicationProtectedItemInput()
                     {
                         RecoveryCloudServiceId = this.RecoveryCloudServiceId,
-                        RecoveryResourceGroupId = this.RecoveryResourceGroupId
+                        RecoveryResourceGroupId = this.RecoveryResourceGroupId,
+                        RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId,
+                        ManagedDiskUpdateDetails = managedDiskUpdateDetails
                     };
-                    if (string.IsNullOrEmpty(this.RecoveryNetworkId))
+
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.RecoveryNetworkId)))
                     {
                         vmRecoveryNetworkId = providerSpecificDetails.SelectedRecoveryAzureNetworkId;
                     }
+
                     vMNicInputDetailsList = getNicListToUpdate(providerSpecificDetails.VmNics);
                 }
 

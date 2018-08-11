@@ -30,6 +30,7 @@ using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Rest.Azure;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -141,7 +142,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             return data.UnFormatArmId(ARMResourceIdPaths.SRSArmUrlPattern)[2];
         }
-        
+
         /// <summary>
         ///     Get Value from ARM ID
         /// </summary>
@@ -219,15 +220,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             string serializedValue;
 
             using (var memoryStream = new MemoryStream())
-                using (var reader = new StreamReader(memoryStream))
-                {
-                    var serializer = new DataContractSerializer(typeof(T));
-                    serializer.WriteObject(
-                        memoryStream,
-                        value);
-                    memoryStream.Position = 0;
-                    serializedValue = reader.ReadToEnd();
-                }
+            using (var reader = new StreamReader(memoryStream))
+            {
+                var serializer = new DataContractSerializer(typeof(T));
+                serializer.WriteObject(
+                    memoryStream,
+                    value);
+                memoryStream.Position = 0;
+                serializedValue = reader.ReadToEnd();
+            }
 
             return serializedValue;
         }
@@ -429,6 +430,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 PSRecoveryServicesClient.asrVaultCreds.ARMResourceType =
                     asrVaultCreds.ARMResourceType;
             }
+        }
+
+        public static string toStorageString(this StorageAccountTypes? storageAccountTypes)
+        {
+            if (StorageAccountTypes.PremiumLRS.Equals(storageAccountTypes))
+            {
+                return Constants.Premium_LRS;
+            }
+
+            if (StorageAccountTypes.PremiumLRS.Equals(storageAccountTypes))
+            {
+                return Constants.Standard_LRS;
+            }
+
+            return null;
         }
 
         /// <summary>
