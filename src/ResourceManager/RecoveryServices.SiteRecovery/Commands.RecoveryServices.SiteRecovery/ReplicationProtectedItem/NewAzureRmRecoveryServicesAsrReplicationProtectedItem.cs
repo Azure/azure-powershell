@@ -345,6 +345,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         VMwareToAzureReplication(input);
                         break;
 
+                    case ASRParameterSets.AzureToAzureWithoutDiskDetails:
                     case ASRParameterSets.AzureToAzure:
                         if (!(policyInstanceType is A2APolicyDetails))
                         {
@@ -406,6 +407,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 TargetAzureVmName = string.IsNullOrEmpty(this.RecoveryVmName)
                                             ? this.ProtectableItem.FriendlyName
                                             : this.RecoveryVmName,
+                EnableRdpOnTargetOption = Constants.NeverEnableRDPOnTargetOption,
                 DisksToInclude = this.IncludeDiskId != null
                                             ? this.IncludeDiskId
                                             : null

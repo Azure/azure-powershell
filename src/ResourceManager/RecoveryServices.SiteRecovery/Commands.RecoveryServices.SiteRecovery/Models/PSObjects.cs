@@ -1347,7 +1347,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.ProtectionState = a2aProviderSpecificDetails.VmProtectionState;
                 this.ProtectionStateDescription = a2aProviderSpecificDetails.VmProtectionStateDescription;
                 this.ProviderSpecificDetails = new ASRAzureToAzureSpecificRPIDetails(a2aProviderSpecificDetails);
-                // todo : vipin convert manageddisk object                
                 if (a2aProviderSpecificDetails.VmNics != null)
                 {
                     this.NicDetailsList =

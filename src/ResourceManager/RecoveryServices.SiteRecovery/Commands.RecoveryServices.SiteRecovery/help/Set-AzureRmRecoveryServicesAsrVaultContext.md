@@ -68,6 +68,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Specifies the recoveryservices vault resource id to be set as Vault context.
+
+```yaml
+Type: String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Vault
 The Recovery Services vault object corresponding to the Recovery Services vault.
 
@@ -96,21 +111,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Specifies the recoveryservices vault resource id to be set as Vault context.
-
-```yaml
-Type: String
-Parameter Sets: ByResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

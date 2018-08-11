@@ -53,8 +53,9 @@ New-AzureRmRecoveryServicesAsrReplicationProtectedItem [-AzureToAzure]
  -AzureToAzureDiskReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]> -AzureVmId <String>
  -Name <String> [-RecoveryVmName <String>] -ProtectionContainerMapping <ASRProtectionContainerMapping>
  -RecoveryResourceGroupId <String> [-RecoveryCloudServiceId <String>] [-RecoveryAvailabilitySetId <String>]
- [-RecoveryBootDiagStorageAccountId <String>] [-WaitForCompletion] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RecoveryBootDiagStorageAccountId <String>] [-WaitForCompletion] [-DiskEncryptionVaultId <String>]
+ [-DiskEncryptionSecertUrl <String>] [-KeyEncryptionKeyUrl <String>] [-KeyEncryptionVaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureToAzureWithoutDiskDetails
@@ -63,7 +64,9 @@ New-AzureRmRecoveryServicesAsrReplicationProtectedItem [-AzureToAzure] -AzureVmI
  [-RecoveryVmName <String>] -ProtectionContainerMapping <ASRProtectionContainerMapping>
  [-RecoveryAzureStorageAccountId <String>] -LogStorageAccountId <String> -RecoveryResourceGroupId <String>
  [-RecoveryAvailabilitySetId <String>] [-RecoveryBootDiagStorageAccountId <String>] [-WaitForCompletion]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DiskEncryptionVaultId <String>] [-DiskEncryptionSecertUrl <String>] [-KeyEncryptionKeyUrl <String>]
+ [-KeyEncryptionVaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -188,10 +191,42 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
+
 ```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskEncryptionSecertUrl
+{{Fill DiskEncryptionSecertUrl Description}}
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskEncryptionVaultId
+{{Fill DiskEncryptionVaultId Description}}
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
+Aliases:
 
 Required: False
 Position: Named
@@ -221,6 +256,36 @@ The list of disks to include for replication. By default all disks are included.
 ```yaml
 Type: String[]
 Parameter Sets: VMwareToAzure, HyperVSiteToAzure
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyEncryptionKeyUrl
+{{Fill KeyEncryptionKeyUrl Description}}
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyEncryptionVaultId
+{{Fill KeyEncryptionVaultId Description}}
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
 Aliases:
 
 Required: False
@@ -421,6 +486,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RecoveryBootDiagStorageAccountId
+Specifies the storage account for boot diagnostics for recovery azure VM.
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RecoveryCloudServiceId
 Specifies the resource ID of the recovery cloud service to failover this virtual machine to.
 
@@ -534,21 +614,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RecoveryBootDiagStorageAccountId
-Specifies the storage account for boot diagnostics for recovery azure VM.
-
-```yaml
-Type: String
-Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
-Aliases:
 
 Required: False
 Position: Named

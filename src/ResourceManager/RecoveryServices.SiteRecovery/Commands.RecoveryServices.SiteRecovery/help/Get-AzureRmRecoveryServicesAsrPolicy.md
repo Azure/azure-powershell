@@ -73,6 +73,8 @@ Returns the replication policy with the specified friendly name.
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
+
 ```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)

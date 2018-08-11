@@ -138,8 +138,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///    Gets or sets  the list of virtual machine disks to replicated 
         ///    and the cache storage account and recovery storage account to be used to replicate the disk.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk, Mandatory = true)]
         [ValidateNotNullOrEmpty]
+        [Parameter]
         public ASRAzuretoAzureDiskReplicationConfig[] AzureToAzureUpdateReplicationConfiguration { get; set; }
 
         /// <summary>

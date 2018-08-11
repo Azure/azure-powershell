@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated Azure to Azure recovery for managed disk and RecoveryServices.siteRecovery 2018-01-10 api version.
 
 ## Version 0.2.7
 * Updated help files to include full parameter types and correct input/output types.

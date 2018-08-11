@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 return Constants.Premium_LRS;
             }
 
-            if (StorageAccountTypes.PremiumLRS.Equals(storageAccountTypes))
+            if (StorageAccountTypes.StandardLRS.Equals(storageAccountTypes))
             {
                 return Constants.Standard_LRS;
             }

@@ -215,8 +215,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureStorageAccountId { get; set; }
 
-        // todo : vipin add in breaking changes list
-        // public string Encryption { get; set; }
+        /// <summary>
+        ///     Gets or sets if encryption should be enabled or disabled.
+        ///  todo : vipin add in breaking changes list.Mark obsolete for now.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVToAzure)]
+        [DefaultValue(Constants.Disable)]
+        [ValidateSet(
+            Constants.Enable,
+            Constants.Disable)]
+        public string Encryption { get; set; }
 
         /// <summary>
         ///     Gets or sets the multiVm sync status for the policy.
