@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias(
         "Get-ASRRP",
         "Get-ASRRecoveryPlan")]
-    [OutputType(typeof(ASRRecoveryPlan))]
+    [OutputType(typeof(IEnumerable<ASRRecoveryPlan>))]
     public class GetAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "AzureRmRecoveryServicesAsrStorageClassification",
         DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
     [Alias("Get-ASRStorageClassification")]
-    [OutputType(typeof(ASRStorageClassification))]
+    [OutputType(typeof(IEnumerable<ASRStorageClassification>))]
     public class GetAzureRmRecoveryServicesAsrStorageClassification : SiteRecoveryCmdletBase
     {
         /// <summary>

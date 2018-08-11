@@ -46,9 +46,8 @@ List all ASR replication services providers registered to the Recovery Services 
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
-
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +62,7 @@ Accept wildcard characters: False
 Specifies the ASR fabric object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
+Type: ASRFabric
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +77,7 @@ Accept wildcard characters: False
 Specifies the friendly name of the ASR recovery services provider to get details for.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByFriendlyName
 Aliases:
 
@@ -93,7 +92,7 @@ Accept wildcard characters: False
 Specifies the name of the ASR recovery services provider to get details for.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByName
 Aliases:
 
@@ -110,11 +109,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
-Parameters: Fabric (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryServicesProvider
+### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryServicesProvider, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 

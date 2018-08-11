@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "AzureRmRecoveryServicesAsrRecoveryPoint",
         DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRRecoveryPoint")]
-    [OutputType(typeof(ASRRecoveryPoint))]
+    [OutputType(typeof(IEnumerable<ASRRecoveryPoint>))]
     public class GetAzureRmRecoveryServicesAsrRecoveryPoint : SiteRecoveryCmdletBase
     {
         /// <summary>

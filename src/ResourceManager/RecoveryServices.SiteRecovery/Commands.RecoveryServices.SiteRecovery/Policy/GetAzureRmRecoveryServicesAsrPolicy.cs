@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "AzureRmRecoveryServicesAsrPolicy",
         DefaultParameterSetName = ASRParameterSets.Default)]
     [Alias("Get-ASRPolicy")]
-    [OutputType(typeof(ASRPolicy))]
+    [OutputType(typeof(IEnumerable<ASRPolicy>))]
     public class GetAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {
         /// <summary>

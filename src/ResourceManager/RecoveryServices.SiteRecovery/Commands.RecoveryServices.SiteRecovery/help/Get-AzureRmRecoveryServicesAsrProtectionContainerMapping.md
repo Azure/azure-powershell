@@ -61,9 +61,8 @@ Gets all protection container mappings for the specified protection container.
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
-
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,7 +77,7 @@ Accept wildcard characters: False
 Specifies the name of the protection container mapping to get.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByObjectWithName
 Aliases:
 
@@ -93,7 +92,7 @@ Accept wildcard characters: False
 Get protection container mappings corresponding to the the specified ASR protection container object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer
+Type: ASRProtectionContainer
 Parameter Sets: (All)
 Aliases:
 
@@ -110,11 +109,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer
-Parameters: ProtectionContainer (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping
+### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 

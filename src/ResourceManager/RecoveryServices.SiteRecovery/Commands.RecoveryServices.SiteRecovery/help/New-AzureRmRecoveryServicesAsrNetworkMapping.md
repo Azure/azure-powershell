@@ -59,7 +59,7 @@ Starts the network mapping for creation operation using the specified name, prim
 Switch parameter specifying that the network mapping being created will be used to replicated Azure virtual machines between two Azure regions.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: AzureToAzure
 Aliases:
 
@@ -70,11 +70,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+```yaml
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,7 +103,7 @@ Accept wildcard characters: False
 Name of the ASR network mapping to create.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +118,7 @@ Accept wildcard characters: False
 Specifies the Azure virtual network ID of the primary network for the mapping.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureToAzure
 Aliases:
 
@@ -119,7 +133,7 @@ Accept wildcard characters: False
 Specifes the ASR fabric where mapping should be created.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
+Type: ASRFabric
 Parameter Sets: AzureToAzure
 Aliases:
 
@@ -134,7 +148,7 @@ Accept wildcard characters: False
 Specifies the primary network object for the ASR network mapping.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork
+Type: ASRNetwork
 Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
 Aliases:
 
@@ -149,7 +163,7 @@ Accept wildcard characters: False
 Specifies the recovery azure network ID for the network mapping.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureToAzure, EnterpriseToAzure
 Aliases:
 
@@ -164,7 +178,7 @@ Accept wildcard characters: False
 The Azure Site Recovery fabric object corresponding to the recovery Azure region.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
+Type: ASRFabric
 Parameter Sets: AzureToAzure
 Aliases:
 
@@ -179,7 +193,7 @@ Accept wildcard characters: False
 Specifies the recovery network object for the ASR network mapping.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork
+Type: ASRNetwork
 Parameter Sets: EnterpriseToEnterprise
 Aliases:
 
@@ -190,26 +204,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -226,7 +225,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork
-Parameters: PrimaryNetwork (ByValue)
 
 ## OUTPUTS
 

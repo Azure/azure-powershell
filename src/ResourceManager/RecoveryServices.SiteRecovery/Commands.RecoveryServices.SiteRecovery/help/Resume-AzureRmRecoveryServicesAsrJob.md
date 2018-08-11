@@ -42,7 +42,7 @@ Resume the specified job if it is in a waiting or suspended state and return the
 Comments for the job log.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: Comments
 
@@ -53,11 +53,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+```yaml
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,7 +86,7 @@ Accept wildcard characters: False
 The input object to the cmdlet: The ASR Job object corresponding to the job to be resumed.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
+Type: ASRJob
 Parameter Sets: ByObject
 Aliases: Job
 
@@ -87,7 +101,7 @@ Accept wildcard characters: False
 Specify the ASR job by name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByName
 Aliases:
 
@@ -98,26 +112,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -WhatIf
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -134,7 +133,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
-Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "AzureRmRecoveryServicesAsrServicesProvider",
         DefaultParameterSetName = ASRParameterSets.Default)]
     [Alias("Get-ASRServicesProvider")]
-    [OutputType(typeof(ASRRecoveryServicesProvider))]
+    [OutputType(typeof(IEnumerable<ASRRecoveryServicesProvider>))]
     public class GetAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
     {
         /// <summary>

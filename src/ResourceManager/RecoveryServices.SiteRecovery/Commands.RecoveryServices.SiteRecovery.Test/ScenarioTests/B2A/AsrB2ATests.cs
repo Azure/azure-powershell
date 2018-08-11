@@ -22,13 +22,10 @@ namespace RecoveryServices.SiteRecovery.Test
 {
     public class AsrB2ATests : AsrTestsBase
     {
-        public XunitTracingInterceptor _logger;
-
         public AsrB2ATests(
             ITestOutputHelper output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             this.vaultSettingsFilePath = System.IO.Path.Combine(
                 System.AppDomain.CurrentDomain.BaseDirectory,
                 "ScenarioTests\\B2A\\B2A.VaultCredentials");
@@ -45,7 +42,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void TestCreatePolicy()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "Test-CreatePolicy -vaultSettingsFilePath \"" +
                 this.vaultSettingsFilePath +
@@ -59,7 +55,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void TestCreatePCMap()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "Test-CreatePCMap -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
@@ -71,7 +66,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void TestEnableDR()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "Test-SiteRecoveryEnableDR -vaultSettingsFilePath \"" +
                 this.vaultSettingsFilePath +
@@ -85,7 +79,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void TestUpdateRPI()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "Test-UpdateRPI -vaultSettingsFilePath \"" +
                 this.vaultSettingsFilePath +
@@ -99,7 +92,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void TestTFO()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "Test-TFO -vaultSettingsFilePath \"" +
                 this.vaultSettingsFilePath +
@@ -113,7 +105,6 @@ namespace RecoveryServices.SiteRecovery.Test
         public void TestPlannedFailover()
         {
             this.RunPowerShellTest(
-                _logger,
                 Constants.NewModel,
                 "Test-PlannedFailover -vaultSettingsFilePath \"" +
                 this.vaultSettingsFilePath +

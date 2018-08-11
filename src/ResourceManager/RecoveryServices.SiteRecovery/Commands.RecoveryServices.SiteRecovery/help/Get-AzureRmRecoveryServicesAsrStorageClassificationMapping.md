@@ -41,9 +41,8 @@ List all storage classification mappings corresponding to the specified storage 
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
-
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -58,7 +57,7 @@ Accept wildcard characters: False
 Specifies the name of the storage classification mapping to get.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByObjectWithName
 Aliases:
 
@@ -73,7 +72,7 @@ Accept wildcard characters: False
 Specifies an ASR storage classification object. The cmdlet gets ASR storage classification mappings corresponding to the specified storage classification 
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassification
+Type: ASRStorageClassification
 Parameter Sets: (All)
 Aliases:
 
@@ -89,12 +88,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassification
-Parameters: StorageClassification (ByValue)
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassificationMapping
+### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassificationMapping, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 

@@ -48,17 +48,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ARSVault Vault { get; set; }
 
         /// <summary>
+        ///     Gets or sets resource Id of vault.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.ByResourceId,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         ///     ProcessRecord of the command.
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
 
+            var vaultName = "";
+            if (this.MyInvocation.BoundParameters.ContainsKey(
+                    Utilities.GetMemberName(() => this.Vault))) {
+                this.ResourceId = this.Vault.ID;
+            }
+
+            vaultName = Utilities.GetValueFromArmId(
+                            this.ResourceId,
+                            ARMResourceTypeConstants.RecoveryServicesVault);
+
             if (this.ShouldProcess(
-                this.Vault.Name,
+                vaultName,
                 VerbsCommon.Set))
             {
-                this.SetARSVaultContext(this.Vault);
+                this.SetARSVaultContext(this.ResourceId);
             }
         }
 
@@ -66,7 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Set Azure Recovery Services Vault context.
         /// </summary>
         private void SetARSVaultContext(
-            ARSVault arsVault)
+            string arsVault)
         {
             try
             {
@@ -77,7 +97,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     vaultExtendedInfo = this.RecoveryServicesClient
                     .GetVaultExtendedInfo(this.Vault.ResourceGroupName, this.Vault.Name);
                 }
-                catch (CloudException ex)
+                catch (Exception ex)
                 {
                     throw new Exception(Resources.TryDownloadingVaultFile);
                 }

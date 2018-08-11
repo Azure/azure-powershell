@@ -57,7 +57,8 @@ Update-AzureRmRecoveryServicesAsrProtectionDirection [-AzureToAzure]
  -ProtectionContainerMapping <ASRProtectionContainerMapping> -LogStorageAccountId <String>
  [-RecoveryAzureStorageAccountId <String>] -ReplicationProtectedItem <ASRReplicationProtectedItem>
  [-RecoveryResourceGroupId <String>] [-RecoveryCloudServiceId <String>] [-RecoveryAvailabilitySetId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RecoveryBootDiagStorageAccountId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AzureToAzureWithMultipleStorageAccount
@@ -67,7 +68,8 @@ Update-AzureRmRecoveryServicesAsrProtectionDirection [-AzureToAzure]
  -AzureToAzureDiskReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>
  -ReplicationProtectedItem <ASRReplicationProtectedItem> [-RecoveryResourceGroupId <String>]
  [-RecoveryCloudServiceId <String>] [-RecoveryAvailabilitySetId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RecoveryBootDiagStorageAccountId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByRPObject
@@ -116,7 +118,7 @@ Start the update direction operation for the specified replication protected ite
 The run as account to be used to push install the Mobility service if needed. Must be one from the list of run as accounts in the ASR fabric.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRunAsAccount
+Type: ASRRunAsAccount
 Parameter Sets: AzureToVMware
 Aliases:
 
@@ -128,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRunAsAccount
+Type: ASRRunAsAccount
 Parameter Sets: VMwareToAzure
 Aliases:
 
@@ -143,7 +145,7 @@ Accept wildcard characters: False
 Switch parameter specifying that the replication direction being updated for replicated Azure virtual machines between two Azure regions.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
 Aliases:
 
@@ -158,7 +160,7 @@ Accept wildcard characters: False
 Specifies the list of virtual machine disks to replicated and the cache storage account and recovery storage account to be used to replicate the disk.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAzuretoAzureDiskReplicationConfig[]
+Type: ASRAzuretoAzureDiskReplicationConfig[]
 Parameter Sets: AzureToAzureWithMultipleStorageAccount
 Aliases:
 
@@ -173,7 +175,7 @@ Accept wildcard characters: False
 Update replication direction from Azure to Vmware.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: AzureToVMware
 Aliases:
 
@@ -184,11 +186,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DataStore
 The VMware datastore to be used for the vmdisk's.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRDataStore
+Type: ASRDataStore
 Parameter Sets: AzureToVMware
 Aliases:
 
@@ -201,9 +218,8 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
-
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -217,11 +233,12 @@ Accept wildcard characters: False
 ### -Direction
 Specifies the direction to be used for the update operation post a failover.
 The acceptable values for this parameter are:
+
 - PrimaryToRecovery
 - RecoveryToPrimary
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByRPIObject, AzureToVMware, VMwareToAzure, HyperVToAzure, EnterpriseToEnterprise, ByRPObject, ByPEObject
 Aliases:
 Accepted values: PrimaryToRecovery, RecoveryToPrimary
@@ -237,7 +254,7 @@ Accept wildcard characters: False
 Reprotect a Hyper-V virtual machine after failback.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: HyperVToAzure
 Aliases:
 
@@ -252,7 +269,7 @@ Accept wildcard characters: False
 Specifies the storage account ID to store the replication log of VMs.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: VMwareToAzure, HyperVToAzure
 Aliases:
 
@@ -264,7 +281,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureToAzure
 Aliases:
 
@@ -279,7 +296,7 @@ Accept wildcard characters: False
 Master Target Server Details.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRMasterTargetServer
+Type: ASRMasterTargetServer
 Parameter Sets: AzureToVMware, VMwareToAzure
 Aliases:
 
@@ -294,7 +311,7 @@ Accept wildcard characters: False
 Process Server to be used for replication.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProcessServer
+Type: ASRProcessServer
 Parameter Sets: AzureToVMware, VMwareToAzure
 Aliases:
 
@@ -309,7 +326,7 @@ Accept wildcard characters: False
 Protection containerMapping to be used for replication.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping
+Type: ASRProtectionContainerMapping
 Parameter Sets: AzureToVMware, VMwareToAzure, AzureToAzure, AzureToAzureWithMultipleStorageAccount
 Aliases:
 
@@ -324,7 +341,7 @@ Accept wildcard characters: False
 The availability set that the virtual machine should be created in upon failover
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
 Aliases:
 
@@ -339,7 +356,7 @@ Accept wildcard characters: False
 Specifies the ID of the Azure storage account to replicate to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: VMwareToAzure, HyperVToAzure, AzureToAzure
 Aliases:
 
@@ -354,7 +371,7 @@ Accept wildcard characters: False
 The resource ID of the recovery cloud service to failover this virtual machine to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
 Aliases:
 
@@ -369,7 +386,7 @@ Accept wildcard characters: False
 Specifies an ASR recovery plan object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan
+Type: ASRRecoveryPlan
 Parameter Sets: ByRPObject
 Aliases:
 
@@ -384,7 +401,7 @@ Accept wildcard characters: False
 Recovery resourceGroup id for protected Vm.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
 Aliases:
 
@@ -399,7 +416,7 @@ Accept wildcard characters: False
 Specifies an ASR replication protected item.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
+Type: ASRReplicationProtectedItem
 Parameter Sets: ByRPIObject, AzureToVMware, VMwareToAzure, HyperVToAzure, EnterpriseToEnterprise, AzureToAzure, AzureToAzureWithMultipleStorageAccount
 Aliases:
 
@@ -414,7 +431,7 @@ Accept wildcard characters: False
 Retention Volume on the master target server to be used.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRetentionVolume
+Type: ASRRetentionVolume
 Parameter Sets: AzureToVMware
 Aliases:
 
@@ -425,26 +442,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VmmToVmm
-Update replication direction for a failed over Hyper-V virtual machine that is protected between two VMM managed Hyper-V sites.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: EnterpriseToEnterprise
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VMwareToAzure
 Update replication direction from VMware to Azure.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: VMwareToAzure
 Aliases:
 
@@ -455,16 +457,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -VmmToVmm
+Update replication direction for a failed over Hyper-V virtual machine that is protected between two VMM managed Hyper-V sites.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: SwitchParameter
+Parameter Sets: EnterpriseToEnterprise
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -474,9 +476,24 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryBootDiagStorageAccountId
+Specifies the storage account for boot diagnostics for recovery azure VM.
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
+Aliases:
 
 Required: False
 Position: Named
@@ -491,10 +508,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan
-Parameters: RecoveryPlan (ByValue)
-
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
-Parameters: ReplicationProtectedItem (ByValue)
+Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
 
 ## OUTPUTS
 

@@ -1183,7 +1183,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 rpi.Properties.RecoveryProtectionContainerFriendlyName;
             this.RecoveryServicesProviderId = rpi.Properties.RecoveryServicesProviderId;
             this.ReplicationHealth = rpi.Properties.ReplicationHealth;
-            this.ReplicationHealthErrors = rpi.Properties.ReplicationHealthErrors;
+            this.ReplicationHealthErrors = rpi.Properties.HealthErrors;
             this.TestFailoverState = rpi.Properties.TestFailoverState;
             this.TestFailoverStateDescription = rpi.Properties.TestFailoverStateDescription;
 
@@ -1193,12 +1193,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     (HyperVReplicaAzureReplicationDetails)rpi.Properties.ProviderSpecificDetails;
 
                 this.ReplicationProvider = Constants.HyperVReplicaAzure;
-                this.RecoveryAzureVMName = providerSpecificDetails.RecoveryAzureVMName;
+                this.RecoveryAzureVMName = providerSpecificDetails.RecoveryAzureVmName;
                 this.RecoveryAzureVMSize = providerSpecificDetails.RecoveryAzureVMSize;
                 this.RecoveryAzureStorageAccount =
                     providerSpecificDetails.RecoveryAzureStorageAccount;
                 this.SelectedRecoveryAzureNetworkId =
                     providerSpecificDetails.SelectedRecoveryAzureNetworkId;
+
+                this.RecoveryResourceGroupId =
+                    providerSpecificDetails.RecoveryAzureResourceGroupId;
+
                 if (providerSpecificDetails.VmNics != null)
                 {
                     this.NicDetailsList = new List<ASRVMNicDetails>();
@@ -1340,33 +1344,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.RecoveryAzureVMName = a2aProviderSpecificDetails.RecoveryAzureVMName;
                 this.RecoveryAzureVMSize = a2aProviderSpecificDetails.RecoveryAzureVMSize;
                 this.SelectedRecoveryAzureNetworkId = a2aProviderSpecificDetails.SelectedRecoveryAzureNetworkId;
-                this.ProviderSpecificDetails = new ASRAzureToAzureReplicationDetails(a2aProviderSpecificDetails);
                 this.ProtectionState = a2aProviderSpecificDetails.VmProtectionState;
                 this.ProtectionStateDescription = a2aProviderSpecificDetails.VmProtectionStateDescription;
-
+                this.ProviderSpecificDetails = new ASRAzureToAzureSpecificRPIDetails(a2aProviderSpecificDetails);
+                // todo : vipin convert manageddisk object                
                 if (a2aProviderSpecificDetails.VmNics != null)
                 {
                     this.NicDetailsList =
                            a2aProviderSpecificDetails.VmNics?.ToList()
                            .ConvertAll(nic => new ASRVMNicDetails(nic));
                 }
-
-                var a2aRPIDetails = new ASRAzureToAzureSpecificRPIDetails
-                {
-                    FabricObjectId = a2aProviderSpecificDetails.FabricObjectId,
-                    RecoveryFabricObjectId = a2aProviderSpecificDetails.RecoveryFabricObjectId,
-                    TestFailoverRecoveryFabricObjectId = a2aProviderSpecificDetails.TestFailoverRecoveryFabricObjectId,
-                    MultiVmGroupId = a2aProviderSpecificDetails.MultiVmGroupId,
-                    MultiVmGroupName = a2aProviderSpecificDetails.MultiVmGroupName
-                };
-
-                if (a2aProviderSpecificDetails.ProtectedDisks != null)
-                {
-                    a2aRPIDetails.A2ADiskDetails = a2aProviderSpecificDetails.ProtectedDisks.ToList()
-                        .ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails(disk));
-                }
-
-                this.ProviderSpecificDetails = a2aRPIDetails;
             }
         }
 
@@ -2214,6 +2201,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the recovery disk storage account ARM Id. 
         /// </summary>
         public string RecoveryAzureStorageAccountId { get; set; }
+
+        /// <summary>
+        /// Gets or sets isManagedDisk. 
+        /// </summary>
+        public bool IsManagedDisk { get; set; }
+
+        /// <summary>
+        /// Gets or sets DiskId. 
+        /// </summary>
+        public string DiskId;
+
+        /// <summary>
+        /// Gets or sets RecoveryReplicaDiskAccountType. 
+        /// </summary>
+        public string RecoveryReplicaDiskAccountType;
+
+        /// <summary>
+        /// Gets or sets RecoveryResourceGroupId. 
+        /// </summary>
+        public string RecoveryResourceGroupId;
+
+        /// <summary>
+        /// Gets or sets RecoveryTargetDiskAccountType. 
+        /// </summary>
+        public string RecoveryTargetDiskAccountType;
     }
 
     /// <summary>
@@ -2245,7 +2257,60 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.MonitoringJobType = disk.MonitoringJobType;
             this.DataPendingInStagingStorageAccountInMB = disk.DataPendingInStagingStorageAccountInMB;
             this.DataPendingAtSourceAgentInMB = disk.DataPendingAtSourceAgentInMB;
+            this.DiskCapacityInBytes = disk.DiskCapacityInBytes;
+            this.DiskName = disk.DiskName;
+            this.DiskType = disk.DiskType;
+            this.managed = false;
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ASRAzureToAzureProtectedDiskDetails" />
+        /// class.
+        /// </summary>
+        public ASRAzureToAzureProtectedDiskDetails(A2AProtectedManagedDiskDetails disk)
+        {
+            this.PrimaryStagingAzureStorageAccountId = disk.PrimaryStagingAzureStorageAccountId;
+            this.ResyncRequired = disk.ResyncRequired;
+            this.MonitoringPercentageCompletion = disk.MonitoringPercentageCompletion;
+            this.MonitoringJobType = disk.MonitoringJobType;
+            this.DataPendingInStagingStorageAccountInMB = disk.DataPendingInStagingStorageAccountInMB;
+            this.DataPendingAtSourceAgentInMB = disk.DataPendingAtSourceAgentInMB;
+            this.DiskCapacityInBytes = disk.DiskCapacityInBytes;
+            this.DiskName = disk.DiskName;
+            this.DiskType = disk.DiskType;
+            this.RecoveryAzureStorageAccountId = disk.RecoveryReplicaDiskAccountType;
+            this.RecoveryReplicaDiskId = disk.RecoveryReplicaDiskId;
+            this.RecoveryResourceGroupId = disk.RecoveryResourceGroupId;
+            this.RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType;
+            this.RecoveryTargetDiskId = disk.RecoveryTargetDiskId;
+            this.managed = true;
+        }
+
+        /// <summary>
+        /// Gets or sets is azure vm managed disk.
+        /// </summary>
+        public bool managed { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery replica disk id.
+        /// </summary>
+        public string RecoveryReplicaDiskId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery resource group id.
+        /// </summary>
+        public string RecoveryResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery target disk AccountType.
+        /// </summary>
+
+        public string RecoveryTargetDiskAccountType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery target disk Id.
+        /// </summary>
+        public string RecoveryTargetDiskId { get; set; }
 
         /// <summary>
         /// Gets or sets the disk uri.
@@ -2266,6 +2331,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the recovery disk storage account. 
         /// </summary>
         public string RecoveryAzureStorageAccountId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the disk capacity in bytes. 
+        /// </summary>
+
+        public long? DiskCapacityInBytes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the disk name. 
+        /// </summary>
+        public string DiskName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the diskType. 
+        /// </summary>
+        public string DiskType { get; set; }
 
         /// <summary>
         /// Gets or sets recovery disk uri.
@@ -2298,142 +2379,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Gets or sets the data pending at source virtual machine in MB.
         /// </summary>
         public double? DataPendingAtSourceAgentInMB { get; set; }
-    }
-
-    /// <summary>
-    /// AzureToAzure replication provider specific entity details.
-    /// </summary>
-    public class ASRAzureToAzureReplicationDetails : ASRProviderSpecificRPIDetails
-    {
-        /// <summary>
-        /// Initializes a new instance of the<see cref="ASRAzureToAzureReplicationDetails" /> class.
-        /// </summary>
-        public ASRAzureToAzureReplicationDetails()
-        {
-            this.ProtectedDisks = new List<ASRAzureToAzureProtectedDiskDetails>();
-            this.VmSyncedConfigDetails = new ASRAzureToAzureVmSyncedConfigDetails();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the<see cref="ASRAzureToAzureReplicationDetails" /> class.
-        /// </summary>
-        public ASRAzureToAzureReplicationDetails(A2AReplicationDetails details)
-        {
-            this.FabricObjectId = details.FabricObjectId;
-            this.MultiVmGroupId = details.MultiVmGroupId;
-            this.MultiVmGroupName = details.MultiVmGroupName;
-            this.OSType = details.OsType;
-            this.PrimaryFabricLocation = details.PrimaryFabricLocation;
-            this.ProtectedDisks =
-                details.ProtectedDisks.ToList()
-                .ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails(disk));
-            this.RecoveryAzureResourceGroupId = details.RecoveryAzureResourceGroupId;
-            this.RecoveryAzureCloudService = details.RecoveryCloudService;
-            this.RecoveryAzureVMName = details.RecoveryAzureVMName;
-            this.RecoveryAzureVMSize = details.RecoveryAzureVMSize;
-            this.RecoveryFabricLocation = details.RecoveryFabricLocation;
-            this.SelectedRecoveryAzureNetworkId = details.SelectedRecoveryAzureNetworkId;
-            this.RecoveryAvailabilitySet = details.RecoveryAvailabilitySet;
-            if (details.VmSyncedConfigDetails != null)
-            {
-                this.VmSyncedConfigDetails =
-                    new ASRAzureToAzureVmSyncedConfigDetails(details.VmSyncedConfigDetails);
-            }
-            this.MonitoringJobType = details.MonitoringJobType;
-            this.MonitoringPercentageCompletion = details.MonitoringPercentageCompletion;
-            if (details.LastHeartbeat != null)
-            {
-                this.LastHeartbeat = details.LastHeartbeat.Value.ToLocalTime();
-            }
-        }
-
-        /// <summary>
-        /// Fabric object ARM Id.
-        /// </summary>
-        public string FabricObjectId { get; set; }
-
-        /// <summary>
-        /// Multi vm group Id.
-        /// </summary>
-        public string MultiVmGroupId { get; set; }
-
-        /// <summary>
-        /// Multi vm group name.
-        /// </summary>
-        public string MultiVmGroupName { get; set; }
-        /// </summary>
-
-        /// <summary>
-        /// Operating system type.
-        /// </summary>
-        public string OSType { get; set; }
-
-        /// <summary>
-        /// Primary fabric location.
-        /// </summary>
-        public string PrimaryFabricLocation { get; set; }
-
-        /// <summary>
-        /// List of disk specific details.
-        /// </summary>
-        public List<ASRAzureToAzureProtectedDiskDetails> ProtectedDisks { get; set; }
-
-        /// <summary>
-        /// Recovery azure resource group id.
-        /// </summary>
-        public string RecoveryAzureResourceGroupId { get; set; }
-
-        /// <summary>
-        /// Recovery azure cloud service.
-        /// </summary>
-        public string RecoveryAzureCloudService { get; set; }
-
-        /// <summary>
-        /// Recovery azure vm name.
-        /// </summary>
-        public string RecoveryAzureVMName { get; set; }
-
-        /// <summary>
-        /// Recovery azure vm size.
-        /// </summary>
-        public string RecoveryAzureVMSize { get; set; }
-
-        /// <summary>
-        /// Recovery fabric location.
-        /// </summary>
-        public string RecoveryFabricLocation { get; set; }
-
-        /// <summary>
-        /// Selected recovery azure network id.
-        /// </summary>
-        public string SelectedRecoveryAzureNetworkId { get; set; }
-
-        /// <summary>
-        /// Recovery availability set.
-        /// </summary>
-        public string RecoveryAvailabilitySet { get; set; }
-
-        /// <summary>
-        /// Synced configuration details of the virtual machine.
-        /// </summary>
-        public ASRAzureToAzureVmSyncedConfigDetails VmSyncedConfigDetails { get; set; }
-
-        /// <summary>
-        /// Gets or sets the type of the monitoring job. The progress is contained in
-        /// MonitoringPercentageCompletion property.
-        /// </summary>
-        public string MonitoringJobType { get; set; }
-
-        /// <summary>
-        /// Gets or sets the percentage of the monitoring job. The type of the monitoring job
-        /// is defined by MonitoringJobType property.
-        /// </summary>
-        public int? MonitoringPercentageCompletion { get; set; }
-
-        /// <summary>
-        /// Gets or sets the last heartbeat received from the source server.
-        /// </summary>
-        public DateTime? LastHeartbeat { get; set; }
     }
 
     /// <summary>
