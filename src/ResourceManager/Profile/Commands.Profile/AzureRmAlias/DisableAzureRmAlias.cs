@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
@@ -25,18 +24,18 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     /// <summary>
     /// Cmdlet to clear default options. 
     /// </summary>
-    [Cmdlet("Enable","AzureRmAlias", SupportsShouldProcess = true)]
-    [OutputType(typeof(Hashtable))]
-    public class EnableAzureRmAlias : AzureRMCmdlet
+    [Cmdlet("Disable", "AzureRmAlias", SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
+    public class DisableAzureRmAlias : AzureRMCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage = "Indicates what scope aliases should be enabled for.  Default is 'Process'")]
+        [Parameter(Mandatory = false, HelpMessage = "Indicates what scope aliases should be disabled for.  Default is 'Process'")]
         [ValidateSet("Process", "CurrentUser", "LocalMachine")]
         public string Scope { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Indicates which modules to enable aliases for. If none are specified, default is all modules.")]
+        [Parameter(Mandatory = false, HelpMessage = "Indicates which modules to disable aliases for. If none are specified, default is all enabled modules.")]
         public string[] Module { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "If specified, cmdlet will return all aliases enabled")]
+        [Parameter(Mandatory = false, HelpMessage = "If specified, cmdlet will return a boolean indicating success")]
         public string PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -52,7 +51,10 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
 
                     foreach (var name in modulemapping.Keys)
                     {
-                        SessionState.PSVariable.Set("Alias:" + modulemapping[name], name);
+                        if (SessionState.PSVariable.GetValue("Alias:" + modulemapping[name]) != null)
+                        {
+                            SessionState.PSVariable.Remove("Alias:" + modulemapping[name]);
+                        }
                     }
                 }
             }
@@ -66,7 +68,10 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                             (Dictionary<string, string>)JsonConvert.DeserializeObject(mapping[module].ToString(), typeof(Dictionary<string, string>));
                         foreach (var name in modulemapping.Keys)
                         {
-                            SessionState.PSVariable.Set("Alias:" + modulemapping[name], name);
+                            if (SessionState.PSVariable.GetValue("Alias:" + modulemapping[name]) != null)
+                            {
+                                SessionState.PSVariable.Remove("Alias:" + modulemapping[name]);
+                            }
                         }
                     }
                     else
@@ -91,30 +96,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
             {
                 using (System.Management.Automation.PowerShell PowerShellInstance = System.Management.Automation.PowerShell.Create())
                 {
-                    PowerShellInstance.AddScript("if (!(Test-Path '" + userprofile + "')) { New-Item '" + userprofile + "' -ItemType file -Force }");
-                    string filecontent = "\"#Begin" + Environment.NewLine + "`$error.clear()" + Environment.NewLine + "Import-Module Az.Profile" + Environment.NewLine + "if (!`$error) { ";
-                    if (Module == null)
-                    {
-                        foreach (var name in mapping.Keys)
-                        {
-                            filecontent += "Enable-AzureRmAlias -Module " + name + "; ";
-                        }
-                    }
-
-                    else
-                    {
-                        foreach (var name in Module)
-                        {
-                            if (mapping.ContainsKey(name))
-                            {
-                                filecontent += "Enable-AzureRmAlias -Module " + name + "; ";
-                            }
-                        }
-                    }
-
-                    filecontent += " }" + Environment.NewLine + "#End";
-                    PowerShellInstance.AddScript("Add-Content -Path '" + userprofile + "' -Value " + filecontent + "\"");
-                    Collection<PSObject> PSOutput = PowerShellInstance.Invoke();
+                    //logic
 
                     if (PowerShellInstance.Streams.Error.Count > 0)
                     {
