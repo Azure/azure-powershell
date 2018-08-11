@@ -64,6 +64,14 @@ function New-AzsComputeQuota {
         $VirtualMachineCount = 100,
 
         [Parameter(Mandatory = $false)]
+        [int32]
+		$MaxAllocationStandardManagedDisksAndSnapshots = 2048,
+
+        [Parameter(Mandatory = $false)]
+        [int32]
+		$MaxAllocationPremiumManagedDisksAndSnapshots = 2048,
+
+        [Parameter(Mandatory = $false)]
         [System.String]
         $Location
     )
@@ -80,8 +88,6 @@ function New-AzsComputeQuota {
     }
 
     Process {
-
-
 
         if ($PSCmdlet.ShouldProcess("$Name", "Create a new compute quota.")) {
 
@@ -104,7 +110,7 @@ function New-AzsComputeQuota {
             }
 
             # Create object
-            $flattenedParameters = @('AvailabilitySetCount', 'CoresLimit', 'VmScaleSetCount', 'VirtualMachineCount', 'Location' )
+            $flattenedParameters = @('AvailabilitySetCount', 'CoresLimit', 'VmScaleSetCount', 'VirtualMachineCount', 'MaxAllocationStandardManagedDisksAndSnapshots', 'MaxAllocationPremiumManagedDisksAndSnapshots', 'Location' )
             $utilityCmdParams = @{}
             $flattenedParameters | ForEach-Object {
                 $utilityCmdParams[$_] = Get-Variable -Name $_ -ValueOnly

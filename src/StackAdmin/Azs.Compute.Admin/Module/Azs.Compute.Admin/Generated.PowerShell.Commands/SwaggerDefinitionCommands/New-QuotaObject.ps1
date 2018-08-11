@@ -28,6 +28,12 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 .PARAMETER VmScaleSetCount
     Maximum number of scale sets allowed.
 
+.PARAMETER MaxAllocationStandardManagedDisksAndSnapshots
+    Maximum number of Standard Managed Disks and Snapshots allowed.
+
+.PARAMETER MaxAllocationPremiumManagedDisksAndSnapshots
+    Maximum number of Premium Managed Disks and Snapshots allowed.
+
 .PARAMETER Name
     Name of the resource.
 
@@ -60,6 +66,14 @@ function New-QuotaObject
         [Parameter(Mandatory = $false)]
         [int32]
         $VmScaleSetCount,
+
+        [Parameter(Mandatory = $false)]
+        [int32]
+		$MaxAllocationStandardManagedDisksAndSnapshots,
+
+        [Parameter(Mandatory = $false)]
+        [int32]
+		$MaxAllocationPremiumManagedDisksAndSnapshots,
 
         [Parameter(Mandatory = $false)]
         [string]

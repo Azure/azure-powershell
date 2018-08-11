@@ -31,6 +31,12 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 .PARAMETER VirtualMachineCount
     Maximum number of virtual machines allowed.
 
+.PARAMETER MaxAllocationStandardManagedDisksAndSnapshots
+	Maximum number of standard managed disks and snapshots allowed
+
+.PARAMETER MaxAllocationPremiumManagedDisksAndSnapshots
+	Maximum number of Premium managed disks and snapshots allowed
+
 .PARAMETER ResourceId
     The ARM compute quota id.
 
@@ -68,6 +74,14 @@ function Set-AzsComputeQuota {
         [Parameter(Mandatory = $false)]
         [int32]
         $VirtualMachineCount,
+
+        [Parameter(Mandatory = $false)]
+        [int32]
+		$MaxAllocationStandardManagedDisksAndSnapshots,
+
+        [Parameter(Mandatory = $false)]
+        [int32]
+		$MaxAllocationPremiumManagedDisksAndSnapshots,
 
         [Parameter(Mandatory = $false)]
         [System.String]
@@ -144,7 +158,7 @@ function Set-AzsComputeQuota {
                 }
 
                 # Update the Quota object from anything passed in
-                $flattenedParameters = @('AvailabilitySetCount', 'CoresLimit', 'VmScaleSetCount', 'VirtualMachineCount' )
+                $flattenedParameters = @('AvailabilitySetCount', 'CoresLimit', 'VmScaleSetCount', 'VirtualMachineCount', 'MaxAllocationStandardManagedDisksAndSnapshots', 'MaxAllocationPremiumManagedDisksAndSnapshots' )
                 $flattenedParameters | ForEach-Object {
                     if ($PSBoundParameters.ContainsKey($_)) {
                         $NewQuota.$($_) = $PSBoundParameters[$_]
