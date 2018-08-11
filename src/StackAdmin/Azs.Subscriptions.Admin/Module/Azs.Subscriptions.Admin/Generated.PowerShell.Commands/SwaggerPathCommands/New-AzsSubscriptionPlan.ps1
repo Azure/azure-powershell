@@ -58,12 +58,12 @@ function New-AzsSubscriptionPlan {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if (-not $PSBoundParameters.ContainsKey('AcquisitionId')) {
             $PSBoundParameters.Add("AcquisitionId", $AcquisitionId)
         }
-        
+
         if ($PSCmdlet.ShouldProcess("$AcquisitionId", "Create a subscription plan")) {
 
             # Validate this resource does not exist.
@@ -87,7 +87,7 @@ function New-AzsSubscriptionPlan {
                 }
             }
             $NewAcquiredPlan = New-PlanAcquisitionPropertiesObject @utilityCmdParams
-            
+
             $NewServiceClient_params = @{
                 FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
             }
@@ -110,7 +110,7 @@ function New-AzsSubscriptionPlan {
             }
         }
     }
-    
+
     End {
         if ($tracerObject) {
             $global:DebugPreference = $oldDebugPreference

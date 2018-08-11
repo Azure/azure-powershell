@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.18.3
+* Updated to the latest version of the Azure ClientRuntime.
+
 ## Version 0.18.2
 * Updated help files to include full parameter types and correct input/output types.
 
@@ -44,7 +47,7 @@
 ## Version 0.16.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 0.15.7
 
 ## Version 0.15.6
@@ -63,7 +66,7 @@
 
 ## Version 0.14.0
 * Consume new version of Azure Machine Learning .Net SDK and add a new cmdlet
-    - Add-AzureRmMlWebServiceRegionalProperty 
+    - Add-AzureRmMlWebServiceRegionalProperty
 * Minor wording fixes in help text.
 
 ## Version 0.13.0

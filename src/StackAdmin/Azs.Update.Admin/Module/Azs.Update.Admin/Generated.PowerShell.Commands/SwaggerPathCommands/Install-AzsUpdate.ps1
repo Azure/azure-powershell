@@ -78,7 +78,7 @@ function Install-AzsUpdate {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
 
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {

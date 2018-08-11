@@ -569,16 +569,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Guid
 
 ### System.String
-Parameters: CertValue (ByPropertyName)
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameters: ApplicationObject (ByValue)
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADPasswordCredential[]
-Parameters: PasswordCredential (ByPropertyName)
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADKeyCredential[]
-Parameters: KeyCredential (ByPropertyName)
 
 ### System.Security.SecureString
 

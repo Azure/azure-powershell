@@ -74,7 +74,7 @@ function Restore-AzsStorageAccount {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{

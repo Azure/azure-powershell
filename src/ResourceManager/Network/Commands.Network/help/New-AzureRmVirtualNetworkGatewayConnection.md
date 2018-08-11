@@ -40,7 +40,7 @@ Creates the Site-to-Site VPN connection between the virtual network gateway and 
 
 ## EXAMPLES
 
-### 1:
+### Example 1
 ```
 New-AzureRmVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location $loc1 -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5'
 ```
@@ -357,27 +357,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AuthorizationKey (ByPropertyName), ConnectionType (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), PeerId (ByPropertyName), ResourceGroupName (ByPropertyName), SharedKey (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
-Parameters: VirtualNetworkGateway1 (ByPropertyName), VirtualNetworkGateway2 (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
-Parameters: LocalNetworkGateway2 (ByPropertyName)
 
 ### System.Int32
-Parameters: RoutingWeight (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Network.Models.PSPeering
-Parameters: Peer (ByPropertyName)
 
 ### System.Boolean
-Parameters: EnableBgp (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy, Microsoft.Azure.Commands.Network, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 
