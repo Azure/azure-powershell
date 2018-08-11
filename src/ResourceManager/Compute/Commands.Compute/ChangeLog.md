@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
 * Updated to the latest version of the Azure ClientRuntime.
 * Add EvictionPolicy parameter to New-AzureRmVmssConfig
 * Use default location in the `DiskFileParameterSet` of New-AzureRmVm if no Location is specified.
