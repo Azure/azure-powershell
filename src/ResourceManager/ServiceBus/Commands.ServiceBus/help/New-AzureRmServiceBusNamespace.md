@@ -14,8 +14,8 @@ Creates a new Service Bus namespace.
 
 ```
 New-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String> [-Name] <String>
- [-SkuName <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SkuName <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,6 +101,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SkuCapacity
+The Service Bus premium namespace throughput units, allowed values 1 or 2 or 4
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -SkuName
 The Service Bus namespace SKU name.
 
@@ -169,10 +184,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), SkuName (ByPropertyName)
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 
