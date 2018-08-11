@@ -52,7 +52,8 @@ function New-ModulePsm1 {
     param(
         [string]$ModulePath,
         [string]$TemplatePath,
-        [switch]$IsRMModule
+        [switch]$IsRMModule,
+        [switch]$IsNetcore
     )
 
     PROCESS {
@@ -114,10 +115,49 @@ function New-ModulePsm1 {
         $contructedCommands = Find-DefaultResourceGroupCmdlets -IsRMModule:$IsRMModule -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath
         $template = $template -replace "%DEFAULTRGCOMMANDS%", $contructedCommands
 
+        if ($IsNetcore)
+        {
+            $mapping = Get-Content -Path $PSScriptRoot\AliasMapping.json | ConvertFrom-Json
+            if ($mapping.$modulename -ne $null)
+            {
+                $modulealiasmapping = $mapping.$moduleName | Get-Member -MemberType NoteProperty
+
+                $outputmappings = @()
+                $modulealiasmapping | ForEach-Object {
+                    $outputmappings += ("`"" + $_.Name + "`" = `"" + $mapping.$modulename.$($_.Name) + "`"")
+                }
+                $output = "@{" + ($outputmappings -join "; ") + "}"
+                $template = $template -replace "%ALIASMAPPING%", $output
+            }
+            else
+            {
+                $template = $template -replace "%ALIASMAPPING%", "@{}"
+            }
+
+            Add-PSM1Dependency -Path $manifestPath
+        }
+
         Write-Host "Writing psm1 manifest to $templateOutputPath"
         $template | Out-File -FilePath $templateOutputPath -Force
         $file = Get-Item -Path $templateOutputPath
+    }
+}
 
+function Add-PSM1Dependency {
+    [CmdletBinding()]
+    param(
+        [string] $Path)
+
+    PROCESS {
+        $file = Get-Item -Path $Path
+        $manifestFile = $file.Name
+        $psm1file = $manifestFile -replace ".psd1", ".psm1"
+
+        # RootModule = ''
+        $regex = New-Object System.Text.RegularExpressions.Regex "#\s*RootModule\s*=\s*''"
+        $content = (Get-Content -Path $Path) -join "`r`n"
+        $text = $regex.Replace($content, "RootModule = '$psm1file'")
+        $text | Out-File -FilePath $Path
     }
 }
 
@@ -383,27 +423,23 @@ function Update-Netcore {
 
     # Publish the Netcore modules and rollup module, if specified.
     Write-Host "Updating profile module"
-    New-ModulePsm1 -ModulePath "$script:AzureRMRoot\AzureRM.Profile.Netcore" -TemplatePath $script:TemplateLocation -IsRMModule
+    New-ModulePsm1 -ModulePath "$script:AzureRMRoot\Az.Profile" -TemplatePath $script:TemplateLocation -IsRMModule -IsNetcore
     Write-Host "Updated profile module"
 
-    $storageModulePath = "$script:AzurePackages\$buildConfig\Storage\Azure.Storage.Netcore"
-    Write-Host "Updating AzureStorage module from $modulePath"
-    New-ModulePsm1 -ModulePath $storageModulePath -TemplatePath $script:TemplateLocation
-
-    $env:PSModulePath += "$([IO.Path]::PathSeparator)$script:AzureRMRoot\AzureRM.Profile.Netcore";
+    $env:PSModulePath += "$([IO.Path]::PathSeparator)$script:AzureRMRoot\Az.Profile";
 
     foreach ($module in $AzureRMModules) {
-        if (($module.Name -ne "AzureRM.Profile.Netcore")) {
+        if (($module.Name -ne "Az.Profile")) {
             $modulePath = $module.FullName
             Write-Host "Updating $module module from $modulePath"
-            New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsRMModule
+            New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsRMModule -IsNetcore
             Write-Host "Updated $module module"
         }
     }
 
-    $modulePath = "$PSScriptRoot\AzureRM.Netcore"
+    $modulePath = "$PSScriptRoot\Az"
     Write-Host "Updating Netcore module from $modulePath"
-    New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation
+    New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsNetcore
     Write-Host "Updated Netcore module"
 }
 
@@ -414,7 +450,14 @@ function Update-Netcore {
 <#
     Constants
 #>
-$script:TemplateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
+if ($Scope -eq "NetCore")
+{
+    $script:TemplateLocation = "$PSScriptRoot\Az.Example.psm1"
+}
+else
+{
+    $script:TemplateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
+}
 
 # Scopes
 $script:NetCoreScopes = @('NetCore')

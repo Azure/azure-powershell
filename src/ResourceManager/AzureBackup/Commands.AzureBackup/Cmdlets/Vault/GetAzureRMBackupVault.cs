@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Command to get azure backup vaults in a subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmBackupVault"), OutputType(typeof(AzureRMBackupVault))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BackupVault"), OutputType(typeof(AzureRMBackupVault))]
     public class GetAzureRMBackupVault : AzureBackupCmdletBase
     {
         [Parameter(Position = 0, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceGroupName)]

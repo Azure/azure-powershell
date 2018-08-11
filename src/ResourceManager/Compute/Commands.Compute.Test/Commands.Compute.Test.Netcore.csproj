@@ -45,7 +45,7 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Commands.Compute">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Compute.Netcore\Microsoft.Azure.Commands.Compute.dll</HintPath>
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Compute\Microsoft.Azure.Commands.Compute.dll</HintPath>
     </Reference>
   </ItemGroup>
 
