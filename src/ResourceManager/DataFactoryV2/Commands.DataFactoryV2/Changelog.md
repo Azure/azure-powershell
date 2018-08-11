@@ -19,6 +19,7 @@
 -->
 
 ## Current Release
+* Fixed issue with default resource groups not being set.
 * Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 0.5.7

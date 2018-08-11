@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
     /// <para> If Queue name provided, a single Queue detials will be returned</para>
     /// <para> If Queue name not provided, list of Queue will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusQueueVerb), OutputType(typeof(PSQueueAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusQueue"), OutputType(typeof(PSQueueAttributes))]
     public class GetAzureRmServiceBusQueue : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]

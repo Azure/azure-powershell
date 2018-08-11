@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
     /// <para> If Rule name provided, a single Rule detials will be returned</para>
     /// <para> If Rule name not provided, list of Rule will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusRuleVerb), OutputType(typeof(PSRulesAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusRule"), OutputType(typeof(PSRulesAttributes))]
     public class GetAzureRmServiceBusRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]

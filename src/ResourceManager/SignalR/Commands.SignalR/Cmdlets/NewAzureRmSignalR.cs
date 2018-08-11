@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
-    [Cmdlet(VerbsCommon.New, SignalRNoun, SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SignalR", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSignalRResource))]
     public sealed class NewAzureRmSignalR : SignalRCmdletBase
     {

@@ -42,10 +42,10 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Commands.Sql">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Sql.Netcore\Microsoft.Azure.Commands.Sql.dll</HintPath>
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Sql\Microsoft.Azure.Commands.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql.Legacy">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Sql.Netcore\Microsoft.Azure.Management.Sql.Legacy.dll</HintPath>
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Sql\Microsoft.Azure.Management.Sql.Legacy.dll</HintPath>
     </Reference>
   </ItemGroup>
 

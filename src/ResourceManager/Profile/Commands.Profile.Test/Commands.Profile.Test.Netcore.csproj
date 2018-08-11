@@ -37,7 +37,7 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Commands.Profile">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Profile.Netcore\Microsoft.Azure.Commands.Profile.dll</HintPath>
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Profile\Microsoft.Azure.Commands.Profile.dll</HintPath>
     </Reference>
   </ItemGroup>
   

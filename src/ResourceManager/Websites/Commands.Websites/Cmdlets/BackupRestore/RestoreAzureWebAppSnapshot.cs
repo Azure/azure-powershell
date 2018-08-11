@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
     /// <summary>
     ///     Restores an Azure Web App snapshot
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureRmWebAppSnapshot", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSnapshot", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RestoreAzureWebAppSnapshot : WebAppOptionalSlotBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = true,
