@@ -23,7 +23,7 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public class ManagedServiceAccessToken : IAccessToken
+    public class ManagedServiceAccessToken : IRenewableToken
     {
         IAzureAccount _account;
         string _tenant;
@@ -103,6 +103,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public string TenantId => _tenant;
 
         public string UserId => _account.Id;
+
+        public DateTimeOffset ExpiresOn
+        {
+            get
+            {
+                return _expiration;
+            }
+        }
 
         public void AuthorizeRequest(Action<string, string> authTokenSetter)
         {
