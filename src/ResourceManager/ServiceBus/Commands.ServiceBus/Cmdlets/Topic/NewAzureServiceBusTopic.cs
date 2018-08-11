@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
     /// <summary>
     /// 'New-AzureRmServiceBusTopic' Cmdlet creates a new ServiceBus Topic
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServicebusTopicVerb, SupportsShouldProcess = true), OutputType(typeof(PSTopicAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusTopic", SupportsShouldProcess = true), OutputType(typeof(PSTopicAttributes))]
     public class NewAzureRmServiceBusTopic : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]

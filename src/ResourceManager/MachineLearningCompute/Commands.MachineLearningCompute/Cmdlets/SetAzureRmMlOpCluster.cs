@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Set, CmdletSuffix, SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlOpCluster", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersParameterSet)]
     [OutputType(typeof(PSOperationalizationCluster))]
     public class SetAzureRmMlOpCluster : MachineLearningComputeCmdletBase
     {

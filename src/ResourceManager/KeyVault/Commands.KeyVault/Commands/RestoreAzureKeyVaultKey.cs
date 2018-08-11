@@ -23,9 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Restores the backup key into a vault 
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureKeyVaultKey",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey",SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
     public class RestoreAzureKeyVaultKey : KeyVaultCmdletBase
     {
