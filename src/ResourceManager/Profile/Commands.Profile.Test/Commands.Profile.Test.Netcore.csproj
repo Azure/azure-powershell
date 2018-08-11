@@ -42,6 +42,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <None Remove="App.config" />
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

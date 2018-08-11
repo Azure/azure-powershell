@@ -7,7 +7,7 @@
     <AssemblyName>Microsoft.Azure.Commands.ResourceManager.Common</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ResourceManager.Common</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-  </PropertyGroup>
+</PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DelaySign>false</DelaySign>
