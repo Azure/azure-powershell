@@ -178,7 +178,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: Context (ByValue)
 
 ### System.String
-Parameters: ApiId (ByPropertyName), ApiRevision (ByPropertyName), Note (ByPropertyName), ReleaseId (ByPropertyName)
 
 ## OUTPUTS
 

@@ -18,7 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Fix issue where error is thrown when passing a context to `Set-AzureRmResource`
+
+## Version 6.4.0
+* Support template deployment at subscription scope. Add new Cmdlets:
+    - New-AzureRmDeployment
+    - Get-AzureRmDeployment
+    - Test-AzureRmDeployment
+    - Remove-AzureRmDeployment
+    - Stop-AzureRmDeployment
+    - Save-AzureRmDeploymentTemplate
+    - Get-AzureRmDeploymentOperation
+* Fix issue where error is thrown when passing a context to Set-AzureRmResource
     - https://github.com/Azure/azure-powershell/issues/5705
 * Fix example in New-AzureRmResourceGroupDeployment
 * Updated to the latest version of the Azure ClientRuntime.
