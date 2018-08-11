@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "AzureRmRecoveryServicesAsrReplicationProtectedItem",
         DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRReplicationProtectedItem")]
-    [OutputType(typeof(IEnumerable<ASRReplicationProtectedItem>))]
+    [OutputType(typeof(ASRReplicationProtectedItem))]
     public class GetAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
     {
         /// <summary>

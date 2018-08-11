@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "AzureRmRecoveryServicesAsrProtectionContainerMapping",
         DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRProtectionContainerMapping")]
-    [OutputType(typeof(IEnumerable<ASRProtectionContainerMapping>))]
+    [OutputType(typeof(ASRProtectionContainerMapping))]
     public class GetAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
     {
         /// <summary>

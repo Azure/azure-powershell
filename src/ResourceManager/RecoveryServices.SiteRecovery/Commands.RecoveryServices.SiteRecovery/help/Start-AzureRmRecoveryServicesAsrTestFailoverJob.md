@@ -153,6 +153,8 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
+
 ```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)

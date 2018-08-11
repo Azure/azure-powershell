@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "AzureRmRecoveryServicesAsrvCenter",
         DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
     [Alias("Get-ASRvCenter")]
-    [OutputType(typeof(IEnumerable<ASRvCenter>))]
+    [OutputType(typeof(ASRvCenter))]
     public class GetAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
     {
         /// <summary>
