@@ -121,13 +121,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification[]
-Parameters: Webhook (ByPropertyName)
 
 ### System.String[]
-Parameters: CustomEmail (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: SendEmailToSubscriptionAdministrator (ByPropertyName), SendEmailToSubscriptionCoAdministrator (ByPropertyName)
 
 ## OUTPUTS
 

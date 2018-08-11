@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 ResourceGroupName,
                 () =>
                 {
-                    PSCreateResourceGroupDeploymentParameters parameters = new PSCreateResourceGroupDeploymentParameters()
+                    var parameters = new PSDeploymentCmdletParameters()
                     {
                         ResourceGroupName = ResourceGroupName,
                         DeploymentName = Name,

@@ -136,13 +136,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), Scope (ByValue)
+Parameters: Scope (ByValue)
 
 ### System.Guid
-Parameters: Id (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Custom (ByPropertyName)
 
 ## OUTPUTS
 

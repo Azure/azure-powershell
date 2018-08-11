@@ -193,7 +193,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: DataFactory (ByValue)
 
 ### System.String
-Parameters: DataFactoryName (ByPropertyName), PipelineName (ByPropertyName), PipelineRunId (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
