@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.New, "AzureRmContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerService))]
     public partial class NewAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 
-    [Cmdlet(VerbsData.Update, "AzureRmContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerService))]
     public partial class UpdateAzureRmContainerService : ComputeAutomationBaseCmdlet
     {

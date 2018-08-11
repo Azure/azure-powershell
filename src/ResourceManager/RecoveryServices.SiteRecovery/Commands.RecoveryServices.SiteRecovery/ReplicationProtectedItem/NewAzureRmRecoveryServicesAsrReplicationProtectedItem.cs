@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,11 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Enables replication for an ASR protectable item by creating a replication protected item.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.New,
-        "AzureRmRecoveryServicesAsrReplicationProtectedItem",
-        DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
-        SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrReplicationProtectedItem",DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise,SupportsShouldProcess = true)]
     [Alias("New-ASRReplicationProtectedItem")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase

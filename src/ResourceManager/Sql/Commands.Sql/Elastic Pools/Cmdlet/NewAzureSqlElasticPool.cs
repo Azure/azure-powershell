@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql ElasticPool
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlElasticPool", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = DtuPoolParameterSet), OutputType(typeof(AzureSqlElasticPoolModel))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlElasticPool", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = DtuPoolParameterSet), OutputType(typeof(AzureSqlElasticPoolModel))]
     public class NewAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {
         /// <summary>

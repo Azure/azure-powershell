@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,11 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Updates Azure Site Recovery Policy.
     /// </summary>
-    [Cmdlet(
-        VerbsData.Update,
-        "AzureRmRecoveryServicesAsrPolicy",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrPolicy",SupportsShouldProcess = true,DefaultParameterSetName = ASRParameterSets.Default)]
     [Alias("Update-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase

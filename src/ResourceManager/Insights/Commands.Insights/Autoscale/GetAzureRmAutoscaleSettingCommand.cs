@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Get an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutoscaleSetting"), OutputType(typeof(PSAutoscaleSetting))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutoscaleSetting"), OutputType(typeof(PSAutoscaleSetting))]
     public class GetAzureRmAutoscaleSettingCommand : ManagementCmdletBase
     {
         internal const string GetAzureRmAutoscaleSettingParamGroup = "GetAutoscaleSetting";

@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmExpressRouteCircuitAuthorization"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitAuthorization"), OutputType(typeof(PSExpressRouteCircuit))]
     public class AddAzureExpressRouteCircuitAuthorizationCommand : AzureExpressRouteCircuitAuthorizationBase
     {
         [Parameter(
