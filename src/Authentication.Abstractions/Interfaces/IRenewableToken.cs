@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,33 +16,11 @@ using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public class RawAccessToken : IRenewableToken
+    /// <summary>
+    /// Canonical representation of a renewable access token
+    /// </summary>
+    public interface IRenewableToken : IAccessToken
     {
-        public string AccessToken
-        {
-            get; set;
-        }
-
-        public string LoginType
-        {
-            get; set;
-        }
-
-        public string TenantId
-        {
-            get; set;
-        }
-
-        public string UserId
-        {
-            get; set;
-        }
-
-        public void AuthorizeRequest(Action<string, string> authTokenSetter)
-        {
-            authTokenSetter("Bearer", AccessToken);
-        }
-
-        public DateTimeOffset ExpiresOn { get; set; }
+        DateTimeOffset ExpiresOn { get; }
     }
 }
