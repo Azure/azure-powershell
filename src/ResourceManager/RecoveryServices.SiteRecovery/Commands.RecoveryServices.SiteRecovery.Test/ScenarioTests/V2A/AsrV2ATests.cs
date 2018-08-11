@@ -36,7 +36,7 @@ namespace RecoveryServices.SiteRecovery.Test
             this.initialize();
         }
 
-        [Fact]
+        [Fact(Skip = "ReRecord with new Version. Command working fine")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void V2AvCenterTest()
         {
@@ -210,7 +210,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 Constants.NewModel,
                 "V2AUpdatePolicy -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
-        
+
         [Fact]
         [Trait(
             Category.AcceptanceType,
