@@ -53,6 +53,10 @@ InModuleScope Azs.KeyVault.Admin {
         BeforeEach {
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
 
         it "TestListQuotas" -Skip:$('TestListQuotas' -in $global:SkippedTests) {
             $global:TestName = 'TestListQuotas'
