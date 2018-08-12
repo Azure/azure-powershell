@@ -82,6 +82,9 @@ InModuleScope Azs.Compute.Admin {
             }
         }
 
+		AfterEach {
+			$global:Client = $null
+		}
 
         It "TestListQuotas" -Skip:$('TestListQuotas' -in $global:SkippedTests) {
             $global:TestName = 'TestListQuotas'

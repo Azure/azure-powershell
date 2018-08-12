@@ -81,8 +81,6 @@ function New-AzsComputeQuota {
 
     Process {
 
-
-
         if ($PSCmdlet.ShouldProcess("$Name", "Create a new compute quota.")) {
 
             # Default location if missing
@@ -90,17 +88,9 @@ function New-AzsComputeQuota {
                 $Location = (Get-AzureRmLocation).Location
             }
 
-            # Validate this resource does not exist.
-            $_objectCheck = $null
-            try {
-                Write-Verbose "Checking to see if compute quota already exists."
-                $_objectCheck = Get-AzsComputeQuota -Name $Name -Location $Location
-            } catch {
-                # No op
-            } finally {
-                if ($_objectCheck -ne $null) {
-                    throw "A compute quota with name $Name at location $Location already exists."
-                }
+            if ($null -ne (Get-AzsComputeQuota -Name $Name -Location $Location -ErrorAction SilentlyContinue)) {
+                Write-Error "A compute quota with name $Name at location $location already exists"
+                return
             }
 
             # Create object

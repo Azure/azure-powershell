@@ -97,7 +97,6 @@ function Set-AzsComputeQuota {
 
     Process {
 
-
         $NewQuota = $null
 
         if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
@@ -115,6 +114,8 @@ function Set-AzsComputeQuota {
 
             $Location = $ArmResourceIdParameterValues['location']
             $Name = $ArmResourceIdParameterValues['quotaName']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Update compute quota")) {
