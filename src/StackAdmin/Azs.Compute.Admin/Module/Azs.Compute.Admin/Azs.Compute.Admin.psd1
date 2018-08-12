@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Compute.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.1.1'
+    ModuleVersion     = '0.2.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -56,8 +56,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules      = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.1'; },
-                             @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '4.4.1'; })
+    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.4'; },
+        @{ModuleName = 'AzureRM.Resources'; ModuleVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
@@ -106,19 +106,33 @@ Licensed under the MIT License. See License.txt in the project root for license 
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            # Tags = @()
+            Tags         = @('AzureStack', 'Compute', 'Admin', 'Azure Stack Compute', 'Virtual Machine', 'Virtual Machine', 'Platform Image', 'Extension', 'CRP')
 
             # A URL to the license for this module.
-            # LicenseUri = ''
+            LicenseUri   = 'https://aka.ms/azps-license'
 
             # A URL to the main website for this project.
-            # ProjectUri = ''
+            ProjectUri   = 'https://github.com/Azure/azure-powershell'
 
             # A URL to an icon representing this module.
             # IconUri = ''
 
             # ReleaseNotes of this module
-            # ReleaseNotes = ''
+            ReleaseNotes = '## 2018.8.12 - Version 0.2.0
+            * New Module dependencies
+                * AzureRM.Profile >= 5.3.4
+                * AzureRM.Resources >= 6.0.2
+            * New Quota properties for managed disks
+                * TODO
+                * TODO
+            * Support handling names of nested resources
+                * Get-AzsQuota
+            * Additional properties to objects
+                * Platform Images - Publisher, Offer, Sku, Version
+                * VM Extensions - Publisher, ExtensionType, TypeHandlerVersion
+            * Bug fixes
+                * Handle ErrrorAction correctly now
+            '
 
         } # End of PSData hashtable
 
