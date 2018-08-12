@@ -77,61 +77,53 @@ function Add-AzsPlanToOffer {
 
     Process {
 
-
-
         if ($PSCmdlet.ShouldProcess("$PlanName to $OfferName" , "Connect plan to offer")) {
 
-            $dontCheck = $true
-            try {
-                $_offer = Get-AzsManagedOffer -Name $OfferName -ResourceGroupName $ResourceGroupName
-                $_planId = $_offer.BasePlanIds | Where-Object { $_ -like "*$PlanName" }
-                $_plan = Get-AzsPlan -ResourceId $_planId
-                $dontCheck = $_plan -eq $null
-            } catch {
-                # No-op
+            $_offer = Get-AzsManagedOffer -Name $OfferName -ResourceGroupName $ResourceGroupName
+            $_planId = $_offer.BasePlanIds | Where-Object { $_ -like "*$PlanName" }
+            if ($null -ne (Get-AzsPlan -ResourceId $_planId -ErrorAction SilentlyContinue)) {
+                Write-Error "A plan with the name $Name under the offer $Offername in the resource group $resourceGroupName already exists"
+                return
             }
 
-            if ($dontCheck -or ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Connect the plan to the offer?", "Performing operation link plan to offer with $PlanName to $OfferName."))) {
+            $NewServiceClient_params = @{
+                FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
+            }
 
-                $NewServiceClient_params = @{
-                    FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
+            $GlobalParameterHashtable = @{}
+            $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+
+            $GlobalParameterHashtable['SubscriptionId'] = $null
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
+            }
+
+            $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
+
+
+            $flattenedParameters = @('PlanName', 'PlanLinkType', 'MaxAcquisitionCount')
+            $utilityCmdParams = @{}
+            $flattenedParameters | ForEach-Object {
+                if ($PSBoundParameters.ContainsKey($_)) {
+                    $utilityCmdParams[$_] = $PSBoundParameters[$_]
+                }
+            }
+            $PlanLink = New-PlanLinkDefinitionObject @utilityCmdParams
+
+            Write-Verbose -Message 'Performing operation link on $SubscriptionsAdminClient.'
+            $TaskResult = $SubscriptionsAdminClient.Offers.LinkWithHttpMessagesAsync($ResourceGroupName, $OfferName, $PlanLink)
+
+            if ($TaskResult) {
+                $GetTaskResult_params = @{
+                    TaskResult = $TaskResult
                 }
 
-                $GlobalParameterHashtable = @{}
-                $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+                Get-TaskResult @GetTaskResult_params
 
-                $GlobalParameterHashtable['SubscriptionId'] = $null
-                if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
-                    $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
+                if ($TaskResult.IsFaulted -ne $true) {
+                    Get-AzsPlan -ResourceGroupName $ResourceGroupName -Name $PlanName
                 }
 
-                $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
-
-
-                $flattenedParameters = @('PlanName', 'PlanLinkType', 'MaxAcquisitionCount')
-                $utilityCmdParams = @{}
-                $flattenedParameters | ForEach-Object {
-                    if ($PSBoundParameters.ContainsKey($_)) {
-                        $utilityCmdParams[$_] = $PSBoundParameters[$_]
-                    }
-                }
-                $PlanLink = New-PlanLinkDefinitionObject @utilityCmdParams
-
-                Write-Verbose -Message 'Performing operation link on $SubscriptionsAdminClient.'
-                $TaskResult = $SubscriptionsAdminClient.Offers.LinkWithHttpMessagesAsync($ResourceGroupName, $OfferName, $PlanLink)
-
-                if ($TaskResult) {
-                    $GetTaskResult_params = @{
-                        TaskResult = $TaskResult
-                    }
-
-                    Get-TaskResult @GetTaskResult_params
-
-                    if ($TaskResult.IsFaulted -ne $true) {
-                        Get-AzsPlan -ResourceGroupName $ResourceGroupName -Name $PlanName
-                    }
-
-                }
             }
         }
     }
