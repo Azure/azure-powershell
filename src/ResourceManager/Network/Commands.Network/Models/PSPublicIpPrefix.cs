@@ -17,40 +17,28 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Newtonsoft.Json;
     using System.Collections.Generic;
 
-    public class PSPublicIpAddress : PSTopLevelResource
+    public class PSPublicIpPrefix : PSTopLevelResource
     {
-        public string PublicIpAllocationMethod { get; set; }
+        public PSPublicIpPrefixSku Sku { get; set; }
 
-        public PSPublicIpAddressSku Sku { get; set; }
-
-        public PSIPConfiguration IpConfiguration { get; set; }
-
-        public PSPublicIpAddressDnsSettings DnsSettings { get; set; }
-
-        public List<PSPublicIpTag> IpTags {get; set;}
-
-        public string IpAddress { get; set; }
+        public List<PSPublicIpPrefixTag> IpTags { get; set; }
 
         public string PublicIpAddressVersion { get; set; }
-
-        public int? IdleTimeoutInMinutes { get; set; }
 
         public List<string> Zones { get; set; }
 
         public string ProvisioningState { get; set; }
 
-        public PSPublicIpPrefix PublicIpPrefix { get; set; }
+        public ushort PrefixLength { get; set; }
+
+        public string IPPrefix { get; set; }
+
+        public List<PSPublicIpAddress> PublicIpAddresses { get; set; }
 
         [JsonIgnore]
-        public string IpConfigurationText
+        public string PublicIpAddressesText
         {
-            get { return JsonConvert.SerializeObject(IpConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string DnsSettingsText
-        {
-            get { return JsonConvert.SerializeObject(DnsSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+           get { return JsonConvert.SerializeObject(PublicIpAddresses, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
@@ -63,12 +51,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string SkuText
         {
             get { return JsonConvert.SerializeObject(Sku, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string PublicIpPrefixText
-        {
-            get { return JsonConvert.SerializeObject(PublicIpPrefix, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
