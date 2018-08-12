@@ -102,6 +102,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The PublicIpPrefix to use for Public IP address")]
+        public PSPublicIpPrefix PublicIpPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Reverse FQDN.")]
         public string ReverseFqdn { get; set; }
 
@@ -157,6 +163,7 @@ namespace Microsoft.Azure.Commands.Network
             publicIp.PublicIpAllocationMethod = this.AllocationMethod;
             publicIp.PublicIpAddressVersion = this.IpAddressVersion;
             publicIp.Zones = this.Zone;
+            publicIp.PublicIpPrefix = this.PublicIpPrefix;
 
             if (!string.IsNullOrEmpty(this.Sku))
             {
