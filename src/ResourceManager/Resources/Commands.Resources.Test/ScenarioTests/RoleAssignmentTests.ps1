@@ -87,11 +87,11 @@ function Test-RaDeleteByPSRoleAssignment
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("c7acc224-7df3-461a-8640-85d7bd15b5da")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment = New-AzureRmRoleAssignmentWithId `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -Scope $scope
+                        -Scope $scope `
+                        -RoleAssignmentId c7acc224-7df3-461a-8640-85d7bd15b5da
 
     Remove-AzureRmRoleAssignment $newAssignment
 
@@ -115,11 +115,11 @@ function Test-RaByScope
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("54e1188f-65ba-4b58-9bc3-a252adedcc7b")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment = New-AzureRmRoleAssignmentWithId `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -Scope $assignmentScope
+                        -Scope $assignmentScope `
+                        -RoleAssignmentId 54e1188f-65ba-4b58-9bc3-a252adedcc7b
 
     # cleanup
     DeleteRoleAssignment $newAssignment
@@ -149,11 +149,11 @@ function Test-RaById
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("93cb604e-14dc-426b-834e-bf7bb3826cbc")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment = New-AzureRmRoleAssignmentWithId `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -Scope $assignmentScope
+                        -Scope $assignmentScope `
+                        -RoleAssignmentId 93cb604e-14dc-426b-834e-bf7bb3826cbc
 
     $assignments = Get-AzureRmRoleAssignment -RoleDefinitionId "acdd72a7-3385-48ef-bd42-f606fba81ae7"
     Assert-NotNull $assignments
@@ -185,11 +185,11 @@ function Test-RaByResourceGroup
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("8748e3e7-2cc7-41a9-81ed-b704b6d328a5")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment = New-AzureRmRoleAssignmentWithId `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -ResourceGroupName $resourceGroups[0].ResourceGroupName
+                        -ResourceGroupName $resourceGroups[0].ResourceGroupName `
+                        -RoleAssignmentId 8748e3e7-2cc7-41a9-81ed-b704b6d328a5
 
     # cleanup
     DeleteRoleAssignment $newAssignment
@@ -218,13 +218,13 @@ function Test-RaByResource
     Assert-NotNull $resource "Cannot find any resource to continue test execution."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("db6e0231-1be9-4bcd-bf16-79de537439fe")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment = New-AzureRmRoleAssignmentWithId `
                         -ObjectId $groups[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
                         -ResourceGroupName $resource.ResourceGroupName `
                         -ResourceType $resource.ResourceType `
-                        -ResourceName $resource.Name
+                        -ResourceName $resource.Name `
+                        -RoleAssignmentId db6e0231-1be9-4bcd-bf16-79de537439fe
 
     # cleanup
     DeleteRoleAssignment $newAssignment
@@ -303,19 +303,19 @@ function Test-RaByServicePrincipal
     Assert-AreEqual 1 $servicePrincipals.Count "No service principals found. Unable to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("0272ecd2-580e-4560-a59e-fd9ed330ee31")
-    $newAssignment1 = New-AzureRmRoleAssignment `
+    $newAssignment1 = New-AzureRmRoleAssignmentWithId `
                         -ServicePrincipalName $servicePrincipals[0].ServicePrincipalNames[0] `
                         -RoleDefinitionName $definitionName `
-                        -Scope $scope
+                        -Scope $scope `
+                        -RoleAssignmentId 0272ecd2-580e-4560-a59e-fd9ed330ee31
 
     $definitionName = 'Contributor'
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("d953d793-bc25-49e9-818b-5ce68f3ff5ed")
-    $newAssignment2 = New-AzureRmRoleAssignment `
+    $newAssignment2 = New-AzureRmRoleAssignmentWithId `
                         -ApplicationId $servicePrincipals[0].ServicePrincipalNames[0] `
                         -RoleDefinitionName $definitionName `
-                        -Scope $scope
+                        -Scope $scope `
+                        -RoleAssignmentId d953d793-bc25-49e9-818b-5ce68f3ff5ed
 
     $assignments = Get-AzureRmRoleAssignment -ObjectId $newAssignment2.ObjectId
     Assert-NotNull $assignments
@@ -350,11 +350,11 @@ function Test-RaByUpn
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("f8dac632-b879-42f9-b4ab-df2aab22a149")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment = New-AzureRmRoleAssignmentWithId `
                         -SignInName $users[0].UserPrincipalName `
                         -RoleDefinitionName $definitionName `
-                        -ResourceGroupName $resourceGroups[0].ResourceGroupName
+                        -ResourceGroupName $resourceGroups[0].ResourceGroupName `
+                        -RoleAssignmentId f8dac632-b879-42f9-b4ab-df2aab22a149
 
     # cleanup
     DeleteRoleAssignment $newAssignment
@@ -381,12 +381,12 @@ function Test-RaGetByUPNWithExpandPrincipalGroups
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("355f2d24-c0e6-43d2-89a7-027e51161d0b")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment = New-AzureRmRoleAssignmentWithId `
                         -SignInName $users[0].UserPrincipalName `
                         -RoleDefinitionName $definitionName `
-                        -ResourceGroupName $resourceGroups[0].ResourceGroupName
-    
+                        -ResourceGroupName $resourceGroups[0].ResourceGroupName `
+                        -RoleAssignmentId 355f2d24-c0e6-43d2-89a7-027e51161d0b
+
     $assignments = Get-AzureRmRoleAssignment -SignInName $users[0].UserPrincipalName -ExpandPrincipalGroups
 
     Assert-NotNull $assignments
@@ -396,9 +396,9 @@ function Test-RaGetByUPNWithExpandPrincipalGroups
             Assert-Throws "Invalid object type received."
         }
     }
-    # cleanup 
+    # cleanup
     DeleteRoleAssignment $newAssignment
-    
+
     VerifyRoleAssignmentDeleted $newAssignment
 }
 
@@ -430,11 +430,11 @@ function Test-RaDeletionByScope
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("238799bf-1593-45d7-a90d-f3edbceb3bc7")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment = New-AzureRmRoleAssignmentWithId `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -Scope $scope
+                        -Scope $scope `
+                        -RoleAssignmentId 238799bf-1593-45d7-a90d-f3edbceb3bc7
     $newAssignment.Scope = $scope.toUpper()
 
     # cleanup
@@ -464,11 +464,11 @@ function Test-RaDeletionByScopeAtRootScope
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("f3c560f8-afaa-4263-b1d7-e34e0ab49fc7")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment = New-AzureRmRoleAssignmentWithId `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -Scope $scope
+                        -Scope $scope `
+                        -RoleAssignmentId f3c560f8-afaa-4263-b1d7-e34e0ab49fc7
     $newAssignment.Scope = $scope.toUpper()
 
     # cleanup
@@ -500,15 +500,14 @@ function Test-RaPropertiesValidation
     $roleDef.Description = "Read, monitor and restart virtual machines"
     $roleDef.AssignableScopes[0] = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
 
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("ff9cd1ab-d763-486f-b253-51a816c92bbf")
-    New-AzureRmRoleDefinition -Role $roleDef
+    New-AzureRmRoleDefinitionWithId -Role $roleDef -RoleDefinitionId ff9cd1ab-d763-486f-b253-51a816c92bbf
     $rd = Get-AzureRmRoleDefinition -Name "Custom Reader Properties Test"
 
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("584d33a3-b14d-4eb4-863e-0df67b178389")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment = New-AzureRmRoleAssignmentWithId `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $roleDef.Name `
-                        -Scope $scope
+                        -Scope $scope `
+                        -RoleAssignmentId 584d33a3-b14d-4eb4-863e-0df67b178389
 
     $assignments = Get-AzureRmRoleAssignment -ObjectId $users[0].Id.Guid
     Assert-NotNull $assignments
@@ -546,12 +545,12 @@ function Test-RaDelegation
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("4dae20f3-6f62-442f-ab84-3b5a6f89e51f")
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment = New-AzureRmRoleAssignmentWithId `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
                         -Scope $assignmentScope `
-                        -AllowDelegation
+                        -AllowDelegation `
+                        -RoleAssignmentId 4dae20f3-6f62-442f-ab84-3b5a6f89e51f
 
     # Assert
     Assert-NotNull $newAssignment
@@ -582,17 +581,17 @@ function Test-RaGetByScope
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("08fe91d5-b917-4d76-81d7-581ff5a99cab")
-    $newAssignment1 = New-AzureRmRoleAssignment `
+    $newAssignment1 = New-AzureRmRoleAssignmentWithId `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -Scope $scope1
+                        -Scope $scope1 `
+                        -RoleAssignmentId 08fe91d5-b917-4d76-81d7-581ff5a99cab
 
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("fa1a4d3b-2cca-406b-8956-6b6b32377641")
-    $newAssignment2 = New-AzureRmRoleAssignment `
+    $newAssignment2 = New-AzureRmRoleAssignmentWithId `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -Scope $scope2
+                        -Scope $scope2 `
+                        -RoleAssignmentId fa1a4d3b-2cca-406b-8956-6b6b32377641
 
     $ras = Get-AzureRmRoleAssignment -ObjectId $users[0].Id.Guid `
             -RoleDefinitionName $definitionName `
@@ -624,11 +623,11 @@ function CreateRoleAssignment
 {
     param([string]$roleAssignmentId, [string]$userId, [string]$definitionName, [string]$resourceGroupName)
 
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue($roleAssignmentId)
-    $newAssignment = New-AzureRmRoleAssignment `
+    $newAssignment = New-AzureRmRoleAssignmentWithId `
                         -ObjectId $userId `
                         -RoleDefinitionName $definitionName `
-                        -ResourceGroupName $resourceGroupName
+                        -ResourceGroupName $resourceGroupName `
+                        -RoleAssignmentId $roleAssignmentId
 
     return $newAssignment
 }

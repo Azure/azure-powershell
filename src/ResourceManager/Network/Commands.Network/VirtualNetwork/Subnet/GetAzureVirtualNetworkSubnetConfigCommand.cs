@@ -13,12 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkSubnetConfig"), OutputType(typeof(PSSubnet))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetConfig"), OutputType(typeof(PSSubnet))]
     public class GetAzureVirtualNetworkSubnetConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -34,14 +35,18 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-
             base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var subnet =
-                    this.VirtualNetwork.Subnets.First(
+                    this.VirtualNetwork.Subnets.FirstOrDefault(
                         resource =>
-                            string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+                            string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
+
+                if (subnet == null)
+                {
+                    throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.Name));
+                }
 
                 WriteObject(subnet);
             }
@@ -50,7 +55,6 @@ namespace Microsoft.Azure.Commands.Network
                 var subnets = this.VirtualNetwork.Subnets;
                 WriteObject(subnets, true);
             }
-
         }
     }
 }

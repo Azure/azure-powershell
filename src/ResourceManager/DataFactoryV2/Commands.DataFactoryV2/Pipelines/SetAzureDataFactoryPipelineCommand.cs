@@ -19,8 +19,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Set, Constants.Pipeline, DefaultParameterSetName = ParameterSetNames.ByFactoryName, 
-        SupportsShouldProcess = true), OutputType(typeof(PSPipeline))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2Pipeline", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSPipeline))]
     [Alias(VerbsCommon.New + "-" + Constants.Pipeline)]
     public class SetAzureDataFactoryPipelineCommand : DataFactoryContextBaseSetCmdlet
     {

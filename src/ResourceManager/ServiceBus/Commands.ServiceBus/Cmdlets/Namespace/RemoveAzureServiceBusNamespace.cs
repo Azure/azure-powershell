@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// <summary>
     /// 'Remove-AzureRmServiceBusNamespace' Cmdlet deletes the specified ServiceBus Namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServiceBusNamespaceVerb, DefaultParameterSetName = NamespacePropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNamespace", DefaultParameterSetName = NamespacePropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NamespacePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]

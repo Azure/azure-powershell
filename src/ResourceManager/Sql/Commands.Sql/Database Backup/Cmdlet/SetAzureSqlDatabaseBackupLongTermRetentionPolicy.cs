@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,11 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     /// <summary>
     /// Cmdlet to create or update a new Azure Sql Database backup archival policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy",
-        DefaultParameterSetName = WeeklyRetentionRequiredSet,
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low),
-        OutputType(typeof(AzureSqlDatabaseBackupLongTermRetentionPolicyModel))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseBackupLongTermRetentionPolicy",DefaultParameterSetName = WeeklyRetentionRequiredSet,SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Low),OutputType(typeof(AzureSqlDatabaseBackupLongTermRetentionPolicyModel))]
     [Alias("Set-AzureRmSqlDatabaseLongTermRetentionPolicy")]
     public class SetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
