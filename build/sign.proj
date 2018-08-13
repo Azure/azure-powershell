@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Error Text="The SigningToolsPath is not assigned a file path!" Condition="'$(SigningToolsPath)' = ''" />
-  <Error Text="The SigningToolsPath [@(SigningToolsPath)] does not exist!" Condition="Exists($(SigningToolsPath))" />
+<Project ToolsVersion="14.0" DefaultTargets="All" InitialTargets="CheckSigningToolsPath" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <UsingTask TaskName="SigningTask" AssemblyFile="$(SigningToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <Import Project="$(SigningToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
 
@@ -13,6 +11,11 @@
     <Keywords>Microsoft Azure PowerShell Common</Keywords>
     <Certificates>400</Certificates>
   </PropertyGroup>
+
+  <Target Name="CheckSigningToolsPath">
+    <Error Text="The SigningToolsPath is not assigned a file path!" Condition="'$(SigningToolsPath)' = ''" />
+    <Error Text="The SigningToolsPath [@(SigningToolsPath)] does not exist!" Condition="Exists($(SigningToolsPath))" />
+  </Target>
 
   <Target Name="net452">
     <Message Importance="high" Text="Sign: net452 started" />
