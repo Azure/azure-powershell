@@ -135,15 +135,15 @@
             "_justification": "Legitimate test session record, rules are deleted"
         },
 		{
-            "file": "src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusQueueTests\\ServiceBusQueueAuth_CURD.json", 
+            "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusQueueTests\\ServiceBusQueueAuth_CURD.json", 
             "_justification": "Legitimate test session record, rules are deleted"
         },
 		{
-            "file": "src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusServiceTests\\ServiceBusNameSpaceAuth_CURD_Tests.json", 
+            "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusServiceTests\\ServiceBusNameSpaceAuth_CURD_Tests.json", 
             "_justification": "Legitimate test session record, rules are deleted"
         },
 		{
-            "file": "src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusTopicTests\\ServiceBusTopicAuth_CURD.json", 
+            "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusTopicTests\\ServiceBusTopicAuth_CURD.json", 
             "_justification": "Legitimate test session record, rules are deleted"
         }
     ]
