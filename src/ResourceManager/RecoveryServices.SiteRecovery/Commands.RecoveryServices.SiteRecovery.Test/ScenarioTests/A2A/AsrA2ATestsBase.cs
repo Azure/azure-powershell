@@ -31,87 +31,51 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Internal.Subscriptions;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace RecoveryServices.SiteRecovery.Test
 {
-    public abstract class AsrTestsBase : RMTestBase
+    public abstract class AsrA2ATestsBase : RMTestBase
     {
         protected string vaultSettingsFilePath;
         protected string powershellFile;
-        private ASRVaultCreds asrVaultCreds;
+        protected string powershellHelperFile;
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
 
-        protected AsrTestsBase()
+        protected AsrA2ATestsBase()
         {
         }
 
         protected void initialize()
         {
-            try
-            {
-                if (FileUtilities.DataStore.ReadFileAsText(this.vaultSettingsFilePath).ToLower().Contains("<asrvaultcreds"))
-                {
-                    var serializer1 = new DataContractSerializer(typeof(ASRVaultCreds));
-                    using (var s = new FileStream(
-                        this.vaultSettingsFilePath,
-                        FileMode.Open,
-                        FileAccess.Read,
-                        FileShare.Read))
-                    {
-                        this.asrVaultCreds = (ASRVaultCreds)serializer1.ReadObject(s);
-                    }
-                }
-                else
-                {
-                    var serializer = new DataContractSerializer(typeof(RSVaultAsrCreds));
-                    using (var s = new FileStream(
-                        this.vaultSettingsFilePath,
-                        FileMode.Open,
-                        FileAccess.Read,
-                        FileShare.Read))
-                    {
-                        RSVaultAsrCreds aadCreds = (RSVaultAsrCreds)serializer.ReadObject(s);
-                        asrVaultCreds = new ASRVaultCreds();
-                        asrVaultCreds.ChannelIntegrityKey = aadCreds.ChannelIntegrityKey;
-                        asrVaultCreds.ResourceGroupName = aadCreds.VaultDetails.ResourceGroup;
-                        asrVaultCreds.Version = "2.0";
-                        asrVaultCreds.SiteId = aadCreds.SiteId;
-                        asrVaultCreds.SiteName = aadCreds.SiteName;
-                        asrVaultCreds.ResourceNamespace = aadCreds.VaultDetails.ProviderNamespace;
-                        asrVaultCreds.ARMResourceType = aadCreds.VaultDetails.ResourceType;
-                    }
-                }
-            }
-            catch (XmlException xmlException)
-            {
-                throw new XmlException(
-                    "XML is malformed or file is empty",
-                    xmlException);
-            }
-            catch (SerializationException serializationException)
-            {
-                throw new SerializationException(
-                    "XML is malformed or file is empty",
-                    serializationException);
-            }
             this.helper = new EnvironmentSetupHelper();
         }
 
         public ResourceManagementClient RmRestClient { get; private set; }
+        public NetworkManagementClient NetworkManagementClient { get; private set; }
+
+        public StorageManagementClient StorageClient { get; private set; }
+
         public RecoveryServicesClient RecoveryServicesMgmtClient { get; private set; }
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
 
+        public SubscriptionClient SubscriptionClient { get; private set; }
+
+        public ComputeManagementClient ComputeManagementClient { get; private set; }
+        public Microsoft.Azure.Management.ResourceManager.ResourceManagementClient ResourceManagementRestClient { get; private set; }
+
         public void RunPowerShellTest(
-            XunitTracingInterceptor logger,
-            string scenario,
+             XunitTracingInterceptor logger,
+             string scenario,
             params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
-
-            helper.TracingInterceptor = logger;
 
             this.RunPsTestWorkflow(
                 scenario,
@@ -147,6 +111,12 @@ namespace RecoveryServices.SiteRecovery.Test
             providers.Add(
                 "Microsoft.Compute",
                 null);
+            providers.Add(
+                "Microsoft.Network",
+                null);
+            providers.Add(
+                "Microsoft.Storage",
+                null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add(
                 "Microsoft.Azure.Management.Resources.ResourceManagementClient",
@@ -172,7 +142,6 @@ namespace RecoveryServices.SiteRecovery.Test
                 }
 
                 this.SetupManagementClients(
-                    scenario,
                     context);
 
                 this.helper.SetupEnvironment(AzureModule.AzureResourceManager);
@@ -186,9 +155,13 @@ namespace RecoveryServices.SiteRecovery.Test
                 var modules = new List<string>();
 
                 modules.Add(powershellFile);
-                modules.Add(rmProfileModule);
+                modules.Add(powershellHelperFile);
+                //modules.Add(rmProfileModule);
                 modules.Add(rmModulePath);
                 modules.Add(recoveryServicesModulePath);
+                modules.Add(helper.GetRMModulePath("AzureRM.Network.psd1"));
+                modules.Add(helper.GetRMModulePath("AzureRM.Storage.psd1"));
+                modules.Add(helper.GetRMModulePath("AzureRM.Compute.psd1"));
 
                 this.helper.SetupModules(
                     AzureModule.AzureResourceManager,
@@ -217,24 +190,49 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         protected void SetupManagementClients(
-            string scenario,
             RestTestFramework.MockContext context)
         {
             this.RmRestClient = this.GetRmRestClient(context);
+            this.ResourceManagementRestClient = this.GetResourceManagementClientRestClient(context);
             this.RecoveryServicesMgmtClient = this.GetRecoveryServicesManagementClient(context);
-            this.SiteRecoveryMgmtClient = this.GetSiteRecoveryManagementClient(
-                scenario,
-                context);
+            this.SiteRecoveryMgmtClient = this.GetSiteRecoveryManagementClient(context);
+            this.SubscriptionClient = this.GetSubscriptionClient(context);
+            this.NetworkManagementClient = this.GetNetworkManagementClientClient(context);
+            this.StorageClient = this.GetStorageManagementClient(context);
+            this.ComputeManagementClient = this.GetComputeManagementClient(context);
+
             this.helper.SetupManagementClients(
                 this.RmRestClient,
                 this.RecoveryServicesMgmtClient,
-                this.SiteRecoveryMgmtClient);
+                this.SiteRecoveryMgmtClient,
+                this.SubscriptionClient,
+                this.NetworkManagementClient,
+                this.ResourceManagementRestClient,
+                this.StorageClient,
+                this.ComputeManagementClient);
+        }
+
+        private StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private NetworkManagementClient GetNetworkManagementClientClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private RecoveryServicesClient GetRecoveryServicesManagementClient(
             RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<RecoveryServicesClient>(
+                RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private SubscriptionClient GetSubscriptionClient(
+            RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<SubscriptionClient>(
                 RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
@@ -245,32 +243,26 @@ namespace RecoveryServices.SiteRecovery.Test
                 RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
+        private ResourceManagementClient GetResourceManagementClient(
+            RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<ResourceManagementClient>(
+                RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private Microsoft.Azure.Management.ResourceManager.ResourceManagementClient GetResourceManagementClientRestClient(
+            RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<Microsoft.Azure.Management.ResourceManager.ResourceManagementClient>(
+                RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
         private SiteRecoveryManagementClient GetSiteRecoveryManagementClient(
             string scenario,
             RestTestFramework.MockContext context)
         {
-            var resourceGroupName = "";
-            var resourceName = "";
-            switch (scenario)
-            {
-                case Constants.NewModel:
-                    resourceName = this.asrVaultCreds.ResourceName;
-                    resourceGroupName = this.asrVaultCreds.ResourceGroupName;
-                    break;
-
-                default:
-                    resourceName = this.asrVaultCreds.ResourceName;
-                    resourceGroupName = this.asrVaultCreds.ResourceGroupName;
-                    break;
-            }
-
-            ;
-
-            var client = this.GetSiteRecoveryManagementClient(context);
-            client.ResourceGroupName = resourceGroupName;
-            client.ResourceName = resourceName;
-
-            return client;
+            return context.GetServiceClient<SiteRecoveryManagementClient>(
+                RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private SiteRecoveryManagementClient GetSiteRecoveryManagementClient(
@@ -278,6 +270,11 @@ namespace RecoveryServices.SiteRecovery.Test
         {
             return context.GetServiceClient<SiteRecoveryManagementClient>(
                 RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private ComputeManagementClient GetComputeManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<ComputeManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static bool IgnoreCertificateErrorHandler(

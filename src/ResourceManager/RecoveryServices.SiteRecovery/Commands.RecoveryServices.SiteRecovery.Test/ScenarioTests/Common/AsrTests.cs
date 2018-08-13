@@ -24,10 +24,13 @@ namespace RecoveryServices.SiteRecovery.Test
 {
     public class AsrCommonTests : AsrTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public AsrCommonTests(
             ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
             this.vaultSettingsFilePath = System.IO.Path.Combine(
                 System.AppDomain.CurrentDomain.BaseDirectory,
                 "ScenarioTests\\Common\\Common.VaultCredentials");
@@ -44,6 +47,7 @@ namespace RecoveryServices.SiteRecovery.Test
         public void EnumerationTests()
         {
             this.RunPowerShellTest(
+                _logger,
                 Constants.NewModel,
                 "Test-SiteRecoveryEnumerationTests -vaultSettingsFilePath \"" +
                 this.vaultSettingsFilePath +
@@ -57,6 +61,7 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2AEvent()
         {
             this.RunPowerShellTest(
+                _logger,
              Constants.NewModel,
              "Test-AsrEvent -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
@@ -68,6 +73,7 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2AGetJobTest()
         {
             this.RunPowerShellTest(
+                _logger,
              Constants.NewModel,
              "Test-Job -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
@@ -79,6 +85,7 @@ namespace RecoveryServices.SiteRecovery.Test
         public void V2AGetNotificationTest()
         {
             this.RunPowerShellTest(
+                _logger,
              Constants.NewModel,
              "Test-NotificationSettings -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }

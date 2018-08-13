@@ -43,6 +43,17 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.2\lib\net45\Microsoft.Azure.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Azure.Common.NetFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.Compute, Version=17.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.5.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=17.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.17.0.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Management.RecoveryServices, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.4.2.0-preview\lib\net45\Microsoft.Azure.Management.RecoveryServices.dll</HintPath>
       <Private>True</Private>
@@ -50,6 +61,12 @@
     <Reference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.2.0-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.4.1.0-preview\lib\net45\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -69,14 +86,6 @@
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.11\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.12\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.12\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
@@ -149,6 +158,8 @@
     <Compile Include="ScenarioTests\E2E\AsrE2ETests.cs" />
     <Compile Include="ScenarioTests\AsrTestsBase.cs" />
     <Compile Include="ScenarioTests\V2A\AsrV2ATests.cs" />
+    <Compile Include="ScenarioTests\A2A\AsrA2ATests.cs" />
+    <Compile Include="ScenarioTests\A2A\AsrA2ATestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
@@ -265,6 +276,15 @@
     <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2AUpdatePolicy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\A2A\AsrA2ATests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\A2A\A2ATestsHelper.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
@@ -290,6 +310,14 @@
     <ProjectReference Include="..\..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj">
       <Project>{604260DC-B392-4CF4-81EC-34B14591E2D2}</Project>
       <Name>Commands.RecoveryServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
+      <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
+      <Name>Commands.Resources.Rest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
+      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
+      <Name>Commands.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.RecoveryServices.SiteRecovery\Commands.RecoveryServices.SiteRecovery.csproj">
       <Project>{7c879645-31ee-4a78-ad81-5512300fa105}</Project>
