@@ -7,9 +7,6 @@
     <Description>Microsoft Azure PowerShell Common</Description>
     <Keywords>Microsoft Azure PowerShell Common</Keywords>
     <Certificates>400</Certificates>
-    <CIToolsPath>$(SigningToolsPath)</CIToolsPath>
-    <OnPremiseBuild Condition="Exists($(SigningToolsPath))">true</OnPremiseBuild>
-    <OnPremiseBuild Condition="!Exists($(SigningToolsPath))">false</OnPremiseBuild>
   </PropertyGroup>
 
   <UsingTask TaskName="CodeSigningTask" AssemblyFile="$(SigningToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
