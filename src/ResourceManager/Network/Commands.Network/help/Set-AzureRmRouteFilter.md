@@ -7,9 +7,6 @@ schema: 2.0.0
 
 # Set-AzureRmRouteFilter
 
-## SYNOPSIS
-{{Fill in the Synopsis}}
-
 ## SYNTAX
 
 ```
@@ -18,7 +15,8 @@ Set-AzureRmRouteFilter -RouteFilter <PSRouteFilter> [-Force] [-AsJob]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmRouteFilter** cmdlet saves the modified route filter object
+from your subscription. A route filter is used in conjunction with Microsoft peering on an ExpressRoute circuit.
 
 ## EXAMPLES
 
@@ -133,6 +131,8 @@ Parameters: RouteFilter (ByValue)
 
 ### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
 
-## NOTES
-
 ## RELATED LINKS
+
+[New-AzureRmRouteFilter](New-AzureRmRouteFilter.md)
+[Remove-AzureRmRouteFilter](Remove-AzureRmRouteFilter.md)
+[Get-AzureRmRouteFilter](Get-AzureRmRouteFilter.md)
