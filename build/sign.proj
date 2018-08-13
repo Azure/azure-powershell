@@ -14,7 +14,8 @@
 
   <Target Name="CheckSigningToolsPath">
     <Error Text="The SigningToolsPath is not assigned a file path!" Condition="'$(SigningToolsPath)' == ''" />
-    <Error Text="The SigningToolsPath [@(SigningToolsPath)] does not exist!" Condition="Exists($(SigningToolsPath))" />
+    <Message Importance="high" Text="SigningToolsPath: @(SigningToolsPath)" />
+    <Error Text="The SigningToolsPath does not exist!" Condition="!Exists($(SigningToolsPath))" />
   </Target>
 
   <Target Name="net452">
