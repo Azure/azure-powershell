@@ -21,6 +21,8 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Management.EventHub.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Management.Automation;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Eventhub
 {
@@ -492,6 +494,14 @@ namespace Microsoft.Azure.Commands.Eventhub
                 returnvalue = 1;
 
             return returnvalue;
+        }
+
+        public static ErrorRecord WriteErrorforBadrequest(ErrorResponseException ex)
+        {
+            ErrorResponseContent errorExtract = new ErrorResponseContent();
+            errorExtract = JsonConvert.DeserializeObject<ErrorResponseContent>(ex.Response.Content);
+            ErrorRecord errorRecord = new ErrorRecord(ex, errorExtract.error.message, ErrorCategory.OpenError, ex);
+            return errorRecord;
         }
     }
 }

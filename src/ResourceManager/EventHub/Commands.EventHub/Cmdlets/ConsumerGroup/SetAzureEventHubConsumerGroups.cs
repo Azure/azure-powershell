@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.EventHub.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
@@ -59,7 +58,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
 
             if(ShouldProcess(target: consumerGroup.Name, action: string.Format(Resources.UpdateConsumerGroup,consumerGroup.Name,EventHub)))
             {
-                WriteObject(Client.CreateOrUpdateConsumerGroup(ResourceGroupName, Namespace, EventHub, consumerGroup.Name, consumerGroup));
+                try
+                {
+                    WriteObject(Client.CreateOrUpdateConsumerGroup(ResourceGroupName, Namespace, EventHub, consumerGroup.Name, consumerGroup));
+                }
+                catch (Management.EventHub.Models.ErrorResponseException ex)
+                {
+                    WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+                }
             }
             
         }
