@@ -12,7 +12,7 @@
     <OnPremiseBuild Condition="!Exists($(SigningToolsPath))">false</OnPremiseBuild>
   </PropertyGroup>
 
-  <UsingTask TaskName="SigningTask" AssemblyFile="$(SigningToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
+  <UsingTask TaskName="CodeSigningTask" AssemblyFile="$(SigningToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
   <Import Project="$(SigningToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
 
   <Target Name="CheckSigningToolsPath">
@@ -30,7 +30,7 @@
       <Net452Files Include="$(OutputDir)Microsoft.Management.Infrastructure.dll" />
       <Net452Files Include="$(OutputDir)System.Management.Automation.dll" />
     </ItemGroup>
-    <SigningTask
+    <CodeSigningTask
       Description="$(Description)"
       Keywords="$(Keywords)"
       UnsignedFiles="@(Net452Files)"
@@ -49,7 +49,7 @@
     <ItemGroup>
       <NetStandard20Files Include="$(OutputDir)Microsoft.Azure.PowerShell*.dll" />
     </ItemGroup>
-    <SigningTask
+    <CodeSigningTask
       Description="$(Description)"
       Keywords="$(Keywords)"
       UnsignedFiles="@(NetStandard20Files)"
