@@ -37,20 +37,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authorization\Common.Authorization.Netcore.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Common.Rbac.Netcore.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Compute\Common.Compute.Netcore.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Common.Network.Netcore.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage.Management\Common.Storage.Management.Netcore.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.KeyVault\Common.KeyVault.Netcore.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Websites\Common.Websites.Netcore.csproj" PrivateAssets="all"/>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Aks\Commands.Common.Aks.Netcore.csproj" PrivateAssets="all"/>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authorization\Common.Authorization.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Common.Rbac.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Compute\Common.Compute.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Common.Network.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage.Management\Common.Storage.Management.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.KeyVault\Common.KeyVault.Netcore.csproj" />
+    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj" />
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Websites\Common.Websites.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Aks\Commands.Common.Aks.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
