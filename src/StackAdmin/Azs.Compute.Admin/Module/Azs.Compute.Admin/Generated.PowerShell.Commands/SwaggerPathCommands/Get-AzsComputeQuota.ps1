@@ -24,7 +24,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
 .EXAMPLE
 
-    PS C:\> Get-AzsComputeQuota
+    PS C:\> Get-AzsComputeQuota -Location 'local'
 
     Get all compute quotas at the specified location.
 
