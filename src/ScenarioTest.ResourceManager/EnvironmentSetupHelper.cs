@@ -236,7 +236,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
 
 #if NETSTANDARD
-            string module = Path.Combine(baseDirectory, $"{desktopModuleName}.Netcore", $"{desktopModuleName}.Netcore.psd1");
+            string module = Path.Combine(baseDirectory, desktopModuleName.Replace("AzureRM", "Az"), $"{desktopModuleName.Replace("AzureRM", "Az")}.psd1");
 #else
             string module = Path.Combine(baseDirectory, desktopModuleName, $"{desktopModuleName}.psd1");
 #endif
