@@ -14,7 +14,9 @@ Create a new compute quota used to limit compute resources.
 
 ```
 New-AzsComputeQuota [-Name] <String> [[-AvailabilitySetCount] <Int32>] [[-CoresLimit] <Int32>]
- [[-VmScaleSetCount] <Int32>] [[-VirtualMachineCount] <Int32>] [[-Location] <String>] [-WhatIf] [-Confirm]
+ [[-VmScaleSetCount] <Int32>] [[-VirtualMachineCount] <Int32>]
+ [[-MaxAllocationStandardManagedDisksAndSnapshots] <Int32>]
+ [[-MaxAllocationPremiumManagedDisksAndSnapshots] <Int32>] [[-Location] <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,27 +27,12 @@ Create a new compute quota.
 
 ### EXAMPLE 1
 ```
-New-AzsComputeQuota -Name testQuota5 -AvailabilitySetCount 1000 -CoresLimit 1000 -VmScaleSetCount 1000 -VirtualMachineCount 1000
+New-AzsComputeQuota -Name testQuota5 -AvailabilitySetCount 1000 -CoresLimit 1000 -VmScaleSetCount 1000 -VirtualMachineCount 1000 -MaxAllocationStandardManagedDisksAndSnapshots 1024 -MaxAllocationPremiumManagedDisksAndSnapshots 1024
 ```
 
 Create a new compute quota.
 
 ## PARAMETERS
-
-### -Name
-Name of the quota.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AvailabilitySetCount
 Maximum number of availability sets allowed.
@@ -77,8 +64,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VmScaleSetCount
-Maximum number of scale sets allowed.
+### -Location
+{{Fill Location Description}}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxAllocationPremiumManagedDisksAndSnapshots
+{{Fill MaxAllocationPremiumManagedDisksAndSnapshots Description}}
 
 ```yaml
 Type: Int32
@@ -86,8 +88,38 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
-Default value: 100
+Position: 7
+Default value: 2048
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxAllocationStandardManagedDisksAndSnapshots
+{{Fill MaxAllocationStandardManagedDisksAndSnapshots Description}}
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: 2048
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the quota.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -107,16 +139,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of the resource.
+### -VmScaleSetCount
+Maximum number of scale sets allowed.
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 4
+Default value: 100
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -138,21 +185,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -161,7 +193,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.AzureStack.Management.Compute.Admin.Models.Quota
-
 ## NOTES
 
 ## RELATED LINKS

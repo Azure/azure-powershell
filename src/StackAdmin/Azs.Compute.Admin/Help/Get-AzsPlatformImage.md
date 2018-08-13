@@ -49,15 +49,15 @@ Get a specific platform image.
 
 ## PARAMETERS
 
-### -Publisher
-Name of the publisher.
+### -Location
+Location of the resource.
 
 ```yaml
 Type: String
-Parameter Sets: Get
+Parameter Sets: List, Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -76,6 +76,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Publisher
+Name of the publisher.
+
+```yaml
+Type: String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id.
+
+```yaml
+Type: String
+Parameter Sets: ResourceId
+Aliases: id
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -109,36 +139,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of the resource.
-
-```yaml
-Type: String
-Parameter Sets: List, Get
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The resource id.
-
-```yaml
-Type: String
-Parameter Sets: ResourceId
-Aliases: id
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -147,7 +147,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImage
-
 ## NOTES
 
 ## RELATED LINKS
