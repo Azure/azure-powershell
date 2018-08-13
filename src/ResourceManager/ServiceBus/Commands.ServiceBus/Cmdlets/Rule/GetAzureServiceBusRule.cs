@@ -59,26 +59,32 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
+            try
             {
-                PSRulesAttributes ruleAttributes = Client.GetRule(ResourceGroupName, Namespace, Topic, Subscription, Name);
-                WriteObject(ruleAttributes);
-            }
-            else
-            {
-                if (MaxCount.HasValue)
+                if (!string.IsNullOrEmpty(Name))
                 {
-                    IEnumerable<PSRulesAttributes> ruleAttributes = Client.ListRules(ResourceGroupName, Namespace, Topic, Subscription, MaxCount);
-                    WriteObject(ruleAttributes, true);
+                    PSRulesAttributes ruleAttributes = Client.GetRule(ResourceGroupName, Namespace, Topic, Subscription, Name);
+                    WriteObject(ruleAttributes);
                 }
                 else
                 {
-                    IEnumerable<PSRulesAttributes> ruleAttributes = Client.ListRules(ResourceGroupName, Namespace, Topic, Subscription);
-                    WriteObject(ruleAttributes, true);
+                    if (MaxCount.HasValue)
+                    {
+                        IEnumerable<PSRulesAttributes> ruleAttributes = Client.ListRules(ResourceGroupName, Namespace, Topic, Subscription, MaxCount);
+                        WriteObject(ruleAttributes, true);
+                    }
+                    else
+                    {
+                        IEnumerable<PSRulesAttributes> ruleAttributes = Client.ListRules(ResourceGroupName, Namespace, Topic, Subscription);
+                        WriteObject(ruleAttributes, true);
+                    }
+
                 }
-
             }
-
+            catch (Management.ServiceBus.Models.ErrorResponseException ex)
+            {
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+            }
         }
     }
 }

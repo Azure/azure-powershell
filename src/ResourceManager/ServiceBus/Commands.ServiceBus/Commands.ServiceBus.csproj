@@ -80,6 +80,7 @@
     <Compile Include="Cmdlets\Topic\NewAzureServiceBusTopic.cs" />
     <Compile Include="Cmdlets\Topic\RemoveAzureServiceBusTopic.cs" />
     <Compile Include="Cmdlets\Topic\SetAzureServiceBusTopic.cs" />
+    <Compile Include="Models\ErrorResponseContent.cs" />
     <Compile Include="Models\PSActionAttributes.cs" />
     <Compile Include="Models\PSCheckNameAvailabilityAttributes.cs" />
     <Compile Include="Models\PSCheckNameAvailabilityResultAttributes.cs" />

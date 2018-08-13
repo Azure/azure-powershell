@@ -64,7 +64,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateRule, Name, Namespace)))
             {
-                WriteObject(Client.CreateUpdateRules(ResourceGroupName, Namespace, Topic, Subscription, Name, rulesAttributes));
+                try
+                {
+                    WriteObject(Client.CreateUpdateRules(ResourceGroupName, Namespace, Topic, Subscription, Name, rulesAttributes));
+                }
+                catch (ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }

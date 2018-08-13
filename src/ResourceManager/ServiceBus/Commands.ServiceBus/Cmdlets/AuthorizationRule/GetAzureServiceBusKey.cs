@@ -57,34 +57,40 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public override void ExecuteCmdlet()
         {
 
-            // Get a Namespace List Keys for the specified AuthorizationRule
-            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
+            try
             {
-                PSListKeysAttributes keys = Client.GetNamespaceListKeys(ResourceGroupName, Namespace, Name);
-                WriteObject(keys,true);
-            }
+                // Get a Namespace List Keys for the specified AuthorizationRule
+                if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
+                {
+                    PSListKeysAttributes keys = Client.GetNamespaceListKeys(ResourceGroupName, Namespace, Name);
+                    WriteObject(keys, true);
+                }
 
-            // Get a Queue List Keys for the specified AuthorizationRule
-            if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
+                // Get a Queue List Keys for the specified AuthorizationRule
+                if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
+                {
+                    PSListKeysAttributes keys = Client.GetQueueKey(ResourceGroupName, Namespace, Queue, Name);
+                    WriteObject(keys, true);
+                }
+
+                // Get a Topic List Keys for the specified AuthorizationRule
+                if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
+                {
+                    PSListKeysAttributes keys = Client.GetTopicKey(ResourceGroupName, Namespace, Topic, Name);
+                    WriteObject(keys, true);
+                }
+
+                // Get Alias List Keys for the specified AuthorizationRule
+                if (ParameterSetName.Equals(AliasAuthoRuleParameterSet))
+                {
+                    PSListKeysAttributes keys = Client.GetAliasListKeys(ResourceGroupName, Namespace, AliasName, Name);
+                    WriteObject(keys, true);
+                }
+            }
+            catch (ErrorResponseException ex)
             {
-                PSListKeysAttributes keys = Client.GetQueueKey(ResourceGroupName, Namespace, Queue, Name);
-                WriteObject(keys,true);
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
             }
-
-            // Get a Topic List Keys for the specified AuthorizationRule
-            if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
-            {
-                PSListKeysAttributes keys = Client.GetTopicKey(ResourceGroupName, Namespace, Topic, Name);
-                WriteObject(keys,true);
-            }
-
-            // Get Alias List Keys for the specified AuthorizationRule
-            if (ParameterSetName.Equals(AliasAuthoRuleParameterSet))
-            {
-                PSListKeysAttributes keys = Client.GetAliasListKeys(ResourceGroupName, Namespace, AliasName, Name);
-                WriteObject(keys, true);
-            }
-
         }
     }
 }
