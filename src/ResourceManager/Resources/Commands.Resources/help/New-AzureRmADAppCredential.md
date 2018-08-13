@@ -296,19 +296,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: ApplicationId (ByPropertyName), ObjectId (ByPropertyName)
 
 ### System.String
-Parameters: CertValue (ByPropertyName), DisplayName (ByPropertyName)
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameters: ApplicationObject (ByValue)
 
 ### System.Security.SecureString
-Parameters: Password (ByPropertyName)
 
 ### System.DateTime
-Parameters: EndDate (ByPropertyName), StartDate (ByPropertyName)
 
 ## OUTPUTS
 

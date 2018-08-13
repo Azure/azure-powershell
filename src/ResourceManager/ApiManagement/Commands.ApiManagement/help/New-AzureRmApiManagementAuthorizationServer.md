@@ -346,27 +346,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-Parameters: Context (ByPropertyName)
 
 ### System.String
-Parameters: AuthorizationEndpointUrl (ByPropertyName), ClientId (ByPropertyName), ClientRegistrationPageUrl (ByPropertyName), ClientSecret (ByPropertyName), DefaultScope (ByPropertyName), Description (ByPropertyName), Name (ByPropertyName), ResourceOwnerPassword (ByPropertyName), ResourceOwnerUsername (ByPropertyName), ServerId (ByPropertyName), TokenEndpointUrl (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementAuthorizationRequestMethod[]
-Parameters: AuthorizationRequestMethods (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGrantType[]
-Parameters: GrantTypes (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementClientAuthenticationMethod[]
-Parameters: ClientAuthenticationMethods (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: TokenBodyParameters (ByPropertyName)
 
 ### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementAccessTokenSendingMethod[]
-Parameters: AccessTokenSendingMethods (ByPropertyName)
 
 ## OUTPUTS
 
