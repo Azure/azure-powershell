@@ -7,9 +7,6 @@ schema: 2.0.0
 
 # Remove-AzureRmRouteFilter
 
-## SYNOPSIS
-{{Fill in the Synopsis}}
-
 ## SYNTAX
 
 ```
@@ -18,16 +15,14 @@ Remove-AzureRmRouteFilter -Name <String> -ResourceGroupName <String> [-Force] [-
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Remove-AzureRmRouteFilter cmdlet is used to remove a route filter object from your subscription. A route filter is used in conjunction with Microsoft peering on an ExpressRoute circuit.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get the route filter to delete it
 ```
-PS C:\> {{ Add example code here }}
+Get-AzureRmRmRouteFilter -Name $RouteFilterName -ResourceGroupName $rg | Remove-AzureRmRouteFilter
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -149,6 +144,8 @@ Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Boolean
 
-## NOTES
-
 ## RELATED LINKS
+
+[New-AzureRmRouteFilter](New-AzureRmRouteFilter.md)
+[Get-AzureRmRouteFilter](Get-AzureRmRouteFilter.md)
+[Set-AzureRmRouteFilter](Set-AzureRmRouteFilter.md)
