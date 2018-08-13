@@ -216,11 +216,16 @@ namespace VersionController.Models
             File.Copy(outputModuleManifestPath, tempModuleManifestPath);
             var script = "$releaseNotes = @();";
             releaseNotes.ForEach(l => script += "$releaseNotes += \"" + l + "\";");
+            script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory};{_fileHelper.SrcDirectory}\\Package\\Debug\\Storage\";";
             script += "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes";
             using (PowerShell powershell = PowerShell.Create())
             {
                 powershell.AddScript(script);
                 var result = powershell.Invoke();
+                if (powershell.Streams.Error.Any())
+                {
+                    Console.WriteLine($"Found error in updating module {_fileHelper.ModuleName}: {powershell.Streams.Error.First().ToString()}");
+                }
             }
 
             var tempModuleContent = File.ReadAllLines(tempModuleManifestPath);

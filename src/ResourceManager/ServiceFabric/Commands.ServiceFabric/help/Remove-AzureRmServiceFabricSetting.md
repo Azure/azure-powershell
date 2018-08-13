@@ -165,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), Parameter (ByValue), ResourceGroupName (ByPropertyName), Section (ByValue)
+Parameters: Parameter (ByValue), Section (ByValue)
 
 ### Microsoft.Azure.Commands.ServiceFabric.Models.PSSettingsSectionDescription[]
 Parameters: SettingsSectionDescription (ByValue)

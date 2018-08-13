@@ -357,27 +357,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AuthorizationKey (ByPropertyName), ConnectionType (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), PeerId (ByPropertyName), ResourceGroupName (ByPropertyName), SharedKey (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
-Parameters: VirtualNetworkGateway1 (ByPropertyName), VirtualNetworkGateway2 (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
-Parameters: LocalNetworkGateway2 (ByPropertyName)
 
 ### System.Int32
-Parameters: RoutingWeight (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Network.Models.PSPeering
-Parameters: Peer (ByPropertyName)
 
 ### System.Boolean
-Parameters: EnableBgp (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy, Microsoft.Azure.Commands.Network, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

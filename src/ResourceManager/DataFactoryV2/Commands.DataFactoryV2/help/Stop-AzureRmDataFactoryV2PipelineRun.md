@@ -196,7 +196,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: InputObject (ByValue)
 
 ### System.String
-Parameters: DataFactoryName (ByPropertyName), PipelineRunId (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
 Parameters: DataFactory (ByValue)
