@@ -6,7 +6,7 @@
     <Artifacts>$(Root)artifacts\</Artifacts>
     <Description>Microsoft Azure PowerShell Common</Description>
     <Keywords>Microsoft Azure PowerShell Common</Keywords>
-    <Certificates>400</Certificates>
+    <Certificates>72, 400</Certificates>
   </PropertyGroup>
 
   <UsingTask TaskName="CodeSigningTask" AssemblyFile="$(SigningToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
@@ -24,8 +24,6 @@
     </PropertyGroup>
     <ItemGroup>
       <Net452Files Include="$(OutputDir)Microsoft.Azure.PowerShell*.dll" />
-      <Net452Files Include="$(OutputDir)Microsoft.Management.Infrastructure.dll" />
-      <Net452Files Include="$(OutputDir)System.Management.Automation.dll" />
     </ItemGroup>
     <CodeSigningTask
       Description="$(Description)"
