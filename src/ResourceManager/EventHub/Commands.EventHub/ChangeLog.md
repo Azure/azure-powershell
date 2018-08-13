@@ -20,6 +20,7 @@
 ## Current Release
 * Fixed issue with default resource groups not being set.
 * Updated to the latest version of the Azure ClientRuntime.
+* Updated exception handling for cmdlets
 
 ## Version 0.6.7
 * Updated piping for InputObject and ResourceId in remove cmdlets
