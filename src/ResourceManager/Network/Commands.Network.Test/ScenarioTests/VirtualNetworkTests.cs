@@ -38,7 +38,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "Fails with server-side error: 'An error occurred'.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestVirtualNetworkCRUDWithDDoSProtection()
@@ -54,7 +54,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-subnetCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "'The '1' auxiliary tokens are either not application token(s) or are from the application(s) ... which are different from the application of primary identity <...>.' StatusCode: 401; ReasonPhrase: Unauthorized.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestVirtualNetworkPeeringCRUD()
