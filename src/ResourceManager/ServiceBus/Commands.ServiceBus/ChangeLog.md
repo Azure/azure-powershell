@@ -20,6 +20,9 @@
 -->
 ## Current Release
 * Updated to the latest version of the Azure ClientRuntime.
+* Fix for issues
+	- https://github.com/Azure/azure-powershell/issues/5058
+	- https://github.com/Azure/azure-powershell/issues/5055
 
 ## Version 0.6.8
 * Updated all help files to include full parameter types and correct input/output types.
