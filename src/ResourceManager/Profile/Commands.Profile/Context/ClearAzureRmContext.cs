@@ -24,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet(VerbsCommon.Clear, "AzureRmContext", SupportsShouldProcess = true)]
+    [Cmdlet("Clear", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class ClearAzureRmContext : AzureContextModificationCmdlet
     {

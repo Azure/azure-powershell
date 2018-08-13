@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
     /// <summary>
     /// 'Get-GetAzureServiceBusMigrationConfiguration' CmdletRetrieves Migration Configuration for Standard to Premium    
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusMigrationConfigurationVerb, DefaultParameterSetName = MigrationConfigurationParameterSet), OutputType(typeof(PSServiceBusMigrationConfigurationAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusMigration", DefaultParameterSetName = MigrationConfigurationParameterSet), OutputType(typeof(PSServiceBusMigrationConfigurationAttributes))]
     public class GetAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 0, HelpMessage = "Resource Group Name")]

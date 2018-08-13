@@ -184,7 +184,6 @@ Parameters: VpnClientIPsecParameter (ByValue)
 Parameters: InputObject (ByValue)
 
 ### System.String
-Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

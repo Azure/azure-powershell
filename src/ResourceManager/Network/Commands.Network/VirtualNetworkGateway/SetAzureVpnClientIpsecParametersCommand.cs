@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,11 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set,
-         "AzureRmVpnClientIpsecParameter",
-         DefaultParameterSetName = "ByFactoryName",
-         SupportsShouldProcess = true),
-     OutputType(typeof(PSVpnClientIPsecParameters))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnClientIpsecParameter",DefaultParameterSetName = "ByFactoryName",SupportsShouldProcess = true),OutputType(typeof(PSVpnClientIPsecParameters))]
     public class SetAzureVpnClientIpsecParametersCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
     /// <summary>
     /// 'Remove-AzureRmServiceBusSubscription' Cmdlet removes the specified Subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusSubscriptionVerb, DefaultParameterSetName = SubscriptionPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusSubscription", DefaultParameterSetName = SubscriptionPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = SubscriptionPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]

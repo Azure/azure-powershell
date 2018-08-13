@@ -189,10 +189,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: Context (ByValue)
 
 ### System.String
-Parameters: ApiId (ByPropertyName), Note (ByPropertyName), ReleaseId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRelease
-Parameters: InputObject (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

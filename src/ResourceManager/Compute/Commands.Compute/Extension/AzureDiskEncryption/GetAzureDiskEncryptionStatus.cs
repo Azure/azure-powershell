@@ -27,10 +27,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ProfileNouns.AzureDiskEncryptionStatus),
-    OutputType(typeof(AzureDiskEncryptionExtensionContext))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDiskEncryptionStatus"),OutputType(typeof(AzureDiskEncryptionExtensionContext))]
     public class GetAzureDiskEncryptionStatusCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -245,12 +242,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private EncryptionStatus AreWindowsDataVolumesEncryptedDualPass(VirtualMachine vmParameters)
         {
-            if (vmParameters == null || vmParameters.Resources == null)
+            VirtualMachineExtension vmExtension = this.FindEncryptionExtension(vmParameters);
+            if (vmExtension == null)
             {
                 return EncryptionStatus.Unknown;
             }
 
-            VirtualMachineExtension vmExtension = this.FindEncryptionExtension(vmParameters);
             AzureDiskEncryptionExtensionContext adeExtension =
                 new AzureDiskEncryptionExtensionContext(vmExtension.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
 
@@ -269,13 +266,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private AzureDiskEncryptionStatusContext GetStatusFromInstanceView(VirtualMachine vm)
         {
-            AzureDiskEncryptionStatusContext result = null;
+            AzureDiskEncryptionStatusContext result = new AzureDiskEncryptionStatusContext();
+            result.OsVolumeEncrypted = EncryptionStatus.Unknown;
+            result.DataVolumesEncrypted = EncryptionStatus.Unknown;
 
             StorageProfile storageProfile = vm.StorageProfile;
             VirtualMachineInstanceView iv = vm.InstanceView;
             if (iv != null)
             {
-                result = new AzureDiskEncryptionStatusContext();
                 result.OsVolumeEncrypted = EncryptionStatus.NoDiskFound;
                 result.DataVolumesEncrypted = EncryptionStatus.NoDiskFound;
 
@@ -368,7 +366,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             string extensionPublisher = "";
             string extensionType = "";
 
-            if (vm.Resources == null) return null;
+            if (vm == null || vm.Resources == null) return null;
 
             switch(vm.StorageProfile.OsDisk.OsType)
             {
@@ -466,6 +464,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             {
                 errorString = "retreived virtual machine does not have an OS type in the storage profile's OS Disk";
             }
+            else if (vm.InstanceView == null)
+            {
+                errorString = "could not retreive VM Instance View";
+            }
 
             if (errorString != "")
             {
@@ -474,6 +476,25 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                       ErrorCategory.InvalidResult,
                                                       null));
             }
+        }
+
+        private bool isVMRunning (VirtualMachine vm)
+        {
+            string lastCode = "";
+            if (vm.InstanceView.Statuses == null)
+            {
+                ThrowTerminatingError(new ErrorRecord(new ApplicationFailedException(string.Format(CultureInfo.CurrentUICulture, "VM instance view statuses array was null. Could not get VM status.")),
+                                                      "InvalidResult",
+                                                      ErrorCategory.InvalidResult,
+                                                      null));
+            }
+            foreach (InstanceViewStatus ivs in vm.InstanceView.Statuses)
+            {
+                if (ivs != null && ivs.Code != null && ivs.Code.StartsWith("PowerState/"))
+                    lastCode = ivs.Code;
+            }
+
+            return lastCode == "PowerState/running";
         }
 
         private AzureDiskEncryptionStatusContext getStatusDualPass(VirtualMachine vm)
@@ -495,7 +516,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     };
                     break;
                 case OperatingSystemTypes.Linux:
-                    if (!IsExtensionInstalled(vm))
+                    if (!this.IsExtensionInstalled(vm) && this.isVMRunning(vm))
                     {
                         VirtualMachineExtension parameters = GetDualPassQueryVmExtensionParameters(vm);
 
@@ -560,7 +581,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             AzureDiskEncryptionStatusContext status = this.GetStatusFromInstanceView(vm);
 
             // Get Data Disk status from extension for Native Disk VMs
-            if (isNativeDiskVM(vm))
+            if ( status.DataVolumesEncrypted != EncryptionStatus.NoDiskFound && isNativeDiskVM(vm))
             {
                 // We use logic that's otherwise only used for Windows VMs in Dual Pass
                 status.DataVolumesEncrypted = this.AreWindowsDataVolumesEncryptedDualPass(vm);

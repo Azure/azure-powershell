@@ -41,7 +41,7 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Commands.Automation">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Automation.Netcore\Microsoft.Azure.Commands.ResourceManager.Automation.dll</HintPath>
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll</HintPath>
     </Reference>
   </ItemGroup>
 

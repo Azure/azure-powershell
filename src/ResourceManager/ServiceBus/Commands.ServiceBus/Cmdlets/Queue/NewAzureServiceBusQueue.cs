@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
     /// <summary>
     /// 'New-AzureRmServiceBusQueue' Cmdlet creates a new Queue
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServicebusQueueVerb, SupportsShouldProcess = true), OutputType(typeof(PSQueueAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusQueue", SupportsShouldProcess = true), OutputType(typeof(PSQueueAttributes))]
     public class NewAzureRmServiceBusQueue : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]

@@ -17,8 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), 
-        OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
     public class NewAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
     {
         public override void ExecuteCmdlet()
