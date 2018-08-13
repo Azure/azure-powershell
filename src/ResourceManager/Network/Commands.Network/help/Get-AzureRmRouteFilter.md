@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmRouteFilter
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This is a test synopsis. 
 
 ## SYNTAX
 
