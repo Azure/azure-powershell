@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Name = ResourceIdUtility.GetResourceName(Id);
             }
             ConfirmAction(
-                ProjectResources.CancelResourceGroupDeploymentMessage,
+                ProjectResources.CancelDeploymentMessage,
                 ResourceGroupName,
                 () => ResourceManagerSdkClient.CancelDeployment(ResourceGroupName, Name));
 
