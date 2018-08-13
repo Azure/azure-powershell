@@ -332,17 +332,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AllocationMethod (ByPropertyName), DomainNameLabel (ByPropertyName), IpAddressVersion (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), ReverseFqdn (ByPropertyName), Sku (ByPropertyName)
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSPublicIpTag, Microsoft.Azure.Commands.Network, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSPublicIpTag, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ### System.Int32
-Parameters: IdleTimeoutInMinutes (ByPropertyName)
 
 ### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

@@ -226,17 +226,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting
-Parameters: InputObject (ByPropertyName)
 
 ### System.String
-Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), TargetResourceId (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: DisableSetting (ByPropertyName)
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile, Microsoft.Azure.Commands.Insights, Version=5.0.1.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile, Microsoft.Azure.Commands.Insights, Version=5.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification, Microsoft.Azure.Commands.Insights, Version=5.0.1.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification, Microsoft.Azure.Commands.Insights, Version=5.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

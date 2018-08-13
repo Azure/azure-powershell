@@ -302,23 +302,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.TimeSpan
-Parameters: WindowSize (ByPropertyName)
 
 ### Microsoft.Azure.Management.Monitor.Management.Models.ConditionOperator
-Parameters: Operator (ByPropertyName)
 
 ### System.Double
-Parameters: Threshold (ByPropertyName)
 
 ### System.String
-Parameters: Description (ByPropertyName), Location (ByPropertyName), MetricName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), TargetResourceId (ByPropertyName)
 
-### System.Nullable`1[[Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator, Microsoft.Azure.Commands.Insights, Version=5.0.1.0, Culture=neutral, PublicKeyToken=null]]
+### System.Nullable`1[[Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationOperator, Microsoft.Azure.Commands.Insights, Version=5.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ### System.Management.Automation.SwitchParameter
-Parameters: DisableRule (ByPropertyName)
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.Commands.Insights, Version=5.0.1.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.Commands.Insights, Version=5.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

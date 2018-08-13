@@ -221,7 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), NodeType (ByValue), ResourceGroupName (ByPropertyName), Tier (ByValue), VmSku (ByValue), VmUserName (ByValue)
+Parameters: NodeType (ByValue), Tier (ByValue), VmSku (ByValue), VmUserName (ByValue)
 
 ### System.Int32
 Parameters: Capacity (ByValue)

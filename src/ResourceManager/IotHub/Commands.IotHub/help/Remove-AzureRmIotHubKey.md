@@ -129,7 +129,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: KeyName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
