@@ -28,7 +28,7 @@
       <Net452Files Include="$(OutputDir)Microsoft.Management.Infrastructure.dll" />
       <Net452Files Include="$(OutputDir)System.Management.Automation.dll" />
     </ItemGroup>
-    <CodeSigningTask
+    <SigningTask
       Description="$(Description)"
       Keywords="$(Keywords)"
       UnsignedFiles="@(Net452Files)"
@@ -47,7 +47,7 @@
     <ItemGroup>
       <NetStandard20Files Include="$(OutputDir)Microsoft.Azure.PowerShell*.dll" />
     </ItemGroup>
-    <CodeSigningTask
+    <SigningTask
       Description="$(Description)"
       Keywords="$(Keywords)"
       UnsignedFiles="@(NetStandard20Files)"
