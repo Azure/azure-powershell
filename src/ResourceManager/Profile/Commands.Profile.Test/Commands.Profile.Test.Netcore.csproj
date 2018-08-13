@@ -3,7 +3,7 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;</TargetFrameworks>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <IsPackable>false</IsPackable>
     <AssemblyName>Microsoft.Azure.Commands.Profile.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Profile.Test</RootNamespace>
