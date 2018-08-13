@@ -281,16 +281,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName), OutputPath (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
-Parameters: Path (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: GetAcl (ByPropertyName), GetDiskUsage (ByPropertyName), HideConsistentAcl (ByPropertyName), IncludeFile (ByPropertyName), PassThru (ByPropertyName), SaveToAdl (ByPropertyName)
 
 ### System.Int32
-Parameters: Concurrency (ByPropertyName), MaximumDepth (ByPropertyName)
 
 ## OUTPUTS
 

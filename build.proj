@@ -708,7 +708,7 @@
   </Target>
 
   <Target Name="TestFailureErrorMessage">
-    <Error Text="Test failures occured, check the files in src/TestResults/FailingTests."/>
+    <Error Text="Test failures occured, check the files in src/Publish/TestResults/FailingTests."/>
   </Target>
 
   <!-- Run Full switch with scenario tests -->

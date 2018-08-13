@@ -78,8 +78,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 Region = vaultLocation,
                 StorageAccountId = storageAccountId,
                 SourceResourceId = rp.SourceResourceId,
-                TargetResourceGroupId = targetResourceGroupName ??
-                    "/subscriptions/" + BmsAdapter.Client.SubscriptionId + "/resourceGroups/" + targetResourceGroupName,
+                TargetResourceGroupId = targetResourceGroupName != null ?
+                    "/subscriptions/" + BmsAdapter.Client.SubscriptionId + "/resourceGroups/" + targetResourceGroupName :
+                    null,
                 OriginalStorageAccountOption = useOsa,
             };
 

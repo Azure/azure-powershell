@@ -166,7 +166,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: InputObject (ByValue)
 
 ### System.String
-Parameters: ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
