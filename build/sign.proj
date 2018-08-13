@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="All" InitialTargets="CheckSigningToolsPath" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <UsingTask TaskName="SigningTask" AssemblyFile="$(SigningToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
-  <Import Project="$(SigningToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
-
   <PropertyGroup>
     <Root>$(MSBuildThisFileDirectory)..\</Root>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
@@ -10,12 +7,18 @@
     <Description>Microsoft Azure PowerShell Common</Description>
     <Keywords>Microsoft Azure PowerShell Common</Keywords>
     <Certificates>400</Certificates>
+    <CIToolsPath>$(SigningToolsPath)</CIToolsPath>
+    <OnPremiseBuild Condition="Exists($(SigningToolsPath))">true</OnPremiseBuild>
+    <OnPremiseBuild Condition="!Exists($(SigningToolsPath))">false</OnPremiseBuild>
   </PropertyGroup>
 
+  <UsingTask TaskName="CodeSigningTask" AssemblyFile="$(SigningToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
+  <UsingTask TaskName="CorporateValidation" AssemblyFile="$(SigningToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
+  <Import Project="$(SigningToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
+
   <Target Name="CheckSigningToolsPath">
-    <Error Text="The SigningToolsPath is not assigned a file path!" Condition="'$(SigningToolsPath)' == ''" />
-    <Message Importance="high" Text="SigningToolsPath: @(SigningToolsPath)" />
-    <Error Text="The SigningToolsPath does not exist!" Condition="!Exists($(SigningToolsPath))" />
+    <Error Text="SigningToolsPath is not assigned a file path!" Condition="'$(SigningToolsPath)' == ''" />
+    <Error Text="The SigningToolsPath directory does not exist!" Condition="!Exists($(SigningToolsPath))" />
   </Target>
 
   <Target Name="net452">
@@ -28,7 +31,7 @@
       <Net452Files Include="$(OutputDir)Microsoft.Management.Infrastructure.dll" />
       <Net452Files Include="$(OutputDir)System.Management.Automation.dll" />
     </ItemGroup>
-    <SigningTask
+    <CodeSigningTask
       Description="$(Description)"
       Keywords="$(Keywords)"
       UnsignedFiles="@(Net452Files)"
@@ -47,7 +50,7 @@
     <ItemGroup>
       <NetStandard20Files Include="$(OutputDir)Microsoft.Azure.PowerShell*.dll" />
     </ItemGroup>
-    <SigningTask
+    <CodeSigningTask
       Description="$(Description)"
       Keywords="$(Keywords)"
       UnsignedFiles="@(NetStandard20Files)"
