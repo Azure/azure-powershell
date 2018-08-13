@@ -163,13 +163,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService
-Parameters: ContainerService (ByPropertyName, ByValue)
 
 ### System.String
-Parameters: DnsPrefix (ByPropertyName), Name (ByPropertyName), VmSize (ByPropertyName)
 
 ### System.Int32
-Parameters: Count (ByPropertyName)
 
 ## OUTPUTS
 
