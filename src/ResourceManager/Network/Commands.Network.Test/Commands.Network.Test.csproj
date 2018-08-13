@@ -256,7 +256,7 @@
     <None Include="ScenarioTests\ExpressRouteCircuitTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\PublicIpPrefixTests.ps1" >
+    <None Include="ScenarioTests\PublicIpPrefixTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\RouteTableTests.ps1">
