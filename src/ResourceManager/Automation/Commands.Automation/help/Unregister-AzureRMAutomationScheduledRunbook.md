@@ -186,7 +186,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), ResourceGroupName (ByPropertyName), RunbookName (ByPropertyName), ScheduleName (ByPropertyName)
 
 ## OUTPUTS
 

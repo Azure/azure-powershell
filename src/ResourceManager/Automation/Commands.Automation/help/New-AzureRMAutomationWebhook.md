@@ -242,13 +242,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), RunbookName (ByPropertyName)
 
 ### System.Boolean
-Parameters: IsEnabled (ByPropertyName)
 
 ### System.DateTimeOffset
-Parameters: ExpiryTime (ByPropertyName)
 
 ## OUTPUTS
 
