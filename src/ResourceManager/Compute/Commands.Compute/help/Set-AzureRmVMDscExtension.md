@@ -371,10 +371,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ArchiveBlobName (ByPropertyName), ArchiveContainerName (ByPropertyName), ArchiveResourceGroupName (ByPropertyName), ArchiveStorageAccountName (ByPropertyName), ArchiveStorageEndpointSuffix (ByPropertyName), ConfigurationData (ByPropertyName), ConfigurationName (ByPropertyName), DataCollection (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Version (ByPropertyName), VMName (ByPropertyName), WmfVersion (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: ConfigurationArgument (ByPropertyName)
 
 ## OUTPUTS
 
