@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Error Text="The SigningToolsPath is not assigned a file path!" Condition="'$(SigningToolsPath)' = ''" />
+  <Error Text="The SigningToolsPath [@(SigningToolsPath)] does not exist!" Condition="Exists($(SigningToolsPath))" />
+  <UsingTask TaskName="SigningTask" AssemblyFile="$(SigningToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
+  <Import Project="$(SigningToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
+
+  <PropertyGroup>
+    <Root>$(MSBuildThisFileDirectory)..\</Root>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Artifacts>$(Root)artifacts\</Artifacts>
+    <Description>Microsoft Azure PowerShell Common</Description>
+    <Keywords>Microsoft Azure PowerShell Common</Keywords>
+    <Certificates>400</Certificates>
+  </PropertyGroup>
+
+  <Target Name="net452">
+    <Message Importance="high" Text="Sign: net452 started" />
+    <PropertyGroup>
+      <OutputDir>$(Artifacts)$(Configuration)\net452\</OutputDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <Net452Files Include="$(OutputDir)Microsoft.Azure.PowerShell*.dll" />
+      <Net452Files Include="$(OutputDir)Microsoft.Management.Infrastructure.dll" />
+      <Net452Files Include="$(OutputDir)System.Management.Automation.dll" />
+    </ItemGroup>
+    <CodeSigningTask
+      Description="$(Description)"
+      Keywords="$(Keywords)"
+      UnsignedFiles="@(Net452Files)"
+      DestinationPath="$(OutputDir)"
+      BasePath="$(OutputDir)"
+      Certificates="$(Certificates)"
+      SigningLogPath="$(OutputDir)Signing.log"
+      ToolsPath="$(SigningToolsPath)" />
+  </Target>
+
+  <Target Name="netstandard20">
+    <Message Importance="high" Text="Sign: netstandard20 started" />
+    <PropertyGroup>
+      <OutputDir>$(Artifacts)$(Configuration)\netstandard2.0\</OutputDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <NetStandard20Files Include="$(OutputDir)Microsoft.Azure.PowerShell*.dll" />
+    </ItemGroup>
+    <CodeSigningTask
+      Description="$(Description)"
+      Keywords="$(Keywords)"
+      UnsignedFiles="@(NetStandard20Files)"
+      DestinationPath="$(OutputDir)"
+      BasePath="$(OutputDir)"
+      Certificates="$(Certificates)"
+      SigningLogPath="$(OutputDir)Signing.log"
+      ToolsPath="$(SigningToolsPath)" />
+  </Target>
+
+  <Target Name="All" DependsOnTargets="net452;netstandard20" />
+</Project>
