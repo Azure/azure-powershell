@@ -19,6 +19,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
 {
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
             object userprofile = "";
             if (Scope != null && Scope.Equals("CurrentUser"))
             {
-                userprofile = SessionState.PSVariable.GetValue("env:USERPROFILE\\Documents\\PowerShell\\profile.ps1");
+                userprofile = SessionState.PSVariable.GetValue("env:USERPROFILE") + "\\Documents\\PowerShell\\profile.ps1";
             }
 
             else if (Scope != null && Scope.Equals("LocalMachine"))
@@ -87,17 +89,59 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                 userprofile = SessionState.PSVariable.GetValue("PSHOME") + "\\profile.ps1";
             }
 
-            if (Scope != null)
+            if (Scope != null && (Scope.Equals("CurrentUser") || Scope.Equals("LocalMachine")))
             {
                 using (System.Management.Automation.PowerShell PowerShellInstance = System.Management.Automation.PowerShell.Create())
                 {
                     PowerShellInstance.AddScript("if (!(Test-Path '" + userprofile + "')) { New-Item '" + userprofile + "' -ItemType file -Force }");
-                    string filecontent = "\"#Begin" + Environment.NewLine + "`$error.clear()" + Environment.NewLine + "Import-Module Az.Profile" + Environment.NewLine + "if (!`$error) { ";
+                    Collection<PSObject> PSOutput = PowerShellInstance.Invoke();
+
+                    if (PowerShellInstance.Streams.Error.Count > 0)
+                    {
+                        foreach (var error in PowerShellInstance.Streams.Error)
+                        {
+                            if (error.ToString().Contains("Access to the path") && error.ToString().Contains("is denied."))
+                            {
+                                throw new Exception("LocalMachine scope can only be set in PowerShell administrative mode.");
+                            }
+                        }
+                    }
+
+                    string filecontent = "";
+                    string originalText = System.IO.File.ReadAllText(userprofile.ToString());
+                    if (originalText.Contains("#Begin Azure PowerShell alias import"))
+                    {
+                        var splitOriginalText = originalText.Split(new string[] { "#Begin Azure PowerShell alias import", "#End Azure PowerShell alias import" }, StringSplitOptions.None);
+                        filecontent += splitOriginalText[0];
+                        if (splitOriginalText.Length > 2)
+                        {
+                            filecontent += splitOriginalText[2];
+                        }
+
+                        if (Module != null)
+                        {
+                            var regex = new Regex(@"Az.[a-zA-Z0-9\.]+;");
+                            Match match = regex.Match(splitOriginalText[1]);
+                            while (match.Success)
+                            {
+                                var moduleList = Module.ToList();
+                                if (!moduleList.Contains(match.ToString().Substring(0, match.ToString().Length - 1)))
+                                {
+                                    moduleList.Add(match.ToString().Substring(0, match.ToString().Length - 1));
+                                }
+                                Module = moduleList.ToArray();
+                                match = match.NextMatch();
+                            }
+                        }
+                    }
+
+                    filecontent = "\"#Begin Azure PowerShell alias import" + Environment.NewLine + "`$error.clear()" + Environment.NewLine + "Import-Module Az.Profile" + 
+                        Environment.NewLine + "if (!`$error) { " + Environment.NewLine;
                     if (Module == null)
                     {
                         foreach (var name in mapping.Keys)
                         {
-                            filecontent += "Enable-AzureRmAlias -Module " + name + "; ";
+                            filecontent += "    Enable-AzureRmAlias -Module " + name + "; " + Environment.NewLine;
                         }
                     }
 
@@ -107,14 +151,14 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                         {
                             if (mapping.ContainsKey(name))
                             {
-                                filecontent += "Enable-AzureRmAlias -Module " + name + "; ";
+                                filecontent += "    Enable-AzureRmAlias -Module " + name + "; " + Environment.NewLine;
                             }
                         }
                     }
 
-                    filecontent += " }" + Environment.NewLine + "#End";
-                    PowerShellInstance.AddScript("Add-Content -Path '" + userprofile + "' -Value " + filecontent + "\"");
-                    Collection<PSObject> PSOutput = PowerShellInstance.Invoke();
+                    filecontent += "}" + Environment.NewLine + "#End Azure PowerShell alias import";
+                    PowerShellInstance.AddScript("Set-Content -Path '" + userprofile + "' -Value " + filecontent + "\"");
+                    PSOutput = PowerShellInstance.Invoke();
 
                     if (PowerShellInstance.Streams.Error.Count > 0)
                     {
