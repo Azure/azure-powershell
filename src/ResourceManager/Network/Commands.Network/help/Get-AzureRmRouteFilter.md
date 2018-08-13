@@ -33,7 +33,6 @@ from your subscription. The route filter object returned can be used as input to
 
 ## EXAMPLES
 
-### Example 1
 ### Example 1: Get the route filter to delete it
 ```
 Get-AzureRmRmRouteFilter -Name $RouteFilterName -ResourceGroupName $rg | Remove-AzureRmRouteFilter
@@ -136,8 +135,6 @@ Parameters: ExpandResource (ByPropertyName), Name (ByPropertyName), ResourceGrou
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
-
-## NOTES
 
 ## RELATED LINKS
 
