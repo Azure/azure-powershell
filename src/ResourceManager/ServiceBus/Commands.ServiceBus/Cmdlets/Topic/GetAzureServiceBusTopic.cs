@@ -48,24 +48,31 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
         public int? MaxCount { get; set; }
 
         public override void ExecuteCmdlet()
-        {            
-            if (!string.IsNullOrEmpty(Name))
+        {
+            try
             {
-                PSTopicAttributes topicAttributes = Client.GetTopic(ResourceGroupName, Namespace, Name);
-                WriteObject(topicAttributes);
-            }
-            else
-            {
-                if (MaxCount.HasValue)
+                if (!string.IsNullOrEmpty(Name))
                 {
-                    IEnumerable<PSTopicAttributes> topicAttributes = Client.ListTopics(ResourceGroupName, Namespace, MaxCount);
-                    WriteObject(topicAttributes, true);
+                    PSTopicAttributes topicAttributes = Client.GetTopic(ResourceGroupName, Namespace, Name);
+                    WriteObject(topicAttributes);
                 }
                 else
                 {
-                    IEnumerable<PSTopicAttributes> topicAttributes = Client.ListTopics(ResourceGroupName, Namespace);
-                    WriteObject(topicAttributes, true);
+                    if (MaxCount.HasValue)
+                    {
+                        IEnumerable<PSTopicAttributes> topicAttributes = Client.ListTopics(ResourceGroupName, Namespace, MaxCount);
+                        WriteObject(topicAttributes, true);
+                    }
+                    else
+                    {
+                        IEnumerable<PSTopicAttributes> topicAttributes = Client.ListTopics(ResourceGroupName, Namespace);
+                        WriteObject(topicAttributes, true);
+                    }
                 }
+            }
+            catch (Management.ServiceBus.Models.ErrorResponseException ex)
+            {
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
             }
         }
     }

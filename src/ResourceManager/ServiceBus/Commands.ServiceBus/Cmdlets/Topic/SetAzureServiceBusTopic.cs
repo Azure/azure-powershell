@@ -56,7 +56,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             
             if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateTopic, Name, Namespace)))
             {
-                WriteObject(Client.CreateUpdateTopic(ResourceGroupName, Namespace, topicAttributes.Name, topicAttributes));
+                try
+                {
+                    WriteObject(Client.CreateUpdateTopic(ResourceGroupName, Namespace, topicAttributes.Name, topicAttributes));
+                }
+                catch (ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }

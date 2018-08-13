@@ -52,7 +52,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.StartMigrationConfiguration)))
             {
-                WriteObject(Client.StartServiceBusMigrationConfiguration(ResourceGroupName, Name, migrationConfiguration));
+                try
+                {
+                    WriteObject(Client.StartServiceBusMigrationConfiguration(ResourceGroupName, Name, migrationConfiguration));
+                }
+                catch (ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }
