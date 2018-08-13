@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
     /// <para> If Subscription name provided, a single Subscription detials will be returned</para>
     /// <para> If Subscription name not provided, list of Subscription will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusSubscriptionVerb), OutputType(typeof(PSSubscriptionAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusSubscription"), OutputType(typeof(PSSubscriptionAttributes))]
     public class GetAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]

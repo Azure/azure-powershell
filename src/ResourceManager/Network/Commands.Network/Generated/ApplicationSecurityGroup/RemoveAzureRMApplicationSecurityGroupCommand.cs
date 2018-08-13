@@ -37,7 +37,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationSecurityGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationSecurityGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public partial class RemoveAzureRmApplicationSecurityGroup : NetworkBaseCmdlet
     {
         [Parameter(

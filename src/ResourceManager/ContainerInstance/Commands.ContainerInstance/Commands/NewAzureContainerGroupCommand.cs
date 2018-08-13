@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     /// <summary>
     /// New-AzureRmContainerGroup
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ContainerGroupNoun, SupportsShouldProcess = true, DefaultParameterSetName = CreateContainerGroupBaseParamSet)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerGroup", SupportsShouldProcess = true, DefaultParameterSetName = CreateContainerGroupBaseParamSet)]
     [OutputType(typeof(PSContainerGroup))]
     public class NewAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {

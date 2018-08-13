@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
     /// <para> If ServiceBus Topic name provided, a single ServiceBus Topic detials will be returned</para>
     /// <para> If ServiceBus Topic name not provided, list of ServiceBus Topic will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusTopicVerb), OutputType(typeof(PSTopicAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusTopic"), OutputType(typeof(PSTopicAttributes))]
     public class GetAzureRmServiceBusTopic : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
