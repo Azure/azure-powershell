@@ -166,7 +166,7 @@ Accept wildcard characters: False
 Specifies the eviction policy for the virtual machines in the scale set.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -611,38 +611,28 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.String
-Parameters: HealthProbeId (ByPropertyName), LicenseType (ByPropertyName), Location (ByPropertyName), PlanName (ByPropertyName), PlanProduct (ByPropertyName), PlanPromotionCode (ByPropertyName), PlanPublisher (ByPropertyName), Priority (ByPropertyName), SkuName (ByPropertyName), SkuTier (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
 ### System.Int32
-Parameters: PlatformFaultDomainCount (ByPropertyName), SkuCapacity (ByPropertyName)
 
-### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.UpgradeMode, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.UpgradeMode, Microsoft.Azure.Management.Compute, Version=21.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSProfile
-Parameters: OsProfile (ByPropertyName)
 
 ### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetStorageProfile
-Parameters: StorageProfile (ByPropertyName)
 
 ### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkConfiguration[]
-Parameters: NetworkInterfaceConfiguration (ByPropertyName)
 
 ### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension[]
-Parameters: Extension (ByPropertyName)
 
 ### System.String[]
-Parameters: IdentityId (ByPropertyName), Zone (ByPropertyName)
 
 ### Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy
-Parameters: RollingUpgradePolicy (ByPropertyName)
 
 ### Microsoft.Azure.Management.Compute.Models.BootDiagnostics
-Parameters: BootDiagnostic (ByPropertyName)
 
-### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.ResourceIdentityType, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.ResourceIdentityType, Microsoft.Azure.Management.Compute, Version=21.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ## OUTPUTS
 

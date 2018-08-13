@@ -19,6 +19,8 @@
 -->
 ## Current Release
 * Updated Azure to Azure recovery for managed disk and RecoveryServices.siteRecovery 2018-01-10 api version.
+
+## Version 0.2.8
 * Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 0.2.7

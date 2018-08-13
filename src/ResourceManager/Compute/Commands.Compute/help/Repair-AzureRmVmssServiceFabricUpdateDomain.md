@@ -203,7 +203,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), VMScaleSetName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 Parameters: VirtualMachineScaleSet (ByValue)

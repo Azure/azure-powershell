@@ -52,7 +52,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ManagementGroups.1.1.0-preview\lib\net452\Microsoft.Azure.Management.ManagementGroups.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.9.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.8.0-preview\lib\net452\Microsoft.Azure.Management.Authorization.dll</HintPath>
@@ -193,6 +193,7 @@
       <Link>AzureRM.Resources.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ChangeLog.md" />
     <None Include="help\*.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />

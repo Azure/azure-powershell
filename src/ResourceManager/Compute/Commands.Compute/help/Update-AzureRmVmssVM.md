@@ -221,7 +221,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: InstanceId (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), VMScaleSetName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineDataDisk[]
 Parameters: DataDisk (ByValue)
