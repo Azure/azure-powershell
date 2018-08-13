@@ -219,7 +219,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: Workspace (ByValue)
 
 ### System.String
-Parameters: ResourceGroupName (ByPropertyName), WorkspaceName (ByPropertyName)
 
 ## OUTPUTS
 

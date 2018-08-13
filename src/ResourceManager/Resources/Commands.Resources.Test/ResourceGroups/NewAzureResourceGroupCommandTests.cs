@@ -40,8 +40,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string resourceGroupLocation = "West US";
 
-        private string deploymentName = "fooDeployment";
-
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
         private Hashtable tags;
@@ -71,8 +69,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             {
                 ResourceGroupName = resourceGroupName,
                 Location = resourceGroupLocation,
-                TemplateFile = templateFile,
-                DeploymentName = deploymentName,
                 Tag = tags
             };
             PSCreateResourceGroupParameters actualParameters = new PSCreateResourceGroupParameters();
