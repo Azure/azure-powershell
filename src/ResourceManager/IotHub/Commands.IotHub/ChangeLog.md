@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix examples for New-AzureRmIotHubExportDevices and New-AzureRmIotHubImportDevices
 
 ## Version 3.1.5
 * Updated all help files to include full parameter types and correct input/output types.
