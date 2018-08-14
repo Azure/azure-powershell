@@ -667,6 +667,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             foreach (string moduleName in modules)
             {
                 powershell.AddScript(string.Format("Import-Module \"{0}\"", moduleName.AsAbsoluteLocation()));
+                if (moduleName.EndsWith(".psd1"))
+                {
+#if NETSTANDARD
+                    var moduleShortName = moduleName.Split("\\").Last().Split("/").Last();
+                    powershell.AddScript("Enable-AzureRmAlias -Module " + moduleShortName.Substring(0, moduleShortName.Length - 5));
+#endif
+                }
             }
 
             powershell.AddScript(
