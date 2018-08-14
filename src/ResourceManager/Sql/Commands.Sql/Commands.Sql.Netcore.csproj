@@ -3,7 +3,7 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.Sql</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Sql</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.18.0-preview" />
+    <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
