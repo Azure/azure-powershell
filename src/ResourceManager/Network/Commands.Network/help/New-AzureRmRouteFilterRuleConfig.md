@@ -16,7 +16,7 @@ New-AzureRmRouteFilterRuleConfig [-Force] -Name <String> -Access <String> -Route
 ```
 
 ## DESCRIPTION
-The New-AzureRmRouteFilterRuleConfig cmdlet creates a route filter rule for an Azure route filter.
+The **New-AzureRmRouteFilterRuleConfig** cmdlet creates a route filter rule for an Azure route filter.
 
 ## EXAMPLES
 
