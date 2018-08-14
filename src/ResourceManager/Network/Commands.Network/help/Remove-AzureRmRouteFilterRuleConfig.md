@@ -7,9 +7,6 @@ schema: 2.0.0
 
 # Remove-AzureRmRouteFilterRuleConfig
 
-## SYNOPSIS
-{{Fill in the Synopsis}}
-
 ## SYNTAX
 
 ```
@@ -18,16 +15,17 @@ Remove-AzureRmRouteFilterRuleConfig -Name <String> -RouteFilter <PSRouteFilter> 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmRouteFilterRuleConfig** cmdlet removes a route filter rule from a route filter. 
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get route filter object and rule object and removes rule config from the route filter
 ```
-PS C:\> {{ Add example code here }}
+$rf =  Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ResourceGroupName"
+$rule = Get-AzureRmRouteFilterRuleConfig -RouteFilter $rf
+Remove-AzureRmRouteFilterRuleConfig -Name $rule.Name -RouteFilter $rf
+Set-AzureRmRouteFilter -RouteFilter $rf
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -133,6 +131,8 @@ Parameters: RouteFilter (ByValue)
 
 ### Microsoft.Azure.Commands.Network.Models.PSRouteFilterRule
 
-## NOTES
-
 ## RELATED LINKS
+[New-AzureRmRouteFilterRuleConfig](New-AzureRmRouteFilterRuleConfig.md)
+[Add-AzureRmRouteFilterRuleConfig](Add-AzureRmRouteFilterRuleConfig.md)
+[Get-AzureRmRouteFilterRuleConfig](Get-AzureRmRouteFilterRuleConfig.md)
+[Set-AzureRmRouteFilterRuleConfig](Set-AzureRmRouteFilterRuleConfig.md)
