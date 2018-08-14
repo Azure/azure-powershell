@@ -3,7 +3,7 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.Profile</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Profile</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -79,9 +79,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
+  
   <ItemGroup>
     <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.ps1xml" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.Netcore.psd1" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.psm1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
-
 </Project>
