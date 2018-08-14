@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,11 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Creates an Azure Site Recovery replication policy.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.New,
-        "AzureRmRecoveryServicesAsrPolicy",
-        DefaultParameterSetName = ASRParameterSets.HyperVToAzure,
-        SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrPolicy",DefaultParameterSetName = ASRParameterSets.HyperVToAzure,SupportsShouldProcess = true)]
     [Alias("New-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase

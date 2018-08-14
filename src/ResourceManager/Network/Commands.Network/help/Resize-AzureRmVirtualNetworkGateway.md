@@ -109,7 +109,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: VirtualNetworkGateway (ByValue)
 
 ### System.String
-Parameters: GatewaySku (ByPropertyName)
 
 ## OUTPUTS
 

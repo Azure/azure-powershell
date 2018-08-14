@@ -331,13 +331,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ExtensionType (ByPropertyName), ForceRerun (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), ProtectedSettingString (ByPropertyName), Publisher (ByPropertyName), ResourceGroupName (ByPropertyName), SettingString (ByPropertyName), TypeHandlerVersion (ByPropertyName), VMName (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: ProtectedSettings (ByPropertyName), Settings (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: DisableAutoUpgradeMinorVersion (ByPropertyName)
 
 ## OUTPUTS
 

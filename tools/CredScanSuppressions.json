@@ -2,6 +2,10 @@
     "tool": "Credential Scanner",
         "suppressions": [
         {
+            "file": "\\documentation\\development-docs\\azure-powershell-developer-guide.md", 
+            "_justification": "Documentation with non-live passwords in sample connection strings"
+        },
+        {
             "file": "\\src\\ResourceManager\\Compute\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem", 
             "_justification": "Legitimate test certificate file"
         },

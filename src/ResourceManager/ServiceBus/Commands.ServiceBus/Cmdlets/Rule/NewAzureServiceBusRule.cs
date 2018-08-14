@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
     /// <summary>
     /// 'New-AzureRmServiceBusRule' Cmdlet creates a new Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServicebusRuleVerb, SupportsShouldProcess = true), OutputType(typeof(PSRulesAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusRule", SupportsShouldProcess = true), OutputType(typeof(PSRulesAttributes))]
     public class NewAzureRmServiceBusRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]

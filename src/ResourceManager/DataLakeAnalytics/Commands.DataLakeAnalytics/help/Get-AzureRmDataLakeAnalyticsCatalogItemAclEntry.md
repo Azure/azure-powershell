@@ -224,10 +224,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName), ItemType (ByPropertyName)
 
 ### Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance
-Parameters: Path (ByPropertyName)
 
 ## OUTPUTS
 

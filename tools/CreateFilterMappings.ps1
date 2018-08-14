@@ -237,7 +237,7 @@ function Create-ModuleMappings
     foreach ($ServiceFolder in $FilteredServiceFolders)
     {
         $Key = "src/ResourceManager/$($ServiceFolder.Name)"
-        $ModuleManifestFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.psd1" -Recurse | where { $_.FullName -notlike "*Stack*" -and $_.FullName -notlike "*Netcore*" -and $_.FullName -notlike "*Test*" }
+        $ModuleManifestFiles = Get-ChildItem -Path $ServiceFolder.FullName -Filter "*.psd1" -Recurse | where { $_.FullName -notlike "*Stack*" -and $_.Name -like "*Azure*" -and $_.FullName -notlike "*Test*" }
         if ($ModuleManifestFiles -ne $null)
         {
             $Value = @()
