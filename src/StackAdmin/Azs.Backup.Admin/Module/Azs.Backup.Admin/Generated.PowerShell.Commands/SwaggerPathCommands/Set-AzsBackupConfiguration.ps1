@@ -84,7 +84,7 @@ function Set-AzsBackupConfiguration {
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        [Alias("Path")]
+        [Alias("BackupShare")]
         $Path,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
