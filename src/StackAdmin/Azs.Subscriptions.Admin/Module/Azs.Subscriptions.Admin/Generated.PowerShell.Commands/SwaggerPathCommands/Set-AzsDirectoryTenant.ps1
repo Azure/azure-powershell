@@ -87,7 +87,7 @@ function Set-AzsDirectoryTenant {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{

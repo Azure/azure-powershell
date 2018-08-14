@@ -87,7 +87,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     Helper.RMProfileModule,
+#if !NETSTANDARD
                     Helper.RMStorageDataPlaneModule,
+#endif
                     Helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
                     Helper.RMNetworkModule,
                     "AzureRM.Storage.ps1",

@@ -37,7 +37,7 @@ PS C:\> Remove-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -N
 
 Removes the rule `SBRule` of subscription `SBSubscription` of specified topic `SBTopic`.
 
-### Example 2.1 - InputObject - Using Variable: 
+### Example 2.1 - InputObject - Using Variable:
 ```
 PS C:\> $inputobject = Get-AzureRmServiceBusRule <params>
 PS C:\> Remove-AzureRmServiceBusRule -InputObject $inputobject
@@ -45,7 +45,7 @@ PS C:\> Remove-AzureRmServiceBusRule -InputObject $inputobject
 
 Removes the rule provided through $inputobject for -InputObject parameter
 
-### Example 2.2 - InputObject - Using Piping: 
+### Example 2.2 - InputObject - Using Piping:
 ```
 PS C:\> Get-AzureRmServiceBusRule <params> | Remove-AzureRmServiceBusRule
 ```
@@ -69,7 +69,7 @@ Removes the rule provided through ARM Id in $resourceid/string for -ResourceId p
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 Service Bus Rule Object
 
 ```yaml
-Type: PSTopicAttributes
+Type: Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
 Parameter Sets: RuleResourceIdSet
 Aliases:
 
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 Rule Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RulePropertiesSet
 Aliases:
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RulePropertiesSet
 Aliases: NamespaceName
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 Specifying this will return true if the command was successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 The name of the resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RulePropertiesSet
 Aliases: ResourceGroup
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 Service Bus Rule Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RuleResourceIdSet
 Aliases:
 
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 Subscription Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RulePropertiesSet
 Aliases: SubscriptionName
 
@@ -219,7 +219,7 @@ Accept wildcard characters: False
 Topic Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RulePropertiesSet
 Aliases: TopicName
 
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -250,7 +250,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -262,13 +262,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), Subscription (ByPropertyName), Topic (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
 Parameters: InputObject (ByValue)
@@ -276,7 +274,6 @@ Parameters: InputObject (ByValue)
 ## OUTPUTS
 
 ### System.Boolean
-
 
 ## NOTES
 

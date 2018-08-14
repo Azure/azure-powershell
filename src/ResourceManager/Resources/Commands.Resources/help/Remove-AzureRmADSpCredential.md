@@ -228,10 +228,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: KeyId (ByPropertyName), ObjectId (ByPropertyName)
 
 ### System.String
-Parameters: DisplayName (ByPropertyName), ServicePrincipalName (ByPropertyName)
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
 Parameters: ServicePrincipalObject (ByValue)

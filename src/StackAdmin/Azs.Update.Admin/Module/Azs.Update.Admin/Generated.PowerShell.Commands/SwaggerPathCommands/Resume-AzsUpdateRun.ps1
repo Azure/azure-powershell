@@ -84,7 +84,7 @@ function Resume-AzsUpdateRun {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ( 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{

@@ -267,10 +267,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Path (ByPropertyName, ByValue), ShareName (ByPropertyName, ByValue)
 
 ### Microsoft.WindowsAzure.Storage.File.CloudFile
-Parameters: File (ByPropertyName, ByValue)
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameters: Context (ByValue)

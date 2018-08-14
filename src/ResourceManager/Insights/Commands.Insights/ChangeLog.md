@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
+
+## Version 5.1.1
+* Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 5.1.0
 * Fixed formatting of OutputType in help files
@@ -142,7 +146,7 @@
     - Warning message about the future deprecation of the plural parameter names added.
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 3.4.1
     * Add-AzureRmLogAlertRule
         - Adding details to deprecation warning introduced in April 2017: the cmdlet will stop having effect: its functionality is moved to the "ActivityLogAlerts" cmdlets.
@@ -191,7 +195,7 @@
     - Issue #2: The documentation contained incorrect data about this cmdlet, e.g.: the default timewindow was 1 hour.
     - Fix #1: The cmdlet now follows the continuation token returned by the backend until it reaches MaxEvents or the end of the set.<br>The default value for MaxEvents is 1000 and its maximum is 100000. Any value for MaxEvents that is less than 1 is ignored and the default is used instead. These values and behavior did not change, now they are correctly documented.<br>An alias for MaxEvents has been added -MaxRecords- since the name of the cmdlet does not speak about events anymore, but only about Logs.
     - Fix #2: The documentation contains correct and more detailed information: new alias, correct time window, correct default, minimum, and maximum values.
- 
+
 ## Version 3.1.0
 
 ## Version 3.0.1
@@ -209,7 +213,7 @@
 * New-AzureRmAutoscaleRule
     - The parameter ScaleActionType has been extended, it receives the following values now: ChangeCount, PercentChangeCount, ExactCount.
 * Remove-AzureRmAutoscaleSetting
-    - The statusCode in the output follows the statusCode returned by the request. Before it was always Ok. 
+    - The statusCode in the output follows the statusCode returned by the request. Before it was always Ok.
 * Get-AzureRMLogProfile
     - The output is now enumerated. Before it was considered a single object. The type of the output remains a list as before.
 * Remove-AzureRmLogProfile

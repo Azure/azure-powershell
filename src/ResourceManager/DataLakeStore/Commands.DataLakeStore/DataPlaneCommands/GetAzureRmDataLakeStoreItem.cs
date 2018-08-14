@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItem"), OutputType(typeof(DataLakeStoreItem))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreItem"), OutputType(typeof(DataLakeStoreItem))]
     [Alias("Get-AdlStoreItem")]
     public class GetAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {

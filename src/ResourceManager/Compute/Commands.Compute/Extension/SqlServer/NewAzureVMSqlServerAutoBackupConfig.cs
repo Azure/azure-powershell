@@ -31,12 +31,7 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Helper cmdlet to construct instance of AutoBackup settings class
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.New,
-        ProfileNouns.VirtualMachineSqlServerAutoBackupConfig,
-        DefaultParameterSetName = StorageUriParamSetName),
-    OutputType(
-        typeof(AutoBackupSettings))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSqlServerAutoBackupConfig",DefaultParameterSetName = StorageUriParamSetName),OutputType(typeof(AutoBackupSettings))]
     public class NewAzureVMSqlServerAutoBackupConfigCommand : AzureRMCmdlet
     {
         protected const string StorageContextParamSetName = "StorageContextSqlServerAutoBackup";
