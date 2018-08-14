@@ -396,6 +396,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         public void TestCreateDeleteVaultWithPiping()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                 _logger,
                 () => { return new[] { string.Format("{0} {1} {2}", "Test-CreateDeleteVaultWithPiping", _data.ResourceGroupName, _data.Location) }; },
                 null,
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
@@ -410,6 +411,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         public void TestNetworkSet()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                 _logger,
                 () => { return new[] { "Test-NetworkRuleSet" }; },
                 null,
                 MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
