@@ -3,7 +3,7 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.Insights.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Insights.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -39,7 +39,7 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Commands.Insights">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Insights.Netcore\Microsoft.Azure.Commands.Insights.dll</HintPath>
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Insights\Microsoft.Azure.Commands.Insights.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -50,6 +50,12 @@
     <None Update="ScenarioTests\*.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Update="xunit" Version="2.4.0" />
+    <PackageReference Update="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
 
 </Project>

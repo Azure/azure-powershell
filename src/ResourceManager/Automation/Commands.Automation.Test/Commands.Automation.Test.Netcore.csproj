@@ -3,7 +3,7 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.ResourceManager.Automation.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ResourceManager.Automation.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -41,7 +41,7 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Commands.Automation">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Automation.Netcore\Microsoft.Azure.Commands.ResourceManager.Automation.dll</HintPath>
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -49,6 +49,12 @@
     <None Update="ScenarioTests\*.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Update="xunit" Version="2.4.0" />
+    <PackageReference Update="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
 
 </Project>

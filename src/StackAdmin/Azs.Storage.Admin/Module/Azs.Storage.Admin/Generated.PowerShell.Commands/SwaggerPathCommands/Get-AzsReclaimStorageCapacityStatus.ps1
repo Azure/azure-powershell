@@ -57,7 +57,7 @@ function Get-AzsReclaimStorageCapacityStatus {
     }
 
     Process {
-        $ErrorActionPreference = 'Stop'
+
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'

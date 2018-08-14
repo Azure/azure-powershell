@@ -143,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-Specifies the path of the VHD.
+The file path in which the template of the captured image is stored.
 
 ```yaml
 Type: System.String
@@ -194,10 +194,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: DestinationContainerName (ByPropertyName), Id (ByPropertyName), Name (ByPropertyName), Path (ByPropertyName), ResourceGroupName (ByPropertyName), VHDNamePrefix (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Overwrite (ByPropertyName)
 
 ## OUTPUTS
 

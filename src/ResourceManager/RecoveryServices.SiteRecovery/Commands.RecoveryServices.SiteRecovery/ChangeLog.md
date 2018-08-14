@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.2.8
+* Updated to the latest version of the Azure ClientRuntime.
+
 ## Version 0.2.7
 * Updated help files to include full parameter types and correct input/output types.
 

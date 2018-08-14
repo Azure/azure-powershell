@@ -3,10 +3,11 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.ApiManagement.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ApiManagement.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -38,7 +39,7 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Commands.ApiManagement">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.ApiManagement.Netcore\Microsoft.Azure.Commands.ApiManagement.dll</HintPath>
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -64,6 +65,12 @@
     <None Update="powershelltest.pfx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Update="xunit" Version="2.4.0" />
+    <PackageReference Update="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
 
 </Project>

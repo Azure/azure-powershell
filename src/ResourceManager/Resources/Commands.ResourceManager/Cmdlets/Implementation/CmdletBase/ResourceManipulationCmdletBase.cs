@@ -116,17 +116,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Initializes the default subscription id if needed.
         /// </summary>
-        public ResourceManipulationCmdletBase()
+        public ResourceManipulationCmdletBase() {}
+
+        protected override void OnProcessRecord()
         {
             if (string.IsNullOrEmpty(this.ResourceId))
             {
                 this.SubscriptionId = DefaultContext.Subscription.GetId();
             }
-        }
-
-        protected override void OnProcessRecord()
-        {
-            base.OnProcessRecord();
         }
 
         /// <summary>

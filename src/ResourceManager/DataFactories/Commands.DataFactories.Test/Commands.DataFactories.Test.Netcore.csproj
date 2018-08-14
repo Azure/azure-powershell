@@ -3,7 +3,7 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.DataFactories.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.DataFactories.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -39,7 +39,7 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Commands.DataFactories">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.DataFactories.Netcore\Microsoft.Azure.Commands.DataFactories.dll</HintPath>
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.DataFactories\Microsoft.Azure.Commands.DataFactories.dll</HintPath>
     </Reference>
   </ItemGroup>
 

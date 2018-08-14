@@ -140,7 +140,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AvailabilitySetName (ByPropertyName), Location (ByPropertyName), ResourceGroupName (ByPropertyName), VMName (ByPropertyName)
 
 ## OUTPUTS
 

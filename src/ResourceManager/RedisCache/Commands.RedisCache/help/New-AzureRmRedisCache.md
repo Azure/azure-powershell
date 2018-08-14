@@ -418,17 +418,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Size (ByPropertyName), Sku (ByPropertyName), StaticIP (ByPropertyName), SubnetId (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: RedisConfiguration (ByPropertyName), Tag (ByPropertyName), TenantSettings (ByPropertyName)
 
 ### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.String[]
-Parameters: Zone (ByPropertyName)
 
 ## OUTPUTS
 

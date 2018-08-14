@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmLoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancer))]
     public class RemoveAzureLoadBalancerProbeCommand : NetworkBaseCmdlet
     {
         [Parameter(

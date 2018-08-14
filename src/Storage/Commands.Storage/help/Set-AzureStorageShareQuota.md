@@ -110,6 +110,7 @@ Accept wildcard characters: False
 
 ### -Quota
 Specifies the quota value in gigabytes (GB).
+See the quota limitation in https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-files-limits. 
 
 ```yaml
 Type: System.Int32
@@ -175,13 +176,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ShareName (ByPropertyName, ByValue)
 
 ### Microsoft.WindowsAzure.Storage.File.CloudFileShare
 Parameters: Share (ByValue)
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

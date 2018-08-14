@@ -24,10 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
-    [Cmdlet(
-        VerbsData.Update, 
-        WebServicesCmdletBase.CommandletSuffix, 
-        SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlWebService",SupportsShouldProcess = true)]
     [OutputType(typeof(WebService))]
     public class UpdateAzureMLWebService : WebServicesCmdletBase
     {

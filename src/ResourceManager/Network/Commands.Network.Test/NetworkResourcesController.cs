@@ -93,19 +93,42 @@ namespace Commands.Network.Test
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-               var callingClassName = callingClassType
+                var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
+
+                string scenarioTestsDir = Path.Combine(Directory.GetCurrentDirectory(), "ScenarioTests");
+                string psScriptPath = null;
+
+                var testDirs = Directory.GetDirectories(scenarioTestsDir).ToList();
+                testDirs.Insert(0, scenarioTestsDir);
+
+                foreach (var dir in testDirs)
+                {
+                    var testPath = Path.Combine(dir, callingClassName + ".ps1");
+                    if (File.Exists(testPath))
+                    {
+                        psScriptPath = testPath;
+                        break;
+                    }
+                }
+
+                if (psScriptPath == null)
+                {
+                    throw new FileNotFoundException(string.Format("Couldn't find ps1 file for test class '{0}'", callingClassName));
+                }
+
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    psScriptPath,
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
                     _helper.GetRMModulePath("AzureRM.Insights.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"),
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     _helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
+#if !NETSTANDARD
                     _helper.RMStorageDataPlaneModule,
+#endif
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 
