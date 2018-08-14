@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help file for Set-AzureRmAnalysisServicesServer
 * Fixed issue with default resource groups not being set.
 * Updated to the latest version of the Azure ClientRuntime.
 
