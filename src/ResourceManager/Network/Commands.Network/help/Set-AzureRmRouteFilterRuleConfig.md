@@ -20,7 +20,7 @@ The **Set-AzureRmRouteFilterRuleConfig** cmdlet saves a route filter rule from a
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get route filter and rule config object, add a new commuinty to the array, and save the rule/filter
 ```
 $rf =  Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ResourceGroupName"
 $rule = Get-AzureRmRouteFilterRuleConfig -RouteFilter $rf
