@@ -256,7 +256,7 @@
     <None Include="ScenarioTests\ExpressRouteCircuitTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\PublicIpPrefixTests.ps1" >
+    <None Include="ScenarioTests\PublicIpPrefixTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\RouteTableTests.ps1">
@@ -673,6 +673,9 @@
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkSubnetServiceEndpoint.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkSubnetServiceEndpointPolicies.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkUsage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
