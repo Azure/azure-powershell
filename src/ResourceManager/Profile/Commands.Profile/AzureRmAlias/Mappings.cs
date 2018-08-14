@@ -1821,7 +1821,14 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                               'Get-AzManagedApplicationDefinition':  'Get-AzureRmManagedApplicationDefinition',
                               'Test-AzResourceGroupDeployment':  'Test-AzureRmResourceGroupDeployment',
                               'Get-AzRoleAssignment':  'Get-AzureRmRoleAssignment',
-                              'Set-AzPolicyAssignment':  'Set-AzureRmPolicyAssignment'
+                              'Set-AzPolicyAssignment':  'Set-AzureRmPolicyAssignment',
+                              'Get-AzDeployment': 'Get-AzureRmDeployment',
+                              'Get-AzDeploymentOperation': 'Get-AzureRmDeploymentOperation',
+                              'New-AzDeployment': 'New-AzureRmDeployment',
+                              'Remove-AzDeployment': 'Remove-AzureRmDeployment',
+                              'Save-AzDeploymentTemplate': 'Save-AzureRmDeploymentTemplate',
+                              'Stop-AzDeployment': 'Stop-AzureRmDeployment',
+                              'Test-AzDeployment': 'Test-AzureRmDeployment'
                           },
     'Az.OperationalInsights':  {
                                         'Get-AzOperationalInsightsSavedSearch':  'Get-AzureRmOperationalInsightsSavedSearch',
