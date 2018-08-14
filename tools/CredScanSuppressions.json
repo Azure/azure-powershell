@@ -141,6 +141,10 @@
         {
             "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\Azure.publishsettings", 
             "_justification": "Legitimate test publishsettings file"
+        },
+        {
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfileChina.PublishSettings", 
+            "_justification": "Legitimate test publishsettings file"
         }
     ]
 }
