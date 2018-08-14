@@ -17,7 +17,7 @@ using System;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
-    public class MockAccessToken : IAccessToken
+    public class MockAccessToken : IRenewableToken
     {
         private string _tenantId = String.Empty;
         public void AuthorizeRequest(Action<string, string> authTokenSetter)
@@ -34,5 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             get { return _tenantId; }
             set { _tenantId = value; }
         }
+
+        public DateTimeOffset ExpiresOn { get; set; }
     }
 }

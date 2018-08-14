@@ -179,10 +179,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), SkuName (ByPropertyName)
 
 ### System.Collections.Hashtable[]
-Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

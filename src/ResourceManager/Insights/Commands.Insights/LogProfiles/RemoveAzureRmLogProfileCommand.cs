@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
     /// <summary>
     /// Removes the log profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmLogProfile", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogProfile", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmLogProfileCommand : ManagementCmdletBase
     {
         #region Parameters declarations

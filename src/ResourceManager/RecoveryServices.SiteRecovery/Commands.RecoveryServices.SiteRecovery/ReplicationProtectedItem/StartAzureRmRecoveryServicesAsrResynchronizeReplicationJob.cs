@@ -19,11 +19,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///    Starts replication resynchronization.
     /// </summary>
-    [Cmdlet(
-        VerbsLifecycle.Start,
-        "AzureRmRecoveryServicesAsrResynchronizeReplicationJob",
-        DefaultParameterSetName = ASRParameterSets.Default,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrResynchronizeReplicationJob",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [Alias(
         "Start-ASRResynchronizeReplicationJob",
         "Start-ASRResyncJob")]
