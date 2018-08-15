@@ -142,5 +142,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public const string ChinaBatchEndpointResourceId = "https://batch.chinacloudapi.cn/";
         public const string USGovernmentBatchEndpointResourceId = "https://batch.core.usgovcloudapi.net/";
         public const string GermanBatchEndpointResourceId = "https://batch.cloudapi.de/";
+
+        /// <summary>
+        /// The domain name suffix for Azure Analysis Services
+        /// </summary>
+        public const string AzureAnalysisServicesEndpointSuffix = "asazure.windows.net";
+        public const string ChinaAnalysisServicesEndpointSuffix = "asazure.chinacloudapi.cn";
+        public const string USGovernmentAnalysisServicesEndpointSuffix = "asazure.usgovcloudapi.net";
+        public const string GermanAnalysisServicesEndpointSuffix = "asazure.cloudapi.de";
     }
 }

@@ -214,15 +214,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                     throw new PSInvalidOperationException(string.Format(Resources.NotLoggedInMessage, Instance));
                 }
             }
-            else
-            {
-                var currentContext = AsAzureClientSession.Instance.Profile.Context;
-                if (currentContext != null
-                    && AsAzureClientSession.AsAzureRolloutEnvironmentMapping.ContainsKey(currentContext.Environment.Name))
-                {
-                    throw new PSInvalidOperationException(string.Format(Resources.InvalidServerName, serverName));
-                }
-            }
 
             if (this.AsAzureHttpClient == null)
             {

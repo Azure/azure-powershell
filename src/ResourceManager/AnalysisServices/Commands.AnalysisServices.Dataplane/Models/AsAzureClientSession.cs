@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Enumerable = System.Linq.Enumerable;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
@@ -34,49 +35,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         public static readonly Uri RedirectUri = new Uri("urn:ietf:wg:oauth:2.0:oob");
         public static string DefaultRolloutEnvironmentKey = "asazure.windows.net";
 
-        public static Dictionary<string, AsAzureAuthInfo> AsAzureRolloutEnvironmentMapping = new Dictionary<string, AsAzureAuthInfo>()
-        {
-            {
-                "asazure.windows.net",
-                new AsAzureAuthInfo()
-                {
-                    AuthorityUrl = "https://login.windows.net",
-                    DefaultResourceUriSuffix = "*.asazure.windows.net"
-                }
-            },
-            {
-                "asazure-int.windows.net",
-                new AsAzureAuthInfo()
-                {
-                    AuthorityUrl = "https://login.windows-ppe.net",
-                    DefaultResourceUriSuffix = "*.asazure-int.windows.net"
-                }
-            },
-            {
-                "asazure.cloudapi.de",
-                new AsAzureAuthInfo()
-                {
-                    AuthorityUrl = "https://login.microsoftonline.de",
-                    DefaultResourceUriSuffix = "*.asazure.cloudapi.de"
-                }
-            },
-            {
-                "asazure.usgovcloudapi.net",
-                new AsAzureAuthInfo()
-                {
-                    AuthorityUrl = "https://login.microsoftonline.us",
-                    DefaultResourceUriSuffix = "*.asazure.usgovcloudapi.net"
-                }
-            },
-            {
-                "asazure.chinacloudapi.cn",
-                new AsAzureAuthInfo()
-                {
-                    AuthorityUrl = "https://login.chinacloudapi.cn",
-                    DefaultResourceUriSuffix = "*.asazure.chinacloudapi.cn"
-                }
-            }
-        };
+        private const string TestEndpointSuffix = "asazure-int.windows.net";
+        private const string TestActiveDirectoryEndpoint = "https://login.windows-ppe.net";
 
         /// <summary>
         /// Gets or sets the token cache store.
@@ -164,14 +124,29 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public static string GetAuthorityUrlForEnvironment(AsAzureEnvironment environment)
         {
-            var environmentKey = AsAzureRolloutEnvironmentMapping.Keys.FirstOrDefault(s => environment.Name.Contains(s));
-            AsAzureAuthInfo authInfo = null;
-            if (string.IsNullOrEmpty(environmentKey) || !AsAzureRolloutEnvironmentMapping.TryGetValue(environmentKey, out authInfo))
+            Console.Out.WriteLine("GetAuthorityUrlForEnvironment: environment.Name=" + environment.Name);
+            if (environment.Name.EndsWith(TestEndpointSuffix))
             {
-                throw new ArgumentException(Properties.Resources.UnknownEnvironment);
+                return TestActiveDirectoryEndpoint;
+            }
+            else if (environment.Name.EndsWith(AzureEnvironmentConstants.AzureAnalysisServicesEndpointSuffix))
+            {
+                return AzureEnvironmentConstants.AzureActiveDirectoryEndpoint;
+            }
+            else if (environment.Name.EndsWith(AzureEnvironmentConstants.ChinaAnalysisServicesEndpointSuffix))
+            {
+                return AzureEnvironmentConstants.ChinaActiveDirectoryEndpoint;
+            }
+            else if (environment.Name.EndsWith(AzureEnvironmentConstants.USGovernmentAnalysisServicesEndpointSuffix))
+            {
+                return AzureEnvironmentConstants.USGovernmentActiveDirectoryEndpoint;
+            }
+            else if (environment.Name.EndsWith(AzureEnvironmentConstants.GermanAnalysisServicesEndpointSuffix))
+            {
+                return AzureEnvironmentConstants.GermanActiveDirectoryEndpoint;
             }
 
-            return authInfo.AuthorityUrl;
+            throw new ArgumentException(Properties.Resources.UnknownEnvironment);
         }
 
         public void SetCurrentContext(AsAzureAccount azureAccount, AsAzureEnvironment asEnvironment)
@@ -184,20 +159,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public static string GetDefaultEnvironmentName()
         {
-            return AsAzureRolloutEnvironmentMapping[DefaultRolloutEnvironmentKey].DefaultResourceUriSuffix;
+            return "*." + AzureEnvironmentConstants.AzureAnalysisServicesEndpointSuffix;
         }
 
         public static string GetResourceUriSuffix(string environmentName)
         {
             if (string.IsNullOrEmpty(environmentName))
             {
-                return AsAzureRolloutEnvironmentMapping[DefaultRolloutEnvironmentKey].DefaultResourceUriSuffix;
-            }
-
-            var authoInfo = AsAzureRolloutEnvironmentMapping.FirstOrDefault(kv => kv.Key.Equals(environmentName)).Value;
-            if (authoInfo != null)
-            {
-                return authoInfo.DefaultResourceUriSuffix;
+                return GetDefaultEnvironmentName();
             }
 
             return environmentName;
