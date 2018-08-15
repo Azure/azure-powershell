@@ -5,31 +5,27 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-Disk
+# Get-AzsDisk
 
 ## SYNOPSIS
+Returns the list of managed disks which can be migrated in the specified share.
 
 ## SYNTAX
 
-### Disks_List (Default)
+### List (Default)
 ```
-Get-Disk -Location <String> [-Start <Int32>] [-SharePath <String>] [-Count <Int32>]
+Get-AzsDisk [-Location <String>] [-Start <Int32>] [-SharePath <String>] [-Count <Int32>]
  [-UserSubscriptionId <String>] [-Status <String>] [<CommonParameters>]
 ```
 
-### ResourceId_Disks_Get
+### ResourceId
 ```
-Get-Disk -ResourceId <String> [<CommonParameters>]
-```
-
-### InputObject_Disks_Get
-```
-Get-Disk -InputObject <Disk> [<CommonParameters>]
+Get-AzsDisk -ResourceId <String> [<CommonParameters>]
 ```
 
-### Disks_Get
+### Get
 ```
-Get-Disk -Location <String> -Name <String> [<CommonParameters>]
+Get-AzsDisk [-Location <String>] -Name <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,10 +35,17 @@ Returns a list of disks.
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzsDisk -location local
 ```
 
-{{ Add example description here }}
+Returns a list of managed disks at the location local. By default, it will the first 100 disks
+
+### Example 2
+```
+Get-AzsDisk -location local -name $DiskId
+```
+
+Get a specific managed disk.
 
 ## PARAMETERS
 
@@ -51,7 +54,7 @@ The maximum number of disks to return.
 
 ```yaml
 Type: Int32
-Parameter Sets: Disks_List
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -61,30 +64,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The input object of type Microsoft.AzureStack.Management.Compute.Admin.Models.Disk.
-
-```yaml
-Type: Disk
-Parameter Sets: InputObject_Disks_Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Location
 Location of the resource.
 
 ```yaml
 Type: String
-Parameter Sets: Disks_List, Disks_Get
+Parameter Sets: List, Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -96,7 +84,7 @@ The disk guid as identity.
 
 ```yaml
 Type: String
-Parameter Sets: Disks_Get
+Parameter Sets: Get
 Aliases: DiskId
 
 Required: True
@@ -111,8 +99,8 @@ The resource id.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceId_Disks_Get
-Aliases:
+Parameter Sets: ResourceId
+Aliases: Id
 
 Required: True
 Position: Named
@@ -126,7 +114,7 @@ The source share which the resource belongs to.
 
 ```yaml
 Type: String
-Parameter Sets: Disks_List
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -141,7 +129,7 @@ The start index of disks in query.
 
 ```yaml
 Type: Int32
-Parameter Sets: Disks_List
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -156,7 +144,7 @@ The parameters of disk state.
 
 ```yaml
 Type: String
-Parameter Sets: Disks_List
+Parameter Sets: List
 Aliases:
 
 Required: False
@@ -171,7 +159,7 @@ Tenant Subscription Id which the resource belongs to.
 
 ```yaml
 Type: String
-Parameter Sets: Disks_List
+Parameter Sets: List
 Aliases:
 
 Required: False

@@ -75,14 +75,14 @@ InModuleScope Azs.Compute.Admin {
         It "TestDiskMigration" {
             $global:TestName = 'TestDiskMigration'
 
-            $disks = Get-Disk -Location $global:Location
+            $disks = Get-AzsDisk -Location $global:Location
             $disks | Should Not Be $null
-			$toMigrationDisks = New-Object System.Collections.Generic.List[Microsoft.AzureStack.Management.Compute.Admin.Models.Disk]
+			$toMigrationDisks = @()
 			foreach($disk in $disks)
             {
                 if ($toMigrationDisks.Count -lt 3)
                 {
-                    $toMigrationDisks.Add($disk);
+                    $toMigrationDisks +=$disk;
                 }
                 else
                 {
@@ -91,20 +91,36 @@ InModuleScope Azs.Compute.Admin {
             }
 			$migrationId = "ba0644a4-c2ed-4e3c-a167-089a32865297"; # this should be the same as session Records
 
-            $migration = New-DiskMigration -Location $global:Location -Name $migrationId -TargetShare $global:TargetShare -Disks $toMigrationDisks
+            $migration = Start-AzsDiskMigrationJob -Location $global:Location -Name $migrationId -TargetShare $global:TargetShare -Disks $disks
 			ValidateDiskMigration -DiskMigration $migration
 
-			$migration = Stop-DiskMigration -Location $global:Location -MigrationId $migration.MigrationId
+			$migration = Stop-AzsDiskMigrationJob -Location $global:Location -Name $migration.MigrationId
 			ValidateDiskMigration -DiskMigration $migration 
 
-			$migrationFromGet = Get-DiskMigration -Location $global:Location -Name $migrationId
+			$migrationFromGet = Get-AzsDiskMigrationJob -Location $global:Location -Name $migrationId
 			ValidateDiskMigration -DiskMigration $migrationFromGet 
 
-			$migrationList = Get-DiskMigration -Location $global:Location
+			$migrationList = Get-AzsDiskMigrationJob -Location $global:Location
 			$migrationList | %{ValidateDiskMigration -DiskMigration $_ }
 
-			$migrationSucceededList = Get-DiskMigration -Location $global:Location  -Status "Succeeded"
+			$migrationSucceededList = Get-AzsDiskMigrationJob -Location $global:Location  -Status "Succeeded"
             $migrationSucceededList | %{ValidateDiskMigration -DiskMigration $_ }
+        }
+
+        It "TestDiskMigrationInvalidInput" {
+            $global:TestName = 'TestDiskMigrationInvalidInput'
+
+			$InvalidtTargetShare = "\\SU1FileServer.azurestack.local\SU1_ObjStore_Invalid\"
+			$disks = @()
+            $disks += Get-AzsDisk -Location $global:Location
+            $disks | Should Not Be $null
+			if($disks.Count -gt 0)
+			{
+				$toMigrationDisks = @($disks[0])
+				$migrationId = "A50E9E6B-CFC2-4BC7-956B-0F7C35035DF2"; # This guid should be the same as the ones in sessionRecord
+				{Start-AzsDiskMigrationJob -Location $global:Location -Name $migrationId -TargetShare $InvalidtTargetShare -Disks $toMigrationDisks} | Should throw
+				{Get-AzsDiskMigrationJob -Location $global:Location -Name $migrationId }| Should throw
+			}
         }
     }
 }

@@ -64,12 +64,13 @@ InModuleScope Azs.Compute.Admin {
                 $Disk.Id | Should Not Be $null
                 $Disk.Type | Should Not Be $null
                 $Disk.Name | Should Not Be $null
-                $Disk.ActualSize | Should Not Be $null
+                $Disk.ActualSizeGB | Should Not Be $null
+				$Disk.ProvisionSizeGB | Should Not Be $null
 				$Disk.DiskSku | Should Not Be $null
-				$Disk.ResourceType | Should Not Be $null
+				$Disk.DiskType | Should Not Be $null
 				$Disk.SharePath | Should Not Be $null
 				$Disk.Status | Should Not Be $null
-				$Disk.TenantId | Should Not Be $null
+				$Disk.UserResourceId | Should Not Be $null
 				$Disk.Location | Should Not Be $null
 				$Disk.DiskId | Should Not Be $null
             }
@@ -98,7 +99,7 @@ InModuleScope Azs.Compute.Admin {
 				$List | Should Not Be $null
 				$Disk | Should Not Be $null
 
-				$diskInList = $List | ?{$_.TenantId.Equals($Disk.TenantId)}
+				$diskInList = $List | ?{$_.UserResourceId.Equals($Disk.UserResourceId)}
 				if($diskInList)
 				{
 					$true
@@ -126,7 +127,7 @@ InModuleScope Azs.Compute.Admin {
         It "TestListDisks" {
             $global:TestName = 'TestListDisks'
 
-            $disks = Get-Disk -Location $global:Location
+            $disks = Get-AzsDisk -Location $global:Location
 
             $disks | Should Not Be $null
             foreach ($disk in $disks) {
@@ -135,19 +136,19 @@ InModuleScope Azs.Compute.Admin {
 			if($disks.Count -gt 0)
 			{
 				$firstDisk = $disks[0]
-				$tenantSubscriptionId = $($firstDisk.TenantId.Split("/", [System.StringSplitOptions]::RemoveEmptyEntries))[1]
-				$disksForSubscription = Get-Disk -Location $global:Location -TenantSubscriptionId $tenantSubscriptionId
-				ValidateDisksTheSame -DisksRight $($disks | ?{$_.TenantId.Contains($tenantSubscriptionId)}) -DisksLeft $disksForSubscription
+				$tenantSubscriptionId = $($firstDisk.UserResourceId.Split("/", [System.StringSplitOptions]::RemoveEmptyEntries))[1]
+				$disksForSubscription = Get-AzsDisk -Location $global:Location -UserSubscriptionId $tenantSubscriptionId
+				ValidateDisksTheSame -DisksRight $($disks | ?{$_.UserResourceId.Contains($tenantSubscriptionId)}) -DisksLeft $disksForSubscription
 
-                $disksForStatus = Get-Disk -Location $global:Location -Status $firstDisk.Status
+                $disksForStatus = Get-AzsDisk -Location $global:Location -Status $firstDisk.Status
 				ValidateDisksTheSame -DisksRight $($disks | ?{$_.Status.Equals($firstDisk.Status)}) -DisksLeft $disksForStatus
 
-                $disksForShare = Get-Disk -Location $global:Location -SharePath $firstDisk.SharePath
+                $disksForShare = Get-AzsDisk -Location $global:Location -SharePath $firstDisk.SharePath
 				ValidateDisksTheSame -DisksRight $($disks | ?{$_.SharePath.Equals($firstDisk.SharePath)}) -DisksLeft $disksForShare
 
                 if ($disks.Count -ge 2)
                 {
-                    $disksWithCountAndStart = Get-Disk -Location $global:Location -Start 1 -Count 1
+                    $disksWithCountAndStart = Get-AzsDisk -Location $global:Location -Start 1 -Count 1
 					ValidateDisksTheSame -DisksRight @($disks[1]) -DisksLeft @($disksWithCountAndStart)
                 }
 			}
@@ -156,7 +157,7 @@ InModuleScope Azs.Compute.Admin {
         It "TestGetDisk" {
             $global:TestName = 'TestGetDisk'
 
-            $disks = Get-Disk -Location $global:Location
+            $disks = Get-AzsDisk -Location $global:Location
 
             $disks | Should Not Be $null
             foreach ($disk in $disks) {
@@ -165,9 +166,15 @@ InModuleScope Azs.Compute.Admin {
 			if($disks.Count -gt 0)
 			{
 				$firstDisk = $disks[0]
-				$diskFromServer = Get-Disk -Location $global:Location -Name $firstDisk.DiskId
+				$diskFromServer = Get-AzsDisk -Location $global:Location -Name $firstDisk.DiskId
 				ValidateDiskTheSame -DiskRight $firstDisk -DiskLeft $diskFromServer
 			}
+        }
+
+        It "TestGetDiskInvalid" {
+            $global:TestName = 'TestGetDiskInvalid'
+
+            {Get-AzsDisk -Location $global:Location -Name "454E5E28-8D5E-41F9-929E-BFF6A7E1A253"} | Should Throw
         }
     }
 }
