@@ -30,21 +30,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDeploymentEndToEnd()
         {
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDeploymentAsJob()
         {
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentAsJob");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestStopDeployment()
         {
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-StopDeployment");
