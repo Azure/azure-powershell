@@ -5,30 +5,26 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-DiskMigrationJob
+# Get-AzsDiskMigrationJob
 
 ## SYNOPSIS
+Returns the list of managed disk migration jobs.
 
 ## SYNTAX
 
-### DiskMigrationJobs_List (Default)
+### List (Default)
 ```
-Get-DiskMigrationJob [-Status <String>] -Location <String> [<CommonParameters>]
-```
-
-### ResourceId_DiskMigrationJobs_Get
-```
-Get-DiskMigrationJob -ResourceId <String> [<CommonParameters>]
+Get-AzsDiskMigrationJob [-Status <String>] [-Location <String>] [<CommonParameters>]
 ```
 
-### DiskMigrationJobs_Get
+### ResourceId
 ```
-Get-DiskMigrationJob -Location <String> -Name <String> [<CommonParameters>]
+Get-AzsDiskMigrationJob -ResourceId <String> [<CommonParameters>]
 ```
 
-### InputObject_DiskMigrationJobs_Get
+### Get
 ```
-Get-DiskMigrationJob -InputObject <DiskMigrationJob> [<CommonParameters>]
+Get-AzsDiskMigrationJob [-Location <String>] -Name <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,37 +34,29 @@ Returns a list of disk migration jobs.
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzsDiskMigrationJob -location local
 ```
 
-{{ Add example description here }}
+Returns a list of managed disk migration jobs at the location local. 
+
+### Example 2
+```
+Get-AzsDiskMigrationJob -location local -Name "mymigrationName"
+```
+
+Get a specific managed disk migration job.
 
 ## PARAMETERS
-
-### -InputObject
-The input object of type Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob.
-
-```yaml
-Type: DiskMigrationJob
-Parameter Sets: InputObject_DiskMigrationJobs_Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -Location
 Location of the resource.
 
 ```yaml
 Type: String
-Parameter Sets: DiskMigrationJobs_List, DiskMigrationJobs_Get
+Parameter Sets: List, Get
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -80,7 +68,7 @@ The migration job guid name.
 
 ```yaml
 Type: String
-Parameter Sets: DiskMigrationJobs_Get
+Parameter Sets: Get
 Aliases: MigrationId
 
 Required: True
@@ -95,8 +83,8 @@ The resource id.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceId_DiskMigrationJobs_Get
-Aliases:
+Parameter Sets: ResourceId
+Aliases: Id
 
 Required: True
 Position: Named
@@ -110,7 +98,7 @@ The parameters of disk migration job status.
 
 ```yaml
 Type: String
-Parameter Sets: DiskMigrationJobs_List
+Parameter Sets: List
 Aliases:
 
 Required: False

@@ -5,14 +5,15 @@ online version:
 schema: 2.0.0
 ---
 
-# Stop-DiskMigrationJob
+# Stop-AzsDiskMigrationJob
 
 ## SYNOPSIS
+Cancel a managed disk migration job.
 
 ## SYNTAX
 
 ```
-Stop-DiskMigrationJob -Location <String> -MigrationId <String> [<CommonParameters>]
+Stop-AzsDiskMigrationJob [[-Location] <String>] [[-Name] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,10 +23,11 @@ Cancel a disk migration job.
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $migration =New-AzsDiskMigrationJob -Name "mymigrationJob" -Disks $list -location local -TargetShare "\\SU1FileServer.azurestack.local\SU1_ObjStore"
+PS C:\> Stop-AzsDiskMigrationJob -Location local -Name $migration.MigrationId
 ```
 
-{{ Add example description here }}
+Cancel a managed disk migration job.
 
 ## PARAMETERS
 
@@ -37,23 +39,23 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MigrationId
-The migration job guid name.
+### -Name
+{{Fill Name Description}}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: MigrationId
 
-Required: True
-Position: Named
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
