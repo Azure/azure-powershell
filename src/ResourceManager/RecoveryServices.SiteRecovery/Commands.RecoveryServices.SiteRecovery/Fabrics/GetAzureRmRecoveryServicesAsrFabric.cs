@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,18 +22,15 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Gets Azure Site Recovery fabric object.
+    ///     Get the details of an Azure Site Recovery Fabric.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrFabric",
-        DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrFabric",DefaultParameterSetName = ASRParameterSets.Default)]
     [Alias("Get-ASRFabric")]
-    [OutputType(typeof(List<ASRFabric>))]
+    [OutputType(typeof(ASRFabric))]
     public class GetAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Fabric.
+        ///     Gets or sets the name of the fabric to look for.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByName,
@@ -42,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets Friendly name of the Fabric.
+        ///     Gets or sets the friendly name of the fabric to look for.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByFriendlyName,

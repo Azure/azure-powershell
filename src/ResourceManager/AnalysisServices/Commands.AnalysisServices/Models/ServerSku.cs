@@ -13,12 +13,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public string Tier { get; set; }
 
-        internal static Dictionary<string, string> FromResourceSku(ResourceSku resourceSku)
+        public int Capacity { get; set; }
+
+        internal static ServerSku FromResourceSku(ResourceSku resourceSku)
         {
-            Dictionary<string, string> sku = new Dictionary<string, string>();
-            sku["Name"] = resourceSku.Name;
-            sku["Tier"] = resourceSku.Tier;
-            return sku;
+            return new ServerSku()
+            {
+                Name = resourceSku.Name,
+                Tier = resourceSku.Tier,
+                Capacity = resourceSku.Capacity == null ? 1 : resourceSku.Capacity.Value
+            };
         }
     }
 }

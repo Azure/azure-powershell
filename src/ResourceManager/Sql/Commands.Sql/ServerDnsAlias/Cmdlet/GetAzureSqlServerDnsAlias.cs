@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 	/// <summary>
 	/// Defines the Get-AzureRmSqlServerDnsAlias cmdlet
 	/// </summary>
-	[Cmdlet(VerbsCommon.Get, "AzureRmSqlServerDnsAlias", SupportsShouldProcess = true)]
-	[OutputType(typeof(Model.AzureSqlServerDnsAliasModel))]
+	[Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerDnsAlias", SupportsShouldProcess = true)]
+	[OutputType(typeof(AzureSqlServerDnsAliasModel))]
 	public class GetAzureSqlServerDNSAlias : AzureSqlServerDnsAliasCmdletBase
 	{
 		/// <summary>

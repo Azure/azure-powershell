@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,16 +24,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure site Recovery Job.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrJob",
-        DefaultParameterSetName = ASRParameterSets.ByParam)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrJob",DefaultParameterSetName = ASRParameterSets.ByParam)]
     [Alias("Get-ASRJob")]
-    [OutputType(typeof(IEnumerable<ASRJob>))]
+    [OutputType(typeof(ASRJob))]
     public class GetAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Job Name.
+        ///     Gets the details of the specified ASR job or the list of recent ASR jobs in the Recovery Services vault.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByName,
@@ -52,8 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRJob Job { get; set; }
 
         /// <summary>
-        ///     Gets or sets start time. Allows to filter the list of jobs started after the given
-        ///     start time.
+        ///     Gets or sets start time. Allows to filter the list of jobs started after the given start time.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByParam,

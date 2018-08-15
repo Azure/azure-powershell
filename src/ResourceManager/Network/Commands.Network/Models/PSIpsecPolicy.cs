@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DhGroup { get; set; }
 
         /// <summary>
-        /// IKE phase 2 DH Group for new child SA
+        /// IKE phase 2 Pfs Group for new child SA
         /// </summary>
         public string PfsGroup { get; set; }
     }

@@ -54,9 +54,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Queue name.
         /// </summary> 
-        public string Name { get; set; }
-
-        
+        public string Name { get; set; }        
 
         /// <summary>
         /// Id of the resource.

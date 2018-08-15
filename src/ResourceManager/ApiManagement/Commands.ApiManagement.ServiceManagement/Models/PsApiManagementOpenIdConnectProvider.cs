@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementOpenIdConnectProvider
+    public class PsApiManagementOpenIdConnectProvider : PsApiManagementArmResource
     {
         public string OpenIdConnectProviderId { get; set; }
 

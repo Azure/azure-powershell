@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// </summary>
     public interface IHttpOperationsFactory
     {
-        IHttpOperations<T> GetHttpOperations<T>();
+        IHttpOperations<T> GetHttpOperations<T>() where T : class, ICacheable; 
+        IHttpOperations<T> GetHttpOperations<T>(bool useCaching) where T: class, ICacheable;
     }
 }

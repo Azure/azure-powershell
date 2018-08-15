@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsData.Save, Constants.ApiManagementTenantGitConfiguration, SupportsShouldProcess = true)]
+    [Cmdlet("Save", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementTenantGitConfiguration", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementOperationResult))]
     public class SaveAzureApiManagementTenantConfiguration : AzureApiManagementCmdletBase
     {
@@ -68,13 +68,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 return;
             }
 
-            ExecuteTenantConfigurationLongRunningCmdletWrap(
-                () => Client.BeginSaveTenantGitConfiguration(
+            var operationResult = Client.SaveTenantGitConfiguration(
                     Context,
                     Branch,
-                    Force.IsPresent),
-                PassThru.IsPresent
-                );
+                    Force.IsPresent);
+
+            if (PassThru.IsPresent)
+            {
+                this.WriteObject(operationResult);
+            }
         }
     }
 }

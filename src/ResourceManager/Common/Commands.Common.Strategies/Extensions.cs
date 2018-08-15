@@ -21,14 +21,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class Extensions
     {
-        /// <summary>
-        /// Returns an empty sequence if the given parameter is null.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static IEnumerable<T> EmptyIfNull<T>(this IEnumerable<T> value)
-            => value ?? Enumerable.Empty<T>();
+        public static IEnumerable<T> EmptyIfNull<T>(this IEnumerable<T> v)
+            => v ?? Enumerable.Empty<T>();
 
         public static TValue GetOrNull<TKey, TValue>(
             this IDictionary<TKey, TValue> dictionary, TKey key)

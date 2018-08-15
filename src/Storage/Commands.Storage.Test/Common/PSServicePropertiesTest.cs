@@ -68,6 +68,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             serviceProperties.Logging.LoggingOperations = LoggingOperations.All;
             serviceProperties.Logging.RetentionDays = 5;
             serviceProperties.DefaultServiceVersion = "2017-04-17";
+            serviceProperties.DeleteRetentionPolicy = new DeleteRetentionPolicy();
+            serviceProperties.DeleteRetentionPolicy.Enabled = true;
+            serviceProperties.DeleteRetentionPolicy.RetentionDays = 5;
             PSSeriviceProperties pSSeriviceProperties = new PSSeriviceProperties(serviceProperties);
             CompareServiceProperties(pSSeriviceProperties, serviceProperties);
 
@@ -110,6 +113,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             if ((pSSeriviceProperties != null && pSSeriviceProperties.DefaultServiceVersion != null) || (serviceProperties != null && serviceProperties.DefaultServiceVersion != null))
             {
                 Assert.AreEqual(serviceProperties.DefaultServiceVersion, pSSeriviceProperties.DefaultServiceVersion);
+            }
+            if ((pSSeriviceProperties != null && pSSeriviceProperties.DeleteRetentionPolicy != null) || (serviceProperties != null && serviceProperties.DeleteRetentionPolicy != null))
+            {
+                Assert.AreEqual(serviceProperties.DeleteRetentionPolicy.Enabled, pSSeriviceProperties.DeleteRetentionPolicy.Enabled);
+                Assert.AreEqual(serviceProperties.DeleteRetentionPolicy.RetentionDays, pSSeriviceProperties.DeleteRetentionPolicy.RetentionDays);
             }
         }
 

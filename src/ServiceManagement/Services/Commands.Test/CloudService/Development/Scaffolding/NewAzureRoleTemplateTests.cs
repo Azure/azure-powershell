@@ -122,6 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         }
 
         [Fact(Skip = "TODO: Fix SetScaffolding in CloudServiceProject.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureRoleTemplateWithRunningOutsideDefaultDirectory()
         {
             string outputPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestDir", "WebRoleTemplate");

@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         IEntityStrategy Strategy { get; }
 
+        IResourceConfig ResourceGroup { get; }
+
         string Name { get; }
 
         IResourceConfig Resource { get; }
@@ -30,7 +32,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         TResult Accept<TContext, TResult>(
             IEntityConfigVisitor<TContext, TResult> visitor, TContext context);
 
-        IEnumerable<string> GetId(string subscription);
+        IEnumerable<string> GetIdFromResourceGroup();
+
+        IEnumerable<INestedResourceConfig> NestedResources { get; }
+
+        IEnumerable<IEntityConfig> Dependencies { get; }
     }
 
     public interface IEntityConfig<TModel> : IEntityConfig
@@ -38,5 +44,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         TResult Accept<TContext, TResult>(
             IEntityConfigVisitor<TModel, TContext, TResult> visitor, TContext context);
+
+        void AddNested<TNestedModel>(
+            NestedResourceConfig<TNestedModel, TModel> config)
+            where TNestedModel : class;
+
+        new IEnumerable<INestedResourceConfig<TModel>> NestedResources { get; }
     }
 }

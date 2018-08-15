@@ -40,7 +40,7 @@ To get information about the x86 client packages, set the value of the *Processo
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,9 +56,9 @@ Specifies the type of CPU architecture that the client package is designed for.
 Valid values are Amd64 and X86.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Amd64, X86
 
 Required: True
@@ -70,13 +70,12 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the virtual network gateway is assigned to.
-
 Resource groups categorize items to help simplify inventory management and general Azure administration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -89,9 +88,9 @@ Accept wildcard characters: False
 Specifies the name of the virtual network gateway where the client package information is stored.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -105,16 +104,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
-Parameter 'ResourceGroupName' accepts value of type 'String' from the pipeline
-
-### String
-Parameter 'VirtualNetworkGatewayName' accepts value of type 'String' from the pipeline
+### System.String
+Parameters: ResourceGroupName (ByValue), VirtualNetworkGatewayName (ByValue)
 
 ## OUTPUTS
 
-###  
-**Get-AzureRmVpnClientPackage** returns instances of the System.String object.
+### System.String
 
 ## NOTES
 

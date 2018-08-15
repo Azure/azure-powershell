@@ -137,8 +137,16 @@
     <value>Removing master region in location '{0}' is not allowed.</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="SetApiManagementService" xml:space="preserve">
+    <value>Set an API Management service.</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="ShouldProcessCaption" xml:space="preserve">
     <value>Confirm</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="UpdateApiManagementService" xml:space="preserve">
+    <value>Update an Api Management Service.</value>
     <comment>Process workflow</comment>
   </data>
   <data name="UpdateRegionDoesNotExistsMessage" xml:space="preserve">

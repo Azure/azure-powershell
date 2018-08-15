@@ -64,7 +64,6 @@
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
     <Reference Include="System.Web" />
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\CommitmentPlans\CommitmentPlansCmdletBase.cs" />
@@ -100,7 +99,7 @@
     <Compile Include="Utilities\WebServicesClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.MachineLearning.psd1">
+    <None Include="AzureRM.MachineLearning.psd1">
       <Link>AzureRM.MachineLearning.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

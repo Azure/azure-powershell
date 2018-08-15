@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the task returned from the OM to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
         }
 
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             int taskCount = 0;
             foreach (PSCloudTask t in pipeline)
             {
-                Assert.True(idsOfConstructedTasks.Contains(t.Id));
+                Assert.Contains(t.Id, idsOfConstructedTasks);
                 taskCount++;
             }
             Assert.Equal(idsOfConstructedTasks.Length, taskCount);
@@ -308,15 +308,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the task returned from the OM to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
 
             PSExitConditions psExitConditions = pipeline[0].ExitConditions;
 
-            Assert.Equal(psExitConditions.Default.JobAction, JobAction.None);
-            Assert.Equal(psExitConditions.ExitCodeRanges.First().ExitOptions.JobAction, JobAction.None);
-            Assert.Equal(psExitConditions.PreProcessingError.JobAction, JobAction.Terminate);
-            Assert.Equal(psExitConditions.FileUploadError.JobAction, JobAction.None);
+            Assert.Equal(JobAction.None, psExitConditions.Default.JobAction);
+            Assert.Equal(JobAction.None, psExitConditions.ExitCodeRanges.First().ExitOptions.JobAction);
+            Assert.Equal(JobAction.Terminate, psExitConditions.PreProcessingError.JobAction);
+            Assert.Equal(JobAction.None, psExitConditions.FileUploadError.JobAction);
 
             Assert.Equal(4, psExitConditions.ExitCodes.First().Code);
             Assert.Equal(JobAction.Terminate, psExitConditions.ExitCodes.First().ExitOptions.JobAction);
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the task returned from the OM to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
 
             var psApplicationPackageReference = pipeline[0].ApplicationPackageReferences.First();

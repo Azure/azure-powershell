@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -85,18 +86,18 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         private const string StorageApiVersion = "2016-12-01";
         private const string StorageAccountSku = "Standard_LRS";
 
-        internal static string ToJsonString(this DeploymentTemplate template)
+        internal static JObject ToJson(this DeploymentTemplate template)
         {
-            var settings = new JsonSerializerSettings
+            var settings = new JsonSerializer
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
 
-            return JsonConvert.SerializeObject(template, settings);
+            return JObject.FromObject(template, settings);
         }
 
-        internal static string DeploymentTemplateNewStorage(
+        internal static JObject DeploymentTemplateNewStorage(
             string registryName,
             string registryLocation,
             string registrySku,
@@ -150,7 +151,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 }
             };
 
-            return template.ToJsonString();
+            return template.ToJson();
         }
     }
 }

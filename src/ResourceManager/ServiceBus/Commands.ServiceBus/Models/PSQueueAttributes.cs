@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         {
             if (quResource != null)
             {
+                Id = quResource.Id;
                 Name = quResource.Name;               
                 LockDuration = XmlConvert.ToString((TimeSpan)quResource.LockDuration);
                 AccessedAt = quResource.AccessedAt;
@@ -50,9 +51,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 UpdatedAt = quResource.UpdatedAt;
                 ForwardTo = quResource.ForwardTo;
                 ForwardDeadLetteredMessagesTo = quResource.ForwardDeadLetteredMessagesTo;
-
+                EnableBatchedOperations = quResource.EnableBatchedOperations;
             }
         }
+
+        /// <summary>
+        /// Queue ID.
+        /// </summary> 
+        public string Id{ get; set; }
 
         /// <summary>
         /// Queue name.
@@ -177,6 +183,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Gets or sets queue/Topic name to forward the Dead Letter message
         /// </summary>
         public string ForwardDeadLetteredMessagesTo { get; set; }
+
+        /// <summary>
+        /// Value that indicates whether server-side batched operations are
+        /// enabled..
+        /// </summary>
+        public bool? EnableBatchedOperations { get; set; }
 
 
     }

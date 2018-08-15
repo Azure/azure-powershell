@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Gets the integration account certificate by name.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountCertificate")]
-    [OutputType(typeof(IntegrationAccountCertificate), typeof(IPage<IntegrationAccountCertificate>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IntegrationAccountCertificate")]
+    [OutputType(typeof(IntegrationAccountCertificate))]
     public class GetAzureIntegrationAccountCertificateCommand : LogicAppBaseCmdlet
     {
 

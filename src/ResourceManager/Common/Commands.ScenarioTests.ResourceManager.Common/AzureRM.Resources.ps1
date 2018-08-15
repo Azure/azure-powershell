@@ -12,12 +12,12 @@
   }
   PROCESS {
     if($Name -eq $null) {
-      $getTask = $client.ResourceGroups.ListAsync($null, [System.Threading.CancellationToken]::None)
+      $getTask = $client.ResourceGroups.ListWithHttpMessagesAsync($null, $null, [System.Threading.CancellationToken]::None)
       $rg = $getTask.Result
       $resourceGroup = List-ResourceGroup
       Write-Output $resourceGroup
     } else {
-      $getTask = $client.ResourceGroups.GetAsync($Name, [System.Threading.CancellationToken]::None)
+      $getTask = $client.ResourceGroups.GetWithHttpMessagesAsync($Name, $null, [System.Threading.CancellationToken]::None)
       $rg = $getTask.Result
       if($rg -eq $null) {
         $resourceGroup = $null
@@ -40,8 +40,8 @@ function Get-AzureRmResourceProvider
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $getTask = $client.Providers.GetAsync($ProviderNamespace, [System.Threading.CancellationToken]::None)
-    Write-Output $getTask.Result.Provider
+    $getTask = $client.Providers.GetWithHttpMessagesAsync($ProviderNamespace)
+    Write-Output $getTask.Result.Body
   }
   END {}
 }
@@ -59,9 +59,9 @@ function New-AzureRmResourceGroup
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $createParams = New-Object -Type Microsoft.Azure.Management.Resources.Models.ResourceGroup
+    $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.ResourceGroup
     $createParams.Location = $Location
-    $createTask = $client.ResourceGroups.CreateOrUpdateAsync($Name, $createParams, [System.Threading.CancellationToken]::None)
+    $createTask = $client.ResourceGroups.CreateOrUpdateWithHttpMessagesAsync($Name, $createParams, $null, [System.Threading.CancellationToken]::None)
     $rg = $createTask.Result
     $resourceGroup = Get-ResourceGroup $Name $Location
     Write-Output $resourceGroup
@@ -89,14 +89,14 @@ function New-AzureRmResourceGroupDeployment
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $createParams = New-Object -Type Microsoft.Azure.Management.Resources.Models.Deployment
-    $createTask = $client.Deployments.CreateOrUpdateAsync($Name, $Name, $createParams, [System.Threading.CancellationToken]::None)
+    $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.Deployment
+    $createTask = $client.Deployments.CreateOrUpdateWithHttpMessagesAsync($Name, $Name, $createParams, $null, [System.Threading.CancellationToken]::None)
     $rg = $createTask.Result
   }
   END {}
 }
 
-function Remove-AzureRmResourceGroup 
+function Remove-AzureRmResourceGroup
 {
   [CmdletBinding()]
   param(
@@ -107,10 +107,128 @@ function Remove-AzureRmResourceGroup
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $deleteTask = $client.ResourceGroups.DeleteAsync($Name, [System.Threading.CancellationToken]::None)
+    $deleteTask = $client.ResourceGroups.DeleteWithHttpMessagesAsync($Name, $null, [System.Threading.CancellationToken]::None)
     $rg = $deleteTask.Result
   }
   END {}
+}
+
+function New-AzureRmRoleAssignmentWithId
+{
+    [CmdletBinding()]
+    param(
+        [Guid]   [Parameter()] [alias("Id", "PrincipalId")] $ObjectId,
+        [string] [Parameter()] [alias("Email", "UserPrincipalName")] $SignInName,
+        [string] [Parameter()] [alias("SPN", "ServicePrincipalName")] $ApplicationId,
+        [string] [Parameter()] $ResourceGroupName,
+        [string] [Parameter()] $ResourceName,
+        [string] [Parameter()] $ResourceType,
+        [string] [Parameter()] $ParentResource,
+        [string] [Parameter()] $Scope,
+        [string] [Parameter()] $RoleDefinitionName,
+        [Guid]   [Parameter()] $RoleDefinitionId,
+        [switch] [Parameter()] $AllowDelegation,
+        [Guid]   [Parameter()] $RoleAssignmentId
+    )
+
+    $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+    $cmdlet = New-Object -TypeName Microsoft.Azure.Commands.Resources.NewAzureRoleAssignmentCommand
+    $cmdlet.DefaultProfile = $profile
+	$cmdlet.CommandRuntime = $PSCmdlet.CommandRuntime
+
+    if ($ObjectId -ne $null -and $ObjectId -ne [System.Guid]::Empty)
+    {
+        $cmdlet.ObjectId = $ObjectId
+    }
+
+    if (-not ([string]::IsNullOrEmpty($SignInName)))
+    {
+        $cmdlet.SignInName = $SignInName
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ApplicationId)))
+    {
+        $cmdlet.ApplicationId = $ApplicationId
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ResourceGroupName)))
+    {
+        $cmdlet.ResourceGroupName = $ResourceGroupName
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ResourceName)))
+    {
+        $cmdlet.ResourceName = $ResourceName
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ResourceType)))
+    {
+        $cmdlet.ResourceType = $ResourceType
+    }
+
+    if (-not ([string]::IsNullOrEmpty($ParentResource)))
+    {
+        $cmdlet.ParentResource = $ParentResource
+    }
+
+    if (-not ([string]::IsNullOrEmpty($Scope)))
+    {
+        $cmdlet.Scope = $Scope
+    }
+
+    if (-not ([string]::IsNullOrEmpty($RoleDefinitionName)))
+    {
+        $cmdlet.RoleDefinitionName = $RoleDefinitionName
+    }
+
+    if ($RoleDefinitionId -ne $null -and $RoleDefinitionId -ne [System.Guid]::Empty)
+    {
+        $cmdlet.RoleDefinitionId = $RoleDefinitionId
+    }
+
+    if ($AllowDelegation.IsPresent)
+    {
+        $cmdlet.AllowDelegation = $true
+    }
+
+    if ($RoleAssignmentId -ne $null -and $RoleAssignmentId -ne [System.Guid]::Empty)
+    {
+        $cmdlet.RoleAssignmentId = $RoleAssignmentId
+    }
+
+    $cmdlet.ExecuteCmdlet()
+}
+
+function New-AzureRmRoleDefinitionWithId
+{
+    [CmdletBinding()]
+    param(
+        [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition] [Parameter()] $Role,
+        [string] [Parameter()] $InputFile,
+        [Guid]   [Parameter()] $RoleDefinitionId
+    )
+
+    $profile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+    $cmdlet = New-Object -TypeName Microsoft.Azure.Commands.Resources.NewAzureRoleDefinitionCommand
+    $cmdlet.DefaultProfile = $profile
+	$cmdlet.CommandRuntime = $PSCmdlet.CommandRuntime
+
+    if (-not ([string]::IsNullOrEmpty($InputFile)))
+    {
+        $cmdlet.InputFile = $InputFile
+    }
+
+    if ($Role -ne $null)
+    {
+        $cmdlet.Role = $Role
+    }
+
+    if ($RoleDefinitionId -ne $null -and $RoleDefinitionId -ne [System.Guid]::Empty)
+    {
+        $cmdlet.RoleDefinitionId = $RoleDefinitionId
+    }
+
+    $cmdlet.ExecuteCmdlet()
 }
 
 function Get-Context
@@ -122,10 +240,10 @@ function Get-ResourcesClient
 {
   param([Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext] $context)
   $factory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.ClientFactory
-  [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext], 
+  [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext],
 	[string]
-  $method = [Microsoft.Azure.Commands.Common.Authentication.IHyakClientFactory].GetMethod("CreateClient", $types)
-  $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Resources.ResourceManagementClient])
+  $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateArmClient", $types)
+  $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient])
   $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment+Endpoint]::ResourceManager
   $client = $closedMethod.Invoke($factory, $arguments)
   return $client

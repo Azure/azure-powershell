@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.Database.Services;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabase", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabase", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = UpdateParameterSetName), OutputType(typeof(AzureSqlDatabaseModel))]
     public class SetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
     {
         private const string UpdateParameterSetName = "Update";
@@ -49,6 +50,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The maximum size of the Azure SQL Database in bytes.",
             ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The maximum size of the Azure SQL Database in bytes.",
+            ParameterSetName = VcoreDatabaseParameterSet)]
         [ValidateNotNullOrEmpty]
         public long MaxSizeBytes { get; set; }
 
@@ -58,8 +62,19 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The edition to assign to the Azure SQL Database.",
             ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The edition to assign to the Azure SQL Database.",
+            ParameterSetName = VcoreDatabaseParameterSet)]
+        [PSArgumentCompleter("None",
+            Management.Sql.Models.DatabaseEdition.Basic,
+            Management.Sql.Models.DatabaseEdition.Standard,
+            Management.Sql.Models.DatabaseEdition.Premium,
+            Management.Sql.Models.DatabaseEdition.DataWarehouse,
+            Management.Sql.Models.DatabaseEdition.Free,
+            Management.Sql.Models.DatabaseEdition.Stretch,
+            "GeneralPurpose", "BusinessCritical")]
         [ValidateNotNullOrEmpty]
-        public DatabaseEdition Edition { get; set; }
+        public string Edition { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the service objective to assign to the Azure SQL Database
@@ -85,6 +100,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)",
             ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)",
+            ParameterSetName = VcoreDatabaseParameterSet)]
         [ValidateNotNullOrEmpty]
         public DatabaseReadScale ReadScale { get; set; }
 
@@ -94,6 +112,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Database",
             ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The tags to associate with the Azure Sql Database",
+            ParameterSetName = VcoreDatabaseParameterSet)]
         [Alias("Tag")]
         public Hashtable Tags { get; set; }
 
@@ -103,6 +124,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The zone redundancy to associate with the Azure Sql Database",
             ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The zone redundancy to associate with the Azure Sql Database",
+            ParameterSetName = VcoreDatabaseParameterSet)]
         public SwitchParameter ZoneRedundant { get; set; }
 
         /// <summary>
@@ -118,6 +142,37 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Vcore number for the Azure Sql database
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
+            HelpMessage = "The Vcore number for the Azure Sql database")]
+        [Alias("Capacity")]
+        public int VCore { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ComputeGeneration for the Azure Sql database.
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
+            HelpMessage = "The compute generation to assign.")]
+        [Alias("Family")]
+        [PSArgumentCompleter("Gen4", "Gen5")]
+        public string ComputeGeneration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The license type for the Azure Sql database.",
+            ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The license type for the Azure Sql database.",
+            ParameterSetName = VcoreDatabaseParameterSet)]
+        [PSArgumentCompleter(
+            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
+            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
+        public string LicenseType { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -146,26 +201,55 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseModel> model)
         {
             List<Model.AzureSqlDatabaseModel> newEntity = new List<AzureSqlDatabaseModel>();
+            AzureSqlDatabaseModel newDbModel = new AzureSqlDatabaseModel()
+            {
+                ResourceGroupName = ResourceGroupName,
+                ServerName = ServerName,
+                DatabaseName = DatabaseName,
+                MaxSizeBytes = MaxSizeBytes,
+                Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
+                ElasticPoolName = ElasticPoolName,
+                Location = model.FirstOrDefault().Location,
+                ReadScale = ReadScale,
+                ZoneRedundant =
+                       ZoneRedundant != null
+                           ? (bool?)ZoneRedundant.ToBool()
+                           : null,
+                LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType // set to original license type
+            };
+
+            var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
+            Management.Sql.Models.Sku databaseCurrentSku = new Management.Sql.Models.Sku()
+            {
+                Name = database.SkuName,
+                Tier = database.Edition,
+                Family = database.Family,
+                Capacity = database.Capacity
+            };
+
             if (this.ParameterSetName == UpdateParameterSetName)
             {
-                newEntity.Add(new AzureSqlDatabaseModel()
-                {
-                    ResourceGroupName = ResourceGroupName,
-                    ServerName = ServerName,
-                    DatabaseName = DatabaseName,
-                    Edition = Edition,
-                    MaxSizeBytes = MaxSizeBytes,
-                    RequestedServiceObjectiveName = RequestedServiceObjectiveName,
-                    Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
-                    ElasticPoolName = ElasticPoolName,
-                    Location = model.FirstOrDefault().Location,
-                    ReadScale = ReadScale,
-                    ZoneRedundant =
-                        MyInvocation.BoundParameters.ContainsKey("ZoneRedundant")
-                            ? (bool?) ZoneRedundant.ToBool()
-                            : null
-                });
+                newDbModel.SkuName = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition) : RequestedServiceObjectiveName;
+                newDbModel.Edition = Edition;
+
+                newEntity.Add(newDbModel);
             }
+            else if(this.ParameterSetName == VcoreDatabaseParameterSet)
+            {
+                if(!string.IsNullOrWhiteSpace(Edition) ||
+                    !string.IsNullOrWhiteSpace(ComputeGeneration) ||
+                    MyInvocation.BoundParameters.ContainsKey("VCore"))
+                {
+                    string skuTier = string.IsNullOrWhiteSpace(Edition) ? databaseCurrentSku.Tier : Edition;
+                    newDbModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(skuTier);
+                    newDbModel.Edition = skuTier;
+                    newDbModel.Family = string.IsNullOrWhiteSpace(ComputeGeneration) ? databaseCurrentSku.Family : ComputeGeneration;
+                    newDbModel.Capacity = MyInvocation.BoundParameters.ContainsKey("VCore") ? VCore : databaseCurrentSku.Capacity;
+                }
+
+                newEntity.Add(newDbModel);
+            }
+
             return newEntity;
         }
 
@@ -179,6 +263,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             switch (this.ParameterSetName)
             {
                 case UpdateParameterSetName:
+                case VcoreDatabaseParameterSet:
                     return new List<AzureSqlDatabaseModel>
                     {
                         ModelAdapter.UpsertDatabaseWithNewSdk(

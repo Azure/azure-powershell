@@ -454,9 +454,6 @@
     <None Include="Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.Compute.dll-Help.psd1">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
     <None Include="Microsoft.Azure.Commands.Compute.format.generated.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

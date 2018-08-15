@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/get-azurermrecoveryservicesasrevent
@@ -86,13 +86,59 @@ List of event between time start time and end time , severity critical and healt
 
 ## PARAMETERS
 
+### -AffectedObjectFriendlyName
+Specifies AffectedObject FriendlyName for the search.
+
+```yaml
+Type: System.String
+Parameter Sets: ByParam, ByFabricId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EndTime
 Specifies the end time of the search window. Use this parameter to get only those events that have occurred before the specified time.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: ByParam, ByFabricId
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EventType
+Filter events by the event type.
+
+```yaml
+Type: System.String
+Parameter Sets: ByParam, ByFabricId
+Aliases:
+Accepted values: VmHealth, ServerHealth, AgentHealth
 
 Required: False
 Position: Named
@@ -105,9 +151,9 @@ Accept wildcard characters: False
 Filter events by the specified fabric.
 
 ```yaml
-Type: ASRFabric
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
 Parameter Sets: ByParam
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -116,13 +162,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FabricId
+Specifies the fabricId to filter.
+
+```yaml
+Type: System.String
+Parameter Sets: ByFabricId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies name of the event for search.
+
+```yaml
+Type: System.String
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Specifes the event ReourceId of event.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Severity
 Event severity to filter on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParam, ByFabricId
-Aliases: 
+Aliases:
 Accepted values: Critical, Warning, OK, Unknown
 
 Required: False
@@ -136,104 +227,14 @@ Accept wildcard characters: False
 Specifies the start time of the search window. Use this parameter to get only those events that have occurred after the specified time.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: ByParam, ByFabricId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AffectedObjectFriendlyName
-specifies AffectedObject FriendlyName for the search.
-
-```yaml
-Type: String
-Parameter Sets: ByParam, ByFabricId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EventType
-Event type to filter on.
-
-```yaml
-Type: String
-Parameter Sets: ByParam, ByFabricId
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Specifies name of the event for search.
-
-```yaml
-Type: String
-Parameter Sets: ByName
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FabricId
-Specifies the fabricId to filter.
-
-```yaml
-Type: String
-Parameter Sets: ByFabricId
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Specifes the event ReourceId of event.
-
-```yaml
-Type: String
-Parameter Sets: ByResourceId
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -242,13 +243,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREvent, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREvent
 
 ## NOTES
 
 ## RELATED LINKS
-

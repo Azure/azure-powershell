@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.MediaServices
     /// <summary>
     ///     Gets an Azure Media Services account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureMediaServicesAccount"), OutputType(typeof(MediaServiceAccountDetails), typeof(IEnumerable<MediaServiceAccount>))]
+    [Cmdlet(VerbsCommon.Get, "AzureMediaServicesAccount"), OutputType(typeof(MediaServiceAccountDetails))]
     public class GetAzureMediaServiceCommand : AzureMediaServicesHttpClientCommandBase
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The media service account name.")]

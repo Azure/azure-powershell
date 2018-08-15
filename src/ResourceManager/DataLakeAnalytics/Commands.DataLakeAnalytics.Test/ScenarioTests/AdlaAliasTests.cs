@@ -15,13 +15,17 @@
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
 
     public class AdlaAliasTests : AdlaTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public AdlaAliasTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -29,6 +33,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         public void TestAdlaAccount()
         {
             AdlaTestsBase.NewInstance.RunPsTest(true,
+                _logger,
                 string.Format(
                     "Test-DataLakeAnalyticsAccount -blobAccountKey -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
@@ -39,6 +44,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         public void TestAdlaAccountTiers()
         {
             AdlaTestsBase.NewInstance.RunPsTest(false,
+                _logger,
                 string.Format(
                     "Test-DataLakeAnalyticsAccountTiers -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
@@ -49,6 +55,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         public void TestAdlaFirewallRules()
         {
             AdlaTestsBase.NewInstance.RunPsTest(false,
+                _logger,
                 string.Format(
                     "Test-DataLakeAnalyticsFirewall -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
@@ -59,6 +66,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         public void TestAdlaComputePolicy()
         {
             AdlaTestsBase.NewInstance.RunPsTest(false,
+                _logger,
                 string.Format(
                     "Test-DataLakeAnalyticsComputePolicy -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
@@ -69,6 +77,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         public void TestAdlaCatalog()
         {
             AdlaTestsBase.NewInstance.RunPsTest(false,
+                _logger,
                 string.Format(
                     "Test-DataLakeAnalyticsCatalog -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
@@ -79,6 +88,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         public void TestAdlaJob()
         {
             AdlaTestsBase.NewInstance.RunPsTest(false,
+                _logger,
                 string.Format(
                     "Test-DataLakeAnalyticsJob -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
@@ -89,6 +99,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         public void TestAdlaJobRelationships()
         {
             AdlaTestsBase.NewInstance.RunPsTest(false,
+                _logger,
                 string.Format(
                     "Test-DataLakeAnalyticsJobRelationships -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
@@ -99,6 +110,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         public void TestNegativeAdlaAccount()
         {
             AdlaTestsBase.NewInstance.RunPsTest(false,
+                _logger,
                 string.Format(
                     "Test-NegativeDataLakeAnalyticsAccount -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));
@@ -109,6 +121,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         public void TestNegativeAdlaJob()
         {
             AdlaTestsBase.NewInstance.RunPsTest(false,
+                _logger,
                 string.Format(
                     "Test-NegativeDataLakeAnalyticsJob -location '{0}'",
                     AdlaTestsBase.resourceGroupLocation));

@@ -1,7 +1,7 @@
 ﻿namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveCmdletAlias
 {
     using System.Management.Automation;
-    
+
     [Cmdlet(VerbsDiagnostic.Test, "RemoveCmdletAlias")]
     public class TestRemoveCmdletAlias : Cmdlet
     {
@@ -477,7 +477,7 @@ namespace StaticAnalysis.Test.CmdletTest.BreakingChange.ChangeOutputGenericTypeA
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputGenericTypeArgument"), OutputType(typeof(List<string>))]
+    [Cmdlet(VerbsDiagnostic.Test, "ChangeOutputGenericTypeArgument"), OutputType(typeof(string))]
     public class TestChangeOutputGenericTypeArgument : Cmdlet
     {
         protected override void BeginProcessing()

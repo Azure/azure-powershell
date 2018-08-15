@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using System.Security.Cryptography.X509Certificates;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementCertificate, DefaultParameterSetName = FromFile)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementCertificate", DefaultParameterSetName = FromFile)]
     [OutputType(typeof(PsApiManagementCertificate))]
     public class SetAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
@@ -96,7 +96,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             new X509Certificate2(rawBytes, PfxPassword);
 
             var certificate = Client.CertificateSet(Context, CertificateId, rawBytes, PfxPassword);
-            WriteObject(certificate);
+            if (PassThru)
+            {
+                WriteObject(certificate);
+            }
         }
     }
 }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -31,7 +32,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Test
         }
 
         IDictionary<string, object> _responses = new ConcurrentDictionary<string, object>(StringComparer.OrdinalIgnoreCase);
-        public IHttpOperations<T> GetHttpOperations<T>()
+        public IHttpOperations<T> GetHttpOperations<T>() where T : class, ICacheable
+        {
+            var result = new TestHttpOperations<T>(_responses, _output);
+            return result;
+        }
+
+        public IHttpOperations<T> GetHttpOperations<T>(bool useCaching) where T :  class, ICacheable
         {
             var result = new TestHttpOperations<T>(_responses, _output);
             return result;
@@ -83,7 +90,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Test
             {
                 if (!_responses.ContainsKey(requestUri))
                 {
-                    throw new InvalidOperationException(string.Format("Unexpected request Uri '{0}'", requestUri));
+                    throw new CloudException(string.Format("Unexpected request Uri '{0}'", requestUri));
                 }
 
                 var output = _responses[requestUri];

@@ -67,11 +67,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             try
             {
                 FileContinuationToken fileToken = new FileContinuationToken();
-                IEnumerator<IListFileItem> listedFiles = share.GetRootDirectoryReference().ListFilesAndDirectoriesSegmented(1, fileToken, RequestOptions, OperationContext).Results.GetEnumerator();
-                if (listedFiles.MoveNext() && listedFiles.Current != null)
-                    return false;
-                else
-                    return true;
+                using (IEnumerator<IListFileItem> listedFiles = share.GetRootDirectoryReference()
+                    .ListFilesAndDirectoriesSegmentedAsync(1, fileToken, RequestOptions, OperationContext).Result
+                    .Results.GetEnumerator())
+                {
+                    return !(listedFiles.MoveNext() && listedFiles.Current != null);
+                }
             }
             catch (Exception)
             {

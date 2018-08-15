@@ -18,11 +18,13 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
+using System.Collections;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.New, ProfileNouns.AvailabilitySet)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilitySet")]
     [OutputType(typeof(PSAvailabilitySet))]
     public class NewAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
@@ -74,10 +76,10 @@ namespace Microsoft.Azure.Commands.Compute
         public string Sku { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Managed Availability Set")]
-        [Obsolete("This parameter is obsolete.  Please use Sku parameter instead.", false)]
-        public SwitchParameter Managed { get; set; }
+            Mandatory = false,
+            HelpMessage = "Key-value pairs in the form of a hash table."
+            )]
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -92,19 +94,16 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Location = this.Location,
                     PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
-                    PlatformFaultDomainCount = this.PlatformFaultDomainCount
+                    PlatformFaultDomainCount = this.PlatformFaultDomainCount,
+                    Tags = Tag == null ? null : Tag.Cast<DictionaryEntry>().ToDictionary(d => (string)d.Key, d => (string)d.Value)
                 };
 
-                if (this.Managed.IsPresent || !string.IsNullOrEmpty(this.Sku))
+                if (!string.IsNullOrEmpty(this.Sku))
                 {
                     avSetParams.Sku = new Sku();
                     if (!string.IsNullOrEmpty(this.Sku))
                     {
                         avSetParams.Sku.Name = this.Sku;
-                    }
-                    if (this.Managed.IsPresent)
-                    {
-                        avSetParams.Sku.Name = "Aligned";
                     }
                 }
 

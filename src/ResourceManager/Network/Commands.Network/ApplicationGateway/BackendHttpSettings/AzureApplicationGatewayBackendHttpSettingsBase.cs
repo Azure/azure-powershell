@@ -96,12 +96,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag if probe should be enabled.")]
-        [Obsolete("Parameter is ignored and will be removed in a future release")]
-        public SwitchParameter ProbeEnabled { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "Path which should be used as a prefix for all HTTP requests. If no value is provided for this parameter, then no path will be prefixed.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }

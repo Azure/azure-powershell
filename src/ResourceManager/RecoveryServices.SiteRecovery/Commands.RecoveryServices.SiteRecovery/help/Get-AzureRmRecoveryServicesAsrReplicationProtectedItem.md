@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/get-azurermrecoveryservicesasrreplicationprotecteditem
@@ -50,13 +50,28 @@ Lists all replication protected items in the specified ASR protection container.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FriendlyName
 Specifies the friendly name of the replication protected item to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByObjectWithFriendlyName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -69,9 +84,9 @@ Accept wildcard characters: False
 Specifies the name of the replication protected item to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByObjectWithName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -84,9 +99,9 @@ Accept wildcard characters: False
 Specifies an ASR protectable item object. The cmdlet gets the ASR replication protected item corresponding to the specified ASR protectable item if the item is protected.
 
 ```yaml
-Type: ASRProtectableItem
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem
 Parameter Sets: ByProtectableItemObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -99,29 +114,14 @@ Accept wildcard characters: False
 Specifies the ASR protection container object of the ASR protection container corresponding to the replication protected item. 
 
 ```yaml
-Type: ASRProtectionContainer
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer
 Parameter Sets: ByObject, ByObjectWithName, ByObjectWithFriendlyName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -131,11 +131,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer
-Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem
+Parameters: ProtectionContainer (ByValue)
+
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem
+Parameters: ProtectableItem (ByValue)
 
 ## OUTPUTS
 
-### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
 
 ## NOTES
 

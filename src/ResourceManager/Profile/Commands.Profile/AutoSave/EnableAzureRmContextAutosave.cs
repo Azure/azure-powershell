@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmContextAutosave", SupportsShouldProcess = true)]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContextAutosave", SupportsShouldProcess = true)]
     [OutputType(typeof(ContextAutosaveSettings))]
     public class EnableAzureRmContextAutosave : AzureContextModificationCmdlet
     {
@@ -59,12 +59,12 @@ namespace Microsoft.Azure.Commands.Profile.Context
             string tokenPath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
             if (!IsValidPath(contextPath))
             {
-                throw new PSInvalidOperationException(string.Format("'{0}' is not a valid path. You cannot enable context autosave without a valid context path"));
+                throw new PSInvalidOperationException(string.Format("'{0}' is not a valid path. You cannot enable context autosave without a valid context path", contextPath));
             }
 
             if (!IsValidPath(tokenPath))
             {
-                throw new PSInvalidOperationException(string.Format("'{0}' is not a valid path. You cannot enable context autosave without a valid token cache path"));
+                throw new PSInvalidOperationException(string.Format("'{0}' is not a valid path. You cannot enable context autosave without a valid token cache path", tokenPath));
             }
 
             result = new ContextAutosaveSettings
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
             }
             catch
             {
-                // do not throw if there are file system erroer
+                // do not throw if there are file system error
             }
         }
 

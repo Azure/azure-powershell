@@ -12,19 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Linq;
-using Microsoft.Azure.Management.ContainerRegistry;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.ContainerRegistry;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using InternalResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
+using ResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
 {
@@ -32,12 +33,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
     {
         private EnvironmentSetupHelper helper;
 
-        public ContainerRegistryManagementClient ContainerRegistryClient { get; private set; }
-
-        public StorageManagementClient StorageClient { get; private set; }
-
-        public ResourceManagementClient ResourceClient { get; private set; }
-        
         public TestController()
         {
             helper = new EnvironmentSetupHelper();
@@ -53,22 +48,23 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            ContainerRegistryClient = GetContainerRegistryManagementClient(context);
-            StorageClient = GetStorageManagementClient(context);
-            ResourceClient = GetResourceManagementClient(context);
-            helper.SetupManagementClients(ContainerRegistryClient, StorageClient, ResourceClient);
+            helper.SetupManagementClients(
+                context.GetServiceClient<ContainerRegistryManagementClient>(TestEnvironmentFactory.GetTestEnvironment()),
+                context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment()),
+                context.GetServiceClient<InternalResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment()));
         }
 
-        public void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
-            d.Add("Microsoft.Compute", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
@@ -83,9 +79,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
+                    "AzureRM.Resources.ps1",
                     "ScenarioTests\\Common.ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.ContainerRegistry.psd1"));
 
                 if (scripts != null)
@@ -93,21 +89,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
                     helper.RunPowerShellTest(scripts);
                 }
             }
-        }
-
-        private ContainerRegistryManagementClient GetContainerRegistryManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<ContainerRegistryManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private StorageManagementClient GetStorageManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private ResourceManagementClient GetResourceManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

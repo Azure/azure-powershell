@@ -12,22 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using Microsoft.Rest.Azure.OData;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.ContainerRegistry.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Rest.Azure.OData;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    public class ResourceManagerClient : ResourceManagerSdkClient
+    public class ResourceManagerClient
     {
-        public ResourceManagerClient(IAzureContext context) : base(context)
+        private ResourceManagementClient _client;
+
+        public Action<string> VerboseLogger { get; set; }
+        public Action<string> ErrorLogger { get; set; }
+        public Action<string> WarningLogger { get; set; }
+
+        public ResourceManagerClient(IAzureContext context)
         {
+            _client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         public DeploymentExtended CreateClassicRegistry(
@@ -37,7 +44,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             bool? adminUserEnabled,
             IDictionary<string, string> tags = null)
         {
-            string template = null;
             var storageAccountName = registryName.ToLowerInvariant();
             if (storageAccountName.Length > 18)
             {
@@ -45,34 +51,30 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             }
             storageAccountName += DateTime.UtcNow.ToString("hhmmss");
 
-            template = DeploymentTemplateHelper.DeploymentTemplateNewStorage(
-                registryName, location, SkuName.Classic, storageAccountName, adminUserEnabled);
-
-
             var deploymentName = $"ContainerRegistry_{registryName}";
             Deployment deployment = new Deployment()
             {
                 Properties = new DeploymentProperties()
                 {
-                    Template = template,
+                    Template = DeploymentTemplateHelper.DeploymentTemplateNewStorage(
+                        registryName, location, SkuName.Classic, storageAccountName, adminUserEnabled),
                     Mode = DeploymentMode.Incremental
                 }
             };
 
-            ResourceManagementClient.Deployments.BeginCreateOrUpdate(resourceGroupName, deploymentName, deployment);
-            return ProvisionDeploymentStatus(resourceGroupName, deploymentName, deployment);
+            return _client.Deployments.CreateOrUpdate(resourceGroupName, deploymentName, deployment);
         }
 
         public string GetStorageAccountId(string storageAccountName)
         {
             var filterExpression = $"ResourceType eq 'Microsoft.Storage/storageAccounts' AND name eq '{storageAccountName}'";
             var odataQuery = new ODataQuery<GenericResourceFilter>() { Filter = filterExpression };
-            var result = ResourceManagementClient.Resources.List(odataQuery);
+            var result = _client.Resources.List(odataQuery);
 
             var resource = result.FirstOrDefault();
             while (resource == null && result.NextPageLink != null)
             {
-                result = ResourceManagementClient.Resources.ListNext(result.NextPageLink);
+                result = _client.Resources.ListNext(result.NextPageLink);
                 resource = result.FirstOrDefault();
             }
 
@@ -86,7 +88,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public string GetResourceGroupLocation(string resourceGroupName)
         {
-            var resourceGroup = ResourceManagementClient.ResourceGroups.Get(resourceGroupName);
+            var resourceGroup = _client.ResourceGroups.Get(resourceGroupName);
             return resourceGroup.Location;
         }
     }

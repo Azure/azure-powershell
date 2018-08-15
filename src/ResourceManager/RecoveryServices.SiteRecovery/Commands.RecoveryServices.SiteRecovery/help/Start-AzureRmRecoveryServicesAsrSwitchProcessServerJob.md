@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/start-azurermrecoveryservicesasrswitchprocessserverjob
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob
 
 ## SYNOPSIS
-Switch replication from one Process server to another.
+Switch replication from one Process server to another for load balancing.
 
 ## SYNTAX
 
@@ -40,26 +40,11 @@ Job to track switching process server for passed replication protected item from
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,10 +56,10 @@ Accept wildcard characters: False
 ```
 
 ### -Fabric
-ASR fabric corresponding to the Configuration Server.
+Site recovery fabric corresponding to the Configuration Server.
 
 ```yaml
-Type: ASRFabric
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
 Parameter Sets: (All)
 Aliases: ConfigServer
 
@@ -89,7 +74,7 @@ Accept wildcard characters: False
 List of replication protected item whose process server to be switched.
 
 ```yaml
-Type: ASRReplicationProtectedItem[]
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem[]
 Parameter Sets: (All)
 Aliases: ReplicatedItem
 
@@ -104,9 +89,9 @@ Accept wildcard characters: False
 The Process server to switch replication out from.
 
 ```yaml
-Type: ASRProcessServer
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProcessServer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -119,11 +104,26 @@ Accept wildcard characters: False
 The Process server to switch replication to.
 
 ```yaml
-Type: ASRProcessServer
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProcessServer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -135,7 +135,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -160,4 +160,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

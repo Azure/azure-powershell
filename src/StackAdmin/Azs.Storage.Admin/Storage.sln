@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azs.Storage.Admin", "Module/Azs.Storage.Admin.csproj", "{94678CB3-8F0B-44D6-8B65-39B4AE43568F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azs.Fabrc.Admin.Tests", "Tests/Azs.Storage.Admin.Tests.csproj", "{88DCE80E-D019-460F-B4AD-B332E8700B96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{060D6F31-AF9F-459B-A01B-F7B18726A72D}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94678CB3-8F0B-44D6-8B65-39B4AE43568F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94678CB3-8F0B-44D6-8B65-39B4AE43568F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94678CB3-8F0B-44D6-8B65-39B4AE43568F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94678CB3-8F0B-44D6-8B65-39B4AE43568F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88DCE80E-D019-460F-B4AD-B332E8700B96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88DCE80E-D019-460F-B4AD-B332E8700B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88DCE80E-D019-460F-B4AD-B332E8700B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88DCE80E-D019-460F-B4AD-B332E8700B96}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

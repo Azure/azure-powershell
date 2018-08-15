@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,18 +23,15 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery Protection Conatiner Mapping
+    ///     Gets Azure Site Recovery Protection Container mappings.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrProtectionContainerMapping",
-        DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrProtectionContainerMapping",DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRProtectionContainerMapping")]
-    [OutputType(typeof(IEnumerable<ASRProtectionContainerMapping>))]
+    [OutputType(typeof(ASRProtectionContainerMapping))]
     public class GetAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Protection Conatiner Mapping
+        ///     Gets or sets the name of the protection container mapping to get.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObjectWithName,
@@ -43,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets Protection Container Object.
+        ///     Gets or sets protection container to look for.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObject,

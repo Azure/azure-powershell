@@ -40,6 +40,19 @@
 
 ## Current Breaking Changes
 
+### Release 6.0.0 - May 2018
+
+The following cmdlets were affected this release:
+
+**New-AzureRmApiManagement**
+- The parameter alias `Tags` is being removed
+
+**New-AzureRmApiManagementProperty**
+- The parameter alias `Tags` is being removed
+
+**Set-AzureRmApiManagementProperty**
+- The parameter alias `Tags` is being removed
+
 ### Release 5.0.0 - November 2017
 
 The following cmdlets were affected this release:

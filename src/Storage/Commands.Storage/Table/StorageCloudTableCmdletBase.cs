@@ -61,11 +61,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table
             {
                 TableQuery<DynamicTableEntity> projectionQuery = new TableQuery<DynamicTableEntity>().Select(new string[] { "PartitionKey" });
                 projectionQuery.TakeCount = 1;
-                IEnumerator<DynamicTableEntity> result = table.ExecuteQuery(projectionQuery).GetEnumerator();
-                if (result.MoveNext() && result.Current != null)
-                    return false;
-                else
-                    return true;
+                //https://ahmet.im/blog/azure-listblobssegmentedasync-listcontainerssegmentedasync-how-to/
+                TableContinuationToken continuationToken = null;
+                var results = new List<DynamicTableEntity>();
+                do
+                {
+                    var response = table.ExecuteQuerySegmentedAsync(projectionQuery, continuationToken).Result;
+                    continuationToken = response.ContinuationToken;
+                    results.AddRange(response.Results);
+                } while (continuationToken != null);
+                using (IEnumerator<DynamicTableEntity> result = results.GetEnumerator())
+                {
+                    return !(result.MoveNext() && result.Current != null);
+                }
             }
             catch (Exception)
             {

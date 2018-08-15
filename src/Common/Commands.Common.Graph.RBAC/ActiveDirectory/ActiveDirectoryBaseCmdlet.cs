@@ -74,11 +74,11 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                 throw exception;
             }
         }
-        
+
 
         private Exception ParseResponse(GraphErrorException graphEx) {
             int exceptionMessageIndex = graphEx.Response.Content.IndexOf("\"value\":", StringComparison.CurrentCultureIgnoreCase);
-            if (exceptionMessageIndex > 0) 
+            if (exceptionMessageIndex > 0)
             {
                 string substring = graphEx.Response.Content.Substring(exceptionMessageIndex+9);
                 // the start index is added 9, so as to remove the delimiter \"value\":\

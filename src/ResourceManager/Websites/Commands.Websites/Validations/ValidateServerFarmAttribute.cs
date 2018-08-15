@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
     {
         protected override void Validate(object arguments, EngineIntrinsics engineIntrinsics)
         {
-            var serverFarm = arguments as ServerFarmWithRichSku;
+            var serverFarm = arguments as AppServicePlan;
             if (serverFarm == null)
             {
                 throw new ValidationMetadataException("Argument 'ServerFarm' must be of type Microsoft.Azure.Management.WebSites.Models.ServerFarmWithRichSku");
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
                 throw new ValidationMetadataException("Argument 'ServerFarm.SKU.Name' must conform to format first letter of sku name and numerical value of worker size. Worker Size [Small = 1, Medium = 2, Large = 3, ExtraLarge = 4] For instance, F1 means free small workers, P3 means premium large workers. ");
             }
 
-            const string tierPattern = "^(Free|Shared|Basic|Standard|Premium)$";
+            const string tierPattern = "^(Free|Shared|Basic|Standard|Premium|Isolated)$";
             if (!Regex.IsMatch(sku.Tier, tierPattern, RegexOptions.IgnoreCase))
             {
                 throw new ValidationMetadataException("Argument 'ServerFarm.SKU.Tier' must be one of Free|Shared|Basic|Standard|Premium");
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
             var firstLetter = string.Equals("Shared", sku.Tier, StringComparison.OrdinalIgnoreCase) ? 'D' : sku.Tier[0];
             if (char.ToUpperInvariant(firstLetter) != char.ToUpperInvariant(sku.Name[0]))
             {
-                throw new ValidationMetadataException(string.Format("Arguments 'ServerFarm.SKU.Name' and 'ServerFarm.SKU.Tier' must point to the same tier. [F = Free, D = Shared, B = Basic, S = Standard, P = Premium]. Current values: SKU.Name = {0}, SKU.Tier = {1}", sku.Name, sku.Tier));
+                throw new ValidationMetadataException(string.Format("Arguments 'ServerFarm.SKU.Name' and 'ServerFarm.SKU.Tier' must point to the same tier. [F = Free, D = Shared, B = Basic, S = Standard, P = Premium, I=Isolated]. Current values: SKU.Name = {0}, SKU.Tier = {1}", sku.Name, sku.Tier));
             }
         }
 

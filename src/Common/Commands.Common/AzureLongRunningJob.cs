@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Commands.Common
     /// <typeparam name="T">The type of the cmdlet being executed</typeparam>
     public class AzureLongRunningJob<T> : AzureLongRunningJob, ICommandRuntime where T : AzurePSCmdlet
     {
+        const int MaxRecords = 1000;
         string _status = "Running";
         T _cmdlet;
         ICommandRuntime _runtime;
@@ -443,7 +444,7 @@ namespace Microsoft.Azure.Commands.Common
         // Members for implementing command runtime for this job
         public PSTransactionContext CurrentPSTransaction
         {
-            get
+           get
             {
                 return _runtime.CurrentPSTransaction;
             }
@@ -458,6 +459,18 @@ namespace Microsoft.Azure.Commands.Common
             {
                 return _runtime.Host;
             }
+        }
+
+        /// <summary>
+        /// Determine if Ambient transaction is available
+        /// </summary>
+        /// <returns>True if an ambient transaction is available, otherwise false</returns>
+        public bool TransactionAvailable()
+        {
+            ThrowIfJobFailedOrCancelled();
+            Exception thrownException;
+            return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.TransactionAvailable(),
+                ShouldMethodType.HasTransaction, out thrownException);
         }
 
         /// <summary>
@@ -653,25 +666,13 @@ namespace Microsoft.Azure.Commands.Common
         }
 
         /// <summary>
-        /// Determine if an ambient transaction is available
-        /// </summary>
-        /// <returns>True if an ambient transaction is available, otherwise false</returns>
-        public bool TransactionAvailable()
-        {
-            ThrowIfJobFailedOrCancelled();
-            Exception thrownException;
-            return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.TransactionAvailable(),
-                ShouldMethodType.HasTransaction, out thrownException);
-        }
-
-        /// <summary>
         /// Write details about a command
         /// </summary>
         /// <param name="text">The text to write</param>
         public void WriteCommandDetail(string text)
         {
             ThrowIfJobFailedOrCancelled();
-            if (Verbose.IsOpen)
+            if (Verbose.IsOpen && Verbose.Count < MaxRecords)
             {
                 Verbose.Add(new VerboseRecord(text));
             }
@@ -684,7 +685,7 @@ namespace Microsoft.Azure.Commands.Common
         public void WriteDebug(string text)
         {
             ThrowIfJobFailedOrCancelled();
-            if (Debug.IsOpen)
+            if (Debug.IsOpen && Debug.Count < MaxRecords)
             {
                 Debug.Add(new DebugRecord(text));
             }
@@ -745,7 +746,7 @@ namespace Microsoft.Azure.Commands.Common
         public void WriteProgress(ProgressRecord progressRecord)
         {
             ThrowIfJobFailedOrCancelled();
-            if (Progress.IsOpen)
+            if (Progress.IsOpen && Progress.Count < MaxRecords)
             {
                 Progress.Add(progressRecord);
             }
@@ -769,7 +770,7 @@ namespace Microsoft.Azure.Commands.Common
         public void WriteVerbose(string text)
         {
             ThrowIfJobFailedOrCancelled();
-            if (Verbose.IsOpen)
+            if (Verbose.IsOpen && Verbose.Count < MaxRecords)
             {
                 Verbose.Add(new VerboseRecord(text));
             }

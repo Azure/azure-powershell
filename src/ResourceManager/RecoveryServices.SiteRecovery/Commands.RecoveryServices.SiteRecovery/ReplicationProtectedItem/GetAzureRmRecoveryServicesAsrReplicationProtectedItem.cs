@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,16 +25,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure Site Protected Item.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrReplicationProtectedItem",
-        DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrReplicationProtectedItem",DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRReplicationProtectedItem")]
-    [OutputType(typeof(IEnumerable<ASRReplicationProtectedItem>))]
+    [OutputType(typeof(ASRReplicationProtectedItem))]
     public class GetAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Replicated Protected Item.
+        ///     Gets or sets the name of the replication protected item to get.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObjectWithName,
@@ -43,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets friendly name of the Protection Entity.
+        ///     Gets or sets the friendly name of the replication protected item to get.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
@@ -52,7 +49,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string FriendlyName { get; set; }
 
         /// <summary>
-        ///     Gets or sets Protection Container Object.
+        ///     Gets or sets the ASR protection container object of the ASR protection container corresponding
+        ///     to the replication protected item. 
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObject,
@@ -70,7 +68,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRProtectionContainer ProtectionContainer { get; set; }
 
         /// <summary>
-        ///     Gets or sets Protectable Item.
+        ///     Gets or sets an ASR protectable item object. The cmdlet gets the ASR replication protected item corresponding 
+        ///     to the specified ASR protectable item if the item is protected.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByProtectableItemObject,

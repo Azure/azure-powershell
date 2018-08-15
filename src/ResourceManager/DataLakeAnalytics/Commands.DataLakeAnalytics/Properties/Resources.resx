@@ -279,4 +279,28 @@
   <data name="ScriptParameterValueIsNull" xml:space="preserve">
     <value>The script parameter value for '{0}' is null.</value>
   </data>
+  <data name="SetDataLakeCatalogAclEntry" xml:space="preserve">
+    <value>Setting Data Lake Analytics catalog ACL entry for '{0}' ... </value>
+  </data>
+  <data name="RemoveDataLakeAnalyticsCatalogAcl" xml:space="preserve">
+    <value>Removing Data Lake Analytics catalog ACL for '{0}' ...</value>
+  </data>
+  <data name="RemoveDataLakeAnalyticsCatalogItemAcl" xml:space="preserve">
+    <value>Removing Data Lake Analytics catalog ACL at path: '{0}' ...</value>
+  </data>
+  <data name="RemovingDataLakeAnalyticsCatalogAcl" xml:space="preserve">
+    <value>Are you sure you want to remove Data Lake Analytics catalog ACL for '{0}'?</value>
+  </data>
+  <data name="SetDataLakeCatalogItemAclEntry" xml:space="preserve">
+    <value>Setting Data Lake Analytics catalog item ACL entry at path: '{0}'  ...</value>
+  </data>
+  <data name="MissingCatalogPathForAclOperation" xml:space="preserve">
+    <value>Invalid empty catalog path. A catalog path is required when listing or updating ACLs for catalog item.</value>
+  </data>
+  <data name="MissingPrincipalId" xml:space="preserve">
+    <value>-ObjectId must be specified when updating or removing ACLs.</value>
+  </data>
+  <data name="PrincipalNotFound" xml:space="preserve">
+    <value>Cannot find principal using the specified object id</value>
+  </data>
 </root>

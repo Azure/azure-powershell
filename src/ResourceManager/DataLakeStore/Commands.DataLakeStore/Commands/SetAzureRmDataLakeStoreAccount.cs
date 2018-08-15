@@ -20,10 +20,11 @@ using Microsoft.Azure.Management.DataLake.Store.Models;
 using System;
 using System.Collections;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreAccount"), OutputType(typeof(PSDataLakeStoreAccount))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreAccount"), OutputType(typeof(PSDataLakeStoreAccount))]
     [Alias("Set-AdlStore")]
     public class SetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "A string,string dictionary of tags associated with this account that should replace the current set of tags"
             )]
         [ValidateNotNull]
-        [Obsolete("Set-AzureRmDataLakeStoreAccount: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [CmdletParameterBreakingChange("Tags", ReplaceMentCmdletParameterName = "Tag", ChangeDescription = "Please start using the -Tag parameter to avoid breaking scripts.")]
         [Alias("Tags")]
         public Hashtable Tag { get; set; }
 

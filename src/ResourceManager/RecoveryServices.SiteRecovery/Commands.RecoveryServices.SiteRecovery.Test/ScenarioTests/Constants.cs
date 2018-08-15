@@ -18,5 +18,8 @@ namespace RecoveryServices.SiteRecovery.Test
     {
         public const string Default = "Default";
         public const string NewModel = "NewModel";
+        public const string A2AV1VmEndToEnd = "A2AV1VmEndToEnd";
+        public const string A2AV2VmEndToEndWithAVSet = "A2AV2VmEndToEndWithAvaiabiltySet";
+        public const string A2AV2RecoveryPlanEndToEnd = "A2AV2RecoveryPlanEndToEnd";
     }
 }

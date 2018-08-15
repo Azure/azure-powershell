@@ -20,10 +20,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// <summary>
     /// New-AzureKeyVaultCertificateAdministratorDetails creates an in-memory administrator details object
     /// </summary>
-    [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificateAdministratorDetails,
-        SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificateAdministratorDetails))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateAdministratorDetails",SupportsShouldProcess = true)]
+    [OutputType(typeof(PSKeyVaultCertificateAdministratorDetails))]
     public class NewAzureKeyVaultCertificateAdministratorDetails : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -32,6 +30,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// FirstName
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true,
+                   Mandatory = false,
                    HelpMessage = "Specifies the first name of the administrator.")]
         public string FirstName { get; set; }
 
@@ -39,6 +38,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// LastName
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true,
+                   Mandatory = false,
                    HelpMessage = "Specifies the last name of the administrator.")]
         public string LastName { get; set; }
 
@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// EmailAddress
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true,
+                   Mandatory = false,
                    HelpMessage = "Specifies the email address of the administrator.")]
         public string EmailAddress { get; set; }
 
@@ -53,16 +54,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// PhoneNumber
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true,
+                   Mandatory = false,
                    HelpMessage = "Specifies the phone number of the administrator.")]
         public string PhoneNumber { get; set; }
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ShouldProcess(string.Empty, Properties.Resources.CreateCertificateAdministrator))
             {
-                var adminDetails = new KeyVaultCertificateAdministratorDetails
+                var adminDetails = new PSKeyVaultCertificateAdministratorDetails
                 {
                     FirstName = FirstName,
                     LastName = LastName,

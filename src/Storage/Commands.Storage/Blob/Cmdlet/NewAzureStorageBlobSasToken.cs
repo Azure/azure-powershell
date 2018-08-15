@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.New, StorageNouns.BlobSas, DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission), OutputType(typeof(String))]
+    [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobSASToken", DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission), OutputType(typeof(String))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>
@@ -209,7 +209,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private CloudBlob GetCloudBlobByName(string ContainerName, string BlobName)
         {
             CloudBlobContainer container = Channel.GetContainerReference(ContainerName);
-            //Create a block blob object in local no mattter what's the real blob type. If so, we can save the unnecessary request calls.
+            //Create a block blob object in local no matter what's the real blob type. If so, we can save the unnecessary request calls.
             return container.GetBlockBlobReference(BlobName);
         }
     }

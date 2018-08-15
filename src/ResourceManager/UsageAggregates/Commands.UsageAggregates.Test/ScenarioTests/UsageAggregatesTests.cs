@@ -22,16 +22,19 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
 {
     public class UsageAggregatesTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public UsageAggregatesTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetUsageAggregatesWithDefaultParameters()
         {
-            UsageAggregatesTestController.NewInstance.RunPsTest("Test-GetUsageAggregatesWithDefaultParameters");
+            UsageAggregatesTestController.NewInstance.RunPsTest(_logger, "Test-GetUsageAggregatesWithDefaultParameters");
         }
     }
 }

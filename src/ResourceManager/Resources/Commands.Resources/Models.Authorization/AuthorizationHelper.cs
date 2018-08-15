@@ -12,6 +12,16 @@
             return string.Concat(scope.TrimEnd('/'), "/providers/Microsoft.Authorization/roleDefinitions/", Id);
         }
 
+        public static string ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(string subscriptionId, string roleId)
+        {
+            if (string.IsNullOrEmpty(subscriptionId) || string.IsNullOrEmpty(roleId))
+            {
+                return null;
+            }
+
+            return string.Concat(GetSubscriptionScope(subscriptionId).TrimEnd('/'), "/providers/Microsoft.Authorization/roleDefinitions/", roleId);
+        }
+
         public static string GetSubscriptionScope(string subscriptionId)
         {
             if (string.IsNullOrEmpty(subscriptionId))

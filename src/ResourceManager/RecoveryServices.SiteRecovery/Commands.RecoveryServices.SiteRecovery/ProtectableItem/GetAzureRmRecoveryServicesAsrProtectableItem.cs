@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,18 +23,15 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Protectable Item.
+    ///     Get the protectable items in an ASR protection container.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrProtectableItem",
-        DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrProtectableItem",DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRProtectableItem")]
-    [OutputType(typeof(IEnumerable<ASRProtectableItem>))]
+    [OutputType(typeof(ASRProtectableItem))]
     public class GetAzureRmRecoveryServicesAsrProtectableItem : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Protectable Item.
+        ///     Gets or sets the name of the ASR protectable item.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObjectWithName,
@@ -43,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets friendly name of the Protectable Item.
+        ///     Gets or sets the friendly name of the ASR protectable item.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
@@ -52,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string FriendlyName { get; set; }
 
         /// <summary>
-        ///     Gets or sets Server Object.
+        ///     Gets or sets the Azure Site Recovery Protection Container object.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObject,

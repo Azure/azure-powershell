@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Get an existing resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
     [Alias("Get-AzureRmResourceProviderAction")]
     public class GetAzureProviderOperationCommand : ResourcesBaseCmdlet
     {
@@ -147,6 +147,7 @@ namespace Microsoft.Azure.Commands.Resources
             psOperation.Description = operation.Description;
             psOperation.ProviderNamespace = provider;
             psOperation.ResourceName = resource ?? string.Empty;
+            psOperation.IsDataAction = operation.IsDataAction.HasValue ? operation.IsDataAction.Value : false;
 
             return psOperation;
         }

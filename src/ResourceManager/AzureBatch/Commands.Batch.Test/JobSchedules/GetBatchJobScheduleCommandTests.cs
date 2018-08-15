@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the job schedule returned from the OM to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
         }
 
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             int jobScheduleCount = 0;
             foreach (PSCloudJobSchedule j in pipeline)
             {
-                Assert.True(idsOfConstructedJobSchedules.Contains(j.Id));
+                Assert.Contains(j.Id, idsOfConstructedJobSchedules);
                 jobScheduleCount++;
             }
             Assert.Equal(idsOfConstructedJobSchedules.Length, jobScheduleCount);

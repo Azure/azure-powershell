@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,18 +17,15 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Removes Azure Site Recovery Policy.
+    ///     Deletes the specified ASR replication policy from the Recovery Services vault.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Remove,
-        "AzureRmRecoveryServicesAsrPolicy",
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrPolicy",SupportsShouldProcess = true)]
     [Alias("Remove-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Policy.
+        ///     Gets or sets replication policy object corresponding to the replication policy to be deleted.
         /// </summary>
         [Parameter(
             Mandatory = true,

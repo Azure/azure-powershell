@@ -72,11 +72,6 @@ The **Test-AzureRmResourceGroupDeployment** cmdlet determines whether an Azure r
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -ApiVersion
@@ -84,7 +79,7 @@ Specifies the API version that is supported by the resource Provider.
 You can specify a different version than the default version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +94,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -113,12 +108,11 @@ Accept wildcard characters: False
 ### -Mode
 Specifies the deployment mode.
 The acceptable values for this parameter are:
-
 - Incremental
 - Complete
 
 ```yaml
-Type: DeploymentMode
+Type: Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +127,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +142,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group to test.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +157,7 @@ Accept wildcard characters: False
 Specifies the full path of a JSON template file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTemplateFileWithNoParameters, ByTemplateFileAndParameterObject, ByTemplateFileAndParameterFile, ByTemplateFileAndParameterUri
 Aliases:
 
@@ -178,7 +172,7 @@ Accept wildcard characters: False
 Specifies the full path of a JSON file that contains the names and values of the template parameters.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTemplateFileAndParameterFile, ByTemplateUriAndParameterFile
 Aliases:
 
@@ -193,7 +187,7 @@ Accept wildcard characters: False
 Specifies a hash table of template parameter names and values.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: ByTemplateFileAndParameterObject, ByTemplateUriAndParameterObject
 Aliases:
 
@@ -208,7 +202,7 @@ Accept wildcard characters: False
 Specifies the URI of a template parameters file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTemplateFileAndParameterUri, ByTemplateUriAndParameterUri
 Aliases:
 
@@ -223,7 +217,7 @@ Accept wildcard characters: False
 Specifies the URI of a JSON template file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTemplateUriAndParameterObject, ByTemplateUriAndParameterFile, ByTemplateUriAndParameterUri, ByTemplateUriWithNoParameters
 Aliases:
 
@@ -239,9 +233,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]
+### Microsoft.Azure.Commands.ResourceManager.Models.PSResourceManagerError
 
 ## NOTES
 

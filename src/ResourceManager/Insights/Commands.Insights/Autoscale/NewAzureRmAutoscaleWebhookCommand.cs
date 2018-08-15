@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Create an WebhookNotification
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutoscaleWebhook"), OutputType(typeof(WebhookNotification))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutoscaleWebhook"), OutputType(typeof(Management.Monitor.Management.Models.WebhookNotification))]
     public class NewAzureRmAutoscaleWebhookCommand : MonitorCmdletBase
     {
         /// <summary>
@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// Gets or sets the properties dictionary of the notification
         /// </summary>
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The properties of the notification in @{Property1 = 'Value1'; ...} format")]
-        [Alias("Properties")]
         public Hashtable Property { get; set; }
 
         /// <summary>
@@ -50,10 +49,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            this.WriteIdentifiedWarning(
-                cmdletName: "New-AzureRmAutoscaleWebhook",
-                topic: "Parameter name change",
-                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             Utilities.ValidateUri(this.ServiceUri, "ServiceUri");
 
             var dictionary = this.Property == null

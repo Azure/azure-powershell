@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/set-azurermrecoveryservicesasralertsetting
@@ -69,39 +69,9 @@ Set notification for custom email address(s) and for subscription owner.
 Alert / Notification sent to emails.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Set, EmailToSubscriptionOwner, DisableEmailToSubcriptionOwner
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisableNotification
-Flag to disable all notification.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: Disable
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LocaleID
-Email language of alert /notifcation to user(supported culture codes from microsoft). 
-
-```yaml
-Type: String
-Parameter Sets: Set, EmailToSubscriptionOwner, DisableEmailToSubcriptionOwner
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -114,9 +84,69 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableEmailToSubscriptionOwner
+Switch parameter specifies enable notification to subscription owner.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DisableEmailToSubcriptionOwner
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableNotification
+Flag to disable all notification.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Disable
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableEmailSubscriptionOwner
+Switch paramter specifies enable notification to subscription owner.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: EmailToSubscriptionOwner
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LocaleID
+Email language of alert /notifcation to user(supported culture codes from microsoft). 
+
+```yaml
+Type: System.String
+Parameter Sets: Set, EmailToSubscriptionOwner, DisableEmailToSubcriptionOwner
+Aliases:
 
 Required: False
 Position: Named
@@ -129,7 +159,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -144,41 +174,11 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisableEmailToSubscriptionOwner
-Switch parameter specifies enable notification to subscription owner.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: DisableEmailToSubcriptionOwner
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableEmailSubscriptionOwner
-Switch paramter specifies enable notification to subscription owner.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: EmailToSubscriptionOwner
-Aliases: 
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,9 +194,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAlertSetting, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAlertSetting
 
 ## NOTES
 
 ## RELATED LINKS
-

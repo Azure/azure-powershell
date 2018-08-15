@@ -45,12 +45,18 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 Name = subscriptionResource.Name;
                 ForwardTo = subscriptionResource.ForwardTo;
                 ForwardDeadLetteredMessagesTo = subscriptionResource.ForwardDeadLetteredMessagesTo;
+                DeadLetteringOnFilterEvaluationExceptions = subscriptionResource.DeadLetteringOnFilterEvaluationExceptions;
+                Id = subscriptionResource.Id;       
             }
         }
 
+        /// <summary>
+        /// Subscription name.
+        /// </summary> 
+        public string Id { get; set; }
 
         /// <summary>
-        /// Queue name.
+        /// Subscription name.
         /// </summary> 
         public string Name { get; set; }
 
@@ -136,6 +142,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Gets or sets queue/Topic name to forward the Dead Letter message
         /// </summary>
         public string ForwardDeadLetteredMessagesTo { get; set; }
+
+        /// <summary>
+        /// Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
+        /// </summary>
+        public bool? DeadLetteringOnFilterEvaluationExceptions { get; set; }
 
     }
 }

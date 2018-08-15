@@ -38,21 +38,37 @@ function ConvertTo-AzureRmVhd
         [switch]$AsJob
     )
 
-    $module = Get-Module Hyper-V;
-    if ($module -ne $null -and $module.Version.ToString().CompareTo("1.1") -lt 0)
+    if ($AsJob)
     {
-        $instructions =
-@"
-This module requires Hyper-V version 1.1. Please follow the instructions below to enable Hyper-V on your Windows System:
-1) https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v
-2) https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server
-"@;
-        Write-Error $instructions -ErrorAction Stop;
+        Start-Job -ScriptBlock ${function:ExecuteCmdlet} -Argumentlist $HyperVVMName,$ExportPath,$HyperVServer,$Force;
     }
-    elseif ($module -eq $null)
+    else
     {
-        Import-Module Hyper-V -MinimumVersion 1.1 -Scope Global;
+        ExecuteCmdlet $HyperVVMName $ExportPath $HyperVServer $Force;
     }
+}
+
+function ConvertTo-AzVhd
+{
+    [CmdletBinding(SupportsShouldProcess = $true)]
+    [OutputType([System.Management.Automation.PathInfo])]
+    param
+    (
+        [Parameter(ParameterSetName = 'Hyper-V', Mandatory = $true)]
+        [string]$HyperVVMName,
+        
+        [Parameter(ParameterSetName = 'Hyper-V', Mandatory = $true)]
+        [string]$ExportPath,
+        
+        [Parameter(ParameterSetName = 'Hyper-V')]
+        [string]$HyperVServer = 'localhost',
+      
+        [Parameter(ParameterSetName = 'Hyper-V')]
+        [switch]$Force,
+        
+        [Parameter(ParameterSetName = 'Hyper-V')]
+        [switch]$AsJob
+    )
 
     if ($AsJob)
     {
@@ -158,7 +174,7 @@ function ExecuteCmdlet($HyperVVMName, $ExportPath, $HyperVServer, $Force)
         }
     }
 
-    if ($PSCmdlet.ShouldProcess($Name, "Converting a Hyper-V VM to Azure supported VHD file(s)..."))
+    if ($PSCmdlet.ShouldProcess($HyperVVMName, "Converting a Hyper-V VM to Azure supported VHD file(s)..."))
     {
         $vhdFiles = Export-DiskFiles $HyperVServer $HyperVVMName $ExportPath;
 

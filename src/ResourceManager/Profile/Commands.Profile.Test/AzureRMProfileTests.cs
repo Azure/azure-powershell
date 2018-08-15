@@ -35,6 +35,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using System.Threading.Tasks;
@@ -351,7 +352,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null);
 
             var tenantsInAccount = azureRmProfile.DefaultContext.Account.GetPropertyAsArray(AzureAccount.Property.Tenants);
-            Assert.Equal(1, tenantsInAccount.Length);
+            Assert.Single(tenantsInAccount);
             Assert.Equal(tenants.First(), tenantsInAccount[0]);
         }
 
@@ -410,7 +411,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var tenantResults = client.ListTenants();
             Assert.Equal(2, tenantResults.Count());
             tenantResults = client.ListTenants(DefaultTenant.ToString());
-            Assert.Equal(1, tenantResults.Count());
+            Assert.Single(tenantResults);
             IAzureSubscription subValue;
             Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
@@ -433,9 +434,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subResults = new List<IAzureSubscription>(client.ListSubscriptions());
             Assert.Equal(2, subResults.Count);
             var tenantResults = client.ListTenants();
-            Assert.Equal(1, tenantResults.Count());
+            Assert.Single(tenantResults);
             tenantResults = client.ListTenants(DefaultTenant.ToString());
-            Assert.Equal(1, tenantResults.Count());
+            Assert.Single(tenantResults);
             IAzureSubscription subValue;
             Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
@@ -473,8 +474,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var tenants = new List<string> { };
             var subscriptions = new List<string> { Guid.NewGuid().ToString() };
             var client = SetupTestEnvironment(tenants, subscriptions);
-            Assert.Equal(0, client.ListSubscriptions().Count());
-            Assert.Equal(0, client.ListTenants().Count());
+            Assert.Empty(client.ListSubscriptions());
+            Assert.Empty(client.ListTenants());
         }
 
         [Fact]
@@ -486,7 +487,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var client = SetupTestEnvironment(tenants, subscriptions, subscriptions,
                                                        subscriptions, subscriptions,
                                                        subscriptions, subscriptions);
-            Assert.Equal(0, client.ListSubscriptions().Count());
+            Assert.Empty(client.ListSubscriptions());
             IAzureSubscription subValue;
             Assert.False(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.False(client.TryGetSubscriptionByName(DefaultTenant.ToString(), "random-name", out subValue));
@@ -657,7 +658,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal(tenants[1], resultSubscription.TenantId);
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "ConcurrentDictionary is not marked as Serializable")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProfileSerializeDeserializeWorks()
         {
@@ -721,7 +727,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("http://insights.contoso.io/", deserializedProfile.DefaultContext.Environment.GetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId));
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Serialized property order changes from NetCore 2.1.2 -> 2.1.200")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SavingProfileWorks()
         {
@@ -820,6 +831,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
   },
   ""ExtendedProperties"": {}
 }";
+#if NETSTANDARD
+            expected = expected.Replace("AgAAAAAAAAA=", "AwAAAAAAAAA=");
+#endif
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ARMProfileFile);
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
@@ -857,6 +871,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             profile.DefaultContext.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } });
             profile.Save();
             string actual = dataStore.ReadFileAsText(path).Substring(1).TrimEnd(new[] { '\0' });
+#if NETSTANDARD
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                expected = expected.Replace("\r\n", "\n");
+            }
+#endif
             Assert.Equal(expected, actual);
         }
 
@@ -905,6 +925,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
     }
   }
 }";
+            var expectedArray = new byte[] { 2, 0, 0, 0, 0, 0, 0, 0 };
+#if NETSTANDARD
+            contents = contents.Replace("AgAAAAAAAAA=", "AwAAAAAAAAA=");
+            expectedArray = new byte[] { 3, 0, 0, 0, 0, 0, 0, 0 };
+#endif
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, AzureSession.Instance.ARMProfileFile);
             var dataStore = new MockDataStore();
             AzureSession.Instance.DataStore = dataStore;
@@ -917,7 +942,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("testCloud", profile.DefaultContext.Environment.Name);
             Assert.Equal("me@contoso.com", profile.DefaultContext.Account.Id);
             Assert.Equal(AzureAccount.AccountType.User, profile.DefaultContext.Account.Type);
-            Assert.Equal(new byte[] { 2, 0, 0, 0, 0, 0, 0, 0 }, profile.DefaultContext.TokenCache.CacheData);
+            Assert.Equal(expectedArray, profile.DefaultContext.TokenCache.CacheData);
             Assert.Equal(path, profile.ProfilePath);
         }
 

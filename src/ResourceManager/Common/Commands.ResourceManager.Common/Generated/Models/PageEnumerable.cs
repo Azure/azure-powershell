@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
 
         public virtual void Dispose(bool disposing)
         {
-            if (disposing )
+            if (disposing)
             {
                 ISubscriptionClient client = Interlocked.Exchange(ref _client, null);
-                if (client!= null)
+                if (client != null)
                 {
 #if DEBUG
                     if (!TestMockSupport.RunningMocked)

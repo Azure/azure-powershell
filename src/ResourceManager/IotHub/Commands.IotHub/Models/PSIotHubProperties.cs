@@ -80,6 +80,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         public PSRoutingProperties Routing { get; set; }
 
         /// <summary>
+        /// Gets the hub state state.
+        /// </summary>
+        [JsonProperty(PropertyName = "state")]
+        public string State { get; private set; }
+
+        /// <summary>
         /// The Capabilities/Features that need to be enabled for the Hub.
         /// Possible values include: 'None', 'DeviceManagement'
         /// </summary>

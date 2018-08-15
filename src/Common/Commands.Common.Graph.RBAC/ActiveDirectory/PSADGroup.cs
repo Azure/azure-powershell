@@ -17,5 +17,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
     public class PSADGroup : PSADObject
     {
         public bool? SecurityEnabled { get; set; }
+
+        public string MailNickname { get; set; }
     }
 }

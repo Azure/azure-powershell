@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azs.KeyVault.Admin", "Module\Azs.KeyVault.Admin.csproj", "{F07CA19C-4DD9-49B9-89EC-EE552953E126}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azs.KeyVault.Admin.Tests", "Tests\Azs.KeyVault.Admin.Tests.csproj", "{3F8DB36F-CF0B-46EB-B80F-4AFD1EDA236E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{060D6F31-AF9F-459B-A01B-F7B18726A72D}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F07CA19C-4DD9-49B9-89EC-EE552953E126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F07CA19C-4DD9-49B9-89EC-EE552953E126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F07CA19C-4DD9-49B9-89EC-EE552953E126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F07CA19C-4DD9-49B9-89EC-EE552953E126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F8DB36F-CF0B-46EB-B80F-4AFD1EDA236E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F8DB36F-CF0B-46EB-B80F-4AFD1EDA236E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F8DB36F-CF0B-46EB-B80F-4AFD1EDA236E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F8DB36F-CF0B-46EB-B80F-4AFD1EDA236E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

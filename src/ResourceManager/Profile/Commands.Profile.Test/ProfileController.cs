@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName, tenant);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             Func<string[]> scriptBuilder,
             Action cleanup,
             string callingClassType,
-            string mockName, 
+            string mockName,
             string tenant)
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
@@ -110,8 +111,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     "Common.ps1",
                     callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.RMInsightsModule);
+                    helper.RMResourceModule
+                    );
 
                 try
                 {

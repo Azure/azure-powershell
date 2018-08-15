@@ -77,9 +77,9 @@ Here 'myVnet1' in US West Central is peered with 'myVnet2' in Canada Central.
 Indicates that this cmdlet allows the forwarded traffic from the virtual machines in the remote virtual network.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -92,9 +92,9 @@ Accept wildcard characters: False
 Flag to allow gatewayLinks be used in remote virtual network's link to this virtual network
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AlloowGatewayTransit
+Aliases:
 
 Required: False
 Position: Named
@@ -107,9 +107,9 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -122,9 +122,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet blocks the virtual machines in the linked virtual network space to access all the virtual machines in local virtual network space.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -152,9 +152,9 @@ Accept wildcard characters: False
 Specifies the name of the virtual network peering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -167,9 +167,9 @@ Accept wildcard characters: False
 Specifies the ID of the remote virtual network.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -182,9 +182,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet allows remote gateways on this virtual network.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -197,9 +197,9 @@ Accept wildcard characters: False
 Specifies the parent virtual network.
 
 ```yaml
-Type: PSVirtualNetwork
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -213,11 +213,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
-Parameter 'RemoteVirtualNetworkId' accepts value of type 'String' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+Parameters: VirtualNetwork (ByValue)
 
-### PSVirtualNetwork
-Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
+### System.String
+Parameters: RemoteVirtualNetworkId (ByValue)
 
 ## OUTPUTS
 

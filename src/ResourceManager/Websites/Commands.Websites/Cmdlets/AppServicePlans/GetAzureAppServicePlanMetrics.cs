@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Management.WebSites.Models;
 using System;
 using System.Management.Automation;
 
@@ -21,7 +22,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you get Azure servce plan metrics
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAppServicePlanMetrics")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AppServicePlanMetrics")]
+    [OutputType(typeof(ResourceMetric))]
     public class GetAzureAppServicePlanMetricsCmdlet : AppServicePlanBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "Names of web app metrics")]

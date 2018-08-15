@@ -21,8 +21,9 @@ function Test-ExpressRouteBGPServiceCommunities
 	$communities = Get-AzureRmBgpServiceCommunity
 
 	Assert-NotNull $communities
-	Assert-NotNull $communities[0].BgpCommunities
-	Assert-AreEqual true $communities[0].BgpCommunities[0].IsAuthorizedToUse
+	$crmOnlineCommunity = $communities | Where-Object {$_.ServiceName -match "CRMOnline"}
+	Assert-NotNull $crmOnlineCommunity.BgpCommunities
+	Assert-AreEqual true $crmOnlineCommunity.BgpCommunities[0].IsAuthorizedToUse
 }
 
 <#
@@ -537,5 +538,61 @@ function Test-ExpressRouteCircuitAuthorizationCRUD
     # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
+
+<#
+.SYNOPSIS
+Tests ExpressRouteCircuitConnectionCRUD.
+#>
+function Test-ExpressRouteCircuitConnectionCRUD
+{
+	$circuitName = "dedharcktpeer"
+	$groupName = "dedharpspeer"
+	$peerCircuitId = "/subscriptions/99c33776-9f4e-4e58-abe8-9263db1b9c6e/resourceGroups/dedharpsinit/providers/Microsoft.Network/expressRouteCircuits/dedhar-cktinit/peerings/AzurePrivatePeering"
+	$addressPrefix = "60.0.0.0/29"
+	$authorizationKey = "aaf441cf-4409-48ee-8e2d-a39cc7e428a8"
+	$connectionName = "transit"
+
+	try
+	{
+		#Get Express Route Circuit Resource
+		$ckt = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $groupName
+		$ckt
+
+		#Create the circuit connection Resource
+		Add-AzureRmExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $ckt -PeerExpressRouteCircuitPeering $peerCircuitId -AddressPrefix $addressPrefix -AuthorizationKey $authorizationKey
+
+		#Set on Express Route Circuit
+		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+
+		#Get Express Route Circuit Resource
+		$ckt = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $groupName
+		$ckt
+
+		#Verify Circuit Connection fields
+		Assert-AreEqual "transit" $ckt.Peerings[0].Connections[0].Name
+		Assert-AreEqual "Succeeded" $ckt.Peerings[0].Connections[0].ProvisioningState
+		Assert-AreEqual "Connected" $ckt.Peerings[0].Connections[0].CircuitConnectionStatus
+
+		#Get Express Route Circuit Resource
+		$ckt = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $groupName
+
+		#Delete the circuit connection Resource
+		Remove-AzureRmExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $ckt
+
+		#Set on Express Route Circuit
+		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+
+		#Get Express Route Circuit Resource
+		$ckt = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $groupName
+		$ckt
+
+		#Verify Circuit Connection does not exist
+		Assert-AreEqual 0 $ckt.Peerings[0].Connections.Count
+	}
+	finally
+	{
+		#Cleanup
+	}
 }
 

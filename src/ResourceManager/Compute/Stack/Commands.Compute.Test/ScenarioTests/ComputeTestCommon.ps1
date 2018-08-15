@@ -12,8 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$PLACEHOLDER = "PLACEHOLDER1@"
-
 <#
 .SYNOPSIS
 Gets valid resource name for compute test
@@ -90,6 +88,24 @@ function Get-ComputeTestMode
     return $testMode;
 }
 
+# Get Storage Endpoint Suffix
+function Get-StorageEndpointSuffix
+{
+    return $env:STORAGEENDPOINTSUFFIX;
+}
+
+# Get Default Storage Endpoint Suffix
+function Get-DefaultStorageEndpointSuffix
+{
+    $storageEndpointSuffix =  Get-StorageEndpointSuffix;
+    if ($storageEndpointSuffix -eq '' -or $storageEndpointSuffix -eq $null)
+    {
+        $storageEndpointSuffix = 'local.azurestack.external';
+    }
+
+    return $storageEndpointSuffix;
+}
+
 # Get Compute Test Location
 function Get-ComputeTestLocation
 {
@@ -115,10 +131,10 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     $rgname = if ([string]::IsNullOrEmpty($rgname)) { Get-ComputeTestResourceName } else { $rgname }
     $vmname = if ([string]::IsNullOrEmpty($vmname)) { 'vm' + $rgname } else { $vmname }
     $loc = if ([string]::IsNullOrEmpty($loc)) { Get-ComputeVMLocation } else { $loc }
-    Write-Host $vmname
+	$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
     # Common
-    $g = New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+    New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
@@ -134,7 +150,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
     $pubipId = $pubip.Id;
     $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-    $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+    #$nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
     $nicId = $nic.Id;
 
     $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
@@ -143,17 +159,17 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
 
     # Storage Account (SA)
     $stoname = 'sto' + $rgname;
-    $stotype = 'Standard_GRS';
-    $sa = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+    $stotype = 'Standard_LRS';
+    New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
     Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
     $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
 
     $osDiskName = 'osDisk';
     $osDiskCaching = 'ReadWrite';
-    $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
-    $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
-    $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
-    $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
+    $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+    $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
+    $dataDiskVhdUri2 = "https://$stoname.blob.$storageEndpointSuffix/test/data2.vhd";
+    $dataDiskVhdUri3 = "https://$stoname.blob.$storageEndpointSuffix/test/data3.vhd";
 
     $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
@@ -177,11 +193,11 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
 
     # OS & Image
     $user = "Foo12";
-    $password = $PLACEHOLDER;
+    $password = 'BaR@123' + $rgname;
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
-    $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+    $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
 
     $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
 
@@ -199,7 +215,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
     # Virtual Machine
-    $v = New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+    New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
     $vm = Get-AzureRmVM -ResourceGroupName $rgname -VMName $vmname
     return $vm
@@ -294,6 +310,7 @@ Gets default VM size string
 function Get-DefaultVMSize
 {
     param([string] $location = "westus")
+	$location = Get-ComputeVMLocation;
 
     $vmSizes = Get-AzureRmVMSize -Location $location | where { $_.NumberOfCores -ge 4 -and $_.MaxDataDiskCount -ge 8 };
 
@@ -335,7 +352,7 @@ Gets default storage type string
 #>
 function Get-DefaultStorageType
 {
-    return 'Standard_GRS';
+    return 'Standard_LRS';
 }
 
 <#
@@ -344,7 +361,8 @@ Gets default CRP Image
 #>
 function Get-DefaultCRPImage
 {
-    param([string] $loc = "westus", [string] $query = '*Microsoft*Windows*Server*')
+    param([string] $loc = "westus", [string] $query = '*Microsoft*Windows*Server')
+	$loc = Get-ComputeVMLocation;
 
     $result = (Get-AzureRmVMImagePublisher -Location $loc) | select -ExpandProperty PublisherName | where { $_ -like $query };
     if ($result.Count -eq 1)
@@ -356,7 +374,7 @@ function Get-DefaultCRPImage
         $defaultPublisher = $result[0];
     }
 
-    $result = (Get-AzureRmVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*Windows*' -and -not ($_ -like '*HUB')  };
+    $result = (Get-AzureRmVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*Windows*' };
     if ($result.Count -eq 1)
     {
         $defaultOffer = $result;
@@ -408,13 +426,13 @@ function Create-ComputeVMImageObject
 # Get Default CRP Windows Image Object Offline
 function Get-DefaultCRPWindowsImageOffline
 {
-    return Create-ComputeVMImageObject 'MicrosoftWindowsServer' 'WindowsServer' '2008-R2-SP1' 'latest';
+    return Create-ComputeVMImageObject 'MicrosoftWindowsServer' 'WindowsServer' '2012-R2-Datacenter' '1.0.0';
 }
 
 # Get Default CRP Linux Image Object Offline
 function Get-DefaultCRPLinuxImageOffline
 {
-    return Create-ComputeVMImageObject 'SUSE' 'openSUSE' '13.2' 'latest';
+	return Create-ComputeVMImageObject 'Canonical' 'UbuntuServer' '14.04.3-LTS' '1.0.0';
 }
 
 <#
@@ -424,7 +442,9 @@ Gets VMM Images
 function Get-MarketplaceImage
 {
     param([string] $location = "westus", [string] $pubFilter = '*', [string] $offerFilter = '*')
-
+	$location = Get-ComputeVMLocation;
+	$pubFilter = 'MicrosoftWindowsServer'
+	$offerFilter = 'WindowsServer'
     $imgs = Get-AzureRmVMImagePublisher -Location $location | where { $_.PublisherName -like $pubFilter } | Get-AzureRmVMImageOffer | where { $_.Offer -like $offerFilter } | Get-AzureRmVMImageSku | Get-AzureRmVMImage | Get-AzureRmVMImage | where { $_.PurchasePlan -ne $null };
 
     return $imgs;
@@ -437,6 +457,7 @@ Gets default VM config object
 function Get-DefaultVMConfig
 {
     param([string] $location = "westus")
+	$location = Get-ComputeVMLocation;
 
     # VM Profile & Hardware
     $vmsize = Get-DefaultVMSize $location;
@@ -480,8 +501,9 @@ function Assert-OutputContains
 function Get-SasUri
 {
     param ([string] $storageAccount, [string] $storageKey, [string] $container, [string] $file, [TimeSpan] $duration, [Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions] $type)
+	$storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
 
-    $uri = [string]::Format("https://{0}.blob.core.windows.net/{1}/{2}", $storageAccount, $container, $file);
+    $uri = [string]::Format("https://{0}.blob.$storageEndpointSuffix/{1}/{2}", $storageAccount, $container, $file);
 
     $destUri = New-Object -TypeName System.Uri($uri);
     $cred = New-Object -TypeName Microsoft.WindowsAzure.Storage.Auth.StorageCredentials($storageAccount, $storageKey);
@@ -575,9 +597,4 @@ function Get-SubscriptionIdFromResourceGroup
       $first = $rgid.IndexOf('/', 1);
       $last = $rgid.IndexOf('/', $first + 1);
       return $rgid.Substring($first + 1, $last - $first - 1);
-}
-
-function Get-ComputeVmssLocation
-{
-      Get-ResourceProviderLocation "Microsoft.Compute/virtualMachineScaleSets"
 }

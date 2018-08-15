@@ -50,6 +50,8 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string AzureBatchCertificate = "AzureBatchCertificate";
         public const string AzureBatchCertificateDeletion = "AzureBatchCertificateDeletion";
         public const string AzureBatchNodeAgentSku = "AzureBatchNodeAgentSku";
+        public const string AzureBatchPoolNodeCounts = "AzureBatchPoolNodeCounts";
+        public const string AzureBatchComputeNodeServiceLogUpload = "AzureBatchComputeNodeServiceLogUpload";
 
         // Parameter sets
         public const string IdParameterSet = "Id";
@@ -58,5 +60,6 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string ParentObjectParameterSet = "ParentObject";
         public const string InputObjectAndPathParameterSet = "InputObject_Path";
         public const string InputObjectAndStreamParameterSet = "InputObject_Stream";
+        public const string PoolIdParameterSet = "PoolId";
     }
 }

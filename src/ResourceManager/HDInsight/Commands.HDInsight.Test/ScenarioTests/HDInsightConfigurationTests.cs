@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,16 +20,19 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 {
     public class HDInsightConfigurationTests : HDInsightScenarioTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public HDInsightConfigurationTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Test requires setting env variable, TODO remove that constraint")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConfigurationPipelining()
         {
-            NewInstance.RunPsTest("Test-ConfigurationPipelining");
+            NewInstance.RunPsTest(_logger, "Test-ConfigurationPipelining");
         }
     }
 }

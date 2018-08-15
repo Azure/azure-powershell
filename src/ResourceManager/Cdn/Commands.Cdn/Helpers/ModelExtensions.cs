@@ -17,6 +17,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Permissions;
 using Microsoft.Azure.Commands.Cdn.Models;
 using Microsoft.Azure.Commands.Cdn.Models.CustomDomain;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
@@ -38,6 +39,7 @@ using SdkOrigin = Microsoft.Azure.Management.Cdn.Models.Origin;
 using SdkCustomDomain = Microsoft.Azure.Management.Cdn.Models.CustomDomain;
 using SdkGeoFilter = Microsoft.Azure.Management.Cdn.Models.GeoFilter;
 using SdkGeoFilterAction = Microsoft.Azure.Management.Cdn.Models.GeoFilterActions;
+using SdkDeliveryPolicy = Microsoft.Azure.Management.Cdn.Models.EndpointPropertiesUpdateParametersDeliveryPolicy;
 using Microsoft.Azure.Commands.Cdn.EdgeNodes;
 
 namespace Microsoft.Azure.Commands.Cdn.Helpers
@@ -142,7 +144,9 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 QueryStringCachingBehavior = sdkEndpoint.QueryStringCachingBehavior.Value.CastEnum<SdkQueryStringCachingBehavior, PSQueryStringCachingBehavior>(),
                 Origins = sdkEndpoint.Origins.Select(o => o.ToPsDeepCreatedOrigin()).ToList(),
                 OptimizationType = sdkEndpoint.OptimizationType,
-                GeoFilters = sdkEndpoint.GeoFilters.Select(ToPsGeoFilter).ToList()
+                ProbePath = sdkEndpoint.ProbePath,
+                GeoFilters = sdkEndpoint.GeoFilters.Select(ToPsGeoFilter).ToList(),
+                DeliveryPolicy = sdkEndpoint.DeliveryPolicy?.ToPsDeliveryPolicy()
             };
         }
 
@@ -159,6 +163,78 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
             };
         }
 
+        public static PSDeliveryRuleAction ToPsDeliveryRuleAction(this DeliveryRuleAction deliveryRuleAction)
+        {
+
+            var deliveryRuleCacheExpirationAction = deliveryRuleAction as DeliveryRuleCacheExpirationAction;
+            if (deliveryRuleCacheExpirationAction !=null)
+            {
+                
+                return new PSDeliveryRuleCacheExpirationAction
+                {
+                    Parameters = new PSCacheExpirationActionParameters
+                    {
+                       CacheBehavior = deliveryRuleCacheExpirationAction.Parameters.CacheBehavior,
+                       CacheDuration = deliveryRuleCacheExpirationAction.Parameters.CacheDuration
+                    }
+                };
+            }
+            return new PSDeliveryRuleAction();
+        }
+
+        public static PSDeliveryRuleCondition ToPsDeliveryRuleCondition(this DeliveryRuleCondition deliveryRuleCondition)
+        {
+            var deliveryRuleUrlFileExtensionCondition = deliveryRuleCondition as DeliveryRuleUrlFileExtensionCondition;
+            if (deliveryRuleUrlFileExtensionCondition != null)
+            {
+                return new PSDeliveryRuleUrlFileExtensionCondition
+                {
+                    Parameters = new PSUrlFileExtensionConditionParameters
+                    {
+                        Extensions = deliveryRuleUrlFileExtensionCondition.Parameters.Extensions
+                    }
+                };
+            }
+
+            var deliveryRuleUrlPathCondition = deliveryRuleCondition as DeliveryRuleUrlPathCondition;
+            if (deliveryRuleUrlPathCondition != null)
+            {
+                return new PSDeliveryRuleUrlPathCondition
+                {
+                    Parameters = new PSUrlPathConditionParameters
+                    {
+                        MatchType = deliveryRuleUrlPathCondition.Parameters.MatchType,
+                        Path = deliveryRuleUrlPathCondition.Parameters.Path
+                    }
+                };
+            }
+            
+            return new PSDeliveryRuleCondition();
+        }
+
+        public static PSDeliveryRule ToPsDeliveryRule(this DeliveryRule deliveryRule)
+        {
+
+            return new PSDeliveryRule
+            {
+                Order = deliveryRule.Order,
+                Actions = deliveryRule.Actions.Select(action =>action.ToPsDeliveryRuleAction()).ToList(),
+                Conditions = deliveryRule.Conditions.Select(condition => condition.ToPsDeliveryRuleCondition()).ToList()
+            };
+        }
+
+        public static PSDeliveryPolicy ToPsDeliveryPolicy(this SdkDeliveryPolicy sdkDeliveryPolicy)
+        {
+            Debug.Assert(sdkDeliveryPolicy.Rules != null, "sdkDeliveryPolicy.Rules != null");
+
+            return new PSDeliveryPolicy
+            {
+                Description = sdkDeliveryPolicy.Description,
+                Rules = sdkDeliveryPolicy.Rules.Select(rule => rule.ToPsDeliveryRule()).ToList()
+            };
+        }
+
+
         public static SdkGeoFilter ToSdkGeoFilter(this PSGeoFilter psGeoFilter)
         {
             Debug.Assert(psGeoFilter.RelativePath != null, "psGeoFilter.RelativePath != null");
@@ -169,6 +245,73 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 RelativePath = psGeoFilter.RelativePath,
                 Action = (SdkGeoFilterAction)Enum.Parse(typeof(SdkGeoFilterAction), psGeoFilter.Action.ToString()),
                 CountryCodes = psGeoFilter.CountryCodes.ToList()
+            };
+        }
+
+        public static DeliveryRuleCondition ToDeliveryRuleCondition(
+            this PSDeliveryRuleCondition psDeliveryRuleCondition)
+        {
+            var psDeliveryRuleUrlFileExtensionCondition = psDeliveryRuleCondition as PSDeliveryRuleUrlFileExtensionCondition;
+            if (psDeliveryRuleUrlFileExtensionCondition != null)
+            {
+                return new DeliveryRuleUrlFileExtensionCondition
+                {
+                    Parameters = new UrlFileExtensionConditionParameters
+                    {
+                        Extensions = psDeliveryRuleUrlFileExtensionCondition.Parameters.Extensions
+                    }
+                };
+            }
+
+            var psDeliveryRuleUrlPathCondition = psDeliveryRuleCondition as PSDeliveryRuleUrlPathCondition;
+            if (psDeliveryRuleUrlPathCondition != null)
+            {
+                return new DeliveryRuleUrlPathCondition
+                {
+                    Parameters = new UrlPathConditionParameters
+                    {
+                        Path = psDeliveryRuleUrlPathCondition.Parameters.Path,
+                        MatchType = psDeliveryRuleUrlPathCondition.Parameters.MatchType
+                    }
+                };
+            }
+
+            return new DeliveryRuleCondition();
+        }
+
+        public static DeliveryRuleAction ToDeliveryRuleAction(this PSDeliveryRuleAction psDeliveryRuleAction)
+        {
+            var psDeliveryRuleCacheExpirationAction = psDeliveryRuleAction as PSDeliveryRuleCacheExpirationAction;
+            if (psDeliveryRuleCacheExpirationAction != null)
+            {
+                return new DeliveryRuleCacheExpirationAction
+                {
+                    Parameters = new CacheExpirationActionParameters
+                    {
+                        CacheBehavior = psDeliveryRuleCacheExpirationAction.Parameters.CacheBehavior,
+                        CacheDuration = psDeliveryRuleCacheExpirationAction.Parameters.CacheDuration
+                    }
+                };
+            }
+            return new DeliveryRuleAction();
+        }
+
+        public static DeliveryRule ToDeliveryRule(this PSDeliveryRule psDeliveryRule)
+        {
+            return new DeliveryRule
+            {
+                Order = psDeliveryRule.Order,
+                Actions = psDeliveryRule.Actions.Select(action => action.ToDeliveryRuleAction()).ToList(),
+                Conditions = psDeliveryRule.Conditions.Select(condition => condition.ToDeliveryRuleCondition()).ToList()
+            };
+        }
+
+        public static SdkDeliveryPolicy ToSdkDeliveryPolicy(this PSDeliveryPolicy psDeliveryPolicy)
+        {
+            return new SdkDeliveryPolicy
+            {
+                Description = psDeliveryPolicy.Description,
+                Rules = psDeliveryPolicy.Rules.Select(rule => rule.ToDeliveryRule()).ToList()
             };
         }
 
@@ -249,6 +392,18 @@ namespace Microsoft.Azure.Commands.Cdn.Helpers
                 Message = output.Message,
                 NameAvailable = output.NameAvailable.Value,
                 Reason = output.Reason
+            };
+        }
+
+        public static PSValidateProbeOutput ToPsValideProbeOutput(
+            this ValidateProbeOutput output)
+        {
+
+            return new PSValidateProbeOutput
+            {
+                Message = output.Message,
+                ErrorCode = output.ErrorCode,
+                IsValid = output.IsValid
             };
         }
 

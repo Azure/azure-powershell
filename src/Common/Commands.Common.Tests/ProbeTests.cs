@@ -13,7 +13,11 @@ namespace Commands.Common.Tests
 
         public ProbeTests()
         {
-            _pwsh = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "powershell" : "pwsh";
+#if !NETSTANDARD
+            _pwsh = "powershell";
+#else
+            _pwsh = "pwsh";
+#endif        
         }
 
         [Fact]

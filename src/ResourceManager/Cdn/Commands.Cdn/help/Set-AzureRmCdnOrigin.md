@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 ms.assetid: 0EB9F1C9-54CC-4794-9E37-108342341FE5
@@ -22,20 +22,15 @@ The **Set-AzureRmCdnOrigin** cmdlet updates an Azure Content Delivery Network (C
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnOrigin
 Specifies the origin server that this cmdlet updates.
 
 ```yaml
-Type: PSOrigin
+Type: Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -48,7 +43,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -64,8 +59,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSOrigin
-Parameter 'CdnOrigin' accepts value of type 'PSOrigin' from the pipeline
+### Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin
+Parameters: CdnOrigin (ByValue)
 
 ## OUTPUTS
 

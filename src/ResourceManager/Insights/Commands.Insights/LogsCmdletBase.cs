@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights
     /// <summary>
     /// Base class for the Azure Insights SDK EventService Cmdlets
     /// </summary>
-    public abstract class LogsCmdletBase : MonitorClientCmdletBase
+    public abstract class LogsCmdletBase : ManagementCmdletBase
     {
         private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromDays(7);
         private const int MaxNumberOfReturnedRecords = 1000;
@@ -165,10 +165,6 @@ namespace Microsoft.Azure.Commands.Insights
         {
             string queryFilter = this.ProcessGeneralParameters();
             var result = this.ProcessParticularParameters(queryFilter);
-            this.WriteIdentifiedWarning(
-                cmdletName: this.GetCmdletName(),
-                topic: "Output change", 
-                message: "The field EventChannels from the EventData object is being deprecated in the release 5.0.0 - November 2017 - since it now returns a constant value (Admin,Operation)");
             return result;
         }
 
@@ -184,7 +180,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// A predicate to filter in/out the records from original list of records obtained from the SDK.
         /// <para>This method is intended to allow descendants of this class to further filter the results.</para>
-        /// <para>An example of this is when the filtering is needed based on Category and ResourceUri at the same time. 
+        /// <para>An example of this is when the filtering is needed based on Category and ResourceUri at the same time.
         /// The SDK does not allow these two fields to be in the query filter togheter. So the call should filter by one and then use this function to filter by the second one.</para>
         /// </summary>
         /// <param name="record">A record from the original list of records obtained from the sdk</param>
@@ -202,7 +198,7 @@ namespace Microsoft.Azure.Commands.Insights
         {
             this.WriteIdentifiedWarning(
                 cmdletName: this.GetCmdletName(),
-                topic: "Parameter deprecation", 
+                topic: "Parameter deprecation",
                 message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
             WriteDebug("Processing parameters");
             string queryFilter = this.ProcessParameters();
@@ -217,7 +213,7 @@ namespace Microsoft.Azure.Commands.Insights
             // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
             WriteDebug("First call");
             var query = new ODataQuery<EventData>(queryFilter);
-            IPage<EventData> response = this.MonitorClient.ActivityLogs.ListAsync(odataQuery: query, cancellationToken: CancellationToken.None).Result;
+            IPage<EventData> response = this.MonitorManagementClient.ActivityLogs.ListAsync(odataQuery: query, cancellationToken: CancellationToken.None).Result;
             var records = new List<PSEventData>();
             var enumerator = response.GetEnumerator();
             enumerator.ExtractCollectionFromResult(fullDetails: fullDetails, records: records, keepTheRecord: this.KeepTheRecord);
@@ -227,7 +223,7 @@ namespace Microsoft.Azure.Commands.Insights
             while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < maxNumberOfRecords)
             {
                 WriteDebug("Following continuation token");
-                response = this.MonitorClient.ActivityLogs.ListNextAsync(nextPageLink: nextLink, cancellationToken: CancellationToken.None).Result;
+                response = this.MonitorManagementClient.ActivityLogs.ListNextAsync(nextPageLink: nextLink, cancellationToken: CancellationToken.None).Result;
                 enumerator = response.GetEnumerator();
                 WriteDebug(string.Format("Merging records with {0} records", records.Count));
                 enumerator.ExtractCollectionFromResult(fullDetails: fullDetails, records: records, keepTheRecord: this.KeepTheRecord);

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmRedisCacheDiagnostics", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCacheDiagnostics", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class SetAzureRedisCacheDiagnostics : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]

@@ -44,8 +44,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
-        private string storageAccountName = "myStorageAccount";
-
         public NewAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
             resourcesClientMock = new Mock<ResourceManagerSdkClient>();
@@ -63,12 +61,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreatesNewPSResourceGroupDeploymentWithUserTemplate()
         {
-            PSCreateResourceGroupDeploymentParameters expectedParameters = new PSCreateResourceGroupDeploymentParameters()
+            PSDeploymentCmdletParameters expectedParameters = new PSDeploymentCmdletParameters()
             {
                 TemplateFile = templateFile,
                 DeploymentName = deploymentName,
             };
-            PSCreateResourceGroupDeploymentParameters actualParameters = new PSCreateResourceGroupDeploymentParameters();
+            PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
             PSResourceGroupDeployment expected = new PSResourceGroupDeployment()
             {
                 Mode = DeploymentMode.Incremental,
@@ -96,9 +94,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 Timestamp = new DateTime(2014, 2, 13)
             };
             resourcesClientMock.Setup(f => f.ExecuteDeployment(
-                It.IsAny<PSCreateResourceGroupDeploymentParameters>()))
+                It.IsAny<PSDeploymentCmdletParameters>()))
                 .Returns(expected)
-                .Callback((PSCreateResourceGroupDeploymentParameters p) => { actualParameters = p; });
+                .Callback((PSDeploymentCmdletParameters p) => { actualParameters = p; });
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = expectedParameters.DeploymentName;

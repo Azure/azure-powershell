@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/new-azurermrecoveryservicesasrnetworkmapping
@@ -17,6 +17,13 @@ Creates an ASR network mapping between two networks.
 New-AzureRmRecoveryServicesAsrNetworkMapping -Name <String> -PrimaryNetwork <ASRNetwork>
  -RecoveryNetwork <ASRNetwork> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### AzureToAzure
+```
+New-AzureRmRecoveryServicesAsrNetworkMapping [-AzureToAzure] -Name <String> -PrimaryFabric <ASRFabric>
+ -PrimaryAzureNetworkId <String> -RecoveryFabric <ASRFabric> -RecoveryAzureNetworkId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### EnterpriseToAzure
@@ -38,15 +45,38 @@ PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrNetworkMapping -Name $Networ
 
 Starts the network mapping creation operation using the specified name, primary and recovery networks, and returns an ASR job to track the operation.
 
+### Example 2
+```
+PS C:\> $currentJob = New-AzureRmRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "mappingName" -PrimaryFabric $AzureFabric `
+ -PrimaryAzureNetworkId $AzureNetworkId -RecoveryFabric $RecoveryAzureFabric -RecoveryAzureNetworkId $RecoveryNetworkId
+```
+
+Starts the network mapping for creation operation using the specified name, primary and recovery networks, and returns an ASR job to track the operation(Azure to Azure scenario).
+
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -AzureToAzure
+Switch parameter specifying that the network mapping being created will be used to replicated Azure virtual machines between two Azure regions.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureToAzure
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: cf
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -59,9 +89,39 @@ Accept wildcard characters: False
 Name of the ASR network mapping to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryAzureNetworkId
+Specifies the Azure virtual network ID of the primary network for the mapping.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzure
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryFabric
+Specifes the ASR fabric where mapping should be created.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
+Parameter Sets: AzureToAzure
+Aliases:
 
 Required: True
 Position: Named
@@ -71,12 +131,12 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryNetwork
-Specifies the primary network object for the network mapping.
+Specifies the primary network object for the ASR network mapping.
 
 ```yaml
-Type: ASRNetwork
-Parameter Sets: (All)
-Aliases: 
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork
+Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
+Aliases:
 
 Required: True
 Position: Named
@@ -89,9 +149,24 @@ Accept wildcard characters: False
 Specifies the recovery azure network ID for the network mapping.
 
 ```yaml
-Type: String
-Parameter Sets: EnterpriseToAzure
-Aliases: 
+Type: System.String
+Parameter Sets: AzureToAzure, EnterpriseToAzure
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryFabric
+The Azure Site Recovery fabric object corresponding to the recovery Azure region.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
+Parameter Sets: AzureToAzure
+Aliases:
 
 Required: True
 Position: Named
@@ -101,14 +176,29 @@ Accept wildcard characters: False
 ```
 
 ### -RecoveryNetwork
-Specifies the recovery network object for the network mapping.
+Specifies the recovery network object for the ASR network mapping.
 
 ```yaml
-Type: ASRNetwork
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork
 Parameter Sets: EnterpriseToEnterprise
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,24 +209,9 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -151,6 +226,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork
+Parameters: PrimaryNetwork (ByValue)
 
 ## OUTPUTS
 

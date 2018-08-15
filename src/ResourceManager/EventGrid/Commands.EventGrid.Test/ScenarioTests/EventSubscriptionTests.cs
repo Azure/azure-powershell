@@ -23,58 +23,61 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 {
     public class EventSubscriptionTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public EventSubscriptionTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscriptionToCustomTopics()
         {
-            EventGridController.NewInstance.RunPsTest("EventSubscriptionTests_CustomTopic");
+            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscriptionToCustomTopics2()
         {
-            EventGridController.NewInstance.RunPsTest("EventSubscriptionTests_CustomTopic2");
+            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_CustomTopic2");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscriptionToAzureSubscription()
         {
-            EventGridController.NewInstance.RunPsTest("EventSubscriptionTests_Subscription");
+            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Subscription");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscriptionToAzureSubscription2()
         {
-            EventGridController.NewInstance.RunPsTest("EventSubscriptionTests_Subscription2");
+            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Subscription2");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscriptionToResourceGroup()
         {
-            EventGridController.NewInstance.RunPsTest("EventSubscriptionTests_ResourceGroup");
+            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_ResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscriptionToResourceGroup2()
         {
-            EventGridController.NewInstance.RunPsTest("EventSubscriptionTests_ResourceGroup2");
+            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_ResourceGroup2");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscriptionToResourceCRUD()
         {
-            EventGridController.NewInstance.RunPsTest("EventSubscriptionTests_Resource");
+            EventGridController.NewInstance.RunPsTest(_logger, "EventSubscriptionTests_Resource");
         }
     }
 }

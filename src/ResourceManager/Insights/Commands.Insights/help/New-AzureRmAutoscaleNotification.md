@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: B5B5F494-D912-40D0-99E2-A62FAACA3EC9
@@ -15,7 +15,7 @@ Creates an Autoscale email notification.
 
 ```
 New-AzureRmAutoscaleNotification [[-Webhook] <WebhookNotification[]>] [[-CustomEmail] <String[]>]
- [-SendEmailToSubscriptionAdministrator] [-SendEmailToSubscriptionCoAdministrator] 
+ [-SendEmailToSubscriptionAdministrator] [-SendEmailToSubscriptionCoAdministrator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -44,9 +44,9 @@ This command creates an Autosacale email notification for the subscription admin
 Specifies a comma-separated list of email addresses.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: CustomEmails
+Aliases:
 
 Required: False
 Position: 1
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,9 +74,9 @@ Accept wildcard characters: False
 Indicates that this operation sends an email notification to the subscription administrator.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -89,9 +89,9 @@ Accept wildcard characters: False
 Indicates that this operation sends an email notification to the subscription co-administrators.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: SendEmailToSubscriptionCoAdministrators
+Aliases:
 
 Required: False
 Position: Named
@@ -104,9 +104,9 @@ Accept wildcard characters: False
 Specifies a comma-separated list of Autoscale webhooks.
 
 ```yaml
-Type: WebhookNotification[]
+Type: Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification[]
 Parameter Sets: (All)
-Aliases: Webhooks
+Aliases:
 
 Required: False
 Position: 0
@@ -119,6 +119,12 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification[]
+
+### System.String[]
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

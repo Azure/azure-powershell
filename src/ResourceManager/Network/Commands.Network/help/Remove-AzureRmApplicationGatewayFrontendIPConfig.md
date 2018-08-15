@@ -30,7 +30,6 @@ PS C:\> Remove-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway $Ap
 ```
 
 The first command gets an application gateway named ApplicationGateway01 and stores it in the $AppGw variable.
-
 The second command removes the front-end IP configuration named FrontEndIP02 from the application gateway stored in $AppGw.
 
 ## PARAMETERS
@@ -39,9 +38,9 @@ The second command removes the front-end IP configuration named FrontEndIP02 fro
 Specifies an application gateway from which to remove a front-end IP configuration.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -54,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,9 +68,9 @@ Accept wildcard characters: False
 Specifies the name of a front-end IP configuration to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -85,7 +84,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

@@ -127,7 +127,7 @@ function Test-SearchSetAndRemoveSavedSearches
 	$newCount = $count + 1
 	$tags = @{"Group" = "Computer"}
 
-	New-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Tags $tags -Version $version -Force
+	New-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Tag $tags -Version $version -Force
 	
 	# Check that the search was saved
 	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
@@ -144,7 +144,7 @@ function Test-SearchSetAndRemoveSavedSearches
 	#Set saved search cmdlet has issue with Etag. Temporarily comment out the call until it's fixed.
 	# Test updating the search
 	$query = "* | distinct Computer"
-	Set-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Tags $tags -Version $version -ETag $etag
+	Set-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -DisplayName $displayName -Category $category -Query $query -Tag $tags -Version $version -ETag $etag
 	
 	# Check that the search was updated
 	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname

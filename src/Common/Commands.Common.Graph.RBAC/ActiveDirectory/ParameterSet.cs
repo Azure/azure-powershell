@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string UPN = "UPNParameterSet";
 
+        public const string UPNOrObjectId = "UPNOrObjectIdParameterSet";
+
         public const string SPN = "SPNParameterSet";
 
         public const string SignInName = "SignInNameParameterSet";
@@ -27,6 +29,10 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         public const string SearchString = "SearchStringParameterSet";
 
         public const string ObjectId = "ObjectIdParameterSet";
+
+        public const string GroupObject = "GroupObjectParameterSet";
+
+        public const string ServicePrincipalObject = "ServicePrincipalObjectParameterSet";
 
         public const string Scope = "ScopeParameterSet";
 
@@ -62,17 +68,39 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string ApplicationWithKeyCredential = "ApplicationWithKeyCredentialParameterSet";
 
+        public const string ApplicationObjectWithoutCredential = "ApplicationObjectWithoutCredentialParameterSet";
+
+        public const string ApplicationObjectWithPasswordPlain = "ApplicationObjectWithPasswordPlainParameterSet";
+
+        public const string ApplicationObjectWithPasswordCredential = "ApplicationObjectWithPasswordCredentialParameterSet";
+
+        public const string ApplicationObjectWithKeyPlain = "ApplicationObjectWithKeyPlainParameterSet";
+
+        public const string ApplicationObjectWithKeyCredential = "ApplicationObjectWithKeyCredentialParameterSet";
+
         public const string ApplicationObjectIdWithPassword = "ApplicationObjectIdWithPasswordParameterSet";
 
         public const string ApplicationObjectIdWithCertValue = "ApplicationObjectIdWithCertValueParameterSet";
+
+        public const string ApplicationObjectWithPassword = "ApplicationObjectWithPasswordParameterSet";
+
+        public const string ApplicationObjectWithCertValue = "ApplicationObjectWithCertValueParameterSet";
 
         public const string ApplicationIdWithPassword = "ApplicationIdWithPasswordParameterSet";
 
         public const string ApplicationIdWithCertValue = "ApplicationIdWithCertValueParameterSet";
 
+        public const string DisplayNameWithPassword = "DisplayNameWithPasswordParameterSet";
+
+        public const string DisplayNameWithCertValue = "DisplayNameWithCertValueParameterSet";
+
         public const string Empty = "EmptyParameterSet";
 
         public const string InputFile = "InputFileParameterSet";
+
+        public const string InputObject = "InputObjectParameterSet";
+
+        public const string InputObjectWithUpdateParams = "InputObjectWithUpdateParamsParameterSet";
 
         public const string RoleDefinition = "RoleDefinitionParameterSet";
 
@@ -85,6 +113,10 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         public const string RoleDefinitionCustom = "RoleDefinitionCustomParameterSet";
 
         public const string ApplicationObjectId = "ApplicationObjectIdParameterSet";
+
+        public const string ApplicationObject = "ApplicationObjectParameterSet";
+
+        public const string ApplicationObjectWithKeyId = "ApplicationObjectWithKeyIdParameterSet";
 
         public const string ApplicationId = "ApplicationIdParameterSet";
 
@@ -108,6 +140,12 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string SPNWithPassword = "SPNWithPasswordParameterSet";
 
+        public const string ServicePrincipalObjectWithCertValue = "ServicePrincipalObjectWithCertValueParameterSet";
+
+        public const string ServicePrincipalObjectWithPassword = "ServicePrincipalObjectWithPasswordParameterSet";
+
+        public const string DisplayNameWithKeyId = "DisplayNameWithKeyIdParameterSet";
+
         public const string ObjectIdWithKeyId = "ObjectIdWithKeyIdParameterSet";
 
         public const string ObjectIdWithAll = "ObjectIdWithAllParameterSet";
@@ -116,9 +154,13 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string SPNWithAll = "SPNWithAllParameterSet";
 
+        public const string SPNObject = "SPNObjectParameterSet";
+
         public const string ApplicationObjectIdWithUpdateParams = "ApplicationObjectIdWithUpdateParamsParameterSet";
 
         public const string ApplicationIdWithUpdateParams = "ApplicationIdWithUpdateParamsParameterSet";
+
+        public const string DisplayName = "DisplayNameParameterSet";
 
         public const string DisplayNameWithoutCredential = "DisplayNameWithoutCredentialParameterSet";
 
@@ -132,8 +174,26 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string SpObjectIdWithDisplayName = "SpObjectIdWithDisplayNameParameterSet";
 
+        public const string SpApplicationIdWithDisplayName = "SpApplicationIdWithDisplayNameParameterSet";
+
+        public const string InputObjectWithDisplayName = "InputObjectWithDisplayNameParameterSet";
+
         public const string SPNWithDisplayName = "SPNWithDisplayNameParameterSet";
 
 		public const string RoleAssignment = "RoleAssignmentParameterSet";
+
+        public const string Explicit = "ExplicitParameterSet";
+
+        public const string MemberUPNWithGroupDisplayName = "MemberUPNWithGroupDisplayNameParameterSet";
+
+        public const string MemberUPNWithGroupObjectId = "MemberUPNWithGroupObjectIdParameterSet";
+
+        public const string MemberUPNWithGroupObject = "MemberUPNWithGroupObjectParameterSet";
+
+        public const string MemberObjectIdWithGroupDisplayName = "MemberObjectIdWithGroupDisplayName";
+
+        public const string MemberObjectIdWithGroupObjectId = "MemberObjectIdWithGroupObjectId";
+
+        public const string MemberObjectIdWithGroupObject = "MemberObjectIdWithGroupObject";
 	}
 }

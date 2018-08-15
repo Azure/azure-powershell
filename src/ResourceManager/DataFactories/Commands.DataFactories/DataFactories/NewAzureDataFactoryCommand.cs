@@ -21,8 +21,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.DataFactory, SupportsShouldProcess = true), 
-        OutputType(typeof(PSDataFactory))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactory", SupportsShouldProcess = true),OutputType(typeof(PSDataFactory))]
     public class NewAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -38,8 +37,6 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags of the data factory.")]
-        [Obsolete("New-AzureRmDataFactory: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
@@ -48,7 +45,6 @@ namespace Microsoft.Azure.Commands.DataFactories
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
-#pragma warning disable CS0618
             CreatePSDataFactoryParameters parameters = new CreatePSDataFactoryParameters()
             {
                 ResourceGroupName = ResourceGroupName,
@@ -58,7 +54,6 @@ namespace Microsoft.Azure.Commands.DataFactories
                 Force = Force.IsPresent,
                 ConfirmAction = ConfirmAction
             };
-#pragma warning restore CS0618
 
             WriteObject(DataFactoryClient.CreatePSDataFactory(parameters));
         }

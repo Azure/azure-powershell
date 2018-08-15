@@ -18,6 +18,7 @@ using System.IO;
 using StaticAnalysis.CmdlineArgParsing;
 using System.Reflection;
 using System.Linq;
+using Tools.Common.Loggers;
 
 namespace StaticAnalysis
 {
@@ -28,11 +29,22 @@ namespace StaticAnalysis
     {
         static IList<IStaticAnalyzer> Analyzers = new List<IStaticAnalyzer>()
         {
-            new HelpAnalyzer.HelpAnalyzer(),
             new DependencyAnalyzer.DependencyAnalyzer(),
             new SignatureVerifier.SignatureVerifier(),
             new BreakingChangeAnalyzer.BreakingChangeAnalyzer()
         };
+
+        static IList<string> ExceptionFileNames = new List<string>()
+        {
+            "AssemblyVersionConflict.csv",
+            "BreakingChangeIssues.csv",
+            "ExtraAssemblies.csv",
+            "HelpIssues.csv",
+            "MissingAssemblies.csv",
+            "SignatureIssues.csv"
+        };
+
+        private static string ExceptionsDirectory { get; set; }
 
         public static void Main(string[] args)
         {
@@ -65,26 +77,33 @@ namespace StaticAnalysis
                     logReportsDirectoryWarning = false;
                 }
 
-                var exceptionsDirectory = Path.Combine(reportsDirectory, "Exceptions");
+                ExceptionsDirectory = Path.Combine(reportsDirectory, "Exceptions");
                 bool useExceptions = true;
                 if (args.Length > 2)
                 {
                     bool.TryParse(args[2], out useExceptions);
                 }
 
-                bool skipHelp = true;
+                ConsolidateExceptionFiles(ExceptionsDirectory);
+                analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, ExceptionsDirectory) :
+                    new AnalysisLogger(reportsDirectory);
+                bool skipHelp = false;
                 if (args.Length > 3)
                 {
                     bool.TryParse(args[3], out skipHelp);
                 }
 
-                if (skipHelp)
+                if (!skipHelp)
                 {
-                    Analyzers = Analyzers.Where((a) => !(a is HelpAnalyzer.HelpAnalyzer)).ToList();
+                    Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
                 }
-                
-                analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, exceptionsDirectory) :
-                    new AnalysisLogger(reportsDirectory);
+
+                var modulesToAnalyze = new List<string>();
+                if (args.Length > 4)
+                {
+                    modulesToAnalyze = args[4].Split(';').ToList();
+                }
+
                 if (logReportsDirectoryWarning)
                 {
                     analysisLogger.WriteWarning("No logger specified in the second parameter, writing reports to {0}",
@@ -95,7 +114,7 @@ namespace StaticAnalysis
                 {
                     analyzer.Logger = analysisLogger;
                     analysisLogger.WriteMessage("Executing analyzer: {0}", analyzer.Name);
-                    analyzer.Analyze(directories);
+                    analyzer.Analyze(directories, modulesToAnalyze);
                     analysisLogger.WriteMessage("Processing complete for analyzer: {0}", analyzer.Name);
                 }
 
@@ -106,6 +125,50 @@ namespace StaticAnalysis
             {
                 analysisLogger.WriteError(ex.ToString());
                 throw ex;
+            }
+            finally
+            {
+                foreach (var exceptionFileName in ExceptionFileNames)
+                {
+                    var exceptionFilePath = Path.Combine(ExceptionsDirectory, exceptionFileName);
+                    if (File.Exists(exceptionFilePath))
+                    {
+                        File.Delete(exceptionFilePath);
+                    }
+                }
+            }
+        }
+
+        private static void ConsolidateExceptionFiles(string exceptionsDirectory)
+        {
+            foreach (var exceptionFileName in ExceptionFileNames)
+            {
+                var moduleExceptionFilePaths = Directory.EnumerateFiles(exceptionsDirectory, exceptionFileName, SearchOption.AllDirectories).ToList();
+                var exceptionFilePath = Path.Combine(exceptionsDirectory, exceptionFileName);
+                if (File.Exists(exceptionFilePath))
+                {
+                    File.Delete(exceptionFilePath);
+                }
+
+                File.Create(exceptionFilePath).Close();
+                var fileEmpty = true;
+                foreach (var moduleExceptionFilePath in moduleExceptionFilePaths)
+                {
+                    var content = File.ReadAllLines(moduleExceptionFilePath);
+                    if (content.Length > 1)
+                    {
+                        if (fileEmpty)
+                        {
+                            // Write the header
+                            File.WriteAllLines(exceptionFilePath, new string[] { content.FirstOrDefault() });
+                            fileEmpty = false;
+                        }
+
+                        // Write everything but the header
+                        content = content.Skip(1).ToArray();
+                        File.AppendAllLines(exceptionFilePath, content);
+                    }
+                }
             }
         }
     }

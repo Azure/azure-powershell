@@ -58,23 +58,22 @@ function ServiceBusSubscriptionTests
 	Assert-True {$ResulListTopic.Count -gt 0} "no Topics were found in ListTopic"
 	
 	#Create Topic
-	Write-Debug " Create new SB Topic-Subscription"
-    Write-Debug " SB Topic-Subscription Name : $subName"
-	$resltNewSub = New-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Name $subName
+	Write-Debug "Create new SB Topic-Subscription"
+    Write-Debug "SB Topic-Subscription Name : $subName"
+	$resltNewSub = New-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $nameTopic -Name $subName -DeadLetteringOnFilterEvaluationExceptions
 	Assert-AreEqual $resltNewSub.Name $subName "Subscription created earlier is not found"
 
 	# Get Created Subscritpiton Name 
-	$resultGetSub = Get-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Name $subName		
+	$resultGetSub = Get-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $nameTopic -Name $subName
     Assert-AreEqual $resultGetSub.Name $subName "Get-Subscription: Subscription created earlier is not found"
-
+	Assert-True {$resultGetSub.DeadLetteringOnFilterEvaluationExceptions} "New-subscription: DeadLetteringOnFilterEvaluationExceptions not updated "
+	
 	# Update the subscription.
-	$resultSetSub = Set-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -InputObject $resultGetSub
-		
+	$resultSetSub = Set-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -InputObject $resultGetSub		
 	Assert-AreEqual $resultSetSub.Name $resultGetSub.Name "Subscription Updated earlier is not found"
 
 	# Delete the created/Updated Subscription
 	$ResultDeleteTopic = Remove-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $ResulListTopic[0].Name -Name $resultSetSub.Name
-	Assert-True {$ResultDeleteTopic} "Topic not deleted"
 		
 	# Cleanup
 	# Delete all Created Topic

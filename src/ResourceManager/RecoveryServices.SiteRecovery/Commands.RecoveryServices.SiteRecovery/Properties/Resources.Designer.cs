@@ -224,11 +224,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please pass a valid VMM fabric with fabric network or pass only Azure fabric to check networkmapping for primary Azure fabric. .
+        /// </summary>
+        internal static string ImproperFabricWithNetwork {
+            get {
+                return ResourceManager.GetString("ImproperFabricWithNetwork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please pass a valid Hyper-V server object if you have set CreateVmIfNotFound to &apos;Yes&apos; while doing failback in hyper-V to Azure scenario. .
         /// </summary>
         internal static string ImproperServerObjectPassedForHyperVFailback {
             get {
                 return ResourceManager.GetString("ImproperServerObjectPassedForHyperVFailback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect Fabric type expected &quot;{0}&quot;  found &quot;{1}&quot;..
+        /// </summary>
+        internal static string IncorrectFabricType {
+            get {
+                return ResourceManager.GetString("IncorrectFabricType", resourceCulture);
             }
         }
         
@@ -306,6 +324,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please pass a valid PrimaryStagingAzureStorageAccountId as input for disk URI &quot;{0}&quot;..
+        /// </summary>
+        internal static string InvalidPrimaryStagingAzureStorageAccountIdDiskInput {
+            get {
+                return ResourceManager.GetString("InvalidPrimaryStagingAzureStorageAccountIdDiskInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RecoveryAzureStorageAccountId passed is null or empty..
+        /// </summary>
+        internal static string InvalidRecoveryAzureStorageAccountId {
+            get {
+                return ResourceManager.GetString("InvalidRecoveryAzureStorageAccountId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please pass a valid RecoveryAzureStorageAccountId as input for disk URI &quot;{0}&quot;..
+        /// </summary>
+        internal static string InvalidRecoveryAzureStorageAccountIdDiskInput {
+            get {
+                return ResourceManager.GetString("InvalidRecoveryAzureStorageAccountIdDiskInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replication Frequency {0} is invalid.
         /// </summary>
         internal static string InvalidReplicationFrequency {
@@ -338,6 +383,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string InvalidServerType {
             get {
                 return ResourceManager.GetString("InvalidServerType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect mapping selected as Input. Replication protected item target fabric {0} not matching protection container mapping target Fabric {1}..
+        /// </summary>
+        internal static string InvalidSwitchParamRPIAndProtectionContainerMapping {
+            get {
+                return ResourceManager.GetString("InvalidSwitchParamRPIAndProtectionContainerMapping", resourceCulture);
             }
         }
         
@@ -432,6 +486,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PrimaryStagingAzureStorageAccountId passed is null or empty..
+        /// </summary>
+        internal static string NullorEmptyPrimaryStagingAzureStorageAccountId {
+            get {
+                return ResourceManager.GetString("NullorEmptyPrimaryStagingAzureStorageAccountId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RecoveryServices client is null, please check Resource, Cloud Service information in Vault Settings.
         /// </summary>
         internal static string NullRecoveryServicesClient {
@@ -504,11 +567,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Protection container fabric type : {0} expected: {1}..
+        /// </summary>
+        internal static string ProtectionContainerFabricTypeIncorrect {
+            get {
+                return ResourceManager.GetString("ProtectionContainerFabricTypeIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Protection Container {0} is not associated with the Vault {1}.
         /// </summary>
         internal static string ProtectionContainerNotFound {
             get {
                 return ResourceManager.GetString("ProtectionContainerNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protection Container type : {0} expected: {1}.
+        /// </summary>
+        internal static string ProtectionContainerTypeIncorrect {
+            get {
+                return ResourceManager.GetString("ProtectionContainerTypeIncorrect", resourceCulture);
             }
         }
         
@@ -773,6 +854,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties {
         internal static string SubscriptionIsNotAssociatedWithTheAccount {
             get {
                 return ResourceManager.GetString("SubscriptionIsNotAssociatedWithTheAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message: For newly created vault download vault creds file and retry.
+        ///Recommended Action: Install module AzureRm.RecoveryServices if not installed. And execute below cmdlets
+        ///$path = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $Vault
+        ///Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $path.filepath.
+        /// </summary>
+        internal static string TryDownloadingVaultFile {
+            get {
+                return ResourceManager.GetString("TryDownloadingVaultFile", resourceCulture);
             }
         }
         

@@ -22,47 +22,43 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery vCenter.
+    ///     Adds a vCenter server to discover protectable items from.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.New,
-        "AzureRmRecoveryServicesAsrvCenter",
-        DefaultParameterSetName = ASRParameterSets.Default,
-        SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrvCenter",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [Alias("New-ASRvCenter")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Fabric of the vCenter.
+        ///     Gets or sets fabric corresponding to the Configuration server.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRFabric Fabric { get; set; }
 
         /// <summary>
-        ///     Gets or sets friendly name of the vCenter.
+        ///     Gets or sets friendly name for the vCenter server.
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets the account id of the vCenter.
+        ///     Gets or sets user login creadential Account
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRRunAsAccount Account { get; set; }
 
         /// <summary>
-        ///     Gets or sets port number of the vCenter.
+        ///     Gets or sets the TCP port on the vCenter server to use for discovery.
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public int Port { get; set; }
 
         /// <summary>
-        ///     Gets or sets ip address or hostname of the vCenter.
+        ///     Gets or sets IPv4 address or FQDN of the vCenter server.
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]

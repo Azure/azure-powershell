@@ -30,6 +30,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -117,6 +118,18 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                     var realClientFactory = new ClientFactory();
                     var realClient = realClientFactory.CreateCustomClient<TClient>(parameters);
                     var newRealClient = realClient.WithHandler(HttpMockServer.CreateInstance());
+
+                    var initialTimeoutPropInfo = typeof(TClient).GetProperty("LongRunningOperationInitialTimeout", BindingFlags.Public | BindingFlags.Instance);
+                    if (initialTimeoutPropInfo != null && initialTimeoutPropInfo.CanWrite)
+                    {
+                        initialTimeoutPropInfo.SetValue(newRealClient, 0, null);
+                    }
+
+                    var retryTimeoutPropInfo = typeof(TClient).GetProperty("LongRunningOperationRetryTimeout", BindingFlags.Public | BindingFlags.Instance);
+                    if (retryTimeoutPropInfo != null && retryTimeoutPropInfo.CanWrite)
+                    {
+                        retryTimeoutPropInfo.SetValue(newRealClient, 0, null);
+                    }
 
                     realClient.Dispose();
                     return newRealClient;

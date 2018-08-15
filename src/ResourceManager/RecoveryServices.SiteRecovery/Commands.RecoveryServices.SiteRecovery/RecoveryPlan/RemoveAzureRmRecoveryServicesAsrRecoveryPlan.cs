@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,13 +18,9 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Remove Azure Site Recovery Recovery Plan.
+    ///     Deletes the specified ASR recovery plan from Recovery Services vault.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Remove,
-        "AzureRmRecoveryServicesAsrRecoveryPlan",
-        DefaultParameterSetName = ASRParameterSets.ByObject,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
     [Alias(
         "Remove-ASRRP",
         "Remove-ASRRecoveryPlan")]
@@ -32,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class RemoveAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Recovery Plan.
+        ///     Gets or sets the name of the recovery plan to be deleted.
         /// </summary>
         [Parameter(
             Mandatory = true,
@@ -40,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets Name of the Recovery Plan.
+        ///     Gets or sets recovery plan object corresponding to the recovery plan to be deleted.
         /// </summary>
         [Parameter(
             Mandatory = true,

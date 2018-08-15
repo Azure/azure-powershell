@@ -14,24 +14,25 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Azure.Management.EventHub;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.Azure.Management.Internal.Resources;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
     public class EventHubsController
-    {       
+    {
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
@@ -51,27 +52,29 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                 return new EventHubsController();
             }
         }
-        
+
         public EventHubsController()
         {
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
         }
-        
+
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
             Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
@@ -104,7 +107,6 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.EventHub.psd1"),
                     "AzureRM.Resources.ps1");
 
@@ -132,20 +134,20 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
+            ResourceManagementClient = GetResourceManagementClient(context);
             EventHubsManagementClient = GetEventHubsManagementClient(context);
             helper.SetupManagementClients(EventHubsManagementClient);
             helper.SetupManagementClients(ResourceManagementClient,EventHubsManagementClient);
-        }        
+        }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
             return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private EventHubManagementClient GetEventHubsManagementClient(MockContext context)
@@ -155,6 +157,6 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         private SubscriptionClient GetSubscriptionClient()
         {
             return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
-        }        
+        }
     }
 }

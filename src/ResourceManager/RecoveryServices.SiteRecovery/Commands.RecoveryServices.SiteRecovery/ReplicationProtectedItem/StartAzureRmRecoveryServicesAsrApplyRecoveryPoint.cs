@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,19 +21,15 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Used to initiate a apply recovery point operation.
+    ///    Changes a recovery point for a failed over protected item before commiting the failover operation.
     /// </summary>
-    [Cmdlet(
-        VerbsLifecycle.Start,
-        "AzureRmRecoveryServicesAsrApplyRecoveryPoint",
-        DefaultParameterSetName = ASRParameterSets.ByPEObject,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrApplyRecoveryPoint",DefaultParameterSetName = ASRParameterSets.ByPEObject,SupportsShouldProcess = true)]
     [Alias("Start-ASRApplyRecoveryPoint")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureRmRecoveryServicesAsrApplyRecoveryPoint : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Recovery Plan object.
+        ///     Gets or sets the recovery point object corresponding to the recovery point to be applied.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByPEObject,
@@ -42,7 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPoint RecoveryPoint { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Protected Item.
+        ///     Gets or sets replication protected item object.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByPEObject,
@@ -52,14 +48,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
 
         /// <summary>
-        ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
+        ///     Gets or sets data encryption primary certificate file path for failover of protected Item.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string DataEncryptionPrimaryCertFile { get; set; }
 
         /// <summary>
-        ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
+        ///     Gets or sets Data encryption secondary certificate file path for failover of protected Item.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -155,6 +151,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.Format(
                         Resources.UnsupportedReplicationProviderForApplyRecoveryPoint,
                         this.ReplicationProtectedItem.ReplicationProvider));
+            }
+            else if (Constants.A2A.Equals(this.ReplicationProtectedItem.ReplicationProvider,StringComparison.OrdinalIgnoreCase))
+            {
+                input.Properties.ProviderSpecificDetails = new A2AApplyRecoveryPointInput();
             }
 
             var response = this.RecoveryServicesClient.StartAzureSiteRecoveryApplyRecoveryPoint(

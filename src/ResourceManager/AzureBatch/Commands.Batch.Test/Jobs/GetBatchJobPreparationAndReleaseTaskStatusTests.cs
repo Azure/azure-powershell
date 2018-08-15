@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the constructed jobs to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             foreach (PSJobPreparationAndReleaseTaskExecutionInformation j in pipeline)
             {
                 Assert.Equal(poolId, j.PoolId);

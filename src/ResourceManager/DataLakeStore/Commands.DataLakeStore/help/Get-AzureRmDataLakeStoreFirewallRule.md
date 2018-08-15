@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 7D27F7B1-BAF8-4A01-8BA7-A75A4CFAE370
@@ -45,7 +45,7 @@ Returns all firewall rules in account "ContosoADL"
 The Data Lake Store account to retrieve the firewall rule from.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,9 +75,9 @@ Accept wildcard characters: False
 The name of the firewall rule to retrieve
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -90,9 +90,9 @@ Accept wildcard characters: False
 Name of resource group under which want to retrieve the specified account's specified firewall rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -106,15 +106,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
 
-### DataLakeStoreFirewallRule
-The specified firewall rule to retrieve
-
-### IList<DataLakeStoreFirewallRule>
-The list of firewall rules in the specified account.
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule
 
 ## NOTES
 
 ## RELATED LINKS
-

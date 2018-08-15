@@ -18,19 +18,15 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Used to initiate a test failover cleanup operation.
+    ///     Starts the test failover cleanup operation.
     /// </summary>
-    [Cmdlet(
-        VerbsLifecycle.Start,
-        "AzureRmRecoveryServicesAsrTestFailoverCleanupJob",
-        DefaultParameterSetName = ASRParameterSets.ByRPIObject,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrTestFailoverCleanupJob",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
     [Alias("Start-ASRTestFailoverCleanupJob")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureRmRecoveryServicesAsrTestFailoverCleanupJob : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Resource Id.
+        ///     Gets or sets resource Id of replication protected item / recovery plan for cleaningup test failover.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByResourceId,
@@ -39,7 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ResourceId { get; set; }
 
         /// <summary>
-        ///     Gets or sets Recovery Plan object.
+        ///     Gets or sets recovery plan to perform the test failover cleanup on.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPObject,
@@ -49,7 +45,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Protected Item.
+        ///     Gets or sets replication protected item to perform the test failover cleanup on.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPIObject,
@@ -59,7 +55,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
 
         /// <summary>
-        ///     Gets or sets test failover cleanup comments.
+        ///     Gets or sets user Comment for Test Failover.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = false)]
         [Parameter(ParameterSetName = ASRParameterSets.ByRPIObject, Mandatory = false)]

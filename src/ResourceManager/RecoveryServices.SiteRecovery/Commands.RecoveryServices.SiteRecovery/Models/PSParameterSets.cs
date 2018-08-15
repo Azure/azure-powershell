@@ -45,6 +45,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string ASRVault = "AzureSiteRecoveryVault";
 
         /// </summary>
+        /// Handle ASR Vault - Azure Fabric.
+        /// </summary>
+        internal const string Azure = "Azure";
+
+        /// </summary>
+        /// Handle ASR Vault - A2A Fabric.
+        /// </summary>
+        internal const string AzureToAzure = "AzureToAzure";
+
+        /// </summary>
+        /// Handle ASR Vault - A2A Fabric name.
+        /// </summary>
+        internal const string AzureToAzureWithFabricName = "AzureToAzureWithFabricName";
+
+        /// </summary>
+        /// Handle ASR Vault - A2A Fabric -AzureToAzureWithMultipleStorageAccount.
+        /// </summary>
+        internal const string AzureToAzureWithMultipleStorageAccount = "AzureToAzureWithMultipleStorageAccount";
+        
+        /// </summary>
         /// Handle ASR Vault.
         /// </summary>
         internal const string AzureToVMware = "AzureToVMware";
@@ -58,6 +78,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     When FabricId is passed to the command.
         /// </summary>
         internal const string ByFabricId = "ByFabricId";
+
+        /// <summary>
+        ///     When only Name is passed to the command.
+        /// </summary>
+        internal const string ByFabricName = "ByFabricName";
 
         /// <summary>
         ///     When only Name is passed to the command.
@@ -93,6 +118,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     When only Name is passed to the command.
         /// </summary>
         internal const string ByName = "ByName";
+
+        /// <summary>
+        ///     When only NetworkName Fabric is passed to the command.
+        /// </summary>
+        internal const string ByNetworkNameFabric = "ByNetworkNameFabric";
+
+        /// <summary>
+        ///     When only NetworkName FabricName is passed to the command.
+        /// </summary>
+        internal const string ByNetworkNameFabricName = "ByNetworkNameFabricName";
 
         /// <summary>
         ///     When only Name is passed to the command Legacy.
@@ -374,6 +409,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string EnterpriseToAzure = "EnterpriseToAzure";
 
         /// <summary>
+        ///     Mapping between Enterprise to Azure.
+        /// </summary>
+        internal const string EnterpriseToAzureByName = "EnterpriseToAzureByName";
+
+        /// <summary>
         ///     Mapping between Enterprise to Azure Legacy.
         /// </summary>
         internal const string EnterpriseToAzureLegacy = "EnterpriseToAzureLegacy";
@@ -382,6 +422,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Mapping between Enterprise to Enterprise.
         /// </summary>
         internal const string EnterpriseToEnterprise = "EnterpriseToEnterprise";
+
+        /// <summary>
+        ///     Mapping between Enterprise to Enterprise.
+        /// </summary>
+        internal const string EnterpriseToEnterpriseByName = "EnterpriseToEnterpriseByName";
 
         /// <summary>
         ///     Mapping between Enterprise to Enterprise Recovery Plan.

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmWebAppSlot")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlot"), OutputType(typeof(Site))]
     public class SetAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
@@ -89,10 +89,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable MSI on an existing azure webapp")]
+        public bool AssignIdentity { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable/disable redirecting all traffic to HTTPS on an existing azure webapp")]
+        public bool HttpsOnly { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             SiteConfig siteConfig = null;
+            Site site = null;
             string location = null;
             switch (ParameterSetName)
             {
@@ -106,7 +113,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         {
                             DefaultDocuments = parameters.Contains("DefaultDocuments") ? DefaultDocuments : null,
                             NetFrameworkVersion = parameters.Contains("NetFrameworkVersion") ? NetFrameworkVersion : null,
-                            PhpVersion = parameters.Contains("PhpVersion") ? PhpVersion : null,
+                            PhpVersion = parameters.Contains("PhpVersion") ? PhpVersion.ToLower() == "off" ? "" : PhpVersion : null,
                             RequestTracingEnabled =
                                 parameters.Contains("RequestTracingEnabled") ? (bool?)RequestTracingEnabled : null,
                             HttpLoggingEnabled = parameters.Contains("HttpLoggingEnabled") ? (bool?)HttpLoggingEnabled : null,
@@ -128,11 +135,27 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     // Update web app configuration
                     WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, AppSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
 
+                    //update reference to WebApp object after site configuration update
+                    WebApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot);
+
+                    if (parameters.Any(p => CmdletHelpers.SiteParameters.Contains(p)))
+                    {
+
+                        site = new Site
+                        {
+                            Location = location,
+                            ServerFarmId = WebApp.ServerFarmId,
+                            Identity = parameters.Contains("AssignIdentity") ? AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : new ManagedServiceIdentity("None", null, null) : WebApp.Identity,
+                            HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
+                        };
+
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, WebApp.ServerFarmId, site);
+                    }
+
                     if (parameters.Contains("AppServicePlan"))
                     {
                         WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, AppServicePlan);
                     }
-
 
                     break;
                 case ParameterSet2Name:

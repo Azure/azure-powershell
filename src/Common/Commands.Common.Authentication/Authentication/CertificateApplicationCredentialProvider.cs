@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             return await context.AcquireTokenAsync(
                 audience,
-                new ClientAssertionCertificate(clientId, certificate));
+                new Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertionCertificate(clientId, certificate));
         }
     }
 }

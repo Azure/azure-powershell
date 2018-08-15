@@ -330,4 +330,11 @@
     <value>Unexpected response status code '{0}' received for request '{{{1} {2}}} Body: {{{3}}}</value>
     <comment>{0} = response code, {1} = Http Verb; {2} = Uri; {3} = response body</comment>
   </data>
+  <data name="CacheCheck" xml:space="preserve">
+    <value>Checking Cache request {0}</value>
+    <comment>0 = requestUri</comment>
+  </data>
+  <data name="CacheHit" xml:space="preserve">
+    <value>Cache Hit</value>
+  </data>
 </root>

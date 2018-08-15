@@ -31,7 +31,6 @@ Set-AzureRmMediaService -ResourceGroupName "ResourceGroup123" -AccountName "Medi
 ```
 
 The first command creates a series of tags and stores those tags in the variable named $Tags.
-
 This second command updates the media service named MediaService001 that belongs to the resource group named ResourceGroup123 with the tags stored in $Tags variable.
 The command also uses an array of storage configuration objects stored in $StorageAccounts variable.
 
@@ -41,7 +40,7 @@ The command also uses an array of storage configuration objects stored in $Stora
 Specifies the name of the media service that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name, ResourceName
 
@@ -56,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,7 +70,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the media service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +85,7 @@ Accept wildcard characters: False
 Specifies an array of storage accounts that this cmdlet associates with the media service.
 
 ```yaml
-Type: PSStorageAccount[]
+Type: Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]
 Parameter Sets: (All)
 Aliases:
 
@@ -101,9 +100,9 @@ Accept wildcard characters: False
 The tags associated with the media account.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: Named
@@ -116,7 +115,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -132,7 +131,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -147,6 +146,12 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
+
+### System.Collections.Hashtable
+
+### Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]
 
 ## OUTPUTS
 

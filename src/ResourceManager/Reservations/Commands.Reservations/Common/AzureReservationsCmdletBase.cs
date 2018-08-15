@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +17,6 @@ namespace Microsoft.Azure.Commands.Reservations.Common
     public abstract class AzureReservationsCmdletBase : AzureRMCmdlet
     {
         private IAzureReservationAPIClient _azureReservationAPI;
-
-        private Dictionary<string, List<string>> _defaultRequestHeaders;
 
         /// <summary>
         /// Gets or sets the Reservations management client.

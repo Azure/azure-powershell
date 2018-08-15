@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void ReturnsEmptyListWhenNoResourceGroupsExist()
         {
             IList<string> resourceGroupsReturned = new List<string>();
-            Assert.Collection(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, null));
+            Assert.Empty(ResourceGroupCompleterAttribute.GetResourceGroups(resourceGroupsReturned, null));
         }
 
         [Fact]
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public void ThrowsErrorWhenResultNull()
         {
             var ex = Assert.Throws<Exception>(() => ResourceGroupCompleterAttribute.CreateResourceGroupList(null));
-            Assert.Equal(ex.Message, "Result from client.ResourceGroups is null");
+            Assert.Equal("Result from client.ResourceGroups is null", ex.Message);
         }
     }
 }

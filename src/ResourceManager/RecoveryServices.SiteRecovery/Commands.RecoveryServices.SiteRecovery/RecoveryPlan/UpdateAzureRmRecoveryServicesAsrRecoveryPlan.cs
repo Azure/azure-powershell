@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,19 +24,16 @@ using Newtonsoft.Json;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Creates Azure Site Recovery Recovery Plan object.
+    ///     Updates the contents of an Azure Site recovery plan.
     /// </summary>
-    [Cmdlet(
-        VerbsData.Update,
-        "AzureRmRecoveryServicesAsrRecoveryPlan",
-        DefaultParameterSetName = ASRParameterSets.ByRPObject,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.ByRPObject,SupportsShouldProcess = true)]
     [Alias("Update-ASRRecoveryPlan")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Recovery Plan.
+        ///     Gets or sets Name of the Recovery Plan object,
+        ///     the contents of which are used to update the recovery plan referred to by the object.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPObject,
@@ -46,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPlan InputObject { get; set; }
 
         /// <summary>
-        ///     Gets or sets RP JSON FilePath.
+        ///     Gets or sets the path of the recovery plan definition json file used to update the recovery plan.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPFile,
@@ -77,7 +74,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                 string.Format(
                                     Resources.FileNotFound,
                                     this.Path));
-
                             ;
                         }
 

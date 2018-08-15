@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -19,8 +20,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// <summary>
     /// Wire representation of MSI token
     /// </summary>
-    public class ManagedServiceTokenInfo
+    public class ManagedServiceTokenInfo : ICacheable
     {
+        public static readonly TimeSpan TimeoutThreshold = TimeSpan.FromMinutes(4);
         [JsonProperty(PropertyName ="access_token")]
         public string AccessToken { get; set; }
 
@@ -42,9 +44,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         [JsonProperty(PropertyName = "token_type")]
         public string TokenType { get; set; }
 
+        [JsonIgnore]
+        public DateTime CreationDate { get; } = DateTime.UtcNow;
+
         public override string ToString()
         {
             return $"(AccessToken: {AccessToken}, ExpiresIn: {ExpiresIn}, ExpiresOn: {ExpiresOn}, Resource:{Resource})";
+        }
+
+        public bool ShouldCache()
+        {
+            return !IsExpired();
+        }
+
+        public bool IsExpired()
+        {
+            return DateTime.UtcNow - CreationDate > (TimeSpan.FromSeconds(ExpiresIn) - TimeoutThreshold);
         }
     }
 }

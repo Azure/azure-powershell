@@ -44,7 +44,9 @@ Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourc
 Type              : Microsoft.EventHub/Namespaces/disasterrecoveryconfigs
 ProvisioningState : Accepted
 PartnerNamespace  : SampleNamespace_Secondary
+AlternateName	  :
 Role              : Primary
+PendingReplicationOperationsCount : 0
 ```
 
 Retrieves alias "SampleDRCongifName" configuration for primary namespace "SampleNamespace_Primary"
@@ -55,7 +57,7 @@ Retrieves alias "SampleDRCongifName" configuration for primary namespace "Sample
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,7 +72,7 @@ Accept wildcard characters: False
 Namespace Object
 
 ```yaml
-Type: PSNamespaceAttributes
+Type: Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes
 Parameter Sets: NamespaceInputObjectSet
 Aliases:
 
@@ -85,7 +87,7 @@ Accept wildcard characters: False
 DR Configuration Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +102,7 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GeoDRParameterSet
 Aliases:
 
@@ -115,7 +117,7 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GeoDRParameterSet
 Aliases:
 
@@ -130,7 +132,7 @@ Accept wildcard characters: False
 Namespace Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -147,11 +149,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes
+
+### Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes, Microsoft.Azure.Commands.EventHub, Version=0.5.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes
 
 ## NOTES
 

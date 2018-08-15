@@ -13,10 +13,10 @@ Creates a configurable disk object.
 ## SYNTAX
 
 ```
-New-AzureRmDiskConfig [[-SkuName] <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
- [[-DiskSizeGB] <Int32>] [[-Location] <String>] [-Zone <String[]>] [-Tag <Hashtable>]
- [-CreateOption <DiskCreateOption>] [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>]
- [-SourceUri <String>] [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
+New-AzureRmDiskConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>] [[-DiskSizeGB] <Int32>]
+ [[-Location] <String>] [-Zone <String[]>] [-Tag <Hashtable>] [-CreateOption <String>]
+ [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>] [-SourceUri <String>]
+ [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -50,10 +50,9 @@ Specifies whether this cmdlet creates a disk in the virtual machine from a platf
 creates an empty disk, or attaches an existing disk.
 
 ```yaml
-Type: DiskCreateOption
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: Empty, Attach, FromImage, Import, Copy
+Aliases:
 
 Required: False
 Position: Named
@@ -66,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -81,9 +80,9 @@ Accept wildcard characters: False
 Specifies the disk encryption key object on a disk.
 
 ```yaml
-Type: KeyVaultAndSecretReference
+Type: Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -96,9 +95,9 @@ Accept wildcard characters: False
 Specifies the size of the disk in GB.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -111,9 +110,9 @@ Accept wildcard characters: False
 Enable encryption settings.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -126,9 +125,9 @@ Accept wildcard characters: False
 Specifies the image reference on a disk.
 
 ```yaml
-Type: ImageDiskReference
+Type: Microsoft.Azure.Management.Compute.Models.ImageDiskReference
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -141,9 +140,9 @@ Accept wildcard characters: False
 Specifies the Key encryption key on a disk.
 
 ```yaml
-Type: KeyVaultAndKeyReference
+Type: Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -156,9 +155,9 @@ Accept wildcard characters: False
 Specifies a location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -171,9 +170,9 @@ Accept wildcard characters: False
 Specifies the OS type.
 
 ```yaml
-Type: OperatingSystemTypes
+Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.OperatingSystemTypes]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Windows, Linux
 
 Required: False
@@ -187,10 +186,9 @@ Accept wildcard characters: False
 Specifies the Sku name of the storage account.
 
 ```yaml
-Type: StorageAccountTypes
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountType
-Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: 0
@@ -203,9 +201,9 @@ Accept wildcard characters: False
 Specifies the  source resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -218,9 +216,9 @@ Accept wildcard characters: False
 Specifies the source Uri.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -233,9 +231,9 @@ Accept wildcard characters: False
 Specifies the storage account ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -246,13 +244,12 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -265,9 +262,9 @@ Accept wildcard characters: False
 Specifies the logical zone list for Disk.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -280,7 +277,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -295,7 +292,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -311,6 +308,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.OperatingSystemTypes, Microsoft.Azure.Management.Compute, Version=21.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+
+### System.Int32
+
+### System.String[]
+
+### System.Collections.Hashtable
+
+### Microsoft.Azure.Management.Compute.Models.ImageDiskReference
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
+
+### Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSDisk
@@ -318,4 +333,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

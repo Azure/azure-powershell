@@ -14,7 +14,7 @@
 
 using System.Net;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -71,8 +71,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of rule actions")]
         [ValidateNotNullOrEmpty]
-        [Alias("Actions")]
-        public List<RuleAction> Action { get; set; }
+        public List<Management.Monitor.Management.Models.RuleAction> Action { get; set; }
 
         #endregion
 
@@ -81,10 +80,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            this.WriteIdentifiedWarning(
-                cmdletName: this.GetCmdletName(),
-                topic: "Parameter name change", 
-                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             if (ShouldProcess(
                     target: string.Format("Create/update an alert rule: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
                     action: "Create/update an alert rule"))
@@ -98,7 +93,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 {
                     RequestId = result.RequestId,
                     StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK,
-                    AlertRule = result.Body
+                    AlertRule = new Management.Monitor.Management.Models.AlertRuleResource(result.Body)
                 };
 
                 WriteObject(response);

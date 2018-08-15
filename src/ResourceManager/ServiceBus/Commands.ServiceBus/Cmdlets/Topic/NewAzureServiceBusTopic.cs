@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
     /// <summary>
     /// 'New-AzureRmServiceBusTopic' Cmdlet creates a new ServiceBus Topic
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServicebusTopicVerb, SupportsShouldProcess = true), OutputType(typeof(PSTopicAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusTopic", SupportsShouldProcess = true), OutputType(typeof(PSTopicAttributes))]
     public class NewAzureRmServiceBusTopic : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
@@ -95,40 +95,35 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             
             topicAttributes.Name = Name;
 
-            if(EnablePartitioning != null)
-            topicAttributes.EnablePartitioning = EnablePartitioning;
-            
+            if (EnablePartitioning != null)
+            { topicAttributes.EnablePartitioning = EnablePartitioning; }            
             
             if (AutoDeleteOnIdle != null)
-                topicAttributes.AutoDeleteOnIdle = AutoDeleteOnIdle;
+            { topicAttributes.AutoDeleteOnIdle = AutoDeleteOnIdle; }
 
             if (DefaultMessageTimeToLive != null)
-                topicAttributes.DefaultMessageTimeToLive = DefaultMessageTimeToLive;
+            { topicAttributes.DefaultMessageTimeToLive = DefaultMessageTimeToLive; }
 
             if (DuplicateDetectionHistoryTimeWindow != null)
-                topicAttributes.DuplicateDetectionHistoryTimeWindow = DuplicateDetectionHistoryTimeWindow;
-
+            { topicAttributes.DuplicateDetectionHistoryTimeWindow = DuplicateDetectionHistoryTimeWindow; }
 
             if (EnableBatchedOperations != null)
-                topicAttributes.EnableBatchedOperations = EnableBatchedOperations;
-
-            
+            { topicAttributes.EnableBatchedOperations = EnableBatchedOperations; }
 
             if (EnableExpress != null)
-                topicAttributes.EnableExpress = EnableExpress;
-            
+            { topicAttributes.EnableExpress = EnableExpress; }
 
             if (MaxSizeInMegabytes != null)
-                topicAttributes.MaxSizeInMegabytes = (int?)MaxSizeInMegabytes;
+            { topicAttributes.MaxSizeInMegabytes = (int?)MaxSizeInMegabytes; }
 
             if (RequiresDuplicateDetection != null)
-                topicAttributes.RequiresDuplicateDetection = RequiresDuplicateDetection;
+            { topicAttributes.RequiresDuplicateDetection = RequiresDuplicateDetection; }
 
             if (SupportOrdering != null)
-                topicAttributes.SupportOrdering = SupportOrdering;
+            { topicAttributes.SupportOrdering = SupportOrdering; }
 
             if (SizeInBytes != null)
-                topicAttributes.SizeInBytes = SizeInBytes;
+            { topicAttributes.SizeInBytes = SizeInBytes; }
             
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateTopic, Name, Namespace)))
             {
