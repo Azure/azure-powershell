@@ -27,7 +27,7 @@ https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#get-the-cont
 ## EXAMPLES
 
 ### Example 1 Issue an export device request.
-```azurepowershell
+```
 PS C:\> New-AzureRmIotHubExportDevices -ResourceGroupName "myresourcegroup" -Name "myiothub" -ExportBlobContainerUri "https://mystorageaccount.blob.core.windows.net/mystoragecontainer?sv=2015-04-05&ss=bfqt&sr=c&srt=sco&sp=rwdl&se=2016-10-27T04:01:48Z&st=2016-10-26T20:01:48Z&spr=https&sig=QqpIhHsIMF8hNuFO%3D" -ExcludeKeys
 ```
 
