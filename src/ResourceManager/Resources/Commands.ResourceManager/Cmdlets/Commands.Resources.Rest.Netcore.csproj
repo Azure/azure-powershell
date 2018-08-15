@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
+  <Import Project="$(ProjectDir)..\..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -9,7 +9,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>$(ProjectDir)..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Resources\</OutputPath>
+    <OutputPath>$(ProjectDir)..\..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Resources\</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
