@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVpnClientRevokedCertificate"), OutputType(typeof(PSVpnClientRevokedCertificate))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnClientRevokedCertificate"), OutputType(typeof(PSVpnClientRevokedCertificate))]
     public class NewAzureVpnClientRevokedCertificateCommand : NetworkBaseCmdlet
     {
         [Parameter(

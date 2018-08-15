@@ -132,7 +132,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: ReservationOrderId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder
 Parameters: ReservationOrder (ByValue)
