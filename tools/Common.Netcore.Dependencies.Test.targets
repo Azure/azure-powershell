@@ -14,4 +14,22 @@
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.0-preview.3" IncludeAssets="All" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
+  <PropertyGroup>
+    <!-- <ScenarioTestToolsPath>$(MSBuildThisFileDirectory)..\src\packages\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.0-preview\tools\</ScenarioTestToolsPath> -->
+    <ScenarioTestToolsPath>$(MSBuildThisFileDirectory)..\src\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\</ScenarioTestToolsPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(ScenarioTestToolsPath)Assert.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(ScenarioTestToolsPath)Common.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(ScenarioTestToolsPath)AzureRM.Resources.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(ScenarioTestToolsPath)AzureRM.Storage.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
