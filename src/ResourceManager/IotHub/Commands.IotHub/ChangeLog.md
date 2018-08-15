@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
 * Fix examples for New-AzureRmIotHubExportDevices and New-AzureRmIotHubImportDevices
 
 ## Version 3.1.6
