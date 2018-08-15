@@ -29,21 +29,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact(Skip = "Flaky test. Needs investigation.")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDeploymentEndToEnd()
         {
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd");
         }
 
-        [Fact]
+        [Fact(Skip = "Flaky test. Needs investigation.")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDeploymentAsJob()
         {
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentAsJob");
         }
 
-        [Fact]
+        [Fact(Skip = "Flaky test. Needs investigation.")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestStopDeployment()
         {
