@@ -91,22 +91,22 @@ function New-AzureRmResourceGroupDeployment
   PROCESS {
     if($TemplateFile)
     {
-      $mode = [Microsoft.Azure.Management.Internal.Resources.Models.DeploymentMode]::Incremental;
-      $template = [Newtonsoft.Json.Linq.JObject]::Parse((Get-Content $TemplateFile) -join "`r`n");
+      $mode = [Microsoft.Azure.Management.Internal.Resources.Models.DeploymentMode]::Incremental
+      $template = [Newtonsoft.Json.Linq.JObject]::Parse((Get-Content $TemplateFile) -join "`r`n")
       if($TemplateParameterFile)
       {
-        $templateParams = [Newtonsoft.Json.Linq.JObject]::Parse((Get-Content $TemplateParameterFile) -join "`r`n");
-        $createParamsProps = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.DeploymentProperties -ArgumentList $mode,$template,$null,$templateParams;
+        $templateParams = [Newtonsoft.Json.Linq.JObject]::Parse((Get-Content $TemplateParameterFile) -join "`r`n")
+        $createParamsProps = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.DeploymentProperties -ArgumentList $mode,$template,$null,$templateParams
       }
       else
       {
-        $createParamsProps = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.DeploymentProperties -ArgumentList $mode,$template;
+        $createParamsProps = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.DeploymentProperties -ArgumentList $mode,$template
       }
-      $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.Deployment -ArgumentList $createParamsProps;
+      $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.Deployment -ArgumentList $createParamsProps
     }
     else
     {
-      $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.Deployment;
+      $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.Deployment
     }
 
     $createTask = $client.Deployments.CreateOrUpdateWithHttpMessagesAsync($Name, $Name, $createParams, $null, [System.Threading.CancellationToken]::None)
