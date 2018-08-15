@@ -182,7 +182,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AliasName (ByPropertyName), Name (ByPropertyName), Namespace (ByPropertyName), Queue (ByPropertyName), ResourceGroupName (ByPropertyName), Topic (ByPropertyName)
 
 ## OUTPUTS
 

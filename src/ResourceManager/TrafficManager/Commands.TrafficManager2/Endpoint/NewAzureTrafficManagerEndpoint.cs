@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "TrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class NewAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.")]

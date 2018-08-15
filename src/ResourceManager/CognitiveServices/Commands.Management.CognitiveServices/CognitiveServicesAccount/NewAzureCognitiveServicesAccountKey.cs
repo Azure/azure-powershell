@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Regnerate Cognitive Services Account Key (Key1 or Key2)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, CognitiveServicesAccountKeyNounStr, SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.CognitiveServicesAccountKeys))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesAccountKey", SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.CognitiveServicesAccountKeys))]
     public class NewAzureCognitiveServicesAccountKeyCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(

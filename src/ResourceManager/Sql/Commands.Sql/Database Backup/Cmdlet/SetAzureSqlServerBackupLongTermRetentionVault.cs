@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,9 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     /// <summary>
     /// Cmdlet to create or update a new Azure Sql Server backup archival vault
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerBackupLongTermRetentionVault",
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(AzureSqlServerBackupLongTermRetentionVaultModel))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerBackupLongTermRetentionVault",SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(AzureSqlServerBackupLongTermRetentionVaultModel))]
     public class SetAzureSqlServerBackupLongTermRetentionVault : AzureSqlServerBackupLongTermRetentionVaultCmdletBase
     {
         /// <summary>

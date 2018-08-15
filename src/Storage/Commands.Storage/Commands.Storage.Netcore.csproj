@@ -3,7 +3,7 @@
   <Import Project="..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.WindowsAzure.Commands.Storage</AssemblyName>
     <RootNamespace>Microsoft.WindowsAzure.Commands.Storage</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\Package\Debug\Storage\Azure.Storage.Netcore\</OutputPath>
+    <OutputPath>..\..\Package\Debug\ResourceManager\AzureResourceManager\Az.Storage\</OutputPath>
     <DelaySign>false</DelaySign>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Package\Release\Storage\Azure.Storage.Netcore\</OutputPath>
+    <OutputPath>..\..\Package\Release\ResourceManager\AzureResourceManager\Az.Storage\</OutputPath>
     <DocumentationFile />
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
@@ -32,20 +32,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" />
     <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Azure.Storage.Netcore.psd1" Link="Azure.Storage.Netcore.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.Common\Common.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
+    <ProjectReference Include="..\..\ResourceManager\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

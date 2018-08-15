@@ -21,11 +21,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Deletes the specified Protection Container from its Fabric.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Remove,
-        "AzureRmRecoveryServicesAsrProtectionContainer",
-        DefaultParameterSetName = ASRParameterSets.ByObject,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrProtectionContainer",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
     [Alias("Remove-ASRProtectionContainer")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrProtectionContainer : SiteRecoveryCmdletBase

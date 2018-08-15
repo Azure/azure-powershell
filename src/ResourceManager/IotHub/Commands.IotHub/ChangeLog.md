@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
+
+## Version 3.1.6
 * Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 3.1.5

@@ -19,7 +19,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureRmBatchLocationQuotas), OutputType(typeof(PSBatchLocationQuotas))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchLocationQuotas"), OutputType(typeof(PSBatchLocationQuotas))]
     // This alias was added in 10/2016 for backwards compatibility
     [Alias("Get-AzureRmBatchSubscriptionQuotas")]
     public class GetBatchLocationQuotasCommand : BatchCmdletBase
