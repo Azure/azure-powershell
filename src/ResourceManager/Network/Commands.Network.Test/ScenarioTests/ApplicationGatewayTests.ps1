@@ -203,10 +203,10 @@ function Test-ApplicationGatewayCRUD
 		Assert-AreEqual 1 $getgw.Probes[1].Match.StatusCodes.Count
 
 		# Get Application Gateway backend health with expanded resource
-		$job = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource" -AsJob
-		$job | Wait-Job
-		$backendHealth = $job | Receive-Job
-		Assert-NotNull $backendHealth.BackendAddressPools[0].BackendAddressPool.Name
+		# $job = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource" -AsJob
+		# $job | Wait-Job
+		# $backendHealth = $job | Receive-Job
+		# Assert-NotNull $backendHealth.BackendAddressPools[0].BackendAddressPool.Name
 
 		# Get Application Gateway backend health without expanded resource
 		$backendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname
