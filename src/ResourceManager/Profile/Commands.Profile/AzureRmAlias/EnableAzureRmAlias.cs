@@ -46,7 +46,12 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
             if (ShouldProcess(Scope, "Add aliases"))
             {
                 string jsonmapping = Mappings.jsonMappings;
-                Dictionary<string, object> mapping = (Dictionary<string, object>)JsonConvert.DeserializeObject(jsonmapping, typeof(Dictionary<string, object>));
+                Dictionary<string, object> caseSensitiveMapping = (Dictionary<string, object>)JsonConvert.DeserializeObject(jsonmapping, typeof(Dictionary<string, object>));
+                var mapping = new Dictionary<string, object>(StringComparer.CurrentCultureIgnoreCase);
+                foreach (var key in caseSensitiveMapping.Keys)
+                {
+                    mapping.Add(key, caseSensitiveMapping[key]);
+                }
 
                 // If no modules are specified, enable all aliases
                 if (Module == null)
@@ -138,11 +143,11 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                             {
                                 // Add modules currently in the profile to the list of modules to enable.
                                 var regex = new Regex(@"Az\.[a-zA-Z0-9\.]+(,\s|\s-)");
-                                Match match = regex.Match(splitOriginalText[1]);
+                                Match match = regex.Match(splitOriginalText[1].Split(new string[] { "Import-Module Az.Profile" }, StringSplitOptions.None)[1]);
                                 while (match.Success)
                                 {
                                     var moduleList = Module.ToList();
-                                    if (!moduleList.Contains(match.ToString().Substring(0, match.ToString().Length - 2)))
+                                    if (!moduleList.Contains(match.ToString().Substring(0, match.ToString().Length - 2), StringComparer.CurrentCultureIgnoreCase))
                                     {
                                         moduleList.Add(match.ToString().Substring(0, match.ToString().Length - 2));
                                     }
@@ -153,8 +158,8 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                         }
 
                         // Add script to enable aliases to profile
-                        filecontent = "\"#Begin Azure PowerShell alias import" + Environment.NewLine + "`$error.clear()" + Environment.NewLine + "Import-Module Az.Profile" +
-                            Environment.NewLine + "if (!`$error) { " + Environment.NewLine;
+                        filecontent = "\"#Begin Azure PowerShell alias import" + Environment.NewLine + "`$error.clear()" + Environment.NewLine + 
+                            "Import-Module Az.Profile -ErrorAction SilentlyContinue" + Environment.NewLine + "if (!`$error) { " + Environment.NewLine;
                         if (Module == null)
                         {
                             filecontent += "    Enable-AzureRmAlias -Module " + string.Join(", ", mapping.Keys) + " -ErrorAction SilentlyContinue" + Environment.NewLine;
