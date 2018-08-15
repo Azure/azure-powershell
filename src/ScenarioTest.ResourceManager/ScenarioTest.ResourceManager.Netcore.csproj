@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(ProjectDir)..\Dependencies.Netcore.targets" />
+  <Import Project="$(ProjectDir)..\Dependencies.Test.Netcore.targets" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -42,10 +42,6 @@
 
   <ItemGroup>
     <PackageReference Include="Moq" Version="4.7.145" />
-    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.9.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.9.0" />
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
-    <PackageReference Include="xunit" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,15 +60,19 @@
   <ItemGroup>
     <Content Include="Assert.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <BuildAction>Content</BuildAction>
     </Content>
     <Content Include="Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <BuildAction>Content</BuildAction>
     </Content>
     <Content Include="AzureRM.Resources.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <BuildAction>Content</BuildAction>
     </Content>
     <Content Include="AzureRM.Storage.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <BuildAction>Content</BuildAction>
     </Content>
   </ItemGroup>
 
