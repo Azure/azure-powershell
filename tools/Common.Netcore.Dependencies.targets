@@ -15,9 +15,7 @@
     <PackageReference Include="Microsoft.Azure.PowerShell.KeyVault" Version="1.0.0" />
     <PackageReference Include="Microsoft.Azure.PowerShell.Network" Version="1.0.0" />
     <PackageReference Include="Microsoft.Azure.PowerShell.ResourceManager" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Azure.PowerShell.Storage" Version="1.0.0-preview">
-      <IncludeAssets>all</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Storage" Version="1.0.0-preview" />
     <PackageReference Include="Microsoft.Azure.PowerShell.Storage.Management" Version="1.0.0-preview" />
     <PackageReference Include="Microsoft.Azure.PowerShell.Strategies" Version="1.0.0-preview" />
     <PackageReference Include="Microsoft.Azure.PowerShell.Websites" Version="1.0.0" />
