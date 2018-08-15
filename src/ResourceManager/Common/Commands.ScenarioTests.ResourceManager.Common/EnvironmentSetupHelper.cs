@@ -670,7 +670,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 if (moduleName.EndsWith(".psd1"))
                 {
 #if NETSTANDARD
-                    var moduleShortName = moduleName.Split("\\").Last().Split("/").Last();
+                    var moduleShortName = moduleName.Split(new string[] { "\\" }, StringSplitOptions.None).Last().Split(new string[] { "/" }, StringSplitOptions.None).Last();
                     powershell.AddScript("Enable-AzureRmAlias -Module " + moduleShortName.Substring(0, moduleShortName.Length - 5));
 #endif
                 }
