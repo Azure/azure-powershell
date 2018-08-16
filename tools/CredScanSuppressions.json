@@ -130,21 +130,41 @@
             "file": "\\src\\ResourceManager\\Compute\\Stack\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem", 
             "_justification": "Legitimate test certificate file"
         },
-		{
+        {
             "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusDRConfigurationTests\\ServiceBusDRConfigurationsCURD.json", 
             "_justification": "Legitimate test session record, rules are deleted"
         },
-		{
+        {
             "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusQueueTests\\ServiceBusQueueAuth_CURD.json", 
             "_justification": "Legitimate test session record, rules are deleted"
         },
-		{
+        {
             "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusServiceTests\\ServiceBusNameSpaceAuth_CURD_Tests.json", 
             "_justification": "Legitimate test session record, rules are deleted"
         },
-		{
+        {
             "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusTopicTests\\ServiceBusTopicAuth_CURD.json", 
             "_justification": "Legitimate test session record, rules are deleted"
+        },
+        {
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfile3.PublishSettings", 
+            "_justification": "Legitimate test publishsettings file"
+        },
+        {
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfile2.PublishSettings", 
+            "_justification": "Legitimate test publishsettings file"
+        },
+        {
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfile.PublishSettings", 
+            "_justification": "Legitimate test publishsettings file"
+        },
+        {
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\Azure.publishsettings", 
+            "_justification": "Legitimate test publishsettings file"
+        },
+        {
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfileChina.PublishSettings", 
+            "_justification": "Legitimate test publishsettings file"
         }
     ]
 }

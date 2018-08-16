@@ -54,9 +54,7 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.4.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\YamlDotNet.dll', 
-               '.\Microsoft.Azure.Commands.Common.Graph.RBAC.dll', 
-               '.\AutoMapper.dll', '.\System.Management.Automation.dll'
+RequiredAssemblies = '.\YamlDotNet.dll', '.\AutoMapper.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
