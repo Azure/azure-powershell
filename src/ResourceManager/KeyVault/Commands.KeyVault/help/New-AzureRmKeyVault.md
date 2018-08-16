@@ -314,16 +314,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: EnabledForDeployment (ByPropertyName), EnabledForDiskEncryption (ByPropertyName), EnabledForTemplateDeployment (ByPropertyName)
 
 ### Microsoft.Azure.Management.KeyVault.Models.SkuName
-Parameters: Sku (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

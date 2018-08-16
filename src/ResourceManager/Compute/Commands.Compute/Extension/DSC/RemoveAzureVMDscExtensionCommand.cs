@@ -15,10 +15,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
     /// <summary>
     /// This cmdlet removes DSC extension handler from a VM in a resource group
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Remove,
-        ProfileNouns.VirtualMachineDscExtension,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDscExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {

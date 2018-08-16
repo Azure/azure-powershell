@@ -25,10 +25,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 {
-    [Cmdlet(
-        VerbsCommon.Add,
-        ProfileNouns.VirtualMachineScaleSetDiagnosticsExtension,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssDiagnosticsExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class AddAzureRmVmssDiagnosticsExtension : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {

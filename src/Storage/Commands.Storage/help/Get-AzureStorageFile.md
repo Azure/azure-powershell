@@ -225,7 +225,6 @@ Parameters: Share (ByValue)
 Parameters: Directory (ByValue)
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

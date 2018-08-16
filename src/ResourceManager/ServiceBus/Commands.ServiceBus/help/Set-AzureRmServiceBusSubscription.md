@@ -163,7 +163,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), Topic (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes
 Parameters: InputObject (ByValue)

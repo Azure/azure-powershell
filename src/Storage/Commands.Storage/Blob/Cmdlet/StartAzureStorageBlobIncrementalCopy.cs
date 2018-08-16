@@ -31,8 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// Start an Incremental copy operation from a Page blob snapshot to the specified destination Page blob.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, StorageNouns.IncrementalCopyBlob, SupportsShouldProcess = true, DefaultParameterSetName = ContainerParameterSet),
-       OutputType(typeof(AzureStorageBlob))]
+    [Cmdlet("Start", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobIncrementalCopy", SupportsShouldProcess = true, DefaultParameterSetName = ContainerParameterSet),OutputType(typeof(AzureStorageBlob))]
     public class StartAzureStorageBlobIncrementalCopy : StorageCloudBlobCmdletBase
     {
         private const string BlobTypeMismatch = "Blob type of the blob reference doesn't match blob type of the blob.";

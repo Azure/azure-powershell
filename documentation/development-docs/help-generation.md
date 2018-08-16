@@ -72,6 +72,8 @@ Get-ChildItem -Path $PathToHelpFolder | Update-MarkdownHelp -AlphabeticParamsOrd
 
 This will update all of the markdown files with public interface changes made to corresponding cmdlets, add markdown files for any new cmdlets, remove markdown files for any deleted cmdlets, and update the module page (_e.g.,_ `AzureRM.Profile.md`) with any added or removed cmdlets.
 
+_This seems to work better when run from within the `help` folder itself (For e.g. to generate the help files for the [`Network`](https://github.com/Azure/azure-powershell/tree/preview/src/ResourceManager/Network) module run the cmd from under [`Commands.Network/help`](https://github.com/Azure/azure-powershell/tree/preview/src/ResourceManager/Network/Commands.Network/help)). Also, you will have to import the profile module from under <Repo base path>/src/Package/Debug/ResourceManager/AzureResourceManager/AzureRM.Profile/AzureRM.Profile.psd1_
+
 #### Updating a single markdown file
 
 To update a single markdown file with the changes made to the corresponding cmdlet, use the [`Update-MarkdownHelp`](https://github.com/PowerShell/platyPS/blob/master/docs/Update-MarkdownHelp.md) cmdlet:
