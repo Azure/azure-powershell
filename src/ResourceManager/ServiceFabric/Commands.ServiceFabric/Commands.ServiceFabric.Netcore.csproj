@@ -3,7 +3,7 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.ServiceFabric</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ServiceFabric</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -32,8 +32,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.0-alpha" />
-    <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.0-alpha" />
+    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.0.0-preview" />
   </ItemGroup>
 

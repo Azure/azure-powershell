@@ -3,7 +3,7 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.Compute.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Compute.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -28,7 +28,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="21.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.1-alpha" />
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.1" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.1.0-preview" />
     <PackageReference Include="Moq" Version="4.7.145" />
   </ItemGroup>
@@ -90,6 +90,12 @@
     <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Storage.ps1" Link="AzureRM.Storage.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Update="xunit" Version="2.4.0" />
+    <PackageReference Update="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
 
 </Project>
