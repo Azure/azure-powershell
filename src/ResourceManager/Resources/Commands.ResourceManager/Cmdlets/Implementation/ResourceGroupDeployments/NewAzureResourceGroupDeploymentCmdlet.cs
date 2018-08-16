@@ -45,6 +45,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateSet("RequestContent", "ResponseContent", "All", "None", IgnoreCase = true)]
         public string DeploymentDebugLogLevel { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of a deployment to roll back to on error, or use as a flag to roll back to the last successful deployment.")]
+        public string RollbackAction { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -74,7 +77,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                         TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                         ParameterUri = TemplateParameterUri,
-                        DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
+                        DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel),
+                        OnErrorDeployment = RollbackAction != null
+                            ? new OnErrorDeployment
+                            {
+                                Type = string.IsNullOrWhiteSpace(RollbackAction) ? OnErrorDeploymentType.LastSuccessful : OnErrorDeploymentType.SpecificDeployment,
+                                DeploymentName = string.IsNullOrWhiteSpace(RollbackAction) ? null : RollbackAction
+                            }
+                            : null
                     };
 
                     if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
