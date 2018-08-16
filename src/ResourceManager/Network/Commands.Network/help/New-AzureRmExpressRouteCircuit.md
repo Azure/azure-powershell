@@ -49,14 +49,14 @@ New-AzureRmExpressRouteCircuit @parameters
 The use of this parameter allows you to enable Global Reach on the circuit.
 
 ```yaml
-Type: System.Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
