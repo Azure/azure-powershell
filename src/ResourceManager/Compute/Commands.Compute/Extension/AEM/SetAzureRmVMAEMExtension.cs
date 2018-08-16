@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            this._StorageEndpoint = DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
+            this._StorageEndpoint = this.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
                 this.CommandRuntime.Host.UI, 
                 AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
