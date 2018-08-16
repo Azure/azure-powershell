@@ -109,7 +109,7 @@ function Test-Stack {
 
 # Scopes
 $AzureScopes = @('All', 'Latest')
-$StackScopes = @('All', 'Stack')
+$StackScopes = @('Stack')
 
 if ($Scope -in $AzureScopes) {
     Test-Azure -BuildConfig $BuildConfig
