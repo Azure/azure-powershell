@@ -156,11 +156,11 @@ namespace RecoveryServices.SiteRecovery.Test
 
                 modules.Add(powershellFile);
                 modules.Add(powershellHelperFile);
-                //modules.Add(rmProfileModule);
+                modules.Add(rmProfileModule);
                 modules.Add(rmModulePath);
                 modules.Add(recoveryServicesModulePath);
                 modules.Add(helper.GetRMModulePath("AzureRM.Network.psd1"));
-                modules.Add(helper.GetRMModulePath("AzureRM.Storage.psd1"));
+               // modules.Add(helper.GetRMModulePath("AzureRM.Storage.psd1"));
                 modules.Add(helper.GetRMModulePath("AzureRM.Compute.psd1"));
 
                 this.helper.SetupModules(
