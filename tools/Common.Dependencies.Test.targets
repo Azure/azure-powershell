@@ -21,11 +21,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.0-preview\lib\net452\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.0-preview\lib\net452\Microsoft.Azure.Commands.ScenarioTest.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.PowerShell.ServiceManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ServiceManagement.1.0.0-preview\lib\net452\Microsoft.Azure.PowerShell.ServiceManagement.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ServiceManagement.1.0.0-preview\lib\net452\Microsoft.WindowsAzure.Commands.ServiceManagement.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
