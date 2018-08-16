@@ -16,7 +16,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 .PARAMETER Location
     Location of the resource.
 
-.PARAMETER MigrationId
+.PARAMETER Name
     The migration job guid name.
 
 .EXAMPLE
