@@ -49,13 +49,12 @@ namespace VersionController
                 Path.Combine(srcDirectory, @"Package\Debug\Storage\")
             }.Where((d) => Directory.Exists(d)).ToList();
 
-            var exceptionsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exceptions");
+            var exceptionsDirectory = string.Empty;
             if (args != null && args.Length > 0)
             {
                 exceptionsDirectory = args[0];
             }
-            
-            if (!Directory.Exists(exceptionsDirectory))
+            else
             {
                 throw new ArgumentException("Please provide a path to the Exceptions folder in the output directory (src/Package/Exceptions).");
             }
