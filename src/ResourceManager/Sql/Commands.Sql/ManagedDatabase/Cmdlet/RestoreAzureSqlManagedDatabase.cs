@@ -128,6 +128,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public string TargetManagedDatabaseName { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the target managed instance to restore to. If not specified, the target instance is same as source
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the target managed instance to restore to.")]
+        public string TargetManagedInstanceName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the target resource group to restore to. If not specified, the target resource group is same as source
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the target resource group to restore to.")]
+        public string TargetResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -158,11 +172,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 Name = resourceInfo.ResourceName;
             }
 
+            if (String.IsNullOrEmpty(TargetManagedInstanceName))
+            {
+                TargetManagedInstanceName = ManagedInstanceName;
+            }
+
+            if (String.IsNullOrEmpty(TargetResourceGroupName))
+            {
+                TargetResourceGroupName = ResourceGroupName;
+            }
+
             model = new AzureSqlManagedDatabaseModel()
             {
                 Location = location,
-                ResourceGroupName = ResourceGroupName,
-                ManagedInstanceName = ManagedInstanceName,
+                ResourceGroupName = TargetResourceGroupName,
+                ManagedInstanceName = TargetManagedInstanceName,
                 Name = TargetManagedDatabaseName,
                 CreateMode = "PointInTimeRestore",
                 RestorePointInTime = PointInTime
@@ -170,7 +194,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 
             string sourceManagedDatabaseId = ModelAdapter.GetManagedDatabaseResourceId(ResourceGroupName, ManagedInstanceName, Name);
 
-            return ModelAdapter.RestoreManagedDatabase(this.ResourceGroupName, sourceManagedDatabaseId, model);
+            return ModelAdapter.RestoreManagedDatabase(sourceManagedDatabaseId, model);
         }
     }
 }

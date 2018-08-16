@@ -15,22 +15,24 @@ Restores a SQL Managed database.
 ### PointInTimeRestoreManagedDatabaseFromInputParameters
 ```
 Restore-AzureRmSqlManagedDatabase [-FromPointInTimeBackup] [-Name] <String> [-ManagedInstanceName] <String>
- [-ResourceGroupName] <String> -PointInTime <DateTime> -TargetManagedDatabaseName <String> [-AsJob]
+ [-ResourceGroupName] <String> -PointInTime <DateTime> -TargetManagedDatabaseName <String>
+ [-TargetManagedInstanceName <String>] [-TargetResourceGroupName <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PointInTimeRestoreManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 ```
-Restore-AzureRmSqlManagedDatabase [-FromPointInTimeBackup] -InputObject <AzureSqlManagedDatabaseModel>
- -PointInTime <DateTime> -TargetManagedDatabaseName <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzureRmSqlManagedDatabase [-FromPointInTimeBackup] [-InputObject] <AzureSqlManagedDatabaseModel>
+ -PointInTime <DateTime> -TargetManagedDatabaseName <String> [-TargetManagedInstanceName <String>]
+ [-TargetResourceGroupName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PointInTimeRestoreManagedDatabaseFromAzureResourceId
 ```
-Restore-AzureRmSqlManagedDatabase [-FromPointInTimeBackup] -ResourceId <String> -PointInTime <DateTime>
- -TargetManagedDatabaseName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Restore-AzureRmSqlManagedDatabase [-FromPointInTimeBackup] [-ResourceId] <String> -PointInTime <DateTime>
+ -TargetManagedDatabaseName <String> [-TargetManagedInstanceName <String>] [-TargetResourceGroupName <String>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +47,20 @@ PS C:\> Restore-AzureRmSqlManagedDatabase -Name "Database01" -ManagedInstanceNam
 ```
 
 The command restores the managed database Database01 from the specified point-in-time backup to the managed database named Database01_restored.
+
+### Example 2: Restore a managed database from a point in time to another managed instance on same resource group
+```
+PS C:\> Restore-AzureRmSqlManagedDatabase -Name "Database01" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01" -PointInTime UTCDateTime -TargetManagedDatabaseName "Database01_restored" -TargetManagedInstanceName "managedInstance2"
+```
+
+The command restores the managed database Database01 on managed instance managedInstance1 from the specified point-in-time backup to the managed database named Database01_restored on managed instance managedInstance2.
+
+### Example 3: Restore a managed database from a point in time to another managed instance on different resource group
+```
+PS C:\> Restore-AzureRmSqlManagedDatabase -Name "Database01" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01" -PointInTime UTCDateTime -TargetManagedDatabaseName "Database01_restored" -TargetManagedInstanceName "managedInstance1" -TargetResourceGroupName "ResourceGroup02"
+```
+
+The command restores the managed database Database01 on managed instance managedInstance1 on resource group ResourceGroup01 from the specified point-in-time backup to the managed database named Database01_restored on managed instance managedInstance2 on resource group ResourceGroup02.
 
 ## PARAMETERS
 
@@ -102,7 +118,7 @@ Parameter Sets: PointInTimeRestoreManagedDatabaseFromAzureSqlManagedDatabaseMode
 Aliases: ManagedDatabase
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -177,7 +193,7 @@ Parameter Sets: PointInTimeRestoreManagedDatabaseFromAzureResourceId
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -192,6 +208,32 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetManagedInstanceName
+The name of the target managed instance to restore to.
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetResourceGroupName
+The name of the target resource group to restore to.
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
