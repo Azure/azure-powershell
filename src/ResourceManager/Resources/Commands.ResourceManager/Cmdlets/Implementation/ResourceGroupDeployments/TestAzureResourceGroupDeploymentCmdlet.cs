@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
         public DeploymentMode Mode { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of a deployment to roll back to on error, or use as a flag to roll back to the last successful deployment.")]
+        public string RollbackAction { get; set; }
+
         public TestAzureResourceGroupDeploymentCmdlet()
         {
             this.Mode = DeploymentMode.Incremental;
@@ -47,7 +50,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 ResourceGroupName = ResourceGroupName,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
-                ParameterUri = TemplateParameterUri
+                ParameterUri = TemplateParameterUri,
+                OnErrorDeployment = RollbackAction != null
+                    ? new OnErrorDeployment
+                    {
+                        Type = string.IsNullOrWhiteSpace(RollbackAction) ? OnErrorDeploymentType.LastSuccessful : OnErrorDeploymentType.SpecificDeployment,
+                        DeploymentName = string.IsNullOrWhiteSpace(RollbackAction) ? null : RollbackAction
+                    }
+                    : null
             };
 
             WriteObject(ResourceManagerSdkClient.ValidateDeployment(parameters, Mode));

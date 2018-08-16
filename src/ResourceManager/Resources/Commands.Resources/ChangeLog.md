@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update New-AzureRmResourceGroupDeployment with new parameter RollbackAction
+    - Add support for OnErrorDeployment with the new parameter.
 
 ## Version 6.4.2
 * Fixed issue with creating managed applications from the MarketPlace.
