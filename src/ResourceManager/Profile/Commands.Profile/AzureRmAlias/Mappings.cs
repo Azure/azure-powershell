@@ -12,10 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
 {
     public class Mappings
     {
+        public static Dictionary<string, object> GetCaseInsensitiveMapping()
+        {
+            string jsonmapping = jsonMappings;
+            Dictionary<string, object> caseSensitiveMapping = (Dictionary<string, object>)JsonConvert.DeserializeObject(jsonmapping, typeof(Dictionary<string, object>));
+            var mapping = new Dictionary<string, object>(StringComparer.CurrentCultureIgnoreCase);
+            foreach (var key in caseSensitiveMapping.Keys)
+            {
+                mapping.Add(key, caseSensitiveMapping[key]);
+            }
+
+            return mapping;
+        }
+
         public static string jsonMappings = @"
     {
     'Az.ManagementPartner':  {
