@@ -3,7 +3,7 @@
   <Import Project="..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.WindowsAzure.Commands.Storage</AssemblyName>
     <RootNamespace>Microsoft.WindowsAzure.Commands.Storage</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -32,6 +32,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" />
     <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.1" />
   </ItemGroup>

@@ -1,4 +1,4 @@
-﻿## 6.7.0 - August 2018
+## 6.7.0 - August 2018
 #### AzureRM.Profile
 * Updated to the latest version of the Azure ClientRuntime.
 * Add user id to default context name to avoid context clashing
