@@ -22,19 +22,20 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using ManagedGroups = Microsoft.Azure.Management.ManagementGroups;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -55,8 +56,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
-        public ManagementGroupsAPIClient ManagementGroupsApiClient { get; private set; }
-
+        public ManagedGroups.ManagementGroupsAPIClient ManagementGroupsApiClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -219,9 +219,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             return context.GetServiceClient<Internal.Subscriptions.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private ManagementGroupsAPIClient GetManagementGroupsApiClient(MockContext context)
+        private ManagedGroups.ManagementGroupsAPIClient GetManagementGroupsApiClient(MockContext context)
         {
-            return context.GetServiceClient<ManagementGroupsAPIClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ManagedGroups.ManagementGroupsAPIClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         /// <summary>

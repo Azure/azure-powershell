@@ -5,14 +5,23 @@ param(
     [Parameter(Mandatory = $false)]
     [string] $BuildConfig = "Debug",
     [Parameter(Mandatory = $false)]
-    [string] $CIToolsPath
+    [string] $CIToolsPath,
+    [Parameter(Mandatory = $false)]
+    [ValidateSet('All', 'Latest', 'Stack', 'ServiceManagement', 'AzureStorage')]
+    [System.String] $Scope
 )
 
-$RMFolders = Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ResourceManager/AzureResourceManager -Directory
-$RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ServiceManagement/Azure -Directory
-$RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/Storage -Directory
-$RMFolders += Get-ChildItem $PSScriptRoot/../src/Stack/$BuildConfig/ResourceManager/AzureResourceManager -Directory
-$RMFolders += Get-ChildItem $PSScriptRoot/../src/Stack/$BuildConfig/Storage -Directory
+if ($Scope -like "Stack")
+{
+    $RMFolders = Get-ChildItem $PSScriptRoot/../src/Stack/$BuildConfig/ResourceManager/AzureResourceManager -Directory
+    $RMFolders += Get-ChildItem $PSScriptRoot/../src/Stack/$BuildConfig/Storage -Directory
+}
+else
+{
+    $RMFolders = Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ResourceManager/AzureResourceManager -Directory
+    $RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ServiceManagement/Azure -Directory
+    $RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/Storage -Directory
+}
 
 $RMFolders | ForEach-Object {
     $dlls = Get-ChildItem $_.FullName -Recurse | Where-Object { $_ -like "*dll" } | ForEach-Object { $_.FullName };

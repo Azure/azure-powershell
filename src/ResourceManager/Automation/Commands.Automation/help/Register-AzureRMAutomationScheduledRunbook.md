@@ -155,7 +155,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), ResourceGroupName (ByPropertyName), RunbookName (ByPropertyName), RunOn (ByPropertyName), ScheduleName (ByPropertyName)
 
 ## OUTPUTS
 

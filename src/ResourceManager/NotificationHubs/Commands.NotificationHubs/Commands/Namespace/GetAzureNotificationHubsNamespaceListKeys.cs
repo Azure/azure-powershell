@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmNotificationHubsNamespaceListKeys"), OutputType(typeof(ResourceListKeys))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubsNamespaceListKeys"), OutputType(typeof(ResourceListKeys))]
     public class GetAzureNotificationHubsNamespaceListKeys : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,

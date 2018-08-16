@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
+using System.Linq;
 using System.Security;
 using System.Security.Authentication;
 using System.Threading;
@@ -294,9 +295,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
 
         /// <summary>
-        /// Implementation of <see cref="IAccessToken"/> using data from ADAL
+        /// Implementation of <see cref="IRenewableToken"/> using data from ADAL
         /// </summary>
-        private class AdalAccessToken : IAccessToken
+        private class AdalAccessToken : IRenewableToken
         {
             internal readonly AdalConfiguration Configuration;
             internal AuthenticationResult AuthResult;
@@ -353,6 +354,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     return Authentication.LoginType.OrgId;
                 }
             }
+
+            public DateTimeOffset ExpiresOn { get { return AuthResult.ExpiresOn; } }
         }
 
         public IAccessToken GetAccessTokenWithCertificate(

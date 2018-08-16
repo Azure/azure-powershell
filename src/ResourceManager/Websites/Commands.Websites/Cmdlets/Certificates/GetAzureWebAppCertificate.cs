@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you get existing web app certificates using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppCertificate")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppCertificate")]
     [OutputType(typeof(Certificate))]
     public class GetAzureWebAppCertificate : WebAppBaseClientCmdLet
     {

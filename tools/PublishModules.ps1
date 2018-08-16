@@ -156,7 +156,7 @@ function Get-RollupModules {
         if ($Scope -eq 'All' -or $Scope -eq 'Latest' -or $Scope -eq 'NetCore') {
             if ($IsNetCore) {
                 # For .NetCore publish AzureRM.Netcore
-                $targets += "$PSScriptRoot\AzureRM.Netcore"
+                $targets += "$PSScriptRoot\Az"
             } else {
                 $targets += "$PSScriptRoot\AzureRM"
             }
@@ -237,20 +237,22 @@ function Get-ClientModules {
 
         $packageFolder, $resourceManagerRootFolder = Get-Directories -BuildConfig $BuildConfig -Scope $Scope
 
-        $NetSuffix = "";
-        if ($IsNetCore) {
-            $NetSuffix = ".Netcore"
-        }
-
         # Everyone but Storage
         $AllScopes = @('Stack', 'All', 'Latest', 'NetCore')
         if ($Scope -in $AllScopes -or $PublishLocal) {
-            $targets += "$resourceManagerRootFolder\AzureRM.Profile$NetSuffix"
+            if ($Scope -eq "Netcore")
+            {
+                $targets += "$resourceManagerRootFolder\Az.Profile"
+            }
+            else
+            {
+                $targets += "$resourceManagerRootFolder\AzureRM.Profile"
+            }
         }
 
-        $StorageScopes = @('All', 'Latest', 'Stack', 'AzureStorage', 'NetCore')
+        $StorageScopes = @('All', 'Latest', 'Stack', 'AzureStorage')
         if ($Scope -in $StorageScopes) {
-            $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage$NetSuffix"
+            $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
         }
 
         # Handle things which don't support netcore yet.
@@ -266,13 +268,13 @@ function Get-ClientModules {
 
             # Get all module directories
             if ($IsNetCore) {
-                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.FullName.EndsWith(".Netcore")}
+                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.Name -like "*Az.*"}
             } else {
-                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.*, *.Netcore
+                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.Name -like "*Azure*"}
             }
 
             # We should ignore these, they are handled separatly.
-            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'AzureRM.Profile.Netcore', 'Azure.Storage.Netcore', 'AzureRM.Netcore')
+            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'Az.Profile', 'Az')
 
             # Add all modules for AzureRM for Azure
             foreach ($module in $resourceManagerModules) {

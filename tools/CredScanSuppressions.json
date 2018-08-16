@@ -129,6 +129,26 @@
         {
             "file": "\\src\\ResourceManager\\Compute\\Stack\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem", 
             "_justification": "Legitimate test certificate file"
+        },
+        {
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfile3.PublishSettings", 
+            "_justification": "Legitimate test publishsettings file"
+        },
+        {
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfile2.PublishSettings", 
+            "_justification": "Legitimate test publishsettings file"
+        },
+        {
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfile.PublishSettings", 
+            "_justification": "Legitimate test publishsettings file"
+        },
+        {
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\Azure.publishsettings", 
+            "_justification": "Legitimate test publishsettings file"
+        },
+        {
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfileChina.PublishSettings", 
+            "_justification": "Legitimate test publishsettings file"
         }
     ]
 }

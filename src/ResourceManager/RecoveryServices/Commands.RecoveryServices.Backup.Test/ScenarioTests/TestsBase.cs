@@ -230,7 +230,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 modules.Add(rmModulePath);
                 modules.Add(recoveryServicesModulePath);
                 modules.Add(helper.RMResourceModule);
+#if !NETSTANDARD
                 modules.Add(helper.RMStorageDataPlaneModule);
+#endif
                 modules.Add(helper.RMStorageModule);
                 modules.Add(helper.GetRMModulePath("AzureRM.Compute.psd1"));
                 modules.Add(helper.GetRMModulePath("AzureRM.Network.psd1"));
