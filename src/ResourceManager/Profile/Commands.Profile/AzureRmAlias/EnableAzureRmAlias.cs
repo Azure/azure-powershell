@@ -15,12 +15,10 @@
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Management.Automation;
-using System.Text.RegularExpressions;
 using System.Linq;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
 {
@@ -28,7 +26,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     /// Cmdlet to clear default options. 
     /// </summary>
     [Cmdlet("Enable","AzureRmAlias", SupportsShouldProcess = true)]
-    [OutputType(typeof(Hashtable))]
+    [OutputType(typeof(string))]
     public class EnableAzureRmAlias : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Indicates what scope aliases should be enabled for.  Default is 'Process'")]
@@ -43,156 +41,50 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Scope, "Add aliases"))
+            Dictionary<string, object> mapping = Mappings.GetCaseInsensitiveMapping();
+
+            // If no modules are specified, enable all aliases
+            if (Module == null)
             {
-                string jsonmapping = Mappings.jsonMappings;
-                Dictionary<string, object> caseSensitiveMapping = (Dictionary<string, object>)JsonConvert.DeserializeObject(jsonmapping, typeof(Dictionary<string, object>));
-                var mapping = new Dictionary<string, object>(StringComparer.CurrentCultureIgnoreCase);
-                foreach (var key in caseSensitiveMapping.Keys)
-                {
-                    mapping.Add(key, caseSensitiveMapping[key]);
-                }
+                EnableLocalAliases(mapping.Keys.ToArray(), mapping);
+            }
+            else
+            {
+                EnableLocalAliases(Module, mapping);
+            }
 
-                // If no modules are specified, enable all aliases
-                if (Module == null)
+            // Set path to user profile based on the Scope
+            string userprofile = AliasHelper.GetProfilePath(Scope, SessionState);
+
+            if (Scope != null && (Scope.Equals("CurrentUser") || Scope.Equals("LocalMachine")))
+            {
+                AliasHelper.AddAliasesToProfile(userprofile, Module, mapping);
+            }
+        }
+
+        public void EnableLocalAliases(string[] modulesToEnable, Dictionary<string, object> mapping)
+        {
+            foreach (var module in modulesToEnable)
+            {
+                if (ShouldProcess(module, Resources.AddAlias))
                 {
-                    foreach (var key in mapping.Keys)
+                    if (mapping.ContainsKey(module))
                     {
-                        Dictionary<string, string> modulemapping = (Dictionary<string, string>)JsonConvert.DeserializeObject(mapping[key].ToString(), typeof(Dictionary<string, string>));
-
+                        Dictionary<string, string> modulemapping =
+                            (Dictionary<string, string>)JsonConvert.DeserializeObject(mapping[module].ToString(), typeof(Dictionary<string, string>));
                         foreach (var name in modulemapping.Keys)
                         {
                             // For every alias, add a pairing in the Alias provider
                             SessionState.PSVariable.Set("Alias:" + modulemapping[name], name);
                             if (PassThru)
                             {
-                                WriteObject("Added: " + modulemapping[name] + " : " + name);
+                                WriteObject(modulemapping[name] + " : " + name);
                             }
                         }
                     }
-                }
-                else
-                {
-                    foreach (var module in Module)
+                    else
                     {
-                        if (mapping.ContainsKey(module))
-                        {
-                            Dictionary<string, string> modulemapping =
-                                (Dictionary<string, string>)JsonConvert.DeserializeObject(mapping[module].ToString(), typeof(Dictionary<string, string>));
-                            foreach (var name in modulemapping.Keys)
-                            {
-                                // For every alias, add a pairing in the Alias provider
-                                SessionState.PSVariable.Set("Alias:" + modulemapping[name], name);
-                                if (PassThru)
-                                {
-                                    WriteObject(modulemapping[name] + " : " + name);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            WriteWarning("Module '" + module + "' is not a valid Az module.");
-                        }
-                    }
-                }
-
-                // Set path to user profile based on the Scope
-                object userprofile = "";
-                if (Scope != null && Scope.Equals("CurrentUser"))
-                {
-                    userprofile = SessionState.PSVariable.GetValue("env:USERPROFILE") + "\\Documents\\PowerShell\\profile.ps1";
-                }
-
-                else if (Scope != null && Scope.Equals("LocalMachine"))
-                {
-                    userprofile = SessionState.PSVariable.GetValue("PSHOME") + "\\profile.ps1";
-                }
-
-                if (Scope != null && (Scope.Equals("CurrentUser") || Scope.Equals("LocalMachine")))
-                {
-                    using (System.Management.Automation.PowerShell PowerShellInstance = System.Management.Automation.PowerShell.Create())
-                    {
-                        PowerShellInstance.AddScript("if (!(Test-Path '" + userprofile + "')) { New-Item '" + userprofile + "' -ItemType file -Force }");
-                        Collection<PSObject> PSOutput = PowerShellInstance.Invoke();
-
-                        // Check for error thrown when LocalMachine profile is accessed from non-admin mode.
-                        if (PowerShellInstance.Streams.Error.Count > 0)
-                        {
-                            foreach (var error in PowerShellInstance.Streams.Error)
-                            {
-                                if (error.ToString().Contains("Access to the path") && error.ToString().Contains("is denied."))
-                                {
-                                    throw new Exception("LocalMachine scope can only be set in PowerShell administrative mode.");
-                                }
-                            }
-                        }
-
-                        string filecontent = "";
-                        string originalText = System.IO.File.ReadAllText(userprofile.ToString());
-                        if (originalText.Contains("#Begin Azure PowerShell alias import"))
-                        {
-                            // Add back profile code unrelated to Azure PowerShell aliases
-                            var splitOriginalText = originalText.Split(new string[] { "#Begin Azure PowerShell alias import", "#End Azure PowerShell alias import" }, StringSplitOptions.None);
-                            filecontent += splitOriginalText[0];
-                            if (splitOriginalText.Length > 2)
-                            {
-                                filecontent += splitOriginalText[2];
-                            }
-
-                            if (Module != null)
-                            {
-                                // Add modules currently in the profile to the list of modules to enable.
-                                var regex = new Regex(@"Az\.[a-zA-Z0-9\.]+(,\s|\s-)");
-                                Match match = regex.Match(splitOriginalText[1].Split(new string[] { "Import-Module Az.Profile" }, StringSplitOptions.None)[1]);
-                                while (match.Success)
-                                {
-                                    var moduleList = Module.ToList();
-                                    if (!moduleList.Contains(match.ToString().Substring(0, match.ToString().Length - 2), StringComparer.CurrentCultureIgnoreCase))
-                                    {
-                                        moduleList.Add(match.ToString().Substring(0, match.ToString().Length - 2));
-                                    }
-                                    Module = moduleList.ToArray();
-                                    match = match.NextMatch();
-                                }
-                            }
-                        }
-
-                        // Add script to enable aliases to profile
-                        filecontent = "\"#Begin Azure PowerShell alias import" + Environment.NewLine + "`$error.clear()" + Environment.NewLine + 
-                            "Import-Module Az.Profile -ErrorAction SilentlyContinue" + Environment.NewLine + "if (!`$error) { " + Environment.NewLine;
-                        if (Module == null)
-                        {
-                            filecontent += "    Enable-AzureRmAlias -Module " + string.Join(", ", mapping.Keys) + " -ErrorAction SilentlyContinue" + Environment.NewLine;
-                        }
-
-                        else
-                        {
-                            var validModules = new List<string>();
-                            foreach (var name in Module)
-                            {
-                                if (mapping.ContainsKey(name))
-                                {
-                                    validModules.Add(name);
-                                }
-                            }
-
-                            filecontent += "    Enable-AzureRmAlias -Module " + string.Join(", ", validModules) + " -ErrorAction SilentlyContinue; " + Environment.NewLine;
-                        }
-
-                        filecontent += "}" + Environment.NewLine + "#End Azure PowerShell alias import";
-                        PowerShellInstance.AddScript("Set-Content -Path '" + userprofile + "' -Value " + filecontent + "\"");
-                        PSOutput = PowerShellInstance.Invoke();
-
-                        if (PowerShellInstance.Streams.Error.Count > 0)
-                        {
-                            foreach (var error in PowerShellInstance.Streams.Error)
-                            {
-                                if (error.ToString().Contains("Access to the path") && error.ToString().Contains("is denied."))
-                                {
-                                    throw new Exception("LocalMachine scope can only be set in PowerShell administrative mode.");
-                                }
-                            }
-                        }
+                        WriteWarning("Module '" + module + "' is not a valid Az module.");
                     }
                 }
             }
