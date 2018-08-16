@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
     {
-        private string _StorageEndpoint;
         private AEMHelper _Helper = null;
 
         [Parameter(
@@ -72,11 +71,11 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            this._StorageEndpoint = DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
                 this.CommandRuntime.Host.UI,
                 AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
-                this.DefaultContext.Subscription, this._StorageEndpoint);
+                this.DefaultContext.Subscription, 
+                this.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
 
             base.ExecuteCmdlet();
 
