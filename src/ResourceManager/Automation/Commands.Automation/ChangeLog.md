@@ -22,6 +22,7 @@
 
 ## Version 5.0.4
 * Updated to the latest version of the Azure ClientRuntime.
+* Corrected description of example for Remove-AzureRmAutomationSchedule.
 
 ## Version 5.0.3
 * Updated all help files to include full parameter types and correct input/output types.
