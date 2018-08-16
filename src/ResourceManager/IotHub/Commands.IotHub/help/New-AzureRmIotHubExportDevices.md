@@ -22,13 +22,13 @@ New-AzureRmIotHubExportDevices [-ResourceGroupName] <String> [-Name] <String>
 Creates a new export devices job for the IotHub.
 This will export all the devices to the specified container. 
 Refer to the following article on how to generate the SAS URI.
-https://azure.microsoft.com/en-us/documentation/articles/iot-hub-bulk-identity-mgmt/ .
+https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#get-the-container-sas-uri .
 
 ## EXAMPLES
 
 ### Example 1 Issue an export device request.
 ```
-PS C:\> New-AzureRmIotHubExportDevices -ResourceGroupName "myresourcegroup" -Name "myiothub" -ExportBlobContainerUri "https://mystorageaccount.blob.core.windows.net/?sv=2015-04-05&ss=bfqt&sr=c&srt=sco&sp=rwdl&se=2016-10-27T04:01:48Z&st=2016-10-26T20:01:48Z&spr=https&sig=QqpIhHsIMF8hNuFO%3D" -ExcludeKeys $true
+PS C:\> New-AzureRmIotHubExportDevices -ResourceGroupName "myresourcegroup" -Name "myiothub" -ExportBlobContainerUri "https://mystorageaccount.blob.core.windows.net/mystoragecontainer?sv=2015-04-05&ss=bfqt&sr=c&srt=sco&sp=rwdl&se=2016-10-27T04:01:48Z&st=2016-10-26T20:01:48Z&spr=https&sig=QqpIhHsIMF8hNuFO%3D" -ExcludeKeys
 ```
 
 Creates a new export device request for the IotHub "myiothub" excluding the keys.
@@ -147,7 +147,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

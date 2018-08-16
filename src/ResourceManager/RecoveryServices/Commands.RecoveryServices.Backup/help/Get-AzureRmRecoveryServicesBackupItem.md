@@ -31,7 +31,7 @@ Get-AzureRmRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementT
 
 ### GetItemsForPolicy
 ```
-Get-AzureRmRecoveryServicesBackupItem -Policy <PolicyBase> [[-Name] <String>]
+Get-AzureRmRecoveryServicesBackupItem [-Policy] <PolicyBase> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -132,7 +132,7 @@ Parameter Sets: GetItemsForPolicy
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -222,7 +222,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
-Parameters: Container (ByPropertyName)
 
 ### System.String
 Parameters: VaultId (ByValue)

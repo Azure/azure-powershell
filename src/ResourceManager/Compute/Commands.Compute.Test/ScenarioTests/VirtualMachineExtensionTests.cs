@@ -128,9 +128,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Fact(Skip = "Updated Storage, needs re-recorded")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
-        [Fact(Skip = "TODO: only works for live mode due to key vault dependency")]
+        [Fact]
 #endif
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionExtensionSinglePass()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AzureDiskEncryptionExtensionSinglePass");
@@ -140,9 +140,21 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Fact(Skip = "Updated Storage, needs re-recorded")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
-        [Fact(Skip = "TODO: only works for live mode due to key vault dependency")]
+        [Fact]
 #endif
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionExtensionSinglePassRemove()
+        {
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AzureDiskEncryptionExtensionSinglePassRemove");
+        }
+
+#if NETSTANDARD
+        [Fact(Skip = "Updated Storage, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureDiskEncryptionExtensionSinglePassDisableAndRemove()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove");
