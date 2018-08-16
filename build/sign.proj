@@ -23,7 +23,8 @@
       <OutputDir>$(Artifacts)$(Configuration)\net452\</OutputDir>
     </PropertyGroup>
     <ItemGroup>
-      <Net452Files Include="$(OutputDir)Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)Microsoft.Azure.PowerShell*.Test.dll" />
+      <Net452Files Include="$(OutputDir)Microsoft.Azure.Commands*.dll" />
+      <Net452Files Include="$(OutputDir)Microsoft.WindowsAzure.Commands*.dll" />
     </ItemGroup>
     <CodeSigningTask
       Description="$(Description)"
