@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{Fill Name Description}}
+The migration job guid name.
 
 ```yaml
 Type: String
