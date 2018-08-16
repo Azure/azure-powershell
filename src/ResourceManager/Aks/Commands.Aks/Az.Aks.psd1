@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core'
+CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
 GUID = 'a97e0c3e-e389-46a6-b73d-2b9bd6909bdb'
@@ -54,8 +54,7 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\YamlDotNet.dll', 
-    '.\Microsoft.Azure.Commands.Common.Graph.RBAC.dll', '.\AutoMapper.dll'
+RequiredAssemblies = '.\YamlDotNet.dll', '.\AutoMapper.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 ScriptsToProcess = @()

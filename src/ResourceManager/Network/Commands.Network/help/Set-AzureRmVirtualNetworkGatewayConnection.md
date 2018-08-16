@@ -24,6 +24,7 @@ Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSV
 The **Set-AzureRmVirtualNetworkGatewayConnection** cmdlet configures a virtual network gateway connection.
 
 ## EXAMPLES
+
 ### Example 1:
 ```
 $conn = Get-AzureRmVirtualNetworkGatewayConnection -Name 1 -ResourceGroupName myRG
@@ -57,6 +58,7 @@ EgressBytesTransferred  : 91334484
 IngressBytesTransferred : 100386089
 TunnelConnectionStatus  : []
 ```
+
 ## PARAMETERS
 
 ### -AsJob
@@ -205,7 +207,7 @@ Parameters: VirtualNetworkGatewayConnection (ByValue)
 
 ### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy, Microsoft.Azure.Commands.Network, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

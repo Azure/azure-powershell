@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core'
+CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
 GUID = 'cd188042-f215-4657-adfe-c17ae28cf730'
@@ -115,7 +115,10 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate',
     'Backup-AzKeyVaultManagedStorageAccount', 
     'Restore-AzKeyVaultManagedStorageAccount', 
     'Undo-AzKeyVaultManagedStorageSasDefinitionRemoval', 
-    'Undo-AzKeyVaultManagedStorageAccountRemoval'
+    'Undo-AzKeyVaultManagedStorageAccountRemoval',
+    'Add-AzKeyVaultNetworkRule', 
+    'Update-AzKeyVaultNetworkRuleSet', 
+    'Remove-AzKeyVaultNetworkRule'
 
 # Variables to export from this module
 # VariablesToExport = @()

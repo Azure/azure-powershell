@@ -379,13 +379,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.String
-Parameters: Caller (ByPropertyName), CorrelationId (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), ResourceProvider (ByPropertyName), Status (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: DetailedOutput (ByPropertyName)
 
 ### System.Int32
-Parameters: MaxRecord (ByPropertyName)
 
 ## OUTPUTS
 
