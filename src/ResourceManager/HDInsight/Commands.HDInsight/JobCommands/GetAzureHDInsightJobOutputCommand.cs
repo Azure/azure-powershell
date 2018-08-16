@@ -24,9 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsCommon.Get,
-        Constants.CommandNames.AzureHDInsightJobOutput),
-    OutputType(typeof(string))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightJobOutput"),OutputType(typeof(string))]
     public class GetAzureHDInsightJobOutputCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions

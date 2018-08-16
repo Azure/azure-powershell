@@ -148,13 +148,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-Parameters: Context (ByPropertyName)
 
 ### System.String
-Parameters: UserId (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: DeleteSubscriptions (ByPropertyName), PassThru (ByPropertyName)
 
 ## OUTPUTS
 

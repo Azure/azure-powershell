@@ -72,7 +72,7 @@ function Get-AzsNetworkQuota {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient'

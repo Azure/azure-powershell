@@ -104,7 +104,7 @@ function New-AzsPlan {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSCmdlet.ShouldProcess("$Name", "Create a new plan")) {
 
@@ -142,7 +142,7 @@ function New-AzsPlan {
                 }
             }
             $NewPlan = New-PlanObject @utilityCmdParams
-            
+
             # Construct client
             $NewServiceClient_params = @{
                 FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'

@@ -36,12 +36,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public override void SetTokenCacheForProfile(IAzureContextContainer profile)
         {
             base.SetTokenCacheForProfile(profile);
+            var cache = new AuthenticationStoreTokenCache(TokenCache.DefaultShared);
             if (profile.HasTokenCache())
             {
-                var cache = TokenCache.DefaultShared;
                 cache.Deserialize(profile.GetTokenCache().CacheData);
-                AzureSession.Instance.TokenCache = new AuthenticationStoreTokenCache(cache);
             }
+
+            AzureSession.Instance.TokenCache = cache;
+            profile.SetTokenCache(cache);
         }
 
         public override T GetProfile<T>()

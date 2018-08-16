@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -57,7 +58,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.4.1-alpha\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.4.1\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -80,42 +81,13 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.4\ARMStorageProvider.cs">
-      <Link>Common\ARMStorageProvider.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.4\ARMStorageService.cs">
-      <Link>Common\ARMStorageService.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">
-      <Link>Common\AzureContextAdapterExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs">
-      <Link>Common\AzureStorageContext.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionCmdletConstants.cs">
-      <Link>Extension\DSC\DscExtensionCmdletConstants.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPrivateSettings.cs">
-      <Link>Extension\DSC\DscExtensionPrivateSettings.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPublicSettings.cs">
-      <Link>Extension\DSC\DscExtensionPublicSettings.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionSettingsSerializer.cs">
-      <Link>Extension\DSC\DscExtensionSettingsSerializer.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParseResult.cs">
-      <Link>Extension\DSC\ConfigurationParseResult.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParsingHelper.cs">
-      <Link>Extension\DSC\ConfigurationParsingHelper.cs</Link>
-    </Compile>
     <Compile Include="AvailabilitySets\RemoveAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\GetAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\NewAzureAvailabilitySetCommand.cs" />
@@ -153,9 +125,9 @@
     <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionContext.cs" />
     <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionProtectedSettings.cs" />
     <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionPublicSettings.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionMode.cs" />
     <Compile Include="Extension\AzureDiskEncryption\DisableAzureDiskEncryption.cs" />
     <Compile Include="Extension\AzureDiskEncryption\GetAzureDiskEncryptionStatus.cs" />
-    <Compile Include="Extension\AzureDiskEncryption\OSType.cs" />
     <Compile Include="Extension\AzureDiskEncryption\RemoveAzureDiskEncryptionExtension.cs" />
     <Compile Include="Extension\AzureDiskEncryption\SetAzureDiskEncryptionExtension.cs" />
     <Compile Include="Extension\AzureVMBackup\AzureVMBackupExtensionUtil.cs" />
@@ -339,44 +311,264 @@
     <Compile Include="VirtualMachine\Config\NewAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\VirtualMachineCmdletHelper.cs" />
+    <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.4\ARMStorageProvider.cs">
+      <Link>Common\ARMStorageProvider.cs</Link>
+    </Compile>
+    <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.4\ARMStorageService.cs">
+      <Link>Common\ARMStorageService.cs</Link>
+    </Compile>
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">
+      <Link>Common\AzureContextAdapterExtensions.cs</Link>
+    </Compile>
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs">
+      <Link>Common\AzureStorageContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionCmdletConstants.cs">
+      <Link>Extension\DSC\DscExtensionCmdletConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPrivateSettings.cs">
+      <Link>Extension\DSC\DscExtensionPrivateSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPublicSettings.cs">
+      <Link>Extension\DSC\DscExtensionPublicSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionSettingsSerializer.cs">
+      <Link>Extension\DSC\DscExtensionSettingsSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParseResult.cs">
+      <Link>Extension\DSC\ConfigurationParseResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParsingHelper.cs">
+      <Link>Extension\DSC\ConfigurationParsingHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\ComputeStats.cs">
+      <Link>Sync\ComputeStats.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Download\BlobHandle.cs">
+      <Link>Sync\Download\BlobHandle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Download\BlobUri.cs">
+      <Link>Sync\Download\BlobUri.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Download\Downloader.cs">
+      <Link>Sync\Download\Downloader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Download\DownloaderParameters.cs">
+      <Link>Sync\Download\DownloaderParameters.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\IO\StreamWithReadProgress.cs">
+      <Link>Sync\IO\StreamWithReadProgress.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Program.cs">
+      <Link>Sync\Program.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\ProgressRecord.cs">
+      <Link>Sync\ProgressRecord.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\ProgressStatus.cs">
+      <Link>Sync\ProgressStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\ProgressTracker.cs">
+      <Link>Sync\ProgressTracker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\ServicePointHandler.cs">
+      <Link>Sync\ServicePointHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Threading\Parallel.cs">
+      <Link>Sync\Threading\Parallel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\BlobCreator.cs">
+      <Link>Sync\Upload\BlobCreator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\BlobCreatorBase.cs">
+      <Link>Sync\Upload\BlobCreatorBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\BlobSynchronizer.cs">
+      <Link>Sync\Upload\BlobSynchronizer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\ComputeStats.cs">
+      <Link>Sync\Upload\ComputeStats.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\DataWithRange.cs">
+      <Link>Sync\Upload\DataWithRange.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\ExtensionMethods.cs">
+      <Link>Sync\Upload\ExtensionMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\IndexRangeHelper.cs">
+      <Link>Sync\Upload\IndexRangeHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\PatchingBlobCreator.cs">
+      <Link>Sync\Upload\PatchingBlobCreator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\SerializationUtil.cs">
+      <Link>Sync\Upload\SerializationUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\UploadContext.cs">
+      <Link>Sync\Upload\UploadContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Sync\Upload\UploadOperationMetaData.cs">
+      <Link>Sync\Upload\UploadOperationMetaData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Async\AsyncMachine.cs">
+      <Link>VhdManagement\Async\AsyncMachine.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Async\ExceptionExtension.cs">
+      <Link>VhdManagement\Async\ExceptionExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\AttributeHelper.cs">
+      <Link>VhdManagement\Model\AttributeHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\BitMap.cs">
+      <Link>VhdManagement\Model\BitMap.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Block.cs">
+      <Link>VhdManagement\Model\Block.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\BlockAllocationTable.cs">
+      <Link>VhdManagement\Model\BlockAllocationTable.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\DiskGeometry.cs">
+      <Link>VhdManagement\Model\DiskGeometry.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\DiskType.cs">
+      <Link>VhdManagement\Model\DiskType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\HostOsType.cs">
+      <Link>VhdManagement\Model\HostOsType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\IndexRange.cs">
+      <Link>VhdManagement\Model\IndexRange.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\IndexRangeComparer.cs">
+      <Link>VhdManagement\Model\IndexRangeComparer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Model.cs">
+      <Link>VhdManagement\Model\Model.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\ParentLocator.cs">
+      <Link>VhdManagement\Model\ParentLocator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\AbstractDiskBlockFactory.cs">
+      <Link>VhdManagement\Model\Persistance\AbstractDiskBlockFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\BitMapFactory.cs">
+      <Link>VhdManagement\Model\Persistance\BitMapFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\BlockAllocationTableFactory.cs">
+      <Link>VhdManagement\Model\Persistance\BlockAllocationTableFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\CloudVhdFileCreator.cs">
+      <Link>VhdManagement\Model\Persistance\CloudVhdFileCreator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\DifferencingDiskBlockFactory.cs">
+      <Link>VhdManagement\Model\Persistance\DifferencingDiskBlockFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\DiskTypeFactory.cs">
+      <Link>VhdManagement\Model\Persistance\DiskTypeFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\DynamicDiskBlockFactory.cs">
+      <Link>VhdManagement\Model\Persistance\DynamicDiskBlockFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\FixedDiskBlockFactory.cs">
+      <Link>VhdManagement\Model\Persistance\FixedDiskBlockFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\IBlockFactory.cs">
+      <Link>VhdManagement\Model\Persistance\IBlockFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\SectorFactory.cs">
+      <Link>VhdManagement\Model\Persistance\SectorFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\StreamHelper.cs">
+      <Link>VhdManagement\Model\Persistance\StreamHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdConstants.cs">
+      <Link>VhdManagement\Model\Persistance\VhdConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdDataReader.cs">
+      <Link>VhdManagement\Model\Persistance\VhdDataReader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdDataWriter.cs">
+      <Link>VhdManagement\Model\Persistance\VhdDataWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdFileFactory.cs">
+      <Link>VhdManagement\Model\Persistance\VhdFileFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdFooterFactory.cs">
+      <Link>VhdManagement\Model\Persistance\VhdFooterFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdFooterSerializer.cs">
+      <Link>VhdManagement\Model\Persistance\VhdFooterSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdHeaderFactory.cs">
+      <Link>VhdManagement\Model\Persistance\VhdHeaderFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Persistence\VhdParentLocatorFactory.cs">
+      <Link>VhdManagement\Model\Persistance\VhdParentLocatorFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\PlatformCode.cs">
+      <Link>VhdManagement\Model\PlatformCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\Sector.cs">
+      <Link>VhdManagement\Model\Sector.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdCookie.cs">
+      <Link>VhdManagement\Model\VhdCookie.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdCookieType.cs">
+      <Link>VhdManagement\Model\VhdCookieType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdCreatorVersion.cs">
+      <Link>VhdManagement\Model\VhdCreatorVersion.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdEntityAttribute.cs">
+      <Link>VhdManagement\Model\VhdEntityAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdEntityDescriptor.cs">
+      <Link>VhdManagement\Model\VhdEntityDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdFeature.cs">
+      <Link>VhdManagement\Model\VhdFeature.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdFile.cs">
+      <Link>VhdManagement\Model\VhdFile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdFileFormatVersion.cs">
+      <Link>VhdManagement\Model\VhdFileFormatVersion.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdFooter.cs">
+      <Link>VhdManagement\Model\VhdFooter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdHeader.cs">
+      <Link>VhdManagement\Model\VhdHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdHeaderVersion.cs">
+      <Link>VhdManagement\Model\VhdHeaderVersion.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdPropertyAttribute.cs">
+      <Link>VhdManagement\Model\VhdPropertyAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdPropertyDescriptor.cs">
+      <Link>VhdManagement\Model\VhdPropertyDescriptor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\Model\VhdTimeStamp.cs">
+      <Link>VhdManagement\Model\VhdTimeStamp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\SparseStream.cs">
+      <Link>VhdManagement\SparseStream.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\VhdManagement\VirtualDiskStream.cs">
+      <Link>VhdManagement\VirtualDiskStream.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Commands.Common.Network.csproj">
-      <Project>{1338f7ae-7111-4ed3-8916-2d0fecc876f4}</Project>
-      <Name>Commands.Common.Network</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
-      <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
-      <Name>Commands.Common.Storage</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.Common.Strategies\Commands.Common.Strategies.csproj">
-      <Project>{eea69772-d41b-482a-9252-2b4595c59e53}</Project>
-      <Name>Commands.Common.Strategies</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\ServiceManagement\Compute\Sync\Sync.csproj">
-      <Project>{73820cbc-f4eb-4c5e-b4f0-cc4a93fbf157}</Project>
-      <Name>Sync</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\ServiceManagement\Compute\VhdManagement\VhdManagement.csproj">
-      <Project>{80496b7b-068a-4a1e-b0bb-4b1fff3fa616}</Project>
-      <Name>VhdManagement</Name>
+    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
+      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
+      <Name>Commands.Profile</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="AzureRM.Compute.psd1">
-      <Link>AzureRM.Compute.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml">
@@ -397,9 +589,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="StartupScripts\*.ps1">
-      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
-    </None>
+    <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -408,9 +598,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />

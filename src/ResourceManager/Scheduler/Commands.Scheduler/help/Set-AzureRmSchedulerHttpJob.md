@@ -341,10 +341,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ErrorActionType (ByPropertyName), JobCollectionName (ByPropertyName), JobName (ByPropertyName), JobState (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Headers (ByPropertyName)
 
 ## OUTPUTS
 

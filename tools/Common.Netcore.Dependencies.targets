@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.4.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.4.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Aks" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.ResourceManager" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Authorization" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Common" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Compute" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Graph.Rbac" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.KeyVault" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Network" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.ResourceManager" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Storage" Version="1.0.0-preview" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Storage.Management" Version="1.0.0-preview" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Strategies" Version="1.0.0-preview" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Websites" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.4.0" />
     <PackageReference Include="Microsoft.Azure.Common" Version="2.2.0" />
     <PackageReference Include="Hyak.Common" Version="1.2.0" />
-    <PackageReference Include="System.Management.Automation" Version="6.0.1.1" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.4.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0-preview-06" PrivateAssets="All" />
   </ItemGroup>
+  <PropertyGroup>
+    <!-- <StorageToolsPath>$(MSBuildThisFileDirectory)..\src\packages\Microsoft.Azure.PowerShell.Storage.1.0.0-preview\tools\</StorageToolsPath> -->
+    <StorageToolsPath>$(MSBuildThisFileDirectory)..\src\Common\Commands.Common.Storage\</StorageToolsPath>
+  </PropertyGroup>
 </Project>

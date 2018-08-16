@@ -19,8 +19,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Set, Constants.LinkedService, DefaultParameterSetName = ParameterSetNames.ByFactoryName, 
-        SupportsShouldProcess = true), OutputType(typeof(PSLinkedService))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2LinkedService", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSLinkedService))]
     [Alias(VerbsCommon.New + "-" + Constants.LinkedService)]
     public class SetAzureDataFactoryLinkedServiceCommand : DataFactoryContextBaseSetCmdlet
     {

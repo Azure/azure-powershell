@@ -18,7 +18,21 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
+
+## Version 6.4.0
+* Support template deployment at subscription scope. Add new Cmdlets:
+    - New-AzureRmDeployment
+    - Get-AzureRmDeployment
+    - Test-AzureRmDeployment
+    - Remove-AzureRmDeployment
+    - Stop-AzureRmDeployment
+    - Save-AzureRmDeploymentTemplate
+    - Get-AzureRmDeploymentOperation
+* Fix issue where error is thrown when passing a context to Set-AzureRmResource
+    - https://github.com/Azure/azure-powershell/issues/5705
 * Fix example in New-AzureRmResourceGroupDeployment
+* Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 6.3.0
 * Updated help files to include full parameter types and correct input/output types.
