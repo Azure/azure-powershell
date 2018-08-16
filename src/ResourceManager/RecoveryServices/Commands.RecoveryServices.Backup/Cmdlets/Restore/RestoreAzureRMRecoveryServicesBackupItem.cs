@@ -29,8 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Restores an item using the recovery point provided within the recovery services vault
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureRmRecoveryServicesBackupItem", SupportsShouldProcess = true),
-        OutputType(typeof(JobBase))]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupItem", SupportsShouldProcess = true),OutputType(typeof(JobBase))]
     public class RestoreAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
         /// <summary>
@@ -67,6 +66,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public string StorageAccountResourceGroupName { get; set; }
 
         /// <summary>
+        /// The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 3,
+            HelpMessage = ParamHelpMsgs.RestoreDisk.TargetResourceGroupName)]
+        [ValidateNotNullOrEmpty]
+        public string TargetResourceGroupName { get; set; }
+
+        /// <summary>
         /// Use this switch if the disks from the recovery point are to be restored to their original storage accounts
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RestoreDisk.OsaOption)]
@@ -85,19 +92,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 GenericResource storageAccountResource = GetStorageAccountResource();
                 WriteDebug(string.Format("StorageId = {0}", storageAccountResource.Id));
 
-                PsBackupProviderManager providerManager = new PsBackupProviderManager(
-                    new Dictionary<Enum, object>()
-                    {
-                        { VaultParams.VaultName, vaultName },
-                        { VaultParams.ResourceGroupName, resourceGroupName },
-                        { VaultParams.VaultLocation, VaultLocation },
-                        { RestoreBackupItemParams.RecoveryPoint, RecoveryPoint },
-                        { RestoreBackupItemParams.StorageAccountId, storageAccountResource.Id },
-                        { RestoreBackupItemParams.StorageAccountLocation, storageAccountResource.Location },
-                        { RestoreBackupItemParams.StorageAccountType, storageAccountResource.Type },
-                        { RestoreBackupItemParams.OsaOption, UseOriginalStorageAccount.IsPresent }
-                    }, ServiceClientAdapter);
+                Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
+                providerParameters.Add(VaultParams.VaultName, vaultName);
+                providerParameters.Add(VaultParams.ResourceGroupName, resourceGroupName);
+                providerParameters.Add(VaultParams.VaultLocation, VaultLocation);
+                providerParameters.Add(RestoreBackupItemParams.RecoveryPoint, RecoveryPoint);
+                providerParameters.Add(RestoreBackupItemParams.StorageAccountId, storageAccountResource.Id);
+                providerParameters.Add(RestoreBackupItemParams.StorageAccountLocation, storageAccountResource.Location);
+                providerParameters.Add(RestoreBackupItemParams.StorageAccountType, storageAccountResource.Type);
+                providerParameters.Add(RestoreBackupItemParams.OsaOption, UseOriginalStorageAccount.IsPresent);
 
+                if (TargetResourceGroupName != null)
+                {
+                    providerParameters.Add(RestoreBackupItemParams.TargetResourceGroupName, TargetResourceGroupName);
+                }
+
+                PsBackupProviderManager providerManager =
+                    new PsBackupProviderManager(providerParameters, ServiceClientAdapter);
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
                     RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
                 var jobResponse = psBackupProvider.TriggerRestore();

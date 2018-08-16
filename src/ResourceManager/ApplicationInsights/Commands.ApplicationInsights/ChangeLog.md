@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
+
+## Version 0.1.6
+* Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 0.1.5
 * Updated help files to include full parameter types and correct input/output types.
@@ -37,10 +41,10 @@
 
 ## Version 0.1.0
 * Add commands to get/create/remove applicaiton insights resource
-    - Get-AzureRmApplicationInsights 
+    - Get-AzureRmApplicationInsights
     - New-AzureRmApplicationInsights
     - Remove-AzureRmApplicationInsights
-* Add commands to get/update pricing/daily cap of applicaiton insights resource        
+* Add commands to get/update pricing/daily cap of applicaiton insights resource
     - Get-AzureRmApplicationInsights -IncludeDailyCap
     - Set-AzureRmApplicationInsightsPricingPlan
     - Set-AzureRmApplicationInsightsDailyCap

@@ -29,9 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Remove,
-        ProfileNouns.VirtualMachineAEMExtension)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAEMExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
     {

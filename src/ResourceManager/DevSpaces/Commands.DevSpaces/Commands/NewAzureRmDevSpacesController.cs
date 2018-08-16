@@ -28,7 +28,7 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.DevSpaces.Commands
 {
-    [Cmdlet(VerbsCommon.New, DevSpacesControllerNoun, SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DevSpacesController", SupportsShouldProcess = true)]
     [OutputType(typeof(PSController))]
     public class NewAzureRmDevSpacesController : DevSpacesCmdletBase
     {
