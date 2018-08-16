@@ -39,57 +39,32 @@ namespace RecoveryServices.SiteRecovery.Test
             this.initialize();
         }
 
-        [Fact(Skip = "Recording needs to be added")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewA2ADiskReplicationConfig()
         {
-            this.RunPowerShellTest(_logger,Constants.NewModel, "Test-NewA2ADiskReplicationConfiguration");
+            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewA2ADiskReplicationConfiguration");
         }
 
-
-        [Fact(Skip = "Recording needs to be added")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewA2AManagedDiskReplicationConfig()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewA2AManagedDiskReplicationConfiguration");
         }
 
-        [Fact(Skip = "Recording needs to be added")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2ANewAsrFabric()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewAsrFabric");
         }
 
-
-        [Fact(Skip = "Recording needs to be added")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2ATestNewContainer()
         {
             this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NewContainer");
         }
-
-
-        [Fact(Skip = "Recording needs to be added")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void A2ATestNetworkMapping()
-        {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-NetworkMapping");
-        }
-
-        [Fact(Skip = "Recording needs to be added")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void A2AManagedDiskFlow()
-        {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-ManagedDiskFlow");
-        }
-
-        [Fact(Skip = "Recording needs to be added")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void A2AUnManagedDiskFlow()
-        {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-UnManagedDiskFlow");
-        }
-
     }
 }
