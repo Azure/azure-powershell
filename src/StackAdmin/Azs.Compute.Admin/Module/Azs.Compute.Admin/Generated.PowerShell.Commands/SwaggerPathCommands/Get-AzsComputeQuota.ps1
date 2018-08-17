@@ -36,7 +36,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
 #>
 function Get-AzsComputeQuota {
-    [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.Quota])]
+    [OutputType([QuotaCustomObject])]
     [CmdletBinding(DefaultParameterSetName = 'List')]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Get', Position = 0)]
@@ -68,8 +68,6 @@ function Get-AzsComputeQuota {
     }
 
     Process {
-
-
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
@@ -143,7 +141,18 @@ function Get-AzsComputeQuota {
             $GetTaskResult_params = @{
                 TaskResult = $TaskResult
             }
-            Get-TaskResult @GetTaskResult_params
+
+			$OldQuotaObjects = Get-TaskResult @GetTaskResult_params 
+
+			[QuotaCustomObject[]] $script:results = @()
+
+            $OldQuotaObjects | ForEach-Object {
+                [QuotaCustomObject]$result = New-QuotaCustomObject -Quota $_
+                                
+				$script:results += $result
+            }
+
+            Write-Output -InputObject $script:results
         }
     }
 
