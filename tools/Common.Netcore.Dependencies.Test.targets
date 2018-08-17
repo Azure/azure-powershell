@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildThisFileDirectory)\Common.Netcore.Dependencies.targets" />
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" />
     <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.9.0" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.1.1" IncludeAssets="All" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.4.0" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.4.0" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.9.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="xunit" Version="2.3.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager" Version="1.0.0-preview" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.0-preview.3" IncludeAssets="All" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+  </ItemGroup>
+  <PropertyGroup>
+    <!-- <ScenarioTestToolsPath>$(MSBuildThisFileDirectory)..\src\packages\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.0-preview\tools\</ScenarioTestToolsPath> -->
+    <ScenarioTestToolsPath>$(MSBuildThisFileDirectory)..\src\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\</ScenarioTestToolsPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(ScenarioTestToolsPath)Assert.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(ScenarioTestToolsPath)Common.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(ScenarioTestToolsPath)AzureRM.Resources.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(ScenarioTestToolsPath)AzureRM.Storage.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

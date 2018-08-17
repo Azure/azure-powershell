@@ -266,13 +266,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName), State (ByPropertyName), StorageAccountName (ByPropertyName), StorageKeyType (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
-Parameters: AuditActionGroup (ByPropertyName)
 
 ### System.Guid
-Parameters: StorageAccountSubscriptionId (ByPropertyName)
 
 ### System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 

@@ -255,13 +255,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-Parameters: Context (ByPropertyName)
 
 ### System.String
-Parameters: ApiId (ByPropertyName), ApiRevision (ByPropertyName), Format (ByPropertyName), OperationId (ByPropertyName), ProductId (ByPropertyName), SaveAs (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Force (ByPropertyName)
 
 ## OUTPUTS
 

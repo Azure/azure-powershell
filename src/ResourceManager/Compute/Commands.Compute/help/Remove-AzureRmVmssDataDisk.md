@@ -142,10 +142,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
-Parameters: VirtualMachineScaleSet (ByPropertyName, ByValue)
 
 ### System.String
-Parameters: Name (ByPropertyName)
 
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
