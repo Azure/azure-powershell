@@ -69,7 +69,6 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
             if (this.IsVirtualNetworkPeeringPresent(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name))
             {

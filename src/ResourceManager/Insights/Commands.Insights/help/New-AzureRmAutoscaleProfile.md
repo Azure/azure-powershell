@@ -344,19 +344,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: DefaultCapacity (ByPropertyName), MaximumCapacity (ByPropertyName), MinimumCapacity (ByPropertyName), Name (ByPropertyName), ScheduleTimeZone (ByPropertyName), TimeWindowTimeZone (ByPropertyName)
 
 ### System.DateTime
-Parameters: EndTimeWindow (ByPropertyName), StartTimeWindow (ByPropertyName)
 
 ### Microsoft.Azure.Management.Monitor.Management.Models.RecurrenceFrequency
-Parameters: RecurrenceFrequency (ByPropertyName)
 
 ### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Collections.Generic.List`1[[System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule, Microsoft.Azure.Commands.Insights, Version=5.0.1.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule, Microsoft.Azure.Commands.Insights, Version=5.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

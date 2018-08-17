@@ -192,13 +192,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName), DatabaseName (ByPropertyName), Name (ByPropertyName)
 
 ### System.Management.Automation.PSCredential
-Parameters: Password (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Recurse (ByPropertyName)
 
 ## OUTPUTS
 
