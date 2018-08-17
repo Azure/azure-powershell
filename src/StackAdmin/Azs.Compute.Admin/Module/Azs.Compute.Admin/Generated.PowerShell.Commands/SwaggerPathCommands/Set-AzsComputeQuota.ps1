@@ -20,22 +20,22 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     Location of the resource.
 
 .PARAMETER AvailabilitySetCount
-    Maximum number of availability sets allowed.
+    Total number of availability sets allowed.
 
-.PARAMETER CoresLimit
-    Maximum number of core allowed.
+.PARAMETER CoresCount
+    Total number of cores allowed.
 
 .PARAMETER VmScaleSetCount
-    Maximum number of scale sets allowed.
+    Total number of scale sets allowed.
 
 .PARAMETER VirtualMachineCount
-    Maximum number of virtual machines allowed.
+    Total number of virtual machines allowed.
 
-.PARAMETER MaxAllocationStandardManagedDisksAndSnapshots
-	Maximum number of standard managed disks and snapshots allowed
-
-.PARAMETER MaxAllocationPremiumManagedDisksAndSnapshots
-	Maximum number of Premium managed disks and snapshots allowed
+.PARAMETER	StandardManagedDiskAndSnapshotSize
+    Total size for standard managed disks and snapshots allowed.
+	
+.PARAMETER PremiumManagedDiskAndSnapshotSize
+    Total size for standard managed disks and snapshots allowed.
 
 .PARAMETER ResourceId
     The ARM compute quota id.
@@ -45,13 +45,13 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
 .EXAMPLE
 
-    PS C:\> Set-AzsComputeQuota -Name Quota1 -CoresLimit 10
+    PS C:\> Set-AzsComputeQuota -Name Quota1 -CoresCount 10
 
     Update a compute quota.
 
 #>
 function Set-AzsComputeQuota {
-    [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.Quota])]
+    [OutputType([QuotaCustomObject])]
     [CmdletBinding(DefaultParameterSetName = 'Update', SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Update')]
@@ -65,7 +65,7 @@ function Set-AzsComputeQuota {
 
         [Parameter(Mandatory = $false)]
         [int32]
-        $CoresLimit,
+        $CoresCount,
 
         [Parameter(Mandatory = $false)]
         [int32]
@@ -77,11 +77,11 @@ function Set-AzsComputeQuota {
 
         [Parameter(Mandatory = $false)]
         [int32]
-		$MaxAllocationStandardManagedDisksAndSnapshots,
+		$StandardManagedDiskAndSnapshotSize,
 
         [Parameter(Mandatory = $false)]
         [int32]
-		$MaxAllocationPremiumManagedDisksAndSnapshots,
+		$PremiumManagedDiskAndSnapshotSize,
 
         [Parameter(Mandatory = $false)]
         [System.String]
@@ -94,7 +94,7 @@ function Set-AzsComputeQuota {
 
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'InputObject')]
         [ValidateNotNullOrEmpty()]
-        [Microsoft.AzureStack.Management.Compute.Admin.Models.Quota]
+        [QuotaCustomObject]
         $InputObject
     )
 
@@ -157,16 +157,32 @@ function Set-AzsComputeQuota {
                     $NewQuota = Get-AzsComputeQuota -Location $Location -Name $Name
                 }
 
+				$QuotaToBeSet = Convert-CustomQuotaToSDKObject -CustomQuota $NewQuota
+
                 # Update the Quota object from anything passed in
-                $flattenedParameters = @('AvailabilitySetCount', 'CoresLimit', 'VmScaleSetCount', 'VirtualMachineCount', 'MaxAllocationStandardManagedDisksAndSnapshots', 'MaxAllocationPremiumManagedDisksAndSnapshots' )
+                $flattenedParameters = @('AvailabilitySetCount', 'CoresCount', 'VmScaleSetCount', 'VirtualMachineCount', 'StandardManagedDiskAndSnapshotSize', 'PremiumManagedDiskAndSnapshotSize' )
                 $flattenedParameters | ForEach-Object {
                     if ($PSBoundParameters.ContainsKey($_)) {
-                        $NewQuota.$($_) = $PSBoundParameters[$_]
+						
+						$NewValue = $PSBoundParameters[$_]
+						
+						if($NewValue -ne $null)
+						{
+							if($_ -eq 'StandardManagedDiskAndSnapshotSize') {
+								$QuotaToBeSet.MaxAllocationStandardManagedDisksAndSnapshots = $NewValue 
+							} elseif($_ -eq 'PremiumManagedDiskAndSnapshotSize') {
+								$QuotaToBeSet.MaxAllocationPremiumManagedDisksAndSnapshots = $NewValue 
+							} elseif($_ -eq 'CoresCount') {
+								$QuotaToBeSet.CoresLimit = $NewValue 
+							} else {
+								$QuotaToBeSet.$($_) = $NewValue 
+							}
+						}
                     }
                 }
 
                 Write-Verbose -Message 'Performing operation update on $ComputeAdminClient.'
-                $TaskResult = $ComputeAdminClient.Quotas.CreateOrUpdateWithHttpMessagesAsync($Location, $Name, $NewQuota)
+                $TaskResult = $ComputeAdminClient.Quotas.CreateOrUpdateWithHttpMessagesAsync($Location, $Name, $QuotaToBeSet)
             } else {
                 Write-Verbose -Message 'Failed to map parameter set to operation method.'
                 throw 'Module failed to find operation to execute.'
@@ -176,7 +192,8 @@ function Set-AzsComputeQuota {
                 $GetTaskResult_params = @{
                     TaskResult = $TaskResult
                 }
-                Get-TaskResult @GetTaskResult_params
+				[QuotaCustomObject]$script:result = New-QuotaCustomObject -Quota (Get-TaskResult @GetTaskResult_params) 
+				Write-Output -InputObject $script:result
             }
         }
     }

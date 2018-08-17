@@ -17,29 +17,35 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     Name of the quota.
 
 .PARAMETER AvailabilitySetCount
-    Maximum number of availability sets allowed.
+    Total number of availability sets allowed.
 
-.PARAMETER CoresLimit
-    Maximum number of cores allowed.
+.PARAMETER CoresCount
+    Total number of cores allowed.
 
 .PARAMETER VmScaleSetCount
-    Maximum number of scale sets allowed.
+    Total number of scale sets allowed.
 
 .PARAMETER VirtualMachineCount
-    Maximum number of virtual machines allowed.
+    Total number of virtual machines allowed.
 
-.PARAMETER LocationName
+.PARAMETER	StandardManagedDiskAndSnapshotSize
+    Total size for standard managed disks and snapshots allowed.
+	
+.PARAMETER PremiumManagedDiskAndSnapshotSize
+    Total size for standard managed disks and snapshots allowed.
+
+.PARAMETER Location
     Location of the resource.
 
 .EXAMPLE
 
-    PS C:\> New-AzsComputeQuota -Name testQuota5 -AvailabilitySetCount 1000 -CoresLimit 1000 -VmScaleSetCount 1000 -VirtualMachineCount 1000 -MaxAllocationStandardManagedDisksAndSnapshots 1024 -MaxAllocationPremiumManagedDisksAndSnapshots 1024
+    PS C:\> New-AzsComputeQuota -Name testQuota5 -AvailabilitySetCount 1000 -CoresCount 1000 -VmScaleSetCount 1000 -VirtualMachineCount 1000 -StandardManagedDiskAndSnapshotSize 1024 -PremiumManagedDiskAndSnapshotSize 1024
 
     Create a new compute quota.
 
 #>
 function New-AzsComputeQuota {
-    [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.Quota])]
+    [OutputType([QuotaCustomObject])]
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $true)]
@@ -53,7 +59,7 @@ function New-AzsComputeQuota {
 
         [Parameter(Mandatory = $false)]
         [int32]
-        $CoresLimit = 100,
+        $CoresCount = 100,
 
         [Parameter(Mandatory = $false)]
         [int32]
@@ -65,11 +71,11 @@ function New-AzsComputeQuota {
 
         [Parameter(Mandatory = $false)]
         [int32]
-		$MaxAllocationStandardManagedDisksAndSnapshots = 2048,
+		$StandardManagedDiskAndSnapshotSize = 2048,
 
         [Parameter(Mandatory = $false)]
         [int32]
-		$MaxAllocationPremiumManagedDisksAndSnapshots = 2048,
+		$PremiumManagedDiskAndSnapshotSize = 2048,
 
         [Parameter(Mandatory = $false)]
         [System.String]
@@ -113,7 +119,17 @@ function New-AzsComputeQuota {
             $flattenedParameters = @('AvailabilitySetCount', 'CoresLimit', 'VmScaleSetCount', 'VirtualMachineCount', 'MaxAllocationStandardManagedDisksAndSnapshots', 'MaxAllocationPremiumManagedDisksAndSnapshots', 'Location' )
             $utilityCmdParams = @{}
             $flattenedParameters | ForEach-Object {
-                $utilityCmdParams[$_] = Get-Variable -Name $_ -ValueOnly
+
+				if($_ -eq 'MaxAllocationStandardManagedDisksAndSnapshots') {
+					$utilityCmdParams[$_] = Get-Variable -Name 'StandardManagedDiskAndSnapshotSize' -ValueOnly
+				} elseif($_ -eq 'MaxAllocationPremiumManagedDisksAndSnapshots') {
+					$utilityCmdParams[$_] = Get-Variable -Name 'PremiumManagedDiskAndSnapshotSize' -ValueOnly
+				} elseif($_ -eq 'CoresLimit') {
+					$utilityCmdParams[$_] = Get-Variable -Name 'CoresCount' -ValueOnly
+				} else {
+					$utilityCmdParams[$_] = Get-Variable -Name $_ -ValueOnly
+				}
+				
             }
             $NewQuota = New-QuotaObject @utilityCmdParams
 
@@ -135,11 +151,14 @@ function New-AzsComputeQuota {
                 $GetTaskResult_params = @{
                     TaskResult = $TaskResult
                 }
-                Get-TaskResult @GetTaskResult_params
+
+                $quotaObj = Get-TaskResult @GetTaskResult_params
+				[QuotaCustomObject]$script:result = New-QuotaCustomObject -Quota $quotaObj
+
+				Write-Output -InputObject $script:result
             }
         }
     }
-
 
     End {
         if ($tracerObject) {

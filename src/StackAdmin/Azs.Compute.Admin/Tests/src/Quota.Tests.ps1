@@ -69,7 +69,7 @@ InModuleScope Azs.Compute.Admin {
 
                 # Subscriber Usage Aggregate
                 $Quota.AvailabilitySetCount | Should Not Be $null
-                $Quota.CoresLimit           | Should Not Be $null
+                $Quota.CoresCount           | Should Not Be $null
                 $Quota.VirtualMachineCount  | Should Not Be $null
                 $Quota.VmScaleSetCount      | Should Not Be $null
             }
@@ -91,7 +91,7 @@ InModuleScope Azs.Compute.Admin {
                 ValidateComputeQuota -Quota $quota
             }
         }
-
+		
 
         It "TestGetQuota" -Skip:$('TestGetQuota' -in $global:SkippedTests) {
             $global:TestName = 'TestGetQuota'
@@ -106,7 +106,7 @@ InModuleScope Azs.Compute.Admin {
             }
         }
 
-
+		
         It "TestGetAllQuotas" -Skip:$('TestGetAllQuotas' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllQuotas'
             $quotas = Get-AzsComputeQuota -Location $global:Location
@@ -136,13 +136,13 @@ InModuleScope Azs.Compute.Admin {
 
             $data | ForEach-Object {
                 $name = $quotaNamePrefix + $_[6]
-                $quota = New-AzsComputeQuota -Location $global:Location -Name $name -AvailabilitySetCount $_[0] -CoresLimit $_[1] -VmScaleSetCount $_[2] -VirtualMachineCount $_[3] -MaxAllocationStandardManagedDisksAndSnapshots $_[4] -MaxAllocationPremiumManagedDisksAndSnapshots $_[5]
+                $quota = New-AzsComputeQuota -Location $global:Location -Name $name -AvailabilitySetCount $_[0] -CoresCount $_[1] -VmScaleSetCount $_[2] -VirtualMachineCount $_[3] -StandardManagedDiskAndSnapshotSize $_[4] -PremiumManagedDiskAndSnapshotSize $_[5]
                 $quota.AvailabilitySetCount | Should be $_[0]
-                $quota.CoresLimit           | Should be $_[1]
+                $quota.CoresCount           | Should be $_[1]
                 $quota.VmScaleSetCount      | Should be $_[2]
                 $quota.VirtualMachineCount  | Should be $_[3]
-				$quota.MaxAllocationStandardManagedDisksAndSnapshots  | Should be $_[4]
-				$quota.MaxAllocationPremiumManagedDisksAndSnapshots | Should be $_[5]
+				$quota.StandardManagedDiskAndSnapshotSize  | Should be $_[4]
+				$quota.PremiumManagedDiskAndSnapshotSize | Should be $_[5]
             }
 
             $data | ForEach-Object {
@@ -175,7 +175,7 @@ InModuleScope Azs.Compute.Admin {
             $name = "myQuota"
             $data | ForEach-Object {
                 {
-                    New-AzsComputeQuota -Location $global:Location -Name $name -AvailabilitySetCount $_[0] -CoresLimit $_[1] -VmScaleSetCount $_[2] -VirtualMachineCount $_[3] -MaxAllocationStandardManagedDisksAndSnapshots $_[4] -MaxAllocationPremiumManagedDisksAndSnapshots $_[5]
+                    New-AzsComputeQuota -Location $global:Location -Name $name -AvailabilitySetCount $_[0] -CoresCount $_[1] -VmScaleSetCount $_[2] -VirtualMachineCount $_[3] -StandardManagedDiskAndSnapshotSize $_[4] -PremiumManagedDiskAndSnapshotSize $_[5]
                 } | Should Throw
             }
         }
@@ -212,7 +212,7 @@ InModuleScope Azs.Compute.Admin {
 			)
             $data | ForEach-Object {
                 $name = $quotaNamePrefix + $_[6]
-                New-AzsComputeQuota -Location $invalidLocation -Name $name -AvailabilitySetCount $_[0] -CoresLimit $_[1] -VmScaleSetCount $_[2] -VirtualMachineCount $_[3] -MaxAllocationStandardManagedDisksAndSnapshots $_[4] -MaxAllocationPremiumManagedDisksAndSnapshots $_[5] | Should be $null
+                New-AzsComputeQuota -Location $invalidLocation -Name $name -AvailabilitySetCount $_[0] -CoresCount $_[1] -VmScaleSetCount $_[2] -VirtualMachineCount $_[3] -StandardManagedDiskAndSnapshotSize $_[4] -PremiumManagedDiskAndSnapshotSize $_[5] | Should be $null
                 Get-AzsComputeQuota -Location $invalidLocation -Name $quota.Name | Should be $null
 
             }
@@ -222,25 +222,26 @@ InModuleScope Azs.Compute.Admin {
                 Get-AzsComputeQuota -Location | Where-Object { $_.Name -eq $name} | Should be $null
             }
         }
-
+		
 		# Session recording for this needs a manual update.
 		# Set command would try to do a get before to ensure the quota exists.
         It "TestQuotaCreateUpdateDelete" -Skip:$('TestQuotaCreateUpdateDelete' -in $global:SkippedTests) {
             $global:TestName = 'TestQuotaCreateUpdateDelete'
 
-			<#
+			#
 			#	if running against the actual environment enable the following to create first.
-			#	New-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 1 -CoresLimit 1 -VmScaleSetCount 1 -VirtualMachineCount 1 -MaxAllocationStandardManagedDisksAndSnapshots 1 -MaxAllocationPremiumManagedDisksAndSnapshots 1
+			#	New-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 1 -CoresCount 1 -VmScaleSetCount 1 -VirtualMachineCount 1 -StandardManagedDiskAndSnapshotSize 1 -PremiumManagedDiskAndSnapshotSize 1
 			# Powershell replay playback session grabs the first matching response in the recorded sessions file. 
 			# So it always picks the first response. If the test checks for not exist (404), then create and checks for exists, that test would always fail in recoreded sessions.
-			#>
-			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 1 -CoresLimit 1 -VmScaleSetCount 1 -VirtualMachineCount 1 -MaxAllocationStandardManagedDisksAndSnapshots 1 -MaxAllocationPremiumManagedDisksAndSnapshots 1
-			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 1 -CoresLimit 1 -VmScaleSetCount 1 -VirtualMachineCount 2 -MaxAllocationStandardManagedDisksAndSnapshots 1 -MaxAllocationPremiumManagedDisksAndSnapshots 1
-			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 2 -CoresLimit 1 -VmScaleSetCount 1 -VirtualMachineCount 2 -MaxAllocationStandardManagedDisksAndSnapshots 1 -MaxAllocationPremiumManagedDisksAndSnapshots 1
-			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 2 -CoresLimit 1 -VmScaleSetCount 2 -VirtualMachineCount 2 -MaxAllocationStandardManagedDisksAndSnapshots 1 -MaxAllocationPremiumManagedDisksAndSnapshots 1
-			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 2 -CoresLimit 2 -VmScaleSetCount 2 -VirtualMachineCount 2 -MaxAllocationStandardManagedDisksAndSnapshots 1 -MaxAllocationPremiumManagedDisksAndSnapshots 1
-			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 2 -CoresLimit 2 -VmScaleSetCount 2 -VirtualMachineCount 2 -MaxAllocationStandardManagedDisksAndSnapshots 2 -MaxAllocationPremiumManagedDisksAndSnapshots 1
-			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 2 -CoresLimit 2 -VmScaleSetCount 2 -VirtualMachineCount 2 -MaxAllocationStandardManagedDisksAndSnapshots 2 -MaxAllocationPremiumManagedDisksAndSnapshots 2
+			#
+			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 1 -CoresCount 1 -VmScaleSetCount 1 -VirtualMachineCount 1 -StandardManagedDiskAndSnapshotSize 1 -PremiumManagedDiskAndSnapshotSize 1
+			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 1 -CoresCount 1 -VmScaleSetCount 1 -VirtualMachineCount 2 -StandardManagedDiskAndSnapshotSize 1 -PremiumManagedDiskAndSnapshotSize 1
+			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 2 -CoresCount 1 -VmScaleSetCount 1 -VirtualMachineCount 2 -StandardManagedDiskAndSnapshotSize 1 -PremiumManagedDiskAndSnapshotSize 1
+			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 2 -CoresCount 1 -VmScaleSetCount 2 -VirtualMachineCount 2 -StandardManagedDiskAndSnapshotSize 1 -PremiumManagedDiskAndSnapshotSize 1
+			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 2 -CoresCount 2 -VmScaleSetCount 2 -VirtualMachineCount 2 -StandardManagedDiskAndSnapshotSize 1 -PremiumManagedDiskAndSnapshotSize 1
+			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 2 -CoresCount 2 -VmScaleSetCount 2 -VirtualMachineCount 2 -StandardManagedDiskAndSnapshotSize 2 -PremiumManagedDiskAndSnapshotSize 1
+			Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 2 -CoresCount 2 -VmScaleSetCount 2 -VirtualMachineCount 2 -StandardManagedDiskAndSnapshotSize 2 -PremiumManagedDiskAndSnapshotSize 2
         }
+		
     }
 }
