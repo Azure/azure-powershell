@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzureRmIotHubRoute
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Test routes in IoT Hub
 
 ## SYNTAX
 
@@ -54,7 +54,7 @@ Test-AzureRmIotHubRoute [-ResourceId] <String> [-Source] <String> [-Body <String
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Test a specific route.
 
 ## EXAMPLES
 

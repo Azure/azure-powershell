@@ -23,9 +23,12 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 {
     public class IotHubRoutingTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public IotHubRoutingTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -34,6 +37,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         public void TestAzureIotHubRoutingLifeCycle()
         {
             IotHubController.NewInstance.RunPsTestWorkflow(
+                 _logger,
                 () => { return new[] { "Test-AzureRmIotHubRoutingLifecycle" }; },
                 null,
                 null,

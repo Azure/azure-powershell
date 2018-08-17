@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmIotHubRoutingEndpoint
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Get information on all the endpoints for your IoT Hub
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzureRmIotHubRoutingEndpoint [-ResourceId] <String> [-EndpointType <String>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Get information on the endpoint.
 
 ## EXAMPLES
 

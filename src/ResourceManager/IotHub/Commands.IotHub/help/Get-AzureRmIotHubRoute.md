@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmIotHubRoute
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Get information about the route in IoT Hub
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzureRmIotHubRoute [-ResourceId] <String> [-RouteName <String>] [-DefaultPro
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Get information on the route.You can get all routes from an IoT Hub, get routes to a type of endpoint or get routes to a specific endpoint.
 
 ## EXAMPLES
 
