@@ -117,20 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Confirm_AddAddressRange" xml:space="preserve">
+    <value>Are you sure you want to add an address range starting with '{0}' to endpoint '{1}' of profile '{2}' in resource group '{3}'?</value>
+  </data>
+  <data name="Confirm_AddHeaderToEndpoint" xml:space="preserve">
+    <value>Are you sure you want to add a custom header with name '{0}' to endpoint '{1}' of profile '{2}' in resource group '{3}'?</value>
+  </data>
+  <data name="Confirm_AddHeaderToProfile" xml:space="preserve">
+    <value>Are you sure you want to add a custom header with name '{0}' to profile '{1}' in resource group '{2}'?</value>
+  </data>
+  <data name="Confirm_AddStatusCodeRange" xml:space="preserve">
+    <value>Are you sure you want to add an expected status code range starting with '{0}' to profile '{1}' in resource group '{2}'?</value>
+  </data>
   <data name="Confirm_DisableEndpoint" xml:space="preserve">
     <value>Are you sure you want to disable endpoint '{0}' of Profile '{1}'?</value>
   </data>
   <data name="Confirm_DisableProfile" xml:space="preserve">
     <value>Are you sure you want to disable profile '{0}'?</value>
   </data>
+  <data name="Confirm_RemoveAddressRange" xml:space="preserve">
+    <value>Are you sure you want to remove the address range starting with '{0}' from endpoint '{1}' of profile '{2}' in resource group '{3}'?</value>
+  </data>
   <data name="Confirm_RemoveEndpoint" xml:space="preserve">
     <value>Are you sure you want to permanently remove endpoint '{0}' from profile '{1}' in resource group '{2}'?</value>
+  </data>
+  <data name="Confirm_RemoveHeaderFromEndpoint" xml:space="preserve">
+    <value>Are you sure you want to remove the custom header with name '{0}' from endpoint '{1}' of profile '{2}' in resource group '{3}'?</value>
+  </data>
+  <data name="Confirm_RemoveHeaderFromProfile" xml:space="preserve">
+    <value>Are you sure you want to remove the custom header with name '{0}' from profile '{1}' in resource group '{2}'?</value>
   </data>
   <data name="Confirm_RemoveProfile" xml:space="preserve">
     <value>Are you sure you want to permanently remove profile '{0}'?</value>
   </data>
+  <data name="Confirm_RemoveStatusCodeRange" xml:space="preserve">
+    <value>Are you sure you want to remove the expected status code range starting with '{0}' from profile '{1}' in resource group '{2}'?</value>
+  </data>
+  <data name="Error_AddExistingAddressRange" xml:space="preserve">
+    <value>There is already an existing adress range starting with '{0}'.</value>
+  </data>
   <data name="Error_AddExistingEndpoint" xml:space="preserve">
     <value>There is already an existing endpoint with name '{0}'.</value>
+  </data>
+  <data name="Error_AddExistingHeader" xml:space="preserve">
+    <value>There is already an existing custom header with name '{0}'.</value>
+  </data>
+  <data name="Error_AddExistingStatusCodeRange" xml:space="preserve">
+    <value>There is already an existing expected status code range with Min of '{0}'.</value>
+  </data>
+  <data name="Error_AddressRangeNotFound" xml:space="preserve">
+    <value>The endpoint provided does not have any address ranges starting with '{0}'.</value>
   </data>
   <data name="Error_CreateExistingEndpoint" xml:space="preserve">
     <value>There is already an existing endpoint with name '{0}' in the profile '{1}' and resource group '{2}'</value>
@@ -138,8 +174,23 @@
   <data name="Error_CreateExistingProfile" xml:space="preserve">
     <value>There is already an existing profile with name '{0}' in the resource group '{1}'</value>
   </data>
+  <data name="Error_CustomHeaderNotFound" xml:space="preserve">
+    <value>The profile or endpoint provided does not have any custom headers with name '{0}'.</value>
+  </data>
   <data name="Error_EndpointNotFound" xml:space="preserve">
     <value>The profile provided does not have any endpoints with name '{0}'.</value>
+  </data>
+  <data name="Error_StatusCodeRangeNotFound" xml:space="preserve">
+    <value>The profile provided does not have any expected status code range with Min of '{0}'.</value>
+  </data>
+  <data name="Progress_AddingAddressRange" xml:space="preserve">
+    <value>Adding address range ...</value>
+  </data>
+  <data name="Progress_AddingHeader" xml:space="preserve">
+    <value>Adding header ...</value>
+  </data>
+  <data name="Progress_AddingStatusCodeRange" xml:space="preserve">
+    <value>Adding status code range ...</value>
   </data>
   <data name="Progress_DisablingEndpoint" xml:space="preserve">
     <value>Disabling endpoint ...</value>
@@ -147,11 +198,20 @@
   <data name="Progress_DisablingProfile" xml:space="preserve">
     <value>Disabling profile ...</value>
   </data>
+  <data name="Progress_RemovingAddressRange" xml:space="preserve">
+    <value>Removing Address range ...</value>
+  </data>
   <data name="Progress_RemovingEndpoint" xml:space="preserve">
     <value>Removing endpoint ...</value>
   </data>
+  <data name="Progress_RemovingHeader" xml:space="preserve">
+    <value>Removing header ...</value>
+  </data>
   <data name="Progress_RemovingProfile" xml:space="preserve">
     <value>Removing profile ...</value>
+  </data>
+  <data name="Progress_RemovingStatusCodeRange" xml:space="preserve">
+    <value>Removing status code range ...</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Success!</value>

@@ -47,11 +47,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.TrafficManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.TrafficManager.2.3.0-preview\lib\net452\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.TrafficManager.2.5.0\lib\net452\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomHeader\AddAzureTrafficManagerCustomHeaderToEndpoint.cs" />
+    <Compile Include="CustomHeader\RemoveAzureTrafficManagerCustomHeaderFromEndpoint.cs" />
+    <Compile Include="CustomHeader\RemoveAzureTrafficManagerCustomHeaderFromProfile.cs" />
     <Compile Include="Endpoint\DisableAzureTrafficManagerEndpoint.cs" />
     <Compile Include="Endpoint\EnableAzureTrafficManagerEndpoint.cs" />
     <Compile Include="Endpoint\SetAzureTrafficManagerEndpoint.cs" />
@@ -60,8 +63,16 @@
     <Compile Include="Endpoint\NewAzureTrafficManagerEndpoint.cs" />
     <Compile Include="Endpoint\RemoveAzureTrafficManagerEndpointConfig.cs" />
     <Compile Include="Endpoint\AddAzureTrafficManagerEndpointConfig.cs" />
+    <Compile Include="ExpectedStatusCodeRange\AddAzureTrafficManagerExpectedStatusCodeRange.cs" />
+    <Compile Include="ExpectedStatusCodeRange\RemoveAzureTrafficManagerExpectedStatusCodeRange.cs" />
+    <Compile Include="IpAddressRange\AddAzureTrafficManagerIpAddressRange.cs" />
+    <Compile Include="IpAddressRange\RemoveAzureTrafficManagerIpAddressRange.cs" />
+    <Compile Include="Models\TrafficManagerCustomHeader.cs" />
     <Compile Include="Models\TrafficManagerEndpoint.cs" />
+    <Compile Include="Models\TrafficManagerExpectedStatusCodeRange.cs" />
+    <Compile Include="Models\TrafficManagerIpAddressRange.cs" />
     <Compile Include="Models\TrafficManagerProfile.cs" />
+    <Compile Include="CustomHeader\AddAzureTrafficManagerCustomHeaderToProfile.cs" />
     <Compile Include="Profile\DisableAzureTrafficManagerProfile.cs" />
     <Compile Include="Profile\EnableAzureTrafficManagerProfile.cs" />
     <Compile Include="Profile\RemoveAzureTrafficManagerProfile.cs" />

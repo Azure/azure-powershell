@@ -167,5 +167,19 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-PipeEndpointFromGetProfile");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAndRemoveCustomHeadersFromEndpoint()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AddAndRemoveCustomHeadersFromEndpoint");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAndRemoveIpAddressRanges()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AddAndRemoveIpAddressRanges");
+        }
     }
 }

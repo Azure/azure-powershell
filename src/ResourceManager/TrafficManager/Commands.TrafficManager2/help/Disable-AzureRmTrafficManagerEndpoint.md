@@ -28,7 +28,9 @@ Disable-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint <TrafficManagerEnd
 
 ## DESCRIPTION
 The **Disable-AzureRmTrafficManagerEndpoint** cmdlet disables an endpoint in an Azure Traffic Manager profile.
+
 You can use the pipeline operator to pass a **TrafficManagerEndpoint** object to this cmdlet, or you can pass a **TrafficManagerEndpoint** object using the *TrafficManagerEndpoint* parameter.
+
 Alternatively, you can specify the endpoint name and type by using the *Name* and *Type* parameters, together with the *ProfileName* and *ResourceGroupName* parameters.
 
 ## EXAMPLES
@@ -150,6 +152,7 @@ Accept wildcard characters: False
 ### -Type
 Specifies the type of endpoint that this cmdlet adds to the Traffic Manager profile.
 Valid values are: 
+
 - AzureEndpoints
 - ExternalEndpoints
 - NestedEndpoints
@@ -203,8 +206,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint
-Parameters: TrafficManagerEndpoint (ByValue)
+### TrafficManagerEndpoint
+Parameter 'TrafficManagerEndpoint' accepts value of type 'TrafficManagerEndpoint' from the pipeline
 
 ## OUTPUTS
 
