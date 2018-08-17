@@ -34,8 +34,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 
 namespace RecoveryServices.SiteRecovery.Test
 {
@@ -160,7 +160,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 modules.Add(rmModulePath);
                 modules.Add(recoveryServicesModulePath);
                 modules.Add(helper.GetRMModulePath("AzureRM.Network.psd1"));
-               // modules.Add(helper.GetRMModulePath("AzureRM.Storage.psd1"));
+                // modules.Add(helper.GetRMModulePath("AzureRM.Storage.psd1"));
                 modules.Add(helper.GetRMModulePath("AzureRM.Compute.psd1"));
 
                 this.helper.SetupModules(
