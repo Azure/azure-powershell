@@ -65,6 +65,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         AzureBackupServer,
         AzureSQL,
+
+        /// <summary>
+        /// Represents Azure File Storage. https://docs.microsoft.com/en-in/azure/storage/files/storage-files-introduction
+        /// </summary>
         AzureStorage,
     }
 
@@ -94,6 +98,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         AzureVM = 1,
         AzureSQLDatabase,
+
+        /// <summary>
+        /// Represents Azure File https://docs.microsoft.com/en-in/azure/storage/files/storage-files-introduction
+        /// </summary>
         AzureFiles,
     }
 

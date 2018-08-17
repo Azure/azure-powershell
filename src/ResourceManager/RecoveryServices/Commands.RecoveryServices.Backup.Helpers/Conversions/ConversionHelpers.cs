@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     containerModel = new AzureVmContainer(protectionContainer);
                 }
-                if (protectionContainer.Properties.GetType() == typeof(ServiceClientModel.MabContainer))
+                else if (protectionContainer.Properties.GetType() == typeof(ServiceClientModel.MabContainer))
                 {
                     containerModel = new MabContainer(protectionContainer);
                 }
@@ -49,6 +49,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     typeof(ServiceClientModel.AzureSqlContainer))
                 {
                     containerModel = new AzureSqlContainer(protectionContainer);
+                }
+                else if (protectionContainer.Properties.GetType() ==
+                    typeof(ServiceClientModel.AzureStorageContainer))
+                {
+                    containerModel = new AzureFileShareContainer(protectionContainer);
                 }
             }
 
@@ -277,52 +282,96 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 if (protectedItem.Properties.GetType().IsSubclassOf(typeof(ServiceClientModel.AzureIaaSVMProtectedItem)))
                 {
-                    string policyName = null;
-                    string policyId = ((ServiceClientModel.AzureIaaSVMProtectedItem)protectedItem.Properties).PolicyId;
-                    if (!string.IsNullOrEmpty(policyId))
-                    {
-                        Dictionary<UriEnums, string> keyValueDict =
-                        HelperUtils.ParseUri(policyId);
-                        policyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policyId);
-                    }
-
-                    string containerUri = HelperUtils.GetContainerUri(
-                        HelperUtils.ParseUri(protectedItem.Id),
-                        protectedItem.Id);
-
-                    itemModel = new AzureVmItem(
-                        protectedItem,
-                        IdUtils.GetNameFromUri(containerUri),
-                        ContainerType.AzureVM,
-                        policyName);
+                    itemModel = GetAzureVmItemModel(protectedItem);
                 }
 
                 if (protectedItem.Properties.GetType() ==
                     typeof(ServiceClientModel.AzureSqlProtectedItem))
                 {
-                    ServiceClientModel.AzureSqlProtectedItem azureSqlProtectedItem =
-                        (ServiceClientModel.AzureSqlProtectedItem)protectedItem.Properties;
-                    string policyName = null;
-                    string policyId = azureSqlProtectedItem.PolicyId;
-                    if (!string.IsNullOrEmpty(policyId))
-                    {
-                        Dictionary<UriEnums, string> keyVauleDict =
-                        HelperUtils.ParseUri(policyId);
-                        policyName = HelperUtils.GetPolicyNameFromPolicyId(keyVauleDict, policyId);
-                    }
+                    itemModel = GetAzureSqlItemModel(protectedItem);
+                }
 
-                    string containerUri = HelperUtils.GetContainerUri(
-                        HelperUtils.ParseUri(protectedItem.Id),
-                        protectedItem.Id);
-
-                    itemModel = new AzureSqlItem(
-                        protectedItem,
-                        IdUtils.GetNameFromUri(containerUri),
-                        ContainerType.AzureSQL,
-                        policyName);
+                if (protectedItem.Properties.GetType() ==
+                    typeof(ServiceClientModel.AzureFileshareProtectedItem))
+                {
+                    itemModel = GetAzureFileShareItemModel(protectedItem);
                 }
             }
 
+            return itemModel;
+        }
+
+        private static ItemBase GetAzureFileShareItemModel(ServiceClientModel.ProtectedItemResource protectedItem)
+        {
+            ItemBase itemModel;
+            string policyName = null;
+            string policyId = ((ServiceClientModel.AzureFileshareProtectedItem)protectedItem.Properties).PolicyId;
+            if (!string.IsNullOrEmpty(policyId))
+            {
+                Dictionary<UriEnums, string> keyValueDict =
+                HelperUtils.ParseUri(policyId);
+                policyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policyId);
+            }
+
+            string containerUri = HelperUtils.GetContainerUri(
+                HelperUtils.ParseUri(protectedItem.Id),
+                protectedItem.Id);
+
+            itemModel = new AzureFileShareItem(
+                protectedItem,
+                IdUtils.GetNameFromUri(containerUri),
+                ContainerType.AzureStorage,
+                policyName);
+            return itemModel;
+        }
+
+        private static ItemBase GetAzureSqlItemModel(ServiceClientModel.ProtectedItemResource protectedItem)
+        {
+            ItemBase itemModel;
+            ServiceClientModel.AzureSqlProtectedItem azureSqlProtectedItem =
+                  (ServiceClientModel.AzureSqlProtectedItem)protectedItem.Properties;
+            string policyName = null;
+            string policyId = azureSqlProtectedItem.PolicyId;
+            if (!string.IsNullOrEmpty(policyId))
+            {
+                Dictionary<UriEnums, string> keyVauleDict =
+                HelperUtils.ParseUri(policyId);
+                policyName = HelperUtils.GetPolicyNameFromPolicyId(keyVauleDict, policyId);
+            }
+
+            string containerUri = HelperUtils.GetContainerUri(
+                HelperUtils.ParseUri(protectedItem.Id),
+                protectedItem.Id);
+
+            itemModel = new AzureSqlItem(
+                protectedItem,
+                IdUtils.GetNameFromUri(containerUri),
+                ContainerType.AzureSQL,
+                policyName);
+            return itemModel;
+        }
+
+        private static ItemBase GetAzureVmItemModel(ServiceClientModel.ProtectedItemResource protectedItem)
+        {
+            ItemBase itemModel;
+            string policyName = null;
+            string policyId = ((ServiceClientModel.AzureIaaSVMProtectedItem)protectedItem.Properties).PolicyId;
+            if (!string.IsNullOrEmpty(policyId))
+            {
+                Dictionary<UriEnums, string> keyValueDict =
+                HelperUtils.ParseUri(policyId);
+                policyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policyId);
+            }
+
+            string containerUri = HelperUtils.GetContainerUri(
+                HelperUtils.ParseUri(protectedItem.Id),
+                protectedItem.Id);
+
+            itemModel = new AzureVmItem(
+                protectedItem,
+                IdUtils.GetNameFromUri(containerUri),
+                ContainerType.AzureVM,
+                policyName);
             return itemModel;
         }
 
