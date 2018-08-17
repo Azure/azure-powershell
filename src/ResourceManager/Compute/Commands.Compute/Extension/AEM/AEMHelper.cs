@@ -46,9 +46,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
         private Dictionary<string, string> _StorageKeyCache = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
         private StorageManagementClient _StorageClient;
         private IAzureSubscription _Subscription;
+        private string _StorageEndpoint;
 
         public AEMHelper(Action<ErrorRecord> errorAction, Action<string> verboseAction, Action<string> warningAction,
-            PSHostUserInterface ui, StorageManagementClient storageClient, IAzureSubscription subscription)
+            PSHostUserInterface ui, StorageManagementClient storageClient, IAzureSubscription subscription, String storageEndpoint)
         {
             this._ErrorAction = errorAction;
             this._VerboseAction = verboseAction;
@@ -56,6 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             this._UI = ui;
             this._StorageClient = storageClient;
             this._Subscription = subscription;
+            this._StorageEndpoint = storageEndpoint;
         }
 
         internal string GetStorageAccountFromUri(string uri)
@@ -140,7 +142,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(resGroupName,
                         this._StorageClient, this._Subscription);
                     StorageCredentials sc = storageCredentialsFactory.Create(blobUri);
-                    CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(sc, true);
+                    CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(sc,  this._StorageEndpoint, true);
                     CloudBlobClient blobClient = cloudStorageAccount.CreateCloudBlobClient();
                     CloudBlobContainer blobContainer = blobClient.GetContainerReference(blobUri.BlobContainerName);
                     var cloudBlob = blobContainer.GetPageBlobReference(blobUri.BlobName);
@@ -729,7 +731,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
         {
             var key = this.GetAzureStorageKeyFromCache(storageAccountName);
             var credentials = new StorageCredentials(storageAccountName, key);
-            var cloudStorageAccount = new CloudStorageAccount(credentials, true);
+            var cloudStorageAccount = new CloudStorageAccount(credentials, this._StorageEndpoint, true);
             return cloudStorageAccount.CreateCloudBlobClient().GetServicePropertiesAsync().ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
