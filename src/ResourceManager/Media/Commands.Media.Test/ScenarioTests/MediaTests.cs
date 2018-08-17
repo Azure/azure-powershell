@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact(Skip = "Old ResourceManager version in test controller. Udpate and re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMedia()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-Media");
         }
 
-        [Fact]
+        [Fact(Skip = "Old ResourceManager version in test controller. Udpate and re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMediaWithPiping()
         {

@@ -89,7 +89,8 @@ namespace Microsoft.Azure.Commands.Compute
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
                 this.CommandRuntime.Host.UI,
                 AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
-                this.DefaultContext.Subscription);
+                this.DefaultContext.Subscription, 
+                this.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
 
             this._Helper.WriteVerbose("Starting TestAzureRmVMAEMExtension");
 
