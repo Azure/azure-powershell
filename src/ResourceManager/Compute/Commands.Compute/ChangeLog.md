@@ -20,6 +20,7 @@
 -->
 ## Current Release
 * Fixed issue with default resource groups not being set.
+* Fix AEM Extension cmdlets for other environments, for example Azure China
 
 ## Version 5.5.0
 * Updated to the latest version of the Azure ClientRuntime.

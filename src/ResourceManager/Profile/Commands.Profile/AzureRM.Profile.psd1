@@ -54,8 +54,7 @@ CLRVersion = '4.0'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 
-               '.\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll', 
+RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll', 
                '.\Microsoft.Azure.Commands.Common.Authentication.dll', 
                '.\Microsoft.Azure.Commands.Common.Authentication.ResourceManager.dll', 
                '.\Microsoft.Azure.Commands.Common.Authorization.dll', 
@@ -67,9 +66,8 @@ RequiredAssemblies =
                '.\Microsoft.WindowsAzure.Commands.Common.Storage.dll', 
                '.\Microsoft.Azure.Commands.Common.Storage.Management.dll', 
                '.\Microsoft.Azure.Commands.Common.KeyVault.dll', 
-               '.\Microsoft.Azure.Commands.Common.Websites.dll', 
-               '.\Hyak.Common.dll', '.\Microsoft.ApplicationInsights.dll', 
-               '.\Microsoft.Azure.Common.dll', 
+               '.\Microsoft.Azure.Commands.Common.WebSites.dll', '.\Hyak.Common.dll', 
+               '.\Microsoft.ApplicationInsights.dll', '.\Microsoft.Azure.Common.dll', 
                '.\Microsoft.Azure.Common.NetFramework.dll', 
                '.\Microsoft.Azure.KeyVault.Core.dll', 
                '.\Microsoft.IdentityModel.Clients.ActiveDirectory.dll', 
