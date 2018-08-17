@@ -27,39 +27,16 @@ function getVaultRg{
 
 
 function getVaultRgLocation{
-    $locationMap = Get-AzureRmLocation| select location,displayName
-    $provider = Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    
-    $resourceTypes = $provider[0].ResourceTypes | Where-Object { $_.ResourceTypeName -eq "vaults"}
-    $resourceLocation = $resourceTypes.Locations[0]
-    return $resourceLocation
+    return "eastus"
 }
 
 function getVaultLocation{
-    $locationMap = Get-AzureRmLocation| select location,displayName
-    $provider = Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-    
-    $resourceTypes = $provider[0].ResourceTypes | Where-Object { $_.ResourceTypeName -eq "vaults"}
-    $resourceLocation = $resourceTypes.Locations[0]
-    foreach($location in $locationMap){
-        if($location.DisplayName -eq $resourceLocation){
-            return $location.Location
-        }
-    }
+     return "eastus"
 }
 
 function getPrimaryLocation
 {
-    $locationMap = Get-AzureRmLocation| select location,displayName
-    $provider = Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-
-    $resourceTypes = $provider[0].ResourceTypes | Where-Object { $_.ResourceTypeName -eq "vaults"}
-    $resourceLocation = $resourceTypes.Locations[1]
-    foreach($location in $locationMap){
-        if($location.DisplayName -eq $resourceLocation){
-            return $location.Location
-        }
-    }
+    return "westus"
 }
 
 function getRecoveryLocation{
@@ -84,8 +61,6 @@ function getAzureVm{
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
         New-AzureRmVM -Name MyVm -Credential $Credential -location getPrimaryLocation
-    
-
 }
 
 function getPrimaryPolicy{
@@ -155,7 +130,7 @@ function WaitForJobCompletion
 { 
     param(
         [string] $JobId,
-        [int] $JobQueryWaitTimeInSeconds = 60,
+        [int] $JobQueryWaitTimeInSeconds = 20,
         [string] $Message = "NA"
         )
         $isJobLeftForProcessing = $true;
