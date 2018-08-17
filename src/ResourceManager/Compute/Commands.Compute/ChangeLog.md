@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with storage account type for VM with managed disk
 * Fixed issue with default resource groups not being set.
 
 ## Version 5.5.0
