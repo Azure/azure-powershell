@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzureRmIotHubRoutingEndpoint
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Add an endpoint to your IoT Hub
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Add-AzureRmIotHubRoutingEndpoint [-ResourceId] <String> [-EndpointName] <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Add a new endpoint in your IoT Hub. To learn about the endpoints that are supported, 
 
 ## EXAMPLES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmIotHubRoutingEndpoint
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Delete an endpoint for your IoT Hub
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Remove-AzureRmIotHubRoutingEndpoint [-ResourceId] <String> [-EndpointName <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Delete and endpoint. Remember to delete any routes that use this endpoint.
 
 ## EXAMPLES
 

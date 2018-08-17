@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzureRmIotHubRoute
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create a route in IoT Hub
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Add-AzureRmIotHubRoute [-ResourceId] <String> [-RouteName] <String> [-Source] <S
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Create a route to send specific data source and condition to a desired endpoint. To learn about query syntax see aka.ms/RoutingQuerySyntax
 
 ## EXAMPLES
 

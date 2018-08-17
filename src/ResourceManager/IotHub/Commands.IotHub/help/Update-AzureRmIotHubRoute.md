@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzureRmIotHubRoute
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Update a route in IoT Hub
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Update-AzureRmIotHubRoute [-ResourceId] <String> [-RouteName] <String> [-Source 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Edit a route. You can update all the fields in a route including the data source, endpoint, routing query and also enable or disable the route.
 
 ## EXAMPLES
 
