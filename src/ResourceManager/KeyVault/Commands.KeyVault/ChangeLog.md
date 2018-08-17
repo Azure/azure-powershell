@@ -23,6 +23,9 @@
 ## Version 5.1.1
 * Updated to the latest version of the Azure ClientRuntime.
 
+## Version 5.1.0-preview
+* Adding support for listing certificates in a pending state
+
 ## Version 5.1.0
 * Fix piping issue in Set-AzureRmKeyVaultAccessPolicy
 * Updated help files to include full parameter types and correct input/output types.
