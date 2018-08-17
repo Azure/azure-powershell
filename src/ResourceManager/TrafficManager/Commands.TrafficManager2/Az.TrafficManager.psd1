@@ -72,19 +72,28 @@ NestedModules = @('.\Microsoft.Azure.Commands.TrafficManager.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Disable-AzTrafficManagerEndpoint', 
-    'Enable-AzTrafficManagerEndpoint', 
-    'Set-AzTrafficManagerEndpoint', 
-    'Get-AzTrafficManagerEndpoint', 
-    'Remove-AzTrafficManagerEndpoint', 
-    'New-AzTrafficManagerEndpoint', 
-    'Remove-AzTrafficManagerEndpointConfig', 
-    'Add-AzTrafficManagerEndpointConfig', 
-    'Disable-AzTrafficManagerProfile', 
-    'Enable-AzTrafficManagerProfile', 
-    'Remove-AzTrafficManagerProfile', 
-    'Set-AzTrafficManagerProfile', 
-    'Get-AzTrafficManagerProfile', 'New-AzTrafficManagerProfile'
+CmdletsToExport = 'Add-AzTrafficManagerCustomHeaderToEndpoint',
+    'Remove-AzTrafficManagerCustomHeaderFromEndpoint',
+    'Add-AzTrafficManagerCustomHeaderToProfile',
+    'Remove-AzTrafficManagerCustomHeaderFromProfile',
+    'Disable-AzTrafficManagerEndpoint',
+    'Enable-AzTrafficManagerEndpoint',
+    'Set-AzTrafficManagerEndpoint',
+    'Get-AzTrafficManagerEndpoint',
+    'Remove-AzTrafficManagerEndpoint',
+    'New-AzTrafficManagerEndpoint',
+    'Remove-AzTrafficManagerEndpointConfig',
+    'Add-AzTrafficManagerEndpointConfig',
+    'Add-AzTrafficManagerExpectedStatusCodeRange',
+    'Remove-AzTrafficManagerExpectedStatusCodeRange',
+    'Add-AzTrafficManagerIpAddressRange',
+    'Remove-AzTrafficManagerIpAddressRange',
+    'Disable-AzTrafficManagerProfile',
+    'Enable-AzTrafficManagerProfile',
+    'Remove-AzTrafficManagerProfile',
+    'Set-AzTrafficManagerProfile',
+    'Get-AzTrafficManagerProfile',
+    'New-AzTrafficManagerProfile'
 
 # Variables to export from this module
 # VariablesToExport = @()
