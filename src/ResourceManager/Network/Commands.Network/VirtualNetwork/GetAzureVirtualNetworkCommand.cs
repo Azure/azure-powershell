@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                IPage<VirtualNetwork> vnetPage;
+                IPage<Microsoft.Azure.Management.Network.Models.VirtualNetwork> vnetPage;
                 if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
                     vnetPage = this.VirtualNetworkClient.List(this.ResourceGroupName);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Get all resources by polling on next page link
-                var vnetList = ListNextLink<VirtualNetwork>.GetAllResourcesByPollingNextLink(vnetPage, this.VirtualNetworkClient.ListNext);
+                var vnetList = ListNextLink<Microsoft.Azure.Management.Network.Models.VirtualNetwork>.GetAllResourcesByPollingNextLink(vnetPage, this.VirtualNetworkClient.ListNext);
 
                 var psVnets = new List<PSVirtualNetwork>();
                 foreach (var virtualNetwork in vnetList)

@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public List<PSServiceEndpoint> ServiceEndpoints { get; set; }
 
+        public List<PSServiceEndpointPolicy> ServiceEndpointPolicies { get; set; }
+
         [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
@@ -73,6 +75,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ServiceEndpointText
         {
             get { return JsonConvert.SerializeObject(ServiceEndpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ServiceEndpointPoliciesText
+        {
+            get { return JsonConvert.SerializeObject(ServiceEndpointPolicies, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

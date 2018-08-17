@@ -214,6 +214,8 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
     'Test-AzureRmPrivateIPAddressAvailability', 
     'Get-AzureRmPublicIpAddress', 'New-AzureRmPublicIpAddress', 
     'Remove-AzureRmPublicIpAddress', 'Set-AzureRmPublicIpAddress', 
+    'Get-AzureRmPublicIpPrefix', 'New-AzureRmPublicIpPrefix', 
+    'Remove-AzureRmPublicIpPrefix', 'Set-AzureRmPublicIpPrefix', 
     'Get-AzureRmRouteTable', 'New-AzureRmRouteTable', 
     'Remove-AzureRmRouteTable', 'Add-AzureRmRouteConfig', 
     'Get-AzureRmRouteConfig', 'New-AzureRmRouteConfig', 
@@ -326,7 +328,17 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
     'New-AzureRMNetworkWatcherProtocolConfiguration', 
     'Add-AzureRmExpressRouteCircuitConnectionConfig', 
     'Get-AzureRmExpressRouteCircuitConnectionConfig', 
-    'Remove-AzureRmExpressRouteCircuitConnectionConfig'
+    'Remove-AzureRmExpressRouteCircuitConnectionConfig', 
+    'Get-AzureRmApplicationSecurityGroup',
+    'New-AzureRmServiceEndpointPolicy', 
+    'Remove-AzureRmServiceEndpointPolicy', 
+    'Get-AzureRmServiceEndpointPolicy',
+    'New-AzureRmServiceEndpointPolicyDefinition', 
+    'Remove-AzureRmServiceEndpointPolicyDefinition', 
+    'Get-AzureRmServiceEndpointPolicyDefinition',
+    'Set-AzureRmServiceEndpointPolicyDefinition',
+    'Add-AzureRmServiceEndpointPolicyDefinition',
+    'Set-AzureRmServiceEndpointPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()

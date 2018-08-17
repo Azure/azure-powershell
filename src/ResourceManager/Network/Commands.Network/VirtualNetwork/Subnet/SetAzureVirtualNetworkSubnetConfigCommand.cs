@@ -89,6 +89,15 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.ServiceEndpoints = null;
             }
 
+            if (this.ServiceEndpointPolicy != null)
+            {
+                subnet.ServiceEndpointPolicies = this.ServiceEndpointPolicy;
+            }
+            else
+            {
+                subnet.ServiceEndpointPolicies = null;
+            }
+
             WriteObject(this.VirtualNetwork);
         }
     }
