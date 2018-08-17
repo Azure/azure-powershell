@@ -127,4 +127,3 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
-

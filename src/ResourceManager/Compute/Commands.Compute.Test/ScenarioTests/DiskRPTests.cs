@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,9 +20,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class DiskRPTests
     {
+        XunitTracingInterceptor _logger;
+
         public DiskRPTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
 #if NETSTANDARD
@@ -33,7 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisk()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-Disk");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-Disk");
         }
 
 
@@ -46,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSnapshot()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-Snapshot");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-Snapshot");
         }
     }
 }

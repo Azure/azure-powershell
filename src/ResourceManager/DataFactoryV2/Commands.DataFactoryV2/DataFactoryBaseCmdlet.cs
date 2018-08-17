@@ -42,12 +42,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         protected override void WriteExceptionError(Exception exception)
         {
-            var castErrorException = exception as ErrorResponseException;
+            var castErrorException = exception as CloudException;
             if (castErrorException != null)
             {
                 if (castErrorException.Body == null && !string.IsNullOrWhiteSpace(castErrorException.Response.Content))
                 {
-                    castErrorException.Body = new ErrorResponse(string.Empty, castErrorException.Response.Content);
+                    castErrorException.Body = new CloudError();
+                    castErrorException.Body.Message = castErrorException.Response.Content;
                 }
 
                 // Override the default error message into a formatted message which contains Request Id

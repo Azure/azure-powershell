@@ -84,7 +84,7 @@ function Remove-AzsVMExtension {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{

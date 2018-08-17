@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
     /// <para> If Queue name provided, a single Queue detials will be returned</para>
     /// <para> If Queue name not provided, list of Queue will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusQueueVerb), OutputType(typeof(PSQueueAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusQueue"), OutputType(typeof(PSQueueAttributes))]
     public class GetAzureRmServiceBusQueue : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
@@ -44,6 +44,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Queues to return.")]
+        [ValidateRange(1, 10000)]
+        public int? MaxCount { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(Name))
@@ -53,11 +57,20 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             }
             else
             {
-                IEnumerable<PSQueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace);
-                WriteObject(queueAttributes,true);
+                if (MaxCount.HasValue)
+                {
+                    IEnumerable<PSQueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace, MaxCount);
+                    WriteObject(queueAttributes, true);
+                }
+                else
+                {
+                    IEnumerable<PSQueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace);
+                    WriteObject(queueAttributes, true);
+                }
+
             }
 
-            
+
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
 Module Name: AzureRM.MachineLearning
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/export-azurermmlwebservice
@@ -30,12 +30,12 @@ You can return the string immediately or save it to a file.
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Export as string  --------------------------
+### Example 1: Export as string
 ```
 Export-AzureRmMlWebService -WebService $svc -ToJsonString
 ```
 
-### --------------------------  Example 2: Export to file  --------------------------
+### Example 2: Export to file
 ```
 Export-AzureRmMlWebService -WebService $svc -OutputFile "C:\mlservice.json"
 ```
@@ -46,7 +46,7 @@ Export-AzureRmMlWebService -WebService $svc -OutputFile "C:\mlservice.json"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -61,9 +61,9 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -76,9 +76,9 @@ Accept wildcard characters: False
 The file path for exported definition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExportToFile
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -91,9 +91,9 @@ Accept wildcard characters: False
 Specifies that the definition will be exported as a JSON string.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ExportToJSON
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -106,9 +106,9 @@ Accept wildcard characters: False
 The web service definition object to be exported.
 
 ```yaml
-Type: WebService
+Type: Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -137,7 +137,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -153,15 +153,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### WebService
-Parameter 'WebService' accepts value of type 'WebService' from the pipeline
+### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
+Parameters: WebService (ByValue)
 
 ## OUTPUTS
 
-### None
+### System.String
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml
 
 ## RELATED LINKS
-

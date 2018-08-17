@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemOwner", SupportsShouldProcess = true),
-        OutputType(typeof(bool))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreItemOwner", SupportsShouldProcess = true),OutputType(typeof(bool))]
     [Alias("Set-AdlStoreItemOwner")]
     public class SetAzureDataLakeStoreItemOwner : DataLakeStoreFileSystemCmdletBase
     {

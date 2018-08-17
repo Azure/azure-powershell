@@ -97,7 +97,7 @@ function Start-AzsStorageContainerMigration {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             if ( $MyInvocation.Line -match "\s-ContainerName\s") {

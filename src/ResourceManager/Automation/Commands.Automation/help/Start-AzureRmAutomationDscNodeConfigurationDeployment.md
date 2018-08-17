@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 32CF9BF7-519F-4B5D-9F2B-3CC556A77A48
@@ -102,9 +102,9 @@ The above command schedules a deployment of a DSC node configuration named "Conf
 Specifies the name of the Automation account that contains the DSC configuration that this cmdlet compiles.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -132,9 +132,9 @@ Accept wildcard characters: False
 ps_force
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByAll
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -147,9 +147,9 @@ Accept wildcard characters: False
 Input object for Piping
 
 ```yaml
-Type: NodeConfigurationDeployment
+Type: Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment
 Parameter Sets: ByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Specifies the name of the DSC node configuration that this cmdlet deploys.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAll
 Aliases: Name
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByInputObject
 Aliases: Name
 
@@ -189,9 +189,9 @@ Accept wildcard characters: False
 Specifies the names of the nodes to which the Node Configuration would be deployed to.
 
 ```yaml
-Type: String[][]
+Type: System.String[][]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -204,9 +204,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group in which this cmdlet compiles a configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -219,9 +219,9 @@ Accept wildcard characters: False
 Automation Schedule object to schedule the deployment job.
 
 ```yaml
-Type: Schedule
+Type: Microsoft.Azure.Commands.Automation.Model.Schedule
 Parameter Sets: ByAll
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -250,7 +250,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -266,8 +266,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.Automation.Model.NodeConfigurationDeployment
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

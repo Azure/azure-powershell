@@ -355,9 +355,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (ItemProtectionState)ProviderData[ItemParams.ProtectionState];
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
+            PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
 
-            ODataQuery<ProtectedItemQueryObject> queryParams =
+            ODataQuery<ProtectedItemQueryObject> queryParams = policy != null ?
                 new ODataQuery<ProtectedItemQueryObject>(
+                    q => q.BackupManagementType
+                            == ServiceClientModel.BackupManagementType.AzureSql &&
+                         q.ItemType == DataSourceType.AzureSqlDb &&
+                         q.PolicyName == policy.Name) :
+                         new ODataQuery<ProtectedItemQueryObject>(
                     q => q.BackupManagementType
                             == ServiceClientModel.BackupManagementType.AzureSql &&
                          q.ItemType == DataSourceType.AzureSqlDb);
@@ -477,6 +483,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             return itemModels;
+        }
+
+        public ResourceBackupStatus CheckBackupStatus()
+        {
+            throw new NotImplementedException();
         }
 
         #region private

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
+using System.Linq;
 using System.Security;
 using System.Security.Authentication;
 using System.Threading;
@@ -121,9 +122,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         // We have to run this in a separate thread to guarantee that it's STA. This method
         // handles the threading details.
         private AuthenticationResult AcquireToken(
-            AdalConfiguration config, 
-            string promptBehavior, 
-            Action<string> promptAction, 
+            AdalConfiguration config,
+            string promptBehavior,
+            Action<string> promptAction,
             string userId,
             SecureString password)
         {
@@ -239,6 +240,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     AdalTokenCache.ClearCookies();
                 }
 
+                Guid tempGuid = Guid.Empty;
+                if (!string.Equals(config.AdDomain, "Common", StringComparison.OrdinalIgnoreCase) && !Guid.TryParse(config.AdDomain, out tempGuid))
+                {
+                    var tempResult = context.AcquireToken(
+                            config.ResourceClientUri,
+                            config.ClientId,
+                            config.ClientRedirectUri,
+                            promptBehavior,
+                            UserIdentifier.AnyUser,
+                            AdalConfiguration.EnableEbdMagicCookie);
+                    config.AdDomain = tempResult.TenantId;
+                    context = CreateContext(config);
+                    promptBehavior = PromptBehavior.Never;
+                }
+
                 result = context.AcquireToken(
                     config.ResourceClientUri,
                     config.ClientId,
@@ -279,9 +295,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
 
         /// <summary>
-        /// Implementation of <see cref="IAccessToken"/> using data from ADAL
+        /// Implementation of <see cref="IRenewableToken"/> using data from ADAL
         /// </summary>
-        private class AdalAccessToken : IAccessToken
+        private class AdalAccessToken : IRenewableToken
         {
             internal readonly AdalConfiguration Configuration;
             internal AuthenticationResult AuthResult;
@@ -338,6 +354,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     return Authentication.LoginType.OrgId;
                 }
             }
+
+            public DateTimeOffset ExpiresOn { get { return AuthResult.ExpiresOn; } }
         }
 
         public IAccessToken GetAccessTokenWithCertificate(

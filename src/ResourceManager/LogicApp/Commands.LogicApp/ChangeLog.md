@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
+
+## Version 4.1.2
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 4.1.1
+* Updated all help files to include full parameter types and correct input/output types.
+
+## Version 4.1.0
+* Fixed "parameter set could not be resolved" error in New-AzureRmLogicApp
+
+## Version 4.0.5
 * Fixed formatting of OutputType in help files
 
 ## Version 4.0.4
@@ -37,7 +49,7 @@
 ## Version 4.0.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 3.4.1
 
 ## Version 3.4.0
@@ -59,7 +71,7 @@
     - Optional -AgreementType parameter ("X12", or "Edifact") to specify the relevant control numbers
 
 ## Version 2.8.0
-* Set-AzureRmIntegrationAccountSchema and Set-AzureRmIntegrationAccountMap cmdlets are fixed for the contentlink issue(Both content and contentlink were set resulting in update failure). 
+* Set-AzureRmIntegrationAccountSchema and Set-AzureRmIntegrationAccountMap cmdlets are fixed for the contentlink issue(Both content and contentlink were set resulting in update failure).
 
 ## Version 2.7.0
 * New cmdlets for X12 Interchange Control Number disaster recovery:

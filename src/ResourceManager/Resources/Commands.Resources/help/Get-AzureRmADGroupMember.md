@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 52C5CD8B-2489-4FE6-9F33-B3350531CD8E
@@ -66,7 +66,7 @@ Gets the AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE' and pipe
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The maximum number of objects to return.
 
 ```yaml
-Type: UInt64
+Type: System.UInt64
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The display name of the group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DisplayNameParameterSet
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The group object that you are listing members from.
 
 ```yaml
-Type: PSADGroup
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
 Parameter Sets: GroupObjectParameterSet
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Object Id of the group.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases: Id, ObjectId
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 Reports the number of objects in the data set. Currently, this parameter does nothing.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 Ignores the first N objects and then gets the remaining objects.
 
 ```yaml
-Type: UInt64
+Type: System.UInt64
 Parameter Sets: (All)
 Aliases:
 
@@ -172,9 +172,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
+### System.Guid
 
-This cmdlet accepts a PSADGroup object from the pipeline. You can pipe the output of Get-AzureRmADGroup to this cmdlet to get members of the provided group.
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
+Parameters: GroupObject (ByValue)
 
 ## OUTPUTS
 

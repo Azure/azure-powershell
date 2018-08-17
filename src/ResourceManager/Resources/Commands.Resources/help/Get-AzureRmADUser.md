@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: BF254F2F-F658-45CC-8AC8-53FF96CFCAAD
@@ -92,7 +92,7 @@ Lists all AD users whose display name starts with "Joe".
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 The display name of the user.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DisplayNameParameterSet
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 The maximum number of objects to return.
 
 ```yaml
-Type: UInt64
+Type: System.UInt64
 Parameter Sets: (All)
 Aliases:
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 Reports the number of objects in the data set. Currently, this parameter does nothing.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 The user mail.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: MailParameterSet
 Aliases:
 
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 Object id of the user.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases:
 
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 Ignores the first N objects and then gets the remaining objects.
 
 ```yaml
-Type: UInt64
+Type: System.UInt64
 Parameter Sets: (All)
 Aliases:
 
@@ -197,7 +197,7 @@ Accept wildcard characters: False
 Used to find users that begin with the provided string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SearchStringParameterSet
 Aliases: SearchString
 
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 UPN of the user.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EmptyParameterSet
 Aliases: UPN
 
@@ -224,7 +224,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UPNParameterSet
 Aliases: UPN
 
@@ -240,9 +240,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
-This cmdlet does not accept any input.
+### System.Guid
 
 ## OUTPUTS
 

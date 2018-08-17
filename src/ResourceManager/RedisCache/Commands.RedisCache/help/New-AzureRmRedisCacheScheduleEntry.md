@@ -36,7 +36,6 @@ This command creates a **PSScheduleEntry** object that represents a weekend sche
 ### -DayOfWeek
 Specifies the day of the week for the schedule entry.
 The acceptable values for this parameter are:
-
 - Everyday 
 - Weekend 
 - Monday 
@@ -48,7 +47,7 @@ The acceptable values for this parameter are:
 - Sunday
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Everyday, Weekend, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
@@ -64,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -79,7 +78,7 @@ Accept wildcard characters: False
 Specifies the amount of time window allowed for updates.
 
 ```yaml
-Type: TimeSpan
+Type: System.Nullable`1[System.TimeSpan]
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +93,7 @@ Accept wildcard characters: False
 Specifies an hour of the day when the schedule starts.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -110,13 +109,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet by property name, but not by value.
+### System.String
+
+### System.Int32
+
+### System.Nullable`1[[System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry
-This cmdlet returns a schedule entry object.
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website

@@ -14,17 +14,16 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
     public partial class ServiceClientAdapter
     {
-        public List<Vault> ListVaults()
+        public List<string> ListVaults()
         {
             var response = RSAdapter.Client.Vaults.ListBySubscriptionIdWithHttpMessagesAsync(
                 cancellationToken: RSAdapter.CmdletCancellationToken).Result;
-            return response.Body.ToList();
+            return response.Body.Select(vault => vault.Id).ToList();
         }
     }
 }

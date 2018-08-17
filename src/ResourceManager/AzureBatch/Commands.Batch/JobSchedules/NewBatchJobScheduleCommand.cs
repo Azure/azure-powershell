@@ -20,7 +20,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, Constants.AzureBatchJobSchedule)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchJobSchedule"), OutputType(typeof(void))]
     public class NewBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
