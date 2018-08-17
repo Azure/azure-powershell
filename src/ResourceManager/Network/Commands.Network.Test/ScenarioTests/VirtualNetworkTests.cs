@@ -38,7 +38,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkCRUD");
         }
 
-        [Fact(Skip = "Fails with server-side error: 'An error occurred'.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestVirtualNetworkCRUDWithDDoSProtection()
