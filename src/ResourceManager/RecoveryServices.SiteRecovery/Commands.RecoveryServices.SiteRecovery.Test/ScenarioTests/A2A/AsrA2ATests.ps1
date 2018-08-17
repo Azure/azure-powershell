@@ -63,7 +63,7 @@ function Test-NewA2AManagedDiskReplicationConfiguration
     Test GetAsrFabric new parametersets
 #>
 function Test-NewAsrFabric {
-    $seed = 10;
+    $seed = 35;
     $primaryPolicyName = getPrimaryPolicy
         $vaultRgLocation = getVaultRgLocation
         $vaultName = getVaultName
@@ -93,7 +93,7 @@ function Test-NewAsrFabric {
 
 function Test-NewContainer{
 
-    $seed = 11;
+    $seed = 33;
     $primaryPolicyName = getPrimaryPolicy
         $recoveryPolicyName = getRecoveryPolicy
         

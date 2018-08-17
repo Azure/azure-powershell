@@ -15,25 +15,18 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Security;
-using System.Runtime.Serialization;
 using System.Security.Cryptography.X509Certificates;
-using System.Xml;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Internal.Subscriptions;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 
@@ -57,10 +50,8 @@ namespace RecoveryServices.SiteRecovery.Test
         }
 
         public ResourceManagementClient RmRestClient { get; private set; }
-        public NetworkManagementClient NetworkManagementClient { get; private set; }
-
-        public StorageManagementClient StorageClient { get; private set; }
-
+        
+        
         public RecoveryServicesClient RecoveryServicesMgmtClient { get; private set; }
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
 
@@ -99,28 +90,15 @@ namespace RecoveryServices.SiteRecovery.Test
             string mockName)
         {
             var providers = new Dictionary<string, string>();
-            providers.Add(
-                "Microsoft.Resources",
-                null);
-            providers.Add(
-                "Microsoft.Features",
-                null);
-            providers.Add(
-                "Microsoft.Authorization",
-                null);
-            providers.Add(
-                "Microsoft.Compute",
-                null);
-            providers.Add(
-                "Microsoft.Network",
-                null);
-            providers.Add(
-                "Microsoft.Storage",
-                null);
+            providers.Add("Microsoft.Resources", null);
+            providers.Add("Microsoft.Features", null);
+            providers.Add("Microsoft.Authorization", null);
+
             var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add(
-                "Microsoft.Azure.Management.Resources.ResourceManagementClient",
-                "2016-02-01");
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10");
+            providersToIgnore.Add("Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-09-01");
+
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(
                 true,
                 providers,
@@ -141,27 +119,23 @@ namespace RecoveryServices.SiteRecovery.Test
                     initialize.Invoke(this.csmTestFactory);
                 }
 
-                this.SetupManagementClients(
-                    context);
+                this.SetupManagementClients(context);
 
                 this.helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var rmProfileModule = this.helper.RMProfileModule;
-                var rmModulePath =
-                    this.helper.GetRMModulePath("AzureRM.RecoveryServices.SiteRecovery.psd1");
-                var recoveryServicesModulePath =
-                    this.helper.GetRMModulePath("AzureRM.RecoveryServices.psd1");
-
                 var modules = new List<string>();
 
                 modules.Add(powershellFile);
                 modules.Add(powershellHelperFile);
                 modules.Add(rmProfileModule);
-                modules.Add(rmModulePath);
-                modules.Add(recoveryServicesModulePath);
                 modules.Add(helper.GetRMModulePath("AzureRM.Network.psd1"));
                 // modules.Add(helper.GetRMModulePath("AzureRM.Storage.psd1"));
                 modules.Add(helper.GetRMModulePath("AzureRM.Compute.psd1"));
+                modules.Add(this.helper.RMResourceModule);
+                modules.Add(this.helper.GetRMModulePath("AzureRM.RecoveryServices.psd1"));
+                modules.Add(this.helper.GetRMModulePath("AzureRM.RecoveryServices.SiteRecovery.psd1"));
+                modules.Add("AzureRM.Resources.ps1");
 
                 this.helper.SetupModules(
                     AzureModule.AzureResourceManager,
@@ -197,29 +171,13 @@ namespace RecoveryServices.SiteRecovery.Test
             this.RecoveryServicesMgmtClient = this.GetRecoveryServicesManagementClient(context);
             this.SiteRecoveryMgmtClient = this.GetSiteRecoveryManagementClient(context);
             this.SubscriptionClient = this.GetSubscriptionClient(context);
-            this.NetworkManagementClient = this.GetNetworkManagementClientClient(context);
-            this.StorageClient = this.GetStorageManagementClient(context);
-            this.ComputeManagementClient = this.GetComputeManagementClient(context);
-
+            
             this.helper.SetupManagementClients(
                 this.RmRestClient,
                 this.RecoveryServicesMgmtClient,
                 this.SiteRecoveryMgmtClient,
                 this.SubscriptionClient,
-                this.NetworkManagementClient,
-                this.ResourceManagementRestClient,
-                this.StorageClient,
-                this.ComputeManagementClient);
-        }
-
-        private StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private NetworkManagementClient GetNetworkManagementClientClient(RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+                this.ResourceManagementRestClient);
         }
 
         private RecoveryServicesClient GetRecoveryServicesManagementClient(
@@ -271,12 +229,7 @@ namespace RecoveryServices.SiteRecovery.Test
             return context.GetServiceClient<SiteRecoveryManagementClient>(
                 RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
-
-        private ComputeManagementClient GetComputeManagementClient(RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<ComputeManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
+        
         private static bool IgnoreCertificateErrorHandler(
             object sender,
             X509Certificate certificate,

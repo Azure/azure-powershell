@@ -23,12 +23,15 @@ $FilteredCommands = %DEFAULTRGCOMMANDS%
 if ($Env:ACC_CLOUD -eq $null)
 {
     $FilteredCommands | ForEach-Object {
-        $global:PSDefaultParameterValues.Add($_,
-            {
-                $context = Get-AzureRmContext
-                if (($context -ne $null) -and $context.ExtendedProperties.ContainsKey("Default Resource Group")) {
-                    $context.ExtendedProperties["Default Resource Group"]
-                } 
-            })
+        if (!$global:PSDefaultParameterValues.Contains($_))
+        {
+            $global:PSDefaultParameterValues.Add($_,
+                {
+                    $context = Get-AzureRmContext
+                    if (($context -ne $null) -and $context.ExtendedProperties.ContainsKey("Default Resource Group")) {
+                        $context.ExtendedProperties["Default Resource Group"]
+                    } 
+                })
+        }
     }
 }
