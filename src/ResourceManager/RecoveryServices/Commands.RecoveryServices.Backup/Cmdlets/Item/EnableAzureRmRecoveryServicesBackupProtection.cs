@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Name of the Azure VM whose representative item needs to be protected.
         /// </summary>
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.AzureVMName)]
+            ParameterSetName = AzureVMClassicComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.ItemName)]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
-            ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.AzureVMName)]
+            ParameterSetName = AzureVMComputeParameterSet, HelpMessage = ParamHelpMsgs.Item.ItemName)]
         public string Name { get; set; }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         {
                             { VaultParams.VaultName, vaultName },
                             { VaultParams.ResourceGroupName, resourceGroupName },
-                            { ItemParams.AzureVMName, Name },
+                            { ItemParams.ItemName, Name },
                             { ItemParams.AzureVMCloudServiceName, ServiceName },
                             { ItemParams.AzureVMResourceGroupName, ResourceGroupName },
                             { ItemParams.Policy, Policy },

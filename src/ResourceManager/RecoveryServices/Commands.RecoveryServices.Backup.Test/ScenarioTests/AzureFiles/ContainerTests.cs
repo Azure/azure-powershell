@@ -12,21 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    /// <summary>
-    /// Azure VM specific container class.
-    /// </summary>
-    public class AzureVmContainer : AzureContainer
+    public partial class ContainerTests : RMTestBase
     {
-        /// <summary>
-        /// Constructor. Takes the service client object representing the container 
-        /// and converts it in to the PS container model
-        /// </summary>
-        /// <param name="protectionContainer">Service client object representing the container</param>
-        public AzureVmContainer(ProtectionContainerResource protectionContainer)
-            : base(protectionContainer) { }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFile)]
+        public void TestAzureFileContainer()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileContainer");
+        }
     }
 }

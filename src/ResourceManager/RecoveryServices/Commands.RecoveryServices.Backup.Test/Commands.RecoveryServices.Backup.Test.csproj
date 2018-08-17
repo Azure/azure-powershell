@@ -52,13 +52,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScenarioTests\AzureFile\PolicyTests.cs" />
+    <Compile Include="ScenarioTests\AzureFiles\ContainerTests.cs" />
+    <Compile Include="ScenarioTests\AzureFiles\ItemTests.cs" />
+    <Compile Include="ScenarioTests\AzureFiles\PolicyTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\ProtectionCheckTests.cs" />
     <Compile Include="TestConstants.cs" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ScenarioTests\AzureFile\PolicyTests.ps1">
+    <None Include="ScenarioTests\AzureFiles\ContainerTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AzureFiles\ItemTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AzureFiles\PolicyTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\AzureSql\ContainerTests.ps1">

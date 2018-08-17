@@ -16,17 +16,28 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    /// <summary>
-    /// Azure VM specific container class.
-    /// </summary>
-    public class AzureVmContainer : AzureContainer
+    public class AzureContainer : ContainerBase
     {
         /// <summary>
-        /// Constructor. Takes the service client object representing the container 
-        /// and converts it in to the PS container model
+        /// Resource Group where the Container is present
         /// </summary>
-        /// <param name="protectionContainer">Service client object representing the container</param>
-        public AzureVmContainer(ProtectionContainerResource protectionContainer)
-            : base(protectionContainer) { }
+        public string ResourceGroupName { get; set; }
+        /// <summary>
+        /// Friendly name of the container
+        /// </summary>
+        public string FriendlyName { get; set; }
+
+        /// <summary>
+        /// Registration Status
+        /// </summary>
+        public ContainerRegistrationStatus Status { get; set; }
+
+        public AzureContainer(ProtectionContainerResource protectionContainer)
+           : base(protectionContainer)
+        {
+            ResourceGroupName = IdUtils.GetResourceGroupName(protectionContainer.Id);
+            FriendlyName = protectionContainer.Properties.FriendlyName;
+            Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(protectionContainer.Properties.RegistrationStatus);
+        }
     }
 }

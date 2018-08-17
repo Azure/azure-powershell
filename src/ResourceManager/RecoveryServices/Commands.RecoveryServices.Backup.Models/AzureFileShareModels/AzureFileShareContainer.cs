@@ -17,16 +17,16 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// Azure VM specific container class.
+    /// Azure File Share specific container class.
     /// </summary>
-    public class AzureVmContainer : AzureContainer
+    public class AzureFileShareContainer : AzureContainer
     {
         /// <summary>
         /// Constructor. Takes the service client object representing the container 
         /// and converts it in to the PS container model
         /// </summary>
-        /// <param name="protectionContainer">Service client object representing the container</param>
-        public AzureVmContainer(ProtectionContainerResource protectionContainer)
-            : base(protectionContainer) { }
+        /// <param name="protectionContainerResource">Service client object representing the container</param>
+        public AzureFileShareContainer(ProtectionContainerResource protectionContainerResource)
+            : base(protectionContainerResource) { }
     }
 }

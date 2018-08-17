@@ -108,6 +108,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                             containerType));
                     }
                     break;
+                case ContainerType.AzureStorage:
+                    if (backupManagementType == BackupManagementType.AzureStorage ||
+                        backupManagementType == null)
+                    {
+                        providerType = PsBackupProviderTypes.AzureFiles;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(
+                            string.Format(
+                            Resources.BackupManagementTypeRequiredForContainerType,
+                            containerType));
+                    }
+                    break;
                 default:
                     throw new ArgumentException(
                         string.Format(Resources.UnsupportedContainerType,
@@ -190,6 +204,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                                      workloadType.ToString()));
                     }
                     psProviderType = PsBackupProviderTypes.AzureSql;
+                    break;
+                case WorkloadType.AzureFiles:
+                    if (backupManagementType.HasValue &&
+                        backupManagementType != BackupManagementType.AzureStorage)
+                    {
+                        throw new ArgumentException(
+                            string.Format(Resources.BackupManagementTypeNotExpectedForWorkloadType,
+                            workloadType.ToString()));
+                    }
+                    psProviderType = PsBackupProviderTypes.AzureFiles;
                     break;
                 default:
                     throw new ArgumentException(

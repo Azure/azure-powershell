@@ -19,15 +19,24 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class PolicyTests : RMTestBase
+    public partial class ItemTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        public void TestAzureFilePolicy()
+        public void TestAzureFileItem()
         {
             TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFile, "Test-AzureFilePolicy");
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileItem");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFile)]
+        public void TestAzureFileShareBackup()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileShareBackup");
         }
     }
 }
