@@ -117,10 +117,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: JobId (ByPropertyName)
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), Id (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

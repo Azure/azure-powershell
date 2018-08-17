@@ -357,19 +357,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName), CompileMode (ByPropertyName), Name (ByPropertyName), PipelineName (ByPropertyName), PipelineUri (ByPropertyName), RecurrenceName (ByPropertyName), Runtime (ByPropertyName), Script (ByPropertyName, ByValue), ScriptPath (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: CompileOnly (ByPropertyName)
 
 ### System.Int32
-Parameters: AnalyticsUnits (ByPropertyName), Priority (ByPropertyName)
 
 ### System.Collections.IDictionary
-Parameters: ScriptParameter (ByPropertyName)
 
 ### System.Guid
-Parameters: PipelineId (ByPropertyName), RecurrenceId (ByPropertyName)
 
 ### System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 

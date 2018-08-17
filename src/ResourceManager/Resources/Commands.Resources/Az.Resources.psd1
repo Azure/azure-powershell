@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core'
+CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
 GUID = '48bb344d-4c24-441e-8ea0-589947784700'
@@ -132,7 +132,11 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
     'Get-AzManagementGroup', 'New-AzManagementGroup', 
     'Update-AzManagementGroup', 'Remove-AzManagementGroup', 
     'New-AzManagementGroupSubscription', 
-    'Remove-AzManagementGroupSubscription'
+    'Remove-AzManagementGroupSubscription', 
+    'New-AzDeployment', 'Get-AzDeployment', 'Test-AzDeployment',
+    'Remove-AzDeployment', 'Stop-AzDeployment',
+    'Save-AzDeploymentTemplate',
+    'Get-AzDeploymentOperation'
 
 # Variables to export from this module
 # VariablesToExport = @()
