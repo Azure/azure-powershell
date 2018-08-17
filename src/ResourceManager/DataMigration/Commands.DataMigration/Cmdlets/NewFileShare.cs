@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
             var fileShare = new FileShare
             {
-                Path = Path,
+                Path = this.ResolvePath(Path),
                 UserName = userName,
                 Password = password
             };
