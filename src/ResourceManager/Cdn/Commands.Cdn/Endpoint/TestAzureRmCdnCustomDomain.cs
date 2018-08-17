@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmCdnCustomDomain", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSValidateCustomDomainOutput))]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnCustomDomain", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSValidateCustomDomainOutput))]
     [Alias("Validate-AzureRmCdnCustomDomain")]
     public class TestAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {

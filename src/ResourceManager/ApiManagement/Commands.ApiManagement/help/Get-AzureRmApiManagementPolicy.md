@@ -84,7 +84,7 @@ Specifies the identifier of the existing API.
 If you specify this parameter the cmdlet returns the API-scope policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetApiLevel, GetOperationLevel
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 Identifier of API Revision. This parameter is optional. If not specified, the policy will be retrieved from the currently active api revision.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetApiLevel, GetOperationLevel
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 Specifies an instance of **PsApiManagementContext**.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -127,9 +127,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 ps_force
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -160,7 +160,7 @@ Specifies the format of the API management policy.
 The default value for this parameter is "application/vnd.ms-azure-apim.policy+xml".
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -176,7 +176,7 @@ Specifies the identifier of the existing API operation.
 If you specify this parameter with *ApiId* the cmdlet returns operation-scope policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetOperationLevel
 Aliases:
 
@@ -192,7 +192,7 @@ Specifies the identifier of an existing product.
 If you specify this parameter the cmdlet returns the product-scope policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetProductLevel
 Aliases:
 
@@ -208,7 +208,7 @@ Specifies the file path to save the result to.
 If you do not specify this parameter the result is pipelined as a sting.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -223,7 +223,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -238,7 +238,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -254,12 +254,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+
+### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### String
+### System.String
 
 ## NOTES
 

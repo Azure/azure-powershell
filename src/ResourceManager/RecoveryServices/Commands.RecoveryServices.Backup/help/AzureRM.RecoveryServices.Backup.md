@@ -53,6 +53,9 @@ Downloads a script to mount all the files of the recovery point.
 ### [Get-AzureRmRecoveryServicesBackupSchedulePolicyObject](Get-AzureRmRecoveryServicesBackupSchedulePolicyObject.md)
 Gets a base schedule policy object.
 
+### [Get-AzureRmRecoveryServicesBackupStatus](Get-AzureRmRecoveryServicesBackupStatus.md)
+Checks whether your ARM resource is backed up or not.
+
 ### [New-AzureRmRecoveryServicesBackupProtectionPolicy](New-AzureRmRecoveryServicesBackupProtectionPolicy.md)
 Creates a Backup protection policy.
 

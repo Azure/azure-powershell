@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: DD150A2C-27D5-4119-9B43-FAB82F9F7D5B
@@ -38,10 +38,8 @@ co03-vm         ConfigureBackup  Completed       26-Aug-15 12:19:49 PM  26-Aug-1
 
 The first command gets the vault named Vault03 by using the **Get-AzureRmBackupVault** cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets the Backup protection policy named DefaultPolicy for the vault in $Vault.
 The command stores that object in the $Policy variable.
-
 The final command uses the pipeline operator to pass values from one cmdlet to the next.
 It gets a container, by using the Get-AzureRmBackupContainer cmdlet.
 The command gets the backup item from that container by using the Get-AzureRmBackupItem cmdlet.
@@ -53,7 +51,7 @@ The current cmdlet enables the policy stored in $Policy for the item that the co
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,9 +67,9 @@ Specifies the Backup item for which this cmdlet enables protection.
 To obtain an **AzureRmBackupItem**, use the Get-AzureRmBackupItem cmdlet.
 
 ```yaml
-Type: AzureRMBackupContainerContextObject
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainerContextObject
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -85,9 +83,9 @@ Specifies protection policy that this cmdlet associates with an item.
 To obtain an **AzureRmBackupProtectionPolicy** object, use the Get-AzureRmBackupProtectionPolicy cmdlet.
 
 ```yaml
-Type: AzureRMBackupProtectionPolicy
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -101,11 +99,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupItem
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainerContextObject
+Parameters: Item (ByValue)
 
 ## OUTPUTS
 
-### AzureRmBackupJob
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
 
 ## NOTES
 

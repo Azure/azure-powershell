@@ -44,7 +44,7 @@ function Get-AzsLocation
 
     Process {
 
-    $ErrorActionPreference = 'Stop'
+
 
     $NewServiceClient_params = @{
         FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'

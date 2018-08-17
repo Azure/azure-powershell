@@ -79,7 +79,7 @@ Starts the test failover operation for the recovery plan with the specified para
 Specifies the Azure virtual network ID to connect the test fail over virtual machine(s) to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRPObjectWithAzureVMNetworkId, ByRPIObjectWithAzureVMNetworkId
 Aliases:
 
@@ -94,25 +94,10 @@ Accept wildcard characters: False
 Specifies whether a new cloud service should be created or the recovery cloud service configured for the VM should be used for the test failover.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRPIObject, ByRPObject, ByRPObjectWithAzureVMNetworkId, ByRPIObjectWithAzureVMNetworkId
 Aliases:
 Accepted values: UseRecoveryCloudService, AutoCreateCloudService
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -125,7 +110,7 @@ Accept wildcard characters: False
 Specifies the primary certificate file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -140,7 +125,7 @@ Accept wildcard characters: False
 Specifies the secondary certificate file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -153,8 +138,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -168,12 +154,11 @@ Accept wildcard characters: False
 ### -Direction
 Specifies the failover direction.
 The acceptable values for this parameter are:
-
 - PrimaryToRecovery
 - RecoveryToPrimary
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: PrimaryToRecovery, RecoveryToPrimary
@@ -189,7 +174,7 @@ Accept wildcard characters: False
 Specifies an ASR recovery plan object.
 
 ```yaml
-Type: ASRRecoveryPlan
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan
 Parameter Sets: ByRPObject, ByRPObjectWithVMNetwork, ByRPObjectWithAzureVMNetworkId
 Aliases:
 
@@ -204,7 +189,7 @@ Accept wildcard characters: False
 Specifies a custom recovery point to test failover the protected machine to.
 
 ```yaml
-Type: ASRRecoveryPoint
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPoint
 Parameter Sets: ByRPIObject, ByRPIObjectWithVMNetwork, ByRPIObjectWithAzureVMNetworkId
 Aliases:
 
@@ -219,7 +204,7 @@ Accept wildcard characters: False
 Specifies the recovery tag to test failover to
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRPObject, ByRPObjectWithVMNetwork, ByRPObjectWithAzureVMNetworkId
 Aliases:
 Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent
@@ -235,7 +220,7 @@ Accept wildcard characters: False
 Specifies an ASR replication protected item.
 
 ```yaml
-Type: ASRReplicationProtectedItem
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
 Parameter Sets: ByRPIObject, ByRPIObjectWithVMNetwork, ByRPIObjectWithAzureVMNetworkId
 Aliases:
 
@@ -250,7 +235,7 @@ Accept wildcard characters: False
 Specifies the Site Recovery virtual machine network to connect the test failover virtual machine(s) to.
 
 ```yaml
-Type: ASRNetwork
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork
 Parameter Sets: ByRPObjectWithVMNetwork, ByRPIObjectWithVMNetwork
 Aliases:
 
@@ -261,11 +246,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -282,7 +282,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan
-Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
+Parameters: RecoveryPlan (ByValue)
+
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
+Parameters: ReplicationProtectedItem (ByValue)
 
 ## OUTPUTS
 

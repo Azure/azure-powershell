@@ -22,16 +22,19 @@ namespace Commands.DeviceProvisioningServices.Test
 {
     public class IotDpsLinkedHubTests : RMTestBase
     {
-        public IotDpsLinkedHubTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public IotDpsLinkedHubTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Test needs re-recorded")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IotDpsLinkedHubLifeCycle()
         {
-            IotDpsController.NewInstance.RunPsTest("Test-AzureIotDpsLinkedHubLifeCycle");
+            IotDpsController.NewInstance.RunPsTest(_logger, "Test-AzureIotDpsLinkedHubLifeCycle");
         }
     }
 }

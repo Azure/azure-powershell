@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
     /// <para> If Subscription name provided, a single Subscription detials will be returned</para>
     /// <para> If Subscription name not provided, list of Subscription will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusSubscriptionVerb), OutputType(typeof(PSSubscriptionAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusSubscription"), OutputType(typeof(PSSubscriptionAttributes))]
     public class GetAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
@@ -49,6 +49,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Subscriptions to return.")]
+        [ValidateRange(1, 10000)]
+        public int? MaxCount { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(Name))
@@ -58,10 +62,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
             }
             else
             {
-                IEnumerable<PSSubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroupName, Namespace, Topic);
-                WriteObject(subscriptionAttributes,true);
+                if (MaxCount.HasValue)
+                {
+                    IEnumerable<PSSubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroupName, Namespace, Topic, MaxCount);
+                    WriteObject(subscriptionAttributes, true);
+                }
+                else
+                {
+                    IEnumerable<PSSubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroupName, Namespace, Topic);
+                    WriteObject(subscriptionAttributes, true);
+                }
+
             }
-            
+
         }
     }
 }

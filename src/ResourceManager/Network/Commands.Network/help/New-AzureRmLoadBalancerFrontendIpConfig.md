@@ -53,7 +53,6 @@ PS C:\> New-AzureRmLoadBalancerFrontendIpConfig -Name "FrontendIpConfig01" -Publ
 ```
 
 The first command creates a dynamic public IP address named MyPublicIP in the resource group named MyResourceGroup, and then stores it in the $publicip variable.
-
 The second command creates a front-end IP configuration named FrontendIpConfig01 using the public IP address in $publicip.
 
 ## PARAMETERS
@@ -62,7 +61,7 @@ The second command creates a front-end IP configuration named FrontendIpConfig01
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,7 +76,7 @@ Accept wildcard characters: False
 Specifies the front-end IP configuration that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +92,7 @@ Specifies the private IP address of the load balancer.
 Specify this parameter only if you also specify the *Subnet* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceSubnet, SetByResourceIdSubnet
 Aliases:
 
@@ -108,7 +107,7 @@ Accept wildcard characters: False
 Specifies the **PublicIpAddress** object to associate with a front-end IP configuration.
 
 ```yaml
-Type: PSPublicIpAddress
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 Parameter Sets: SetByResourcePublicIpAddress
 Aliases:
 
@@ -123,7 +122,7 @@ Accept wildcard characters: False
 Specifies the ID of the **PublicIpAddress** object to associate with a front-end IP configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdPublicIpAddress
 Aliases:
 
@@ -138,7 +137,7 @@ Accept wildcard characters: False
 Specifies the **Subnet** object in which to create a front-end IP configuration.
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: SetByResourceSubnet
 Aliases:
 
@@ -153,7 +152,7 @@ Accept wildcard characters: False
 Specifies the ID of the subnet in which to create a front-end IP configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdSubnet
 Aliases:
 
@@ -184,8 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

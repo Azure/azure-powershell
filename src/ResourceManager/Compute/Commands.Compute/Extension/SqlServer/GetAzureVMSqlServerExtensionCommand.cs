@@ -26,12 +26,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ProfileNouns.VirtualMachineSqlServerExtension,
-        DefaultParameterSetName = GetSqlServerExtensionParamSetName),
-    OutputType(
-        typeof(VirtualMachineSqlServerExtensionContext))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSqlServerExtension",DefaultParameterSetName = GetSqlServerExtensionParamSetName),OutputType(typeof(VirtualMachineSqlServerExtensionContext))]
     public class GetAzureVMSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         protected const string GetSqlServerExtensionParamSetName = "GetSqlServerExtension";

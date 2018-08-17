@@ -92,7 +92,7 @@ function Remove-AzsNetworkQuota {
         if ($PSCmdlet.ShouldProcess("$Name" , "Delete the network quota")) {
             if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Delete the network quota?", "Performing operation delete $Name."))) {
 
-                $ErrorActionPreference = 'Stop'
+
 
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient'

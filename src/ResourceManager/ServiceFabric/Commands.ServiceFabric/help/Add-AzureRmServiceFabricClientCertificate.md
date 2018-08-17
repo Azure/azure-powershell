@@ -64,9 +64,9 @@ This command will add a read only client certificate that's common name is 'Cont
 Client authentication type.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SingleUpdateWithThumbprint, SingleUpdateWithCommonName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -79,9 +79,9 @@ Accept wildcard characters: False
 Specify client certificate thumbprint that only has admin permission.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: MultipleUpdatesWithThumbprint
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Specify client common name, issuer thumbprint, and authentication type.
 
 ```yaml
-Type: PSClientCertificateCommonName[]
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]
 Parameter Sets: MultipleUpdatesWithCommonName
 Aliases: CertCommonName
 
@@ -109,9 +109,9 @@ Accept wildcard characters: False
 Specify client certificate common name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SingleUpdateWithCommonName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -139,9 +139,9 @@ Accept wildcard characters: False
 Specify client certificate issuer thumbprint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SingleUpdateWithCommonName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ClusterName
 
@@ -169,9 +169,9 @@ Accept wildcard characters: False
 Specify client certificate thumbprint that has read only permission.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: MultipleUpdatesWithThumbprint
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -184,9 +184,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 Specify client certificate thumbprint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SingleUpdateWithThumbprint
 Aliases: ClientCertificateThumbprint
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -245,14 +245,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Collections.Hashtable
-System.String
+### System.Management.Automation.SwitchParameter
+Parameters: Admin (ByValue)
 
-System.Boolean
+### System.String
+Parameters: CommonName (ByValue), IssuerThumbprint (ByValue), Thumbprint (ByValue)
+
+### System.String[]
+Parameters: AdminClientThumbprint (ByValue), ReadonlyClientThumbprint (ByValue)
+
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]
+Parameters: ClientCertificateCommonName (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.PsCluster
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster
 
 ## NOTES
 

@@ -31,6 +31,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -261,6 +262,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData[RestoreBackupItemParams.StorageAccountLocation].ToString();
             string storageAccountType =
                 ProviderData[RestoreBackupItemParams.StorageAccountType].ToString();
+            string targetResourceGroupName =
+                ProviderData.ContainsKey(RestoreBackupItemParams.TargetResourceGroupName) ?
+                ProviderData[RestoreBackupItemParams.TargetResourceGroupName].ToString() : null;
             bool osaOption = (bool)ProviderData[RestoreBackupItemParams.OsaOption];
 
             var response = ServiceClientAdapter.RestoreDisk(
@@ -268,6 +272,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 storageAccountId,
                 storageAccountLocation,
                 storageAccountType,
+                targetResourceGroupName,
                 osaOption,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
@@ -733,8 +738,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (ItemProtectionState)ProviderData[ItemParams.ProtectionState];
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
+            PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
 
-            ODataQuery<ProtectedItemQueryObject> queryParams =
+            ODataQuery<ProtectedItemQueryObject> queryParams = policy != null ?
+                new ODataQuery<ProtectedItemQueryObject>(
+                    q => q.BackupManagementType
+                            == ServiceClientModel.BackupManagementType.AzureIaasVM &&
+                         q.ItemType == DataSourceType.VM &&
+                         q.PolicyName == policy.Name) :
                 new ODataQuery<ProtectedItemQueryObject>(
                     q => q.BackupManagementType
                             == ServiceClientModel.BackupManagementType.AzureIaasVM &&
@@ -921,6 +932,55 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.YearlySchedule.RetentionScheduleWeekly = GetWeeklyRetentionFormat();
             return defaultRetention;
 
+        }
+
+        public ResourceBackupStatus CheckBackupStatus()
+        {
+            string azureVmName = (string)ProviderData[ProtectionCheckParams.Name];
+            string azureVmResourceGroupName =
+                (string)ProviderData[ProtectionCheckParams.ResourceGroupName];
+
+            ODataQuery<ProtectedItemQueryObject> queryParams =
+                new ODataQuery<ProtectedItemQueryObject>(
+                    q => q.BackupManagementType
+                            == ServiceClientModel.BackupManagementType.AzureIaasVM &&
+                         q.ItemType == DataSourceType.VM);
+
+            var vaultIds = ServiceClientAdapter.ListVaults();
+            foreach (var vaultId in vaultIds)
+            {
+                ResourceIdentifier vaultIdentifier = new ResourceIdentifier(vaultId);
+
+                var items = ServiceClientAdapter.ListProtectedItem(
+                    queryParams,
+                    vaultName: vaultIdentifier.ResourceName,
+                    resourceGroupName: vaultIdentifier.ResourceGroupName);
+
+                if (items.Any(
+                    item =>
+                    {
+                        ResourceIdentifier vmIdentifier =
+                            new ResourceIdentifier(item.Properties.SourceResourceId);
+                        var itemVmName = vmIdentifier.ResourceName;
+                        var itemVmRgName = vmIdentifier.ResourceGroupName;
+
+                        return itemVmName.ToLower() == azureVmName.ToLower() &&
+                            itemVmRgName.ToLower() == azureVmResourceGroupName.ToLower();
+                    }))
+                {
+                    return new ResourceBackupStatus(
+                        azureVmName,
+                        azureVmResourceGroupName,
+                        vaultId,
+                        true);
+                }
+            }
+
+            return new ResourceBackupStatus(
+                azureVmName,
+                azureVmResourceGroupName,
+                null,
+                false);
         }
 
         #region private
@@ -1286,8 +1346,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        #endregion
-
         /// <summary>
         /// Generates ILR Response object for Windows VMs
         /// </summary>
@@ -1443,5 +1501,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             return password;
         }
+
+        #endregion
     }
 }

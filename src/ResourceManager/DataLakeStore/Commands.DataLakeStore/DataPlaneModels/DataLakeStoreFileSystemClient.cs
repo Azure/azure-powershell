@@ -28,6 +28,7 @@ using Microsoft.Azure.DataLake.Store;
 using Microsoft.Azure.DataLake.Store.Acl;
 using Microsoft.Azure.DataLake.Store.AclTools;
 using Microsoft.Azure.DataLake.Store.FileTransfer;
+using Microsoft.Azure.DataLake.Store.MockAdlsFileSystem;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
@@ -47,7 +48,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         private const long NeverExpireValue = 253402300800000;
         internal const int ImportExportMaxThreads = 256;
         private readonly LoggingConfiguration _adlsLoggerConfig;
-
+        private readonly bool _isDebugEnabled;
+        private const int DebugMessageFlushThreshold = 500;
         #region Constructors
 
         static DataLakeStoreFileSystemClient()
@@ -80,25 +82,45 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public DataLakeStoreFileSystemClient(IAzureContext context, DataLakeStoreFileSystemCmdletBase cmdlet) : this(context)
         {
+            bool containsDebug = cmdlet.MyInvocation.BoundParameters.ContainsKey("Debug");
+            if (containsDebug)
+            {
+                _isDebugEnabled = ((SwitchParameter) cmdlet.MyInvocation.BoundParameters["Debug"]).ToBool();
+            }
+            else
+            {
+                // The return type of cmdlet.GetVariableValue("DebugPreference") is string when run from a script
+                // return type is System.Management.Automation.ActionPreference when run from commandline
+                var debugPreference = cmdlet.GetVariableValue("DebugPreference").ToString();
+                if (debugPreference != null)
+                {
+                    _isDebugEnabled = !debugPreference.Equals("SilentlyContinue");
+                }
+            }
+
+            // Keep this outside if block because it is also used for diagnostic file loggind for BulkCopy
             _adlsLoggerConfig = new LoggingConfiguration();
-            
-            // Custom target that logs the debug messages from the SDK to the powershell framework's debug message queue
-            var adlsTarget = new AdlsLoggerTarget{ 
-                DebugMessageQueue = cmdlet.DebugMessages
-            };
+            if (_isDebugEnabled)
+            {
+                // Custom target that logs the debug messages from the SDK to the powershell framework's debug message queue
+                var adlsTarget = new AdlsLoggerTarget
+                {
+                    DebugMessageQueue = cmdlet.DebugMessages
+                };
+                // Add the target to the configuration
+                _adlsLoggerConfig.AddTarget("logger", adlsTarget);
 
-            // Add the target to the configuration
-            _adlsLoggerConfig.AddTarget("logger", adlsTarget);
+                //Logs all patterns of debug messages
+                var rule = new LoggingRule("adls.dotnet.*", NLog.LogLevel.Debug, adlsTarget);
+                _adlsLoggerConfig.LoggingRules.Add(rule);
 
-            //Logs all patterns of debug messages
-            var rule = new LoggingRule("adls.dotnet.*", NLog.LogLevel.Debug, adlsTarget);
-            _adlsLoggerConfig.LoggingRules.Add(rule);
-            
-            var powershellLoggingRule= new LoggingRule("adls.powershell.WebTransport", NLog.LogLevel.Debug, adlsTarget);
-            _adlsLoggerConfig.LoggingRules.Add(powershellLoggingRule);
+               var powershellLoggingRule =
+                    new LoggingRule("adls.powershell.WebTransport", NLog.LogLevel.Debug, adlsTarget);
+                _adlsLoggerConfig.LoggingRules.Add(powershellLoggingRule);
 
-            // Enable the NLog configuration to use this
-            LogManager.Configuration = _adlsLoggerConfig;
+                // Enable the NLog configuration to use this
+                LogManager.Configuration = _adlsLoggerConfig;
+            }
         }
 
         #endregion
@@ -164,17 +186,78 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         }
 
         /// <summary>
-        /// 
+        /// Changes Acl recursively
         /// </summary>
-        /// <param name="path"></param>
-        /// <param name="accountName"></param>
-        /// <param name="aclToSet"></param>
-        /// <param name="aclChangeType"></param>
-        /// <param name="concurrency"></param>
+        /// <param name="path">Input path</param>
+        /// <param name="accountName">Account name</param>
+        /// <param name="aclToSet">List of acl to set</param>
+        /// <param name="aclChangeType">Type of al change- Modify, Set, Remove</param>
+        /// <param name="concurrency">Concurrency- number of parallel operations</param>
+        /// <param name="aclCmdlet">Cmdlet for acl change. This is only for printing progress. If passed null, then no progress tracking is done</param>
+        /// <param name="trackProgress"></param>
+        /// <param name="cmdletCancellationToken">Cancellationtoken for cmdlet</param>
         public AclProcessorStats ChangeAclRecursively(string path, string accountName, List<AclEntry> aclToSet,
-            RequestedAclType aclChangeType, int concurrency = -1)
+            RequestedAclType aclChangeType, int concurrency, Cmdlet aclCmdlet, bool trackProgress, CancellationToken cmdletCancellationToken )
         {
-            return AdlsClientFactory.GetAdlsClient(accountName, _context).ChangeAcl(path, aclToSet, aclChangeType, concurrency);
+            var client = AdlsClientFactory.GetAdlsClient(accountName, _context);
+            // Currently mockadlsclient signature is different, once that gets fixed, we can remove this
+            if (client.GetType() != typeof(MockAdlsClient))
+            {
+                System.Progress<AclProcessorStats> progressTracker = null;
+                ProgressRecord progress = null;
+                // If passing null, then we do not want progreess tracking
+                if (trackProgress)
+                {
+                    progress = new ProgressRecord(_uniqueActivityIdGenerator.Next(0, 10000000),
+                        string.Format($"Recursive acl change for path {path}"),
+                        $"Type of Acl Change: {aclChangeType}")
+                    {
+                        PercentComplete = 0
+                    };
+                    // On update from the Data Lake store uploader, capture the progress.
+                    progressTracker = new System.Progress<AclProcessorStats>();
+                    progressTracker.ProgressChanged += (s, e) =>
+                    {
+                        lock (ConsoleOutputLock)
+                        {
+                            progress.PercentComplete = 0;
+                            progress.Activity =
+                                $"Files enumerated: {e.FilesProcessed} Directories enumerated:{e.DirectoryProcessed}";
+
+                        }
+                    };
+                }
+
+                AclProcessorStats status = null;
+                Task aclTask = Task.Run(() =>
+                {
+                    cmdletCancellationToken.ThrowIfCancellationRequested();
+                    status = client.ChangeAcl(path, aclToSet, aclChangeType, concurrency, progressTracker,
+                        cmdletCancellationToken);
+                }, cmdletCancellationToken);
+
+                if (trackProgress || _isDebugEnabled)
+                {
+                    TrackTaskProgress(aclTask, aclCmdlet, progress, cmdletCancellationToken);
+
+                    if (trackProgress && !cmdletCancellationToken.IsCancellationRequested)
+                    {
+                        progress.PercentComplete = 100;
+                        progress.RecordType = ProgressRecordType.Completed;
+                        UpdateProgress(progress, aclCmdlet);
+
+                    }
+                }
+                else
+                {
+                    WaitForTask(aclTask, cmdletCancellationToken);
+                }
+
+
+                return status;
+            }
+
+            return client.ChangeAcl(path, aclToSet, aclChangeType, concurrency);
         }
         /// <summary>
         /// Add specific Acl entries
@@ -631,7 +714,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 }, cmdletCancellationToken);
 
 
-            TrackUploadProgress(transferTask, progress, cmdletRunningRequest, cmdletCancellationToken);
+            TrackTaskProgress(transferTask, cmdletRunningRequest, progress, cmdletCancellationToken);
 
             if (!cmdletCancellationToken.IsCancellationRequested)
             {
@@ -662,102 +745,158 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="displayFiles">Display files</param>
         /// <param name="hideConsistentAcl">Hide consistent Acl</param>
         /// <param name="maxDepth">Maximum depth</param>
-        public void GetFileProperties(string accountName, string path, bool getAclUsage, string dumpFileName, bool getDiskUsage , bool saveToLocal, int numThreads, bool displayFiles, bool hideConsistentAcl , long maxDepth )
+        /// <param name="cmdlet">ExportFileProperties Commandlet</param>
+        /// <param name="cmdletCancellationToken">CancellationToken</param>
+        public void GetFileProperties(string accountName, string path, bool getAclUsage, string dumpFileName, bool getDiskUsage , bool saveToLocal, int numThreads, bool displayFiles, bool hideConsistentAcl , long maxDepth, Cmdlet cmdlet, CancellationToken cmdletCancellationToken)
         {
-            AdlsClientFactory.GetAdlsClient(accountName, _context).GetFileProperties(path, getAclUsage, dumpFileName,
-                getDiskUsage, saveToLocal, numThreads, displayFiles, hideConsistentAcl, maxDepth);
+            var client = AdlsClientFactory.GetAdlsClient(accountName, _context);
+            Task exportTask = Task.Run(() => client
+                    .GetFileProperties(
+                        path, getAclUsage, dumpFileName,
+                        getDiskUsage, saveToLocal, numThreads, displayFiles, hideConsistentAcl, maxDepth,
+                        cmdletCancellationToken), cmdletCancellationToken);
+
+            if (_isDebugEnabled)
+            {
+                TrackTaskProgress(exportTask, cmdlet, null, cmdletCancellationToken);
+            }
+            else
+            {
+                WaitForTask(exportTask, cmdletCancellationToken);
+            }
+            
+
         }
 
         #endregion
 
         #region private helpers
         /// <summary>
-        /// Tracks the upload progress in the PowerShell console.
+        /// Tracks the task and shows the task progress or debug nessages after a regular interval in the PowerShell console.
+        /// Call this method only if you want to do something for a task - like show progress, show debug messages
         /// </summary>
-        /// <param name="uploadTask">The task that tracks the upload.</param>
-        /// <param name="uploadProgress">The upload progress that will be displayed in the console.</param>
+        /// <param name="task">The task that tracks the upload.</param>
         /// <param name="commandToUpdateProgressFor">Commandlet to write to</param>
+        /// <param name="taskProgress">The upload progress that will be displayed in the console.</param>
         /// <param name="token">Cancellation token</param>
-        private void TrackUploadProgress(Task uploadTask, ProgressRecord uploadProgress,
-            Cmdlet commandToUpdateProgressFor, CancellationToken token)
+        private void TrackTaskProgress(Task task, Cmdlet commandToUpdateProgressFor, ProgressRecord taskProgress, CancellationToken token)
         {
+            var pscommandToUpdateProgressFor = (DataLakeStoreFileSystemCmdletBase) commandToUpdateProgressFor;
             // Update the UI with the progress.
             var lastUpdate = DateTime.Now.Subtract(TimeSpan.FromSeconds(2));
-            while (!uploadTask.IsCompleted && !uploadTask.IsCanceled)
+            while (!task.IsCompleted && !task.IsCanceled)
             {
                 if (token.IsCancellationRequested)
                 {
                     // we are done tracking progress and will just break and let the task clean itself up.
-                    try
-                    {
-                        uploadTask.Wait(token);
-                    }
-                    catch (OperationCanceledException)
-                    {
-                        if (uploadTask.IsCanceled)
-                        {
-                            uploadTask.Dispose();
-                        }
-                    }
-                    catch (AggregateException ex)
-                    {
-                        if (ex.InnerExceptions.OfType<OperationCanceledException>().Any())
-                        {
-                            if (uploadTask.IsCanceled)
-                            {
-                                uploadTask.Dispose();
-                            }
-                        }
-                        else
-                        {
-                            throw;
-                        }
-                    }
+                    WaitForTask(task, token);
                     break;
                 }
 
                 if (DateTime.Now - lastUpdate > TimeSpan.FromSeconds(1))
                 {
-                    lock (ConsoleOutputLock)
+                    if (taskProgress != null && !token.IsCancellationRequested &&
+                        !commandToUpdateProgressFor.Stopping) 
                     {
-                        if (commandToUpdateProgressFor != null && !token.IsCancellationRequested &&
-                            !commandToUpdateProgressFor.Stopping)
+                        lock (ConsoleOutputLock)
                         {
-                            commandToUpdateProgressFor.WriteProgress(uploadProgress);
+                            commandToUpdateProgressFor.WriteProgress(taskProgress);
                         }
                     }
                 }
 
+                // If debug is enabled then flush debug messsages 
+                if (_isDebugEnabled)
+                {
+                    if (!token.IsCancellationRequested &&
+                        !commandToUpdateProgressFor.Stopping && pscommandToUpdateProgressFor.DebugMessages.Count > DebugMessageFlushThreshold)
+                    {
+                        lock (ConsoleOutputLock)
+                        {
+                            FlushDebugMessages(DebugMessageFlushThreshold, pscommandToUpdateProgressFor);
+                        }
+                    }
+                }
                 TestMockSupport.Delay(250);
+                
             }
 
-            if (uploadTask.IsCanceled || token.IsCancellationRequested)
+            if (taskProgress != null && (task.IsCanceled || token.IsCancellationRequested))
             {
-                uploadProgress.RecordType = ProgressRecordType.Completed;
+                taskProgress.RecordType = ProgressRecordType.Completed;
             }
-            else if (uploadTask.IsFaulted && uploadTask.Exception != null)
+            else if (task.IsFaulted && task.Exception != null)
             {
                 // If there are errors, raise them to the user.
-                if (uploadTask.Exception.InnerException != null)
+                if (task.Exception.InnerException != null)
                 {
                     // we only go three levels deep. This is the Inception rule.
-                    if (uploadTask.Exception.InnerException.InnerException != null)
+                    if (task.Exception.InnerException.InnerException != null)
                     {
-                        throw uploadTask.Exception.InnerException.InnerException;
+                        throw task.Exception.InnerException.InnerException;
                     }
 
-                    throw uploadTask.Exception.InnerException;
+                    throw task.Exception.InnerException;
                 }
 
-                throw uploadTask.Exception;
+                throw task.Exception;
             }
-            else
+            else if (taskProgress != null)
             {
                 // finally execution is finished, set progress state to completed.
-                uploadProgress.PercentComplete = 100;
-                uploadProgress.RecordType = ProgressRecordType.Completed;
+                taskProgress.PercentComplete = 100;
+                taskProgress.RecordType = ProgressRecordType.Completed;
 
-                commandToUpdateProgressFor?.WriteProgress(uploadProgress);
+                commandToUpdateProgressFor?.WriteProgress(taskProgress);
+            }
+        }
+
+        /// <summary>
+        /// Flushes the debug messages to debug stream
+        /// </summary>
+        /// <param name="numDebugMessagesToFlush">number of debug messages to flush</param>
+        /// <param name="cmdlet">Instance of AzurePSCCmdlet</param>
+        private void FlushDebugMessages(int numDebugMessagesToFlush, AzurePSCmdlet cmdlet)
+        {
+            string message;
+            int count = 0;
+            while ((count++ < numDebugMessagesToFlush) && cmdlet.DebugMessages.TryDequeue(out message))
+            {
+                cmdlet.WriteDebug(message);
+            }
+        }
+
+        /// <summary>
+        /// Waits for the task to finish
+        /// </summary>
+        /// <param name="task">Task</param>
+        /// <param name="token">Cancellation token</param>
+        private void WaitForTask(Task task, CancellationToken token)
+        {
+            try
+            {
+                task.Wait(token);
+            }
+            catch (OperationCanceledException)
+            {
+                if (task.IsCanceled)
+                {
+                    task.Dispose();
+                }
+            }
+            catch (AggregateException ex)
+            {
+                if (ex.InnerExceptions.OfType<OperationCanceledException>().Any())
+                {
+                    if (task.IsCanceled)
+                    {
+                        task.Dispose();
+                    }
+                }
+                else
+                {
+                    throw;
+                }
             }
         }
 

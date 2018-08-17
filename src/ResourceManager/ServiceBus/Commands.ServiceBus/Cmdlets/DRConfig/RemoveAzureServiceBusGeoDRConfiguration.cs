@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// <summary>
     /// 'Remove-AzureRmServicebusGeoDRConfiguration' Cmdlet Deletes an Alias(Disaster Recovery configuration)
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusDRConfigurationVerb, DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveServicBusGeoDRConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         {
             if (ParameterSetName == GeoDRInputObjectParameterSet)
             {
-                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
+                LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(InputObject.Id);
 
                 if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
                 {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             }
             if (ParameterSetName == GeoDRConfigResourceIdParameterSet)
             {
-                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
+                LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(ResourceId);
 
                 if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
                 {

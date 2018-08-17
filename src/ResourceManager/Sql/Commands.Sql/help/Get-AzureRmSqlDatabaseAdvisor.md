@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 5AAB22C6-8E3C-4BDC-8A54-DA5A9906B762
@@ -175,7 +175,7 @@ Since the command uses the *ExpandRecommendedActions* parameter, the cmdlet gets
 Specifies the name of the advisor that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 Specifies the name of the database for which this cmdlet requests the Advisor.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -220,7 +220,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets the recommended actions with the response.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -235,7 +235,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the server that contains this database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -250,7 +250,7 @@ Accept wildcard characters: False
 Specifies the name of the server that contains the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -266,8 +266,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

@@ -35,25 +35,11 @@ Starts the operation of updating the replication protect item settings using the
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -68,7 +54,7 @@ Accept wildcard characters: False
 The input object to the cmdlet: The ASR replication protected item object corresponding to the replication protected item to update.
 
 ```yaml
-Type: ASRReplicationProtectedItem
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
 Parameter Sets: (All)
 Aliases: ReplicationProtectedItem
 
@@ -83,7 +69,7 @@ Accept wildcard characters: False
 Specifiy the license type selection to be used for Windows Server virtual machines. If you are entitled to use the Azure Hybrid Use Benefit (HUB) for migrations and would like to specify that the HUB setting be used while failing over this protected item set the license type to be WindowsServer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: NoLicenseType, WindowsServer
@@ -99,7 +85,7 @@ Accept wildcard characters: False
 Specifies the name of the recovery virtual machine that will be created on failover.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +101,7 @@ Specifies the network interface card (NIC) properties set by user or set by defa
 You can specify NotSelected to go back to the default values.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: NotSelected, SelectedByUser
@@ -131,7 +117,7 @@ Accept wildcard characters: False
 Specifies the NIC of the virtual machine for which this cmdlet sets the recovery network property.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +132,7 @@ Accept wildcard characters: False
 Availability set for replication protected item after failover.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +147,7 @@ Accept wildcard characters: False
 The resource ID of the recovery cloud service to failover this virtual machine to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -176,7 +162,7 @@ Accept wildcard characters: False
 Specifies the ID of the Azure virtual network to which the protected item should be failed over.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +177,7 @@ Accept wildcard characters: False
 Specifies the static IP address that should be assigned to primary NIC on recovery.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -206,7 +192,7 @@ Accept wildcard characters: False
 Specifies the name of the subnet on the recovery Azure virtual network to which this NIC of the protected item should be connected to on failover.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -221,7 +207,7 @@ Accept wildcard characters: False
 The ID of the Azure resource group in the recovery region in which the protected item will be recovered on failover.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -237,7 +223,7 @@ Specifies the recovery virtual machine size.
 The value should be from the set of sizes supported by Azure virtual machines.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -252,10 +238,25 @@ Accept wildcard characters: False
 Specifies if the Azure virtual machine that is created on failover should use managed disks.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: True, False
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -268,7 +269,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -285,6 +286,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

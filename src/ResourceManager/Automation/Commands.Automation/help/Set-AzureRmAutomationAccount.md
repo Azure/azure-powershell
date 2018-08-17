@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: B1897EFC-0184-4A8B-B8E4-203CC8E3B179
@@ -20,7 +20,6 @@ Set-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Pl
 
 ## DESCRIPTION
 The **Set-AzureRmAutomationAccount** cmdlet modifies an Azure Automation account.
-
 For more information about Automation accounts, see the New-AzureRmAutomationAccount cmdlet.
 
 ## EXAMPLES
@@ -32,7 +31,6 @@ PS C:\> Set-AzureRmAutomationAccount -Name "AutomationAccount01" -ResourceGroupN
 ```
 
 The first command assigns two key/value pairs to the $Tags variable.
-
 The second command sets tags in $Tags for the Automation account named AutomationAccount01.
 
 ### Example 2: Change the plan for an Automation account
@@ -48,7 +46,7 @@ This command changes the plan to Basic for the Automation account named Automati
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +61,7 @@ Accept wildcard characters: False
 Specifies the name of the Automation account that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AutomationAccountName
 
@@ -77,14 +75,13 @@ Accept wildcard characters: False
 ### -Plan
 Specifies the plan for the Automation account.
 Valid values are:
-
 - Basic
 - Free
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Free, Basic
 
 Required: False
@@ -98,9 +95,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group that contains the Automation account that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -111,11 +108,10 @@ Accept wildcard characters: False
 
 ### -Tags
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: IDictionary
+Type: System.Collections.IDictionary
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -131,8 +127,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Collections.IDictionary
 
 ## OUTPUTS
 

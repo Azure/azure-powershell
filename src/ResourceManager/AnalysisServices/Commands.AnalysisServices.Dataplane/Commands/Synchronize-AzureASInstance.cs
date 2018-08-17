@@ -35,14 +35,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     /// <summary>
     /// Cmdlet to log into an Analysis Services environment
     /// </summary>
-    [Cmdlet(VerbsData.Sync, "AzureAnalysisServicesInstance", SupportsShouldProcess = true)]
+    [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AnalysisServicesInstance", SupportsShouldProcess = true)]
     [Alias("Sync-AzureAsInstance")]
-    [OutputType(typeof(ScaleOutServerDatabaseSyncDetails[]))]
+    [OutputType(typeof(ScaleOutServerDatabaseSyncDetails))]
     public class SynchronizeAzureAzureAnalysisServer : AzurePSCmdlet
     {
         private static TimeSpan DefaultPollingInterval = TimeSpan.FromSeconds(30);
 
-        private static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(10);
+        public static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(10);
 
         private static string RootActivityIdHeaderName = "x-ms-root-activity-id";
 

@@ -36,157 +36,159 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
 InModuleScope Azs.InfrastructureInsights.Admin {
 
-	Describe "AzsServiceHealths" -Tags @('AzsServiceHealth', 'InfrastructureInsightsAdmin') {
+    Describe "AzsServiceHealths" -Tags @('AzsServiceHealth', 'InfrastructureInsightsAdmin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateAzsServiceHealth {
-				param(
-					[Parameter(Mandatory=$true)]
-					$ServiceHealth
-				)
+            function ValidateAzsServiceHealth {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $ServiceHealth
+                )
 
-				$ServiceHealth          | Should Not Be $null
+                $ServiceHealth          | Should Not Be $null
 
-				# Resource
-				$ServiceHealth.Id       | Should Not Be $null
-				$ServiceHealth.Location | Should Not Be $null
-				$ServiceHealth.Name     | Should Not Be $null
-				$ServiceHealth.Type     | Should Not Be $null
+                # Resource
+                $ServiceHealth.Id       | Should Not Be $null
+                $ServiceHealth.Location | Should Not Be $null
+                $ServiceHealth.Name     | Should Not Be $null
+                $ServiceHealth.Type     | Should Not Be $null
 
-				# Service Health
-				$ServiceHealth.AlertSummary  	| Should Not Be $null
-				$ServiceHealth.DisplayName  	| Should Not Be $null
-				$ServiceHealth.HealthState  	| Should Not Be $null
-				$ServiceHealth.InfraURI  		| Should Not Be $null
-				#$ServiceHealth.Namespace        | Should Not Be $null
-				$ServiceHealth.RegistrationId   | Should Not Be $null
-				$ServiceHealth.RoutePrefix      | Should Not Be $null
-				$ServiceHealth.ServiceLocation	| Should Not Be $null
-			}
+                # Service Health
+                $ServiceHealth.AlertSummary  	| Should Not Be $null
+                $ServiceHealth.DisplayName  	| Should Not Be $null
+                $ServiceHealth.HealthState  	| Should Not Be $null
+                $ServiceHealth.InfraURI  		| Should Not Be $null
+                #$ServiceHealth.Namespace        | Should Not Be $null
+                $ServiceHealth.RegistrationId   | Should Not Be $null
+                $ServiceHealth.RoutePrefix      | Should Not Be $null
+                $ServiceHealth.ServiceLocation	| Should Not Be $null
+            }
 
-			function AssertAzsServiceHealthsAreSame {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Expected,
+            function AssertAzsServiceHealthsAreSame {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Expected,
 
-					[Parameter(Mandatory=$true)]
-					$Found
-				)
-				if($Expected -eq $null) {
-					$Found | Should Be $null
-				} else {
-					$Found                  | Should Not Be $null
+                    [Parameter(Mandatory = $true)]
+                    $Found
+                )
+                if ($Expected -eq $null) {
+                    $Found | Should Be $null
+                } else {
+                    $Found                  | Should Not Be $null
 
-					# Resource
-					$Found.Id               | Should Be $Expected.Id
-					$Found.Location         | Should Be $Expected.Location
-					$Found.Name             | Should Be $Expected.Name
-					$Found.Type             | Should Be $Expected.Type
+                    # Resource
+                    $Found.Id               | Should Be $Expected.Id
+                    $Found.Location         | Should Be $Expected.Location
+                    $Found.Name             | Should Be $Expected.Name
+                    $Found.Type             | Should Be $Expected.Type
 
-					# Service Health
-					if($Expected.AlertSummary -eq $null) {
-						$Found.AlertSummary        				| Should Be $null
-					} else {
-						$Found.AlertSummary        				| Should Not Be $null
-						$Found.AlertSummary.CriticalAlertCount  | Should Be $Expected.AlertSummary.CriticalAlertCount
-						$Found.AlertSummary.WarningAlertCount  	| Should Be $Expected.AlertSummary.WarningAlertCount
-					}
+                    # Service Health
+                    if ($Expected.AlertSummary -eq $null) {
+                        $Found.AlertSummary        				| Should Be $null
+                    } else {
+                        $Found.AlertSummary        				| Should Not Be $null
+                        $Found.AlertSummary.CriticalAlertCount  | Should Be $Expected.AlertSummary.CriticalAlertCount
+                        $Found.AlertSummary.WarningAlertCount  	| Should Be $Expected.AlertSummary.WarningAlertCount
+                    }
 
-					$Found.DisplayName  	| Should Be $Expected.DisplayName
-					$Found.HealthState  	| Should Be $Expected.HealthState
-					$Found.InfraURI  		| Should Be $Expected.InfraURI
-					#$Found.Namespace  		| Should Be $Expected.Namespace
-					$Found.RegistrationId	| Should Be $Expected.RegistrationId
-					$Found.RoutePrefix  	| Should Be $Expected.RoutePrefix
-					$Found.ServiceLocation  | Should Be $Expected.ServiceLocation
-
-
-				}
-			}
-		}
+                    $Found.DisplayName  	| Should Be $Expected.DisplayName
+                    $Found.HealthState  	| Should Be $Expected.HealthState
+                    $Found.InfraURI  		| Should Be $Expected.InfraURI
+                    #$Found.Namespace  		| Should Be $Expected.Namespace
+                    $Found.RegistrationId	| Should Be $Expected.RegistrationId
+                    $Found.RoutePrefix  	| Should Be $Expected.RoutePrefix
+                    $Found.ServiceLocation  | Should Be $Expected.ServiceLocation
 
 
-		It "TestListAzsServiceHealths" {
-			$global:TestName = 'TestListServiceHealths'
+                }
+            }
+        }
 
 
-			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
-			foreach($RegionHealth in $RegionHealths) {
-				$regionName = Extract-Name -Name $RegionHealth.Name
+        it "TestListServiceHealths" -Skip:$('TestListServiceHealths' -in $global:SkippedTests) {
+            $global:TestName = 'TestListServiceHealths'
 
-				$ServiceHealths = Get-AzsRPHealth -ResourceGroupName $ResourceGroupName -Location $regionName
-				foreach($serviceHealth in $ServiceHealths) {
-					$serviceHealthName = Extract-Name -Name $serviceHealth.Name
-					ValidateAzsServiceHealth -ServiceHealth $serviceHealth
-				}
-			}
-	    }
 
-		It "TestGetAzsServiceHealth" {
+            $RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
+            foreach ($RegionHealth in $RegionHealths) {
+                $regionName = Extract-Name -Name $RegionHealth.Name
+
+                $ServiceHealths = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName
+                foreach ($serviceHealth in $ServiceHealths) {
+                    $serviceHealthName = Extract-Name -Name $serviceHealth.Name
+                    ValidateAzsServiceHealth -ServiceHealth $serviceHealth
+                }
+            }
+        }
+
+        it "TestGetServiceHealth" -Skip:$('TestGetServiceHealth' -in $global:SkippedTests) {
             $global:TestName = 'TestGetServiceHealth'
 
-			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
-			foreach($RegionHealth in $RegionHealths) {
+            $RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
+            foreach ($RegionHealth in $RegionHealths) {
 
-				$regionName = Extract-Name -Name $RegionHealth.Name
-				$ServiceHealths = Get-AzsRPHealth -ResourceGroupName $ResourceGroupName -Location $regionName
-				foreach($serviceHealth in $ServiceHealths) {
+                $regionName = Extract-Name -Name $RegionHealth.Name
+                $ServiceHealths = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName
+                foreach ($serviceHealth in $ServiceHealths) {
 
-					$serviceHealthName = Extract-Name -Name $serviceHealth.Name
-					$retrieved = Get-AzsRPHealth -ResourceGroupName $ResourceGroupName -Location $regionName -Name $serviceHealthName
-					AssertAzsServiceHealthsAreSame -Expected $serviceHealth -Found $retrieved
-					break
-				}
-				break
-			}
-		}
+                    $serviceHealthName = Extract-Name -Name $serviceHealth.Name
+                    $retrieved = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName -Name $serviceHealthName
+                    AssertAzsServiceHealthsAreSame -Expected $serviceHealth -Found $retrieved
+                    break
+                }
+                break
+            }
+        }
 
-		It "TestGetAllAzsServiceHealths" {
-			$global:TestName = 'TestGetAllServiceHealths'
+        it "TestGetAllServiceHealths" -Skip:$('TestGetAllServiceHealths' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllServiceHealths'
 
-			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
-			foreach($RegionHealth in $RegionHealths) {
+            $RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
+            foreach ($RegionHealth in $RegionHealths) {
 
-				$regionName = Extract-Name -Name $RegionHealth.Name
-				$ServiceHealths = Get-AzsRPHealth -ResourceGroupName $ResourceGroupName -Location $regionName
-				foreach($serviceHealth in $ServiceHealths) {
+                $regionName = Extract-Name -Name $RegionHealth.Name
+                $ServiceHealths = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName
+                foreach ($serviceHealth in $ServiceHealths) {
 
-					$serviceHealthName = Extract-Name -Name $serviceHealth.Name
-					$retrieved = Get-AzsRPHealth -ResourceGroupName $ResourceGroupName -Location $regionName -Name $serviceHealthName
-					AssertAzsServiceHealthsAreSame -Expected $serviceHealth -Found $retrieved
-				}
-			}
-		}
+                    $serviceHealthName = Extract-Name -Name $serviceHealth.Name
+                    $retrieved = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName -Name $serviceHealthName
+                    AssertAzsServiceHealthsAreSame -Expected $serviceHealth -Found $retrieved
+                }
+            }
+        }
 
 
 
-		It "TestAzsServiceHealthsPipeline" {
-			$global:TestName = 'TestGetAllServiceHealths'
+        it "TestGetAllServiceHealths" -Skip:$('TestGetAllServiceHealths' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllServiceHealths'
 
-			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
-			foreach($RegionHealth in $RegionHealths) {
+            $RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
+            foreach ($RegionHealth in $RegionHealths) {
 
-				$regionName = Extract-Name -Name $RegionHealth.Name
-				$ServiceHealths = Get-AzsRPHealth -ResourceGroupName $ResourceGroupName -Location $regionName
-				foreach($serviceHealth in $ServiceHealths) {
+                $regionName = Extract-Name -Name $RegionHealth.Name
+                $ServiceHealths = Get-AzsRPHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName
+                foreach ($serviceHealth in $ServiceHealths) {
 
-					$retrieved = $serviceHealth | Get-AzsRPHealth
-					AssertAzsServiceHealthsAreSame -Expected $serviceHealth -Found $retrieved
-				}
-			}
-		}
+                    $retrieved = $serviceHealth | Get-AzsRPHealth
+                    AssertAzsServiceHealthsAreSame -Expected $serviceHealth -Found $retrieved
+                }
+            }
+        }
     }
 }

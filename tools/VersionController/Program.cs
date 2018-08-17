@@ -17,6 +17,16 @@ namespace VersionController
         private static List<string> _projectDirectories, _outputDirectories;
         private static string _rootDirectory, _moduleNameFilter;
 
+        private static IList<string> ExceptionFileNames = new List<string>()
+        {
+            "AssemblyVersionConflict.csv",
+            "BreakingChangeIssues.csv",
+            "ExtraAssemblies.csv",
+            "HelpIssues.csv",
+            "MissingAssemblies.csv",
+            "SignatureIssues.csv"
+        };
+
         public static void Main(string[] args)
         {
             var executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
@@ -39,12 +49,24 @@ namespace VersionController
                 Path.Combine(srcDirectory, @"Package\Debug\Storage\")
             }.Where((d) => Directory.Exists(d)).ToList();
 
-            _moduleNameFilter = string.Empty;
+            var exceptionsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exceptions");
             if (args != null && args.Length > 0)
             {
-                _moduleNameFilter = args[0] + ".psd1";
+                exceptionsDirectory = args[0];
+            }
+            
+            if (!Directory.Exists(exceptionsDirectory))
+            {
+                throw new ArgumentException("Please provide a path to the Exceptions folder in the output directory (src/Package/Exceptions).");
             }
 
+            _moduleNameFilter = string.Empty;
+            if (args != null && args.Length > 1)
+            {
+                _moduleNameFilter = args[1] + ".psd1";
+            }
+
+            ConsolidateExceptionFiles(exceptionsDirectory);
             BumpVersions();
             ValidateVersionBump();
         }
@@ -192,6 +214,39 @@ namespace VersionController
             }
 
             return moduleManifest.FirstOrDefault();
+        }
+
+        private static void ConsolidateExceptionFiles(string exceptionsDirectory)
+        {
+            foreach (var exceptionFileName in ExceptionFileNames)
+            {
+                var moduleExceptionFilePaths = Directory.EnumerateFiles(exceptionsDirectory, exceptionFileName, SearchOption.AllDirectories).ToList();
+                var exceptionFilePath = Path.Combine(exceptionsDirectory, exceptionFileName);
+                if (File.Exists(exceptionFilePath))
+                {
+                    File.Delete(exceptionFilePath);
+                }
+
+                File.Create(exceptionFilePath).Close();
+                var fileEmpty = true;
+                foreach (var moduleExceptionFilePath in moduleExceptionFilePaths)
+                {
+                    var content = File.ReadAllLines(moduleExceptionFilePath);
+                    if (content.Length > 1)
+                    {
+                        if (fileEmpty)
+                        {
+                            // Write the header
+                            File.WriteAllLines(exceptionFilePath, new string[] { content.FirstOrDefault() });
+                            fileEmpty = false;
+                        }
+
+                        // Write everything but the header
+                        content = content.Skip(1).ToArray();
+                        File.AppendAllLines(exceptionFilePath, content);
+                    }
+                }
+            }
         }
     }
 }

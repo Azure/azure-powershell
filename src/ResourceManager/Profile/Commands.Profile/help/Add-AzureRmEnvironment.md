@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/add-azurermenvironment
@@ -22,20 +22,20 @@ Add-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-
  [[-TrafficManagerDnsSuffix] <String>] [[-SqlDatabaseDnsSuffix] <String>]
  [[-AzureDataLakeStoreFileSystemEndpointSuffix] <String>]
  [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [-EnableAdfsAuthentication]
- [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId <String>]]
- [[-AzureOperationalInsightsEndpoint] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>] 
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
+ [[-BatchEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>]
+ [[-AzureOperationalInsightsEndpoint] <String>] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ARMEndpoint
 ```
 Add-AzureRmEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpoint] <String>
  [[-AzureKeyVaultDnsSuffix] <String>] [[-AzureKeyVaultServiceEndpointResourceId] <String>]
- [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId <String>]]
- [[-AzureOperationalInsightsEndpoint] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>] 
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId] <String>]
+ [[-AzureOperationalInsightsEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpoint] <String>]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,7 +106,7 @@ In this example we are creating a new Azure environment with sample endpoints us
 Specifies the base authority for Azure Active Directory authentication.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
 Aliases: AdEndpointUrl, ActiveDirectory, ActiveDirectoryAuthority
 
@@ -121,9 +121,9 @@ Accept wildcard characters: False
 Specifies the audience for tokens that authenticate requests to Azure Resource Manager or Service Management (RDFE) endpoints.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
-Aliases: 
+Aliases:
 
 Required: False
 Position: 8
@@ -136,9 +136,9 @@ Accept wildcard characters: False
 Specifies the default Active Directory tenant.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
-Aliases: 
+Aliases:
 
 Required: False
 Position: 17
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 The Azure Resource Manager endpoint
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ARMEndpoint
 Aliases: ArmUrl
 
@@ -166,9 +166,9 @@ Accept wildcard characters: False
 Dns Suffix of Azure Data Lake Analytics job and catalog services
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
-Aliases: 
+Aliases:
 
 Required: False
 Position: 15
@@ -182,9 +182,9 @@ Dns Suffix of Azure Data Lake Store FileSystem.
 Example: azuredatalake.net
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
-Aliases: 
+Aliases:
 
 Required: False
 Position: 14
@@ -197,9 +197,9 @@ Accept wildcard characters: False
 Specifies the domain name suffix for Key Vault services.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 10
@@ -212,12 +212,57 @@ Accept wildcard characters: False
 Specifies the audience for access tokens that authorize requests for Key Vault services.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 11
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AzureOperationalInsightsEndpoint
+Specifies the endpoint for the Operational Insights query access. 
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 22
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AzureOperationalInsightsEndpointResourceId
+Specifies the audience for access tokens that authorize requests for Operational Insights services.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 21
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BatchEndpointResourceId
+The resource identifier of the Azure Batch service that is the recipient of the requested token
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: BatchResourceId, BatchAudience
+
+Required: False
+Position: 20
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -227,7 +272,7 @@ Accept wildcard characters: False
 The audience for tokens authenticating with the AD Data Lake services Endpoint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: DataLakeEndpointResourceId, DataLakeResourceId
 
@@ -242,7 +287,7 @@ Accept wildcard characters: False
 The credeetnails, tenant and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -257,7 +302,7 @@ Accept wildcard characters: False
 Indicates that Active Directory Federation Services (ADFS) on-premise authentication is allowed.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Name
 Aliases: OnPremise
 
@@ -272,7 +317,7 @@ Accept wildcard characters: False
 Specifies the endpoint for the Azure Resource Manager gallery of deployment templates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
 Aliases: Gallery, GalleryUrl
 
@@ -287,7 +332,7 @@ Accept wildcard characters: False
 The audience for tokens authenticating with the AD Graph Endpoint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
 Aliases: GraphEndpointResourceId, GraphResourceId
 
@@ -302,7 +347,7 @@ Accept wildcard characters: False
 Specifies the URL for Graph (Active Directory metadata) requests.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
 Aliases: Graph, GraphUrl
 
@@ -317,9 +362,9 @@ Accept wildcard characters: False
 Specifies the URL for the Management Portal.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -332,9 +377,9 @@ Accept wildcard characters: False
 Specifies the name of the environment to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -347,9 +392,9 @@ Accept wildcard characters: False
 Specifies the URL from which .publishsettings files can be downloaded.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -362,7 +407,7 @@ Accept wildcard characters: False
 Specifies the URL for Azure Resource Manager requests.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
 Aliases: ResourceManager, ResourceManagerUrl
 
@@ -377,9 +422,9 @@ Accept wildcard characters: False
 Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 
 ```yaml
-Type: ContextModificationScope
+Type: Microsoft.Azure.Commands.Profile.Common.ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: False
@@ -393,7 +438,7 @@ Accept wildcard characters: False
 Specifies the endpoint for Service Management (RDFE) requests.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
 Aliases: ServiceManagement, ServiceManagementUrl
 
@@ -408,9 +453,9 @@ Accept wildcard characters: False
 Specifies the domain-name suffix for Azure SQL Database servers.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
-Aliases: 
+Aliases:
 
 Required: False
 Position: 13
@@ -423,7 +468,7 @@ Accept wildcard characters: False
 Specifies the endpoint for storage (blob, table, queue, and file) access.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: StorageEndpointSuffix
 
@@ -438,57 +483,12 @@ Accept wildcard characters: False
 Specifies the domain-name suffix for Azure Traffic Manager services.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
-Aliases: 
+Aliases:
 
 Required: False
 Position: 12
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -BatchEndpointResourceId
-The resource identifier of the Azure Batch service that is the recipient of the requested token
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 20
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AzureOperationalInsightsEndpoint
-Specifies the endpoint for the Operational Insights query access. 
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 22
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AzureOperationalInsightsEndpointResourceId
-Specifies the audience for access tokens that authorize requests for Operational Insights services.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 21
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -498,7 +498,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -513,7 +513,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -529,13 +529,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### PSAzureEnvironment
-This cmdlet returns the set of endpoints and metadata needed to communicate with an instance of Azure.
+### Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment
 
 ## NOTES
 

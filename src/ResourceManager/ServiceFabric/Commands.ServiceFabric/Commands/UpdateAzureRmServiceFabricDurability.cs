@@ -28,7 +28,7 @@ using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsData.Update, CmdletNoun.AzureRmServiceFabricDurability, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricDurability", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class UpdateAzureRmServiceFabricDurability : ServiceFabricClusterCmdlet
     {
         private readonly HashSet<string> skusSupportGoldDurability = 

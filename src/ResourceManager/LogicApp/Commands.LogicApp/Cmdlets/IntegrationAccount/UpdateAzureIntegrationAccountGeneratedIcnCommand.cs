@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account generated interchange control number.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountGeneratedIcn", SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IntegrationAccountGeneratedIcn", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccountControlNumber))]
     public class UpdateAzureIntegrationAccountGeneratedIcnCommand : LogicAppBaseCmdlet
     {

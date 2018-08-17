@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,23 +20,26 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
     public class RecoveryPointTests : AzureBackupTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public RecoveryPointTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetRecoveryPointsTests()
         {
-            this.RunPowerShellTest("Test-GetAzureRecoveryPoints");
+            this.RunPowerShellTest(_logger, "Test-GetAzureRecoveryPoints");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetRecoveryPointTests()
         {
-            this.RunPowerShellTest("Test-GetAzureRecoveryPoint");
+            this.RunPowerShellTest(_logger, "Test-GetAzureRecoveryPoint");
         }
     }
 }

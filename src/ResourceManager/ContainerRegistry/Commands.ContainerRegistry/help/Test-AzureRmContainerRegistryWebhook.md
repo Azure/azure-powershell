@@ -52,7 +52,7 @@ Triggers a webhook ping event.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Webhook Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameResourceGroupParameterSet
 Aliases: WebhookName, ResourceName
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 Container Registry Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameResourceGroupParameterSet
 Aliases: ContainerRegistryName
 
@@ -97,9 +97,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameResourceGroupParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 The container registry Webhook resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases: Id
 
@@ -127,9 +127,9 @@ Accept wildcard characters: False
 Container Registry Object.
 
 ```yaml
-Type: PSContainerRegistryWebhook
+Type: Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
 Parameter Sets: WebhookObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -144,11 +144,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
-System.String
+Parameters: Webhook (ByValue)
+
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.ContainerRegistry.Models.EventInfo
+### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryEventInfo
 
 ## NOTES
 

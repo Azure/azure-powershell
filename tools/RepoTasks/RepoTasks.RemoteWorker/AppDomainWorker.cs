@@ -309,8 +309,13 @@ namespace RepoTasks.RemoteWorker
                             }
                             : new ListItem
                             {
-                                PropertyName = memberInfo.Name,
+                                PropertyName = memberInfo.Name
                             };
+
+                        if (ps1XmlAttribute.Label != null)
+                        {
+                            listItem.Label = ps1XmlAttribute.Label;
+                        }
 
                         if (position == Ps1XmlConstants.DefaultPosition)
                         {
@@ -368,7 +373,7 @@ namespace RepoTasks.RemoteWorker
                 var warning = "Found a duplicate. ";
                 foreach (var duplicate in duplicates)
                 {
-                    warning += $"Position value of {duplicate.Key} specified:";
+                    warning += $"Position value of {duplicate.Key} specified: ";
                     foreach (var tuple in duplicate)
                     {
                         var outputTypeName = tuple.Item1;

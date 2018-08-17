@@ -23,8 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     using System.Security.Permissions;
     using System.Threading.Tasks;
 
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.Blob, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true),
-        OutputType(typeof(Boolean))]
+    [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlob", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true),OutputType(typeof(Boolean))]
     public class RemoveStorageAzureBlobCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>

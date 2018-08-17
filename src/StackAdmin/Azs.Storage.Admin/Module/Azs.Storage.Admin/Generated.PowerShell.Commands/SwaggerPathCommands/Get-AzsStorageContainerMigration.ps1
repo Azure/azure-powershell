@@ -62,7 +62,7 @@ function Get-AzsStorageContainerMigrationStatus {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
