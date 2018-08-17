@@ -498,10 +498,24 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public static ErrorRecord WriteErrorforBadrequest(ErrorResponseException ex)
         {
-            ErrorResponseContent errorExtract = new ErrorResponseContent();
-            errorExtract = JsonConvert.DeserializeObject<ErrorResponseContent>(ex.Response.Content);
-            ErrorRecord errorRecord = new ErrorRecord(ex, errorExtract.error.message, ErrorCategory.OpenError, ex);
-            return errorRecord;
+            if (ex != null && !string.IsNullOrEmpty(ex.Response.Content))
+            {
+                ErrorResponseContent errorExtract = new ErrorResponseContent();
+                errorExtract = JsonConvert.DeserializeObject<ErrorResponseContent>(ex.Response.Content);
+                if (!string.IsNullOrEmpty(errorExtract.error.message))
+                {
+                    return new ErrorRecord(ex, errorExtract.error.message, ErrorCategory.OpenError, ex);
+                }
+                else
+                {
+                    return new ErrorRecord(ex, ex.Response.Content, ErrorCategory.OpenError, ex);
+                }
+            }
+            else
+            {
+                Exception emptyEx = new Exception("Response object empty");
+                return new ErrorRecord(emptyEx, "Response object was empty", ErrorCategory.OpenError, emptyEx);
+            }
         }
     }
 }
