@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed the issue that target is missing in error output.
 * Fixed issue with default resource groups not being set.
 * Fix AEM Extension cmdlets for other environments, for example Azure China
 
