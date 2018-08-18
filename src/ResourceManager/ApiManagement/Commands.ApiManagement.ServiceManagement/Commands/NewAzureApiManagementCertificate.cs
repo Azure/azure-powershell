@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, PfxFilePath));
                 }
 
-                using (var certStream = File.OpenRead(localFile.Name))
+                using (var certStream = File.OpenRead(localFile.FullName))
                 {
                     rawBytes = new byte[certStream.Length];
                     certStream.Read(rawBytes, 0, rawBytes.Length);

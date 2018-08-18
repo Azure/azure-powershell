@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 }
 
                 byte[] certificate;
-                using (var certStream = File.OpenRead(localFile.Name))
+                using (var certStream = File.OpenRead(localFile.FullName))
                 {
                     certificate = new byte[certStream.Length];
                     certStream.Read(certificate, 0, certificate.Length);
