@@ -21,6 +21,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -88,11 +89,14 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Reference to the DDoS protection plan resource associated with the virtual network.")]
         public string DdosProtectionPlanId { get; set; }
 
+#if !NETSTANDARD
+        [CmdletParameterBreakingChange("EnableVmProtection", ChangeDescription = "The -EnableVmProtection parameter is deprecated and ignored")]
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "A switch parameter which represents if Vm protection is enabled or not.")]
         public SwitchParameter EnableVmProtection { get; set; }
+#endif
 
         [Parameter(
             Mandatory = false,
@@ -137,8 +141,7 @@ namespace Microsoft.Azure.Commands.Network
 
             vnet.Subnets = this.Subnet;
             vnet.EnableDdosProtection = this.EnableDdosProtection;
-            vnet.EnableVmProtection = this.EnableVmProtection;
-
+            
             if (!string.IsNullOrEmpty(this.DdosProtectionPlanId))
             {
                 vnet.DdosProtectionPlan = new PSResourceId();
