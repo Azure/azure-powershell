@@ -71,6 +71,9 @@
     <Compile Include="Subscription\SelectAzureSubscription.cs" />
     <Compile Include="Subscription\SetAzureSubscription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicePrincipal\AddAzureSubscriptionServicePrincipal.cs" />
+    <Compile Include="ServicePrincipal\GetAzureSubscriptionServicePrincipal.cs" />
+    <Compile Include="ServicePrincipal\RemoveAzureSubscriptionServicePrincipal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.WindowsAzure.Commands.Profile.format.ps1xml">
