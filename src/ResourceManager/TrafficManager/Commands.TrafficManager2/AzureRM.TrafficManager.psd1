@@ -72,7 +72,11 @@ NestedModules = @('.\Microsoft.Azure.Commands.TrafficManager.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Disable-AzureRmTrafficManagerEndpoint', 
+CmdletsToExport = 'Add-AzureRmTrafficManagerCustomHeaderToEndpoint', 
+               'Remove-AzureRmTrafficManagerCustomHeaderFromEndpoint', 
+               'Add-AzureRmTrafficManagerCustomHeaderToProfile', 
+               'Remove-AzureRmTrafficManagerCustomHeaderFromProfile', 
+               'Disable-AzureRmTrafficManagerEndpoint', 
                'Enable-AzureRmTrafficManagerEndpoint', 
                'Set-AzureRmTrafficManagerEndpoint', 
                'Get-AzureRmTrafficManagerEndpoint', 
@@ -80,6 +84,10 @@ CmdletsToExport = 'Disable-AzureRmTrafficManagerEndpoint',
                'New-AzureRmTrafficManagerEndpoint', 
                'Remove-AzureRmTrafficManagerEndpointConfig', 
                'Add-AzureRmTrafficManagerEndpointConfig', 
+               'Add-AzureRmTrafficManagerExpectedStatusCodeRange', 
+               'Remove-AzureRmTrafficManagerExpectedStatusCodeRange', 
+               'Add-AzureRmTrafficManagerIpAddressRange', 
+               'Remove-AzureRmTrafficManagerIpAddressRange', 
                'Disable-AzureRmTrafficManagerProfile', 
                'Enable-AzureRmTrafficManagerProfile', 
                'Remove-AzureRmTrafficManagerProfile', 
@@ -120,7 +128,14 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime.'
+        ReleaseNotes = '* Support for the MultiValue routing method
+    - New parameter ''MaxReturn'' for MultiValue routing
+* Support for the Subnet routing method
+    - Support for IP address ranges (subnets) in endpoints
+* Support for Custom Headers in profiles
+* Support for Expected status code ranges in profiles
+* Support for Custom Headers in endpoints
+* Fixed issue with default resource groups not being set.'
 
         # Prerelease string of this module
         # Prerelease = ''

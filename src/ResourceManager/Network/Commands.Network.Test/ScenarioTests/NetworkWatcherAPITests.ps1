@@ -16,6 +16,7 @@
 .SYNOPSIS
 Deployment of resources: VM, storage account, network interface, nsg, virtual network and route table.
 #>
+
 function Get-TestResourcesDeployment([string]$rgn)
 {
     $virtualMachineName = Get-ResourceName
@@ -26,7 +27,7 @@ function Get-TestResourcesDeployment([string]$rgn)
     $networkSecurityGroupName = Get-ResourceName
     $diagnosticsStorageAccountName = Get-ResourceName
     
-        $paramFile = ".\TestData\DeploymentParameters.json"
+        $paramFile = (Resolve-Path ".\TestData\DeploymentParameters.json").Path
         $paramContent =
 @"
 {
@@ -94,7 +95,7 @@ function Get-TestResourcesDeployment([string]$rgn)
 "@;
 
         $st = Set-Content -Path $paramFile -Value $paramContent -Force;
-        New-AzureRmResourceGroupDeployment -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
+        New-AzureRmResourceGroupDeployment  -Name "${rgn}" -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
 }
 
 <#
@@ -110,10 +111,12 @@ function Test-GetTopology
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
-    $templateFile = ".\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     
     try 
     {
+        . ".\AzureRM.Resources.ps1"
+
         # Create Resource group
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
         
@@ -173,10 +176,12 @@ function Test-GetSecurityGroupView
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityRuleName = Get-ResourceName
-    $templateFile = ".\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     
     try 
     {
+        . ".\AzureRM.Resources.ps1"
+
         # Create Resource group
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
 
@@ -249,10 +254,12 @@ function Test-GetNextHop
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityRuleName = Get-ResourceName
-    $templateFile = ".\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     
     try 
     {
+        . ".\AzureRM.Resources.ps1"
+
         # Create Resource group
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
 
@@ -318,10 +325,12 @@ function Test-VerifyIPFlow
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityGroupName = Get-ResourceName
-    $templateFile = ".\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     
     try 
     {
+        . ".\AzureRM.Resources.ps1"
+
         # Create Resource group
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
 
@@ -398,12 +407,14 @@ function Test-PacketCapture
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityGroupName = Get-ResourceName
-    $templateFile = ".\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     $pcName1 = Get-ResourceName
     $pcName2 = Get-ResourceName
     
     try 
     {
+        . ".\AzureRM.Resources.ps1"
+
         # Create Resource group
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
 
@@ -682,6 +693,8 @@ Test ConnectivityCheck NetworkWatcher API.
 #>
 function Test-ConnectivityCheck
 {
+    . ".\AzureRM.Resources.ps1"
+
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
@@ -690,12 +703,14 @@ function Test-ConnectivityCheck
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityGroupName = Get-ResourceName
-    $templateFile = ".\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     $pcName1 = Get-ResourceName
     $pcName2 = Get-ResourceName
     
     try 
     {
+        . ".\AzureRM.Resources.ps1"
+
         # Create Resource group
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
 
@@ -849,12 +864,14 @@ function Test-ConnectionMonitor
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $securityGroupName = Get-ResourceName
-    $templateFile = "..\..\TestData\Deployment.json"
+    $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
     $cmName1 = Get-ResourceName
     $cmName2 = Get-ResourceName
     
     try 
     {
+        . ".\AzureRM.Resources.ps1"
+
         # Create Resource group
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
 

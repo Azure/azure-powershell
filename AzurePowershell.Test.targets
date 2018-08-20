@@ -4,7 +4,6 @@
 		<TestSettings>.\src\Local.testsettings</TestSettings>
 		<TestSettings_x64>.\src\Local.x64.testsettings</TestSettings_x64>
 		<ScenarioTestDebug>.\src\ServiceManagement\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll</ScenarioTestDebug>
-		<CommonTestDebug>.\src\ServiceManagement\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll</CommonTestDebug>
 		<BackupTestDebug>.\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll</BackupTestDebug>
 		<RecoveryServicesBackupTestDebug>.\src\ResourceManager\RecoveryServices\Commands.RecoveryServices.Backup.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll</RecoveryServicesBackupTestDebug>
 		<SqlTestDebug>.\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll</SqlTestDebug>
@@ -14,7 +13,7 @@
 		<AzureRTTestSettings>.\src\AzureRT.testsettings</AzureRTTestSettings>
 		<AzureRTSeqTestSettings>.\src\AzureRTSeq.testsettings</AzureRTSeqTestSettings>
 		<AzureRTTestContainer>.\src\ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Test.dll</AzureRTTestContainer>
-		<StorageScenarioTestDebug>src\Common\Storage\Commands.Storage.ScenarioTest\bin\Debug\CLITest.dll</StorageScenarioTestDebug>
+		<StorageScenarioTestDebug>src\Storage\Commands.Storage.ScenarioTest\bin\Debug\CLITest.dll</StorageScenarioTestDebug>
 		<ManagementTestDebug>.\src\ServiceManagement\Services\Commands.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Test.dll</ManagementTestDebug>
 		<ResourceManagerTestDebug>.\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll</ResourceManagerTestDebug>
 		<DataFactoryManagerTestDebug>.\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll</DataFactoryManagerTestDebug>
@@ -237,13 +236,6 @@
 	<Target Name="RecoveryServicesBackupTests">
 		<Message Importance="high" Text="Running Recovery Services Backup tests" />
 		<Xunit.Runner.MSBuild.xunit Assemblies="$(RecoveryServicesBackupTestDebug)" Html="$(TestOutputDirectory)\RecoveryServicesBackupTests.xunit.dll.html" Verbose="false"
-		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
-	</Target>
-
-	<!-- Run the common tests -->
-	<Target Name="CommonTests">
-		<Message Importance="high" Text="Running Common tests" />
-		<Xunit.Runner.MSBuild.xunit Assemblies="$(CommonTestDebug)" Html="$(TestOutputDirectory)\CommonTests.xunit.dll.html" Verbose="false"
 		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
 	</Target>
 
