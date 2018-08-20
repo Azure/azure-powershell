@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using StaticAnalysis.BreakingChangeAnalyzer;
 using System;
 using System.Collections.Generic;
@@ -129,7 +128,11 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                                 if (File.Exists(cmdletFileFullPath))
                                 {
                                     var proxy =
+#if !NETSTANDARD
                                         EnvironmentHelpers.CreateProxy<CmdletBreakingChangeAttributeLoader>(directory, out _appDomain);
+#else
+                                        new CmdletBreakingChangeAttributeLoader();
+#endif
                                     var cmdletDataForModule = proxy.GetModuleBreakingChangeAttributes(cmdletFileFullPath);
 
                                     //If there is nothing in this module just onctinue
@@ -226,10 +229,6 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             foreach (BreakingChangeAttributesInCmdlet cmdletData in moduleData.CmdletList)
             {
                 textForBreakingChangesInModule += string.Format(BREAKING_CHANGE_CMDLET_HEADER_FORMAT_STRING, cmdletData.CmdletName);
-                foreach (GenericBreakingChangeAttribute attribute in cmdletData.BreakingChangeAttributes)
-                {
-                    textForBreakingChangesInModule += attribute.GetBreakingChangeTextFromAttribute(cmdletData.CmdletType, true) + "\n\n";
-                }
             }
 
             //Now that we have the text, add it to the log file

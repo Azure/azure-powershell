@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Reflection;
+using System.Runtime.Loader;
 using Tools.Common.Models;
 
 namespace Tools.Common.Loaders
@@ -64,7 +66,20 @@ namespace Tools.Common.Loaders
             AssemblyMetadata result = null;
             try
             {
+#if !NETSTANDARD
                 return new AssemblyMetadata(Assembly.ReflectionOnlyLoadFrom(assemblyPath));
+#else
+                return new AssemblyMetadata(AssemblyLoadContext.Default.LoadFromAssemblyPath(assemblyPath));
+            }
+            catch(System.IO.FileLoadException ex) when (string.Equals(ex.Message, "Assembly with same name is already loaded"))
+            {
+                var assemblyName = AssemblyLoadContext.GetAssemblyName(assemblyPath);
+                var assembly = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.GetName().Name == assemblyName.Name).FirstOrDefault();
+                if (assembly != null)
+                {
+                    result = new AssemblyMetadata(assembly);
+                }
+#endif
             }
             catch
             {
