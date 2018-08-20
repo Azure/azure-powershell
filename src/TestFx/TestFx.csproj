@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.TestFx</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.TestFx</AssemblyName>
+    <AssemblyName>Microsoft.Azure.Powershell.TestFx</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
