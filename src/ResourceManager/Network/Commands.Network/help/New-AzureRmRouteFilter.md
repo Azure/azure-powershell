@@ -7,9 +7,6 @@ schema: 2.0.0
 
 # New-AzureRmRouteFilter
 
-## SYNOPSIS
-Creates a route filter.
-
 ## SYNTAX
 
 ```
@@ -20,17 +17,15 @@ New-AzureRmRouteFilter -Name <String> -ResourceGroupName <String> -Location <Str
 ```
 
 ## DESCRIPTION
-The New-AzureRmRouteFilter cmdlet creates an Azure route filter.
+The New-AzureRmRouteFilter cmdlet is used to create a route filter object in your subscription. A route filter is used in conjunction with Microsoft peering on an ExpressRoute circuit.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Adds a new route filter to a subscription in West US region
 ```
-PS C:\> {{ Add example code here }}
+New-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ResourceGroupName" -Location westus
 ```
 
- 
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -206,8 +201,6 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 ## RELATED LINKS
 
 [Get-AzureRmRouteFilter](./Get-AzureRmRouteFilter.md)
-
-[New-AzureRmRouteFilterRuleConfig](./New-AzureRmRouteFilterRuleConfig.md)
 
 [Remove-AzureRmRouteFilter](./Remove-AzureRmRouteFilter.md)
 

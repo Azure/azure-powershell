@@ -7,9 +7,6 @@ schema: 2.0.0
 
 # New-AzureRmRouteFilterRuleConfig
 
-## SYNOPSIS
-Creates a route filter rule for a route filter.
-
 ## SYNTAX
 
 ```
@@ -19,16 +16,18 @@ New-AzureRmRouteFilterRuleConfig [-Force] -Name <String> -Access <String> -Route
 ```
 
 ## DESCRIPTION
-The New-AzureRmRouteFilterRuleConfig cmdlet creates a route filter rule for an Azure route filter.
+The **New-AzureRmRouteFilterRuleConfig** cmdlet creates a route filter rule for an Azure route filter.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a rule config based on a community list and set the route filter with the new rules
 ```
-PS C:\> {{ Add example code here }}
+$communities = @("12076:51015","12076:51016")
+$ruleConfig = New-AzureRmRouteFilterRuleConfig -Name "RuleName" -Access Allow -RouteFilterRuleType Community -CommunityList $communities
+$rf =  Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ResourceGroupName"
+$rf.Rules = $ruleConfig
+Set-AzureRmRouteFilter -RouteFilter $rf
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 

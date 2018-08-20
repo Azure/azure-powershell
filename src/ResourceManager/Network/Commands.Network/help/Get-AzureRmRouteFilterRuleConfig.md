@@ -7,9 +7,6 @@ schema: 2.0.0
 
 # Get-AzureRmRouteFilterRuleConfig
 
-## SYNOPSIS
-{{Fill in the Synopsis}}
-
 ## SYNTAX
 
 ```
@@ -18,16 +15,16 @@ Get-AzureRmRouteFilterRuleConfig [-Name <String>] -RouteFilter <PSRouteFilter>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Get-AzureRmRouteFilterRuleConfig cmdlet is used to retrieve an existing route filter rule configuration associated to a route filter. The route filter rule configuration object returned can be used as input to other cmdlets that are related to route filters or route filter rule configs. A route filter is used in conjunction with Microsoft peering on an ExpressRoute circuit.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get the route filter object and return the rule associated to the route filter
 ```
-PS C:\> {{ Add example code here }}
-```
+$rf =  Get-AzureRmRouteFilter -Name "RouteFilter" -ResourceGroupName "ResourceGroupName"
+Get-AzureRmRouteFilterRuleConfig -RouteFilter $rf
 
-{{ Add example description here }}
+```
 
 ## PARAMETERS
 
@@ -88,6 +85,9 @@ Parameters: RouteFilter (ByValue)
 
 ### Microsoft.Azure.Commands.Network.Models.PSRouteFilterRule
 
-## NOTES
-
 ## RELATED LINKS
+
+[New-AzureRmRouteFilterRuleConfig](New-AzureRmRouteFilterRuleConfig.md)
+[Add-AzureRmRouteFilterRuleConfig](Add-AzureRmRouteFilterRuleConfig.md)
+[Remove-AzureRmRouteFilterRuleConfig](Remove-AzureRmRouteFilterRuleConfig.md)
+[Set-AzureRmRouteFilterRuleConfig](Set-AzureRmRouteFilterRuleConfig.md)

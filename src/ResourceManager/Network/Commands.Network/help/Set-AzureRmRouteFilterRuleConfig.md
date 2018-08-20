@@ -7,9 +7,6 @@ schema: 2.0.0
 
 # Set-AzureRmRouteFilterRuleConfig
 
-## SYNOPSIS
-{{Fill in the Synopsis}}
-
 ## SYNTAX
 
 ```
@@ -19,16 +16,18 @@ Set-AzureRmRouteFilterRuleConfig -RouteFilter <PSRouteFilter> [-Force] -Name <St
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmRouteFilterRuleConfig** cmdlet saves a route filter rule from a route filter.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get route filter and rule config object, add a new commuinty to the array, and save the rule/filter
 ```
-PS C:\> {{ Add example code here }}
+$rf =  Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ResourceGroupName"
+$rule = Get-AzureRmRouteFilterRuleConfig -RouteFilter $rf
+$communities = @("12076:51015","12076:51016","12076:51014")
+Set-AzureRmRouteFilterRuleConfig -RouteFilter $rf -CommunityList $communities -Name $rule.Name -Access Allow -RouteFilterRuleType Community
+Set-AzureRmRouteFilter -RouteFilter $rf
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -183,6 +182,9 @@ Parameters: RouteFilter (ByValue)
 
 ### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
 
-## NOTES
-
 ## RELATED LINKS
+
+[New-AzureRmRouteFilterRuleConfig](New-AzureRmRouteFilterRuleConfig.md)
+[Add-AzureRmRouteFilterRuleConfig](Add-AzureRmRouteFilterRuleConfig.md)
+[Remove-AzureRmRouteFilterRuleConfig](Remove-AzureRmRouteFilterRuleConfig.md)
+[Get-AzureRmRouteFilterRuleConfig](Get-AzureRmRouteFilterRuleConfig.md)

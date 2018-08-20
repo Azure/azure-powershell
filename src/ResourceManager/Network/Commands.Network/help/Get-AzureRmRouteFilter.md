@@ -7,10 +7,13 @@ schema: 2.0.0
 
 # Get-AzureRmRouteFilter
 
-## SYNOPSIS
-{{Fill in the Synopsis}}
 
 ## SYNTAX
+
+```
+Get-AzureRmRouteFilter [-Name <String>] [-ResourceGroupName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
 
 ### NoExpand
 ```
@@ -25,16 +28,15 @@ Get-AzureRmRouteFilter -Name <String> -ResourceGroupName <String> -ExpandResourc
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmRouteFilter** cmdlet is used to retrieve a route filter object
+from your subscription. The route filter object returned can be used as input to other cmdlets that are related to route filters. A route filter is used in conjunction with Microsoft peering on an ExpressRoute circuit.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get the route filter to delete it
 ```
-PS C:\> {{ Add example code here }}
+Get-AzureRmRmRouteFilter -Name $RouteFilterName -ResourceGroupName $rg | Remove-AzureRmRouteFilter
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -133,6 +135,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
 
-## NOTES
-
 ## RELATED LINKS
+
+[New-AzureRmRouteFilter](New-AzureRmRouteFilter.md)
+[Remove-AzureRmRouteFilter](Remove-AzureRmRouteFilter.md)
+[Set-AzureRmRouteFilter](Set-AzureRmRouteFilter.md)
+

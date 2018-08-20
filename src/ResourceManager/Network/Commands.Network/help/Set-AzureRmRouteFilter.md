@@ -7,9 +7,6 @@ schema: 2.0.0
 
 # Set-AzureRmRouteFilter
 
-## SYNOPSIS
-{{Fill in the Synopsis}}
-
 ## SYNTAX
 
 ```
@@ -18,16 +15,21 @@ Set-AzureRmRouteFilter -RouteFilter <PSRouteFilter> [-Force] [-AsJob]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmRouteFilter** cmdlet saves the modified route filter object
+from your subscription. A route filter is used in conjunction with Microsoft peering on an ExpressRoute circuit.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a rule config based on a community list and set the route filter with the new rules
 ```
-PS C:\> {{ Add example code here }}
+$communities = @("12076:51015","12076:51016")
+$ruleConfig = New-AzureRmRouteFilterRuleConfig -Name "RuleName" -Access Allow -RouteFilterRuleType Community -CommunityList $communities
+$rf =  Get-AzureRmRouteFilter -Name "RouteFilterName" -ResourceGroupName "ResourceGroupName"
+$rf.Rules = $ruleConfig
+Set-AzureRmRouteFilter -RouteFilter $rf
 ```
 
-{{ Add example description here }}
+
 
 ## PARAMETERS
 
@@ -133,6 +135,8 @@ Parameters: RouteFilter (ByValue)
 
 ### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
 
-## NOTES
-
 ## RELATED LINKS
+
+[New-AzureRmRouteFilter](New-AzureRmRouteFilter.md)
+[Remove-AzureRmRouteFilter](Remove-AzureRmRouteFilter.md)
+[Get-AzureRmRouteFilter](Get-AzureRmRouteFilter.md)
