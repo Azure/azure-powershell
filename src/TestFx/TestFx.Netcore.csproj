@@ -21,6 +21,7 @@
     <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Azure/azure-powershell-common</PackageProjectUrl>
     <PackageOutputPath>$(ProjectDir)..\..\artifacts\Package\$(Configuration)</PackageOutputPath>
+    <PackageVersion>1.0.0-preview</PackageVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
