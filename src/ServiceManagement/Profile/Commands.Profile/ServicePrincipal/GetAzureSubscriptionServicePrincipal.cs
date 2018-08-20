@@ -29,26 +29,35 @@ using Microsoft.WindowsAzure.Management.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureSubscriptionServicePrincipal", DefaultParameterSetName = ServicePrincipalObjectIdParameterSet)]
-    [OutputType(typeof(SubscriptionServicePrincipalGetResponse))]
+    [Cmdlet(VerbsCommon.Get, AzureSubscriptionServicePrincipalNounName, DefaultParameterSetName = ListAllServicePrincipalObjectIdsParameterSet)]
+    [OutputType(typeof(SubscriptionServicePrincipalGetResponse), typeof(SubscriptionServicePrincipalListResponse))]
     public class GetAzureSubscriptionServicePrincipal : ServiceManagementBaseCmdlet
     {
         protected const string ServicePrincipalObjectIdParameterSet = "ServicePrincipalObjectIdParameterSet";
-        protected GetAzureSubscriptionServicePrincipal()
+        protected const string ListAllServicePrincipalObjectIdsParameterSet = "ListAllServicePrincipalObjectIdsParameterSet";
+        public GetAzureSubscriptionServicePrincipal()
             : base()
         {
 
         }
 
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "ServicePrincipal Object Id", ParameterSetName = ServicePrincipalObjectIdParameterSet)]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ServicePrincipal Object Id", ParameterSetName = ServicePrincipalObjectIdParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("ObjectId")]
         public string ServicePrincipalObjectId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            SubscriptionServicePrincipalGetResponse response = ManagementClient.SubscriptionServicePrincipals.Get(ServicePrincipalObjectId);
-            WriteObject(response);
+            if (string.IsNullOrEmpty(this.ServicePrincipalObjectId))
+            {
+                var response = ManagementClient.SubscriptionServicePrincipals.List();
+                WriteObject(response);
+            }
+            else
+            {
+                var response = ManagementClient.SubscriptionServicePrincipals.Get(ServicePrincipalObjectId);
+                WriteObject(response);
+            }
         }
     }
 }

@@ -30,18 +30,17 @@ using Microsoft.WindowsAzure.Management.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureSubscriptionServicePrincipal", DefaultParameterSetName = ServicePrincipalObjectIdParameterSet)]
-    [OutputType(typeof(Boolean))]
+    [Cmdlet(VerbsCommon.Remove, AzureSubscriptionServicePrincipalNounName)]
+    [OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureSubscriptionServicePrincipal : ServiceManagementBaseCmdlet
     {
-        protected const string ServicePrincipalObjectIdParameterSet = "ServicePrincipalObjectIdParameterSet";
         protected RemoveAzureSubscriptionServicePrincipal()
             : base()
         {
 
         }
 
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "ServicePrincipal Object Id", ParameterSetName = ServicePrincipalObjectIdParameterSet)]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "ServicePrincipal Object Id")]
         [ValidateNotNullOrEmpty]
         [Alias("ObjectId")]
         public string ServicePrincipalObjectId { get; set; }
@@ -50,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         {
             var response = ManagementClient.SubscriptionServicePrincipals.Delete(ServicePrincipalObjectId);
 
-            WriteObject(true);
+            WriteObject(response);
 
         }
     }

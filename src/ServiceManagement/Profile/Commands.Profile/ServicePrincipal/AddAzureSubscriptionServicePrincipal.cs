@@ -25,18 +25,17 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 {
 
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureSubscriptionServicePrincipal", DefaultParameterSetName = ServicePrincipalObjectIdParameterSet)]
+    [Cmdlet(VerbsCommon.Add, AzureSubscriptionServicePrincipalNounName)]
     [OutputType(typeof(SubscriptionServicePrincipalGetResponse))]
     public class AddAzureSubscriptionServicePrincipal : ServiceManagementBaseCmdlet
     {
-        protected const string ServicePrincipalObjectIdParameterSet = "ServicePrincipalObjectIdParameterSet";
         public AddAzureSubscriptionServicePrincipal() 
             : base()
         {
 
         }
 
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "ServicePrincipal Object Id", ParameterSetName = ServicePrincipalObjectIdParameterSet)]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ServicePrincipal Object Id")]
         [ValidateNotNullOrEmpty]
         [Alias("ObjectId")]
         public string ServicePrincipalObjectId { get; set; }

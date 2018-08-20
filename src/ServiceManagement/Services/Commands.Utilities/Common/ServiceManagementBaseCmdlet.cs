@@ -38,6 +38,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         private static readonly object _lock = new object();
 
+        protected const string AzureSubscriptionServicePrincipalNounName = "AzureSubscriptionServicePrincipal";
+
         private static IMapper Mapper
         {
             get
