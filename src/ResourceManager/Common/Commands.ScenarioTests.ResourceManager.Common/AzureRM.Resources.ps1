@@ -89,7 +89,19 @@ function New-AzureRmResourceGroupDeployment
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.Deployment
+    if($TemplateFile -and $TemplateParameterFile)
+    {
+      $mode = [Microsoft.Azure.Management.Internal.Resources.Models.DeploymentMode]::Incremental;
+      $template = [Newtonsoft.Json.Linq.JObject]::Parse((Get-Content $TemplateFile) -join "`r`n");
+      $templateParams = [Newtonsoft.Json.Linq.JObject]::Parse((Get-Content $TemplateParameterFile) -join "`r`n");
+      $createParamsProps = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.DeploymentProperties -ArgumentList $mode,$template,$null,$templateParams;
+      $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.Deployment -ArgumentList $createParamsProps;
+    }
+    else
+    {
+      $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.Deployment;
+    }
+
     $createTask = $client.Deployments.CreateOrUpdateWithHttpMessagesAsync($Name, $Name, $createParams, $null, [System.Threading.CancellationToken]::None)
     $rg = $createTask.Result
   }
