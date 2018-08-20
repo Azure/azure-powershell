@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,9 @@
 using System;
 using System.Linq;
 using System.Reflection;
+#if NETSTANDARD
 using System.Runtime.Loader;
+#endif
 using Tools.Common.Models;
 
 namespace Tools.Common.Loaders
