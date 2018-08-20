@@ -439,7 +439,7 @@
     <PropertyGroup>
         <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
     </PropertyGroup>
-    <Exec Command="$(PowerShellCoreCommandPrefix) dotnet $(MSBuildProjectDirectory)\tools\StaticAnalysis\bin\$(Configuration)\netcoreapp2.1\StaticAnalysis.Netcore.dll -p $(MSBuildProjectDirectory)\src\Package\$(Configuration) -r $(MSBuildProjectDirectory)\src\Package\ $(SkipHelpValue) -m @(ModulesChanged) -u" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;dotnet $(MSBuildProjectDirectory)\tools\StaticAnalysis\bin\$(Configuration)\netcoreapp2.1\StaticAnalysis.Netcore.dll -p $(MSBuildProjectDirectory)\src\Package\$(Configuration) -r $(MSBuildProjectDirectory)\src\Package\ $(SkipHelpValue) -m @(ModulesChanged) -u &quot;" />
 
     <!-- Cleanup extraneous files. -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
