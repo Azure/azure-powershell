@@ -20,38 +20,38 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     Location of the resource.
 
 .PARAMETER AvailabilitySetCount
-    Total number of availability sets allowed.
+    Number of availability sets allowed.
 
-.PARAMETER CoresCount
-    Total number of cores allowed.
+.PARAMETER CoresLimit
+    Number of cores allowed.
 
 .PARAMETER VmScaleSetCount
-    Total number of scale sets allowed.
+    Number of scale sets allowed.
 
 .PARAMETER VirtualMachineCount
-    Total number of virtual machines allowed.
+    Number of virtual machines allowed.
 
 .PARAMETER	StandardManagedDiskAndSnapshotSize
-    Total size for standard managed disks and snapshots allowed.
-	
+    Size for standard managed disks and snapshots allowed.
+    
 .PARAMETER PremiumManagedDiskAndSnapshotSize
-    Total size for standard managed disks and snapshots allowed.
+    Size for standard managed disks and snapshots allowed.
 
 .PARAMETER ResourceId
     The ARM compute quota id.
 
 .PARAMETER InputObject
-    Posbbily modified compute quota returned form Get-AzsComputeQuota.
+    Possibly modified compute quota returned form Get-AzsComputeQuota.
 
 .EXAMPLE
 
-    PS C:\> Set-AzsComputeQuota -Name Quota1 -CoresCount 10
+    PS C:\> Set-AzsComputeQuota -Name Quota1 -CoresLimit 10
 
     Update a compute quota.
 
 #>
 function Set-AzsComputeQuota {
-    [OutputType([QuotaCustomObject])]
+    [OutputType([ComputeQuotaObject])]
     [CmdletBinding(DefaultParameterSetName = 'Update', SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Update')]
@@ -65,7 +65,7 @@ function Set-AzsComputeQuota {
 
         [Parameter(Mandatory = $false)]
         [int32]
-        $CoresCount,
+        $CoresLimit,
 
         [Parameter(Mandatory = $false)]
         [int32]
@@ -77,11 +77,11 @@ function Set-AzsComputeQuota {
 
         [Parameter(Mandatory = $false)]
         [int32]
-		$StandardManagedDiskAndSnapshotSize,
+        $StandardManagedDiskAndSnapshotSize,
 
         [Parameter(Mandatory = $false)]
         [int32]
-		$PremiumManagedDiskAndSnapshotSize,
+        $PremiumManagedDiskAndSnapshotSize,
 
         [Parameter(Mandatory = $false)]
         [System.String]
@@ -94,7 +94,7 @@ function Set-AzsComputeQuota {
 
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'InputObject')]
         [ValidateNotNullOrEmpty()]
-        [QuotaCustomObject]
+        [ComputeQuotaObject]
         $InputObject
     )
 
@@ -157,27 +157,25 @@ function Set-AzsComputeQuota {
                     $NewQuota = Get-AzsComputeQuota -Location $Location -Name $Name
                 }
 
-				$QuotaToBeSet = Convert-CustomQuotaToSDKObject -CustomQuota $NewQuota
+                $QuotaToBeSet = ConvertTo-SdkQuota -CustomQuota $NewQuota
 
                 # Update the Quota object from anything passed in
-                $flattenedParameters = @('AvailabilitySetCount', 'CoresCount', 'VmScaleSetCount', 'VirtualMachineCount', 'StandardManagedDiskAndSnapshotSize', 'PremiumManagedDiskAndSnapshotSize' )
+                $flattenedParameters = @('AvailabilitySetCount', 'CoresLimit', 'VmScaleSetCount', 'VirtualMachineCount', 'StandardManagedDiskAndSnapshotSize', 'PremiumManagedDiskAndSnapshotSize' )
                 $flattenedParameters | ForEach-Object {
                     if ($PSBoundParameters.ContainsKey($_)) {
-						
-						$NewValue = $PSBoundParameters[$_]
-						
-						if($NewValue -ne $null)
-						{
-							if($_ -eq 'StandardManagedDiskAndSnapshotSize') {
-								$QuotaToBeSet.MaxAllocationStandardManagedDisksAndSnapshots = $NewValue 
-							} elseif($_ -eq 'PremiumManagedDiskAndSnapshotSize') {
-								$QuotaToBeSet.MaxAllocationPremiumManagedDisksAndSnapshots = $NewValue 
-							} elseif($_ -eq 'CoresCount') {
-								$QuotaToBeSet.CoresLimit = $NewValue 
-							} else {
-								$QuotaToBeSet.$($_) = $NewValue 
-							}
-						}
+                        
+                        $NewValue = $PSBoundParameters[$_]
+                        
+                        if($NewValue -ne $null)
+                        {
+                            if($_ -eq 'StandardManagedDiskAndSnapshotSize') {
+                                $QuotaToBeSet.MaxAllocationStandardManagedDisksAndSnapshots = $NewValue 
+                            } elseif($_ -eq 'PremiumManagedDiskAndSnapshotSize') {
+                                $QuotaToBeSet.MaxAllocationPremiumManagedDisksAndSnapshots = $NewValue 
+                            } else {
+                                $QuotaToBeSet.$($_) = $NewValue 
+                            }
+                        }
                     }
                 }
 
@@ -192,8 +190,7 @@ function Set-AzsComputeQuota {
                 $GetTaskResult_params = @{
                     TaskResult = $TaskResult
                 }
-				[QuotaCustomObject]$script:result = New-QuotaCustomObject -Quota (Get-TaskResult @GetTaskResult_params) 
-				Write-Output -InputObject $script:result
+                ConvertTo-ComputeQuota -Quota (Get-TaskResult @GetTaskResult_params)
             }
         }
     }
