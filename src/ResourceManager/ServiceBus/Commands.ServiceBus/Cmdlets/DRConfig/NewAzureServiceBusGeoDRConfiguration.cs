@@ -67,36 +67,30 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             if (ParameterSetName == NamespaceInputObjectParameterSet)
             {
                 LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(InputObject.Id);
-
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
-                {
-                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRCreateAlias, Name, getParamGeoDR.ResourceName)))
-                    {
-                        WriteObject(Client.CreateServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
-                    }
-                }
+                ResourceGroupName = getParamGeoDR.ResourceGroupName;
+                Namespace = getParamGeoDR.ResourceName;
             }
 
             if (ParameterSetName == NamespaceResourceIdParameterSet)
             {
                 LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(ResourceId);
+                ResourceGroupName = getParamGeoDR.ResourceGroupName;
+                Namespace = getParamGeoDR.ResourceName;
+            }           
 
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
-                {
-                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRCreateAlias, Name, getParamGeoDR.ResourceName)))
-                    {
-                        WriteObject(Client.CreateServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
-                    }
-                }
-            }
-
-            if (ParameterSetName == GeoDRParameterSet)
+            try
             {
                 if (ShouldProcess(target: Name, action: string.Format(Resources.DRCreateAlias, Name, Namespace)))
                 {
                     WriteObject(Client.CreateServiceBusDRConfiguration(ResourceGroupName, Namespace, Name, drConfiguration));
                 }
             }
+            catch (ErrorResponseException ex)
+            {
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+            }
+
+
         }
     }
 }

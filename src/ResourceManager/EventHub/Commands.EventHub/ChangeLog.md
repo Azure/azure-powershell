@@ -22,6 +22,7 @@
 
 ## Version 0.6.8
 * Updated to the latest version of the Azure ClientRuntime.
+* Updated exception handling for cmdlets
 
 ## Version 0.6.7
 * Updated piping for InputObject and ResourceId in remove cmdlets
