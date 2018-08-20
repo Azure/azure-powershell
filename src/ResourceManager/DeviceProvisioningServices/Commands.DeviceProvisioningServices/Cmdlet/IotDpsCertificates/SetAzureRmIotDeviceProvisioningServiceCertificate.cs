@@ -111,6 +111,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         public override void ExecuteCmdlet()
         {
+            Path = ResolvePath(Path);
             if (ShouldProcess(Name, DPSResources.SetCertificate))
             {
                 switch (ParameterSetName)
