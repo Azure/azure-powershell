@@ -60,7 +60,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
-            bool removeFlag = true;
             IotHubDescription iotHubDescription;
             if (ParameterSetName.Equals(InputObjectParameterSet))
             {
