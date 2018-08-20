@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Network
         public string DdosProtectionPlanId { get; set; }
 
 #if !NETSTANDARD
-        [CmdletParameterBreakingChange("EnableVmProtection", ChangeDescription = "The -EnableVmProtection parameter is deprecated and ignored")]
+        [CmdletParameterBreakingChange("EnableVmProtection", ChangeDescription = "The EnableVMProtection setting is no longer supported. Setting this parameter has no impact. This parameter will be removed in a future release. Please remove it from your scripts")]
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
