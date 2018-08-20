@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMOSDisk",DefaultParameterSetName = DefaultParamSet),OutputType(typeof(PSVirtualMachine))]
-    public class SetAzureVMOSDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public class SetAzureVMOSDiskCommand : ComputeClientBaseCmdlet
     {
         protected const string DefaultParamSet = "DefaultParamSet";
         protected const string WindowsParamSet = "WindowsParamSet";
@@ -244,16 +244,7 @@ namespace Microsoft.Azure.Commands.Compute
                 };
             }
 
-            if (!string.IsNullOrEmpty(this.ManagedDiskId) || this.StorageAccountType != null)
-            {
-                if (this.VM.StorageProfile.OsDisk.ManagedDisk == null)
-                {
-                    this.VM.StorageProfile.OsDisk.ManagedDisk = new ManagedDiskParameters();
-                }
-
-                this.VM.StorageProfile.OsDisk.ManagedDisk.Id = this.ManagedDiskId ?? this.VM.StorageProfile.OsDisk.ManagedDisk.Id;
-                this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType = this.StorageAccountType ?? this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
-            }
+            this.VM.StorageProfile.OsDisk.ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType, this.VM.StorageProfile.OsDisk.ManagedDisk);
 
             this.VM.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
 
