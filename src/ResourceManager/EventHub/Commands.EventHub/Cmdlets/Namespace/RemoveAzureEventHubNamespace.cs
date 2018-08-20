@@ -67,10 +67,17 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             // delete a EventHub namespace 
             if (ShouldProcess(target: Name, action:string.Format(Resources.RemoveNamespaces, Name, ResourceGroupName)))
             {
-                Client.BeginDeleteNamespace(ResourceGroupName, Name);
-                if (PassThru)
+                try
                 {
-                    WriteObject(true);
+                    Client.BeginDeleteNamespace(ResourceGroupName, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                }
+                catch (Management.EventHub.Models.ErrorResponseException ex)
+                {
+                    WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
                 }
             }            
         }

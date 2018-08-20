@@ -3316,3 +3316,131 @@ function Test-VirtualMachineWriteAcceleratorUpdate
         Clean-ResourceGroup $rgname
     }
 }
+
+function Test-VirtualMachineManagedDisk
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        $loc = Get-ComputeVMLocation;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vmsize = 'Standard_DS1';
+        $vmname = 'vm' + $rgname;
+
+        $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+
+        # NRP
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+        $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
+
+        # OS & Image
+        $user = "Foo2";
+        $password = $PLACEHOLDER;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $computerName = 'test';
+
+        $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
+
+        # Virtual Machine
+        New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+        # Get VM
+        $vm = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
+
+        Assert-NotNull $vm.StorageProfile.OsDisk.ManagedDisk.Id;
+        Assert-AreEqual 'Premium_LRS' $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
+
+        # Create OS snapshot from the VM
+        $snapshotConfig = New-AzureRmSnapshotConfig -SourceUri $vm.Storageprofile.OsDisk.ManagedDisk.Id -Location $loc -CreateOption Copy;
+        $snapshotname = "ossnapshot";
+        New-AzureRmSnapshot -Snapshot $snapshotConfig -SnapshotName $snapshotname -ResourceGroupName $rgname;
+        $snapshot = Get-AzureRmSnapshot -SnapshotName $snapshotname -ResourceGroupName $rgname;
+
+        Assert-NotNull $snapshot.Id;
+        Assert-AreEqual $snapshotname $snapshot.Name;
+        Assert-AreEqual 'Standard_LRS' $snapshot.Sku.Name;
+
+        # Create an OS disk from the snapshot
+        $osdiskConfig = New-AzureRmDiskConfig -Location $loc -CreateOption Copy -SourceUri $snapshot.Id;
+        $osdiskname = "osdisk";
+        New-AzureRmDisk -ResourceGroupName $rgname -DiskName $osdiskname -Disk $osdiskConfig;
+        $osdisk = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $osdiskname;
+
+        Assert-NotNull $osdisk.Id;
+        Assert-AreEqual $osdiskname $osdisk.Name;
+        Assert-AreEqual 'Standard_LRS' $osdisk.Sku.Name;
+
+        # Stop the VM
+        Stop-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force;
+
+        # Change the OS disk of the VM
+        $vm = Set-AzureRmVMOSDisk -VM $vm -Name $osdiskname -ManagedDiskId $osdisk.Id;
+
+        # Create an empty disk
+        $datadiskconfig = New-AzureRmDiskConfig -Location $loc -CreateOption Empty -AccountType 'Standard_LRS' -DiskSizeGB 10;
+        $datadiskname = "datadisk";
+        New-AzureRmDisk -ResourceGroupName $rgname -DiskName $datadiskname -Disk $datadiskconfig;
+        $datadisk = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $datadiskname;
+
+        Assert-NotNull $datadisk.Id;
+        Assert-AreEqual $datadiskname $datadisk.Name;
+        Assert-AreEqual 'Standard_LRS' $datadisk.Sku.Name;
+
+        # Add the disk to the VM
+        $vm = Add-AzureRmVMDataDisk -VM $vm -Name $datadiskname -ManagedDiskId $dataDisk.Id -Lun 2 -CreateOption Attach -Caching 'ReadWrite';
+
+        # Update and start the VM
+        Update-AzureRmVM -ResourceGroupName $rgname -VM $vm;
+        Start-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
+
+        # Get the updated VM
+        $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-NotNull $vm.VmId;
+        Assert-AreEqual $vmname $vm.Name ;
+        Assert-AreEqual 1 $vm.NetworkProfile.NetworkInterfaces.Count;
+        Assert-AreEqual $nicId $vm.NetworkProfile.NetworkInterfaces[0].Id;
+
+        Assert-AreEqual $imgRef.Offer $vm.StorageProfile.ImageReference.Offer;
+        Assert-AreEqual $imgRef.PublisherName $vm.StorageProfile.ImageReference.Publisher;
+        Assert-AreEqual $imgRef.Skus $vm.StorageProfile.ImageReference.Sku;
+        Assert-AreEqual $imgRef.Version $vm.StorageProfile.ImageReference.Version;
+
+        Assert-AreEqual $user $vm.OSProfile.AdminUsername;
+        Assert-AreEqual $computerName $vm.OSProfile.ComputerName;
+        Assert-AreEqual $vmsize $vm.HardwareProfile.VmSize;
+
+        Assert-True {$vm.DiagnosticsProfile.BootDiagnostics.Enabled;};
+
+        Assert-AreEqual "BGInfo" $vm.Extensions[0].VirtualMachineExtensionType;
+        Assert-AreEqual "Microsoft.Compute" $vm.Extensions[0].Publisher;
+
+        Assert-AreEqual $osdisk.Id $vm.StorageProfile.OsDisk.ManagedDisk.Id;
+        Assert-AreEqual 'Standard_LRS' $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
+        Assert-AreEqual $datadisk.Id $vm.StorageProfile.DataDisks[0].ManagedDisk.Id;
+        Assert-AreEqual 'Standard_LRS' $vm.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -157,6 +157,10 @@ function Test-PowerBIEmbeddedCapacityScale
 		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A2 -PassThru
 		Assert-AreEqual A2 $capacityUpdated.Sku
 
+		$capacityGetItem = Suspend-AzureRmPowerBIEmbeddedCapacity -ResourceGroupName $resourceGroupName -Name $capacityName -PassThru
+		# this is to ensure backward compatibility compatibility. The servie side would make change to differenciate state and provisioningState in future
+		Assert-True {$capacityGetItem.State -like "Paused"}
+
 		# Scale down A2 -> A1
 		$capacityUpdated = Update-AzureRmPowerBIEmbeddedCapacity -Name $capacityName -Sku A1 -PassThru
 		Assert-AreEqual A1 $capacityUpdated.Sku
