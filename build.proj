@@ -5,7 +5,7 @@
   <!--
     Available Targets:
 
-    /t:Clean
+    /t:Clean 
       Removes temporary build outputs.
 
     /t:Build
