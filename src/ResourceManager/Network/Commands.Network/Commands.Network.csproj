@@ -221,9 +221,7 @@
     <Compile Include="Generated\Models\PSApplicationGatewayProbeHealthResponseMatch.cs" />
     <Compile Include="Generated\Models\PSApplicationGatewaySslPolicy.cs" />
     <Compile Include="Generated\Models\PSApplicationGatewaySslPredefinedPolicy.cs" />
-    <Compile Include="Generated\Models\PSAvailableProvidersListState.cs" />
     <Compile Include="Generated\Models\PSAzureReachabilityReportLatencyInfo.cs" />
-    <Compile Include="Generated\Models\PSAzureReachabilityReportParameters.cs" />
     <Compile Include="Generated\Models\PSBgpPeerStatus.cs" />
     <Compile Include="Generated\Models\PSBgpSettings.cs" />
     <Compile Include="Generated\Models\PSConnectionMonitorSource.cs" />
@@ -284,6 +282,8 @@
     <Compile Include="Models\PSAvailableProvidersListCity.cs" />
     <Compile Include="Models\PSAvailableProvidersListCountry.cs" />
     <Compile Include="Models\PSAvailableProvidersListParameters.cs" />
+    <Compile Include="Models\PSAvailableProvidersListState.cs" />
+    <Compile Include="Models\PSAzureReachabilityReportParameters.cs" />
     <Compile Include="Models\PSConnectionMonitor.cs" />
     <Compile Include="Models\PSConnectionMonitorDestination.cs" />
     <Compile Include="Models\PSConnectionMonitorParameters.cs" />
