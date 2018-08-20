@@ -34,13 +34,13 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     [OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureSubscriptionServicePrincipal : ServiceManagementBaseCmdlet
     {
-        protected RemoveAzureSubscriptionServicePrincipal()
+        public RemoveAzureSubscriptionServicePrincipal()
             : base()
         {
 
         }
 
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "ServicePrincipal Object Id")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ServicePrincipal Object Id")]
         [ValidateNotNullOrEmpty]
         [Alias("ObjectId")]
         public string ServicePrincipalObjectId { get; set; }
