@@ -32,6 +32,7 @@
 * Clarified error message for Get-AzureRmVirtualNetworkSubnetConfig when attempting to get a subnet that does not exist
 * Improved exception messages: added more details to output
 * Dropped outdated warnings
+* Changed default models representation to table-view
 
 ## Version 6.4.1
 * Updated all help files to include full parameter types and correct input/output types.
