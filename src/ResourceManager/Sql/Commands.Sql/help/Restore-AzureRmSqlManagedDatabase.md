@@ -216,6 +216,8 @@ Accept wildcard characters: False
 
 ### -TargetManagedInstanceName
 The name of the target managed instance to restore to.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
@@ -229,6 +231,8 @@ Accept wildcard characters: False
 
 ### -TargetResourceGroupName
 The name of the target resource group to restore to.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:

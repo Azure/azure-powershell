@@ -128,17 +128,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public string TargetManagedDatabaseName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the target managed instance to restore to. If not specified, the target instance is same as source
+        /// Gets or sets the name of the target managed instance to restore to.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of the target managed instance to restore to.")]
+            HelpMessage = "The name of the target managed instance to restore to. If not specified, the target managed instance is the same as the source managed instance.")]
         public string TargetManagedInstanceName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the target resource group to restore to. If not specified, the target resource group is same as source
+        /// Gets or sets the name of the target resource group to restore to.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of the target resource group to restore to.")]
+            HelpMessage = "The name of the target resource group to restore to. If not specified, the target resource group is the same as the source resource group.")]
         public string TargetResourceGroupName { get; set; }
 
         /// <summary>
