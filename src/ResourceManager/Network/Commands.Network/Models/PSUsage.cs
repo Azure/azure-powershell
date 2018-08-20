@@ -15,15 +15,19 @@
 //
 
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSUsage
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public long CurrentValue;
+        [Ps1Xml(Target = ViewControl.Table)]
         public long Limit;
         public string Unit;
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.Name.LocalizedValue")]
         public PSUsageName Name;
 
         public string ResourceType

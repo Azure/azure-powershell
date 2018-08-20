@@ -16,13 +16,16 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSInboundNatPool : PSInboundRule
     {
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public int FrontendPortRangeStart { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public int FrontendPortRangeEnd { get; set; }
     }
 }
