@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "..\..\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Management.Storage", "..\Storage\Commands.Management.Storage\Commands.Management.Storage.csproj", "{A50AB133-5C04-4A17-9054-F8343683EC23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.KeyVault", "..\KeyVault\Commands.KeyVault\Commands.KeyVault.csproj", "{9FFC40CC-A341-4D0C-A25D-DC6B78EF6C94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{A50AB133-5C04-4A17-9054-F8343683EC23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A50AB133-5C04-4A17-9054-F8343683EC23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A50AB133-5C04-4A17-9054-F8343683EC23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FFC40CC-A341-4D0C-A25D-DC6B78EF6C94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FFC40CC-A341-4D0C-A25D-DC6B78EF6C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FFC40CC-A341-4D0C-A25D-DC6B78EF6C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FFC40CC-A341-4D0C-A25D-DC6B78EF6C94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{A50AB133-5C04-4A17-9054-F8343683EC23} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{9FFC40CC-A341-4D0C-A25D-DC6B78EF6C94} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54E53EE0-76A1-4911-8FED-63555F09459F}

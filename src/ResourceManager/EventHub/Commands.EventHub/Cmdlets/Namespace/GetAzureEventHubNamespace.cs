@@ -38,23 +38,30 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
+            try
             {
-                // Get EventHub namespace
-                PSNamespaceAttributes attributes = Client.GetNamespace(ResourceGroupName, Name);
-                WriteObject(attributes);
+                if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
+                {
+                    // Get EventHub namespace
+                    PSNamespaceAttributes attributes = Client.GetNamespace(ResourceGroupName, Name);
+                    WriteObject(attributes);
+                }
+                else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
+                {
+                    // List all EventHub namespace in given resource group
+                    IEnumerable<PSNamespaceAttributes> namespaceList = Client.ListNamespacesByResourceGroup(ResourceGroupName);
+                    WriteObject(namespaceList.ToList(), true);
+                }
+                else
+                {
+                    // List all EventHub namespaces in the given subscription
+                    IEnumerable<PSNamespaceAttributes> namespaceList = Client.ListNamespacesBySubscription();
+                    WriteObject(namespaceList.ToList(), true);
+                }
             }
-            else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
+            catch (Management.EventHub.Models.ErrorResponseException ex)
             {
-                // List all EventHub namespace in given resource group
-                IEnumerable<PSNamespaceAttributes> namespaceList = Client.ListNamespacesByResourceGroup(ResourceGroupName);
-                WriteObject(namespaceList.ToList(), true);
-            }
-            else
-            {
-                // List all EventHub namespaces in the given subscription
-                IEnumerable<PSNamespaceAttributes> namespaceList = Client.ListNamespacesBySubscription();
-                WriteObject(namespaceList.ToList(), true);
+                WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
             }
         }
     }
