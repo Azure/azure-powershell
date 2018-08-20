@@ -123,11 +123,11 @@ function Get-AzsPlatformImage {
             $offer = $ArmResourceIdParameterValues['offer']
             $sku = $ArmResourceIdParameterValues['sku']
             $version = $ArmResourceIdParameterValues['version']
-        } elseif ( [System.String]::IsNullOrEmpty($Location)) {
+        } elseif ( -not $PSBoundParameters.ContainsKey('Location')) {
             $Location = (Get-AzureRMLocation).Location
         }
 
-		$filterInfos = @(
+        $filterInfos = @(
             @{
                 'Type'     = 'powershellWildcard'
                 'Value'    = $Version
@@ -184,4 +184,3 @@ function Get-AzsPlatformImage {
         }
     }
 }
-

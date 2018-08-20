@@ -36,7 +36,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
 #>
 function Get-AzsComputeQuota {
-    [OutputType([QuotaCustomObject])]
+    [OutputType([ComputeQuotaObject])]
     [CmdletBinding(DefaultParameterSetName = 'List')]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Get', Position = 0)]
@@ -141,18 +141,8 @@ function Get-AzsComputeQuota {
             $GetTaskResult_params = @{
                 TaskResult = $TaskResult
             }
-
-			$OldQuotaObjects = Get-TaskResult @GetTaskResult_params 
-
-			[QuotaCustomObject[]] $script:results = @()
-
-            $OldQuotaObjects | ForEach-Object {
-                [QuotaCustomObject]$result = New-QuotaCustomObject -Quota $_
-                                
-				$script:results += $result
-            }
-
-            Write-Output -InputObject $script:results
+            
+            Get-TaskResult @GetTaskResult_params | ForEach-Object { ConvertTo-ComputeQuota -Quota $_ }
         }
     }
 
@@ -163,4 +153,3 @@ function Get-AzsComputeQuota {
         }
     }
 }
-
