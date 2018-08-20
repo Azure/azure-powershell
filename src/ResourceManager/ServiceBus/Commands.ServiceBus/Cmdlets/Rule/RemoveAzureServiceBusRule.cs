@@ -89,21 +89,28 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
                 Name = Namespace = identifier.ResourceName;
             }
 
-            // delete a Rule            
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemoveRule, Name, Subscription, Namespace),
-                string.Format(Resources.RemoveRule, Name, Subscription, Namespace),
-                Name,
-                () =>
-                {
-                   var result = Client.DeleteRule(ResourceGroupName, Namespace, Topic, Subscription, Name);
-
-                    if (PassThru)
+            try
+            {
+                // delete a Rule            
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.RemoveRule, Name, Subscription, Namespace),
+                    string.Format(Resources.RemoveRule, Name, Subscription, Namespace),
+                    Name,
+                    () =>
                     {
-                        WriteObject(result);
-                    }
-                });
+                        var result = Client.DeleteRule(ResourceGroupName, Namespace, Topic, Subscription, Name);
+
+                        if (PassThru)
+                        {
+                            WriteObject(result);
+                        }
+                    });
+            }
+            catch (Management.ServiceBus.Models.ErrorResponseException ex)
+            {
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+            }
         }
     }
 }

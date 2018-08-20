@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
-        {           
+        {
+
             if (ParameterSetName == NamespaceInputObjectParameterSet)
             {
                 LocalResourceIdentifier getMigrationConfig = new LocalResourceIdentifier(InputObject.Id);
@@ -66,12 +67,20 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CompleteMigrationConfiguration)))
             {
-                Client.SetServiceBusCompleteMigrationConfiguration(ResourceGroupName, Name);
-                if (PassThru)
+                try
                 {
-                    WriteObject(true);
+                    Client.SetServiceBusCompleteMigrationConfiguration(ResourceGroupName, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                }
+                catch (Management.ServiceBus.Models.ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
                 }
             }
+            
         }
     }
 }
