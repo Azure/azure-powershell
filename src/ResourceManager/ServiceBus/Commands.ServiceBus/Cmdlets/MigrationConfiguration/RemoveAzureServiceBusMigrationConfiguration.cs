@@ -67,10 +67,17 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveMigrationConfiguration)))
             {
-                Client.DeleteServiceBusMigrationConfiguration(ResourceGroupName, Name);
-                if (PassThru)
+                try
                 {
-                    WriteObject(true);
+                    Client.DeleteServiceBusMigrationConfiguration(ResourceGroupName, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                }
+                catch (Management.ServiceBus.Models.ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
                 }
             }
         }

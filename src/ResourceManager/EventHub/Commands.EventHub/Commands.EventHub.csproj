@@ -67,6 +67,7 @@
     <Compile Include="Cmdlets\Namespace\NewAzureEventHubNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\RemoveAzureEventHubNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\SetAzureEventHubNamespace.cs" />
+    <Compile Include="Models\ErrorResponseContent.cs" />
     <Compile Include="Models\PSAuthorizationRuleAttributes.cs" />
     <Compile Include="Models\PSAuthorizationRuleKeysAttributes.cs" />
     <Compile Include="Models\PSCaptureDescriptionAttributes.cs" />
