@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            DestinationPath = ResolvePath(DestinationPath);
+            DestinationPath = ResolveUserPath(DestinationPath);
             if (this.ByteRangeEnd != null && this.ByteRangeStart == null)
             {
                 this.ByteRangeStart = 0;

@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private string ResolveKeyVaultPath(string filePath)
         {
-            FileInfo keyFile = new FileInfo(this.ResolvePath(filePath));
+            FileInfo keyFile = new FileInfo(this.ResolveUserPath(filePath));
             if (!keyFile.Exists)
             {
                 throw new FileNotFoundException(string.Format(Resources.BackupKeyFileNotFound, filePath));
