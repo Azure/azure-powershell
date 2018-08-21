@@ -51,25 +51,32 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
+            try
             {
-                // Get a EventHub
-                PSEventHubAttributes eventHub = Client.GetEventHub(ResourceGroupName, Namespace, Name);
-                WriteObject(eventHub);
-            }
-            else
-            {
-                if (MaxCount.HasValue)
+                if (!string.IsNullOrEmpty(Name))
                 {
-                    IEnumerable<PSEventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace, MaxCount);
-                    WriteObject(eventHubsList.ToList(), true);
+                    // Get a EventHub
+                    PSEventHubAttributes eventHub = Client.GetEventHub(ResourceGroupName, Namespace, Name);
+                    WriteObject(eventHub);
                 }
                 else
                 {
-                    // Get all EventHubs
-                    IEnumerable<PSEventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace);
-                    WriteObject(eventHubsList.ToList(), true);
+                    if (MaxCount.HasValue)
+                    {
+                        IEnumerable<PSEventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace, MaxCount);
+                        WriteObject(eventHubsList.ToList(), true);
+                    }
+                    else
+                    {
+                        // Get all EventHubs
+                        IEnumerable<PSEventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace);
+                        WriteObject(eventHubsList.ToList(), true);
+                    }
                 }
+            }
+            catch (Management.EventHub.Models.ErrorResponseException ex)
+            {
+                WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
             }
         }
     }

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix failure in Update-AzureRmPowerBIEmbeddedCapacity when trying to scale paused capacity
 * Fixed issue with default resource groups not being set.
 
 ## Version 4.1.8

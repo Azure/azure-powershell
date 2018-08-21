@@ -73,6 +73,13 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateCount(1, 350)]
         public List<string> GeoMapping { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The list of address ranges or subnets mapped to this endpoint when using the â€˜Subnetâ€™ traffic routing method.")]
+        public List<TrafficManagerIpAddressRange> SubnetMapping { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "List of custom header name and value pairs for probe requests.")]
+        [ValidateCount(1, 8)]
+        public List<TrafficManagerCustomHeader> CustomHeader { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.TrafficManagerProfile.Endpoints == null)
@@ -98,6 +105,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     Location = this.EndpointLocation,
                     MinChildEndpoints = this.MinChildEndpoints,
                     GeoMapping = this.GeoMapping,
+                    SubnetMapping = this.SubnetMapping,
+                    CustomHeaders = this.CustomHeader,
                 });
 
             this.WriteVerbose(ProjectResources.Success);
