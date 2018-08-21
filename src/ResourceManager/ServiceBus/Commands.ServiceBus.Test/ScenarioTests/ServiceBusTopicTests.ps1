@@ -211,3 +211,4 @@ function ServiceBusTopicAuthTests
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
+

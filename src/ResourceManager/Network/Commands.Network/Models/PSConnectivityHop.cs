@@ -17,16 +17,19 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSConnectivityHop
     {
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Type { get; set; }
 
         [JsonProperty(Order = 2)]
         public string Id { get; set; }
 
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Address { get; set; }
 
         [JsonProperty(Order = 2)]
