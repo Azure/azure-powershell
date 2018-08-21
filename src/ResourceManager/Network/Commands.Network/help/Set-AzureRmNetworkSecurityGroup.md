@@ -37,7 +37,7 @@ The command persists the modified Azure network security group using **Set-Azure
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 A network security group object representing the goal state to which the cmdlet sets the network security group.
 
 ```yaml
-Type: PSNetworkSecurityGroup
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
 Parameter Sets: (All)
 Aliases:
 
@@ -83,8 +83,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSNetworkSecurityGroup
-Parameter 'NetworkSecurityGroup' accepts value of type 'PSNetworkSecurityGroup' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
+Parameters: NetworkSecurityGroup (ByValue)
 
 ## OUTPUTS
 

@@ -30,6 +30,7 @@ using TestBase = Microsoft.Azure.Test.TestBase;
 using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using RM = Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 {
@@ -82,10 +83,12 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
                 ConsumptionManagementClient);
         }
 
-        public void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            _helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,

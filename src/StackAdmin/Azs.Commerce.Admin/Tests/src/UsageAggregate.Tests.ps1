@@ -39,21 +39,20 @@ param(
     [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
-
-$global:TestName = ""
 
 InModuleScope Azs.Commerce.Admin {
 
     Describe "SubscriberUsageAggregates" -Tags @('SubscriberUsageAggregate', 'Azs.Commerce.Admin') {
 
+        . $PSScriptRoot\Common.ps1
+
         BeforeEach {
-
-            . $PSScriptRoot\Common.ps1
-
             function ValidateSubscriberUsageAggregate {
                 param(
                     [Parameter(Mandatory = $true)]
@@ -79,13 +78,10 @@ InModuleScope Azs.Commerce.Admin {
         }
 
         # Record again.
-        It "TestListSubscriberUsageAggregatesFromLastTwoDays" -Skip {
+        It "TestListSubscriberUsageAggregatesFromLastTwoDays" -Skip:$('TestListSubscriberUsageAggregatesFromLastTwoDays' -in $global:SkippedTests) {
             $global:TestName = 'TestListSubscriberUsageAggregatesFromLastTwoDays'
 
-            [DateTime]$start = "2017-09-06T00:00:00Z"
-            [DateTime]$end = "2017-09-07T00:00:00Z"
-
-            $usageAggregates = Get-AzsSubscriberUsage -ReportedStartTime $start -ReportedEndTime $end -AggregationGranularity Hourly
+            $usageAggregates = Get-AzsSubscriberUsage -ReportedStartTime $global:Start -ReportedEndTime $global:End -AggregationGranularity $global:Granularity
             foreach ($usageAggregate in $usageAggregates) {
                 ValidateSubscriberUsageAggregate -SubscriberUsageAggregate $usageAggregate
             }

@@ -24,11 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ProfileNouns.VirtualMachineDiagnosticsExtension),
-    OutputType(
-        typeof(PSVirtualMachineExtension))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDiagnosticsExtension"),OutputType(typeof(PSVirtualMachineExtension))]
     public class GetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(

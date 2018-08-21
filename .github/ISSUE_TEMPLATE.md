@@ -31,7 +31,7 @@ If this issue is not a bug report, please remove the below template
 <!-- Please run (Get-Module -Name AzureRM -ListAvailable) to get the version(s) of AzureRM installed on your machine -->
 
 ```powershell
-Get-Module -Name AzureRM -ListAvailable
+Get-Module -ListAvailable
 ```
 
 ### Environment Data

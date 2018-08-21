@@ -14,8 +14,8 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading;
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
     /// <summary>
     /// Gets the log profiles.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmLogProfile"), OutputType(typeof(PSLogProfileCollection))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogProfile"), OutputType(typeof(PSLogProfileCollection))]
     public class GetAzureRmLogProfileCommand : ManagementCmdletBase
     {
 

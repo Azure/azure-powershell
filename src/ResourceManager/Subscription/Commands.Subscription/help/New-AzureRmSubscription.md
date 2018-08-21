@@ -25,7 +25,7 @@ The **New-AzureRmSubscription** cmdlet creates an Azure subscription.
 
 ### Example 1
 ```
-PS C:\> New-AzureRmSubscription -Name "My Subscription" -EnrollmentAccountObjectId (Get-AzureRmEnrollmentAccount)[0].ObjectId) -OfferType MS-AZR-0017P
+PS C:\> New-AzureRmSubscription -Name "My Subscription" -EnrollmentAccountObjectId ((Get-AzureRmEnrollmentAccount)[0].ObjectId) -OfferType MS-AZR-0017P
 
 Name        : My Subscription
 Id          : 86869d42-1782-4337-98b0-c905fb937d46
@@ -41,7 +41,7 @@ Creates an Azure subscription under the specified enrollment account with the sp
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Name of the enrollment account to use when creating the subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The name of the subscription to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The type of offer to use when creating the subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 The app SPN(s) to be granted Owner access to the subscription.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases: OwnerSPN, OwnerServicePrincipalName
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 The user(s) or group object(s) id(s) to be granted Owner access to the subscription.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases: OwnerId, OwnerPrincipalId
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 The user(s) to be granted Owner access to the subscription.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases: OwnerEmail, OwnerUserPrincipalName
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -196,7 +196,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription
+### Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription
 
 ## NOTES
 

@@ -120,7 +120,7 @@ function Add-AzsPlatformImage {
     }
 
     Process {
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSCmdlet.ShouldProcess("$Publisher/$Offer/$Sku/$Version" , "Add new virtual machine image")) {
 

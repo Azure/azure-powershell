@@ -31,25 +31,11 @@ Starts the deletion of the specified replication policy and returns the ASR job 
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -64,7 +50,7 @@ Accept wildcard characters: False
 The input object to the cmdlet: The ASR replication policy object corresponding to the replication policy to be deleted.
 
 ```yaml
-Type: ASRPolicy
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy
 Parameter Sets: (All)
 Aliases: Policy
 
@@ -75,11 +61,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -96,10 +97,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
 
 ## NOTES
 

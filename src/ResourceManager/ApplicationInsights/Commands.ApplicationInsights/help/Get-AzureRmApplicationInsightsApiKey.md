@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApplicationInsights.dll-Help.xml
 Module Name: AzureRM.ApplicationInsights
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.applicationinsights/get-azurermapplicationinsightsapikey
@@ -68,9 +68,9 @@ Get specific application insights api key that id is "dd173f38-4fd1-4c75-8af5-9
 Application Insights Api Key Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -83,9 +83,9 @@ Accept wildcard characters: False
 Application Insights Component Object.
 
 ```yaml
-Type: PSApplicationInsightsComponent
+Type: Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
 Parameter Sets: ComponentObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Application Insights Component Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
 Aliases: ApplicationInsightsComponentName, ComponentName
 
@@ -128,9 +128,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -143,9 +143,9 @@ Accept wildcard characters: False
 Application Insights Component Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -159,6 +159,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
+Parameters: ApplicationInsightsComponent (ByValue)
+
 ### System.String
 
 ## OUTPUTS
@@ -168,4 +171,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

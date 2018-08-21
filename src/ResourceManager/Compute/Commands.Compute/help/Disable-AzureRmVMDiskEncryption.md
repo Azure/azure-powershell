@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 979E956B-4C74-426E-A617-E50C4EBC8A20
@@ -52,7 +52,7 @@ This command disables encryption for volumes of type data for the virtual machin
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet disables auto-upgrade of the minor version of the extension.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 The extension publisher name. Specify this parameter only to override the default value of "Microsoft.Azure.Security".
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 The extension type. Specify this parameter to override its default value of "AzureDiskEncryption" for Windows VMs and "AzureDiskEncryptionForLinux" for Linux VMs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +128,7 @@ Specifes the name of the Azure Resource Manager (ARM) resource that represents t
 If this parameter is not specified, this cmdlet defaults to "AzureDiskEncryption for Windows VMs".
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 Specifies the resource group name of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +159,7 @@ Specifies the version of the encryption extension.
 If you do not specify a value for this parameter, the latest version of the extension is used.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: HandlerVersion, Version
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual machine that this cmdlet disables encryption on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -188,7 +188,6 @@ Accept wildcard characters: False
 ### -VolumeType
 Specifies the type of virtual machine volumes to perform the encryption operation.
 For Windows virtual machines, valid values are: 
-
 - All
 - OS
 - Data.
@@ -196,7 +195,7 @@ If you do not specify a value for this parameter, the default value is All.
 Disable encryption is not currently supported for Linux.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: OS, Data, All
@@ -212,7 +211,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -225,11 +224,10 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -245,12 +243,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### This cmdlet does not generate any output.
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 

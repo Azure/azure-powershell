@@ -80,7 +80,7 @@ function Remove-AzsAzureBridgeDownloadedProduct {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{

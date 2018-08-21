@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.PowerBI.dll-Help.xml
 Module Name: AzureRM.PowerBIEmbedded
 ms.assetid: 5321FC62-3585-4493-A3D2-22CD82503CA7
@@ -13,14 +13,22 @@ Suspends an instance of PowerBI Embedded Capacity.
 
 ## SYNTAX
 
+### ByNameAndResourceGroup (Default)
 ```
-Suspend-AzureRmPowerBIEmbeddedCapacity 
-	[-Name] <String> 
-	[[-ResourceGroupName] <String>] 
-	[-PassThru] 
-	[-WhatIf]
- 	[-Confirm] 
-	[<CommonParameters>]
+Suspend-AzureRmPowerBIEmbeddedCapacity [-Name] <String> [-ResourceGroupName <String>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Suspend-AzureRmPowerBIEmbeddedCapacity [-ResourceId] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Suspend-AzureRmPowerBIEmbeddedCapacity [-InputObject] <PSPowerBIEmbeddedCapacity> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,45 +55,18 @@ This command will suspend an active capacity named testcapacity in the resourceg
 
 ## PARAMETERS
 
-### -Name
-Name of the PowerBI Embedded Capacity
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: String
-Parameter Sets: ByNameAndResourceGroup
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Name of the Azure resource group to which the capacity belongs
-
-```yaml
-Type: String
-Parameter Sets: ByNameAndResourceGroup
-Aliases: 
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
+Position: Named
 Default value: None
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Azure resource ID
-
-```yaml
-Type: String
-Parameter Sets: ByResourceId
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -93,9 +74,9 @@ Accept wildcard characters: False
 Input object for Piping
 
 ```yaml
-Type: PSPowerBIEmbeddedCapacity
+Type: Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
 Parameter Sets: ByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -104,11 +85,71 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the PowerBI Embedded Capacity
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameAndResourceGroup
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of the Azure resource group to which the capacity belongs
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameAndResourceGroup
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Azure resource ID
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts user to confirm whether to perform the operation
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -123,7 +164,7 @@ Accept wildcard characters: False
 Describes the actions the current operation will perform without actually performing them
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -139,8 +180,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

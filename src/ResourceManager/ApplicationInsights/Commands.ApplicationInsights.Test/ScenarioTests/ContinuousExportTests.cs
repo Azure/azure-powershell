@@ -23,37 +23,40 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
 {
     public class ContinuousExportTests : RMTestBase
     {
-        public ContinuousExportTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public ContinuousExportTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetContinuousExport()
         {
-            TestController.NewInstance.RunPsTest("Test-GetApplicationInsightsContinuousExport");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetApplicationInsightsContinuousExport");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewContinuousExport()
         {
-            TestController.NewInstance.RunPsTest("Test-NewApplicationInsightsContinuousExport");
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewApplicationInsightsContinuousExport");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetContinuousExport()
         {
-            TestController.NewInstance.RunPsTest("Test-SetApplicationInsightsContinuousExport");
+            TestController.NewInstance.RunPsTest(_logger, "Test-SetApplicationInsightsContinuousExport");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveContinuousExport()
         {
-            TestController.NewInstance.RunPsTest("Test-RemoveApplicationInsightsContinuousExport");
+            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveApplicationInsightsContinuousExport");
         }
     }
 }

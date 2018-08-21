@@ -46,7 +46,7 @@ This command gets the profile named ContosoProfile in ResourceGroup11.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 Specifies the name of the Traffic Manager profile that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameParameterSet
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Specifies the name of a resource group that contains the Traffic Manager profile that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameParameterSet
 Aliases:
 

@@ -22,23 +22,26 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
 
     public class JobTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public JobTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateHttpJob()
         {
-            SchedulerController.NewInstance.RunPowerShellTests("Test-CreateHttpJob");
+            SchedulerController.NewInstance.RunPowerShellTests(_logger, "Test-CreateHttpJob");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateHttpJob()
         {
-            SchedulerController.NewInstance.RunPowerShellTests("Test-UpdateHttpJob");
+            SchedulerController.NewInstance.RunPowerShellTests(_logger, "Test-UpdateHttpJob");
         }
     }
 }

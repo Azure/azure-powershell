@@ -89,7 +89,7 @@ Here, we do not specify any parameters to get a list of all DDoS protection plan
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 Specifies the name of the DDoS protection plan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameAndGroup
 Aliases: ResourceName
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 Specifies the name of the DDoS protection plan resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameAndGroup
 Aliases:
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List
 Aliases:
 

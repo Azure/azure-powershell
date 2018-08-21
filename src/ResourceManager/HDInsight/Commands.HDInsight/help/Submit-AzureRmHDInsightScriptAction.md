@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: 15C5D659-472B-41DD-806A-A0A175434EE3
@@ -44,9 +44,9 @@ Specifies the application name for the script action.
 When *ApplicationName* is specified, *PersistOnSuccess* should be set to False, nodes must contain only edgenode, and script action count should equal 1.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -59,9 +59,9 @@ Accept wildcard characters: False
 Specifies the name of the cluster.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,9 +89,9 @@ Accept wildcard characters: False
 Specifies the name of the script action.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -104,9 +104,9 @@ Accept wildcard characters: False
 Specifies the node types on which to run the script action.
 
 ```yaml
-Type: RuntimeScriptActionClusterNodeType[]
+Type: Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HeadNode, WorkerNode, ZookeeperNode, EdgeNode
 
 Required: True
@@ -120,9 +120,9 @@ Accept wildcard characters: False
 Specifies the parameters for the script action.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -136,9 +136,9 @@ Indicates that the script action should run each time the cluster is scaled up.
 This switch parameter is ignored if the script action initially fails.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -151,9 +151,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -166,9 +166,9 @@ Accept wildcard characters: False
 Specifies the public URI for the script action (a PowerShell or Bash script).
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -182,8 +182,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Uri
+
+### Microsoft.Azure.Commands.HDInsight.Models.Management.RuntimeScriptActionClusterNodeType[]
 
 ## OUTPUTS
 
