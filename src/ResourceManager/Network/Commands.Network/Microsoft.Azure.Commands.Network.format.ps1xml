@@ -2416,6 +2416,10 @@
                 <Label>GatewayManagerEtag</Label>
                 <PropertyName>GatewayManagerEtag</PropertyName>                
               </ListItem>
+              <ListItem>
+                <Label>AllowGlobalReach</Label>
+                <PropertyName>AllowGlobalReach</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

@@ -41,6 +41,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string GatewayManagerEtag { get; set; } 
 
+        public bool AllowGlobalReach { get; set; }
+
         [JsonIgnore]
         public string SkuText
         {

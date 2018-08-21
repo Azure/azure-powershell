@@ -21,6 +21,7 @@
 ## Current Release
 * Added example for Set-AzureRmLocalNetworkGateway
 * Added examples and descriptions for Add-AzureRmVirtualNetworkGatewayIpConfig, Get-AzureRmVirtualNetworkGatewayConnectionSharedKey and New-AzureRmVirtualNetworkGatewayConnection
+* Added AllowGlobalReach flag in New-AzureExpressRouteCircuit to enable/disable Global reach feature
 * Added PublicIpPrefix Functionality. New cmdlets added
 	- New-AzureRmPublicIpPrefix
 	- Get-AzureRmPublicIpPrefix
@@ -28,6 +29,7 @@
 	- Set-AzureRmPublicIpPrefix
 * Added service endpoint policies cmdlets
 * Added deprecation messages for EnableVmProtection property in VirtualNetwork
+
 
 ## Version 6.4.1
 * Updated all help files to include full parameter types and correct input/output types.
