@@ -191,13 +191,53 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                         throw new ArgumentException("No operation is specified");
                     }
 
-                    WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Getting existing diagnostics setting called '{0}'", settingName));
-                    properties = this.MonitorManagementClient.DiagnosticSettings.GetAsync(resourceUri: this.ResourceId, name: settingName, cancellationToken: CancellationToken.None).Result;
+                    try
+                    {
+                        WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Listing existing diagnostics settings for resourceId '{0}'", this.ResourceId));
+                        IList<DiagnosticSettingsResource> listSettings = this.MonitorManagementClient.DiagnosticSettings.ListAsync(resourceUri: this.ResourceId, cancellationToken: CancellationToken.None).Result.Value;
+                        DiagnosticSettingsResource singleResource = listSettings.FirstOrDefault(e => string.Equals(e.Name, settingName, StringComparison.OrdinalIgnoreCase));
+                        if (singleResource == null)
+                        {
+                            // Creating a new setting with settingName as name
+                            WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Diagnostic setting named: '{0}' not found in list of {1} settings. Creating a new one.", settingName, listSettings.Count));
+                            
+                            properties = new DiagnosticSettingsResource();
+                            properties.Logs = new List<LogSettings>();
+                            properties.Metrics = new List<MetricSettings>();
+                        }
+                        else
+                        {
+                            // Updating existing name, regardless of name
+                            WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Updating existing diagnostic setting '{0}'", settingName));
+                            properties = singleResource;
+                        }
+                    }
+                    catch (AggregateException ex)
+                    {
+                        WriteDebugWithTimestamp("Aggregate exception {0}", ex.ToString());
+                        ErrorResponseException ex1 = ex.InnerException as ErrorResponseException;
+                        if (ex1 != null && ex1.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                        {
+                            WriteDebugWithTimestamp("Inner exception is NotFound");
+                            properties = new DiagnosticSettingsResource();
+                            properties.Logs = new List<LogSettings>();
+                            properties.Metrics = new List<MetricSettings>();
+                        }
+                        else
+                        {
+                            WriteDebugWithTimestamp("Inner exception is different NotFound: {0}", ex.InnerException.ToString());
+                            throw ex.InnerException;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        WriteDebugWithTimestamp("Unexpected exception thrown: {0}", ex.ToString());
+                        throw;
+                    }
 
                     WriteDebugWithTimestamp("Merging data. Existing setting is: {0}", properties == null ? "null" : "not null");
                     SetStorage(properties);
 
-                    // TODO: make sure that ServiceBusRuleId is not being used anymore.
                     SetServiceBus(properties);
 
                     SetEventHubRule(properties);
@@ -259,6 +299,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                     }
                 }
 
+                WriteDebugWithTimestamp("Copying diagnostic settings");
                 DiagnosticSettingsResource putParameters = CopySettings(properties);
 
                 WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Sending create/update request setting: {0}", settingName));
@@ -283,7 +324,8 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 EventHubName = properties.EventHubName,                
                 StorageAccountId = properties.StorageAccountId,
                 WorkspaceId = properties.WorkspaceId,
-                EventHubAuthorizationRuleId = properties.EventHubAuthorizationRuleId
+                EventHubAuthorizationRuleId = properties.EventHubAuthorizationRuleId,
+                ServiceBusRuleId = properties.ServiceBusRuleId
             };
             return putParameters;
         }
@@ -298,6 +340,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
             if (properties.Logs != null)
             {
+                WriteDebugWithTimestamp("Setting retention policy for logs");
                 foreach (LogSettings logSettings in properties.Logs)
                 {
                     logSettings.RetentionPolicy = retentionPolicy;
@@ -306,6 +349,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
             if (properties.Metrics != null)
             {
+                WriteDebugWithTimestamp("Setting retention policy for metrics");
                 foreach (MetricSettings metricSettings in properties.Metrics)
                 {
                     metricSettings.RetentionPolicy = retentionPolicy;
@@ -320,16 +364,14 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 throw new ArgumentException("Parameter 'Enabled' is required by 'Timegrains' parameter.");
             }
 
-            foreach (string timegrainString in this.Timegrains)
+            if (this.Timegrains.Count > 0)
             {
-                TimeSpan timegrain = XmlConvert.ToTimeSpan(timegrainString);
-                MetricSettings metricSettings = properties.Metrics.FirstOrDefault(x => TimeSpan.Equals(x.TimeGrain, timegrain));
-
-                if (metricSettings == null)
+                WriteWarningWithTimestamp("Deprecation: The timegain argument for metrics will be deprecated since the back end supports only PT1M. Currently it is ignored for backwards compatibility.");
+                WriteDebugWithTimestamp("Setting Enabled property for metrics since timegrains argument is non-empty");
+                foreach (MetricSettings metric in properties.Metrics)
                 {
-                    throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Metric timegrain '{0}' is not available", timegrainString));
+                    metric.Enabled = this.Enabled;
                 }
-                metricSettings.Enabled = this.Enabled;
             }
         }
 
@@ -340,6 +382,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 throw new ArgumentException("Parameter 'Enabled' is required by 'Categories' parameter.");
             }
 
+            WriteDebugWithTimestamp("Setting log categories, including Enabled property");
             foreach (string category in this.Categories)
             {
                 LogSettings logSettings = properties.Logs.FirstOrDefault(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
@@ -360,6 +403,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 throw new ArgumentException("Parameter 'Enabled' is required by 'MetricCategory' parameter.");
             }
 
+            WriteDebugWithTimestamp("Setting metric categories, including Enabled property");
             foreach (string category in this.MetricCategory)
             {
                 MetricSettings metricSettings = properties.Metrics.FirstOrDefault(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
@@ -373,7 +417,6 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
         }
 
-
         private void SetAllCategoriesAndTimegrains(DiagnosticSettingsResource properties)
         {
             if (!this.isEnbledParameterPresent)
@@ -381,11 +424,13 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 return;
             }
 
+            WriteDebugWithTimestamp("Setting Enabled property for logs");
             foreach (var log in properties.Logs)
             {
                 log.Enabled = this.Enabled;
             }
 
+            WriteDebugWithTimestamp("Setting Enabled property for metrics");
             foreach (var metric in properties.Metrics)
             {
                 metric.Enabled = this.Enabled;
@@ -396,6 +441,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         {
             if (this.isWorkspaceParamPresent)
             {
+                WriteDebugWithTimestamp("Setting workspace Id");
                 properties.WorkspaceId = this.WorkspaceId;
             }
         }
@@ -404,11 +450,13 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         {
             if (this.isServiceBusParamPresent)
             {
-                properties.EventHubName = this.ServiceBusRuleId;
+                WriteDebugWithTimestamp("Setting service bus rule Id");
+                properties.ServiceBusRuleId = this.ServiceBusRuleId;
             }
 
             if (this.isEventHubParamPresent)
             {
+                WriteDebugWithTimestamp("Setting event hub name");
                 properties.EventHubName = this.EventHubName;
             }
         }
@@ -417,6 +465,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         {
             if (this.isEventHubRuleParamPresent)
             {
+                WriteDebugWithTimestamp("Setting event hub rule Id");
                 properties.EventHubAuthorizationRuleId = this.EventHubAuthorizationRuleId;
             }
         }
@@ -426,6 +475,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         {
             if (this.isStorageParamPresent)
             {
+                WriteDebugWithTimestamp("Setting storage account Id");
                 properties.StorageAccountId = this.StorageAccountId;
             }
         }

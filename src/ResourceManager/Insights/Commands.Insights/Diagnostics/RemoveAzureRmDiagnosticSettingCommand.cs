@@ -16,7 +16,10 @@ using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
@@ -54,67 +57,84 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         protected override void ProcessRecordInternal()
         {
-            if (ShouldProcess(
-                target: string.Format("Remove a diagnostic setting for resource Id: {0}", this.ResourceId),
-                action: "Remove a diagnostic setting"))
+            string requestId;
+            HttpStatusCode statusCode;
+
+            if (string.IsNullOrWhiteSpace(this.Name))
             {
-                // Name defaults to "service"
-                if (string.IsNullOrWhiteSpace(this.Name))
-                {
-                    this.Name = TempServiceName;
-                }
+                WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Listing existing diagnostics settings for resourceId '{0}'", this.ResourceId));
+                IList<DiagnosticSettingsResource> listSettings = this.MonitorManagementClient.DiagnosticSettings.ListAsync(resourceUri: this.ResourceId).Result.Value;
 
-                string requestId;
-                HttpStatusCode statusCode;
-                bool isService = string.Equals(TempServiceName, this.Name, System.StringComparison.OrdinalIgnoreCase);
-                if (isService)
+                if (listSettings.Any())
                 {
-                    WriteDebugWithTimestamp("Getting 'service' diagnostic setting");
-                    AzureOperationResponse<DiagnosticSettingsResource> result = this.MonitorManagementClient.DiagnosticSettings.GetWithHttpMessagesAsync(resourceUri: this.ResourceId, name: TempServiceName).Result;
-                    if (result.Response == null)
+                    if (listSettings.Count == 1)
                     {
-                        WriteDebugWithTimestamp("Response was null");
-                        requestId = result.RequestId;
-                        statusCode = HttpStatusCode.OK;
-                    }
-                    else if (!result.Response.IsSuccessStatusCode)
-                    {
-                        // NotFound is still OK since this cmdlet want to delete
-                        WriteDebugWithTimestamp("Response marked as not successful");
-                        if (result.Response.StatusCode != HttpStatusCode.NotFound)
-                        {
-                            WriteErrorWithTimestamp(message: string.Format(CultureInfo.InvariantCulture, "Error removing Diagnostic Settings. Status code: {0}", result.Response.StatusCode));
-                            return;
-                        }
-
-                        WriteDebugWithTimestamp("Response marked as not NotFound");
-                        requestId = result.RequestId;
-                        statusCode = HttpStatusCode.OK;
+                        // Default to the only existing setting regardless of name
+                        this.Name = listSettings[0].Name;
                     }
                     else
                     {
-                        WriteDebugWithTimestamp("Setting successfully recovered, disabling it");
-                        this.DisableAllCategoriesAndTimegrains(result.Body);
-
-                        AzureOperationResponse<DiagnosticSettingsResource> resultService = this.MonitorManagementClient.DiagnosticSettings.CreateOrUpdateWithHttpMessagesAsync(
-                            resourceUri: this.ResourceId,
-                            parameters: result.Body,
-                            name: TempServiceName).Result;
-
-                        requestId = resultService.RequestId;
-                        statusCode = resultService.Response != null ? resultService.Response.StatusCode : HttpStatusCode.OK;
+                        throw new ErrorResponseException
+                        {
+                            Body = new ErrorResponse
+                            {
+                                Code = HttpStatusCode.Ambiguous.ToString(),
+                                Message = "Multiple resources exist, but no name given as input."
+                            },
+                            Response = new HttpResponseMessageWrapper(
+                                new System.Net.Http.HttpResponseMessage
+                                {
+                                    StatusCode = HttpStatusCode.Ambiguous,
+                                    ReasonPhrase = "Multiple resources exist, but no name given as input."
+                                },
+                                null)
+                        };
                     }
                 }
                 else
                 {
-                    WriteDebugWithTimestamp("Removing named diagnostic setting: {0}", this.Name);
-                    Rest.Azure.AzureOperationResponse resultDelete = this.MonitorManagementClient.DiagnosticSettings.DeleteWithHttpMessagesAsync(
-                        resourceUri: this.ResourceId,
-                        name: this.Name).Result;
-
-                    requestId = resultDelete.RequestId;
-                    statusCode = resultDelete.Response != null ? resultDelete.Response.StatusCode : HttpStatusCode.OK;
+                    WriteDebugWithTimestamp("No setting to delete for resource: {0}", this.ResourceId);
+                    return;
                 }
+
+                DiagnosticSettingsResource singleResource = listSettings.FirstOrDefault(e => string.Equals(e.Name, this.Name, StringComparison.OrdinalIgnoreCase));
+                if (singleResource == null)
+                {
+                    throw new ErrorResponseException
+                    {
+                        Body = new ErrorResponse
+                        {
+                            Code = HttpStatusCode.NotFound.ToString(),
+                            Message = string.Format(
+                                CultureInfo.InvariantCulture,
+                                "Diagnostic setting named {0} not found.",
+                                this.Name)
+                        },
+                        Response = new HttpResponseMessageWrapper(
+                            new System.Net.Http.HttpResponseMessage
+                            {
+                                StatusCode = HttpStatusCode.NotFound,
+                                ReasonPhrase = string.Format(
+                                    CultureInfo.InvariantCulture,
+                                    "Diagnostic setting named {0} not found.",
+                                    this.Name)
+                            },
+                            null)
+                    };
+                }
+            }
+
+            if (ShouldProcess(
+                target: string.Format("Remove a diagnostic setting for resource Id: {0}", this.ResourceId),
+                action: "Remove a diagnostic setting"))
+            {
+                WriteDebugWithTimestamp("Removing named diagnostic setting: {0}", this.Name);
+                Rest.Azure.AzureOperationResponse resultDelete = this.MonitorManagementClient.DiagnosticSettings.DeleteWithHttpMessagesAsync(
+                    resourceUri: this.ResourceId,
+                    name: this.Name).Result;
+
+                requestId = resultDelete.RequestId;
+                statusCode = resultDelete.Response != null ? resultDelete.Response.StatusCode : HttpStatusCode.OK;
 
                 WriteDebugWithTimestamp("Sending response");
                 var response = new AzureOperationResponse
@@ -124,6 +144,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 };
 
                 WriteObject(response);
+            }
+            else
+            {
+                WriteDebugWithTimestamp("Delete operation cancelled");
+                return;
             }
         }
 
