@@ -128,7 +128,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         {
             IAzureAccount tenantAccount = new AzureAccount();
             CopyAccount(account, tenantAccount);
-            WriteObject("AzureSession.Instance.AuthenticationFactory.Authenticate");
+            WriteDebugWithTimestamp("AzureSession.Instance.AuthenticationFactory.Authenticate");
             var tenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
                 tenantAccount,
                 environment,
@@ -141,14 +141,13 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 tenantAccount = account;
             }
             tenantAccount.SetOrAppendProperty(AzureAccount.Property.Tenants, new string[] { Tenant });
-            WriteObject("Creaet mangement client");
+            WriteDebugWithTimestamp("Create mangement client");
             using (var managementClient = AzureSession.Instance.ClientFactory.CreateCustomClient<ManagementClient>(
                             new TokenCloudCredentials(SubscriptionId, tenantToken.AccessToken),
                             environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)))
             {
-                WriteObject("Get Subscription");
+                WriteDebugWithTimestamp("Get Subscription");
                 var subscription = managementClient.Subscriptions.Get();
-                WriteObject(subscription);
 
                 AzureSubscription psSubscription = new AzureSubscription
                 {
@@ -162,11 +161,11 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 tenantAccount.SetOrAppendProperty(AzureAccount.Property.Subscriptions,
                     new string[] { psSubscription.Id });
 
-                WriteObject("AddOrSetAccount");
+                WriteDebugWithTimestamp("AddOrSetAccount");
                 // Add account 
                 ProfileClient.AddOrSetAccount(tenantAccount);
 
-                WriteObject("AddOrSetSubscription");
+                WriteDebugWithTimestamp("AddOrSetSubscription");
                 ProfileClient.AddOrSetSubscription(psSubscription);
 
                 // Set subscription as Default
