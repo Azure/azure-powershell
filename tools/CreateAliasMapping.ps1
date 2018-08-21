@@ -28,7 +28,7 @@ $psd1s | ForEach-Object {
     } 
     else
     { #>
-        $name = ($_.Name -replace "AzureRM", "Az") -replace "Azure", "Az"
+        $name = (($_.Name -replace "AzureRM", "Az") -replace "Azure", "Az") -replace ".psd1", ""
         if (!($mapping.Contains($name)))
         {
             $mapping.Add($name, @{})
