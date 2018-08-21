@@ -22,7 +22,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 .PARAMETER AvailabilitySetCount
     Number of availability sets allowed.
 
-.PARAMETER CoresLimit
+.PARAMETER CoresCount
     Number of cores allowed.
 
 .PARAMETER VmScaleSetCount
@@ -31,7 +31,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 .PARAMETER VirtualMachineCount
     Number of virtual machines allowed.
 
-.PARAMETER	StandardManagedDiskAndSnapshotSize
+.PARAMETER StandardManagedDiskAndSnapshotSize
     Size for standard managed disks and snapshots allowed.
     
 .PARAMETER PremiumManagedDiskAndSnapshotSize
@@ -45,7 +45,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
 .EXAMPLE
 
-    PS C:\> Set-AzsComputeQuota -Name Quota1 -CoresLimit 10
+    PS C:\> Set-AzsComputeQuota -Name Quota1 -VmScaleSetCount 20
 
     Update a compute quota.
 
@@ -63,9 +63,10 @@ function Set-AzsComputeQuota {
         [int32]
         $AvailabilitySetCount,
 
+        [Alias("CoresLimit")]
         [Parameter(Mandatory = $false)]
         [int32]
-        $CoresLimit,
+        $CoresCount,
 
         [Parameter(Mandatory = $false)]
         [int32]
@@ -110,7 +111,12 @@ function Set-AzsComputeQuota {
     }
 
     Process {
-
+        # Breaking changes message
+        if ($PSBoundParameters.ContainsKey('CoresCount')) {
+            if ( $MyInvocation.Line -match "\s-CoresLimit\s") {
+                Write-Warning -Message "The parameter alias CoresLimit will be deprecated in future release. Please use the parameter CoresCount instead"
+            }
+        }
 
         $NewQuota = $null
 
@@ -160,7 +166,7 @@ function Set-AzsComputeQuota {
                 $QuotaToBeSet = ConvertTo-SdkQuota -CustomQuota $NewQuota
 
                 # Update the Quota object from anything passed in
-                $flattenedParameters = @('AvailabilitySetCount', 'CoresLimit', 'VmScaleSetCount', 'VirtualMachineCount', 'StandardManagedDiskAndSnapshotSize', 'PremiumManagedDiskAndSnapshotSize' )
+                $flattenedParameters = @('AvailabilitySetCount', 'CoresCount', 'VmScaleSetCount', 'VirtualMachineCount', 'StandardManagedDiskAndSnapshotSize', 'PremiumManagedDiskAndSnapshotSize' )
                 $flattenedParameters | ForEach-Object {
                     if ($PSBoundParameters.ContainsKey($_)) {
                         
@@ -172,6 +178,8 @@ function Set-AzsComputeQuota {
                                 $QuotaToBeSet.MaxAllocationStandardManagedDisksAndSnapshots = $NewValue 
                             } elseif($_ -eq 'PremiumManagedDiskAndSnapshotSize') {
                                 $QuotaToBeSet.MaxAllocationPremiumManagedDisksAndSnapshots = $NewValue 
+                            } elseif($_ -eq 'CoresCount') {
+                                $QuotaToBeSet.CoresLimit = $NewValue 
                             } else {
                                 $QuotaToBeSet.$($_) = $NewValue 
                             }
