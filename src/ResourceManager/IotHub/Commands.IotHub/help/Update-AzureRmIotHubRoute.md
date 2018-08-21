@@ -49,7 +49,7 @@ Condition     : true
 IsEnabled     : False
 ```
 
-{{ Add example description here }}
+Updating the route information.
 
 ### Example 2
 ```
@@ -62,7 +62,7 @@ Condition     : true
 IsEnabled     : False
 ```
 
-{{ Add example description here }}
+Updating the route information.
 
 ### Example 3
 ```
@@ -75,7 +75,7 @@ Condition     : false
 IsEnabled     : False
 ```
 
-{{ Add example description here }}
+Updating the route information.
 
 ### Example 4
 ```
@@ -88,7 +88,7 @@ Condition     : false
 IsEnabled     : True
 ```
 
-{{ Add example description here }}
+Updating the route information.
 
 ## PARAMETERS
 

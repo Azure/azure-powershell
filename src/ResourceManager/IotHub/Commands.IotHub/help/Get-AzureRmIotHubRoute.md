@@ -45,7 +45,7 @@ R1        DeviceMessages   events        False
 R2        TwinChangeEvents E1            True
 ```
 
-{{ Add example description here }}
+Get all route from "myiothub" IoT Hub.
 
 ### Example 2
 ```
@@ -58,7 +58,7 @@ Condition     : true
 IsEnabled     : False
 ```
 
-{{ Add example description here }}
+Get route information from "myiothub" IoT Hub.
 
 ## PARAMETERS
 

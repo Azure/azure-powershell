@@ -68,7 +68,7 @@ R1        DeviceMessages events        True
 R5        DeviceMessages E1            True
 ```
 
-{{ Add example description here }}
+Test all route with source "DeviceMessges".
 
 ### Example 2
 ```
@@ -77,7 +77,7 @@ PS C:\> Test-AzureRmIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myio
 Result : true
 ```
 
-{{ Add example description here }}
+Test a specific route.
 
 ### Example 3
 ```
@@ -88,7 +88,7 @@ ErrorMessage  Severity LocationStartLine LocationStartColumn LocationEndLine Loc
 Syntax error. error    1                 29                  1               30
 ```
 
-{{ Add example description here }}
+Test a specific route and showing the reason of failure.
 
 ## PARAMETERS
 
