@@ -1460,6 +1460,7 @@
                         "Add-AzKeyVaultManagedStorageAccount":  "Add-AzureKeyVaultManagedStorageAccount",
                         "Restore-AzKeyVaultCertificate":  "Restore-AzureKeyVaultCertificate",
                         "New-AzKeyVault":  "New-AzureRmKeyVault",
+                        "Add-AzKeyVaultNetworkRule": "Add-AzureRmKeyVaultNetworkRule",
                         "Get-AzKeyVaultSecret":  "Get-AzureKeyVaultSecret",
                         "Add-AzKeyVaultKey":  "Add-AzureKeyVaultKey",
                         "New-AzKeyVaultCertificateOrganizationDetails":  "New-AzureKeyVaultCertificateOrganizationDetails",

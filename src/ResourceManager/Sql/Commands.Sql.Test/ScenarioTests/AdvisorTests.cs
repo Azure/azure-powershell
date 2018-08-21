@@ -64,7 +64,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         #region Database Advisor Tests
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.ChecTODO: 6992 Improve test execution performance on NetCorekIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestListDatabaseAdvisors()
         {
             RunPowerShellTest("Test-ListDatabaseAdvisors");
