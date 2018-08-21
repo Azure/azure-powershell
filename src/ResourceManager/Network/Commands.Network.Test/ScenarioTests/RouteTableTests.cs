@@ -49,6 +49,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestRouteTableSubnetRef()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteTableSubnetRef");

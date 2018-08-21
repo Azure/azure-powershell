@@ -40,6 +40,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestPublicIpAddressCRUDNoDomainNameLabel()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-NoDomainNameLabel");
@@ -48,6 +50,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestPublicIpAddressCRUDStaticAllocation()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-StaticAllocation");
@@ -56,6 +60,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestPublicIpAddressCRUDEditDomainNameLavel()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-EditDomainNameLavel");
@@ -64,6 +70,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestPublicIpAddressCRUDReverseFqdn()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-ReverseFqdn");
@@ -73,6 +81,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
         [Trait("Re-record", "ClientRuntime changes")]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestPublicIpAddressCRUDIpTag()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-IpTag");
@@ -106,6 +116,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
         [Trait("Re-record", "ClientRuntime changes")]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestPublicIpStandardSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PublicIpAddressCRUD-StandardSku");

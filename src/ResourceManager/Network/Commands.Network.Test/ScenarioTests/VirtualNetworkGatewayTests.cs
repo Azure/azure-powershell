@@ -66,6 +66,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void VirtualNetworkGatewayActiveActiveFeatureTest()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayActiveActiveFeatureOperations");
@@ -74,6 +76,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void VirtualNetworkGatewayRouteApiTest()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayBgpRouteApi");
@@ -82,6 +86,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestVirtualNetworkGatewayP2SVpnProfile()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format(
@@ -91,6 +97,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void VirtualNetworkGatewayIkeV2Test()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayIkeV2");
@@ -99,6 +107,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void VirtualNetworkGatewayOpenVPNTest()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayOpenVPN");
@@ -107,6 +117,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void VirtualNetworkGatewayVpnCustomIpsecPolicySetTest()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet");

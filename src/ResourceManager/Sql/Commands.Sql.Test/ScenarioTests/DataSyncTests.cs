@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestSyncAgentsGetAndList()
         {
             RunPowerShellTest("Test-GetAndListSyncAgents");
@@ -57,6 +59,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestSyncAgentLinkedDatabaseList()
         {
             RunPowerShellTest("Test-listSyncAgentLinkedDatabase");
@@ -78,6 +82,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestSyncGroupsGetAndList()
         {
             RunPowerShellTest("Test-GetAndListSyncGroups");
@@ -106,6 +112,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestSyncMembersGetAndList()
         {
             RunPowerShellTest("Test-GetAndListSyncMembers");
@@ -120,6 +128,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestSyncMemberSchemaRefreshAndGet()
         {
             RunPowerShellTest("Test-RefreshAndGetSyncMemberSchema");

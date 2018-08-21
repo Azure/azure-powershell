@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestGetServerRecommendedAction()
         {
             RunPowerShellTest("Test-GetServerRecommendedAction");
@@ -54,6 +56,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestListDatabaseRecommendedActions()
         {
             RunPowerShellTest("Test-ListDatabaseRecommendedActions");
@@ -86,6 +90,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestGetElasticPoolRecommendedAction()
         {
             RunPowerShellTest("Test-GetElasticPoolRecommendedAction");
