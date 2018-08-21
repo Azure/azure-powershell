@@ -14,12 +14,10 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Utilities.Profile;
-using Microsoft.WindowsAzure.Management;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.WindowsAzure.Management.Models;
+
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management;
+using Microsoft.WindowsAzure.Management.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {

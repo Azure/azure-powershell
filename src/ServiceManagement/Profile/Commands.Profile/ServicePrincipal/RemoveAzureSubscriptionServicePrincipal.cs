@@ -12,21 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
-using Microsoft.WindowsAzure.Commands.Profile.Models;
+
+using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using Microsoft.WindowsAzure.Management;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using static Microsoft.WindowsAzure.Management.Models.SubscriptionServicePrincipalListResponse;
-using Microsoft.WindowsAzure.Management.Models;
+
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
