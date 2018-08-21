@@ -13,7 +13,7 @@ Create a new compute quota used to limit compute resources.
 ## SYNTAX
 
 ```
-New-AzsComputeQuota [-Name] <String> [[-AvailabilitySetCount] <Int32>] [[-CoresLimit] <Int32>]
+New-AzsComputeQuota [-Name] <String> [[-AvailabilitySetCount] <Int32>] [[-CoresCount] <Int32>]
  [[-VmScaleSetCount] <Int32>] [[-VirtualMachineCount] <Int32>] [[-StandardManagedDiskAndSnapshotSize] <Int32>]
  [[-PremiumManagedDiskAndSnapshotSize] <Int32>] [[-Location] <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -26,7 +26,7 @@ Create a new compute quota.
 
 ### EXAMPLE 1
 ```
-New-AzsComputeQuota -Name testQuota5 -AvailabilitySetCount 1000 -CoresLimit 1000 -VmScaleSetCount 1000 -VirtualMachineCount 1000 -StandardManagedDiskAndSnapshotSize 1024 -PremiumManagedDiskAndSnapshotSize 1024
+New-AzsComputeQuota -Name testQuota5 -AvailabilitySetCount 1000 -CoresCount 1000 -VmScaleSetCount 1000 -VirtualMachineCount 1000 -StandardManagedDiskAndSnapshotSize 1024 -PremiumManagedDiskAndSnapshotSize 1024
 ```
 
 Create a new compute quota.
@@ -48,13 +48,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CoresLimit
+### -CoresCount
 Number  of cores allowed.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: CoresLimit
 
 Required: False
 Position: 3
