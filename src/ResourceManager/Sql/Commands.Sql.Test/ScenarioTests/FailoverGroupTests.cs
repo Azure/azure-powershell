@@ -41,6 +41,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestCreateFailoverGroup_Positional()
         {
             RunPowerShellTest("Test-CreateFailoverGroup-Positional");
@@ -55,6 +57,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestCreateFailoverGroup_AutomaticPolicyGracePeriodReadOnlyFailover()
         {
             RunPowerShellTest("Test-CreateFailoverGroup-AutomaticPolicyGracePeriodReadOnlyFailover");
@@ -62,6 +66,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestCreateFailoverGroup_ZeroGracePeriod()
         {
             RunPowerShellTest("Test-CreateFailoverGroup-ZeroGracePeriod");
@@ -83,6 +89,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestSetFailoverGroup_Named()
         {
             RunPowerShellTest("Test-SetFailoverGroup-Named");
@@ -97,6 +105,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestSetFailoverGroup_PipeServer()
         {
             RunPowerShellTest("Test-SetFailoverGroup-PipeServer");
@@ -104,6 +114,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestSetFailoverGroup_AutomaticWithGracePeriodReadOnlyFailover()
         {
             RunPowerShellTest("Test-SetFailoverGroup-AutomaticWithGracePeriodReadOnlyFailover");
@@ -111,6 +123,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestSetFailoverGroup_AutomaticWithGracePeriodZero()
         {
             RunPowerShellTest("Test-SetFailoverGroup-AutomaticWithGracePeriodZero");
@@ -118,6 +132,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestSetFailoverGroup_AutomaticToManual()
         {
             RunPowerShellTest("Test-SetFailoverGroup-AutomaticToManual");
@@ -125,6 +141,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestSetFailoverGroup_ManualToAutomaticNoGracePeriod()
         {
             RunPowerShellTest("Test-SetFailoverGroup-ManualToAutomaticNoGracePeriod");
@@ -139,6 +157,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void Test_AddRemoveDatabasesToFromFailoverGroup()
         {
             RunPowerShellTest("Test-AddRemoveDatabasesToFromFailoverGroup");
@@ -153,6 +173,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestSwitchFailoverGroupAllowDataLoss()
         {
             RunPowerShellTest("Test-SwitchFailoverGroupAllowDataLoss");

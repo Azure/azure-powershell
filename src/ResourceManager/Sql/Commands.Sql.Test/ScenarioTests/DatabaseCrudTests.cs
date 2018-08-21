@@ -49,6 +49,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestVcoreDatabaseCreateWithLicenseType()
         {
             RunPowerShellTest("Test-CreateVcoreDatabaseWithLicenseType");
@@ -56,6 +58,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestDatabaseCreateWithSampleName()
         {
             RunPowerShellTest("Test-CreateDatabaseWithSampleName");
@@ -63,6 +67,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestDatabaseCreateWithZoneRedundancy()
         {
             RunPowerShellTest("Test-CreateDatabaseWithZoneRedundancy");
@@ -84,6 +90,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestVcoreDatabaseUpdateWithLicenseType()
         {
             RunPowerShellTest("Test-UpdateVcoreDatabaseLicenseType");
@@ -91,6 +99,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestDatabaseUpdateWithZoneRedundancy()
         {
             RunPowerShellTest("Test-UpdateDatabaseWithZoneRedundant");
@@ -98,6 +108,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestDatabaseUpdateWithZoneRedundancyNotSpecified()
         {
             RunPowerShellTest("Test-UpdateDatabaseWithZoneRedundantNotSpecified");
