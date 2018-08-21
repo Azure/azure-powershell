@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
-            Path = ResolvePath(Path);
+            Path = ResolveUserPath(Path);
             if (ShouldProcess(CertificateName, Properties.Resources.VerifyIotHubCertificate))
             {
                 string certificate = string.Empty;

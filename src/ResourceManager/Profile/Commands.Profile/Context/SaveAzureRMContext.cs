@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            Path = ResolvePath(Path);
+            Path = this.ResolveUserPath(Path);
             if (Profile != null)
             {
                 if (ShouldProcess(string.Format(Resources.ProfileArgumentWrite, Path),

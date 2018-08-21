@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            Path = this.ResolvePath(Path);
+            Path = this.ResolveUserPath(Path);
 
             if (this.ShouldProcess(
                 "Vault Setting file",
