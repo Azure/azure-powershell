@@ -14,14 +14,14 @@ Update an existing compute quota using the provided parameters.
 
 ### Update (Default)
 ```
-Set-AzsComputeQuota -Name <String> [-AvailabilitySetCount <Int32>] [-CoresLimit <Int32>]
+Set-AzsComputeQuota -Name <String> [-AvailabilitySetCount <Int32>] [-CoresCount <Int32>]
  [-VmScaleSetCount <Int32>] [-VirtualMachineCount <Int32>] [-StandardManagedDiskAndSnapshotSize <Int32>]
  [-PremiumManagedDiskAndSnapshotSize <Int32>] [-Location <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Set-AzsComputeQuota [-AvailabilitySetCount <Int32>] [-CoresLimit <Int32>] [-VmScaleSetCount <Int32>]
+Set-AzsComputeQuota [-AvailabilitySetCount <Int32>] [-CoresCount <Int32>] [-VmScaleSetCount <Int32>]
  [-VirtualMachineCount <Int32>] [-StandardManagedDiskAndSnapshotSize <Int32>]
  [-PremiumManagedDiskAndSnapshotSize <Int32>] [-Location <String>] -ResourceId <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -29,7 +29,7 @@ Set-AzsComputeQuota [-AvailabilitySetCount <Int32>] [-CoresLimit <Int32>] [-VmSc
 
 ### InputObject
 ```
-Set-AzsComputeQuota [-AvailabilitySetCount <Int32>] [-CoresLimit <Int32>] [-VmScaleSetCount <Int32>]
+Set-AzsComputeQuota [-AvailabilitySetCount <Int32>] [-CoresCount <Int32>] [-VmScaleSetCount <Int32>]
  [-VirtualMachineCount <Int32>] [-StandardManagedDiskAndSnapshotSize <Int32>]
  [-PremiumManagedDiskAndSnapshotSize <Int32>] [-Location <String>] -InputObject <ComputeQuotaObject> [-WhatIf]
  [-Confirm] [<CommonParameters>]
@@ -42,7 +42,7 @@ Update an existing compute quota.
 
 ### EXAMPLE 1
 ```
-Set-AzsComputeQuota -Name Quota1 -CoresLimit 10
+Set-AzsComputeQuota -Name Quota1 -VmScaleSetCount 20
 ```
 
 Update a compute quota.
@@ -64,13 +64,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CoresLimit
+### -CoresCount
 Number of cores allowed.
 
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: CoresLimit
 
 Required: False
 Position: Named
