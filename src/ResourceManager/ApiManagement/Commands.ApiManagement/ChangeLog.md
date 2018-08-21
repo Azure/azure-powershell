@@ -19,6 +19,16 @@
 -->
 ## Current Release
 * Fixed issue with default resource groups not being set.
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6603
+    - Import-AzureRmApiManagementApi and *-AzureRmApiManagementCertificate cmdlets now handle relative Paths
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6879
+    - The CertificateInformation is a settable property allowing for Set-AzureRmApiManagement cmdlet to work property. Fixed by upgrading to 
+	4.0.4-preview nuget
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6853
+    - Fixed the Odata filter for Search by Name on Product
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6814
+    - Fixed the Odata filter for Search by Name on Api
+* Added support for AzureMonitor logger
 
 ## Version 6.1.3
 * Updated to the latest version of the Azure ClientRuntime.
