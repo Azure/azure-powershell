@@ -56,6 +56,8 @@ A string representing a comma separated list of users or groups to be set as adm
 The users or groups need to be specified UPN format e.g.
 user@contoso.com or groups@contoso.com
 
+Note: If this parameter is used, any existing Administrator will be overwritten.
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
