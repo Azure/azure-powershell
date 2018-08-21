@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.4'; }, 
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.4'; },
                @{ModuleName = 'Azure.Storage'; ModuleVersion = '4.1.1'; })
 
 # Assemblies that must be loaded prior to importing this module
@@ -73,11 +73,11 @@ NestedModules = @('.\Microsoft.Azure.Commands.Management.Storage.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmStorageAccount', 'Get-AzureRmStorageAccountKey', 
-               'New-AzureRmStorageAccount', 'New-AzureRmStorageAccountKey', 
-               'Remove-AzureRmStorageAccount', 'Set-AzureRmCurrentStorageAccount', 
-               'Set-AzureRmStorageAccount', 
-               'Get-AzureRmStorageAccountNameAvailability', 
+CmdletsToExport = 'Get-AzureRmStorageAccount', 'Get-AzureRmStorageAccountKey',
+               'New-AzureRmStorageAccount', 'New-AzureRmStorageAccountKey',
+               'Remove-AzureRmStorageAccount', 'Set-AzureRmCurrentStorageAccount',
+               'Set-AzureRmStorageAccount',
+               'Get-AzureRmStorageAccountNameAvailability',
                'Get-AzureRmStorageUsage'
 
 # Variables to export from this module
@@ -119,7 +119,7 @@ PrivateData = @{
         # ExternalModuleDependencies = ''
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
