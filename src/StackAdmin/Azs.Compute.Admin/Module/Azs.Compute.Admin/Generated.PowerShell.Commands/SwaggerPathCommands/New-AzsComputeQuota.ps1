@@ -19,7 +19,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 .PARAMETER AvailabilitySetCount
     Number  of availability sets allowed.
 
-.PARAMETER CoresLimit
+.PARAMETER CoresCount
     Number  of cores allowed.
 
 .PARAMETER VmScaleSetCount
@@ -28,7 +28,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 .PARAMETER VirtualMachineCount
     Number  of virtual machines allowed.
 
-.PARAMETER	StandardManagedDiskAndSnapshotSize
+.PARAMETER StandardManagedDiskAndSnapshotSize
     Size for standard managed disks and snapshots allowed.
     
 .PARAMETER PremiumManagedDiskAndSnapshotSize
@@ -39,7 +39,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
 .EXAMPLE
 
-    PS C:\> New-AzsComputeQuota -Name testQuota5 -AvailabilitySetCount 1000 -CoresLimit 1000 -VmScaleSetCount 1000 -VirtualMachineCount 1000 -StandardManagedDiskAndSnapshotSize 1024 -PremiumManagedDiskAndSnapshotSize 1024
+    PS C:\> New-AzsComputeQuota -Name testQuota5 -AvailabilitySetCount 1000 -CoresCount 1000 -VmScaleSetCount 1000 -VirtualMachineCount 1000 -StandardManagedDiskAndSnapshotSize 1024 -PremiumManagedDiskAndSnapshotSize 1024
 
     Create a new compute quota.
 
@@ -57,10 +57,10 @@ function New-AzsComputeQuota {
         [int32]
         $AvailabilitySetCount = 10,
 
-        #[Alias("CoresLimit")]
+        [Alias("CoresLimit")]
         [Parameter(Mandatory = $false)]
         [int32]
-        $CoresLimit = 100,
+        $CoresCount = 100,
 
         [Parameter(Mandatory = $false)]
         [int32]
@@ -95,17 +95,14 @@ function New-AzsComputeQuota {
     }
 
     Process {
+        # Breaking changes message
+        if ($PSBoundParameters.ContainsKey('CoresCount')) {
+            if ( $MyInvocation.Line -match "\s-CoresLimit\s") {
+                Write-Warning -Message "The parameter alias CoresLimit will be deprecated in future release. Please use the parameter CoresCount instead"
+            }
+        }
 
         if ($PSCmdlet.ShouldProcess("$Name", "Create a new compute quota.")) {
-
-            <#
-            # Breaking changes message
-            if ($PSBoundParameters.ContainsKey('CoresCount')) {
-                if ( $MyInvocation.Line -match "\s-CoresLimit\s") {
-                    Write-Warning -Message "The parameter alias CoresLimit will be deprecated in future release. Please use the parameter CoresCount instead"
-                }
-            }
-            #>
 
             # Default location if missing
             if ([System.String]::IsNullOrEmpty($Location)) {
@@ -125,7 +122,29 @@ function New-AzsComputeQuota {
                 }
             }
 
-            $NewQuota = ConvertTo-SdkQuota $PSBoundParameters
+            $utilityCmdParams = @{}
+            $flattenedParameters = @('AvailabilitySetCount', 'CoresCount', 'VmScaleSetCount', 'VirtualMachineCount', 'StandardManagedDiskAndSnapshotSize', 'PremiumManagedDiskAndSnapshotSize' )
+            $flattenedParameters | ForEach-Object {
+                if ($PSBoundParameters.ContainsKey($_)) {
+                        
+                    $NewValue = $PSBoundParameters[$_]
+                        
+                    if($NewValue -ne $null)
+                    {
+                        if($_ -eq 'StandardManagedDiskAndSnapshotSize') {
+                            $utilityCmdParams.MaxAllocationStandardManagedDisksAndSnapshots = $NewValue 
+                        } elseif($_ -eq 'PremiumManagedDiskAndSnapshotSize') {
+                            $utilityCmdParams.MaxAllocationPremiumManagedDisksAndSnapshots = $NewValue 
+                        } elseif($_ -eq 'CoresCount') {
+                            $utilityCmdParams.CoresLimit = $NewValue 
+                        } else  {
+                            $utilityCmdParams[$_] = $NewValue 
+                        }
+                    }
+                }
+            }
+
+            $NewQuota = New-QuotaObject @utilityCmdParams
 
             $NewServiceClient_params = @{
                 FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
@@ -147,9 +166,7 @@ function New-AzsComputeQuota {
                 }
 
                 $quotaObj = Get-TaskResult @GetTaskResult_params
-                [ComputeQuotaObject]$script:result = ConvertTo-ComputeQuota -Quota $quotaObj
-
-                Write-Output -InputObject $script:result
+                ConvertTo-ComputeQuota -Quota $quotaObj
             }
         }
     }

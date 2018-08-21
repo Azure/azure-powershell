@@ -69,11 +69,11 @@ function New-QuotaObject
 
         [Parameter(Mandatory = $false)]
         [int32]
-		$MaxAllocationStandardManagedDisksAndSnapshots,
+        $MaxAllocationStandardManagedDisksAndSnapshots,
 
         [Parameter(Mandatory = $false)]
         [int32]
-		$MaxAllocationPremiumManagedDisksAndSnapshots,
+        $MaxAllocationPremiumManagedDisksAndSnapshots,
 
         [Parameter(Mandatory = $false)]
         [string]
