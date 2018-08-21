@@ -15,6 +15,8 @@
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
@@ -38,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the diagnostics setting name parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The diagnostic setting name. Defaults to 'service'")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The diagnostic setting name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -46,13 +48,20 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         protected override void ProcessRecordInternal()
         {
-            // Temporary service name constant provided for backwards compatibility
-            DiagnosticSettingsResource result = this.MonitorManagementClient.DiagnosticSettings.Get(
-                resourceUri: this.ResourceId, 
-                name: string.IsNullOrWhiteSpace(this.Name) ? SetAzureRmDiagnosticSettingCommand.TempServiceName : this.Name);
-
-            var psResult = new PSServiceDiagnosticSettings(result);
-            WriteObject(psResult);
+            IList<PSServiceDiagnosticSettings> output;
+            if (string.IsNullOrWhiteSpace(this.Name))
+            {
+                // Temporary service name constant provided for backwards compatibility
+                IList<DiagnosticSettingsResource> results = this.MonitorManagementClient.DiagnosticSettings.List(resourceUri: this.ResourceId).Value;
+                output = results.Select(e => new PSServiceDiagnosticSettings(e)).ToList();
+            }
+            else
+            {
+                // Temporary service name constant provided for backwards compatibility
+                DiagnosticSettingsResource result = this.MonitorManagementClient.DiagnosticSettings.Get(resourceUri: this.ResourceId, name: this.Name);
+                output = new List<PSServiceDiagnosticSettings> { new PSServiceDiagnosticSettings(result) };
+            }
+            WriteObject(sendToPipeline: output, enumerateCollection: true);
         }
     }
 }

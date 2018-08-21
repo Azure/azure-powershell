@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact(Skip = "Needs to be recorded again")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddGetListSetRemoveActionGroup()
         {
