@@ -42,7 +42,7 @@ PS C:\> Remove-AzureRmIotHubRoute -ResourceGroupName "myresourcegroup" -Name "my
 True
 ```
 
-{{ Add example description here }}
+Delete route "R1" from "myiothub" IoT Hub.
 
 ## PARAMETERS
 

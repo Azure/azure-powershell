@@ -46,7 +46,7 @@ E2   EventHub				resourcegroup1/event2
 S1   AzureStorageContainer	mystorage1/container
 ```
 
-{{ Add example description here }}
+Get all the endpoints from "myiothub" IoT Hub.
 
 ### Example 2
 ```
@@ -58,7 +58,7 @@ resourcegroup1    91d12343-a3de-345d-b2ea-135792468abc E1
 resourcegroup1    91d12343-a3de-345d-b2ea-135792468abc E2
 ```
 
-{{ Add example description here }}
+Get all the endpoints of type EventHub from "myiothub" IoT Hub. 
 
 ### Example 3
 ```
@@ -70,7 +70,7 @@ EndpointName      : E1
 ConnectionString  : Endpoint=sb://myeventhub1.servicebus.windows.net:5671/;SharedAccessKeyName=iothubroutes_myeventhub1;SharedAccessKey=****;EntityPath=event1
 ```
 
-{{ Add example description here }}
+Get all the endpoints of type EventHub from "myiothub" IoT Hub.
 
 ### Example 4
 ```
@@ -82,7 +82,7 @@ EndpointName      : E1
 ConnectionString  : Endpoint=sb://myeventhub1.servicebus.windows.net:5671/;SharedAccessKeyName=iothubroutes_myeventhub1;SharedAccessKey=****;EntityPath=event1
 ```
 
-{{ Add example description here }}
+Get an endpoint information from "myiothub" IoT Hub.
 
 ## PARAMETERS
 

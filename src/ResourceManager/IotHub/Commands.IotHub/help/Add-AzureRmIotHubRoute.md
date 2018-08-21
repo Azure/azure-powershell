@@ -49,7 +49,7 @@ Condition     :
 IsEnabled     : False
 ```
 
-{{ Add example description here }}
+Create a new route "R1".
 
 ### Example 2
 ```
@@ -62,7 +62,7 @@ Condition     : true
 IsEnabled     : True
 ```
 
-{{ Add example description here }}
+Create a new route "R1" with all parameters.
 
 ## PARAMETERS
 

@@ -31,7 +31,7 @@ Remove-AzureRmIotHubRoutingEndpoint [-ResourceId] <String> [-EndpointName <Strin
 ```
 
 ## DESCRIPTION
-Delete and endpoint. Remember to delete any routes that use this endpoint.
+Delete an endpoint. Remember to delete any routes that use this endpoint.
 
 ## EXAMPLES
 
@@ -42,7 +42,7 @@ PS C:\> Remove-AzureRmIotHubRoutingEndpoint -ResourceGroupName "myresourcegroup"
 True
 ```
 
-{{ Add example description here }}
+Delete endpoint "E2" from "myiothub" IoT Hub.
 
 ## PARAMETERS
 
