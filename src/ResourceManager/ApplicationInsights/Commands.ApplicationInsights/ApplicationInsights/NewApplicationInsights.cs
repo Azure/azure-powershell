@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
-    [Cmdlet(VerbsCommon.New, ApplicationInsightsNounStr, SupportsShouldProcess = true), OutputType(typeof(PSApplicationInsightsComponent))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationInsights", SupportsShouldProcess = true), OutputType(typeof(PSApplicationInsightsComponent))]
     public class NewAzureApplicationInsights : ApplicationInsightsBaseCmdlet
     {
         [Parameter(

@@ -96,7 +96,7 @@ Starts the update azure to azure replication policy using the specified paramete
 Specifies the frequency(in hours) at which to create application consistent recovery points.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Specifies the type of authentication used.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default, EnterpriseToEnterprise
 Aliases:
 Accepted values: Certificate, Kerberos
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 Switch parameter specifying that the replication policy used to replicate Azure virtual machines between two Azure regions will be updated.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AzureToAzure
 Aliases:
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 Switch parameter indicating that the specfied policy is used to replicate failed over virtual machines running in Azure back to an on-premises VMware site.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AzureToVMware
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 Specifies if compression should be enabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default, EnterpriseToEnterprise
 Aliases:
 Accepted values: Enable, Disable
@@ -169,25 +169,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -202,7 +188,7 @@ Accept wildcard characters: False
 Specifies if encryption should be enabled or disabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default, HyperVToAzure
 Aliases:
 Accepted values: Enable, Disable
@@ -218,7 +204,7 @@ Accept wildcard characters: False
 Switch parameter indicating that the specfied policy is used to replicate Hyper-V virtual machines to Azure.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: HyperVToAzure
 Aliases:
 
@@ -233,7 +219,7 @@ Accept wildcard characters: False
 Input object for the cmdlet: Specifies the ASR replication policy object corresponding to the replication policy to be updated.
 
 ```yaml
-Type: ASRPolicy
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy
 Parameter Sets: (All)
 Aliases: Policy
 
@@ -248,7 +234,7 @@ Accept wildcard characters: False
 Specifies multiVm sync status for the policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VMwareToAzure, AzureToAzure, AzureToVMware
 Aliases:
 Accepted values: Enable, Disable
@@ -264,24 +250,9 @@ Accept wildcard characters: False
 Specifies the number recovery points to retain.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: Default, HyperVToAzure, EnterpriseToEnterprise
 Aliases: RecoveryPoints
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RPOWarningThresholdInMinutes
-The RPO threshold value in minutes to warn on.
-
-```yaml
-Type: Int32
-Parameter Sets: VMwareToAzure, AzureToVMware
-Aliases:
 
 Required: False
 Position: Named
@@ -293,9 +264,8 @@ Accept wildcard characters: False
 ### -RecoveryAzureStorageAccountId
 Specifies the Azure storage account ID of the replication target. Used as the target storage account for replication if an alternate is not provided while enabling replication using the New-AzureRmRecoveryServicesASRReplicationProtectedItem cmdlet.
 
-
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default, HyperVToAzure
 Aliases:
 
@@ -310,7 +280,7 @@ Accept wildcard characters: False
 Time in hours to retain recovery points after creation.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: VMwareToAzure, AzureToAzure, AzureToVMware
 Aliases:
 
@@ -325,7 +295,7 @@ Accept wildcard characters: False
 Specifies if the replica virtual machine should be deleted on disabling replication from a VMM managed site to another.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default, EnterpriseToEnterprise
 Aliases:
 Accepted values: Required, NotRequired
@@ -340,13 +310,12 @@ Accept wildcard characters: False
 ### -ReplicationFrequencyInSeconds
 Specifies the replication frequency interval in seconds.
 Valid values are:
-
 - 30
 - 300
 - 900
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default, HyperVToAzure, EnterpriseToEnterprise
 Aliases:
 Accepted values: 30, 300, 900
@@ -362,7 +331,7 @@ Accept wildcard characters: False
 Specifies the replication method.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default, EnterpriseToEnterprise
 Aliases:
 Accepted values: Online, Offline
@@ -378,7 +347,7 @@ Accept wildcard characters: False
 Specifies the port used for replication.
 
 ```yaml
-Type: UInt16
+Type: System.UInt16
 Parameter Sets: Default, EnterpriseToEnterprise
 Aliases:
 
@@ -394,7 +363,7 @@ Specifies the replication start time.
 It must be no later than 24-hours from the start of the job.
 
 ```yaml
-Type: TimeSpan
+Type: System.Nullable`1[System.TimeSpan]
 Parameter Sets: Default, HyperVToAzure, EnterpriseToEnterprise
 Aliases:
 
@@ -405,16 +374,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VMwareToAzure
-Switch parameter indicating that the specfied policy is used to replicate VMware virtual machines to Azure.
+### -RPOWarningThresholdInMinutes
+The RPO threshold value in minutes to warn on.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: VMwareToAzure
+Type: System.Int32
+Parameter Sets: VMwareToAzure, AzureToVMware
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -424,7 +393,7 @@ Accept wildcard characters: False
 Switch parameter indicating that the specfied policy is used to replicate VMM managed Hyper-V virtual machines between two Hyper-V sites.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: EnterpriseToEnterprise
 Aliases:
 
@@ -435,11 +404,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VMwareToAzure
+Switch parameter indicating that the specfied policy is used to replicate VMware virtual machines to Azure.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: VMwareToAzure
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -456,10 +455,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
 
 ## NOTES
 

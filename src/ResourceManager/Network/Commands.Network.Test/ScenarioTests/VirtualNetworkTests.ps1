@@ -150,15 +150,28 @@ function Test-subnetCRUD
         Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
         Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
         Assert-AreEqual "10.0.3.0/24" $vnetExpected.Subnets[1].AddressPrefix
-        
+
         # Get subnet
         $subnet2 = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name
         $subnetAll = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzureRmVirtualNetworkSubnetConfig
-        
+
         Assert-AreEqual 2 @($subnetAll).Count
         Assert-AreEqual $subnetName $subnetAll[0].Name
         Assert-AreEqual $subnet2Name $subnetAll[1].Name
         Assert-AreEqual $subnet2Name $subnet2.Name
+
+        # Get non-existing subnet
+        try
+        {
+            $subnetNotExists = $vnetExpected | Get-AzureRmVirtualNetworkSubnetConfig -Name "Subnet-DoesNotExist"
+        }
+        catch
+        {
+            if ($_.Exception.GetType() -ne [System.ArgumentException])
+            {
+                throw;
+            }
+        }
 
         # Remove a subnet
         Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Remove-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name | Set-AzureRmVirtualNetwork
@@ -380,6 +393,132 @@ function Test-VirtualNetworkPeeringCRUD
     }
 }
 
+<#
+.SYNOPSIS
+Tests on CRUD for virtualNetworkpeering.
+#>
+function Test-MultiTenantVNetPCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $peerName = Get-ResourceName
+    $vnet1Name = Get-ResourceName
+    $vnet2Id = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/paryTestRG/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork1"
+    $subnet1Name = Get-ResourceName
+    $subnet2Name = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+
+    $location = "eastus"
+    
+	# The remote VNet in this case lives under a different tenant and hence can is assumed to be created by the time the test is run
+	# Create the remote Virtual Network : This needs to e done ins a seperate subscription that lives under a different tenant
+	# As of now the steps are manual
+
+    # $subnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.1.1.0/24
+    # $vnet2 = New-AzureRmvirtualNetwork -Name myVirtualNetwork1 -ResourceGroupName $rgname -Location eastus -AddressPrefix 10.1.0.0/16 -Subnet $subnet2
+
+    try 
+    {
+        # Create the resource group
+        $rglocation = "eastus"
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create the Virtual Network1
+        $subnet1 = New-AzureRmVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.0.0/24
+        $vnet1 = New-AzureRmvirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet2
+                
+        Assert-AreEqual $vnet1.ResourceGroupName $rgname    
+        Assert-AreEqual $vnet1.Name $vnet1Name    
+        Assert-AreEqual $vnet1.Location $rglocation
+        Assert-AreEqual "Succeeded" $vnet1.ProvisioningState        
+       
+
+        # Add Peering to vnet1
+        $job = $vnet1 | Add-AzureRmVirtualNetworkPeering -name $peerName -RemoteVirtualNetworkId $vnet2Id -AllowForwardedTraffic -AsJob
+        $job | Wait-Job
+        $peer = $job | Receive-Job
+        
+        Assert-AreEqual $peer.ResourceGroupName $rgname    
+        Assert-AreEqual $peer.Name $peerName    
+        Assert-AreEqual $peer.VirtualNetworkName $vnet1Name
+        Assert-AreEqual "Succeeded" $peer.ProvisioningState 
+        Assert-AreEqual $peer.RemoteVirtualNetwork.Id $vnet2.Id
+        Assert-AreEqual $peer.AllowVirtualNetworkAccess True
+        Assert-AreEqual $peer.AllowForwardedTraffic True
+        Assert-Null $peer.RemoteGateways
+        Assert-Null $peer.$peer.RemoteVirtualNetworkAddressSpace
+        
+        # Get peer
+        $getPeer = Get-AzureRmVirtualNetworkPeering -name $peerName -VirtualNetworkName $vnet1Name -ResourceGroupName $rgname
+        
+        Assert-AreEqual $getPeer.ResourceGroupName $rgname    
+        Assert-AreEqual $getPeer.Name $peerName    
+        Assert-AreEqual $getPeer.VirtualNetworkName $vnet1Name
+        Assert-AreEqual "Succeeded" $getPeer.ProvisioningState 
+        Assert-AreEqual $getPeer.RemoteVirtualNetwork.Id $vnet2.Id
+        Assert-AreEqual $getPeer.AllowVirtualNetworkAccess True
+        Assert-AreEqual $getPeer.AllowForwardedTraffic True
+        Assert-AreEqual $peer.AllowGatewayTransit $false
+        Assert-AreEqual $peer.UseRemoteGateways $false
+        Assert-Null $getPeer.RemoteGateways
+        Assert-Null $getPeer.$peer.RemoteVirtualNetworkAddressSpace
+        
+        # List Peer
+        $listPeer = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName $vnet1Name -ResourceGroupName $rgname
+        
+        Assert-AreEqual 1 @($listPeer).Count
+        Assert-AreEqual $listPeer[0].ResourceGroupName $rgname    
+        Assert-AreEqual $listPeer[0].Name $peerName    
+        Assert-AreEqual $listPeer[0].VirtualNetworkName $vnet1Name
+        Assert-AreEqual "Succeeded" $listPeer[0].ProvisioningState 
+        Assert-AreEqual $listPeer[0].RemoteVirtualNetwork.Id $vnet2.Id
+        Assert-AreEqual $listPeer[0].AllowVirtualNetworkAccess True
+        Assert-AreEqual $listPeer[0].AllowForwardedTraffic True
+        Assert-AreEqual $listPeer[0].AllowGatewayTransit $false
+        Assert-AreEqual $listPeer[0].UseRemoteGateways $false
+        Assert-Null $listPeer[0].RemoteGateways
+        Assert-Null $listPeer[0].$peer.RemoteVirtualNetworkAddressSpace
+        
+        # Set Peer
+        $getPeer.AllowForwardedTraffic = $false
+        
+        $job = $getPeer | Set-AzureRmVirtualNetworkPeering -AsJob
+        $job | Wait-Job
+        $setPeer = $job | Receive-Job
+        
+        Assert-AreEqual $setPeer.ResourceGroupName $rgname    
+        Assert-AreEqual $setPeer.Name $peerName    
+        Assert-AreEqual $setPeer.VirtualNetworkName $vnet1Name
+        Assert-AreEqual "Succeeded" $setPeer.ProvisioningState 
+        Assert-AreEqual $setPeer.RemoteVirtualNetwork.Id $vnet2.Id
+        Assert-AreEqual $setPeer.AllowVirtualNetworkAccess True
+        Assert-AreEqual $setPeer.AllowForwardedTraffic $false
+        Assert-AreEqual $setPeer.AllowGatewayTransit $false
+        Assert-AreEqual $setPeer.UseRemoteGateways $false
+        Assert-Null $setPeer.RemoteGateways
+        Assert-Null $setPeer.$peer.RemoteVirtualNetworkAddressSpace
+        
+        # Delete Peer
+        $job = Remove-AzureRmVirtualNetworkPeering -name $peerName -VirtualNetworkName $vnet1Name -ResourceGroupName $rgname -Force -PassThru -AsJob
+        $job | Wait-Job
+        $delete = $job | Receive-Job
+        Assert-AreEqual true $delete
+
+        # Delete VirtualNetwork
+        $delete = Remove-AzureRmvirtualNetwork -ResourceGroupName $rgname -name $vnet1Name -PassThru -Force
+        Assert-AreEqual true $delete
+
+		# Delete VNet2 in the remote tenant
+        # $delete = Remove-AzureRmvirtualNetwork -ResourceGroupName $rgname -name $vnet2Name -PassThru -Force
+        # Assert-AreEqual true $delete
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
 
 <#
 .SYNOPSIS

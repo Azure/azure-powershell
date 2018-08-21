@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
+
+## Version 0.6.12
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 0.6.11
+* Updated help files to include full parameter types and correct input/output types.
+
+## Version 0.6.10
+* Add required property ResourceGroupName to AS.
 
 ## Version 0.6.9
 * Fixed formatting of OutputType in help files
@@ -53,14 +63,14 @@
 * Fixed Synchronize-AzureAsInstance command to work with new AsAzure REST API for sync
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 0.4.7
 
 ## Version 0.4.6
-* Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances 
+* Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances
     - Included help file for the commandlet
     - Added in-memory tests and a scenario test (only live)
-* Fixed bugs in Add-AzureAsAccount commandlet 
+* Fixed bugs in Add-AzureAsAccount commandlet
 
 ## Version 0.4.4
 

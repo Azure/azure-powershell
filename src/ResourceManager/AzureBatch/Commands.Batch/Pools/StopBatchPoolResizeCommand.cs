@@ -17,7 +17,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Stop, Constants.AzureBatchPoolResize)]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPoolResize"), OutputType(typeof(void))]
     public class StopBatchPoolResizeCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,

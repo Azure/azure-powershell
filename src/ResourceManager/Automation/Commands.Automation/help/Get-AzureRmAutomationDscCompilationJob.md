@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: D704BAC0-D89E-4F15-ACF8-FA2C1F0D1B8F
@@ -65,9 +65,9 @@ This command gets the compilation job with the specified ID in the Automation ac
 Specifies the name of the Automation account that contains DSC compilation jobs that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 Specifies the name of the DSC configuration for which this cmdlet gets compilation jobs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByConfigurationName
 Aliases: Name
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,9 +111,9 @@ Specifies an end time.
 This cmdlet gets compilations jobs that started up to the time that this parameter specifies.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: ByAll, ByConfigurationName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Specifies the unique ID of the DSC compilation job that this cmdlet gets.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ByJobId
 Aliases: JobId
 
@@ -141,9 +141,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group in which this cmdlet gets DSC compilation jobs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -157,9 +157,9 @@ Specifies a start time.
 This cmdlet gets jobs that start at or after the time that this parameter specifies.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: ByAll, ByConfigurationName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -171,7 +171,6 @@ Accept wildcard characters: False
 ### -Status
 Specifies the status of jobs that this cmdlet gets.
 Valid values are: 
-
 - Completed 
 - Failed 
 - Queued 
@@ -186,9 +185,9 @@ Valid values are:
 - New
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAll, ByConfigurationName
-Aliases: 
+Aliases:
 Accepted values: Completed, Failed, Queued, Starting, Resuming, Running, Stopped, Stopping, Suspended, Suspending, Activating, New
 
 Required: False
@@ -203,8 +202,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+
+### System.String
 
 ## OUTPUTS
 

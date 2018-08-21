@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,9 +20,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class AEMExtensionTests
     {
+        XunitTracingInterceptor _logger;
+
         public AEMExtensionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
 #if NETSTANDARD
@@ -33,7 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionBasicWindowsWAD()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicWindowsWAD");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AEMExtensionBasicWindowsWAD");
         }
 
 #if NETSTANDARD
@@ -45,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionBasicWindows()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicWindows");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AEMExtensionBasicWindows");
         }
 
 #if NETSTANDARD
@@ -57,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionBasicLinuxWAD()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicLinuxWAD");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AEMExtensionBasicLinuxWAD");
         }
 
 #if NETSTANDARD
@@ -69,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionBasicLinux()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicLinux");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AEMExtensionBasicLinux");
         }
 
 #if NETSTANDARD
@@ -81,7 +85,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedWindowsWAD()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindowsWAD");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AEMExtensionAdvancedWindowsWAD");
         }
 
 #if NETSTANDARD
@@ -93,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedWindows()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindows");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AEMExtensionAdvancedWindows");
         }
 
 #if NETSTANDARD
@@ -105,14 +109,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedLinuxWAD()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxWAD");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AEMExtensionAdvancedLinuxWAD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedLinux()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinux");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AEMExtensionAdvancedLinux");
         }
 
 #if NETSTANDARD
@@ -124,28 +128,28 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedWindowsMD()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindowsMD");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AEMExtensionAdvancedWindowsMD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedLinuxMD()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AEMExtensionAdvancedLinuxMD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedLinuxMD_ESeries()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD_E");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AEMExtensionAdvancedLinuxMD_E");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedLinuxMD_DSeries()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinuxMD_D");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AEMExtensionAdvancedLinuxMD_D");
         }
     }
 }

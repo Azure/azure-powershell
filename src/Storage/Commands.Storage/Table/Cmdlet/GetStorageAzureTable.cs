@@ -26,8 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     /// <summary>
     /// list azure tables
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, StorageNouns.Table, DefaultParameterSetName = NameParameterSet),
-        OutputType(typeof(AzureStorageTable))]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageTable", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageTable))]
     public class GetAzureStorageTableCommand : StorageCloudTableCmdletBase
     {
         /// <summary>

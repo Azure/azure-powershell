@@ -30,6 +30,7 @@ namespace MS.Test.Common.MsTestLib
         public override void BeginTimer(string timerName) { }
 
         public override void EndTimer(string timerName) { }
+
         public override void WriteLine(string format, params object[] args) { }
 
         public override DbConnection DataConnection { get { return null; } }

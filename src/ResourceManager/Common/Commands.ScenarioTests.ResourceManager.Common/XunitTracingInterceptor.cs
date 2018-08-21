@@ -35,17 +35,23 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
 
         public ITestOutputHelper traceOutput;
 
+        public List<string> traceOutputArray = new List<string>();
+
         private void Write(string message, params object[] arguments)
         {
             try
             {
-                traceOutput.WriteLine(string.Format(message, arguments));
-                using (StreamWriter file = new StreamWriter(string.Format("{0}.test.log", callingAssembly).AsAbsoluteLocation(), true))
-                {
-                    file.WriteLine(string.Format(message, arguments));
-                }
+                traceOutputArray.Add(string.Format(message, arguments));
             }
             catch { }
+        }
+
+        public void Flush()
+        {
+            foreach (string message in traceOutputArray)
+            {
+                traceOutput.WriteLine(message);
+            }
         }
 
         public void Information(string message)

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
 Module Name: AzureRM.NotificationHubs
 ms.assetid: F769A8AB-E025-49EE-AEA4-0D27EAEE341F
@@ -20,7 +20,6 @@ Get-AzureRmNotificationHubsNamespaceListKeys [-ResourceGroup] <String> [-Namespa
 
 ## DESCRIPTION
 The **Get-AzureRmNotificationHubsNamespaceListKeys** cmdlet returns the primary and secondary connection strings for a Shared Access Signature (SAS) authorization rule assigned to a notification hub namespace.
-
 Authorization rules manage user rights to a notification hub namespace.
 Each rule includes a primary and a secondary connection string.
 
@@ -41,9 +40,9 @@ Specifies the name of a SAS authentication rule.
 These rules determine the type of access that users have to the notification hub.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -56,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,9 +70,9 @@ Accept wildcard characters: False
 Specifies the namespace containing the connection strings that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -84,13 +83,12 @@ Accept wildcard characters: False
 
 ### -ResourceGroup
 Specifies the resource group to which the namespace is assigned.
-
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -104,8 +102,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

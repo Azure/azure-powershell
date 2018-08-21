@@ -22,10 +22,7 @@ using Microsoft.Azure.Management.MachineLearning.WebServices.Util;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
-    [Cmdlet(
-        VerbsData.Export, 
-        WebServicesCmdletBase.CommandletSuffix, 
-        SupportsShouldProcess = true)]
+    [Cmdlet("Export", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlWebService",SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class ExportWebServiceDefinition : WebServicesCmdletBase
     {

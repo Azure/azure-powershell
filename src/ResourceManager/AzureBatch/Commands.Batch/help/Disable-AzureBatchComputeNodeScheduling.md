@@ -32,7 +32,6 @@ The **Disable-AzureBatchComputeNodeScheduling** cmdlet disables task scheduling 
 A compute node is an Azure virtual machine dedicated to a specific application workload.
 When you disable task scheduling on a compute node you will also have the option of determining what to do about jobs currently in the node's task queue.
 **Disable-AzureBatchComputeNodeScheduling** lets you do the following: 
-
 - Terminate the tasks and put them back in the job queue.
 This enables those tasks to be rescheduled on another compute node. 
 - Terminate the tasks and remove them from the job queue.
@@ -51,9 +50,7 @@ PS C:\> Disable-AzureBatchComputeNodeScheduling -PoolId "myPool" -Id "tvm-178359
 These commands disable task schedule on the compute node tvm-1783593343_34-20151117t222514z.
 To do this, the first command in the example creates an object reference to the account keys for the batch account contosobatchaccount.
 This object reference is stored in a variable named $context.
-
 The second command then uses this object reference and the **Disable-AzureBatchComputeNodeScheduling** cmdlet to connect to the pool myPool and disable task scheduling on node tvm-1783593343_34-20151117t222514z.
-
 Because the *DisableComputeNodeSchedulingOptions* parameter was not included any tasks currently running on the compute node will be requeued.
 
 ### Example 2: Disable task scheduling on all compute nodes in a pool
@@ -65,10 +62,8 @@ PS C:\> Get-AzureBatchComputeNode -PoolId "Pool06"  -BatchContext $Context | Dis
 These commands disable task scheduling on all the computer nodes in the batch pool Pool06.
 To perform this task, the first command in the example creates an object reference to the account keys for the batch account contosobatchaccount.
 This object reference is stored in a variable named $context.
-
 The second command in the example then uses this object reference and **Get-AzureBatchComputeNode** to return a collection of all the compute nodes found in Pool06.
 That collection is then piped to then **Disable-AzureBatchComputeNodeScheduling** cmdlet to disable task scheduling on each compute node in the collection.
-
 Because the *DisableComputeNodeSchedulingOptions* parameter was not included any tasks currently running on the compute nodes will be requeued.
 
 ## PARAMETERS
@@ -78,7 +73,7 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +89,7 @@ Specifies an object reference to the compute node where task scheduling is disab
 This object reference is created by using the Get-AzureBatchComputeNode cmdlet and storing the returned compute node object in a variable.
 
 ```yaml
-Type: PSComputeNode
+Type: Microsoft.Azure.Commands.Batch.Models.PSComputeNode
 Parameter Sets: InputObject
 Aliases:
 
@@ -109,7 +104,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -123,7 +118,6 @@ Accept wildcard characters: False
 ### -DisableSchedulingOption
 Specifies how this cmdlet deals with any tasks currently running on the computer node where scheduling is being disabled.
 The acceptable values for this parameter are:
-
 - Requeue.
 Tasks are stopped immediately and returned to the job queue.
 This enables the tasks to be rescheduled on another compute node.
@@ -139,7 +133,7 @@ Currently running tasks will be able to complete and data retention periods will
 No new tasks will be scheduled on this node.
 
 ```yaml
-Type: DisableComputeNodeSchedulingOption
+Type: System.Nullable`1[Microsoft.Azure.Batch.Common.DisableComputeNodeSchedulingOption]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Requeue, Terminate, TaskCompletion
@@ -155,7 +149,7 @@ Accept wildcard characters: False
 Specifies the ID of the compute node where task scheduling is disabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id
 Aliases:
 
@@ -168,11 +162,10 @@ Accept wildcard characters: False
 
 ### -PoolId
 Specifies the ID of the batch pool that contains the compute node where task scheduling is disabled.
-
 If you use the *PoolId* parameter, do not use the *ComputeNode* parameter in that same command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id
 Aliases:
 
@@ -188,13 +181,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### Microsoft.Azure.Commands.Batch.Models.PSComputeNode
+Parameters: ComputeNode (ByValue)
 
-### PSComputeNode
-Parameter 'ComputeNode' accepts value of type 'PSComputeNode' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

@@ -81,9 +81,7 @@ function Test-CreateDataFactory
         $actual = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
         $expected = Get-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
 
-        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
-        Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
-        Assert-AreEqual $expected.DataFactoryId $actual.DataFactoryId
+		ValidateFactoryProperties $expected $actual
     }
     finally
     {
@@ -166,14 +164,20 @@ function Test-UpdateDataFactory
         $actual = Update-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Tag @{newTag = "NewTagValue"}
         $expected = Get-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
 
-        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
-        Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
-        Assert-AreEqual $expected.DataFactoryId $actual.DataFactoryId
-        Assert-AreEqual $expected.Tag $actual.Tag
+		ValidateFactoryProperties $expected $actual
     }
     finally
     {
         CleanUp $rgname $dfname
     }
+}
+
+<#
+.SYNOOSIS
+Verifies factory proepties
+#>
+function ValidateFactoryProperties ($expected, $actual)
+{
+    Assert-AreEqualObjectProperties $expected $actual
 }
 

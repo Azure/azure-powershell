@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Scheduler.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Scheduler
 ms.assetid: D82270AD-50C2-4980-ABE2-58049C187875
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.scheduler/new-azurermschedulerjobcollection
 schema: 2.0.0
@@ -30,7 +30,7 @@ The **New-AzureRmSchedulerJobCollection** cmdlet creates a job collection in Azu
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -44,7 +44,6 @@ Accept wildcard characters: False
 ### -Frequency
 Specifies the maximum frequency that you can specify on any job in the job collection.
 The acceptable values for this parameter are:
-
 - Minute 
 - Hour 
 - Day 
@@ -52,9 +51,9 @@ The acceptable values for this parameter are:
 - Month
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Minute, Hour, Day, Week, Month
 
 Required: False
@@ -68,9 +67,9 @@ Accept wildcard characters: False
 Specifies an interval of recurrence.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -83,7 +82,7 @@ Accept wildcard characters: False
 Specifies a name for the job collection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name, ResourceName
 
@@ -98,9 +97,9 @@ Accept wildcard characters: False
 Specifies the Azure region in which this cmdlet creates the job collection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -114,9 +113,9 @@ Specifies the maximum number of jobs that you can create in the job collection.
 The maximum depends on the plan that the *Plan* parameter specifies.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -128,16 +127,15 @@ Accept wildcard characters: False
 ### -Plan
 Specifies the job collection plan.
 The acceptable values for this parameter are:
-
 - Free 
 - Standard 
 - P10Premium 
 - P20Premium
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Free, Standard, P10Premium, P20Premium
 
 Required: False
@@ -151,9 +149,9 @@ Accept wildcard characters: False
 Specifies the resource group for the job collection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -166,7 +164,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -182,7 +180,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -198,8 +196,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

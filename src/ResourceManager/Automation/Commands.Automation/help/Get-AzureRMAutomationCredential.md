@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: DAFB709D-A6F2-4645-8A9E-F8D95669E02F
@@ -29,7 +29,6 @@ Get-AzureRmAutomationCredential [-Name] <String> [-ResourceGroupName] <String>
 The **Get-AzureRmAutomationCredential** cmdlet gets one or more Azure Automation credentials.
 By default, all credentials are returned.
 Specify the name of a credential to get a specific credential.
-
 For security purposes, this cmdlet does not return credential passwords.
 
 ## EXAMPLES
@@ -54,9 +53,9 @@ This command gets metadata for the credential named ContosoCredential in the Aut
 Specifies the name of the Automation account for which this cmdlet retrieves credentials.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -69,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -84,9 +83,9 @@ Accept wildcard characters: False
 Specifies the name of a credential to retrieve.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -99,9 +98,9 @@ Accept wildcard characters: False
 Specifies the resource group for which this cmdlet retrieves credentials.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -115,8 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

@@ -7,16 +7,8 @@ Microsoft.PowerShell.Core\Set-StrictMode -Version Latest
 
 Write-Warning "Preview version of the module Azs.Storage.Admin loaded. Future release of this module may have breaking changes."
 
-# If the user supplied -Prefix to Import-Module, that applies to the nested module as well
-# Force import the nested module again without -Prefix
-if (-not (Get-Command Get-OperatingSystemInfo -Module PSSwaggerUtility -ErrorAction Ignore)) {
-    # Simply doing "Import-Module PSSwaggerUtility" doesn't work for local case
-	if (Test-Path -Path (Join-Path -Path $PSScriptRoot -ChildPath PSSwaggerUtility)) {
-		Import-Module (Join-Path -Path $PSScriptRoot -ChildPath PSSwaggerUtility) -Force
-	} else {
-		Import-Module PSSwaggerUtility -Force
-	}
-}
+# We always import embedded version.
+Import-Module (Join-Path -Path $PSScriptRoot -ChildPath PSSwaggerUtility) -Force
 
 if ((Get-OperatingSystemInfo).IsCore) {
     $clr = 'coreclr'

@@ -480,4 +480,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="RemoveDeletedManagedStorageAccountWhatIfMessage" xml:space="preserve">
     <value>Purge managed storage account</value>
   </data>
+  <data name="VaultDoesNotExist" xml:space="preserve">
+    <value>Vault '{0}' does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modifiy the Access Policies of this vault.</value>
+  </data>
 </root>

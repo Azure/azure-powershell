@@ -1,3 +1,4 @@
+
 <!--
     Please leave this section at the top of the change log.
 
@@ -18,6 +19,37 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed the issue that target is missing in error output.
+* Fixed issue with storage account type for VM with managed disk
+* Fixed issue with default resource groups not being set.
+* Fix AEM Extension cmdlets for other environments, for example Azure China
+
+## Version 5.5.0
+* Updated to the latest version of the Azure ClientRuntime.
+* Add EvictionPolicy parameter to New-AzureRmVmssConfig
+* Use default location in the DiskFileParameterSet of New-AzureRmVm if no Location is specified.
+* Fix parameter description in Save-AzureRmVMImage
+* Fix Get-AzureRmVMDiskEncryptionStatus cmdlet for certain singlepass related scenarios
+
+## Version 5.4.0
+* Fix issue with creating a vm using `DiskFileParameterSet` in `New-AzureRmVm` failing because of `PremiumLRS` storage account type renaming.
+* Fix Invoke-AzureRmVMRunCommand cmdlet
+* Update Get-AzureRmAvailabilitySet to enable list all availability sets in a subscription.  (ResouceGroupName parameter is now optional.)
+* Update SimpleParameterSet of `New-AzureRmVm` to enable Accelerated Network on qualifying vms.
+* Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
+* Update example for New-AzureRmDisk
+* Add example for `New-AzureRmVM`
+* Updated all help files to include full parameter types and correct input/output types.
+* Update description for Set-AzureRmVMOSDisk
+* Update Example 1 for Set-AzureRmVMBginfoExtension to correct spelling and prefix. 
+
+## Version 5.3.0
+* Add -Tag parameter to Update/New-AzureRmAvailabilitySet
+* Add example for `Add-AzureRmVmssExtension`
+* Add examples for `Remove-AzureRmVmssExtension`
+* Update help for `Set-AzureRmVMAccessExtension`
+* Update SimpleParameterSet for New-AzureRmVmss to set SinglePlacementGroup to false by default and add switch parameter `SinglePlacementGroup` that enables the user to create the VMSS in a single placement group.
+* Fixed Disable-AzureRmVmDiskEncryption to work for VMs encrypted without AAD parameters
 
 ## Version 5.2.0
 * IP Tag feature for VMSS
@@ -31,7 +63,7 @@
 
 ## Version 5.1.1
 * ResourceId tab completer applied to the cmdelts top level resource id parameters if any.
-* `Get-AzureRmVmDiskEncryptionStatus` fixes an issue observed for VMs with no data disks 
+* `Get-AzureRmVmDiskEncryptionStatus` fixes an issue observed for VMs with no data disks
 * Update Compute client library version to fix following cmdlets
     - Grant-AzureRmDiskAccess
     - Grant-AzureRmSnapshotAccess
@@ -74,7 +106,7 @@
 * Set minimum dependency of module to PowerShell 5.0
 * Introduce multiple breaking changes
     - Please refer to the migration guide for more details
-* `Set-AzureRmVmDiskEncryptionExtension` makes AAD parameters optional 
+* `Set-AzureRmVmDiskEncryptionExtension` makes AAD parameters optional
 
 ## Version 4.6.0
 * `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level
