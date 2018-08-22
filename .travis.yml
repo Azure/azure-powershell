@@ -1,7 +1,7 @@
 sudo: required
 language: csharp
 mono: none
-dotnet: 2.1.302
+dotnet: 2.1.400
 dist: trusty
 
 env:
@@ -19,7 +19,6 @@ before_install:
  - sudo dpkg -i packages-microsoft-prod.deb
  - sudo apt-get install apt-transport-https
  - sudo apt-get update
- - sudo apt-get install dotnet-sdk-2.1
  - sudo apt-get install -y powershell
  - sudo pwsh -NonInteractive -NoLogo -NoProfile -Command "Install-Module platyPS -Force -Confirm:\$false -Scope CurrentUser"
 
