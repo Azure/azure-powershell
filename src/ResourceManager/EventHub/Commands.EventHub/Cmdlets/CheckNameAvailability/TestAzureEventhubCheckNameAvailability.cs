@@ -13,9 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventHub.Models;
-using Microsoft.Azure.Commands;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
@@ -43,18 +40,24 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName.Equals(NamespaceCheckNameAvailabilityParameterSet))
+            try
             {
-                PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetCheckNameAvailability(Namespace);
-                WriteObject(checkNameAvailabilityResult, true);
-            }
+                if (ParameterSetName.Equals(NamespaceCheckNameAvailabilityParameterSet))
+                {
+                    PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetCheckNameAvailability(Namespace);
+                    WriteObject(checkNameAvailabilityResult, true);
+                }
 
-            if (ParameterSetName.Equals(AliasCheckNameAvailabilityParameterSet))
+                if (ParameterSetName.Equals(AliasCheckNameAvailabilityParameterSet))
+                {
+                    PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetAliasCheckNameAvailability(ResourceGroupName, Namespace, AliasName);
+                    WriteObject(checkNameAvailabilityResult, true);
+                }
+            }
+            catch (Management.EventHub.Models.ErrorResponseException ex)
             {
-                PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetAliasCheckNameAvailability(ResourceGroupName, Namespace, AliasName);
-                WriteObject(checkNameAvailabilityResult, true);
+                WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
             }
-
         }
     }
 }

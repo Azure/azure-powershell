@@ -35,14 +35,14 @@ Returns the specified rule description for a specified subscription.
 PS C:\> Get-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription
 ```
 
-Returns list of rule descriptions for a specified subscription.
+Returns list of rule descriptions for a specified subscription.  By default 100 rule will be returned, if more than 100 rule to be returned, please use -MaxCount Parameter.
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -MaxCount 30
+PS C:\> Get-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -MaxCount 150
 ```
 
-Returns list of first 30 rule descriptions for a specified subscription.
+Returns list of first 150 rules descriptions for a specified subscription.
 
 ## PARAMETERS
 
