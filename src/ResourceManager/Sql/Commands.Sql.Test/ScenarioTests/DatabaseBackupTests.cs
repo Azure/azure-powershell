@@ -47,8 +47,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestRestoreDeletedDatabaseBackup()
         {
             // TODO Rewrite SQL backup tests to be recordable
@@ -60,8 +58,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestRestorePointInTimeBackup()
         {
             // TODO Rewrite SQL backup tests to be recordable
@@ -73,8 +69,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestServerBackupLongTermRetentionVault()
         {
             // TODO Rewrite SQL backup tests to be recordable
@@ -86,8 +80,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
         [Fact(Skip = "LTR-V1 restore service is retiring in Prod.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestRestoreLongTermRetentionBackup()
         {
             // TODO Rewrite SQL backup tests to be recordable
@@ -99,8 +91,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestLongTermRetentionV2Policy()
         {
             RunPowerShellTest("Test-LongTermRetentionV2Policy");

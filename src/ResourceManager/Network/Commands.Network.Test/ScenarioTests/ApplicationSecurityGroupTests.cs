@@ -50,8 +50,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestApplicationSecurityGroupInNewSecurityRule()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInNewSecurityRule"));
@@ -61,8 +59,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestApplicationSecurityGroupInAddedSecurityRule()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInAddedSecurityRule"));
@@ -72,8 +68,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestApplicationSecurityGroupInSetSecurityRule()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInSetSecurityRule"));
@@ -83,8 +77,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestApplicationSecurityGroupInNewNetworkInterface()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInNewNetworkInterface"));
@@ -93,8 +85,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestApplicationSecurityGroupInNewNetworkInterfaceIpConfig()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig"));
@@ -104,8 +94,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestApplicationSecurityGroupInAddedNetworkInterfaceIpConfig()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig"));

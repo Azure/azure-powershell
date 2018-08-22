@@ -30,8 +30,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Sql, "Needs to be re-recorded")]
         // TODO: Remove "CallSite.Target" from Get-SqlDatabaseImportExportTestEnvironmentParameters in GetName when re-recording
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestExportDatabase()
         {
             RunPowerShellTest("Test-ExportDatabase");
