@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 {
                     sb.AppendLine().AppendFormat("ErrorCode: {0}", errorReturned.Error.Code);
                     sb.AppendLine().AppendFormat("ErrorMessage: {0}", errorReturned.Error.Message);
+                    sb.AppendLine().AppendFormat("ErrorTarget: {0}", errorReturned.Error.Target);
                 }
 
                 if (errorReturned.StartTime != null)

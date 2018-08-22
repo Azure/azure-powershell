@@ -15,6 +15,7 @@
 // 
 
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
@@ -22,26 +23,35 @@ namespace Microsoft.Azure.Commands.Network.Models
     public partial class PSExpressRouteCrossConnectionPeering : PSChildResource
     {
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PeeringType { get; set; }
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string State { get; set; }
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? AzureASN { get; set; }
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public long? PeerASN { get; set; }
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PrimaryPeerAddressPrefix { get; set; }
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string SecondaryPeerAddressPrefix { get; set; }
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PrimaryAzurePort { get; set; }
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string SecondaryAzurePort { get; set; }
         [JsonProperty(Order = 1)]
         public string SharedKey { get; set; }
         [JsonProperty(Order = 1)]
         public int? VlanId { get; set; }
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         [JsonProperty(Order = 1)]
         public string GatewayManagerEtag { get; set; }
