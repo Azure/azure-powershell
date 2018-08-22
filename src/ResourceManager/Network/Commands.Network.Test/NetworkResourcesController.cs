@@ -128,6 +128,8 @@ namespace Commands.Network.Test
                     _helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
 #if !NETSTANDARD
                     _helper.RMStorageDataPlaneModule,
+#else
+                    _helper.RMStorageModule,
 #endif
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
