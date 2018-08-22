@@ -60,32 +60,39 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public string KeyValue { get; set; }
 
         public override void ExecuteCmdlet()
-        {            
-            // Generate new Namespace List Keys for the specified AuthorizationRule
-            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
+        {
+            try
             {
-                if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyNamesapce, Name, Namespace)))
+                // Generate new Namespace List Keys for the specified AuthorizationRule
+                if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                 {
-                    WriteObject(Client.SetRegenerateKeys(ResourceGroupName, Namespace, Name, RegenerateKey, KeyValue));
+                    if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyNamesapce, Name, Namespace)))
+                    {
+                        WriteObject(Client.SetRegenerateKeys(ResourceGroupName, Namespace, Name, RegenerateKey, KeyValue));
+                    }
+                }
+
+                // Generate new Queue List Keys for the specified AuthorizationRule
+                if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
+                {
+                    if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyQueue, Name, Queue)))
+                    {
+                        WriteObject(Client.NewQueueKey(ResourceGroupName, Namespace, Queue, Name, RegenerateKey, KeyValue));
+                    }
+                }
+
+                // Generate new Topic List Keys for the specified AuthorizationRule
+                if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
+                {
+                    if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyTopic, Name, Topic)))
+                    {
+                        WriteObject(Client.NewTopicKey(ResourceGroupName, Namespace, Topic, Name, RegenerateKey, KeyValue));
+                    }
                 }
             }
-
-            // Generate new Queue List Keys for the specified AuthorizationRule
-            if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
+            catch (ErrorResponseException ex)
             {
-                if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyQueue, Name, Queue)))
-                {
-                    WriteObject(Client.NewQueueKey(ResourceGroupName, Namespace, Queue, Name, RegenerateKey, KeyValue));
-                }
-            }
-
-            // Generate new Topic List Keys for the specified AuthorizationRule
-            if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
-            {
-                if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyTopic, Name, Topic)))
-                {
-                    WriteObject(Client.NewTopicKey(ResourceGroupName, Namespace, Topic, Name, RegenerateKey, KeyValue));
-                }
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
             }
         }
     }

@@ -16,11 +16,14 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
 
     using Newtonsoft.Json;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSVirtualNetworkGatewayIpConfiguration : PSChildResource
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateIpAddress { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PrivateIpAllocationMethod { get; set; }
 
         public PSResourceId Subnet { get; set; }
