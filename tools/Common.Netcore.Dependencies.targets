@@ -29,7 +29,7 @@
     <!-- <StorageToolsPath>$(MSBuildThisFileDirectory)..\src\packages\Microsoft.Azure.PowerShell.Storage.1.0.0-preview\tools\</StorageToolsPath> -->
     <StorageToolsPath>$(MSBuildThisFileDirectory)..\src\Common\Commands.Common.Storage\</StorageToolsPath>
   </PropertyGroup>
-  <ItemGroup Condition='$(OmitJsonPackage)' != 'true'"">
+  <ItemGroup Condition="'$(OmitJsonPackage)' != 'true'">
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 </Project>
