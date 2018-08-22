@@ -210,16 +210,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName), CredentialName (ByPropertyName), DatabaseHost (ByPropertyName), DatabaseName (ByPropertyName)
 
 ### System.Management.Automation.PSCredential
-Parameters: Credential (ByPropertyName)
 
 ### System.Uri
-Parameters: Uri (ByPropertyName)
 
 ### System.Int32
-Parameters: Port (ByPropertyName)
 
 ## OUTPUTS
 

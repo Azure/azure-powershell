@@ -1,4 +1,202 @@
-﻿## 6.6.0 - July 2018
+## 6.7.0 - August 2018
+#### AzureRM.Profile
+* Updated to the latest version of the Azure ClientRuntime.
+* Add user id to default context name to avoid context clashing
+    - https://github.com/Azure/azure-powershell/issues/6489
+* Fix issues with Clear-AzureRmContext that caused issues with selecting a context #6398
+* Enable tenant domain to be passed to '-TenantId' parameter for 'Connect-AzureRmAccount'
+    - https://github.com/Azure/azure-powershell/issues/3974
+    - https://github.com/Azure/azure-powershell/issues/6709
+
+#### Azure.Storage
+* Remove the 5TB limitation for Azure File Share quota
+- Set-AzureStorageShareQuota
+
+#### AzureRM.AnalysisServices
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### Azure.AnalysisServices
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.ApiManagement
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.ApplicationInsights
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Automation
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Backup
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Batch
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Billing
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Cdn
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.CognitiveServices
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Compute
+* Updated to the latest version of the Azure ClientRuntime.
+* Add EvictionPolicy parameter to New-AzureRmVmssConfig
+* Use default location in the DiskFileParameterSet of New-AzureRmVm if no Location is specified.
+* Fix parameter description in Save-AzureRmVMImage
+* Fix Get-AzureRmVMDiskEncryptionStatus cmdlet for certain singlepass related scenarios
+
+#### AzureRM.Consumption
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.ContainerInstance
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.ContainerRegistry
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.DataFactories
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.DataFactoryV2
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.DataLakeAnalytics
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.DataLakeStore
+* Fix debugging when DebugPreference is set from powershell command line
+* Update example for Set-AzureRmDataLakeStoreItemAcl
+* Updated to the latest version of the Azure ClientRuntime.
+* Update example for Set-AzureRmDataLakeStoreItemAclEntry
+
+#### AzureRM.DevTestLabs
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Dns
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.EventGrid
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.EventHub
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.HDInsight
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Insights
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.IotHub
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.KeyVault
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.LogicApp
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.MachineLearning
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.MachineLearningCompute
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.MarketplaceOrdering
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Media
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Network
+* Added example for Set-AzureRmLocalNetworkGateway
+* Added examples and descriptions for Add-AzureRmVirtualNetworkGatewayIpConfig, Get-AzureRmVirtualNetworkGatewayConnectionSharedKey and New-AzureRmVirtualNetworkGatewayConnection
+* Added examples for Remove-AzureRmVirtualNetworkGatewayIpConfig and Reset-AzureRmVirtualNetworkGateway
+* Added example for Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey
+* Added example for Set-AzureRmVirtualNetworkGatewayConnectionSharedKey
+* Added example for Set-AzureRmVirtualNetworkGatewayConnection
+* Re-generated cmdlets for ApplicationSecurityGroup, RouteTable and Usage using latest code generator
+* Clarified error message for Get-AzureRmVirtualNetworkSubnetConfig when attempting to get a subnet that does not exitc
+
+#### AzureRM.NotificationHubs
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.OperationalInsights
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.PolicyInsights
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.PowerBIEmbedded
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.RecoveryServices
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.RecoveryServices.Backup
+* Added policy filter to Get-AzureRmRecoveryServicesBackItem cmdlet. The command returns the list of backup items protected by the given policy id.
+* Updated Microsoft.Azure.Management.RecoveryServices.Backup to version 3.0.0-preview.
+* Updated to the latest version of the Azure ClientRuntime.
+* Added TargetResourceGroupName parameter to Restore-AzureRmRecoveryServicesBackupItem. The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks.
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.RedisCache
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Relay
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Resources
+* Support template deployment at subscription scope. Add new Cmdlets:
+    - New-AzureRmDeployment
+    - Get-AzureRmDeployment
+    - Test-AzureRmDeployment
+    - Remove-AzureRmDeployment
+    - Stop-AzureRmDeployment
+    - Save-AzureRmDeploymentTemplate
+    - Get-AzureRmDeploymentOperation
+* Fix issue where error is thrown when passing a context to Set-AzureRmResource
+    - https://github.com/Azure/azure-powershell/issues/5705
+* Fix example in New-AzureRmResourceGroupDeployment
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Scheduler
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.ServiceBus
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.ServiceFabric
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Sql
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Storage
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.StreamAnalytics
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Tags
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.TrafficManager
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.UsageAggregates
+* Updated to the latest version of the Azure ClientRuntime.
+
+#### AzureRM.Websites
+* Updated to the latest version of the Azure ClientRuntime.
+
+## 6.6.0 - July 2018
 #### General
 * Updated all help files to include full parameter types and correct input/output types.
 

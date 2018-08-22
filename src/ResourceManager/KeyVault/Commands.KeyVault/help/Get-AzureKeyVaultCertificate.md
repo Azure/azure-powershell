@@ -16,7 +16,7 @@ Gets a certificate from a key vault.
 ### ByName (Default)
 ```
 Get-AzureKeyVaultCertificate [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IncludePending] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateNameAndVersion
@@ -34,7 +34,7 @@ Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-IncludeVer
 ### ByNameInputObject
 ```
 Get-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IncludePending] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateNameAndVersionInputObject
@@ -52,7 +52,7 @@ Get-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [-Name] <String> [-Incl
 ### ByNameResourceId
 ```
 Get-AzureKeyVaultCertificate [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IncludePending] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateNameAndVersionResourceId
@@ -312,6 +312,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IncludePending
+Specifies whether to include pending certificates in the output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ByName, ByNameInputObject, ByNameResourceId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -321,7 +336,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: InputObject (ByValue)
 
 ### System.String
-Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

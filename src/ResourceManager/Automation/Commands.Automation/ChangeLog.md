@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
+
+## Version 5.0.4
+* Updated to the latest version of the Azure ClientRuntime.
+* Corrected description of example for Remove-AzureRmAutomationSchedule.
 
 ## Version 5.0.3
 * Updated all help files to include full parameter types and correct input/output types.
@@ -57,7 +62,7 @@
 ## Version 4.0.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 3.4.1
 
 ## Version 3.4.0
@@ -67,7 +72,7 @@
 	- Stop-AzureRmAutomationDscNodeConfigurationDeployment
 	- Get-AzureRmAutomationDscNodeConfigurationDeployment
 	- Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule
-    
+
 ## Version 3.3.1
 
 ## Version 3.3.0
@@ -81,7 +86,7 @@
 ## Version 3.2.0
 * Properly setting TimeZone value for Weekly and Monthly schedules for New-AzureRmAutomationSchedule
     - More information can be found in this issue: https://github.com/Azure/azure-powershell/issues/3043
-    
+
 ## Version 3.1.0
 
 ## Version 3.0.1

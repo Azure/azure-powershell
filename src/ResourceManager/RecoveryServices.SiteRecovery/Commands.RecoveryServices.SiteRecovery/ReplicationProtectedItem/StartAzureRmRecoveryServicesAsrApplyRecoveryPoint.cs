@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,11 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///    Changes a recovery point for a failed over protected item before commiting the failover operation.
     /// </summary>
-    [Cmdlet(
-        VerbsLifecycle.Start,
-        "AzureRmRecoveryServicesAsrApplyRecoveryPoint",
-        DefaultParameterSetName = ASRParameterSets.ByPEObject,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrApplyRecoveryPoint",DefaultParameterSetName = ASRParameterSets.ByPEObject,SupportsShouldProcess = true)]
     [Alias("Start-ASRApplyRecoveryPoint")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureRmRecoveryServicesAsrApplyRecoveryPoint : SiteRecoveryCmdletBase

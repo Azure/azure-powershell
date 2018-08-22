@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkGatewaySupportedVpnDevice"), OutputType(typeof(string))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewaySupportedVpnDevice"), OutputType(typeof(string))]
     public class GetAzureRmVirtualNetworkGatewaySupportedVpnDevice : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
