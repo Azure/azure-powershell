@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
 Module Name: AzureRM.DeviceProvisioningServices
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/add-aziotdeviceprovisioningservicecertificate
 schema: 2.0.0
 ---
 
