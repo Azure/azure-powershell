@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         DiagnosticSettingsResource calledSettings = null;
 
         private Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResourceCollection> multipleResponse;
-        private bool singleResult;
 
         public SetDiagnosticSettingCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
@@ -105,7 +104,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                     // this.calledResourceId = resourceId;
                     // this.diagnosticSettingName = "service";
                     this.calledSettings = multipleResponse.Body.Value[0];
-                    this.singleResult = false;
                     return Task.FromResult(multipleResponse);
                 });
 
