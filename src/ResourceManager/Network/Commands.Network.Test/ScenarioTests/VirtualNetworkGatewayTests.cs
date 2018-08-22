@@ -50,6 +50,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestVirtualNetworkGatewayP2SAndSKU()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayP2SAndSKU");
@@ -58,6 +60,8 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
+        // TODO: 6992 Improve test execution performance on NetCore
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestSetVirtualNetworkGatewayCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-SetVirtualNetworkGatewayCRUD");
