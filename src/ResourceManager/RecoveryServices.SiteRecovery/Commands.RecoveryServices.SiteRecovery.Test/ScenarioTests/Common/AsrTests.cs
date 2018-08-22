@@ -66,7 +66,7 @@ namespace RecoveryServices.SiteRecovery.Test
              "Test-AsrEvent -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
 
-        [Fact(Skip = "Need to be Rerecorded Api version change")]
+        [Fact]
         [Trait(
             Category.AcceptanceType,
             Category.CheckIn)]
@@ -90,17 +90,17 @@ namespace RecoveryServices.SiteRecovery.Test
              "Test-NotificationSettings -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
 
-        [Fact(Skip = "Need to be ReRecorded Api version change")]
+        [Fact]
         [Trait(
             Category.AcceptanceType,
             Category.CheckIn)]
         public void CIKTokenValidation()
         {
-            DateTime? dateTime = new DateTime(636604856296924385);
+            DateTime dateTime = new DateTime(636604658296924385,DateTimeKind.Utc);
             PSRecoveryServicesClient.asrVaultCreds = new ASRVaultCreds();
             PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey = "RandomRandom";
 
-            var cikToken = PSRecoveryServicesClient.GenerateAgentAuthenticationHeader(
+            var cikToken =  PSRecoveryServicesClient.GenerateAgentAuthenticationHeader(
                   "e5ec3f71-75c6-4688-b557-6ef69d2e7514-2018-04-27 22:43:45Z-Ps",
                    dateTime);
 

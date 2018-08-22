@@ -140,15 +140,8 @@ function WaitForJobCompletion
             Write-Host $("Job Status:") -ForegroundColor Green
             $Job
 
-            if($Job.State -eq "InProgress" -or $Job.State -eq "NotStarted")
-            {
-                $isJobLeftForProcessing = $true
-            }
-            else
-            {
-                $isJobLeftForProcessing = $false
-            }
-
+            $isJobLeftForProcessing = ($Job.State -eq 'InProgress' -or $Job.State -eq 'NotStarted')
+            
             if($isJobLeftForProcessing)
             {
                 if($Message -ne "NA")
@@ -191,14 +184,7 @@ Function WaitForIRCompletion
         do
         {
             $IRjobs = Get-AzureRmRecoveryServicesAsrJob -TargetObjectId $affectedObjectId | Sort-Object StartTime -Descending | select -First 2 | Where-Object{$_.JobType -eq "SecondaryIrCompletion"}
-            if($IRjobs -eq $null -or $IRjobs.Count -ne 1)
-            {
-                $isProcessingLeft = $true
-            }
-            else
-            {
-                $isProcessingLeft = $false
-            }
+            $isProcessingLeft = ($IRjobs -eq $null -or $IRjobs.Count -ne 1)
 
             if($isProcessingLeft)
             {

@@ -12,6 +12,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.S
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices", "..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj", "{604260DC-B392-4CF4-81EC-34B14591E2D2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E} = {142D7B0B-388A-4CEB-A228-7F6D423C5C2E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject

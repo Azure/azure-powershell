@@ -195,8 +195,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 CloudException cloudException = exception as CloudException;
 
-                if (cloudException != null && cloudException.Response != null
-                    && !string.IsNullOrEmpty(cloudException.Response.Content))
+                if (!string.IsNullOrEmpty(cloudException?.Response?.Content))
                 {
                     rpError.Error error = JsonConvert.DeserializeObject<rpError.Error>(cloudException.Response.Content);
 

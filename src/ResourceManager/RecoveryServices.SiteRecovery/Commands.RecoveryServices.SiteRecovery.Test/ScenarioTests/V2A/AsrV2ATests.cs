@@ -39,7 +39,7 @@ namespace RecoveryServices.SiteRecovery.Test
             this.initialize();
         }
 
-        [Fact(Skip = "ReRecord with new Version. Command working fine")]
+        [Fact (Skip ="Need to ReRecord")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void V2AvCenterTest()
         {
