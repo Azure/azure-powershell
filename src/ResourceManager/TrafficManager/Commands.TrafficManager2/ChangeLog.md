@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Support for the MultiValue routing method
+    - New parameter 'MaxReturn' for MultiValue routing
+* Support for the Subnet routing method
+    - Support for IP address ranges (subnets) in endpoints
+* Support for Custom Headers in profiles
+* Support for Expected status code ranges in profiles
+* Support for Custom Headers in endpoints
+* Fixed issue with default resource groups not being set.
+
+## Version 4.0.9
+* Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 4.0.8
 * Updated help files to include full parameter types and correct input/output types.
@@ -47,7 +58,7 @@
 ## Version 4.0.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 3.4.1
 
 ## Version 3.4.0

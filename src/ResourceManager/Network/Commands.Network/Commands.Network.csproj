@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -51,10 +52,6 @@
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=19.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -171,9 +168,9 @@
     <Compile Include="ApplicationGateway\UrlPathMap\NewAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
-    <Compile Include="ApplicationSecurityGroup\GetAzureRMApplicationSecurityGroupCommand.cs" />
-    <Compile Include="ApplicationSecurityGroup\NewAzureRMApplicationSecurityGroupCommand.cs" />
-    <Compile Include="ApplicationSecurityGroup\RemoveAzureRMApplicationSecurityGroupCommand.cs" />
+    <Compile Include="Generated\ApplicationSecurityGroup\GetAzureRMApplicationSecurityGroupCommand.cs" />
+    <Compile Include="Generated\ApplicationSecurityGroup\NewAzureRMApplicationSecurityGroupCommand.cs" />
+    <Compile Include="Generated\ApplicationSecurityGroup\RemoveAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Common\ListNextLink.cs" />
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />
@@ -208,6 +205,61 @@
     <Compile Include="ExpressRouteCrossConnection\ExpressRouteCrossConnectionBaseCmdlet.cs" />
     <Compile Include="ExpressRouteCrossConnection\GetAzureRMExpressRouteCrossConnectionCommand.cs" />
     <Compile Include="ExpressRouteCrossConnection\SetAzureRMExpressRouteCrossConnectionCommand.cs" />
+    <Compile Include="Generated\Models\PSAddressSpace.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewayAvailableSslOptions.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewayAvailableWafRuleSetsResult.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewayBackendAddress.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewayBackendHealth.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewayBackendHealthHttpSettings.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewayBackendHealthPool.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewayBackendHealthServer.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewayConnectionDraining.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewayFirewallDisabledRuleGroup.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewayFirewallRule.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewayFirewallRuleGroup.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewayFirewallRuleSet.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewayProbeHealthResponseMatch.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewaySslPolicy.cs" />
+    <Compile Include="Generated\Models\PSApplicationGatewaySslPredefinedPolicy.cs" />
+    <Compile Include="Generated\Models\PSAzureReachabilityReportLatencyInfo.cs" />
+    <Compile Include="Generated\Models\PSBgpPeerStatus.cs" />
+    <Compile Include="Generated\Models\PSBgpSettings.cs" />
+    <Compile Include="Generated\Models\PSConnectionMonitorSource.cs" />
+    <Compile Include="Generated\Models\PSConnectionResetSharedKey.cs" />
+    <Compile Include="Generated\Models\PSConnectionSharedKey.cs" />
+    <Compile Include="Generated\Models\PSDhcpOptions.cs" />
+    <Compile Include="Generated\Models\PSExpressRouteCircuit.cs" />
+    <Compile Include="Generated\Models\PSExpressRouteCircuitArpTable.cs" />
+    <Compile Include="Generated\Models\PSExpressRouteCircuitAuthorization.cs" />
+    <Compile Include="Generated\Models\PSExpressRouteCircuitConnection.cs" />
+    <Compile Include="Generated\Models\PSExpressRouteCircuitReference.cs" />
+    <Compile Include="Generated\Models\PSExpressRouteCircuitRoutesTable.cs" />
+    <Compile Include="Generated\Models\PSExpressRouteCircuitRoutesTableSummary.cs" />
+    <Compile Include="Generated\Models\PSExpressRouteCircuitStats.cs" />
+    <Compile Include="Generated\Models\PSExpressRouteCrossConnection.cs" />
+    <Compile Include="Generated\Models\PSExpressRouteCrossConnectionRoutesTableSummary.cs" />
+    <Compile Include="Generated\Models\PSGatewayRoute.cs" />
+    <Compile Include="Generated\Models\PSIpFlowVerifyResult.cs" />
+    <Compile Include="Generated\Models\PSIpv6ExpressRouteCircuitPeeringConfig.cs" />
+    <Compile Include="Generated\Models\PSLoadBalancerSku.cs" />
+    <Compile Include="Generated\Models\PSNetworkInterfaceDnsSettings.cs" />
+    <Compile Include="Generated\Models\PSNetworkWatcher.cs" />
+    <Compile Include="Generated\Models\PSNextHopResult.cs" />
+    <Compile Include="Generated\Models\PSPacketCaptureStatus.cs" />
+    <Compile Include="Generated\Models\PSPublicIpAddressDnsSettings.cs" />
+    <Compile Include="Generated\Models\PSPublicIpAddressSku.cs" />
+    <Compile Include="Generated\Models\PSPublicIpTag.cs" />
+    <Compile Include="Generated\Models\PSResourceNavigationLink.cs" />
+    <Compile Include="Generated\Models\PSTrafficAnalyticsConfigurationProperties.cs" />
+    <Compile Include="Generated\Models\PSTrafficAnalyticsProperties.cs" />
+    <Compile Include="Generated\Models\PSTroubleshootingDetails.cs" />
+    <Compile Include="Generated\Models\PSTroubleshootingRecommendedActions.cs" />
+    <Compile Include="Generated\Models\PSTunnelConnectionHealth.cs" />
+    <Compile Include="Generated\Models\PSVpnClientConfiguration.cs" />
+    <Compile Include="Generated\Models\PSVpnClientParameters.cs" />
+    <Compile Include="Generated\Models\PSVpnClientRevokedCertificate.cs" />
+    <Compile Include="Generated\Models\PSVpnClientRootCertificate.cs" />
+    <Compile Include="Generated\Usage\GetAzureRMUsageListCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AddAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AzureLoadBalancerInboundNatPoolConfigBase.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\GetAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
@@ -225,41 +277,27 @@
     <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
-    <Compile Include="Models\PSApplicationGatewayBackendAddress.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddressPool.cs" />
-    <Compile Include="Models\PSApplicationGatewayProbeHealthResponseMatch.cs" />
-    <Compile Include="Models\PSApplicationGatewaySslPredefinedPolicy.cs" />
-    <Compile Include="Models\PSApplicationGatewayAvailableSslOptions.cs" />
+    <Compile Include="Models\PSApplicationGatewayFrontendIPConfiguration.cs" />
+    <Compile Include="Models\PSAvailableProvidersListCity.cs" />
+    <Compile Include="Models\PSAvailableProvidersListCountry.cs" />
+    <Compile Include="Models\PSAvailableProvidersListParameters.cs" />
+    <Compile Include="Models\PSAvailableProvidersListState.cs" />
+    <Compile Include="Models\PSAzureReachabilityReportParameters.cs" />
     <Compile Include="Models\PSConnectionMonitor.cs" />
     <Compile Include="Models\PSConnectionMonitorDestination.cs" />
     <Compile Include="Models\PSConnectionMonitorParameters.cs" />
     <Compile Include="Models\PSConnectionMonitorQueryResult.cs" />
     <Compile Include="Models\PSConnectionMonitorResult.cs" />
-    <Compile Include="Models\PSConnectionMonitorSource.cs" />
     <Compile Include="Models\PSConnectionStateSnapshot.cs" />
     <Compile Include="Models\PSEndpointServiceResult.cs" />
-    <Compile Include="Models\PSExpressRouteCircuitReference.cs" />
-    <Compile Include="Models\PSExpressRouteCrossConnectionRoutesTableSummary.cs" />
-    <Compile Include="Models\PSExpressRouteCrossConnection.cs" />
+    <Compile Include="Models\PSExpressRouteCircuitPeeringConfig.cs" />
     <Compile Include="Models\PSExpressRouteCrossConnectionPeering.cs" />
     <Compile Include="Models\PSNetworkWatcherProtocolConfiguration.cs" />
     <Compile Include="Models\PSServiceEndpoint.cs" />
-    <Compile Include="Models\PSLoadBalancerSku.cs" />
-    <Compile Include="Models\PSPublicIpAddressSku.cs" />
     <Compile Include="Models\PSVirtualNetworkUsage.cs" />
-    <Compile Include="Models\PSApplicationGatewayBackendHealth.cs" />
-    <Compile Include="Models\PSApplicationGatewayBackendHealthHttpSettings.cs" />
-    <Compile Include="Models\PSApplicationGatewayBackendHealthPool.cs" />
-    <Compile Include="Models\PSApplicationGatewayAvailableWafRuleSetsResult.cs" />
-    <Compile Include="Models\PSApplicationGatewayFirewallRuleSet.cs" />
-    <Compile Include="Models\PSApplicationGatewayFirewallRuleGroup.cs" />
-    <Compile Include="Models\PSApplicationGatewayFirewallRule.cs" />
-    <Compile Include="Models\PSApplicationGatewayFirewallDisabledRuleGroup.cs" />
-    <Compile Include="Models\PSApplicationGatewayBackendHealthServer.cs" />
-    <Compile Include="Models\PSApplicationGatewayConnectionDraining.cs" />
     <Compile Include="Models\PSBackendAddressPool.cs" />
     <Compile Include="Models\PSBgpCommunity.cs" />
-    <Compile Include="Models\PSBgpPeerStatus.cs" />
     <Compile Include="Models\PSBgpServiceCommunity.cs" />
     <Compile Include="Models\PSChildResource.cs" />
     <Compile Include="Models\PSConnectivityHop.cs" />
@@ -268,18 +306,14 @@
     <Compile Include="Models\PSDdosProtectionPlan.cs" />
     <Compile Include="Models\PSFlowLog.cs" />
     <Compile Include="Models\PSFlowLogProperties.cs" />
-    <Compile Include="Models\PSGatewayRoute.cs" />
     <Compile Include="Models\PSGetPacketCaptureResult.cs" />
     <Compile Include="Models\PSInboundNatRule.cs" />
     <Compile Include="Models\PSInboundRule.cs" />
     <Compile Include="Models\PSIPAddressAvailabilityResult.cs" />
     <Compile Include="Models\PSApplicationGatewayAuthenticationCertificate.cs" />
     <Compile Include="Models\PSApplicationGatewayWebApplicationFirewallConfiguration.cs" />
-    <Compile Include="Models\PSApplicationGatewaySslPolicy.cs" />
-    <Compile Include="Models\PSBgpSettings.cs" />
     <Compile Include="Models\PSApplicationGateway.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendHttpSettings.cs" />
-    <Compile Include="Models\PSApplicationGatewayFrontendIPConfiguration.cs" />
     <Compile Include="Models\PSApplicationGatewayFrontendPort.cs" />
     <Compile Include="Models\PSApplicationGatewayHttpListener.cs" />
     <Compile Include="Models\PSApplicationGatewayIPConfiguration.cs" />
@@ -295,33 +329,24 @@
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
     <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />
     <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
-    <Compile Include="Models\PSExpressRouteCircuitConnection.cs" />
     <Compile Include="Models\PSIPConfiguration.cs" />
     <Compile Include="Models\PSIpsecPolicy.cs" />
     <Compile Include="Models\PSIpFlowVerify.cs" />
-    <Compile Include="Models\PSIPFlowVerifyResult.cs" />
     <Compile Include="Models\PSIpv6PeeringConfig.cs" />
     <Compile Include="Models\PSNetworkInterface.cs" />
     <Compile Include="Models\PSNetworkInterfaceAssociation.cs" />
-    <Compile Include="Models\PSNetworkInterfaceDnsSettings.cs" />
     <Compile Include="Models\PSNetworkInterfaceIpConfiguration.cs" />
     <Compile Include="Models\PSNetworkSecurityGroup.cs" />
-    <Compile Include="Models\PSNextHopResult.cs" />
     <Compile Include="Models\PSPacketCapture.cs" />
     <Compile Include="Models\PSPacketCaptureFilter.cs" />
     <Compile Include="Models\PSPacketCaptureResult.cs" />
-    <Compile Include="Models\PSPacketCaptureStatus.cs" />
     <Compile Include="Models\PSPublicIpAddress.cs" />
-    <Compile Include="Models\PSPublicIpAddressDnsSettings.cs" />
-    <Compile Include="Models\PSPublicIpTag.cs" />
     <Compile Include="Models\PSResourceId.cs" />
-    <Compile Include="Models\PSResourceNavigationLink.cs" />
     <Compile Include="Models\PSApplicationGatewayRedirectConfiguration.cs" />
     <Compile Include="Models\PSRetentionPolicyParameters.cs" />
-    <Compile Include="Models\PSRoute.cs" />
+    <Compile Include="Generated\Models\PSRoute.cs" />
     <Compile Include="Models\PSRouteTable.cs" />
     <Compile Include="Models\PSSecurityGroupNetworkInterface.cs" />
-    <Compile Include="Models\PSNetworkWatcher.cs" />
     <Compile Include="Models\PSNetworkLongRunningOperation.cs" />
     <Compile Include="Models\PSEffectiveNetworkSecurityGroup.cs" />
     <Compile Include="Models\PSEffectiveRoute.cs" />
@@ -335,43 +360,25 @@
     <Compile Include="Models\PSSubnet.cs" />
     <Compile Include="Models\PSSubnetAssociation.cs" />
     <Compile Include="Models\PSTopLevelResource.cs" />
-    <Compile Include="Models\PSTroubleshootingDetails.cs" />
-    <Compile Include="Models\PSTroubleshootingRecommendedActions.cs" />
     <Compile Include="Models\PSTroubleshootingResult.cs" />
     <Compile Include="Models\PSUsage.cs" />
-    <Compile Include="Models\PSUsageCustom.cs" />
-    <Compile Include="Models\PSUsageName.cs" />
+    <Compile Include="Generated\Models\PSUsageName.cs" />
     <Compile Include="Models\PSViewNsgRules.cs" />
     <Compile Include="Models\PSServiceProviderProperties.cs" />
     <Compile Include="Models\PSPeering.cs" />
     <Compile Include="Models\PSPeeringConfig.cs" />
     <Compile Include="Models\PSExpressRouteCircuitSku.cs" />
     <Compile Include="Models\PSPeeringStats.cs" />
-    <Compile Include="Models\PSExpressRouteCircuitAuthorization.cs" />
-    <Compile Include="Models\PSExpressRouteCircuit.cs" />
-    <Compile Include="Models\PSExpressRouteCircuitArpTable.cs" />
-    <Compile Include="Models\PSExpressRouteCircuitRoutesTable.cs" />
-    <Compile Include="Models\PSExpressRouteCircuitRoutesTableSummary.cs" />
-    <Compile Include="Models\PSExpressRouteCircuitStats.cs" />
     <Compile Include="Models\PSTopology.cs" />
     <Compile Include="Models\PSTopologyAssociation.cs" />
     <Compile Include="Models\PSTopologyResource.cs" />
     <Compile Include="Models\PSVirtualNetworkPeering.cs" />
-    <Compile Include="Models\PSTunnelConnectionHealth.cs" />
     <Compile Include="Models\PSVirtualNetworkUsageCustom.cs" />
     <Compile Include="Models\PSVpnProfile.cs" />
     <Compile Include="Models\PSAvailableProvidersList.cs" />
-    <Compile Include="Models\PSAvailableProvidersListCity.cs" />
-    <Compile Include="Models\PSAvailableProvidersListCountry.cs" />
-    <Compile Include="Models\PSAvailableProvidersListParameters.cs" />
-    <Compile Include="Models\PSAvailableProvidersListState.cs" />
     <Compile Include="Models\PSAzureReachabilityReport.cs" />
     <Compile Include="Models\PSAzureReachabilityReportItem.cs" />
-    <Compile Include="Models\PSAzureReachabilityReportLatencyInfo.cs" />
     <Compile Include="Models\PSAzureReachabilityReportLocation.cs" />
-    <Compile Include="Models\PSAzureReachabilityReportParameters.cs" />
-    <Compile Include="Models\PSTrafficAnalyticsConfigurationProperties.cs" />
-    <Compile Include="Models\PSTrafficAnalyticsProperties.cs" />
     <Compile Include="NetworkInterface\EffectiveResources\GetAzureEffectiveNetworkSecurityGroupCommand.cs" />
     <Compile Include="NetworkInterface\EffectiveResources\GetAzureEffectiveRouteTableCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\AddAzureNetworkInterfaceIpConfigCommand.cs" />
@@ -413,17 +420,16 @@
     <Compile Include="NetworkWatcher\GetAzureNetworkWatcherReachabilityProvidersListCommand.cs" />
     <Compile Include="NetworkWatcher\GetAzureRMNetworkWatcherReachabilityReportCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
-    <Compile Include="Models\PSApplicationSecurityGroup.cs" />
-    <Compile Include="RouteTable\GetAzureRMRouteTableCommand.cs" />
-    <Compile Include="RouteTable\NewAzureRMRouteTableCommand.cs" />
-    <Compile Include="RouteTable\RemoveAzureRMRouteTableCommand.cs" />
-    <Compile Include="RouteTable\Route\AddAzureRmRouteConfigCommand.cs" />
-    <Compile Include="RouteTable\Route\GetAzureRmRouteConfigCommand.cs" />
-    <Compile Include="RouteTable\Route\NewAzureRmRouteConfigCommand.cs" />
-    <Compile Include="RouteTable\Route\RemoveAzureRmRouteConfigCommand.cs" />
-    <Compile Include="RouteTable\Route\SetAzureRmRouteConfigCommand.cs" />
-    <Compile Include="RouteTable\SetAzureRMRouteTableCommand.cs" />
-    <Compile Include="Usage\GetAzureNetworkUsageCommand.cs" />
+    <Compile Include="Generated\Models\PSApplicationSecurityGroup.cs" />
+    <Compile Include="Generated\RouteTable\GetAzureRMRouteTableCommand.cs" />
+    <Compile Include="Generated\RouteTable\NewAzureRMRouteTableCommand.cs" />
+    <Compile Include="Generated\RouteTable\RemoveAzureRMRouteTableCommand.cs" />
+    <Compile Include="Generated\RouteTable\Route\AddAzureRmRouteConfigCommand.cs" />
+    <Compile Include="Generated\RouteTable\Route\GetAzureRmRouteConfigCommand.cs" />
+    <Compile Include="Generated\RouteTable\Route\NewAzureRmRouteConfigCommand.cs" />
+    <Compile Include="Generated\RouteTable\Route\RemoveAzureRmRouteConfigCommand.cs" />
+    <Compile Include="Generated\RouteTable\Route\SetAzureRmRouteConfigCommand.cs" />
+    <Compile Include="Generated\RouteTable\SetAzureRMRouteTableCommand.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\GetAzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\GetAzureRmVirtualNetworkGatewaySupportedVpnDevice.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\NewAzureRmIpsecPolicyCommand.cs" />
@@ -528,26 +534,18 @@
     <Compile Include="LoadBalancer\Probe\RemoveAzureLoadBalancerProbeCommand.cs" />
     <Compile Include="LoadBalancer\RemoveAzureLoadBalancerCommand.cs" />
     <Compile Include="LoadBalancer\SetAzureLoadBalancerCommand.cs" />
-    <Compile Include="Models\PSConnectionResetSharedKey.cs" />
-    <Compile Include="Models\PSConnectionSharedKey.cs" />
     <Compile Include="Models\PSLocalNetworkGateway.cs" />
     <Compile Include="Models\PSFrontendIpConfiguration.cs" />
     <Compile Include="Models\PSLoadBalancer.cs" />
     <Compile Include="Models\PSLoadBalancingRule.cs" />
     <Compile Include="Models\PSProbe.cs" />
-    <Compile Include="Models\PSAddressSpace.cs" />
-    <Compile Include="Models\PSDhcpOptions.cs" />
     <Compile Include="Models\PSProvisioningState.cs" />
     <Compile Include="Models\PSResourceProperties.cs" />
     <Compile Include="Models\PSVirtualNetwork.cs" />
     <Compile Include="Models\PSTransportProtocol.cs" />
     <Compile Include="Models\PSVirtualNetworkGateway.cs" />
     <Compile Include="Models\PSVirtualNetworkGatewaySku.cs" />
-    <Compile Include="Models\PSVpnClientRootCertificate.cs" />
-    <Compile Include="Models\PSVpnClientRevokedCertificate.cs" />
-    <Compile Include="Models\PSVpnClientConfiguration.cs" />
     <Compile Include="Models\PSVpnClientIPsecParameters.cs" />
-    <Compile Include="Models\PSVpnClientParameters.cs" />
     <Compile Include="Models\PSVirtualNetworkGatewayConnection.cs" />
     <Compile Include="Models\PSVirtualNetworkGatewayIpConfiguration.cs" />
     <Compile Include="NetworkInterface\RemoveAzureNetworkInterfaceCommand.cs" />
@@ -592,32 +590,17 @@
     <Compile Include="VirtualNetwork\VirtualNetworkListUsageMethod.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Commands.Common.Network.csproj">
-      <Project>{1338f7ae-7111-4ed3-8916-2d0fecc876f4}</Project>
-      <Name>Commands.Common.Network</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Microsoft\Azure\Commands\Network\Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AzureRM.Network.psd1">
-      <Link>AzureRM.Network.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Network.format.ps1xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Microsoft.Azure.Commands.Network.generated.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
@@ -625,9 +608,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="StartupScripts\*.ps1">
-      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
-    </None>
+    <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -636,8 +617,13 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
+      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
+      <Name>Commands.Profile</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />

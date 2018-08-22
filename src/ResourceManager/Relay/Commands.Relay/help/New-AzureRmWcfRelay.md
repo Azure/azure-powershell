@@ -252,10 +252,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), UserMetadata (ByPropertyName), WcfRelayType (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
-Parameters: InputObject (ByPropertyName)
 
 ### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 

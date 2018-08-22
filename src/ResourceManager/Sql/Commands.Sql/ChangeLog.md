@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
+
+## Version 4.11.1
+* Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 4.11.0
 * Adding Server Advanced Threat Protection support with the following cmdlets:
@@ -58,7 +62,7 @@
 * Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
 * Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with 'Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy'.
 * Update all Azure Sql Database/ElasticPool Creation/Update related cmdlets to use the new Database API, which support Sku property for scale and tier-related properties.
-* The updated cmdlets including: 
+* The updated cmdlets including:
 	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
 	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
 	- New-AzureRmSqlDatabaseCopy

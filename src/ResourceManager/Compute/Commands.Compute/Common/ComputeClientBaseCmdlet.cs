@@ -18,6 +18,7 @@ using System.Management.Automation;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -95,6 +96,28 @@ namespace Microsoft.Azure.Commands.Compute
             Regex r = new Regex(@"(.*?)operations/(?<id>[a-f0-9]{8}[-]([a-f0-9]{4}[-]){3}[a-f0-9]{12})", RegexOptions.IgnoreCase);
             Match m = r.Match(Url);
             return m.Success ? m.Groups["id"].Value : null;
+        }
+
+        public static ManagedDiskParameters SetManagedDisk(string managedDiskId, string storageAccountType, ManagedDiskParameters managedDisk = null)
+        {
+            if (string.IsNullOrWhiteSpace(managedDiskId) && string.IsNullOrWhiteSpace(storageAccountType))
+            {
+                return managedDisk;
+            }
+
+            managedDisk = new ManagedDiskParameters();
+
+            if (!string.IsNullOrWhiteSpace(managedDiskId))
+            {
+                managedDisk.Id = managedDiskId;
+            }
+
+            if (!string.IsNullOrWhiteSpace(storageAccountType))
+            {
+                managedDisk.StorageAccountType = storageAccountType;
+            }
+
+            return managedDisk;
         }
     }
 }

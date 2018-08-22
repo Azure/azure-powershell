@@ -122,6 +122,7 @@ function Test-SsisAzure-IntegrationRuntime
         }
 
         if ($catalogAdminPassword -eq $null){
+		    <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Fake password to resource that has been deleted.")]#>
             $catalogAdminPassword = 'fakepassord'
         }
 
@@ -285,10 +286,11 @@ function Test-Shared-IntegrationRuntime
             -Type 'SelfHosted' `
             -Force
 
-        New-AzureRMRoleAssignment `
+        New-AzureRMRoleAssignmentWithId `
             -ObjectId $linkeddf.Identity.PrincipalId `
             -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
-            -Scope $shared.Id
+            -Scope $shared.Id `
+            -RoleAssignmentId 6558f9a7-689c-41d3-93bd-3281fbe3d26f
 
         Wait-Seconds 20
 

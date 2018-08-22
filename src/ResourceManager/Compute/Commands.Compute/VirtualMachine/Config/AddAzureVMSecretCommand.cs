@@ -23,11 +23,7 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Add a Vault Secret Group object to VM
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Add,
-        ProfileNouns.VaultSecretGroup),
-    OutputType(
-        typeof(PSVirtualMachine))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSecret"),OutputType(typeof(PSVirtualMachine))]
     public class NewAzureVaultSecretGroupCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]

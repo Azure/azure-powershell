@@ -150,7 +150,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: EmailAddress (ByPropertyName), FirstName (ByPropertyName), LastName (ByPropertyName), PhoneNumber (ByPropertyName)
 
 ## OUTPUTS
 
