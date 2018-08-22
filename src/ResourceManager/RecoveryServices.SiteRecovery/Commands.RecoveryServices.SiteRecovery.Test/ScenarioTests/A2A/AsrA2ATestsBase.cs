@@ -124,22 +124,15 @@ namespace RecoveryServices.SiteRecovery.Test
                 this.helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var rmProfileModule = this.helper.RMProfileModule;
-                var modules = new List<string>();
-
-                modules.Add(powershellFile);
-                modules.Add(powershellHelperFile);
-                modules.Add(rmProfileModule);
-                modules.Add(helper.GetRMModulePath("AzureRM.Network.psd1"));
-                // modules.Add(helper.GetRMModulePath("AzureRM.Storage.psd1"));
-                modules.Add(helper.GetRMModulePath("AzureRM.Compute.psd1"));
-                modules.Add(this.helper.RMResourceModule);
-                modules.Add(this.helper.GetRMModulePath("AzureRM.RecoveryServices.psd1"));
-                modules.Add(this.helper.GetRMModulePath("AzureRM.RecoveryServices.SiteRecovery.psd1"));
-                modules.Add("AzureRM.Resources.ps1");
-
                 this.helper.SetupModules(
                     AzureModule.AzureResourceManager,
-                    modules.ToArray());
+                    powershellFile,
+                    powershellHelperFile,
+                    rmProfileModule,
+                    this.helper.RMResourceModule,
+                    this.helper.GetRMModulePath("AzureRM.RecoveryServices.psd1"),
+                    this.helper.GetRMModulePath("AzureRM.RecoveryServices.SiteRecovery.psd1"),
+                    "AzureRm.Resources.ps1");
 
                 try
                 {

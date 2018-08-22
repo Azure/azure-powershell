@@ -30,12 +30,13 @@ namespace RecoveryServices.SiteRecovery.Test
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
 
-            this.powershellFile = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests\\A2A\\AsrA2ATests.ps1");
             this.powershellHelperFile = System.IO.Path.Combine(
                 System.AppDomain.CurrentDomain.BaseDirectory,
                 "ScenarioTests\\A2A\\A2ATestsHelper.ps1");
+
+            this.powershellFile = System.IO.Path.Combine(
+                System.AppDomain.CurrentDomain.BaseDirectory,
+                "ScenarioTests\\A2A\\AsrA2ATests.ps1");
             this.initialize();
         }
 

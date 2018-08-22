@@ -197,8 +197,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets encryption should be enabled or disabled.
         /// </summary>
+        
         [Parameter(ParameterSetName = ASRParameterSets.HyperVToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.Default)]
+        [Obsolete("cmdlet parameter will be removed in upcoming breaking release")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             Constants.Enable,

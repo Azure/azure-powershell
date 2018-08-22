@@ -217,6 +217,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.HyperVToAzure)]
         [DefaultValue(Constants.Disable)]
+        [Obsolete("cmdlet parameter will be removed in upcoming breaking release")]
         [ValidateSet(
             Constants.Enable,
             Constants.Disable)]

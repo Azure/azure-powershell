@@ -21,6 +21,7 @@
 .SYNOPSIS
     NewA2ADiskReplicationConfiguration creation test.
 #>
+
 function Test-NewA2ADiskReplicationConfiguration
 {
     $recoveryStorageAccountId ="/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/a2a-rg/providers/Microsoft.Storage/storageAccounts/a2argdisks412"
@@ -64,7 +65,6 @@ function Test-NewA2AManagedDiskReplicationConfiguration
 #>
 function Test-NewAsrFabric {
     $seed = 35;
-    $primaryPolicyName = getPrimaryPolicy
         $vaultRgLocation = getVaultRgLocation
         $vaultName = getVaultName
         $vaultLocation = getVaultLocation
