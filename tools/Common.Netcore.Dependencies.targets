@@ -3,7 +3,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.4.0" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.4.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Microsoft.Azure.PowerShell.Aks" Version="1.0.0" />
     <PackageReference Include="Microsoft.Azure.PowerShell.Authentication" Version="1.0.0" />
     <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions" Version="1.0.0" />
@@ -30,4 +29,7 @@
     <!-- <StorageToolsPath>$(MSBuildThisFileDirectory)..\src\packages\Microsoft.Azure.PowerShell.Storage.1.0.0-preview\tools\</StorageToolsPath> -->
     <StorageToolsPath>$(MSBuildThisFileDirectory)..\src\Common\Commands.Common.Storage\</StorageToolsPath>
   </PropertyGroup>
+  <ItemGroup Condition="'$(OmitJsonPackage)' != 'true'">
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
 </Project>
