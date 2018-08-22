@@ -676,6 +676,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
             }
 
+            powershell.AddScript("Disable-AzureRmDataCollection -ErrorAction Ignore");
             powershell.AddScript(
                 string.Format("set-location \"{0}\"", System.AppDomain.CurrentDomain.BaseDirectory));
             powershell.AddScript(string.Format(@"$TestOutputRoot='{0}'", System.AppDomain.CurrentDomain.BaseDirectory));
