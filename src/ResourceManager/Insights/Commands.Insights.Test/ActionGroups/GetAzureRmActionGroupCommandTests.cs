@@ -109,16 +109,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             // Error
             cmdlet.ResourceGroupName = "   ";
             cmdlet.Name = Utilities.Name;
-            try
-            {
-                cmdlet.ExecuteCmdlet();
-                Assert.True(false, "Did not throw exception");
-            }
-            catch (PSInvalidOperationException ex)
-            {
-                string message = ex.ToString();
-                Assert.True(message.Contains("PSArgumentException"), "Wrong exception thrown");
-            }
+            var argException = Assert.Throws<PSInvalidOperationException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Contains("PSArgumentException", argException.ToString());
         }
     }
 }

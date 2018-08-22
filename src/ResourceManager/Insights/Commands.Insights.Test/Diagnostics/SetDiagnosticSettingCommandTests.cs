@@ -209,17 +209,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             cmdlet.Categories = new List<string> { "TestCategory3" };
             cmdlet.Enabled = false;
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
-
-            try
-            {
-                cmdlet.ExecuteCmdlet();
-                Assert.True(false, "Did not throw exception");
-            }
-            catch (PSInvalidOperationException ex)
-            {
-                string message = ex.ToString();
-                Assert.True(message.Contains("ArgumentException"), "Not the right type of exception");
-            }
+            var argException = Assert.Throws<PSInvalidOperationException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Contains("ArgumentException", argException.ToString());
 
             // Testing the new metric categories must be known before the cmdlet can add them
             expectedSettings.Metrics[0].Enabled = false;
@@ -235,16 +226,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             cmdlet.MetricCategory = new List<string> { "MetricCat3" };
             cmdlet.Enabled = false;
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
-            try
-            {
-                cmdlet.ExecuteCmdlet();
-                Assert.True(false, "Did not throw exception #2");
-            }
-            catch (PSInvalidOperationException ex)
-            {
-                string message = ex.ToString();
-                Assert.True(message.Contains("ArgumentException"), "Not the right type of exception #2");
-            }
+            argException = Assert.Throws<PSInvalidOperationException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Contains("ArgumentException", argException.ToString());
         }
 
         [Fact]
