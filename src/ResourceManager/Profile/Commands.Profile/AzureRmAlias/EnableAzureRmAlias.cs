@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
 
             if (Scope != null && (Scope.Equals("CurrentUser") || Scope.Equals("LocalMachine")))
             {
-                AliasHelper.AddAliasesToProfile(userprofile, Module, mapping);
+                var helper = new AliasHelper();
+                helper.AddAliasesToProfile(userprofile, Module, mapping);
             }
         }
 

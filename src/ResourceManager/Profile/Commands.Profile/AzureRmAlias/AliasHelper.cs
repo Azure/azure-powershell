@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -28,12 +28,26 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
         private const string STARTALIASIMPORTMARKER = "#Begin Azure PowerShell alias import";
         private const string ENDALIASIMPORTMARKER = "#End Azure PowerShell alias import";
 
+        private IDataStore _dataStore;
+
+        public AliasHelper(IDataStore dataStore)
+        {
+            _dataStore = dataStore;
+            FileUtilities.DataStore = dataStore;
+        }
+
+        public AliasHelper() : this(AzureSession.Instance.DataStore)
+        {
+        }
+
         public static string GetProfilePath(string Scope, SessionState sessionState)
         {
-            object userprofile = "";
+            var userprofile = "";
             if (Scope != null && Scope.Equals("CurrentUser"))
             {
-                userprofile = Path.Combine(sessionState.PSVariable.GetValue("env:USERPROFILE").ToString(), "Documents", "PowerShell", "profile.ps1");
+                var editionType = sessionState.PSVariable.GetValue("PSEdition") as string;
+                var psFolder = string.Equals(editionType, "Desktop", StringComparison.OrdinalIgnoreCase) ? "WindowsPowerShell" : "PowerShell";
+                userprofile = Path.Combine(sessionState.PSVariable.GetValue("env:USERPROFILE").ToString(), "Documents", psFolder, "profile.ps1");
             }
 
             else if (Scope != null && Scope.Equals("LocalMachine"))
@@ -41,10 +55,10 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                 userprofile = Path.Combine(sessionState.PSVariable.GetValue("PSHOME").ToString(), "profile.ps1");
             }
 
-            return userprofile.ToString();
+            return userprofile;
         }
 
-        public static void RemoveAliasesInProfile(string userprofile, string[] Module, Dictionary<string, object> mapping)
+        public void RemoveAliasesInProfile(string userprofile, string[] Module, Dictionary<string, object> mapping)
         {
             ParseFile(userprofile, Module, out string filecontent, out List<string> modulesToKeep, add: false);
 
@@ -52,9 +66,9 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
             CreateFileEntry(modulesToKeep, filecontent, userprofile, mapping);
         }
 
-        public static void AddAliasesToProfile(string userprofile, string[] Module, Dictionary<string, object> mapping)
+        public void AddAliasesToProfile(string userprofile, string[] Module, Dictionary<string, object> mapping)
         {
-            CreateProfileIfNotExisting(userprofile);
+            CreateProfileIfNotExists(userprofile);
 
             ParseFile(userprofile, Module, out string filecontent, out List<string> modulesToKeep, add: true);
 
@@ -68,7 +82,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
             }
         }
 
-        public static void ParseFile(string userprofile, string[] Module, out string filecontent, out List<string> modulesToKeep, bool add)
+        public void ParseFile(string userprofile, string[] Module, out string filecontent, out List<string> modulesToKeep, bool add)
         {
             filecontent = "";
             modulesToKeep = new List<String>();
@@ -76,7 +90,9 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
             {
                 modulesToKeep = Module?.ToList();
             }
-            string originalText = File.ReadAllText(userprofile.ToString());
+
+            
+            string originalText = _dataStore.ReadFileAsText(userprofile.ToString());
             if (originalText.Contains(STARTALIASIMPORTMARKER))
             {
                 // Add back profile code unrelated to Azure PowerShell aliases
@@ -119,12 +135,12 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
             }
         }
 
-        public static void CreateFileEntry(List<string> modulesToKeep, string filecontent, string userprofile, Dictionary<string, object> mapping)
+        public void CreateFileEntry(List<string> modulesToKeep, string filecontent, string userprofile, Dictionary<string, object> mapping)
         {
             if (modulesToKeep.Count > 0)
             {
                 filecontent += STARTALIASIMPORTMARKER + Environment.NewLine + "Import-Module Az.Profile -ErrorAction SilentlyContinue -ErrorVariable importError" + 
-                    Environment.NewLine + "if (`$importerror.Count -eq 0) { " + Environment.NewLine;
+                    Environment.NewLine + "if ($importerror.Count -eq 0) { " + Environment.NewLine;
 
                 var validModules = new List<string>();
                 foreach (var name in modulesToKeep)
@@ -139,43 +155,34 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                 filecontent += "}" + Environment.NewLine + ENDALIASIMPORTMARKER;
             }
 
-            using (System.Management.Automation.PowerShell PowerShellInstance = System.Management.Automation.PowerShell.Create())
+            ExecuteFileActionWithFriendlyError(() =>
             {
-                PowerShellInstance.AddScript("Set-Content -Path '" + userprofile + "' -Value \"" + filecontent + "\"");
-                Collection<PSObject> PSOutput = PowerShellInstance.Invoke();
-
-                // Check for error thrown when LocalMachine profile is accessed from non-admin mode.
-                if (PowerShellInstance.Streams.Error.Count > 0)
-                {
-                    foreach (var error in PowerShellInstance.Streams.Error)
-                    {
-                        if (error.ToString().Contains("Access to the path") && error.ToString().Contains("is denied."))
-                        {
-                            throw new Exception(Resources.AliasImportFailure);
-                        }
-                    }
-                }
-            }
+                FileUtilities.EnsureDirectoryExists(Path.GetDirectoryName(userprofile));
+                _dataStore.WriteFile(userprofile, filecontent);
+            });
         }
 
-        public static void CreateProfileIfNotExisting(string userprofile)
+        public void CreateProfileIfNotExists(string userprofile)
         {
-            using (System.Management.Automation.PowerShell PowerShellInstance = System.Management.Automation.PowerShell.Create())
+            ExecuteFileActionWithFriendlyError(() =>
             {
-                PowerShellInstance.AddScript("if (!(Test-Path '" + userprofile + "')) { New-Item '" + userprofile + "' -ItemType file -Force }");
-                Collection<PSObject> PSOutput = PowerShellInstance.Invoke();
-
-                // Check for error thrown when LocalMachine profile is accessed from non-admin mode.
-                if (PowerShellInstance.Streams.Error.Count > 0)
+                FileUtilities.EnsureDirectoryExists(Path.GetDirectoryName(userprofile));
+                if (!_dataStore.FileExists(userprofile))
                 {
-                    foreach (var error in PowerShellInstance.Streams.Error)
-                    {
-                        if (error.ToString().Contains("Access to the path") && error.ToString().Contains("is denied."))
-                        {
-                            throw new Exception(Resources.AliasImportFailure);
-                        }
-                    }
+                    _dataStore.WriteFile(userprofile, Environment.NewLine);
                 }
+            });
+        }
+
+        private static void ExecuteFileActionWithFriendlyError(Action fileAction)
+        {
+            try
+            {
+                fileAction();
+            }
+            catch (UnauthorizedAccessException accessException) when (accessException?.Message != null && accessException.Message.ToLower().Contains("denied"))
+            {
+                throw new UnauthorizedAccessException(Properties.Resources.AliasImportFailure, accessException);
             }
         }
     }
