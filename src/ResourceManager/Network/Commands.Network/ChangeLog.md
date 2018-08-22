@@ -19,6 +19,8 @@
 --->
 
 ## Current Release
+
+## Version 6.6.0
 * Fixed issue with default resource groups not being set.
 
 ## Version 6.5.0
