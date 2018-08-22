@@ -263,7 +263,7 @@ namespace StaticAnalysis.HelpAnalyzer
         {
             foreach (var cmdlet in cmdlets)
             {
-                if (!helpRecords.Contains(cmdlet.Name, StringComparer.OrdinalIgnoreCase))
+                if (!helpRecords.Contains(cmdlet.Name.Replace("AzureRm", "Az").Replace("-Azure", "-Az"), StringComparer.OrdinalIgnoreCase))
                 {
                     helpLogger.LogRecord(new HelpIssue
                     {
