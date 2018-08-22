@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Newtonsoft.Json;
 using System;
@@ -58,9 +59,10 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
 
             if (Scope != null && (Scope.Equals("CurrentUser") || Scope.Equals("LocalMachine")))
             {
-                if (File.Exists(userprofile.ToString()))
+                if (AzureSession.Instance.DataStore.FileExists(userprofile))
                 {
-                    AliasHelper.RemoveAliasesInProfile(userprofile, Module, mapping);
+                    var helper = new AliasHelper();
+                    helper.RemoveAliasesInProfile(userprofile, Module, mapping);
                 }
             }
         }
