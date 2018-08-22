@@ -73,10 +73,10 @@ namespace Tools.Common.Loaders
 #else
                 return new AssemblyMetadata(AssemblyLoadContext.Default.LoadFromAssemblyPath(assemblyPath));
             }
-            catch(System.IO.FileLoadException ex) when (string.Equals(ex.Message, "Assembly with same name is already loaded"))
+            catch(System.IO.FileLoadException ex) when (ex != null && string.Equals(ex.Message, "Assembly with same name is already loaded"))
             {
                 var assemblyName = AssemblyLoadContext.GetAssemblyName(assemblyPath);
-                var assembly = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.GetName().Name == assemblyName.Name).FirstOrDefault();
+                var assembly = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.GetName().Name == assemblyName?.Name).FirstOrDefault();
                 if (assembly != null)
                 {
                     result = new AssemblyMetadata(assembly);
