@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.New, "AzureRmDisk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Disk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDisk))]
     public partial class NewAzureRmDisk : ComputeAutomationBaseCmdlet
     {

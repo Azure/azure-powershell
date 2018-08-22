@@ -40,7 +40,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmRouteTable", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteTable", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
     public class SetAzureRouteTableCommand : NetworkBaseCmdlet
     {
         [Parameter(

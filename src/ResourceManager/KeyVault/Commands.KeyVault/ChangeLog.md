@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
+
+## Version 5.1.1
 * Updated to the latest version of the Azure ClientRuntime.
+
+## Version 5.1.0-preview
+* Adding support for listing certificates in a pending state
 
 ## Version 5.1.0
 * Fix piping issue in Set-AzureRmKeyVaultAccessPolicy

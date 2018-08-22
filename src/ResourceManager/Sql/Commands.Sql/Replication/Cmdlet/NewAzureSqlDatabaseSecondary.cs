@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure SQL Database Secondary and Replication Link
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseSecondary",
-        ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureReplicationLinkModel))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseSecondary",ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureReplicationLinkModel))]
     public class NewAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
     {
         private const string DtuDatabaseParameterSet = "DtuBasedDatabase";
@@ -175,7 +174,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             string location = ModelAdapter.GetServerLocation(this.PartnerResourceGroupName, this.PartnerServerName);
             List<Model.AzureReplicationLinkModel> newEntity = new List<AzureReplicationLinkModel>();
             Database.Model.AzureSqlDatabaseModel primaryDb = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
-
+            
             AzureReplicationLinkModel linkModel = new AzureReplicationLinkModel()
             {
                 PartnerLocation = location,

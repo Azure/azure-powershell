@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmNetworkWatcherResourceTroubleshooting", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSTroubleshootingResult))]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherResourceTroubleshooting", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSTroubleshootingResult))]
 
     public class StartAzureNetworkWatcherResourceTroubleshootingCommand : NetworkWatcherBaseCmdlet
     {
