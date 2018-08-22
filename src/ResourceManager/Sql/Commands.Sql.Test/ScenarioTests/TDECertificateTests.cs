@@ -35,8 +35,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestAddTdeCertificateForSqlServerDefaultParameterSetWithPassword()
         {
             RunPowerShellTest("Test-AddTdeCertificateForSqlServerDefaultParameterSetWithPassword");
@@ -44,8 +42,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact(Skip = "Skip due to long setup time for managed instance")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestAddTdeCertificateForManagedInstanceDefaultParameterSetNoPassword()
         {
             RunPowerShellTest("Test-AddTdeCertificateForManagedInstanceDefaultParameterSetNoPassword");
@@ -60,8 +56,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestAddTdeCertificateForSqlServerInputObjectParameterSetWithPassword()
         {
             RunPowerShellTest("Test-AddTdeCertificateForSqlServerInputObjectParameterSetWithPassword");
@@ -76,8 +70,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestAddTdeCertificateForSqlServerInputObjectParameterSetNoPassword()
         {
             RunPowerShellTest("Test-AddTdeCertificateForSqlServerInputObjectParameterSetNoPassword");
@@ -85,8 +77,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestAddTdeCertificateForSqlServerResourceIdParameterSetNoPassword()
         {
             RunPowerShellTest("Test-AddTdeCertificateForSqlServerResourceIdParameterSetNoPassword");

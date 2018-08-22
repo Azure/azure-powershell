@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
         [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestVcoreElasticPoolCreateWithLicenseType()
         {
@@ -52,8 +51,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestElasticPoolCreateWithZoneRedundancy()
         {
             RunPowerShellTest("Test-CreateElasticPoolWithZoneRedundancy");
@@ -75,8 +72,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestVcoreElasticPoolUpdateWithLicenseType()
         {
             RunPowerShellTest("Test-UpdateVcoreElasticPoolWithLicenseType");
@@ -84,8 +79,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestElasticPoolUpdateWithZoneRedundancy()
         {
             RunPowerShellTest("Test-UpdateElasticPoolWithZoneRedundancy");
@@ -100,8 +93,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestElasticPoolGetWithZoneRedundancy()
         {
             RunPowerShellTest("Test-GetElasticPoolWithZoneRedundancy");

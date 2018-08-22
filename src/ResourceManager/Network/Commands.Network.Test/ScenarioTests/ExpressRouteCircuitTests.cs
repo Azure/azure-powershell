@@ -48,8 +48,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.pgtm)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestExpressRouteCircuitPrivatePublicPeeringCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitPrivatePublicPeeringCRUD");
@@ -58,8 +56,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.pgtm)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestExpressRouteCircuitMicrosoftPeeringCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitMicrosoftPeeringCRUD");
@@ -68,8 +64,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.pgtm)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestExpressRouteCircuitAuthorizationCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCircuitAuthorizationCRUD");
@@ -78,8 +72,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.pgtm)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestExpressRouteBgpServiceCommunitiesGet()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteBGPServiceCommunities");
@@ -88,8 +80,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.pgtm)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestExpressRouteRouteFilterCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteRouteFilters");

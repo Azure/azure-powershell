@@ -151,8 +151,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestAuditingFailedServerUpdatePolicyWithNoStorage()
         {
             RunPowerShellTest("Test-AuditingFailedServerUpdatePolicyWithNoStorage");
@@ -222,8 +220,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestAuditingFailWithBadServerIndentity()
         {
             RunPowerShellTest("Test-AuditingFailWithBadServerIndentity");

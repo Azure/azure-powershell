@@ -48,8 +48,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestVirtualNetworkeExpressRouteGatewayConnectionCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD");
@@ -58,8 +56,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestVirtualNetworkGatewayConnectionWithBgpCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionWithBgpCRUD");
@@ -68,8 +64,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestVirtualNetworkGatewayConnectionwithIpsecPoliciesCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD");
@@ -78,8 +72,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestVirtualNetworkGatewayConnectionWithActiveAcitveGateway()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionWithActiveActiveGateway");
@@ -88,8 +80,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestVirtualNetworkGatewayVpnDeviceConfigurationScripts()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations");

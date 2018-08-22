@@ -36,8 +36,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
      
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestAuditingUpdatePolicyWithClassicStorage()
         {
             RunPowerShellTest("Test-AuditingUpdatePolicyWithClassicStorage");

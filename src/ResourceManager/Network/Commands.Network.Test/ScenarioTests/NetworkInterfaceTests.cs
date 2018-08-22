@@ -56,8 +56,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestNetworkInterfaceNoPublicIpAddress()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceNoPublicIpAddress");
@@ -74,8 +72,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestNetworkInterfaceIDns()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceIDns");
@@ -84,8 +80,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestNetworkInterfaceEnableIPForwarding()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceEnableIPForwarding");
@@ -102,8 +96,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestNetworkInterfaceIpv6()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceIpv6");
@@ -112,8 +104,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestNetworkInterfaceWithIpConfiguration()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceWithIpConfiguration");
@@ -122,8 +112,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        // TODO: 6992 Improve test execution performance on NetCore
-        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestNetworkInterfaceWithAcceleratedNetworking()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceWithAcceleratedNetworking");
