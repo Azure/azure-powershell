@@ -50,4 +50,4 @@ $psd1s | ForEach-Object {
 }
 
 $json = ConvertTo-Json $mapping
-$json | Out-File $PSScriptRoot/AliasMapping.json
+$json -replace "`"", "`'" | Out-File $PSScriptRoot/AliasMapping.json
