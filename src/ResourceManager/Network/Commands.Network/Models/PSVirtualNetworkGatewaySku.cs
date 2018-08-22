@@ -12,14 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSVirtualNetworkGatewaySku
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public int Capacity { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Name { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Tier { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Get, StorageAccountRuleSetNounStr), OutputType(typeof(PSNetworkRuleSet))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccountNetworkRuleSet"), OutputType(typeof(PSNetworkRuleSet))]
     public class GetAzureStorageAccountNetworkRuleSetCommand : StorageAccountBaseCmdlet
     {
         [Parameter(

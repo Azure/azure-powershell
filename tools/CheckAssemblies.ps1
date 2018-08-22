@@ -65,7 +65,7 @@ foreach ($ModuleManifest in $ModuleManifestFiles) {
 
     $Found = @()
     foreach ($Assembly in $Assemblies) {
-        if ($Found -notcontains $Assembly.AssemblyName -and $LoadedAssemblies -notcontains $Assembly.AssemblyName) {
+        if ($Found -notcontains $Assembly.AssemblyName -and $LoadedAssemblies -notcontains $Assembly.AssemblyName -and $Assembly.AssemblyName -notlike "System.Management.Automation*") {
             $Found += $Assembly.AssemblyName
             Write-Error "ERROR: Assembly $($Assembly.AssemblyName) was not included in the required assemblies field for module $ModuleName"
         }

@@ -56,8 +56,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
                 subscriptionsClient,
                 graphClient,
                 authorizationManagementClient);
-
-            AuthorizationClient.RoleAssignmentNames.Enqueue(new Guid("6558f9a7-689c-41d3-93bd-3281fbe3d26f"));
         }
 
         protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)

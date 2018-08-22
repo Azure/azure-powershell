@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     /// <summary>
     /// Returns the Advanced Threat Protection policy of a specific server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerAdvancedThreatProtectionPolicy"), 
-        OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvancedThreatProtectionPolicy"), OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
     public class GetAzureSqlServerAdvancedThreatProtectionPolicy : SqlServerAdvancedThreatProtectionCmdletBase
     {
         /// <summary>

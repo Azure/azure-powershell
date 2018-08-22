@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
     /// <summary>
     /// 'Set-AzureRmServiceBusCompleteMigrationConfiguration' Cmdlet invokes 
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Complete, ServicebusMigrationConfigurationVerb, DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Complete", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusMigration", DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class CompleteAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
-        {           
+        {
+
             if (ParameterSetName == NamespaceInputObjectParameterSet)
             {
                 LocalResourceIdentifier getMigrationConfig = new LocalResourceIdentifier(InputObject.Id);
@@ -66,12 +67,20 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CompleteMigrationConfiguration)))
             {
-                Client.SetServiceBusCompleteMigrationConfiguration(ResourceGroupName, Name);
-                if (PassThru)
+                try
                 {
-                    WriteObject(true);
+                    Client.SetServiceBusCompleteMigrationConfiguration(ResourceGroupName, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                }
+                catch (Management.ServiceBus.Models.ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
                 }
             }
+            
         }
     }
 }

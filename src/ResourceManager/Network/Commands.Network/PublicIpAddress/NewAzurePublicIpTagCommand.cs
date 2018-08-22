@@ -1,4 +1,4 @@
-
+﻿
 
 // ----------------------------------------------------------------------------------
 //
@@ -26,8 +26,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmPublicIpTag", SupportsShouldProcess = true),
-        OutputType(typeof(PSPublicIpTag))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpTag", SupportsShouldProcess = true),OutputType(typeof(PSPublicIpTag))]
     public class NewAzurePublicIpTagCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -64,4 +63,3 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
-

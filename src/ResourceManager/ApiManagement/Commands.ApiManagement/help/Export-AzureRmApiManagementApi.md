@@ -201,16 +201,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-Parameters: Context (ByPropertyName)
 
 ### System.String
-Parameters: ApiId (ByPropertyName), ApiRevision (ByPropertyName), SaveAs (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiFormat
-Parameters: SpecificationFormat (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Force (ByPropertyName), PassThru (ByPropertyName)
 
 ## OUTPUTS
 

@@ -1,5 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <UseStorageManagement>false</UseStorageManagement>
+    <UseWebDeployment>false</UseWebDeployment>
+    <UseNewtonsoftJson>false</UseNewtonsoftJson>
+    <UseWindowsAzureStorage>false</UseWindowsAzureStorage>
+  </PropertyGroup>
+  <Import Project="..\..\..\tools\Common.ServiceManagement.Dependencies.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -43,29 +50,33 @@
   <ItemGroup>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\WindowsAzure.Storage.9.0.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement, Version=0.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Azure.Storage.DataMovement.0.7.1\lib\net45\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Commands.ResourceManager.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Azure.PowerShell.ResourceManager.1.0.0\lib\net452\Microsoft.Azure.Commands.ResourceManager.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\AzureContextAdapterExtensions.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\AzureContextAdapterExtensions.cs">
       <Link>Common\Cmdlet\AzureContextAdapterExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageBlob.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageBlob.cs">
       <Link>Common\AzureStorageBlob.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageContainer.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageContainer.cs">
       <Link>Common\AzureStorageContainer.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageQueue.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageQueue.cs">
       <Link>Common\AzureStorageQueue.cs</Link>
     </Compile>
-    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageTable.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageTable.cs">
       <Link>Common\AzureStorageTable.cs</Link>
     </Compile>
     <Compile Include="Blob\Cmdlet\GetAzureStorageBlob.cs" />
@@ -192,22 +203,7 @@
     <Compile Include="Table\StorageCloudTableCmdletBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
-      <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
-      <Name>Commands.Common.Storage</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Azure.Storage.psd1">
-      <Link>Azure.Storage.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.WindowsAzure.Commands.Storage.format.ps1xml">
@@ -230,12 +226,10 @@
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
-      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />

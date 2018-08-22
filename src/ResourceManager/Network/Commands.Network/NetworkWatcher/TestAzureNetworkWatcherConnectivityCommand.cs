@@ -25,7 +25,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmNetworkWatcherConnectivity", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSConnectivityInformation))]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherConnectivity", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSConnectivityInformation))]
 
     public class TestAzureNetworkWatcherConnectivity : NetworkWatcherBaseCmdlet
     {
