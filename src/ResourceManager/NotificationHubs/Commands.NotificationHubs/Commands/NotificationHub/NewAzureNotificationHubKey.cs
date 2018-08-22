@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHubKey", SupportsShouldProcess = true), OutputType(typeof(ResourceListKeys))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubKey", SupportsShouldProcess = true), OutputType(typeof(ResourceListKeys))]
     public class NewAzureNotificationHubKey : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,

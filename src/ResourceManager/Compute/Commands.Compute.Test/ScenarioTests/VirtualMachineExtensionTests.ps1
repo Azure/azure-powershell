@@ -1052,13 +1052,67 @@ function Test-AzureDiskEncryptionExtensionSinglePass
 		$status = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
 		Assert-NotNull $status
 		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
-		Assert-AreEqual $status.DataVolumesEncrypted Unknown
+		# For Native disks we expect the cmdlet to show the data disks as encrypted.
+		Assert-AreEqual $status.DataVolumesEncrypted Encrypted 
 
 		# verify encryption settings 
 		$settings = $status.OsVolumeEncryptionSettings
 		Assert-NotNull $settings
 		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
-		Assert-NotNull $settings.DiskEncryptionKey.SourceVault
+		Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
+	}
+	finally
+	{
+		Clean-ResourceGroup($resourceGroupName)
+	}
+}
+
+<#
+.SYNOPSIS
+Test the Get-AzureRmVmDiskEncryptionStatus single pass remove scenario
+#>
+function Test-AzureDiskEncryptionExtensionSinglePassRemove
+{
+	$resourceGroupName = Get-ComputeTestResourceName
+	try
+	{
+		# create virtual machine and key vault prerequisites
+		$vm = Create-VirtualMachineNoDataDisks $resourceGroupName
+		$kv = Create-KeyVault $vm.ResourceGroupName $vm.Location
+
+		# enable encryption with single pass syntax (omits AD parameters)
+		Set-AzureRmVMDiskEncryptionExtension `
+			-ResourceGroupName $vm.ResourceGroupName `
+			-VMName $vm.Name `
+			-DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl `
+			-DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId `
+			-Force
+
+		# verify encryption state
+		$status = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+		Assert-NotNull $status
+		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+		Assert-AreEqual $status.DataVolumesEncrypted NoDiskFound
+
+		# verify encryption settings 
+		$settings = $status.OsVolumeEncryptionSettings
+		Assert-NotNull $settings
+		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+		Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
+
+		# remove extension
+		Remove-AzureRmVmDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Force
+		$status = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+		Assert-NotNull $status
+		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+		Assert-AreEqual $status.DataVolumesEncrypted NoDiskFound
+
+		# verify encryption settings 
+		$settings = $status.OsVolumeEncryptionSettings
+		Assert-NotNull $settings
+		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+		Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
+
 	}
 	finally
 	{
@@ -1091,18 +1145,30 @@ function Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove
 		$status = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
 		Assert-NotNull $status
 		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+		Assert-AreEqual $status.DataVolumesEncrypted Encrypted
+
+		# verify encryption settings 
+		$settings = $status.OsVolumeEncryptionSettings
+		Assert-NotNull $settings
+		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+		Assert-AreEqual $settings.DiskEncryptionKey.SourceVault.Id $kv.DiskEncryptionKeyVaultId
 
 		# disable encryption
-		$status = Disable-AzureRmVmDiskEncryption -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+		$status = Disable-AzureRmVmDiskEncryption -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Force
 		Assert-NotNull $status
 
 		# verify encryption state
 		$status = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
 		Assert-NotNull $status
 		Assert-AreEqual $status.OsVolumeEncrypted NotEncrypted
+		Assert-AreEqual $status.DataVolumesEncrypted NotEncrypted
+
+		# verify encryption settings 
+		$settings = $status.OsVolumeEncryptionSettings
+		Assert-Null $settings
 
 		# remove extension
-		$status = Remove-AzureRmVmDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+		$status = Remove-AzureRmVmDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Force
 		Assert-NotNull $status
 	}
 	finally

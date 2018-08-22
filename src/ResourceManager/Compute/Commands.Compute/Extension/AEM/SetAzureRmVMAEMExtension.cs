@@ -34,12 +34,11 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineAEMExtension)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAEMExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
     {
+        private string _StorageEndpoint;
         private AEMHelper _Helper = null;
 
         [Parameter(
@@ -93,8 +92,13 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            this._StorageEndpoint = this.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
-                this.CommandRuntime.Host.UI, AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager), this.DefaultContext.Subscription);
+                this.CommandRuntime.Host.UI, 
+                AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
+                    DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager), 
+                this.DefaultContext.Subscription,
+                this._StorageEndpoint);
 
             base.ExecuteCmdlet();
 
@@ -523,7 +527,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var key = this._Helper.GetAzureStorageKeyFromCache(storageAccountName);
             var credentials = new StorageCredentials(storageAccountName, key);
-            var cloudStorageAccount = new CloudStorageAccount(credentials, true);
+            var cloudStorageAccount = new CloudStorageAccount(credentials,  this._StorageEndpoint, true);
 
             cloudStorageAccount.CreateCloudBlobClient().SetServicePropertiesAsync(props)
                                                        .ConfigureAwait(false).GetAwaiter().GetResult();

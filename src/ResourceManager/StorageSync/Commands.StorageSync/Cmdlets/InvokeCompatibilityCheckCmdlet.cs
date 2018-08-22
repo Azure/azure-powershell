@@ -25,9 +25,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
     using Interfaces;
     using Models;
 
-    [Cmdlet(
-        VerbsLifecycle.Invoke, "AzureRmStorageSyncCompatibilityCheck", 
-        DefaultParameterSetName="PathBased")]
+    [Cmdlet("Invoke", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageSyncCompatibilityCheck",DefaultParameterSetName="PathBased")]
     [OutputType(typeof(PSValidationResult))]
     public class InvokeCompatibilityCheckCmdlet : Cmdlet, ICmdlet
     {
