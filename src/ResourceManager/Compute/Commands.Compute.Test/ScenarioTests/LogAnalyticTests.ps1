@@ -19,8 +19,8 @@ Test Export Log Analytic Throttled Requests
 function Test-ExportLogAnalyticThrottledRequestsNegative
 {
     $loc = Get-ComputeOperationLocation;
-    $from = Get-Date -Year 2018 -Month 2 -Day 27 -Hour 9;
-    $to = Get-Date -Year 2018 -Month 2 -Day 28 -Hour 9;
+    $from = (Get-Date).AddDays(-7)
+    $to = (Get-Date).AddDays(-5);
     $sasuri = 'https://fakestore.blob.core.windows.net/mylogs/fakesas';
     Assert-ThrowsContains { `
         $result = Export-AzureRmLogAnalyticThrottledRequests -Location $loc -FromTime $from -ToTime $to -BlobContainerSasUri $sasuri -GroupByThrottlePolicy -GroupByResourceName;} `
@@ -34,8 +34,8 @@ Test Export Log Analytic Request Rate By Interval
 function Test-ExportLogAnalyticRequestRateByIntervalNegative
 {
     $loc = Get-ComputeOperationLocation;
-    $from = Get-Date -Year 2018 -Month 2 -Day 27 -Hour 9;
-    $to = Get-Date -Year 2018 -Month 2 -Day 28 -Hour 9;
+    $from = (Get-Date).AddDays(-7)
+    $to = (Get-Date).AddDays(-5);
     $sasuri = 'https://fakestore.blob.core.windows.net/mylogs/fakesas';
     $interval = "FiveMins";
     Assert-ThrowsContains { `

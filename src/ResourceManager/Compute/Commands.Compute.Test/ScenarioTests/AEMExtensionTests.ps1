@@ -328,7 +328,7 @@ function Test-AEMExtensionAdvancedLinuxMD
         $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_DS2' -stotype 'Premium_LRS' -nicCount 2 -useMD -linux
 		$vmname = $vm.Name
 		$vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
-		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType PremiumLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzureRmVM
+		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzureRmVM
 		
         
         Write-Verbose "Test-AEMExtensionAdvancedLinuxMD: VM created"
@@ -629,7 +629,7 @@ function Test-AEMExtensionAdvancedLinuxMD_E
         $vm = Create-AdvancedVM -rgname $rgname -loc $loc -vmsize 'Standard_E4s_v3' -stotype 'Premium_LRS' -nicCount 2 -useMD -linux
 		$vmname = $vm.Name
 		$vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
-		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType PremiumLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzureRmVM
+		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzureRmVM
 		
         
         Write-Output "Test-AEMExtensionAdvancedLinuxMD: VM created"
@@ -704,7 +704,7 @@ function Test-AEMExtensionAdvancedLinuxMD_D
 		Log "Test-AEMExtensionAdvancedLinuxMD_D" "VM created"
 		$vmname = $vm.Name
 		$vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
-		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType PremiumLRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzureRmVM
+		Add-AzureRmVMDataDisk -VM $vm -StorageAccountType Premium_LRS -Lun (($vm.StorageProfile.DataDisks | select -ExpandProperty Lun | Measure-Object -Maximum).Maximum + 1) -CreateOption Empty -DiskSizeInGB 2059 | Update-AzureRmVM
 		
         
         Log "Test-AEMExtensionAdvancedLinuxMD_D" "Test-AEMExtensionAdvancedLinuxMD: VM created"

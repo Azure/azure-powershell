@@ -69,7 +69,7 @@ function Test-SetAzureRmVMSqlServerAKVExtension
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP1-WS2012R2 -Skus Enterprise -Version "latest"
+        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP2-WS2012R2 -Skus Enterprise -Version "latest"
 
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
@@ -178,7 +178,7 @@ function Test-SetAzureRmVMSqlServerExtension
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP1-WS2012R2 -Skus Enterprise -Version "latest"
+        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP2-WS2012R2 -Skus Enterprise -Version "latest"
 
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
@@ -211,6 +211,9 @@ function Test-SetAzureRmVMSqlServerExtension
         $aps = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Monday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
         $abs = New-AzureRmVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 10 -ResourceGroupName $rgname -StorageUri $storageBlobUrl -StorageKey $storageKeyAsSecureString
 		Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs  -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
+
+		# Give the changes time to take effect, sleep 10 seconds
+		Start-TestSleep 10000
 
         # 5) Verify changes
 
@@ -334,6 +337,9 @@ function Test-SetAzureRmVMSqlServerExtensionWith2016Image
         $abs = New-AzureRmVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 10 -ResourceGroupName $rgname -StorageUri $storageBlobUrl `
 				-StorageKey $storageKeyAsSecureString -BackupScheduleType Automated
 		Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
+
+		# Give the changes time to take effect, sleep 10 seconds
+		Start-TestSleep 10000
 
         # 5) Verify changes
         $extension = Get-AzureRmVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;

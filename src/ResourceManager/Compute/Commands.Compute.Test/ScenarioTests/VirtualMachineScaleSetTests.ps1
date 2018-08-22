@@ -1472,7 +1472,7 @@ function Test-VirtualMachineScaleSetWriteAcceleratorUpdate
 
         Assert-ThrowsContains {
             $vmss | Update-AzureRmVmss -OsDiskWriteAccelerator $true; } `
-            "not supported on disks with Write Accelerator enabled";
+            "Write Accelerator is supported with Premium_LRS storage account type only. Please use correct storage account type for disk osDisk.";
 
         $vmss2 = $vmss | Update-AzureRmVmss -OsDiskWriteAccelerator $false;
         Assert-AreEqual $false $vmss2.VirtualMachineProfile.StorageProfile.OsDisk.WriteAcceleratorEnabled;
