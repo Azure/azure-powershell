@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("EnvironmentName")]
         [ValidateNotNullOrEmpty]
         public string Environment { get; set; }
-        
+
 #if !NETSTANDARD
-        [Parameter(ParameterSetName = UserParameterSet, 
+        [Parameter(ParameterSetName = UserParameterSet,
                     Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
 #endif
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, 
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true, HelpMessage = "Credential")]
         public PSCredential Credential { get; set; }
 
@@ -267,6 +267,12 @@ namespace Microsoft.Azure.Commands.Profile
             if (!string.IsNullOrEmpty(TenantId))
             {
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
+            }
+
+            if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal)
+            {
+                azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalName, azureAccount.Id);
+                azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalSecret, password.ConvertToString());
             }
 
             if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, _environment.Name), "log in"))
