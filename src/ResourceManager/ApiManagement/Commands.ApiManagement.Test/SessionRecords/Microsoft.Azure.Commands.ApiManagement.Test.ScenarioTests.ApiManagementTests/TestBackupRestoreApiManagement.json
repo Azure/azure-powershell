@@ -337,6 +337,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/4.0.0.0"
         ]
       },
+     //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
       "ResponseBody": "{\r\n  \"key1\": \"UBtUn1dHtGm5GGA7gD57vvb/VYgJtSPbzfwDQf6tLSs5zY8ihgYWG07TnP6Y1s4wCE09Xy8I8c7ELslOAcZi9A==\",\r\n  \"key2\": \"Rz+0CRTRmy9weXJUsvtRQH+f7hIwoF9Tlw2LBZ6FU/upbgYFqa5uz8IcoR2BfjO3/2awQ8baASbchc2DxHTjLQ==\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -3101,6 +3102,7 @@
       "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/ps8118/providers/Microsoft.ApiManagement/service/ps806/backup?api-version=2018-01-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3BzODExOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9wczgwNi9iYWNrdXA/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "POST",
+     //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
       "RequestBody": "{\r\n  \"storageAccount\": \"ps9162\",\r\n  \"accessKey\": \"UBtUn1dHtGm5GGA7gD57vvb/VYgJtSPbzfwDQf6tLSs5zY8ihgYWG07TnP6Y1s4wCE09Xy8I8c7ELslOAcZi9A==\",\r\n  \"containerName\": \"backups\",\r\n  \"backupName\": \"ps806.apimbackup\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
@@ -4007,6 +4009,7 @@
       "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/ps8118/providers/Microsoft.ApiManagement/service/ps806/restore?api-version=2018-01-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3BzODExOC9wcm92aWRlcnMvTWljcm9zb2Z0LkFwaU1hbmFnZW1lbnQvc2VydmljZS9wczgwNi9yZXN0b3JlP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "POST",
+     //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
       "RequestBody": "{\r\n  \"storageAccount\": \"ps9162\",\r\n  \"accessKey\": \"UBtUn1dHtGm5GGA7gD57vvb/VYgJtSPbzfwDQf6tLSs5zY8ihgYWG07TnP6Y1s4wCE09Xy8I8c7ELslOAcZi9A==\",\r\n  \"containerName\": \"backups\",\r\n  \"backupName\": \"ps806.apimbackup\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [

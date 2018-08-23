@@ -19,6 +19,7 @@
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
+     //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
       "ResponseBody": "{\r\n  \"id\": \"integration\",\r\n  \"primaryKey\": \"TDp5xERRjwxTV+FKL0kPVCcdjnkKLlZgQ9XAOTr6kKc7CjoJamj2JgvdSIgdpICwQZK7VaGEE4s3r2d4acXiKA==\",\r\n  \"secondaryKey\": \"Y1ap+0LZwCZi87HZ0NYyqxzn4S7ZbsESJq3TP3Odx/ZKl2BL8yE7nMlL64P9Ro0rVVLW1W6NTGYKKEy6C56Q+A==\",\r\n  \"enabled\": false\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -85,6 +86,7 @@
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
+     //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
       "ResponseBody": "{\r\n  \"id\": \"integration\",\r\n  \"primaryKey\": \"TDp5xERRjwxTV+FKL0kPVCcdjnkKLlZgQ9XAOTr6kKc7CjoJamj2JgvdSIgdpICwQZK7VaGEE4s3r2d4acXiKA==\",\r\n  \"secondaryKey\": \"Y1ap+0LZwCZi87HZ0NYyqxzn4S7ZbsESJq3TP3Odx/ZKl2BL8yE7nMlL64P9Ro0rVVLW1W6NTGYKKEy6C56Q+A==\",\r\n  \"enabled\": true\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -151,6 +153,7 @@
           "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
+     //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
       "ResponseBody": "{\r\n  \"id\": \"integration\",\r\n  \"primaryKey\": \"TDp5xERRjwxTV+FKL0kPVCcdjnkKLlZgQ9XAOTr6kKc7CjoJamj2JgvdSIgdpICwQZK7VaGEE4s3r2d4acXiKA==\",\r\n  \"secondaryKey\": \"Y1ap+0LZwCZi87HZ0NYyqxzn4S7ZbsESJq3TP3Odx/ZKl2BL8yE7nMlL64P9Ro0rVVLW1W6NTGYKKEy6C56Q+A==\",\r\n  \"enabled\": false\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
