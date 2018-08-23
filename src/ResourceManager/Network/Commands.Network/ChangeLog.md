@@ -19,7 +19,10 @@
 --->
 
 ## Current Release
+
+## Version 6.6.0
 * Fixed issue with default resource groups not being set.
+* Changed default models representation to table-view
 
 ## Version 6.5.0
 * Added example for Set-AzureRmLocalNetworkGateway
@@ -32,7 +35,6 @@
 * Clarified error message for Get-AzureRmVirtualNetworkSubnetConfig when attempting to get a subnet that does not exist
 * Improved exception messages: added more details to output
 * Dropped outdated warnings
-* Changed default models representation to table-view
 
 ## Version 6.4.1
 * Updated all help files to include full parameter types and correct input/output types.
