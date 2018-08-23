@@ -13,6 +13,9 @@
 #### AzureRM.IotHub
 * Fix examples for New-AzureRmIotHubExportDevices and New-AzureRmIotHubImportDevices
 
+#### AzureRM.Network
+* Changed default models representation to table-view
+
 #### AzureRM.PowerBIEmbedded
 * Fix failure in Update-AzureRmPowerBIEmbeddedCapacity when trying to scale paused capacity
 

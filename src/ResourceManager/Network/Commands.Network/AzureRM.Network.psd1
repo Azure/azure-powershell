@@ -364,7 +364,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed issue with default resource groups not being set.'
+        ReleaseNotes = '* Fixed issue with default resource groups not being set.
+* Changed default models representation to table-view'
 
         # Prerelease string of this module
         # Prerelease = ''
