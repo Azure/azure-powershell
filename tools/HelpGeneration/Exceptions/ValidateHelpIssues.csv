@@ -92,7 +92,7 @@ Enable-AzOperationalInsightsLinuxCustomLogCollection.md,No examples found
 Enable-AzOperationalInsightsLinuxPerformanceCollection.md,No examples found
 Enable-AzOperationalInsightsLinuxSyslogCollection.md,No examples found
 Get-AzOperationalInsightsDataSource.md,No examples found
-New-AzOperationalInsightsAzActivityLogDataSource.md,No examples found
+New-AzOperationalInsightsAzureActivityLogDataSource.md,No examples found
 New-AzOperationalInsightsComputerGroup.md,No examples found
 New-AzOperationalInsightsCustomLogDataSource.md,No examples found
 New-AzOperationalInsightsLinuxPerformanceObjectDataSource.md,No examples found
