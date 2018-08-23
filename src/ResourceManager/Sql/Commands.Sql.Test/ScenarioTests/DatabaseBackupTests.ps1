@@ -121,22 +121,6 @@ function Test-RestorePointInTimeBackup
 		-ServerName $db.ServerName -ResourceId $db.ResourceId -Edition 'GeneralPurpose' -VCore 2 -ComputeGeneration 'Gen4'
 }
 
-function Test-ServerBackupLongTermRetentionVault
-{
-	$location = "North Europe"
-	$serverVersion = "12.0"
-	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung
-	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
-	$vaultResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault"
-
-	# set
-	Set-AzureRmSqlServerBackupLongTermRetentionVault -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ResourceId $vaultResourceId
-	# get
-	$result = Get-AzureRmSqlServerBackupLongTermRetentionVault -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName
-	#verify
-	Assert-True { $result.RecoveryServicesVaultResourceId -eq $vaultResourceId }
-}
-
 function Test-DatabaseBackupLongTermRetentionPolicy
 {
 	$location = "North Europe"
