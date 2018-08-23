@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Deprecated unsupported LongTermRetention cmdlets:
+	* Get-AzureRmSqlServerBackupLongTermRetentionVault
+	* Set-AzureRmSqlServerBackupLongTermRetentionVault
 
 ## Version 4.8.1-preview
 * Bug fixes for cmdlets in Elastic Jobs
