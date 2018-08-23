@@ -175,8 +175,7 @@ function Test-RestoreManagedDatabase
 	$rg = Create-ResourceGroupForTest
 	$rg2 = Create-ResourceGroupForTest
 	$managedInstance = Create-ManagedInstanceForTest $rg
-	$managedInstance2 = Create-ManagedInstanceForTest $rg
-	$managedInstance3 = Create-ManagedInstanceForTest $rg2
+	$managedInstance2 = Create-ManagedInstanceForTest $rg2
 
 	try
 	{
@@ -190,10 +189,10 @@ function Test-RestoreManagedDatabase
 		Assert-AreEqual $db.Name $managedDatabaseName
 
 		$targetManagedDatabaseName = Get-ManagedDatabaseName
-		$pointInTime = (Get-date).AddMinutes(8)
+		$pointInTime = (Get-date).AddMinutes(5)
 
-		# Wait for 900 seconds for restore to be ready
-		Wait-Seconds 900
+		# Wait for 450 seconds for restore to be ready
+		Wait-Seconds 450
 
 		# restore managed database to the same instance
 		$restoredDb = Restore-AzureRmSqlManagedDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -PointInTime $pointInTime -TargetManagedDatabaseName $targetManagedDatabaseName
@@ -202,19 +201,12 @@ function Test-RestoreManagedDatabase
 		Assert-AreEqual $restoredDb.ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $restoredDb.ManagedInstanceName $managedInstance.ManagedInstanceName
 
-		# restore managed database to the another instance, same resource group
-		$restoredDb2 = Restore-AzureRmSqlManagedDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -PointInTime $pointInTime -TargetManagedDatabaseName $targetManagedDatabaseName -TargetManagedInstanceName $managedInstance2.ManagedInstanceName
-		Assert-NotNull $restoredDb2
-		Assert-AreEqual $restoredDb2.Name $targetManagedDatabaseName
-		Assert-AreEqual $restoredDb2.ResourceGroupName $rg.ResourceGroupName
-		Assert-AreEqual $restoredDb2.ManagedInstanceName $managedInstance2.ManagedInstanceName
-
-		# restore managed database to the another instance, different resource group
-		$restoredDb2 = Restore-AzureRmSqlManagedDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -PointInTime $pointInTime -TargetManagedDatabaseName $targetManagedDatabaseName -TargetManagedInstanceName $managedInstance3.ManagedInstanceName -TargetResourceGroupName $rg2.ResourceGroupName
+		# restore managed database to the another instance, different resource group and managed instance
+		$restoredDb2 = Restore-AzureRmSqlManagedDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -Name $managedDatabaseName -PointInTime $pointInTime -TargetManagedDatabaseName $targetManagedDatabaseName -TargetManagedInstanceName $managedInstance2.ManagedInstanceName -TargetResourceGroupName $rg2.ResourceGroupName
 		Assert-NotNull $restoredDb2
 		Assert-AreEqual $restoredDb2.Name $targetManagedDatabaseName
 		Assert-AreEqual $restoredDb2.ResourceGroupName $rg2.ResourceGroupName
-		Assert-AreEqual $restoredDb2.ManagedInstanceName $managedInstance3.ManagedInstanceName
+		Assert-AreEqual $restoredDb2.ManagedInstanceName $managedInstance2.ManagedInstanceName
 	}
 	finally
 	{
