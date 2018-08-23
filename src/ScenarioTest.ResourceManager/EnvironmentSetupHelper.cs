@@ -672,6 +672,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #if NETSTANDARD
                     var moduleShortName = moduleName.Split(new string[] { "\\" }, StringSplitOptions.None).Last().Split(new string[] { "/" }, StringSplitOptions.None).Last();
                     powershell.AddScript("Enable-AzureRmAlias -Module " + moduleShortName.Substring(0, moduleShortName.Length - 5));
+                    if (moduleShortName.Equals("Az.Storage.psd1"))
+                    {
+                        powershell.AddScript("Get-Alias | Where-Object {$_.Name -like '*-AzureRmStorage*'} | ForEach-Object { Remove-Item \"alias:\\$_\" }");
+                    }
 #endif
                 }
             }
