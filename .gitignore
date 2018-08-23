@@ -220,6 +220,7 @@ groupMapping*.json
 /Package/index.json
 /tools/outputtypes.json
 /Package/outputtypes.json
+/tools/AzureRM/AzureRM.psm1
 
 *.msi
 *.wixpdb
