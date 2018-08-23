@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         Azure.Management.Storage.Models.StorageAccount _account;
         List<string> _authenticationKeys = new List<string>();
-        public ARMStorageService(Azure.Management.Storage.Models.StorageAccount account,
+        public ARMStorageService(Azure.Management.Storage.Version2017_10_01.Models.StorageAccount account,
             params string[] authenticationKeys)
         {
             _account = account;
