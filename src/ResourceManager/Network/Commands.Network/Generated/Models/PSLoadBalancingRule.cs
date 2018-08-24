@@ -80,5 +80,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(Probe, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+
+        public bool ShouldSerializeFrontendPort()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeBackendPort()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
     }
 }

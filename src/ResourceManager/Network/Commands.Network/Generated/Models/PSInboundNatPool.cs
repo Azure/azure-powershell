@@ -61,5 +61,20 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+
+        public bool ShouldSerializeFrontendPortRangeStart()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeFrontendPortRangeEnd()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeBackendPort()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
     }
 }

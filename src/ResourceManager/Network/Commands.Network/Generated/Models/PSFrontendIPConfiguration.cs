@@ -49,8 +49,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public List<PSResourceId> InboundNatPools { get; set; }
         [JsonProperty(Order = 1)]
-        public List<PSResourceId> OutboundNatRules { get; set; }
-        [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancingRules { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Label = "Subnet", Target = ViewControl.Table, ScriptBlock = "$_.Subnet.Name")]
@@ -75,12 +73,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string InboundNatPoolsText
         {
             get { return JsonConvert.SerializeObject(InboundNatPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string OutboundNatRulesText
-        {
-            get { return JsonConvert.SerializeObject(OutboundNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

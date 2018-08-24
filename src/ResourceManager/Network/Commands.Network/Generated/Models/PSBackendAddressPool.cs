@@ -52,5 +52,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
+
+        public bool ShouldSerializeBackendIpConfigurations()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
     }
 }
