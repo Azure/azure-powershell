@@ -77,11 +77,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public List<string> PublicIPAddressZones { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ParameterSetName = "SetByResourceIdPublicIpAddress",
             HelpMessage = "The reference of the Public IP resource.",
             ValueFromPipelineByPropertyName = true)]
@@ -142,15 +137,6 @@ namespace Microsoft.Azure.Commands.Network
                     vFrontendIpConfigurations.Subnet = new PSSubnet();
                 }
                 vFrontendIpConfigurations.Subnet.Id = this.SubnetId;
-            }
-            if(this.PublicIPAddressZones != null)
-            {
-                // PublicIpAddress
-                if (vFrontendIpConfigurations.PublicIpAddress == null)
-                {
-                    vFrontendIpConfigurations.PublicIpAddress = new PSPublicIpAddress();
-                }
-                vFrontendIpConfigurations.PublicIpAddress.Zones = this.PublicIPAddressZones;
             }
             if(!string.IsNullOrEmpty(this.PublicIpAddressId))
             {

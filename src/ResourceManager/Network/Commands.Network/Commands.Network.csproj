@@ -255,6 +255,7 @@
     <Compile Include="Generated\Models\PSApplicationGatewaySslPolicy.cs" />
     <Compile Include="Generated\Models\PSApplicationGatewaySslPredefinedPolicy.cs" />
     <Compile Include="Generated\Models\PSAzureReachabilityReportLatencyInfo.cs" />
+    <Compile Include="Generated\Models\PSBackendAddressPool.cs" />
     <Compile Include="Generated\Models\PSBgpPeerStatus.cs" />
     <Compile Include="Generated\Models\PSBgpSettings.cs" />
     <Compile Include="Generated\Models\PSConnectionMonitorSource.cs" />
@@ -271,14 +272,20 @@
     <Compile Include="Generated\Models\PSExpressRouteCircuitStats.cs" />
     <Compile Include="Generated\Models\PSExpressRouteCrossConnection.cs" />
     <Compile Include="Generated\Models\PSExpressRouteCrossConnectionRoutesTableSummary.cs" />
+    <Compile Include="Generated\Models\PSFrontendIPConfiguration.cs" />
     <Compile Include="Generated\Models\PSGatewayRoute.cs" />
+    <Compile Include="Generated\Models\PSInboundNatPool.cs" />
+    <Compile Include="Generated\Models\PSInboundNatRule.cs" />
     <Compile Include="Generated\Models\PSIpFlowVerifyResult.cs" />
     <Compile Include="Generated\Models\PSIpv6ExpressRouteCircuitPeeringConfig.cs" />
+    <Compile Include="Generated\Models\PSLoadBalancer.cs" />
     <Compile Include="Generated\Models\PSLoadBalancerSku.cs" />
+    <Compile Include="Generated\Models\PSLoadBalancingRule.cs" />
     <Compile Include="Generated\Models\PSNetworkInterfaceDnsSettings.cs" />
     <Compile Include="Generated\Models\PSNetworkWatcher.cs" />
     <Compile Include="Generated\Models\PSNextHopResult.cs" />
     <Compile Include="Generated\Models\PSPacketCaptureStatus.cs" />
+    <Compile Include="Generated\Models\PSProbe.cs" />
     <Compile Include="Generated\Models\PSPublicIpAddressDnsSettings.cs" />
     <Compile Include="Generated\Models\PSPublicIpAddressSku.cs" />
     <Compile Include="Generated\Models\PSPublicIpTag.cs" />
@@ -323,7 +330,6 @@
     <Compile Include="Models\PSNetworkWatcherProtocolConfiguration.cs" />
     <Compile Include="Models\PSServiceEndpoint.cs" />
     <Compile Include="Models\PSVirtualNetworkUsage.cs" />
-    <Compile Include="Models\PSBackendAddressPool.cs" />
     <Compile Include="Models\PSBgpCommunity.cs" />
     <Compile Include="Models\PSBgpServiceCommunity.cs" />
     <Compile Include="Models\PSChildResource.cs" />
@@ -334,8 +340,6 @@
     <Compile Include="Models\PSFlowLog.cs" />
     <Compile Include="Models\PSFlowLogProperties.cs" />
     <Compile Include="Models\PSGetPacketCaptureResult.cs" />
-    <Compile Include="Models\PSInboundNatRule.cs" />
-    <Compile Include="Models\PSInboundRule.cs" />
     <Compile Include="Models\PSIPAddressAvailabilityResult.cs" />
     <Compile Include="Models\PSApplicationGatewayAuthenticationCertificate.cs" />
     <Compile Include="Models\PSApplicationGatewayWebApplicationFirewallConfiguration.cs" />
@@ -352,7 +356,6 @@
     <Compile Include="Models\PSApplicationGatewayUrlPathMap.cs" />
     <Compile Include="Models\PSEffectiveNetworkSecurityGroupAssociation.cs" />
     <Compile Include="Models\PSEffectiveSecurityRule.cs" />
-    <Compile Include="Models\PSInboundNatPool.cs" />
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
     <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />
     <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
@@ -527,10 +530,6 @@
     <Compile Include="VirtualNetworkGatewayConnection\SetAzureVirtualNetworkGatewayConnectionSharedKeyCommand.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\UpdateAzureVirtualNetworkGatewayConnectionCommand.cs" />
     <Compile Include="Models\PSLocalNetworkGateway.cs" />
-    <Compile Include="Models\PSFrontendIpConfiguration.cs" />
-    <Compile Include="Models\PSLoadBalancer.cs" />
-    <Compile Include="Models\PSLoadBalancingRule.cs" />
-    <Compile Include="Models\PSProbe.cs" />
     <Compile Include="Models\PSProvisioningState.cs" />
     <Compile Include="Models\PSResourceProperties.cs" />
     <Compile Include="Models\PSVirtualNetwork.cs" />

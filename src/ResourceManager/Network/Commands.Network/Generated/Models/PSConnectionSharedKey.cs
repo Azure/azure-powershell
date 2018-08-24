@@ -30,9 +30,8 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSConnectionSharedKey : PSChildResource
+    public partial class PSConnectionSharedKey
     {
-        [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string Value { get; set; }
     }
