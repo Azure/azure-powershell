@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                 var powershellProfile = sessionState.PSVariable.GetValue("PROFILE") as PSObject;
                 if (powershellProfile == null || !powershellProfile.Members.ToList().Any(a => a.Name.Equals("CurrentUserAllHosts")))
                 {
-                    throw new NullReferenceException(string.Format(Properties.Resources.ProfilePathNull, "PROFILE.CurrentUserAllHosts"));
+                    throw new PSInvalidOperationException(string.Format(Properties.Resources.ProfilePathNull, "PROFILE.CurrentUserAllHosts"));
                 }
                 userprofile = powershellProfile.Members.ToList().Where(a => a.Name.Equals("CurrentUserAllHosts")).First().Value.ToString();
             }
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                 var powershellProfile = sessionState.PSVariable.GetValue("PROFILE") as PSObject;
                 if (powershellProfile == null || !powershellProfile.Members.ToList().Any(a => a.Name.Equals("AllUsersAllHosts")))
                 {
-                    throw new NullReferenceException(string.Format(Properties.Resources.ProfilePathNull, "PROFILE.AllUsersAllHosts"));
+                    throw new PSInvalidOperationException(string.Format(Properties.Resources.ProfilePathNull, "PROFILE.AllUsersAllHosts"));
                 }
                 userprofile = powershellProfile.Members.ToList().Where(a => a.Name.Equals("AllUsersAllHosts")).First().Value.ToString();
             }
