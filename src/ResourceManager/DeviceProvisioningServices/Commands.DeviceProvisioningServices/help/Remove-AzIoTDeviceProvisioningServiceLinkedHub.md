@@ -1,35 +1,34 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
 Module Name: AzureRM.DeviceProvisioningServices
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/remove-aziotdeviceprovisioningservicelinkedhub
 schema: 2.0.0
 ---
 
-# Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy
+# Remove-AzureRmIoTDeviceProvisioningServiceLinkedHub
 
 ## SYNOPSIS
-Update a shared access policy in an Azure IoT Hub device provisioning service.
+Delete a linked IoT hub in an Azure IoT Hub device provisioning service.
 
 ## SYNTAX
 
 ### ResourceSet (Default)
 ```
-Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String> [-Name] <String>
- [-KeyName] <String> [-Permissions] <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Remove-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceGroupName] <String> [-Name] <String>
+ [-LinkedHubName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy
- [-InputObject] <PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription> [-Permissions] <String[]>
+Remove-AzureRmIoTDeviceProvisioningServiceLinkedHub [-InputObject] <PSIotHubDefinitionDescription> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceId] <String> [-KeyName] <String>
- [-Permissions] <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceId] <String> [-LinkedHubName] <String>
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,31 +38,19 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 
 ### Example 1
 ```
-PS C:\> Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" -Permissions "EnrollmentWrite"
+PS C:\> Remove-AzureRmIoTDeviceProvisioningServiceLinkedHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -LinkedHubName "myiothub" -PassThru
 
-ResourceGroupName	: myresourcegroup
-Name				: myiotdps
-KeyName				: mypolicy
-PrimaryKey			: hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
-SecondaryKey		: vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
-Rights				: EnrollmentWrite
+True
 ```
 
-Update access policy "mypolicy" in an Azure IoT Hub device provisioning service with EnrollmentWrite right.
+Delete linked IoT hub "myiothub" in an Azure IoT Hub device provisioning service.
 
-### Example 1
+### Example 2
 ```
-PS C:\> Get-AzureRmIoTDpsAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" | Update-AzureRmIoTDpsAccessPolicy -Permissions "EnrollmentWrite"
-
-ResourceGroupName	: myresourcegroup
-Name				: myiotdps
-KeyName				: mypolicy
-PrimaryKey			: hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
-SecondaryKey		: vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
-Rights				: EnrollmentWrite
+PS C:\> Get-AzureRmIoTDpsHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -LinkedHubName "myiothub" | Remove-AzureRmIoTDpsHub
 ```
 
-Update access policy "mypolicy" in an Azure IoT Hub device provisioning service with EnrollmentWrite right using pipeline.
+Delete linked IoT hub "myiothub" in an Azure IoT Hub device provisioning service using pipeline.
 
 ## PARAMETERS
 
@@ -86,7 +73,7 @@ Accept wildcard characters: False
 IoT Device Provisioning Service Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription
+Type: Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription
 Parameter Sets: InputObjectSet
 Aliases:
 
@@ -97,8 +84,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -KeyName
-IoT Device Provisioning Service access policy key name
+### -LinkedHubName
+Host name of linked IoT Hub
 
 ```yaml
 Type: System.String
@@ -127,17 +114,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Permissions
-IoT Device Provisioning Service access policy permissions
+### -PassThru
+{{Fill PassThru Description}}
 
 ```yaml
-Type: System.String[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-Accepted values: ServiceConfig, EnrollmentRead, EnrollmentWrite, DeviceConnect, RegistrationStatusRead, RegistrationStatusWrite
 
-Required: True
-Position: 2
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -209,14 +195,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription
+### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription
 Parameters: InputObject (ByValue)
 
 ### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription
+### System.Boolean
 
 ## NOTES
 

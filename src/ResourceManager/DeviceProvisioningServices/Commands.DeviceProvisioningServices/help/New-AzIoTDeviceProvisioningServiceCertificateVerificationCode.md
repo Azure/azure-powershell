@@ -1,45 +1,45 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
 Module Name: AzureRM.DeviceProvisioningServices
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/new-aziotdeviceprovisioningservicecertificateverificationcode
 schema: 2.0.0
 ---
 
-# Set-AzureRmIoTDeviceProvisioningServiceCertificate
+# New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode
 
 ## SYNOPSIS
-Verify an Azure IoT Hub Device Provisioning Service certificate.
+Generate a verification code for an Azure IoT Hub Device Provisioning Service certificate.
 
 ## SYNTAX
 
 ### ResourceSet (Default)
 ```
-Set-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceGroupName] <String> [-Name] <String>
- [-CertificateName] <String> [-Etag] <String> [-Path] <String> [-DefaultProfile <IAzureContextContainer>]
+New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode [-ResourceGroupName] <String>
+ [-Name] <String> [-CertificateName] <String> [-Etag] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Set-AzureRmIoTDeviceProvisioningServiceCertificate [-InputObject] <PSCertificateResponse> [-Path] <String>
+New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode [-InputObject] <PSCertificateResponse>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Set-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceId] <String> [-Etag] <String> [-Path] <String>
+New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode [-ResourceId] <String> [-Etag] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Verify a certificate by uploading a verification certificate containing the verification code obtained by calling generate-verification-code. This is the last step in the proof of possession process.
-For a detailed explanation of CA certificates in Azure IoT Hub Device Provisioning Service, see https://docs.microsoft.com/en-us/azure/iot-dps/how-to-verify-certificates
+This verification code is used to complete the proof of possession step for a certificate. Use this verification code as the CN of a new certificate signed with the root certificates private key.
+For a detailed explanation of CA certificates in Azure IoT Hub Device Provisioning Service, see https://docs.microsoft.com/en-us/azure/iot-dps/how-to-verify-certificates.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmIoTDeviceProvisioningServiceCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" -Path "c:\mycertificate.cer" -Etag "AAAAAAFpGcA="
+PS C:\> New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" -Etag "AAAAAAFPazE="
 
 Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/provisioningServices/myiotdps/certificates/mycertificate
 ResourceGroupName	: myresourcegroup
@@ -47,17 +47,18 @@ Name				: myiotdps
 CertificateName		: mycertificate
 Subject				: CN=mycertificate
 Thumbprint			: 38303FC7371EC78DDE3E18D712C8414EE50969C7
-Status				: Verified
+VerificationCode	: A901A843EFF75419AC1F0EB460E85DF153092A0547AA30F5
+Status				: Unverified
 Expiry				: 1/01/2027 16:01
 Created				: 1/01/2017 16:01
 Etag				: AAAAAAFpGcA=
 ```
 
-Verify ownership of the "mycertificate" private key.
+Generate a verification code for "mycertificate".
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmIoTDpsCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" | Set-AzureRmIoTDpsCertificate -Path "c:\mycertificate.cer"
+PS C:\> Get-AzureRmIoTDpsCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" | New-AzureRmIoTDpsCVC
 
 Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/provisioningServices/myiotdps/certificates/mycertificate
 ResourceGroupName	: myresourcegroup
@@ -65,13 +66,14 @@ Name				: myiotdps
 CertificateName		: mycertificate
 Subject				: CN=mycertificate
 Thumbprint			: 38303FC7371EC78DDE3E18D712C8414EE50969C7
-Status				: Verified
+VerificationCode	: A901A843EFF75419AC1F0EB460E85DF153092A0547AA30F5
+Status				: Unverified
 Expiry				: 1/01/2027 16:01
 Created				: 1/01/2017 16:01
 Etag				: AAAAAAFpGcA=
 ```
 
-Verify ownership of the "mycertificate" private key using pipeline.
+Generate a verification code for "mycertificate" using pipeline.
 
 ## PARAMETERS
 
@@ -141,21 +143,6 @@ Name of the IoT Device Provisioning Service
 ```yaml
 Type: System.String
 Parameter Sets: ResourceSet
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Path
-base-64 representation of X509 certificate .cer file or .pem file path
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -238,7 +225,7 @@ Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse
+### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponse
 
 ## NOTES
 

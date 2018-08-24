@@ -1,47 +1,45 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
 Module Name: AzureRM.DeviceProvisioningServices
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/set-aziotdeviceprovisioningservicecertificate
 schema: 2.0.0
 ---
 
-# Add-AzureRmIoTDeviceProvisioningServiceCertificate
+# Set-AzureRmIoTDeviceProvisioningServiceCertificate
 
 ## SYNOPSIS
-Create/update an Azure IoT Hub Device Provisioning Service certificate.
+Verify an Azure IoT Hub Device Provisioning Service certificate.
 
 ## SYNTAX
 
 ### ResourceSet (Default)
 ```
-Add-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceGroupName] <String> [-Name] <String>
- [-CertificateName] <String> [-Path] <String> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>]
+Set-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceGroupName] <String> [-Name] <String>
+ [-CertificateName] <String> [-Etag] <String> [-Path] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Add-AzureRmIoTDeviceProvisioningServiceCertificate [-InputObject] <PSCertificateResponse>
- [-CertificateName] <String> [-Path] <String> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmIoTDeviceProvisioningServiceCertificate [-InputObject] <PSCertificateResponse> [-Path] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Add-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceId] <String> [-CertificateName] <String>
- [-Path] <String> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceId] <String> [-Etag] <String> [-Path] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Uploads a new certificate or to replace the existing certificate with the same name.
-For a detailed explanation of CA certificates in Azure IoT Hub Device Provisioning Service, see https://docs.microsoft.com/en-us/azure/iot-dps/how-to-verify-certificates.
+Verify a certificate by uploading a verification certificate containing the verification code obtained by calling generate-verification-code. This is the last step in the proof of possession process.
+For a detailed explanation of CA certificates in Azure IoT Hub Device Provisioning Service, see https://docs.microsoft.com/en-us/azure/iot-dps/how-to-verify-certificates
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Add-AzureRmIoTDeviceProvisioningServiceCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" -Path "c:\mycertificate.cer"
+PS C:\> Set-AzureRmIoTDeviceProvisioningServiceCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" -Path "c:\mycertificate.cer" -Etag "AAAAAAFpGcA="
 
 Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/provisioningServices/myiotdps/certificates/mycertificate
 ResourceGroupName	: myresourcegroup
@@ -49,31 +47,31 @@ Name				: myiotdps
 CertificateName		: mycertificate
 Subject				: CN=mycertificate
 Thumbprint			: 38303FC7371EC78DDE3E18D712C8414EE50969C7
-Status				: Unverified
+Status				: Verified
 Expiry				: 1/01/2027 16:01
 Created				: 1/01/2017 16:01
 Etag				: AAAAAAFpGcA=
 ```
 
-Upload a CA certificate CER file to an Azure IoT Hub device provisioning service.
+Verify ownership of the "mycertificate" private key.
 
 ### Example 2
 ```
-PS C:\> Add-AzureRmIoTDpsCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" -Path "c:\mycertificate.cer" -Etag "AAAAAAFpGcA="
+PS C:\> Get-AzureRmIoTDpsCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" | Set-AzureRmIoTDpsCertificate -Path "c:\mycertificate.cer"
 
-Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/provisioningServices/myiothub/certificates/mycertificate
+Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/provisioningServices/myiotdps/certificates/mycertificate
 ResourceGroupName	: myresourcegroup
 Name				: myiotdps
 CertificateName		: mycertificate
 Subject				: CN=mycertificate
-Thumbprint			: 38303FC7371EC13DDE3E18D712C8414EE50969C7
-Status				: Unverified
+Thumbprint			: 38303FC7371EC78DDE3E18D712C8414EE50969C7
+Status				: Verified
 Expiry				: 1/01/2027 16:01
 Created				: 1/01/2017 16:01
-Etag				: AAAAAAFpObE=
+Etag				: AAAAAAFpGcA=
 ```
 
-Updates a CA certificate in an IoT hub device provisioning service by uploading a new CER file. 
+Verify ownership of the "mycertificate" private key using pipeline.
 
 ## PARAMETERS
 
@@ -82,11 +80,11 @@ Name of the Iot device provisioning service certificate
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet
 Aliases:
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -112,11 +110,11 @@ Etag of the Certificate
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet, ResourceIdSet
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -161,7 +159,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

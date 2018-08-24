@@ -1,32 +1,32 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
 Module Name: AzureRM.DeviceProvisioningServices
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/get-aziotdeviceprovisioningserviceaccesspolicy
 schema: 2.0.0
 ---
 
-# Get-AzureRmIoTDeviceProvisioningServiceLinkedHub
+# Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy
 
 ## SYNOPSIS
-List all or show details of linked IoT hubs in an Azure IoT Hub device provisioning service.
+List all or show details of shared access policies in an Azure IoT Hub device provisioning service.
 
 ## SYNTAX
 
 ### ResourceSet (Default)
 ```
-Get-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceGroupName] <String> [-Name] <String>
- [-LinkedHubName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String> [-Name] <String>
+ [-KeyName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Get-AzureRmIoTDeviceProvisioningServiceLinkedHub [-DpsObject] <PSProvisioningServiceDescription>
- [-LinkedHubName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-DpsObject] <PSProvisioningServiceDescription>
+ [-KeyName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceId] <String> [-LinkedHubName <String>]
+Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceId] <String> [-KeyName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -37,30 +37,29 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmIoTDeviceProvisioningServiceLinkedHub -ResourceGroupName "myresourcegroup" -Name "myiotdps"
+PS C:\> Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps"
 
-LinkedHubName					Location	AllocationWeight	ApplyAllocationPolicy
--------------					--------	----------------	---------------------
-myiothub1.azure-devices.net		eastus		2
-myiothub2.azure-devices.net		westus2							true
+KeyName		Rights		
+-------		------	
+mypolicy1	ServiceConfig, DeviceConnect, EnrollmentWrite
+mypolicy2	EnrollmentWrite
 ```
 
-List all linked IoT hubs in "myiotdps".
+List all shared access policies in "myiotdps".
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmIoTDpsHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -LinkedHubName "myiothub1"
+PS C:\> Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy"
 
-ResourceGroupName	  : myresourcegroup
-Name				  : myiotdps
-LinkedHubName         : myiothub1.azure-devices.net
-ConnectionString      : HostName=myiothub1.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=****
-AllocationWeight      : 2
-ApplyAllocationPolicy :
-Location              : eastus
+ResourceGroupName	: myresourcegroup
+Name				: myiotdps
+KeyName				: mypolicy
+PrimaryKey			: hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
+SecondaryKey		: vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
+Rights				: ServiceConfig, DeviceConnect, EnrollmentWrite
 ```
 
-Show details of linked IoT hub "myiothub1" in an Azure IoT Hub device provisioning service.
+Show details of shared access policy "mypolicy" in an Azure IoT Hub device provisioning service.
 
 ## PARAMETERS
 
@@ -94,8 +93,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LinkedHubName
-Host name of linked IoT Hub
+### -KeyName
+IoT Device Provisioning Service access policy key name
 
 ```yaml
 Type: System.String
@@ -166,9 +165,7 @@ Parameters: DpsObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription
-
-### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions
+### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription
 
 ## NOTES
 

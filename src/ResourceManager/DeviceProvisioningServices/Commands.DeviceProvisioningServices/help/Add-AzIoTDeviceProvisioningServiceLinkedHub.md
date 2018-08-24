@@ -1,36 +1,36 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
 Module Name: AzureRM.DeviceProvisioningServices
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/add-aziotdeviceprovisioningservicelinkedhub
 schema: 2.0.0
 ---
 
-# Update-AzureRmIoTDeviceProvisioningServiceLinkedHub
+# Add-AzureRmIoTDeviceProvisioningServiceLinkedHub
 
 ## SYNOPSIS
-Update a linked IoT hub in an Azure IoT Hub device provisioning service.
+Linked IoT hub to an Azure IoT Hub device provisioning service.
 
 ## SYNTAX
 
 ### ResourceSet (Default)
 ```
-Update-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceGroupName] <String> [-Name] <String>
- [-LinkedHubName] <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceGroupName] <String> [-Name] <String>
+ [-IotHubConnectionString] <String> [-IotHubLocation] <String> [-AllocationWeight <Int32>]
+ [-ApplyAllocationPolicy] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Update-AzureRmIoTDeviceProvisioningServiceLinkedHub [-InputObject] <PSIotHubDefinitionDescription>
- [-AllocationWeight <Int32>] [-ApplyAllocationPolicy] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-DpsObject] <PSProvisioningServiceDescription>
+ [-IotHubConnectionString] <String> [-IotHubLocation] <String> [-AllocationWeight <Int32>]
+ [-ApplyAllocationPolicy] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Update-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceId] <String> [-LinkedHubName] <String>
- [-AllocationWeight <Int32>] [-ApplyAllocationPolicy] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceId] <String> [-IotHubConnectionString] <String>
+ [-IotHubLocation] <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,18 +40,30 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 
 ### Example 1
 ```
-PS C:\> Update-AzureRmIoTDeviceProvisioningServiceLinkedHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -LinkedHubName "myiothub" -AllocationWeight 10 -ApplyAllocationPolicy $true
+PS C:\> Add-AzureRmIoTDeviceProvisioningServiceLinkedHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -IotHubConnectionString $hubConnectionString -IotHubLocation "eastus"
 
 ResourceGroupName	  : myresourcegroup
 Name				  : myiotdps
 LinkedHubName         : myiothub.azure-devices.net
 ConnectionString      : HostName=myiothub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=****
-AllocationWeight      : 10
-ApplyAllocationPolicy : True
+AllocationWeight      : 
+ApplyAllocationPolicy : 
 Location              : eastus
 ```
 
-Update linked IoT hub "myiothub.azure-devices.net" in an Azure IoT Hub device provisioning service.
+Linked IoT hub to an Azure IoT Hub device provisioning service.
+
+### Example 2
+```
+PS C:\> Add-AzureRmIoTDpsHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -IotHubConnectionString $hubConnectionString -IotHubLocation "eastus" -AllocationWeight 10 -ApplyAllocationPolicy $false
+
+LinkedHubName					Location	AllocationWeight	ApplyAllocationPolicy
+-------------					--------	----------------	---------------------
+myiothub1.azure-devices.net		eastus		2					true
+myiothub2.azure-devices.net		westus2		10					false
+```
+
+Linked IoT hub to an Azure IoT Hub device provisioning service with AllocationWeight and ApplyAllocationPolicy.
 
 ## PARAMETERS
 
@@ -71,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -ApplyAllocationPolicy
-Apply allocation policy to the IoT Hub
+A boolean indicating whether to apply allocation policy to the IoT Hub
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -100,11 +112,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
+### -DpsObject
 IoT Device Provisioning Service Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription
+Type: Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription
 Parameter Sets: InputObjectSet
 Aliases:
 
@@ -115,16 +127,31 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LinkedHubName
-Host name of linked IoT Hub
+### -IotHubConnectionString
+Connection String of the Iot Hub resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceSet, ResourceIdSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IotHubLocation
+Location of the Iot Hub
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -211,14 +238,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription
-Parameters: InputObject (ByValue)
+### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription
+Parameters: DpsObject (ByValue)
 
 ### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitionDescription
+
+### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSIotHubDefinitions
 
 ## NOTES
 

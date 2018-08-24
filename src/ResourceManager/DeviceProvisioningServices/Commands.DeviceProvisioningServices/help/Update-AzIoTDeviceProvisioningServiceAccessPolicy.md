@@ -1,34 +1,34 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
 Module Name: AzureRM.DeviceProvisioningServices
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/update-aziotdeviceprovisioningserviceaccesspolicy
 schema: 2.0.0
 ---
 
-# Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy
+# Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy
 
 ## SYNOPSIS
-Add a new shared access policy in an Azure IoT Hub device provisioning service.
+Update a shared access policy in an Azure IoT Hub device provisioning service.
 
 ## SYNTAX
 
 ### ResourceSet (Default)
 ```
-Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String> [-Name] <String>
+Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String> [-Name] <String>
  [-KeyName] <String> [-Permissions] <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-DpsObject] <PSProvisioningServiceDescription>
- [-KeyName] <String> [-Permissions] <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy
+ [-InputObject] <PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription> [-Permissions] <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceId] <String> [-KeyName] <String>
+Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceId] <String> [-KeyName] <String>
  [-Permissions] <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,29 +39,31 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 
 ### Example 1
 ```
-PS C:\> Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" -Permissions "ServiceConfig, EnrollmentWrite"
+PS C:\> Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" -Permissions "EnrollmentWrite"
 
 ResourceGroupName	: myresourcegroup
 Name				: myiotdps
 KeyName				: mypolicy
 PrimaryKey			: hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
 SecondaryKey		: vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
-Rights				: ServiceConfig, EnrollmentWrite
+Rights				: EnrollmentWrite
 ```
 
-Add a new shared access policy in an Azure IoT Hub device provisioning service with EnrollmentWrite and ServiceConfig rights.
+Update access policy "mypolicy" in an Azure IoT Hub device provisioning service with EnrollmentWrite right.
 
-### Example 2
+### Example 1
 ```
-PS C:\> Add-AzureRmIoTDpsAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy2" -Permissions "EnrollmentRead"
+PS C:\> Get-AzureRmIoTDpsAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" | Update-AzureRmIoTDpsAccessPolicy -Permissions "EnrollmentWrite"
 
-KeyName		Rights		
--------		------	
-mypolicy1	ServiceConfig, EnrollmentWrite
-mypolicy2	EnrollmentRead
+ResourceGroupName	: myresourcegroup
+Name				: myiotdps
+KeyName				: mypolicy
+PrimaryKey			: hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
+SecondaryKey		: vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
+Rights				: EnrollmentWrite
 ```
 
-Add a new shared access policy in an Azure IoT Hub device provisioning service with EnrollmentRead right.
+Update access policy "mypolicy" in an Azure IoT Hub device provisioning service with EnrollmentWrite right using pipeline.
 
 ## PARAMETERS
 
@@ -80,11 +82,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DpsObject
+### -InputObject
 IoT Device Provisioning Service Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription
+Type: Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription
 Parameter Sets: InputObjectSet
 Aliases:
 
@@ -100,7 +102,7 @@ IoT Device Provisioning Service access policy key name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet, ResourceIdSet
 Aliases:
 
 Required: True
@@ -207,8 +209,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSProvisioningServiceDescription
-Parameters: DpsObject (ByValue)
+### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription
+Parameters: InputObject (ByValue)
 
 ### System.String
 

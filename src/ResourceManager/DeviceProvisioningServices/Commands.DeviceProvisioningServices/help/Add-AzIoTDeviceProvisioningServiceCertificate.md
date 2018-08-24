@@ -1,45 +1,47 @@
 ---
 external help file: Microsoft.Azure.Commands.DeviceProvisioningServices.dll-Help.xml
 Module Name: AzureRM.DeviceProvisioningServices
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/az.deviceprovisioningservices/add-aziotdeviceprovisioningservicecertificate
 schema: 2.0.0
 ---
 
-# New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode
+# Add-AzureRmIoTDeviceProvisioningServiceCertificate
 
 ## SYNOPSIS
-Generate a verification code for an Azure IoT Hub Device Provisioning Service certificate.
+Create/update an Azure IoT Hub Device Provisioning Service certificate.
 
 ## SYNTAX
 
 ### ResourceSet (Default)
 ```
-New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode [-ResourceGroupName] <String>
- [-Name] <String> [-CertificateName] <String> [-Etag] <String> [-DefaultProfile <IAzureContextContainer>]
+Add-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceGroupName] <String> [-Name] <String>
+ [-CertificateName] <String> [-Path] <String> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode [-InputObject] <PSCertificateResponse>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmIoTDeviceProvisioningServiceCertificate [-InputObject] <PSCertificateResponse>
+ [-CertificateName] <String> [-Path] <String> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode [-ResourceId] <String> [-Etag] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceId] <String> [-CertificateName] <String>
+ [-Path] <String> [-Etag <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This verification code is used to complete the proof of possession step for a certificate. Use this verification code as the CN of a new certificate signed with the root certificates private key.
+Uploads a new certificate or to replace the existing certificate with the same name.
 For a detailed explanation of CA certificates in Azure IoT Hub Device Provisioning Service, see https://docs.microsoft.com/en-us/azure/iot-dps/how-to-verify-certificates.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" -Etag "AAAAAAFPazE="
+PS C:\> Add-AzureRmIoTDeviceProvisioningServiceCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" -Path "c:\mycertificate.cer"
 
 Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/provisioningServices/myiotdps/certificates/mycertificate
 ResourceGroupName	: myresourcegroup
@@ -47,33 +49,31 @@ Name				: myiotdps
 CertificateName		: mycertificate
 Subject				: CN=mycertificate
 Thumbprint			: 38303FC7371EC78DDE3E18D712C8414EE50969C7
-VerificationCode	: A901A843EFF75419AC1F0EB460E85DF153092A0547AA30F5
 Status				: Unverified
 Expiry				: 1/01/2027 16:01
 Created				: 1/01/2017 16:01
 Etag				: AAAAAAFpGcA=
 ```
 
-Generate a verification code for "mycertificate".
+Upload a CA certificate CER file to an Azure IoT Hub device provisioning service.
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmIoTDpsCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" | New-AzureRmIoTDpsCVC
+PS C:\> Add-AzureRmIoTDpsCertificate -ResourceGroupName "myresourcegroup" -Name "myiotdps" -CertificateName "mycertificate" -Path "c:\mycertificate.cer" -Etag "AAAAAAFpGcA="
 
-Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/provisioningServices/myiotdps/certificates/mycertificate
+Id					: /subscriptions/377cxxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Devices/provisioningServices/myiothub/certificates/mycertificate
 ResourceGroupName	: myresourcegroup
 Name				: myiotdps
 CertificateName		: mycertificate
 Subject				: CN=mycertificate
-Thumbprint			: 38303FC7371EC78DDE3E18D712C8414EE50969C7
-VerificationCode	: A901A843EFF75419AC1F0EB460E85DF153092A0547AA30F5
+Thumbprint			: 38303FC7371EC13DDE3E18D712C8414EE50969C7
 Status				: Unverified
 Expiry				: 1/01/2027 16:01
 Created				: 1/01/2017 16:01
-Etag				: AAAAAAFpGcA=
+Etag				: AAAAAAFpObE=
 ```
 
-Generate a verification code for "mycertificate" using pipeline.
+Updates a CA certificate in an IoT hub device provisioning service by uploading a new CER file. 
 
 ## PARAMETERS
 
@@ -82,11 +82,11 @@ Name of the Iot device provisioning service certificate
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -112,11 +112,11 @@ Etag of the Certificate
 
 ```yaml
 Type: System.String
-Parameter Sets: ResourceSet, ResourceIdSet
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -147,6 +147,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Path
+base-64 representation of X509 certificate .cer file or .pem file path
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -225,7 +240,7 @@ Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSVerificationCodeResponse
+### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse
 
 ## NOTES
 
