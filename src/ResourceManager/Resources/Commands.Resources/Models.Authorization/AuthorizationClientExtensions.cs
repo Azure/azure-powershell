@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 assignment.RoleDefinitionId = assignment.RoleDefinitionId.GuidFromFullyQualifiedId();
                 PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == Guid.Parse(assignment.PrincipalId)) ??
-                    new PSADObject() { Id = Guid.Parse(assignment.PrincipalId) };
+                                      new PSADObject() { Id = Guid.Parse(assignment.PrincipalId) };
                 PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.RoleDefinitionId) ??
                     new PSRoleDefinition() { Id = assignment.RoleDefinitionId };
                 bool delegationFlag = assignment.CanDelegate.HasValue ? (bool)assignment.CanDelegate : false;
