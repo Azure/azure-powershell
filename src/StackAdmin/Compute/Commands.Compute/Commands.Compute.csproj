@@ -49,33 +49,38 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper.Net4, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Compute">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.16.3.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.3.0-preview\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm">
-      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.8.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.OData">
-      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.8.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Services.Client">
-      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.8.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\WindowsAzure.Storage.6.1.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=8.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.8.6.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Spatial">
-      <HintPath>..\..\..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
+      <HintPath>..\..\..\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -84,18 +89,42 @@
     <Compile Include="AvailabilitySets\GetAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\NewAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\AvailabilitySetBaseCmdlet.cs" />
+    <Compile Include="AvailabilitySets\UpdateAzureAvailabilitySetCommand.cs" />
     <Compile Include="Common\ComputeAutoMapperProfile.cs" />
     <Compile Include="Common\ComputeClientBaseCmdlet.cs" />
     <Compile Include="Common\ComputeClient.cs" />
     <Compile Include="Common\ComputeClientInstancViewMethod.cs" />
     <Compile Include="Common\ComputeCloudException.cs" />
     <Compile Include="Common\DiagnosticsHelper.cs" />
+    <Compile Include="Common\DoubleFetchHandler.cs" />
+    <Compile Include="Common\StorageManagementClient.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageTypeCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
     <Compile Include="ExtensionImages\VirtualMachineExtensionImageBaseCmdlet.cs" />
+    <Compile Include="Extension\ADDomain\ADDomainExtensionPrivateSettings.cs" />
+    <Compile Include="Extension\ADDomain\ADDomainExtensionPublicSettings.cs" />
+    <Compile Include="Extension\ADDomain\GetAzureVMADDomainExtensionCommand.cs" />
+    <Compile Include="Extension\ADDomain\SetAzureVMADDomainExtensionCommand.cs" />
+    <Compile Include="Extension\ADDomain\VirtualMachineADDomainExtensionContext.cs" />
+    <Compile Include="Extension\AEM\AEMExtensionConstants.cs" />
+    <Compile Include="Extension\AEM\AEMHelper.cs" />
+    <Compile Include="Extension\AEM\AEMStringExtensions.cs" />
+    <Compile Include="Extension\AEM\AEMTestResult.cs" />
+    <Compile Include="Extension\AEM\AzureSLA.cs" />
+    <Compile Include="Extension\AEM\ExtensionConfig.cs" />
+    <Compile Include="Extension\AEM\GetAzureRmVMAEMExtension.cs" />
+    <Compile Include="Extension\AEM\KeyValuePair.cs" />
+    <Compile Include="Extension\AEM\PerformanceCounter.cs" />
+    <Compile Include="Extension\AEM\RemoveAzureRmVMAEMExtension.cs" />
+    <Compile Include="Extension\AEM\SetAzureRmVMAEMExtension.cs" />
+    <Compile Include="Extension\AEM\TestAzureRmVMAEMExtension.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionConstants.cs" />
     <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionContext.cs" />
     <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionProtectedSettings.cs" />
     <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionPublicSettings.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\DisableAzureDiskEncryption.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\GetAzureDiskEncryptionStatus.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\OSType.cs" />
     <Compile Include="Extension\AzureDiskEncryption\RemoveAzureDiskEncryptionExtension.cs" />
     <Compile Include="Extension\AzureDiskEncryption\SetAzureDiskEncryptionExtension.cs" />
     <Compile Include="Extension\AzureVMBackup\AzureVMBackupExtensionUtil.cs" />
@@ -107,16 +136,22 @@
     <Compile Include="Extension\AzureVMBackup\SetAzureVMBackupExtension.cs" />
     <Compile Include="Extension\BGInfo\SetAzureVMBGInfoExtension.cs" />
     <Compile Include="Extension\BGInfo\VirtualMachineBGInfoExtensionContext.cs" />
+    <Compile Include="Extension\Chef\GetAzureRmVMChefExtension.cs" />
+    <Compile Include="Extension\Chef\RemoveAzureRmVMChefExtension.cs" />
+    <Compile Include="Extension\Chef\SetAzureVMChefExtension.cs" />
     <Compile Include="Extension\CustomScript\GetAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\CustomScriptExtensionPrivateSettings.cs" />
     <Compile Include="Extension\CustomScript\CustomScriptExtensionPublicSettings.cs" />
     <Compile Include="Extension\CustomScript\RemoveAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\SetAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\VirtualMachineCustomScriptExtensionContext.cs" />
+    <Compile Include="Extension\Diagnostics\AddAzureRmVmssDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\DiagnosticsExtensionConstants.cs" />
     <Compile Include="Extension\Diagnostics\GetAzureRmVMDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\RemoveAzureRmVMDiagnosticsExtension.cs" />
+    <Compile Include="Extension\Diagnostics\RemoveAzureRmVmssDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\SetAzureRmVMDiagnosticsExtension.cs" />
+    <Compile Include="Extension\Diagnostics\WADPrivateConfigSchema.cs" />
     <Compile Include="Extension\DSC\GetAzureVMDscExtensionStatusCommand.cs" />
     <Compile Include="Extension\DSC\GetDscResourceException.cs" />
     <Compile Include="Extension\DSC\DscExtensionPublishCmdletCommonBase.cs" />
@@ -127,6 +162,7 @@
     <Compile Include="Extension\DSC\VirtualMachineDscExtensionContext.cs" />
     <Compile Include="Extension\DSC\GetAzureVMDscExtensionCommand.cs" />
     <Compile Include="Extension\DSC\VirtualMachineDscExtensionStatusContext.cs" />
+    <Compile Include="Extension\NetcoreExtension.cs" />
     <Compile Include="Extension\SetAzureVMExtensionBaseCmdlet.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
@@ -134,181 +170,28 @@
     <Compile Include="Extension\SqlServer\AzureVMSqlServerAutoBackupSettings.cs" />
     <Compile Include="Extension\SqlServer\AzureVMSqlServerAutoPatchingSettings.cs" />
     <Compile Include="Extension\SqlServer\AzureVMSqlServerAutoTelemetrySettings.cs" />
+    <Compile Include="Extension\SqlServer\AzureVMSqlServerConfiguration.cs" />
+    <Compile Include="Extension\SqlServer\AzureVMSqlServerKeyVaultCredential.cs" />
+    <Compile Include="Extension\SqlServer\PrivateKeyVaultCredentialSettings.cs" />
     <Compile Include="Extension\SqlServer\AzureVMSqlServerPrivateSettings.cs" />
     <Compile Include="Extension\SqlServer\AzureVMSqlServerPublicSettings.cs" />
     <Compile Include="Extension\SqlServer\GetAzureVMSqlServerExtensionCommand.cs" />
+    <Compile Include="Extension\SqlServer\AzureVMSqlServerKeyVaultCredentialSettings.cs" />
     <Compile Include="Extension\SqlServer\NewAzureVMSqlServerAutoBackupConfig.cs" />
     <Compile Include="Extension\SqlServer\NewAzureVMSqlServerAutoPatchingConfig.cs" />
+    <Compile Include="Extension\SqlServer\NewAzureVMSqlServerKeyVaultCredentialConfig.cs" />
     <Compile Include="Extension\SqlServer\RemoveAzureVMSqlServerExtensionCommand.cs" />
     <Compile Include="Extension\SqlServer\SetAzureVMSqlServerExtensionCommand.cs" />
     <Compile Include="Extension\SqlServer\VirtualMachineSqlServerExtensionContext.cs" />
-    <Compile Include="Generated\AvailabilitySetsOperations.cs" />
-    <Compile Include="Generated\AvailabilitySetsOperationsExtensions.cs" />
-    <Compile Include="Generated\ComputeAutomationBaseCmdlet.cs" />
-    <Compile Include="Generated\ComputeManagementClientExtensions.cs" />
-    <Compile Include="Generated\ComputeMgmtClient.cs" />
-    <Compile Include="Generated\IAvailabilitySetsOperations.cs" />
-    <Compile Include="Generated\InvokeAzureComputeMethodCmdlet.cs" />
-    <Compile Include="Generated\IVirtualMachineExtensionImagesOperations.cs" />
-    <Compile Include="Generated\IVirtualMachineExtensionsOperations.cs" />
-    <Compile Include="Generated\IVirtualMachineImagesOperations.cs" />
-    <Compile Include="Generated\IVirtualMachineScaleSetsOperations.cs" />
-    <Compile Include="Generated\IVirtualMachineScaleSetVMsOperations.cs" />
-    <Compile Include="Generated\IVirtualMachineSizesOperations.cs" />
-    <Compile Include="Generated\IVirtualMachinesOperations.cs" />
-    <Compile Include="Generated\Models\AdditionalUnattendContent.cs" />
-    <Compile Include="Generated\Models\ApiEntityReference.cs" />
-    <Compile Include="Generated\Models\ApiError.cs" />
-    <Compile Include="Generated\Models\ApiErrorBase.cs" />
-    <Compile Include="Generated\Models\AvailabilitySet.cs" />
-    <Compile Include="Generated\Models\BootDiagnostics.cs" />
-    <Compile Include="Generated\Models\BootDiagnosticsInstanceView.cs" />
-    <Compile Include="Generated\Models\CachingTypes.cs" />
-    <Compile Include="Generated\Models\ComponentNames.cs" />
-    <Compile Include="Generated\Models\ComputeAutoMapperProfile.cs" />
-    <Compile Include="Generated\Models\ComputeLongRunningOperationProperties.cs" />
-    <Compile Include="Generated\Models\DataDisk.cs" />
-    <Compile Include="Generated\Models\DataDiskImage.cs" />
-    <Compile Include="Generated\Models\DiagnosticsProfile.cs" />
-    <Compile Include="Generated\Models\DiskCreateOptionTypes.cs" />
-    <Compile Include="Generated\Models\DiskEncryptionSettings.cs" />
-    <Compile Include="Generated\Models\DiskInstanceView.cs" />
-    <Compile Include="Generated\Models\HardwareProfile.cs" />
-    <Compile Include="Generated\Models\ImageReference.cs" />
-    <Compile Include="Generated\Models\InnerError.cs" />
-    <Compile Include="Generated\Models\InstanceViewStatus.cs" />
-    <Compile Include="Generated\Models\InstanceViewTypes.cs" />
-    <Compile Include="Generated\Models\KeyVaultKeyReference.cs" />
-    <Compile Include="Generated\Models\KeyVaultSecretReference.cs" />
-    <Compile Include="Generated\Models\LinuxConfiguration.cs" />
-    <Compile Include="Generated\Models\NetworkInterfaceReference.cs" />
-    <Compile Include="Generated\Models\NetworkProfile.cs" />
-    <Compile Include="Generated\Models\OperatingSystemTypes.cs" />
-    <Compile Include="Generated\Models\OSDisk.cs" />
-    <Compile Include="Generated\Models\OSDiskImage.cs" />
-    <Compile Include="Generated\Models\OSProfile.cs" />
-    <Compile Include="Generated\Models\Page.cs" />
-    <Compile Include="Generated\Models\PassNames.cs" />
-    <Compile Include="Generated\Models\Plan.cs" />
-    <Compile Include="Generated\Models\ProtocolTypes.cs" />
-    <Compile Include="Generated\Models\PSArgument.cs" />
-    <Compile Include="Generated\Models\PSVirtualMachineScaleSet.cs" />
-    <Compile Include="Generated\Models\PSVirtualMachineScaleSetList.cs" />
-    <Compile Include="Generated\Models\PSVirtualMachineScaleSetVM.cs" />
-    <Compile Include="Generated\Models\PSVirtualMachineScaleSetVMList.cs" />
-    <Compile Include="Generated\Models\PurchasePlan.cs" />
-    <Compile Include="Generated\Models\Resource.cs" />
-    <Compile Include="Generated\Models\SettingNames.cs" />
-    <Compile Include="Generated\Models\Sku.cs" />
-    <Compile Include="Generated\Models\SshConfiguration.cs" />
-    <Compile Include="Generated\Models\SshPublicKey.cs" />
-    <Compile Include="Generated\Models\StatusLevelTypes.cs" />
-    <Compile Include="Generated\Models\StorageProfile.cs" />
-    <Compile Include="Generated\Models\SubResource.cs" />
-    <Compile Include="Generated\Models\UpgradeMode.cs" />
-    <Compile Include="Generated\Models\UpgradePolicy.cs" />
-    <Compile Include="Generated\Models\Usage.cs" />
-    <Compile Include="Generated\Models\UsageName.cs" />
-    <Compile Include="Generated\Models\UsageUnit.cs" />
-    <Compile Include="Generated\Models\VaultCertificate.cs" />
-    <Compile Include="Generated\Models\VaultSecretGroup.cs" />
-    <Compile Include="Generated\Models\VirtualHardDisk.cs" />
-    <Compile Include="Generated\Models\VirtualMachine.cs" />
-    <Compile Include="Generated\Models\VirtualMachineAgentInstanceView.cs" />
-    <Compile Include="Generated\Models\VirtualMachineCaptureParameters.cs" />
-    <Compile Include="Generated\Models\VirtualMachineCaptureResult.cs" />
-    <Compile Include="Generated\Models\VirtualMachineExtension.cs" />
-    <Compile Include="Generated\Models\VirtualMachineExtensionHandlerInstanceView.cs" />
-    <Compile Include="Generated\Models\VirtualMachineExtensionImage.cs" />
-    <Compile Include="Generated\Models\VirtualMachineExtensionInstanceView.cs" />
-    <Compile Include="Generated\Models\VirtualMachineImage.cs" />
-    <Compile Include="Generated\Models\VirtualMachineImageResource.cs" />
-    <Compile Include="Generated\Models\VirtualMachineInstanceView.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSet.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetExtension.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetExtensionProfile.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetInstanceView.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetInstanceViewStatusesSummary.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetIPConfiguration.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetNetworkConfiguration.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetNetworkProfile.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetOSDisk.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetOSProfile.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetSku.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetSkuCapacity.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetSkuScaleType.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetStorageProfile.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetVM.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetVMExtensionsSummary.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetVMInstanceIDs.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetVMInstanceRequiredIDs.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetVMInstanceView.cs" />
-    <Compile Include="Generated\Models\VirtualMachineScaleSetVMProfile.cs" />
-    <Compile Include="Generated\Models\VirtualMachineSize.cs" />
-    <Compile Include="Generated\Models\VirtualMachineSizeTypes.cs" />
-    <Compile Include="Generated\Models\VirtualMachineStatusCodeCount.cs" />
-    <Compile Include="Generated\Models\WindowsConfiguration.cs" />
-    <Compile Include="Generated\Models\WinRMConfiguration.cs" />
-    <Compile Include="Generated\Models\WinRMListener.cs" />
-    <Compile Include="Generated\VirtualMachineExtensionImagesOperations.cs" />
-    <Compile Include="Generated\VirtualMachineExtensionImagesOperationsExtensions.cs" />
-    <Compile Include="Generated\VirtualMachineExtensionsOperations.cs" />
-    <Compile Include="Generated\VirtualMachineExtensionsOperationsExtensions.cs" />
-    <Compile Include="Generated\VirtualMachineImagesOperations.cs" />
-    <Compile Include="Generated\VirtualMachineImagesOperationsExtensions.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetsOperations.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetsOperationsExtensions.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetVMsOperations.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetVMsOperationsExtensions.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetVM\VirtualMachineScaleSetVMDeallocateMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetVM\VirtualMachineScaleSetVMDeleteMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetVM\VirtualMachineScaleSetVMGetInstanceViewMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetVM\VirtualMachineScaleSetVMGetMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetVM\VirtualMachineScaleSetVMListMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetVM\VirtualMachineScaleSetVMListNextMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetVM\VirtualMachineScaleSetVMPowerOffMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetVM\VirtualMachineScaleSetVMReimageMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetVM\VirtualMachineScaleSetVMRestartMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSetVM\VirtualMachineScaleSetVMStartMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\Config\AddAzureRmVmssAdditionalUnattendContentCommand.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\Config\AddAzureRmVmssExtensionCommand.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\Config\AddAzureRmVmssNetworkInterfaceConfigurationCommand.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\Config\AddAzureRmVmssSecretCommand.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\Config\AddAzureRmVmssSshPublicKeyCommand.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\Config\AddAzureRmVmssWinRMListenerCommand.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\Config\NewAzureRmVmssConfigCommand.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\Config\NewAzureRmVmssIpConfigCommand.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\Config\NewAzureRmVmssVaultCertificateConfigCommand.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\Config\RemoveAzureRmVmssExtensionCommand.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\Config\RemoveAzureRmVmssNetworkInterfaceConfigurationCommand.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\Config\SetAzureRmVmssOsProfileCommand.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\Config\SetAzureRmVmssStorageProfileCommand.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetCreateOrUpdateMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetDeallocateMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetDeleteInstancesMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetDeleteMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetGetInstanceViewMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetGetMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetListAllMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetListAllNextMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetListMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetListNextMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetListSkusMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetListSkusNextMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetPowerOffMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetReimageMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetRestartMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetStartMethod.cs" />
-    <Compile Include="Generated\VirtualMachineScaleSet\VirtualMachineScaleSetUpdateInstancesMethod.cs" />
-    <Compile Include="Generated\ComputeManagementClient.cs" />
-    <Compile Include="Generated\IComputeManagementClient.cs" />
-    <Compile Include="Generated\IUsageOperations.cs" />
-    <Compile Include="Generated\UsageOperations.cs" />
-    <Compile Include="Generated\UsageOperationsExtensions.cs" />
-    <Compile Include="Generated\VirtualMachineSizesOperations.cs" />
-    <Compile Include="Generated\VirtualMachineSizesOperationsExtensions.cs" />
-    <Compile Include="Generated\VirtualMachinesOperations.cs" />
-    <Compile Include="Generated\VirtualMachinesOperationsExtensions.cs" />
+    <Compile Include="Extension\VirtualMachineScaleSetExtensionBaseCmdlet.cs" />
+    <Compile Include="Extension\VmssDiskEncryption\AzureVmssDiskEncryptionExtensionContext.cs" />
+    <Compile Include="Extension\VmssDiskEncryption\AzureVmssDiskEncryptionExtensionPublicSettings.cs" />
+    <Compile Include="Extension\VmssDiskEncryption\GetAzureVmssDiskEncryptionStatus.cs" />
+    <Compile Include="Extension\VmssDiskEncryption\DisableAzureVmssDiskEncryption.cs" />
+    <Compile Include="Extension\VmssDiskEncryption\GetAzureVmssVMDiskEncryptionStatus.cs" />
+    <Compile Include="Extension\VmssDiskEncryption\SetAzureVmssDiskEncryptionExtension.cs" />
+    <Compile Include="Generated\**\*.cs" />
+    <Compile Include="Manual\*.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Common\HashTableExtensions.cs" />
     <Compile Include="Models\AzureDiskEncryptionStatusContext.cs" />
@@ -336,8 +219,11 @@
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
     <Compile Include="Models\PSVirtualMachineList.cs" />
     <Compile Include="Models\PSVirtualMachineListStatus.cs" />
+    <Compile Include="Models\PSVirtualMachineScaleSetExtension.cs" />
     <Compile Include="Models\PSVirtualMachineSize.cs" />
     <Compile Include="Common\LocationStringExtensions.cs" />
+    <Compile Include="Models\PSVmssDiskEncryptionStatusContext.cs" />
+    <Compile Include="Models\PSVmssVMDiskEncryptionStatusContext.cs" />
     <Compile Include="Models\UploadParameters.cs" />
     <Compile Include="Models\VhdDownloadContext.cs" />
     <Compile Include="Models\VhdDownloaderModel.cs" />
@@ -361,6 +247,7 @@
     <Compile Include="VirtualMachine\Config\AddAzureVMSecretCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskCommand.cs" />
+    <Compile Include="VirtualMachine\Config\RemoveAzureVMSecretCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMBootDiagnosticsCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMPlan.cs" />
@@ -389,88 +276,41 @@
     <Compile Include="VirtualMachine\Config\AddAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\VirtualMachineCmdletHelper.cs" />
-    <Compile Include="Extension\DSC\DscExtensionCmdletConstants.cs" />
-    <Compile Include="Extension\DSC\DscExtensionPrivateSettings.cs" />
-    <Compile Include="Extension\DSC\DscExtensionPublicSettings.cs" />
-    <Compile Include="Extension\DSC\DscExtensionSettingsSerializer.cs" />
-    <Compile Include="Extension\DSC\ConfigurationParseResult.cs" />
-    <Compile Include="Extension\DSC\ConfigurationParsingHelper.cs" />
-    <Compile Include="Sync\ComputeStats.cs" />
-    <Compile Include="Sync\Download\BlobHandle.cs" />
-    <Compile Include="Sync\Download\BlobUri.cs" />
-    <Compile Include="Sync\Download\Downloader.cs" />
-    <Compile Include="Sync\Download\DownloaderParameters.cs" />
-    <Compile Include="Sync\IO\StreamWithReadProgress.cs" />
-    <Compile Include="Sync\Program.cs" />
-    <Compile Include="Sync\ProgressRecord.cs" />
-    <Compile Include="Sync\ProgressStatus.cs" />
-    <Compile Include="Sync\ProgressTracker.cs" />
-    <Compile Include="Sync\ServicePointHandler.cs" />
-    <Compile Include="Sync\Threading\Parallel.cs" />
-    <Compile Include="Sync\Upload\BlobCreator.cs" />
-    <Compile Include="Sync\Upload\BlobCreatorBase.cs" />
-    <Compile Include="Sync\Upload\BlobSynchronizer.cs" />
-    <Compile Include="Sync\Upload\ComputeStats.cs" />
-    <Compile Include="Sync\Upload\DataWithRange.cs" />
-    <Compile Include="Sync\Upload\ExtensionMethods.cs" />
-    <Compile Include="Sync\Upload\IndexRangeHelper.cs" />
-    <Compile Include="Sync\Upload\PatchingBlobCreator.cs" />
-    <Compile Include="Sync\Upload\SerializationUtil.cs" />
-    <Compile Include="Sync\Upload\UploadContext.cs" />
-    <Compile Include="Sync\Upload\UploadOperationMetaData.cs" />
-    <Compile Include="VhdManagement\Async\AsyncMachine.cs" />
-    <Compile Include="VhdManagement\Async\ExceptionExtension.cs" />
-    <Compile Include="VhdManagement\Model\AttributeHelper.cs" />
-    <Compile Include="VhdManagement\Model\BitMap.cs" />
-    <Compile Include="VhdManagement\Model\Block.cs" />
-    <Compile Include="VhdManagement\Model\BlockAllocationTable.cs" />
-    <Compile Include="VhdManagement\Model\DiskGeometry.cs" />
-    <Compile Include="VhdManagement\Model\DiskType.cs" />
-    <Compile Include="VhdManagement\Model\HostOsType.cs" />
-    <Compile Include="VhdManagement\Model\IndexRange.cs" />
-    <Compile Include="VhdManagement\Model\IndexRangeComparer.cs" />
-    <Compile Include="VhdManagement\Model\Model.cs" />
-    <Compile Include="VhdManagement\Model\ParentLocator.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\AbstractDiskBlockFactory.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\BitMapFactory.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\BlockAllocationTableFactory.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\CloudVhdFileCreator.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\DifferencingDiskBlockFactory.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\DiskTypeFactory.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\DynamicDiskBlockFactory.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\FixedDiskBlockFactory.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\IBlockFactory.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\SectorFactory.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\StreamHelper.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\VhdConstants.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\VhdDataReader.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\VhdDataWriter.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\VhdFileFactory.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\VhdFooterFactory.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\VhdFooterSerializer.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\VhdHeaderFactory.cs" />
-    <Compile Include="VhdManagement\Model\Persistence\VhdParentLocatorFactory.cs" />
-    <Compile Include="VhdManagement\Model\PlatformCode.cs" />
-    <Compile Include="VhdManagement\Model\Sector.cs" />
-    <Compile Include="VhdManagement\Model\VhdCookie.cs" />
-    <Compile Include="VhdManagement\Model\VhdCookieType.cs" />
-    <Compile Include="VhdManagement\Model\VhdCreatorVersion.cs" />
-    <Compile Include="VhdManagement\Model\VhdEntityAttribute.cs" />
-    <Compile Include="VhdManagement\Model\VhdEntityDescriptor.cs" />
-    <Compile Include="VhdManagement\Model\VhdFeature.cs" />
-    <Compile Include="VhdManagement\Model\VhdFile.cs" />
-    <Compile Include="VhdManagement\Model\VhdFileFormatVersion.cs" />
-    <Compile Include="VhdManagement\Model\VhdFooter.cs" />
-    <Compile Include="VhdManagement\Model\VhdHeader.cs" />
-    <Compile Include="VhdManagement\Model\VhdHeaderVersion.cs" />
-    <Compile Include="VhdManagement\Model\VhdPropertyAttribute.cs" />
-    <Compile Include="VhdManagement\Model\VhdPropertyDescriptor.cs" />
-    <Compile Include="VhdManagement\Model\VhdTimeStamp.cs" />
-    <Compile Include="VhdManagement\SparseStream.cs" />
-    <Compile Include="VhdManagement\VirtualDiskStream.cs" />
+    <Compile Include="..\Sync\Download\**\*.cs" />
+    <Compile Include="..\Sync\IO\**\*.cs" />
+    <Compile Include="..\Sync\Threading\**\*.cs" />
+    <Compile Include="..\Sync\Upload\**\*.cs" />
+    <Compile Include="..\Sync\ProgressRecord.cs" />
+    <Compile Include="..\Sync\ProgressStatus.cs" />
+    <Compile Include="..\Sync\ProgressTracker.cs" />
+    <Compile Include="..\Sync\ComputeStats.cs" />
+    <Compile Include="..\Sync\Program.cs" />
+    <Compile Include="..\Sync\ServicePointHandler.cs" />
+    <Compile Include="..\VhdManagement\Async\**\*.cs" />
+    <Compile Include="..\VhdManagement\Model\**\*.cs" />
+    <Compile Include="..\VhdManagement\VirtualDiskStream.cs" />
+    <Compile Include="..\VhdManagement\SparseStream.cs" />
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParsingHelper.cs">
+      <Link>Extension\DSC\ConfigurationParsingHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionCmdletConstants.cs">
+      <Link>Extension\DSC\DscExtensionCmdletConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParseResult.cs">
+      <Link>Extension\DSC\ConfigurationParseResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionSettingsSerializer.cs">
+      <Link>Extension\DSC\DscExtensionSettingsSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPublicSettings.cs">
+      <Link>Extension\DSC\DscExtensionPublicSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPrivateSettings.cs">
+      <Link>Extension\DSC\DscExtensionPrivateSettings.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\ResourceManager\Profile\Commands.Profile\Commands.Profile.csproj">
+      <ProjectReference Include="..\..\..\ResourceManager\Profile\Commands.Profile\Commands.Profile.csproj">
       <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
       <Name>Commands.Profile</Name>
     </ProjectReference>
@@ -482,9 +322,13 @@
       <Project>{a50ab133-5c04-4a17-9054-f8343683ec23}</Project>
       <Name>Commands.Management.Storage</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Storage.Management\SDK\StorageSDK.csproj">
+      <Project>{ccc1f6c7-e2ce-47b3-bd64-8efd17823e20}</Project>
+      <Name>StorageSDK</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AzureRM.Compute.psd1">
+    <None Include="..\AzureRM.Compute.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Extension\AzureDiskEncryption\Scripts\AzureDiskEncryptionPreRequisiteSetup.ps1" />
@@ -505,7 +349,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

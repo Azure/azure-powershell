@@ -17,11 +17,10 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Rest.Azure;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -33,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string ListVirtualMachineInResourceGroupParamSet = "ListVirtualMachineInResourceGroupParamSet";
         protected const string ListAllVirtualMachinesParamSet = "ListAllVirtualMachinesParamSet";
         protected const string ListNextLinkVirtualMachinesParamSet = "ListNextLinkVirtualMachinesParamSet";
+        private const string InfoNotAvailable = "Info Not Available";
 
         [Parameter(
            Mandatory = true,
@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.Compute
            Position = 0,
             ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
            ValueFromPipelineByPropertyName = true)]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -58,8 +57,7 @@ namespace Microsoft.Azure.Commands.Compute
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
-            ParameterSetName = GetVirtualMachineInResourceGroupParamSet)]
+            Position = 2)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Status { get; set; }
 
@@ -71,13 +69,66 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public Uri NextLink { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public DisplayHintType DisplayHint { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
-                if (!string.IsNullOrEmpty(this.Name))
+                if (string.IsNullOrEmpty(this.ResourceGroupName) && string.IsNullOrEmpty(this.Name))
+                {
+                    AzureOperationResponse<IPage<VirtualMachine>> vmListResult = null;
+
+                    if (this.NextLink != null)
+                    {
+                        vmListResult = this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync(this.NextLink.ToString())
+                            .GetAwaiter().GetResult();
+                    }
+                    else
+                    {
+                        vmListResult = this.VirtualMachineClient.ListAllWithHttpMessagesAsync().GetAwaiter().GetResult();
+                    }
+
+                    var psResultListStatus = new List<PSVirtualMachineListStatus>();
+
+                    while (vmListResult != null)
+                    {
+                        psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
+
+                        if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
+                        {
+                            vmListResult = this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync(vmListResult.Body.NextPageLink)
+                                 .GetAwaiter().GetResult();
+                        }
+                        else
+                        {
+                            vmListResult = null;
+                        }
+                    }
+
+                    if (this.Status.IsPresent)
+                    {
+                        WriteObject(psResultListStatus, true);
+                    }
+                    else
+                    {
+                        var psResultList = new List<PSVirtualMachineList>();
+                        foreach (var item in psResultListStatus)
+                        {
+                            var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(item);
+                            psResultList.Add(psItem);
+                        }
+                        WriteObject(psResultList, true);
+                    }
+                }
+                else if (!string.IsNullOrEmpty(this.Name))
                 {
                     if (Status)
                     {
@@ -89,62 +140,90 @@ namespace Microsoft.Azure.Commands.Compute
                         var result = this.VirtualMachineClient.GetWithHttpMessagesAsync(
                             this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
 
-                        var psResult = Mapper.Map<PSVirtualMachine>(result);
+                        var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
                         if (result.Body != null)
                         {
-                            psResult = Mapper.Map<PSVirtualMachine>(result.Body);
+                            psResult = ComputeAutoMapperProfile.Mapper.Map(result.Body, psResult);
                         }
+                        psResult.DisplayHint = this.DisplayHint;
                         WriteObject(psResult);
                     }
                 }
                 else
                 {
                     AzureOperationResponse<IPage<VirtualMachine>> vmListResult = null;
-                    if (!string.IsNullOrEmpty(this.ResourceGroupName))
-                    {
-                        vmListResult = this.VirtualMachineClient.ListWithHttpMessagesAsync(this.ResourceGroupName)
+                    vmListResult = this.VirtualMachineClient.ListWithHttpMessagesAsync(this.ResourceGroupName)
                             .GetAwaiter().GetResult();
-                    }
-                    else if (this.NextLink != null)
+
+                    var psResultListStatus = new List<PSVirtualMachineListStatus>();
+                    psResultListStatus = GetPowerstate(vmListResult, psResultListStatus);
+
+                    if (this.Status.IsPresent)
                     {
-                        vmListResult = this.VirtualMachineClient.ListNextWithHttpMessagesAsync(this.NextLink.ToString())
-                            .GetAwaiter().GetResult();
+                        WriteObject(psResultListStatus, true);
                     }
                     else
                     {
-                        vmListResult = this.VirtualMachineClient.ListAllWithHttpMessagesAsync()
-                            .GetAwaiter().GetResult();
-                    }
-
-                    var psResultList = new List<PSVirtualMachine>();
-
-                    while (vmListResult != null)
-                    {
-                        if (vmListResult.Body != null)
+                        var psResultList = new List<PSVirtualMachineList>();
+                        foreach (var item in psResultListStatus)
                         {
-                            foreach (var item in vmListResult.Body)
-                            {
-                                var psItem = Mapper.Map<PSVirtualMachine>(item);
-                                psItem = Mapper.Map(vmListResult, psItem);
-                                psResultList.Add(psItem);
-                            }
+                            var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineList>(item);
+                            psResultList.Add(psItem);
+                        }
+                        WriteObject(psResultList, true);
+                    }
+                }
+            });
+        }
+
+        private List<PSVirtualMachineListStatus> GetPowerstate(
+            AzureOperationResponse<IPage<VirtualMachine>> vmListResult,
+            List<PSVirtualMachineListStatus> psResultListStatus)
+        {
+            if (vmListResult.Body != null)
+            {
+                foreach (var item in vmListResult.Body)
+                {
+                    var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineListStatus>(vmListResult);
+                    psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
+                    if (this.Status.IsPresent)
+                    {
+                        VirtualMachine state = null;
+                        try
+                        {
+                            // Call additional Get InstanceView of each VM to get the power states of all VM.
+                            state = this.VirtualMachineClient.Get(psItem.ResourceGroupName, psItem.Name, InstanceViewExpand);
+                        }
+                        catch
+                        {
+                            // Swallow any exception during getting instance view information.
                         }
 
-
-                        if (!string.IsNullOrEmpty(vmListResult.Body.NextPageLink))
+                        if (state == null)
                         {
-                            vmListResult = this.VirtualMachineClient.ListNextWithHttpMessagesAsync(vmListResult.Body.NextPageLink)
-                                 .GetAwaiter().GetResult();
+                            psItem.PowerState = InfoNotAvailable;
+                            psItem.MaintenanceRedeployStatus = null;
                         }
                         else
                         {
-                            vmListResult = null;
+                            var psstate = state.ToPSVirtualMachineInstanceView(psItem.ResourceGroupName, psItem.Name);
+                            if (psstate != null && psstate.Statuses != null && psstate.Statuses.Count > 1)
+                            {
+                                psItem.PowerState = psstate.Statuses[1].DisplayStatus;
+                            }
+                            else
+                            {
+                                psItem.PowerState = InfoNotAvailable;
+                            }
+                            psItem.MaintenanceRedeployStatus = psstate.MaintenanceRedeployStatus;
                         }
                     }
-
-                    WriteObject(psResultList, true);
+                    psItem.DisplayHint = this.DisplayHint;
+                    psResultListStatus.Add(psItem);
                 }
-            });
+            }
+
+            return psResultListStatus;
         }
     }
 }

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\tools\Common.Dependencies.Test.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.Compute.Test</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Compute.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
+    <RestorePackages>true</RestorePackages>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>1017a61d</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+    <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.Compute">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.16.3.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=16.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.16.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\ComputeTestController.cs" />
+    <Compile Include="ScenarioTests\AddVhdTests.cs" />
+    <Compile Include="ScenarioTests\AEMExtensionTests.cs" />
+    <Compile Include="ScenarioTests\AvailabilityZoneTests.cs" />
+    <Compile Include="ScenarioTests\ChefExtensionTests.cs" />
+    <Compile Include="ScenarioTests\ComputeCloudExceptionTests.cs" />
+    <Compile Include="ScenarioTests\ContainerServiceTests.cs" />
+    <Compile Include="ScenarioTests\DiagnosticsExtensionTests.cs" />
+    <Compile Include="ScenarioTests\DiskRPTests.cs" />
+    <Compile Include="ScenarioTests\ImageTests.cs" />
+    <Compile Include="ScenarioTests\ResourceSkuTests.cs" />
+    <Compile Include="ScenarioTests\SqlIaaSExtensionTests.cs" />
+    <Compile Include="ScenarioTests\DscExtensionTests.cs" />
+    <Compile Include="ScenarioTests\RunnerTests.cs" />
+    <Compile Include="ScenarioTests\VirtualMachineBootDiagnosticsTests.cs" />
+    <Compile Include="ScenarioTests\VirtualMachineRunCommandTests.cs" />
+    <Compile Include="ScenarioTests\VirtualMachineScaleSetExtensionTests.cs" />
+    <Compile Include="ScenarioTests\VirtualMachineScaleSetTests.cs" />
+    <Compile Include="ScenarioTests\VMDynamicTests.cs" />
+    <Compile Include="ScenarioTests\VirtualMachineProfileTests.cs" />
+    <Compile Include="ScenarioTests\AvailabilitySetTests.cs" />
+    <Compile Include="ScenarioTests\VirtualMachineExtensionTests.cs" />
+    <Compile Include="ScenarioTests\VirtualMachineNetworkInterfaceTests.cs" />
+    <Compile Include="ScenarioTests\UtilityFunctionTests.cs" />
+    <Compile Include="ScenarioTests\VirtualMachineTests.cs" />
+    <None Include="Properties\Resources.resx" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="ScenarioTests\*.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\**\*.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Storage.Management\SDK\StorageSDK.csproj">
+      <Project>{ccc1f6c7-e2ce-47b3-bd64-8efd17823e20}</Project>
+      <Name>StorageSDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.Compute\Commands.Compute.csproj">
+      <Project>{52643bd5-6378-49bd-9f6e-dac9dd8a867b}</Project>
+      <Name>Commands.Compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commands.Compute\Commands.Compute.csproj">
+      <Project>{52643bd5-6378-49bd-9f6e-dac9dd8a867b}</Project>
+      <Name>Commands.Network</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+      <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
