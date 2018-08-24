@@ -173,6 +173,55 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
+        /// Resolve user submitted paths correctly on all platforms
+        /// </summary>
+        /// <param name="path">Absolute or relative path</param>
+        /// <returns>Absolute path</returns>
+        public string ResolveUserPath(string path)
+        {
+            if (path == null)
+            {
+                return null;
+            }
+
+            if (SessionState == null)
+            {
+                return path;
+            }
+
+            try
+            {
+                return GetUnresolvedProviderPathFromPSPath(path);
+            }
+            catch
+            {
+                return path;
+            }
+        }
+
+        /// <summary>
+        /// Correctly join sections of a path and resolve final path correctly on all platforms
+        /// </summary>
+        /// <param name="paths">Sections of an absolute or relative path</param>
+        /// <returns>Combined absolute path</returns>
+        public string ResolveUserPath(string[] paths)
+        {
+            if (paths == null || paths.Count() == 0)
+            {
+                return "";
+            }
+            string path = paths[0];
+            if (paths.Count() > 1)
+            {
+                for (int i = 1; i < paths.Count(); i++)
+                {
+                    path = Path.Combine(path, paths[i]);
+                }
+            }
+            return ResolveUserPath(path);
+        }
+
+        /// <summary>
         /// Initializes AzurePSCmdlet properties.
         /// </summary>
         public AzurePSCmdlet()
