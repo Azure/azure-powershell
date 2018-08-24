@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public Guid Id { get; set; }
 
+        public string AdfsId { get; set; }
+
         public string Type { get; set; }
     }
 }
