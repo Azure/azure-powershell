@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,10 +22,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure Site Recovery Network.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrNetwork",
-        DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrNetwork",DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
     [Alias("Get-ASRNetwork")]
     [OutputType(typeof(ASRNetwork))]
     public class GetAzureRmRecoveryServicesAsrNetwork : SiteRecoveryCmdletBase

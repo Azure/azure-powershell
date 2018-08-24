@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsData.Update, Constants.DataFactory, DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),
-        OutputType(typeof(PSDataFactory))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),OutputType(typeof(PSDataFactory))]
     public class UpdateAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 0, Mandatory = true,

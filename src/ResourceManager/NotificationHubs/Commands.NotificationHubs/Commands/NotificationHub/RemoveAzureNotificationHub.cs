@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNotificationHub", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHub", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureNotificationHub : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,

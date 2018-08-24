@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,11 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     ///     Updates the replication direction for the specified replication protected item or recovery plan.
     ///     Used to re-protect/reverse replicate a failed over replicated item or recovery plan.
     /// </summary>
-    [Cmdlet(
-        VerbsData.Update,
-        "AzureRmRecoveryServicesAsrProtectionDirection",
-        DefaultParameterSetName = ASRParameterSets.ByRPIObject,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrProtectionDirection",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
     [Alias("Update-ASRProtectionDirection")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrProtection : SiteRecoveryCmdletBase

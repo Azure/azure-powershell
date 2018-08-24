@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityGroup))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class RemoveAzureNetworkSecurityRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

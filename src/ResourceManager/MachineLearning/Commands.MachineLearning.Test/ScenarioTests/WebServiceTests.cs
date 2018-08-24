@@ -30,35 +30,35 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(this.interceptor);
         }
 
-        [Fact(Skip = "MachineLearning tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6684")]
+        [Fact(Skip = "Old ResourceManager version in test controller. Update and re-record. MachineLearning tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6684")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateGetRemoveWebService()
         {
             WebServicesTestController.NewInstance.RunPsTest(this.interceptor, "Test-CreateGetRemoveMLService");
         }
 
-        [Fact(Skip = "MachineLearning tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6684")]
+        [Fact(Skip = "Old ResourceManager version in test controller. Update and re-record. MachineLearning tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6684")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateWebServiceFromFile()
         {
             WebServicesTestController.NewInstance.RunPsTest(this.interceptor, "Test-CreateWebServiceFromFile");
         }
 
-        [Fact(Skip = "MachineLearning tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6684")]
+        [Fact(Skip = "Old ResourceManager version in test controller. Update and re-record. MachineLearning tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6684")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateWebService()
         {
             WebServicesTestController.NewInstance.RunPsTest(this.interceptor, "Test-UpdateWebService");
         }
 
-        [Fact(Skip = "MachineLearning tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6684")]
+        [Fact(Skip = "Old ResourceManager version in test controller. Update and re-record. MachineLearning tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6684")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListWebServices()
         {
             WebServicesTestController.NewInstance.RunPsTest(this.interceptor, "Test-ListWebServices");
         }
 
-        [Fact(Skip = "MachineLearning tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6684")]
+        [Fact(Skip = "Old ResourceManager version in test controller. Update and re-record. MachineLearning tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6684")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAndGetRegionalProperties()
         {

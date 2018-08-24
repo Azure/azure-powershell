@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsData.Update, ContainerRegistryCredentialNoun, DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryCredential", DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistryCredential))]
     public class UpdateAzureContainerRegistryCredential : ContainerRegistryCmdletBase
     {

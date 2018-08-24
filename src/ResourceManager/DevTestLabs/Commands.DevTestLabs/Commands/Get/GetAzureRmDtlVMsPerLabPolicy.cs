@@ -19,8 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDtlVMsPerLabPolicy",
-        HelpUri = Constants.DevTestLabsHelpUri)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DtlVMsPerLabPolicy",HelpUri = Constants.DevTestLabsHelpUri)]
     [OutputType(typeof(PSPolicy))]
     public class GetAzureRmDtlVMsPerLabPolicy : DevTestLabsCmdletBase
     {

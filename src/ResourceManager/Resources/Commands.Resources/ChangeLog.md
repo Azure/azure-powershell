@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 6.4.1
+* Fixed issue with default resource groups not being set.
+* Fixed issue with creating managed application from the MarketPlace.
+
 ## Version 6.4.0
 * Support template deployment at subscription scope. Add new Cmdlets:
     - New-AzureRmDeployment

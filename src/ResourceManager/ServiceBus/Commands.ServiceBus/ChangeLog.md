@@ -20,6 +20,13 @@
 -->
 ## Current Release
 
+## Version 0.6.10
+* Fixed issue with default resource groups not being set.
+* Fix for issues
+	- https://github.com/Azure/azure-powershell/issues/5058
+	- https://github.com/Azure/azure-powershell/issues/5055
+	- https://github.com/Azure/azure-powershell/issues/6891
+
 ## Version 0.6.9
 * Updated to the latest version of the Azure ClientRuntime.
 
