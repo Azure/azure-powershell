@@ -12,7 +12,7 @@
     <AssemblyName>Microsoft.Azure.Commands.Management.Storage.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <NuGetPackageImportStamp>f747f8a7</NuGetPackageImportStamp>
     <TargetFrameworkProfile />
@@ -40,9 +40,25 @@
     <Compile Include="TestController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <!--    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
+      <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
+      <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
+      <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
+    </ProjectReference> -->
     <ProjectReference Include="..\Commands.Management.Storage\Commands.Management.Storage.csproj">
       <Project>{a50ab133-5c04-4a17-9054-f8343683ec23}</Project>
       <Name>Commands.Management.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SDK\StorageSDK.csproj">
+      <Project>{ccc1f6c7-e2ce-47b3-bd64-8efd17823e20}</Project>
+      <Name>StorageSDK</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -74,9 +90,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestRemoveAzureStorageAccount.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestSetAzureRmStorageAccountKeySource.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestSetAzureStorageAccount.json">
