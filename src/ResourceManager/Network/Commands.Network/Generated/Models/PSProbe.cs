@@ -74,5 +74,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             return !string.IsNullOrEmpty(this.Name);
         }
+
+        public bool ShouldSerializeLoadBalancingRules()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
     }
 }
