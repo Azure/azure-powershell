@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,11 +22,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Creates an Azure Site Recovery Fabric.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.New,
-        "AzureRmRecoveryServicesAsrFabric",
-        DefaultParameterSetName = ASRParameterSets.Default,
-        SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrFabric",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [Alias("New-ASRFabric")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase

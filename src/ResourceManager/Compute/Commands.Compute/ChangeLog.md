@@ -20,6 +20,12 @@
 -->
 ## Current Release
 
+## Version 5.5.1
+* Fixed the issue that target is missing in error output.
+* Fixed issue with storage account type for VM with managed disk
+* Fixed issue with default resource groups not being set.
+* Fix AEM Extension cmdlets for other environments, for example Azure China
+
 ## Version 5.5.0
 * Updated to the latest version of the Azure ClientRuntime.
 * Add EvictionPolicy parameter to New-AzureRmVmssConfig

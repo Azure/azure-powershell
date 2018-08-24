@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
     /// <summary>
     /// this commandlet will let you Create Relay namespace.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, RelayNamespaceVerb, SupportsShouldProcess = true), OutputType(typeof(RelayNamespaceAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayNamespace", SupportsShouldProcess = true), OutputType(typeof(RelayNamespaceAttributes))]
     public class NewAzureRelayNamespace : AzureRelayCmdletBase
     {
         /// <summary>

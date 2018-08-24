@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnProfileSsoUrl", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSSsoUri))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnProfileSsoUrl", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSSsoUri))]
     public class GetAzureRmCdnProfileSsoUrl : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the profile.")]

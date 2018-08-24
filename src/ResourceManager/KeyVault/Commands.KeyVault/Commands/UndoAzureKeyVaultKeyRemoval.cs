@@ -17,9 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Undo, "AzureKeyVaultKeyRemoval",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyRemoval",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
     public class UndoAzureKeyVaultKeyRemoval : KeyVaultCmdletBase
     {

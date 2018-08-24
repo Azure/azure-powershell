@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             ServicePrincipalKeyStore.SaveKey(appId, tenantId, appKey);
         }
 
-        private class ServicePrincipalAccessToken : IAccessToken
+        private class ServicePrincipalAccessToken : IRenewableToken
         {
             internal readonly AdalConfiguration Configuration;
             internal AuthenticationResult AuthResult;
@@ -211,6 +211,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     return timeUntilExpiration < expirationThreshold;
                 }
             }
+
+            public DateTimeOffset ExpiresOn { get { return AuthResult.ExpiresOn; } }
         }
     }
 }

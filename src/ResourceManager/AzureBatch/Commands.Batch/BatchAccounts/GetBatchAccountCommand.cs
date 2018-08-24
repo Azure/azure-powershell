@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureRmBatchAccount), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchAccount"), OutputType(typeof(BatchAccountContext))]
     public class GetBatchAccountCommand : BatchCmdletBase
     {
         [Alias("Name")]

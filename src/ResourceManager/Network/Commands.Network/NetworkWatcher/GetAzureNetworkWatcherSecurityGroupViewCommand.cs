@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherSecurityGroupView", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSecurityGroupViewResult))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherSecurityGroupView", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSecurityGroupViewResult))]
 
     public class GetAzureNeyworkWatcherSecurityGroupViewCommand : NetworkWatcherBaseCmdlet
     {

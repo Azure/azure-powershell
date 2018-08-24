@@ -21,7 +21,7 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.Gateway, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGateway))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryGateway", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGateway))]
     public class NewAzureDataFactoryGatewayCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

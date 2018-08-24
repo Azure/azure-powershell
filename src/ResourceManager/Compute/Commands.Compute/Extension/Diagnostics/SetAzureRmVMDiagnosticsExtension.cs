@@ -29,9 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineDiagnosticsExtension)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDiagnosticsExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
