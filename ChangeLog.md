@@ -359,6 +359,7 @@
 
 #### AzureRM.Profile
 * Ps1Xml attribute added to the basic output types
+* Fixed issue in Get-AzureRmSubscription where multiple sets of subscriptions returned per AAD Tenant
 
 #### AzureRM.Compute
 * IP Tag feature for VMSS
