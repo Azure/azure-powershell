@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
 Module Name: AzureRM.LogicApp
 ms.assetid: 5307F1F1-E84C-4949-A557-99EF0012C3DF
@@ -22,7 +22,6 @@ Get-AzureRmLogicAppTrigger -ResourceGroupName <String> -Name <String> [-TriggerN
 The **Get-AzureRmLogicAppTrigger** cmdlet gets triggers from a logic app.
 This cmdlet returns a **WorkflowTrigger** object.
 Specify the workflow, resource group, and trigger.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -72,7 +71,7 @@ This command gets the triggers of the logic app named LogicApp07.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,7 +86,7 @@ Accept wildcard characters: False
 Specifies the name of the logic app from which this cmdlet gets a trigger.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -102,9 +101,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group in which this cmdlet gets a trigger.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -117,9 +116,9 @@ Accept wildcard characters: False
 Specifies the name of the trigger that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -133,8 +132,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

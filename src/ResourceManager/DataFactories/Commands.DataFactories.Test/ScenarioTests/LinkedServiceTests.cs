@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,9 +20,12 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 {
     public class LinkedServiceTests : DataFactoriesScenarioTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public LinkedServiceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
 #if NETSTANDARD
@@ -33,7 +37,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedService()
         {
-            RunPowerShellTest("Test-LinkedService");
+            RunPowerShellTest(_logger, "Test-LinkedService");
         }
 
 #if NETSTANDARD
@@ -45,7 +49,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedServiceWithDataFactoryParameter()
         {
-            RunPowerShellTest("Test-LinkedServiceWithDataFactoryParameter");
+            RunPowerShellTest(_logger, "Test-LinkedServiceWithDataFactoryParameter");
         }
 
 #if NETSTANDARD
@@ -57,7 +61,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinkedServicePiping()
         {
-            RunPowerShellTest("Test-LinkedServicePiping");
+            RunPowerShellTest(_logger, "Test-LinkedServicePiping");
         }
     }
 }

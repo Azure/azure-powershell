@@ -91,21 +91,6 @@ namespace ManagedComputeServicesTests
                 mockName);
         }
 
-        public void RunPsTest(params string[] scripts)
-        {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
-
-            RunPsTestWorkflow(
-                () => scripts,
-                // no custom initializer
-                null,
-                // no custom cleanup 
-                null,
-                callingClassType,
-                mockName);
-        }
-
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
             Action<CSMTestEnvironmentFactory> initialize,

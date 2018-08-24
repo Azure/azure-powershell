@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: A73B388A-E859-40D3-BA63-0E231CF1E81D
@@ -50,9 +50,9 @@ This command gets a module named ContosoModule in the Automation account named C
 Specifies the name of the Automation account for which this cmdlet gets module metadata.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,9 +80,9 @@ Accept wildcard characters: False
 Specifies the name of the module for which this cmdlet gets metadata.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -95,9 +95,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group for which this cmdlet gets module metadata.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -111,8 +111,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

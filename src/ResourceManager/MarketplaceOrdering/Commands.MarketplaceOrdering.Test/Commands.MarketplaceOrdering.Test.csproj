@@ -182,10 +182,6 @@
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
-      <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
-      <Name>Commands.Resources.Rest</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Commands.MarketplaceOrdering\Commands.MarketplaceOrdering.csproj">
       <Project>{fb664582-4176-4fa8-bd73-e5b043516ba4}</Project>
       <Name>Commands.MarketplaceOrdering</Name>

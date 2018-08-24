@@ -241,8 +241,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
             catch (StorageException e)
             {
-                //Handle the limited read permission.
-                if (!e.IsNotFoundException())
+                //Handle the limited read permission, and handle the upload with write only permission
+                if (!e.IsNotFoundException() && !e.IsForbiddenException())
                 {
                     throw;
                 }

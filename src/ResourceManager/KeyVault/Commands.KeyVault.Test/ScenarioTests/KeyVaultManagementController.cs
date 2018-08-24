@@ -62,10 +62,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             var mockName = sf.GetMethod().Name;
 
             logger.Information(string.Format("Test method entered: {0}.{1}", callingClassType, mockName));
-            _helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
+                logger,
                 () => scripts,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -74,18 +74,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
 
 
         public void RunPsTestWorkflow(
+            XunitTracingInterceptor logger,
             Func<string[]> scriptBuilder,
             Action cleanup,
             string callingClassType,
             string mockName,
             Action initialize = null)
         {
+            _helper.TracingInterceptor = logger;
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");

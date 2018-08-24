@@ -204,6 +204,7 @@
     <Compile Include="Utilities\Models\ResourceIdentifier.cs" />
     <Compile Include="Utilities\ResourceManagementClientExtensions.cs" />
     <Compile Include="Utilities\ResourcesExtensions.cs" />
+    <Compile Include="Utilities\SubscriptionAndTenantHelper.cs" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

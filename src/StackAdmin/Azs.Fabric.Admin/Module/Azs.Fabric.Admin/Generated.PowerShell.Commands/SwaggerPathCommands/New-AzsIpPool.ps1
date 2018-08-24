@@ -89,7 +89,7 @@ function New-AzsIpPool {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSCmdlet.ShouldProcess("$Name", "Create a new Ip Pool")) {
 
@@ -121,7 +121,7 @@ function New-AzsIpPool {
                 }
             }
             $Pool = New-IpPoolObject @utilityCmdParams
-            
+
             $NewServiceClient_params = @{
                 FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
             }

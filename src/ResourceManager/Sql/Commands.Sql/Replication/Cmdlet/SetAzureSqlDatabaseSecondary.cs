@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseSecondary",
         DefaultParameterSetName = NoOptionsSet,
-        ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+        ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true), OutputType(typeof(AzureReplicationLinkModel))]
     public class SetAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
     {
         /// <summary>

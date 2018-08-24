@@ -111,8 +111,7 @@ function Test-VirtualMachineSetRunCommand
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
         $st = $job | Receive-Job;
-
-        # BUG: Currently the result is null.  Need to verify the result shows something after the bug is fixed in the client library.
+        Assert-NotNull $st.Value;
 
         # Remove All VMs
         Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -Force;
