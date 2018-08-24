@@ -134,6 +134,10 @@
   <Target Name="Clean">
     <Message  Importance="high" Text="Cleaning Cmdlets..." ContinueOnError="false" />
 
+    <!-- Clean out the NuGet cache -->
+    <Exec ContinueOnError="false"
+      Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; $Path = Join-Path $env:USERPROFILE .nuget; if (Test-Path $Path) { Remove-Item $Path -Recurse } &quot;"/>
+
     <!-- Clean each project -->
     <MSBuild Projects="@(CmdletSolutionsToBuild)"
       Targets="Clean"
