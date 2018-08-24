@@ -53,6 +53,9 @@ Gets metrics for an Azure Web App slot.
 ### [Get-AzureRmWebAppSlotPublishingProfile](Get-AzureRmWebAppSlotPublishingProfile.md)
 Gets an Azure Web App slot publishing profile.
 
+### [Get-AzureRmWebAppSnapshot](Get-AzureRmWebAppSnapshot.md)
+Gets the snapshots available for a web app.
+
 ### [Get-AzureRmWebAppSSLBinding](Get-AzureRmWebAppSSLBinding.md)
 Gets an Azure Web App certificate SSL binding.
 
@@ -103,6 +106,10 @@ Restarts an Azure Web App slot.
 
 ### [Restore-AzureRmWebAppBackup](Restore-AzureRmWebAppBackup.md)
 Restores an Azure Web App from a backup.
+
+
+### [Restore-AzureRmWebAppSnapshot](Restore-AzureRmWebAppSnapshot.md)
+Restores a web app snapshot.
 
 ### [Set-AzureRmAppServicePlan](Set-AzureRmAppServicePlan.md)
 Sets an Azure App Service plan.

@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             }
 
             public bool CurrentMatch(IEntityConfig config)
-                => Current.ContainsDispatch(config) &&
+                => Current.IsCurrentPresentAndCompatibleDispatch(config) &&
                     config.NestedResources.All(CurrentMatch);
 
             public void AddIfRequired(IResourceConfig config)

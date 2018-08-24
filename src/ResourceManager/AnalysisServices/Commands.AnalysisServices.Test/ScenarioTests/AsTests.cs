@@ -15,90 +15,94 @@
 namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
 
     public class AsTests : AsTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public AsTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAnalysisServicesServer()
         {
-            NewInstance.RunPsTest("Test-AnalysisServicesServer");
+            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAnalysisServicesServerScaleUpDown()
         {
-            NewInstance.RunPsTest("Test-AnalysisServicesServerScaleUpDown");
+            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerScaleUpDown");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAnalysisServicesServerScaleOutIn()
         {
-            NewInstance.RunPsTest("Test-AnalysisServicesServerScaleOutIn");
+            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerScaleOutIn");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAnalysisServicesServerFirewall()
         {
-            NewInstance.RunPsTest("Test-AnalysisServicesServerFirewall");
+            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerFirewall");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerDisableBackup()
         {
-            NewInstance.RunPsTest("Test-AnalysisServicesServerDisableBackup");
+            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerDisableBackup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeAnalysisServicesServer()
         {
-            NewInstance.RunPsTest("Test-NegativeAnalysisServicesServer");
+            NewInstance.RunPsTest(_logger, "Test-NegativeAnalysisServicesServer");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerLogExport()
         {
-            NewInstance.RunPsTest("Test-AnalysisServicesServerLogExport");
+            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerLogExport");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerRestart()
         {
-            NewInstance.RunPsTest("Test-AnalysisServicesServerRestart");
+            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerRestart");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerSynchronizeSingle()
         {
-            NewInstance.RunPsTest("Test-AnalysisServicesServerSynchronizeSingle");
+            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerSynchronizeSingle");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerLoginWithSPN()
         {
-            NewInstance.RunPsTest("Test-AnalysisServicesServerLoginWithSPN");
+            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerLoginWithSPN");
         }
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerGateway()
         {
-            NewInstance.RunPsTest("Test-AnalysisServicesServerGateway");
+            NewInstance.RunPsTest(_logger, "Test-AnalysisServicesServerGateway");
         }
 
     }

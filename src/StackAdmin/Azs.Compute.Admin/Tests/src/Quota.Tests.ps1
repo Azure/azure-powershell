@@ -40,20 +40,19 @@ param(
     [bool]$UseInstalled = $false
 )
 
+$Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
-
-$global:TestName = ""
-$global:Location = "local"
 
 InModuleScope Azs.Compute.Admin {
 
     Describe "Quota" -Tags @('Quota', 'Azs.Compute.Admin') {
 
-        BeforeEach {
+        . $PSScriptRoot\Common.ps1
 
-            . $PSScriptRoot\Common.ps1
+        BeforeEach {
 
             function ValidateComputeQuota {
                 param(
@@ -84,7 +83,7 @@ InModuleScope Azs.Compute.Admin {
         }
 
 
-        It "TestListQuotas" {
+        It "TestListQuotas" -Skip:$('TestListQuotas' -in $global:SkippedTests) {
             $global:TestName = 'TestListQuotas'
             $quotas = Get-AzsComputeQuota -Location $global:Location
 
@@ -95,7 +94,7 @@ InModuleScope Azs.Compute.Admin {
         }
 
 
-        It "TestGetQuota" {
+        It "TestGetQuota" -Skip:$('TestGetQuota' -in $global:SkippedTests) {
             $global:TestName = 'TestGetQuota'
 
             $quotas = Get-AzsComputeQuota -Location $global:Location
@@ -109,7 +108,7 @@ InModuleScope Azs.Compute.Admin {
         }
 
 
-        It "TestGetAllQuotas" {
+        It "TestGetAllQuotas" -Skip:$('TestGetAllQuotas' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllQuotas'
             $quotas = Get-AzsComputeQuota -Location $global:Location
             $quotas | Should Not Be $null
@@ -120,7 +119,7 @@ InModuleScope Azs.Compute.Admin {
         }
 
 
-        It "TestCreateQuota" {
+        It "TestCreateQuota" -Skip:$('TestCreateQuota' -in $global:SkippedTests) {
             $global:TestName = 'TestCreateQuota'
 
             $quotaNamePrefix = "testQuota"
@@ -151,9 +150,7 @@ InModuleScope Azs.Compute.Admin {
         }
 
         # Tests wth Invalid data
-
-
-        It "TestCreateInvalidQuota" {
+        It "TestCreateInvalidQuota" -Skip:$('TestCreateInvalidQuota' -in $global:SkippedTests) {
             $global:TestName = 'TestCreateInvalidQuota'
 
             $data = @(
@@ -178,21 +175,21 @@ InModuleScope Azs.Compute.Admin {
 
 
         # Apparently CRP will default to a place even if it does not exist
-        It "TestListInvalidLocation" -Skip {
+        It "TestListInvalidLocation" -Skip:$('TestListInvalidLocation' -in $global:SkippedTests) {
             $global:TestName = 'TestListInvalidLocation'
             $quotas = Get-AzsComputeQuota -Location "thisisnotarealplace"
             $quotas | Should Be $null
         }
 
 
-        It "TestDeleteNonExistingQuota" {
+        It "TestDeleteNonExistingQuota" -Skip:$('TestDeleteNonExistingQuota' -in $global:SkippedTests) {
             $global:TestName = 'TestDeleteNonExistingQuota'
 
             Remove-AzsComputeQuota -Location $global:Location -Name "thisdoesnotexistandifitdoesoops" -Force
         }
 
 
-        It "TestCreateQuotaOnInvalidLocation" -Skip {
+        It "TestCreateQuotaOnInvalidLocation" -Skip:$('TestCreateQuotaOnInvalidLocation' -in $global:SkippedTests) {
             $global:TestName = 'TestCreateQuotaOnInvalidLocation'
 
             $quotaNamePrefix = "testQuota"
@@ -220,7 +217,7 @@ InModuleScope Azs.Compute.Admin {
             }
         }
 
-        It "TestUpdateQuota" {
+        It "TestUpdateQuota" -Skip:$('TestUpdateQuota' -in $global:SkippedTests) {
             $global:TestName = 'TestUpdateQuota'
             Set-AzsComputeQuota -Location $global:Location -Name "UpdateQuota" -AvailabilitySetCount 100 -CoresLimit 100 -VmScaleSetCount 100 -VirtualMachineCount 100
         }

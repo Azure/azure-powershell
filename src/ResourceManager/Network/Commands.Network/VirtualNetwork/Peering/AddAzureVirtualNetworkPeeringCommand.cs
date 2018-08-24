@@ -16,6 +16,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -86,11 +87,20 @@ namespace Microsoft.Azure.Commands.Network
         {
             var vnetPeering= new PSVirtualNetworkPeering();
             vnetPeering.Name = this.Name;
+            Dictionary<string, List<string>> auxAuthHeader = null;
 
             if (!string.IsNullOrEmpty(this.RemoteVirtualNetworkId))
             {
                 vnetPeering.RemoteVirtualNetwork = new PSResourceId();
                 vnetPeering.RemoteVirtualNetwork.Id = this.RemoteVirtualNetworkId;
+                //Get the aux header for the remote vnet
+                List<string> resourceIds = new List<string>();
+                resourceIds.Add(this.RemoteVirtualNetworkId);
+                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                {
+                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                }
             }
 
             vnetPeering.AllowVirtualNetworkAccess = !this.BlockVirtualNetworkAccess.IsPresent;
@@ -102,8 +112,7 @@ namespace Microsoft.Azure.Commands.Network
             var vnetPeeringModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkPeering>(vnetPeering);
 
             // Execute the Create VirtualNetwork call
-            this.VirtualNetworkPeeringClient.CreateOrUpdate(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name, vnetPeeringModel);
-
+            this.VirtualNetworkPeeringClient.CreateOrUpdateWithHttpMessagesAsync(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name, vnetPeeringModel, auxAuthHeader).GetAwaiter().GetResult();
             var getVirtualNetworkPeering = this.GetVirtualNetworkPeering(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name);
 
             return getVirtualNetworkPeering;

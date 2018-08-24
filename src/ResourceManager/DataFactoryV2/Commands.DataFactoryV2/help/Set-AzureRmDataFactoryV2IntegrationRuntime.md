@@ -14,32 +14,52 @@ Updates an integration runtime.
 
 ### ByIntegrationRuntimeName (Default)
 ```
-Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
- [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
- [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
- [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-Name] <String> [-ResourceGroupName] <String>
- [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactoryName] <String>
+ [-Name] <String> [-Type <String>] [-Description <String>] [-Location <String>] [-NodeSize <String>]
+ [-NodeCount <Int32>] [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>]
+ [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>] [-SetupScriptContainerSasUri <String>]
+ [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
- [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
+Set-AzureRmDataFactoryV2IntegrationRuntime [-ResourceId] <String> [-Type <String>] [-Description <String>]
+ [-Location <String>] [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
  [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
- [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-ResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByLinkedIntegrationRuntimeResourceId
+```
+Set-AzureRmDataFactoryV2IntegrationRuntime [-ResourceId] <String> [-Type <String>] [-Description <String>]
+ -SharedIntegrationRuntimeResourceId <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByLinkedIntegrationRuntimeName
+```
+Set-AzureRmDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactoryName] <String>
+ [-Name] <String> [-Type <String>] [-Description <String>] -SharedIntegrationRuntimeResourceId <String>
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
- [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
- [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
- [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-InputObject] <PSIntegrationRuntime>
+Set-AzureRmDataFactoryV2IntegrationRuntime [-InputObject] <PSIntegrationRuntime> [-Type <String>]
+ [-Description <String>] [-Location <String>] [-NodeSize <String>] [-NodeCount <Int32>]
+ [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>]
+ [-VNetId <String>] [-Subnet <String>] [-SetupScriptContainerSasUri <String>] [-Edition <String>]
+ [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByLinkedIntegrationRuntimeObject
+```
+Set-AzureRmDataFactoryV2IntegrationRuntime [-InputObject] <PSIntegrationRuntime> [-Type <String>]
+ [-Description <String>] -SharedIntegrationRuntimeResourceId <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -68,9 +88,9 @@ The cmdlet updates the description of integration runtime named 'test-selfhost-i
 The authentication key of the self-hosted integration runtime.
 
 ```yaml
-Type: SecureString
-Parameter Sets: (All)
-Aliases: 
+Type: System.Security.SecureString
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
 
 Required: False
 Position: Named
@@ -83,9 +103,9 @@ Accept wildcard characters: False
 The catalog database administrator credential of the integration runtime.
 
 ```yaml
-Type: PSCredential
-Parameter Sets: (All)
-Aliases: 
+Type: System.Management.Automation.PSCredential
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
 
 Required: False
 Position: Named
@@ -98,9 +118,9 @@ Accept wildcard characters: False
 The catalog database pricing tier of the integration runtime.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
 
 Required: False
 Position: Named
@@ -113,9 +133,9 @@ Accept wildcard characters: False
 The catalog database server endpoint of the integration runtime.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
 
 Required: False
 Position: Named
@@ -128,9 +148,9 @@ Accept wildcard characters: False
 The data factory name.
 
 ```yaml
-Type: String
-Parameter Sets: ByIntegrationRuntimeName
-Aliases: 
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByLinkedIntegrationRuntimeName
+Aliases:
 
 Required: True
 Position: 1
@@ -143,7 +163,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -158,9 +178,9 @@ Accept wildcard characters: False
 The integration runtime description.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -173,9 +193,9 @@ Accept wildcard characters: False
 The edition for SSIS integration runtime which could be Standard or Enterprise, default is Standard if it is not specified.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
 Accepted values: Standard, Enterprise
 
 Required: False
@@ -189,9 +209,9 @@ Accept wildcard characters: False
 Runs the cmdlet without prompting for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -204,9 +224,9 @@ Accept wildcard characters: False
 The integration runtime object.
 
 ```yaml
-Type: PSIntegrationRuntime
-Parameter Sets: ByIntegrationRuntimeObject
-Aliases: 
+Type: Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
+Parameter Sets: ByIntegrationRuntimeObject, ByLinkedIntegrationRuntimeObject
+Aliases:
 
 Required: True
 Position: 0
@@ -219,9 +239,9 @@ Accept wildcard characters: False
 The license type that you want to select for the SSIS IR. There are two types: LicenseIncluded or BasePrice. If you are qualified for the Azure Hybrid Use Benefit (AHUB) pricing, please select BasePrice. If not, please select LicenseIncluded.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
 Accepted values: LicenseIncluded, BasePrice
 
 Required: False
@@ -235,9 +255,9 @@ Accept wildcard characters: False
 The integration runtime location.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
 
 Required: False
 Position: Named
@@ -250,9 +270,9 @@ Accept wildcard characters: False
 Maximum parallel execution count per node for a managed dedicated integration runtime.
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
 
 Required: False
 Position: Named
@@ -265,8 +285,8 @@ Accept wildcard characters: False
 The integration runtime name.
 
 ```yaml
-Type: String
-Parameter Sets: ByIntegrationRuntimeName
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByLinkedIntegrationRuntimeName
 Aliases: IntegrationRuntimeName
 
 Required: True
@@ -280,9 +300,9 @@ Accept wildcard characters: False
 Target nodes count of the integration runtime.
 
 ```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
 
 Required: False
 Position: Named
@@ -295,9 +315,9 @@ Accept wildcard characters: False
 The integration runtime node size.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
 
 Required: False
 Position: Named
@@ -310,9 +330,9 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
-Parameter Sets: ByIntegrationRuntimeName
-Aliases: 
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByLinkedIntegrationRuntimeName
+Aliases:
 
 Required: True
 Position: 0
@@ -325,8 +345,8 @@ Accept wildcard characters: False
 The Azure resource ID.
 
 ```yaml
-Type: String
-Parameter Sets: ByResourceId
+Type: System.String
+Parameter Sets: ByResourceId, ByLinkedIntegrationRuntimeResourceId
 Aliases: Id
 
 Required: True
@@ -340,11 +360,26 @@ Accept wildcard characters: False
 The SAS URI of the Azure blob container that contains the custom setup script.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedIntegrationRuntimeResourceId
+The resource id of the shared self-hosted integration runtime.
+
+```yaml
+Type: System.String
+Parameter Sets: ByLinkedIntegrationRuntimeResourceId, ByLinkedIntegrationRuntimeName, ByLinkedIntegrationRuntimeObject
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -355,8 +390,8 @@ Accept wildcard characters: False
 The name of the subnet in the VNet.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: SubnetName
 
 Required: False
@@ -370,9 +405,9 @@ Accept wildcard characters: False
 The integration runtime type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Managed, SelfHosted
 
 Required: False
@@ -386,9 +421,9 @@ Accept wildcard characters: False
 The ID of the VNet that the integration runtime joins.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Type: System.String
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
+Aliases:
 
 Required: False
 Position: Named
@@ -401,7 +436,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -416,7 +451,7 @@ Accept wildcard characters: False
 Shows what happens if the cmdlet runs, but doesn't run the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -433,7 +468,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
+
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

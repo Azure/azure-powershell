@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using LegacyTest = Microsoft.Azure.Test;
     using ResourceManager.Common;
+    using ServiceManagemenet.Common.Models;
 
     public class SchedulerController
     {
@@ -100,15 +101,16 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
         /// RUns the PowerShell tests.
         /// </summary>
         /// <param name="scripts">Scripts to be executed.</param>
-        public void RunPowerShellTests(params string[] scripts)
+        public void RunPowerShellTests(XunitTracingInterceptor logger, params string[] scripts)
         {
+            _helper.TracingInterceptor = logger;
             string callingClassType = TestUtilities.GetCallingClass(2);
             string mockName = TestUtilities.GetCurrentMethodName(2);
             RunPsTestScheduler(
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -154,7 +156,6 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
                              "ScenarioTests\\Common.ps1",
                              "ScenarioTests\\" + callingClassName + ".ps1",
                              _helper.RMProfileModule,
-                             _helper.RMResourceModule,
                              _helper.GetRMModulePath(@"AzureRM.Scheduler.psd1"),
                              "AzureRM.Resources.ps1",
                              "AzureRM.Storage.ps1");
