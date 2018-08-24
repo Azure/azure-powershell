@@ -28,14 +28,38 @@ using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 
-
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSUsageName
+    public partial class PSInboundNatPool : PSChildResource
     {
+        [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string Value { get; set; }
+        public string Protocol { get; set; }
+        [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string LocalizedValue { get; set; }
+        public int FrontendPortRangeStart { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int FrontendPortRangeEnd { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int BackendPort { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? IdleTimeoutInMinutes { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableFloatingIP { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ProvisioningState { get; set; }
+        [JsonProperty(Order = 1)]
+        public PSResourceId FrontendIPConfiguration { get; set; }
+
+        [JsonIgnore]
+        public string FrontendIPConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }
