@@ -93,7 +93,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
                     _helper.RMStorageModule,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    "AzureRM.Resources.ps1");
+                    "AzureRM.Resources.ps1",
+                    "AzureRM.Storage.ps1");
 
                 try
                 {
