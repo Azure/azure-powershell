@@ -21,9 +21,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Management.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.Remove,
-        Constants.ApiManagementApiRevision, 
-        SupportsShouldProcess = true, DefaultParameterSetName = ByApiIdParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApiRevision",SupportsShouldProcess = true, DefaultParameterSetName = ByApiIdParameterSet)]
     [OutputType(typeof(bool), ParameterSetName = new [] { ByApiIdParameterSet, ByInputObjectParameterSet })]
     public class RemoveAzureApiManagementApiRevision : AzureApiManagementCmdletBase
     {

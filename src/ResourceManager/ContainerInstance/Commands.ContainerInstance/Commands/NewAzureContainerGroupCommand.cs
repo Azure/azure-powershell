@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     /// <summary>
     /// New-AzureRmContainerGroup
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ContainerGroupNoun, SupportsShouldProcess = true, DefaultParameterSetName = CreateContainerGroupBaseParamSet)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerGroup", SupportsShouldProcess = true, DefaultParameterSetName = CreateContainerGroupBaseParamSet)]
     [OutputType(typeof(PSContainerGroup))]
     public class NewAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {
@@ -149,11 +149,13 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [ValidateNotNullOrEmpty]
         public int[] Port { get; set; }
 
-        [Parameter(
+ #if !NETSTANDARD
+       [Parameter(
             Mandatory = false,
             HelpMessage = "The command to run in the container.")]
         [ValidateNotNullOrEmpty]
         public string Command { get; set; }
+#endif
 
         [Parameter(
             Mandatory = false,
@@ -200,6 +202,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     AzureFileVolumeAccountKey = ContainerGroupCreationParameters.ConvertToString(this.AzureFileVolumeAccountCredential?.Password),
                     AzureFileVolumeMountPath = this.AzureFileVolumeMountPath
                 };
+#if !NETSTANDARD
 
                 if (!string.IsNullOrWhiteSpace(this.Command))
                 {
@@ -211,7 +214,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     }
                     creationParameter.ContainerCommand = commandTokens.Select(token => token.Content).ToList();
                 }
-
+#endif
                 creationParameter.Validate();
 
                 var psContainerGroup = PSContainerGroup.FromContainerGroup(

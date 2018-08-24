@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Create an AlertRuleWebhook action
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAlertRuleEmail"), OutputType(typeof(Management.Monitor.Management.Models.RuleEmailAction))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertRuleEmail"), OutputType(typeof(Management.Monitor.Management.Models.RuleEmailAction))]
     public class NewAzureRmAlertRuleEmailCommand : MonitorCmdletBase
     {
         /// <summary>

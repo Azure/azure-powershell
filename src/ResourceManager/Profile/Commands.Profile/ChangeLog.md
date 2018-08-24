@@ -18,9 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added expiration property to tokens returned during Connect-AzureRmAccount
+
+## Version 5.4.0
+* Updated to the latest version of the Azure ClientRuntime.
 * Add user id to default context name to avoid context clashing
     - https://github.com/Azure/azure-powershell/issues/6489
 * Fix issues with Clear-AzureRmContext that caused issues with selecting a context #6398
+* Enable tenant domain to be passed to `-TenantId` parameter for `Connect-AzureRmAccount`
+    - https://github.com/Azure/azure-powershell/issues/3974
+    - https://github.com/Azure/azure-powershell/issues/6709
 
 ## Version 5.3.4
 * Updated Common.Strategy library to be able to validate that the current config for a resource is compatible with the target resource. Default is always true, individual resources and overridet the default.

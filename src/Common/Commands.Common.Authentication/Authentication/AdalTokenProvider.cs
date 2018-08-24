@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 default:
                     throw new ArgumentException(string.Format(Resources.UnsupportedCredentialType, credentialType), "credentialType");
             }
-        }			
+        }
 #else
         public AdalTokenProvider()
         {

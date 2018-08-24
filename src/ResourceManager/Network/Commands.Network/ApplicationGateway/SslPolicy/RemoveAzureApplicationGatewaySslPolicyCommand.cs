@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewaySslPolicy", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewaySslPolicy", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
     public class RemoveAzureApplicationGatewaySslPolicyCommand : NetworkBaseCmdlet
     {
         [Parameter(

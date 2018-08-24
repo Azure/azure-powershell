@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Gets the managed application definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmManagedApplicationDefinition", DefaultParameterSetName = GetAzureManagedApplicationDefinitionCmdlet.ManagedApplicationDefinitionNameParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedApplicationDefinition", DefaultParameterSetName = GetAzureManagedApplicationDefinitionCmdlet.ManagedApplicationDefinitionNameParameterSet), OutputType(typeof(PSObject))]
     public class GetAzureManagedApplicationDefinitionCmdlet : ManagedApplicationCmdletBase
     {
         /// <summary>

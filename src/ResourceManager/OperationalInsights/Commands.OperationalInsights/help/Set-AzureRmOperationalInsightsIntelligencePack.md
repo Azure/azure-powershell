@@ -112,10 +112,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: IntelligencePackName (ByPropertyName), ResourceGroupName (ByPropertyName), WorkspaceName (ByPropertyName)
 
 ### System.Boolean
-Parameters: Enabled (ByPropertyName)
 
 ## OUTPUTS
 
