@@ -22,30 +22,32 @@ using System;
 
 namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseInstanceFailoverGroup", DefaultParameterSetName = RemoveIFGDefaultSet,
-        SupportsShouldProcess = true), OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseInstanceFailoverGroup",
+        DefaultParameterSetName = RemoveIfgDefaultSet,
+        SupportsShouldProcess = true),
+        OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
     public class RemoveAzureSqlInstanceFailoverGroup : AzureSqlInstanceFailoverGroupCmdletBase
     {
         /// <summary>
         /// Parameter set name for the default remove.
         /// </summary>
-        private const string RemoveIFGDefaultSet = "RemoveIFGDefault";
+        private const string RemoveIfgDefaultSet = "RemoveIFGDefaultSet";
 
         /// <summary>
         /// Parameter set name for remove with an Input Object.
         /// </summary>
-        protected const string RemoveIFGByInputObjectParameterSet =
-            "Remove a Instance Failover Group from AzureSqlInstanceFailoverGroupModel instance definition";
+        protected const string RemoveIfgByInputObjectSet =
+            "RemoveInstanceFailoverGroupByAzureSqlInstanceFailoverGroupModelSet";
         
         /// <summary>
         /// Parameter set name for remove with a resource ID.
         /// </summary>
-        private const string RemoveIFGByResourceIdSet = "Remove a Instance Failover Group from Resource Id";
+        private const string RemoveIfgByResourceIdSet = "RemoveInstanceFailoverGroupByResourceId";
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(ParameterSetName = RemoveIFGDefaultSet,
+        [Parameter(ParameterSetName = RemoveIfgDefaultSet,
             Mandatory = true,
             Position = 0,
             HelpMessage = "The name of the resource group.")]
@@ -56,11 +58,11 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the name of the local region to use.
         /// </summary>
-        [Parameter(ParameterSetName = RemoveIFGByResourceIdSet,
+        [Parameter(ParameterSetName = RemoveIfgByResourceIdSet,
             Mandatory = true,
             Position = 1,
             HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
-        [Parameter(ParameterSetName = RemoveIFGDefaultSet,
+        [Parameter(ParameterSetName = RemoveIfgDefaultSet,
             Mandatory = true,
             Position = 1,
             HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
@@ -71,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the name of the InstanceFailoverGroup to remove.
         /// </summary>
-        [Parameter(ParameterSetName = RemoveIFGDefaultSet, 
+        [Parameter(ParameterSetName = RemoveIfgDefaultSet, 
             Mandatory = true,
             Position = 2,
             HelpMessage = "The name of the Instance Failover Group to remove.")]
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
 	    /// Instance Failover Group object to remove
 	    /// </summary>
-	    [Parameter(ParameterSetName = RemoveIFGByInputObjectParameterSet,
+	    [Parameter(ParameterSetName = RemoveIfgByInputObjectSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
@@ -92,7 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the resource ID of the Instance Failover Group to remove.
         /// </summary>
-        [Parameter(ParameterSetName = RemoveIFGByResourceIdSet,
+        [Parameter(ParameterSetName = RemoveIfgByResourceIdSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,

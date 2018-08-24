@@ -96,7 +96,7 @@
     <Compile Include="Instance Failover Group\Cmdlet\NewAzureSqlInstanceFailoverGroup.cs" />
     <Compile Include="Instance Failover Group\Cmdlet\RemoveAzureSqlInstanceFailoverGroup.cs" />
     <Compile Include="Instance Failover Group\Cmdlet\SetAzureSqlInstanceFailoverGroup.cs" />
-    <Compile Include="Instance Failover Group\Cmdlet\Switch-AzureSqlDatabaseInstanceFailoverGroup.cs" />
+    <Compile Include="Instance Failover Group\Cmdlet\SwitchAzureSqlDatabaseInstanceFailoverGroup.cs" />
     <Compile Include="Instance Failover Group\Model\AzureSqlInstanceFailoverGroupModel.cs" />
     <Compile Include="Instance Failover Group\Model\FailoverPolicy.cs" />
     <Compile Include="Instance Failover Group\Model\AllowReadOnlyFailoverToPrimary.cs" />

@@ -27,31 +27,31 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Instance Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseInstanceFailoverGroup", DefaultParameterSetName = SetIFGDefaultSet,
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseInstanceFailoverGroup", DefaultParameterSetName = SetIfgDefaultSet,
         SupportsShouldProcess = true), OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
     public class SetAzureSqlInstanceFailoverGroup : AzureSqlInstanceFailoverGroupCmdletBase
     {
         /// <summary>
         /// Parameter set name for the default set.
         /// </summary>
-        private const string SetIFGDefaultSet = "SetIFGDefault";
+        private const string SetIfgDefaultSet = "SetInstanceFailoverGroupDefaultSet";
 
         /// <summary>
         /// Parameter set name for set with an Input Object.
         /// </summary>
-        protected const string SetIFGByInputObjectParameterSet =
-            "Set a Instance Failover Group from AzureSqlInstanceFailoverGroupModel instance definition";
+        protected const string SetIfgByInputObjectSet =
+            "SetInstanceFailoverGroupByAzureSqlInstanceFailoverGroupModelSet";
 
         /// <summary>
         /// Parameter set name for set with a resource ID.
         /// </summary>
-        private const string SetIFGByResourceIdSet = "Set a Instance Failover Group from Resource Id";
+        private const string SetIfgByResourceIdSet = "SetInstanceFailoverGroupByResourceIdSet";
 
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(ParameterSetName = SetIFGDefaultSet,
+        [Parameter(ParameterSetName = SetIfgDefaultSet,
             Mandatory = true,
             Position = 0,
             HelpMessage = "The name of the resource group.")]
@@ -62,11 +62,11 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the name of the local region to use.
         /// </summary>
-        [Parameter(ParameterSetName = SetIFGByResourceIdSet,
+        [Parameter(ParameterSetName = SetIfgByResourceIdSet,
             Mandatory = true,
             Position = 1,
             HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
-        [Parameter(ParameterSetName = SetIFGDefaultSet,
+        [Parameter(ParameterSetName = SetIfgDefaultSet,
             Mandatory = true,
             Position = 1,
             HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the name of the Instance Failover Group
         /// </summary>
-        [Parameter(ParameterSetName = SetIFGDefaultSet, 
+        [Parameter(ParameterSetName = SetIfgDefaultSet, 
             Mandatory = true,
             Position = 2,
             HelpMessage = "The name of the Instance Failover Group.")]
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
 		/// Instance Failover Group object to set
 		/// </summary>
-		[Parameter(ParameterSetName = SetIFGByInputObjectParameterSet,
+		[Parameter(ParameterSetName = SetIfgByInputObjectSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the resource ID of the Instance Failover Group to set.
         /// </summary>
-        [Parameter(ParameterSetName = SetIFGByResourceIdSet,
+        [Parameter(ParameterSetName = SetIfgByResourceIdSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
