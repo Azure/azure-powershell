@@ -54,13 +54,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-RaDeletedPrincipals");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "DisableTestParallelization disabled on .NET Core: Test uses RoleDefinitionNames")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
-        [Fact]
-#endif
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Fact(Skip = "Test fails during parallelization. Test uses RoleDefinitionNames statically.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaPropertiesValidation() {
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-RaPropertiesValidation");
         }

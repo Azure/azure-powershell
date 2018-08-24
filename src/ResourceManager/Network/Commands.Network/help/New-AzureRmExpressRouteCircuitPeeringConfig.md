@@ -322,13 +322,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: PeerAddressType (ByPropertyName), RouteFilterId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
-Parameters: RouteFilter (ByPropertyName)
 
 ### System.Boolean
-Parameters: LegacyMode (ByPropertyName)
 
 ## OUTPUTS
 

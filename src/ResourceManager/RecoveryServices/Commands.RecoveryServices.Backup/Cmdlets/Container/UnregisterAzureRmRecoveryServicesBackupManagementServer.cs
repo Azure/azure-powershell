@@ -23,8 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
     /// <summary>
     /// Unregisters the backup management server from the vault.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupManagementServer",
-        SupportsShouldProcess = true), OutputType(typeof(BackupEngineBase))]
+    [Cmdlet("Unregister", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupManagementServer",SupportsShouldProcess = true), OutputType(typeof(BackupEngineBase))]
     public class UnregisterAzureRmRecoveryServicesBackupManagementServer
         : RSBackupVaultCmdletBase
     {

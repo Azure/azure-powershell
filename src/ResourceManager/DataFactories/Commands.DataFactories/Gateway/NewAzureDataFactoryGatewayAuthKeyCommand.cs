@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.GatewayAuthKey, DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSDataFactoryGatewayAuthKey))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryGatewayAuthKey", DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSDataFactoryGatewayAuthKey))]
     public class NewAzureDataFactoryGatewayAuthKeyCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
