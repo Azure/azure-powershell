@@ -14,7 +14,6 @@
 
 using System.Collections;
 using System.Management.Automation;
-//using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
