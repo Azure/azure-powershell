@@ -19,6 +19,7 @@
 --->
 
 ## Current Release
+* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
 
 ## Version 6.6.0
 * Fixed issue with default resource groups not being set.
