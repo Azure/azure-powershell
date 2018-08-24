@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management;
@@ -39,9 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         public override void ExecuteCmdlet()
         {
             var response = ManagementClient.SubscriptionServicePrincipals.Delete(ServicePrincipalObjectId);
-
             WriteObject(response);
-
         }
     }
 }

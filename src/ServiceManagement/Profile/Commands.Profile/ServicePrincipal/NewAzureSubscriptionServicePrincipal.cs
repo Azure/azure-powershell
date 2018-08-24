@@ -14,20 +14,20 @@
 
 using System;
 using System.Management.Automation;
-
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Models;
+using static Microsoft.WindowsAzure.Management.Models.SubscriptionServicePrincipalListResponse;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
 
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, AzureSubscriptionServicePrincipalNounName)]
-    [OutputType(typeof(SubscriptionServicePrincipalGetResponse))]
-    public class AddAzureSubscriptionServicePrincipal : ServiceManagementBaseCmdlet
+    [Cmdlet(VerbsCommon.New, AzureSubscriptionServicePrincipalNounName)]
+    [OutputType(typeof(ServicePrincipal))]
+    public class NewAzureSubscriptionServicePrincipal : ServiceManagementBaseCmdlet
     {
-        public AddAzureSubscriptionServicePrincipal() 
+        public NewAzureSubscriptionServicePrincipal() 
             : base()
         {
 
@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             {
                 ManagementClient.SubscriptionServicePrincipals.Create(new SubscriptionServicePrincipalCreateParameters(ServicePrincipalObjectId));
                 SubscriptionServicePrincipalGetResponse response = ManagementClient.SubscriptionServicePrincipals.Get(ServicePrincipalObjectId);
-                WriteObject(response);
+                WriteObject(response.ToSubscriptionServicePrincipal());
             }
             catch(Exception ex)
             {
@@ -53,6 +53,5 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 WriteErrorWithTimestamp(ex.Message);
             }
         }
-
     }
 }

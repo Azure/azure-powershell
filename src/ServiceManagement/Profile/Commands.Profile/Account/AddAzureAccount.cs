@@ -94,7 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
             if (ParameterSetName.Equals(ServicePrincipalParameterSetName))
             {
-                account = GetAccountFromSPN(azureAccount, environment, password);
+                account = AddAcountFromSPNAndLoadSubscription(azureAccount, environment, password);
             }
             else
             {
@@ -124,12 +124,12 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
         }
 
-        private IAzureAccount GetAccountFromSPN(AzureAccount account, IAzureEnvironment environment, SecureString password)
+        private IAzureAccount AddAcountFromSPNAndLoadSubscription(AzureAccount account, IAzureEnvironment environment, SecureString password)
         {
             IAzureAccount tenantAccount = new AzureAccount();
             CopyAccount(account, tenantAccount);
             WriteDebugWithTimestamp("AzureSession.Instance.AuthenticationFactory.Authenticate");
-            var tenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
+            IAccessToken tenantToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
                 tenantAccount,
                 environment,
                 Tenant,

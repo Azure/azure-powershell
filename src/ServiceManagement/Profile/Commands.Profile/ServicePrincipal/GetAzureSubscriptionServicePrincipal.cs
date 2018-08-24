@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Management.Automation;
-
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management;
-using Microsoft.WindowsAzure.Management.Models;
+using static Microsoft.WindowsAzure.Management.Models.SubscriptionServicePrincipalListResponse;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
     [Cmdlet(VerbsCommon.Get, AzureSubscriptionServicePrincipalNounName, DefaultParameterSetName = ListAllServicePrincipalObjectIdsParameterSet)]
-    [OutputType(typeof(SubscriptionServicePrincipalGetResponse), typeof(SubscriptionServicePrincipalListResponse))]
+    [OutputType(typeof(IList<ServicePrincipal>))]
     public class GetAzureSubscriptionServicePrincipal : ServiceManagementBaseCmdlet
     {
         protected const string ServicePrincipalObjectIdParameterSet = "ServicePrincipalObjectIdParameterSet";
@@ -39,16 +39,18 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
+            IList<ServicePrincipal> servicePrincipals = null;
             if (string.IsNullOrEmpty(this.ServicePrincipalObjectId))
             {
                 var response = ManagementClient.SubscriptionServicePrincipals.List();
-                WriteObject(response);
+                servicePrincipals = response.ServicePrincipals;
             }
             else
             {
                 var response = ManagementClient.SubscriptionServicePrincipals.Get(ServicePrincipalObjectId);
-                WriteObject(response);
+                servicePrincipals = new List<ServicePrincipal>() { response.ToSubscriptionServicePrincipal() };
             }
+            WriteObject(servicePrincipals, true);
         }
     }
 }

@@ -51,10 +51,10 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @(@{ModuleName = 'Azure.Storage'; ModuleVersion = '4.5.0'; })
+RequiredModules = @(@{ModuleName = 'Azure.Storage'; ModuleVersion = '4.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = @('.\Services\Microsoft.WindowsAzure.Management.dll')
+# RequiredAssemblies = @()
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -441,7 +441,9 @@ CmdletsToExport = 'Get-AzureAutomationCertificate', 'Get-AzureAutomationConnecti
                'Remove-AzureTrafficManagerEndpoint', 
                'Test-AzureRecoveryServicesVaultUpgrade', 
                'Invoke-AzureRecoveryServicesVaultUpgrade',
-               'Get-AzureSubscriptionServicePrincipal', 'Add-AzureSubscriptionServicePrincipal', 'Remove-AzureSubscriptionServicePrincipal'
+               'Get-AzureSubscriptionServicePrincipal',
+               'New-AzureSubscriptionServicePrincipal',
+               'Remove-AzureSubscriptionServicePrincipal'
 
 # Variables to export from this module
 # VariablesToExport = @()
