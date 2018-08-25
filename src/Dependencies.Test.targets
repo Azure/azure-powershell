@@ -12,23 +12,18 @@
   <ItemGroup>
     <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>$(PackagesDirectory)Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>$(PackagesDirectory)xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>$(PackagesDirectory)xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>$(PackagesDirectory)xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>$(PackagesDirectory)xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
 
@@ -40,4 +35,4 @@
       <HintPath>$(PackagesDirectory)MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
   </ItemGroup>
- </Project>
+</Project>
