@@ -467,4 +467,22 @@
   <data name="NoJobIdPassedToGetJobInformationCall" xml:space="preserve">
     <value>No JobId passed. Please pass a valid JobId.</value>
   </data>
+  <data name="SoftwareUpdateConfigurationHasNoTargetComputers" xml:space="preserve">
+    <value>Software update configuration has no target computers.</value>
+  </data>
+  <data name="SourceControlCreateAction" xml:space="preserve">
+    <value>Creating Azure Automation Source Control.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="SourceControlRemoveAction" xml:space="preserve">
+    <value>Removing the Azure Automation Source Control.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="SourceControlRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Automation Source Control?</value>
+  </data>
+  <data name="SourceControlUpdateAction" xml:space="preserve">
+    <value>Updating the Azure Automation Source Control.</value>
+    <comment>Automation</comment>
+  </data>
 </root>

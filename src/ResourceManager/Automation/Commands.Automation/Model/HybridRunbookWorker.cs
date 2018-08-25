@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Management.Automation.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
-    public class HybridRunbookWorker : object
+    public class HybridRunbookWorker 
     {
         public HybridRunbookWorker()
         {
 
         }
-        public HybridRunbookWorker(string ipAddress, string name, DateTimeOffset registrationDataTime)
+        public HybridRunbookWorker(Azure.Management.Automation.Models.HybridRunbookWorker worker)
         {
-            this.IpAddress = ipAddress;
-            this.Name = name;
-            this.RegistrationTime = registrationDataTime;
+            this.IpAddress = worker.Ip;
+            this.Name = worker.Name;
+            this.RegistrationTime = worker.RegistrationTime;
+            this.LastSeenDateTime = worker.LastSeenDateTime;
         }
         public string IpAddress { get; set; }
         //
@@ -27,6 +29,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
         // Summary:
         //     Optional. Gets or sets the registration time of the worker machine.
         public DateTimeOffset RegistrationTime { get; set; }
+
+        public DateTimeOffset LastSeenDateTime { get; set; }
 
     }
 }

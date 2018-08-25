@@ -49,27 +49,30 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = automationAccountName;
             this.Name = webhook.Name;
 
-            if (webhook.Properties == null) return;
+            if (webhook == null) return;
 
-            this.CreationTime = webhook.Properties.CreationTime.ToLocalTime();
-            this.Description = webhook.Properties.Description;
-            this.ExpiryTime = webhook.Properties.ExpiryTime.ToLocalTime();
-            this.IsEnabled = webhook.Properties.IsEnabled;
-            if (webhook.Properties.LastInvokedTime.HasValue)
+            this.CreationTime = webhook.CreationTime.ToLocalTime();
+            this.Description = webhook.Description;
+            this.ExpiryTime = webhook.ExpiryTime.ToLocalTime();
+            this.IsEnabled = webhook.IsEnabled;
+            if (webhook.LastInvokedTime.HasValue)
             {
-                this.LastInvokedTime = webhook.Properties.LastInvokedTime.Value.ToLocalTime();
+                this.LastInvokedTime = webhook.LastInvokedTime.Value.ToLocalTime();
             }
 
-            this.LastModifiedTime = webhook.Properties.LastModifiedTime.ToLocalTime();
+            this.LastModifiedTime = webhook.LastModifiedTime.ToLocalTime();
             this.Parameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
-            foreach (var kvp in webhook.Properties.Parameters)
+            if (webhook.Parameters != null)
             {
-                this.Parameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+                foreach (var kvp in webhook.Parameters)
+                {
+                    this.Parameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+                }
             }
 
-            this.RunbookName = webhook.Properties.Runbook.Name;
+            this.RunbookName = webhook.Runbook.Name;
             this.WebhookURI = webhookUri;
-            this.HybridWorker = webhook.Properties.RunOn;
+            this.HybridWorker = webhook.RunOn;
         }
 
         public string ResourceGroupName { get; set; }
