@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             if (ShouldProcess(Name, VerbsData.Export))
             {
                 var outputFolder = this.AutomationClient.ExportRunbook(this.ResourceGroupName,
-                    this.AutomationAccountName, this.Name, isDraft, this.OutputFolder, this.Force.IsPresent);
+                    this.AutomationAccountName, this.Name, isDraft, ResolveUserPath(this.OutputFolder), this.Force.IsPresent);
 
                 this.WriteObject(outputFolder, true);
             }
