@@ -69,8 +69,5 @@
     <Compile Include="Version2017_08_31\Models\Page.cs" />
     <Compile Include="Version2017_08_31\Models\Resource.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
