@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsCommon.Get, Constants.CommandNames.AzureHDInsightOMS)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOperationsManagementSuite")]
     [Alias("Get-AzureRmHDInsightOMS")]
     [OutputType(typeof(AzureHDInsightOMS))]
     public class GetAzureHDInsightOMSCommand : HDInsightCmdletBase

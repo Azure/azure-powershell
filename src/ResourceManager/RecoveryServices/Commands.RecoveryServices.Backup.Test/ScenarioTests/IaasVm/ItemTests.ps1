@@ -25,16 +25,19 @@ function Test-AzureVMGetItems
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
 		Enable-Protection $vault $vm
 		Enable-Protection $vault $vm2
-
-		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy"
 
 		$container = Get-AzureRmRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
 			-ContainerType AzureVM `
 			-Status Registered `
 			-Name $vm.Name
 		
 		# VARIATION-1: Get all items for container
 		$items = Get-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureVM;
 		Assert-True { $items.VirtualMachineId -contains $vm.Id }
@@ -42,6 +45,7 @@ function Test-AzureVMGetItems
 		# VARIATION-2: Get items for container with friendly name filter.
 		# Here we will be testing a case when two VMs with overlapping names are protected.
 		$items = Get-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureVM `
 			-Name $vm.Name;
@@ -51,6 +55,7 @@ function Test-AzureVMGetItems
 
 		# VARIATION-3: Get items for container with ProtectionStatus filter
 		$items = Get-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureVM `
 			-ProtectionStatus Healthy;
@@ -58,6 +63,7 @@ function Test-AzureVMGetItems
 
 		# VARIATION-4: Get items for container with Status filter
 		$items = Get-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureVM `
 			-ProtectionState IRPending;
@@ -65,6 +71,7 @@ function Test-AzureVMGetItems
 
 		# VARIATION-5: Get items for container with friendly name and ProtectionStatus filters
 		$items = Get-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureVM `
 			-Name $vm.Name `
@@ -73,6 +80,7 @@ function Test-AzureVMGetItems
 
 		# VARIATION-6: Get items for container with friendly name and Status filters
 		$items = Get-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureVM `
 			-Name $vm.Name `
@@ -81,6 +89,7 @@ function Test-AzureVMGetItems
 
 		# VARIATION-7: Get items for container with Status and ProtectionStatus filters
 		$items = Get-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureVM `
 			-ProtectionState IRPending `
@@ -89,11 +98,18 @@ function Test-AzureVMGetItems
 
 		# VARIATION-8: Get items for container with friendly name, Status and ProtectionStatus filters
 		$items = Get-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureVM `
 			-Name $vm.Name `
 			-ProtectionState IRPending `
 			-ProtectionStatus Healthy;
+		Assert-True { $items.VirtualMachineId -contains $vm.Id }
+
+		# VARIATION-9: Get items for Vault Id and Policy
+		$items = Get-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Policy $policy;
 		Assert-True { $items.VirtualMachineId -contains $vm.Id }
 	}
 	finally
@@ -114,27 +130,34 @@ function Test-AzureVMProtection
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
 
-		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
-
 		# Get default policy
-		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy";
+		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy";
 	
 		# Enable protection
 		Enable-AzureRmRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
 			-Policy $policy `
 			-Name $vm.Name `
 			-ResourceGroupName $vm.ResourceGroupName;
 
 		$container = Get-AzureRmRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
 			-ContainerType AzureVM `
 			-Status Registered;
 
 		$item = Get-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureVM
 
 		# Disable protection
-		Disable-AzureRmRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -Force;
+		Disable-AzureRmRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Item $item `
+			-RemoveRecoveryPoints `
+			-Force;
 	}
 	finally
 	{
@@ -160,33 +183,45 @@ function Test-AzureVMGetRPs
 		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
 		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
 		$recoveryPoint = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
-			-StartDate $backupStartTime -EndDate $backupEndTime -Item $item;
+			-VaultId $vault.ID `
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime `
+			-Item $item;
 	
 		Assert-NotNull $recoveryPoint;
 		Assert-True { $recoveryPoint.SourceResourceId -match $vm.Id };
 
 		# Test 2: Get Recovery point detail
 		$recoveryPointDetail = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
-			-RecoveryPointId $recoveryPoint[0].RecoveryPointId -Item $item;
+			-VaultId $vault.ID `
+			-RecoveryPointId $recoveryPoint[0].RecoveryPointId `
+			-Item $item;
 	
 		Assert-NotNull $recoveryPointDetail;
 
 		# Negative test cases
 		# 1. StartDate < EndDate
 		Assert-ThrowsContains { Get-AzureRmRecoveryServicesBackupRecoveryPoint `
-			-StartDate $backupEndTime -EndDate $backupStartTime -Item $item } `
+			-VaultId $vault.ID `
+			-StartDate $backupEndTime `
+			-EndDate $backupStartTime `
+			-Item $item } `
 			"End date should be greater than start date";
 		
 		# 2. rangeStart > DateTime.UtcNow
 		$backupStartTime1 = Get-QueryDateInUtc $((Get-Date).AddYears(100)) "BackupStartTime1"
         Assert-ThrowsContains { Get-AzureRmRecoveryServicesBackupRecoveryPoint `
-			-StartDate $backupStartTime1 -Item $item } `
+			-VaultId $vault.ID `
+			-StartDate $backupStartTime1 `
+			-Item $item } `
 			"Start date\time should be less than current UTC date\time";
 
 		# 3. rangeStart.Kind != DateTimeKind.Utc
 		$backupStartTime2 = Get-QueryDateLocal $((Get-Date).AddDays(-20)) "BackupStartTime2"
         Assert-ThrowsContains { Get-AzureRmRecoveryServicesBackupRecoveryPoint `
-			-StartDate $backupStartTime2 -Item $item } `
+			-VaultId $vault.ID `
+			-StartDate $backupStartTime2 `
+			-Item $item } `
 			"Please specify startdate and enddate in UTC format";
 	}
 	finally
@@ -200,6 +235,7 @@ function Test-AzureVMFullRestore
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location
+	$targetResourceGroupName = Create-ResourceGroup $location 1
 
 	try
 	{
@@ -210,27 +246,42 @@ function Test-AzureVMFullRestore
 		$item = Enable-Protection $vault $vm
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
-		
-		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
 		Assert-ThrowsContains { Restore-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
 			-RecoveryPoint $rp `
 			-StorageAccountName $saName `
 			-StorageAccountResourceGroupName $resourceGroupName `
 			-UseOriginalStorageAccount } `
 			"This recovery point doesn’t have the capability to restore disks to their original storage account. Re-run the restore command without the UseOriginalStorageAccountForDisks parameter.";
 
-		$restoreJob = Restore-AzureRmRecoveryServicesBackupItem `
+		$restoreJob1 = Restore-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
 			-RecoveryPoint $rp `
 			-StorageAccountName $saName `
-			-StorageAccountResourceGroupName $resourceGroupName | Wait-AzureRmRecoveryServicesBackupJob
+			-StorageAccountResourceGroupName $resourceGroupName | `
+				Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
 
-		Assert-True { $restoreJob.Status -eq "Completed" }
+		Assert-True { $restoreJob1.Status -eq "Completed" }   
+
+		$restoreJob2 = Restore-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $rp `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $resourceGroupName `
+			-TargetResourceGroupName $targetResourceGroupName | `
+				Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob2.Status -eq "Completed" }
 	}
 	finally
 	{
 		# Cleanup
 		Cleanup-ResourceGroup $resourceGroupName
+		Cleanup-ResourceGroup $targetResourceGroupName
 	}
 }
 
@@ -248,10 +299,10 @@ function Test-AzureVMRPMountScript
 		$backupJob = Backup-Item $vault $item
 		$rp = Get-RecoveryPoint $vault $item $backupJob
 
-		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
-
 		# Get details of mount script of recovery point
-		$mountScriptDetails = Get-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp
+		$mountScriptDetails = Get-AzureRmRecoveryServicesBackupRPMountScript `
+			-VaultId $vault.ID `
+			-RecoveryPoint $rp
 
 		Assert-NotNull $mountScriptDetails.OsType
 		Assert-NotNull $mountScriptDetails.Password
@@ -261,7 +312,7 @@ function Test-AzureVMRPMountScript
 		Write-Output $mountScriptDetails
 
 		# Disable the mount script of recovery point
-		Disable-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp
+		Disable-AzureRmRecoveryServicesBackupRPMountScript -VaultId $vault.ID -RecoveryPoint $rp
 	}
 	finally
 	{
@@ -282,13 +333,56 @@ function Test-AzureVMBackup
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
 		$item = Enable-Protection $vault $vm
 		
-		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
-
 		# Trigger backup and wait for completion
 		$backupJob = Backup-AzureRmRecoveryServicesBackupItem `
-			-Item $item | Wait-AzureRmRecoveryServicesBackupJob
+			-VaultId $vault.ID `
+			-Item $item | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $backupJob.Status -eq "Completed" }
+	}
+	finally
+	{
+		# Cleanup
+		Cleanup-ResourceGroup $resourceGroupName
+	}
+}
+
+function Test-AzureVMSetVaultContext
+{
+	$location = Get-ResourceGroupLocation
+	$resourceGroupName = Create-ResourceGroup $location
+
+	try
+	{
+		# Setup
+		$vm = Create-VM $resourceGroupName $location
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+
+		Set-AzureRmRecoveryServicesVaultContext -Vault $vault
+
+		# Get default policy
+		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-Name "DefaultPolicy";
+	
+		# Enable protection
+		Enable-AzureRmRecoveryServicesBackupProtection `
+			-Policy $policy `
+			-Name $vm.Name `
+			-ResourceGroupName $vm.ResourceGroupName;
+
+		$container = Get-AzureRmRecoveryServicesBackupContainer `
+			-ContainerType AzureVM `
+			-Status Registered;
+
+		$item = Get-AzureRmRecoveryServicesBackupItem `
+			-Container $container `
+			-WorkloadType AzureVM
+
+		# Disable protection
+		Disable-AzureRmRecoveryServicesBackupProtection `
+			-Item $item `
+			-RemoveRecoveryPoints `
+			-Force;
 	}
 	finally
 	{

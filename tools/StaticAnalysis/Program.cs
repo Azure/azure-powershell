@@ -147,7 +147,7 @@ namespace StaticAnalysis
                 var exceptionFilePath = Path.Combine(exceptionsDirectory, exceptionFileName);
                 if (File.Exists(exceptionFilePath))
                 {
-                    throw new IOException(string.Format("The file '{0}' already exists.", exceptionFilePath));
+                    File.Delete(exceptionFilePath);
                 }
 
                 File.Create(exceptionFilePath).Close();

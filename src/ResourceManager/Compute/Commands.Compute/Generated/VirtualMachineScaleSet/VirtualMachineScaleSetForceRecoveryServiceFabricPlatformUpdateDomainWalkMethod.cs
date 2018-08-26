@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -111,13 +111,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("Repair", "AzureRmVmssServiceFabricUpdateDomain", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("Repair", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssServiceFabricUpdateDomain", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [Alias("Repair-AzureRmVmssServiceFabricUD")]
     [OutputType(typeof(PSRecoveryWalkResponse))]
     public partial class RepairAzureRmVmssServiceFabricUpdateDomain : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMScaleSetName, "Repair"))

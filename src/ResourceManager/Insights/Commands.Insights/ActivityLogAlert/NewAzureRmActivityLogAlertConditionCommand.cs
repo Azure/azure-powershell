@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// <summary>
     /// Create an Activity Log Alert condition
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmActivityLogAlertCondition"), OutputType(typeof(ActivityLogAlertLeafCondition))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActivityLogAlertCondition"), OutputType(typeof(Management.Monitor.Management.Models.ActivityLogAlertLeafCondition))]
     public class NewAzureRmActivityLogAlertConditionCommand : AzureRMCmdlet
     {
         #region Cmdlet parameters
@@ -48,9 +48,11 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         public override void ExecuteCmdlet()
         {
             WriteObject(
-                new ActivityLogAlertLeafCondition(
-                    field: this.Field,
-                    equals: this.Equal));
+                new Management.Monitor.Management.Models.ActivityLogAlertLeafCondition
+                {
+                    Field = this.Field,
+                    Equals = this.Equal
+                });
         }
     }
 }

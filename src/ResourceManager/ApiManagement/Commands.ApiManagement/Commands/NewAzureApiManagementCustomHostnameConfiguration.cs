@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Security;
     using WindowsAzure.Commands.Common;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementCustomHostnameConfiguration", DefaultParameterSetName = "NoChangeCertificate")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementCustomHostnameConfiguration", DefaultParameterSetName = "NoChangeCertificate")]
     [OutputType(typeof(PsApiManagementCustomHostNameConfiguration))]
     public class NewAzureApiManagementCustomHostnameConfiguration : AzureRMCmdlet
     {

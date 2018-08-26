@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
     /// <para> If ServiceBus Topic name provided, a single ServiceBus Topic detials will be returned</para>
     /// <para> If ServiceBus Topic name not provided, list of ServiceBus Topic will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusTopicVerb), OutputType(typeof(PSTopicAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusTopic"), OutputType(typeof(PSTopicAttributes))]
     public class GetAzureRmServiceBusTopic : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
@@ -43,20 +43,37 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
         [Alias(AliasTopicName)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Topics to return.")]
+        [ValidateRange(1, 10000)]
+        public int? MaxCount { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
+            try
             {
-                PSTopicAttributes topicAttributes = Client.GetTopic(ResourceGroupName, Namespace, Name);
-                WriteObject(topicAttributes);
+                if (!string.IsNullOrEmpty(Name))
+                {
+                    PSTopicAttributes topicAttributes = Client.GetTopic(ResourceGroupName, Namespace, Name);
+                    WriteObject(topicAttributes);
+                }
+                else
+                {
+                    if (MaxCount.HasValue)
+                    {
+                        IEnumerable<PSTopicAttributes> topicAttributes = Client.ListTopics(ResourceGroupName, Namespace, MaxCount);
+                        WriteObject(topicAttributes, true);
+                    }
+                    else
+                    {
+                        IEnumerable<PSTopicAttributes> topicAttributes = Client.ListTopics(ResourceGroupName, Namespace);
+                        WriteObject(topicAttributes, true);
+                    }
+                }
             }
-            else
+            catch (Management.ServiceBus.Models.ErrorResponseException ex)
             {
-               IEnumerable<PSTopicAttributes> topicAttributes = Client.ListTopics(ResourceGroupName, Namespace);
-               WriteObject(topicAttributes,true);
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
             }
-
-            
         }
     }
 }

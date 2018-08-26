@@ -79,8 +79,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string vmName = (string)ParseParameter(invokeMethodInputParameters[1]);
 
-            var result = VirtualMachinesClient.PerformMaintenance(resourceGroupName, vmName);
-            WriteObject(result);
+            VirtualMachinesClient.PerformMaintenance(resourceGroupName, vmName);
         }
     }
 

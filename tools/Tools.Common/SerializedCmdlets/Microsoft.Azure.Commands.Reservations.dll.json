@@ -12,16 +12,83 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Reservations.Models.PSCatalog]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Reservations.Models.PSCatalog, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
+            "Name": "Microsoft.Azure.Commands.Reservations.Models.PSCatalog",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSCatalog, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "SkuProperties": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.SkuProperty]",
+              "Restrictions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.SkuRestriction]",
+              "Terms": "System.Collections.Generic.IList`1[System.String]",
+              "Locations": "System.Collections.Generic.IList`1[System.String]",
+              "ResourceType": "System.String",
+              "Name": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Reservations.Models.PSCatalog"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "PrintTerms",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "PrintLocations",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "PrintSkuProperties",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "PrintRestrictions",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "catalog",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -46,6 +113,42 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "ReservedResourceType",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Location",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "DefaultProfile",
@@ -102,6 +205,54 @@
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ReservedResourceType",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Location",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
               "Position": -2147483648,
@@ -373,7 +524,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NextPageLink": "System.String"
             },
@@ -437,7 +588,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Reservations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.ReservationResponse]",
               "RequestDateTime": "System.Nullable`1[System.DateTime]",
@@ -646,7 +797,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NextPageLink": "System.String"
             },
@@ -750,23 +901,25 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
               "SplitProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationSplitProperties",
               "AppliedScopes": "System.Collections.Generic.IList`1[System.String]",
-              "Kind": "System.Nullable`1[Microsoft.Azure.Management.Reservations.Models.Kind]",
               "EffectiveDateTime": "System.Nullable`1[System.DateTime]",
               "LastUpdatedDateTime": "System.Nullable`1[System.DateTime]",
               "ExpiryDate": "System.Nullable`1[System.DateTime]",
               "Name": "System.String",
               "Type": "System.String",
+              "ReservedResourceType": "System.String",
+              "InstanceFlexibility": "System.String",
               "DisplayName": "System.String",
               "Etag": "System.String",
               "AppliedScopeType": "System.String",
               "Quantity": "System.String",
               "ProvisioningState": "System.String",
+              "SkuDescription": "System.String",
               "Location": "System.String",
               "Id": "System.String",
               "Sku": "System.String"
@@ -978,23 +1131,25 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
                     "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
                     "SplitProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationSplitProperties",
                     "AppliedScopes": "System.Collections.Generic.IList`1[System.String]",
-                    "Kind": "System.Nullable`1[Microsoft.Azure.Management.Reservations.Models.Kind]",
                     "EffectiveDateTime": "System.Nullable`1[System.DateTime]",
                     "LastUpdatedDateTime": "System.Nullable`1[System.DateTime]",
                     "ExpiryDate": "System.Nullable`1[System.DateTime]",
                     "Name": "System.String",
                     "Type": "System.String",
+                    "ReservedResourceType": "System.String",
+                    "InstanceFlexibility": "System.String",
                     "DisplayName": "System.String",
                     "Etag": "System.String",
                     "AppliedScopeType": "System.String",
                     "Quantity": "System.String",
                     "ProvisioningState": "System.String",
+                    "SkuDescription": "System.String",
                     "Location": "System.String",
                     "Id": "System.String",
                     "Sku": "System.String"
@@ -1176,7 +1331,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationPage, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NextPageLink": "System.String"
             },
@@ -1240,23 +1395,25 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
               "SplitProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationSplitProperties",
               "AppliedScopes": "System.Collections.Generic.IList`1[System.String]",
-              "Kind": "System.Nullable`1[Microsoft.Azure.Management.Reservations.Models.Kind]",
               "EffectiveDateTime": "System.Nullable`1[System.DateTime]",
               "LastUpdatedDateTime": "System.Nullable`1[System.DateTime]",
               "ExpiryDate": "System.Nullable`1[System.DateTime]",
               "Name": "System.String",
               "Type": "System.String",
+              "ReservedResourceType": "System.String",
+              "InstanceFlexibility": "System.String",
               "DisplayName": "System.String",
               "Etag": "System.String",
               "AppliedScopeType": "System.String",
               "Quantity": "System.String",
               "ProvisioningState": "System.String",
+              "SkuDescription": "System.String",
               "Location": "System.String",
               "Id": "System.String",
               "Sku": "System.String"
@@ -1376,7 +1533,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Reservations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.ReservationResponse]",
               "RequestDateTime": "System.Nullable`1[System.DateTime]",
@@ -1454,7 +1611,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "NextPageLink": "System.String"
             },
@@ -1650,7 +1807,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Reservations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.ReservationResponse]",
                     "RequestDateTime": "System.Nullable`1[System.DateTime]",
@@ -1777,7 +1934,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "NextPageLink": "System.String"
                   },
@@ -1941,16 +2098,97 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Reservations.Models.PSReservation]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
+            "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
+              "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
+              "SplitProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationSplitProperties",
+              "AppliedScopes": "System.Collections.Generic.IList`1[System.String]",
+              "EffectiveDateTime": "System.Nullable`1[System.DateTime]",
+              "LastUpdatedDateTime": "System.Nullable`1[System.DateTime]",
+              "ExpiryDate": "System.Nullable`1[System.DateTime]",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ReservedResourceType": "System.String",
+              "InstanceFlexibility": "System.String",
+              "DisplayName": "System.String",
+              "Etag": "System.String",
+              "AppliedScopeType": "System.String",
+              "Quantity": "System.String",
+              "ProvisioningState": "System.String",
+              "SkuDescription": "System.String",
+              "Location": "System.String",
+              "Id": "System.String",
+              "Sku": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Reservations.Models.PSReservation"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "PrintAppliedScopes",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "PrintSplitProperties",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "PrintMergeProperties",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "PrintStatusInfo",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "Reservation",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -2000,7 +2238,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[], Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[], Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
             "GenericTypeArguments": [],
@@ -2147,7 +2385,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[], Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation[], Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
                   "GenericTypeArguments": [],
@@ -2264,23 +2502,25 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
               "SplitProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationSplitProperties",
               "AppliedScopes": "System.Collections.Generic.IList`1[System.String]",
-              "Kind": "System.Nullable`1[Microsoft.Azure.Management.Reservations.Models.Kind]",
               "EffectiveDateTime": "System.Nullable`1[System.DateTime]",
               "LastUpdatedDateTime": "System.Nullable`1[System.DateTime]",
               "ExpiryDate": "System.Nullable`1[System.DateTime]",
               "Name": "System.String",
               "Type": "System.String",
+              "ReservedResourceType": "System.String",
+              "InstanceFlexibility": "System.String",
               "DisplayName": "System.String",
               "Etag": "System.String",
               "AppliedScopeType": "System.String",
               "Quantity": "System.String",
               "ProvisioningState": "System.String",
+              "SkuDescription": "System.String",
               "Location": "System.String",
               "Id": "System.String",
               "Sku": "System.String"
@@ -2407,13 +2647,10 @@
             "Methods": [],
             "Constructors": []
           },
-          "ValidateSet": [
-            "Single",
-            "Shared"
-          ],
+          "ValidateSet": [],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": false
+          "ValidateNotNullOrEmpty": true
         },
         {
           "Name": "AppliedScope",
@@ -2434,28 +2671,48 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "InstanceFlexibility",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
           "Name": "Reservation",
           "AliasList": [],
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
               "SplitProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationSplitProperties",
               "AppliedScopes": "System.Collections.Generic.IList`1[System.String]",
-              "Kind": "System.Nullable`1[Microsoft.Azure.Management.Reservations.Models.Kind]",
               "EffectiveDateTime": "System.Nullable`1[System.DateTime]",
               "LastUpdatedDateTime": "System.Nullable`1[System.DateTime]",
               "ExpiryDate": "System.Nullable`1[System.DateTime]",
               "Name": "System.String",
               "Type": "System.String",
+              "ReservedResourceType": "System.String",
+              "InstanceFlexibility": "System.String",
               "DisplayName": "System.String",
               "Etag": "System.String",
               "AppliedScopeType": "System.String",
               "Quantity": "System.String",
               "ProvisioningState": "System.String",
+              "SkuDescription": "System.String",
               "Location": "System.String",
               "Id": "System.String",
               "Sku": "System.String"
@@ -2631,13 +2888,10 @@
                   "Methods": [],
                   "Constructors": []
                 },
-                "ValidateSet": [
-                  "Single",
-                  "Shared"
-                ],
+                "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
               "Position": -2147483648,
@@ -2662,6 +2916,30 @@
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InstanceFlexibility",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
               "Position": -2147483648,
@@ -2725,13 +3003,10 @@
                   "Methods": [],
                   "Constructors": []
                 },
-                "ValidateSet": [
-                  "Single",
-                  "Shared"
-                ],
+                "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
               "Position": -2147483648,
@@ -2756,6 +3031,30 @@
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InstanceFlexibility",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
               "Position": -2147483648,
@@ -2812,23 +3111,25 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
                     "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
                     "SplitProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationSplitProperties",
                     "AppliedScopes": "System.Collections.Generic.IList`1[System.String]",
-                    "Kind": "System.Nullable`1[Microsoft.Azure.Management.Reservations.Models.Kind]",
                     "EffectiveDateTime": "System.Nullable`1[System.DateTime]",
                     "LastUpdatedDateTime": "System.Nullable`1[System.DateTime]",
                     "ExpiryDate": "System.Nullable`1[System.DateTime]",
                     "Name": "System.String",
                     "Type": "System.String",
+                    "ReservedResourceType": "System.String",
+                    "InstanceFlexibility": "System.String",
                     "DisplayName": "System.String",
                     "Etag": "System.String",
                     "AppliedScopeType": "System.String",
                     "Quantity": "System.String",
                     "ProvisioningState": "System.String",
+                    "SkuDescription": "System.String",
                     "Location": "System.String",
                     "Id": "System.String",
                     "Sku": "System.String"
@@ -2924,13 +3225,10 @@
                   "Methods": [],
                   "Constructors": []
                 },
-                "ValidateSet": [
-                  "Single",
-                  "Shared"
-                ],
+                "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": false
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
               "Position": -2147483648,
@@ -2955,6 +3253,30 @@
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "InstanceFlexibility",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
               },
               "Mandatory": false,
               "Position": -2147483648,
@@ -3016,16 +3338,97 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Reservations.Models.PSReservation]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
+            "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
+              "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
+              "SplitProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationSplitProperties",
+              "AppliedScopes": "System.Collections.Generic.IList`1[System.String]",
+              "EffectiveDateTime": "System.Nullable`1[System.DateTime]",
+              "LastUpdatedDateTime": "System.Nullable`1[System.DateTime]",
+              "ExpiryDate": "System.Nullable`1[System.DateTime]",
+              "Name": "System.String",
+              "Type": "System.String",
+              "ReservedResourceType": "System.String",
+              "InstanceFlexibility": "System.String",
+              "DisplayName": "System.String",
+              "Etag": "System.String",
+              "AppliedScopeType": "System.String",
+              "Quantity": "System.String",
+              "ProvisioningState": "System.String",
+              "SkuDescription": "System.String",
+              "Location": "System.String",
+              "Id": "System.String",
+              "Sku": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Reservations.Models.PSReservation"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "PrintAppliedScopes",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "PrintSplitProperties",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "PrintMergeProperties",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "PrintStatusInfo",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "Reservation",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -3093,23 +3496,25 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
             "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
               "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
               "SplitProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationSplitProperties",
               "AppliedScopes": "System.Collections.Generic.IList`1[System.String]",
-              "Kind": "System.Nullable`1[Microsoft.Azure.Management.Reservations.Models.Kind]",
               "EffectiveDateTime": "System.Nullable`1[System.DateTime]",
               "LastUpdatedDateTime": "System.Nullable`1[System.DateTime]",
               "ExpiryDate": "System.Nullable`1[System.DateTime]",
               "Name": "System.String",
               "Type": "System.String",
+              "ReservedResourceType": "System.String",
+              "InstanceFlexibility": "System.String",
               "DisplayName": "System.String",
               "Etag": "System.String",
               "AppliedScopeType": "System.String",
               "Quantity": "System.String",
               "ProvisioningState": "System.String",
+              "SkuDescription": "System.String",
               "Location": "System.String",
               "Id": "System.String",
               "Sku": "System.String"
@@ -3412,23 +3817,25 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
                   "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
                     "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
                     "SplitProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationSplitProperties",
                     "AppliedScopes": "System.Collections.Generic.IList`1[System.String]",
-                    "Kind": "System.Nullable`1[Microsoft.Azure.Management.Reservations.Models.Kind]",
                     "EffectiveDateTime": "System.Nullable`1[System.DateTime]",
                     "LastUpdatedDateTime": "System.Nullable`1[System.DateTime]",
                     "ExpiryDate": "System.Nullable`1[System.DateTime]",
                     "Name": "System.String",
                     "Type": "System.String",
+                    "ReservedResourceType": "System.String",
+                    "InstanceFlexibility": "System.String",
                     "DisplayName": "System.String",
                     "Etag": "System.String",
                     "AppliedScopeType": "System.String",
                     "Quantity": "System.String",
                     "ProvisioningState": "System.String",
+                    "SkuDescription": "System.String",
                     "Location": "System.String",
                     "Id": "System.String",
                     "Sku": "System.String"
@@ -3719,103 +4126,22 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.Reservations.Models.PSCatalog": {
-      "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
-      "Name": "Microsoft.Azure.Commands.Reservations.Models.PSCatalog",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSCatalog, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Capabilities": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.SkuCapability]",
-        "Restrictions": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.SkuRestriction]",
-        "Terms": "System.Collections.Generic.IList`1[System.String]",
-        "Locations": "System.Collections.Generic.IList`1[System.String]",
-        "ResourceType": "System.String",
-        "Name": "System.String",
-        "Tier": "System.String",
-        "Size": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "PrintTerms",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "PrintLocations",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "PrintCapabilities",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "PrintRestrictions",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "catalog",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.SkuCapability]": {
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.SkuProperty]": {
       "Namespace": "System.Collections.Generic",
-      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.SkuCapability]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Reservations.Models.SkuCapability, Microsoft.Azure.Management.Reservations, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.SkuProperty]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Reservations.Models.SkuProperty, Microsoft.Azure.Management.Reservations, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Reservations.Models.SkuCapability"
+        "Microsoft.Azure.Management.Reservations.Models.SkuProperty"
       ],
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Management.Reservations.Models.SkuCapability": {
+    "Microsoft.Azure.Management.Reservations.Models.SkuProperty": {
       "Namespace": "Microsoft.Azure.Management.Reservations.Models",
-      "Name": "Microsoft.Azure.Management.Reservations.Models.SkuCapability",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Reservations.Models.SkuCapability, Microsoft.Azure.Management.Reservations, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Name": "Microsoft.Azure.Management.Reservations.Models.SkuProperty",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Reservations.Models.SkuProperty, Microsoft.Azure.Management.Reservations, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Value": "System.String"
@@ -4210,7 +4536,7 @@
     "System.Collections.Generic.IEnumerator`1[Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerator`1[Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerator`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerator`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4222,7 +4548,7 @@
     "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder": {
       "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
       "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Reservations": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Reservations.Models.ReservationResponse]",
         "RequestDateTime": "System.Nullable`1[System.DateTime]",
@@ -4308,7 +4634,6 @@
       "Properties": {
         "Properties": "Microsoft.Azure.Management.Reservations.Models.ReservationProperties",
         "Sku": "Microsoft.Azure.Management.Reservations.Models.SkuName",
-        "Kind": "System.Nullable`1[Microsoft.Azure.Management.Reservations.Models.Kind]",
         "Etag": "System.Nullable`1[System.Int32]",
         "Location": "System.String",
         "Id": "System.String",
@@ -4371,10 +4696,6 @@
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
-              "Name": "kind",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
               "Name": "sku",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
@@ -4403,9 +4724,12 @@
         "LastUpdatedDateTime": "System.Nullable`1[System.DateTime]",
         "ExpiryDate": "System.Nullable`1[System.DateTime]",
         "Quantity": "System.Nullable`1[System.Int32]",
+        "ReservedResourceType": "System.String",
+        "InstanceFlexibility": "System.String",
         "DisplayName": "System.String",
         "AppliedScopeType": "System.String",
-        "ProvisioningState": "System.String"
+        "ProvisioningState": "System.String",
+        "SkuDescription": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -4447,6 +4771,14 @@
           "ReturnType": null,
           "Parameters": [
             {
+              "Name": "reservedResourceType",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "instanceFlexibility",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
               "Name": "displayName",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
@@ -4476,6 +4808,10 @@
             },
             {
               "Name": "expiryDate",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "skuDescription",
               "Type": "System.Reflection.RuntimeParameterInfo"
             },
             {
@@ -4759,127 +5095,10 @@
         }
       ]
     },
-    "System.Nullable`1[Microsoft.Azure.Management.Reservations.Models.Kind]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.Management.Reservations.Models.Kind]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.Reservations.Models.Kind, Microsoft.Azure.Management.Reservations, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.Reservations.Models.Kind"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.Reservations.Models.Kind": {
-      "Namespace": "Microsoft.Azure.Management.Reservations.Models",
-      "Name": "Microsoft.Azure.Management.Reservations.Models.Kind",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Reservations.Models.Kind, Microsoft.Azure.Management.Reservations, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "CompareTo",
-          "Parameters": [
-            {
-              "Name": "target",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "HasFlag",
-          "Parameters": [
-            {
-              "Name": "flag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetTypeCode",
-          "Parameters": [],
-          "ReturnType": "System.TypeCode"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": []
-    },
-    "System.TypeCode": {
-      "Namespace": "System",
-      "Name": "System.TypeCode",
-      "AssemblyQualifiedName": "System.TypeCode, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
-    },
     "System.Collections.Generic.IEnumerator`1[Microsoft.Azure.Commands.Reservations.Models.PSReservation]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerator`1[Microsoft.Azure.Commands.Reservations.Models.PSReservation]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerator`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerator`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -4891,23 +5110,25 @@
     "Microsoft.Azure.Commands.Reservations.Models.PSReservation": {
       "Namespace": "Microsoft.Azure.Commands.Reservations.Models",
       "Name": "Microsoft.Azure.Commands.Reservations.Models.PSReservation",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ExtendedStatusInfo": "Microsoft.Azure.Management.Reservations.Models.ExtendedStatusInfo",
         "MergeProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationMergeProperties",
         "SplitProperties": "Microsoft.Azure.Management.Reservations.Models.ReservationSplitProperties",
         "AppliedScopes": "System.Collections.Generic.IList`1[System.String]",
-        "Kind": "System.Nullable`1[Microsoft.Azure.Management.Reservations.Models.Kind]",
         "EffectiveDateTime": "System.Nullable`1[System.DateTime]",
         "LastUpdatedDateTime": "System.Nullable`1[System.DateTime]",
         "ExpiryDate": "System.Nullable`1[System.DateTime]",
         "Name": "System.String",
         "Type": "System.String",
+        "ReservedResourceType": "System.String",
+        "InstanceFlexibility": "System.String",
         "DisplayName": "System.String",
         "Etag": "System.String",
         "AppliedScopeType": "System.String",
         "Quantity": "System.String",
         "ProvisioningState": "System.String",
+        "SkuDescription": "System.String",
         "Location": "System.String",
         "Id": "System.String",
         "Sku": "System.String"

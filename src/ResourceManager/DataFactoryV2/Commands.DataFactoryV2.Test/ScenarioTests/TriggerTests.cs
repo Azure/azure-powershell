@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,37 +20,40 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
     public class TriggerTests : DataFactoriesScenarioTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public TriggerTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTrigger()
         {
-            RunPowerShellTest("Test-Trigger");
+            RunPowerShellTest(_logger, "Test-Trigger");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStartTriggerThrowsWithoutPipeline()
         {
-            RunPowerShellTest("Test-StartTriggerThrowsWithoutPipeline");
+            RunPowerShellTest(_logger, "Test-StartTriggerThrowsWithoutPipeline");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTriggerRun()
         {
-            RunPowerShellTest("Test-TriggerRun");
+            RunPowerShellTest(_logger, "Test-TriggerRun");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTriggerWithResourceId()
         {
-            RunPowerShellTest("Test-TriggerWithResourceId");
+            RunPowerShellTest(_logger, "Test-TriggerWithResourceId");
         }
     }
 }

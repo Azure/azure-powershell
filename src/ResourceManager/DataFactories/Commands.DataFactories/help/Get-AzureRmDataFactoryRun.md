@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
 Module Name: AzureRM.DataFactories
 ms.assetid: 7100B5F0-A07B-4305-BF80-1F52647A03AB
@@ -33,9 +33,7 @@ A run is a unit of processing for a slice.
 There could be one or more runs for a slice in case of retries or in case you rerun your slice due to failures.
 A slice is identified by its start time.
 To obtain the start time of a slice, use the Get-AzureRmDataFactorySlice cmdlet.
-
 For example, to get a run for the following slice, use the start time 2015-04-02T20:00:00.
-
 ResourceGroupName  : ADF
 DataFactoryName : SPDataFactory0924
 DatasetName : MarketingCampaignEffectivenessBlobDataset
@@ -79,9 +77,9 @@ Specifies a **PSDataFactory** object.
 This cmdlet gets runs for slices that belong to the data factory that this parameter specifies.
 
 ```yaml
-Type: PSDataFactory
+Type: Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
 Parameter Sets: ByFactoryObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -95,9 +93,9 @@ Specifies the name of a data factory.
 This cmdlet gets runs for slices that belong to the data factory that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -111,9 +109,9 @@ Specifies the name of the dataset.
 This cmdlet gets runs for slices that belong to the dataset that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -126,7 +124,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -142,9 +140,9 @@ Specifies the name of an Azure resource group.
 This cmdlet gets factory runs for slices that belong to the group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -156,20 +154,17 @@ Accept wildcard characters: False
 ### -StartDateTime
 Specifies the start of a time period as a **DateTime** object.
 This cmdlet gets runs for the data slices that match this time period.
-
 *StartDateTime* must be specified in the ISO8601 format, as in the following examples: 
-
 2015-01-01Z
 2015-01-01T00:00:00Z
 2015-01-01T00:00:00.000Z (UTC) 
 2015-01-01T00:00:00-08:00 (Pacific Standard Time)
-
 The default time zone designator is UTC.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -183,12 +178,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.WindowsAzure.Commands.Utilities.PSDataSliceRun, Microsoft.WindowsAzure.Commands.Utilities, Version=0.8.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataSliceRun
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

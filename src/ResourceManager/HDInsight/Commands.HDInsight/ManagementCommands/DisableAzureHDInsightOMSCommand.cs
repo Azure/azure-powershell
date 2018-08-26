@@ -19,10 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsLifecycle.Disable,
-        Constants.CommandNames.AzureHDInsightOMS,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightOperationsManagementSuite",SupportsShouldProcess = true)]
     [Alias("Disable-AzureRmHDInsightOMS")]
     [OutputType(typeof(OperationResource))]
     public class DisableAzureHDInsightOMSCommand : HDInsightCmdletBase

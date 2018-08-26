@@ -97,8 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 instanceIds = inputArray2.ToList();
             }
 
-            var result = VirtualMachineScaleSetsClient.Redeploy(resourceGroupName, vmScaleSetName, instanceIds);
-            WriteObject(result);
+            VirtualMachineScaleSetsClient.Redeploy(resourceGroupName, vmScaleSetName, instanceIds);
         }
     }
 

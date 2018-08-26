@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.BackupServices;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -58,8 +59,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
             helper.SetupSomeOfManagementClients(BackupVaultServicesMgmtClient, BackupServicesMgmtClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
+            helper.TracingInterceptor = logger;
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);

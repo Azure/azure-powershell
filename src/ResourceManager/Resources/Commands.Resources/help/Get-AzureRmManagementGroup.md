@@ -129,7 +129,7 @@ Children    :
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -144,9 +144,9 @@ Accept wildcard characters: False
 Expand the output to list the children of the management group
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: GetOperation
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -159,9 +159,9 @@ Accept wildcard characters: False
 Management Group Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetOperation
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -174,9 +174,9 @@ Accept wildcard characters: False
 Recursively list the children of the management group
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: GetOperation
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -205,7 +205,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -225,11 +225,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup
+### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo]
+### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup
 
 ## NOTES
 
 ## RELATED LINKS
-

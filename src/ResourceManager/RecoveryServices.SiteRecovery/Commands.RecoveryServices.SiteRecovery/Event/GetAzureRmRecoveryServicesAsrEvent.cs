@@ -23,12 +23,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Gets details of Azure Site Recovery events in the vault.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrEvent",
-        DefaultParameterSetName = ASRParameterSets.ByParam)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrEvent",DefaultParameterSetName = ASRParameterSets.ByParam)]
     [Alias("Get-ASREvent")]
-    [OutputType(typeof(IEnumerable<ASREvent>))]
+    [OutputType(typeof(ASREvent))]
     public class GetAzureRmRecoveryServicesAsrEvents : SiteRecoveryCmdletBase
     {
         /// <summary>

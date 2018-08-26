@@ -19,10 +19,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, 
-        Constants.AzureBatchPoolNodeCounts, 
-        DefaultParameterSetName = Constants.AzureBatchPoolNodeCounts),         
-        OutputType(typeof(PSPoolNodeCounts))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchPoolNodeCounts",DefaultParameterSetName = Constants.AzureBatchPoolNodeCounts),OutputType(typeof(PSPoolNodeCounts))]
     public class GetBatchPoolNodeCountsCommand : BatchObjectModelCmdletBase
     {
         private const int defaultMaxCount = 10;

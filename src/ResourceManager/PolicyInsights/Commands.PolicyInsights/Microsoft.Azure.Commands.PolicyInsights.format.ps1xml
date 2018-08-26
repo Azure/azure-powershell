@@ -540,6 +540,9 @@
                 <PropertyName>PolicyDefinitionId</PropertyName>
               </ListItem>
               <ListItem>
+                <PropertyName>PolicyDefinitionReferenceId</PropertyName>
+              </ListItem>
+              <ListItem>
                 <PropertyName>Effect</PropertyName>
               </ListItem>
               <ListItem>

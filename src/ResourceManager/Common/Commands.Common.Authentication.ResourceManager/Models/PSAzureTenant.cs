@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Profile.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -87,11 +88,13 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The tenant id.
         /// </summary>
+        [Ps1Xml(Label = "Tenant Id", Target = ViewControl.Table)]
         public string Id { get; set; }
 
         /// <summary>
         /// The name of the subscription.
         /// </summary>
+        [Ps1Xml(Label = "Directory Name", Target = ViewControl.Table)]
         public string Directory { get; set; }
 
         /// <summary>

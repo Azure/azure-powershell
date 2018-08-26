@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermsubscription
@@ -102,9 +102,9 @@ subscription (Contoso Subscription 1) by default.
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 The credentials, tenant and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -132,9 +132,9 @@ Accept wildcard characters: False
 Specifies the ID of the subscription to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByIdInTenant
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -147,9 +147,9 @@ Accept wildcard characters: False
 Specifies the name of the subscription to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByNameInTenant
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -162,9 +162,9 @@ Accept wildcard characters: False
 Specifies the ID of the tenant that contains subscriptions to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -178,14 +178,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### PSAzureSubscription
+### Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription
 
 ## NOTES
 
 ## RELATED LINKS
-

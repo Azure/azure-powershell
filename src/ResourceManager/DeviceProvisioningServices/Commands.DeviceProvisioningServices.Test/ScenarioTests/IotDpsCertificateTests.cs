@@ -25,9 +25,12 @@ namespace Commands.DeviceProvisioningServices.Test
 {
     public class IotDpsCertificateTests : RMTestBase
     {
-        public IotDpsCertificateTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public IotDpsCertificateTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Access denied error on CertEnroll CX509 Enrollment CreateRequest")]
@@ -48,7 +51,7 @@ namespace Commands.DeviceProvisioningServices.Test
 
             AzureSession.Instance.DataStore = dataStore;
 
-            IotDpsController.NewInstance.RunPsTest("Test-AzureIotDpsCertificateLifeCycle");
+            IotDpsController.NewInstance.RunPsTest(_logger, "Test-AzureIotDpsCertificateLifeCycle");
         }
     }
 }

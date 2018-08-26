@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmAnalysisServicesServer"), OutputType(typeof(bool))]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer"), OutputType(typeof(bool))]
     [Alias("Test-AzureAs")]
     public class TestAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {

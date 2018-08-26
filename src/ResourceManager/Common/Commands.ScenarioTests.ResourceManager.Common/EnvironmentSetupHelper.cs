@@ -202,7 +202,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 var baseDirectory = Path.Combine(srcDirectory, targetDirectory);
                 if (Directory.Exists(baseDirectory))
                 {
-                    result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault();
+                    result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault(
+                        (dir) => ! string.IsNullOrWhiteSpace(dir) 
+                        && (dir.EndsWith("Debug", StringComparison.OrdinalIgnoreCase)
+                        || dir.EndsWith("Release", StringComparison.OrdinalIgnoreCase)));
                     if (result != null)
                     {
                         result = Path.GetFullPath(result);
@@ -233,7 +236,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
 
 #if NETSTANDARD
-            string module = Path.Combine(baseDirectory, $"{desktopModuleName}.Netcore", $"{desktopModuleName}.Netcore.psd1");
+            string module = Path.Combine(baseDirectory, desktopModuleName.Replace("AzureRM", "Az"), $"{desktopModuleName.Replace("AzureRM", "Az")}.psd1");
 #else
             string module = Path.Combine(baseDirectory, desktopModuleName, $"{desktopModuleName}.psd1");
 #endif
@@ -442,6 +445,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.GraphUrl = currentEnvironment.Endpoints.GraphUri.AbsoluteUri;
             environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.AzureDataLakeStoreFileSystemEndpointSuffix = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
+            environment.StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix;
+
 #if !NETSTANDARD
             if (!ProfileClient.Profile.EnvironmentTable.ContainsKey(testEnvironmentName))
             {
@@ -597,7 +602,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 d.Add("Microsoft.Features", null);
                 d.Add("Microsoft.Authorization", null);
                 d.Add("Microsoft.Compute", null);
-                d.Add("Microsoft.Azure.Management.KeyVault", null);
+                d.Add("Microsoft.KeyVault", null);
                 var providersToIgnore = new Dictionary<string, string>();
                 providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
                 HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
@@ -635,11 +640,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 catch (Exception psException)
                 {
                     powershell.LogPowerShellException(psException, TracingInterceptor);
+                    powershell.LogPowerShellResults(output, TracingInterceptor);
+                    TracingInterceptor?.Flush();
                     throw;
                 }
                 finally
                 {
-                    powershell.LogPowerShellResults(output, TracingInterceptor);
                     powershell.Streams.Error.Clear();
                 }
             }
@@ -661,6 +667,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             foreach (string moduleName in modules)
             {
                 powershell.AddScript(string.Format("Import-Module \"{0}\"", moduleName.AsAbsoluteLocation()));
+                if (moduleName.EndsWith(".psd1"))
+                {
+#if NETSTANDARD
+                    var moduleShortName = moduleName.Split(new string[] { "\\" }, StringSplitOptions.None).Last().Split(new string[] { "/" }, StringSplitOptions.None).Last();
+                    powershell.AddScript("Enable-AzureRmAlias -Module " + moduleShortName.Substring(0, moduleShortName.Length - 5));
+#endif
+                }
             }
 
             powershell.AddScript(

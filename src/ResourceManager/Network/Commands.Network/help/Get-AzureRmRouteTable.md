@@ -13,16 +13,16 @@ Gets route tables.
 
 ## SYNTAX
 
+### NoExpand (Default)
+```
+Get-AzureRmRouteTable [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ### Expand
 ```
 Get-AzureRmRouteTable -ResourceGroupName <String> -Name <String> -ExpandResource <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### NoExpand
-```
-Get-AzureRmRouteTable [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,7 +65,7 @@ This command gets the route table named RouteTable01 in the resource group named
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 
 ### -ExpandResource
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases:
 
@@ -93,11 +93,11 @@ Accept wildcard characters: False
 Specifies the name of the route table that this cmdlet gets.
 
 ```yaml
-Type: String
-Parameter Sets: Expand
+Type: System.String
+Parameter Sets: NoExpand
 Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -105,11 +105,11 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
-Parameter Sets: NoExpand
+Type: System.String
+Parameter Sets: Expand
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -120,11 +120,11 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the route tables that this cmdlet gets.
 
 ```yaml
-Type: String
-Parameter Sets: Expand
+Type: System.String
+Parameter Sets: NoExpand
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -132,11 +132,11 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
-Parameter Sets: NoExpand
+Type: System.String
+Parameter Sets: Expand
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -148,8 +148,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

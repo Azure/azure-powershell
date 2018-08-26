@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Security;
     using WindowsAzure.Commands.Common;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementSystemCertificate")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementSystemCertificate")]
     [OutputType(typeof(PsApiManagementSystemCertificate))]
     public class NewAzureApiManagementSystemCertificate : AzureRMCmdlet
     {

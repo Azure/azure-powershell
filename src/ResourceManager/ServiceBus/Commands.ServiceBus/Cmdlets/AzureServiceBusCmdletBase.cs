@@ -73,11 +73,17 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string SubscriptionInputObjectParameterSet = "SubscriptionInputObjectSet";
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
         protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
+        protected const string RuleInputObjectParameterSet = "RuleResourceIdSet";
 
         //Parameter sets for ResourceID
+        protected const string MigrationConfigResourceIdParameterSet = "MigrationConfigResourceIdParameterSet";
         protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
         protected const string NamespaceResourceIdParameterSet = "NamespaceResourceIdParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
+        protected const string QueueResourceIdParameterSet = "QueueResourceIdSet";
+        protected const string TopicResourceIdParameterSet = "TopicResourceIdSet";
+        protected const string SubscriptionResourceIdParameterSet = "SubscriptionResourceIdSet";
+        protected const string RuleResourceIdParameterSet = "RuleResourceIdSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -85,6 +91,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string TopicPropertiesParameterSet = "TopicPropertiesSet";
         protected const string SubscriptionPropertiesParameterSet = "SubscriptionPropertiesSet";
         protected const string GeoDRParameterSet = "GeoDRPropertiesSet";
+        protected const string MigrationConfigurationParameterSet = "MigrationConfigurationPropertiesSet";
+        protected const string RuleResourceParameterSet = "RulePropertiesSet";
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroupname = "ResourceGroupName";
@@ -106,6 +114,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string ServicebusDRConfigurationVerb = "AzureRmServiceBusGeoDRConfiguration";
         protected const string ServicebusDRConfigurationFailoverVerb = "AzureRmServiceBusGeoDRConfigurationFailOver";
         protected const string ServicebusDRConfigurationBreakPairingVerb = "AzureRmServiceBusGeoDRConfigurationBreakPair";
+
+        protected const string ServicebusMigrationConfigurationVerb = "AzureRmServiceBusMigration";
+        protected const string ServicebusRevertMigrationConfiguration = "AzureRmServiceBusRevertMigration";
+        protected const string ServicebusStartMigrationConfiguration = "AzureRmServiceBusStartMigration";
+        protected const string ServicebusCompleteMigrationConfiguration = "AzureRmServiceBusCompleteMigration";
 
         protected struct SKU
         {
@@ -249,14 +262,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
 
             return default(T);
-        }
-
-        public ResourceIdentifier GetResourceDetailsFromId(string strResourceId)
-        {
-            ResourceIdentifier returnResourceIdentifier = new ResourceIdentifier(strResourceId);
-            returnResourceIdentifier.ParentResource = Regex.Split(strResourceId, @"/")[8];
-            return returnResourceIdentifier;
-        }
+        }       
 
         #region TagsHelper
 
@@ -300,5 +306,37 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         }
 
         #endregion
+    }
+
+    public class LocalResourceIdentifier : ResourceIdentifier
+    {
+        public LocalResourceIdentifier(string strResourceID ) : base (strResourceID)
+        {
+            string[] tokens = base.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+            // for upto 3 Parents 
+            switch (tokens.Length)
+            {
+                case 2:
+                    ParentResource = tokens[1];
+                    break;
+                case 4:
+                    ParentResource = tokens[1];
+                    ParentResource1 = tokens[3];
+                    break;
+                case 6:
+                    ParentResource = tokens[1];
+                    ParentResource1 = tokens[3];
+                    ParentResource2 = tokens[5];
+                    break;
+            }
+        }
+
+        public string ParentResource1 { get; set; }
+
+        public string ParentResource2 { get; set; }
+
+
+
     }
 }

@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -133,12 +133,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class GetAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 string resourceGroupName = this.ResourceGroupName;
@@ -152,6 +153,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         var psObject = new PSVirtualMachineScaleSetInstanceView();
                         ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetInstanceView, PSVirtualMachineScaleSetInstanceView>(result, psObject);
                         WriteObject(psObject);
+                    }
+                    else if (this.ParameterSetName.Equals("OSUpgradeHistoryMethodParameter"))
+                    {
+                        var result = VirtualMachineScaleSetsClient.GetOSUpgradeHistory(resourceGroupName, vmScaleSetName);
+                        var resultList = result.ToList();
+                        var nextPageLink = result.NextPageLink;
+                        while (!string.IsNullOrEmpty(nextPageLink))
+                        {
+                            var pageResult = VirtualMachineScaleSetsClient.GetOSUpgradeHistoryNext(nextPageLink);
+                            foreach (var pageItem in pageResult)
+                            {
+                                resultList.Add(pageItem);
+                            }
+                            nextPageLink = pageResult.NextPageLink;
+                        }
+                        var psObject = new List<PSUpgradeOperationHistoricalStatusInfo>();
+                        foreach (var r in resultList)
+                        {
+                            psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<UpgradeOperationHistoricalStatusInfo, PSUpgradeOperationHistoricalStatusInfo>(r));
+                        }
+                        WriteObject(psObject, true);
                     }
                     else
                     {
@@ -207,22 +229,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 1,
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            ParameterSetName = "FriendMethod",
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 2,
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            ParameterSetName = "FriendMethod",
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
         [Alias("Name")]
@@ -232,5 +244,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "FriendMethod",
             Mandatory = true)]
         public SwitchParameter InstanceView { get; set; }
+
+        [Parameter(
+            ParameterSetName = "OSUpgradeHistoryMethodParameter",
+            Mandatory = true)]
+        public SwitchParameter OSUpgradeHistory { get; set; }
     }
 }
