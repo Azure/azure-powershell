@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -127,12 +127,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsSecurity.Grant, "AzureRmSnapshotAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("Grant", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAccessUri))]
     public partial class GrantAzureRmSnapshotAccess : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.SnapshotName, VerbsSecurity.Grant))

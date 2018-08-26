@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// <summary>
     /// this commandlet will let you get a new Azure Web app slot using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSlot")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlot")]
+    [OutputType(typeof(Site))]
     public class GetAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
     {
         protected const string ParameterSet1Name = "S1";

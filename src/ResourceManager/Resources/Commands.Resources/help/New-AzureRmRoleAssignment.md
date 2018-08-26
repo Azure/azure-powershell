@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: E460D108-2BF9-4F57-AF3D-13868DC73EA0
@@ -87,14 +87,11 @@ Use the New-AzureRMRoleAssignment command to grant access.
 Access is granted by assigning the appropriate RBAC role to them at the right scope.
 To grant access to the entire subscription, assign a role at the subscription scope.
 To grant access to a specific resource group within a subscription, assign a role at the resource group scope.
-
 The subject of the assignment must be specified.
 To specify a user, use SignInName or Azure AD ObjectId parameters.
 To specify a security group, use Azure AD ObjectId parameter.
 And to specify an Azure AD application, use ApplicationId or ObjectId parameters.
-
 The role that is being assigned must be specified using the RoleDefinitionName parameter.
-
 The scope at which access is being granted may be specified.
 It defaults to the selected subscription. 
 The scope of the assignment can be specified using one of the following parameter combinations
@@ -118,7 +115,7 @@ Grant Reader role access to a user at a resource group scope with the Role Assig
 ```
 PS C:\> Get-AzureRMADGroup -SearchString "Christine Koch Team"
 
-          DisplayName                    Type                           ObjectId
+          DisplayName                    Type                           Id
           -----------                    ----                           --------
           Christine Koch Team                                           2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb
 
@@ -155,7 +152,7 @@ Grant reader access to a service principal
 The delegation flag while creating a Role assignment.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +167,7 @@ Accept wildcard characters: False
 The Application ID of the ServicePrincipal
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
 Aliases: SPN, ServicePrincipalName
 
@@ -185,7 +182,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -200,7 +197,7 @@ Accept wildcard characters: False
 Azure AD Objectid of the user, group or service principal.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, RoleIdWithScopeAndObjectIdParameterSet
 Aliases: Id, PrincipalId
 
@@ -216,7 +213,7 @@ The parent resource in the hierarchy(of the resource specified using ResourceNam
 Should only be  used in conjunction with ResourceGroupName, ResourceType and ResourceName parameters to construct a hierarchical scope in the form of a relative URI that identifies a resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet
 Aliases:
 
@@ -233,7 +230,7 @@ Creates an assignment that is effective at the specified resource group.
 When used in conjunction with ResourceName, ResourceType and (optionally)ParentResource parameters, the command constructs a hierarchical scope in the form of a relative URI that identifies a resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet
 Aliases:
 
@@ -251,7 +248,7 @@ storageaccountprod.
 Should only be used in conjunction with ResourceGroupName, ResourceType and (optionally)ParentResource parameters to construct a hierarchical scope in the form of a  relative URI that identifies a resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet
 Aliases:
 
@@ -269,7 +266,7 @@ Microsoft.Network/virtualNetworks.
 Should only be used in conjunction with ResourceGroupName, ResourceName and (optionally)ParentResource parameters to construct a hierarchical scope in  the form of a relative URI that identifies a resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet
 Aliases:
 
@@ -284,7 +281,7 @@ Accept wildcard characters: False
 Id of the RBAC role that needs to be assigned to the principal.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
 Aliases:
 
@@ -300,7 +297,7 @@ Name of the RBAC role that needs to be assigned to the principal i.e.
 Reader, Contributor, Virtual Network Administrator, etc.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
 Aliases:
 
@@ -320,7 +317,7 @@ If not specified, will create the role assignment at subscription level.
 If specified, it should start with "/subscriptions/{id}".
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EmptyParameterSet, RoleIdWithScopeAndObjectIdParameterSet
 Aliases:
 
@@ -332,7 +329,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ScopeWithObjectIdParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet
 Aliases:
 
@@ -347,7 +344,7 @@ Accept wildcard characters: False
 The email address or the user principal name of the user.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet
 Aliases: Email, UserPrincipalName
 
@@ -363,8 +360,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+
+### System.String
 
 ## OUTPUTS
 

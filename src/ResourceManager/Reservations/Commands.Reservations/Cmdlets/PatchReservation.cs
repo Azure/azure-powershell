@@ -9,13 +9,14 @@ using Microsoft.Azure.Management.Reservations;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet(VerbsData.Update, "AzureRmReservation", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSReservation))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Reservation", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSReservation))]
     public class PatchReservation : AzureReservationsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet,
@@ -29,13 +30,18 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         public Guid ReservationId { get; set; }
 
         [Parameter(Mandatory = true)]
-        [ValidateNotNull]
-        [ValidateSet ("Single", "Shared")]
+        [PSArgumentCompleter("Single", "Shared")]
+        [ValidateNotNullOrEmpty]
         public string AppliedScopeType { get; set; }
 
         [Parameter(Mandatory = false)]
         [ValidateNotNull]
         public string AppliedScope { get; set; }
+
+        [Parameter(Mandatory = false)]
+        [PSArgumentCompleter("On", "Off", "NotSupported")]
+        [ValidateNotNullOrEmpty]
+        public string InstanceFlexibility { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ObjectParameterSet,
             Mandatory = true,
@@ -55,7 +61,6 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             var resourceInfo = $"Reservation {ReservationId} in order {ReservationOrderId}";
             if (ShouldProcess(resourceInfo, "Update"))
             {
-                
                 Patch Patch;
                 if (AppliedScope != null)
                 {
@@ -63,11 +68,11 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
                     string subscriptionId = ValidateAndGetAppliedSubscription();
                     PreRegister(subscriptionId);
 
-                    Patch = new Patch(AppliedScopeType, new List<string>() { AppliedScope });
+                    Patch = new Patch(AppliedScopeType, new List<string>() { AppliedScope }, InstanceFlexibility);
                 }
                 else
                 {
-                    Patch = new Patch(AppliedScopeType);
+                    Patch = new Patch(AppliedScopeType, instanceFlexibility: InstanceFlexibility);
                 }
                 var response = new PSReservation(AzureReservationAPIClient.Reservation.Update(ReservationOrderId.ToString(), ReservationId.ToString(), Patch));
                 WriteObject(response);

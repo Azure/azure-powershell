@@ -12,10 +12,25 @@ Sets the vpn ipsec parameters for existing virtual network gateway.
 
 ## SYNTAX
 
+### ByFactoryName (Default)
 ```
 Set-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName <String> -ResourceGroupName <String>
  -VpnClientIPsecParameter <PSVpnClientIPsecParameters> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### ByFactoryObject
+```
+Set-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName <String> -ResourceGroupName <String>
+ -VpnClientIPsecParameter <PSVpnClientIPsecParameters> -InputObject <PSVirtualNetworkGateway>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Set-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName <String> -ResourceGroupName <String>
+ -VpnClientIPsecParameter <PSVpnClientIPsecParameters> -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +55,7 @@ This created VpnClientIPsecParameters object is passed to Set-AzureRmVpnClientIp
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,12 +66,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The virtual network gateaway object
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Parameter Sets: ByFactoryObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The Azure resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
@@ -70,14 +115,14 @@ Accept wildcard characters: False
 The virtual network gateway name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -85,7 +130,7 @@ Accept wildcard characters: False
 Vpn client ipsec parameters. This parameter value can be constructed using PS command let:New-AzureRmVpnClientIpsecParameter
 
 ```yaml
-Type: PSVpnClientIPsecParameters
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +145,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -116,7 +161,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -132,13 +177,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-This cmdlet accepts pipelined instances of the **Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters** object.
+### Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters
+Parameters: VpnClientIPsecParameter (ByValue)
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Parameters: InputObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 
-###  
-This cmdlet modifies existing instances of the **Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters** object.
+### Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters
 
 ## NOTES
 

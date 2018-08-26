@@ -46,8 +46,9 @@ Returns all the jobs on a particular ASR object(reference the ASR object such as
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,7 +66,7 @@ To obtain a **DateTime** object for this parameter, use the Get-Date cmdlet.
 For more information, type `Get-Help Get-Date`.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: ByParam
 Aliases:
 
@@ -80,7 +81,7 @@ Accept wildcard characters: False
 Specifies the ASR job object to get updated details for.
 
 ```yaml
-Type: ASRJob
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
 Parameter Sets: ByObject
 Aliases:
 
@@ -95,7 +96,7 @@ Accept wildcard characters: False
 Specify the ASR job by name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -111,7 +112,7 @@ Specifies the start time for the jobs.
 This cmdlet gets all jobs that started after the specified time.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: ByParam
 Aliases:
 
@@ -126,7 +127,6 @@ Accept wildcard characters: False
 Specifies the state for a ASR job.
 This cmdlet gets all jobs that match the specified state.
 The acceptable values for this parameter are:
-
 - NotStarted
 - InProgress
 - Succeeded
@@ -136,7 +136,7 @@ The acceptable values for this parameter are:
 - Suspended
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParam
 Aliases:
 Accepted values: NotStarted, InProgress, Succeeded, Other, Failed, Cancelled, Suspended
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 Specifies the ID of the object. Used to search for jobs on the specified object.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByParam
 Aliases:
 
@@ -169,10 +169,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
+Parameters: Job (ByValue)
 
 ## OUTPUTS
 
-### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
 
 ## NOTES
 

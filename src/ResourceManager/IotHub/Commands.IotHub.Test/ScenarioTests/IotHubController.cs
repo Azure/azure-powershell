@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using TestBase = Microsoft.Azure.Test.TestBase;
     using TestUtilities = Microsoft.Azure.Test.TestUtilities;
+    using ServiceManagemenet.Common.Models;
 
     public sealed class IotHubController
     {
@@ -67,16 +68,17 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
             RunPsTestWorkflow(
+                logger,
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -84,12 +86,14 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 
 
         public void RunPsTestWorkflow(
+            XunitTracingInterceptor logger,
             Func<string[]> scriptBuilder,
             Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
+            helper.TracingInterceptor = logger;
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
@@ -118,7 +122,6 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
                     "Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.IotHub.psd1"),
                     helper.GetRMModulePath(@"AzureRM.EventHub.psd1"),
                     "AzureRM.Resources.ps1");

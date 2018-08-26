@@ -79,8 +79,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
 
-            var result = VirtualMachineScaleSetsClient.Delete(resourceGroupName, vmScaleSetName);
-            WriteObject(result);
+            VirtualMachineScaleSetsClient.Delete(resourceGroupName, vmScaleSetName);
         }
     }
 

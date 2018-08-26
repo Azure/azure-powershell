@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,15 +18,15 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create or update a new Azure Sql Database backup archival policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy",
-        DefaultParameterSetName = WeeklyRetentionRequiredSet,
-        SupportsShouldProcess = true,
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseBackupLongTermRetentionPolicy",
+        DefaultParameterSetName = WeeklyRetentionRequiredSet,SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low),
         OutputType(typeof(AzureSqlDatabaseBackupLongTermRetentionPolicyModel))]
     [Alias("Set-AzureRmSqlDatabaseLongTermRetentionPolicy")]
@@ -60,6 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary>
         /// Gets or sets the backup long term retention state
         /// </summary>
+        [CmdletParameterBreakingChange("State", "Parameter is being deprecated without being replaced")]
         [Parameter(Mandatory = true,
             ParameterSetName = LegacySet,
             HelpMessage = "The state of the long term retention backup policy, 'Enabled' or 'Disabled'")]

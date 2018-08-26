@@ -16,9 +16,9 @@
 # Please create reservation through portal and use id to run tests
 # Once reservation is created you will have reservationOrderId (which is container for reservation),
 # reservationId, subscriptionId to run this test
-$subscriptionId ="98df3792-7962-4f18-8be2-d5576f122de3"
-$reservationOrderId = "55793bc2-e5c2-4a98-9d5c-0a0bce6cf998"
-$reservationId = "55ef9160-825e-4ca3-969e-c919de3c57ec"
+$subscriptionId ="302110e3-cd4e-4244-9874-07c91853c809"
+$reservationOrderId = "704aee8c-c906-47c7-bd22-781841fb48b5"
+$reservationId = "ac7f6b04-ff45-4da1-83f3-b0f2f6c8128e"
 
 <#
 .SYNOPSIS
@@ -26,13 +26,32 @@ Get reservation catalog
 #>
 function Test-GetCatalog
 {
-	$catalog = Get-AzureRmReservationCatalog -SubscriptionId $subscriptionId
+	# Get VirtualMachines catalog
+	$catalog = Get-AzureRmReservationCatalog -SubscriptionId $subscriptionId -ReservedResourceType VirtualMachines -Location westus
 	Foreach ($item in $catalog)
 	{
 		Assert-NotNull $item.ResourceType
 		Assert-NotNull $item.Name
-		Assert-NotNull $item.Tier
-		Assert-NotNull $item.Size
+		Assert-True { $item.Terms.Count -gt 0 }
+		Assert-True { $item.Locations.Count -gt 0 }
+	}
+
+	# Get SuseLinux catalog
+	$catalog = Get-AzureRmReservationCatalog -SubscriptionId $subscriptionId -ReservedResourceType SuseLinux
+	Foreach ($item in $catalog)
+	{
+		Assert-NotNull $item.ResourceType
+		Assert-NotNull $item.Name
+		Assert-Null $item.Locations
+		Assert-True { $item.Terms.Count -gt 0 }
+	}
+
+	# Get SqlDatabases catalog
+	$catalog = Get-AzureRmReservationCatalog -SubscriptionId $subscriptionId -ReservedResourceType SqlDatabases -Location southeastasia
+	Foreach ($item in $catalog)
+	{
+		Assert-NotNull $item.ResourceType
+		Assert-NotNull $item.Name
 		Assert-True { $item.Terms.Count -gt 0 }
 		Assert-True { $item.Locations.Count -gt 0 }
 	}
@@ -63,7 +82,7 @@ function Test-SplitReservation
 {
 	$type = "Microsoft.Capacity/reservationOrders/reservations"
 
-	$splitResult = Split-AzureRmReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId -Quantity 2,3
+	$splitResult = Split-AzureRmReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId -Quantity 1,1
 	Foreach ($splitItem in $splitResult)
 	{
 		Assert-NotNull $splitItem
@@ -81,8 +100,8 @@ Merge reservations
 #>
 function Test-MergeReservation
 {
-	$reservationId1 = "85c72953-db91-4d92-8535-e02f6bddb2cb"
-	$reservationId2 = "d2f9dac4-5bfb-4013-a93a-fdc1a7a353f7"
+	$reservationId1 = "efcd2077-baa6-4be3-8190-2b9ba939c8bc"
+	$reservationId2 = "0281e256-5b31-424a-8df8-e67f6531113a"
 	$type = "Microsoft.Capacity/reservationOrders/reservations"
 	$mergeResult = Merge-AzureRmReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId1,$reservationId2
 	Foreach ($mergeItem in $mergeResult)
@@ -126,7 +145,7 @@ function Test-UpdateReservationToShared
 {
 	$type = "Microsoft.Capacity/reservationOrders/reservations"
 
-	$reservationItem = Update-AzureRmReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId -appliedscopetype Shared
+	$reservationItem = Update-AzureRmReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId -appliedscopetype Shared -InstanceFlexibility On
 
 	Assert-NotNull $reservationItem
 	Assert-NotNull $reservationItem.Etag
@@ -147,9 +166,9 @@ Update reservation
 function Test-UpdateReservationToSingle
 {
 	$type = "Microsoft.Capacity/reservationOrders/reservations"
-	$subscription = "/subscriptions/98df3792-7962-4f18-8be2-d5576f122de3"
+	$subscription = "/subscriptions/302110e3-cd4e-4244-9874-07c91853c809"
 
-	$reservationItem = Update-AzureRmReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId -appliedscopetype Single -appliedscope $subscription
+	$reservationItem = Update-AzureRmReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId -appliedscopetype Single -appliedscope $subscription -InstanceFlexibility On
 
 	Assert-NotNull $reservationItem
 	Assert-NotNull $reservationItem.Etag

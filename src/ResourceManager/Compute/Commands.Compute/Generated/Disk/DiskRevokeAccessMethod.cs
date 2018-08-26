@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -79,8 +79,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string diskName = (string)ParseParameter(invokeMethodInputParameters[1]);
 
-            var result = DisksClient.RevokeAccess(resourceGroupName, diskName);
-            WriteObject(result);
+            DisksClient.RevokeAccess(resourceGroupName, diskName);
         }
     }
 
@@ -97,12 +96,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsSecurity.Revoke, "AzureRmDiskAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("Revoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class RevokeAzureRmDiskAccess : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.DiskName, VerbsSecurity.Revoke))
@@ -110,10 +110,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string diskName = this.DiskName;
 
-                    var result = DisksClient.RevokeAccess(resourceGroupName, diskName);
-                    var psObject = new PSOperationStatusResponse();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                    WriteObject(psObject);
+                    var result = DisksClient.RevokeAccessWithHttpMessagesAsync(resourceGroupName, diskName).GetAwaiter().GetResult();
+                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    {
+                        StartTime = this.StartTime,
+                        EndTime = DateTime.Now
+                    };
+
+                    if (result != null && result.Request != null && result.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+                    }
+
+                    WriteObject(output);
                 }
             });
         }

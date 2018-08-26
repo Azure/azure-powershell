@@ -248,6 +248,9 @@ Creates a VMSS configuration object.
 ### [New-AzureRmVmssIpConfig](New-AzureRmVmssIpConfig.md)
 Creates an IP configuration for a network interface of a VMSS.
 
+### [New-AzureRmVmssIpTagConfig](New-AzureRmVmssIpTagConfig.md)
+Creates an IP Tag object for a network interface of a VMSS.
+
 ### [New-AzureRmVmssVaultCertificateConfig](New-AzureRmVmssVaultCertificateConfig.md)
 Creates a Key Vault certificate configuration.
 

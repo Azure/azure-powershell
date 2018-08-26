@@ -41,8 +41,9 @@ Gets recovery points for the specified ASR replication protected item.
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -57,7 +58,7 @@ Accept wildcard characters: False
 Specifies the name of the recovery point to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByObjectWithName
 Aliases:
 
@@ -72,7 +73,7 @@ Accept wildcard characters: False
 Specifies the Azure Site Recovery Replication Protected Item object for which to get the list of available recovery points.
 
 ```yaml
-Type: ASRReplicationProtectedItem
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
 Parameter Sets: (All)
 Aliases:
 
@@ -89,10 +90,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
+Parameters: ReplicationProtectedItem (ByValue)
 
 ## OUTPUTS
 
-### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPoint, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPoint
 
 ## NOTES
 

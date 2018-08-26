@@ -31,15 +31,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns>List of protectable items</returns>
         public List<WorkloadProtectableItemResource> ListProtectableItem(
             ODataQuery<BMSPOQueryObject> queryFilter,
-            string skipToken = default(string))
+            string skipToken = default(string),
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
             Func<RestAzureNS.IPage<WorkloadProtectableItemResource>> listAsync =
                 () => BmsAdapter.Client.BackupProtectableItems.ListWithHttpMessagesAsync(
-                    BmsAdapter.GetResourceName(),
-                    BmsAdapter.GetResourceGroupName(),
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                     queryFilter,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
 

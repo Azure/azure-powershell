@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get, Constants.LinkedService, DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(List<PSLinkedService>), typeof(PSLinkedService))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2LinkedService", DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(PSLinkedService))]
     public class GetAzureDataFactoryLinkedServiceCommand : DataFactoryContextBaseGetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,

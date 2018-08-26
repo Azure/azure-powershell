@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
     public class ClientFactory : IClientFactory
     {
         private static readonly char[] uriPathSeparator = { '/' };
+        private static readonly CancelRetryHandler DefaultCancelRetryHandler  = new CancelRetryHandler(TimeSpan.FromSeconds(10), 3);
 
         private Dictionary<Type, IClientAction> _actions;
         private OrderedDictionary _handlers;
@@ -56,11 +57,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
-            var newHandlers = GetCustomHandlers();
-            TClient client = (newHandlers == null || newHandlers.Length == 0)
-                ? CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds)
-                : CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds, GetCustomHandlers());
-
+            var baseUri = context.Environment.GetEndpointAsUri(endpoint);
+            TClient client = CreateCustomArmClient<TClient>(baseUri, creds);
             var subscriptionId = typeof(TClient).GetProperty("SubscriptionId");
             if (subscriptionId != null && context.Subscription != null)
             {
@@ -73,23 +71,35 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         public virtual TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
             List<Type> types = new List<Type>();
-            var containsDelegatingHandler = false;
-            foreach (object obj in parameters)
+            List<object> parameterList = new List<object>();
+            List<DelegatingHandler> handlerList = new List<DelegatingHandler> { DefaultCancelRetryHandler.Clone() as CancelRetryHandler};
+            var customHandlers = GetCustomHandlers();
+            if (customHandlers != null && customHandlers.Any())
             {
-                if (obj.GetType().Name.Equals("DelegatingHandler[]"))
-                {
-                    containsDelegatingHandler = true;
-                }
-                types.Add(obj.GetType());
+                handlerList.AddRange(customHandlers);
             }
 
-            var copiedParameters = parameters;
-            if (!containsDelegatingHandler)
+            bool hasHandlers = false;
+            foreach (object obj in parameters)
+            {
+                var paramType = obj.GetType();
+                types.Add(paramType);
+                if (paramType == typeof(DelegatingHandler[]))
+                {
+                    handlerList.AddRange(obj as DelegatingHandler[]);
+                    parameterList.Add(handlerList.ToArray());
+                    hasHandlers = true;
+                }
+                else
+                {
+                    parameterList.Add(obj);
+                }
+            }
+
+            if (!hasHandlers)
             {
                 types.Add((new DelegatingHandler[0]).GetType());
-                var parameterList = copiedParameters.ToList();
-                parameterList.Add(new DelegatingHandler[0]);
-                copiedParameters = parameterList.ToArray();
+                parameterList.Add(handlerList.ToArray());
             }
 
             var constructor = typeof(TClient).GetConstructor(types.ToArray());
@@ -99,7 +109,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new InvalidOperationException(string.Format(Resources.InvalidManagementClientType, typeof(TClient).Name));
             }
 
-            TClient client = (TClient)constructor.Invoke(copiedParameters);
+            TClient client = (TClient)constructor.Invoke(parameterList.ToArray());
 
             foreach (ProductInfoHeaderValue userAgent in _userAgents.Keys)
             {
@@ -120,13 +130,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             SubscriptionCloudCredentials creds = AzureSession.Instance.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
-            TClient client = CreateCustomClient<TClient>(creds, context.Environment.GetEndpointAsUri(endpoint));
-            foreach (DelegatingHandler handler in GetCustomHandlers())
-            {
-                client.AddHandlerToPipeline(handler);
-            }
-
-            return client;
+            return CreateCustomClient<TClient>(creds, context.Environment.GetEndpointAsUri(endpoint));
         }
 
         public virtual TClient CreateClient<TClient>(IAzureContextContainer container, string endpoint) where TClient : ServiceClient<TClient>
@@ -177,7 +181,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             AzureContext context = new AzureContext(subscription, account, environment);
 
-            TClient client = CreateClient<TClient>(context, endpoint);
+            var client = CreateClient<TClient>(context, endpoint);
 
             foreach (IClientAction action in GetActions())
             {
@@ -209,6 +213,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 client.UserAgent.Add(userAgent);
             }
 
+            foreach (DelegatingHandler handler in GetCustomHandlers())
+            {
+                client.AddHandlerToPipeline(handler);
+            }
+
+            client.AddHandlerToPipeline(DefaultCancelRetryHandler.Clone() as CancelRetryHandler);
             return client;
         }
 

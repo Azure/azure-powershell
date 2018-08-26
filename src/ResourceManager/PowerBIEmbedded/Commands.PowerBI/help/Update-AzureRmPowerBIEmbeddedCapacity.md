@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.PowerBI.dll-Help.xml
 Module Name: AzureRM.PowerBIEmbedded
 ms.assetid: 5321FC62-3585-4493-A3D2-22CD82503CA7
@@ -13,17 +13,25 @@ Modifies  an instance of PowerBI Embedded Capacity.
 
 ## SYNTAX
 
+### ByNameAndResourceGroup (Default)
 ```
-Update-AzureRmPowerBIEmbeddedCapacity 
-	[-Name] <String> 
-	[[-ResourceGroupName] <String>] 
-	[[-Sku] <String>]
- 	[[-Tag] <Hashtable>] 
-	[[-Administrator] <String>] 
-	[-PassThru] 
-	[-WhatIf]
- 	[-Confirm] 
-    [<CommonParameters>]
+Update-AzureRmPowerBIEmbeddedCapacity [-Name] <String> [-ResourceGroupName <String>] [-Sku <String>]
+ [-Tag <Hashtable>] [-Administrator <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Update-AzureRmPowerBIEmbeddedCapacity [-Sku <String>] [-Tag <Hashtable>] [-Administrator <String[]>]
+ [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Update-AzureRmPowerBIEmbeddedCapacity [-Sku <String>] [-Tag <Hashtable>] [-Administrator <String[]>]
+ [-InputObject] <PSPowerBIEmbeddedCapacity> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,91 +52,39 @@ Administrator          : {testuser1@contoso.com, testuser2@contoso.com}
 Sku                    : A1
 Tier                   : PBIE_Azure
 Tag                    : {[key1, value1], [key2, value2]}
-
 ```
 
 Modifies the capacity named testcapacity in resourcegroup testgroup to set the tags as key1:value1 and key2:value2 and administrator to testuser1@contoso.com
 
 ## PARAMETERS
 
-### -Name
-Name of the PowerBI Embedded Capacity
-
-```yaml
-Type: String
-Parameter Sets: ByNameAndResourceGroup
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Name of the Azure resource group to which the capacity belongs
-
-```yaml
-Type: String
-Parameter Sets: ByNameAndResourceGroup
-Aliases: 
-
-Required: False
-Default value: None
-Accept wildcard characters: False
-```
-
-### -Sku
-The name of the Sku for the capacity.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-Accepted values: A1, A2, A3, A4, A5, A6
-
-Required: False
-Default value: None
-Accept wildcard characters: False
-```
-
-### -Tag
-Key-value pairs in the form of a hash table set as tags on the capacity.
-
-```yaml
-Type: Hashtable
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Default value: None
-Accept wildcard characters: False
-```
 ### -Administrator
 A comma separated capacity names to set as administrator on the capacity
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
+Position: Named
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-PowerBI Embedded Capacity ResourceID.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: String
-Parameter Sets: ByResourceId
-Aliases: 
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -136,9 +92,9 @@ Accept wildcard characters: False
 Input object for Piping
 
 ```yaml
-Type: PSPowerBIEmbeddedCapacity
+Type: Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
 Parameter Sets: ByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -147,13 +103,89 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the PowerBI Embedded Capacity
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameAndResourceGroup
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Will return the deleted capacity details if the operation completes successfully
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of the Azure resource group to which the capacity belongs
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameAndResourceGroup
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+PowerBI Embedded Capacity ResourceID.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Sku
+The name of the Sku for the capacity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: A1, A2, A3, A4, A5, A6
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Key-value pairs in the form of a hash table set as tags on the capacity.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -166,7 +198,7 @@ Accept wildcard characters: False
 Prompts user to confirm whether to perform the operation
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -181,7 +213,7 @@ Accept wildcard characters: False
 Describes the actions the current operation will perform without actually performing them
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -197,8 +229,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

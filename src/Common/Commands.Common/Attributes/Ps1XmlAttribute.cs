@@ -10,7 +10,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;   
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Attributes
 {
@@ -23,11 +23,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Attributes
         All = Table | List,
     }
 
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = true)]
     public sealed class Ps1XmlAttribute : Attribute
     {
         public string Label { get; set; }
 
         public ViewControl Target { get; set; } = ViewControl.Table;
+
+        public string ScriptBlock { get; set; }
+
+        public bool GroupByThis { get; set; }
+
+        public uint TableColumnWidth { get; set; }
+
+        public uint Position { get; set; } = Ps1XmlConstants.DefaultPosition;
+    }
+
+    public static class Ps1XmlConstants
+    {
+        public static uint DefaultPosition = 1000;
     }
 }

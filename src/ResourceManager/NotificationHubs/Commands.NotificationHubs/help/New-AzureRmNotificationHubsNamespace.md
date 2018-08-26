@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
 Module Name: AzureRM.NotificationHubs
 ms.assetid: 3BA94976-DE88-4F07-9C06-41FEEDE1B829
@@ -21,12 +21,10 @@ New-AzureRmNotificationHubsNamespace [-ResourceGroup] <String> [-Namespace] <Str
 
 ## DESCRIPTION
 The **New-AzureRmNotificationHubsNamespace** cmdlet creates a notification hub namespace.
-
 Namespaces are logical containers that help you organize and manage your notification hubs.
 You must have at least one notification hub namespace.
 A single namespace can house multiple hubs.
 You can have multiple namespaces to organize your hubs, or to give specific individuals permission to manage a selected subset of your hubs.
-
 To create a namespace, make sure that you specify a unique name for the namespace; specify the datacenter where the namespace will be located; and, specify the resource group that the namespace will be assigned to.
 After the namespace has been created you can use the New-AzureRmNotificationHubsNamespaceAuthorizationRules cmdlet to assign authorization rules to that namespace.
 Authorization rules are used to manage permissions to the namespace.
@@ -57,7 +55,7 @@ This ensures that the namespace will be displayed any time you filter for items 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -73,7 +71,7 @@ Specifies the display name of the datacenter that will host the Namespace.
 Although you can set this parameter to any valid location, for optimal performance you might want to use a datacenter located near the majority of your users.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +87,7 @@ Specifies the name of the new namespace.
 Namespaces provide a way to group and categorize notification hubs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +103,7 @@ Specifies the resource group to which the namespace will be assigned.
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and administration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +118,7 @@ Accept wildcard characters: False
 Sku tier of the namespace
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -135,13 +133,12 @@ Accept wildcard characters: False
 Specifies name-value pairs that can be used to categorize and organize Azure items.
 Tags function similar to keywords, and operate across a deployment.
 For example, if you search for all items with the tag Department:IT the search will return all the Azure items that have that tag, regardless of such things as item type, location, or resource group.
-
 An individual tag consists of two parts: the *Name* and, optionally, the *Value*.
 For instance, in Department:IT, the tag name is Department and the tag value is IT.
 To add a tag, use hash table syntax similar to this, which creates the tag CalendarYear:2016:
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +153,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -171,7 +168,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -187,8 +184,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 

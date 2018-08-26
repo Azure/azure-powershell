@@ -79,8 +79,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string availabilitySetName = (string)ParseParameter(invokeMethodInputParameters[1]);
 
-            var result = AvailabilitySetsClient.Delete(resourceGroupName, availabilitySetName);
-            WriteObject(result);
+            AvailabilitySetsClient.Delete(resourceGroupName, availabilitySetName);
         }
     }
 

@@ -39,7 +39,6 @@ Get-AzureRmKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>]
 The **Get-AzureRmKeyVault** cmdlet gets information about the key vaults in a subscription. You can
 view all key vaults instances in a subscription, or filter your results by a resource group or a
 particular key vault.
-
 Note that although specifying the resource group is optional for this cmdlet when you get a single
 key vault, you should do so for better performance.
 
@@ -172,7 +171,7 @@ subscription and in westus region.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -187,7 +186,7 @@ Accept wildcard characters: False
 Specifies whether to show the previously deleted vaults in the output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByDeletedVault, ListAllDeletedVaultsInSubscription
 Aliases:
 
@@ -202,7 +201,7 @@ Accept wildcard characters: False
 The location of the deleted vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByDeletedVault
 Aliases:
 
@@ -217,7 +216,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group associated with the key vault or key vaults being queried.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetVaultByName
 Aliases:
 
@@ -230,11 +229,10 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: ListAllVaultsInSubscription
 Aliases:
 
@@ -249,7 +247,7 @@ Accept wildcard characters: False
 Specifies the name of the key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetVaultByName
 Aliases: Name
 
@@ -261,7 +259,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByDeletedVault
 Aliases: Name
 
@@ -277,8 +275,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 

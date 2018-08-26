@@ -57,13 +57,39 @@ Properties       : {
 
 In this example we get the flow logging status for a Network Security Group. The specified NSG has flow logging enabled, and no retention policy set.
 
+### Example 2: Get the Flow Logging and Traffic Analytics Status for a Specified NSG
+```
+PS C:\> $NW = Get-AzurermNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
+PS C:\> $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName NSGRG -Name appNSG
+
+PS C:\> Get-AzureRmNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $nsg.Id
+
+TargetResourceId : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Network/networkSecurityGroups/appNSG
+StorageId        : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123
+Enabled          : True
+RetentionPolicy  : {
+                     "Days": 0,
+                     "Enabled": false
+                   }
+FlowAnalyticsConfiguration : {
+            "networkWatcherFlowAnalyticsConfiguration": {
+              "enabled": true,
+              "workspaceId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+              "workspaceRegion": "WorkspaceLocation",
+              "workspaceResourceId": "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourcegroups/WorkspaceRg/providers/microsoft.operationalinsights/workspaces/WorkspaceName"
+            }
+          }
+```
+
+In this example we get the flow logging and Traffic Analytics status for a Network Security Group. The specified NSG has flow logging and Traffic Analytics enabled, and no retention policy set.
+
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +104,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,7 +119,7 @@ Accept wildcard characters: False
 Location of the network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByLocation
 Aliases:
 
@@ -108,7 +134,7 @@ Accept wildcard characters: False
 The network watcher resource.
 
 ```yaml
-Type: PSNetworkWatcher
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
 Parameter Sets: SetByResource
 Aliases:
 
@@ -123,7 +149,7 @@ Accept wildcard characters: False
 The name of network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases: Name
 
@@ -138,7 +164,7 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases:
 
@@ -153,7 +179,7 @@ Accept wildcard characters: False
 The target resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +196,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-System.String
+Parameters: NetworkWatcher (ByValue)
+
+### System.String
+Parameters: NetworkWatcherName (ByValue)
 
 ## OUTPUTS
 

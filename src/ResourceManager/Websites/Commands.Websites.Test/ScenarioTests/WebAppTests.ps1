@@ -596,9 +596,10 @@ function Test-SetWebApp
 		Assert-AreEqual $webAppName $webApp.Name
 		Assert-AreEqual $serverFarm1.Id $webApp.ServerFarmId
 		Assert-Null $webApp.Identity
+		Assert-NotNull $webApp.SiteConfig.phpVersion
 		
 		# Change service plan & set site properties
-		$job = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -AssignIdentity $true -AsJob
+		$job = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -AsJob
 		$job | Wait-Job
 		$webApp = $job | Receive-Job
 
@@ -606,7 +607,6 @@ function Test-SetWebApp
 		Assert-AreEqual $webAppName $webApp.Name
 		Assert-AreEqual $serverFarm2.Id $webApp.ServerFarmId
 		Assert-AreEqual $true $webApp.HttpsOnly
-		Assert-NotNull  $webApp.Identity
 
 		# Set config properties
 		$webapp.SiteConfig.HttpLoggingEnabled = $true
@@ -621,21 +621,28 @@ function Test-SetWebApp
 		Assert-AreEqual $true $webApp.SiteConfig.HttpLoggingEnabled
 		Assert-AreEqual $true $webApp.SiteConfig.RequestTracingEnabled
 
-		# set app settings and connection strings
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}
 
-		$webApp = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppSettings $appSettings -ConnectionStrings $connectionStrings -NumberofWorkers $capacity
+        # set app settings and assign Identity
+        $webApp = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppSettings $appSettings -AssignIdentity $true
+
+        # Assert
+        Assert-NotNull  $webApp.Identity
+        # AssignIdentity adds an appsetting to handle enabling / disabling AssignIdentity
+        Assert-AreEqual ($appSettings.Keys.Count) $webApp.SiteConfig.AppSettings.Count
+        Assert-NotNull  $webApp.Identity
+
+        # set app settings and connection strings
+		$webApp = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppSettings $appSettings -ConnectionStrings $connectionStrings -NumberofWorkers $capacity -PhpVersion "off"
 
 		# Assert
 		Assert-AreEqual $webAppName $webApp.Name
-		Assert-AreEqual $appSettings.Keys.Count $webApp.SiteConfig.AppSettings.Count
-		foreach($nvp in $webApp.SiteConfig.AppSettings)
+        foreach($nvp in $webApp.SiteConfig.AppSettings)
 		{
 			Assert-True { $appSettings.Keys -contains $nvp.Name }
 			Assert-True { $appSettings[$nvp.Name] -match $nvp.Value }
 		}
-
 		Assert-AreEqual $connectionStrings.Keys.Count $webApp.SiteConfig.ConnectionStrings.Count
 		foreach($connStringInfo in $webApp.SiteConfig.ConnectionStrings)
 		{
@@ -643,6 +650,7 @@ function Test-SetWebApp
 		}
 
 		Assert-AreEqual $capacity $webApp.SiteConfig.NumberOfWorkers
+		Assert-AreEqual "" $webApp.SiteConfig.PhpVersion
 
 	}
 	finally

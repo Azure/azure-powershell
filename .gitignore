@@ -26,6 +26,7 @@ app.config
 *.userprefs
 *.sln.docstates
 .vscode
+*.userosscache
 
 # Build results
 [Dd]ebug/
@@ -217,6 +218,8 @@ pingme.txt
 groupMapping*.json
 /tools/index.json
 /Package/index.json
+/tools/outputtypes.json
+/Package/outputtypes.json
 
 *.msi
 *.wixpdb
@@ -232,3 +235,6 @@ launchSettings.json
 /src/StackAdmin/AzureRM/AzureRM.psm1
 /src/StackAdmin/AzureStack/AzureStack.psm1
 /tools/AzureRM.Netcore/AzureRM.Netcore.psm1
+/ModuleMappings.json
+/SolutionMappings.json
+/TestMappings.json

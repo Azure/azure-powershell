@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 98836BC0-AB4F-4F24-88BE-E7DD350B71E8
@@ -104,7 +104,7 @@ Gets the application with object id '1f89cf81-0146-4f4e-beae-2007d0668416' and p
 The application id of the application to add the credentials to.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationIdWithCertValueParameterSet, ApplicationIdWithPasswordParameterSet
 Aliases:
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 The application object to add the credentials to.
 
 ```yaml
-Type: PSADApplication
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameter Sets: ApplicationObjectWithCertValueParameterSet, ApplicationObjectWithPasswordParameterSet
 Aliases:
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 The value of the "asymmetric" credential type. It represents the base 64 encoded certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ApplicationObjectIdWithCertValueParameterSet, ApplicationIdWithCertValueParameterSet
 Aliases:
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DisplayNameWithCertValueParameterSet, ApplicationObjectWithCertValueParameterSet
 Aliases:
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 The display name of the application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DisplayNameWithPasswordParameterSet, DisplayNameWithCertValueParameterSet
 Aliases:
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 The effective end date of the credential usage. The default end date value is one year from today.  For an "asymmetric" type credential, this must be set to on or before the date that the X509 certificate is valid.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -206,7 +206,7 @@ Accept wildcard characters: False
 The object id of the application to add the credentials to.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationObjectIdWithPasswordParameterSet, ApplicationObjectIdWithCertValueParameterSet
 Aliases:
 
@@ -221,7 +221,7 @@ Accept wildcard characters: False
 The password to be associated with the application.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: ApplicationObjectIdWithPasswordParameterSet, ApplicationIdWithPasswordParameterSet
 Aliases:
 
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: DisplayNameWithPasswordParameterSet, ApplicationObjectWithPasswordParameterSet
 Aliases:
 
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 The effective start date of the credential usage. The default start date value is today. For an "asymmetric" type credential, this must be set to on or after the date that the X509 certificate is valid from.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -263,7 +263,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -279,7 +279,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -295,9 +295,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+### System.Guid
 
-This cmdlet accepts a PSADApplication object from the pipeline. You can pipe the output of Get-AzureRmADApplication to this cmdlet to create new credentials for the provided application.
+### System.String
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: ApplicationObject (ByValue)
+
+### System.Security.SecureString
+
+### System.DateTime
 
 ## OUTPUTS
 

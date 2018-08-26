@@ -14,31 +14,71 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.EventHub.Models;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
 {
     /// <summary>
     /// 'Remove-AzureRmEventHubNamespace' Cmdlet deletes the specified Eventhub Namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, EventHubNamespaceVerb, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubNamespace", DefaultParameterSetName = NamespaceParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureRmEventHubNamespace : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "EventHub Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "EventHub Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "EventHubs Namespace Object")]
+        [ValidateNotNullOrEmpty]
+        public PSNamespaceAttributes InputObject { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "EventHubs Namespace Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            // delete a EventHub namespace 
-            if(ShouldProcess(target: Name, action:string.Format(Resources.RemoveNamespaces, Name, ResourceGroupName)))
+
+            if(ParameterSetName.Equals(NamespaceInputObjectParameterSet))
             {
-                Client.BeginDeleteNamespace(ResourceGroupName, Name);
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(InputObject.Id);
+                ResourceGroupName = identifier.ResourceGroupName;
+                Name = identifier.ResourceName;              
+            }
+            else if (ParameterSetName.Equals(NamespaceResourceIdParameterSet))
+            {
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(ResourceId);
+                ResourceGroupName = identifier.ResourceGroupName;
+                Name = identifier.ResourceName;
+            }
+
+            // delete a EventHub namespace 
+            if (ShouldProcess(target: Name, action:string.Format(Resources.RemoveNamespaces, Name, ResourceGroupName)))
+            {
+                try
+                {
+                    Client.BeginDeleteNamespace(ResourceGroupName, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                }
+                catch (Management.EventHub.Models.ErrorResponseException ex)
+                {
+                    WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+                }
             }            
         }
     }

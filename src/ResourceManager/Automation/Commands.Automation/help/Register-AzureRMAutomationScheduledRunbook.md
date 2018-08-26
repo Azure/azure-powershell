@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: F79AFF9A-CEDA-4E57-B5DB-9D0A7CDA6D27
@@ -45,9 +45,9 @@ This command associates the runbook named Runbk01 with the schedule named Sched0
 Specifies an Automation account for the runbook on which this cmdlet operates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,9 +78,9 @@ The values are runbook parameter values.
 When the runbook starts in response to the associated schedule, these parameters are passed to the runbook.
 
 ```yaml
-Type: IDictionary
+Type: System.Collections.IDictionary
 Parameter Sets: ByRunbookNameAndScheduleName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -93,9 +93,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group for the scheduled runbook.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Specifies the name of the runbook that this cmdlet associates to a schedule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRunbookNameAndScheduleName
 Aliases: Name
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The name of the hybrid runbook worker group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRunbookNameAndScheduleName
 Aliases: HybridWorker
 
@@ -138,9 +138,9 @@ Accept wildcard characters: False
 Specifies the name of the schedule to which this cmdlet associates a runbook.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRunbookNameAndScheduleName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -154,8 +154,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

@@ -65,7 +65,7 @@ Deletes the specified Azure Maps Account.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 Maps Account piped from Get-AzureRmMapsAccount.
 
 ```yaml
-Type: PSMapsAccount
+Type: Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Maps Account Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet
 Aliases: MapsAccountName, AccountName
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 Return whether the specified account was successfully deleted or not.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 Maps Account ResourceId.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -171,7 +171,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -190,10 +190,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String
 
 ### Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

@@ -14,18 +14,12 @@
 
 function Get-ResourceGroupLocation
 {
-    $namespace = "Microsoft.RecoveryServices"
-    $type = "vaults"
-    $resourceProvider = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
-  
-    if ($resourceProvider -eq $null)
-    {
-        return "westus";
-    }
-	else
-    {
-		return $resourceProvider.Locations[0]
-    }
+	$location = Get-Location "Microsoft.RecoveryServices" "vaults" "West US";
+	$outputLocation = $location.ToLower()
+	$outputLocation = $outputLocation -replace '\s', ''
+	$outputLocation = $outputLocation -replace '-', ''
+	$outputLocation = $outputLocation -replace '_', ''
+	return $outputLocation;
 }
 
 function Get-RandomSuffix(
@@ -54,9 +48,14 @@ function Get-RandomSuffix(
 }
 
 function Create-ResourceGroup(
-	[string] $location)
+	[string] $location,
+	[int] $nick = -1)
 {
 	$name = "PSTestRG" + @(Get-RandomSuffix)
+	if($nick -gt -1)
+	{
+		$name += $nick
+	}
 
 	$resourceGroup = Get-AzureRmResourceGroup -Name $name -ErrorAction Ignore
 	
@@ -100,23 +99,35 @@ function Cleanup-ResourceGroup(
 		$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
 		foreach ($vault in $vaults)
 		{
-			Set-AzureRmRecoveryServicesVaultContext -Vault $vault
-			$containers = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureVM
-			foreach ($container in $containers)
-			{
-				$items = Get-AzureRmRecoveryServicesBackupItem -Container $container -WorkloadType AzureVM
-				foreach ($item in $items)
-				{
-					Disable-AzureRmRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -Force
-				}
-			}
-
-			Remove-AzureRmRecoveryServicesVault -Vault $vault
+			Delete-Vault $vault
 		}
 	
 		# Cleanup RG. This cleans up all VMs and Storage Accounts.
 		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 	}
+}
+
+function Delete-Vault($vault)
+{
+	$containers = Get-AzureRmRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-ContainerType AzureVM
+	foreach ($container in $containers)
+	{
+		$items = Get-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container `
+			-WorkloadType AzureVM
+		foreach ($item in $items)
+		{
+			Disable-AzureRmRecoveryServicesBackupProtection `
+				-VaultId $vault.ID `
+				-Item $item `
+				-RemoveRecoveryPoints -Force
+		}
+	}
+
+	Remove-AzureRmRecoveryServicesVault -Vault $vault
 }
 
 function Create-VM(
@@ -177,6 +188,44 @@ function Create-VM(
 	return $vm
 }
 
+function Create-GalleryVM(
+	[string] $resourceGroupName, 
+	[string] $location, 
+	[int] $nick = 0)
+{
+	$suffix = $(Get-RandomSuffix 5) + $nick
+	$vmName = "PSTestGVM" + $suffix
+
+	$vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName -ErrorAction Ignore
+
+	if ($vm -eq $null)
+	{
+		$subnetConfigName = "PSTestSNC" + $suffix
+		$vnetName = "PSTestVNET" + $suffix
+		$pipName = "pstestpublicdns" + $suffix
+		$nsgName = "PSTestNSG" + $suffix
+		$dnsLabel = "pstestdnslabel" + "-" + $suffix
+
+		$UserName='demouser'
+		$PasswordString = $(Get-RandomSuffix 12)
+		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
+		$Credential=New-Object PSCredential($UserName,$Password)
+
+		$vm = New-AzureRmVm `
+			-ResourceGroupName $resourceGroupName `
+			-Name $vmName `
+			-Location $location `
+			-SubnetName $subnetConfigName `
+			-SecurityGroupName $nsgName `
+			-PublicIpAddressName $pipName `
+			-ImageName "MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest" `
+			-Credential $Credential `
+			-DomainNameLabel $dnsLabel
+	}
+
+	return $vm
+}
+
 function Create-SA(
 	[string] $resourceGroupName, 
 	[string] $location)
@@ -202,25 +251,31 @@ function Enable-Protection(
 	$vault, 
 	$vm)
 {
-	Set-AzureRmRecoveryServicesVaultContext -Vault $vault | Out-Null
-
 	$container = Get-AzureRmRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
 		-ContainerType AzureVM `
 		-Name $vm.Name;
 
 	if ($container -eq $null)
 	{
-		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy";
+		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name "DefaultPolicy";
 	
 		Enable-AzureRmRecoveryServicesBackupProtection `
-			-Policy $policy -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName | Out-Null
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Name $vm.Name `
+			-ResourceGroupName $vm.ResourceGroupName | Out-Null
 
 		$container = Get-AzureRmRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
 			-ContainerType AzureVM `
 			-Name $vm.Name;
 	}
 	
 	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
 		-Container $container `
 		-WorkloadType AzureVM `
 		-Name $vm.Name
@@ -232,9 +287,9 @@ function Backup-Item(
 	$vault,
 	$item)
 {
-	Set-AzureRmRecoveryServicesVaultContext -Vault $vault | Out-Null
-
-	return Backup-AzureRmRecoveryServicesBackupItem -Item $item | Wait-AzureRmRecoveryServicesBackupJob
+	return Backup-AzureRmRecoveryServicesBackupItem `
+		-VaultId $vault.ID `
+		-Item $item | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
 }
 
 function Get-RecoveryPoint(
@@ -242,12 +297,14 @@ function Get-RecoveryPoint(
 	$item,
 	$backupJob)
 {
-	Set-AzureRmRecoveryServicesVaultContext -Vault $vault | Out-Null
-
 	$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
 	$backupEndTime = $backupJob.EndTime.AddMinutes(1);
 
-	$rps = Get-AzureRmRecoveryServicesBackupRecoveryPoint -Item $item -StartDate $backupStartTime -EndDate $backupEndTime
+	$rps = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
+		-VaultId $vault.ID `
+		-Item $item `
+		-StartDate $backupStartTime `
+		-EndDate $backupEndTime
 	
 	return $rps[0]
 }

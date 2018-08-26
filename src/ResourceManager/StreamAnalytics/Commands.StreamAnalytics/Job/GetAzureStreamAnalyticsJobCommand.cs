@@ -20,7 +20,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsCommon.Get, Constants.StreamAnalyticsJob), OutputType(typeof(List<PSJob>), typeof(PSJob))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StreamAnalyticsJob"), OutputType(typeof(PSJob))]
     public class GetAzureStreamAnalyticsJobCommand : StreamAnalyticsBaseCmdlet
     {
         [Parameter(ParameterSetName = StreamAnalyticsObjectsInResourceGroup, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

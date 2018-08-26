@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.WebSites
+Module Name: AzureRM.Websites
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebappsnapshot
 schema: 2.0.0
 ---
@@ -15,12 +15,12 @@ Gets the snapshots available for a web app.
 ### FromResourceName
 ```
 Get-AzureRmWebAppSnapshot [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FromWebApp
 ```
-Get-AzureRmWebAppSnapshot [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmWebAppSnapshot [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,7 @@ Get the snapshots for a web app named "ConstosoApp" with a slot named "Staging" 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,9 +56,9 @@ Accept wildcard characters: False
 The name of the web app.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FromResourceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -71,9 +71,9 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FromResourceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -86,9 +86,9 @@ Accept wildcard characters: False
 The name of the web app slot.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FromResourceName
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -101,9 +101,9 @@ Accept wildcard characters: False
 The web app object
 
 ```yaml
-Type: Site
+Type: Microsoft.Azure.Management.WebSites.Models.Site
 Parameter Sets: FromWebApp
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -112,18 +112,20 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Management.WebSites.Models.Site
 
+### Microsoft.Azure.Management.WebSites.Models.Site
+Parameters: WebApp (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot
 
-
 ## NOTES
 
 ## RELATED LINKS
-

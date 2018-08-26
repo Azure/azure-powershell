@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/get-azurermeventgridtopic
@@ -71,7 +71,7 @@ List all the Event Grid topics in the subscription.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 EventGrid Topic Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TopicNameParameterSet
 Aliases: TopicName
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupNameParameterSet
 Aliases: ResourceGroup
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TopicNameParameterSet
 Aliases: ResourceGroup
 
@@ -128,9 +128,9 @@ Accept wildcard characters: False
 Resource Identifier representing the Event Grid Topic.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -145,14 +145,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.EventGrid.Models.PSTopic
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance, Microsoft.Azure.Commands.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance
 
 ## NOTES
 
 ## RELATED LINKS
-

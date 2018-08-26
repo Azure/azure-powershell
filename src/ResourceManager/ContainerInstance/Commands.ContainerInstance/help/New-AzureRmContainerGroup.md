@@ -193,7 +193,7 @@ This commands creates a container group that mounts the provided Azure File shar
 The storage account credential of the Azure File share to mount where the username is the storage account name and the key is the storage account key.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: CreateContainerGroupWithAzureFileMountParamSet
 Aliases:
 
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 The mount path for the Azure File volume.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateContainerGroupWithAzureFileMountParamSet
 Aliases:
 
@@ -223,7 +223,7 @@ Accept wildcard characters: False
 The name of the Azure File share to mount.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateContainerGroupWithAzureFileMountParamSet
 Aliases:
 
@@ -238,7 +238,7 @@ Accept wildcard characters: False
 The command to run in the container.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -254,7 +254,7 @@ The required CPU cores.
 Default: 1
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -269,7 +269,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -284,7 +284,7 @@ Accept wildcard characters: False
 The DNS name label for the IP address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -299,7 +299,7 @@ Accept wildcard characters: False
 The container environment variables.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -314,7 +314,7 @@ Accept wildcard characters: False
 The container image.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -329,7 +329,7 @@ Accept wildcard characters: False
 The IP address type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Public
@@ -346,7 +346,7 @@ The container group Location.
 Default to the location of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -362,7 +362,7 @@ The required memory in GB.
 Default: 1.5
 
 ```yaml
-Type: Double
+Type: System.Nullable`1[System.Double]
 Parameter Sets: (All)
 Aliases: Memory
 
@@ -377,7 +377,7 @@ Accept wildcard characters: False
 The container group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -393,7 +393,7 @@ The container OS type.
 Default: Linux
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Linux, Windows
@@ -409,7 +409,7 @@ Accept wildcard characters: False
 The port(s) to open. Default: [80]
 
 ```yaml
-Type: Int32[]
+Type: System.Int32[]
 Parameter Sets: (All)
 Aliases:
 
@@ -424,7 +424,7 @@ Accept wildcard characters: False
 The custom container registry credential.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -439,7 +439,7 @@ Accept wildcard characters: False
 The custom container registry login server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: RegistryServer
 
@@ -454,7 +454,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -469,7 +469,7 @@ Accept wildcard characters: False
 The container restart policy. Default: Always
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Always, Never, OnFailure
@@ -485,7 +485,7 @@ Accept wildcard characters: False
 {{Fill Tag Description}}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -500,7 +500,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -516,7 +516,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -533,7 +533,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Collections.Hashtable
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 

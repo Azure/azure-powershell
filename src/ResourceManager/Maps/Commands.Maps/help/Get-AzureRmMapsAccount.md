@@ -31,7 +31,6 @@ Get-AzureRmMapsAccount [-ResourceId] <String> [-DefaultProfile <IAzureContextCon
 
 ## DESCRIPTION
 The Get-AzureRmMapsAccount cmdlet gets a provisioned Azure Maps account, either by resource group and name, or by resource id.
-
 Additionally, it can return a list of all accounts in the ResourceGroup, or all Azure Maps accounts for the current subscription.
 
 ## EXAMPLES
@@ -89,7 +88,7 @@ Gets the Maps account specified by the Resource Id.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -104,7 +103,7 @@ Accept wildcard characters: False
 Maps Account Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameParameterSet
 Aliases: MapsAccountName, AccountName
 
@@ -119,7 +118,7 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -131,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameParameterSet
 Aliases:
 
@@ -146,7 +145,7 @@ Accept wildcard characters: False
 Maps Account ResourceId.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 

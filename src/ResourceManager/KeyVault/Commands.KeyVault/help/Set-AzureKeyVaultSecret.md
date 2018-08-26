@@ -55,7 +55,6 @@ Tags         :
 The first command converts a string into a secure string by using the **ConvertTo-SecureString**
 cmdlet, and then stores that string in the $Secret variable. For more information, type `Get-Help
 ConvertTo-SecureString`.
-
 The second command modifies value of the secret named ITSecret in the key vault named Contoso. The
 secret value becomes the value stored in $Secret.
 
@@ -86,10 +85,8 @@ Tags         : Name      Value
 The first command converts a string into a secure string by using the **ConvertTo-SecureString**
 cmdlet, and then stores that string in the $Secret variable. For more information, type `Get-Help
 ConvertTo-SecureString`.
-
 The next commands define custom attributes for the expiry date, tags, and context type, and store
 the attributes in variables.
-
 The final command modifies values of the secret named ITSecret in the key vault named Contoso, by
 using the values specified previously as variables.
 
@@ -100,7 +97,7 @@ Specifies the content type of a secret.
 To delete the existing content type, specify an empty string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +112,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -130,7 +127,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet disables a secret.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +144,7 @@ This parameter uses Coordinated Universal Time (UTC). To obtain a **DateTime** o
 **Get-Date** cmdlet. For more information, type `Get-Help Get-Date`.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +159,7 @@ Accept wildcard characters: False
 Secret object
 
 ```yaml
-Type: PSKeyVaultSecretIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -179,7 +176,7 @@ Specifies the name of a secret to modify. This cmdlet constructs the fully quali
 your current environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases: SecretName
 
@@ -195,7 +192,7 @@ Specifies the time, as a **DateTime** object, before which the secret cannot be 
 parameter uses UTC. To obtain a **DateTime** object, use the **Get-Date** cmdlet.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -212,7 +209,7 @@ object, use the **ConvertTo-SecureString** cmdlet. For more information, type `G
 ConvertTo-SecureString`.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -225,11 +222,10 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -245,7 +241,7 @@ Specifies the name of the key vault to which this secret belongs. This cmdlet co
 of a key vault based on the name that this parameter specifies and your current environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases:
 
@@ -260,7 +256,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -276,7 +272,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -293,6 +289,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

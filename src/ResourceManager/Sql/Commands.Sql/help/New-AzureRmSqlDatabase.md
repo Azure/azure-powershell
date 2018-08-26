@@ -33,7 +33,6 @@ New-AzureRmSqlDatabase -DatabaseName <String> [-CollationName <String>] [-Catalo
 
 ## DESCRIPTION
 The **New-AzureRmSqlDatabase** cmdlet creates an Azure SQL database.
-
 You can also create an elastic database by setting the *ElasticPoolName* parameter to an existing elastic pool.
 
 ## EXAMPLES
@@ -118,8 +117,9 @@ This command creates a Vcore database named Database03 on server Server01.
 
 ### -AsJob
 Run cmdlet in the background
+
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 Specifies the name of the SQL database catalog collation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 Specifies the name of the SQL database collation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -161,10 +161,10 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The compute generation assign to the Azure SQL Database.
+The compute generation to assign.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VcoreBasedDatabase
 Aliases: Family
 
@@ -179,7 +179,7 @@ Accept wildcard characters: False
 Specifies the name of the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -207,7 +207,6 @@ Accept wildcard characters: False
 
 ### -Edition
 Specifies the edition to assign to the database. The acceptable values for this parameter are:
-
 - None
 - Basic
 - Standard
@@ -219,10 +218,9 @@ Specifies the edition to assign to the database. The acceptable values for this 
 - BusinessCritical
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DtuBasedDatabase
 Aliases:
-Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 
 Required: False
 Position: Named
@@ -232,10 +230,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VcoreBasedDatabase
 Aliases:
-Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 
 Required: True
 Position: Named
@@ -248,7 +245,7 @@ Accept wildcard characters: False
 Specifies the name of the elastic pool in which to put the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DtuBasedDatabase
 Aliases:
 
@@ -261,11 +258,11 @@ Accept wildcard characters: False
 
 ### -LicenseType
 The license type for the Azure Sql database.
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: LicenseIncluded, BasePrice
 
 Required: False
 Position: Named
@@ -278,7 +275,7 @@ Accept wildcard characters: False
 Specifies the maximum size of the database in bytes.
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -293,7 +290,7 @@ Accept wildcard characters: False
 The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)
 
 ```yaml
-Type: DatabaseReadScale
+Type: Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale
 Parameter Sets: (All)
 Aliases:
 Accepted values: Disabled, Enabled
@@ -309,7 +306,7 @@ Accept wildcard characters: False
 Specifies the name of the service objective to assign to the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DtuBasedDatabase
 Aliases:
 
@@ -324,7 +321,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the server is assigned.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -339,7 +336,7 @@ Accept wildcard characters: False
 The name of the sample schema to apply when creating this database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: AdventureWorksLT
@@ -355,7 +352,7 @@ Accept wildcard characters: False
 Specifies the name of the server that hosts the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -369,11 +366,10 @@ Accept wildcard characters: False
 ### -Tags
 Specifies a dictionary of Key-value pairs in the form of a hash table that this cmdlet associates
 with the new database. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -388,7 +384,7 @@ Accept wildcard characters: False
 The Vcore number for the Azure Sql database
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: VcoreBasedDatabase
 Aliases: Capacity
 
@@ -403,7 +399,7 @@ Accept wildcard characters: False
 The zone redundancy to associate with the Azure Sql Database
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -418,7 +414,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -434,7 +430,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -450,8 +446,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

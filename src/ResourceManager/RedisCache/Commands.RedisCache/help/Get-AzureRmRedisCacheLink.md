@@ -90,7 +90,7 @@ This command gets a single geo-replication links where Redis Cache named mycache
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 Name of redis cache.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AllLinksForCache
 Aliases:
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 Name of primary redis cache in link.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AllLinksForPrimaryCache, SingleLink
 Aliases:
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 Name of secondary redis cache in link.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SingleLink, AllLinksForSecondaryCache
 Aliases:
 
@@ -152,11 +152,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-You can pipe input to this cmdlet by name, but not by value.
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer, Microsoft.Azure.Commands.RedisCache, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer
 
 ## NOTES
 

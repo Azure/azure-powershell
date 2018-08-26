@@ -3,7 +3,7 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Aks.Generated;
+using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Rest;
 using CloudException = Microsoft.Rest.Azure.CloudException;

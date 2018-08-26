@@ -13,17 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Management.Automation;
-using System.Threading;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
     /// <summary>
     /// Gets the logs and metrics for the resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmDiagnosticSetting"), OutputType(typeof(PSServiceDiagnosticSettings))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting"), OutputType(typeof(PSServiceDiagnosticSettings))]
     public class GetAzureRmDiagnosticSettingCommand : ManagementCmdletBase
     {
 
@@ -36,11 +35,21 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the diagnostics setting name parameter of the cmdlet
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The diagnostic setting name. Defaults to 'service'")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
         #endregion
 
         protected override void ProcessRecordInternal()
         {
-            ServiceDiagnosticSettingsResource result = this.MonitorManagementClient.ServiceDiagnosticSettings.GetAsync(resourceUri: this.ResourceId, cancellationToken: CancellationToken.None).Result;
+            // Temporary service name constant provided for backwards compatibility
+            DiagnosticSettingsResource result = this.MonitorManagementClient.DiagnosticSettings.Get(
+                resourceUri: this.ResourceId, 
+                name: string.IsNullOrWhiteSpace(this.Name) ? SetAzureRmDiagnosticSettingCommand.TempServiceName : this.Name);
 
             var psResult = new PSServiceDiagnosticSettings(result);
             WriteObject(psResult);

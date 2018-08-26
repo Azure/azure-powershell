@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmruncommanddocument
@@ -28,8 +28,6 @@ PS C:\> Get-AzureRmVMRunCommandDocument -Location 'westus' -CommandId 'RunPowerS
 ```
 
 Gets a specific run command document for 'RunPowerShellScript' in 'westus'.
-
-
 Get-AzureRmVMRunCommandDocument -Location $loc
 
 ### Example 2
@@ -45,7 +43,7 @@ Lists all available run commands in 'westus'.
 The command id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -60,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,7 +73,7 @@ Accept wildcard characters: False
 The location upon which run commands is queried.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

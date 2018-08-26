@@ -37,6 +37,7 @@ using NetworkMgmtNS = Microsoft.Azure.Management.Network;
 using ComputeMgmtNS = Microsoft.Azure.Management.Compute;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
@@ -58,6 +59,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public StorageMgmtNS.StorageManagementClient StorageClient { get; private set; }
 
         public NetworkMgmtNS.NetworkManagementClient NetworkManagementClient { get; private set; }
+
+        public Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient InternalNetworkManagementClient { get; private set; }
 
         public ComputeMgmtNS.ComputeManagementClient ComputeManagementClient { get; private set; }
 
@@ -92,6 +95,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
             StorageClient = GetStorageManagementClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
+            InternalNetworkManagementClient = this.GetNetworkManagementClientInternal(context);
             ComputeManagementClient = GetComputeManagementClient(context);
 
             helper.SetupManagementClients(
@@ -102,6 +106,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 HyakRmClient,
                 StorageClient,
                 NetworkManagementClient,
+                InternalNetworkManagementClient,
                 ComputeManagementClient);
         }
 
@@ -114,6 +119,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         private NetworkMgmtNS.NetworkManagementClient GetNetworkManagementClient(MockContext context)
         {
             return context.GetServiceClient<NetworkMgmtNS.NetworkManagementClient>(
+                TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient GetNetworkManagementClientInternal(MockContext context)
+        {
+            return context.GetServiceClient<Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient>(
                 TestEnvironmentFactory.GetTestEnvironment());
         }
 
@@ -141,10 +152,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        public Collection<PSObject> RunPsTest(PsBackupProviderTypes providerType, params string[] scripts)
+        public Collection<PSObject> RunPsTest(XunitTracingInterceptor logger, PsBackupProviderTypes providerType, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             return RunPsTestWorkflow(
                 providerType,
@@ -217,7 +230,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 modules.Add(rmModulePath);
                 modules.Add(recoveryServicesModulePath);
                 modules.Add(helper.RMResourceModule);
+#if !NETSTANDARD
                 modules.Add(helper.RMStorageDataPlaneModule);
+#endif
                 modules.Add(helper.RMStorageModule);
                 modules.Add(helper.GetRMModulePath("AzureRM.Compute.psd1"));
                 modules.Add(helper.GetRMModulePath("AzureRM.Network.psd1"));

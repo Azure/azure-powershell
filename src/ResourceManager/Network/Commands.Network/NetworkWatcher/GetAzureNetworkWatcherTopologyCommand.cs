@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherTopology", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSTopology))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherTopology", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSTopology))]
 
     public class GetAzureNetworkWatcherTopologyCommand : NetworkWatcherBaseCmdlet
     {

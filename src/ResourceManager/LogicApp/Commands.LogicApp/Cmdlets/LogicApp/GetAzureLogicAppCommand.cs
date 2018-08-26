@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using Management.Logic.Models;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new LogicApp workflow 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmLogicApp"), OutputType(typeof(object))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LogicApp"), OutputType(typeof(Workflow), typeof(WorkflowVersion))]
     public class GetAzureLogicAppCommand : LogicAppBaseCmdlet
     {
 

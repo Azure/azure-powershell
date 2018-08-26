@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
 Module Name: AzureRM.MachineLearning
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/get-azurermmlcommitmentplan
@@ -23,17 +23,17 @@ Depending on the paramenters passed, the cmdlet returns the a specific commitmen
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Get a specific commitment plan  --------------------------
+### Example 1: Get a specific commitment plan
 ```
 Get-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
 ```
 
-### --------------------------  Example 2: Get all commitment plan resources in current subscription  --------------------------
+### Example 2: Get all commitment plan resources in current subscription
 ```
 Get-AzureRmMlCommitmentPlan
 ```
 
-### --------------------------  Example 3: Get all commitment plans in the current subscription and given resource group  --------------------------
+### Example 3: Get all commitment plans in the current subscription and given resource group
 ```
 Get-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup"
 ```
@@ -44,7 +44,7 @@ Get-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -59,9 +59,9 @@ Accept wildcard characters: False
 The name of the commitment plan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -74,9 +74,9 @@ Accept wildcard characters: False
 The name of the resource group for the Azure ML commitment plan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -91,15 +91,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan
-Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[]
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml
 
 ## RELATED LINKS
-

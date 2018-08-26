@@ -237,8 +237,8 @@ Breaking changes in the cmdlet : Get-SomeObjectA
 
 #### The output return type is changing
 ```cs
-[CmdletOutputBreakingChange(typeof(List<Foo>), ReplacementCmdletOutputTypeName = "Dictionary<String, Foo>")]
-[Cmdlet(VerbsCommon.Get, "SomeObjectA"), OutputType(typeof(List<Foo>))]
+[CmdletOutputBreakingChange(typeof(Foo), ReplacementCmdletOutputTypeName = "Dictionary<String, Foo>")]
+[Cmdlet(VerbsCommon.Get, "SomeObjectA"), OutputType(typeof(Foo))]
 public class GetSomeObjectA : AzureRMCmdlet
 {
     protected override void BeginProcessing()

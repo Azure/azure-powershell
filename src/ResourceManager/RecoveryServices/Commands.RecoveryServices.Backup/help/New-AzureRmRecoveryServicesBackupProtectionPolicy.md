@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.Backup
 ms.assetid: C2A7F37B-5713-4430-B83F-C6745692396D
@@ -16,19 +16,17 @@ Creates a Backup protection policy.
 ```
 New-AzureRmRecoveryServicesBackupProtectionPolicy [-Name] <String> [-WorkloadType] <WorkloadType>
  [[-BackupManagementType] <BackupManagementType>] [[-RetentionPolicy] <RetentionPolicyBase>]
- [[-SchedulePolicy] <SchedulePolicyBase>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-SchedulePolicy] <SchedulePolicyBase>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzureRmRecoveryServicesBackupProtectionPolicy** cmdlet creates a Backup protection policy in a vault.
 A protection policy is associated with at least one retention policy.
 The retention policy defines how long a recovery point is kept with Azure Backup.
-
 You can use the Get-AzureRmRecoveryServicesBackupRetentionPolicyObject cmdlet to get the default retention policy.
 And you can use the Get-AzureRmRecoveryServicesBackupSchedulePolicyObject cmdlet to get the default schedule policy.
 The **SchedulePolicy** and **RetentionPolicy** objects are used as inputs to the **New-AzureRmRecoveryServicesBackupProtectionPolicy** cmdlet.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -45,17 +43,11 @@ PS C:\> New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -Wor
 ```
 
 The first command gets a base **SchedulePolicyObject**, and then stores it in the $SchPol variable.
-
 The second command removes all scheduled run times from the schedule policy in $SchPol.
-
 The third command uses the Get-Date cmdlet to get the current date and time.
-
 The fourth command adds the current date and time in $Dt as the scheduled run time to the schedule policy.
-
 The fifth command gets a base **RetentionPolicy** object, and then stores it in the $RetPol variable.
-
 The sixth command sets the retention duration policy to 365 days.
-
 The final command creates a **BackupProtectionPolicy** object based on the schedule and retention policies created by the previous commands.
 
 ## PARAMETERS
@@ -63,14 +55,13 @@ The final command creates a **BackupProtectionPolicy** object based on the sched
 ### -BackupManagementType
 Specifies the Backup management type.
 The acceptable values for this parameter are:
-
 - AzureVM 
 - AzureSQLDatabase
 
 ```yaml
-Type: BackupManagementType
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
 
 Required: False
@@ -84,7 +75,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -99,9 +90,9 @@ Accept wildcard characters: False
 Specifies the name of the policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -115,9 +106,9 @@ Specifies the base **RetentionPolicy** object.
 You can use the Get-AzureRmRecoveryServicesBackupRetentionPolicyObject cmdlet to get a **RetentionPolicy** object.
 
 ```yaml
-Type: RetentionPolicyBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -131,9 +122,9 @@ Specifies the base **SchedulePolicy** object.
 You can use the Get-AzureRmRecoveryServicesBackupSchedulePolicyObject cmdlet to get a **SchedulePolicy** object.
 
 ```yaml
-Type: SchedulePolicyBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -142,17 +133,31 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -VaultId
+ARM ID of the Recovery Services Vault.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -WorkloadType
 Specifies the workload type.
 The acceptable values for this parameter are:
-
 - AzureVM 
 - AzureSQLDatabase
 
 ```yaml
-Type: WorkloadType
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureVM, AzureSQLDatabase
 
 Required: True
@@ -166,7 +171,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -181,7 +186,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -197,8 +202,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
+
+### System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null]]
+
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase
+
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase
+
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

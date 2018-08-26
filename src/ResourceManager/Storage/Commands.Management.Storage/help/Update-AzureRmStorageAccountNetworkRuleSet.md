@@ -53,9 +53,9 @@ This command clean up rules of NetworkRule of a Storage account (other propertie
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -72,9 +72,9 @@ The allowed value are none or any combination of:
 • Azureservices
 
 ```yaml
-Type: PSNetWorkRuleBypassEnum
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleBypassEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Logging, Metrics, AzureServices
 
 Required: False
@@ -91,9 +91,9 @@ The allowed Options:
 • Deny
 
 ```yaml
-Type: PSNetWorkRuleDefaultActionEnum
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Deny, Allow
 
 Required: False
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -122,9 +122,9 @@ Accept wildcard characters: False
 The Array of IpRule objects to update to the NetworkRule Property of a Storage account.
 
 ```yaml
-Type: PSIpRule[]
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 Specifies the name of the Storage account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountName, AccountName
 
@@ -152,9 +152,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group contains the Storage account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -167,9 +167,9 @@ Accept wildcard characters: False
 The Array of VirtualNetworkRule objects to update to the NetworkRule Property of a Storage account.
 
 ```yaml
-Type: PSVirtualNetworkRule[]
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -198,7 +198,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -215,8 +215,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
-Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
+
+### Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
+Parameters: IPRule (ByValue)
+
+### Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
+Parameters: VirtualNetworkRule (ByValue)
 
 ## OUTPUTS
 
@@ -225,4 +229,3 @@ Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
 ## NOTES
 
 ## RELATED LINKS
-

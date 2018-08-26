@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 5F135E64-9432-4D08-961F-4604410378A3
@@ -36,7 +36,7 @@ This command removes diagnostics extension from the VMSS.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 Specifies the name of the extension that this cmdlet removes from the VMSS.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 Specifies the VMSS from which to remove the extension.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -94,11 +94,10 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -114,13 +113,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### VirtualMachineScaleSet
-Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
+
+### System.String
 
 ## OUTPUTS
 
-###  
-This cmdlet does not generate any output.
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
 
 ## NOTES
 
