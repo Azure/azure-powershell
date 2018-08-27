@@ -53,7 +53,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ApiManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ApiManagement.4.0.3-preview\lib\net452\Microsoft.Azure.Management.ApiManagement.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ApiManagement.4.0.4-preview\lib\net452\Microsoft.Azure.Management.ApiManagement.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

@@ -9,13 +9,13 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = 'Az.psm1'
+RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = 'd48d710e-85cb-46a1-990f-22dae76f6b5f'
