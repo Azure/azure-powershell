@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,10 +22,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Retrieves Azure Site Recovery storage classification.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrStorageClassification",
-        DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrStorageClassification",DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
     [Alias("Get-ASRStorageClassification")]
     [OutputType(typeof(ASRStorageClassification))]
     public class GetAzureRmRecoveryServicesAsrStorageClassification : SiteRecoveryCmdletBase

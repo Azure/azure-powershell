@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
     /// <summary>
     /// 'Set-AzureRmServiceBusRule' Cmdlet updates the specified ServiceBus Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServicebusRuleVerb, SupportsShouldProcess = true), OutputType(typeof(PSRulesAttributes))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusRule", SupportsShouldProcess = true), OutputType(typeof(PSRulesAttributes))]
     public class SetAzureRmServiceBusRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
@@ -64,7 +64,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateRule, Name, Namespace)))
             {
-                WriteObject(Client.CreateUpdateRules(ResourceGroupName, Namespace, Topic, Subscription, Name, rulesAttributes));
+                try
+                {
+                    WriteObject(Client.CreateUpdateRules(ResourceGroupName, Namespace, Topic, Subscription, Name, rulesAttributes));
+                }
+                catch (ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }

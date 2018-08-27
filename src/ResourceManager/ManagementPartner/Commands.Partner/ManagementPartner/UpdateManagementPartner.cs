@@ -20,8 +20,7 @@ using PartnerResources = Microsoft.Azure.Commands.ManagementPartner.Properties.R
 
 namespace Microsoft.Azure.Commands.ManagementPartner
 {
-    [Cmdlet(VerbsData.Update, "AzureRmManagementPartner", SupportsShouldProcess = true),
-     OutputType(typeof(PSManagementPartner))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementPartner", SupportsShouldProcess = true),OutputType(typeof(PSManagementPartner))]
     public class UpdateManagementPartner : AzureManagementPartnerCmdletsBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The management partner id")]

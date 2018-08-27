@@ -143,10 +143,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), TargetResourceId (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: DetailedOutput (ByPropertyName)
 
 ## OUTPUTS
 

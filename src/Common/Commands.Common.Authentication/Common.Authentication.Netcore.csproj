@@ -3,7 +3,7 @@
   <Import Project="..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.Common.Authentication</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -24,6 +24,10 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.4.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Authentication\ConsoleParentWindow.cs" />
