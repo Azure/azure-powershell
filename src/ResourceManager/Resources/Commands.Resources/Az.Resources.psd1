@@ -132,7 +132,11 @@ CmdletsToExport = 'Get-AzProviderOperation', 'Remove-AzRoleAssignment',
     'Get-AzManagementGroup', 'New-AzManagementGroup', 
     'Update-AzManagementGroup', 'Remove-AzManagementGroup', 
     'New-AzManagementGroupSubscription', 
-    'Remove-AzManagementGroupSubscription'
+    'Remove-AzManagementGroupSubscription', 
+    'New-AzDeployment', 'Get-AzDeployment', 'Test-AzDeployment',
+    'Remove-AzDeployment', 'Stop-AzDeployment',
+    'Save-AzDeploymentTemplate',
+    'Get-AzDeploymentOperation'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -174,7 +178,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''

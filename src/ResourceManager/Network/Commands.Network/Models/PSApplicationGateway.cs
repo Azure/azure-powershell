@@ -13,6 +13,7 @@
 // limitations under the License.
 //
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -20,8 +21,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGateway : PSTopLevelResource
     {
+        [Ps1Xml(Label = "Sku Name", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name")]
         public PSApplicationGatewaySku Sku { get; set; }
 
+        [Ps1Xml(Label = "Policy Name", Target = ViewControl.Table, ScriptBlock = "$_.SslPolicy.PolicyName")]
         public PSApplicationGatewaySslPolicy SslPolicy { get; set; }
 
         public List<PSApplicationGatewayIPConfiguration> GatewayIPConfigurations { get; set; }
@@ -50,14 +53,18 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableHttp2 { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableFips { get; set; }
 
         public List<string> Zones { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string OperationalState { get; private set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]

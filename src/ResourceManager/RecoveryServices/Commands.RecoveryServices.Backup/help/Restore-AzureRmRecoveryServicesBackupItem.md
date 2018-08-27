@@ -15,9 +15,9 @@ Restores the data and configuration for a Backup item to a recovery point.
 
 ```
 Restore-AzureRmRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
- [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-TargetResourceGroupName <String>]
- [-UseOriginalStorageAccount] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String>
+ [[-TargetResourceGroupName] <String>] [-UseOriginalStorageAccount] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +125,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
