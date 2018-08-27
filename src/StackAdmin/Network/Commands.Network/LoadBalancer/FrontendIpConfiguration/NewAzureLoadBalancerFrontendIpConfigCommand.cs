@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -26,23 +26,13 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
-            // Get the subnetId and publicIpAddressId from the object if specified
-            if (string.Equals(ParameterSetName, "object"))
-            {
-                this.SubnetId = this.Subnet.Id;
-
-                if (PublicIpAddress != null)
-                {
-                    this.PublicIpAddressId = this.PublicIpAddress.Id;
-                }
-            }
+            base.Execute();
 
             var frontendIpConfig = new PSFrontendIPConfiguration();
             frontendIpConfig.Name = this.Name;
+            frontendIpConfig.Zones = this.Zone;
 
             if (!string.IsNullOrEmpty(this.SubnetId))
             {
