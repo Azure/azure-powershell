@@ -88,7 +88,7 @@ function New-AzsSubscription {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSBoundParameters.ContainsKey('Location')) {
             if ( $MyInvocation.Line -match "\s-ArmLocation\s") {
@@ -117,7 +117,7 @@ function New-AzsSubscription {
                     throw "A subscription with identifier $SubscriptionId already exists."
                 }
             }
-        
+
             $NewServiceClient_params = @{
                 FullClientTypeName = 'Microsoft.AzureStack.Management.Subscription.SubscriptionClient'
             }

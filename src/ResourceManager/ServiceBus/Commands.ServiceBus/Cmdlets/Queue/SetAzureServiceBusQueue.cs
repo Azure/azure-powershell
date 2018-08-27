@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
     /// <summary>
     /// 'Set-AzureRmServiceBusQueue' Cmdlet updates the specified Queue
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServicebusQueueVerb, SupportsShouldProcess = true), OutputType(typeof(PSQueueAttributes))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusQueue", SupportsShouldProcess = true), OutputType(typeof(PSQueueAttributes))]
     public class SetAzureRmServiceBusQueue : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
@@ -58,7 +58,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateQueue, Name, Namespace)))
             {
-                WriteObject(Client.CreateUpdateQueue(ResourceGroupName, Namespace, queueAttributes.Name, queueAttributes));
+                try
+                {
+                    WriteObject(Client.CreateUpdateQueue(ResourceGroupName, Namespace, queueAttributes.Name, queueAttributes));
+                }
+                catch (ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
+
             }
         }
     }

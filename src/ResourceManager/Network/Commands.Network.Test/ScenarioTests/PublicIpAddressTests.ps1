@@ -445,12 +445,13 @@ function Test-PublicIpAddressVmss
 
     try
     {
+        . ".\AzureRM.Resources.ps1"
+
         # Create the resource group
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         $vmssName = "vmssip"
-        $deploymentName = "vmssDeployment";
-        $templateFile = ".\ScenarioTests\Data\VmssDeploymentTemplate.json"
-        New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $rgname -TemplateFile $templateFile;
+        $templateFile = (Resolve-Path ".\ScenarioTests\Data\VmssDeploymentTemplate.json").Path
+        New-AzureRmResourceGroupDeployment -Name $rgname -ResourceGroupName $rgname -TemplateFile $templateFile;
 
         $listAllResults = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -VirtualMachineScaleSetName $vmssName;
         Assert-NotNull $listAllResults;

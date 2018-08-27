@@ -22,10 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
-    [Cmdlet(
-        VerbsCommon.Remove, 
-        WebServicesCmdletBase.CommandletSuffix,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlWebService",SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
     public class RemoveAzureMLWebService : WebServicesCmdletBase
     {

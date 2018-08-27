@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props')" />
-  <Import Project="..\..\..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props" Condition="Exists('..\..\..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props')" />
+  <Import Project="..\..\..\..\tools\Common.Dependencies.Test.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,7 +13,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <NuGetPackageImportStamp>7f1b82e3</NuGetPackageImportStamp>
   </PropertyGroup>
@@ -69,13 +68,6 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.OperationalInsights, Version=0.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.18.0-preview\lib\net45\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.ResourceManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.13.1-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.6.1.0-preview\lib\net45\Microsoft.Azure.Management.Storage.dll</HintPath>
@@ -181,15 +173,18 @@
     <Compile Include="ScenarioTests\ApplicationSecurityGroupTests.cs" />
     <Compile Include="ScenarioTests\AvailableEndpointServicesTests.cs" />
     <Compile Include="ScenarioTests\ExpressRouteCrossConnectionTests.cs" />
+    <Compile Include="ScenarioTests\Generated\ApplicationSecurityGroupTestsGenerated.cs" />
+    <Compile Include="ScenarioTests\Generated\UsageTestsGenerated.cs" />
     <Compile Include="ScenarioTests\MultiIpConfigOnNicTests.cs" />
     <Compile Include="ScenarioTests\ExpressRouteServiceProviderTests.cs" />
+    <Compile Include="ScenarioTests\NetworkCloudExceptionTests.cs" />
     <Compile Include="ScenarioTests\NetworkInterfaceTests.cs" />
     <Compile Include="ScenarioTests\LoadBalancerTests.cs" />
     <Compile Include="ScenarioTests\ExpressRouteCircuitTests.cs" />
     <Compile Include="ScenarioTests\PublicIpPrefixTests.cs" />
     <Compile Include="ScenarioTests\RouteTableTests.cs" />
     <Compile Include="ScenarioTests\NetworkSecurityGroupTests.cs" />
-    <Compile Include="ScenarioTests\RouteTableTestsGenerated.cs" />
+    <Compile Include="ScenarioTests\Generated\RouteTableTestsGenerated.cs" />
     <Compile Include="ScenarioTests\TestDnsAvailabilityTest.cs" />
     <Compile Include="ScenarioTests\UsageTests.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkTests.cs" />
@@ -201,12 +196,6 @@
     <Compile Include="ScenarioTests\NetworkWatcherAPITests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Resources.ps1">
-      <Link>ScenarioTests\AzureRM.Resources.ps1</Link>
-    </None>
-    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Storage.ps1">
-      <Link>ScenarioTests\AzureRM.Storage.ps1</Link>
-    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -244,7 +233,16 @@
     <None Include="ScenarioTests\ExpressRouteServiceProviderTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\Generated\ApplicationSecurityGroupTestsGenerated.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\Generated\UsageTestsGenerated.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\MultiIpConfigOnNicTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\NetworkCloudExceptionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\NetworkInterfaceTests.ps1">
@@ -265,7 +263,7 @@
     <None Include="ScenarioTests\NetworkSecurityGroupTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\RouteTableTestsGenerated.ps1">
+    <None Include="ScenarioTests\Generated\RouteTableTestsGenerated.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\TestDnsAvailabilityTest.ps1">
@@ -302,6 +300,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestAvailableWafRuleSets.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTestsGenerated\TestApplicationSecurityGroupCRUDAllParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTestsGenerated\TestApplicationSecurityGroupCRUDMinimalParameters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationSecurityGroupTests\TestApplicationSecurityGroupCollections.json">
@@ -364,6 +368,18 @@
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestSetLoadBalancerCRUDPublicStandardSku.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkCloudExceptionTests\TestDuplicateResource.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkCloudExceptionTests\TestIntersectAddressSpace.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkCloudExceptionTests\TestInvalidName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkCloudExceptionTests\TestNotFound.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkSecurityGroupTests\TestNetworkSecurityGroupMultiValuedRules.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -578,6 +594,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.TestDnsAvailabilityTest\TestDnsAvailability.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.UsageTestsGenerated\TestUsageCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayConnectionTests\TestVirtualNetworkeExpressRouteGatewayConnectionCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -688,29 +707,21 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
+    <ProjectReference Include="..\..\..\Storage\Commands.Storage\Commands.Storage.csproj">
+      <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
+      <Name>Commands.Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
-      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
-      <Name>Commands.Common.Authentication</Name>
+    <ProjectReference Include="..\..\Compute\Commands.Compute\Commands.Compute.csproj">
+      <Project>{52643bd5-6378-49bd-9f6e-dac9dd8a867b}</Project>
+      <Name>Commands.Compute</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
-      <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
-      <Name>Commands.Common.Storage</Name>
+    <ProjectReference Include="..\..\Insights\Commands.Insights\Commands.Insights.csproj">
+      <Project>{dea446a1-84e2-46cc-b780-eb4afde2460e}</Project>
+      <Name>Commands.Insights</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
-      <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
-      <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
+    <ProjectReference Include="..\..\OperationalInsights\Commands.OperationalInsights\Commands.OperationalInsights.csproj">
+      <Project>{5be35a94-c20f-4659-aa29-9b9aebcfaf36}</Project>
+      <Name>Commands.OperationalInsights</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
@@ -720,15 +731,10 @@
       <Project>{98cfd96b-a6bc-4f15-ae2c-603fc2b58981}</Project>
       <Name>Commands.Network</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\OperationalInsights\Commands.OperationalInsights\Commands.OperationalInsights.csproj">
-      <Project>{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36}</Project>
-      <Name>Commands.OperationalInsights</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\..\tools\Common.Dependencies.Test.targets" />
 </Project>

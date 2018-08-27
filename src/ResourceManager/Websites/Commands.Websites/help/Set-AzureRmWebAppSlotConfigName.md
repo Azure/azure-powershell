@@ -167,10 +167,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String[]
-Parameters: AppSettingNames (ByPropertyName), ConnectionStringNames (ByPropertyName)
 
 ### System.String
-Parameters: Name (ByPropertyName)
 
 ### Microsoft.Azure.Management.WebSites.Models.Site
 Parameters: WebApp (ByValue)

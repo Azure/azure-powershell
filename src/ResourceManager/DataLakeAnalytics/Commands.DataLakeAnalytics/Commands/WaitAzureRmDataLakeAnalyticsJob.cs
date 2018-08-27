@@ -23,7 +23,7 @@ using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsLifecycle.Wait, "AzureRmDataLakeAnalyticsJob"), OutputType(typeof(JobInformation))]
+    [Cmdlet("Wait", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeAnalyticsJob"), OutputType(typeof(JobInformation))]
     [Alias("Wait-AdlJob")]
     public class WaitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {

@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,10 @@
 -->
 
 ## Current Release
+* Fixed issue with default resource groups not being set.
+
+## Version 0.5.8
+* Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 0.5.7
 * Updated all help files to include full parameter types and correct input/output types.
@@ -54,14 +58,14 @@
     - Added new AzureDatabricks LinkedService and DatabricksNotebook Activity
     - Added headNodeSize and dataNodeSize properties in HDInsightOnDemand LinkedService
     - Added LinkedService, Dataset, CopySource for SalesforceMarketingCloud
-    - Added support for SecureOutput on all activities 
+    - Added support for SecureOutput on all activities
     - Added new BatchCount property on ForEach activity which control how many concurrent activities to run
     - Added new Filter Activity
     - Added Linked Service Parameters support
 
 ## Version 0.5.1
 * Add parameter 'SetupScriptContainerSasUri' and 'Edition' for 'Set-AzureRmDataFactoryV2IntegrationRuntime' cmd to enable custom setup and edition selection functionality
-* Fix credential encryption issue that caused no meaningful error for some encryption operations. 
+* Fix credential encryption issue that caused no meaningful error for some encryption operations.
 * Enable integration runtime to be shared across data factory
 
 ## Version 0.5.0

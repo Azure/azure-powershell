@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,10 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Get the protectable items in an ASR protection container.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get,
-        "AzureRmRecoveryServicesAsrProtectableItem",
-        DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrProtectableItem",DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRProtectableItem")]
     [OutputType(typeof(ASRProtectableItem))]
     public class GetAzureRmRecoveryServicesAsrProtectableItem : SiteRecoveryCmdletBase

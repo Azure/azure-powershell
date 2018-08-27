@@ -195,10 +195,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: DefaultGroup (ByPropertyName), KeyVersion (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
 ### System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProviderState, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 

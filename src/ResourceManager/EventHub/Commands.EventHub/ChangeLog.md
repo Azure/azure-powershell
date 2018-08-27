@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
+
+## Version 0.6.8
+* Updated to the latest version of the Azure ClientRuntime.
+* Updated exception handling for cmdlets
 
 ## Version 0.6.7
 * Updated piping for InputObject and ResourceId in remove cmdlets
@@ -47,10 +52,10 @@
 * Fix bug in Get-AzureRmEventHubGeoDRConfiguration help
 
 ## Version 0.6.0
-* Added below new commands for Geo Disaster Recovery operations. 
-	-Creating a new Alias(Disaster Recovery configuration): 
+* Added below new commands for Geo Disaster Recovery operations.
+	-Creating a new Alias(Disaster Recovery configuration):
 		- New-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
-	-Retrieve Alias(Disaster Recovery configuration) : 
+	-Retrieve Alias(Disaster Recovery configuration) :
 		- Get-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
 	-Disabling the Disaster Recovery and stops replicating changes from primary to secondary namespaces
 		- Set-AzureRmEventHubGeoDRConfigurationBreakPair [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
@@ -59,14 +64,14 @@
 	-Deleting an Alias(Disaster Recovery configuration)
 		- Remove-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
 
-* Added below new commands for checking the Namespace Name and GeoDr Configuration Name - Alias availability. 
-	-Check the Availability of Namespace name or Alias(Disaster Recovery configuration) name: 
+* Added below new commands for checking the Namespace Name and GeoDr Configuration Name - Alias availability.
+	-Check the Availability of Namespace name or Alias(Disaster Recovery configuration) name:
 		- Test-AzureRmEventHubName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String>
-		
+
 ## Version 0.5.1
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
-		
+
 ## Version 0.5.0
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
 * Add support for online help
@@ -92,14 +97,14 @@
     - Set-AzureRmEventHubAuthorizationRule
         - Updates properties of existing AuthorizationRule of EventHub NameSpace.
     - Remove-AzureRmEventHubAuthorizationRule
-        - Deletes the existing AuthorizationRule of existing NameSpace or EventHub.    
+        - Deletes the existing AuthorizationRule of existing NameSpace or EventHub.
     - New-AzureRmEventHubKey
         - Generates a new Primary/Secondary Key for AuthorizationRule of existing NameSpace or EventHub.
     - Get-AzureRmEventHubKey
         - Gets Primary/Secondary Key for AuthorizationRule of existing NameSpace or EventHub.
 
 ## Version 0.4.2
-		
+
 ## Version 0.4.1
 
 ## Version 0.4.0
@@ -107,9 +112,9 @@
 ## Version 0.3.1
 
 ## Version 0.3.0
-* Bug fix : 
-	- Fix for Set-AzureRmEventHubNamespace cmdlet error  - 'Tier' cannot be null, where it should be 'SkuName' 
-    - Set-AzureRmEventHub - Fix 'Object reference not set to an instance of an object' error while updating EventHub  
+* Bug fix :
+	- Fix for Set-AzureRmEventHubNamespace cmdlet error  - 'Tier' cannot be null, where it should be 'SkuName'
+    - Set-AzureRmEventHub - Fix 'Object reference not set to an instance of an object' error while updating EventHub
 
 ## Version 0.2.0
 
@@ -154,7 +159,7 @@
     - New-AzureRmEventHubAuthorizationRule
         - Adds a new AuthorizationRule to the existing EventHub of NameSpace.
     - Get-AzureRmEventHubAuthorizationRule
-        - Gets the AuthorizationRule / List of AuthorizationRules of the EventHub. 
+        - Gets the AuthorizationRule / List of AuthorizationRules of the EventHub.
     - Set-AzureRmEventHubAuthorizationRule
         - Updates the AuthorizationRule of the EventHub.
     - New-AzureRmEventHubKey
