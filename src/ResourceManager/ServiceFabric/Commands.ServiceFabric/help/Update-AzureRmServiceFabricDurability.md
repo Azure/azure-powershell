@@ -159,7 +159,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), NodeType (ByValue), ResourceGroupName (ByPropertyName), Sku (ByValue)
+Parameters: NodeType (ByValue), Sku (ByValue)
 
 ### Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel
 Parameters: DurabilityLevel (ByValue)
