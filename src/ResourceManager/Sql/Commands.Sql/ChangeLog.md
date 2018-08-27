@@ -21,9 +21,11 @@
 
 ## Version 4.11.2
 * Fixed issue with default resource groups not being set.
-* Deprecated unsupported LongTermRetention cmdlets:
-	* Get-AzureRmSqlServerBackupLongTermRetentionVault
-	* Set-AzureRmSqlServerBackupLongTermRetentionVault
+* Deprecated unsupported LongTermRetention features:
+	* Get-AzureRmSqlServerBackupLongTermRetentionVault cmdlet
+	* Set-AzureRmSqlServerBackupLongTermRetentionVault cmdlet
+	* Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -Current parameter
+	* Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -State parameter
 
 ## Version 4.11.1
 * Updated to the latest version of the Azure ClientRuntime.
