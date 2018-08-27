@@ -241,13 +241,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), StorageAccountEndpoint (ByPropertyName), StorageAccountKey (ByPropertyName), StorageAccountName (ByPropertyName), TypeHandlerVersion (ByPropertyName), VMName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameters: StorageContext (ByPropertyName)
 
 ### System.Boolean
-Parameters: AutoUpgradeMinorVersion (ByPropertyName)
 
 ## OUTPUTS
 

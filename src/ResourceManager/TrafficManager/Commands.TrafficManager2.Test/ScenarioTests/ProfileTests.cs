@@ -167,5 +167,19 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileMonitorParameterAliases");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAndRemoveCustomHeadersFromProfile()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AddAndRemoveCustomHeadersFromProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAndRemoveExpectedStatusCodeRanges()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AddAndRemoveExpectedStatusCodeRanges");
+        }
     }
 }
