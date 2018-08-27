@@ -3,10 +3,11 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.ScenarioTest.Common</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ScenarioTest</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <IsTestProject>false</IsTestProject>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -33,6 +34,7 @@
     <Compile Remove="Mocks\MockDeploymentClientFactory.cs" />
     <Compile Remove="ProfileClient.cs" />
   </ItemGroup>
+  
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />

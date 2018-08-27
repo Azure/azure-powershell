@@ -170,13 +170,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
-Parameters: VirtualMachineScaleSet (ByPropertyName, ByValue)
 
 ### System.Int32
-Parameters: MaxBatchInstancePercent (ByPropertyName), MaxUnhealthyInstancePercent (ByPropertyName), MaxUnhealthyUpgradedInstancePercent (ByPropertyName)
 
 ### System.String
-Parameters: PauseTimeBetweenBatches (ByPropertyName)
 
 ## OUTPUTS
 

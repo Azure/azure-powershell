@@ -132,13 +132,7 @@ namespace Microsoft.Azure.Commands.Compute
                     DiskSizeGB = this.DiskSizeInGB,
                     Lun = this.Lun,
                     CreateOption = this.CreateOption,
-                    ManagedDisk = (this.ManagedDiskId == null && this.StorageAccountType == null)
-                              ? null
-                              : new ManagedDiskParameters
-                              {
-                                  Id = this.ManagedDiskId,
-                                  StorageAccountType = this.StorageAccountType
-                              },
+                    ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType),
                     WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
                 };
 

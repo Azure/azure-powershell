@@ -18,16 +18,20 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Microsoft.Azure.Management.Network.Models;
 
     using Newtonsoft.Json;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSIpv6PeeringConfig : PSChildResource
     {
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string State { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string PrimaryPeerAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string SecondaryPeerAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
