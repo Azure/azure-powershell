@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.EventHub.Models;
 using Microsoft.Azure.Commands.EventHub.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     /// <summary>
     /// 'New-AzureRmRelayKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given EventHub Authorization Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.New, EventHubKeyVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSListKeysAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSListKeysAttributes))]
     public class NewAzureEventhubKey : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -56,22 +55,29 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         public override void ExecuteCmdlet()
         {
-            // Generate new Namespace List Keys for the specified AuthorizationRule
-            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
+            try
             {
-                if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyNamesapce, Name, Namespace)))
+                // Generate new Namespace List Keys for the specified AuthorizationRule
+                if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                 {
-                    WriteObject(Client.SetRegenerateKeys(ResourceGroupName, Namespace, Name, RegenerateKey, KeyValue));
+                    if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyNamesapce, Name, Namespace)))
+                    {
+                        WriteObject(Client.SetRegenerateKeys(ResourceGroupName, Namespace, Name, RegenerateKey, KeyValue));
+                    }
+                }
+
+                // Generate new EventHub List Keys for the specified AuthorizationRule
+                if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
+                {
+                    if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyEventHub, Name, EventHub)))
+                    {
+                        WriteObject(Client.SetRegenerateKeys(ResourceGroupName, Namespace, EventHub, Name, RegenerateKey, KeyValue));
+                    }
                 }
             }
-
-            // Generate new EventHub List Keys for the specified AuthorizationRule
-            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
+            catch (Management.EventHub.Models.ErrorResponseException ex)
             {
-                if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyEventHub, Name, EventHub)))
-                {
-                    WriteObject(Client.SetRegenerateKeys(ResourceGroupName, Namespace, EventHub, Name, RegenerateKey, KeyValue));
-                }
+                WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
             }
         }
     }

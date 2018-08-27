@@ -27,6 +27,8 @@ using System.Xml.Linq;
 using System.Security.Cryptography;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.ServiceBus
 {
@@ -733,8 +735,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
 
 
-        #endregion
-        
+        #endregion        
 
         #region MigrationConfiguration
         public PSServiceBusMigrationConfigurationAttributes GetServiceBusMigrationConfiguration(string resourceGroupName, string namespaceName)
@@ -805,8 +806,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
             return returnvalue;
         }
-
-
+        
         #region Operations
         public IEnumerable<PSOperationAttributes> GetOperations()
         {
@@ -828,5 +828,27 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
 
         #endregion
+
+        public static ErrorRecord WriteErrorforBadrequest(ErrorResponseException ex)
+        {
+            if (ex != null && !string.IsNullOrEmpty(ex.Response.Content))
+            {
+                ErrorResponseContent errorExtract = new ErrorResponseContent();
+                errorExtract = JsonConvert.DeserializeObject<ErrorResponseContent>(ex.Response.Content);
+                if (!string.IsNullOrEmpty(errorExtract.error.message))
+                {
+                    return new ErrorRecord(ex, errorExtract.error.message, ErrorCategory.OpenError, ex);
+                }
+                else
+                {
+                    return new ErrorRecord(ex, ex.Response.Content, ErrorCategory.OpenError, ex);
+                }
+            }
+            else
+            {
+                Exception emptyEx = new Exception("Response object empty");
+                return new ErrorRecord(emptyEx, "Response object was empty", ErrorCategory.OpenError, emptyEx);
+            }
+        }
     }
 }

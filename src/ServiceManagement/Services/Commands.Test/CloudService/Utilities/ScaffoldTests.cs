@@ -14,7 +14,7 @@
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.Common.Test.Properties;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Properties;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService.Scaffolding;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;

@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkSubnetConfig"), OutputType(typeof(PSSubnet))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetConfig"), OutputType(typeof(PSSubnet))]
     public class GetAzureVirtualNetworkSubnetConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

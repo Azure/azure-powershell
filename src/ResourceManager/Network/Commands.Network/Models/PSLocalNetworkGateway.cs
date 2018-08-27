@@ -16,13 +16,16 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
 
     using Newtonsoft.Json;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSLocalNetworkGateway : PSTopLevelResource
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string GatewayIpAddress { get; set; }
 
         public PSAddressSpace LocalNetworkAddressSpace { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         public PSBgpSettings BgpSettings { get; set; }

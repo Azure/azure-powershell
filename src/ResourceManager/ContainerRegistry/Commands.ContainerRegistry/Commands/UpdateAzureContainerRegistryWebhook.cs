@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsData.Update, ContainerRegistryWebhookNoun, DefaultParameterSetName = ResourceIdParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryWebhook", DefaultParameterSetName = ResourceIdParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistryWebhook))]
     public class UpdateAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
     {

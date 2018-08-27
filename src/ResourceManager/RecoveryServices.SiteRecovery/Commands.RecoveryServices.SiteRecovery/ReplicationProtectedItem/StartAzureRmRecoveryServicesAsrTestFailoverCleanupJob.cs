@@ -20,11 +20,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Starts the test failover cleanup operation.
     /// </summary>
-    [Cmdlet(
-        VerbsLifecycle.Start,
-        "AzureRmRecoveryServicesAsrTestFailoverCleanupJob",
-        DefaultParameterSetName = ASRParameterSets.ByRPIObject,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrTestFailoverCleanupJob",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
     [Alias("Start-ASRTestFailoverCleanupJob")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureRmRecoveryServicesAsrTestFailoverCleanupJob : SiteRecoveryCmdletBase

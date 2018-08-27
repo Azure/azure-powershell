@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// <summary>
     /// Class for the cmdlet to get project task details.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataMigrationTask", DefaultParameterSetName = DefaultParams), OutputType(typeof(PSProjectTask))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationTask", DefaultParameterSetName = DefaultParams), OutputType(typeof(PSProjectTask))]
     [Alias("Get-AzureRmDmsTask")]
     public class GetDataMigrationTask : DataMigrationCmdlet
     {

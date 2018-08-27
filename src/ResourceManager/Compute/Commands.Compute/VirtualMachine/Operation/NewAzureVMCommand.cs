@@ -49,11 +49,7 @@ using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.New,
-        ProfileNouns.VirtualMachine,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = "SimpleParameterSet")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM",SupportsShouldProcess = true,DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {

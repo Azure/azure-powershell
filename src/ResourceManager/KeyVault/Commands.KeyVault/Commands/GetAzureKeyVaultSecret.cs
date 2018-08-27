@@ -20,8 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureKeyVaultSecret",        
-        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecret",        DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultSecretIdentityItem), typeof(PSKeyVaultSecret), typeof(PSDeletedKeyVaultSecretIdentityItem), typeof(PSDeletedKeyVaultSecret))]
     public class GetAzureKeyVaultSecret : KeyVaultCmdletBase
     {

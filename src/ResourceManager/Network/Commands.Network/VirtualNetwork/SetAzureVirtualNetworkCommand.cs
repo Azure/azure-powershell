@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
     public class SetAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
     {
         [Parameter(

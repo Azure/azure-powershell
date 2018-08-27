@@ -19,8 +19,7 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsCommon.Remove, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition,
-        DefaultParameterSetName = ByDefinitionNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultManagedStorageSasDefinition",DefaultParameterSetName = ByDefinitionNameParameterSet, SupportsShouldProcess = true)]
     [OutputType( typeof( PSDeletedKeyVaultManagedStorageSasDefinition ) )]
     public class RemoveAzureKeyVaultSasDefinition : KeyVaultCmdletBase
     {

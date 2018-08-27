@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherFlowLogStatus", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSFlowLog))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherFlowLogStatus", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSFlowLog))]
 
     public class GetAzureNetworkWatcherFlowLogStatusCommand : NetworkWatcherBaseCmdlet
     {

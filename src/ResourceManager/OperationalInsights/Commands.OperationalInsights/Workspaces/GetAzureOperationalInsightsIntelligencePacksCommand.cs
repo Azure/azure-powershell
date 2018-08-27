@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.IntelligencePacks), OutputType(typeof(PSIntelligencePack))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsIntelligencePacks"), OutputType(typeof(PSIntelligencePack))]
     public class GetAzureOperationalInsightsIntelligencePacksCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

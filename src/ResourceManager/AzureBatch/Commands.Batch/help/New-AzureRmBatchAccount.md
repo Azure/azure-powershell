@@ -186,12 +186,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AccountName (ByPropertyName), AutoStorageAccountId (ByPropertyName), KeyVaultId (ByPropertyName), KeyVaultUrl (ByPropertyName), Location (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Nullable`1[[Microsoft.Azure.Management.Batch.Models.PoolAllocationMode, Microsoft.Azure.Management.Batch, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

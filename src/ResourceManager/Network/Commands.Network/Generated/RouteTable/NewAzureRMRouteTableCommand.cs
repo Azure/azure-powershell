@@ -40,7 +40,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmRouteTable", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteTable", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
     public partial class NewAzureRmRouteTable : NetworkBaseCmdlet
     {
         [Parameter(

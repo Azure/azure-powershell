@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSKeyVaultKey(keyBundle, this.vaultUriHelper);
         }
 
-        public IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options)
+        public IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificates(KeyVaultCertificateFilterOptions options)
         {
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 IPage<CertificateItem> result;
 
                 if (string.IsNullOrEmpty(options.NextLink))
-                    result = this.keyVaultClient.GetCertificatesAsync(vaultAddress).GetAwaiter().GetResult();
+                    result = this.keyVaultClient.GetCertificatesAsync(vaultAddress, maxresults: null, includePending: options.IncludePending).GetAwaiter().GetResult();
                 else
                     result = this.keyVaultClient.GetCertificatesNextAsync(options.NextLink).GetAwaiter().GetResult();
 
@@ -1666,7 +1666,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSDeletedKeyVaultCertificate(deletedCertificate);
         }
 
-        public IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options )
+        public IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates( KeyVaultCertificateFilterOptions options )
         {
             if ( options == null )
                 throw new ArgumentNullException( nameof( options ) );
@@ -1680,7 +1680,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 IPage<DeletedCertificateItem> result;
 
                 if ( string.IsNullOrEmpty( options.NextLink ) )
-                    result = this.keyVaultClient.GetDeletedCertificatesAsync( vaultAddress ).GetAwaiter( ).GetResult( );
+                    result = this.keyVaultClient.GetDeletedCertificatesAsync( vaultAddress, maxresults: null, includePending: options.IncludePending ).GetAwaiter( ).GetResult( );
                 else
                     result = this.keyVaultClient.GetDeletedCertificatesNextAsync( options.NextLink ).GetAwaiter( ).GetResult( );
 

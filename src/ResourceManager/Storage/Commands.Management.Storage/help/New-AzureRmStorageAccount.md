@@ -296,10 +296,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), SkuName (ByPropertyName)
 
 ### System.Boolean
-Parameters: EnableHttpsTrafficOnly (ByPropertyName)
 
 ## OUTPUTS
 
