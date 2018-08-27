@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = 'dfa9e4ea-1407-446d-9111-79122977ab20'
@@ -54,7 +54,8 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll',
+                        '.\Microsoft.WindowsAzure.Storage.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -67,8 +68,7 @@ FormatsToProcess = '.\Microsoft.Azure.Commands.Management.Storage.format.ps1xml'
     '.\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',  '.\Microsoft.WindowsAzure.Commands.Storage.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Management.Storage.dll', 
-    '.\Microsoft.WindowsAzure.Storage.dll', '.\Microsoft.WindowsAzure.Commands.Storage.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.Management.Storage.dll', '.\Microsoft.WindowsAzure.Commands.Storage.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -166,13 +166,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add AssignIdentity setting support to resource mode storage account cmdlets
-    - New-AzureRmStorageAccount
-    - Set-AzureRmStorageAccount
-* Add Customer Key Support to resource mode storage account cmdlets
-    - Set-AzureRmStorageAccount
-    - New-AzureRmStorageAccountEncryptionKeySource
-'
+        ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''

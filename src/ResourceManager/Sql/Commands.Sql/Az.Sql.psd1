@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = 'f088f4ab-1b59-4836-a6e0-4e14d15800c6'
@@ -137,9 +137,7 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
     'Remove-AzSqlDatabaseLongTermRetentionBackup', 
     'Get-AzSqlDeletedDatabaseBackup', 
     'Get-AzSqlDatabaseGeoBackup', 
-    'Get-AzSqlServerBackupLongTermRetentionVault', 
     'Restore-AzSqlDatabase', 
-    'Set-AzSqlServerBackupLongTermRetentionVault', 
     'Get-AzSqlDatabaseRestorePoints', 
     'Get-AzSqlDatabaseAuditingPolicy', 
     'Get-AzSqlServerAuditingPolicy', 

@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = 'd4cb9989-9ed1-49c2-bacd-0f8daf758671'
@@ -214,17 +214,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated Set-AzureRmVMAEMExtension and Test-AzureRmVMAEMExtension cmdlets to support Premium managed disks
-* Backup encryption settings for IaaS VMs and restore on failure
-* ChefServiceInterval option is renamed to ChefDaemonInterval now. Old one will continue to work however.
-* Remove duplicated DataDiskNames and NetworkInterfaceIDs properties from PS VM object.
-  - Make DataDiskNames and NetworkInterfaceIDs parameters optional in Remove-AzureRmVMDataDisk and Remove-AzureRmVMNetworkInterface, respectively.
-* Fix the piping issue of Get cmdlets when the Get cmdlets return a list object.
-* Cmdlets that conflicted with RDFE cmdlets have been renamed. See issue https://github.com/Azure/azure-powershell/issues/2917 for more details
-    - `New-AzureVMSqlServerAutoBackupConfig` has been renamed to `New-AzureRmVMSqlServerAutoBackupConfig`
-    - `New-AzureVMSqlServerAutoPatchingConfig` has been renamed to `New-AzureRmVMSqlServerAutoPatchingConfig`
-    - `New-AzureVMSqlServerKeyVaultCredentialConfig` has been renamed to `New-AzureRmVMSqlServerKeyVaultCredentialConfig`
-'
+        ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''
