@@ -132,7 +132,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Byte[]
-Parameters: RawData (ByPropertyName, ByValue)
 
 ### Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameters: BatchContext (ByValue)

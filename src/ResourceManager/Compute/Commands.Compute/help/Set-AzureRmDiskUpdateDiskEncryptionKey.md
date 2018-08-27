@@ -137,10 +137,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSDiskUpdate
-Parameters: DiskUpdate (ByPropertyName, ByValue)
 
 ### System.String
-Parameters: SecretUrl (ByPropertyName), SourceVaultId (ByPropertyName)
 
 ## OUTPUTS
 

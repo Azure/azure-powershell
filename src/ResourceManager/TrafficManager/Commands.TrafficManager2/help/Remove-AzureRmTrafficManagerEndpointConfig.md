@@ -21,6 +21,7 @@ Remove-AzureRmTrafficManagerEndpointConfig -EndpointName <String>
 ## DESCRIPTION
 The **Remove-AzureRmTrafficManagerEndpointConfig** cmdlet removes an endpoint from a local Azure Traffic Manager profile object.
 You can get a profile by using the Get-AzureRmTrafficManagerProfile cmdlet.
+
 This cmdlet operates on the local profile object.
 Commit your changes to the profile for Traffic Manager by using the Set-AzureRmTrafficManagerProfile cmdlet.
 To remove an endpoint and commit changes in a single operation, use the Remove-AzureRmTrafficManagerEndpoint cmdlet.
@@ -36,8 +37,10 @@ PS C:\> Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManagerP
 
 The first command gets an Azure Traffic Manager profile by using the **Get-AzureRmTrafficManagerProfile** cmdlet.
 The command stores the local profile in the $TrafficManagerProfile variable.
+
 The second command removes an Azure endpoint named contoso from the profile stored in $TrafficManagerProfile.
 This command changes only the local object.
+
 The final command updates the Traffic Manager profile named ContosoProfile to match the local value in $TrafficManagerProfile.
 
 ## PARAMETERS
@@ -94,12 +97,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
-Parameters: TrafficManagerProfile (ByValue)
+### Microsoft.Azure.Commands.Network.TrafficManagerProfile
+This cmdlet accepts a **TrafficManagerProfile** object to this cmdlet.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
+### Microsoft.Azure.Commands.Network.TrafficManagerProfile
+This cmdlet returns a modified TrafficManagerProfile object.
 
 ## NOTES
 
