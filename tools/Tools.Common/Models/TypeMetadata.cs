@@ -270,6 +270,11 @@ namespace Tools.Common.Models
             return typesEqual;
         }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         private bool AreMethodSignaturesEqual(
             List<MethodSignature> thisMethodSignatures,
             List<MethodSignature> otherMethodSignatures)

@@ -136,16 +136,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: ApiManagement (ByValue)
 
 ### System.String
-Parameters: Location (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku
-Parameters: Sku (ByPropertyName)
 
 ### System.Int32
-Parameters: Capacity (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
-Parameters: VirtualNetwork (ByPropertyName)
 
 ## OUTPUTS
 
