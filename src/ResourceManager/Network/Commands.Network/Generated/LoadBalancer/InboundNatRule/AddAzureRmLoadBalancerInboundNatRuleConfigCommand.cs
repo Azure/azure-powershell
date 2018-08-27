@@ -102,6 +102,12 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
 
+            var existingInboundNatRule = this.LoadBalancer.InboundNatRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            if (existingInboundNatRule != null)
+            {
+                throw new ArgumentException("InboundNatRule with the specified name already exists");
+            }
+
             // InboundNatRules
             if (this.LoadBalancer.InboundNatRules == null)
             {

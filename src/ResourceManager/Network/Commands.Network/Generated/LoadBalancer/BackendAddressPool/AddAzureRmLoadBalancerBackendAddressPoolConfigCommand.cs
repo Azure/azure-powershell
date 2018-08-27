@@ -53,6 +53,12 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
 
+            var existingBackendAddressPool = this.LoadBalancer.BackendAddressPools.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            if (existingBackendAddressPool != null)
+            {
+                throw new ArgumentException("BackendAddressPool with the specified name already exists");
+            }
+
             // BackendAddressPools
             if (this.LoadBalancer.BackendAddressPools == null)
             {

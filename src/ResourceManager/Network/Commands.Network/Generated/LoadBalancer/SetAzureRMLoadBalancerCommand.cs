@@ -52,9 +52,49 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        public void IdValuesReplacer(object inputItem)
+        {
+            string rgDefinition = "/resourceGroups/";
+            string vLoadBalancerDefinition = "/loadBalancers/";
+            foreach (var item in inputItem.GetType().GetProperties())
+            {
+                var value = item.GetValue(inputItem);
+                if (value != null && value.ToString() != "null")
+                {
+                    if (item.Name == "Id")
+                    {
+                        string outValue = value.ToString().Replace(
+                            rgDefinition + Microsoft.Azure.Commands.Network.Properties.Resources.ResourceGroupNotSet,
+                            rgDefinition + this.LoadBalancer.ResourceGroupName);
+
+                        outValue = outValue.Replace(
+                            vLoadBalancerDefinition + Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerNameNotSet,
+                            vLoadBalancerDefinition + this.LoadBalancer.Name);
+
+                        item.SetValue(inputItem, outValue);
+                    }
+                    else if (value is IList)
+                    {
+                        if (!value.GetType().GetGenericArguments()[0].Equals(typeof(string)))
+                        {
+                            foreach (var listItem in (IList)value)
+                            {
+                                IdValuesReplacer(listItem);
+                            }
+                        }
+                    }
+                    else if(!item.GetType().IsPrimitive && (!value.GetType().Equals(typeof(string)) && !value.GetType().Equals(typeof(Hashtable))))
+                    {
+                        IdValuesReplacer(value);
+                    }
+                }
+            }
+        }
+
         public override void Execute()
         {
             base.Execute();
+
             var present = true;
             try
             {
@@ -78,9 +118,13 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
+            // Normalize child IDs
+            IdValuesReplacer(this.LoadBalancer);
+
             // Map to the sdk object
             var vLoadBalancerModel = NetworkResourceManagerProfile.Mapper.Map<MNM.LoadBalancer>(this.LoadBalancer);
             vLoadBalancerModel.Tags = TagsConversionHelper.CreateTagDictionary(this.LoadBalancer.Tag, validate: true);
+
             // Execute the PUT LoadBalancer call
             this.NetworkClient.NetworkManagementClient.LoadBalancers.CreateOrUpdate(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name, vLoadBalancerModel);
 

@@ -146,6 +146,12 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
 
+            var existingLoadBalancingRule = this.LoadBalancer.LoadBalancingRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            if (existingLoadBalancingRule != null)
+            {
+                throw new ArgumentException("LoadBalancingRule with the specified name already exists");
+            }
+
             // LoadBalancingRules
             if (this.LoadBalancer.LoadBalancingRules == null)
             {

@@ -93,6 +93,12 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
 
+            var existingFrontendIpConfiguration = this.LoadBalancer.FrontendIpConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            if (existingFrontendIpConfiguration != null)
+            {
+                throw new ArgumentException("FrontendIpConfiguration with the specified name already exists");
+            }
+
             // FrontendIpConfigurations
             if (this.LoadBalancer.FrontendIpConfigurations == null)
             {

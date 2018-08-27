@@ -128,10 +128,10 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter AsJob { get; set; }
 
 
-        string rgDefinition = "/resourceGroups/";
-        string vLoadBalancerDefinition = "/loadBalancers/";
         public void IdValuesReplacer(object inputItem)
         {
+            string rgDefinition = "/resourceGroups/";
+            string vLoadBalancerDefinition = "/loadBalancers/";
             foreach (var item in inputItem.GetType().GetProperties())
             {
                 var value = item.GetValue(inputItem);
@@ -196,6 +196,7 @@ namespace Microsoft.Azure.Commands.Network
                 Sku = vSku,
             };
 
+            // Normalize child IDs
             IdValuesReplacer(vLoadBalancer);
 
             var vLoadBalancerModel = NetworkResourceManagerProfile.Mapper.Map<MNM.LoadBalancer>(vLoadBalancer);

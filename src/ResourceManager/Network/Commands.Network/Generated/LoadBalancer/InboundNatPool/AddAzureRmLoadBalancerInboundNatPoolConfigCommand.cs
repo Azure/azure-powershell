@@ -97,6 +97,12 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
 
+            var existingInboundNatPool = this.LoadBalancer.InboundNatPools.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            if (existingInboundNatPool != null)
+            {
+                throw new ArgumentException("InboundNatPool with the specified name already exists");
+            }
+
             // InboundNatPools
             if (this.LoadBalancer.InboundNatPools == null)
             {
