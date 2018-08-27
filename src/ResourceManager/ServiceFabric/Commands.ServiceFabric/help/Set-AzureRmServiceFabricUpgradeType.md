@@ -152,7 +152,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), Version (ByValue)
+Parameters: Version (ByValue)
 
 ### Microsoft.Azure.Commands.ServiceFabric.Models.ClusterUpgradeMode
 Parameters: UpgradeMode (ByValue)

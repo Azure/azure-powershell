@@ -55,24 +55,31 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
+            try
             {
-                PSSubscriptionAttributes subscriptionAttributes = Client.GetSubscription(ResourceGroupName, Namespace, Topic, Name);
-                WriteObject(subscriptionAttributes);
-            }
-            else
-            {
-                if (MaxCount.HasValue)
+                if (!string.IsNullOrEmpty(Name))
                 {
-                    IEnumerable<PSSubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroupName, Namespace, Topic, MaxCount);
-                    WriteObject(subscriptionAttributes, true);
+                    PSSubscriptionAttributes subscriptionAttributes = Client.GetSubscription(ResourceGroupName, Namespace, Topic, Name);
+                    WriteObject(subscriptionAttributes);
                 }
                 else
                 {
-                    IEnumerable<PSSubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroupName, Namespace, Topic);
-                    WriteObject(subscriptionAttributes, true);
-                }
+                    if (MaxCount.HasValue)
+                    {
+                        IEnumerable<PSSubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroupName, Namespace, Topic, MaxCount);
+                        WriteObject(subscriptionAttributes, true);
+                    }
+                    else
+                    {
+                        IEnumerable<PSSubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroupName, Namespace, Topic);
+                        WriteObject(subscriptionAttributes, true);
+                    }
 
+                }
+            }
+            catch (Management.ServiceBus.Models.ErrorResponseException ex)
+            {
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
             }
 
         }

@@ -52,7 +52,7 @@ The example gets admin key pair of the Azure Search service.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Search Service Input Object.
 
 ```yaml
-Type: PSSearchService
+Type: Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
 Parameter Sets: ParentObjectParameterSet
 Aliases:
 
@@ -82,7 +82,7 @@ Accept wildcard characters: False
 Search Service Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ParentResourceIdParameterSet
 Aliases:
 
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 Resource Group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceNameParameterSet
 Aliases:
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 Search Service name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceNameParameterSet
 Aliases:
 
@@ -128,9 +128,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
+Parameters: ParentObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 

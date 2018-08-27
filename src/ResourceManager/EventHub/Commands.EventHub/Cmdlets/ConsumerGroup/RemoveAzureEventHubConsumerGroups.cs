@@ -83,10 +83,17 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
             // delete a ConsumerGroup 
             if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveConsumerGroup, Name, EventHub)))
             {
-                Client.DeletConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
-                if (PassThru)
+                try
                 {
-                    WriteObject(true);
+                    Client.DeletConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                }
+                catch (Management.EventHub.Models.ErrorResponseException ex)
+                {
+                    WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
                 }
             }
         }

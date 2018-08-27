@@ -51,32 +51,29 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public List<string> GeoMapping { get; set; }
 
+        public List<TrafficManagerIpAddressRange> SubnetMapping { get; set; }
+
+        public List<TrafficManagerCustomHeader> CustomHeaders { get; set; }
+
         public Endpoint ToSDKEndpoint()
         {
-            return new Endpoint
-            {
-                Id = this.Id,
-                Name = this.Name,
-                Type = TrafficManagerEndpoint.ToFullEndpointType(this.Type),
-                EndpointLocation = this.Location,
-                EndpointStatus = this.EndpointStatus,
-                GeoMapping = this.GeoMapping,
-                MinChildEndpoints = this.MinChildEndpoints,
-                Priority = this.Priority,
-                Target = this.Target,
-                TargetResourceId = this.TargetResourceId,                   
-                Weight = this.Weight,
-            };
+            Endpoint endpoint = new Endpoint(this.Id, this.Name, TrafficManagerEndpoint.ToFullEndpointType(this.Type));
+            endpoint.EndpointLocation = this.Location;
+            endpoint.EndpointStatus = this.EndpointStatus;
+            endpoint.GeoMapping = this.GeoMapping;
+            endpoint.MinChildEndpoints = this.MinChildEndpoints;
+            endpoint.Priority = this.Priority;
+            endpoint.Target = this.Target;
+            endpoint.TargetResourceId = this.TargetResourceId;
+            endpoint.Weight = this.Weight;
+            endpoint.Subnets = this.SubnetMapping?.Select(ipAddressRange => ipAddressRange.ToSDKSubnetMapping()).ToList();
+            endpoint.CustomHeaders = this.CustomHeaders?.Select(customHeader => customHeader.ToSDKEndpointPropertiesCustomHeadersItem()).ToList();
+            return endpoint;
         }
 
         public Endpoint ToSDKEndpointForPatch()
         {
-            return new Endpoint
-            {
-                Id = this.Id,
-                Name = this.Name,
-                Type = TrafficManagerEndpoint.ToFullEndpointType(this.Type),
-            };
+            return new Endpoint(this.Id, this.Name, TrafficManagerEndpoint.ToFullEndpointType(this.Type));
         }
 
         public static string ToFullEndpointType(string endpointType)

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public override void ExecuteCmdlet()
         {
             ConfirmAction(
-                ProjectResources.DeleteResourceGroupDeploymentMessage,
+                ProjectResources.DeleteDeploymentMessage,
                 ResourceGroupName,
                 () =>
                 {

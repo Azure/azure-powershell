@@ -98,7 +98,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: ApiManagement (ByValue)
 
 ### System.String
-Parameters: Location (ByPropertyName)
 
 ## OUTPUTS
 
