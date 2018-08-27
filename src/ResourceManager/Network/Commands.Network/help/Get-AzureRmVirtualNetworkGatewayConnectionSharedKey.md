@@ -22,6 +22,7 @@ Get-AzureRmVirtualNetworkGatewayConnectionSharedKey [-Name <String>] -ResourceGr
 Displays the shared key used for the connection.
 
 ## EXAMPLES
+
 ### Example 1
 ```
 Get-AzureRmVirtualNetworkGatewayConnectionSharedKey -Name 1 -ResourceGroupName P2SVPNGateway
@@ -77,7 +78,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

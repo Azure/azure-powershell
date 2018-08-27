@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSConnectionMonitorParameters
     {
@@ -22,8 +23,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSConnectionMonitorDestination Destination { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? AutoStart { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? MonitoringIntervalInSeconds { get; set; }
 
         [JsonIgnore]

@@ -57,7 +57,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateConsumerGroup, Name, EventHub)))
             {
-                WriteObject(Client.CreateOrUpdateConsumerGroup(ResourceGroupName, Namespace, EventHub, Name, consumerGroup));
+                try
+                {
+                    WriteObject(Client.CreateOrUpdateConsumerGroup(ResourceGroupName, Namespace, EventHub, Name, consumerGroup));
+                }
+                catch (Management.EventHub.Models.ErrorResponseException ex)
+                {
+                    WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+                }
             }
             
         }

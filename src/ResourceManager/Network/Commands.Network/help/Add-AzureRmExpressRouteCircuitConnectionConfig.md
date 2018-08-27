@@ -183,7 +183,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: ExpressRouteCircuit (ByValue)
 
 ### System.String
-Parameters: PeerExpressRouteCircuitPeering (ByPropertyName)
 
 ## OUTPUTS
 

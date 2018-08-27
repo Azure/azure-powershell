@@ -54,8 +54,7 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\YamlDotNet.dll', 
-    '.\Microsoft.Azure.Commands.Common.Graph.RBAC.dll', '.\AutoMapper.dll'
+RequiredAssemblies = '.\YamlDotNet.dll', '.\AutoMapper.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 ScriptsToProcess = @()
@@ -111,7 +110,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''

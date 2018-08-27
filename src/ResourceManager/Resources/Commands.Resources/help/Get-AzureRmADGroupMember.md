@@ -173,7 +173,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: GroupObjectId (ByPropertyName)
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
 Parameters: GroupObject (ByValue)

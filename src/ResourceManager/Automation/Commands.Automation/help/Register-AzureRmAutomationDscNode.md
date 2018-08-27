@@ -247,13 +247,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ActionAfterReboot (ByPropertyName), AutomationAccountName (ByPropertyName), AzureVMLocation (ByPropertyName), AzureVMName (ByPropertyName), AzureVMResourceGroup (ByPropertyName), ConfigurationMode (ByPropertyName), NodeConfigurationName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Int32
-Parameters: ConfigurationModeFrequencyMins (ByPropertyName), RefreshFrequencyMins (ByPropertyName)
 
 ### System.Boolean
-Parameters: AllowModuleOverwrite (ByPropertyName), RebootNodeIfNeeded (ByPropertyName)
 
 ## OUTPUTS
 

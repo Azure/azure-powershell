@@ -69,8 +69,6 @@ BgpSettings            : {
                            "BgpPeeringAddress": "192.0.2.4,192.0.2.5",
                            "PeerWeight": 0
                          }
-
-
 ```
 
 ## PARAMETERS
