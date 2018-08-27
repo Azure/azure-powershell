@@ -414,4 +414,13 @@
     <value>Unable to get context name for subscription with id '{0}'.</value>
     <comment>{0} = subscription id</comment>
   </data>
+  <data name="AddAlias" xml:space="preserve">
+    <value>Add aliases</value>
+  </data>
+  <data name="AliasImportFailure" xml:space="preserve">
+    <value>LocalMachine scope can only be set in PowerShell administrative mode.</value>
+  </data>
+  <data name="ProfilePathNull" xml:space="preserve">
+    <value>Unable to set profile because environment variable '${0}' is null.</value>
+  </data>
 </root>
