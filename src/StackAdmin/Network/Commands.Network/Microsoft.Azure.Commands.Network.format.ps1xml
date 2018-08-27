@@ -245,7 +245,11 @@
               <ListItem> 
                 <Label>TunnelConnectionStatus</Label> 
                 <PropertyName>TunnelConnectionStatusText</PropertyName> 
-              </ListItem>		 
+              </ListItem>
+              <ListItem>
+                <Label>ExpressRouteGatewayBypass</Label>
+                <PropertyName>ExpressRouteGatewayBypass</PropertyName>
+              </ListItem>
             </ListItems> 
           </ListEntry> 
         </ListEntries> 

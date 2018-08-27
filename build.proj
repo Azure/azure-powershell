@@ -611,10 +611,13 @@
 
     <Message Importance="high" Text="Running dependency analysis..." />
 
-    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(MSBuildProjectDirectory)\src\Package true $(SkipHelp) @(ModulesChanged)"
+    <PropertyGroup>
+        <SkipHelpValue Condition=" '$(SkipHelp)' == 'true' ">-s</SkipHelpValue>
+    </PropertyGroup>
+    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe -p $(MSBuildProjectDirectory)\src\Package\$(Configuration) -r $(MSBuildProjectDirectory)\src\Package $(SkipHelpValue) -m @(ModulesChanged)"
           Condition="'$(Scope)' != 'Stack'"/>
 
-    <Exec Command="$(PackageDirectory)\StaticAnalysis.exe $(StackPackageFolder)\$(Configuration) $(StackPackageFolder)"
+    <Exec Command="$(PackageDirectory)\StaticAnalysis.exe -p $(StackPackageFolder)\$(Configuration) -r $(StackPackageFolder)"
           Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
           ContinueOnError="True"/>
 
