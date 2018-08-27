@@ -127,7 +127,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated help files to include full parameter types and correct input/output types.'
+        ReleaseNotes = '* Public preview release of Security Center cmdlets'
 
         # Prerelease string of this module
         Prerelease = 'preview'
