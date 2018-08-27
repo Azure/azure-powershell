@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = '80c60f49-dd83-4f4e-92ad-5f3449de36e3'
@@ -130,7 +130,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -83,8 +83,14 @@ namespace Tools.Common.Loggers
         {
             _baseDirectory = baseDirectory;
             _exceptionsDirectory = exceptionsDirectory;
-            _defaultLogName = Assembly.GetExecutingAssembly().GetName().Name;
+            var assembly = Assembly.GetExecutingAssembly();
+            var assemblyType = assembly.GetType();
+            _defaultLogName = assembly.GetName().Name;
+#if !NETSTANDARD
             Log4NetLogger = log4net.LogManager.GetLogger(_defaultLogName);
+#else
+            Log4NetLogger = log4net.LogManager.GetLogger(assemblyType);
+#endif
         }
 
         /// <summary>

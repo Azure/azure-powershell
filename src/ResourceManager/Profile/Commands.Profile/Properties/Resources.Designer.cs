@@ -574,6 +574,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to set profile because environment variable &apos;${0}&apos; is null..
+        /// </summary>
+        internal static string ProfilePathNull {
+            get {
+                return ResourceManager.GetString("ProfilePathNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Personally identifiable information and secrets may be written to the file at &apos;{0}&apos;.  Please ensure that the saved file is assigned appropriate access controls.
         /// </summary>
         internal static string ProfileWriteWarning {
