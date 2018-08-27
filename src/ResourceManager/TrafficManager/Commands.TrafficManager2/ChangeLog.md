@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.1.0
+* Support for the MultiValue routing method
+    - New parameter 'MaxReturn' for MultiValue routing
+* Support for the Subnet routing method
+    - Support for IP address ranges (subnets) in endpoints
+* Support for Custom Headers in profiles
+* Support for Expected status code ranges in profiles
+* Support for Custom Headers in endpoints
 * Fixed issue with default resource groups not being set.
 
 ## Version 4.0.9

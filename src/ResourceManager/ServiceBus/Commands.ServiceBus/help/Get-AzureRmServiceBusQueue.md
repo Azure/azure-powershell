@@ -57,14 +57,14 @@ Returns the description of the queue.
 PS C:\> Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
 ```
 
-Returns list of queues for given namespace
+Returns list of queues for given namespace, By default 100 queues will be returned, if more than 100 queues to be returned, please use -MaxCount Parameter.
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -MaxCount 30
+PS C:\> Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -MaxCount 150
 ```
 
-Returns list of first 30 queues for given namespace
+Returns list of first 150 queues for given namespace
 
 ## PARAMETERS
 

@@ -167,7 +167,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateQueue, Name, Namespace)))
             {
-                WriteObject(Client.CreateUpdateQueue(ResourceGroupName, Namespace, Name, queueAttributes));
+                try
+                {
+                    WriteObject(Client.CreateUpdateQueue(ResourceGroupName, Namespace, Name, queueAttributes));
+                }
+                catch (ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }
