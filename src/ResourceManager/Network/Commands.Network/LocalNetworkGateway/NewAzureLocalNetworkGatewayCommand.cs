@@ -99,7 +99,6 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsLocalNetworkGatewayPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,

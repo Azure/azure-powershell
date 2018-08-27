@@ -200,10 +200,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: CountryCode (ByPropertyName), EmailAddress (ByPropertyName), Name (ByPropertyName), PhoneNumber (ByPropertyName), ServiceUri (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: EmailReceiver (ByPropertyName), SmsReceiver (ByPropertyName), WebhookReceiver (ByPropertyName)
 
 ## OUTPUTS
 

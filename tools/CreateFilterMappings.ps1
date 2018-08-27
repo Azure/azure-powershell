@@ -338,7 +338,6 @@ function Create-TestMappings
         "tools"
     )
     $CustomMappings = @{
-        "src/Common/Commands.Common.Authentication.Test" = @( ".\src\Common\Commands.Common.Authentication.Test\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Test.dll" );
         "tools/BuildPackagesTask" =                        @( ".\tools\BuildPackagesTask\Microsoft.Azure.Build.Tasks.Test\bin\Debug\Microsoft.Azure.Build.Tasks.Test.dll" );
         "tools/RepoTasks" =                                @( ".\tools\RepoTasks\RepoTasks.Cmdlets.Tests\bin\Debug\RepoTasks.Cmdlets.Tests.dll" );
     }
@@ -390,7 +389,7 @@ function Add-TestDllMappings
             }
         }
 
-        $TestProjects = Get-ChildItem -Path $ServiceFolderPath -Filter "*.Test*csproj" -Recurse | where { $_.FullName -notlike "*Netcore*" -and $_.FullName -notlike "*Stack*" }
+        $TestProjects = Get-ChildItem -Path $ServiceFolderPath -Filter "*.Test*csproj" -Recurse | where { $_.FullName -notlike "*Netcore*" -and $_.FullName -notlike "*Stack*" -and $_.FullName -notlike "*Commands.Common.Test*" }
         foreach ($TestProject in $TestProjects)
         {
             $AssemblyName = Get-AssemblyName -TestCsprojPath $TestProject.FullName
