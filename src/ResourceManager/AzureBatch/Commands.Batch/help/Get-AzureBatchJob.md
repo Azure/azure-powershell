@@ -276,7 +276,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: JobScheduleId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Batch.Models.PSCloudJobSchedule
 Parameters: JobSchedule (ByValue)

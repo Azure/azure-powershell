@@ -98,10 +98,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Dimension (ByPropertyName), Operator (ByPropertyName)
 
 ### System.String[]
-Parameters: Value (ByPropertyName)
 
 ## OUTPUTS
 

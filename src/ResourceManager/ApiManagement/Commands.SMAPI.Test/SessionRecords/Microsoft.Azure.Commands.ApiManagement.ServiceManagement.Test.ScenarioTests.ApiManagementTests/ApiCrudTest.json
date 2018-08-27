@@ -7,16 +7,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4dfd4a59-4a96-48b4-94f2-a0fdb4b4bb59"
+          "318046fe-cd79-4fa2-9522-8bee5fd86719"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n      \"name\": \"echo-api\",\r\n      \"properties\": {\r\n        \"displayName\": \"Echo API\",\r\n        \"apiRevision\": \"1\",\r\n        \"description\": null,\r\n        \"serviceUrl\": \"http://echoapi.cloudapp.net/api\",\r\n        \"path\": \"echo\",\r\n        \"protocols\": [\r\n          \"https\"\r\n        ],\r\n        \"authenticationSettings\": null,\r\n        \"subscriptionKeyParameterNames\": null,\r\n        \"isCurrent\": true\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}",
@@ -37,16 +37,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e48efb76-dc70-44e9-8585-dcad2b14d9a0"
+          "39a6a87f-8b94-448e-9ae7-ad02d9bdf65f"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14966"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "9337beec-c451-4931-9eef-a652392aa8e6"
+          "5fff87f6-7d41-4e3d-9c0b-00bceb3cdfa5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T010034Z:9337beec-c451-4931-9eef-a652392aa8e6"
+          "NORTHCENTRALUS:20180818T003202Z:5fff87f6-7d41-4e3d-9c0b-00bceb3cdfa5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -55,7 +55,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 01:00:34 GMT"
+          "Sat, 18 Aug 2018 00:32:02 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -70,16 +70,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "07c7af31-b373-49f1-b9ea-0767f7b7cf2d"
+          "448665e2-b1cf-4d86-a69d-951febfe7068"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"echo-api\",\r\n  \"properties\": {\r\n    \"displayName\": \"Echo API\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": null,\r\n    \"serviceUrl\": \"http://echoapi.cloudapp.net/api\",\r\n    \"path\": \"echo\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"Ocp-Apim-Subscription-Key\",\r\n      \"query\": \"subscription-key\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
@@ -100,16 +100,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "6f141e98-b6ac-4445-b056-dd49e0e5bc91"
+          "e64105e7-1e02-4078-b792-e861806e2fb8"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14965"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "8c8abe42-6ddf-4f09-b0b5-35ef64dd305a"
+          "907af509-72f6-47a0-8fd1-acc8fe319f45"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T010034Z:8c8abe42-6ddf-4f09-b0b5-35ef64dd305a"
+          "NORTHCENTRALUS:20180818T003203Z:907af509-72f6-47a0-8fd1-acc8fe319f45"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -118,10 +118,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 01:00:34 GMT"
+          "Sat, 18 Aug 2018 00:32:03 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAAFDo=\""
+          "\"AAAAAAAAG+E=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -130,22 +130,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis?$filter=contains('Echo%20API',properties/displayName)&api-version=2018-01-01&expandApiVersionSet=false",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXM/JGZpbHRlcj1jb250YWlucygnRWNobyUyMEFQSScscHJvcGVydGllcy9kaXNwbGF5TmFtZSkmYXBpLXZlcnNpb249MjAxOC0wMS0wMSZleHBhbmRBcGlWZXJzaW9uU2V0PWZhbHNl",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis?$filter=properties/displayName%20eq%20'Echo%20API'&api-version=2018-01-01&expandApiVersionSet=false",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXM/JGZpbHRlcj1wcm9wZXJ0aWVzL2Rpc3BsYXlOYW1lJTIwZXElMjAnRWNobyUyMEFQSScmYXBpLXZlcnNpb249MjAxOC0wMS0wMSZleHBhbmRBcGlWZXJzaW9uU2V0PWZhbHNl",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2fa42369-f5c7-4918-9064-77f698ec1c35"
+          "8677b5ef-dfc7-4a35-b1a9-73e01ee578d3"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/echo-api\",\r\n      \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n      \"name\": \"echo-api\",\r\n      \"properties\": {\r\n        \"displayName\": \"Echo API\",\r\n        \"apiRevision\": \"1\",\r\n        \"description\": null,\r\n        \"serviceUrl\": \"http://echoapi.cloudapp.net/api\",\r\n        \"path\": \"echo\",\r\n        \"protocols\": [\r\n          \"https\"\r\n        ],\r\n        \"authenticationSettings\": null,\r\n        \"subscriptionKeyParameterNames\": null,\r\n        \"isCurrent\": true\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}",
@@ -166,16 +166,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "846c8043-a759-4494-9665-15ce4fd623af"
+          "3f09e8ea-da52-4d12-b632-58bd953e454e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14964"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "decd8fb0-e60f-43c4-9f6e-10d686664249"
+          "701d54fc-f3f1-4a04-b827-141a09e83f7c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T010035Z:decd8fb0-e60f-43c4-9f6e-10d686664249"
+          "NORTHCENTRALUS:20180818T003203Z:701d54fc-f3f1-4a04-b827-141a09e83f7c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -184,7 +184,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 01:00:34 GMT"
+          "Sat, 18 Aug 2018 00:32:03 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -193,34 +193,34 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6287?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM2Mjg3P2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2462?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyNDYyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"ps3468\",\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"ps6793\",\r\n      \"query\": \"ps7455\"\r\n    },\r\n    \"displayName\": \"ps2122\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapi\",\r\n    \"path\": \"ps4269\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ]\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"ps119\",\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"ps8840\",\r\n      \"query\": \"ps4299\"\r\n    },\r\n    \"displayName\": \"ps4692\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapi\",\r\n    \"path\": \"ps118\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "328"
+          "326"
         ],
         "x-ms-client-request-id": [
-          "c73bd7e8-d1ed-4fdd-ad0b-c62fcc511d52"
+          "d07bdccd-113c-440d-b531-04307ae5241f"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6287\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps6287\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps2122\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps3468\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapi\",\r\n    \"path\": \"ps4269\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"ps6793\",\r\n      \"query\": \"ps7455\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2462\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps2462\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps4692\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps119\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapi\",\r\n    \"path\": \"ps118\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"ps8840\",\r\n      \"query\": \"ps4299\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "704"
+          "702"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -235,16 +235,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "eeb6a6af-c16d-4e88-98ee-bc3359e41b3c"
+          "f12d0ae8-3bec-489d-adee-c139b359c4f3"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "f0a177ff-7816-4903-b7db-aad86cb09dd5"
+          "685adc91-10e0-49ef-829e-c7635ac41949"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T010036Z:f0a177ff-7816-4903-b7db-aad86cb09dd5"
+          "NORTHCENTRALUS:20180818T003205Z:685adc91-10e0-49ef-829e-c7635ac41949"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -253,10 +253,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 01:00:36 GMT"
+          "Sat, 18 Aug 2018 00:32:05 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAAFME=\""
+          "\"AAAAAAAAHRU=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -265,19 +265,19 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6287?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM2Mjg3P2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2462?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyNDYyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"ps423\",\r\n    \"authenticationSettings\": {},\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"ps192\",\r\n      \"query\": \"ps7450\"\r\n    },\r\n    \"displayName\": \"ps6312\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapinew\",\r\n    \"path\": \"ps6863\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ]\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"ps6059\",\r\n    \"authenticationSettings\": {},\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"ps7081\",\r\n      \"query\": \"ps2836\"\r\n    },\r\n    \"apiRevision\": \"1\",\r\n    \"displayName\": \"ps5080\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapinew\",\r\n    \"path\": \"ps4976\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "349"
+          "376"
         ],
         "x-ms-client-request-id": [
-          "fbd91ee5-2efc-473f-bd34-68207a0e22e3"
+          "de97d3a4-ceb8-4f7a-9e98-8ae070e214bc"
         ],
         "If-Match": [
           "*"
@@ -286,16 +286,16 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6287\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps6287\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps6312\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps423\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapinew\",\r\n    \"path\": \"ps6863\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"ps192\",\r\n      \"query\": \"ps7450\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2462\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps2462\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps5080\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps6059\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapinew\",\r\n    \"path\": \"ps4976\",\r\n    \"protocols\": [\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"ps7081\",\r\n      \"query\": \"ps2836\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "690"
+          "692"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -310,16 +310,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "46449ab3-681c-4dec-974e-4dad9cc52ba0"
+          "206df32d-2e4e-4410-87cc-58582d06136e"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1193"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "04760b5f-b0f2-4dde-b587-9828cff4615b"
+          "f4669ce2-16c1-4822-ad2c-73bb84d23be2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T010042Z:04760b5f-b0f2-4dde-b587-9828cff4615b"
+          "NORTHCENTRALUS:20180818T003206Z:f4669ce2-16c1-4822-ad2c-73bb84d23be2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -328,10 +328,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 01:00:41 GMT"
+          "Sat, 18 Aug 2018 00:32:06 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAAFMM=\""
+          "\"AAAAAAAAHRk=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -340,28 +340,28 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6287?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM2Mjg3P2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2462?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyNDYyP2FwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "59cff35e-f9b5-4af6-893c-f977a6fcab72"
+          "dc405a0c-76a7-4266-996c-652e79267c9c"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6287\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps6287\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps2122\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps3468\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapi\",\r\n    \"path\": \"ps4269\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"ps6793\",\r\n      \"query\": \"ps7455\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2462\",\r\n  \"type\": \"Microsoft.ApiManagement/service/apis\",\r\n  \"name\": \"ps2462\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps4692\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps119\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapi\",\r\n    \"path\": \"ps118\",\r\n    \"protocols\": [\r\n      \"http\",\r\n      \"https\"\r\n    ],\r\n    \"authenticationSettings\": {\r\n      \"oAuth2\": null,\r\n      \"openid\": null\r\n    },\r\n    \"subscriptionKeyParameterNames\": {\r\n      \"header\": \"ps8840\",\r\n      \"query\": \"ps4299\"\r\n    },\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "704"
+          "702"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -376,16 +376,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "37b3ed7e-24c0-4568-a7b7-9fbe2adb0a5c"
+          "6a034f48-8fdf-4ea9-b93f-502419961820"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14963"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "2624f377-2b51-4a54-91bf-ca090c929bc6"
+          "7257b39e-ca49-4a04-a151-f15072a9c5e9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T010036Z:2624f377-2b51-4a54-91bf-ca090c929bc6"
+          "NORTHCENTRALUS:20180818T003205Z:7257b39e-ca49-4a04-a151-f15072a9c5e9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -394,10 +394,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 01:00:36 GMT"
+          "Sat, 18 Aug 2018 00:32:05 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAAFME=\""
+          "\"AAAAAAAAHRU=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -412,16 +412,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "78ed47f4-bffa-4408-b7e4-2a4d283f0ed0"
+          "2be1e606-05c0-4589-ac23-0929215f646d"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products\",\r\n      \"name\": \"starter\",\r\n      \"properties\": {\r\n        \"displayName\": \"Starter\",\r\n        \"description\": \"Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.\",\r\n        \"terms\": \"\",\r\n        \"subscriptionRequired\": true,\r\n        \"approvalRequired\": false,\r\n        \"subscriptionsLimit\": 100,\r\n        \"state\": \"published\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/unlimited\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products\",\r\n      \"name\": \"unlimited\",\r\n      \"properties\": {\r\n        \"displayName\": \"Unlimited\",\r\n        \"description\": \"Subscribers have completely unlimited access to the API. Administrator approval is required.\",\r\n        \"terms\": null,\r\n        \"subscriptionRequired\": true,\r\n        \"approvalRequired\": true,\r\n        \"subscriptionsLimit\": 1,\r\n        \"state\": \"published\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}",
@@ -442,16 +442,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "722f7537-53a9-4a4a-8ca1-a85d972154b6"
+          "327c2820-4149-416d-ad28-85ed76f0b117"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14962"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "d04961b6-9a3b-45d3-8574-076cef840d94"
+          "1d27e278-5508-43d8-ae2c-c7bbf64a15bd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T010042Z:d04961b6-9a3b-45d3-8574-076cef840d94"
+          "NORTHCENTRALUS:20180818T003206Z:1d27e278-5508-43d8-ae2c-c7bbf64a15bd"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -460,7 +460,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 01:00:42 GMT"
+          "Sat, 18 Aug 2018 00:32:06 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -469,28 +469,28 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps6287?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL3Byb2R1Y3RzL3N0YXJ0ZXIvYXBpcy9wczYyODc/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps2462?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL3Byb2R1Y3RzL3N0YXJ0ZXIvYXBpcy9wczI0NjI/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "79094412-e369-4bf9-8b86-c3728263281a"
+          "eab1a0ce-a47d-4706-b928-2b1fdc5dabad"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps6287\",\r\n  \"type\": \"Microsoft.ApiManagement/service/products/apis\",\r\n  \"name\": \"ps6287\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps6312\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps423\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapinew\",\r\n    \"path\": \"ps6863\",\r\n    \"protocols\": null,\r\n    \"authenticationSettings\": null,\r\n    \"subscriptionKeyParameterNames\": null,\r\n    \"isCurrent\": true\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps2462\",\r\n  \"type\": \"Microsoft.ApiManagement/service/products/apis\",\r\n  \"name\": \"ps2462\",\r\n  \"properties\": {\r\n    \"displayName\": \"ps5080\",\r\n    \"apiRevision\": \"1\",\r\n    \"description\": \"ps6059\",\r\n    \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapinew\",\r\n    \"path\": \"ps4976\",\r\n    \"protocols\": null,\r\n    \"authenticationSettings\": null,\r\n    \"subscriptionKeyParameterNames\": null,\r\n    \"isCurrent\": true\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "593"
+          "594"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -505,16 +505,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "fe92a95d-b306-4587-99c7-1ac0008ecaf8"
+          "19b33a04-ab49-42fa-9541-174793180172"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1192"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "bd9f3610-9856-4d19-938b-0bf163080c79"
+          "6dbe9288-2307-4bd4-9397-47f01aa2b0df"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T010043Z:bd9f3610-9856-4d19-938b-0bf163080c79"
+          "NORTHCENTRALUS:20180818T003207Z:6dbe9288-2307-4bd4-9397-47f01aa2b0df"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -523,10 +523,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 01:00:42 GMT"
+          "Sat, 18 Aug 2018 00:32:07 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAAFMM=\""
+          "\"AAAAAAAAHRk=\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -541,22 +541,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5651c6ff-bdb1-4c8b-864b-75646e02885a"
+          "913e3eb3-a2a1-4b99-850c-653891845340"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/echo-api\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products/apis\",\r\n      \"name\": \"echo-api\",\r\n      \"properties\": {\r\n        \"displayName\": \"Echo API\",\r\n        \"apiRevision\": \"1\",\r\n        \"description\": null,\r\n        \"serviceUrl\": \"http://echoapi.cloudapp.net/api\",\r\n        \"path\": \"echo\",\r\n        \"protocols\": [\r\n          \"https\"\r\n        ],\r\n        \"authenticationSettings\": null,\r\n        \"subscriptionKeyParameterNames\": null,\r\n        \"isCurrent\": true\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps6287\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products/apis\",\r\n      \"name\": \"ps6287\",\r\n      \"properties\": {\r\n        \"displayName\": \"ps6312\",\r\n        \"apiRevision\": \"1\",\r\n        \"description\": \"ps423\",\r\n        \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapinew\",\r\n        \"path\": \"ps6863\",\r\n        \"protocols\": [\r\n          \"https\"\r\n        ],\r\n        \"authenticationSettings\": null,\r\n        \"subscriptionKeyParameterNames\": null,\r\n        \"isCurrent\": true\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/echo-api\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products/apis\",\r\n      \"name\": \"echo-api\",\r\n      \"properties\": {\r\n        \"displayName\": \"Echo API\",\r\n        \"apiRevision\": \"1\",\r\n        \"description\": null,\r\n        \"serviceUrl\": \"http://echoapi.cloudapp.net/api\",\r\n        \"path\": \"echo\",\r\n        \"protocols\": [\r\n          \"https\"\r\n        ],\r\n        \"authenticationSettings\": null,\r\n        \"subscriptionKeyParameterNames\": null,\r\n        \"isCurrent\": true\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps2462\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products/apis\",\r\n      \"name\": \"ps2462\",\r\n      \"properties\": {\r\n        \"displayName\": \"ps5080\",\r\n        \"apiRevision\": \"1\",\r\n        \"description\": \"ps6059\",\r\n        \"serviceUrl\": \"http://newechoapi.cloudapp.net/newapinew\",\r\n        \"path\": \"ps4976\",\r\n        \"protocols\": [\r\n          \"https\"\r\n        ],\r\n        \"authenticationSettings\": null,\r\n        \"subscriptionKeyParameterNames\": null,\r\n        \"isCurrent\": true\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1407"
+          "1408"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -571,16 +571,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "58daa210-c41b-412d-9f71-dd034c25cee6"
+          "a5e44a82-6b48-41e2-bbfc-ef7eb9419480"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14961"
+          "11994"
         ],
         "x-ms-correlation-request-id": [
-          "64b64475-18d9-4c36-8183-a7a78f07ffc4"
+          "e1deb216-58ee-4917-8f6b-603804833004"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T010043Z:64b64475-18d9-4c36-8183-a7a78f07ffc4"
+          "NORTHCENTRALUS:20180818T003208Z:e1deb216-58ee-4917-8f6b-603804833004"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -589,7 +589,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 01:00:42 GMT"
+          "Sat, 18 Aug 2018 00:32:07 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -604,16 +604,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b86ab4a6-7b42-4eee-ae44-2e56542b7a2b"
+          "9c01fdd2-fbc0-4291-8cdd-af38ad29e9c4"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/echo-api\",\r\n      \"type\": \"Microsoft.ApiManagement/service/products/apis\",\r\n      \"name\": \"echo-api\",\r\n      \"properties\": {\r\n        \"displayName\": \"Echo API\",\r\n        \"apiRevision\": \"1\",\r\n        \"description\": null,\r\n        \"serviceUrl\": \"http://echoapi.cloudapp.net/api\",\r\n        \"path\": \"echo\",\r\n        \"protocols\": [\r\n          \"https\"\r\n        ],\r\n        \"authenticationSettings\": null,\r\n        \"subscriptionKeyParameterNames\": null,\r\n        \"isCurrent\": true\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": \"\"\r\n}",
@@ -634,16 +634,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "4cbaf215-094c-4874-94ea-b2aa782ec303"
+          "84d00abe-b763-4ce0-aee0-c0e7af7e4843"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14960"
+          "11993"
         ],
         "x-ms-correlation-request-id": [
-          "7621f17f-846c-4b1e-a4f1-3dfbd0028258"
+          "223498b4-8be0-43fb-bd7d-f9c71ad1abe5"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T010044Z:7621f17f-846c-4b1e-a4f1-3dfbd0028258"
+          "NORTHCENTRALUS:20180818T003209Z:223498b4-8be0-43fb-bd7d-f9c71ad1abe5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -652,7 +652,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 01:00:43 GMT"
+          "Sat, 18 Aug 2018 00:32:09 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -661,22 +661,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps6287?api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL3Byb2R1Y3RzL3N0YXJ0ZXIvYXBpcy9wczYyODc/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/products/starter/apis/ps2462?api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL3Byb2R1Y3RzL3N0YXJ0ZXIvYXBpcy9wczI0NjI/YXBpLXZlcnNpb249MjAxOC0wMS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a228308a-3deb-44b6-a51d-d450b0e7d252"
+          "b5c62138-f5b4-435a-a1c3-300c57f63370"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "",
@@ -694,16 +694,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "28e82727-9c62-4a8b-bbd5-a4d7dd9a0159"
+          "3fdb6181-a572-472f-b606-877660a32f4e"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "b7621eac-846f-4642-aabd-05e37ae20770"
+          "be62f482-ba11-4c8e-8e2a-57ebb3ded0b4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T010044Z:b7621eac-846f-4642-aabd-05e37ae20770"
+          "NORTHCENTRALUS:20180818T003209Z:be62f482-ba11-4c8e-8e2a-57ebb3ded0b4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -712,7 +712,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 01:00:43 GMT"
+          "Sat, 18 Aug 2018 00:32:09 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -721,13 +721,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps6287?deleteRevisions=true&api-version=2018-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHM2Mjg3P2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
+      "RequestUri": "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ApiManagement/service/powershellsdkservice/apis/ps2462?deleteRevisions=true&api-version=2018-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTIwMDM0MGQtNmI4Mi00OTRkLTlkYmYtNjg3YmE2ZTMzZjllL3Jlc291cmNlR3JvdXBzL3Bvd2Vyc2hlbGx0ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXBpTWFuYWdlbWVudC9zZXJ2aWNlL3Bvd2Vyc2hlbGxzZGtzZXJ2aWNlL2FwaXMvcHMyNDYyP2RlbGV0ZVJldmlzaW9ucz10cnVlJmFwaS12ZXJzaW9uPTIwMTgtMDEtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "57c87354-1c97-48f9-b2f8-00cbd14c6281"
+          "98a67991-d90e-4739-9d4b-3e3a7956b49e"
         ],
         "If-Match": [
           "*"
@@ -736,10 +736,10 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "",
@@ -757,16 +757,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "183434e1-6f28-4cb9-abe0-217e3d8a6792"
+          "411009ab-cf68-42b9-9e46-9a013879a6cd"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "7f8be4da-cc73-4165-90f2-538417689a61"
+          "484ba1de-0ba3-4bd3-a61a-19b1d1a4ba81"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T010045Z:7f8be4da-cc73-4165-90f2-538417689a61"
+          "NORTHCENTRALUS:20180818T003210Z:484ba1de-0ba3-4bd3-a61a-19b1d1a4ba81"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -775,7 +775,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 01:00:44 GMT"
+          "Sat, 18 Aug 2018 00:32:10 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -786,17 +786,17 @@
   ],
   "Names": {
     "": [
-      "ps6287",
-      "ps2122",
-      "ps3468",
-      "ps4269",
-      "ps6793",
-      "ps7455",
-      "ps6312",
-      "ps423",
-      "ps6863",
-      "ps192",
-      "ps7450"
+      "ps2462",
+      "ps4692",
+      "ps119",
+      "ps118",
+      "ps8840",
+      "ps4299",
+      "ps5080",
+      "ps6059",
+      "ps4976",
+      "ps7081",
+      "ps2836"
     ]
   },
   "Variables": {

@@ -241,10 +241,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Mail (ByPropertyName), StartsWith (ByPropertyName), UserPrincipalName (ByPropertyName)
 
 ### System.Guid
-Parameters: ObjectId (ByPropertyName)
 
 ## OUTPUTS
 

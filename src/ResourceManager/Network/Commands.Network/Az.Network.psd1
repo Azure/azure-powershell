@@ -363,12 +363,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Get-AzureRmNetworkUsage: New cmdlet to show network usage and capacity details
-* Added new GatewaySku options for VirtualNetworkGateways
-    - VpnGw1, VpnGw2, VpnGw3 are the new Skus added for Vpn gateways
-* Set-AzureRmNetworkWatcherConfigFlowLog
-  * Fixed  help examples
-'
+        ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''
