@@ -1,3 +1,4 @@
+
 <#
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the MIT License. See License.txt in the project root for license information.
@@ -5,16 +6,16 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Returns the list of backup locations.
+    Returns the list of backup configurations.
 
 .DESCRIPTION
-    Returns the list of backup locations.
+    Returns the list of backup configurations.
 
 .PARAMETER Skip
     Skip the first N items as specified by the parameter value.
 
 .PARAMETER Location
-    Location to backup.
+    Backup location.
 
 .PARAMETER ResourceId
     The resource id.
@@ -27,12 +28,13 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    PS C:\> Get-AzsBackupLocation
+    PS C:\> Get-AzsBackupConfiguration
 
     Get Azure Stack backup configuration.
 
 #>
-function Get-AzsBackupLocation {
+function Get-AzsBackupConfiguration {
+    [Alias('Get-AzsBackupLocation')]
     [OutputType([Microsoft.AzureStack.Management.Backup.Admin.Models.BackupLocation])]
     [CmdletBinding(DefaultParameterSetName = 'List')]
     param(
@@ -75,7 +77,9 @@ function Get-AzsBackupLocation {
 
     Process {
 
-
+        if ($MyInvocation.InvocationName -eq 'Get-AzsBackupLocation') {
+            Write-Warning "Get-AzsBackupLocation has been deprecated, please use Get-AzsBackupConfiguration"
+        }
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Backup.Admin.BackupAdminClient'
@@ -101,12 +105,13 @@ function Get-AzsBackupLocation {
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroup']
             $Location = $ArmResourceIdParameterValues['location']
         } else {
-            if ([System.String]::IsNullOrEmpty($Location)) {
-                $Location = (Get-AzureRMLocation).Location
-            }
 
             if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
-                $ResourceGroupName = "System.$Location"
+                $tmpLocation = $Location
+                if ([System.String]::IsNullOrEmpty($tmpLocation)) {
+                    $tmpLocation = (Get-AzureRMLocation).Location
+                }
+                $ResourceGroupName = "System.$tmpLocation"
             }
         }
 
