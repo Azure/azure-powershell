@@ -90,12 +90,16 @@ InModuleScope Azs.Storage.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         it "TestGetBlobService" -Skip:$('TestGetBlobService' -in $global:SkippedTests) {
             $global:TestName = 'TestGetBlobService'
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $blobService = Get-AzsBlobService -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $blobService = Get-AzsBlobService -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 $blobService  | Should Not Be $null
                 ValidateBlobService -BlobService $blobService
             }
@@ -106,10 +110,10 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $blobService = Get-AzsBlobService -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $blobService = Get-AzsBlobService -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 $blobService  | Should Not Be $null
                 ValidateBlobService -BlobService $blobService
-                Get-AzsBlobServiceMetricDefinition -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                Get-AzsBlobServiceMetricDefinition -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
             }
         }
 
@@ -118,10 +122,10 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $blobService = Get-AzsBlobService -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $blobService = Get-AzsBlobService -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 $blobService  | Should Not Be $null
                 ValidateBlobService -BlobService $blobService
-                Get-AzsBlobServiceMetric -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                Get-AzsBlobServiceMetric -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
             }
         }
     }
