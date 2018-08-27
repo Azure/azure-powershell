@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The default deployment operation API version.
         /// </summary>
-        public static readonly string DeploymentOperationApiVersion = "2016-02-01";
+        public static readonly string DeploymentOperationApiVersion = "2018-05-01";
 
         /// <summary>
         /// The move action.

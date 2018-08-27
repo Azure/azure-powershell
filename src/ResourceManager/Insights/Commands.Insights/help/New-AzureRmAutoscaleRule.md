@@ -285,28 +285,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: MetricName (ByPropertyName), MetricResourceId (ByPropertyName), ScaleActionValue (ByPropertyName)
 
 ### Microsoft.Azure.Management.Monitor.Management.Models.ComparisonOperationType
-Parameters: Operator (ByPropertyName)
 
 ### Microsoft.Azure.Management.Monitor.Management.Models.MetricStatisticType
-Parameters: MetricStatistic (ByPropertyName)
 
 ### System.Double
-Parameters: Threshold (ByPropertyName)
 
 ### Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationType
-Parameters: TimeAggregationOperator (ByPropertyName)
 
 ### System.TimeSpan
-Parameters: ScaleActionCooldown (ByPropertyName), TimeGrain (ByPropertyName), TimeWindow (ByPropertyName)
 
 ### Microsoft.Azure.Management.Monitor.Management.Models.ScaleDirection
-Parameters: ScaleActionDirection (ByPropertyName)
 
 ### Microsoft.Azure.Management.Monitor.Management.Models.ScaleType
-Parameters: ScaleActionScaleType (ByPropertyName)
 
 ## OUTPUTS
 
