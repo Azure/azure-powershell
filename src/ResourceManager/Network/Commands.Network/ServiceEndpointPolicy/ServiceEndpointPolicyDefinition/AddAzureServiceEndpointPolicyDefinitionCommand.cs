@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmServiceEndpointPolicyDefinition", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicy))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceEndpointPolicyDefinition", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicy))]
     public class AddAzureServiceEndpointPolicyDefinitionCommand : AzureServiceEndpointPolicyDefinitionBase
     {
         [Parameter(

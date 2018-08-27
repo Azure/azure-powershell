@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmPublicIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSPublicIpPrefix))]
-
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSPublicIpPrefix))]
     public class NewAzurePublicIpPrefixCommand : PublicIpPrefixBaseCmdlet
     {
         [Alias("ResourceName")]
