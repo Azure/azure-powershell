@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Network
     using MNM = Microsoft.Azure.Management.Network.Models;
     using Management.Network;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmServiceEndpointPolicy", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicy))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceEndpointPolicy", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicy))]
     public class SetAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
     {
         [Parameter(

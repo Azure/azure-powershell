@@ -214,6 +214,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'Test-AzPrivateIPAddressAvailability', 
     'Get-AzPublicIpAddress', 'New-AzPublicIpAddress', 
     'Remove-AzPublicIpAddress', 'Set-AzPublicIpAddress', 
+    'Get-AzPublicIpPrefix', 'New-AzPublicIpPrefix', 
+    'Remove-AzPublicIpPrefix', 'Set-AzPublicIpPrefix', 
     'Get-AzRouteTable', 'New-AzRouteTable', 
     'Remove-AzRouteTable', 'Add-AzRouteConfig', 
     'Get-AzRouteConfig', 'New-AzRouteConfig', 
@@ -326,7 +328,16 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'New-AzNetworkWatcherProtocolConfiguration', 
     'Add-AzExpressRouteCircuitConnectionConfig', 
     'Get-AzExpressRouteCircuitConnectionConfig', 
-    'Remove-AzExpressRouteCircuitConnectionConfig'
+    'Remove-AzExpressRouteCircuitConnectionConfig',
+    'New-AzServiceEndpointPolicy',
+    'Remove-AzServiceEndpointPolicy',
+    'Get-AzServiceEndpointPolicy',
+    'New-AzServiceEndpointPolicyDefinition',
+    'Remove-AzServiceEndpointPolicyDefinition',
+    'Get-AzServiceEndpointPolicyDefinition',
+    'Set-AzServiceEndpointPolicyDefinition',
+    'Add-AzServiceEndpointPolicyDefinition',
+    'Set-AzServiceEndpointPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()

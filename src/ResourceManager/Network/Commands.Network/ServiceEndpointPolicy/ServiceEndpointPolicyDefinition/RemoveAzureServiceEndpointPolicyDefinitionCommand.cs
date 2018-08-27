@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmServiceEndpointPolicyDefinition", DefaultParameterSetName = "RemoveByNameParameterSet", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicy))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceEndpointPolicyDefinition", DefaultParameterSetName = "RemoveByNameParameterSet", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicy))]
     public class RemoveAzureServiceEndpointPolicyDefinitionCommand : NetworkBaseCmdlet
     {
         [Parameter(
