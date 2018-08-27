@@ -441,7 +441,6 @@
     <Compile Include="ServiceEndpointPolicy\ServiceEndpointPolicyDefinition\NewAzureServiceEndpointPolicyDefinitionCommand.cs" />
     <Compile Include="ServiceEndpointPolicy\ServiceEndpointPolicyDefinition\RemoveAzureServiceEndpointPolicyDefinitionCommand.cs" />
     <Compile Include="ServiceEndpointPolicy\ServiceEndpointPolicyDefinition\SetAzureServiceEndpointPolicyDefinitionCommand.cs" />
-    <Compile Include="Usage\GetAzureNetworkUsageCommand.cs" />
     <Compile Include="Generated\Models\PSApplicationSecurityGroup.cs" />
     <Compile Include="Generated\RouteTable\GetAzureRMRouteTableCommand.cs" />
     <Compile Include="Generated\RouteTable\NewAzureRMRouteTableCommand.cs" />
