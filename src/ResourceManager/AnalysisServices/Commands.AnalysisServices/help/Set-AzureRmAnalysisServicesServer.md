@@ -302,19 +302,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Administrator (ByPropertyName), BackupBlobContainerUri (ByPropertyName), DefaultConnectionMode (ByPropertyName), GatewayResourceId (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Sku (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: DisableBackup (ByPropertyName), DisassociateGateway (ByPropertyName)
 
 ### System.Int32
-Parameters: ReadonlyReplicaCount (ByPropertyName)
 
 ### Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig
-Parameters: FirewallConfig (ByPropertyName)
 
 ## OUTPUTS
 

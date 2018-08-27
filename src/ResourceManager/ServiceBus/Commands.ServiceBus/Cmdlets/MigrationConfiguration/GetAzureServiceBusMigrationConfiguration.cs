@@ -62,10 +62,17 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
                 ResourceGroupName = getParamMigrationconfig.ResourceGroupName;
                 Name = getParamMigrationconfig.ResourceName;
             }
+           
+            try
+            {
+                PSServiceBusMigrationConfigurationAttributes migrationConfiguration = Client.GetServiceBusMigrationConfiguration(ResourceGroupName, Name);
+                WriteObject(migrationConfiguration);
+            }
+            catch (Management.ServiceBus.Models.ErrorResponseException ex)
+            {
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+            }
 
-            PSServiceBusMigrationConfigurationAttributes migrationConfiguration = Client.GetServiceBusMigrationConfiguration(ResourceGroupName, Name);
-            WriteObject(migrationConfiguration);
-            
         }
     }
 }

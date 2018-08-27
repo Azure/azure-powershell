@@ -176,10 +176,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AdvisorName (ByPropertyName), ElasticPoolName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus
-Parameters: AutoExecuteStatus (ByPropertyName)
 
 ## OUTPUTS
 

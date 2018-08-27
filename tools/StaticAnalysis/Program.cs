@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using StaticAnalysis.CmdlineArgParsing;
 using System.Reflection;
 using System.Linq;
 using Tools.Common.Loggers;
@@ -29,9 +28,7 @@ namespace StaticAnalysis
     {
         static IList<IStaticAnalyzer> Analyzers = new List<IStaticAnalyzer>()
         {
-            new DependencyAnalyzer.DependencyAnalyzer(),
-            new SignatureVerifier.SignatureVerifier(),
-            new BreakingChangeAnalyzer.BreakingChangeAnalyzer()
+            new DependencyAnalyzer.DependencyAnalyzer()
         };
 
         static IList<string> ExceptionFileNames = new List<string>()
@@ -51,58 +48,79 @@ namespace StaticAnalysis
             AnalysisLogger analysisLogger = null;
             try
             {
-                if (args == null || args.Length < 1)
+                string installDir = null;
+                if (args.Any(a => a == "--package-directory" || a == "-p"))
                 {
-                    throw new InvalidOperationException("Please pass a valid directory name as the first parameter");
+                    int idx = Array.FindIndex(args, a => a == "--package-directory" || a == "-p");
+                    if (idx == args.Length)
+                    {
+                        throw new ArgumentException("No value provided for the --package-directory parameter.");
+                    }
+
+                    installDir = args[idx + 1];
                 }
 
-                var installDir = args[0];
-                if (!Directory.Exists(installDir))
+                if (args == null)
                 {
-                    throw new InvalidOperationException("You must pass a valid directory as the first parameter");
+                    throw new InvalidOperationException("No installation directory was provided; please use the --package-directory parameter to provide the value.");
+                }
+                else if (!Directory.Exists(installDir))
+                {
+                    throw new InvalidOperationException(string.Format("Please provide a valid installation directory; the provided directory '{0}' could not be found.", installDir));
                 }
 
                 var directories = new List<string>
-            {
-                Path.Combine(installDir, @"ResourceManager\AzureResourceManager\"),
-                Path.Combine(installDir, @"ServiceManagement\Azure\"),
-                Path.Combine(installDir, @"Storage\")
-           }.Where((d) => Directory.Exists(d)).ToList<string>();
+                {
+                    Path.Combine(installDir, @"ResourceManager\AzureResourceManager\"),
+                    Path.Combine(installDir, @"ServiceManagement\Azure\"),
+                    Path.Combine(installDir, @"Storage\")
+                }.Where((d) => Directory.Exists(d)).ToList<string>();
 
                 var reportsDirectory = Directory.GetCurrentDirectory();
                 bool logReportsDirectoryWarning = true;
-                if (args.Length > 1 && Directory.Exists(args[1]))
+                if (args.Any(a => a == "--reports-directory" || a == "-r"))
                 {
-                    reportsDirectory = args[1];
+                    int idx = Array.FindIndex(args, a => a == "--reports-directory" || a == "-r");
+                    if (idx == args.Length)
+                    {
+                        throw new ArgumentException("No value provided for the --reports-directory parameter.");
+                    }
+
+                    reportsDirectory = args[idx + 1];
                     logReportsDirectoryWarning = false;
                 }
 
                 ExceptionsDirectory = Path.Combine(reportsDirectory, "Exceptions");
-                bool useExceptions = true;
-                if (args.Length > 2)
+                bool useExceptions = !args.Any(a => a == "--dont-use-exceptions" || a == "-d");
+                bool skipHelp = args.Any(a => a == "--skip-help" || a == "-s");
+
+                var modulesToAnalyze = new List<string>();
+                if (args.Any(a => a == "--modules-to-analyze" || a == "-m"))
                 {
-                    bool.TryParse(args[2], out useExceptions);
+                    int idx = Array.FindIndex(args, a => a == "--modules-to-analyze" || a == "-m");
+                    if (idx == args.Length)
+                    {
+                        throw new ArgumentException("No value provided for the --modules-to-analyze parameter.");
+                    }
+
+                    modulesToAnalyze = args[idx + 1].Split(';').ToList();
                 }
 
-                ConsolidateExceptionFiles(ExceptionsDirectory);
-                analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, ExceptionsDirectory) :
-                    new AnalysisLogger(reportsDirectory);
-                bool skipHelp = false;
-                if (args.Length > 3)
+                bool useNetcore = args.Any(a => a == "--use-netcore" || a == "-u");
+                if (!useNetcore)
                 {
-                    bool.TryParse(args[3], out skipHelp);
+                    Analyzers.Add(new SignatureVerifier.SignatureVerifier());
+                    Analyzers.Add(new BreakingChangeAnalyzer.BreakingChangeAnalyzer());
                 }
 
-                if (!skipHelp)
+                if (!skipHelp && !useNetcore)
                 {
                     Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
                 }
 
-                var modulesToAnalyze = new List<string>();
-                if (args.Length > 4)
-                {
-                    modulesToAnalyze = args[4].Split(';').ToList();
-                }
+                ConsolidateExceptionFiles(ExceptionsDirectory, useNetcore);
+                analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, ExceptionsDirectory) :
+                    new AnalysisLogger(reportsDirectory);
 
                 if (logReportsDirectoryWarning)
                 {
@@ -139,11 +157,13 @@ namespace StaticAnalysis
             }
         }
 
-        private static void ConsolidateExceptionFiles(string exceptionsDirectory)
+        private static void ConsolidateExceptionFiles(string exceptionsDirectory, bool useNetcore)
         {
             foreach (var exceptionFileName in ExceptionFileNames)
             {
-                var moduleExceptionFilePaths = Directory.EnumerateFiles(exceptionsDirectory, exceptionFileName, SearchOption.AllDirectories).ToList();
+                var moduleExceptionFilePaths = Directory.EnumerateFiles(exceptionsDirectory, exceptionFileName, SearchOption.AllDirectories)
+                                                        .Where(f => useNetcore ? Directory.GetParent(f).Name.StartsWith("Az.") : Directory.GetParent(f).Name.StartsWith("Azure"))
+                                                        .ToList();
                 var exceptionFilePath = Path.Combine(exceptionsDirectory, exceptionFileName);
                 if (File.Exists(exceptionFilePath))
                 {
