@@ -49,12 +49,13 @@ namespace VersionController
                 Path.Combine(srcDirectory, @"Package\Debug\Storage\")
             }.Where((d) => Directory.Exists(d)).ToList();
 
-            var exceptionsDirectory = string.Empty;
+            var exceptionsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Exceptions");
             if (args != null && args.Length > 0)
             {
                 exceptionsDirectory = args[0];
             }
-            else
+            
+            if (!Directory.Exists(exceptionsDirectory))
             {
                 throw new ArgumentException("Please provide a path to the Exceptions folder in the output directory (src/Package/Exceptions).");
             }
@@ -202,7 +203,7 @@ namespace VersionController
         /// <returns>The path to the module manifest file.</returns>
         private static string GetModuleManifestPath(string parentFolder)
         {
-            var moduleManifest = Directory.GetFiles(parentFolder, "*.psd1").Where(f => !f.Contains("Netcore")).ToList();
+            var moduleManifest = Directory.GetFiles(parentFolder, "*.psd1").Where(f => !f.Contains("Az.")).ToList();
             if (moduleManifest.Count == 0)
             {
                 throw new FileNotFoundException("No module manifest file found in directory " + parentFolder);

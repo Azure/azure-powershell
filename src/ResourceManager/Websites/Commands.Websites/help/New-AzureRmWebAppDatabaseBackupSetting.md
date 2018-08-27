@@ -112,7 +112,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ConnectionString (ByPropertyName), ConnectionStringName (ByPropertyName), DatabaseType (ByPropertyName), Name (ByPropertyName)
 
 ## OUTPUTS
 

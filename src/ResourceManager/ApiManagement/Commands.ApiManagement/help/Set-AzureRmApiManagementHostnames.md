@@ -170,10 +170,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: ApiManagement (ByValue)
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration
-Parameters: PortalHostnameConfiguration (ByPropertyName), ProxyHostnameConfiguration (ByPropertyName)
 
 ## OUTPUTS
 
