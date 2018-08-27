@@ -47,7 +47,8 @@ namespace Commands.Aks.Test.ScenarioTests
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>
                 {
-                    {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2017-05-10"}
+                    {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2017-05-10"},
+                    {"Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10"}
                 };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");

@@ -307,7 +307,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: NetworkWatcher (ByValue)
 
 ### System.String
-Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
