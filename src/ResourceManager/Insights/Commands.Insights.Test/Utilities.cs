@@ -302,12 +302,12 @@ namespace Microsoft.Azure.Commands.Insights.Test
             cmdlet.Status = null;
             cmdlet.StartTime = DateTime.Now.AddSeconds(1);
             nextLink = null;
-            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Throws<System.Management.Automation.PSInvalidOperationException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.StartTime = DateTime.Now.Subtract(TimeSpan.FromSeconds(20));
             cmdlet.EndTime = DateTime.Now.Subtract(TimeSpan.FromSeconds(21));
             nextLink = null;
-            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Throws<System.Management.Automation.PSInvalidOperationException>(() => cmdlet.ExecuteCmdlet());
         }
 
         #endregion
