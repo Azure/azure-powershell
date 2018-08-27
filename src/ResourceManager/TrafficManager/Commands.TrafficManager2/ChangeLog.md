@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.1.0
 * Support for the MultiValue routing method
     - New parameter 'MaxReturn' for MultiValue routing
 * Support for the Subnet routing method

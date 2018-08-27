@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.1.7
 * Fixed issue with default resource groups not being set.
 
 ## Version 4.1.6
