@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.5.0
 * Added expiration property to tokens returned during Connect-AzureRmAccount
+
+## Version 5.4.0
 * Updated to the latest version of the Azure ClientRuntime.
 * Add user id to default context name to avoid context clashing
     - https://github.com/Azure/azure-powershell/issues/6489

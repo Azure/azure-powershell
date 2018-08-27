@@ -309,24 +309,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AdminUsername (ByPropertyName), CustomProfileOrchestrator (ByPropertyName), Location (ByPropertyName), MasterDnsPrefix (ByPropertyName), ServicePrincipalProfileClientId (ByPropertyName), ServicePrincipalProfileSecret (ByPropertyName), WindowsProfileAdminPassword (ByPropertyName), WindowsProfileAdminUsername (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
-### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.ContainerServiceOrchestratorTypes, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.ContainerServiceOrchestratorTypes, Microsoft.Azure.Management.Compute, Version=21.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ### System.Int32
-Parameters: MasterCount (ByPropertyName)
 
 ### Microsoft.Azure.Management.Compute.Models.ContainerServiceAgentPoolProfile[]
-Parameters: AgentPoolProfile (ByPropertyName)
 
 ### System.String[]
-Parameters: SshPublicKey (ByPropertyName)
 
 ### System.Boolean
-Parameters: VmDiagnosticsEnabled (ByPropertyName)
 
 ## OUTPUTS
 

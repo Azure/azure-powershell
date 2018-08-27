@@ -145,13 +145,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Account (ByPropertyName)
 
 ### System.Guid
-Parameters: JobId (ByPropertyName, ByValue)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Force (ByPropertyName)
 
 ## OUTPUTS
 
