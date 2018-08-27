@@ -89,8 +89,6 @@ function New-AzsIpPool {
 
     Process {
 
-
-
         if ($PSCmdlet.ShouldProcess("$Name", "Create a new Ip Pool")) {
 
             if ([System.String]::IsNullOrEmpty($Location)) {
@@ -101,16 +99,9 @@ function New-AzsIpPool {
             }
 
             # Validate this resource does not exist.
-            $_objectCheck = $null
-            try {
-                Write-Verbose "Checking to see if ip pool already exists."
-                $_objectCheck = Get-AzsIpPool -Name $Name -Location $Location -ResourceGroupName $ResourceGroupName
-            } catch {
-                # No op
-            } finally {
-                if ($_objectCheck -ne $null) {
-                    throw "Ip Pool with name $Name at location $Location under the resource group $ResourceGroupName  already exists."
-                }
+            if ($null -ne (Get-AzsIpPool -Name $Name -Location $Location -ResourceGroupName $ResourceGroupName -ErrorAction SilentlyContinue)) {
+                Write-Error "An IP pool with the name $Name under the resource group $ResourceGroupName at location $location already exists"
+                return
             }
 
             $flattenedParameters = @('NumberOfIpAddressesInTransition', 'StartIpAddress', 'Tags', 'AddressPrefix', 'NumberOfIpAddresses', 'Location', 'EndIpAddress', 'NumberOfAllocatedIpAddresses')
