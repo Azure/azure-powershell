@@ -155,7 +155,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ImageName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
 Parameters: Image (ByValue)

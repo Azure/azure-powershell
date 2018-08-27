@@ -3,7 +3,7 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.Common.Strategies.UnitTest</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Strategies.UnitTest</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>

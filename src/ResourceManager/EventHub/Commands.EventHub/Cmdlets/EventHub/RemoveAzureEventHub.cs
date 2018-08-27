@@ -74,11 +74,18 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             // delete a EventHub 
             if(ShouldProcess(target:Name, action:string.Format(Resources.RemovingEventHub,Name,Namespace)))
             {
-                var result = Client.DeleteEventHub(ResourceGroupName, Namespace, Name);
-
-                if (PassThru.IsPresent)
+                try
                 {
-                    WriteObject(result);
+                    var result = Client.DeleteEventHub(ResourceGroupName, Namespace, Name);
+
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(result);
+                    }
+                }
+                catch (Management.EventHub.Models.ErrorResponseException ex)
+                {
+                    WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
                 }
             }            
         }

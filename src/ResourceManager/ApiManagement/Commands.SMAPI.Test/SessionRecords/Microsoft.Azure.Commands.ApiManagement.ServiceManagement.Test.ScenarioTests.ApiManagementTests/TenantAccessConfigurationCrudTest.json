@@ -7,18 +7,19 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6e1d463b-f025-4444-8807-dde82db12833"
+          "c872d837-e2ca-45f1-af59-71bd7b5c113c"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
+     //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
       "ResponseBody": "{\r\n  \"id\": \"integration\",\r\n  \"primaryKey\": \"TDp5xERRjwxTV+FKL0kPVCcdjnkKLlZgQ9XAOTr6kKc7CjoJamj2JgvdSIgdpICwQZK7VaGEE4s3r2d4acXiKA==\",\r\n  \"secondaryKey\": \"Y1ap+0LZwCZi87HZ0NYyqxzn4S7ZbsESJq3TP3Odx/ZKl2BL8yE7nMlL64P9Ro0rVVLW1W6NTGYKKEy6C56Q+A==\",\r\n  \"enabled\": false\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -37,16 +38,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "effe3e0e-2c98-433a-bc32-9b5ef18424a7"
+          "02f7cc7d-55b1-49d0-95f8-55f59a9f675a"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "63923741-78bb-4d18-a4aa-97718e4264db"
+          "7363bced-2f2b-4449-9c94-6ec4744c5746"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T180708Z:63923741-78bb-4d18-a4aa-97718e4264db"
+          "WESTUS:20180818T002601Z:7363bced-2f2b-4449-9c94-6ec4744c5746"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -55,10 +56,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 18:07:08 GMT"
+          "Sat, 18 Aug 2018 00:26:01 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAAFakAAAAAAAAAAA==\""
+          "\"AAAAAAAAFawAAAAAAAAAAA==\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -73,18 +74,19 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f5d50781-acbc-40c5-bb06-c6217b2d75e0"
+          "73e20b89-e156-45a2-81bf-644e46cca03b"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
+     //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
       "ResponseBody": "{\r\n  \"id\": \"integration\",\r\n  \"primaryKey\": \"TDp5xERRjwxTV+FKL0kPVCcdjnkKLlZgQ9XAOTr6kKc7CjoJamj2JgvdSIgdpICwQZK7VaGEE4s3r2d4acXiKA==\",\r\n  \"secondaryKey\": \"Y1ap+0LZwCZi87HZ0NYyqxzn4S7ZbsESJq3TP3Odx/ZKl2BL8yE7nMlL64P9Ro0rVVLW1W6NTGYKKEy6C56Q+A==\",\r\n  \"enabled\": true\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -103,16 +105,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "80e468b7-2637-4bea-bdd2-308ec85df996"
+          "7bd8d70b-fe01-448e-b148-f5d24bf307b1"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "b070cb6d-85ce-49ed-b87c-1065cdacec88"
+          "13237366-392f-403d-ac3d-7300717f5335"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T180720Z:b070cb6d-85ce-49ed-b87c-1065cdacec88"
+          "WESTUS:20180818T002603Z:13237366-392f-403d-ac3d-7300717f5335"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -121,10 +123,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 18:07:20 GMT"
+          "Sat, 18 Aug 2018 00:26:02 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAAFasAAAAAAAAAAA==\""
+          "\"AAAAAAAAHFkAAAAAAAAAAA==\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -139,18 +141,19 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c642db27-0e5c-412a-914c-8053fe48adb0"
+          "92018b87-fa6f-4fb8-bb28-93aae083e018"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
+     //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
       "ResponseBody": "{\r\n  \"id\": \"integration\",\r\n  \"primaryKey\": \"TDp5xERRjwxTV+FKL0kPVCcdjnkKLlZgQ9XAOTr6kKc7CjoJamj2JgvdSIgdpICwQZK7VaGEE4s3r2d4acXiKA==\",\r\n  \"secondaryKey\": \"Y1ap+0LZwCZi87HZ0NYyqxzn4S7ZbsESJq3TP3Odx/ZKl2BL8yE7nMlL64P9Ro0rVVLW1W6NTGYKKEy6C56Q+A==\",\r\n  \"enabled\": false\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -169,16 +172,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b87a785f-c1e8-42b0-88e3-e7ce61fa23f0"
+          "9b427324-d1ad-4627-b2e4-245da0c91633"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "1b246d00-1271-4d98-8e01-8714d25c041d"
+          "8d2393f3-e619-45f8-9f10-ef30ee59b3d1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T180735Z:1b246d00-1271-4d98-8e01-8714d25c041d"
+          "WESTUS:20180818T002604Z:8d2393f3-e619-45f8-9f10-ef30ee59b3d1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -187,10 +190,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 18:07:34 GMT"
+          "Sat, 18 Aug 2018 00:26:03 GMT"
         ],
         "ETag": [
-          "\"AAAAAAAAFawAAAAAAAAAAA==\""
+          "\"AAAAAAAAHFoAAAAAAAAAAA==\""
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -211,7 +214,7 @@
           "23"
         ],
         "x-ms-client-request-id": [
-          "91b70973-74da-4e41-b840-ccfc15ad4d48"
+          "0039d0cd-c271-4e33-a38e-742c40e0c62d"
         ],
         "If-Match": [
           "*"
@@ -220,10 +223,10 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "",
@@ -238,16 +241,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "3713996d-bfd8-4f08-9696-f1385f7b5207"
+          "80589820-7e2d-4530-960d-fecf00fd120c"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "3b54c646-05df-4a82-96ba-7576ca4e8491"
+          "b43b63ba-6b88-414c-b5c4-cd563239ad67"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T180709Z:3b54c646-05df-4a82-96ba-7576ca4e8491"
+          "WESTUS:20180818T002603Z:b43b63ba-6b88-414c-b5c4-cd563239ad67"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -256,7 +259,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 18:07:09 GMT"
+          "Sat, 18 Aug 2018 00:26:02 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -277,7 +280,7 @@
           "24"
         ],
         "x-ms-client-request-id": [
-          "d430a666-79bc-42a5-8ab1-262c9a794f13"
+          "965cc993-f7e0-454b-b9b7-e71c2b3c9173"
         ],
         "If-Match": [
           "*"
@@ -286,10 +289,10 @@
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3131.0",
+          "FxVersion/4.7.3132.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.3.0"
+          "Microsoft.Azure.Management.ApiManagement.ApiManagementClient/4.0.4.0"
         ]
       },
       "ResponseBody": "",
@@ -304,16 +307,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e93a48e7-7a9b-4184-9d59-4bb148db60bb"
+          "40bd33c9-bf03-424b-b0b5-ebc6f184b8ac"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "e9dee020-8798-411a-a3fc-ea6621d77641"
+          "646144d8-d5fb-4731-817d-c86412989469"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180718T180729Z:e9dee020-8798-411a-a3fc-ea6621d77641"
+          "WESTUS:20180818T002604Z:646144d8-d5fb-4731-817d-c86412989469"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -322,7 +325,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 18 Jul 2018 18:07:28 GMT"
+          "Sat, 18 Aug 2018 00:26:03 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

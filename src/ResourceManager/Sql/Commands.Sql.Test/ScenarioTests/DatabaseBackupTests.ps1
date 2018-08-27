@@ -137,6 +137,7 @@ function Test-ServerBackupLongTermRetentionVault
 	Assert-True { $result.RecoveryServicesVaultResourceId -eq $vaultResourceId }
 }
 
+# TODO: Deprecate LTRv1
 function Test-DatabaseBackupLongTermRetentionPolicy
 {
 	$location = "North Europe"
@@ -156,6 +157,7 @@ function Test-DatabaseBackupLongTermRetentionPolicy
 }
 
 # LTR-V1 restore tests need to be removed once the service is retired completely
+# TODO update for LTRv2 backup
 function Test-RestoreLongTermRetentionBackup
 {
 	$location = "North Europe"

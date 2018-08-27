@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -52,7 +53,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ManagementGroups.1.1.0-preview\lib\net452\Microsoft.Azure.Management.ManagementGroups.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.9.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.8.0-preview\lib\net452\Microsoft.Azure.Management.Authorization.dll</HintPath>
@@ -163,42 +164,18 @@
     <Compile Include="Models.ResourceGroups\ResourceClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Commands.Common.Graph.RBAC.csproj">
-      <Project>{269acf73-0a34-42dc-ab9c-4b15931a489d}</Project>
-      <Name>Commands.Common.Graph.RBAC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
-      <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
-      <Name>Commands.Resources.Rest</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Resources.format.ps1xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="AzureRM.Resources.psd1">
-      <Link>AzureRM.Resources.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ChangeLog.md" />
     <None Include="help\*.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="StartupScripts\*.ps1">
-      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
-    </None>
+    <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ManagementGroups\Common\Resource.resx">
@@ -211,9 +188,13 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
+      <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
+      <Name>Commands.Resources.Rest</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
