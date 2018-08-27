@@ -20,6 +20,8 @@
 ## Current Release
 * Minor changes to the storage common code
 * Updated help files to include full parameter types.
+
+## Version 5.5.0
 * Added expiration property to tokens returned during Connect-AzureRmAccount
 
 ## Version 5.4.0

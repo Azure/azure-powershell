@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = '17a2feff-488b-47f9-8729-e2cec094624c'
@@ -76,7 +76,6 @@ RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.d
     '.\Microsoft.Rest.ClientRuntime.Azure.dll', 
     '.\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll', 
     '.\Microsoft.WindowsAzure.Storage.dll', 
-    '.\Microsoft.Azure.Management.Storage.dll', '.\Newtonsoft.Json.dll', 
     '.\Microsoft.Azure.PowerShell.Aks.dll', 
     '.\Microsoft.Azure.PowerShell.Strategies.dll'
 
@@ -146,13 +145,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Resolve-AzureRmError
-  * New cmdlet to show details of errors and exceptions thrown by cmdlets, including server request/response data
-* Send-Feedback
-  * Enabled sending feedback without logging in
-* Get-AzureRmSubscription
-  * Fix bug in retrieving CSP subscriptions
-'
+        ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''
