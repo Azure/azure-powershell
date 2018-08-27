@@ -27,18 +27,19 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     /// Cmdlet to create a new Azure Sql Managed Database
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlManagedDatabase",
+        DefaultParameterSetName = CreateNewByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedDatabaseModel))]
     public class NewAzureSqlManagedDatabase : AzureSqlManagedDatabaseCmdletBase<AzureSqlManagedDatabaseModel>
     {
         protected const string CreateNewByNameAndResourceGroupParameterSet =
-            "CreateNewManagedDatabaseFromInputParameters";
+            "CreateNewManagedDatabaseByInputParameters";
 
         protected const string CreateNewByInputObjectParameterSet =
-            "CreateNewManagedDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition";
+            "CreateNewManagedDatabaseByAzureSqlManagedInstanceModelInstanceDefinition";
 
         protected const string CreateNewByResourceIdParameterSet =
-            "CreateNewManagedDatabaseFromAzureSqlManagedInstanceResourceId";
+            "CreateNewManagedDatabaseByAzureSqlManagedInstanceResourceId";
 
         /// <summary>
         /// Gets or sets the name of the managed database to create.

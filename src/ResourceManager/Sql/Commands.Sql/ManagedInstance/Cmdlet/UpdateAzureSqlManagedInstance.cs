@@ -30,18 +30,19 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// Defines the Update-AzureRmSqlManagedInstance cmdlet
     /// </summary>
     [Cmdlet(VerbsData.Update, "AzureRmSqlManagedInstance",
+        DefaultParameterSetName = UpdateByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class UpdateAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
         protected const string UpdateByNameAndResourceGroupParameterSet =
-            "UpdateManagedInstanceFromInputParameters";
+            "UpdateManagedInstanceByInputParameters";
 
         protected const string UpdateByInputObjectParameterSet =
-            "UpdateManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition";
+            "UpdateManagedInstanceByAzureSqlManagedInstanceModelInstanceDefinition";
 
         protected const string UpdateByResourceIdParameterSet =
-            "UpdateManagedInstanceFromAzureResourceId";
+            "UpdateManagedInstanceByAzureResourceId";
 
         /// <summary>
         /// AzureSqlManagedInstanceModel object to remove

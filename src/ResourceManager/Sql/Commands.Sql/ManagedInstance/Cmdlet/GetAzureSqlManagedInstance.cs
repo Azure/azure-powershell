@@ -23,15 +23,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the Get-ManagedInstance cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlManagedInstance"),
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlManagedInstance",
+        DefaultParameterSetName = GetByResourceGroupParameterSet),
         OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class GetAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
-        protected const string GetByNameAndResourceGroupParameterSet =
-            "GetManagedInstanceByNameAndResourceGroup";
-
         protected const string GetByResourceGroupParameterSet =
             "GetManagedInstanceByResourceGroup";
+
+        protected const string GetByNameAndResourceGroupParameterSet =
+            "GetManagedInstanceByNameAndResourceGroup";
 
         /// <summary>
         /// Gets or sets the name of the managed instance.

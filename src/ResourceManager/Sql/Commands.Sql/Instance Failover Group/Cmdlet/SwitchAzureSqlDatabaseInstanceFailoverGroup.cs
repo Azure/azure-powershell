@@ -23,30 +23,32 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Switch, "AzureRmSqlDatabaseInstanceFailoverGroup", DefaultParameterSetName = SwitchIFGDefaultSet,
-        SupportsShouldProcess = true), OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
+    [Cmdlet(VerbsCommon.Switch, "AzureRmSqlDatabaseInstanceFailoverGroup",
+        DefaultParameterSetName = SwitchIfgDefaultSet,
+        SupportsShouldProcess = true),
+        OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
     public class SwitchAzureSqlInstanceFailoverGroup : AzureSqlInstanceFailoverGroupCmdletBase
     {
         /// <summary>
         /// Parameter set name for the default switch.
         /// </summary>
-        private const string SwitchIFGDefaultSet = "SwitchIFGDefault";
+        private const string SwitchIfgDefaultSet = "SwitchInstanceFailoverGroupDefaultSet";
 
         /// <summary>
         /// Parameter set name for switch with an Input Object.
         /// </summary>
-        protected const string SwitchIFGByInputObjectParameterSet =
-            "Switch a Instance Failover Group from AzureSqlInstanceFailoverGroupModel instance definition";
+        protected const string SwitchIfgByInputObjectParameterSet =
+            "SwitchInstanceFailoverGroupByInputObjectSet";
         
         /// <summary>
         /// Parameter set name for switch with a resource ID.
         /// </summary>
-        private const string SwitchIFGByResourceIdSet = "Switch a Instance Failover Group from Resource Id";
+        private const string SwitchIfgByResourceIdSet = "SwitchInstanceFailoverGroupByResourceIdSet";
         
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(ParameterSetName = SwitchIFGDefaultSet,
+        [Parameter(ParameterSetName = SwitchIfgDefaultSet,
             Mandatory = true,
             Position = 0,
             HelpMessage = "The name of the resource group.")]
@@ -57,11 +59,11 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the name of the local region to use.
         /// </summary>
-        [Parameter(ParameterSetName = SwitchIFGByResourceIdSet,
+        [Parameter(ParameterSetName = SwitchIfgByResourceIdSet,
             Mandatory = true,
             Position = 1,
             HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
-        [Parameter(ParameterSetName = SwitchIFGDefaultSet,
+        [Parameter(ParameterSetName = SwitchIfgDefaultSet,
             Mandatory = true,
             Position = 1,
             HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
@@ -72,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the name of the InstanceFailoverGroup to use.
         /// </summary>
-        [Parameter(ParameterSetName = SwitchIFGDefaultSet, 
+        [Parameter(ParameterSetName = SwitchIfgDefaultSet, 
             Mandatory = true,
             Position = 2,
             HelpMessage = "The name of the Instance Failover Group.")]
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Instance Failover Group object to switch
         /// </summary>
-        [Parameter(ParameterSetName = SwitchIFGByInputObjectParameterSet,
+        [Parameter(ParameterSetName = SwitchIfgByInputObjectParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
@@ -93,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the resource ID of the Instance Failover Group to switch.
         /// </summary>
-        [Parameter(ParameterSetName = SwitchIFGByResourceIdSet,
+        [Parameter(ParameterSetName = SwitchIfgByResourceIdSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,

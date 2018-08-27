@@ -22,18 +22,19 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlManagedDatabase",
+        DefaultParameterSetName = RemoveByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedDatabaseModel))]
     public class RemoveAzureSqlManagedDatabase : AzureSqlManagedDatabaseCmdletBase<IEnumerable<AzureSqlManagedDatabaseModel>>
     {
         protected const string RemoveByNameAndResourceGroupParameterSet =
-            "RemoveManagedDatabaseFromInputParameters";
+            "RemoveManagedDatabaseByInputParameters";
 
         protected const string RemoveByInputObjectParameterSet =
-            "RemoveManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition";
+            "RemoveManagedDatabaseByAzureSqlManagedDatabaseModelInstanceDefinition";
 
         protected const string RemoveByResourceIdParameterSet =
-            "RemoveManagedDatabaseFromAzureResourceId";
+            "RemoveManagedDatabaseByAzureResourceId";
 
         /// <summary>
         /// Gets or sets the name of the managed database to remove.

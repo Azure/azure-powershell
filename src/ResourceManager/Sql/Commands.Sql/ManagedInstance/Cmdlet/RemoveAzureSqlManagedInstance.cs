@@ -25,18 +25,19 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// Defines the Get-AzureRmSqlManagedInstance cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlManagedInstance",
+        DefaultParameterSetName = RemoveByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class RemoveAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
         protected const string RemoveByNameAndResourceGroupParameterSet =
-            "RemoveMManagedInstanceFromInputParameters";
+            "RemoveManagedInstanceByNameAndResourceGroup";
 
         protected const string RemoveByInputObjectParameterSet =
-            "RemoveMManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition";
+            "RemoveManagedInstanceByAzureSqlManagedInstanceModel";
 
         protected const string RemoveByResourceIdParameterSet =
-            "RemoveMManagedInstanceFromAzureResourceId";
+            "RemoveManagedInstanceByResourceId";
 
         /// <summary>
         /// Gets or sets the name of the Managed instance to use.
