@@ -265,10 +265,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Management.Dns.Models.RecordType
-Parameters: RecordType (ByPropertyName)
 
 ### System.String
-Parameters: ResourceGroupName (ByPropertyName), ZoneName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Dns.DnsZone
 Parameters: Zone (ByValue)

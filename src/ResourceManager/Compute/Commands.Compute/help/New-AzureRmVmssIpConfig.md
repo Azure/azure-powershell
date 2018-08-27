@@ -288,16 +288,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: DnsSetting (ByPropertyName), Id (ByPropertyName), Name (ByPropertyName), PrivateIPAddressVersion (ByPropertyName), PublicIPAddressConfigurationName (ByPropertyName), SubnetId (ByPropertyName)
 
 ### System.String[]
-Parameters: ApplicationGatewayBackendAddressPoolsId (ByPropertyName), LoadBalancerBackendAddressPoolsId (ByPropertyName), LoadBalancerInboundNatPoolsId (ByPropertyName)
 
 ### System.Int32
-Parameters: PublicIPAddressConfigurationIdleTimeoutInMinutes (ByPropertyName)
 
 ### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIpTag[]
-Parameters: IpTag (ByPropertyName)
 
 ## OUTPUTS
 

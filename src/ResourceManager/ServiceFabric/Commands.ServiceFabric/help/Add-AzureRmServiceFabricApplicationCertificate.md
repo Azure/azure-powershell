@@ -245,7 +245,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: CertificateFile (ByValue), CertificateOutputFolder (ByValue), CertificateSubjectName (ByValue), KeyVaultName (ByValue), KeyVaultResouceGroupName (ByValue), Name (ByPropertyName), ResourceGroupName (ByPropertyName), SecretIdentifier (ByValue)
+Parameters: CertificateFile (ByValue), CertificateOutputFolder (ByValue), CertificateSubjectName (ByValue), KeyVaultName (ByValue), KeyVaultResouceGroupName (ByValue), SecretIdentifier (ByValue)
 
 ### System.Security.SecureString
 Parameters: CertificatePassword (ByValue)

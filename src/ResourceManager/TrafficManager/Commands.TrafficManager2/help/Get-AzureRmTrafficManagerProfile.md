@@ -28,6 +28,7 @@ Get-AzureRmTrafficManagerProfile [-ResourceGroupName] <String> [-Name] <String>
 ## DESCRIPTION
 The **Get-AzureRmTrafficManagerProfile** cmdlet gets an Azure Traffic Manager profile, and returns an object that represents that profile.
 Specify a profile by its name and resource group name.
+
 You can modify this object locally, and then apply changes to the profile by using the Set-AzureRmTrafficManagerProfile cmdlet.
 
 ## EXAMPLES
@@ -103,12 +104,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
+### Microsoft.Azure.Commands.Network.TrafficManagerProfile
+This cmdlet returns a **TrafficManagerProfile** object.
+You can modify this object, and then apply changes to Traffic Manager by using **Set-AzureRmTrafficManagerProfile**.
 
 ## NOTES
 

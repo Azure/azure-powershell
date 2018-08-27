@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.4.0
 * Added policy filter to Get-AzureRmRecoveryServicesBackItem cmdlet. The command returns the list of backup items protected by the given policy id.
 * Updated Microsoft.Azure.Management.RecoveryServices.Backup to version 3.0.0-preview.
 * Updated to the latest version of the Azure ClientRuntime.

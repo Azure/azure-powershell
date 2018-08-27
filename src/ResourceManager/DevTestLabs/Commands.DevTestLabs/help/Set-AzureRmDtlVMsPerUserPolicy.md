@@ -160,7 +160,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: LabName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
