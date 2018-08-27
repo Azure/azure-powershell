@@ -242,6 +242,96 @@ function Create-VirtualMachine
     return $vm
 }
 
+# Create a new virtual machine with other necessary resources configured
+function Create-VirtualMachineNoDataDisks
+{
+    Param
+    (
+        [Parameter(Mandatory=$false, Position=0)]
+        [string] $rgname,
+        [Parameter(Mandatory=$false, Position=1)]
+        [string] $vmname,
+        [Parameter(Mandatory=$false, Position=2)]
+        [string] $loc       
+    )
+
+    # initialize parameters if needed
+    if ([string]::IsNullOrEmpty($rgname)) { $rgname = Get-ComputeTestResourceName }
+    if ([string]::IsNullOrEmpty($vmname)) { $vmname = 'vm' + $rgname }
+    if ([string]::IsNullOrEmpty($loc)) { $loc = Get-ComputeVMLocation } 
+
+    # Common
+    $g = New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+
+    # VM Profile & Hardware
+    $vmsize = 'Standard_D2S_V3';
+    $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+    Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
+
+    # NRP
+    $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+    $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+    $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+    $subnetId = $vnet.Subnets[0].Id;
+    $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+    $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+    $pubipId = $pubip.Id;
+    $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+    $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+    $nicId = $nic.Id;
+
+    $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
+    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
+    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
+
+    # Storage Account (SA)
+    $stoname = 'sto' + $rgname;
+    $stotype = 'Standard_GRS';
+    $sa = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+    Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+    $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+
+    $osDiskName = 'osDisk';
+    $osDiskCaching = 'ReadWrite';
+    $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
+
+    $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+
+    Assert-AreEqual $p.StorageProfile.OsDisk.Caching $osDiskCaching;
+    Assert-AreEqual $p.StorageProfile.OsDisk.Name $osDiskName;
+    Assert-AreEqual $p.StorageProfile.OsDisk.Vhd.Uri $osDiskVhdUri;
+    Assert-AreEqual $p.StorageProfile.DataDisks.Count 0;
+
+    # OS & Image
+    $user = "Foo12";
+    $password = $PLACEHOLDER;
+    $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+    $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+    $computerName = 'test';
+    $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+
+    $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+
+    $imgRef = Get-DefaultCRPWindowsImageOffline;
+    $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
+
+    Assert-AreEqual $p.OSProfile.AdminUsername $user;
+    Assert-AreEqual $p.OSProfile.ComputerName $computerName;
+    Assert-AreEqual $p.OSProfile.AdminPassword $password;
+    Assert-AreEqual $p.OSProfile.WindowsConfiguration.ProvisionVMAgent $true;
+
+    Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imgRef.Offer;
+    Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
+    Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
+    Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
+
+    # Virtual Machine
+    $v = New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+
+    $vm = Get-AzureRmVM -ResourceGroupName $rgname -VMName $vmname
+    return $vm
+}
+
 # Cleans the created resource group
 function Clean-ResourceGroup($rgname)
 {

@@ -13,13 +13,16 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSTopologyAssociation
     {
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string AssociationType { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Name { get; set; }
 
         [JsonProperty(Order = 1)]

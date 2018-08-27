@@ -93,7 +93,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSRouteTable
-Parameters: RouteTable (ByPropertyName, ByValue)
 
 ## OUTPUTS
 
