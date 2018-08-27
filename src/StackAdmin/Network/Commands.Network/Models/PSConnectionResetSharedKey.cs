@@ -14,12 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
-    using Newtonsoft.Json;
-
-    public class PSConnectionResetSharedKey 
+    public class PSConnectionResetSharedKey
     {
-        public uint KeyLength { get; set; }
+        public int KeyLength { get; set; }
     }
 }

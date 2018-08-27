@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Frontend port with the specified name already exists");
             }
 
-            frontendPort = base.NewObject();            
+            frontendPort = base.NewObject();
             this.ApplicationGateway.FrontendPorts.Add(frontendPort);
 
             WriteObject(this.ApplicationGateway);
