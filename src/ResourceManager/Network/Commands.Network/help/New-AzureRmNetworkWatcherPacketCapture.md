@@ -331,7 +331,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: NetworkWatcher (ByValue)
 
 ### System.String
-Parameters: LocalFilePath (ByPropertyName), NetworkWatcherName (ByValue), PacketCaptureName (ByPropertyName), ResourceGroupName (ByPropertyName), StorageAccountId (ByPropertyName), StoragePath (ByPropertyName), TargetVirtualMachineId (ByPropertyName)
+Parameters: NetworkWatcherName (ByValue)
 
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 

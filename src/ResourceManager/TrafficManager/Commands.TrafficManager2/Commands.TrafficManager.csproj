@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -46,11 +47,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.TrafficManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.TrafficManager.2.3.0-preview\lib\net452\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.TrafficManager.2.5.0\lib\net452\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomHeader\AddAzureTrafficManagerCustomHeaderToEndpoint.cs" />
+    <Compile Include="CustomHeader\RemoveAzureTrafficManagerCustomHeaderFromEndpoint.cs" />
+    <Compile Include="CustomHeader\RemoveAzureTrafficManagerCustomHeaderFromProfile.cs" />
     <Compile Include="Endpoint\DisableAzureTrafficManagerEndpoint.cs" />
     <Compile Include="Endpoint\EnableAzureTrafficManagerEndpoint.cs" />
     <Compile Include="Endpoint\SetAzureTrafficManagerEndpoint.cs" />
@@ -59,8 +63,16 @@
     <Compile Include="Endpoint\NewAzureTrafficManagerEndpoint.cs" />
     <Compile Include="Endpoint\RemoveAzureTrafficManagerEndpointConfig.cs" />
     <Compile Include="Endpoint\AddAzureTrafficManagerEndpointConfig.cs" />
+    <Compile Include="ExpectedStatusCodeRange\AddAzureTrafficManagerExpectedStatusCodeRange.cs" />
+    <Compile Include="ExpectedStatusCodeRange\RemoveAzureTrafficManagerExpectedStatusCodeRange.cs" />
+    <Compile Include="IpAddressRange\AddAzureTrafficManagerIpAddressRange.cs" />
+    <Compile Include="IpAddressRange\RemoveAzureTrafficManagerIpAddressRange.cs" />
+    <Compile Include="Models\TrafficManagerCustomHeader.cs" />
     <Compile Include="Models\TrafficManagerEndpoint.cs" />
+    <Compile Include="Models\TrafficManagerExpectedStatusCodeRange.cs" />
+    <Compile Include="Models\TrafficManagerIpAddressRange.cs" />
     <Compile Include="Models\TrafficManagerProfile.cs" />
+    <Compile Include="CustomHeader\AddAzureTrafficManagerCustomHeaderToProfile.cs" />
     <Compile Include="Profile\DisableAzureTrafficManagerProfile.cs" />
     <Compile Include="Profile\EnableAzureTrafficManagerProfile.cs" />
     <Compile Include="Profile\RemoveAzureTrafficManagerProfile.cs" />
@@ -78,31 +90,20 @@
     <Compile Include="Utilities\TrafficManagerClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
+    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
+      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
+      <Name>Commands.Profile</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="AzureRM.TrafficManager.psd1">
-      <Link>AzureRM.TrafficManager.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="StartupScripts\*.ps1">
-      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
-    </None>
+    <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -112,7 +113,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />

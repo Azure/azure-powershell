@@ -50,27 +50,32 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
+            try
             {
-                var queueAttributes = Client.GetQueue(ResourceGroupName, Namespace, Name);
-                WriteObject(queueAttributes);
-            }
-            else
-            {
-                if (MaxCount.HasValue)
+                if (!string.IsNullOrEmpty(Name))
                 {
-                    IEnumerable<PSQueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace, MaxCount);
-                    WriteObject(queueAttributes, true);
+                    var queueAttributes = Client.GetQueue(ResourceGroupName, Namespace, Name);
+                    WriteObject(queueAttributes);
                 }
                 else
                 {
-                    IEnumerable<PSQueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace);
-                    WriteObject(queueAttributes, true);
+                    if (MaxCount.HasValue)
+                    {
+                        IEnumerable<PSQueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace, MaxCount);
+                        WriteObject(queueAttributes, true);
+                    }
+                    else
+                    {
+                        IEnumerable<PSQueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace);
+                        WriteObject(queueAttributes, true);
+                    }
+
                 }
-
             }
-
-
+            catch (Management.ServiceBus.Models.ErrorResponseException ex)
+            {
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+            }
         }
     }
 }

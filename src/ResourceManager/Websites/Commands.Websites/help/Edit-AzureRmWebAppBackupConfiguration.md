@@ -221,22 +221,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Int32
-Parameters: FrequencyInterval (ByPropertyName), RetentionPeriodInDays (ByPropertyName)
 
 ### System.String
-Parameters: FrequencyUnit (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Slot (ByPropertyName), StorageAccountUrl (ByPropertyName)
 
 ### System.DateTime
-Parameters: StartTime (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: KeepAtLeastOneBackup (ByPropertyName)
 
 ### Microsoft.Azure.Management.WebSites.Models.Site
 Parameters: WebApp (ByValue)
 
 ### Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]
-Parameters: Databases (ByPropertyName)
 
 ## OUTPUTS
 
