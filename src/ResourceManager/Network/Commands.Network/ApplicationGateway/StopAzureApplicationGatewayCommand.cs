@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
     public class StopAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Parameter(

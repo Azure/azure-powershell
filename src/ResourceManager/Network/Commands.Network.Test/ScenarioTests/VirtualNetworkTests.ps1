@@ -150,15 +150,28 @@ function Test-subnetCRUD
         Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
         Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
         Assert-AreEqual "10.0.3.0/24" $vnetExpected.Subnets[1].AddressPrefix
-        
+
         # Get subnet
         $subnet2 = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name
         $subnetAll = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzureRmVirtualNetworkSubnetConfig
-        
+
         Assert-AreEqual 2 @($subnetAll).Count
         Assert-AreEqual $subnetName $subnetAll[0].Name
         Assert-AreEqual $subnet2Name $subnetAll[1].Name
         Assert-AreEqual $subnet2Name $subnet2.Name
+
+        # Get non-existing subnet
+        try
+        {
+            $subnetNotExists = $vnetExpected | Get-AzureRmVirtualNetworkSubnetConfig -Name "Subnet-DoesNotExist"
+        }
+        catch
+        {
+            if ($_.Exception.GetType() -ne [System.ArgumentException])
+            {
+                throw;
+            }
+        }
 
         # Remove a subnet
         Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Remove-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name | Set-AzureRmVirtualNetwork

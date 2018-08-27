@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// <summary>
     /// Disable an activity log alert
     /// </summary>
-    [Cmdlet("Disable", "AzureRmActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(PSActivityLogAlertResource))]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(PSActivityLogAlertResource))]
     public class DisableAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
         internal const string DisableActivityLogAlertDefaultParamGroup = "DisableByNameAndResourceGroup";

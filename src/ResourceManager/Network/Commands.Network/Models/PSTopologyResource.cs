@@ -17,16 +17,19 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSTopologyResource
     {
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Name { get; set; }
 
         [JsonProperty(Order = 2)]
         public string Id { get; set; }
 
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Location { get; set; }
 
         [JsonProperty(Order = 2)]

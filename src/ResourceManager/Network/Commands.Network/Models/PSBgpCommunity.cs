@@ -17,19 +17,25 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSBgpCommunity
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ServiceSupportedRegion { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string CommunityName { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string CommunityValue { get; set; }
 
         public List<string> CommunityPrefixes { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool IsAuthorizedToUse { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ServiceGroup { get; set; }
 
         [JsonIgnore]

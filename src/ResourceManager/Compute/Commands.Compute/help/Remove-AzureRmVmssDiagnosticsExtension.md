@@ -114,10 +114,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
-Parameters: VirtualMachineScaleSet (ByPropertyName, ByValue)
 
 ### System.String
-Parameters: Name (ByPropertyName)
 
 ## OUTPUTS
 

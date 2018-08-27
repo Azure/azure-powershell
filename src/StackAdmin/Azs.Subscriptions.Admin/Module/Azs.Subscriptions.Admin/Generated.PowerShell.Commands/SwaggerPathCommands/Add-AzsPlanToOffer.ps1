@@ -77,13 +77,13 @@ function Add-AzsPlanToOffer {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSCmdlet.ShouldProcess("$PlanName to $OfferName" , "Connect plan to offer")) {
 
             $dontCheck = $true
             try {
-                $_offer = Get-AzsManagedOffer -Name $OfferName
+                $_offer = Get-AzsManagedOffer -Name $OfferName -ResourceGroupName $ResourceGroupName
                 $_planId = $_offer.BasePlanIds | Where-Object { $_ -like "*$PlanName" }
                 $_plan = Get-AzsPlan -ResourceId $_planId
                 $dontCheck = $_plan -eq $null

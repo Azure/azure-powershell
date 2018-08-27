@@ -23,10 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
-    [Cmdlet(
-        VerbsCommon.Add,
-        "AzureRmMlWebServiceRegionalProperty",
-        SupportsShouldProcess = true)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MlWebServiceRegionalProperty",SupportsShouldProcess = true)]
     [OutputType(typeof(WebService))]
     public class AddAzureMLWebServiceRegionalProperty : WebServicesCmdletBase
     {

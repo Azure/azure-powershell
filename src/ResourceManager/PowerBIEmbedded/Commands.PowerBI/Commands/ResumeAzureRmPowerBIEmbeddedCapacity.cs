@@ -23,8 +23,7 @@ using Microsoft.Azure.Management.PowerBIDedicated.Models;
 
 namespace Microsoft.Azure.Commands.PowerBI
 {
-    [Cmdlet(VerbsLifecycle.Resume, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet),
-        OutputType(typeof(PSPowerBIEmbeddedCapacity))]
+    [Cmdlet("Resume", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet),OutputType(typeof(PSPowerBIEmbeddedCapacity))]
     public class ResumeAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
     {
         protected const string CmdletParametersSet = "ByNameAndResourceGroup";

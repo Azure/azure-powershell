@@ -324,19 +324,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
-Parameters: VM (ByPropertyName, ByValue)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: DisablePasswordAuthentication (ByPropertyName), EnableAutoUpdate (ByPropertyName), Linux (ByPropertyName), ProvisionVMAgent (ByPropertyName), Windows (ByPropertyName), WinRMHttp (ByPropertyName), WinRMHttps (ByPropertyName)
 
 ### System.String
-Parameters: ComputerName (ByPropertyName), CustomData (ByPropertyName), TimeZone (ByPropertyName)
 
 ### System.Management.Automation.PSCredential
-Parameters: Credential (ByPropertyName)
 
 ### System.Uri
-Parameters: WinRMCertificateUrl (ByPropertyName)
 
 ## OUTPUTS
 

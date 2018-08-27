@@ -18,14 +18,15 @@ using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using RM = Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
@@ -40,11 +41,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
 
         public ResourceManagementClient NewResourceManagementClient { get; private set; }
 
-        public RM.ResourceManagementClient ResourceClient { get; private set; }
-
         public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
 
         public GraphRbacManagementClient GraphClient { get; private set; }
+
+        public NetworkManagementClient NetworkManagementClient { get; private set; }
+
+        public RM.ResourceManagementClient ResourceClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -65,7 +68,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             RunPsTestWorkflow(
                 logger,
                 () => scripts,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -88,6 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             d.Add("Microsoft.Authorization", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
@@ -104,7 +108,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                     "Scripts\\ControlPlane\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
                     _helper.RMResourceModule,
-                    _helper.GetRMModulePath("AzureRM.KeyVault.psd1"));
+                    _helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
+                    _helper.RMNetworkModule);
 
                 try
                 {
@@ -129,14 +134,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         {
             NewResourceManagementClient = GetResourceManagementClient(context);
             ResourceClient = GetResourceClient(context);
+            NetworkManagementClient = GetNetworkManagementClient(context);
             GraphClient = GetGraphClient(context);
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             _helper.SetupManagementClients(
                 NewResourceManagementClient,
                 ResourceClient,
+                NetworkManagementClient,
                 KeyVaultManagementClient,
                 GraphClient
                 );
+        }
+
+        private NetworkManagementClient GetNetworkManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private ResourceManagementClient GetResourceManagementClient(MockContext context)
@@ -162,10 +174,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
                 tenantId = environment.Tenant;
-                UserDomain = environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
 
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
-                HttpMockServer.Variables[DomainKey] = UserDomain;
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {

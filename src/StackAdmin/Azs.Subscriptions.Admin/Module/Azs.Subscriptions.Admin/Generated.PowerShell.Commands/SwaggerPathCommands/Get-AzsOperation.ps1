@@ -5,7 +5,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-	
+
 
 .DESCRIPTION
 	Get the list of Operations.
@@ -18,7 +18,7 @@ function Get-AzsOperation
 	param(
 	)
 
-	Begin 
+	Begin
 	{
 		Initialize-PSSwaggerDependencies -Azure
 		$tracerObject = $null
@@ -31,8 +31,8 @@ function Get-AzsOperation
 	}
 
 	Process {
-	
-	$ErrorActionPreference = 'Stop'
+
+
 
 	$NewServiceClient_params = @{
 		FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
@@ -56,9 +56,9 @@ function Get-AzsOperation
 		$GetTaskResult_params = @{
 			TaskResult = $TaskResult
 		}
-			
+
 		Get-TaskResult @GetTaskResult_params
-		
+
 	}
 	}
 
