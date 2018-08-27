@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary>
         /// Gets or sets the backup long term retention state
         /// </summary>
-        [CmdletParameterBreakingChange("State", "Parameter is being deprecated without being replaced")]
+        [CmdletParameterBreakingChange("State", "Parameter is being deprecated without being replaced.")]
         [Parameter(Mandatory = true,
             ParameterSetName = LegacySet,
             HelpMessage = "The state of the long term retention backup policy, 'Enabled' or 'Disabled'")]
@@ -70,6 +70,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary>
         /// Gets or sets the name of the backup long term retention policy
         /// </summary>
+        /// <remarks>
+        /// The upcoming breaking change will need some logic changes of how the ResourceId is handled. Contact adeal or pixia for assistance.
+        /// </remarks>
+        [CmdletParameterBreakingChange("ResourceId", "ResourceId will no longer refer to RecoveryServicesBackupPolicyResourceId as it is no longer needed. Instead, it will refer to the ResourceId of the long term retention policy being set.")]
         [Parameter(Mandatory = true,
             ParameterSetName = LegacySet,
             ValueFromPipelineByPropertyName = true,
