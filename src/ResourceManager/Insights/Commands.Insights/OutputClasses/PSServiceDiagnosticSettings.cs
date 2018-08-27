@@ -23,11 +23,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     public class PSServiceDiagnosticSettings : DiagnosticSettingsResource
     {
         /// <summary>
-        /// Sets or gets the Service Bus Rule Id, a.k.a. EventHubName
-        /// </summary>
-        public string ServiceBusRuleId { get; set; }
-
-        /// <summary>
         /// Sets or gets the Location of the Diagnostic Setting
         /// </summary>
         public string Location { get; set; }
@@ -65,7 +60,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             {
                 this.StorageAccountId = serviceDiagnosticSettings.StorageAccountId;
                 this.EventHubName = serviceDiagnosticSettings.EventHubName;
-                this.ServiceBusRuleId = this.EventHubName;
+                this.ServiceBusRuleId = serviceDiagnosticSettings.ServiceBusRuleId;
                 this.EventHubAuthorizationRuleId = serviceDiagnosticSettings.EventHubAuthorizationRuleId;
                 this.Metrics = new List<Management.Monitor.Management.Models.MetricSettings>();
                 foreach (MetricSettings metricSettings in serviceDiagnosticSettings.Metrics)

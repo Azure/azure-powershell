@@ -13,17 +13,27 @@
 // limitations under the License.
 //
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSIpFlowVerify
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Direction { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string LocalIPAddress { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string LocalPort { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public int Protocol { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public int RemoteIPAddress { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public int RemotePort { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string TargetNicResourceId { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string TargetResourceId { get; set; }
     }
 }

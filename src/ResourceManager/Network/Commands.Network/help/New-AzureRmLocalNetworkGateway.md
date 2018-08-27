@@ -243,18 +243,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: BgpPeeringAddress (ByPropertyName), GatewayIpAddress (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.UInt32
-Parameters: Asn (ByPropertyName)
 
 ### System.Int32
-Parameters: PeerWeight (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 
