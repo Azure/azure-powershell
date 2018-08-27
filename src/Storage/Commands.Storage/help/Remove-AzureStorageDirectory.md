@@ -277,7 +277,6 @@ Parameters: Directory (ByValue)
 ### System.String
 
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

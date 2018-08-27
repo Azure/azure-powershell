@@ -3,7 +3,7 @@
   <Import Project="..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.Common.Graph.RBAC</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Graph.RBAC</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>

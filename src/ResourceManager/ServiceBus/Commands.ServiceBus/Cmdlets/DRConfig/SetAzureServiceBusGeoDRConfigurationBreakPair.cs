@@ -57,46 +57,23 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
             if (ParameterSetName == GeoDRInputObjectParameterSet)
             {
                 LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(InputObject.Id);
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
-                {
-                    if (ShouldProcess(target: getParamGeoDR.ResourceName, action: string.Format(Resources.DRBreakPairing, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
-                    {
-                        Client.SetServiceBusDRConfigurationBreakPairing(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
-                        if (PassThru)
-                        {
-                            WriteObject(true);
-                        }
-                    }
-                }
-                else
-                {
-                    WriteObject(false);
-                }
+                ResourceGroupName = getParamGeoDR.ResourceGroupName;
+                Namespace = getParamGeoDR.ParentResource;
+                Name = getParamGeoDR.ResourceName;
+
             }
 
             if (ParameterSetName == GeoDRConfigResourceIdParameterSet)
             {
                 LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(ResourceId);
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
-                {
-                    if (ShouldProcess(target: getParamGeoDR.ResourceName, action: string.Format(Resources.DRBreakPairing, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
-                    {
-                        Client.SetServiceBusDRConfigurationBreakPairing(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
-                        if (PassThru)
-                        {
-                            WriteObject(true);
-                        }
-                    }
-                }
-                else
-                {
-                    WriteObject(false);
-                }
+                ResourceGroupName = getParamGeoDR.ResourceGroupName;
+                Namespace = getParamGeoDR.ParentResource;
+                Name = getParamGeoDR.ResourceName;
             }
 
-            if (ParameterSetName == GeoDRParameterSet)
-            {
-                if (ShouldProcess(target: Name, action: string.Format(Resources.DRBreakPairing, Name, Namespace)))
+            if (ShouldProcess(target: Name, action: string.Format(Resources.DRBreakPairing, Name, Namespace)))
+            {                
+                try
                 {
                     Client.SetServiceBusDRConfigurationBreakPairing(ResourceGroupName, Namespace, Name);
                     if (PassThru)
@@ -104,7 +81,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
                         WriteObject(true);
                     }
                 }
-            }
+                catch (Management.ServiceBus.Models.ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
+            }            
         }
     }
 }
