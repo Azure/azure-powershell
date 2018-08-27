@@ -20,6 +20,9 @@
 -->
 ## Current Release
 * Move dependencies on Keyvault and Storage to the common dependencies.
+
+
+## Version 5.5.1
 * Fixed the issue that target is missing in error output.
 * Fixed issue with storage account type for VM with managed disk
 * Fixed issue with default resource groups not being set.
