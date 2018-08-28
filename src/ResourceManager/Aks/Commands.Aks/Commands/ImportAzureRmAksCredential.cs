@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ using YamlDotNet.RepresentationModel;
 
 namespace Microsoft.Azure.Commands.Aks
 {
-    [Cmdlet("Import", KubeNounStr + "Credential", SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AksCredential", SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
     [OutputType(typeof(string))]
     public class ImportAzureRmAksCredential : KubeCmdletBase
     {

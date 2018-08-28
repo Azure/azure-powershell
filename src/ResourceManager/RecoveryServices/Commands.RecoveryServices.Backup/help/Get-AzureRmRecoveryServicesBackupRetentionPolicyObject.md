@@ -35,11 +35,8 @@ PS C:\> New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -Wor
 ```
 
 The first command gets the retention policy object, and then stores it in the $RetPol variable.
-
 The second command sets the duration for the retention policy object to 365 days.
-
 The third command gets the schedule policy object, and then stores it in the $SchPol variable.
-
 The last command creates a backup protection policy using the retention policy and schedule policy created with the previous commands.
 
 ## PARAMETERS
@@ -47,14 +44,13 @@ The last command creates a backup protection policy using the retention policy a
 ### -BackupManagementType
 Specifies the Backup management type.
 The acceptable values for this parameter are:
-
 - AzureVM 
 - AzureSQLDatabase
 
 ```yaml
-Type: BackupManagementType
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
 
 Required: False
@@ -68,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -82,14 +78,13 @@ Accept wildcard characters: False
 ### -WorkloadType
 Specifies the workload type.
 The acceptable values for this parameter are:
-
 - AzureVM 
 - AzureSQLDatabase
 
 ```yaml
-Type: WorkloadType
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureVM, AzureSQLDatabase
 
 Required: True
@@ -105,7 +100,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

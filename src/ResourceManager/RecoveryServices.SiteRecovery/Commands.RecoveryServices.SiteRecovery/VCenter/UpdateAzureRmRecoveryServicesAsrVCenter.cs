@@ -21,11 +21,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Update discovery details for a registered vCenter.
     /// </summary>
-    [Cmdlet(
-        VerbsData.Update,
-        "AzureRmRecoveryServicesAsrvCenter",
-        DefaultParameterSetName = ASRParameterSets.Default,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrvCenter",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [Alias("Update-ASRvCenter")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase

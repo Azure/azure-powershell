@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes a Certificate for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationCertificate", SupportsShouldProcess = true,
-        DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationCertificate", SupportsShouldProcess = true,DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName), OutputType(typeof(void))]
     public class RemoveAzureAutomationCertificate : AzureAutomationBaseCmdlet
     {
         /// <summary>

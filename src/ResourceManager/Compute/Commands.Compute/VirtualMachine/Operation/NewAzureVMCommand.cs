@@ -49,11 +49,7 @@ using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.New,
-        ProfileNouns.VirtualMachine,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = "SimpleParameterSet")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM",SupportsShouldProcess = true,DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
@@ -296,8 +292,11 @@ namespace Microsoft.Azure.Commands.Compute
                     name: _cmdlet.SecurityGroupName,
                     openPorts: _cmdlet.OpenPorts);
 
+                bool enableAcceleratedNetwork = Utils.DoesConfigSupportAcceleratedNetwork(_client,
+                    ImageAndOsType, _cmdlet.Size, Location, DefaultLocation);
+
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
-                    _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup);
+                    _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
 
                 var availabilitySet = _cmdlet.AvailabilitySetName == null
                     ? null
@@ -350,6 +349,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var parameters = new Parameters(this, client);
 
+
             if (DiskFile != null)
             {
                 var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
@@ -357,6 +357,7 @@ namespace Microsoft.Azure.Commands.Compute
                     AzureEnvironment.Endpoint.ResourceManager);
                 if (!resourceClient.ResourceGroups.CheckExistence(ResourceGroupName))
                 {
+                    Location = Location ?? parameters.DefaultLocation;
                     var st0 = resourceClient.ResourceGroups.CreateOrUpdate(
                         ResourceGroupName,
                         new ResourceGroup

@@ -19,6 +19,33 @@
 -->
 ## Current Release
 
+## Version 4.11.2
+* Fixed issue with default resource groups not being set.
+* Deprecated unsupported LongTermRetention features:
+	* Get-AzureRmSqlServerBackupLongTermRetentionVault cmdlet
+	* Set-AzureRmSqlServerBackupLongTermRetentionVault cmdlet
+	* Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -Current parameter
+	* Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -State parameter
+
+## Version 4.11.1
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 4.11.0
+* Adding Server Advanced Threat Protection support with the following cmdlets:
+	- Enable-AzureRmSqlServerAdvancedThreatProtection; Disable-AzureRmSqlServerAdvancedThreatProtection; Get-AzureRmSqlServerAdvancedThreatProtectionPolicy
+* Adding Vulnerability Assessment support with the following cmdlets:
+	- Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings
+	- Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline; Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline; Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline
+	- Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan; Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord; Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan
+* Fixed example in Remove-AzureRmSqlServerFirewallRule
+* Fix datetime handling incorrectly for non-us base culture in Get-AzureSqlSyncGroupLog
+* Updated all help files to include full parameter types and correct input/output types.
+
+## Version 4.10.0
+* Adding new Cmdlets for Management.Sql to allow customers to add TDE Certificate to Sql Server instance or a Managed Instance
+	- Add-AzureRmSqlServerTransparentDataEncryptionCertificate
+	- Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate
+
 ## Version 4.9.0
 * Clarified User-Defined Restore Points for SQLDW in New-AzureRmSqlDatabaseRestorePoint help
 * Fixed formatting of OutputType in help files
@@ -42,7 +69,7 @@
 * Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
 * Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with 'Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy'.
 * Update all Azure Sql Database/ElasticPool Creation/Update related cmdlets to use the new Database API, which support Sku property for scale and tier-related properties.
-* The updated cmdlets including: 
+* The updated cmdlets including:
 	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
 	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
 	- New-AzureRmSqlDatabaseCopy

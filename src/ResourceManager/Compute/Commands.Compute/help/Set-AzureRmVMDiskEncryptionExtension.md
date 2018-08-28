@@ -238,7 +238,7 @@ For more details, see the **Add-AzureRmVMSecret** cmdlet help.
 The certificate must be previously deployed to the virtual machine local computer my certificate store.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AADClientCertParameterSet
 Aliases:
 
@@ -253,7 +253,7 @@ Accept wildcard characters: False
 Specifies the client ID of the Azure AD application that has permissions to write secrets to **KeyVault**.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet
 Aliases:
 
@@ -268,7 +268,7 @@ Accept wildcard characters: False
 Specifies the client secret of the Azure AD application that has permissions to write secrets to **KeyVault**.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AADClientSecretParameterSet
 Aliases:
 
@@ -283,7 +283,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -298,7 +298,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet disables auto-upgrade of the minor version of the extension.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -313,7 +313,7 @@ Accept wildcard characters: False
 Specifies the resource ID of the **KeyVault** to which the virtual machine encryption keys should be uploaded.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -328,7 +328,7 @@ Accept wildcard characters: False
 Specifies the **KeyVault** URL to which the virtual machine encryption keys should be uploaded.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -343,7 +343,7 @@ Accept wildcard characters: False
 Encrypt-Format all data drives that are not already encrypted
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -358,7 +358,7 @@ Accept wildcard characters: False
 The extension publisher name. Specify this parameter only to override the default value of "Microsoft.Azure.Security".
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -373,7 +373,7 @@ Accept wildcard characters: False
 The extension type. Specify this parameter to override its default value of "AzureDiskEncryption" for Windows VMs and "AzureDiskEncryptionForLinux" for Linux VMs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -388,7 +388,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -404,7 +404,7 @@ Specifies the algorithm that is used to wrap and unwrap the key encryption key o
 The default value is RSA-OAEP.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: RSA-OAEP, RSA1_5
@@ -421,7 +421,7 @@ Specifies the URL of the key encryption key that is used to wrap and unwrap the 
 This must be the full versioned URL.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -437,7 +437,7 @@ Specifies the resource ID of the **KeyVault** that contains key encryption key t
 This must be a full versioned URL.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -453,7 +453,7 @@ Specifies the name of the Azure Resource Manager resource that represents the ex
 The default value is AzureDiskEncryption for virtual machines that run the Windows operating system or AzureDiskEncryptionForLinux for Linux virtual machines.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
@@ -469,7 +469,7 @@ Specifies the passphrase used for encrypting Linux virtual machines only.
 This parameter is not used for virtual machines that run the Windows operating system.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -484,7 +484,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -501,7 +501,7 @@ This is unique per each encryption operation performed on the same virtual machi
 The Get-AzureRmVMExtension cmdlet can be used to retrieve the previous sequence number that was used.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -516,7 +516,7 @@ Accept wildcard characters: False
 Skip backup creation for Linux VMs
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -531,7 +531,7 @@ Accept wildcard characters: False
 Specifies the version of the encryption extension.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: HandlerVersion, Version
 
@@ -546,7 +546,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -563,7 +563,7 @@ Allowed values for virtual machines that run the Windows operating system are as
 The allowed values for Linux virtual machines are as follows: Data only.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: OS, Data, All
@@ -579,7 +579,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -592,11 +592,10 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -612,8 +611,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

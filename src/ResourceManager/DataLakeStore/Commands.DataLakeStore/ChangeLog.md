@@ -19,6 +19,16 @@
 -->
 ## Current Release
 
+## Version 6.1.2
+* Fix debugging when DebugPreference is set from powershell command line
+* Update example for Set-AzureRmDataLakeStoreItemAcl
+* Updated to the latest version of the Azure ClientRuntime.
+* Update example for Set-AzureRmDataLakeStoreItemAclEntry
+
+## Version 6.1.1
+* Updated all help files to include full parameter types and correct input/output types.
+* Updated the DataPlane SDK (Microsoft.Azure.DataLake.Store) version to 1.1.9
+
 ## Version 6.1.0
 * Add cancellation support and progress tracking for Set-AzureRmDataLakeStoreItemAclEntry, Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
 * Add cancellation support for Export-AzureRmDataLakeStoreChildItemProperties

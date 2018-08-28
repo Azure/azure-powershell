@@ -16,8 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 .Returns(Task.FromResult<Rest.Azure.AzureOperationResponse<AlertRuleResource>>(response))
                 .Callback((string resourceGrp, string name, AlertRuleResource alertRuleResourceIn, Dictionary<string, List<string>> headers, CancellationToken t) =>
                 {
+                    response.Body = alertRuleResourceIn;
                     resourceGroup = resourceGrp;
                     alertRuleResource = alertRuleResourceIn;
                 });
@@ -91,11 +92,11 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             cmdlet.Name = Utilities.Name;
             cmdlet.Location = "East US";
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
-            cmdlet.Operator = ConditionOperator.GreaterThan;
+            cmdlet.Operator = Management.Monitor.Management.Models.ConditionOperator.GreaterThan;
             cmdlet.Threshold = 1;
             cmdlet.TargetResourceId = "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo";
             cmdlet.MetricName = "Requests";
-            cmdlet.TimeAggregationOperator = TimeAggregationOperator.Total;
+            cmdlet.TimeAggregationOperator = Management.Monitor.Management.Models.TimeAggregationOperator.Total;
             cmdlet.Action = null;
             cmdlet.WindowSize = TimeSpan.FromMinutes(10);
 
@@ -134,7 +135,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
             // Test empty actions
             cmdlet.DisableRule = false;
-            cmdlet.Action = new List<RuleAction>();
+            cmdlet.Action = new List<Management.Monitor.Management.Models.RuleAction>();
 
             cmdlet.ExecuteCmdlet();
 
@@ -154,7 +155,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             // Test non-empty actions (one action)
             List<string> eMails = new List<string>();
             eMails.Add("le@hypersoft.com");
-            RuleAction ruleAction = new RuleEmailAction
+            Management.Monitor.Management.Models.RuleAction ruleAction = new Management.Monitor.Management.Models.RuleEmailAction
             {
                 SendToServiceOwners = true,
                 CustomEmails = eMails
@@ -180,7 +181,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             // Test non-empty actions (two actions)
             var properties = new Dictionary<string, string>();
             properties.Add("hello", "goodbye");
-            ruleAction = new RuleWebhookAction
+            ruleAction = new Management.Monitor.Management.Models.RuleWebhookAction
             {
                 ServiceUri = "http://bueno.net",
                 Properties = properties
@@ -262,9 +263,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             Assert.Equal(totalMinutes, ((TimeSpan)condition.WindowSize).TotalMinutes);
             Assert.Equal(timeAggregationOperator, condition.TimeAggregation);
 
-            Assert.True(condition.DataSource is RuleMetricDataSource);
+            Assert.True(condition.DataSource is Management.Monitor.Models.RuleMetricDataSource);
 
-            var dataSource = condition.DataSource as RuleMetricDataSource;
+            var dataSource = condition.DataSource as Management.Monitor.Models.RuleMetricDataSource;
             Assert.Equal(metricName, dataSource.MetricName);
             Assert.Equal(resourceUri, dataSource.ResourceUri);
         }

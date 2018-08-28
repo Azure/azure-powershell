@@ -19,6 +19,21 @@
 -->
 ## Current Release
 
+## Version 4.5.0
+* Remove the 5TB limitation for Azure File Share quota
+- Set-AzureStorageShareQuota
+
+## Version 4.4.0
+* Updated all help files to include full parameter types and correct input/output types.
+* Updated to the latest version of the Azure ClientRuntime.
+* Support get Storage Context from DefaulfProfile
+* Add Ps1XmlAttribute to cmdlets output types properties.
+
+## Version 4.3.2
+* Support Upload Blob or File with write only Sas token
+- Set-AzureStorageBlobContent
+- Set-AzureStorageFileContent
+
 ## Version 4.3.1
 * Added additional information about -Permissions parameter in help files.
 
@@ -46,7 +61,7 @@
 ## Version 4.1.1
 * Fix Get Blob Container cmdlet execute fail with Accout SAS credential issue
 	- Get-AzureStorageContainer
-	
+
 ## Version 4.1.0
 * Add cmdlets to get and set Storage service properties
 	- Get-AzureStorageServiceProperty
@@ -62,7 +77,7 @@
     - Add 'IncludeAllSnapshot' parameter to Remove-AzureStorageShare
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-	
+
 ## Version 3.4.1
 
 ## Version 3.4.0
@@ -106,7 +121,7 @@
 ## Version 2.5.0
 * Fix Start-AzureStorageBlobCopy output might has wrong BlobType issue
     - Start-AzureStorageBlobCopy
-* Fix hang issue when running cmdlets from WPF/Winform context  
+* Fix hang issue when running cmdlets from WPF/Winform context
     - Get-AzureStorageBlob
     - Get-AzureStorageBlobContent
     - Get-AzureStorageBlobCopyState

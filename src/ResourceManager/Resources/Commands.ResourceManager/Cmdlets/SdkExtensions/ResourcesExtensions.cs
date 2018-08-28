@@ -53,6 +53,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             return deployment;
         }
 
+        public static PSDeployment ToPSDeployment(this DeploymentExtended result)
+        {
+            PSDeployment deployment = new PSDeployment();
+
+            if (result != null)
+            {
+                deployment = CreatePSDeployment(result.Name, result.Location, result.Properties);
+            }
+
+            return deployment;
+        }
+
+        public static PSDeploymentOperation ToPSDeploymentOperation(this DeploymentOperation result)
+        {
+            if (result != null)
+            {
+                return new PSDeploymentOperation()
+                {
+                    Id = result.Id,
+                    OperationId = result.OperationId,
+                    ProvisioningState = result.Properties.ProvisioningState,
+                    StatusCode = result.Properties.StatusCode,
+                    StatusMessage = result.Properties.StatusMessage,
+                    TargetResource = result.Properties.TargetResource?.Id
+                };
+            }
+
+            return null;
+        }
+
 
         public static PSResourceManagerError ToPSResourceManagerError(this ResourceManagementErrorWithDetails error)
         {
@@ -118,7 +148,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
                 resourcesTable.AppendFormat(rowFormat, tag.Key, tag.Value);
             }
-            
+
             return resourcesTable.ToString();
         }
 
@@ -161,19 +191,40 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             }
 
             return result.ToString();
+        }
 
+        private static PSDeployment CreatePSDeployment(
+            string name,
+            string location,
+            DeploymentPropertiesExtended properties)
+        {
+            PSDeployment deploymentObject = new PSDeployment();
+
+            deploymentObject.DeploymentName = name;
+            deploymentObject.Location = location;
+
+            SetDeploymentProperties(deploymentObject, properties);
+
+            return deploymentObject;
         }
 
         private static PSResourceGroupDeployment CreatePSResourceGroupDeployment(
             string name,
-            string gesourceGroup,
+            string resourceGroup,
             DeploymentPropertiesExtended properties)
         {
             PSResourceGroupDeployment deploymentObject = new PSResourceGroupDeployment();
 
             deploymentObject.DeploymentName = name;
-            deploymentObject.ResourceGroupName = gesourceGroup;
+            deploymentObject.ResourceGroupName = resourceGroup;
 
+            SetDeploymentProperties(deploymentObject, properties);
+
+            return deploymentObject;
+        }
+
+        private static void SetDeploymentProperties(PSDeploymentObject deploymentObject, DeploymentPropertiesExtended properties)
+        {
             if (properties != null)
             {
                 deploymentObject.Mode = properties.Mode.Value;
@@ -182,7 +233,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 deploymentObject.Timestamp = properties.Timestamp == null ? default(DateTime) : properties.Timestamp.Value;
                 deploymentObject.CorrelationId = properties.CorrelationId;
 
-                if(properties.DebugSetting != null && !string.IsNullOrEmpty(properties.DebugSetting.DetailLevel))
+                if (properties.DebugSetting != null && !string.IsNullOrEmpty(properties.DebugSetting.DetailLevel))
                 {
                     deploymentObject.DeploymentDebugLogLevel = properties.DebugSetting.DetailLevel;
                 }
@@ -204,8 +255,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                     deploymentObject.TemplateLinkString = ConstructTemplateLinkView(properties.TemplateLink);
                 }
             }
-
-            return deploymentObject;
         }
 
         public static PSProviderFeature ToPSProviderFeature(this FeatureResult feature)
@@ -216,6 +265,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 ProviderName = feature.Name.Substring(0, feature.Name.IndexOf('/')),
                 RegistrationState = feature.Properties.State,
             };
+        }
+
+        public static Hashtable ToHashtable(this object obj)
+        {
+            return new Hashtable(obj.GetType()
+                                    .GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public)
+                                    .ToDictionary(p => p.Name, p => p.GetValue(obj, null)));
+
         }
     }
 }

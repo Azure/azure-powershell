@@ -557,7 +557,7 @@ function Test-SetWebAppSlot
 
         # Assert
         Assert-NotNull  $slot.Identity
-        Assert-AreEqual ($appSettings.Keys.Count  + 1) $slot.SiteConfig.AppSettings.Count
+        Assert-AreEqual ($appSettings.Keys.Count) $slot.SiteConfig.AppSettings.Count
 
         $slot = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -ConnectionStrings $connectionStrings -numberofworkers $numberOfWorkers
 
