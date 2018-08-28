@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
-        public PSPublicIpPrefix PublicIpPrefix { get; set; }
+        public PSResourceId PublicIpPrefix { get; set; }
 
         [JsonIgnore]
         public string IpConfigurationText
