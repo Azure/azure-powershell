@@ -44,10 +44,4 @@
     <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.Netcore.csproj" />
-    <ProjectReference Include="..\ResourceManager\ResourceManager.Netcore.csproj" />
-    <ProjectReference Include="..\Common\Common.Netcore.csproj" />
-  </ItemGroup>
-
 </Project>

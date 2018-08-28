@@ -34,10 +34,5 @@
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.Netcore.csproj" />
-    <ProjectReference Include="..\ResourceManager\ResourceManager.Netcore.csproj" />
-  </ItemGroup>
   
 </Project>
