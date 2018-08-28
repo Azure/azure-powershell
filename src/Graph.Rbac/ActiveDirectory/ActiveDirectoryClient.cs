@@ -394,6 +394,28 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return principalId;
         }
 
+        public string GetAdfsObjectId(ADObjectFilterOptions options)
+        {
+            string principalId = null;
+            if (options != null && options.Id != null)
+            {
+                // do nothing, we have parsed the guid
+            }
+            else
+            {
+                PSADObject adObj = GetADObject(options);
+
+                if (adObj == null)
+                {
+                    throw new KeyNotFoundException("The provided information does not map to an AD object id.");
+                }
+
+                principalId = adObj.AdfsId;
+            }
+
+            return principalId;
+        }
+		
         public void UpdateApplication(Guid appObjectId, ApplicationUpdateParameters parameters)
         {
             GraphClient.Applications.Patch(appObjectId.ToString(), parameters);
