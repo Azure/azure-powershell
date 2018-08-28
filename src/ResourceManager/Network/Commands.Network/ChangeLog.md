@@ -28,6 +28,18 @@
 	- Set-AzureRmPublicIpPrefix
 * Added service endpoint policies cmdlets
 * Added deprecation messages for EnableVmProtection property in VirtualNetwork
+* Added support for Trusted Root certificate in Application Gateway
+    - Cmdlets added:
+        - Add-AzureRmApplicationGatewayTrustedRootCertificate
+        - Get-AzureRmApplicationGatewayTrustedRootCertificate
+        - New-AzureRmApplicationGatewayTrustedRootCertificate
+        - Remove-AzureRmApplicationGatewayTrustedRootCertificate
+        - Set-AzureRmApplicationGatewayTrustedRootCertificate
+    - Cmdlets updated with optonal parameter -TrustedRootCertificates
+        - New-AzureRmApplicationGateway
+        - Set-AzureRmApplicationGateway
+        - New-AzureRmApplicationGatewayBackendHttpSetting
+        - Set-AzureRmApplicationGatewayBackendHttpSetting
 
 ## Version 6.4.1
 * Updated all help files to include full parameter types and correct input/output types.

@@ -87,6 +87,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of trusted root certificates")]
+        public List<PSApplicationGatewayTrustedRootCertificate> TrustedRootCertificates { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of frontend IP config")]
         public List<PSApplicationGatewayFrontendIPConfiguration> FrontendIPConfigurations { get; set; }
 
@@ -219,6 +225,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.AuthenticationCertificates != null)
             {
                 applicationGateway.AuthenticationCertificates = this.AuthenticationCertificates;
+            }
+
+            if (this.TrustedRootCertificates != null)
+            {
+                applicationGateway.TrustedRootCertificates = this.TrustedRootCertificates;
             }
 
             if (this.FrontendIPConfigurations != null)

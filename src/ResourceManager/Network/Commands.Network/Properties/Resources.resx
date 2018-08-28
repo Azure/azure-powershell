@@ -136,7 +136,7 @@
   </data>
   <data name="VirtualNetworkGatewayName" xml:space="preserve">
     <value>virtualNetworkGatewayName</value>
-  </data>  
+  </data>
   <data name="LoadBalancerInBoundNatRuleName" xml:space="preserve">
     <value>inboundNatRules</value>
   </data>
@@ -263,5 +263,8 @@
   </data>
   <data name="ApplicationGatewayRedirectConfigurationName" xml:space="preserve">
     <value>redirectConfigurations</value>
+  </data>
+  <data name="ApplicationGatewayTrustedRootCertificateName" xml:space="preserve">
+    <value>trustedRootCertificates</value>
   </data>
 </root>
