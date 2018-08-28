@@ -1446,6 +1446,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/7.1.0.0"
         ]
       },
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"KHtNm4JeF+Cn2hrYxgvl8ymnaBvFq6mqap6TCM/KTn6tFM5qeHVxoiI3sT+OMpFJQDKa5UsuucCTN75ZJt/Yug==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"6u/z9Oymv07uhBdVFkZlB81mj3nl1aO7vZzBle1rauVtvH7pyOV3z9Z7osnVIEUdxZCeYqUefi/Lys6jFoX/YQ==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
