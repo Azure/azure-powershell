@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSApplicationGatewayConnectionDraining ConnectionDraining { get; set; }
         public PSResourceId Probe { get; set; }
         public List<PSResourceId> AuthenticationCertificates { get; set; }
+        public List<PSResourceId> TrustedRootCertificates { get; set; }
         public string HostName { get; set; }
         public bool? PickHostNameFromBackendAddress { get; set; }
         public string AffinityCookieName { get; set; }

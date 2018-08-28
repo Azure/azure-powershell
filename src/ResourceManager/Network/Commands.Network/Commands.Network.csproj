@@ -59,7 +59,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=20.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.20.2.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
-    </Reference>
+     </Reference>
     <Reference Include="System.Runtime" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +166,12 @@
     <Compile Include="ApplicationGateway\SslPolicy\SetAzureApplicationGatewaySslPolicyCommand.cs" />
     <Compile Include="ApplicationGateway\StartAzureApplicationGatewayCommand.cs" />
     <Compile Include="ApplicationGateway\StopAzureApplicationGatewayCommand.cs" />
+    <Compile Include="ApplicationGateway\TrustedRootCertificate\AddAzureApplicationGatewayTrustedRootCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\TrustedRootCertificate\AzureApplicationGatewayTrustedRootCertificateBase.cs" />
+    <Compile Include="ApplicationGateway\TrustedRootCertificate\GetAzureApplicationGatewayTrustedRootCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\TrustedRootCertificate\NewAzureApplicationGatewayTrustedRootCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\TrustedRootCertificate\RemoveAzureApplicationGatewayTrustedRootCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\TrustedRootCertificate\SetAzureApplicationGatewayTrustedRootCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\AddAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\AzureApplicationGatewayUrlPathMapConfigBase.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\GetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
@@ -231,6 +237,7 @@
     <Compile Include="Models\PSApplicationGatewayProbeHealthResponseMatch.cs" />
     <Compile Include="Models\PSApplicationGatewaySslPredefinedPolicy.cs" />
     <Compile Include="Models\PSApplicationGatewayAvailableSslOptions.cs" />
+    <Compile Include="Models\PSApplicationGatewayTrustedRootCertificate.cs" />
     <Compile Include="Models\PSConnectionMonitor.cs" />
     <Compile Include="Models\PSConnectionMonitorDestination.cs" />
     <Compile Include="Models\PSConnectionMonitorParameters.cs" />
