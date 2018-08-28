@@ -28,16 +28,16 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 function Stop-AzsDiskMigrationJob
 {
     [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob])]
-    param(    
+    param(
         [System.String]
         $Location,
-    
+
         [Alias('MigrationId')]
         [System.String]
         $Name
     )
 
-    Begin 
+    Begin
     {
 	    Initialize-PSSwaggerDependencies -Azure
         $tracerObject = $null
@@ -57,7 +57,7 @@ function Stop-AzsDiskMigrationJob
 
 		$GlobalParameterHashtable = @{}
 		$NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-     
+
 		$GlobalParameterHashtable['SubscriptionId'] = $null
 		if($PSBoundParameters.ContainsKey('SubscriptionId')) {
 			$GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
@@ -70,15 +70,15 @@ function Stop-AzsDiskMigrationJob
 		}
 
 		Write-Verbose -Message 'Performing operation CancelWithHttpMessagesAsync on $ComputeAdminClient.'
-		$TaskResult = $ComputeAdminClient.DiskMigrationJobs.CancelWithHttpMessagesAsync($Location, $Name) 
+		$TaskResult = $ComputeAdminClient.DiskMigrationJobs.CancelWithHttpMessagesAsync($Location, $Name)
 
 		if ($TaskResult) {
 			$GetTaskResult_params = @{
 				TaskResult = $TaskResult
 			}
-            
+
 			Get-TaskResult @GetTaskResult_params
-        
+
 		}
     }
 
