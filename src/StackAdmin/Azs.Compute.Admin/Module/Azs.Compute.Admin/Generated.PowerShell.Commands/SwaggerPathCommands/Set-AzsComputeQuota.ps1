@@ -160,8 +160,8 @@ function Set-AzsComputeQuota {
 
             if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
 
-                if ($null -ne $NewQuota) {
-                    $QuotaObject = ConvertTo-ComputeQuota -Quota (Get-AzsComputeQuota -Location $Location -Name $Name)
+                if ($null -eq $QuotaObject) {
+                    $QuotaObject = Get-AzsComputeQuota -Location $Location -Name $Name
                 }
 
                 # Update the Quota object from anything passed in
@@ -170,14 +170,17 @@ function Set-AzsComputeQuota {
                     if ($PSBoundParameters.ContainsKey($_)) {
                         $NewValue = $PSBoundParameters[$_]
                         if ($null -ne $NewValue) {
+                            if($_ -eq 'CoresCount') {
+                                $_ = 'CoresLimit'
+                            }
                             $QuotaObject.$_ = $NewValue
                         }
                     }
                 }
-                $quotaObject = ConvertTo-SdkQuota -CustomQuota $QuotaObject
+                $sdkObject = ConvertTo-SdkQuota -CustomQuota $QuotaObject
 
                 Write-Verbose -Message 'Performing operation update on $ComputeAdminClient.'
-                $TaskResult = $ComputeAdminClient.Quotas.CreateOrUpdateWithHttpMessagesAsync($Location, $Name, $quotaObject)
+                $TaskResult = $ComputeAdminClient.Quotas.CreateOrUpdateWithHttpMessagesAsync($Location, $Name, $sdkObject)
             } else {
                 Write-Verbose -Message 'Failed to map parameter set to operation method.'
                 throw 'Module failed to find operation to execute.'

@@ -139,7 +139,7 @@ InModuleScope Azs.Compute.Admin {
                 -Version $script:Version `
                 -OsType "Linux" `
                 -OsUri $global:VHDUri `
-                -Force -Verbose
+                -Force
 
             $image | Should Not Be $null
             $image.OsDisk.Uri | Should be $global:VHDUri
