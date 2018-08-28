@@ -26,9 +26,15 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     The migration job guid name.
 
 .EXAMPLE
-
-    PS C:\> $migrations = Get-AzsDiskMigrationJob -location local
     PS C:\> $migration = Get-AzsDiskMigrationJob -location local -Name "mymigrationName"
+
+    Get a specific managed disk migration job.
+
+.EXAMPLE
+    PS C:\> $migration = Get-AzsDiskMigrationJob -location local
+
+    Returns a list of managed disk migration jobs at the location local.
+
 #>
 function Get-AzsDiskMigrationJob
 {
