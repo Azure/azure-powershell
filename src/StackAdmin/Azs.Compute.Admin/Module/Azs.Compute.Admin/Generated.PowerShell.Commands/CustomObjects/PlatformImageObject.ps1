@@ -13,8 +13,8 @@ class PlatformImageObject {
     [string]$Version
 
     # VM Extension Properties
-    [Microsoft.AzureStack.Management.Compute.Admin.Models.OsDisk]$OsDisk;
-    [Microsoft.AzureStack.Management.Compute.Admin.Models.DataDisk[]]$DataDisks
-    [Microsoft.AzureStack.Management.Compute.Admin.Models.ImageDetails]$Details
-    [Microsoft.AzureStack.Management.Compute.Admin.Models.ProvisioningState]$ProvisioningState
+    [Object]$OsDisk;
+    [Object]$DataDisks
+    [Object]$Details
+    [Object]$ProvisioningState
 }
