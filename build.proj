@@ -473,13 +473,13 @@
     <Message Importance="high" Text="$(PackageDirectory)\$(Configuration) does not contains any files to sign. Code sign will skip."
              Condition="'@(DelaySignedAssembliesToSign)' == ''" />
 
-    <ValidateStrongNameSignatureTask
+<!--    <ValidateStrongNameSignatureTask
       WindowsSdkPath="$(WindowsSdkPath)"
       Assembly="%(DelaySignedAssembliesToSign.Identity)"
       ExpectedTokenSignature="$(StrongNameToken)"
       ExpectedDelaySigned="true"
       ContinueOnError="false"
-      Condition="'@(DelaySignedAssembliesToSign)' != ''"/>
+      Condition="'@(DelaySignedAssembliesToSign)' != ''"/> -->
 
     <CodeSigningTask
       Description="Microsoft Azure PowerShell"
@@ -492,13 +492,13 @@
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
 
-    <ValidateStrongNameSignatureTask
+<!--    <ValidateStrongNameSignatureTask
         WindowsSdkPath="$(WindowsSdkPath)"
         Assembly="%(DelaySignedAssembliesToSign.Identity)"
         ExpectedTokenSignature="$(StrongNameToken)"
         ExpectedDelaySigned="false"
         ContinueOnError="false"
-        Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
+        Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/> -->
 
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
           Condition="'$(Scope)' != 'Netcore'"/>
