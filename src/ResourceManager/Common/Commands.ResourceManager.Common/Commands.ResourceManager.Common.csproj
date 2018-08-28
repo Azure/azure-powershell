@@ -60,6 +60,7 @@
     <Compile Include="ArgumentCompleters\ResourceTypeCompleter.cs" />
     <Compile Include="ArgumentCompleters\ScopeCompleter.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
+    <Compile Include="AzureRMConstants.cs" />
     <Compile Include="AzureRmLongRunningCmdlet.cs" />
     <Compile Include="Generated\DeploymentOperations.cs" />
     <Compile Include="Generated\DeploymentOperationsExtensions.cs" />
@@ -204,6 +205,7 @@
     <Compile Include="Utilities\Models\ResourceIdentifier.cs" />
     <Compile Include="Utilities\ResourceManagementClientExtensions.cs" />
     <Compile Include="Utilities\ResourcesExtensions.cs" />
+    <Compile Include="Utilities\SubscriptionAndTenantHelper.cs" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

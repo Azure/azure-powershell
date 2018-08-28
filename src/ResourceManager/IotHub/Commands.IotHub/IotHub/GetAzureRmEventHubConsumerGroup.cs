@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIotHubEventHubConsumerGroup"), OutputType(typeof(PSEventHubConsumerGroupInfo))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubEventHubConsumerGroup"), OutputType(typeof(PSEventHubConsumerGroupInfo))]
     [Alias("Get-AzureRmIotHubEHCG")]
     public class GetAzureRmIotHubEventHubConsumerGroup : IotHubBaseCmdlet
     {

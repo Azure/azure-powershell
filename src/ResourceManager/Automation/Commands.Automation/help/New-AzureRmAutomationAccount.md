@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 2D5B16F0-0662-4D9F-A13F-808CE5EEBBA3
@@ -20,7 +20,6 @@ New-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Lo
 
 ## DESCRIPTION
 The **New-AzureRmAutomationAccount** cmdlet creates an Azure Automation account in a resource group.
-
 An Automation account is a container for Automation resources that is isolated from the resources
 of other Automation accounts. Automation resources include runbooks, Desired State Configuration
 (DSC) configurations, jobs, and assets.
@@ -40,7 +39,7 @@ This command creates a new automation account named ContosoAutomationAccount in 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,9 +55,9 @@ Specifies the location in which this cmdlet creates the Automation account.
 To obtain valid locations, use the Get-AzureRMLocation cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -71,7 +70,7 @@ Accept wildcard characters: False
 Specifies a name for the Automation account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AutomationAccountName
 
@@ -85,14 +84,13 @@ Accept wildcard characters: False
 ### -Plan
 Specifies the plan for the Automation account.
 Valid values are:
-
 - Basic
 - Free
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Free, Basic
 
 Required: False
@@ -106,9 +104,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group to which this cmdlet adds an Automation account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -119,11 +117,10 @@ Accept wildcard characters: False
 
 ### -Tags
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: IDictionary
+Type: System.Collections.IDictionary
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -139,8 +136,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Collections.IDictionary
 
 ## OUTPUTS
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: D57C32D1-EB4F-495E-A11B-3B4066E8C552
@@ -39,7 +39,7 @@ The current cmdlet changes the storage type to LocallyRedundant.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -55,9 +55,9 @@ Specifies the storage type for the backup data.
 The acceptable values for this parameter are: LocallyRedundant and GeoRedundant.
 
 ```yaml
-Type: AzureBackupVaultStorageType
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupVaultStorageType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: GeoRedundant, LocallyRedundant
 
 Required: False
@@ -72,9 +72,9 @@ Specifies a Backup vault that this cmdlet modifies.
 To obtain an **AzureRmBackupVault** object, use the Get-AzureRmBackupVault cmdlet.
 
 ```yaml
-Type: AzureRMBackupVault
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -88,11 +88,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupVault
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
 
-### None
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
 
 ## NOTES
 * When you register the first server or virtual machine for a vault, the storage type is locked. Subsequently, you cannot change the storage type.

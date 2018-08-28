@@ -21,8 +21,11 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class AzureFirewallTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public AzureFirewallTests(ITestOutputHelper output)
         {
+            _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
@@ -30,14 +33,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureFirewallCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-AzureFirewallCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-AzureFirewallCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureFirewallAllocateAndDeallocate()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-AzureFirewallAllocateAndDeallocate");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-AzureFirewallAllocateAndDeallocate");
         }
     }
 }

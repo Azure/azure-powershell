@@ -23,9 +23,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ProtectionCheckTests : RMTestBase
     {
-        public ProtectionCheckTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public ProtectionCheckTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -34,7 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMProtectionCheck()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMProtectionCheck");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMProtectionCheck");
         }
     }
 }

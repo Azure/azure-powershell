@@ -20,16 +20,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     using Xunit.Abstractions;
     public class MoveResourceTest
     {
+        public XunitTracingInterceptor _logger;
+
         public MoveResourceTest(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMoveAzureResource()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-MoveAzureResource");
         }
     }
 }

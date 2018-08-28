@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
 Module Name: AzureRM.DataFactories
 ms.assetid: 5BF24BC2-DEB6-4830-BDEA-841BAB070388
@@ -43,7 +43,6 @@ PS C:\> New-AzureRmDataFactoryEncryptValue -GatewayName "WikiGateway" -DataFacto
 The first command uses the ConvertTo-SecureString cmdlet to convert the specified connection string to a **SecureString** object, and then stores that object in the $Value variable.
 For more information, type `Get-Help ConvertTo-SecureString`.
 Allowed values: SQL Server or Oracle connection string.
-
 The second command creates an encrypted value for the object stored in $Value for the specified data factory, gateway, resource group, and linked service type.
 
 ### Example 2: Encrypt a non-ODBC connection string that uses Windows authentication.
@@ -54,10 +53,8 @@ PS C:\> New-AzureRmDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayNa
 ```
 
 The first command uses **ConvertTo-SecureString** to convert the specified connection string to a secure string object, and then stores that object in the $Value variable.
-
 The second command uses the Get-Credential cmdlet to collect the windows authentication (user name and password), and then stores that **PSCredential** object in the $Credential variable.
 For more information, type `Get-Help Get-Credential`.
-
 The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, resource group, and linked service type.
 
 ### Example 3: Encrypt server name and credentials for File system linked service
@@ -68,9 +65,7 @@ PS C:\> New-AzureRmDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayNa
 ```
 
 The first command uses **ConvertTo-SecureString** to convert the specified string to a secure string, and then stores that object in the $Value variable.
-
 The second command uses **Get-Credential** to collect the windows authentication (user name and password), and then stores that **PSCredential** object in the $Credential variable.
-
 The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, resource group, and linked service type.
 
 ### Example 4: Encrypt credentials for HDFS linked service
@@ -84,7 +79,6 @@ New-AzureRmDataFactoryEncryptValue -DataFactoryName "MyDataFactory" -ResourceGro
 The **ConvertTo-SecureString** command converts the specified string to a secure string.
 The **New-Object** command creates a PSCredential object using the secure username and password strings.
 Instead, you could use the **Get-Credential** command to collect windows authentication (user name and password), and then store the returned **PSCredential** object in the $credential variable as shown in previous examples.
-
 The **New-AzureRmDataFactoryEncryptValue** command creates an encrypted value for the object stored in $Credential for the specified data factory, gateway, resource group, and linked service type.
 
 ### Example 5: Encrypt credentials for ODBC linked service
@@ -94,7 +88,6 @@ New-AzureRmDataFactoryEncryptValue -ResourceGroupName $RGName -DataFactoryName $
 ```
 
 The **ConvertTo-SecureString** command converts the specified string to a secure string.
-
 The **New-AzureRmDataFactoryEncryptValue** command creates an encrypted value for the object stored in $Value for the specified data factory, gateway, resource group, and linked service type.
 
 ## PARAMETERS
@@ -102,15 +95,14 @@ The **New-AzureRmDataFactoryEncryptValue** command creates an encrypted value fo
 ### -AuthenticationType
 Specifies the type of authentication to be used to connect to the data source.
 The acceptable values for this parameter are:
-
 - Windows
 - Basic
 - Anonymous.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Windows, Basic, Anonymous
 
 Required: False
@@ -125,9 +117,9 @@ Specifies the Windows authentication credentials (user name and password) to be 
 This cmdlet encrypts the credential data you specify here.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -140,9 +132,9 @@ Accept wildcard characters: False
 Specifies the database name of the linked service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 8
@@ -156,9 +148,9 @@ Specifies a **PSDataFactory** object.
 This cmdlet encrypts data for the data factory that this parameter specifies.
 
 ```yaml
-Type: PSDataFactory
+Type: Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
 Parameter Sets: ByFactoryObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -172,9 +164,9 @@ Specifies the name of a data factory.
 This cmdlet encrypts data for the data factory that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -187,7 +179,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -203,9 +195,9 @@ Specifies the name of the gateway.
 This cmdlet encrypts data for the gateway that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -219,9 +211,9 @@ Specifies the non-credential part of the Open Database Connectivity (ODBC) conne
 This parameter is applicable only for the ODBC linked service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -235,9 +227,9 @@ Specifies the name of an Azure resource group.
 This cmdlet encrypts data for the group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -250,9 +242,9 @@ Accept wildcard characters: False
 Specifies the server name of the linked service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -265,7 +257,6 @@ Accept wildcard characters: False
 Specifies the linked service type.
 This cmdlet encrypts data for the linked service type that this parameter specifies.
 The acceptable values for this parameter are:
-
 - OnPremisesSqlLinkedService 
 - OnPremisesFileSystemLinkedService 
 - OnPremisesOracleLinkedService 
@@ -277,9 +268,9 @@ The acceptable values for this parameter are:
 - OnPremisesSybaseLinkedService
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: OnPremisesSqlLinkedService, OnPremisesFileSystemLinkedService, OnPremisesOracleLinkedService, OnPremisesOdbcLinkedService, OnPremisesPostgreSqlLinkedService, OnPremisesTeradataLinkedService, OnPremisesMySQLLinkedService, OnPremisesDB2LinkedService, OnPremisesSybaseLinkedService, HdfsLinkedService
 
 Required: False
@@ -296,9 +287,9 @@ For an on-premises ODBC linked service, use the credential part of the connectio
 For on premises file system linked service, if the file system is local to the gateway computer, use Local or localhost, and if the file system is on a server different from the gateway computer, use \\\\servername.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -312,8 +303,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+
+### System.String
 
 ## OUTPUTS
 

@@ -13,42 +13,91 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Management.Automation;
+using System.Collections.Generic;
+using System;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 {
     /// <summary>
     /// 'Remove-AzureRmServiceBusSubscription' Cmdlet removes the specified Subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusSubscriptionVerb, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusSubscription", DefaultParameterSetName = SubscriptionPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ParameterSetName = SubscriptionPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = SubscriptionPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
+        [Parameter(Mandatory = true, ParameterSetName = SubscriptionPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [Alias(AliasTopicName)]
         [ValidateNotNullOrEmpty]
         public string Topic { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Subscription Name")]
+        [Parameter(Mandatory = true, ParameterSetName = SubscriptionPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Subscription Name")]
         [Alias(AliasSubscriptionName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = SubscriptionInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Service Bus Subscription Object")]
+        [ValidateNotNullOrEmpty]
+        public PSSubscriptionAttributes InputObject { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = SubscriptionResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Service Bus Subscription Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName.Equals(SubscriptionInputObjectParameterSet))
+            {
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(InputObject.Id);
+
+                ResourceGroupName = identifier.ResourceGroupName;
+                Namespace = identifier.ParentResource;
+                Topic = identifier.ParentResource1;
+                Name = identifier.ResourceName;
+            }
+
+            if (ParameterSetName.Equals(SubscriptionResourceIdParameterSet))
+            {
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(ResourceId);
+
+                ResourceGroupName = identifier.ResourceGroupName;
+                Namespace = identifier.ParentResource;
+                Topic = identifier.ParentResource1;
+                Name = identifier.ResourceName;
+            }
+
             // delete a Subscription 
             if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveSubscription, Name, Topic, Namespace)))
             {
-                WriteObject(Client.DeleteSubscription(ResourceGroupName, Namespace, Topic, Name));
+                try
+                {
+                    var result = Client.DeleteSubscription(ResourceGroupName, Namespace, Topic, Name);
+
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(result);
+                    }
+                }
+                catch (Management.ServiceBus.Models.ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }

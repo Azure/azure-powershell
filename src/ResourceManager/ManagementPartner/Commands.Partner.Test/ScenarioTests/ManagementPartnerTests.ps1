@@ -21,7 +21,7 @@ Tests get management partner
 function Test-GetPartner
 {
     # Setup
-	$partnerId="123457"
+	$partnerId="5127255"
 	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
 
     # Test
@@ -45,7 +45,7 @@ Tests get management partner without parnter id
 function Test-GetPartnerNoPartnerId
 {
 	 # Setup
-	$partnerId="123457"
+	$partnerId="5127255"
 	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
 
     # Test
@@ -68,7 +68,7 @@ Tests add management partner
 #>
 function Test-NewPartner
 {
-	$partnerId="123457"
+	$partnerId="5127255"
 	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
 
 	# Assert
@@ -89,11 +89,11 @@ Tests update management partner
 function Test-UpdatePartner
 {
 	# Setup
-	$partnerId="123457"
+	$partnerId="5127255"
 	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
 
     # Test
-    $newPartnerId="123456"
+    $newPartnerId="5127254"
 	$partner = Update-AzureRmManagementPartner -PartnerId $newPartnerId
 
 	# Assert
@@ -113,7 +113,7 @@ Tests remove management partner
 function Test-RemovePartner
 {
 	# Setup
-	$partnerId="123457"
+	$partnerId="5127255"
 	$partner = New-AzureRmManagementPartner -PartnerId $partnerId
     
     # Test

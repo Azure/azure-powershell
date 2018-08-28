@@ -83,7 +83,7 @@ namespace RepoTasks.Cmdlets.Tests
             var view0 = conf.ViewDefinitions.Views[0];
             Assert.Equal($"{ExpectedAssemblyName}.Models.PsDummyOutput1", view0?.ViewSelectedBy?.TypeName);
 
-            var expecterProps1 = new[] { "RequestId", "StatusCode", "Id", "Name", "Type", "PsDummyOutput2" };
+            var expecterProps1 = new[] { "RequestId", "ScriptBlock", "StatusCode", "Id", "Name", "Type", "PsDummyOutput2" };
             var columnItems = view0?.TableControl?.TableRowEntries[0]?.TableColumnItems;
             Assert.NotNull(columnItems);
             Assert.Equal(expecterProps1.Length, columnItems.Length);
