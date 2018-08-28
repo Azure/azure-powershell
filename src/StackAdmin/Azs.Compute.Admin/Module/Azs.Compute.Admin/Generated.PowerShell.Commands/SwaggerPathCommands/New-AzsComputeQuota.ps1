@@ -30,7 +30,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
 .PARAMETER StandardManagedDiskAndSnapshotSize
     Size for standard managed disks and snapshots allowed.
-    
+
 .PARAMETER PremiumManagedDiskAndSnapshotSize
     Size for standard managed disks and snapshots allowed.
 
@@ -109,36 +109,28 @@ function New-AzsComputeQuota {
                 $Location = (Get-AzureRmLocation).Location
             }
 
-            # Validate this resource does not exist.
-            $_objectCheck = $null
-            try {
-                Write-Verbose "Checking to see if compute quota already exists."
-                $_objectCheck = Get-AzsComputeQuota -Name $Name -Location $Location
-            } catch {
-                # No op
-            } finally {
-                if ($_objectCheck -ne $null) {
-                    throw "A compute quota with name $Name at location $Location already exists."
-                }
+            if ($null -ne (Get-AzsComputeQuota -Name $Name -Location $Location -ErrorAction SilentlyContinue)) {
+                Write-Error "A compute quota with name $Name at location $location already exists"
+                return
             }
 
             $utilityCmdParams = @{}
             $flattenedParameters = @('AvailabilitySetCount', 'CoresCount', 'VmScaleSetCount', 'VirtualMachineCount', 'StandardManagedDiskAndSnapshotSize', 'PremiumManagedDiskAndSnapshotSize' )
             $flattenedParameters | ForEach-Object {
                 if ($PSBoundParameters.ContainsKey($_)) {
-                        
+
                     $NewValue = $PSBoundParameters[$_]
-                        
+
                     if($NewValue -ne $null)
                     {
                         if($_ -eq 'StandardManagedDiskAndSnapshotSize') {
-                            $utilityCmdParams.MaxAllocationStandardManagedDisksAndSnapshots = $NewValue 
+                            $utilityCmdParams.MaxAllocationStandardManagedDisksAndSnapshots = $NewValue
                         } elseif($_ -eq 'PremiumManagedDiskAndSnapshotSize') {
-                            $utilityCmdParams.MaxAllocationPremiumManagedDisksAndSnapshots = $NewValue 
+                            $utilityCmdParams.MaxAllocationPremiumManagedDisksAndSnapshots = $NewValue
                         } elseif($_ -eq 'CoresCount') {
-                            $utilityCmdParams.CoresLimit = $NewValue 
+                            $utilityCmdParams.CoresLimit = $NewValue
                         } else  {
-                            $utilityCmdParams[$_] = $NewValue 
+                            $utilityCmdParams[$_] = $NewValue
                         }
                     }
                 }

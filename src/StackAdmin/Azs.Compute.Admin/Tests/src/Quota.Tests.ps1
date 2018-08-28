@@ -83,7 +83,11 @@ InModuleScope Azs.Compute.Admin {
                 )
             }
         }
-        
+
+		AfterEach {
+			$global:Client = $null
+		}
+
         It "TestListQuotas" -Skip:$('TestListQuotas' -in $global:SkippedTests) {
             $global:TestName = 'TestListQuotas'
             $quotas = Get-AzsComputeQuota -Location $global:Location
@@ -93,7 +97,7 @@ InModuleScope Azs.Compute.Admin {
                 ValidateComputeQuota -Quota $quota
             }
         }
-                
+
         It "TestGetQuota" -Skip:$('TestGetQuota' -in $global:SkippedTests) {
             $global:TestName = 'TestGetQuota'
 
@@ -167,7 +171,7 @@ InModuleScope Azs.Compute.Admin {
             }
 
         }
-        
+
         # Tests wth Invalid data
         It "TestCreateInvalidQuota" -Skip:$('TestCreateInvalidQuota' -in $global:SkippedTests) {
             $global:TestName = 'TestCreateInvalidQuota'
@@ -238,7 +242,7 @@ InModuleScope Azs.Compute.Admin {
                 Get-AzsComputeQuota -Location | Where-Object { $_.Name -eq $name} | Should be $null
             }
         }
-        
+
         # Session recording for this needs a manual update.
         # Set command would try to do a get before to ensure the quota exists.
         It "TestQuotaCreateUpdateDelete" -Skip:$('TestQuotaCreateUpdateDelete' -in $global:SkippedTests) {
@@ -247,7 +251,7 @@ InModuleScope Azs.Compute.Admin {
             #
             # if running against the actual environment enable the following to create first.
             # New-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 1 -CoresLimit 1 -VmScaleSetCount 1 -VirtualMachineCount 1 -StandardManagedDiskAndSnapshotSize 1 -PremiumManagedDiskAndSnapshotSize 1
-            # Powershell replay playback session grabs the first matching response in the recorded sessions file. 
+            # Powershell replay playback session grabs the first matching response in the recorded sessions file.
             # So it always picks the first response. If the test checks for not exist (404), then create and checks for exists, that test would always fail in recoreded sessions.
             #
             Set-AzsComputeQuota -Location $global:Location -Name "testQuotaCreateUpdateDelete" -AvailabilitySetCount 1 -CoresLimit 1 -VmScaleSetCount 1 -VirtualMachineCount 1 -StandardManagedDiskAndSnapshotSize 1 -PremiumManagedDiskAndSnapshotSize 1

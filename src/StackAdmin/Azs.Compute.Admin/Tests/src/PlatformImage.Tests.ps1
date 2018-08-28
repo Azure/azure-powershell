@@ -83,10 +83,14 @@ InModuleScope Azs.Compute.Admin {
             }
         }
 
+		AfterEach {
+			$global:Client = $null
+		}
+
         It "TestListPlatformImages" -Skip:$('TestListPlatformImages' -in $global:SkippedTests) {
             $global:TestName = 'TestListPlatformImages'
 
-            $platformImages = Get-AzsPlatformImage -Location "local"
+            $platformImages = Get-AzsPlatformImage -Location $global:Location
 
             $platformImages  | Should Not Be $null
             foreach ($platformImage in $platformImages) {
@@ -97,19 +101,11 @@ InModuleScope Azs.Compute.Admin {
         It "TestGetPlatformImage" -Skip:$('TestGetPlatformImage' -in $global:SkippedTests) {
             $global:TestName = 'TestGetPlatformImage'
 
-            $platformImages = Get-AzsPlatformImage -Location "local"
+            $platformImages = Get-AzsPlatformImage -Location $global:Location
             $platformImages  | Should Not Be $null
 
             foreach ($platformImage in $platformImages) {
-
-                $part = $platformImage.Id.Split("/")
-                $publisher = $part[10]
-                $offer = $part[12]
-                $sku = $part[14]
-                $version = $part[16]
-
-                $result = Get-AzsPlatformImage -Location "local" -Publisher $publisher -Offer $offer -Sku $sku -Version $version
-
+                $result = Get-AzsPlatformImage -Location $global:Location -Publisher $platformImage.publisher -Offer $platformImage.offer -Sku $platformImage.sku -Version $platformImage.version
                 AssertSame -Expected $platformImage -Found $result
                 break
             }
@@ -118,7 +114,7 @@ InModuleScope Azs.Compute.Admin {
         It "TestGetAllPlatformImages" -Skip:$('TestGetAllPlatformImages' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllPlatformImages'
 
-            $platformImages = Get-AzsPlatformImage -Location "local"
+            $platformImages = Get-AzsPlatformImage -Location $global:Location
             $platformImages  | Should Not Be $null
             foreach ($platformImage in $platformImages) {
                 $result = $platformImage | Get-AzsPlatformImage
@@ -129,13 +125,21 @@ InModuleScope Azs.Compute.Admin {
         It "TestCreatePlatformImage" -Skip:$('TestCreatePlatformImage' -in $global:SkippedTests) {
             $global:TestName = 'TestCreatePlatformImage'
 
-            $Location = "Canonical";
-            $Publisher = "Test";
-            $Offer = "UbuntuServer";
-            $Sku = "16.04-LTS";
-            $Version = "1.0.0";
+            $script:Location = $global:Location;
+            $script:Publisher = "Canonical";
+            $script:Offer = "UbuntuServer";
+            $script:Sku = "16.04-LTS";
+            $script:Version = "1.0.0";
 
-            $image = Add-AzsPlatformImage -Location $Location -Publisher $Publisher -Offer $Offer -Sku $Sku -Version $Version -OsType "Linux" -OsUri $global:VHDUri -Force
+            $image = Add-AzsPlatformImage `
+                -Location $script:Location `
+                -Publisher $script:Publisher `
+                -Offer $script:Offer `
+                -Sku $script:Sku `
+                -Version $script:Version `
+                -OsType "Linux" `
+                -OsUri $global:VHDUri `
+                -Force -Verbose
 
             $image | Should Not Be $null
             $image.OsDisk.Uri | Should be $global:VHDUri
@@ -143,7 +147,12 @@ InModuleScope Azs.Compute.Admin {
 
             while ($image.ProvisioningState -eq "Creating") {
                 # Start-Sleep -Seconds 30
-                $image = Get-AzsPlatformImage -Location $Location -Publisher $Publisher -Offer $Offer -Version $version
+                Write-host $script:Location
+                $image = Get-AzsPlatformImage `
+                    -Location $script:Location `
+                    -Publisher $script:Publisher `
+                    -Offer $script:Offer `
+                    -Version $script:version
             }
 
             $image.ProvisioningState | Should be "Succeeded"
@@ -153,22 +162,34 @@ InModuleScope Azs.Compute.Admin {
         It "TestCreateAndDeletePlatformImage" -Skip:$('TestCreateAndDeletePlatformImage' -in $global:SkippedTests) {
             $global:TestName = 'TestCreateAndDeletePlatformImage'
 
-            $Publisher = "Microsoft";
-            $Offer = "UbuntuServer";
-            $Sku = "16.04-LTS";
-            $Version = "1.0.0";
+            $script:Location = $global:Location;
+            $script:Publisher = "Microsoft";
+            $script:Offer = "UbuntuServer";
+            $script:Sku = "16.04-LTS";
+            $script:Version = "1.0.0";
 
-            $image = Add-AzsPlatformImage -Location $Location -Publisher $Publisher -Offer $Offer -Sku $Sku -Version $Version -OsType "Linux" -OsUri $global:VHDUri -Force
+            $image = Add-AzsPlatformImage `
+                -Location $script:Location `
+                -Publisher $script:Publisher `
+                -Offer $script:Offer `
+                -Sku $script:Sku `
+                -Version $script:Version `
+                -OsType "Linux" `
+                -OsUri $global:VHDUri `
+                -Force
+
             $image | Should Not Be $null
             $image.OsDisk.Uri | Should be $global:VHDUri
 
             while ($image.ProvisioningState -ne "Succeeded") {
-                $image = Get-AzsPlatformImage -Location $Location -Publisher $Publisher -Offer $Offer -Sku $Sku -Version $version
+                $image = Get-AzsPlatformImage `
+                    -Location $script:Location `
+                    -Publisher $script:Publisher `
+                    -Offer $script:Offer `
+                    -Version $script:version
             }
             $image.ProvisioningState | Should be "Succeeded"
-
-            Remove-AzsPlatformImage -Location $Location -Publisher $Publisher -Offer $Offer -Version $version -Sku $Sku -Force
-
+            Remove-AzsPlatformImage -Location $script:Location -Publisher $script:Publisher -Offer $script:Offer -Version $script:version -Sku $script:Sku -Force
         }
     }
 }
