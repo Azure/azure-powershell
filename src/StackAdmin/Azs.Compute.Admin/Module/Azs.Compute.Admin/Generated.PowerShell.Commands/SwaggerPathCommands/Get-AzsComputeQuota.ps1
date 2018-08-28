@@ -113,7 +113,6 @@ function Get-AzsComputeQuota {
             $GetTaskResult_params = @{
                 TaskResult = $TaskResult
             }
-
             Get-TaskResult @GetTaskResult_params | ForEach-Object { ConvertTo-ComputeQuota -Quota $_ }
         }
     }

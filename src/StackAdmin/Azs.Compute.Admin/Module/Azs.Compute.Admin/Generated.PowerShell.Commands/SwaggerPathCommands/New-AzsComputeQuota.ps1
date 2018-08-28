@@ -118,18 +118,15 @@ function New-AzsComputeQuota {
             $flattenedParameters = @('AvailabilitySetCount', 'CoresCount', 'VmScaleSetCount', 'VirtualMachineCount', 'StandardManagedDiskAndSnapshotSize', 'PremiumManagedDiskAndSnapshotSize' )
             $flattenedParameters | ForEach-Object {
                 if ($PSBoundParameters.ContainsKey($_)) {
-
                     $NewValue = $PSBoundParameters[$_]
-
-                    if($NewValue -ne $null)
-                    {
-                        if($_ -eq 'StandardManagedDiskAndSnapshotSize') {
+                    if ($null -ne $NewValue) {
+                        if ($_ -eq 'StandardManagedDiskAndSnapshotSize') {
                             $utilityCmdParams.MaxAllocationStandardManagedDisksAndSnapshots = $NewValue
-                        } elseif($_ -eq 'PremiumManagedDiskAndSnapshotSize') {
+                        } elseif ($_ -eq 'PremiumManagedDiskAndSnapshotSize') {
                             $utilityCmdParams.MaxAllocationPremiumManagedDisksAndSnapshots = $NewValue
-                        } elseif($_ -eq 'CoresCount') {
+                        } elseif ($_ -eq 'CoresCount') {
                             $utilityCmdParams.CoresLimit = $NewValue
-                        } else  {
+                        } else {
                             $utilityCmdParams[$_] = $NewValue
                         }
                     }
@@ -156,9 +153,7 @@ function New-AzsComputeQuota {
                 $GetTaskResult_params = @{
                     TaskResult = $TaskResult
                 }
-
-                $quotaObj = Get-TaskResult @GetTaskResult_params
-                ConvertTo-ComputeQuota -Quota $quotaObj
+                ConvertTo-ComputeQuota -Quota (Get-TaskResult @GetTaskResult_params)
             }
         }
     }
