@@ -127,41 +127,44 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-
-        public void IdValuesReplacer(object inputItem)
+        private bool IsResourceReference(Type t)
         {
-            string rgDefinition = "/resourceGroups/";
-            string vLoadBalancerDefinition = "/loadBalancers/";
+            return t.Equals(typeof(PSResourceId)) || t.IsSubclassOf(typeof(PSResourceId));
+        }
+
+        public void NormalizeChildIds(object inputItem)
+        {
             foreach (var item in inputItem.GetType().GetProperties())
             {
                 var value = item.GetValue(inputItem);
                 if (value != null && value.ToString() != "null")
                 {
+                    var valueType = value.GetType();
                     if (item.Name == "Id")
                     {
                         string outValue = value.ToString().Replace(
-                            rgDefinition + Microsoft.Azure.Commands.Network.Properties.Resources.ResourceGroupNotSet,
-                            rgDefinition + this.ResourceGroupName);
+                            "/resourceGroups/" + Microsoft.Azure.Commands.Network.Properties.Resources.ResourceGroupNotSet,
+                            "/resourceGroups/" + this.ResourceGroupName);
 
                         outValue = outValue.Replace(
-                            vLoadBalancerDefinition + Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerNameNotSet,
-                            vLoadBalancerDefinition + this.Name);
+                            "/loadBalancers/" + Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerNameNotSet,
+                            "/loadBalancers/" + this.Name);
 
                         item.SetValue(inputItem, outValue);
                     }
                     else if (value is IList)
                     {
-                        if (!value.GetType().GetGenericArguments()[0].Equals(typeof(string)))
+                        if (IsResourceReference(valueType.GetGenericArguments()[0]))
                         {
                             foreach (var listItem in (IList)value)
                             {
-                                IdValuesReplacer(listItem);
+                                NormalizeChildIds(listItem);
                             }
                         }
                     }
-                    else if(!item.GetType().IsPrimitive && !value.GetType().Equals(typeof(string)))
+                    else if (IsResourceReference(valueType))
                     {
-                        IdValuesReplacer(value);
+                        NormalizeChildIds(value);
                     }
                 }
             }
@@ -196,8 +199,7 @@ namespace Microsoft.Azure.Commands.Network
                 Sku = vSku,
             };
 
-            // Normalize child IDs
-            IdValuesReplacer(vLoadBalancer);
+            NormalizeChildIds(vLoadBalancer);
 
             var vLoadBalancerModel = NetworkResourceManagerProfile.Mapper.Map<MNM.LoadBalancer>(vLoadBalancer);
             vLoadBalancerModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);

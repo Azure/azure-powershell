@@ -209,11 +209,11 @@
     <Compile Include="Generated\LoadBalancer\BackendAddressPool\GetAzureRmLoadBalancerBackendAddressPoolConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\BackendAddressPool\NewAzureRmLoadBalancerBackendAddressPoolConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\BackendAddressPool\RemoveAzureRmLoadBalancerBackendAddressPoolConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\FrontendIPConfiguration\AddAzureRmLoadBalancerFrontendIPConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\FrontendIPConfiguration\GetAzureRmLoadBalancerFrontendIPConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\FrontendIPConfiguration\NewAzureRmLoadBalancerFrontendIPConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\FrontendIPConfiguration\RemoveAzureRmLoadBalancerFrontendIPConfigCommand.cs" />
-    <Compile Include="Generated\LoadBalancer\FrontendIPConfiguration\SetAzureRmLoadBalancerFrontendIPConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\FrontendIPConfiguration\AddAzureRmLoadBalancerFrontendIpConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\FrontendIPConfiguration\GetAzureRmLoadBalancerFrontendIpConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\FrontendIPConfiguration\NewAzureRmLoadBalancerFrontendIpConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\FrontendIPConfiguration\RemoveAzureRmLoadBalancerFrontendIpConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\FrontendIPConfiguration\SetAzureRmLoadBalancerFrontendIpConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\GetAzureRMLoadBalancerCommand.cs" />
     <Compile Include="Generated\LoadBalancer\InboundNatPool\AddAzureRmLoadBalancerInboundNatPoolConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\InboundNatPool\GetAzureRmLoadBalancerInboundNatPoolConfigCommand.cs" />
