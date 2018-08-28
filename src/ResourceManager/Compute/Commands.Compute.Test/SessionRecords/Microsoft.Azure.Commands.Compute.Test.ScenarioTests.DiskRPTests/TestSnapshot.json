@@ -622,6 +622,7 @@
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/20.0.0.0"
         ]
       },
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"startTime\": \"2018-07-13T23:43:27.0554083-07:00\",\r\n  \"endTime\": \"2018-07-13T23:43:27.2742411-07:00\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"output\": {\r\n      \"accessSAS\": \"https://md-f3g4sdswml1w.blob.core.windows.net/dwbmj01344xh/abcd?sv=2017-04-17&sr=b&si=9204c173-8323-4645-b546-c2cb50477917&sig=fIDy0J1jstJwKFr91Q7nv50O0PbZlReIjsHRXnVZuXE%3D\"\r\n    }\r\n  },\r\n  \"name\": \"e9815066-31e0-461e-95f9-1c0e45c1e21e\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -686,6 +687,7 @@
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/20.0.0.0"
         ]
       },
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"accessSAS\": \"https://md-f3g4sdswml1w.blob.core.windows.net/dwbmj01344xh/abcd?sv=2017-04-17&sr=b&si=9204c173-8323-4645-b546-c2cb50477917&sig=fIDy0J1jstJwKFr91Q7nv50O0PbZlReIjsHRXnVZuXE%3D\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [

@@ -397,6 +397,7 @@
           "Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient/0.0.0.0"
         ]
       },
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"sC9cbbfff0aj4Zj5mGK12jh7PZTmA4reibI1shihpVnwBBW65jRhPqHusO88OxI13YcJdffa+YFazF4Mlj53cw==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"hG5IjCmW5RlYqSr+J0YlLgQvi6AZBYSEvuZJr+IWtTVIIhrSTF3DOzOFMYkpVr8v0QHn9nt9nN5vmsIZdt4J7A==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -460,6 +461,7 @@
           "Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient/0.0.0.0"
         ]
       },
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"sC9cbbfff0aj4Zj5mGK12jh7PZTmA4reibI1shihpVnwBBW65jRhPqHusO88OxI13YcJdffa+YFazF4Mlj53cw==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"hG5IjCmW5RlYqSr+J0YlLgQvi6AZBYSEvuZJr+IWtTVIIhrSTF3DOzOFMYkpVr8v0QHn9nt9nN5vmsIZdt4J7A==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [

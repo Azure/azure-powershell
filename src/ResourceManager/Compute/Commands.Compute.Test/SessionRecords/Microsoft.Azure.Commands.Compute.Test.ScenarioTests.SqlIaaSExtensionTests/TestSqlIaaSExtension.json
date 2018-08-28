@@ -3879,6 +3879,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/7.1.0.0"
         ]
       },
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"Gdi1YgGuv0J89W7XR0GxUbu6SyxugA99n1zydTchezck+9rYdZFYhBJepR4H3VO4BwGFR9iGKlPvMfi5C9agaA==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"fMB7anOR/sA36FI80ogY3lIg1lf5w5U8wpW7rWbyamFH4ZGAz/tnHk2zBvGMBz+TcsjnlL08f0IFW1ljM+WXXQ==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -3927,6 +3928,7 @@
       "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps2824/providers/Microsoft.Compute/virtualMachines/vmcrptestps2824/extensions/SqlIaaSExtension?api-version=2018-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI4MjQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bWNycHRlc3RwczI4MjQvZXh0ZW5zaW9ucy9TcWxJYWFTRXh0ZW5zaW9uP2FwaS12ZXJzaW9uPTIwMTgtMDQtMDE=",
       "RequestMethod": "PUT",
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.SqlServer.Management\",\r\n    \"type\": \"SqlIaaSAgent\",\r\n    \"typeHandlerVersion\": \"1.2\",\r\n    \"settings\": {\r\n      \"AutoPatchingSettings\": {\r\n        \"Enable\": true,\r\n        \"DayOfWeek\": \"Thursday\",\r\n        \"MaintenanceWindowStartingHour\": 20,\r\n        \"MaintenanceWindowDuration\": 120,\r\n        \"PatchCategory\": \"Important\"\r\n      },\r\n      \"AutoBackupSettings\": {\r\n        \"Enable\": true,\r\n        \"EnableEncryption\": false,\r\n        \"RetentionPeriod\": 5,\r\n        \"BackupSystemDbs\": false\r\n      },\r\n      \"AutoTelemetrySettings\": {\r\n        \"Region\": \"eastus\"\r\n      },\r\n      \"DeploymentToken\": 26805388\r\n    },\r\n    \"protectedSettings\": {\r\n      \"StorageUrl\": \"https://stocrptestps2824.blob.core.windows.net/\",\r\n      \"StorageAccessKey\": \"Gdi1YgGuv0J89W7XR0GxUbu6SyxugA99n1zydTchezck+9rYdZFYhBJepR4H3VO4BwGFR9iGKlPvMfi5C9agaA==\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
@@ -4006,6 +4008,7 @@
       "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps2824/providers/Microsoft.Compute/virtualMachines/vmcrptestps2824/extensions/SqlIaaSExtension?api-version=2018-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI4MjQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bWNycHRlc3RwczI4MjQvZXh0ZW5zaW9ucy9TcWxJYWFTRXh0ZW5zaW9uP2FwaS12ZXJzaW9uPTIwMTgtMDQtMDE=",
       "RequestMethod": "PUT",
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.SqlServer.Management\",\r\n    \"type\": \"SqlIaaSAgent\",\r\n    \"typeHandlerVersion\": \"1.2\",\r\n    \"settings\": {\r\n      \"AutoPatchingSettings\": {\r\n        \"Enable\": true,\r\n        \"DayOfWeek\": \"Monday\",\r\n        \"MaintenanceWindowStartingHour\": 20,\r\n        \"MaintenanceWindowDuration\": 120,\r\n        \"PatchCategory\": \"Important\"\r\n      },\r\n      \"AutoBackupSettings\": {\r\n        \"Enable\": true,\r\n        \"EnableEncryption\": false,\r\n        \"RetentionPeriod\": 10,\r\n        \"BackupSystemDbs\": false\r\n      },\r\n      \"AutoTelemetrySettings\": {\r\n        \"Region\": \"eastus\"\r\n      },\r\n      \"DeploymentToken\": 789632515\r\n    },\r\n    \"protectedSettings\": {\r\n      \"StorageUrl\": \"https://stocrptestps2824.blob.core.windows.net/\",\r\n      \"StorageAccessKey\": \"Gdi1YgGuv0J89W7XR0GxUbu6SyxugA99n1zydTchezck+9rYdZFYhBJepR4H3VO4BwGFR9iGKlPvMfi5C9agaA==\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
@@ -4085,6 +4088,7 @@
       "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps2824/providers/Microsoft.Compute/virtualMachines/vmcrptestps2824/extensions/SqlIaaSExtension?api-version=2018-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI4MjQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bWNycHRlc3RwczI4MjQvZXh0ZW5zaW9ucy9TcWxJYWFTRXh0ZW5zaW9uP2FwaS12ZXJzaW9uPTIwMTgtMDQtMDE=",
       "RequestMethod": "PUT",
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.SqlServer.Management\",\r\n    \"type\": \"SqlIaaSAgent\",\r\n    \"typeHandlerVersion\": \"1.2\",\r\n    \"settings\": {\r\n      \"AutoPatchingSettings\": {\r\n        \"Enable\": true,\r\n        \"DayOfWeek\": \"Monday\",\r\n        \"MaintenanceWindowStartingHour\": 20,\r\n        \"MaintenanceWindowDuration\": 120,\r\n        \"PatchCategory\": \"Important\"\r\n      },\r\n      \"AutoBackupSettings\": {\r\n        \"Enable\": true,\r\n        \"EnableEncryption\": false,\r\n        \"RetentionPeriod\": 10,\r\n        \"BackupSystemDbs\": false\r\n      },\r\n      \"AutoTelemetrySettings\": {\r\n        \"Region\": \"eastus\"\r\n      },\r\n      \"DeploymentToken\": 2136573559\r\n    },\r\n    \"protectedSettings\": {\r\n      \"StorageUrl\": \"https://stocrptestps2824.blob.core.windows.net/\",\r\n      \"StorageAccessKey\": \"Gdi1YgGuv0J89W7XR0GxUbu6SyxugA99n1zydTchezck+9rYdZFYhBJepR4H3VO4BwGFR9iGKlPvMfi5C9agaA==\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
@@ -4164,6 +4168,7 @@
       "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps2824/providers/Microsoft.Compute/virtualMachines/vmcrptestps2824/extensions/SqlIaaSExtension?api-version=2018-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczI4MjQvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bWNycHRlc3RwczI4MjQvZXh0ZW5zaW9ucy9TcWxJYWFTRXh0ZW5zaW9uP2FwaS12ZXJzaW9uPTIwMTgtMDQtMDE=",
       "RequestMethod": "PUT",
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.SqlServer.Management\",\r\n    \"type\": \"SqlIaaSAgent\",\r\n    \"typeHandlerVersion\": \"1.2\",\r\n    \"settings\": {\r\n      \"AutoPatchingSettings\": {\r\n        \"Enable\": true,\r\n        \"DayOfWeek\": \"Monday\",\r\n        \"MaintenanceWindowStartingHour\": 20,\r\n        \"MaintenanceWindowDuration\": 120,\r\n        \"PatchCategory\": \"Important\"\r\n      },\r\n      \"AutoBackupSettings\": {\r\n        \"Enable\": true,\r\n        \"EnableEncryption\": false,\r\n        \"RetentionPeriod\": 10,\r\n        \"BackupSystemDbs\": false\r\n      },\r\n      \"AutoTelemetrySettings\": {\r\n        \"Region\": \"eastus\"\r\n      },\r\n      \"DeploymentToken\": 175620251\r\n    },\r\n    \"protectedSettings\": {\r\n      \"StorageUrl\": \"https://stocrptestps2824.blob.core.windows.net/\",\r\n      \"StorageAccessKey\": \"Gdi1YgGuv0J89W7XR0GxUbu6SyxugA99n1zydTchezck+9rYdZFYhBJepR4H3VO4BwGFR9iGKlPvMfi5C9agaA==\"\r\n    }\r\n  },\r\n  \"location\": \"eastus\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [

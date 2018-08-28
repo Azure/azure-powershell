@@ -1507,6 +1507,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/7.1.0.0"
         ]
       },
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"yXRMDugMJpqAI7Omqv7r4N8vzqzg9aNUf+tg+i5URYZ6v0OgUnbA6pqgjHNdxN14y/laUthaADwHEMq5LEGZXg==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"S4MeViLaEo+yPAQ50iAu1LD8e2Z3HHG574+kZeCpu7TJjZMxDSXrtNkD4oyxNtFyobqBOkZjXdrBoYT0RsYauA==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -3900,6 +3901,7 @@
       "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps7039/providers/Microsoft.Compute/virtualMachines/vmcrptestps7039/extensions/csetest?api-version=2018-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczcwMzkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bWNycHRlc3RwczcwMzkvZXh0ZW5zaW9ucy9jc2V0ZXN0P2FwaS12ZXJzaW9uPTIwMTgtMDQtMDE=",
       "RequestMethod": "PUT",
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.Compute\",\r\n    \"type\": \"CustomScriptExtension\",\r\n    \"typeHandlerVersion\": \"1.1\",\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\r\n      \"commandToExecute\": \"powershell Get-Process\",\r\n      \"fileUris\": []\r\n    },\r\n    \"protectedSettings\": {\r\n      \"storageAccountName\": \"stocrptestps7039\",\r\n      \"storageAccountKey\": \"yXRMDugMJpqAI7Omqv7r4N8vzqzg9aNUf+tg+i5URYZ6v0OgUnbA6pqgjHNdxN14y/laUthaADwHEMq5LEGZXg==\"\r\n    }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [

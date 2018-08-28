@@ -1507,6 +1507,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/7.1.0.0"
         ]
       },
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"mBN2Uh8idBASOoxVqHiF5L46p0ZE2po51VGNGzW+d2Dng1jIF28CpEybJnm9cD9CLcqY7cq8hld3qf7rSelVfA==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"8UHRpxQuJxbkORZvlknwNE06bf7g0rbuh8dNg1Yhxh7DmIWlGdCTuSZ/2N7A/nrNwGe5h90Jz1/rzYic0+LOog==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -2559,6 +2560,7 @@
       "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps4829/providers/Microsoft.Compute/virtualMachines/vmcrptestps4829/extensions/crptestps4829ext?api-version=2018-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Jlc291cmNlR3JvdXBzL2NycHRlc3RwczQ4MjkvcHJvdmlkZXJzL01pY3Jvc29mdC5Db21wdXRlL3ZpcnR1YWxNYWNoaW5lcy92bWNycHRlc3RwczQ4MjkvZXh0ZW5zaW9ucy9jcnB0ZXN0cHM0ODI5ZXh0P2FwaS12ZXJzaW9uPTIwMTgtMDQtMDE=",
       "RequestMethod": "PUT",
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"publisher\": \"Microsoft.Compute\",\r\n    \"type\": \"CustomScriptExtension\",\r\n    \"typeHandlerVersion\": \"1.1\",\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\r\n      \"fileUris\": [\r\n        \"https://stocrptestps4829.blob.core.windows.net/script/a.exe?sv=2016-05-31&sr=b&sig=FYjF%2BkxMCfTFsCapryXSoKdncCWTs6OEOTLIXbAY%2FFk%3D&se=2018-07-15T13%3A11%3A13Z&sp=r\"\r\n      ]\r\n    },\r\n    \"protectedSettings\": {\r\n      \"storageAccountName\": \"stocrptestps4829\",\r\n      \"commandToExecute\": \"powershell -ExecutionPolicy Unrestricted -file a.exe \",\r\n      \"storageAccountKey\": \"mBN2Uh8idBASOoxVqHiF5L46p0ZE2po51VGNGzW+d2Dng1jIF28CpEybJnm9cD9CLcqY7cq8hld3qf7rSelVfA==\"\r\n    }\r\n  },\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
@@ -2580,6 +2582,7 @@
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/20.0.0.0"
         ]
       },
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\r\n      \"fileUris\": [\r\n        \"https://stocrptestps4829.blob.core.windows.net/script/a.exe?sv=2016-05-31&sr=b&sig=FYjF%2BkxMCfTFsCapryXSoKdncCWTs6OEOTLIXbAY%2FFk%3D&se=2018-07-15T13%3A11%3A13Z&sp=r\"\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"publisher\": \"Microsoft.Compute\",\r\n    \"type\": \"CustomScriptExtension\",\r\n    \"typeHandlerVersion\": \"1.1\"\r\n  },\r\n  \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps4829/providers/Microsoft.Compute/virtualMachines/vmcrptestps4829/extensions/crptestps4829ext\",\r\n  \"name\": \"crptestps4829ext\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -2909,6 +2912,7 @@
           "Microsoft.Azure.Management.Compute.ComputeManagementClient/20.0.0.0"
         ]
       },
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"autoUpgradeMinorVersion\": true,\r\n    \"settings\": {\r\n      \"fileUris\": [\r\n        \"https://stocrptestps4829.blob.core.windows.net/script/a.exe?sv=2016-05-31&sr=b&sig=FYjF%2BkxMCfTFsCapryXSoKdncCWTs6OEOTLIXbAY%2FFk%3D&se=2018-07-15T13%3A11%3A13Z&sp=r\"\r\n      ]\r\n    },\r\n    \"provisioningState\": \"Failed\",\r\n    \"publisher\": \"Microsoft.Compute\",\r\n    \"type\": \"CustomScriptExtension\",\r\n    \"typeHandlerVersion\": \"1.1\"\r\n  },\r\n  \"type\": \"Microsoft.Compute/virtualMachines/extensions\",\r\n  \"location\": \"eastus\",\r\n  \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps4829/providers/Microsoft.Compute/virtualMachines/vmcrptestps4829/extensions/crptestps4829ext\",\r\n  \"name\": \"crptestps4829ext\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
