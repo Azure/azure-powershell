@@ -147,14 +147,6 @@
             "_justification": "Legitimate test session record, rules are deleted"
         },
         {
-            "file": "\\src\\StackAdmin\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagedApplicationTests\\TestManagedApplicationCRUD.json", 
-            "_justification": "Legitimate test session record"
-        },
-        {
-            "file": "\\src\\StackAdmin\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagedApplicationDefinitionTests\\TestManagedApplicationDefinitionCRUD.json", 
-            "_justification": "Legitimate test session record"
-        },
-        {
             "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusDRConfigurationTests\\ServiceBusDRConfigurationsCURD.json", 
             "_justification": "Legitimate test session record, rules are deleted"
         },
@@ -190,7 +182,7 @@
             "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfileChina.PublishSettings", 
             "_justification": "Legitimate test publishsettings file"
         },
-        {
+		{
             "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\\TestTroubleshoot.json", 
             "_justification": "Legitimate test session record, resources are deleted"
         },
