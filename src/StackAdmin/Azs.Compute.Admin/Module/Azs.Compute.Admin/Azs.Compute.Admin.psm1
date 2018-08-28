@@ -33,9 +33,6 @@ if (Test-Path -Path $ClrPath -PathType Container) {
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Get-ArmResourceIdParameterValue.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Get-ResourceNameSuffix.ps1')
 
-# Custom Objects
-Join-Path -Path $PSScriptRoot -ChildPath 'Generated.PowerShell.Commands\CustomObjects' | Get-ChildItem -Filter *.ps1 | ForEach-Object { . $_.FullName }
-
 # Scripts
 $allPs1FilesPath = Join-Path -Path $PSScriptRoot -ChildPath 'Generated.PowerShell.Commands' | Join-Path -ChildPath '*.ps1'
 Get-ChildItem -Path $allPs1FilesPath -Recurse -File | ForEach-Object { . $_.FullName}

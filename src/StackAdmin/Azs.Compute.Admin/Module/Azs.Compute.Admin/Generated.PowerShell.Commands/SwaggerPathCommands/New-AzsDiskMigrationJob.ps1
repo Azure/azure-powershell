@@ -29,9 +29,9 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     The migration job guid name.
 
 .EXAMPLE
-
-    PS C:\> $disks = Get-AzsDisk -location local
     PS C:\> New-AzsDiskMigrationJob -Name "MyMigrationJob" -Disks $disks -location local -TargetShare "\\SU1FileServer.azurestack.local\SU1_ObjStore"
+
+    Start a managed disk migration job for the first 20 disks
 #>
 function New-AzsDiskMigrationJob
 {

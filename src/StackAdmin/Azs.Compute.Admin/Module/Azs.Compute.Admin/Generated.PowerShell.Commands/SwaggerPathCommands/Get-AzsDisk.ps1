@@ -38,9 +38,15 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     The disk guid as identity.
 
 .EXAMPLE
+    PS C:\> $disks = Get-AzsDisk -location local
 
-	PS C:\> $disks = Get-AzsDisk -location local
+    Returns a list of managed disks at the location local. By default, it will the first 100 disks
+
+.EXAMPLE
     PS C:\> $disk = Get-AzsDisk -location local -name $DiskId
+
+    Get a specific managed disk.
+
 #>
 function Get-AzsDisk
 {

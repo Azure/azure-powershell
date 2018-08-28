@@ -20,9 +20,9 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     The migration job guid name.
 
 .EXAMPLE
-
-    PS C:\> $migration =New-AzsDiskMigrationJob -Name "mymigrationJob" -Disks $list -location local -TargetShare "\\SU1FileServer.azurestack.local\SU1_ObjStore"
     PS C:\> Stop-AzsDiskMigrationJob -Location local -MigrationId $migration.MigrationId
+
+    Cancel a managed disk migration job.
 
 #>
 function Stop-AzsDiskMigrationJob
