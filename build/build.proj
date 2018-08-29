@@ -42,10 +42,11 @@
       <Solution>$(Root)Azure.PowerShell.Common.Netcore.sln</Solution>
       <TestOutput>$(Artifacts)Test\</TestOutput>
       <FileVersion Condition="'$(FileVersion)' == ''">1.0.0.0</FileVersion>
+      <AssemblyVersion Condition="'$(AssemblyVersion)' == ''">1.0.0.0</AssemblyVersion>
     </PropertyGroup>
 
     <Message Importance="high" Text="netstandard20: Building $([System.IO.Path]::GetFileName($(Solution)))" />
-    <Exec Command="dotnet build $(Solution) -c $(Configuration) /p:FileVersion=$(FileVersion) -NoLogo" />
+    <Exec Command="dotnet build $(Solution) -c $(Configuration) /p:FileVersion=$(FileVersion) /p:AssemblyVersion=$(AssemblyVersion) -NoLogo" />
 
     <Message Condition="'$(Configuration)' == 'Debug'" Importance="high" Text="netstandard20: Testing $([System.IO.Path]::GetFileName($(Solution)))" />
     <Exec Condition="'$(Configuration)' == 'Debug'" Command="dotnet test $(Solution) --filter $(TestFilter) --configuration $(Configuration) --logger trx -NoLogo" ContinueOnError="ErrorAndContinue" />
