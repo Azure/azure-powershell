@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Root>$(MSBuildThisFileDirectory)..\</Root>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
     <Artifacts>$(Root)artifacts\</Artifacts>
     <TestFilter>"AcceptanceType=CheckIn"</TestFilter>
   </PropertyGroup>
@@ -25,15 +25,15 @@
     <Message Importance="high" Text="net452: Building $([System.IO.Path]::GetFileName($(Solution)))" />
     <MSBuild Projects="$(Solution)" Properties="Configuration=$(Configuration)" />
 
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
       <CurrentDate>$([System.DateTime]::Now.ToString(yyyy-MM-dd_hh_mm_ss))</CurrentDate>
       <TestOutput>$(Artifacts)Test\$(Framework)\TestResults_$(CurrentDate).html</TestOutput>
     </PropertyGroup>
-    <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
       <TestAssemblies Include="$(OutputDir)*.Tests.dll;$(OutputDir)*.Test.dll;$(OutputDir)*.UnitTest.dll" />
     </ItemGroup>
-    <Message Condition=" '$(Configuration)' == 'Debug' " Importance="high" Text="net452: Testing %(TestAssemblies.Filename)" />
-    <Exec Condition=" '$(Configuration)' == 'Debug' " Command="$(xUnitRunner) @(TestAssemblies, ' ') -trait $(TestFilter) -html $(TestOutput)"/>
+    <Message Condition="'$(Configuration)' == 'Debug'" Importance="high" Text="net452: Testing %(TestAssemblies.Filename)" />
+    <Exec Condition="'$(Configuration)' == 'Debug'" Command="$(xUnitRunner) @(TestAssemblies, ' ') -trait $(TestFilter) -html $(TestOutput)"/>
   </Target>
 
   <Target Name="netstandard20">
@@ -41,17 +41,19 @@
     <PropertyGroup>
       <Solution>$(Root)Azure.PowerShell.Common.Netcore.sln</Solution>
       <TestOutput>$(Artifacts)Test\</TestOutput>
+      <FileVersion Condition="'$(FileVersion)' == ''">1.0.0.0</FileVersion>
+      <AssemblyVersion Condition="'$(AssemblyVersion)' == ''">1.0.0.0</AssemblyVersion>
     </PropertyGroup>
 
     <Message Importance="high" Text="netstandard20: Building $([System.IO.Path]::GetFileName($(Solution)))" />
-    <Exec Command="dotnet build $(Solution) -c $(Configuration) -NoLogo" />
+    <Exec Command="dotnet build $(Solution) -c $(Configuration) /p:FileVersion=$(FileVersion) /p:AssemblyVersion=$(AssemblyVersion) -NoLogo" />
 
-    <Message Condition=" '$(Configuration)' == 'Debug' " Importance="high" Text="netstandard20: Testing $([System.IO.Path]::GetFileName($(Solution)))" />
-    <Exec Condition=" '$(Configuration)' == 'Debug' " Command="dotnet test $(Solution) --filter $(TestFilter) --configuration $(Configuration) --logger trx -NoLogo" ContinueOnError="ErrorAndContinue" />
-    <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <Message Condition="'$(Configuration)' == 'Debug'" Importance="high" Text="netstandard20: Testing $([System.IO.Path]::GetFileName($(Solution)))" />
+    <Exec Condition="'$(Configuration)' == 'Debug'" Command="dotnet test $(Solution) --filter $(TestFilter) --configuration $(Configuration) --logger trx -NoLogo" ContinueOnError="ErrorAndContinue" />
+    <ItemGroup Condition="'$(Configuration)' == 'Debug'">
       <TestResults Include="$(Root)src\**\TestResults\*.trx" />
     </ItemGroup>
-    <Move Condition=" '$(Configuration)' == 'Debug' " SourceFiles="@(TestResults)" DestinationFolder="$(TestOutput)" />
+    <Move Condition="'$(Configuration)' == 'Debug'" SourceFiles="@(TestResults)" DestinationFolder="$(TestOutput)" />
   </Target>
 
   <Target Name="All" DependsOnTargets="net452;netstandard20" />

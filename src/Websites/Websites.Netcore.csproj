@@ -6,7 +6,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.Websites</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Websites</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
@@ -47,5 +46,12 @@
     <ProjectReference Include="..\Common\Common.Netcore.csproj" />
     <ProjectReference Include="..\ResourceManager\ResourceManager.Netcore.csproj" />
   </ItemGroup>
-  
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Remove="Properties\AssemblyInfo.cs" />
+    <None Remove="Properties\AssemblyInfo.cs" />
+    <Content Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
 </Project>

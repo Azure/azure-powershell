@@ -6,7 +6,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.KeyVault</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.KeyVault</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
@@ -48,6 +47,13 @@
     <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.Netcore.csproj" />
     <ProjectReference Include="..\ResourceManager\ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\Common\Common.Netcore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Remove="Properties\AssemblyInfo.cs" />
+    <None Remove="Properties\AssemblyInfo.cs" />
+    <Content Remove="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 
 </Project>
