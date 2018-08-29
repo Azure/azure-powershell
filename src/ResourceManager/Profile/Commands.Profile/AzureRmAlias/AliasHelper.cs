@@ -45,14 +45,22 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
             var userprofile = "";
             if (Scope != null && Scope.Equals("CurrentUser"))
             {
-                var editionType = sessionState.PSVariable.GetValue("PSEdition") as string;
-                var psFolder = string.Equals(editionType, "Desktop", StringComparison.OrdinalIgnoreCase) ? "WindowsPowerShell" : "PowerShell";
-                userprofile = Path.Combine(sessionState.PSVariable.GetValue("env:USERPROFILE").ToString(), "Documents", psFolder, "profile.ps1");
+                var powershellProfile = sessionState.PSVariable.GetValue("PROFILE") as PSObject;
+                if (powershellProfile == null || !powershellProfile.Members.ToList().Any(a => a.Name.Equals("CurrentUserAllHosts")))
+                {
+                    throw new PSInvalidOperationException(string.Format(Properties.Resources.ProfilePathNull, "PROFILE.CurrentUserAllHosts"));
+                }
+                userprofile = powershellProfile.Members.ToList().Where(a => a.Name.Equals("CurrentUserAllHosts")).First().Value.ToString();
             }
 
             else if (Scope != null && Scope.Equals("LocalMachine"))
             {
-                userprofile = Path.Combine(sessionState.PSVariable.GetValue("PSHOME").ToString(), "profile.ps1");
+                var powershellProfile = sessionState.PSVariable.GetValue("PROFILE") as PSObject;
+                if (powershellProfile == null || !powershellProfile.Members.ToList().Any(a => a.Name.Equals("AllUsersAllHosts")))
+                {
+                    throw new PSInvalidOperationException(string.Format(Properties.Resources.ProfilePathNull, "PROFILE.AllUsersAllHosts"));
+                }
+                userprofile = powershellProfile.Members.ToList().Where(a => a.Name.Equals("AllUsersAllHosts")).First().Value.ToString();
             }
 
             return userprofile;
