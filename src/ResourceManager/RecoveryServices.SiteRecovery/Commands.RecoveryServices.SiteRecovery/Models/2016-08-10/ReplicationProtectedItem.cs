@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.Properties = new ReplicationProtectedItemProperties_2016_08_10(replicationProtectedItem.Properties);
         }
         public ReplicationProtectedItemProperties_2016_08_10 Properties { get; set; }
-
+        
         //
         // Summary
         //    Get or set the entity id.
@@ -71,21 +71,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.LastSuccessfulFailoverTime = rpiProperties.LastSuccessfulFailoverTime;
             this.PolicyFriendlyName = rpiProperties.PolicyFriendlyName;
             this.PolicyId = rpiProperties.PolicyId;
-            this.FailoverHealthErrors = new List<ASRHealthError>();
+            this.FailoverHealthErrors = new List<ASRHealthError_2016_08_10>();
             if (rpiProperties.HealthErrors != null)
             {
                 foreach (var healthError in rpiProperties.HealthErrors)
                 {
-                    this.FailoverHealthErrors.Add(new ASRHealthError(healthError));
+                    this.FailoverHealthErrors.Add(new ASRHealthError_2016_08_10(healthError));
                 }
             }
-            this.ReplicationHealthErrors = new List<ASRHealthError>();
+            this.ReplicationHealthErrors = new List<ASRHealthError_2016_08_10>();
 
             if (rpiProperties.HealthErrors != null)
             {
                 foreach (var healthError in rpiProperties.HealthErrors)
                 {
-                    this.ReplicationHealthErrors.Add(new ASRHealthError(healthError));
+                    this.ReplicationHealthErrors.Add(new ASRHealthError_2016_08_10(healthError));
                 }
             }
 
@@ -169,12 +169,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         //
         // Summary:
         //     Gets or sets list of failover health errors.
-        public IList<ASRHealthError> FailoverHealthErrors { get; set; }
+        public IList<ASRHealthError_2016_08_10> FailoverHealthErrors { get; set; }
 
         //
         // Summary:
         //     Gets or sets list of replication health errors.
-        public IList<ASRHealthError> ReplicationHealthErrors { get; set; }
+        public IList<ASRHealthError_2016_08_10> ReplicationHealthErrors { get; set; }
 
         //
         // Summary:
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             {
                 this.VmNics =
                        a2aReplicationDetails.VmNics?.ToList()
-                       .ConvertAll(nic => new ASRVMNicDetails(nic));
+                       .ConvertAll(nic => new ASRVMNicDetails_2016_08_10(nic));
             }
             this.SelectedRecoveryAzureNetworkId = a2aReplicationDetails.SelectedRecoveryAzureNetworkId;
             this.RecoveryAvailabilitySet = a2aReplicationDetails.RecoveryAvailabilitySet;
@@ -362,20 +362,20 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             {
                 this.ProtectedDisks =
                     a2aReplicationDetails.ProtectedDisks.ToList()
-                    .ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails(disk));
+                    .ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails_2016_08_10(disk));
             }
 
             if (a2aReplicationDetails.ProtectedManagedDisks != null)
             {
                 this.ProtectedManagedDisks =
                     a2aReplicationDetails.ProtectedManagedDisks.ToList()
-                    .ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails(disk));
+                    .ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails_2016_08_10(disk));
             }
 
             if (a2aReplicationDetails.VmSyncedConfigDetails != null)
             {
                 this.VmSyncedConfigDetails =
-                    new ASRAzureToAzureVmSyncedConfigDetails(a2aReplicationDetails.VmSyncedConfigDetails);
+                    new ASRAzureToAzureVmSyncedConfigDetails_2016_08_10(a2aReplicationDetails.VmSyncedConfigDetails);
             }
             this.ManagementId = a2aReplicationDetails.ManagementId;
             this.MultiVmGroupName = a2aReplicationDetails.MultiVmGroupName;
@@ -442,11 +442,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         //
         // Summary:
         //     Gets or sets the synced configuration details.
-        public ASRAzureToAzureVmSyncedConfigDetails VmSyncedConfigDetails { get; set; }
+        public ASRAzureToAzureVmSyncedConfigDetails_2016_08_10 VmSyncedConfigDetails { get; set; }
         //
         // Summary:
         //     Gets or sets the virtual machine nic details.
-        public IList<ASRVMNicDetails> VmNics { get; set; }
+        public IList<ASRVMNicDetails_2016_08_10> VmNics { get; set; }
         //
         // Summary:
         //     Gets or sets the recovery virtual network.
@@ -490,11 +490,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         //
         // Summary:
         //     Gets or sets the list of protected managed disks.
-        public IList<ASRAzureToAzureProtectedDiskDetails> ProtectedManagedDisks { get; set; }
+        public IList<ASRAzureToAzureProtectedDiskDetails_2016_08_10> ProtectedManagedDisks { get; set; }
         //
         // Summary:
         //     Gets or sets the list of protected disks.
-        public IList<ASRAzureToAzureProtectedDiskDetails> ProtectedDisks { get; set; }
+        public IList<ASRAzureToAzureProtectedDiskDetails_2016_08_10> ProtectedDisks { get; set; }
         //
         // Summary:
         //     Gets or sets the management Id.
@@ -538,10 +538,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.OsDiskId = inMageAzureV2ReplicationDetails.OsDiskId;
             if (inMageAzureV2ReplicationDetails.AzureVMDiskDetails != null)
             {
-                this.AzureVMDiskDetails = new List<ASRHyperVReplicaAzureVmDiskDetails>();
+                this.AzureVMDiskDetails = new List<ASRHyperVReplicaAzureVmDiskDetails_2016_08_10>();
                 foreach (var diskDetails in inMageAzureV2ReplicationDetails.AzureVMDiskDetails)
                 {
-                    this.AzureVMDiskDetails.Add(new ASRHyperVReplicaAzureVmDiskDetails(diskDetails));
+                    this.AzureVMDiskDetails.Add(new ASRHyperVReplicaAzureVmDiskDetails_2016_08_10(diskDetails));
                 }
             }
             this.RecoveryAzureVMName = inMageAzureV2ReplicationDetails.RecoveryAzureVMName;
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             {
                 this.VmNics =
                        inMageAzureV2ReplicationDetails.VmNics?.ToList()
-                       .ConvertAll(nic => new ASRVMNicDetails(nic));
+                       .ConvertAll(nic => new ASRVMNicDetails_2016_08_10(nic));
             }
             this.SelectedRecoveryAzureNetworkId = inMageAzureV2ReplicationDetails.SelectedRecoveryAzureNetworkId;
             this.DiscoveryType = inMageAzureV2ReplicationDetails.DiscoveryType;
@@ -565,10 +565,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.LicenseType = inMageAzureV2ReplicationDetails.LicenseType;
             if (inMageAzureV2ReplicationDetails.ValidationErrors != null)
             {
-                this.ValidationErrors = new List<ASRHealthError>();
+                this.ValidationErrors = new List<ASRHealthError_2016_08_10>();
                 foreach (var healthError in inMageAzureV2ReplicationDetails.ValidationErrors)
                 {
-                    this.ValidationErrors.Add(new ASRHealthError(healthError));
+                    this.ValidationErrors.Add(new ASRHealthError_2016_08_10(healthError));
                 }
             }
 
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         //
         // Summary:
         //     Gets or sets azure VM Disk details.
-        public IList<ASRHyperVReplicaAzureVmDiskDetails> AzureVMDiskDetails { get; set; }
+        public IList<ASRHyperVReplicaAzureVmDiskDetails_2016_08_10> AzureVMDiskDetails { get; set; }
         //
         // Summary:
         //     Gets or sets recovery Azure given name.
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         //
         // Summary:
         //     Gets or sets the PE Network details.
-        public IList<ASRVMNicDetails> VmNics { get; set; }
+        public IList<ASRVMNicDetails_2016_08_10> VmNics { get; set; }
         //
         // Summary:
         //     Gets or sets the selected recovery azure network Id.
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         // Summary:
         //     Gets or sets the validation errors of the on-premise machine Value can be list
         //     of validation errors.
-        public IList<ASRHealthError> ValidationErrors { get; set; }
+        public IList<ASRHealthError_2016_08_10> ValidationErrors { get; set; }
         //
         // Summary:
         //     Gets or sets the last RPO calculated time.
@@ -821,14 +821,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.EnableRDPOnTargetOption = hyperVReplicaAzureReplicationDetails.EnableRdpOnTargetOption;
             this.SourceVmCPUCount = hyperVReplicaAzureReplicationDetails.SourceVmCpuCount;
             this.SourceVmRAMSizeInMB = hyperVReplicaAzureReplicationDetails.SourceVmRamSizeInMB;
-            this.OSDetails = new ASRHyperVReplicaAzureOsDetails(hyperVReplicaAzureReplicationDetails.OSDetails);
+            this.OSDetails = new ASRHyperVReplicaAzureOsDetails_2016_08_10(hyperVReplicaAzureReplicationDetails.OSDetails);
             this.Encryption = hyperVReplicaAzureReplicationDetails.Encryption;
             this.SelectedRecoveryAzureNetworkId = hyperVReplicaAzureReplicationDetails.SelectedRecoveryAzureNetworkId;
             if (hyperVReplicaAzureReplicationDetails.VmNics != null)
             {
                 this.VmNics =
                        hyperVReplicaAzureReplicationDetails.VmNics?.ToList()
-                       .ConvertAll(nic => new ASRVMNicDetails(nic));
+                       .ConvertAll(nic => new ASRVMNicDetails_2016_08_10(nic));
             }
             this.InitialReplicationDetails = new InitialReplicationDetails_2016_08_10(hyperVReplicaAzureReplicationDetails.InitialReplicationDetails);
             this.VmProtectionStateDescription = hyperVReplicaAzureReplicationDetails.VmProtectionStateDescription;
@@ -841,10 +841,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.RecoveryAzureVMName = hyperVReplicaAzureReplicationDetails.RecoveryAzureVmName;
             if (hyperVReplicaAzureReplicationDetails.AzureVmDiskDetails != null)
             {
-                this.AzureVMDiskDetails = new List<ASRHyperVReplicaAzureVmDiskDetails>();
+                this.AzureVMDiskDetails = new List<ASRHyperVReplicaAzureVmDiskDetails_2016_08_10>();
                 foreach (var diskDetails in hyperVReplicaAzureReplicationDetails.AzureVmDiskDetails)
                 {
-                    this.AzureVMDiskDetails.Add(new ASRHyperVReplicaAzureVmDiskDetails(diskDetails));
+                    this.AzureVMDiskDetails.Add(new ASRHyperVReplicaAzureVmDiskDetails_2016_08_10(diskDetails));
                 }
             }
             this.UseManagedDisks = hyperVReplicaAzureReplicationDetails.UseManagedDisks;
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         //
         // Summary:
         //     Gets or sets the operating system info.
-        public ASRHyperVReplicaAzureOsDetails OSDetails { get; set; }
+        public ASRHyperVReplicaAzureOsDetails_2016_08_10 OSDetails { get; set; }
         //
         // Summary:
         //     Gets or sets the encryption info.
@@ -887,7 +887,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         //
         // Summary:
         //     Gets or sets the PE Network details.
-        public IList<ASRVMNicDetails> VmNics { get; set; }
+        public IList<ASRVMNicDetails_2016_08_10> VmNics { get; set; }
         //
         // Summary:
         //     Gets or sets initial replication details.
@@ -928,7 +928,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         //
         // Summary:
         //     Gets or sets azure VM Disk details.
-        public IList<ASRHyperVReplicaAzureVmDiskDetails> AzureVMDiskDetails { get; set; }
+        public IList<ASRHyperVReplicaAzureVmDiskDetails_2016_08_10> AzureVMDiskDetails { get; set; }
         //
         // Summary:
         //     Gets or sets a value indicating whether managed disks should be used during failover.
@@ -979,7 +979,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             {
                 this.VmNics =
                        hyperVReplicaReplicationDetails.VmNics?.ToList()
-                       .ConvertAll(nic => new ASRVMNicDetails(nic));
+                       .ConvertAll(nic => new ASRVMNicDetails_2016_08_10(nic));
             }
             this.VmId = hyperVReplicaReplicationDetails.VmId;
             this.VmProtectionState = hyperVReplicaReplicationDetails.VmProtectionState;
@@ -989,7 +989,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             if (hyperVReplicaReplicationDetails.VMDiskDetails != null)
             {
                 this.VMDiskDetails = hyperVReplicaReplicationDetails.VMDiskDetails.ToList().ConvertAll(
-                    (VMDiskDetails) => new ASRHyperVReplicaDiskDetails(VMDiskDetails));
+                    (VMDiskDetails) => new ASRHyperVReplicaDiskDetails_2016_08_10(VMDiskDetails));
             }
         }
 
@@ -1000,7 +1000,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         //
         // Summary:
         //     Gets or sets the PE Network details.
-        public IList<ASRVMNicDetails> VmNics { get; set; }
+        public IList<ASRVMNicDetails_2016_08_10> VmNics { get; set; }
         //
         // Summary:
         //     Gets or sets the virtual machine Id.
@@ -1020,7 +1020,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         //
         // Summary:
         //     Gets or sets VM disk details.
-        public IList<ASRHyperVReplicaDiskDetails> VMDiskDetails { get; set; }
+        public IList<ASRHyperVReplicaDiskDetails_2016_08_10> VMDiskDetails { get; set; }
     }
 
 
@@ -1039,7 +1039,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             {
                 this.VmNics =
                        hyperVReplicaBlueReplicationDetails.VmNics?.ToList()
-                       .ConvertAll(nic => new ASRVMNicDetails(nic));
+                       .ConvertAll(nic => new ASRVMNicDetails_2016_08_10(nic));
             }
             this.VmId = hyperVReplicaBlueReplicationDetails.VmId;
             this.VmProtectionState = hyperVReplicaBlueReplicationDetails.VmProtectionState;
@@ -1049,7 +1049,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             if (hyperVReplicaBlueReplicationDetails.VMDiskDetails != null)
             {
                 this.VMDiskDetails = hyperVReplicaBlueReplicationDetails.VMDiskDetails.ToList().ConvertAll(
-                    (VMDiskDetails) => new ASRHyperVReplicaDiskDetails(VMDiskDetails));
+                    (VMDiskDetails) => new ASRHyperVReplicaDiskDetails_2016_08_10(VMDiskDetails));
             }
         }
 
@@ -1060,7 +1060,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         //
         // Summary:
         //     Gets or sets the PE Network details.
-        public IList<ASRVMNicDetails> VmNics { get; set; }
+        public IList<ASRVMNicDetails_2016_08_10> VmNics { get; set; }
         //
         // Summary:
         //     Gets or sets the virtual machine Id.
@@ -1080,7 +1080,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         //
         // Summary:
         //     Gets or sets VM disk details.
-        public IList<ASRHyperVReplicaDiskDetails> VMDiskDetails { get; set; }
+        public IList<ASRHyperVReplicaDiskDetails_2016_08_10> VMDiskDetails { get; set; }
     }
 
 
@@ -1107,7 +1107,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             {
                 this.VmNics =
                        inMageREplicationDetails.VmNics?.ToList()
-                       .ConvertAll(nic => new ASRVMNicDetails(nic));
+                       .ConvertAll(nic => new ASRVMNicDetails_2016_08_10(nic));
             }
             this.DiscoveryType = inMageREplicationDetails.DiscoveryType;
             this.AzureStorageAccountId = inMageREplicationDetails.AzureStorageAccountId;
@@ -1115,7 +1115,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             if (inMageREplicationDetails.ValidationErrors != null)
             {
                 this.ValidationErrors = inMageREplicationDetails.ValidationErrors.ToList().ConvertAll(
-                    (healthError)=>new ASRHealthError(healthError));
+                    (healthError)=>new ASRHealthError_2016_08_10(healthError));
             }
             this.LastRpoCalculatedTime = inMageREplicationDetails.LastRpoCalculatedTime;
             this.LastUpdateReceivedTime = inMageREplicationDetails.LastUpdateReceivedTime;
@@ -1184,7 +1184,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         //
         // Summary:
         //     Gets or sets the PE Network details.
-        public IList<ASRVMNicDetails> VmNics { get; set; }
+        public IList<ASRVMNicDetails_2016_08_10> VmNics { get; set; }
         //
         // Summary:
         //     Gets or sets a value indicating the discovery type of the machine.
@@ -1203,7 +1203,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         // Summary:
         //     Gets or sets the validation errors of the on-premise machine Value can be list
         //     of validation errors
-        public IList<ASRHealthError> ValidationErrors { get; set; }
+        public IList<ASRHealthError_2016_08_10> ValidationErrors { get; set; }
         //
         // Summary:
         //     Gets or sets the last RPO calculated time.
