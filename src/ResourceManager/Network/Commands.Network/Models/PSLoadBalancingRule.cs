@@ -29,13 +29,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int FrontendPort { get; set; }
 
         [JsonProperty(Order = 1)]
-        public int? IdleTimeoutInMinutes { get; set; }
-
-        [JsonProperty(Order = 1)]
         public string LoadDistribution { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public bool? EnableFloatingIP { get; set; }
 
         [JsonProperty(Order = 1)]
         public bool? DisableOutboundSNAT { get; set; }

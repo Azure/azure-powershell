@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.Network
                 inboundNatRule.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
             inboundNatRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
+            inboundNatRule.EnableTcpReset = this.EnableTcpReset.IsPresent;
 
             inboundNatRule.FrontendIPConfiguration = null;
             if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))

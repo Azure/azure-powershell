@@ -98,6 +98,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "EnableTcpReset")]
+        public SwitchParameter EnableTcpReset { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "DisableOutboundSNAT")]
         public SwitchParameter DisableOutboundSNAT { get; set; }
 

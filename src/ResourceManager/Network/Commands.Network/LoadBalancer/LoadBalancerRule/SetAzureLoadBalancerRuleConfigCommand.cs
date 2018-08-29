@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Network
             loadBalancingRule.LoadDistribution = string.IsNullOrEmpty(this.LoadDistribution) ? "Default" : this.LoadDistribution;
 
             loadBalancingRule.EnableFloatingIP = this.EnableFloatingIP.IsPresent;
+            loadBalancingRule.EnableTcpReset = this.EnableTcpReset.IsPresent;
             loadBalancingRule.DisableOutboundSNAT = this.DisableOutboundSNAT.IsPresent;
 
             loadBalancingRule.BackendAddressPool = null;

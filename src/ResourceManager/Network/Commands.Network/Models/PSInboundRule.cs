@@ -29,6 +29,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Protocol { get; set; }
 
         [JsonProperty(Order = 1)]
+        public int? IdleTimeoutInMinutes { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public bool? EnableFloatingIP { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public bool? EnableTcpReset { get; set; }
+
+        [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
