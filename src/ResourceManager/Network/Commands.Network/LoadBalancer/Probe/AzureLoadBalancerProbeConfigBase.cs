@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The transport protocol for the external endpoint.")]
-        [ValidateSet(MNM.ProbeProtocol.Tcp, MNM.ProbeProtocol.Http, IgnoreCase = true)]
+        [ValidateSet(MNM.ProbeProtocol.Tcp, MNM.ProbeProtocol.Http, MNM.ProbeProtocol.Https, IgnoreCase = true)]
         public string Protocol { get; set; }
 
         [Parameter(
