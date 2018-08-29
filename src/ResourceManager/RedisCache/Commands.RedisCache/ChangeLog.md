@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated Insights dependency.
 
 ## Version 5.0.4
 * Fixed issue with default resource groups not being set.
