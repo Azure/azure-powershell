@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     ///     The definition of a health object.
     /// </summary>
-    public class ASRHealthError
+    public class ASRHealthError_2016_08_10
     {
         /// <summary>
         ///     Initializes a new instance of the HealthError class.
         /// </summary>
         /// <param name="healthError">Event health error object.</param>
-        public ASRHealthError(HealthError healthError)
+        public ASRHealthError_2016_08_10(HealthError healthError)
         {
             if (healthError.CreationTimeUtc.HasValue)
             {
@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             this.PossibleCauses = healthError.PossibleCauses;
             this.RecommendedAction = healthError.RecommendedAction;
             this.RecoveryProviderErrorMessage = healthError.RecoveryProviderErrorMessage;
-            this.childError = new List<ASRHealthError>();
+            this.childError = new List<ASRHealthError_2016_08_10>();
             if (healthError.InnerHealthErrors != null)
             {
                 foreach (var innerHealthError in healthError.InnerHealthErrors)
                 {
-                    var childHealthError = new ASRHealthError(innerHealthError);
+                    var childHealthError = new ASRHealthError_2016_08_10(innerHealthError);
                     this.childError.Add(childHealthError);
                 }
 
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         ///     Initializes a new instance of the HealthError class.
         /// </summary>
         /// <param name="healthError">Event health error object.</param>
-        public ASRHealthError(InnerHealthError healthError)
+        public ASRHealthError_2016_08_10(InnerHealthError healthError)
         {
             if (healthError.CreationTimeUtc.HasValue)
             {
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <summary>
         ///     Error type.
         /// </summary>
-        public IList<ASRHealthError> childError { get; set; }
+        public IList<ASRHealthError_2016_08_10> childError { get; set; }
 
         /// <summary>
         ///     Error creation time (UTC).
@@ -140,19 +140,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     ///     ASR VM Nic Details
     /// </summary>
-    public class ASRVMNicDetails
+    public class ASRVMNicDetails_2016_08_10
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ASRVMNicDetails" /> class.
+        ///     Initializes a new instance of the <see cref="ASRVMNicDetails_2016_08_10" /> class.
         /// </summary>
-        public ASRVMNicDetails()
+        public ASRVMNicDetails_2016_08_10()
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ASRVMNicDetails" /> class.
+        ///     Initializes a new instance of the <see cref="ASRVMNicDetails_2016_08_10" /> class.
         /// </summary>
-        public ASRVMNicDetails(
+        public ASRVMNicDetails_2016_08_10(
             VMNicDetails vMNicDetails)
         {
             this.NicId = vMNicDetails.NicId;
@@ -233,9 +233,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// Onprem disk details data.
     /// </summary>
-    public class ASRHyperVReplicaDiskDetails
+    public class ASRHyperVReplicaDiskDetails_2016_08_10
     {
-        public ASRHyperVReplicaDiskDetails(DiskDetails diskDetails)
+        public ASRHyperVReplicaDiskDetails_2016_08_10(DiskDetails diskDetails)
         {
             this.MaxSizeMB = diskDetails.MaxSizeMB;
             this.VhdId = diskDetails.VhdId;
@@ -263,9 +263,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         public string VhdName { get; set; }
     }
 
-    public class ASRHyperVReplicaAzureVmDiskDetails
+    public class ASRHyperVReplicaAzureVmDiskDetails_2016_08_10
     {
-        public ASRHyperVReplicaAzureVmDiskDetails(AzureVmDiskDetails hyperVReplicaAzureVmDiskDetails)
+        public ASRHyperVReplicaAzureVmDiskDetails_2016_08_10(AzureVmDiskDetails hyperVReplicaAzureVmDiskDetails)
         {
             this.VhdType = hyperVReplicaAzureVmDiskDetails.VhdType;
             this.VhdId = hyperVReplicaAzureVmDiskDetails.VhdId;
@@ -314,24 +314,24 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// Azure to Azure VM synced configuration details.
     /// </summary>
-    public class ASRAzureToAzureVmSyncedConfigDetails
+    public class ASRAzureToAzureVmSyncedConfigDetails_2016_08_10
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRAzureToAzureVmSyncedConfigDetails" />
+        /// Initializes a new instance of the <see cref="ASRAzureToAzureVmSyncedConfigDetails_2016_08_10" />
         /// class.
         /// </summary>
-        public ASRAzureToAzureVmSyncedConfigDetails()
+        public ASRAzureToAzureVmSyncedConfigDetails_2016_08_10()
         {
             this.Tags = new Dictionary<string, string>();
-            this.RoleAssignments = new List<ASRRoleAssignment>();
-            this.InputEndpoints = new List<ASRInputEndpoint>();
+            this.RoleAssignments = new List<ASRRoleAssignment_2016_08_10>();
+            this.InputEndpoints = new List<ASRInputEndpoint_2016_08_10>();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRAzureToAzureVmSyncedConfigDetails" />
+        /// Initializes a new instance of the <see cref="ASRAzureToAzureVmSyncedConfigDetails_2016_08_10" />
         /// class.
         /// </summary>
-        public ASRAzureToAzureVmSyncedConfigDetails(AzureToAzureVmSyncedConfigDetails details)
+        public ASRAzureToAzureVmSyncedConfigDetails_2016_08_10(AzureToAzureVmSyncedConfigDetails details)
         {
             if (details.Tags == null)
             {
@@ -346,14 +346,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             {
                 this.RoleAssignments =
                     details.RoleAssignments.ToList()
-                    .ConvertAll(role => new ASRRoleAssignment(role));
+                    .ConvertAll(role => new ASRRoleAssignment_2016_08_10(role));
             }
 
             if (details.InputEndpoints != null)
             {
                 this.InputEndpoints =
                     details.InputEndpoints.ToList()
-                    .ConvertAll(endpoint => new ASRInputEndpoint(endpoint));
+                    .ConvertAll(endpoint => new ASRInputEndpoint_2016_08_10(endpoint));
             }
         }
 
@@ -365,23 +365,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <summary>
         /// Gets or sets the Azure role assignments.
         /// </summary>
-        public List<ASRRoleAssignment> RoleAssignments { get; set; }
+        public List<ASRRoleAssignment_2016_08_10> RoleAssignments { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure VM input endpoints.
         /// </summary>
-        public List<ASRInputEndpoint> InputEndpoints { get; set; }
+        public List<ASRInputEndpoint_2016_08_10> InputEndpoints { get; set; }
     }
 
     /// <summary>
     /// Azure VM input endpoint details.
     /// </summary>
-    public class ASRInputEndpoint
+    public class ASRInputEndpoint_2016_08_10
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRInputEndpoint" /> class.
+        /// Initializes a new instance of the <see cref="ASRInputEndpoint_2016_08_10" /> class.
         /// </summary>
-        public ASRInputEndpoint(InputEndpoint endpoint)
+        public ASRInputEndpoint_2016_08_10(InputEndpoint endpoint)
         {
             this.EndpointName = endpoint.EndpointName;
             this.PrivatePort = endpoint.PrivatePort;
@@ -428,12 +428,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// Azure role assignment details.
     /// </summary>
-    public class ASRRoleAssignment
+    public class ASRRoleAssignment_2016_08_10
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRRoleAssignment" /> class.
+        /// Initializes a new instance of the <see cref="ASRRoleAssignment_2016_08_10" /> class.
         /// </summary>
-        public ASRRoleAssignment(RoleAssignment role)
+        public ASRRoleAssignment_2016_08_10(RoleAssignment role)
         {
             this.Id = role.Id;
             this.Name = role.Name;
@@ -487,21 +487,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     /// AzureToAzure replication provider specific protected disk details.
     /// </summary>
-    public class ASRAzureToAzureProtectedDiskDetails
+    public class ASRAzureToAzureProtectedDiskDetails_2016_08_10
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRAzureToAzureProtectedDiskDetails" />
+        /// Initializes a new instance of the <see cref="ASRAzureToAzureProtectedDiskDetails_2016_08_10" />
         /// class.
         /// </summary>
-        public ASRAzureToAzureProtectedDiskDetails()
+        public ASRAzureToAzureProtectedDiskDetails_2016_08_10()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRAzureToAzureProtectedDiskDetails" />
+        /// Initializes a new instance of the <see cref="ASRAzureToAzureProtectedDiskDetails_2016_08_10" />
         /// class.
         /// </summary>
-        public ASRAzureToAzureProtectedDiskDetails(A2AProtectedDiskDetails disk)
+        public ASRAzureToAzureProtectedDiskDetails_2016_08_10(A2AProtectedDiskDetails disk)
         {
             this.DiskUri = disk.DiskUri;
             this.PrimaryDiskAzureStorageAccountId = disk.PrimaryDiskAzureStorageAccountId;
@@ -520,10 +520,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ASRAzureToAzureProtectedDiskDetails" />
+        /// Initializes a new instance of the <see cref="ASRAzureToAzureProtectedDiskDetails_2016_08_10" />
         /// class.
         /// </summary>
-        public ASRAzureToAzureProtectedDiskDetails(A2AProtectedManagedDiskDetails disk)
+        public ASRAzureToAzureProtectedDiskDetails_2016_08_10(A2AProtectedManagedDiskDetails disk)
         {
             this.PrimaryStagingAzureStorageAccountId = disk.PrimaryStagingAzureStorageAccountId;
             this.ResyncRequired = disk.ResyncRequired;
@@ -645,9 +645,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
     /// <summary>
     ///     Disk Details.
     /// </summary>
-    public class ASRHyperVReplicaAzureOsDetails
+    public class ASRHyperVReplicaAzureOsDetails_2016_08_10
     {
-        public ASRHyperVReplicaAzureOsDetails(OSDetails hyperVOsSetails)
+        public ASRHyperVReplicaAzureOsDetails_2016_08_10(OSDetails hyperVOsSetails)
         {
             this.OsType = hyperVOsSetails.OsType;
             this.ProductType = hyperVOsSetails.ProductType;
