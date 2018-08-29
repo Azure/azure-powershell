@@ -175,7 +175,6 @@ InModuleScope Azs.Update.Admin {
             $list = Get-AzsUpdateLocation -ResourceGroup $global:ResourceGroupName
             $list | Should not be $null
             foreach ($location in $list) {
-                Write-Host $location.Id
                 $location1 = Get-AzsUpdateLocation -Location $location.Name -ResourceGroup $global:ResourceGroupName
                 ValidateSameUpdateLocation $location $location1
             }
@@ -219,10 +218,8 @@ InModuleScope Azs.Update.Admin {
             $list = Get-AzsUpdate -ResourceGroup $global:ResourceGroupName -Location $global:Location
             $list | Should not be $null
             foreach ($update in $list) {
-                Write-Host "Name: $($update.Name)"
                 $runList = Get-AzsUpdateRun -UpdateName $update.Name -ResourceGroup $global:ResourceGroupName -Location $global:Location
                 foreach ($run in $runList) {
-                    Write-Host $run.Name
                     $run1 = Get-AzsUpdateRun -Name $run.Name -ResourceGroup $global:ResourceGroupName -Location $global:Location -UpdateName $update.Name
                     ValidateSameUpdateRun $run $run1
                 }
