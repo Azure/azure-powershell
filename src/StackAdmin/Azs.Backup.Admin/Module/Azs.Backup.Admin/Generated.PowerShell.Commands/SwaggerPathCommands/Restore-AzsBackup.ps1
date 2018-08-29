@@ -97,7 +97,7 @@ function Restore-AzsBackup {
 
         # Should process
         if ($PSCmdlet.ShouldProcess("$Name" , "Restore from backup at location $Location")) {
-            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Restore from backup at location $Location?", "Performing operation restore using backup $Name.")) {
+            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Restore from backup at location $($Location)?", "Performing operation restore using backup $Name.")) {
 
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Backup.Admin.BackupAdminClient'
