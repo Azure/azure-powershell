@@ -137,11 +137,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
             * Module dependencies updated
                 * AzureRM.Profile >= 5.3.4
                 * AzureRM.Resources >= 6.0.2
-            * Support handling names of nested resources
-                * TODO
             * Deprecations
                 * Get-AzsDelegatedProviderManagedOffer, the parameter DelegatedProvider is now an alias for DelegatedProviderId
-                * TODO
             * Bug fixes
                 * Handle ErrrorAction correctly now
             '
