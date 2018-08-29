@@ -2,11 +2,12 @@
 <Project ToolsVersion="14.0" DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Root>$(MSBuildThisFileDirectory)..\</Root>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
     <Artifacts>$(Root)artifacts\</Artifacts>
     <Src>$(Root)src\</Src>
     <Tools>$(Root)tools\</Tools>
     <Net452PackDir>$(Artifacts)Package\$(Configuration)\net452\</Net452PackDir>
+    <PackageVersion Condition="'$(PackageVersion)' == ''">1.0.0</PackageVersion>
   </PropertyGroup>
 
   <Target Name="net452">
@@ -18,7 +19,7 @@
     <ItemGroup>
       <Net452Projects Include="$(Src)**\*.csproj" Exclude="$(Src)**\*.Netcore.csproj;$(Src)**\*.Tests.csproj;$(Src)**\*.Test.csproj;$(Src)**\*.UnitTest.csproj"/>
     </ItemGroup>
-    <Exec Command="$(NuGet) pack %(Net452Projects.FullPath) -OutputDirectory $(Net452PackDir) -Properties Configuration=$(Configuration) -IncludeReferencedProjects"/>
+    <Exec Command="$(NuGet) pack %(Net452Projects.FullPath) -OutputDirectory $(Net452PackDir) -Properties Configuration=$(Configuration) -Version $(PackageVersion)-preview -IncludeReferencedProjects"/>
   </Target>
 
   <Target Name="netstandard20">
@@ -26,7 +27,7 @@
     <ItemGroup>
       <NetStandard20Projects Include="$(Src)**\*.Netcore.csproj" Exclude="$(Src)**\*.Tests.Netcore.csproj;$(Src)**\*.Test.Netcore.csproj;$(Src)**\*.UnitTest.Netcore.csproj"/>
     </ItemGroup>
-    <Exec Command="dotnet pack %(NetStandard20Projects.FullPath) -c $(Configuration) --no-build"/>
+    <Exec Command="dotnet pack %(NetStandard20Projects.FullPath) -c $(Configuration) /p:PackageVersion=$(PackageVersion)-preview --no-build"/>
   </Target>
 
   <Target Name="All" DependsOnTargets="net452;netstandard20">

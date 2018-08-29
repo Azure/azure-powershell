@@ -5,7 +5,6 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.Probe.Test</AssemblyName>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
@@ -22,6 +21,13 @@
   <ItemGroup>
     <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\Common\Common.Netcore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Remove="Properties\AssemblyInfo.cs" />
+    <None Remove="Properties\AssemblyInfo.cs" />
+    <Content Remove="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 
 </Project>
