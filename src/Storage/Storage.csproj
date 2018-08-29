@@ -100,6 +100,12 @@
     <None Include="Adapters\ARM.Storage.4\ARMStorageService.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+	<None Include="Adapters\ARM.Storage.Common.2017_10_01\ARMStorageProvider.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Adapters\ARM.Storage.Common.2017_10_01\ARMStorageService.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Adapters\ARM.Storage.5\ARMStorageProvider.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

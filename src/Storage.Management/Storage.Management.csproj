@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Version2017-10-01\IOperations.cs" />
     <Compile Include="Version2017-10-01\ISkusOperations.cs" />
     <Compile Include="Version2017-10-01\IStorageAccountsOperations.cs" />

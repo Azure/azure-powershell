@@ -529,6 +529,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
                 EnvironmentTable[environment.Name] = mergedEnvironment;
                 result = true;
+                foreach (var context in Contexts)
+                {
+                    if (context.Value.Environment != null &&
+                        context.Value.Environment.Name == environment.Name)
+                    {
+                        context.Value.Environment = mergedEnvironment;
+                    }
+                }
             }
 
             return result;
