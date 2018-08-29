@@ -54,8 +54,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Type of the Routing Endpoint")]
-        [ValidateSet(new string[] { "EventHub", "ServiceBusQueue", "ServiceBusTopic", "AzureStorageContainer" }, IgnoreCase = true)]
-        public string EndpointType { get; set; }
+        public PSEndpointType? EndpointType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the Routing Endpoint")]
         public string EndpointName { get; set; }
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
             }
 
-            if (string.IsNullOrEmpty(this.EndpointType))
+            if (!this.EndpointType.HasValue)
             {
                 List<PSRoutingCustomEndpoint> psRoutingCustomEndpointCollection = new List<PSRoutingCustomEndpoint>();
 
@@ -142,15 +141,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             }
             else
             {
-                PSEndpointType psEndpointType;
-                if (Enum.TryParse<PSEndpointType>(this.EndpointType, true, out psEndpointType))
-                {
-                    this.WriteEndpointObject(iotHubDescription, psEndpointType, this.EndpointName);
-                }
-                else
-                {
-                    throw new ArgumentException("Invalid Routing Endpoint Type");
-                }
+                this.WriteEndpointObject(iotHubDescription, this.EndpointType.Value, this.EndpointName);
             }
         }
 

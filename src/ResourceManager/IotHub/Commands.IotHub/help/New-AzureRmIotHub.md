@@ -45,7 +45,7 @@ $psCloudToDeviceProperties = New-Object Microsoft.Azure.Commands.Management.IotH
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 Location where the IoT hub needs to be created. 
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 Name of the IotHub
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 Properties of the IoT hub. 
 
 ```yaml
-Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties
+Type: PSIotHubInputProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 Name of the sku
 
 ```yaml
-Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku
+Type: PSIotHubSku
 Parameter Sets: (All)
 Aliases:
 Accepted values: F1, S1, S2, S3, B1, B2, B3
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 Number of units
 
 ```yaml
-Type: System.Int64
+Type: Int64
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -167,7 +167,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

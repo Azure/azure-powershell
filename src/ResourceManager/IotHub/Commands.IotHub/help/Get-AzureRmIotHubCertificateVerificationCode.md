@@ -61,7 +61,7 @@ Generates a verification code for MyCertificate
 Name of the Certificate
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceSet
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 Etag of the Certificate
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceSet, ResourceIdSet
 Aliases:
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 Certificate Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription
+Type: PSCertificateDescription
 Parameter Sets: InputObjectSet
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Name of the Iot Hub
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceSet
 Aliases:
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 Name of the Resource Group
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceSet
 Aliases:
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 Certificate Resource Id
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdSet
 Aliases:
 

@@ -83,7 +83,7 @@ IotHub Object
 ```yaml
 Type: PSIotHub
 Parameter Sets: InputObjectSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -98,7 +98,7 @@ Name of the Iot Hub
 ```yaml
 Type: String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -113,7 +113,7 @@ Name of the Resource Group
 ```yaml
 Type: String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -128,7 +128,7 @@ IotHub Resource Id
 ```yaml
 Type: String
 Parameter Sets: ResourceIdSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -143,7 +143,7 @@ Name of the Route
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -168,4 +168,3 @@ System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Mo
 ## NOTES
 
 ## RELATED LINKS
-

@@ -54,28 +54,27 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Type of the Routing Endpoint")]
-        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Type of the Routing Endpoint")]
-        [Parameter(Position = 3, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Type of the Routing Endpoint")]
+        [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Type of the Routing Endpoint")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Type of the Routing Endpoint")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Type of the Routing Endpoint")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(new string[] { "EventHub", "ServiceBusQueue", "ServiceBusTopic", "AzureStorageContainer" }, IgnoreCase = true)]
-        public string EndpointType { get; set; }
+        public PSEndpointType EndpointType { get; set; }
 
-        [Parameter(Position = 3, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Resource group of the Endpoint resoure")]
-        [Parameter(Position = 3, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Resource group of the Endpoint resoure")]
-        [Parameter(Position = 4, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Resource group of the Endpoint resoure")]
+        [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Resource group of the Endpoint resoure")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Resource group of the Endpoint resoure")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Resource group of the Endpoint resoure")]
         [ValidateNotNullOrEmpty]
         public string EndpointResourceGroup { get; set; }
 
-        [Parameter(Position = 4, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "SubscriptionId of the Endpoint resource")]
-        [Parameter(Position = 4, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "SubscriptionId of the Endpoint resource")]
-        [Parameter(Position = 5, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "SubscriptionId of the Endpoint resource")]
+        [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "SubscriptionId of the Endpoint resource")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "SubscriptionId of the Endpoint resource")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "SubscriptionId of the Endpoint resource")]
         [ValidateNotNullOrEmpty]
         public string EndpointSubscriptionId { get; set; }
 
-        [Parameter(Position = 5, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Connection string of the Routing Endpoint")]
-        [Parameter(Position = 5, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Connection string of the Routing Endpoint")]
-        [Parameter(Position = 6, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Connection string of the Routing Endpoint")]
+        [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Connection string of the Routing Endpoint")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Connection string of the Routing Endpoint")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Connection string of the Routing Endpoint")]
         [ValidateNotNullOrEmpty]
         public string ConnectionString { get; set; }
 
@@ -101,90 +100,78 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
                 }
 
-                PSEndpointType psEndpointType;
-                if (Enum.TryParse<PSEndpointType>(this.EndpointType, true, out psEndpointType))
+                switch (this.EndpointType)
                 {
-                    switch (psEndpointType)
-                    {
-                        case PSEndpointType.EventHub:
-                            iotHubDescription.Properties.Routing.Endpoints.EventHubs.Add(
-                                new RoutingEventHubProperties()
-                                {
-                                    Name = this.EndpointName,
-                                    ConnectionString = this.ConnectionString,
-                                    ResourceGroup = this.EndpointResourceGroup,
-                                    SubscriptionId = this.EndpointSubscriptionId
-                                });
-                            break;
-                        case PSEndpointType.ServiceBusQueue:
-                            iotHubDescription.Properties.Routing.Endpoints.ServiceBusQueues.Add(
-                                new RoutingServiceBusQueueEndpointProperties()
-                                {
-                                    Name = this.EndpointName,
-                                    ConnectionString = this.ConnectionString,
-                                    ResourceGroup = this.EndpointResourceGroup,
-                                    SubscriptionId = this.EndpointSubscriptionId
-                                });
-                            break;
-                        case PSEndpointType.ServiceBusTopic:
-                            iotHubDescription.Properties.Routing.Endpoints.ServiceBusTopics.Add(
-                                new RoutingServiceBusTopicEndpointProperties()
-                                {
-                                    Name = this.EndpointName,
-                                    ConnectionString = this.ConnectionString,
-                                    ResourceGroup = this.EndpointResourceGroup,
-                                    SubscriptionId = this.EndpointSubscriptionId
-                                });
-                            break;
-                        case PSEndpointType.AzureStorageContainer:
-                            iotHubDescription.Properties.Routing.Endpoints.StorageContainers.Add(
-                                new RoutingStorageContainerProperties()
-                                {
-                                    Name = this.EndpointName,
-                                    ConnectionString = this.ConnectionString,
-                                    ResourceGroup = this.EndpointResourceGroup,
-                                    SubscriptionId = this.EndpointSubscriptionId,
-                                    ContainerName = this.routingEndpointDynamicParameter.ContainerName
-                                });
-                            break;
-                    }
-
-                    this.IotHubClient.IotHubResource.CreateOrUpdate(this.ResourceGroupName, this.Name, iotHubDescription);
-                    IotHubDescription updatedIotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
-
-                    switch (psEndpointType)
-                    {
-                        case PSEndpointType.EventHub:
-                            this.WriteObject(IotHubUtils.ToPSRoutingEventHubEndpoint(updatedIotHubDescription.Properties.Routing.Endpoints.EventHubs.FirstOrDefault(x => x.Name.Equals(this.EndpointName, StringComparison.OrdinalIgnoreCase))), false);
-                            break;
-                        case PSEndpointType.ServiceBusQueue:
-                            this.WriteObject(IotHubUtils.ToPSRoutingServiceBusQueueEndpoint(updatedIotHubDescription.Properties.Routing.Endpoints.ServiceBusQueues.FirstOrDefault(x => x.Name.Equals(this.EndpointName, StringComparison.OrdinalIgnoreCase))), false);
-                            break;
-                        case PSEndpointType.ServiceBusTopic:
-                            this.WriteObject(IotHubUtils.ToPSRoutingServiceBusTopicEndpoint(updatedIotHubDescription.Properties.Routing.Endpoints.ServiceBusTopics.FirstOrDefault(x => x.Name.Equals(this.EndpointName, StringComparison.OrdinalIgnoreCase))), false);
-                            break;
-                        case PSEndpointType.AzureStorageContainer:
-                            this.WriteObject(IotHubUtils.ToPSRoutingStorageContainerEndpoint(updatedIotHubDescription.Properties.Routing.Endpoints.StorageContainers.FirstOrDefault(x => x.Name.Equals(this.EndpointName, StringComparison.OrdinalIgnoreCase))), false);
-                            break;
-                    }
+                    case PSEndpointType.EventHub:
+                        iotHubDescription.Properties.Routing.Endpoints.EventHubs.Add(
+                            new RoutingEventHubProperties()
+                            {
+                                Name = this.EndpointName,
+                                ConnectionString = this.ConnectionString,
+                                ResourceGroup = this.EndpointResourceGroup,
+                                SubscriptionId = this.EndpointSubscriptionId
+                            });
+                        break;
+                    case PSEndpointType.ServiceBusQueue:
+                        iotHubDescription.Properties.Routing.Endpoints.ServiceBusQueues.Add(
+                            new RoutingServiceBusQueueEndpointProperties()
+                            {
+                                Name = this.EndpointName,
+                                ConnectionString = this.ConnectionString,
+                                ResourceGroup = this.EndpointResourceGroup,
+                                SubscriptionId = this.EndpointSubscriptionId
+                            });
+                        break;
+                    case PSEndpointType.ServiceBusTopic:
+                        iotHubDescription.Properties.Routing.Endpoints.ServiceBusTopics.Add(
+                            new RoutingServiceBusTopicEndpointProperties()
+                            {
+                                Name = this.EndpointName,
+                                ConnectionString = this.ConnectionString,
+                                ResourceGroup = this.EndpointResourceGroup,
+                                SubscriptionId = this.EndpointSubscriptionId
+                            });
+                        break;
+                    case PSEndpointType.AzureStorageContainer:
+                        iotHubDescription.Properties.Routing.Endpoints.StorageContainers.Add(
+                            new RoutingStorageContainerProperties()
+                            {
+                                Name = this.EndpointName,
+                                ConnectionString = this.ConnectionString,
+                                ResourceGroup = this.EndpointResourceGroup,
+                                SubscriptionId = this.EndpointSubscriptionId,
+                                ContainerName = this.routingEndpointDynamicParameter.ContainerName
+                            });
+                        break;
                 }
-                else
+
+                this.IotHubClient.IotHubResource.CreateOrUpdate(this.ResourceGroupName, this.Name, iotHubDescription);
+                IotHubDescription updatedIotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
+
+                switch (this.EndpointType)
                 {
-                    throw new ArgumentException("Invalid Routing Endpoint Type");
+                    case PSEndpointType.EventHub:
+                        this.WriteObject(IotHubUtils.ToPSRoutingEventHubEndpoint(updatedIotHubDescription.Properties.Routing.Endpoints.EventHubs.FirstOrDefault(x => x.Name.Equals(this.EndpointName, StringComparison.OrdinalIgnoreCase))), false);
+                        break;
+                    case PSEndpointType.ServiceBusQueue:
+                        this.WriteObject(IotHubUtils.ToPSRoutingServiceBusQueueEndpoint(updatedIotHubDescription.Properties.Routing.Endpoints.ServiceBusQueues.FirstOrDefault(x => x.Name.Equals(this.EndpointName, StringComparison.OrdinalIgnoreCase))), false);
+                        break;
+                    case PSEndpointType.ServiceBusTopic:
+                        this.WriteObject(IotHubUtils.ToPSRoutingServiceBusTopicEndpoint(updatedIotHubDescription.Properties.Routing.Endpoints.ServiceBusTopics.FirstOrDefault(x => x.Name.Equals(this.EndpointName, StringComparison.OrdinalIgnoreCase))), false);
+                        break;
+                    case PSEndpointType.AzureStorageContainer:
+                        this.WriteObject(IotHubUtils.ToPSRoutingStorageContainerEndpoint(updatedIotHubDescription.Properties.Routing.Endpoints.StorageContainers.FirstOrDefault(x => x.Name.Equals(this.EndpointName, StringComparison.OrdinalIgnoreCase))), false);
+                        break;
                 }
             }
         }
 
         public object GetDynamicParameters()
         {
-            PSEndpointType psEndpointType;
-            if (Enum.TryParse<PSEndpointType>(this.EndpointType, true, out psEndpointType))
+            if (this.EndpointType.Equals(PSEndpointType.AzureStorageContainer))
             {
-                if (psEndpointType.Equals(PSEndpointType.AzureStorageContainer))
-                {
-                    routingEndpointDynamicParameter = new RoutingEndpointDynamicParameter();
-                    return routingEndpointDynamicParameter;
-                }
+                routingEndpointDynamicParameter = new RoutingEndpointDynamicParameter();
+                return routingEndpointDynamicParameter;
             }
 
             return null;
@@ -194,9 +181,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public class RoutingEndpointDynamicParameter
         {
-            [Parameter(Position = 6, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Name of the storage container")]
-            [Parameter(Position = 6, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Name of the storage container")]
-            [Parameter(Position = 7, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Name of the storage container")]
+            [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Name of the storage container")]
+            [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Name of the storage container")]
+            [Parameter(Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Name of the storage container")]
             [ValidateNotNullOrEmpty]
             public string ContainerName { get; set; }
         }
