@@ -3,14 +3,17 @@
   <PropertyGroup>
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
     <Framework Condition="'$(Framework)' == ''">All</Framework>
+    <FileVersion Condition="'$(FileVersion)' == ''">1.0.0.0</FileVersion>
+    <PackageVersion Condition="'$(PackageVersion)' == ''">1.0.0</PackageVersion>
+    <CommandArguments>/p:Configuration=$(Configuration) /p:FileVersion=$(FileVersion) /p:PackageVersion=$(PackageVersion) /t:$(Framework) /NoLogo</CommandArguments>
   </PropertyGroup>
 
   <Target Name="Build">
-    <Exec Command="dotnet msbuild build/build.proj /p:Configuration=$(Configuration) /t:$(Framework) /NoLogo" />
+    <Exec Command="dotnet msbuild build/build.proj $(CommandArguments)" />
   </Target>
 
   <Target Name="Pack">
-    <Exec Command="dotnet msbuild build/pack.proj /p:Configuration=$(Configuration) /t:$(Framework) /NoLogo" />
+    <Exec Command="dotnet msbuild build/pack.proj $(CommandArguments)" />
   </Target>
 
   <Target Name="All" DependsOnTargets="Build;Pack" />
