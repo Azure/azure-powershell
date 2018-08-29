@@ -59,6 +59,21 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The backend port")]
         public int BackendPort { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "IdleTimeoutInMinutes")]
+        public int IdleTimeoutInMinutes { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "EnableFloatingIp")]
+        public SwitchParameter EnableFloatingIp { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "EnableTcpReset")]
+        public SwitchParameter EnableTcpReset { get; set; }
+
         public override void Execute()
         {
             

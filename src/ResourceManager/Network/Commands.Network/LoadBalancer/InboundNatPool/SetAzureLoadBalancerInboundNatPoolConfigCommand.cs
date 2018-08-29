@@ -50,6 +50,12 @@ namespace Microsoft.Azure.Commands.Network
             inboundNatPool.FrontendPortRangeStart = this.FrontendPortRangeStart;
             inboundNatPool.FrontendPortRangeEnd = this.FrontendPortRangeEnd;
             inboundNatPool.BackendPort = this.BackendPort;
+            if (this.IdleTimeoutInMinutes > 0)
+            {
+                inboundNatPool.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
+            }
+            inboundNatPool.EnableFloatingIP = this.EnableFloatingIp.IsPresent;
+            inboundNatPool.EnableTcpReset = this.EnableTcpReset;
 
             inboundNatPool.FrontendIPConfiguration = null;
             if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
