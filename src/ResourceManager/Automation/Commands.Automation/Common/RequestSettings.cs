@@ -18,7 +18,6 @@ using System;
 #if !NETSTANDARD
 using System.Diagnostics.Eventing;
 #endif
-
 using AutomationManagement = Microsoft.Azure.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation

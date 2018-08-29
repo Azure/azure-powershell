@@ -15,45 +15,45 @@
 using System;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Azure.Management.Automation;
+using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Test.HttpRecorder;
 using System.Reflection;
 using Microsoft.Rest;
 using System.Net.Http;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Test
 {
     public abstract class AutomationScenarioTestsBase : RMTestBase
     {
-        private readonly EnvironmentSetupHelper _helper;
+        private EnvironmentSetupHelper helper;
 
         protected AutomationScenarioTestsBase()
         {
-            _helper = new EnvironmentSetupHelper();
+            helper = new EnvironmentSetupHelper();
+        }
+
+        protected void SetupManagementClients()
+        {
+            var automationManagementClient = GetAutomationManagementClient();
+
+            helper.SetupManagementClients(automationManagementClient);
         }
 
         protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
-        {
-            var sf = new StackTrace().GetFrame(1);
-            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
-            var mockName = sf.GetMethod().Name;
-
-            _helper.TracingInterceptor = logger;
-        protected void RunPowerShellTest(params string[] scripts)
         {
             const string RootNamespace = "ScenarioTests";
 
             using (UndoContext context = UndoContext.Current)
             {
-                _helper.SetupManagementClients();
-                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
+                SetupManagementClients();
 
-                var psModuleFile = this.GetType().FullName.Contains(RootNamespace) ?
-                    this.GetType().FullName.Split(new[] { RootNamespace }, StringSplitOptions.RemoveEmptyEntries).Last().Replace(".", "\\") :
-                    $"\\{this.GetType().Name}";
+                helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
 
                 var psModuleFile = this.GetType().FullName.Contains(RootNamespace) ?
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
                     helper.RMProfileModule,
                     helper.GetRMModulePath(@"AzureRM.Automation.psd1"));
 
-                _helper.RunPowerShellTest(scripts);
+                helper.RunPowerShellTest(scripts);
             }
         }
 

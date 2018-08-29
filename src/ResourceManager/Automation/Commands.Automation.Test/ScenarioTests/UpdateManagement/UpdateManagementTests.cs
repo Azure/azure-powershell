@@ -16,13 +16,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
 {
     using Microsoft.Azure.Commands.Automation.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Microsoft.Azure.ServiceManagemenet.Common.Models;
     using Xunit;
 
     public class UpdateManagementTests : AutomationScenarioTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public UpdateManagementTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
@@ -30,7 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void CreateWindowsOneTimeSUCWithDefaults()
         {
-            RunPowerShellTest("Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithDefaults");
+            RunPowerShellTest(_logger, "Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithDefaults");
         }
 
         [Fact]
@@ -38,7 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxOneTimeSUCWithDefaults()
         {
-            RunPowerShellTest("Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithDefaults");
+            RunPowerShellTest(_logger, "Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithDefaults");
         }
 
         [Fact]
@@ -46,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void CreateWindowsOneTimeSUCWithAllOption()
         {
-            RunPowerShellTest("Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithAllOption");
+            RunPowerShellTest(_logger, "Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithAllOption");
         }
 
         [Fact]
@@ -54,7 +59,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxOneTimeSUCWithAllOption()
         {
-            RunPowerShellTest("Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithAllOption");
+            RunPowerShellTest(_logger, "Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithAllOption");
         }
 
         [Fact]
@@ -62,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxOneTimeSUCNonAzureOnly()
         {
-            RunPowerShellTest("Test-CreateLinuxOneTimeSoftwareUpdateConfigurationNonAzureOnly");
+            RunPowerShellTest(_logger, "Test-CreateLinuxOneTimeSoftwareUpdateConfigurationNonAzureOnly");
         }
 
         [Fact(Skip = "No recording generated")]
@@ -70,7 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxOneTimeSUCNoTarget()
         {
-            RunPowerShellTest("Test-CreateLinuxOneTimeSoftwareUpdateConfigurationNoTargets");
+            RunPowerShellTest(_logger, "Test-CreateLinuxOneTimeSoftwareUpdateConfigurationNoTargets");
         }
 
         [Fact]
@@ -78,7 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void GetAllSUCs()
         {
-            RunPowerShellTest("Test-GetAllSoftwareUpdateConfigurations");
+            RunPowerShellTest(_logger, "Test-GetAllSoftwareUpdateConfigurations");
         }
 
         [Fact]
@@ -86,7 +91,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void GetAllSUCsForVM()
         {
-            RunPowerShellTest("Test-GetSoftwareUpdateConfigurationsForVM");
+            RunPowerShellTest(_logger, "Test-GetSoftwareUpdateConfigurationsForVM");
         }
 
         [Fact]
@@ -94,7 +99,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void DeleteSUC()
         {
-            RunPowerShellTest("Test-DeleteSoftwareUpdateConfiguration");
+            RunPowerShellTest(_logger, "Test-DeleteSoftwareUpdateConfiguration");
         }
 
         [Fact]
@@ -102,7 +107,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRuns()
         {
-            RunPowerShellTest("Test-GetAllSoftwareUpdateRuns");
+            RunPowerShellTest(_logger, "Test-GetAllSoftwareUpdateRuns");
         }
 
         [Fact]
@@ -110,7 +115,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRunsWithFilters()
         {
-            RunPowerShellTest("Test-GetAllSoftwareUpdateRunsWithFilters");
+            RunPowerShellTest(_logger, "Test-GetAllSoftwareUpdateRunsWithFilters");
         }
 
         [Fact]
@@ -118,7 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRunsWithFiltersNoResults()
         {
-            RunPowerShellTest("Test-GetAllSoftwareUpdateRunsWithFiltersNoResults");
+            RunPowerShellTest(_logger, "Test-GetAllSoftwareUpdateRunsWithFiltersNoResults");
         }
 
         [Fact]
@@ -126,7 +131,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void GetAllMachineRuns()
         {
-            RunPowerShellTest("Test-GetAllSoftwareUpdateMachineRuns");
+            RunPowerShellTest(_logger, "Test-GetAllSoftwareUpdateMachineRuns");
         }
 
         [Fact]
@@ -134,7 +139,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void GetAllMachineRunsWithFilters()
         {
-            RunPowerShellTest("Test-GetAllSoftwareUpdateMachineRunsWithFilters");
+            RunPowerShellTest(_logger, "Test-GetAllSoftwareUpdateMachineRunsWithFilters");
         }
 
         [Fact]
@@ -142,7 +147,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void GetAllMachineRunsWithFiltersNoResults()
         {
-            RunPowerShellTest("Test-GetAllSoftwareUpdateMachineRunsWithFiltersNoResults");
+            RunPowerShellTest(_logger, "Test-GetAllSoftwareUpdateMachineRunsWithFiltersNoResults");
         }
 
         [Fact]
@@ -150,7 +155,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxWeeklySUC()
         {
-            RunPowerShellTest("Test-CreateLinuxWeeklySoftwareUpdateConfiguration");
+            RunPowerShellTest(_logger, "Test-CreateLinuxWeeklySoftwareUpdateConfiguration");
         }
 
         [Fact]
@@ -158,7 +163,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Trait(Category.Service, Category.Automation)]
         public void CreateWindowsMonthlySUC()
         {
-            RunPowerShellTest("Test-CreateWindowsMonthlySoftwareUpdateConfiguration");
+            RunPowerShellTest(_logger, "Test-CreateWindowsMonthlySoftwareUpdateConfiguration");
         }
     }
 }
