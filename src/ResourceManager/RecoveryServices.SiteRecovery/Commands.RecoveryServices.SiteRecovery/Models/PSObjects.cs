@@ -880,6 +880,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             VMNicDetails vMNicDetails)
         {
             this.NicId = vMNicDetails.NicId;
+            this.ReplicaNicId = vMNicDetails.ReplicaNicId;
+            this.SourceNicArmId = vMNicDetails.SourceNicArmId;
             this.VMNetworkName = vMNicDetails.VMNetworkName;
             this.VMSubnetName = vMNicDetails.VMSubnetName;
             this.RecoveryVMNetworkId = vMNicDetails.RecoveryVMNetworkId;
@@ -887,7 +889,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.ReplicaNicStaticIPAddress = vMNicDetails.ReplicaNicStaticIPAddress;
             this.IpAddressType = vMNicDetails.IpAddressType;
             this.SelectionType = vMNicDetails.SelectionType;
+            this.PrimaryNicStaticIPAddress = vMNicDetails.PrimaryNicStaticIPAddress;
+            this.RecoveryNicIpAddressType = vMNicDetails.RecoveryNicIpAddressType;
         }
+
+        //
+        // Summary:
+        //     Gets or sets primary nic static IP address.
+        public string PrimaryNicStaticIPAddress { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets IP allocation type for recovery VM.
+        public string RecoveryNicIpAddressType { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the replica nic Id.
+        public string ReplicaNicId { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets the source nic ARM Id.
+        public string SourceNicArmId { get; set; }
 
         /// <summary>
         ///     Gets or sets ipv4 address type.
@@ -1183,7 +1207,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 rpi.Properties.RecoveryProtectionContainerFriendlyName;
             this.RecoveryServicesProviderId = rpi.Properties.RecoveryServicesProviderId;
             this.ReplicationHealth = rpi.Properties.ReplicationHealth;
-            this.ReplicationHealthErrors = rpi.Properties.HealthErrors;
+            this.ReplicationHealthErrors = new List<ASRHealthError>();
+            if (rpi.Properties.HealthErrors != null) {
+                foreach (var healthError in rpi.Properties.HealthErrors) {
+                    this.ReplicationHealthErrors.Add(new ASRHealthError(healthError));
+                }
+            }
+            
             this.TestFailoverState = rpi.Properties.TestFailoverState;
             this.TestFailoverStateDescription = rpi.Properties.TestFailoverStateDescription;
 
@@ -1499,7 +1529,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Replication Health Errors
         /// </summary>
-        public IList<HealthError> ReplicationHealthErrors { get; set; }
+        public IList<ASRHealthError> ReplicationHealthErrors { get; set; }
 
         /// <summary>
         ///     Gets or sets Replication provider.
@@ -2259,7 +2289,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.DiskCapacityInBytes = disk.DiskCapacityInBytes;
             this.DiskName = disk.DiskName;
             this.DiskType = disk.DiskType;
-            this.managed = false;
+            this.Managed = false;
         }
 
         /// <summary>
@@ -2277,18 +2307,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.DiskCapacityInBytes = disk.DiskCapacityInBytes;
             this.DiskName = disk.DiskName;
             this.DiskType = disk.DiskType;
-            this.RecoveryAzureStorageAccountId = disk.RecoveryReplicaDiskAccountType;
+            this.RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType;
             this.RecoveryReplicaDiskId = disk.RecoveryReplicaDiskId;
             this.RecoveryResourceGroupId = disk.RecoveryResourceGroupId;
             this.RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType;
             this.RecoveryTargetDiskId = disk.RecoveryTargetDiskId;
-            this.managed = true;
+            this.Managed = true;
         }
 
         /// <summary>
         /// Gets or sets is azure vm managed disk.
         /// </summary>
-        public bool managed { get; set; }
+        public bool Managed { get; set; }
+
+        /// <summary>
+        /// Gets or sets is recovery azure vm managed disk type.
+        /// </summary>
+        public string RecoveryReplicaDiskAccountType { get; set; }
 
         /// <summary>
         /// Gets or sets the recovery replica disk id.

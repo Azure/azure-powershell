@@ -20,13 +20,14 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Newtonsoft.Json;
+using SRSModel_2016_08_10 = Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08_10;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
     ///     Updates the contents of an Azure Site recovery plan.
     /// </summary>
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.ByRPObject,SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan", DefaultParameterSetName = ASRParameterSets.ByRPObject, SupportsShouldProcess = true)]
     [Alias("Update-ASRRecoveryPlan")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
@@ -125,35 +126,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                         if (item.Properties.ProviderSpecificDetails.GetType() ==
                                             typeof(HyperVReplicaAzureReplicationDetails))
                                         {
-                                            VmId = ((HyperVReplicaAzureReplicationDetails)item
+                                            VmId = ((SRSModel_2016_08_10.HyperVReplicaAzureReplicationDetails)item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
                                                      .GetType() ==
                                                  typeof(HyperVReplicaReplicationDetails))
                                         {
-                                            VmId = ((HyperVReplicaReplicationDetails)item.Properties
+                                            VmId = ((SRSModel_2016_08_10.HyperVReplicaReplicationDetails)item.Properties
                                                 .ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
                                                      .GetType() ==
                                                  typeof(HyperVReplicaBlueReplicationDetails))
                                         {
-                                            VmId = ((HyperVReplicaBlueReplicationDetails)item
+                                            VmId = ((SRSModel_2016_08_10.HyperVReplicaBlueReplicationDetails)item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
                                                     .GetType() ==
                                                  typeof(InMageAzureV2ReplicationDetails))
                                         {
-                                            VmId = ((InMageAzureV2ReplicationDetails)item
+                                            VmId = ((SRSModel_2016_08_10.InMageAzureV2ReplicationDetails)item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
                                                     .GetType() ==
                                                  typeof(InMageReplicationDetails))
                                         {
-                                            VmId = ((InMageReplicationDetails)item
+                                            VmId = ((SRSModel_2016_08_10.InMageReplicationDetails)item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
 
@@ -162,8 +163,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                         return newItem;
                                     })
                                 .ToList(),
-                    StartGroupActions = asrRecoveryPlanGroup.StartGroupActions,
-                    EndGroupActions = asrRecoveryPlanGroup.EndGroupActions
+
+                    StartGroupActions = asrRecoveryPlanGroup.StartGroupActions.ToList().ConvertAll(
+                        (asrRecoveryPlanAction) =>
+                        { return ASRRecoveryPlanUtil.getRecoveryPlanAction(asrRecoveryPlanAction); }),
+
+                    EndGroupActions = asrRecoveryPlanGroup.EndGroupActions.ToList().ConvertAll(
+                        (asrRecoveryPlanAction) =>
+                        { return ASRRecoveryPlanUtil.getRecoveryPlanAction(asrRecoveryPlanAction); }),
                 };
 
                 updateRecoveryPlanInputProperties.Groups.Add(recoveryPlanGroup);

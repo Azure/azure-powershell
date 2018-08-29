@@ -18,6 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08_10;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -186,7 +187,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                                 this.InputObject.Groups[this.InputObject.Groups.IndexOf(tempGroup)]
                                     .ReplicationProtectedItems
-                                    .Add(replicationProtectedItemResponse);
+                                    .Add(new ReplicationProtectedItem_2016_08_10(replicationProtectedItemResponse));
                             }
                             else
                             {

@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Microsoft.Rest.Azure.OData;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08_10;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -139,7 +140,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         /// <param name="recoveryPlanName">Recovery Plan Name</param>
         /// <returns>Protection entity list response</returns>
-        public List<ReplicationProtectedItem> GetAzureSiteRecoveryReplicationProtectedItemInRP(
+        public List<ReplicationProtectedItem_2016_08_10> GetAzureSiteRecoveryReplicationProtectedItemInRP(
             string recoveryPlanName)
         {
             var protectedItemsQueryParameter =
@@ -163,7 +164,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.GetRequestHeaders(true));
 
             pages.Insert(0, firstPage);
-            return Utilities.IpageToList(pages);
+            List<ReplicationProtectedItem> rpiList = Utilities.IpageToList(pages);
+
+            List<ReplicationProtectedItem_2016_08_10> rpi_2016_08_10 = new List<ReplicationProtectedItem_2016_08_10>();
+            rpiList.ConvertAll(rpi => new ReplicationProtectedItem_2016_08_10(rpi));
+            return rpi_2016_08_10;
         }
 
         /// <summary>
