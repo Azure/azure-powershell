@@ -81,6 +81,7 @@
     <Compile Include="Fabrics\RemoveAzureRmRecoveryServicesAsrFabric.cs" />
     <Compile Include="Fabrics\StartAzureRmRecoveryServicesAsrSwitchProcessServerJob.cs" />
     <Compile Include="Job\StopAzureRmRecoveryServicesAsrJob.cs" />
+    <Compile Include="Models\2016-08-10\ASRPSObjects.cs" />
     <Compile Include="Models\2016-08-10\RecoveryPlanGroup.cs" />
     <Compile Include="Models\2016-08-10\ReplicationProtectedItem.cs" />
     <Compile Include="Models\PSAlertSetting.cs" />
