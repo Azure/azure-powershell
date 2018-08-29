@@ -18,11 +18,27 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.1.2
 * Fixed issue with default resource groups not being set.
 
 ## Version 5.1.1
 * Updated to the latest version of the Azure ClientRuntime.
 
+* Using Microsoft.Azure.Management.Monitor SDK 0.20.1-preview
+    - Fixing incidents #3585 [Monitor] Breaking change found in AutoScale spec (Swagger spec) and #3293 [Monitor] Add serviceBusRuleId to the DiagnosticSettings resource (Swagger spec)
+      Check this https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/src/SDKs/Monitor/changelog.md for more details on the changes for this SDK
+
+* **Set-AzureRmDiagnosticSetting**
+    - If no name is given the cmdlet defaults to "service" as before, but it does not fail when "service" does not exist. If there is only one setting, but it is not called service its name is the new default. If there are two or more settings and none is called service, the cmdlet fails.
+    - Time grains are mostly ignored in this version since only 1 minute is supported. They are only used to enable/disable the metrics in the setting. A deprecation message is included.
+    
+* **Remove-AzureRmDiagnosticSetting**
+    - If no name is given the cmdlet deletes either the setting called service or the only existing setting. If there are more than one setting is none is called service, the cmdlet fails.
+
+* **Get-AzureRmDiagnosticSetting**
+    - If no name is given, the cmdlet lists all the settings for the given resource Id
+    
 ## Version 5.1.0
 * Fixed formatting of OutputType in help files
 * Updated help files to include full parameter types and correct input/output types.

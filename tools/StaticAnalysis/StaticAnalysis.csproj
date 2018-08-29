@@ -115,7 +115,6 @@
     <Compile Include="BreakingChangeAttributesAnalyzer\TextFileLogger.cs" />
     <Compile Include="BreakingChangeAttributesAnalyzer\CmdletBreakingChangeAttributeLoader.cs" />
     <Compile Include="DependencyAnalyzer\DependencyMap.cs" />
-    <Compile Include="CmdlineArgParsing\StaticAnalysisArgs.cs" />
     <Compile Include="DependencyAnalyzer\AssemblyNameComparer.cs" />
     <Compile Include="DependencyAnalyzer\AssemblyRecord.cs" />
     <Compile Include="DependencyAnalyzer\AssemblyVersionConflict.cs" />
