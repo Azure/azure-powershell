@@ -16,24 +16,39 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using SRSDataModel = Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08_10;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     public class ASRRecoveryPlanGroup
     {
-        public ASRRecoveryPlanGroup()
+        public ASRRecoveryPlanGroup(SRSDataModel.RecoveryPlanAction rpAction)
         {
         }
 
         public ASRRecoveryPlanGroup(
             RecoveryPlanGroup recoveryPlanGroup,
-            IList<ReplicationProtectedItem> replicationProtectedItems = null)
+            IList<ReplicationProtectedItem_2016_08_10> replicationProtectedItems = null)
         {
             if (recoveryPlanGroup != null)
             {
-                this.GroupType = recoveryPlanGroup.GroupType.ToString(); //TODO
-                this.StartGroupActions = recoveryPlanGroup.StartGroupActions;
-                this.EndGroupActions = recoveryPlanGroup.EndGroupActions;
+                this.GroupType = recoveryPlanGroup.GroupType.ToString();
+                if (recoveryPlanGroup.StartGroupActions != null) {
+                    this.StartGroupActions = new List<ASRRecoveryPlanAction>();
+                    foreach (var startGroupAction in recoveryPlanGroup.StartGroupActions) {
+                        this.StartGroupActions.Add(new ASRRecoveryPlanAction(startGroupAction));
+                    }
+                }
+
+                if (recoveryPlanGroup.EndGroupActions != null)
+                {
+                    this.EndGroupActions = new List<ASRRecoveryPlanAction>();
+                    foreach (var endGroupAction in recoveryPlanGroup.EndGroupActions)
+                    {
+                        this.StartGroupActions.Add(new ASRRecoveryPlanAction(endGroupAction));
+                    }
+                }
 
                 if (replicationProtectedItems != null)
                 {
@@ -46,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
                 else
                 {
-                    this.ReplicationProtectedItems = new List<ReplicationProtectedItem>();
+                    this.ReplicationProtectedItems = new List<ReplicationProtectedItem_2016_08_10>();
                 }
             }
         }
@@ -54,7 +69,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPlanGroup(
             string groupName,
             RecoveryPlanGroup recoveryPlanGroup,
-            IList<ReplicationProtectedItem> replicationProtectedItems = null) : this(
+            IList<ReplicationProtectedItem_2016_08_10> replicationProtectedItems = null) : this(
             recoveryPlanGroup,
             replicationProtectedItems)
         {
@@ -68,7 +83,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         // Summary:
         //     Optional. Recovery plan end group actions.
-        public IList<RecoveryPlanAction> EndGroupActions { get; set; }
+        public IList<ASRRecoveryPlanAction> EndGroupActions { get; set; }
 
         //
         // Summary:
@@ -78,12 +93,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         //
         // Summary:
         //     Optional. List of protected items.
-        public IList<ReplicationProtectedItem> ReplicationProtectedItems { get; set; }
+        public IList<ReplicationProtectedItem_2016_08_10> ReplicationProtectedItems { get; set; }
 
         //
         // Summary:
         //     Optional. Recovery plan start group actions.
-        public IList<RecoveryPlanAction> StartGroupActions { get; set; }
+        public IList<ASRRecoveryPlanAction> StartGroupActions { get; set; }
     }
 
     /// <summary>
@@ -109,7 +124,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <param name="recoveryPlan">Recovery plan object</param>
         public ASRRecoveryPlan(
             RecoveryPlan recoveryPlan,
-            IList<ReplicationProtectedItem> replicationProtectedItems)
+            IList<ReplicationProtectedItem_2016_08_10> replicationProtectedItems)
         {
             this.Id = recoveryPlan.Id;
             this.Name = recoveryPlan.Name;
@@ -221,5 +236,295 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Id { get; set; }
 
         #endregion
+    }
+
+    //
+    // Summary:
+    //     Recovery plan action custom details.
+    public class ASRRecoveryPlanActionDetails
+    {
+        //
+        // Summary:
+        //     Initializes a new instance of the RecoveryPlanActionDetails class.
+        public ASRRecoveryPlanActionDetails() { }
+    }
+
+    //
+    // Summary:
+    //     Recovery plan Automation runbook action details.
+    public class ASRRecoveryPlanAutomationRunbookActionDetails : ASRRecoveryPlanActionDetails
+    {
+        //
+        // Summary:
+        //     Initializes a new instance of the RecoveryPlanAutomationRunbookActionDetails
+        //     class.
+        public ASRRecoveryPlanAutomationRunbookActionDetails(RecoveryPlanAutomationRunbookActionDetails automationRunbookActionDetails) {
+            this.RunbookId = automationRunbookActionDetails.RunbookId;
+            this.Timeout = automationRunbookActionDetails.Timeout;
+            this.FabricLocation = "Primary" == automationRunbookActionDetails.FabricLocation ?
+                ASRRecoveryPlanActionLocation.Primary: ASRRecoveryPlanActionLocation.Recovery;
+
+        }
+        //
+        // Summary:
+        //     Gets or sets the runbook ARM Id.
+        public string RunbookId { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the runbook timeout.
+        public string Timeout { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the fabric location. Possible values include: 'Primary', 'Recovery'
+        public ASRRecoveryPlanActionLocation FabricLocation { get; set; }
+    }
+
+    //
+    // Summary:
+    //     Recovery plan manual action details.
+    public class ASRRecoveryPlanManualActionDetails : ASRRecoveryPlanActionDetails
+    {
+        //
+        // Summary:
+        //     Initializes a new instance of the RecoveryPlanManualActionDetails class.
+        public ASRRecoveryPlanManualActionDetails(RecoveryPlanManualActionDetails manualActionDetails) {
+            this.Description = manualActionDetails.Description;
+        }
+        
+        //
+        // Summary:
+        //     Gets or sets the manual action description.
+        public string Description { get; set; }
+    }
+
+    //
+    // Summary:
+    //     Recovery plan script action details.
+    public class ASRRecoveryPlanScriptActionDetails : ASRRecoveryPlanActionDetails
+    {
+        //
+        // Summary:
+        //     Initializes a new instance of the RecoveryPlanScriptActionDetails class.
+        public ASRRecoveryPlanScriptActionDetails(RecoveryPlanScriptActionDetails recoveryPlanScriptActionDetails) {
+            this.Path = recoveryPlanScriptActionDetails.Path;
+            this.Timeout = recoveryPlanScriptActionDetails.Timeout;
+            this.FabricLocation = "Primary" == recoveryPlanScriptActionDetails.FabricLocation ?
+                ASRRecoveryPlanActionLocation.Primary : ASRRecoveryPlanActionLocation.Recovery;
+        }
+        //
+        // Summary:
+        //     Gets or sets the script path.
+        public string Path { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the script timeout.
+        public string Timeout { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the fabric location. Possible values include: 'Primary', 'Recovery'
+        public ASRRecoveryPlanActionLocation FabricLocation { get; set; }
+    }
+
+    //
+    // Summary:
+    //     Recovery plan action details.
+    public class ASRRecoveryPlanAction
+    {
+        //
+        // Summary:
+        //     Initializes a new instance of the RecoveryPlanAction class.
+        public ASRRecoveryPlanAction(SRSDataModel.RecoveryPlanAction srsRecoveryPlanAction) {
+            this.ActionName = srsRecoveryPlanAction.ActionName;
+            if (srsRecoveryPlanAction.FailoverTypes != null)
+            {
+                this.FailoverTypes = new List<ASRReplicationProtectedItemOperation?>();
+                foreach (var startGroupAction in srsRecoveryPlanAction.FailoverTypes)
+                {
+                    this.FailoverTypes.Add(ASRRecoveryPlanUtil.getASRReplicationProtectedItemOperation(startGroupAction));
+                }
+            }
+
+            if (srsRecoveryPlanAction.FailoverDirections != null)
+            {
+                this.FailoverDirections = new List<ASRPossibleOperationsDirections?>();
+                foreach (var failoverDirection in srsRecoveryPlanAction.FailoverDirections)
+                {
+                    var direction = failoverDirection == "PrimaryToRecovery" ? 
+                        ASRPossibleOperationsDirections.PrimaryToRecovery :
+                        ASRPossibleOperationsDirections.RecoveryToPrimary;
+                    this.FailoverDirections.Add(direction);
+                }
+            }
+
+            if (srsRecoveryPlanAction.CustomDetails is RecoveryPlanAutomationRunbookActionDetails) {
+                this.CustomDetails = new ASRRecoveryPlanAutomationRunbookActionDetails(
+                    srsRecoveryPlanAction.CustomDetails as RecoveryPlanAutomationRunbookActionDetails);
+                    }
+            else if (srsRecoveryPlanAction.CustomDetails is RecoveryPlanManualActionDetails) {
+                this.CustomDetails = new ASRRecoveryPlanManualActionDetails(
+                        srsRecoveryPlanAction.CustomDetails as RecoveryPlanManualActionDetails);
+            }
+            else if (srsRecoveryPlanAction.CustomDetails is RecoveryPlanScriptActionDetails) {
+                this.CustomDetails = new ASRRecoveryPlanScriptActionDetails(
+                        srsRecoveryPlanAction.CustomDetails as RecoveryPlanScriptActionDetails);
+            }
+        }
+        //
+        // Summary:
+        //     Gets or sets the action name.
+        public string ActionName { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the list of failover types.
+        public IList<ASRReplicationProtectedItemOperation?> FailoverTypes { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the list of failover directions.
+        public IList<ASRPossibleOperationsDirections?> FailoverDirections { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the custom details.
+        public ASRRecoveryPlanActionDetails CustomDetails { get; set; }
+    }
+
+    //
+    // Summary:
+    //     Defines values for RecoveryPlanActionLocation.
+    public enum ASRRecoveryPlanActionLocation
+    {
+        Primary = 0,
+        Recovery = 1
+    }
+
+    //
+    // Summary:
+    //     Defines values for PossibleOperationsDirections.
+    public enum ASRPossibleOperationsDirections
+    {
+        PrimaryToRecovery = 0,
+        RecoveryToPrimary = 1
+    }
+
+    //
+    // Summary:
+    //     Defines values for ReplicationProtectedItemOperation.
+    public enum ASRReplicationProtectedItemOperation
+    {
+        ReverseReplicate = 0,
+        Commit = 1,
+        PlannedFailover = 2,
+        UnplannedFailover = 3,
+        DisableProtection = 4,
+        TestFailover = 5,
+        TestFailoverCleanup = 6,
+        Failback = 7,
+        FinalizeFailback = 8,
+        ChangePit = 9,
+        RepairReplication = 10,
+        SwitchProtection = 11,
+        CompleteMigration = 12
+    }
+
+    //
+    // Summary:
+    //     Recovery plan protected item.
+    public class ASRRecoveryPlanProtectedItem
+    {
+        //
+        // Summary:
+        //     Initializes a new instance of the RecoveryPlanProtectedItem class.
+        public ASRRecoveryPlanProtectedItem()
+        {
+
+        }
+
+        //
+        // Summary:
+        //     Gets or sets the ARM Id of the recovery plan protected item.
+        public string Id { get; set; }
+        //
+        // Summary:
+        //     Gets or sets the virtual machine Id.
+        public string VirtualMachineId { get; set; }
+    }
+
+    public static class ASRRecoveryPlanUtil {
+
+        public static ASRReplicationProtectedItemOperation? getASRReplicationProtectedItemOperation(string startGroupAction) {
+            
+            switch (startGroupAction) {
+                case "ReverseReplicate": return ASRReplicationProtectedItemOperation.ReverseReplicate;
+                case "Commit":
+                    return ASRReplicationProtectedItemOperation.Commit;
+                case "PlannedFailover":
+                    return ASRReplicationProtectedItemOperation.PlannedFailover;
+                case "UnplannedFailover":
+                    return ASRReplicationProtectedItemOperation.UnplannedFailover;
+                case "DisableProtection":
+                    return ASRReplicationProtectedItemOperation.DisableProtection;
+                case "TestFailover":
+                    return ASRReplicationProtectedItemOperation.TestFailover;
+                case "TestFailoverCleanup":
+                    return ASRReplicationProtectedItemOperation.TestFailoverCleanup;
+                case "Failback":
+                    return ASRReplicationProtectedItemOperation.Failback;
+                case "FinalizeFailback":
+                    return ASRReplicationProtectedItemOperation.FinalizeFailback;
+                case "ChangePit":
+                    return ASRReplicationProtectedItemOperation.ChangePit;
+                case "RepairReplication":
+                    return ASRReplicationProtectedItemOperation.RepairReplication;
+                case "SwitchProtection":
+                    return ASRReplicationProtectedItemOperation.SwitchProtection;
+                case "CompleteMigration":
+                    return ASRReplicationProtectedItemOperation.CompleteMigration;
+                default:
+                    return null;
+            }
+        }
+        public static RecoveryPlanAction getRecoveryPlanAction(ASRRecoveryPlanAction asrRecoveryPlanAction) {
+            var recoveryPlanAction = new RecoveryPlanAction();
+            recoveryPlanAction.ActionName = asrRecoveryPlanAction.ActionName;
+            if (asrRecoveryPlanAction.FailoverDirections != null) {
+                recoveryPlanAction.FailoverDirections =
+                    asrRecoveryPlanAction.FailoverDirections.ToList().ConvertAll((asrFODirection) => { return asrFODirection.ToString(); });
+            }
+
+            if (asrRecoveryPlanAction.FailoverTypes != null)
+            {
+                recoveryPlanAction.FailoverTypes =
+                asrRecoveryPlanAction.FailoverTypes.ToList().ConvertAll((asrFailoverTypes) => { return asrFailoverTypes.ToString(); });
+            }
+
+            if (asrRecoveryPlanAction.CustomDetails is ASRRecoveryPlanAutomationRunbookActionDetails) {
+                var actionDetails = asrRecoveryPlanAction.CustomDetails as ASRRecoveryPlanAutomationRunbookActionDetails;
+                recoveryPlanAction.CustomDetails = new RecoveryPlanAutomationRunbookActionDetails {
+                    FabricLocation = actionDetails.FabricLocation.ToString(),
+                    RunbookId = actionDetails.RunbookId,
+                    Timeout = actionDetails.Timeout
+                };
+            }
+            else if (asrRecoveryPlanAction.CustomDetails is ASRRecoveryPlanManualActionDetails)
+            {
+                var actionDetails = asrRecoveryPlanAction.CustomDetails as ASRRecoveryPlanManualActionDetails;
+                recoveryPlanAction.CustomDetails = new RecoveryPlanManualActionDetails
+                {
+                    Description = actionDetails.Description
+                };
+            }
+            else if (asrRecoveryPlanAction.CustomDetails is ASRRecoveryPlanScriptActionDetails)
+            {
+                var actionDetails = asrRecoveryPlanAction.CustomDetails as ASRRecoveryPlanScriptActionDetails;
+                recoveryPlanAction.CustomDetails = new RecoveryPlanScriptActionDetails
+                {
+                    FabricLocation = actionDetails.FabricLocation.ToString(),
+                    Path = actionDetails.Path,
+                    Timeout = actionDetails.Timeout
+                };
+            }
+            
+            
+            return recoveryPlanAction;
+        }
     }
 }

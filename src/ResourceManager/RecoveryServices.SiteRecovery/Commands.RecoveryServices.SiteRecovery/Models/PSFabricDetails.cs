@@ -537,7 +537,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     public class ASRHyperVReplicaDiskDetails
     {
-
+        public ASRHyperVReplicaDiskDetails(DiskDetails diskDetails) {
+            this.MaxSizeMB = diskDetails.MaxSizeMB;
+            this.VhdId = diskDetails.VhdId;
+            this.VhdName = diskDetails.VhdName;
+            this.VhdType = diskDetails.VhdType;
+        }
         /// <summary>
         ///    Gets or sets the hard disk max size in MB.
         /// </summary>
@@ -561,6 +566,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
     public class ASRHyperVReplicaAzureVmDiskDetails
     {
+        public ASRHyperVReplicaAzureVmDiskDetails(AzureVmDiskDetails hyperVReplicaAzureVmDiskDetails)
+        {
+            this.VhdType = hyperVReplicaAzureVmDiskDetails.VhdType;
+            this.VhdId = hyperVReplicaAzureVmDiskDetails.VhdId;
+            this.VhdName = hyperVReplicaAzureVmDiskDetails.VhdName;
+            this.MaxSizeMB = hyperVReplicaAzureVmDiskDetails.MaxSizeMB;
+            this.TargetDiskLocation = hyperVReplicaAzureVmDiskDetails.TargetDiskLocation;
+            this.TargetDiskName = hyperVReplicaAzureVmDiskDetails.TargetDiskName;
+            this.LunId = hyperVReplicaAzureVmDiskDetails.LunId;
+        }
+
         /// <summary>
         ///    Gets or sets VHD type.
         /// </summary>
@@ -602,6 +618,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     public class ASRHyperVReplicaAzureOsDetails
     {
+        public ASRHyperVReplicaAzureOsDetails(OSDetails hyperVOsSetails)
+        {
+            this.OsType = hyperVOsSetails.OsType;
+            this.ProductType = hyperVOsSetails.ProductType;
+            this.OsEdition = hyperVOsSetails.OsEdition;
+            this.OSVersion = hyperVOsSetails.OSVersion;
+            this.OSMinorVersion = hyperVOsSetails.OSMinorVersion;
+            this.OSMajorVersion = hyperVOsSetails.OSMajorVersion;
+        }
         /// <summary>
         ///     Gets or sets VM Disk details.
         /// </summary>
