@@ -185,7 +185,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
                 return ResourceManager.GetString("FirewallRuleNotFound", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to The specified virtual network rule &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string VirtualNetworkRuleNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("VirtualNetworkRuleNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to User supplied Key Vault information. For service managed encryption user supplied Key Vault information is ignored..
         /// </summary>
@@ -437,7 +448,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
                 return ResourceManager.GetString("RemoveDataLakeStoreFirewallRule", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Data Lake Store virtual network rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeStoreVirtualNetworkRule
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveDataLakeStoreVirtualNetworkRule", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Removing Data Lake file or folder at path: &apos;{0}&apos; ....
         /// </summary>
@@ -480,6 +502,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string RemovingDataLakeStoreFirewallRule {
             get {
                 return ResourceManager.GetString("RemovingDataLakeStoreFirewallRule", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Data Lake Store virtuan network rule: &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingDataLakeStoreVirtualNetworkRule
+        {
+            get
+            {
+                return ResourceManager.GetString("RemovingDataLakeStoreVirtualNetworkRule", resourceCulture);
             }
         }
         
@@ -527,7 +560,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
                 return ResourceManager.GetString("SetDataLakeFirewallRule", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Setting the Data Lake Store virtual network rule: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string SetDataLakeVirtualNetworkRule
+        {
+            get
+            {
+                return ResourceManager.GetString("SetDataLakeVirtualNetworkRule", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Setting the Data Lake file or folder ACL at path: &apos;{0}&apos; ....
         /// </summary>
