@@ -1207,10 +1207,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 rpi.Properties.RecoveryProtectionContainerFriendlyName;
             this.RecoveryServicesProviderId = rpi.Properties.RecoveryServicesProviderId;
             this.ReplicationHealth = rpi.Properties.ReplicationHealth;
-            this.ReplicationHealthErrors = new List<ASRHealthError>();
+            this.ReplicationHealthErrors = new List<ASRHealthError_2016_08_10>();
             if (rpi.Properties.HealthErrors != null) {
                 foreach (var healthError in rpi.Properties.HealthErrors) {
-                    this.ReplicationHealthErrors.Add(new ASRHealthError(healthError));
+                    this.ReplicationHealthErrors.Add(new ASRHealthError_2016_08_10(healthError));
                 }
             }
             
