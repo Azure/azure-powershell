@@ -15,27 +15,29 @@ Add an endpoint to your IoT Hub
 ### ResourceSet (Default)
 ```
 Add-AzureRmIotHubRoutingEndpoint [-ResourceGroupName] <String> [-Name] <String> [-EndpointName] <String>
- [-EndpointType] <String> [-EndpointResourceGroup] <String> [-EndpointSubscriptionId] <String>
+ [-EndpointType] <PSEndpointType> [-EndpointResourceGroup] <String> [-EndpointSubscriptionId] <String>
  [-ConnectionString] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Add-AzureRmIotHubRoutingEndpoint [-InputObject] <PSIotHub> [-EndpointName] <String> [-EndpointType] <String>
- [-EndpointResourceGroup] <String> [-EndpointSubscriptionId] <String> [-ConnectionString] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmIotHubRoutingEndpoint [-InputObject] <PSIotHub> [-EndpointName] <String>
+ [-EndpointType] <PSEndpointType> [-EndpointResourceGroup] <String> [-EndpointSubscriptionId] <String>
+ [-ConnectionString] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Add-AzureRmIotHubRoutingEndpoint [-ResourceId] <String> [-EndpointName] <String> [-EndpointType] <String>
- [-EndpointResourceGroup] <String> [-EndpointSubscriptionId] <String> [-ConnectionString] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmIotHubRoutingEndpoint [-ResourceId] <String> [-EndpointName] <String>
+ [-EndpointType] <PSEndpointType> [-EndpointResourceGroup] <String> [-EndpointSubscriptionId] <String>
+ [-ConnectionString] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Add a new endpoint in your IoT Hub. To learn about the endpoints that are supported, 
+Add a new endpoint in your IoT Hub. To learn about the endpoints that are supported, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-endpoints
 
 ## EXAMPLES
 
@@ -76,7 +78,7 @@ Connection string of the Routing Endpoint
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 5
@@ -106,7 +108,7 @@ Name of the Routing Endpoint
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -121,7 +123,7 @@ Resource group of the Endpoint resoure
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -136,7 +138,7 @@ SubscriptionId of the Endpoint resource
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -149,9 +151,9 @@ Accept wildcard characters: False
 Type of the Routing Endpoint
 
 ```yaml
-Type: String
+Type: PSEndpointType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: EventHub, ServiceBusQueue, ServiceBusTopic, AzureStorageContainer
 
 Required: True
@@ -167,7 +169,7 @@ IotHub Object
 ```yaml
 Type: PSIotHub
 Parameter Sets: InputObjectSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -182,7 +184,7 @@ Name of the Iot Hub
 ```yaml
 Type: String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -197,7 +199,7 @@ Name of the Resource Group
 ```yaml
 Type: String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -212,7 +214,7 @@ IotHub Resource Id
 ```yaml
 Type: String
 Parameter Sets: ResourceIdSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -270,4 +272,3 @@ Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingStorageContainerEndpo
 ## NOTES
 
 ## RELATED LINKS
-

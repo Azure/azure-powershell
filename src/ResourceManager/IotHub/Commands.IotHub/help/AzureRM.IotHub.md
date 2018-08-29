@@ -21,10 +21,10 @@ Creates an eventhub consumer group.
 Creates an IotHub Key.
 
 ### [Add-AzureRmIotHubRoute](Add-AzureRmIotHubRoute.md)
-{{Fill in the Synopsis}}
+Create a route in IoT Hub
 
 ### [Add-AzureRmIotHubRoutingEndpoint](Add-AzureRmIotHubRoutingEndpoint.md)
-{{Fill in the Synopsis}}
+Add an endpoint to your IoT Hub
 
 ### [Get-AzureRmIotHub](Get-AzureRmIotHub.md)
 Gets information about the IotHubs in a subscription.
@@ -54,10 +54,10 @@ Gets the Quota Metrics for an IotHub.
 Gets the RegistryStatistics for an IotHub.
 
 ### [Get-AzureRmIotHubRoute](Get-AzureRmIotHubRoute.md)
-{{Fill in the Synopsis}}
+Get information about the route in IoT Hub
 
 ### [Get-AzureRmIotHubRoutingEndpoint](Get-AzureRmIotHubRoutingEndpoint.md)
-{{Fill in the Synopsis}}
+Get information on all the endpoints for your IoT Hub
 
 ### [Get-AzureRmIotHubValidSku](Get-AzureRmIotHubValidSku.md)
 Gets all valid skus that this IotHub can transition to.
@@ -84,23 +84,23 @@ Deletes an eventhub consumergroup.
 Removes an IotHub Key.
 
 ### [Remove-AzureRmIotHubRoute](Remove-AzureRmIotHubRoute.md)
-{{Fill in the Synopsis}}
+Delete a route in IoT Hub
 
 ### [Remove-AzureRmIotHubRoutingEndpoint](Remove-AzureRmIotHubRoutingEndpoint.md)
-{{Fill in the Synopsis}}
+Delete an endpoint for your IoT Hub
 
 ### [Set-AzureRmIotHub](Set-AzureRmIotHub.md)
 Updates the properties of an IotHub.
+
+### [Set-AzureRmIotHubRoute](Set-AzureRmIotHubRoute.md)
+Update a route in IoT Hub
 
 ### [Set-AzureRmIotHubVerifiedCertificate](Set-AzureRmIotHubVerifiedCertificate.md)
 Verifies an Azure IoT Hub certificate. 
 
 ### [Test-AzureRmIotHubRoute](Test-AzureRmIotHubRoute.md)
-{{Fill in the Synopsis}}
+Test routes in IoT Hub
 
 ### [Update-AzureRmIotHub](Update-AzureRmIotHub.md)
 Update an Azure IoT Hub.
-
-### [Update-AzureRmIotHubRoute](Update-AzureRmIotHubRoute.md)
-{{Fill in the Synopsis}}
 

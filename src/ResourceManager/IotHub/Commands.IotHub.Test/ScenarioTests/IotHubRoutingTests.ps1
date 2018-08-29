@@ -32,6 +32,9 @@ function Test-AzureRmIotHubRoutingLifecycle
 	$endpointName = getAssetName
 	$routeName = getAssetName
 	$Sku = "S1"
+	$EndpointTypeEventHub = [Microsoft.Azure.Commands.Management.IotHub.Models.PSEndpointType] "EventHub"
+	$RoutingSourceTwinChangeEvents = [Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource] "TwinChangeEvents"
+	$RoutingSourceDeviceMessages = [Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource] "DeviceMessages"
 
 	# Create or Update Resource Group
 	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
@@ -63,7 +66,7 @@ function Test-AzureRmIotHubRoutingLifecycle
 	Assert-True { $routingEndpoints.Count -eq 0}
 
 	# Add event hub endpoint
-	$newRoutingEndpoint = Add-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName -EndpointName $endpointName -EndpointType EventHub -EndpointResourceGroup $eventHubResourceGroup -EndpointSubscriptionId $eventHubSubscriptionId -ConnectionString $ehConnectionString
+	$newRoutingEndpoint = Add-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName -EndpointName $endpointName -EndpointType $EndpointTypeEventHub -EndpointResourceGroup $eventHubResourceGroup -EndpointSubscriptionId $eventHubSubscriptionId -ConnectionString $ehConnectionString
 	Assert-True { $newRoutingEndpoint.ResourceGroup -eq $eventHubResourceGroup}
 	Assert-True { $newRoutingEndpoint.SubscriptionId -eq $eventHubSubscriptionId}
 	Assert-True { $newRoutingEndpoint.Name -eq $endpointName}
@@ -80,10 +83,9 @@ function Test-AzureRmIotHubRoutingLifecycle
 	Assert-True { $routingEndpoints.Count -eq 0}
 
 	# Add new route
-	$routeDataSource = 'DeviceMessages'
-	$newRoute = Add-AzureRmIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName -RouteName $routeName -Source $routeDataSource -EndpointName $endpointName
+	$newRoute = Add-AzureRmIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName -RouteName $routeName -Source $RoutingSourceDeviceMessages -EndpointName $endpointName
 	Assert-True { $newRoute.Name -eq $routeName}
-	Assert-True { $newRoute.Source -eq $routeDataSource}
+	Assert-True { $newRoute.Source -eq $RoutingSourceDeviceMessages}
 	Assert-True { $newRoute.EndpointNames -eq $endpointName}
 	Assert-False { $newRoute.IsEnabled }
 
@@ -91,23 +93,22 @@ function Test-AzureRmIotHubRoutingLifecycle
 	$routes = Get-AzureRmIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName
 	Assert-True { $routes.Count -eq 1}
 	Assert-True { $routes[0].Name -eq $routeName}
-	Assert-True { $routes[0].Source -eq $routeDataSource}
+	Assert-True { $routes[0].Source -eq $RoutingSourceDeviceMessages}
 	Assert-True { $routes[0].EndpointNames -eq $endpointName}
 	Assert-False { $routes[0].IsEnabled }
 
-	# Update route 
-	$newRouteDataSource = 'TwinChangeEvents'
-	$updatedRoute = Update-AzureRmIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName -RouteName $routeName -Source $newRouteDataSource -Enabled
+	# Set route 
+	$updatedRoute = Set-AzureRmIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName -RouteName $routeName -Source $RoutingSourceTwinChangeEvents -Enabled
 	Assert-True { $updatedRoute.Name -eq $routeName}
-	Assert-True { $updatedRoute.Source -eq $newRouteDataSource}
+	Assert-True { $updatedRoute.Source -eq $RoutingSourceTwinChangeEvents}
 	Assert-True { $updatedRoute.EndpointNames -eq $endpointName}
 	Assert-True { $updatedRoute.IsEnabled }
 
 	# Test All Routes
-	$testRouteOutput = Test-AzureRmIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName -Source $newRouteDataSource
+	$testRouteOutput = Test-AzureRmIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName -Source $RoutingSourceTwinChangeEvents
 	Assert-True { $testRouteOutput.Count -eq 1}
 	Assert-True { $testRouteOutput[0].Name -eq $routeName}
-	Assert-True { $testRouteOutput[0].Source -eq $newRouteDataSource}
+	Assert-True { $testRouteOutput[0].Source -eq $RoutingSourceTwinChangeEvents}
 	Assert-True { $testRouteOutput[0].EndpointNames -eq $endpointName}
 	Assert-True { $testRouteOutput[0].IsEnabled }
 

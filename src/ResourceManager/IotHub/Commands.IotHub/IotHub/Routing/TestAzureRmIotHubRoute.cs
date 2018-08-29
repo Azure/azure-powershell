@@ -39,26 +39,22 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         private const string InputObjectTestRouteParameterSet = "InputObjectTestRouteSet";
         private const string InputObjectTestAllRouteParameterSet = "InputObjectTestAllRouteSet";
 
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "IotHub Object")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = InputObjectTestRouteParameterSet, ValueFromPipeline = true, HelpMessage = "IotHub Object")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = InputObjectTestAllRouteParameterSet, ValueFromPipeline = true, HelpMessage = "IotHub Object")]
         [ValidateNotNullOrEmpty]
         public PSIotHub InputObject { get; set; }
 
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Name of the Resource Group")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = TestRouteParameterSet, HelpMessage = "Name of the Resource Group")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = TestAllRouteParameterSet, HelpMessage = "Name of the Resource Group")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "IotHub Resource Id")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ResourceIdTestRouteParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "IotHub Resource Id")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ResourceIdTestAllRouteParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "IotHub Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Name of the Iot Hub")]
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = TestRouteParameterSet, HelpMessage = "Name of the Iot Hub")]
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = TestAllRouteParameterSet, HelpMessage = "Name of the Iot Hub")]
         [ValidateNotNullOrEmpty]
@@ -74,8 +70,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ResourceIdTestAllRouteParameterSet, HelpMessage = "Source of the route")]
         [Parameter(Position = 2, Mandatory = true, ParameterSetName = TestAllRouteParameterSet, HelpMessage = "Source of the route")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(new string[] { "Invalid", "DeviceMessages", "TwinChangeEvents", "DeviceLifecycleEvents", "DeviceJobLifecycleEvents" }, IgnoreCase = true)]
-        public string Source { get; set; }
+        public PSRoutingSource Source { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Body of the route message")]
         public string Body { get; set; }
@@ -94,7 +89,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public override void ExecuteCmdlet()
         {
             IotHubDescription iotHubDescription;
-            if (ParameterSetName.Equals(InputObjectTestRouteParameterSet) || ParameterSetName.Equals(InputObjectTestAllRouteParameterSet) || ParameterSetName.Equals(InputObjectParameterSet))
+            if (ParameterSetName.Equals(InputObjectTestRouteParameterSet) || ParameterSetName.Equals(InputObjectTestAllRouteParameterSet))
             {
                 this.ResourceGroupName = this.InputObject.Resourcegroup;
                 this.Name = this.InputObject.Name;
@@ -102,7 +97,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             }
             else
             {
-                if (ParameterSetName.Equals(ResourceIdTestRouteParameterSet) || ParameterSetName.Equals(ResourceIdTestAllRouteParameterSet) || ParameterSetName.Equals(ResourceIdParameterSet))
+                if (ParameterSetName.Equals(ResourceIdTestRouteParameterSet) || ParameterSetName.Equals(ResourceIdTestAllRouteParameterSet))
                 {
                     this.ResourceGroupName = IotHubUtils.GetResourceGroupName(this.ResourceId);
                     this.Name = IotHubUtils.GetIotHubName(this.ResourceId);
@@ -122,7 +117,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     testRouteInput.Message = routingMessage;
                     testRouteInput.Route = iotHubDescription.Properties.Routing.Routes.FirstOrDefault(x => x.Name.Equals(this.RouteName, StringComparison.OrdinalIgnoreCase));
                     PSTestRouteResult psTestRouteResult = IotHubUtils.ToPSTestRouteResult(this.IotHubClient.IotHubResource.TestRoute(testRouteInput, this.Name, this.ResourceGroupName));
-                    if(this.ShowError.IsPresent && psTestRouteResult.Details != null)
+                    if (this.ShowError.IsPresent && psTestRouteResult.Details != null)
                     {
                         this.WriteObject(psTestRouteResult.Details.CompilationErrors, true);
                     }
@@ -134,15 +129,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 case InputObjectTestAllRouteParameterSet:
                 case ResourceIdTestAllRouteParameterSet:
                 case TestAllRouteParameterSet:
-                case InputObjectParameterSet:
-                case ResourceIdParameterSet:
-                case ResourceParameterSet:
                     TestAllRoutesInput testAllRoutesInput = new TestAllRoutesInput();
-                    PSRoutingSource psRoutingSource;
-                    if (Enum.TryParse<PSRoutingSource>(this.Source, true, out psRoutingSource))
-                    {
-                        testAllRoutesInput.RoutingSource = this.Source;
-                    }
+                    testAllRoutesInput.RoutingSource = this.Source.ToString();
                     testAllRoutesInput.Message = routingMessage;
                     this.WriteObject(IotHubUtils.ToPSRouteProperties(this.IotHubClient.IotHubResource.TestAllRoutes(testAllRoutesInput, this.Name, this.ResourceGroupName).Routes), true);
                     break;

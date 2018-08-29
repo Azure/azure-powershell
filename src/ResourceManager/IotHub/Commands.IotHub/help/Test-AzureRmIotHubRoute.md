@@ -12,10 +12,9 @@ Test routes in IoT Hub
 
 ## SYNTAX
 
-### TestRouteSet (Default)
+### ResourceSet (Default)
 ```
-Test-AzureRmIotHubRoute [-ResourceGroupName] <String> [-Name] <String> [-RouteName] <String> [-Body <String>]
- [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>] [-ShowError]
+Test-AzureRmIotHubRoute [-Body <String>] [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -28,16 +27,23 @@ Test-AzureRmIotHubRoute [-InputObject] <PSIotHub> [-RouteName] <String> [-Body <
 
 ### InputObjectTestAllRouteSet
 ```
-Test-AzureRmIotHubRoute [-InputObject] <PSIotHub> [-Source] <String> [-Body <String>]
+Test-AzureRmIotHubRoute [-InputObject] <PSIotHub> [-Source] <PSRoutingSource> [-Body <String>]
  [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
+### TestRouteSet
+```
+Test-AzureRmIotHubRoute [-ResourceGroupName] <String> [-Name] <String> [-RouteName] <String> [-Body <String>]
+ [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>] [-ShowError]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### TestAllRouteSet
 ```
-Test-AzureRmIotHubRoute [-ResourceGroupName] <String> [-Name] <String> [-Source] <String> [-Body <String>]
- [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Test-AzureRmIotHubRoute [-ResourceGroupName] <String> [-Name] <String> [-Source] <PSRoutingSource>
+ [-Body <String>] [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdTestRouteSet
@@ -49,8 +55,9 @@ Test-AzureRmIotHubRoute [-ResourceId] <String> [-RouteName] <String> [-Body <Str
 
 ### ResourceIdTestAllRouteSet
 ```
-Test-AzureRmIotHubRoute [-ResourceId] <String> [-Source] <String> [-Body <String>] [-AppProperty <Hashtable>]
- [-SystemProperty <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzureRmIotHubRoute [-ResourceId] <String> [-Source] <PSRoutingSource> [-Body <String>]
+ [-AppProperty <Hashtable>] [-SystemProperty <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +105,7 @@ App properties of the route message
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -113,7 +120,7 @@ Body of the route message
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -143,7 +150,7 @@ IotHub Object
 ```yaml
 Type: PSIotHub
 Parameter Sets: InputObjectTestRouteSet, InputObjectTestAllRouteSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -158,7 +165,7 @@ Name of the Iot Hub
 ```yaml
 Type: String
 Parameter Sets: TestRouteSet, TestAllRouteSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -173,7 +180,7 @@ Name of the Resource Group
 ```yaml
 Type: String
 Parameter Sets: TestRouteSet, TestAllRouteSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -188,7 +195,7 @@ IotHub Resource Id
 ```yaml
 Type: String
 Parameter Sets: ResourceIdTestRouteSet, ResourceIdTestAllRouteSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -202,8 +209,8 @@ Name of the Route
 
 ```yaml
 Type: String
-Parameter Sets: TestRouteSet, InputObjectTestRouteSet, ResourceIdTestRouteSet
-Aliases: 
+Parameter Sets: InputObjectTestRouteSet, TestRouteSet, ResourceIdTestRouteSet
+Aliases:
 
 Required: True
 Position: 1
@@ -217,8 +224,8 @@ Show detailed error, if exist
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: TestRouteSet, InputObjectTestRouteSet, ResourceIdTestRouteSet
-Aliases: 
+Parameter Sets: InputObjectTestRouteSet, TestRouteSet, ResourceIdTestRouteSet
+Aliases:
 
 Required: False
 Position: Named
@@ -231,9 +238,9 @@ Accept wildcard characters: False
 Source of the route
 
 ```yaml
-Type: String
+Type: PSRoutingSource
 Parameter Sets: InputObjectTestAllRouteSet, TestAllRouteSet, ResourceIdTestAllRouteSet
-Aliases: 
+Aliases:
 Accepted values: Invalid, DeviceMessages, TwinChangeEvents, DeviceLifecycleEvents, DeviceJobLifecycleEvents
 
 Required: True
@@ -249,7 +256,7 @@ System properties of the route message
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -275,4 +282,3 @@ System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Mo
 ## NOTES
 
 ## RELATED LINKS
-

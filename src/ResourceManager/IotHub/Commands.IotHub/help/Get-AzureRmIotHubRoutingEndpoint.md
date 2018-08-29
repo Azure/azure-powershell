@@ -14,20 +14,21 @@ Get information on all the endpoints for your IoT Hub
 
 ### ResourceSet (Default)
 ```
-Get-AzureRmIotHubRoutingEndpoint [-ResourceGroupName] <String> [-Name] <String> [-EndpointType <String>]
- [-EndpointName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmIotHubRoutingEndpoint [-ResourceGroupName] <String> [-Name] <String>
+ [-EndpointType <PSEndpointType>] [-EndpointName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Get-AzureRmIotHubRoutingEndpoint [-InputObject] <PSIotHub> [-EndpointType <String>] [-EndpointName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmIotHubRoutingEndpoint [-InputObject] <PSIotHub> [-EndpointType <PSEndpointType>]
+ [-EndpointName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmIotHubRoutingEndpoint [-ResourceId] <String> [-EndpointType <String>] [-EndpointName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmIotHubRoutingEndpoint [-ResourceId] <String> [-EndpointType <PSEndpointType>]
+ [-EndpointName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,7 +108,7 @@ Name of the Routing Endpoint
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -120,9 +121,9 @@ Accept wildcard characters: False
 Type of the Routing Endpoint
 
 ```yaml
-Type: String
+Type: PSEndpointType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: EventHub, ServiceBusQueue, ServiceBusTopic, AzureStorageContainer
 
 Required: False
@@ -138,7 +139,7 @@ IotHub Object
 ```yaml
 Type: PSIotHub
 Parameter Sets: InputObjectSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -153,7 +154,7 @@ Name of the Iot Hub
 ```yaml
 Type: String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -168,7 +169,7 @@ Name of the Resource Group
 ```yaml
 Type: String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -183,7 +184,7 @@ IotHub Resource Id
 ```yaml
 Type: String
 Parameter Sets: ResourceIdSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -215,4 +216,3 @@ System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.IotHub.Mo
 ## NOTES
 
 ## RELATED LINKS
-

@@ -24,11 +24,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmIotHubRoutingEndpoint", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSRoutingEventHubEndpoint), typeof(List<PSRoutingEventHubProperties>),
-        typeof(PSRoutingServiceBusQueueEndpoint), typeof(List<PSRoutingServiceBusQueueEndpointProperties>),
-        typeof(PSRoutingServiceBusTopicEndpoint), typeof(List<PSRoutingServiceBusTopicEndpointProperties>),
-        typeof(PSRoutingStorageContainerEndpoint), typeof(List<PSRoutingStorageContainerProperties>),
-        typeof(List<PSRoutingCustomEndpoint>))]
+    [OutputType(typeof(bool))]
     public class RemoveAzureRmIotHubRoutingEndpoint : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
@@ -54,6 +50,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the Routing Endpoint")]
         public string EndpointName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Type of the Routing Endpoint")]
+        public PSEndpointType? EndpointType { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -82,10 +81,31 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             {
                 if (string.IsNullOrEmpty(this.EndpointName))
                 {
-                    iotHubDescription.Properties.Routing.Endpoints.EventHubs = new List<RoutingEventHubProperties>();
-                    iotHubDescription.Properties.Routing.Endpoints.ServiceBusQueues = new List<RoutingServiceBusQueueEndpointProperties>();
-                    iotHubDescription.Properties.Routing.Endpoints.ServiceBusTopics = new List<RoutingServiceBusTopicEndpointProperties>();
-                    iotHubDescription.Properties.Routing.Endpoints.StorageContainers = new List<RoutingStorageContainerProperties>();
+                    if (this.EndpointType.HasValue)
+                    {
+                        switch (this.EndpointType.Value)
+                        {
+                            case PSEndpointType.EventHub:
+                                iotHubDescription.Properties.Routing.Endpoints.EventHubs = new List<RoutingEventHubProperties>();
+                                break;
+                            case PSEndpointType.ServiceBusQueue:
+                                iotHubDescription.Properties.Routing.Endpoints.ServiceBusQueues = new List<RoutingServiceBusQueueEndpointProperties>();
+                                break;
+                            case PSEndpointType.ServiceBusTopic:
+                                iotHubDescription.Properties.Routing.Endpoints.ServiceBusTopics = new List<RoutingServiceBusTopicEndpointProperties>();
+                                break;
+                            case PSEndpointType.AzureStorageContainer:
+                                iotHubDescription.Properties.Routing.Endpoints.StorageContainers = new List<RoutingStorageContainerProperties>();
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        iotHubDescription.Properties.Routing.Endpoints.EventHubs = new List<RoutingEventHubProperties>();
+                        iotHubDescription.Properties.Routing.Endpoints.ServiceBusQueues = new List<RoutingServiceBusQueueEndpointProperties>();
+                        iotHubDescription.Properties.Routing.Endpoints.ServiceBusTopics = new List<RoutingServiceBusTopicEndpointProperties>();
+                        iotHubDescription.Properties.Routing.Endpoints.StorageContainers = new List<RoutingStorageContainerProperties>();
+                    }
                 }
                 else
                 {

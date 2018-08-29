@@ -1,11 +1,11 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
 Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/update-azurermiothubroute
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/set-azurermiothubroute
 schema: 2.0.0
 ---
 
-# Update-AzureRmIotHubRoute
+# Set-AzureRmIotHubRoute
 
 ## SYNOPSIS
 Update a route in IoT Hub
@@ -14,21 +14,21 @@ Update a route in IoT Hub
 
 ### ResourceSet (Default)
 ```
-Update-AzureRmIotHubRoute [-ResourceGroupName] <String> [-Name] <String> [-RouteName] <String>
- [-Source <String>] [-EndpointName <String>] [-Condition <String>] [-Enabled]
+Set-AzureRmIotHubRoute [-ResourceGroupName] <String> [-Name] <String> [-RouteName] <String>
+ [-Source <PSRoutingSource>] [-EndpointName <String>] [-Condition <String>] [-Enabled]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Update-AzureRmIotHubRoute [-InputObject] <PSIotHub> [-RouteName] <String> [-Source <String>]
+Set-AzureRmIotHubRoute [-InputObject] <PSIotHub> [-RouteName] <String> [-Source <PSRoutingSource>]
  [-EndpointName <String>] [-Condition <String>] [-Enabled] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Update-AzureRmIotHubRoute [-ResourceId] <String> [-RouteName] <String> [-Source <String>]
+Set-AzureRmIotHubRoute [-ResourceId] <String> [-RouteName] <String> [-Source <PSRoutingSource>]
  [-EndpointName <String>] [-Condition <String>] [-Enabled] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -39,8 +39,8 @@ Edit a route. You can update all the fields in a route including the data source
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Update-AzureRmIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -Source TwinChangeEvents 
+```powershell
+PS C:\> Set-AzureRmIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -Source TwinChangeEvents 
 
 RouteName     : R1
 DataSource    : TwinChangeEvents
@@ -52,8 +52,8 @@ IsEnabled     : False
 Updating the route information.
 
 ### Example 2
-```
-PS C:\> Update-AzureRmIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -EndpointName E1 
+```powershell
+PS C:\> Set-AzureRmIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -EndpointName E1 
 
 RouteName     : R1
 DataSource    : TwinChangeEvents
@@ -65,26 +65,13 @@ IsEnabled     : False
 Updating the route information.
 
 ### Example 3
-```
-PS C:\> Update-AzureRmIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -Condition false 
+```powershell
+PS C:\> Set-AzureRmIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -Enabled
 
 RouteName     : R1
 DataSource    : TwinChangeEvents
 EndpointNames : E1
-Condition     : false
-IsEnabled     : False
-```
-
-Updating the route information.
-
-### Example 4
-```
-PS C:\> Update-AzureRmIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -Enabled 
-
-RouteName     : R1
-DataSource    : TwinChangeEvents
-EndpointNames : E1
-Condition     : false
+Condition     : true
 IsEnabled     : True
 ```
 
@@ -98,7 +85,7 @@ Condition that is evaluated to apply the routing rule
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -128,7 +115,7 @@ Enable route
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -143,7 +130,7 @@ Name of the routing endpoint
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -158,7 +145,7 @@ IotHub Object
 ```yaml
 Type: PSIotHub
 Parameter Sets: InputObjectSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -173,7 +160,7 @@ Name of the Iot Hub
 ```yaml
 Type: String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -188,7 +175,7 @@ Name of the Resource Group
 ```yaml
 Type: String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -203,7 +190,7 @@ IotHub Resource Id
 ```yaml
 Type: String
 Parameter Sets: ResourceIdSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -218,7 +205,7 @@ Name of the Route
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -231,9 +218,9 @@ Accept wildcard characters: False
 Source of the route
 
 ```yaml
-Type: String
+Type: PSRoutingSource
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Invalid, DeviceMessages, TwinChangeEvents, DeviceLifecycleEvents, DeviceJobLifecycleEvents
 
 Required: False
@@ -289,4 +276,3 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
-

@@ -14,23 +14,23 @@ Create a route in IoT Hub
 
 ### ResourceSet (Default)
 ```
-Add-AzureRmIotHubRoute [-ResourceGroupName] <String> [-Name] <String> [-RouteName] <String> [-Source] <String>
- [-EndpointName] <String> [-Condition <String>] [-Enabled] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Add-AzureRmIotHubRoute [-ResourceGroupName] <String> [-Name] <String> [-RouteName] <String>
+ [-Source] <PSRoutingSource> [-EndpointName] <String> [-Condition <String>] [-Enabled]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Add-AzureRmIotHubRoute [-InputObject] <PSIotHub> [-RouteName] <String> [-Source] <String>
+Add-AzureRmIotHubRoute [-InputObject] <PSIotHub> [-RouteName] <String> [-Source] <PSRoutingSource>
  [-EndpointName] <String> [-Condition <String>] [-Enabled] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Add-AzureRmIotHubRoute [-ResourceId] <String> [-RouteName] <String> [-Source] <String> [-EndpointName] <String>
- [-Condition <String>] [-Enabled] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Add-AzureRmIotHubRoute [-ResourceId] <String> [-RouteName] <String> [-Source] <PSRoutingSource>
+ [-EndpointName] <String> [-Condition <String>] [-Enabled] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,19 +51,6 @@ IsEnabled     : False
 
 Create a new route "R1".
 
-### Example 2
-```
-PS C:\> Add-AzureRmIotHubRoute -ResourceGroupName "myresourcegroup" -Name "myiothub" -RouteName R1 -Source DeviceMessages -EndpointName E1 -Condition true -Enabled
-
-RouteName     : R1
-DataSource    : DeviceMessages
-EndpointNames : E1
-Condition     : true
-IsEnabled     : True
-```
-
-Create a new route "R1" with all parameters.
-
 ## PARAMETERS
 
 ### -Condition
@@ -72,7 +59,7 @@ Condition that is evaluated to apply the routing rule
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -102,7 +89,7 @@ Enable route
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -117,7 +104,7 @@ Name of the routing endpoint
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -132,7 +119,7 @@ IotHub Object
 ```yaml
 Type: PSIotHub
 Parameter Sets: InputObjectSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -147,7 +134,7 @@ Name of the Iot Hub
 ```yaml
 Type: String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -162,7 +149,7 @@ Name of the Resource Group
 ```yaml
 Type: String
 Parameter Sets: ResourceSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -177,7 +164,7 @@ IotHub Resource Id
 ```yaml
 Type: String
 Parameter Sets: ResourceIdSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -192,7 +179,7 @@ Name of the Route
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -205,9 +192,9 @@ Accept wildcard characters: False
 Source of the route
 
 ```yaml
-Type: String
+Type: PSRoutingSource
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Invalid, DeviceMessages, TwinChangeEvents, DeviceLifecycleEvents, DeviceJobLifecycleEvents
 
 Required: True
@@ -263,4 +250,3 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
-
