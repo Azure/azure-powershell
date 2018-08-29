@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated common runtime assemblies
 
 ## Version 0.14.5
 * Updated to the latest version of the Azure ClientRuntime.

@@ -19,6 +19,9 @@
 --->
 
 ## Current Release
+* Changed default cmdlet output presentation to table view
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
 
 ## Version 6.6.0
 * Fixed issue with default resource groups not being set.

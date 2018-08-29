@@ -19,6 +19,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issues
+	- https://github.com/Azure/azure-powershell/issues/5058
+	- https://github.com/Azure/azure-powershell/issues/5055
+	- https://github.com/Azure/azure-powershell/issues/6891
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
 
 ## Version 0.6.10
 * Fixed issue with default resource groups not being set.

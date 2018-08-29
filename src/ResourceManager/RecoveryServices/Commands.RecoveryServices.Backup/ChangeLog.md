@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
 
 ## Version 4.4.0
 * Added policy filter to Get-AzureRmRecoveryServicesBackItem cmdlet. The command returns the list of backup items protected by the given policy id.

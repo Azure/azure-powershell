@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with creating managed applications from the MarketPlace.
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
 
 ## Version 6.4.1
 * Fixed issue with default resource groups not being set.
