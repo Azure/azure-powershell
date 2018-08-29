@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrVaultContext")]
     [OutputType(typeof(ASRVaultSettings))]
     [Alias(
-        "Get-AzureRmRecoveryServicesAsrVaultSettings",
+        "Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrVaultSettings",
         "Get-ASRVaultContext",
         "Get-ASRVaultSettings"
         )]
