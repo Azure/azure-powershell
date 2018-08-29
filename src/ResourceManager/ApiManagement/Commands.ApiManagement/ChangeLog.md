@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.1.5
 * Fixed issue with default resource groups not being set.
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6603
     - Import-AzureRmApiManagementApi and *-AzureRmApiManagementCertificate cmdlets now handle relative Paths
