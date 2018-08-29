@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Starts the commit failover action for a site recovery object.
     /// </summary>
-    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrCommitFailoverJob",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrCommitFailoverJob", DefaultParameterSetName = ASRParameterSets.ByRPIObject, SupportsShouldProcess = true)]
     [Alias(
         "Start-ASRCommitFailover",
         "Start-ASRCommitFailoverJob")]
@@ -187,11 +187,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Gets or sets ID of the Protection Container.
         /// </summary>
         private string protectionContainerName;
-
-        /// <summary>
-        ///     Gets or sets ID of the PE.
-        /// </summary>
-        private string protectionEntityName;
 
         #endregion
     }

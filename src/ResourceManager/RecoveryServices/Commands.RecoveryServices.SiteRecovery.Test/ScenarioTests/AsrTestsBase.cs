@@ -24,7 +24,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -32,6 +31,9 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System.Diagnostics;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 
 namespace RecoveryServices.SiteRecovery.Test
 {
@@ -40,7 +42,6 @@ namespace RecoveryServices.SiteRecovery.Test
         protected string vaultSettingsFilePath;
         protected string powershellFile;
         private ASRVaultCreds asrVaultCreds;
-        private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
 
         protected AsrTestsBase()
@@ -108,8 +109,9 @@ namespace RecoveryServices.SiteRecovery.Test
             string scenario,
             params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
             helper.TracingInterceptor = logger;
 
@@ -129,7 +131,7 @@ namespace RecoveryServices.SiteRecovery.Test
         public void RunPsTestWorkflow(
             string scenario,
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
+            Action<object> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -164,12 +166,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 callingClassType,
                 mockName))
             {
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
-
-                if (initialize != null)
-                {
-                    initialize.Invoke(this.csmTestFactory);
-                }
+                initialize?.Invoke(this);
 
                 this.SetupManagementClients(
                     scenario,
