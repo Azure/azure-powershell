@@ -16,7 +16,6 @@ using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Microsoft.Rest.Azure.OData;
-using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08_10;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {

@@ -11,12 +11,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using SRSDataModel = Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08_10
+namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
     //
     // Summary:
@@ -29,9 +30,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
             this.Name = replicationProtectedItem.Name;
             this.Type = replicationProtectedItem.Type;
             this.Location = replicationProtectedItem.Location;
-            this.Properties = new ReplicationProtectedItemProperties(replicationProtectedItem.Properties);
+            this.Properties = new ReplicationProtectedItemProperties_2016_08_10(replicationProtectedItem.Properties);
         }
-        public ReplicationProtectedItemProperties Properties { get; set; }
+        public ReplicationProtectedItemProperties_2016_08_10 Properties { get; set; }
 
         //
         // Summary
@@ -57,15 +58,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
     //
     // Summary:
     //     Replication protected item custom data details.
-    public class ReplicationProtectedItemProperties
+    public class ReplicationProtectedItemProperties_2016_08_10
     {
         //
         // Summary:
         //     Initializes a new instance of the ReplicationProtectedItemProperties class.
-        public ReplicationProtectedItemProperties(SRSDataModel.ReplicationProtectedItemProperties rpiProperties)
+        public ReplicationProtectedItemProperties_2016_08_10(SRSDataModel.ReplicationProtectedItemProperties rpiProperties)
         {
             this.FailoverRecoveryPointId = rpiProperties.FailoverRecoveryPointId;
-            this.CurrentScenario = new CurrentScenarioDetails(rpiProperties.CurrentScenario);
+            this.CurrentScenario = new CurrentScenarioDetails_2016_08_10(rpiProperties.CurrentScenario);
             this.LastSuccessfulTestFailoverTime = rpiProperties.LastSuccessfulTestFailoverTime;
             this.LastSuccessfulFailoverTime = rpiProperties.LastSuccessfulFailoverTime;
             this.PolicyFriendlyName = rpiProperties.PolicyFriendlyName;
@@ -105,32 +106,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
             this.FriendlyName = rpiProperties.FriendlyName;
             if (rpiProperties.ProviderSpecificDetails is SRSDataModel.HyperVReplicaAzureReplicationDetails)
             {
-                this.ProviderSpecificDetails = new HyperVReplicaAzureReplicationDetails(
+                this.ProviderSpecificDetails = new HyperVReplicaAzureReplicationDetails_2016_08_10(
                     rpiProperties.ProviderSpecificDetails as SRSDataModel.HyperVReplicaAzureReplicationDetails);
             }
             else if (rpiProperties.ProviderSpecificDetails is SRSDataModel.HyperVReplicaReplicationDetails)
             {
-                this.ProviderSpecificDetails = new HyperVReplicaReplicationDetails(
+                this.ProviderSpecificDetails = new HyperVReplicaReplicationDetails_2016_08_10(
                     rpiProperties.ProviderSpecificDetails as SRSDataModel.HyperVReplicaReplicationDetails);
             }
             else if (rpiProperties.ProviderSpecificDetails is SRSDataModel.HyperVReplicaBlueReplicationDetails)
             {
-                this.ProviderSpecificDetails = new HyperVReplicaBlueReplicationDetails(
+                this.ProviderSpecificDetails = new HyperVReplicaBlueReplicationDetails_2016_08_10(
                     rpiProperties.ProviderSpecificDetails as SRSDataModel.HyperVReplicaBlueReplicationDetails);
             }
             else if (rpiProperties.ProviderSpecificDetails is SRSDataModel.InMageAzureV2ReplicationDetails)
             {
-                this.ProviderSpecificDetails = new InMageAzureV2ReplicationDetails(
+                this.ProviderSpecificDetails = new InMageAzureV2ReplicationDetails_2016_08_10(
                     rpiProperties.ProviderSpecificDetails as SRSDataModel.InMageAzureV2ReplicationDetails);
             }
             else if (rpiProperties.ProviderSpecificDetails is SRSDataModel.InMageReplicationDetails)
             {
-                this.ProviderSpecificDetails = new InMageReplicationDetails(
+                this.ProviderSpecificDetails = new InMageReplicationDetails_2016_08_10(
                     rpiProperties.ProviderSpecificDetails as SRSDataModel.InMageReplicationDetails);
             }
             else if (rpiProperties.ProviderSpecificDetails is SRSDataModel.A2AReplicationDetails)
             {
-                this.ProviderSpecificDetails = new A2AReplicationDetails(
+                this.ProviderSpecificDetails = new A2AReplicationDetails_2016_08_10(
                     rpiProperties.ProviderSpecificDetails as SRSDataModel.A2AReplicationDetails);
             }
             this.FailoverRecoveryPointId = rpiProperties.RecoveryContainerId;
@@ -144,7 +145,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
         //
         // Summary:
         //     Gets or sets the current scenario.
-        public CurrentScenarioDetails CurrentScenario { get; set; }
+        public CurrentScenarioDetails_2016_08_10 CurrentScenario { get; set; }
 
         //
         // Summary:
@@ -265,7 +266,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
         //
         // Summary:
         //     Gets or sets the Replication provider custom settings.
-        public ReplicationProviderSpecificSettings ProviderSpecificDetails { get; set; }
+        public ReplicationProviderSpecificSettings_2016_08_10 ProviderSpecificDetails { get; set; }
 
         //
         // Summary:
@@ -276,12 +277,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
     //
     // Summary:
     //     Current scenario details of the protected entity.
-    public class CurrentScenarioDetails
+    public class CurrentScenarioDetails_2016_08_10
     {
         //
         // Summary:
         //     Initializes a new instance of the CurrentScenarioDetails class.
-        public CurrentScenarioDetails(SRSDataModel.CurrentScenarioDetails currentScenario)
+        public CurrentScenarioDetails_2016_08_10(SRSDataModel.CurrentScenarioDetails currentScenario)
         {
             this.ScenarioName = currentScenario.ScenarioName;
             this.JobId = currentScenario.JobId;
@@ -304,12 +305,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
         public DateTime? StartTime { get; set; }
     }
 
-    public class ReplicationProviderSpecificSettings
+    public class ReplicationProviderSpecificSettings_2016_08_10
     {
         //
         // Summary:
         //     Initializes a new instance of the ReplicationProviderSpecificSettings class.
-        public ReplicationProviderSpecificSettings()
+        public ReplicationProviderSpecificSettings_2016_08_10()
         {
 
         }
@@ -318,17 +319,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
     //
     // Summary:
     //     A2A provider specific settings.
-    public class A2AReplicationDetails : ReplicationProviderSpecificSettings
+    public class A2AReplicationDetails_2016_08_10 : ReplicationProviderSpecificSettings_2016_08_10
     {
         //
         // Summary:
         //     Initializes a new instance of the A2AReplicationDetails class.
-        public A2AReplicationDetails() { }
+        public A2AReplicationDetails_2016_08_10() { }
 
         //
         // Summary:
         //     Initializes a new instance of the A2AReplicationDetails class.
-        public A2AReplicationDetails(SRSDataModel.ReplicationProviderSpecificSettings rpSpecificDetails)
+        public A2AReplicationDetails_2016_08_10(SRSDataModel.ReplicationProviderSpecificSettings rpSpecificDetails)
         {
             SRSDataModel.A2AReplicationDetails a2aReplicationDetails = rpSpecificDetails as SRSDataModel.A2AReplicationDetails;
             this.TestFailoverRecoveryFabricObjectId = a2aReplicationDetails.TestFailoverRecoveryFabricObjectId;
@@ -525,12 +526,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
     //
     // Summary:
     //     InMageAzureV2 provider specific settings
-    public class InMageAzureV2ReplicationDetails : ReplicationProviderSpecificSettings
+    public class InMageAzureV2ReplicationDetails_2016_08_10 : ReplicationProviderSpecificSettings_2016_08_10
     {
         //
         // Summary:
         //     Initializes a new instance of the InMageAzureV2ReplicationDetails class.
-        public InMageAzureV2ReplicationDetails(SRSDataModel.ReplicationProviderSpecificSettings rpSpecificDetails)
+        public InMageAzureV2ReplicationDetails_2016_08_10(SRSDataModel.ReplicationProviderSpecificSettings rpSpecificDetails)
         {
             var inMageAzureV2ReplicationDetails = rpSpecificDetails as SRSDataModel.InMageAzureV2ReplicationDetails;
             this.VhdName = inMageAzureV2ReplicationDetails.VhdName;
@@ -599,10 +600,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
             this.MultiVmSyncStatus = inMageAzureV2ReplicationDetails.MultiVmSyncStatus;
             if (inMageAzureV2ReplicationDetails.ProtectedDisks != null)
             {
-                this.ProtectedDisks = new List<InMageAzureV2ProtectedDiskDetails>();
+                this.ProtectedDisks = new List<InMageAzureV2ProtectedDiskDetails_2016_08_10>();
                 foreach (var diskDetails in inMageAzureV2ReplicationDetails.ProtectedDisks)
                 {
-                    this.ProtectedDisks.Add(new InMageAzureV2ProtectedDiskDetails(diskDetails));
+                    this.ProtectedDisks.Add(new InMageAzureV2ProtectedDiskDetails_2016_08_10(diskDetails));
                 }
             }
             this.DiskResized = inMageAzureV2ReplicationDetails.DiskResized;
@@ -793,7 +794,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
         //
         // Summary:
         //     Gets or sets the list of protected disks.
-        public IList<InMageAzureV2ProtectedDiskDetails> ProtectedDisks { get; set; }
+        public IList<InMageAzureV2ProtectedDiskDetails_2016_08_10> ProtectedDisks { get; set; }
         //
         // Summary:
         //     Gets or sets a value indicating whether any disk is resized for this VM.
@@ -808,12 +809,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
         public string OsVersion { get; set; }
     }
 
-    public class HyperVReplicaAzureReplicationDetails : ReplicationProviderSpecificSettings
+    public class HyperVReplicaAzureReplicationDetails_2016_08_10 : ReplicationProviderSpecificSettings_2016_08_10
     {
         //
         // Summary:
         //     Initializes a new instance of the HyperVReplicaAzureReplicationDetails class.
-        public HyperVReplicaAzureReplicationDetails(SRSDataModel.HyperVReplicaAzureReplicationDetails hyperVReplicaAzureReplicationDetails)
+        public HyperVReplicaAzureReplicationDetails_2016_08_10(SRSDataModel.HyperVReplicaAzureReplicationDetails hyperVReplicaAzureReplicationDetails)
         {
             this.RecoveryAvailabilitySetId = hyperVReplicaAzureReplicationDetails.RecoveryAvailabilitySetId;
             this.RecoveryAzureResourceGroupId = hyperVReplicaAzureReplicationDetails.RecoveryAzureResourceGroupId;
@@ -829,7 +830,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
                        hyperVReplicaAzureReplicationDetails.VmNics?.ToList()
                        .ConvertAll(nic => new ASRVMNicDetails(nic));
             }
-            this.InitialReplicationDetails = new InitialReplicationDetails(hyperVReplicaAzureReplicationDetails.InitialReplicationDetails);
+            this.InitialReplicationDetails = new InitialReplicationDetails_2016_08_10(hyperVReplicaAzureReplicationDetails.InitialReplicationDetails);
             this.VmProtectionStateDescription = hyperVReplicaAzureReplicationDetails.VmProtectionStateDescription;
             this.VmProtectionState = hyperVReplicaAzureReplicationDetails.VmProtectionState;
             this.VmId = hyperVReplicaAzureReplicationDetails.VmId;
@@ -890,7 +891,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
         //
         // Summary:
         //     Gets or sets initial replication details.
-        public InitialReplicationDetails InitialReplicationDetails { get; set; }
+        public InitialReplicationDetails_2016_08_10 InitialReplicationDetails { get; set; }
         //
         // Summary:
         //     Gets or sets the protection state description for the vm.
@@ -941,12 +942,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
     //
     // Summary:
     //     Initial replication details.
-    public class InitialReplicationDetails
+    public class InitialReplicationDetails_2016_08_10
     {
         //
         // Summary:
         //     Initializes a new instance of the InitialReplicationDetails class.
-        public InitialReplicationDetails(SRSDataModel.InitialReplicationDetails initialReplicationDetails)
+        public InitialReplicationDetails_2016_08_10(SRSDataModel.InitialReplicationDetails initialReplicationDetails)
         {
             this.InitialReplicationProgressPercentage = initialReplicationDetails.InitialReplicationProgressPercentage;
             this.InitialReplicationType = initialReplicationDetails.InitialReplicationType;
@@ -966,12 +967,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
     //
     // Summary:
     //     HyperV replica 2012 replication details.
-    public class HyperVReplicaReplicationDetails : ReplicationProviderSpecificSettings
+    public class HyperVReplicaReplicationDetails_2016_08_10 : ReplicationProviderSpecificSettings_2016_08_10
     {
         //
         // Summary:
         //     Initializes a new instance of the HyperVReplicaReplicationDetails class.
-        public HyperVReplicaReplicationDetails(SRSDataModel.HyperVReplicaReplicationDetails hyperVReplicaReplicationDetails)
+        public HyperVReplicaReplicationDetails_2016_08_10(SRSDataModel.HyperVReplicaReplicationDetails hyperVReplicaReplicationDetails)
         {
             this.LastReplicatedTime = hyperVReplicaReplicationDetails.LastReplicatedTime;
             if (hyperVReplicaReplicationDetails.VmNics != null)
@@ -983,7 +984,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
             this.VmId = hyperVReplicaReplicationDetails.VmId;
             this.VmProtectionState = hyperVReplicaReplicationDetails.VmProtectionState;
             this.VmProtectionStateDescription = hyperVReplicaReplicationDetails.VmProtectionStateDescription;
-            this.InitialReplicationDetails = new InitialReplicationDetails(hyperVReplicaReplicationDetails.InitialReplicationDetails);
+            this.InitialReplicationDetails = new InitialReplicationDetails_2016_08_10(hyperVReplicaReplicationDetails.InitialReplicationDetails);
 
             if (hyperVReplicaReplicationDetails.VMDiskDetails != null)
             {
@@ -1015,7 +1016,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
         //
         // Summary:
         //     Gets or sets initial replication details.
-        public InitialReplicationDetails InitialReplicationDetails { get; set; }
+        public InitialReplicationDetails_2016_08_10 InitialReplicationDetails { get; set; }
         //
         // Summary:
         //     Gets or sets VM disk details.
@@ -1026,12 +1027,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
     //
     // Summary:
     //     HyperV replica 2012 R2 (Blue) replication details.
-    public class HyperVReplicaBlueReplicationDetails : ReplicationProviderSpecificSettings
+    public class HyperVReplicaBlueReplicationDetails_2016_08_10 : ReplicationProviderSpecificSettings_2016_08_10
     {
         //
         // Summary:
         //     Initializes a new instance of the HyperVReplicaBlueReplicationDetails class.
-        public HyperVReplicaBlueReplicationDetails(SRSDataModel.HyperVReplicaBlueReplicationDetails hyperVReplicaBlueReplicationDetails)
+        public HyperVReplicaBlueReplicationDetails_2016_08_10(SRSDataModel.HyperVReplicaBlueReplicationDetails hyperVReplicaBlueReplicationDetails)
         {
             this.LastReplicatedTime = hyperVReplicaBlueReplicationDetails.LastReplicatedTime;
             if (hyperVReplicaBlueReplicationDetails.VmNics != null)
@@ -1043,7 +1044,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
             this.VmId = hyperVReplicaBlueReplicationDetails.VmId;
             this.VmProtectionState = hyperVReplicaBlueReplicationDetails.VmProtectionState;
             this.VmProtectionStateDescription = hyperVReplicaBlueReplicationDetails.VmProtectionStateDescription;
-            this.InitialReplicationDetails = new InitialReplicationDetails(hyperVReplicaBlueReplicationDetails.InitialReplicationDetails);
+            this.InitialReplicationDetails = new InitialReplicationDetails_2016_08_10(hyperVReplicaBlueReplicationDetails.InitialReplicationDetails);
 
             if (hyperVReplicaBlueReplicationDetails.VMDiskDetails != null)
             {
@@ -1075,7 +1076,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
         //
         // Summary:
         //     Gets or sets initial replication details.
-        public InitialReplicationDetails InitialReplicationDetails { get; set; }
+        public InitialReplicationDetails_2016_08_10 InitialReplicationDetails { get; set; }
         //
         // Summary:
         //     Gets or sets VM disk details.
@@ -1086,20 +1087,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
     //
     // Summary:
     //     InMage provider specific settings
-    public class InMageReplicationDetails : ReplicationProviderSpecificSettings
+    public class InMageReplicationDetails_2016_08_10 : ReplicationProviderSpecificSettings_2016_08_10
     {
 
         //
         // Summary:
         //     Initializes a new instance of the InMageReplicationDetails class.
-        public InMageReplicationDetails(SRSDataModel.InMageReplicationDetails inMageREplicationDetails)
+        public InMageReplicationDetails_2016_08_10(SRSDataModel.InMageReplicationDetails inMageREplicationDetails)
         {
             this.DiskResized = inMageREplicationDetails.DiskResized;
             this.RebootAfterUpdateStatus = inMageREplicationDetails.RebootAfterUpdateStatus;
             this.MultiVmGroupId = inMageREplicationDetails.MultiVmGroupId;
             this.MultiVmGroupName = inMageREplicationDetails.MultiVmGroupName;
             this.MultiVmSyncStatus = inMageREplicationDetails.MultiVmSyncStatus;
-            this.AgentDetails = new InMageAgentDetails(inMageREplicationDetails.AgentDetails);
+            this.AgentDetails = new InMageAgentDetails_2016_08_10(inMageREplicationDetails.AgentDetails);
             this.VCenterInfrastructureId = inMageREplicationDetails.VCenterInfrastructureId;
             this.InfrastructureVmId = inMageREplicationDetails.InfrastructureVmId;
             if (inMageREplicationDetails.VmNics != null)
@@ -1125,7 +1126,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
             this.ActiveSiteType = inMageREplicationDetails.ActiveSiteType;
             this.SourceVmCPUCount = inMageREplicationDetails.SourceVmCpuCount;
             this.SourceVmRAMSizeInMB = inMageREplicationDetails.SourceVmRamSizeInMB;
-            this.OsDetails = new OSDiskDetails(inMageREplicationDetails.OsDetails);
+            this.OsDetails = new OSDiskDetails_2016_08_10(inMageREplicationDetails.OsDetails);
             this.ProtectionStage = inMageREplicationDetails.ProtectionStage;
             this.VmId = inMageREplicationDetails.VmId;
             this.VmProtectionState = inMageREplicationDetails.VmProtectionState;
@@ -1137,11 +1138,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
             this.UncompressedDataRateInMB = inMageREplicationDetails.UncompressedDataRateInMB;
             this.RpoInSeconds = inMageREplicationDetails.RpoInSeconds;
             if (inMageREplicationDetails.ProtectedDisks != null) {
-                this.ProtectedDisks = inMageREplicationDetails.ProtectedDisks.ToList().ConvertAll((protectedDisk)=> new InMageProtectedDiskDetails(protectedDisk));
+                this.ProtectedDisks = inMageREplicationDetails.ProtectedDisks.ToList().ConvertAll((protectedDisk)=> new InMageProtectedDiskDetails_2016_08_10(protectedDisk));
             }
             
             this.IpAddress = inMageREplicationDetails.IpAddress;
-            this.ResyncDetails = new InitialReplicationDetails(inMageREplicationDetails.ResyncDetails);
+            this.ResyncDetails = new InitialReplicationDetails_2016_08_10(inMageREplicationDetails.ResyncDetails);
 
             this.OsVersion = inMageREplicationDetails.OsVersion;
         }
@@ -1171,7 +1172,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
         //
         // Summary:
         //     Gets or sets the agent details.
-        public InMageAgentDetails AgentDetails { get; set; }
+        public InMageAgentDetails_2016_08_10 AgentDetails { get; set; }
         //
         // Summary:
         //     Gets or sets the vCenter infrastructure Id.
@@ -1244,7 +1245,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
         //
         // Summary:
         //     Gets or sets the OS details.
-        public OSDiskDetails OsDetails { get; set; }
+        public OSDiskDetails_2016_08_10 OsDetails { get; set; }
         //
         // Summary:
         //     Gets or sets the protection stage.
@@ -1288,7 +1289,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
         //
         // Summary:
         //     Gets or sets the list of protected disks.
-        public IList<InMageProtectedDiskDetails> ProtectedDisks { get; set; }
+        public IList<InMageProtectedDiskDetails_2016_08_10> ProtectedDisks { get; set; }
         //
         // Summary:
         //     Gets or sets the source IP address.
@@ -1296,7 +1297,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
         //
         // Summary:
         //     Gets or sets the resync details of the machine
-        public InitialReplicationDetails ResyncDetails { get; set; }
+        public InitialReplicationDetails_2016_08_10 ResyncDetails { get; set; }
         //
         // Summary:
         //     Gets or sets the OS Version of the protected item.
@@ -1306,12 +1307,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
     //
     // Summary:
     //     InMage protected disk details.
-    public class InMageProtectedDiskDetails
+    public class InMageProtectedDiskDetails_2016_08_10
     {
         //
         // Summary:
         //     Initializes a new instance of the InMageProtectedDiskDetails class.
-        public InMageProtectedDiskDetails(SRSDataModel.InMageProtectedDiskDetails inMageProtectedDiskDetails) {
+        public InMageProtectedDiskDetails_2016_08_10(SRSDataModel.InMageProtectedDiskDetails inMageProtectedDiskDetails) {
             this.TargetDataInMB = inMageProtectedDiskDetails.TargetDataInMB;
             this.PsDataInMB = inMageProtectedDiskDetails.PsDataInMB;
             this.SourceDataInMB = inMageProtectedDiskDetails.SourceDataInMB;
@@ -1408,12 +1409,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
     //
     // Summary:
     //     The details of the InMage agent.
-    public class InMageAgentDetails
+    public class InMageAgentDetails_2016_08_10
     {
         //
         // Summary:
         //     Initializes a new instance of the InMageAgentDetails class.
-        public InMageAgentDetails(SRSDataModel.InMageAgentDetails agentDetails) {
+        public InMageAgentDetails_2016_08_10(SRSDataModel.InMageAgentDetails agentDetails) {
             this.AgentUpdateStatus = agentDetails.AgentUpdateStatus;
             this.AgentVersion = agentDetails.AgentVersion;
             this.PostUpdateRebootStatus = agentDetails.PostUpdateRebootStatus;
@@ -1436,12 +1437,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
     //
     // Summary:
     //     Details of the OS Disk.
-    public class OSDiskDetails
+    public class OSDiskDetails_2016_08_10
     {
         //
         // Summary:
         //     Initializes a new instance of the OSDiskDetails class.
-        public OSDiskDetails(SRSDataModel.OSDiskDetails osDiskDetails) {
+        public OSDiskDetails_2016_08_10(SRSDataModel.OSDiskDetails osDiskDetails) {
             this.OsType = osDiskDetails.OsType;
             this.OsVhdId = osDiskDetails.OsVhdId;
             this.VhdName = osDiskDetails.VhdName;
@@ -1462,12 +1463,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08
     //
     // Summary:
     //     InMageAzureV2 protected disk details.
-    public class InMageAzureV2ProtectedDiskDetails
+    public class InMageAzureV2ProtectedDiskDetails_2016_08_10
     {
         //
         // Summary:
         //     Initializes a new instance of the InMageAzureV2ProtectedDiskDetails class.
-        public InMageAzureV2ProtectedDiskDetails(SRSDataModel.InMageAzureV2ProtectedDiskDetails inMageAzureV2ProtectedDiskDetails)
+        public InMageAzureV2ProtectedDiskDetails_2016_08_10(SRSDataModel.InMageAzureV2ProtectedDiskDetails inMageAzureV2ProtectedDiskDetails)
         {
             this.TargetDataInMegaBytes = inMageAzureV2ProtectedDiskDetails.TargetDataInMegaBytes;
             this.PsDataInMegaBytes = inMageAzureV2ProtectedDiskDetails.PsDataInMegaBytes;

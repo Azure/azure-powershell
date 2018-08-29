@@ -11,9 +11,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08_10
+namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
     public class ASRRecoveryPlanGroup
     {

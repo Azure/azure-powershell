@@ -17,7 +17,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using SRSDataModel = Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
-using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08_10;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {

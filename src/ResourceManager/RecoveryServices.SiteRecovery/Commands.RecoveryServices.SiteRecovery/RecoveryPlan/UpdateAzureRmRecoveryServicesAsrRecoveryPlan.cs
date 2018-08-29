@@ -20,7 +20,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Newtonsoft.Json;
-using SRSModel_2016_08_10 = Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Models._2016_08_10;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -126,35 +125,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                         if (item.Properties.ProviderSpecificDetails.GetType() ==
                                             typeof(HyperVReplicaAzureReplicationDetails))
                                         {
-                                            VmId = ((SRSModel_2016_08_10.HyperVReplicaAzureReplicationDetails)item
+                                            VmId = ((HyperVReplicaAzureReplicationDetails_2016_08_10)item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
                                                      .GetType() ==
                                                  typeof(HyperVReplicaReplicationDetails))
                                         {
-                                            VmId = ((SRSModel_2016_08_10.HyperVReplicaReplicationDetails)item.Properties
+                                            VmId = ((HyperVReplicaReplicationDetails_2016_08_10)item.Properties
                                                 .ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
                                                      .GetType() ==
                                                  typeof(HyperVReplicaBlueReplicationDetails))
                                         {
-                                            VmId = ((SRSModel_2016_08_10.HyperVReplicaBlueReplicationDetails)item
+                                            VmId = ((HyperVReplicaBlueReplicationDetails_2016_08_10)item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
                                                     .GetType() ==
                                                  typeof(InMageAzureV2ReplicationDetails))
                                         {
-                                            VmId = ((SRSModel_2016_08_10.InMageAzureV2ReplicationDetails)item
+                                            VmId = ((InMageAzureV2ReplicationDetails_2016_08_10)item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
                                                     .GetType() ==
                                                  typeof(InMageReplicationDetails))
                                         {
-                                            VmId = ((SRSModel_2016_08_10.InMageReplicationDetails)item
+                                            VmId = ((InMageReplicationDetails_2016_08_10)item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
 
