@@ -113,17 +113,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public PSDataLakeStoreAccountBasic (DataLakeStoreAccountBasic baseAccount) :
             base(
-                baseAccount.Location,
                 baseAccount.Id,
                 baseAccount.Name,
                 baseAccount.Type,
+                baseAccount.Location,
                 baseAccount.Tags,
+                baseAccount.AccountId,
                 baseAccount.ProvisioningState,
                 baseAccount.State,
                 baseAccount.CreationTime,
                 baseAccount.LastModifiedTime,
-                baseAccount.Endpoint,
-                baseAccount.AccountId)
+                baseAccount.Endpoint)
         {
         }
     }

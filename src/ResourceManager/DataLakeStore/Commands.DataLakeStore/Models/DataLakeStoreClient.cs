@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             Hashtable customTags = null, 
             EncryptionIdentity identity = null, 
             EncryptionConfig config = null, 
-            IList<TrustedIdProvider> trustedProviders = null,
-            IList<FirewallRule> firewallRules = null,
+            IList<CreateTrustedIdProviderWithAccountParameters> trustedProviders = null,
+            IList<CreateFirewallRuleWithAccountParameters> firewallRules = null,
             EncryptionConfigType? encryptionType = null,
             TierType? tier = null)
         {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             var tags = TagsConversionHelper.CreateTagDictionary(customTags, true);
 
-            var parameters = new DataLakeStoreAccount
+            var parameters = new CreateDataLakeStoreAccountParameters
             {
                 Location = location,
                 DefaultGroup = defaultGroup,
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 parameters.NewTier = tier;
             }
 
-            var toReturn = _client.Account.Create(resourceGroupName, accountName, parameters);
+            var toReturn = _client.Accounts.Create(resourceGroupName, accountName, parameters);
 
             return toReturn;
         }
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             var tags = TagsConversionHelper.CreateTagDictionary(customTags, true);
 
-            var parameters = new DataLakeStoreAccountUpdateParameters
+            var parameters = new UpdateDataLakeStoreAccountParameters
             {
                 DefaultGroup = defaultGroup,
                 Tags = tags ?? new Dictionary<string, string>(),
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 parameters.NewTier = tier;
             }
 
-            var toReturn = _client.Account.Update(resourceGroupName, accountName, parameters);
+            var toReturn = _client.Accounts.Update(resourceGroupName, accountName, parameters);
 
             return toReturn;
         }
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 throw new InvalidOperationException(string.Format(Properties.Resources.AccountDoesNotExist, accountName));
             }
 
-            _client.Account.Delete(resourceGroupName, accountName);
+            _client.Accounts.Delete(resourceGroupName, accountName);
         }
 
         public bool TestAccount(string resourceGroupName, string accountName)
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 resourceGroupName = GetResourceGroupByAccount(accountName);
             }
 
-            return _client.Account.Get(resourceGroupName, accountName);
+            return _client.Accounts.Get(resourceGroupName, accountName);
         }
 
         public void EnableKeyVault(string resourceGroupName, string accountName)
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 resourceGroupName = GetResourceGroupByAccount(accountName);
             }
 
-            _client.Account.EnableKeyVault(resourceGroupName, accountName);
+            _client.Accounts.EnableKeyVault(resourceGroupName, accountName);
         }
 
         public FirewallRule AddOrUpdateFirewallRule(string resourceGroupName, string accountName, string ruleName, string startIp, string endIp, Cmdlet runningCommand)
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 resourceGroupName = GetResourceGroupByAccount(accountName);
             }
 
-            if (_client.Account.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)
+            if (_client.Accounts.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)
             {
                 runningCommand.WriteWarning(string.Format(Properties.Resources.FirewallDisabledWarning, accountName));
             }
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 resourceGroupName,
                 accountName,
                 ruleName,
-                new FirewallRule
+                new CreateOrUpdateFirewallRuleParameters
                 {
                     StartIpAddress = startIp,
                     EndIpAddress = endIp
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 resourceGroupName = GetResourceGroupByAccount(accountName);
             }
 
-            if (_client.Account.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)
+            if (_client.Accounts.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)
             {
                 runningCommand.WriteWarning(string.Format(Properties.Resources.FirewallDisabledWarning, accountName));
             }
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 resourceGroupName = GetResourceGroupByAccount(accountName);
             }
 
-            if (_client.Account.Get(resourceGroupName, accountName).TrustedIdProviderState == TrustedIdProviderState.Disabled)
+            if (_client.Accounts.Get(resourceGroupName, accountName).TrustedIdProviderState == TrustedIdProviderState.Disabled)
             {
                 runningCommand.WriteWarning(string.Format(Properties.Resources.TrustedIdProviderDisabledWarning, accountName));
             }
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 resourceGroupName,
                 accountName,
                 providerName,
-                new TrustedIdProvider
+                new CreateOrUpdateTrustedIdProviderParameters
                 {
                     IdProvider = providerEndpoint 
                 });
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 resourceGroupName = GetResourceGroupByAccount(accountName);
             }
 
-            if (_client.Account.Get(resourceGroupName, accountName).TrustedIdProviderState == TrustedIdProviderState.Disabled)
+            if (_client.Accounts.Get(resourceGroupName, accountName).TrustedIdProviderState == TrustedIdProviderState.Disabled)
             {
                 runningCommand.WriteWarning(string.Format(Properties.Resources.TrustedIdProviderDisabledWarning, accountName));
             }
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public List<DataLakeStoreAccountBasic> ListAccounts(string resourceGroupName, string filter, int? top, int? skip)
         {
-            var parameters = new ODataQuery<DataLakeStoreAccount>
+            var parameters = new ODataQuery<DataLakeStoreAccountBasic>
             {
                 Filter = filter,
                 Top = top,
@@ -358,8 +358,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             var accountList = new List<DataLakeStoreAccountBasic>();
             var response = string.IsNullOrEmpty(resourceGroupName) ?
-                _client.Account.List(parameters) :
-                _client.Account.ListByResourceGroup(resourceGroupName, parameters);
+                _client.Accounts.List(parameters) :
+                _client.Accounts.ListByResourceGroup(resourceGroupName, parameters);
 
             accountList.AddRange(response);
 
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         private IPage<DataLakeStoreAccountBasic> ListAccountsWithNextLink(string nextLink)
         {
-            return _client.Account.ListNext(nextLink);
+            return _client.Accounts.ListNext(nextLink);
         }
 
         private IPage<TrustedIdProvider> ListTrustedIdProvidersWithNextLink(string nextLink)
