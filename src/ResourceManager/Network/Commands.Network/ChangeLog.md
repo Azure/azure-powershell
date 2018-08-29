@@ -20,6 +20,11 @@
 
 ## Current Release
 
+## Version 6.6.1
+* Changed default cmdlet output presentation to table view
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
 ## Version 6.6.0
 * Fixed issue with default resource groups not being set.
 * Changed default models representation to table-view
