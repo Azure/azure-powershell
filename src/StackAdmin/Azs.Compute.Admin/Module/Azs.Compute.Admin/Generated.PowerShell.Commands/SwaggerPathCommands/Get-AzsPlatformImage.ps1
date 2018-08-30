@@ -184,4 +184,3 @@ function Get-AzsPlatformImage {
         }
     }
 }
-
