@@ -94,6 +94,16 @@
         public PSIpsecPolicy IpSecPolicy { get; set; }
 
         [Parameter(
+        Mandatory = false,
+        ValueFromPipelineByPropertyName = true,
+        HelpMessage = "Gateway connection protocol:IKEv1/IKEv2")]
+        [ValidateSet(
+            MNM.VirtualNetworkGatewayConnectionProtocol.IKEv1,
+            MNM.VirtualNetworkGatewayConnectionProtocol.IKEv2,
+            IgnoreCase = true)]
+        public string ConnectionProtocol { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Enable BGP for this connection")]
         public bool? EnableBgp { get; set; }
