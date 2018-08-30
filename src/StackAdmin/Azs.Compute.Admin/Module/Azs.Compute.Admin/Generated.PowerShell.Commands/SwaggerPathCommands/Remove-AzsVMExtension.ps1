@@ -22,7 +22,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 .PARAMETER Version
     The version of the virtual machine extension image.
 
-.PARAMETER LocationName
+.PARAMETER Location
     Location of the resource.
 
 .PARAMETER ResourceId
@@ -147,4 +147,3 @@ function Remove-AzsVMExtension {
         }
     }
 }
-
