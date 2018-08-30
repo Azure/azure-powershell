@@ -33,7 +33,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 Description = 'Microsoft Azure PowerShell - Storage service management cmdlets for Azure Resource Manager.  Creates and manages storage accounts in Azure Resource Manager.'
 
 # Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = '3.0'
+PowerShellVersion = '5.0'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
@@ -52,7 +52,7 @@ CLRVersion = '4.0'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.4'; },
-               @{ModuleName = 'Azure.Storage'; ModuleVersion = '4.1.1'; })
+               @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.1.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
