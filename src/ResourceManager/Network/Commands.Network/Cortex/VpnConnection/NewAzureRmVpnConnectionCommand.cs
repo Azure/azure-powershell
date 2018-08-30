@@ -217,6 +217,11 @@
                 vpnConnection.SharedKey = SecureStringExtensions.ConvertToString(this.SharedKey);
             }
 
+            if (!String.IsNullOrEmpty(this.ConnectionProtocol))
+            {
+                vpnConnection.ConnectionProtocol = this.ConnectionProtocol;
+            }
+
             //// Connection bandwidth
             vpnConnection.ConnectionBandwidth = this.ConnectionBandwidthInMbps > 0 ?
                 Convert.ToInt32(this.ConnectionBandwidthInMbps) :
