@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         DefaultParameterSetName = WeeklyRetentionRequiredSet,SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low),
         OutputType(typeof(AzureSqlDatabaseBackupLongTermRetentionPolicyModel))]
-    [Alias("Set-AzureRmSqlDatabaseLongTermRetentionPolicy")]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLongTermRetentionPolicy")]
     public class SetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
         /// <summary>
