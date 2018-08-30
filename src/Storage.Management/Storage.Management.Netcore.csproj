@@ -8,7 +8,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.Storage.Management</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Storage.Management</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
@@ -61,6 +60,13 @@
     <EmbeddedResource Remove="Stack\Properties\Resources.resx" />
     <None Remove="Stack\MSSharedLibKey.snk" />
     <None Remove="Stack\packages.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Remove="Properties\AssemblyInfo.cs" />
+    <None Remove="Properties\AssemblyInfo.cs" />
+    <Content Remove="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 
 </Project>

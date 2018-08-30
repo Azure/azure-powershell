@@ -6,7 +6,6 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.Authentication.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Authentication.Test</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
@@ -26,6 +25,13 @@
     <ProjectReference Include="..\Storage.Management\Storage.Management.Netcore.csproj" />
     <ProjectReference Include="..\Common\Common.Netcore.csproj" />
     <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.Netcore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Remove="Properties\AssemblyInfo.cs" />
+    <None Remove="Properties\AssemblyInfo.cs" />
+    <Content Remove="Properties\AssemblyInfo.cs" />
   </ItemGroup>
 
 </Project>
