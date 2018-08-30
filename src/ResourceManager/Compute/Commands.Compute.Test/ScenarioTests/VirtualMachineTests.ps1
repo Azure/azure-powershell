@@ -130,7 +130,7 @@ function Test-VirtualMachine
         $a = $vm1 | Out-String;
         Write-Verbose("Get-AzureRmVM output:");
         Write-Verbose($a);
-		Assert-NotNull $a
+        Assert-NotNull $a
         Assert-True {$a.Contains("Sku");}
 
         # VM Compact output
