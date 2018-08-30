@@ -17,153 +17,157 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
+    using ServiceManagemenet.Common.Models;
     using System.Diagnostics;
 
     public class RecordsTests : DnsTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public RecordsTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetCrud()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetCrud");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetCrudTrimsDotFromZoneName()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetCrudTrimsDotFromZoneName");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetCrudTrimsDotFromZoneName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetCrudWithPiping()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetCrudWithPiping");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetCrudWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetCrudWithPipingTrimsDotFromZoneName()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetCrudWithPipingTrimsDotFromZoneName");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetCrudWithPipingTrimsDotFromZoneName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetA()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetA");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetA");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetANonEmpty()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetANonEmpty");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetANonEmpty");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetAAAA()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetAAAA");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetAAAA");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetAAAANonEmpty()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetAAAANonEmpty");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetAAAANonEmpty");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetCNAME()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetCNAME");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetCNAME");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetCNAMENonEmpty()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetCNAMENonEmpty");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetCNAMENonEmpty");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetMX()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetMX");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetMX");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetMXNonEmpty()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetMXNonEmpty");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetMXNonEmpty");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetCAA()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetCAA");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetCAA");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetCAANonEmpty()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetCAANonEmpty");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetCAANonEmpty");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetNS()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetNS");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetNS");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetNSNonEmpty()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetNSNonEmpty");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetNSNonEmpty");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetTXT()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetTXT");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetTXT");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetTXTNonEmpty()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetTXTNonEmpty");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetTXTNonEmpty");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetTXTLengthValidation()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetTXTLengthValidation");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetTXTLengthValidation");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetTXTLegacyLengthValidation()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetTXTLegacyLengthValidation");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetTXTLegacyLengthValidation");
         }
 
 
@@ -171,90 +175,90 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetSRV()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetSRV");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetSRV");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetSRVNonEmpty()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetSRVNonEmpty");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetSRVNonEmpty");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetSOA()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetSOA");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetSOA");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetPTR()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetPTR");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetPTR");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetPTRNonEmpty()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetPTRNonEmpty");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetPTRNonEmpty");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetnewAlreadyExists()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetnewAlreadyExists");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetnewAlreadyExists");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetAddRecordTypeMismatch()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetAddRecordTypeMismatch");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetAddRecordTypeMismatch");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetAddTwoCnames()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetAddTwoCnames");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetAddTwoCnames");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetRemoveRecordTypeMismatch()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetRemoveRecordTypeMismatch");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetRemoveRecordTypeMismatch");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetEtagMismatch()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetEtagMismatch");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetEtagMismatch");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetGet()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetGet");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetGet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetEndsWithZoneName()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetEndsWithZoneName");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetEndsWithZoneName");
         }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetNewRecordNoName()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetNewRecordNoName");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-RecordSetNewRecordNoName");
         }
     }
 }

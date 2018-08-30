@@ -17,9 +17,11 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSLoadBalancer : PSTopLevelResource
     {
+        [Ps1Xml(Label = "Sku Name", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name")]
         public PSLoadBalancerSku Sku { get; set; }
 
         public List<PSFrontendIPConfiguration> FrontendIpConfigurations { get; set; }
@@ -34,6 +36,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSInboundNatPool> InboundNatPools { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]

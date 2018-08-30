@@ -23,9 +23,12 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
 {
     public class ContainerRegistryTests : RMTestBase
     {
-        public ContainerRegistryTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public ContainerRegistryTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
@@ -33,21 +36,21 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureContainerRegistry()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureContainerRegistry");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureContainerRegistry");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureContainerRegistryCredential()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureContainerRegistryCredential");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureContainerRegistryCredential");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureContainerRegistryNameAvailability()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureContainerRegistryNameAvailability");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureContainerRegistryNameAvailability");
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
@@ -55,7 +58,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestAzureContainerRegistryReplication()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureContainerRegistryReplication");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureContainerRegistryReplication");
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
@@ -63,7 +66,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestAzureContainerRegistryWebhook()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-AzureContainerRegistryWebhook");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-AzureContainerRegistryWebhook");
         }
     }
 }

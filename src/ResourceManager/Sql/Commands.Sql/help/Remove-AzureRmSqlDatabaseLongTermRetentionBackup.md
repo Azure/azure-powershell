@@ -14,7 +14,7 @@ Deletes a long term retention backup.
 
 ### RemoveBackupDefault (Default)
 ```
-Remove-AzureRmSqlDatabaseLongTermRetentionBackup -Location <String> [-ServerName] <String>
+Remove-AzureRmSqlDatabaseLongTermRetentionBackup [-Location] <String> [-ServerName] <String>
  [-DatabaseName] <String> [-BackupName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -88,7 +88,7 @@ This command deletes all long term retention backups for the northeurope locatio
 The name of the backup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveBackupDefault
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Database the backup is from.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveBackupDefault
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 Skip confirmation message for performing the action
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 The Database Long Term Retention Backup object to remove.
 
 ```yaml
-Type: AzureSqlDatabaseLongTermRetentionBackupModel
+Type: Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseLongTermRetentionBackupModel
 Parameter Sets: RemoveBackupByInputObject
 Aliases:
 
@@ -163,12 +163,12 @@ Accept wildcard characters: False
 The location of the backups' source server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveBackupDefault
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 The Resource ID of the Database Long Term Retention Backup to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveBackupByResourceId
 Aliases:
 
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Server the backup is under.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveBackupDefault
 Aliases:
 
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -224,7 +224,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -236,13 +236,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseLongTermRetentionBackupModel
 
 ## OUTPUTS
 

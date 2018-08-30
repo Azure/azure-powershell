@@ -14,9 +14,10 @@
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// <summary>
     /// Create or update an Activity Log Alert
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(PSActivityLogAlertResource))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(PSActivityLogAlertResource))]
     public class SetAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
         internal const string SetActivityLogAlertDefaultParamGroup = "SetByNameAndResourceGroup";
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         [Parameter(ParameterSetName = SetActivityLogAlertFromPipeParamGroup, Mandatory = false, HelpMessage = "The list of leaf conditions of the activity log alert")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of leaf conditions of the activity log alert")]
         [ValidateNotNullOrEmpty]
-        public List<ActivityLogAlertLeafCondition> Condition { get; set; }
+        public List<Management.Monitor.Management.Models.ActivityLogAlertLeafCondition> Condition { get; set; }
 
         /// <summary>
         /// Gets or sets the actions of the activity log alert
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         [Parameter(ParameterSetName = SetActivityLogAlertFromPipeParamGroup, Mandatory = false, HelpMessage = "The list actions of the activity log alert")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list actions of the activity log alert")]
         [ValidateNotNullOrEmpty]
-        public List<ActivityLogAlertActionGroup> Action { get; set; }
+        public List<Management.Monitor.Management.Models.ActivityLogAlertActionGroup> Action { get; set; }
 
         /// <summary>
         /// Gets or sets the DisableAlert flag.
@@ -215,12 +216,12 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
 
             if (this.MyInvocation.BoundParameters.ContainsKey("Condition") || this.Condition != null)
             {
-                requestBody.Condition = new ActivityLogAlertAllOfCondition(this.Condition);
+                requestBody.Condition = new ActivityLogAlertAllOfCondition(allOf: this.Condition.Select(e => new ActivityLogAlertLeafCondition(field: e.Field, equals: e.Equals)).ToList());
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("Action") || this.Action != null)
             {
-                requestBody.Actions = new ActivityLogAlertActionList(this.Action);
+                requestBody.Actions = new ActivityLogAlertActionList(actionGroups: this.Action.Select(e => new ActivityLogAlertActionGroup(actionGroupId: e.ActionGroupId, webhookProperties: e.WebhookProperties)).ToList());
             }
 
             if (this.DisableAlert.IsPresent)
@@ -247,8 +248,8 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
                 name: name,
                 location: location,
                 scopes: this.Scope,
-                condition: new ActivityLogAlertAllOfCondition(this.Condition),
-                actions: new ActivityLogAlertActionList(this.Action));
+                condition: new ActivityLogAlertAllOfCondition(allOf: this.Condition.Select(e => new ActivityLogAlertLeafCondition(field: e.Field, equals: e.Equals)).ToList()),
+                actions: new ActivityLogAlertActionList(actionGroups: this.Action.Select(e => new ActivityLogAlertActionGroup(actionGroupId: e.ActionGroupId, webhookProperties: e.WebhookProperties)).ToList()));
 
             // EnableAlert defaults to true
             newAlert.Enabled = !this.DisableAlert.IsPresent;

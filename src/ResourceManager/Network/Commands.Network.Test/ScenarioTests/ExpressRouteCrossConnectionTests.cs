@@ -21,16 +21,20 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class ExpressRouteCrossConnectionTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public ExpressRouteCrossConnectionTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.pgtm)]
         public void TestExpressRouteCrossConnectionApis()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCrossConnectionApis");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCrossConnectionApis");
         }
     }
 }

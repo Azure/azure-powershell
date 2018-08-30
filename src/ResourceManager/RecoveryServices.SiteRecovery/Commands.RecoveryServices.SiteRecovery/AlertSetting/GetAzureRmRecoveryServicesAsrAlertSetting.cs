@@ -22,9 +22,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     /// Gets Azure Site Recovery Notification / Alert Settings.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Get, 
-        "AzureRmRecoveryServicesAsrAlertSetting")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrAlertSetting")]
     [Alias(
         "Get-ASRNotificationSetting",
         "Get-AzureRmRecoveryServicesAsrNotificationSetting",

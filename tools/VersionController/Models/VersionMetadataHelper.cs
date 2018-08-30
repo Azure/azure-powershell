@@ -296,6 +296,14 @@ namespace VersionController.Models
                     var newModuleMetadata = proxy.GetModuleMetadata(assemblyPath, requiredModules);
                     var serializedCmdletName = nestedModule + ".json";
                     var serializedCmdletFile = Directory.GetFiles(serializedCmdletsDirectory, serializedCmdletName).FirstOrDefault();
+                    if (serializedCmdletFile == null)
+                    {
+                        var currentColor = Console.ForegroundColor;
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"Warning: {nestedModule} does not have a previously serialized cmdlet for comparison.");
+                        Console.ForegroundColor = currentColor;
+                        continue;
+                    }
                     var oldModuleMetadata = DeserializeCmdlets(serializedCmdletFile);
                     CmdletLoader.ModuleMetadata = oldModuleMetadata;
                     issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyPath, "AssemblyFileName");
@@ -326,7 +334,7 @@ namespace VersionController.Models
             }
             else
             {
-                throw new NullReferenceException("No nested modules found for " + moduleName);
+                return Version.PATCH;
             }
 
             return versionBump;

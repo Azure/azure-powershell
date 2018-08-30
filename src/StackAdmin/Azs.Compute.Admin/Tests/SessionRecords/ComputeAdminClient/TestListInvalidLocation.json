@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/thisisnotarealplace/quotas?api-version=2015-12-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvdGhpc2lzbm90YXJlYWxwbGFjZS9xdW90YXM/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/8158498d-27b1-4ccf-9aa1-de0f925731e6/providers/Microsoft.Compute.Admin/locations/thisisnotarealplace/quotas?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODE1ODQ5OGQtMjdiMS00Y2NmLTlhYTEtZGUwZjkyNTczMWU2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvdGhpc2lzbm90YXJlYWxwbGFjZS9xdW90YXM/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9ec14770-52d8-4427-8a4f-97bba691231f"
+          "62052f4d-8724-4ffe-9126-e1c49246e0f1"
         ],
         "accept-language": [
           "en-US"
@@ -17,7 +17,7 @@
           "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/thisisnotarealplace/quotas/Default Quota\",\r\n      \"name\": \"Default Quota\",\r\n      \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n      \"location\": \"thisisnotarealplace\",\r\n      \"properties\": {\r\n        \"virtualMachineCount\": 20,\r\n        \"coresLimit\": 50,\r\n        \"availabilitySetCount\": 10,\r\n        \"vmScaleSetCount\": 20\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/8158498d-27b1-4ccf-9aa1-de0f925731e6/providers/Microsoft.Compute.Admin/locations/thisisnotarealplace/quotas/Default Quota\",\r\n      \"name\": \"Default Quota\",\r\n      \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n      \"location\": \"thisisnotarealplace\",\r\n      \"properties\": {\r\n        \"virtualMachineCount\": 20,\r\n        \"coresLimit\": 50,\r\n        \"availabilitySetCount\": 10,\r\n        \"vmScaleSetCount\": 20\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "356"
@@ -32,7 +32,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 13 Oct 2017 19:54:20 GMT"
+          "Wed, 07 Feb 2018 02:22:36 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -41,19 +41,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "WWW-Authenticate": [
-          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvGUdT0qcrcnQ6mwNzu7aD52NZiB6WBqKTVS3y29ROxajKtwsAzwFvg+p4WLpVfpc6zwm5DR0dqCKOYEQFp8njoVp3fX7krouMm4/3UswKN3SmD9xokh0v8jlMK+f40B5fPilEFQRnyY/WLOz3YGFg"
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvUzXDmYquICiTIHAvw4kf5b5ysGsPJnl0YHhS/8ZhfNhSJAu8j2qtBzoyp3YZv5VkDPh75i2EvFcCVstq2mtTqFPy40sFoAg3N2L8HYv21ULBtluXJxeeYHaq+mYbrBbGcLk+I80h/FeuP+K4KZqu"
         ],
         "x-ms-correlation-request-id": [
-          "117b67d6-95d4-4966-9291-a88bf08fc331"
+          "d7334284-c072-4aa4-a845-7403e909e31b"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14844"
+          "14519"
         ],
         "x-ms-request-id": [
-          "117b67d6-95d4-4966-9291-a88bf08fc331"
+          "d7334284-c072-4aa4-a845-7403e909e31b"
         ],
         "x-ms-routing-request-id": [
-          "LOCAL:20171013T195421Z:117b67d6-95d4-4966-9291-a88bf08fc331"
+          "LOCAL:20180207T022237Z:d7334284-c072-4aa4-a845-7403e909e31b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -67,6 +67,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "0ff0bbbe-d68d-4314-8f68-80a808b5a6ec"
+    "SubscriptionId": "8158498d-27b1-4ccf-9aa1-de0f925731e6"
   }
 }

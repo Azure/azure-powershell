@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,16 +20,19 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 {
     public class DataFactoryGatewayTests : DataFactoriesScenarioTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public DataFactoryGatewayTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "test takes too long (more than 5 sec)")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingDataFactoryGateway()
         {
-            RunPowerShellTest("Test-GetNonExistingDataFactoryGateway");
+            RunPowerShellTest(_logger, "Test-GetNonExistingDataFactoryGateway");
         }
 
 #if NETSTANDARD
@@ -40,7 +44,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactoryGateway()
         {
-            RunPowerShellTest("Test-DataFactoryGateway");
+            RunPowerShellTest(_logger, "Test-DataFactoryGateway");
         }
 
 #if NETSTANDARD
@@ -52,14 +56,14 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataFactoryGatewayAuthKey()
         {
-            RunPowerShellTest("Test-DataFactoryGatewayAuthKey");
+            RunPowerShellTest(_logger, "Test-DataFactoryGatewayAuthKey");
         }
 
         [Fact(Skip = "test takes too long (more than 5 sec)")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactoryGatewayWithDataFactoryParameter()
         {
-            RunPowerShellTest("Test-DataFactoryGatewayWithDataFactoryParameter");
+            RunPowerShellTest(_logger, "Test-DataFactoryGatewayWithDataFactoryParameter");
         }
     }
 }

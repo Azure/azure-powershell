@@ -19,6 +19,37 @@
 -->
 ## Current Release
 
+## Version 6.4.1
+* Fixed issue with default resource groups not being set.
+* Fixed issue with creating managed application from the MarketPlace.
+
+## Version 6.4.0
+* Support template deployment at subscription scope. Add new Cmdlets:
+    - New-AzureRmDeployment
+    - Get-AzureRmDeployment
+    - Test-AzureRmDeployment
+    - Remove-AzureRmDeployment
+    - Stop-AzureRmDeployment
+    - Save-AzureRmDeploymentTemplate
+    - Get-AzureRmDeploymentOperation
+* Fix issue where error is thrown when passing a context to Set-AzureRmResource
+    - https://github.com/Azure/azure-powershell/issues/5705
+* Fix example in New-AzureRmResourceGroupDeployment
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 6.3.0
+* Updated help files to include full parameter types and correct input/output types.
+* Fix piping scenario with `Set-AzureRmResource`
+* Fix issue when providing both tag name and value for `Get-AzureRmResource`
+    - https://github.com/Azure/azure-powershell/issues/6765
+
+## Version 6.2.1
+* Update Roleassignment and roledefinition cmdlets:
+    - Remove extra roledefinition calls done as part of paging.
+* Fix Get-AzureRmRoleAssignment cmdlet
+    - Fix -ExpandPrincipalGroups command parameter functionality
+* Fix issue with `Get-AzureRmResource` where `-ResourceType` parameter was case sensitive
+
 ## Version 6.2.0
 * Update Get-AzureRmPolicyAssignment cmdlets:
     - Add support for listing -Scope values at management group level

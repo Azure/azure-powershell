@@ -30,7 +30,7 @@ Gets Azure CDN edgenodes.
 Gets a CDN endpoint.
 
 ### [Get-AzureRmCdnEndpointNameAvailability](Get-AzureRmCdnEndpointNameAvailability.md)
-Gets availability status of a CDN endpoint.
+Gets availability status of the CDN endpoint.
 
 ### [Get-AzureRmCdnEndpointResourceUsage](Get-AzureRmCdnEndpointResourceUsage.md)
 Gets the resource usage of a CDN endpoint.

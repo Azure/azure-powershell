@@ -46,7 +46,7 @@ PS C:\> Start-AzureRmAksDashboard -ResourceGroupName group -Name myCluster
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 Do not pop open a browser after establising the kubectl port-forward.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Id of a managed Kubernetes cluster
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 A PSKubernetesCluster object, normally passed through the pipeline.
 
 ```yaml
-Type: PSKubernetesCluster
+Type: Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 Name of your managed Kubernetes cluster
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GroupNameParameterSet
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Cmdlet returns the KubeTunnelJob if passed.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 Resource group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GroupNameParameterSet
 Aliases:
 
@@ -153,7 +153,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
-System.String
+Parameters: InputObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 
