@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -31,6 +33,12 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
+            if (string.IsNullOrEmpty(this.AddressPrefix) &&
+                (this.AddressPrefixes == null || !this.AddressPrefixes.Any()))
+            {
+                throw new ArgumentException("Either AddressPrefix or AddressPrefixes must be specified");
+            }
+
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (this.NetworkSecurityGroup != null)
@@ -47,6 +55,7 @@ namespace Microsoft.Azure.Commands.Network
             var subnet = new PSSubnet();
             subnet.Name = this.Name;
             subnet.AddressPrefix = this.AddressPrefix;
+            subnet.AddressPrefixes = this.AddressPrefixes;
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {

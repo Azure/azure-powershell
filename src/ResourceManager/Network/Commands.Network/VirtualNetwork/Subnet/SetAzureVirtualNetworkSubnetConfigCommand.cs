@@ -47,6 +47,12 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Subnet with the specified name does not exist");
             }
 
+            if (string.IsNullOrEmpty(this.AddressPrefix) &&
+                (this.AddressPrefixes == null || !this.AddressPrefixes.Any()))
+            {
+                throw new ArgumentException("Either AddressPrefix or AddressPrefixes must be specified");
+            }
+
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (this.NetworkSecurityGroup != null)
@@ -61,6 +67,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             subnet.AddressPrefix = this.AddressPrefix;
+            subnet.AddressPrefixes = this.AddressPrefixes;
 
             if (!string.IsNullOrEmpty(this.NetworkSecurityGroupId))
             {
