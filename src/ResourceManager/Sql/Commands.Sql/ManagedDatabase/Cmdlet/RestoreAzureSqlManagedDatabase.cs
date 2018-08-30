@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 Name = InputObject.Name;
             }
             else if (string.Equals(this.ParameterSetName, PointInTimeSameInstanceRestoreFromResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(this.ParameterSetName, PointInTimeCrossInstanceRestoreFromResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+                     string.Equals(this.ParameterSetName, PointInTimeCrossInstanceRestoreFromResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
                 var resourceInfo = new ResourceIdentifier(ResourceId);
 
