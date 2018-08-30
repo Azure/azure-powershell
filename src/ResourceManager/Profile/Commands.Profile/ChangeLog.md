@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 5.5.1
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
 ## Version 5.5.0
 * Added expiration property to tokens returned during Connect-AzureRmAccount
 
