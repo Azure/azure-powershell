@@ -14,7 +14,6 @@
 
 
 $global:SkippedTests = @(
-    'TestRestoreBackup'
 )
 
 $global:Location = "local"
