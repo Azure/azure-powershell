@@ -149,7 +149,7 @@ InModuleScope Azs.Backup.Admin {
         It "TestUpdateBackupLocation" -Skip:$('TestUpdateBackupLocation' -in $global:SkippedTests) {
             $global:TestName = 'TestUpdateBackupLocation'
 
-            $backup = Set-AzsBackupConfiguration -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Username $global:username -Password $global:password -BackupShare $global:path -EncryptionKey $global:encryptionKey -IsBackupSchedulerEnabled $global:isBackupSchedulerEnabled -BackupFrequencyInHours $global:backupFrequencyInHours -BackupRetentionPeriodInDays $global:backupRetentionPeriodInDays
+            $backup = Set-AzsBackupConfiguration -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Username $global:username -Password $global:password -Path $global:path -EncryptionKey $global:encryptionKey -IsBackupSchedulerEnabled $global:isBackupSchedulerEnabled -BackupFrequencyInHours $global:backupFrequencyInHours -BackupRetentionPeriodInDays $global:backupRetentionPeriodInDays
 
             $backup                             | Should Not Be $Null
             $backup.Path                        | Should Be $global:path
@@ -173,15 +173,9 @@ InModuleScope Azs.Backup.Admin {
         It "TestRestoreBackup" -Skip:$('TestRestoreBackup' -in $global:SkippedTests) {
             $global:TestName = 'TestRestoreBackup'
 
-            [String]$username = "azurestack\AzureStackAdmin"
-            [SecureString]$password = ConvertTo-SecureString -String "password" -AsPlainText -Force
-            [String]$path = "\\su1fileserver\SU1_Infrastructure_2"
-            [SecureString]$encryptionKey = ConvertTo-SecureString -String "YVVOa0J3S2xTamhHZ1lyRU9wQ1pKQ0xWanhjaHlkaU5ZQnNDeHRPTGFQenJKdWZsRGtYT25oYmlaa1RMVWFKeQ==" -AsPlainText -Force
-
-            $backup = Set-AzsBackupConfiguration -ResourceGroupName $global:ResourceGroupName -Location $global:ResourceGroupName -Username $username -Password $password -BackupShare $path -EncryptionKey $encryptionKey
-
+            $backup = Start-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Force
             $backup 					| Should Not Be $Null
-            Restore-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $global:ResourceGroupName -Backup $backup.Name
+            Restore-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Name $backup.Name -Force
         }
     }
 }
