@@ -14,14 +14,11 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
     public class PSVirtualWanVpnSitesConfiguration
     {
+        [Ps1Xml(Label = "SAS Url", Target = ViewControl.Table)]
         public string SasUrl { get; set; }
     }
 }
