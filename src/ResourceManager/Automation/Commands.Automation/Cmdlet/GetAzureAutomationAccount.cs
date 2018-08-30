@@ -31,16 +31,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// The automation client.
         /// </summary>
-        private IAutomationClient automationClient;
+        private IAutomationPSClient automationClient;
 
         /// <summary>
         /// Gets or sets the automation client base.
         /// </summary>
-        public IAutomationClient AutomationClient
+        public IAutomationPSClient AutomationClient
         {
             get
             {
-                return this.automationClient = this.automationClient ?? new AutomationClient(DefaultProfile.DefaultContext);
+                return this.automationClient = this.automationClient ?? new AutomationPSClient(DefaultProfile.DefaultContext);
             }
 
             set

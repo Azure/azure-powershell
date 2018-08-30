@@ -137,6 +137,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string TimeZone { get; set; }
 
         /// <summary>
+        /// Passed to indicate that the schedule object returned by the cmdlet is to be used for update management
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that this schedule object will be used for scheduling an update deployment")]
+        public SwitchParameter ForUpdate { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -175,7 +181,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     break;
             }
 
-            Schedule createdSchedule = this.AutomationClient.CreateSchedule(this.ResourceGroupName, this.AutomationAccountName, schedule);
+            Schedule createdSchedule = schedule;
+
+            if (!this.ForUpdate.IsPresent)
+            {
+                createdSchedule = this.AutomationClient.CreateSchedule(this.ResourceGroupName, this.AutomationAccountName, schedule);
+            }
+             
             this.WriteObject(createdSchedule);
         }
 
