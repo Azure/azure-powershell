@@ -189,6 +189,95 @@ function Test-subnetCRUD
 
 <#
 .SYNOPSIS
+Tests creating new simple virtualNetwork and subnets.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-multiPrefixSubnetCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $subnet2Name = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create the Virtual Network
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefixes 10.0.1.0/28,10.0.2.0/28
+        New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        
+        # Add a subnet
+        $vnet | Add-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefixes 10.0.3.0/28,10.0.4.0/28
+        
+        # Set VirtualNetwork
+        $vnet | Set-AzureRmVirtualNetwork
+        
+        # Get VirtualNetwork
+        $vnetExpected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        Assert-AreEqual 2 @($vnetExpected.Subnets).Count
+        Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
+        Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
+		Assert-AreEqual "10.0.1.0/28 10.0.2.0/28" $vnetExpected.Subnets[0].AddressPrefixes
+        Assert-AreEqual "10.0.3.0/28 10.0.4.0/28" $vnetExpected.Subnets[1].AddressPrefixes
+        
+        # Edit a subnet
+        $job = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Set-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefixes 10.0.5.0/28,10.0.6.0/28 | Set-AzureRmVirtualNetwork -AsJob
+        $job | Wait-Job
+
+        $vnetExpected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual 2 @($vnetExpected.Subnets).Count
+        Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
+        Assert-AreEqual $subnet2Name $vnetExpected.Subnets[1].Name
+        Assert-AreEqual "10.0.5.0/28 10.0.6.0/28" $vnetExpected.Subnets[1].AddressPrefixes
+
+        # Get subnet
+        $subnet2 = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name
+        $subnetAll = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzureRmVirtualNetworkSubnetConfig
+
+        Assert-AreEqual 2 @($subnetAll).Count
+        Assert-AreEqual $subnetName $subnetAll[0].Name
+        Assert-AreEqual $subnet2Name $subnetAll[1].Name
+        Assert-AreEqual $subnet2Name $subnet2.Name
+
+        # Get non-existing subnet
+        try
+        {
+            $subnetNotExists = $vnetExpected | Get-AzureRmVirtualNetworkSubnetConfig -Name "Subnet-DoesNotExist"
+        }
+        catch
+        {
+            if ($_.Exception.GetType() -ne [System.ArgumentException])
+            {
+                throw;
+            }
+        }
+
+        # Remove a subnet
+        Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Remove-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name | Set-AzureRmVirtualNetwork
+        
+        $vnetExpected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($vnetExpected.Subnets).Count
+        Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name        
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests the creation of a new virtual network with DDoS protection parameters.
 #>
 function Test-VirtualNetworkCRUDWithDDoSProtection

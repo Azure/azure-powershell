@@ -57,6 +57,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
+        public void TestVirtualNetworkMultiPrefixSubnetCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-multiPrefixSubnetCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkPeeringCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkPeeringCRUD");
