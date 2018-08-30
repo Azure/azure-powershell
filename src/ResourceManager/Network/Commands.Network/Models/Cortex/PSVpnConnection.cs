@@ -10,6 +10,9 @@
 
         public string SharedKey { get; set; }
 
+        [Ps1Xml(Label = "ConnectionProtocol", Target = ViewControl.Table)]
+        public string ConnectionProtocol { get; set; }
+
         [Ps1Xml(Label = "ConnectionStatus", Target = ViewControl.Table)]
         public string ConnectionStatus { get; set; }
 
