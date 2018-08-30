@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// Class for the cmdlet to create task.
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationTask", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSProjectTask))]
-    [Alias("New-AzureRmDmsTask")]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsTask")]
     public class NewDataMigrationTask : DataMigrationCmdlet, IDynamicParameters
     {
         [Parameter(
