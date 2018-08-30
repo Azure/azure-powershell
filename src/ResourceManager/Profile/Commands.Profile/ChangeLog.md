@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+- Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set 
 
 ## Version 5.5.0
 * Added expiration property to tokens returned during Connect-AzureRmAccount
