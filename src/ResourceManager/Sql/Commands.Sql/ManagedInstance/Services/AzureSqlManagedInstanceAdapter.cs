@@ -66,7 +66,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         /// <summary>
         /// Gets a list of all the managed instances in a subscription
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <returns>A list of all the managed instances</returns>
         public List<AzureSqlManagedInstanceModel> ListManagedInstances()
         {

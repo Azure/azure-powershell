@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// Defines the Set-AzureRmSqlManagedInstance cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlManagedInstance",
+        DefaultParameterSetName = SetByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class SetAzureSqlManagedInstance : ManagedInstanceCmdletBase

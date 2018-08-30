@@ -21,18 +21,19 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlManagedDatabase"),
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlManagedDatabase",
+        DefaultParameterSetName = GetByNameAndResourceGroupParameterSet),
         OutputType(typeof(AzureSqlManagedDatabaseModel))]
     public class GetAzureSqlManagedDatabase : AzureSqlManagedDatabaseCmdletBase<IEnumerable<AzureSqlManagedDatabaseModel>>
     {
         protected const string GetByNameAndResourceGroupParameterSet =
-            "GetManagedDatabaseFromInputParameters";
+            "GetManagedDatabaseByInputParameters";
 
         protected const string GetByResourceIdParameterSet =
-            "GetManagedDatabaseFromAzureResourceId";
+            "GetManagedDatabaseByAzureResourceId";
 
         protected const string GetByInputObjectParameterSet =
-            "GetManagedDatabaseFromManagedInstanceObject";
+            "GetManagedDatabaseByManagedInstanceObject";
 
         /// <summary>
         /// Gets or sets the name of the managed database to use.
