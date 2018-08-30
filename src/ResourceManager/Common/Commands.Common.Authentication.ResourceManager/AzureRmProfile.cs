@@ -312,10 +312,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         }
 
         /// <summary>
-        /// Set the contaienr to its defautl state
+        /// Set the contaienr to its default state
         /// </summary>
         public void Clear()
         {
+            this.GetTokenCache()?.Clear();
             Contexts.Clear();
             DefaultContextKey = "Default";
             DefaultContext = new AzureContext();
@@ -324,6 +325,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 EnvironmentTable.Add(environment.Key, environment.Value);
             }
+
+            AzureRmProfileProvider.Instance.SetTokenCacheForProfile(this);
         }
 
         public bool TryAddContext(IAzureContext context, out string name)
@@ -393,9 +396,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (context != null)
             {
 
-                if (context.Subscription != null)
+                if (context.Subscription != null && context.Account != null)
                 {
-                    name = string.Format("{0} - {1}", context.Subscription.Name, context.Subscription.Id);
+                    name = string.Format("{0} ({1}) - {2}", context.Subscription.Name, context.Subscription.Id, context.Account.Id);
                     result = true;
                 }
                 else

@@ -31,6 +31,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace RecoveryServices.SiteRecovery.Test
 {
@@ -103,11 +104,14 @@ namespace RecoveryServices.SiteRecovery.Test
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
 
         public void RunPowerShellTest(
+            XunitTracingInterceptor logger,
             string scenario,
             params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             this.RunPsTestWorkflow(
                 scenario,

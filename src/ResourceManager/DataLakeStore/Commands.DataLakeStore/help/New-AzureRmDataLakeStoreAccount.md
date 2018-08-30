@@ -46,7 +46,7 @@ This command creates a Data Lake Store account named ContosoADL for the East US 
 Specifies the object ID of the AzureActive Directory group to use as the default group owner for new files and folders.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Indicates that the account will not have any form of encryption applied to it.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DisableEncryption
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 
 ### -Encryption
 ```yaml
-Type: EncryptionConfigType
+Type: System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType]
 Parameter Sets: UserOrSystemAssignedEncryption
 Aliases:
 Accepted values: UserManaged, ServiceManaged
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 
 ### -KeyName
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UserOrSystemAssignedEncryption
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 
 ### -KeyVaultId
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UserOrSystemAssignedEncryption
 Aliases:
 
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 
 ### -KeyVersion
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UserOrSystemAssignedEncryption
 Aliases:
 
@@ -143,11 +143,10 @@ Accept wildcard characters: False
 ### -Location
 Specifies the location to use for the account.
 The acceptable values for this parameter are:
-
 - East US 2
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +161,7 @@ Accept wildcard characters: False
 Specifies the name of the account to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +176,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -193,7 +192,7 @@ Specifies tags as key-value pairs.
 You can use tags to identify a Data Lake Store account from other Azure resources.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -208,7 +207,7 @@ Accept wildcard characters: False
 The desired commitment tier for this account to use.
 
 ```yaml
-Type: TierType
+Type: System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.TierType]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Consumption, Commitment1TB, Commitment10TB, Commitment100TB, Commitment500TB, Commitment1PB, Commitment5PB
@@ -225,13 +224,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Collections.Hashtable
+
+### System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfigType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+
+### System.Management.Automation.SwitchParameter
+
+### System.Nullable`1[[Microsoft.Azure.Management.DataLake.Store.Models.TierType, Microsoft.Azure.Management.DataLake.Store, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ## OUTPUTS
 
-### PSDataLakeStoreAccount
-The created account details.
+### Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount
 
 ## NOTES
 

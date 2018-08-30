@@ -30,7 +30,6 @@ D:\> $vnet = New-AzureRmvirtualNetwork -Name VnetName -ResourceGroupName Resourc
 ```
 
 First, we create a new DDoS Protection plan with the **New-AzureRmDdosProtectionPlan** command.
-
 Then, we create a new virtual network with **New-AzureRmvirtualNetwork** and we specify the ID of the newly created plan in the parameter **DdosProtectionPlanId**. In this case, since we are associating the virtual network with a plan, we can also specify the parameter **EnableDdoSProtection**.
 
 ### Example 2: Create and associate a DDoS protection plan with an existing virtual network
@@ -82,9 +81,7 @@ EnableVmProtection     : false
 ```
 
 First, we create a new DDoS Protection plan with the **New-AzureRmDdosProtectionPlan** command.
-
 Second, we get the most updated version of the virtual network we want to associate with the plan. We update the property **DdosProtectionPlan** with a **PSResourceId** object containing a reference to the ID of the newly created plan. In this case, if we associate the virtual network with a DDoS protection plan, we can also set the flag **EnableDdosProtection** to true.
-
 Finally, we persist the new state by piping the local variable into **Set-AzureRmVirtualNetwork**.
 
 ## PARAMETERS
@@ -93,7 +90,7 @@ Finally, we persist the new state by piping the local variable into **Set-AzureR
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +105,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -123,7 +120,7 @@ Accept wildcard characters: False
 Specifies the location of the DDoS protection plan to be created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +135,7 @@ Accept wildcard characters: False
 Specifies the name of the DDoS protection plan to be created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -153,7 +150,7 @@ Accept wildcard characters: False
 Specifies the resource group of the DDoS protection plan to be created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +165,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -183,7 +180,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -199,7 +196,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -216,7 +213,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Collections.Hashtable
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 

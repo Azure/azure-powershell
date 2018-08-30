@@ -120,7 +120,7 @@ function Set-AzsNetworkQuota {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $Quota = $null
 

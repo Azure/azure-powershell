@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,9 +20,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class ImageTests
     {
+        XunitTracingInterceptor _logger;
+
         public ImageTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
 #if NETSTANDARD
@@ -33,7 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestImage()
         {
-            ComputeTestController.NewInstance.RunPsTest(@"Test-Image $null");
+            ComputeTestController.NewInstance.RunPsTest(_logger, @"Test-Image $null");
         }
 
 #if NETSTANDARD
@@ -45,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestImageCapture()
         {
-            ComputeTestController.NewInstance.RunPsTest(@"Test-ImageCapture $null");
+            ComputeTestController.NewInstance.RunPsTest(_logger, @"Test-ImageCapture $null");
         }
     }
 }

@@ -16,7 +16,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
-    public class RawAccessToken : IAccessToken
+    public class RawAccessToken : IRenewableToken
     {
         public string AccessToken
         {
@@ -42,5 +42,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             authTokenSetter("Bearer", AccessToken);
         }
+
+        public DateTimeOffset ExpiresOn { get; set; }
     }
 }

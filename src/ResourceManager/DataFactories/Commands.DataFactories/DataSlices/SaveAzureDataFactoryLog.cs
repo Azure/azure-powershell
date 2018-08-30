@@ -23,7 +23,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsData.Save, Constants.RunLog, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSRunLogInfo))]
+    [Cmdlet("Save", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryLog", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSRunLogInfo))]
     public class SaveAzureDataFactoryLog : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

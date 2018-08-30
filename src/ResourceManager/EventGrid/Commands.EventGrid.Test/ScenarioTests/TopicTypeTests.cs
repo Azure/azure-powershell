@@ -23,16 +23,19 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 {
     public class TopicTypeTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public TopicTypeTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicTypes()
         {
-            EventGridController.NewInstance.RunPsTest("TopicTypeTests_Operations");
+            EventGridController.NewInstance.RunPsTest(_logger, "TopicTypeTests_Operations");
         }
     }
 }
