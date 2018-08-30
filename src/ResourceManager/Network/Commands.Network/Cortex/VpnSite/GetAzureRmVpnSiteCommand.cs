@@ -21,7 +21,7 @@
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -31,7 +31,22 @@
         public override void Execute()
         {
             base.Execute();
-            WriteObject(this.GetVpnSite(this.ResourceGroupName, this.Name));
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
+
+            if (!string.IsNullOrWhiteSpace(this.Name))
+            {
+                if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                {
+                    throw new PSArgumentException("ResourceGroupName must be specified if ResourceName is specified.");
+                }
+
+                WriteObject(this.GetVpnSite(this.ResourceGroupName, this.Name));
+            }
+            else
+            {
+                //// Resource name has not been specified - list all vpnsites
+                WriteObject(this.ListVpnSites(this.ResourceGroupName));
+            }
         }
     }
 }

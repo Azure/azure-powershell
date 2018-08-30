@@ -21,7 +21,7 @@
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -31,7 +31,21 @@
         public override void Execute()
         {
             base.Execute();
-            WriteObject(this.GetVirtualHub(this.ResourceGroupName, this.Name));
+
+            if (!string.IsNullOrWhiteSpace(this.Name))
+            {
+                if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                {
+                    throw new PSArgumentException("ResourceGroupName must be specified if ResourceName is specified.");
+                }
+
+                WriteObject(this.GetVirtualHub(this.ResourceGroupName, this.Name));
+            }
+            else
+            {
+                //// Resource name has not been specified - list all hubs
+                WriteObject(this.ListVirtualHubs(this.ResourceGroupName));
+            }
         }
     }
 }

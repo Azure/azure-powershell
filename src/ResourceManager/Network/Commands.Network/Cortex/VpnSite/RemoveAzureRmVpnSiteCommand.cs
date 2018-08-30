@@ -52,6 +52,7 @@
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID for the vpnSite to be deleted.")]
+        [ResourceIdCompleter("Microsoft.Network/vpnSites")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -75,17 +76,18 @@
             }
 
             base.Execute();
-            bool shouldProcess = this.Force.IsPresent;
-            if (!shouldProcess)
-            {
-                shouldProcess = ShouldProcess(Name, Properties.Resources.RemoveResourceMessage);
-            }
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
-            if (shouldProcess)
-            {
-                this.VpnSiteClient.Delete(this.ResourceGroupName, this.Name);
-                WriteObject(true);
-            }
+            ConfirmAction(
+                    this.Force.IsPresent,
+                    string.Format(Properties.Resources.RemovingResource, this.Name),
+                    Properties.Resources.RemoveResourceMessage,
+                    this.Name,
+                    () =>
+                    {
+                        this.VpnSiteClient.Delete(this.ResourceGroupName, this.Name);
+                        WriteObject(true);
+                    });
         }
     }
 }

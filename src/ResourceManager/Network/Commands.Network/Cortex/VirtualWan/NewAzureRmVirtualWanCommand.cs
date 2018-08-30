@@ -39,7 +39,7 @@
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "location.")]
-        [LocationCompleter("Microsoft.Network/virtualWans")]
+        [LocationCompleter]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

@@ -34,7 +34,6 @@
         [Alias("ParentVpnGatewayName", "VpnGatewayName")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name of the parent VpnGateway for this connection.")]
         [ValidateNotNullOrEmpty]
         public string ParentResourceName { get; set; }
@@ -42,7 +41,6 @@
         [Alias("ParentVpnGateway", "VpnGateway")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayObject,
             HelpMessage = "The parent VpnGateway for this connection.")]
         [ValidateNotNullOrEmpty]
@@ -51,10 +49,10 @@
         [Alias("ParentVpnGatewayId", "VpnGatewayId")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayResourceId,
             HelpMessage = "The resource id of the parent VpnGateway for this connection.")]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Network/vpnGateways")]
         public string ParentResourceId { get; set; }
 
         [Alias("ResourceName", "VpnConnectionName")]
@@ -67,56 +65,48 @@
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The vpn site this connection is connected to.")]
         [ValidateNotNullOrEmpty]
         public PSVpnSite VpnSite { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The vpn site id for the VpnSite this connection is connected to.")]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Network/vpnSites")]
         public string VpnSiteId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The shared key required to set this connection up.")]
-        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public SecureString SharedKey { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The bandwith that needs to be handled by this connection in mbps.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
         public uint ConnectionBandwidthInMbps { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The bandwith that needs to be handled by this connection in mbps.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
         public PSIpsecPolicy IpSecPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable BGP for this connection")]
-        public bool EnableBgp { get; set; }
+        public bool? EnableBgp { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable rate limiting for this connection")]
-        public bool EnableRateLimiting { get; set; }
+        public bool? EnableRateLimiting { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable internet security for this connection")]
-        public bool EnableInternetSecurity { get; set; }
+        public bool? EnableInternetSecurity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -148,6 +138,9 @@
 
         private PSVpnConnection CreateVpnConnection()
         {
+            base.Execute();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
+
             PSVpnGateway parentVpnGateway = null;
 
             //// Resolve the VpnGateway
@@ -173,45 +166,40 @@
 
             //// Validate if there is a conenction with this name on this vpn connection
             //// Fail the new connection operation if there is
-            if (parentVpnGateway.VpnConnections != null)
+            if (parentVpnGateway.Connections != null)
             {
-                if (parentVpnGateway.VpnConnections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
+                if (parentVpnGateway.Connections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
                 {
                     throw new PSArgumentException("The parent VpnGateway already contains a connection with this name. If you wish to change the properties of the connection, please use the SET operation instead.");
                 }
             }
             else
             {
-                parentVpnGateway.VpnConnections = new List<PSVpnConnection>();
+                parentVpnGateway.Connections = new List<PSVpnConnection>();
             }
 
             PSVpnConnection vpnConnection = new PSVpnConnection
             {
                 Name = this.Name,
-                ConnectionBandwidhtInMbps = Convert.ToInt32(this.ConnectionBandwidthInMbps),
-                EnableBgp = this.EnableBgp,
-                EnableRateLimiting = this.EnableRateLimiting,
-                EnableInternetSecurity = this.EnableInternetSecurity
+                EnableBgp = this.EnableBgp.HasValue ? this.EnableBgp.Value : false,
+                EnableRateLimiting = this.EnableRateLimiting.HasValue ? this.EnableRateLimiting.Value : false,
+                EnableInternetSecurity = this.EnableInternetSecurity.HasValue ? this.EnableInternetSecurity.Value : false
             };
 
-            //// Resolve the VpnSite
-            string vpnSiteRGName = null;
-            string vpnSiteName = null;
-
+            //// Resolve the VpnSite reference
+            //// And set it in the VpnConnection object.
             if (this.VpnSite != null)
             {
-                vpnSiteRGName = this.VpnSite.ResourceGroupName;
-                vpnSiteName = this.VpnSite.Name;
-            }
-            else if (!string.IsNullOrWhiteSpace(this.VpnSiteId))
-            {
-                var parsedVpnSiteResourceId = new ResourceIdentifier(this.VpnSiteId);
-                vpnSiteRGName = parsedVpnSiteResourceId.ResourceGroupName;
-                vpnSiteName = parsedVpnSiteResourceId.ResourceName;
+                this.VpnSiteId = this.VpnSite.Id;
             }
 
-            //// Get the VpnSite - this will throw not found if the VpnSite does not exist
-            vpnConnection.VpnSite = new VpnSiteBaseCmdlet().GetVpnSite(vpnSiteRGName, vpnSiteName);
+            if (string.IsNullOrWhiteSpace(this.VpnSiteId))
+            {
+                throw new PSArgumentException("A valid VpnSite is required to create a VpnConnection");
+            }
+
+            //// Let's not resolve the vpnSite here. If this does not exist, NRP/GWM will fail the call.
+            vpnConnection.RemoteVpnSite = new PSResourceId() { Id = this.VpnSiteId };
 
             //// Set the shared key, if specified
             if (this.SharedKey != null)
@@ -220,7 +208,7 @@
             }
 
             //// Connection bandwidth
-            vpnConnection.ConnectionBandwidhtInMbps = this.ConnectionBandwidthInMbps > 0 ?
+            vpnConnection.ConnectionBandwidth = this.ConnectionBandwidthInMbps > 0 ?
                 Convert.ToInt32(this.ConnectionBandwidthInMbps) :
                 20;
 
@@ -229,14 +217,23 @@
                 vpnConnection.IpsecPolicies = new List<PSIpsecPolicy> { this.IpSecPolicy };
             }
 
-            parentVpnGateway.VpnConnections.Add(vpnConnection);
+            parentVpnGateway.Connections.Add(vpnConnection);
 
-            // Map to the sdk object
-            var vpnGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnGateway>(parentVpnGateway);
-            this.VpnGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vpnGatewayModel);
+            bool shouldProcess = this.Force.IsPresent;
+            if (!shouldProcess)
+            {
+                shouldProcess = ShouldProcess(Name, Properties.Resources.AddingResourceMessage);
+            }
 
-            var createdOrUpdatedVpnGateway = this.GetVpnGateway(this.ResourceGroupName, this.Name);
-            return createdOrUpdatedVpnGateway.VpnConnections.Where(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+            if (shouldProcess)
+            {
+                this.CreateOrUpdateVpnGateway(this.ResourceGroupName, this.ParentResourceName, parentVpnGateway, parentVpnGateway.Tag);
+
+                var createdOrUpdatedVpnGateway = this.GetVpnGateway(this.ResourceGroupName, this.ParentResourceName);
+                return createdOrUpdatedVpnGateway.Connections.Where(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+            }
+
+            return null;
         }
     }
 }

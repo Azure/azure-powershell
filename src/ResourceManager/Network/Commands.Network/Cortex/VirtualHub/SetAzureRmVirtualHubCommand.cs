@@ -46,7 +46,7 @@
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId,
             HelpMessage = "The resource id of the Virtual hub to be modified.")]
-        [ResourceGroupCompleter]
+        [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceId { get; set; }
 
@@ -56,38 +56,32 @@
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The Virtual hub object to be modified.")]
-        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public PSVirtualHub InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject,
             HelpMessage = "The virtual wan object this hub is linked to.")]
-        [ResourceGroupCompleter]
         public PSVirtualWan VirtualWan { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId,
             HelpMessage = "The id of virtual wan object this hub is linked to.")]
-        [ResourceGroupCompleter]
+        [ResourceIdCompleter("Microsoft.Network/virtualWans")]
         public string VirtualWanId { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address space string for this virtual hub.")]
-        [ResourceGroupCompleter]
         public string AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The hub virtual network connections associated with this Virtual Hub.")]
-        [ResourceGroupCompleter]
         public List<PSHubVirtualNetworkConnection> HubVnetConnection { get; set; }
 
         [Parameter(
@@ -109,6 +103,7 @@
         public override void Execute()
         {
             base.Execute();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
             {
@@ -124,40 +119,58 @@
 
             PSVirtualHub virtualHubToUpdate = this.GetVirtualHub(this.ResourceGroupName, this.Name);
 
+            string virtualWanRGName = null;
+            string virtualWanName = null;
+
+            //// Resolve the virtual wan
             if (this.VirtualWan != null)
             {
-                virtualHubToUpdate.VirtualWan = new MNM.SubResource(this.VirtualWan.Id);
+                virtualWanRGName = this.VirtualWan.ResourceGroupName;
+                virtualWanName = this.VirtualWan.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.VirtualWanId))
             {
-                virtualHubToUpdate.VirtualWan = new MNM.SubResource(this.VirtualWanId);
+                var parsedWanResourceId = new ResourceIdentifier(this.VirtualWanId);
+                virtualWanName = parsedWanResourceId.ResourceName;
+                virtualWanRGName = parsedWanResourceId.ResourceGroupName;
             }
 
+            if (string.IsNullOrWhiteSpace(virtualWanRGName) || string.IsNullOrWhiteSpace(virtualWanName))
+            {
+                throw new PSArgumentException("A virtual hub cannot be created without a valid virtual wan");
+            }
+
+            PSVirtualWan resolvedVirtualWan = new VirtualWanBaseCmdlet().GetVirtualWan(virtualWanRGName, virtualWanName);
+            virtualHubToUpdate.VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id };
+
+
+            //// Update address prefix, if specified
             if (!string.IsNullOrWhiteSpace(this.AddressPrefix))
             {
                 virtualHubToUpdate.AddressPrefix = this.AddressPrefix;
             }
 
-            bool shouldProcess = this.Force.IsPresent;
-            if (!shouldProcess)
+            //// HubVirtualNetworkConnections
+            if (this.HubVnetConnection != null && this.HubVnetConnection.Any())
             {
-                shouldProcess = ShouldProcess(this.Name, Properties.Resources.CreatingResourceMessage);
+                virtualHubToUpdate.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
+                virtualHubToUpdate.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
             }
 
-            if (shouldProcess)
-            {
-                if (this.HubVnetConnection != null && this.HubVnetConnection.Any())
-                {
-                    virtualHubToUpdate.HubVirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
-                    virtualHubToUpdate.HubVirtualNetworkConnections.AddRange(this.HubVnetConnection);
-                }
-
-                WriteObject(this.CreateOrUpdateVirtualHub(
-                    this.ResourceGroupName,
+            //// Update the virtual hub
+            ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Properties.Resources.SettingResourceMessage, this.Name),
+                    Properties.Resources.SettingResourceMessage,
                     this.Name,
-                    virtualHubToUpdate,
-                    this.Tag));
-            }
+                    () =>
+                    {
+                        WriteObject(this.CreateOrUpdateVirtualHub(
+                            this.ResourceGroupName,
+                            this.Name,
+                            virtualHubToUpdate,
+                            this.Tag));
+                    });
         }
     }
 }

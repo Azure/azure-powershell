@@ -10,7 +10,7 @@
 
         public string IpAddress { get; set; }
 
-        public PSVirtualWan VirtualWan { get; set; }
+        public PSResourceId VirtualWan { get; set; }
 
         public bool IsSecuritySite { get; set; }
 

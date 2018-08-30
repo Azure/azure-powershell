@@ -23,15 +23,15 @@
     public class NewAzureRmVpnSiteCommand : VpnSiteBaseCmdlet
     {
         [Alias("ResourceName", "VpnSiteName")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = CortexParameterSetNames.ByVirtualWanName, HelpMessage = "The resource name.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = CortexParameterSetNames.ByVirtualWanObject, HelpMessage = "The resource name.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId, HelpMessage = "The resource name.")]
+        [Parameter(Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = CortexParameterSetNames.ByVirtualWanName, HelpMessage = "The resource group name.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = CortexParameterSetNames.ByVirtualWanObject, HelpMessage = "The resource group name.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId, HelpMessage = "The resource group name.")]
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -66,11 +66,12 @@
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId,
             HelpMessage = "The ResourceId VirtualWan this VpnSite needs to be connected to.")]
+        [ResourceIdCompleter("Microsot.Network/virtualWans")]
         public string VirtualWanId { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = CortexParameterSetNames.ByVirtualWanName, HelpMessage = "IP address of local network gateway.")]
-        [Parameter(Mandatory = true, ParameterSetName = CortexParameterSetNames.ByVirtualWanObject, HelpMessage = "IP address of local network gateway.")]
-        [Parameter(Mandatory = true, ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId, HelpMessage = "IP address of local network gateway.")]
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.")]
         public string IpAddress { get; set; }
 
         [Parameter(
@@ -144,6 +145,7 @@
             vpnSiteToCreate.ResourceGroupName = this.ResourceGroupName;
             vpnSiteToCreate.Name = this.Name;
             vpnSiteToCreate.IsSecuritySite = this.IsSecuritySite.IsPresent;
+            vpnSiteToCreate.Location = this.Location;
 
             //// Resolve the virtual wan
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanObject, StringComparison.OrdinalIgnoreCase))
@@ -165,7 +167,7 @@
                 throw new PSArgumentException("The referenced virtual wan cannot be resolved.");
             }
 
-            vpnSiteToCreate.VirtualWan = resolvedVirtualWan;
+            vpnSiteToCreate.VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id };
 
             //// Bgp Settings
             if (this.BgpAsn > 0 || this.BgpPeeringWeight > 0 || !string.IsNullOrWhiteSpace(this.BgpPeeringAddress))
@@ -174,7 +176,7 @@
             }
 
             //// VpnSite device settings
-            if (!string.IsNullOrWhiteSpace(this.DeviceModel) || string.IsNullOrWhiteSpace(this.DeviceVendor) || this.LinkSpeedInMbps > 0)
+            if (!string.IsNullOrWhiteSpace(this.DeviceModel) || string.IsNullOrWhiteSpace(this.DeviceVendor))
             {
                 vpnSiteToCreate.DeviceProperties = this.ValidateAndCreateVpnSiteDeviceProperties(this.DeviceModel, this.DeviceVendor, this.LinkSpeedInMbps);
             }
@@ -192,6 +194,7 @@
             if (this.AddressSpace.Any())
             {
                 vpnSiteToCreate.AddressSpace = new PSAddressSpace();
+                vpnSiteToCreate.AddressSpace.AddressPrefixes = new List<string>();
                 vpnSiteToCreate.AddressSpace.AddressPrefixes.AddRange(this.AddressSpace);
             }
 

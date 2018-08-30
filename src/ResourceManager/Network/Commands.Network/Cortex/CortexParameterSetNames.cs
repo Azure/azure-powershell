@@ -35,5 +35,9 @@ namespace Microsoft.Azure.Commands.Network
         internal const string ByVpnConnectionObject = "ByVpnConnectionObject";
         internal const string ByVpnConnectionResourceId = "ByVpnConnectionResourceId";
         internal const string ByVpnConnectionName = "ByVpnConnectionName";
+
+        internal const string ByHubVirtualNetworkConnectionObject = "ByHubVirtualNetworkConnectionObject";
+        internal const string ByHubVirtualNetworkConnectionResourceId = "ByHubVirtualNetworkConnectionResourceId";
+        internal const string ByHubVirtualNetworkConnectionName = "ByHubVirtualNetworkConnectionName";
     }
 }

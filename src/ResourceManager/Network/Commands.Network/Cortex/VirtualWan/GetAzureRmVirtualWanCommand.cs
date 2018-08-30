@@ -21,7 +21,7 @@
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -31,12 +31,21 @@
         public override void Execute()
         {
             base.Execute();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var vnetGateway = this.GetVirtualWan(this.ResourceGroupName, this.Name);
+                if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                {
+                    throw new PSArgumentException("ResourceGroupName must be specified if ResourceName is specified.");
+                }
 
-                WriteObject(vnetGateway);
+                var virtualWan = this.GetVirtualWan(this.ResourceGroupName, this.Name);
+                WriteObject(virtualWan);
+            }
+            else
+            {
+                WriteObject(this.ListVirtualWans(this.ResourceGroupName));
             }
         }
     }

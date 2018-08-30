@@ -75,17 +75,17 @@
             }
 
             base.Execute();
-            bool shouldProcess = this.Force.IsPresent;
-            if (!shouldProcess)
-            {
-                shouldProcess = ShouldProcess(Name, Properties.Resources.RemoveResourceMessage);
-            }
 
-            if (shouldProcess)
-            {
-                this.VirtualWanClient.Delete(this.ResourceGroupName, this.Name);
-                WriteObject(true);
-            }
+            ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(Properties.Resources.RemovingResource, this.Name),
+                Properties.Resources.RemoveResourceMessage,
+                this.Name,
+                () =>
+                {
+                    this.VirtualWanClient.Delete(this.ResourceGroupName, this.Name);
+                    WriteObject(true);
+                });
         }
     }
 }

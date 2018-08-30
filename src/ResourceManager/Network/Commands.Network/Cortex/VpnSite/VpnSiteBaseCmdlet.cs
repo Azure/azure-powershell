@@ -9,6 +9,7 @@
     using System.Collections;
     using System.Management.Automation;
     using System.Net;
+    using System.Collections.Generic;
 
     public class VpnSiteBaseCmdlet : NetworkBaseCmdlet
     {
@@ -76,6 +77,24 @@
 
             var vpnSiteCreatedOrUpdated = this.VpnSiteClient.CreateOrUpdate(resourceGroupName, vpnSiteName, vpnSiteModel);
             return this.ToPsVpnSite(vpnSiteCreatedOrUpdated);
+        }
+
+        public List<PSVpnSite> ListVpnSites(string resourceGroupName)
+        {
+            var vpnSites = string.IsNullOrWhiteSpace(resourceGroupName) ?
+                this.VpnSiteClient.List() :                                       //// List by SubId
+                this.VpnSiteClient.ListByResourceGroup(resourceGroupName);        //// List by RG Name
+
+            List<PSVpnSite> sitesToReturn = new List<PSVpnSite>();
+            if (vpnSites != null)
+            {
+                foreach (MNM.VpnSite vpnSite in vpnSites)
+                {
+                    sitesToReturn.Add(ToPsVpnSite(vpnSite));
+                }
+            }
+
+            return sitesToReturn;
         }
     }
 }

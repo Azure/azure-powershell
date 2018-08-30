@@ -9,6 +9,7 @@
     using System.Collections;
     using System.Management.Automation;
     using System.Net;
+    using System.Collections.Generic;
 
     public class VpnGatewayBaseCmdlet : NetworkBaseCmdlet
     {
@@ -35,6 +36,24 @@
             psVpnGateway.ResourceGroupName = resourceGroupName;
 
             return psVpnGateway;
+        }
+
+        public List<PSVpnGateway> ListVpnGateways(string resourceGroupName)
+        {
+            var vpnGateways = string.IsNullOrWhiteSpace(resourceGroupName) ?
+                this.VpnGatewayClient.List() :                                              //// List by sub id
+                this.VpnGatewayClient.ListByResourceGroup(resourceGroupName);               //// List by RG name
+
+            List<PSVpnGateway> gatewaysToReturn = new List<PSVpnGateway>();
+            if (vpnGateways != null)
+            {
+                foreach (MNM.VpnGateway gateway in vpnGateways)
+                {
+                    gatewaysToReturn.Add(ToPsVpnGateway(gateway));
+                }
+            }
+
+            return gatewaysToReturn;
         }
 
         public PSVpnGateway CreateOrUpdateVpnGateway(string resourceGroupName, string vpnGatewayName, PSVpnGateway vpnGateway, Hashtable tags)

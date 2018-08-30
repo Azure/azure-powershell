@@ -3,7 +3,10 @@
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
+    using Microsoft.Azure.Management.Network.Models;
+    using System.Collections.Generic;
     using System.Net;
+    using MNM = Microsoft.Azure.Management.Network.Models;
 
     public class VirtualWanBaseCmdlet : NetworkBaseCmdlet
     {
@@ -12,6 +15,14 @@
             get
             {
                 return NetworkClient.NetworkManagementClient.VirtualWANs;
+            }
+        }
+
+        public IVpnSitesConfigurationOperations VpnSitesConfigurationClient
+        {
+            get
+            {
+                return NetworkClient.NetworkManagementClient.VpnSitesConfiguration;
             }
         }
 
@@ -42,6 +53,40 @@
             psVirtualWan.ResourceGroupName = resourceGroupName;
 
             return psVirtualWan;
+        }
+
+        public PSVirtualWanVpnSitesConfiguration GetVirtualWanVpnSitesConfiguration(PSVirtualWan virtualWan, List<string> vpnSiteIds, string outputBlobSasUrl)
+        {
+            GetVpnSitesConfigurationRequest request = new GetVpnSitesConfigurationRequest();
+            request.OutputBlobSasUrl = outputBlobSasUrl;
+            request.VpnSites = new List<string>();
+
+            foreach(string vpnSiteId in vpnSiteIds)
+            {
+                request.VpnSites.Add(vpnSiteId);
+            }
+
+            this.VpnSitesConfigurationClient.Download(virtualWan.ResourceGroupName, virtualWan.Name, request);
+
+            return new PSVirtualWanVpnSitesConfiguration() { SasUrl = outputBlobSasUrl};
+        }
+
+        public List<PSVirtualWan> ListVirtualWans(string resourceGroupName)
+        {
+            var virtualWans = string.IsNullOrWhiteSpace(resourceGroupName) ?
+                this.VirtualWanClient.List() :                                      //// List by sub id
+                this.VirtualWanClient.ListByResourceGroup(resourceGroupName);       //// List by RG name
+
+            List<PSVirtualWan> wansToReturn = new List<PSVirtualWan>();
+            if (virtualWans != null)
+            {
+                foreach (MNM.VirtualWAN virtualWan in virtualWans)
+                {
+                    wansToReturn.Add(ToPsVirtualWan(virtualWan));
+                }
+            }
+
+            return wansToReturn;
         }
     }
 }

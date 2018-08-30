@@ -55,35 +55,33 @@
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID for the vpn site.")]
+        [ResourceIdCompleter("Microsoft.Network/vpnSites")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
+            Mandatory = false,
             HelpMessage = "The resource group name of the VirtualWan this VpnSite needs to be connected to.")]
         public string VirtualWanResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
+            Mandatory = false,
             HelpMessage = "The name of the VirtualWan this VpnSite needs to be connected to.")]
         public string VirtualWanName { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject,
+            Mandatory = false,
             HelpMessage = "The VirtualWan this VpnSite needs to be connected to.")]
         public PSVirtualWan VirtualWan { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId,
+            Mandatory = false,
             HelpMessage = "The ResourceId VirtualWan this VpnSite needs to be connected to.")]
+        [ResourceIdCompleter("Microsoft.Network/virtualWans")]
         public string VirtualWanId { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "IP address of local network gateway.")]
         public string IpAddress { get; set; }
 
@@ -152,6 +150,7 @@
         public override void Execute()
         {
             base.Execute();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnSiteObject, StringComparison.OrdinalIgnoreCase))
             {
@@ -171,13 +170,13 @@
                 throw new PSArgumentException("The VpnSite to update could not be found");
             }
 
-            //// Resolve the virtual wan
-            if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanObject, StringComparison.OrdinalIgnoreCase))
+            //// Resolve the virtual wan, if specified
+            if (this.VirtualWan != null)
             {
                 this.VirtualWanResourceGroupName = this.VirtualWan.ResourceGroupName;
                 this.VirtualWanName = this.VirtualWan.Name;
             }
-            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanResourceId, StringComparison.OrdinalIgnoreCase))
+            else if (!string.IsNullOrWhiteSpace(this.VirtualWanId))
             {
                 var parsedWanResourceId = new ResourceIdentifier(this.VirtualWanId);
                 this.VirtualWanResourceGroupName = parsedWanResourceId.ResourceGroupName;
@@ -193,7 +192,7 @@
                     throw new PSArgumentException("The referenced virtual wan cannot be resolved.");
                 }
 
-                vpnSiteToUpdate.VirtualWan = resolvedVirtualWan;
+                vpnSiteToUpdate.VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id };
             }
 
             //// Bgp Settings
@@ -225,7 +224,7 @@
             }
 
             //// VpnSite device settings
-            if (!string.IsNullOrWhiteSpace(this.DeviceModel) || string.IsNullOrWhiteSpace(this.DeviceVendor) || this.LinkSpeedInMbps > 0)
+            if (!string.IsNullOrWhiteSpace(this.DeviceModel) || !string.IsNullOrWhiteSpace(this.DeviceVendor))
             {
                 vpnSiteToUpdate.DeviceProperties = this.ValidateAndCreateVpnSiteDeviceProperties(this.DeviceModel, this.DeviceVendor, this.LinkSpeedInMbps);
             }
@@ -243,9 +242,13 @@
             }
 
             //// Adress spaces
-            if (this.AddressSpace == null || this.AddressSpace.Any())
+            if (this.AddressSpace != null && this.AddressSpace.Any())
             {
-                vpnSiteToUpdate.AddressSpace = new PSAddressSpace();
+                if (vpnSiteToUpdate.AddressSpace == null)
+                {
+                    vpnSiteToUpdate.AddressSpace = new PSAddressSpace();
+                }
+                
                 vpnSiteToUpdate.AddressSpace.AddressPrefixes.AddRange(this.AddressSpace);
             }
 
@@ -255,16 +258,15 @@
                 vpnSiteToUpdate.SiteKey = SecureStringExtensions.ConvertToString(this.SiteKey);
             }
 
-            bool shouldProcess = this.Force.IsPresent;
-            if (!shouldProcess)
-            {
-                shouldProcess = ShouldProcess(Name, Properties.Resources.SettingResourceMessage);
-            }
-
-            if (shouldProcess)
-            {
-                WriteObject(this.CreateOrUpdateVpnSite(this.ResourceGroupName, this.Name, vpnSiteToUpdate, this.Tag));
-            }
+            ConfirmAction(
+                    this.Force.IsPresent,
+                    string.Format(Properties.Resources.SettingResourceMessage, this.Name),
+                    Properties.Resources.SettingResourceMessage,
+                    this.Name,
+                    () =>
+                    {
+                        WriteObject(this.CreateOrUpdateVpnSite(this.ResourceGroupName, this.Name, vpnSiteToUpdate, this.Tag));
+                    });
         }
     }
 }

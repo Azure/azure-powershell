@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSVpnConnection : PSChildResource
     {
-        public PSVpnSite VpnSite { get; set; }
+        public PSResourceId RemoteVpnSite { get; set; }
 
         public string SharedKey { get; set; }
 
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public bool EnableBgp { get; set; }
 
-        public int ConnectionBandwidhtInMbps { get; set; }
+        public int ConnectionBandwidth { get; set; }
 
         public bool EnableRateLimiting { get; set; }
 

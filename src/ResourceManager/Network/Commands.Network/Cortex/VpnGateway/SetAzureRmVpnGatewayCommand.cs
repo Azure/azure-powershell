@@ -16,7 +16,7 @@
     using System.Linq;
 
     [Cmdlet(VerbsCommon.Set,
-        "AzureRmVirtualWan",
+        "AzureRmVpnGateway",
         DefaultParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnGateway))]
@@ -26,6 +26,7 @@
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual wan name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -33,6 +34,7 @@
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -43,9 +45,9 @@
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayObject,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The virtual wan object to be modified")]
+            HelpMessage = "The vpn gateway object to be modified")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualWan InputObject { get; set; }
+        public PSVpnGateway InputObject { get; set; }
 
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayResourceId,
@@ -116,7 +118,7 @@
             }
 
             //// Modify the connections
-            existingVpnGateway.VpnConnections = this.VpnConnection;
+            existingVpnGateway.Connections = this.VpnConnection;
 
             //// Modify the peering weight if specified
             if (this.BgpPeerWeight > 0)
@@ -133,17 +135,15 @@
                 existingVpnGateway.BgpSettings.PeerWeight = Convert.ToInt32(this.BgpPeerWeight);
             }
 
-            bool shouldProcess = this.Force.IsPresent;
-
-            if (!shouldProcess)
-            {
-                shouldProcess = ShouldProcess(this.Name, Properties.Resources.CreatingResourceMessage);
-            }
-
-            if (shouldProcess)
-            {
-                WriteObject(this.CreateOrUpdateVpnGateway(this.ResourceGroupName, this.Name, existingVpnGateway, this.Tag));
-            }
+            ConfirmAction(
+                    this.Force.IsPresent,
+                    string.Format(Properties.Resources.SettingResourceMessage, this.Name),
+                    Properties.Resources.SettingResourceMessage,
+                    this.Name,
+                    () =>
+                    {
+                        WriteObject(this.CreateOrUpdateVpnGateway(this.ResourceGroupName, this.Name, existingVpnGateway, this.Tag));
+                    });
         }
     }
 }

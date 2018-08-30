@@ -47,6 +47,7 @@
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The id of virtual wan object this hub is linked to.")]
+        [ResourceIdCompleter("Microsoft.Network/virtualWans")]
         public string VirtualWanId { get; set; }
 
         [Parameter(
@@ -60,6 +61,7 @@
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "location.")]
+        [LocationCompleter]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -67,7 +69,6 @@
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The hub virtual network connections associated with this Virtual Hub.")]
-        [ResourceGroupCompleter]
         public List<PSHubVirtualNetworkConnection> HubVnetConnection { get; set; }
 
         [Parameter(
@@ -89,22 +90,30 @@
         public override void Execute()
         {
             base.Execute();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
-            if (this.VirtualWan == null)
+            string virtualWanRGName = null;
+            string virtualWanName = null;
+
+            //// Resolve the virtual wan
+            if (this.VirtualWan != null)
             {
-                if (string.IsNullOrWhiteSpace(this.VirtualWanId))
-                {
-                    throw new PSArgumentException("A virtual hub cannot be created without a virtual wan");
-                }
-
-                var parsedWanResourceId = new ResourceIdentifier(this.VirtualWanId);
-                this.VirtualWan = new PSVirtualWan
-                {
-                    ResourceGroupName = parsedWanResourceId.ResourceGroupName,
-                    Name = parsedWanResourceId.ResourceGroupName,
-                    Id = this.VirtualWanId
-                };
+                virtualWanRGName = this.VirtualWan.ResourceGroupName;
+                virtualWanName = this.VirtualWan.Name;
             }
+            else if (!string.IsNullOrWhiteSpace(this.VirtualWanId))
+            {
+                var parsedWanResourceId = new ResourceIdentifier(this.VirtualWanId);
+                virtualWanName = parsedWanResourceId.ResourceName;
+                virtualWanRGName = parsedWanResourceId.ResourceGroupName;
+            }
+
+            if (string.IsNullOrWhiteSpace(virtualWanRGName) || string.IsNullOrWhiteSpace(virtualWanName))
+            {
+                throw new PSArgumentException("A virtual hub cannot be created without a valid virtual wan");
+            }
+
+            PSVirtualWan resolvedVirtualWan = new VirtualWanBaseCmdlet().GetVirtualWan(virtualWanRGName, virtualWanName);
 
             bool shouldProcess = this.Force.IsPresent;
             if (!shouldProcess)
@@ -118,15 +127,15 @@
                 {
                     ResourceGroupName = this.ResourceGroupName,
                     Name = this.Name,
-                    VirtualWan = new MNM.SubResource(this.VirtualWan.Id),
+                    VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id },
                     AddressPrefix = this.AddressPrefix,
                     Location = this.Location
                 };
 
-                virtualHub.HubVirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
+                virtualHub.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
                 if (this.HubVnetConnection != null && this.HubVnetConnection.Any())
                 {
-                    virtualHub.HubVirtualNetworkConnections.AddRange(this.HubVnetConnection);
+                    virtualHub.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
                 }
                 
                 WriteObject(this.CreateOrUpdateVirtualHub(

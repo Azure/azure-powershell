@@ -21,7 +21,7 @@
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -34,9 +34,18 @@
 
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var vpnGateway = this.GetVpnGateway(this.ResourceGroupName, this.Name);
+                if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                {
+                    throw new PSArgumentException("ResourceGroupName must be specified if ResourceName is specified.");
+                }
 
+                var vpnGateway = this.GetVpnGateway(this.ResourceGroupName, this.Name);
                 WriteObject(vpnGateway);
+            }
+            else
+            {
+                //// ResourceName has not been specified - List all gateways
+                WriteObject(this.ListVpnGateways(this.ResourceGroupName));
             }
         }
     }

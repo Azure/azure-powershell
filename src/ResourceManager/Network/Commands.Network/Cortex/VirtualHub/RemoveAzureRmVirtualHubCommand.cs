@@ -46,17 +46,16 @@
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId,
             HelpMessage = "The resource id of the Virtual hub to be modified.")]
-        [ResourceGroupCompleter]
+        [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceId { get; set; }
 
         [Alias("VirtualHub")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The Virtual hub object to be modified.")]
-        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public PSVirtualHub InputObject { get; set; }
 
@@ -72,8 +71,6 @@
 
         public override void Execute()
         {
-            base.Execute();
-
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
             {
                 Name = InputObject.Name;
@@ -86,17 +83,19 @@
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
             }
 
-            bool shouldProcess = this.Force.IsPresent;
-            if (!shouldProcess)
-            {
-                shouldProcess = ShouldProcess(this.Name, Properties.Resources.CreatingResourceMessage);
-            }
+            base.Execute();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
-            if (shouldProcess)
-            {
-                this.VirtualHubClient.Delete(this.ResourceGroupName, this.Name);
-                WriteObject(true);
-            }
+            ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Properties.Resources.RemovingResource, this.Name),
+                    Properties.Resources.RemoveResourceMessage,
+                    this.Name,
+                    () =>
+                    {
+                        this.VirtualHubClient.Delete(this.ResourceGroupName, this.Name);
+                        WriteObject(true);
+                    });
         }
     }
 }

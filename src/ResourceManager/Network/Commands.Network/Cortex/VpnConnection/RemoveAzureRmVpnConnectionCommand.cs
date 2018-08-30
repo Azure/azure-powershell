@@ -17,6 +17,7 @@
 
     [Cmdlet(VerbsCommon.Remove,
         "AzureRmVpnConnection",
+        DefaultParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
         SupportsShouldProcess = true)]
     public class RemoveVpnConnectionCommand : VpnConnectionBaseCmdlet
     {
@@ -47,13 +48,21 @@
         [ValidateNotNullOrEmpty]
         public virtual string ParentResourceName { get; set; }
 
-        [Alias("VpnConnection")]
+        [Alias("VpnConnectionId")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CortexParameterSetNames.ByVpnConnectionObject,
-            HelpMessage = "The resource id of the VpnConenction object to update.")]
+            ParameterSetName = CortexParameterSetNames.ByVpnConnectionResourceId,
+            HelpMessage = "The resource id of the VpnConenction object to delete.")]
         public string ResourceId { get; set; }
+
+        [Alias("VpnConnection")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByVpnConnectionObject,
+            HelpMessage = "The VpnConenction object to update.")]
+        public PSVpnConnection InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -62,52 +71,63 @@
 
         public override void Execute()
         {
-            base.Execute();
-
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnConnectionName, StringComparison.OrdinalIgnoreCase))
             {
                 this.ResourceGroupName = this.ResourceGroupName;
                 this.ParentResourceName = this.ParentResourceName;
                 this.Name = this.Name;
             }
-            else if (ParameterSetName.Equals(ParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
+            else 
             {
+                if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnConnectionObject, StringComparison.OrdinalIgnoreCase))
+                {
+                    this.ResourceId = this.InputObject.Id;
+                }
+                
+                //// At this point, the resource id should not be null. If it is, customer did not specify a valid resource to delete.
+                if (string.IsNullOrWhiteSpace(this.ResourceId))
+                {
+                    throw new PSArgumentException("No vpn connection specified. Nothing will be deleted.");
+                }
+
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ParentResource;
+                this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
                 this.Name = parsedResourceId.ResourceName;
             }
 
             //// Get the vpngateway object - this will throw not found if the object is not found
             PSVpnGateway parentGateway = this.GetVpnGateway(this.ResourceGroupName, this.ParentResourceName);
 
-            if (parentGateway != null || !parentGateway.VpnConnections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
+            if (parentGateway == null || 
+                parentGateway.Connections == null ||
+                !parentGateway.Connections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
             {
-                throw new PSArgumentException("The VpnSite to modify does not exist");
+                throw new PSArgumentException("The VpnConnection to delete could not be found.");
             }
 
-            bool shouldProcess = this.Force.IsPresent;
-            if (!shouldProcess)
+            if (parentGateway.Connections.Any())
             {
-                shouldProcess = ShouldProcess(Name, Properties.Resources.RemoveResourceMessage);
-            }
-
-            if (shouldProcess)
-            {
-                if (parentGateway.VpnConnections.Any())
+                var vpnConnectionToRemove = parentGateway.Connections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
+                if (vpnConnectionToRemove != null)
                 {
-                    var vpnConnectionToRemove = parentGateway.VpnConnections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
-                    if (vpnConnectionToRemove != null)
-                    {
-                        parentGateway.VpnConnections.Remove(vpnConnectionToRemove);
-                        var vpnGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnGateway>(parentGateway);
+                    base.Execute();
+                    WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
-                        this.VpnGatewayClient.CreateOrUpdate(this.ResourceGroupName, this.Name, vpnGatewayModel);
-                    }
+                    ConfirmAction(
+                        Force.IsPresent,
+                        string.Format(Properties.Resources.RemovingResource, this.Name),
+                        Properties.Resources.RemoveResourceMessage,
+                        this.Name,
+                        () =>
+                        {
+                            parentGateway.Connections.Remove(vpnConnectionToRemove);
+                            this.CreateOrUpdateVpnGateway(this.ResourceGroupName, this.ParentResourceName, parentGateway, parentGateway.Tag);
+                        });
                 }
-
-                WriteObject(true);
             }
+
+            WriteObject(true);
         }
     }
 }

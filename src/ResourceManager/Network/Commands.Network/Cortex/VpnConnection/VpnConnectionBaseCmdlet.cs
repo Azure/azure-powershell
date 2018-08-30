@@ -5,8 +5,10 @@
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
     using System;
+    using System.Collections.Generic;
     using System.Management.Automation;
     using System.Net;
+    using MNM = Microsoft.Azure.Management.Network.Models;
 
     public class VpnConnectionBaseCmdlet : VpnGatewayBaseCmdlet
     {
@@ -27,6 +29,22 @@
         {
             var vpnConnection = this.VpnConnectionClient.Get(resourceGroupName, parentVpnGatewayName, name);
             return this.ToPsVpnConnection(vpnConnection);
+        }
+
+        public List<PSVpnConnection> ListVpnConnections(string resourceGroupName, string parentVpnGatewayName)
+        {
+            var vpnConnections = this.VpnConnectionClient.ListByVpnGateway(resourceGroupName, parentVpnGatewayName);
+
+            List<PSVpnConnection> connectionsToReturn = new List<PSVpnConnection>();
+            if (vpnConnections != null)
+            {
+                foreach (MNM.VpnConnection connection in vpnConnections)
+                {
+                    connectionsToReturn.Add(ToPsVpnConnection(connection));
+                }
+            }
+
+            return connectionsToReturn;
         }
     }
 }

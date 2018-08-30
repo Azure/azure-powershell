@@ -40,14 +40,6 @@
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource location.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        [Parameter(
-            Mandatory = true,
             HelpMessage = "The scale unit for this VpnGateway.")]
         public uint VpnGatewayScaleUnit { get; set; }
 
@@ -61,6 +53,7 @@
             Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId,
             HelpMessage = "The Id of the VirtualHub this VpnGateway needs to be associated with.")]
+        [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
         public string VirtualHubId { get; set; }
 
         [Parameter(
@@ -103,33 +96,34 @@
             var vpnGateway = new PSVpnGateway();
             vpnGateway.Name = this.Name;
             vpnGateway.ResourceGroupName = this.ResourceGroupName;
+            vpnGateway.VirtualHub = null;
 
-            //// Set the virtual hub
+            //// Resolve and Set the virtual hub
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
             {
-                vpnGateway.VirtualHub = this.VirtualHub;
+                this.VirtualHubName = this.VirtualHub.Name;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubResourceId, StringComparison.OrdinalIgnoreCase))
             {
                 var parsedResourceId = new ResourceIdentifier(this.VirtualHubId);
-
-                vpnGateway.VirtualHub = new VirtualHubBaseCmdlet().GetVirtualHub(parsedResourceId.ResourceGroupName, parsedResourceId.ResourceName);
+                this.VirtualHubName = parsedResourceId.ResourceName;
             }
-            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubResourceId, StringComparison.OrdinalIgnoreCase))
-            {
-                vpnGateway.VirtualHub = new VirtualHubBaseCmdlet().GetVirtualHub(this.ResourceGroupName, this.VirtualHubName);
-            }
-
-            if (vpnGateway.VirtualHub == null)
+            
+            //// At this point, we should have the virtual hub name resolved. Fail this operation if it is not.
+            if (string.IsNullOrWhiteSpace(this.VirtualHubName))
             {
                 throw new PSArgumentException("A valid VirtualHub reference is required to create a VpnGateway");
             }
 
+            var resolvedVirtualHub = new VirtualHubBaseCmdlet().GetVirtualHub(this.ResourceGroupName, this.VirtualHubName);
+            vpnGateway.Location = resolvedVirtualHub.Location;
+            vpnGateway.VirtualHub = new PSResourceId() { Id = resolvedVirtualHub.Id };
+
             //// VpnConnections, if specified
-            vpnGateway.VpnConnections = new List<PSVpnConnection>();
+            vpnGateway.Connections = new List<PSVpnConnection>();
             if (this.VpnConnection != null && this.VpnConnection.Any())
             {
-                vpnGateway.VpnConnections.AddRange(this.VpnConnection);
+                vpnGateway.Connections.AddRange(this.VpnConnection);
             }
 
             //// Scale unit, if specified

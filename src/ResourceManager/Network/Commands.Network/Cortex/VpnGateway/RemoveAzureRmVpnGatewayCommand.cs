@@ -50,9 +50,9 @@
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayResourceId,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID for the vpnGateway to be deleted.")]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Network/vpnGateways")]
         public string ResourceId { get; set; }
 
         [Parameter(
@@ -75,17 +75,18 @@
             }
 
             base.Execute();
-            bool shouldProcess = this.Force.IsPresent;
-            if (!shouldProcess)
-            {
-                shouldProcess = ShouldProcess(Name, Properties.Resources.RemoveResourceMessage);
-            }
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
-            if (shouldProcess)
-            {
-                this.VpnGatewayClient.Delete(this.ResourceGroupName, this.Name);
-                WriteObject(true);
-            }
+            ConfirmAction(
+                    this.Force.IsPresent,
+                    string.Format(Properties.Resources.RemovingResource, this.Name),
+                    Properties.Resources.RemoveResourceMessage,
+                    this.Name,
+                    () =>
+                    {
+                        this.VpnGatewayClient.Delete(this.ResourceGroupName, this.Name);
+                        WriteObject(true);
+                    });
         }
     }
 }

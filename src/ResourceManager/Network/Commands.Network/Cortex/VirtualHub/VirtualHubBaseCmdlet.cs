@@ -47,5 +47,22 @@
             var virtualHubCreatedOrUpdated = this.VirtualHubClient.CreateOrUpdate(resourceGroupName, virtualHubName, virtualHubModel);
             return this.ToPsVirtualHub(virtualHubCreatedOrUpdated);
         }
+
+        public List<PSVirtualHub> ListVirtualHubs(string resourceGroupName)
+        {
+            var virtualHubs = string.IsNullOrWhiteSpace(resourceGroupName) ?
+                this.VirtualHubClient.List() :                                       //// List by SubId
+                this.VirtualHubClient.ListByResourceGroup(resourceGroupName);        //// List by RG Name
+            List<PSVirtualHub> hubsToReturn = new List<PSVirtualHub>();
+            if (virtualHubs != null)
+            {
+                foreach (MNM.VirtualHub virtualHub in virtualHubs)
+                {
+                    hubsToReturn.Add(ToPsVirtualHub(virtualHub));
+                }
+            }
+
+            return hubsToReturn;
+        }
     }
 }
