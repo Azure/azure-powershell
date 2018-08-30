@@ -16,6 +16,7 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSLoadBalancingRule : PSInboundRule
     {
@@ -26,12 +27,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId Probe { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public int FrontendPort { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string LoadDistribution { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool? DisableOutboundSNAT { get; set; }
 
         [JsonIgnore]

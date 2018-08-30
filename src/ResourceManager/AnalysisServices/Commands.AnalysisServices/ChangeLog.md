@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.6.14
+ * Fixed issue with default resource groups not being set.
+ * Updated common runtime assemblies
+
+## Version 0.6.13
+* Fixed issue with default resource groups not being set.
+
+## Version 0.6.12
 * Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 0.6.11

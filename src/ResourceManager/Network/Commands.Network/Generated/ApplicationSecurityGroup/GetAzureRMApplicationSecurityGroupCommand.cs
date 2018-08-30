@@ -40,7 +40,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationSecurityGroup"), OutputType(typeof(PSApplicationSecurityGroup))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationSecurityGroup"), OutputType(typeof(PSApplicationSecurityGroup))]
     public partial class GetAzureRmApplicationSecurityGroup : NetworkBaseCmdlet
     {
         [Parameter(

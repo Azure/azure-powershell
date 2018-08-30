@@ -279,7 +279,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Id (ByPropertyName), PoolId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Batch.Models.PSCloudPool
 Parameters: Pool (ByValue)

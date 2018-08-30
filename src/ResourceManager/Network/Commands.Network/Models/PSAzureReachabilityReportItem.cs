@@ -15,6 +15,7 @@
 // 
 
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -23,9 +24,11 @@ namespace Microsoft.Azure.Commands.Network.Models
     public partial class PSAzureReachabilityReportItem
     {
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string Provider { get; set; }
 
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string AzureLocation { get; set; }
 
         [JsonProperty(Order = 2)]

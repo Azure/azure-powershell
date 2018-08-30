@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.1.8
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+* Fixed examples for New-AzureRmIotHubExportDevices and New-AzureRmIotHubImportDevices
+
+## Version 3.1.7
+* Fixed issue with default resource groups not being set.
+* Fix examples for New-AzureRmIotHubExportDevices and New-AzureRmIotHubImportDevices
+
+## Version 3.1.6
 * Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 3.1.5

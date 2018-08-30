@@ -342,13 +342,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Argument (ByPropertyName), ContainerName (ByPropertyName), ForceRerun (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Run (ByPropertyName), StorageAccountKey (ByPropertyName), StorageAccountName (ByPropertyName), StorageEndpointSuffix (ByPropertyName), TypeHandlerVersion (ByPropertyName), VMName (ByPropertyName)
 
 ### System.String[]
-Parameters: FileName (ByPropertyName), FileUri (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: DisableAutoUpgradeMinorVersion (ByPropertyName), SecureExecution (ByPropertyName)
 
 ## OUTPUTS
 

@@ -390,6 +390,35 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
+        #region Piping
+        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateDeleteVaultWithPiping()
+        {
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                 _logger,
+                () => { return new[] { string.Format("{0} {1} {2}", "Test-CreateDeleteVaultWithPiping", _data.ResourceGroupName, _data.Location) }; },
+                null,
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name
+                );
+        }
+
+        #endregion
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkSet()
+        {
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                 _logger,
+                () => { return new[] { "Test-NetworkRuleSet" }; },
+                null,
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name
+                );
+        }
+
         #region Helper Methods
         private string GetUserObjectId(KeyVaultManagementController controllerAdmin, string upn)
         {

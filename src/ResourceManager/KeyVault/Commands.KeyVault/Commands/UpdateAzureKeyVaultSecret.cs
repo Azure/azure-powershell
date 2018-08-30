@@ -19,11 +19,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsData.Update, "AzureKeyVaultSecret",
-        DefaultParameterSetName = DefaultParameterSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecret",DefaultParameterSetName = DefaultParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultSecret))]
-    [Alias("Set-AzureKeyVaultSecretAttribute")]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultSecretAttribute")]
     public class UpdateAzureKeyVaultSecret : KeyVaultCmdletBase
     {
         #region Parameter Set Names
