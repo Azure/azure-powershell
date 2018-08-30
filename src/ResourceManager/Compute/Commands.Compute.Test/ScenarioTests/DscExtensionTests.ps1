@@ -100,14 +100,6 @@ function Test-GetAzureRmVMDscExtension
         # Remove Extension
         Remove-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname
     }
-    finally
-    {
-		# Cleanup
-		#if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
-		#{
-			#Remove-AzureRmResourceGroup -Name $rgname -Force;
-		#}
-    }
 }
 
 #helper methods for ARM 

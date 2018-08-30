@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 #else
         [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
 #endif
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWithValidVhdDiskFile()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmVhdVMWithValidDiskFile");

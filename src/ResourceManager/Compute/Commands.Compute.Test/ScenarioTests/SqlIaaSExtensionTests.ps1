@@ -110,14 +110,6 @@ function Test-SetAzureRmVMSqlServerAKVExtension
         # 7) Test with correct Name and incorrect Version
         Set-AzureRmVMSqlServerExtension -KeyVaultCredentialSettings $aps_akv  -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.*"
     }
-    finally
-    {
-        # Cleanup
-        #if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
-        #{
-             #Remove-AzureRmResourceGroup -Name $rgname -Force;
-        #}
-    }
 }
 
 function Test-SetAzureRmVMSqlServerExtension
@@ -223,14 +215,6 @@ function Test-SetAzureRmVMSqlServerExtension
 
         # 7) Test with correct Name and incorrect Version
         Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.*"
-    }
-    finally
-    {
-        # Cleanup
-        #if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
-        #{
-            #Remove-AzureRmResourceGroup -Name $rgname -Force;
-        #}
     }
 }
 
@@ -347,14 +331,6 @@ function Test-SetAzureRmVMSqlServerExtensionWith2016Image
 
         # 7) Test with correct Name and incorrect Version
         Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.*"
-    }
-    finally
-    {
-        # Cleanup
-        #if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
-        #{
-            #Remove-AzureRmResourceGroup -Name $rgname -Force;
-        #}
     }
 }
 

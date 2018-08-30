@@ -14,7 +14,7 @@
 
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.Azure.Commands.Compute;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {

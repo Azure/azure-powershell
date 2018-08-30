@@ -24,8 +24,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.KeyVault;
-#if NETSTANDARD
-#else
+#if !NETSTANDARD
 using Microsoft.Azure.Test;
 using TestBase = Microsoft.Azure.Test.TestBase;
 #endif
