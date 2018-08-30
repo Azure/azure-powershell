@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet("Suspend", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer",SupportsShouldProcess = true),OutputType(typeof(AzureAnalysisServicesServer))]
-    [Alias("Suspend-AzureAs")]
+    [Alias("Suspend-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "As")]
     public class SuspendAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = true,

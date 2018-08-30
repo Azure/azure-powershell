@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseBackupLongTermRetentionPolicy",
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlDatabaseBackupLongTermRetentionPolicyModel))]
-    [Alias("Get-AzureRmSqlDatabaseLongTermRetentionPolicy")]
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseLongTermRetentionPolicy")]
     public class GetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
         /// <summary>

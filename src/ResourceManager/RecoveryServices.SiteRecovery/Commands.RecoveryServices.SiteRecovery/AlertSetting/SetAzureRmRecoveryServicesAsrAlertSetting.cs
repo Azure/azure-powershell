@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrAlertSetting",DefaultParameterSetName = ASRParameterSets.Set,SupportsShouldProcess = true)]
     [Alias(
         "Set-ASRNotificationSetting",
-        "Set-AzureRmRecoveryServicesAsrNotificationSetting",
+        "Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrNotificationSetting",
         "Set-ASRAlertSetting")]
     [OutputType(typeof(ASRAlertSetting))]
     public class SetAzureRmRecoveryServicesAsrAlertSetting : SiteRecoveryCmdletBase
