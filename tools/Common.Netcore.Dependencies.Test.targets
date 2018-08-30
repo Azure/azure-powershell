@@ -19,8 +19,7 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
   <PropertyGroup>
-    <!-- <ScenarioTestToolsPath>$(MSBuildThisFileDirectory)..\src\packages\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.94-preview\tools\</ScenarioTestToolsPath> -->
-    <ScenarioTestToolsPath>$(MSBuildThisFileDirectory)..\src\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\</ScenarioTestToolsPath>
+    <ScenarioTestToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.scenariotest.resourcemanager\1.0.94-preview\tools\</ScenarioTestToolsPath>
   </PropertyGroup>
   <ItemGroup>
     <None Include="$(ScenarioTestToolsPath)Assert.ps1">
