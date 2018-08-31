@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSLoadBalancer LoadBalancer { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Name of the load balancing rule.")]
         public string Name { get; set; }
 

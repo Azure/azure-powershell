@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSProbe> Probes { get; set; }
         public List<PSInboundNatRule> InboundNatRules { get; set; }
         public List<PSInboundNatPool> InboundNatPools { get; set; }
+        public List<PSOutboundRule> OutboundRules { get; set; }
 
         [JsonIgnore]
         public string SkuText
@@ -84,6 +85,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string InboundNatPoolsText
         {
             get { return JsonConvert.SerializeObject(InboundNatPools, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string OutboundRulesText
+        {
+            get { return JsonConvert.SerializeObject(OutboundRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

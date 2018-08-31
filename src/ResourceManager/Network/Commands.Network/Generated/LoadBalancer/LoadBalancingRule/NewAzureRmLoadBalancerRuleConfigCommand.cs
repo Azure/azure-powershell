@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
     public partial class NewAzureRmLoadBalancerRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Name of the load balancing rule.")]
         public string Name { get; set; }
 

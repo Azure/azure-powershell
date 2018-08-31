@@ -52,6 +52,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool? EnableFloatingIP { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableTcpReset { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         [JsonProperty(Order = 1)]
         public PSResourceId FrontendIPConfiguration { get; set; }

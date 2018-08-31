@@ -55,7 +55,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=19.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.3.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +231,11 @@
     <Compile Include="Generated\LoadBalancer\LoadBalancingRule\RemoveAzureRmLoadBalancerRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\LoadBalancingRule\SetAzureRmLoadBalancerRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\NewAzureRMLoadBalancerCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\OutboundRule\AddAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\OutboundRule\GetAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\OutboundRule\NewAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\OutboundRule\RemoveAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\OutboundRule\SetAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\Probe\AddAzureRmLoadBalancerProbeConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\Probe\GetAzureRmLoadBalancerProbeConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\Probe\NewAzureRmLoadBalancerProbeConfigCommand.cs" />
@@ -284,6 +289,7 @@
     <Compile Include="Generated\Models\PSNetworkInterfaceDnsSettings.cs" />
     <Compile Include="Generated\Models\PSNetworkWatcher.cs" />
     <Compile Include="Generated\Models\PSNextHopResult.cs" />
+    <Compile Include="Generated\Models\PSOutboundRule.cs" />
     <Compile Include="Generated\Models\PSPacketCaptureStatus.cs" />
     <Compile Include="Generated\Models\PSProbe.cs" />
     <Compile Include="Generated\Models\PSPublicIpAddressDnsSettings.cs" />

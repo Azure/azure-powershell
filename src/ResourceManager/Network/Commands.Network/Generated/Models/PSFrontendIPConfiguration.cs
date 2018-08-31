@@ -49,6 +49,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public List<PSResourceId> InboundNatPools { get; set; }
         [JsonProperty(Order = 1)]
+        public List<PSResourceId> OutboundRules { get; set; }
+        [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancingRules { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Label = "Subnet", Target = ViewControl.Table, ScriptBlock = "$_.Subnet.Name")]
@@ -56,6 +58,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         [Ps1Xml(Label = "PublicIpAddress", Target = ViewControl.Table, ScriptBlock = "$_.PublicIpAddress.Name")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
+        [JsonProperty(Order = 1)]
+        public PSResourceId PublicIPPrefix { get; set; }
 
         [JsonIgnore]
         public string ZonesText
@@ -76,6 +80,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string OutboundRulesText
+        {
+            get { return JsonConvert.SerializeObject(OutboundRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
         public string LoadBalancingRulesText
         {
             get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
@@ -93,12 +103,23 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
+        [JsonIgnore]
+        public string PublicIPPrefixText
+        {
+            get { return JsonConvert.SerializeObject(PublicIPPrefix, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
         public bool ShouldSerializeInboundNatRules()
         {
             return !string.IsNullOrEmpty(this.Name);
         }
 
         public bool ShouldSerializeInboundNatPools()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeOutboundRules()
         {
             return !string.IsNullOrEmpty(this.Name);
         }

@@ -34,7 +34,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerFrontendIpConfig", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancerFrontendIpConfig", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
     public partial class AddAzureRmLoadBalancerFrontendIpConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSLoadBalancer LoadBalancer { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Name of the frontend ip configuration.")]
         public string Name { get; set; }
 
@@ -62,28 +62,28 @@ namespace Microsoft.Azure.Commands.Network
         public List<string> Zone { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = "SetByResourceIdSubnet",
             HelpMessage = "The reference of the subnet resource.",
             ValueFromPipelineByPropertyName = true)]
         public string SubnetId { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = "SetByResourceSubnet",
             HelpMessage = "The reference of the subnet resource.",
             ValueFromPipelineByPropertyName = true)]
         public PSSubnet Subnet { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = "SetByResourceIdPublicIpAddress",
             HelpMessage = "The reference of the Public IP resource.",
             ValueFromPipelineByPropertyName = true)]
         public string PublicIpAddressId { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = "SetByResourcePublicIpAddress",
             HelpMessage = "The reference of the Public IP resource.",
             ValueFromPipelineByPropertyName = true)]

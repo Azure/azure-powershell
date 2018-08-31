@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSNetworkInterfaceIPConfiguration> BackendIpConfigurations { get; set; }
         [JsonProperty(Order = 1)]
         public List<PSResourceId> LoadBalancingRules { get; set; }
+        [JsonProperty(Order = 1)]
+        public PSResourceId OutboundRule { get; set; }
 
         [JsonIgnore]
         public string BackendIpConfigurationsText
@@ -51,6 +53,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string LoadBalancingRulesText
         {
             get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string OutboundRuleText
+        {
+            get { return JsonConvert.SerializeObject(OutboundRule, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         public bool ShouldSerializeBackendIpConfigurations()

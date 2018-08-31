@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSLoadBalancer LoadBalancer { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Name of the inbound nat rule.")]
         public string Name { get; set; }
 

@@ -786,6 +786,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                        'Remove-AzNetworkSecurityGroup':  'Remove-AzureRmNetworkSecurityGroup',
                        'Get-AzLoadBalancerProbeConfig':  'Get-AzureRmLoadBalancerProbeConfig',
                        'New-AzVirtualNetworkGatewayConnection':  'New-AzureRmVirtualNetworkGatewayConnection',
+                       'Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript':  'Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript',
                        'Get-AzExpressRouteCircuitConnectionConfig':  'Get-AzureRmExpressRouteCircuitConnectionConfig',
                        'Get-AzApplicationGatewayIPConfiguration':  'Get-AzureRmApplicationGatewayIPConfiguration',
                        'New-AzVpnClientRevokedCertificate':  'New-AzureRmVpnClientRevokedCertificate',
@@ -811,6 +812,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                        'Set-AzExpressRouteCircuit':  'Set-AzureRmExpressRouteCircuit',
                        'Set-AzApplicationGatewayIPConfiguration':  'Set-AzureRmApplicationGatewayIPConfiguration',
                        'Add-AzVpnClientRootCertificate':  'Add-AzureRmVpnClientRootCertificate',
+                       'Set-AzLoadBalancerOutboundRuleConfig':  'Set-AzureRmLoadBalancerOutboundRuleConfig',
                        'Get-AzNetworkWatcherConnectionMonitorReport':  'Get-AzureRmNetworkWatcherConnectionMonitorReport',
                        'New-AzPublicIpAddress':  'New-AzureRmPublicIpAddress',
                        'Get-AzApplicationGatewaySku':  'Get-AzureRmApplicationGatewaySku',
@@ -938,6 +940,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                        'Add-AzApplicationGatewayRequestRoutingRule':  'Add-AzureRmApplicationGatewayRequestRoutingRule',
                        'New-AzVpnClientRootCertificate':  'New-AzureRmVpnClientRootCertificate',
                        'Get-AzExpressRouteServiceProvider':  'Get-AzureRmExpressRouteServiceProvider',
+                       'Remove-AzLoadBalancerOutboundRuleConfig':  'Remove-AzureRmLoadBalancerOutboundRuleConfig',
                        'New-AzLoadBalancerInboundNatRuleConfig':  'New-AzureRmLoadBalancerInboundNatRuleConfig',
                        'New-AzVirtualNetworkSubnetConfig':  'New-AzureRmVirtualNetworkSubnetConfig',
                        'New-AzApplicationGatewayFrontendPort':  'New-AzureRmApplicationGatewayFrontendPort',
@@ -960,10 +963,10 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                        'Get-AzVpnClientRootCertificate':  'Get-AzureRmVpnClientRootCertificate',
                        'New-AzLoadBalancer':  'New-AzureRmLoadBalancer',
                        'Add-AzNetworkSecurityRuleConfig':  'Add-AzureRmNetworkSecurityRuleConfig',
-                       'Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript':  'Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript',
+                       'Get-AzLoadBalancerRuleConfig':  'Get-AzureRmLoadBalancerRuleConfig',
                        'Add-AzApplicationGatewayHttpListener':  'Add-AzureRmApplicationGatewayHttpListener',
                        'Set-AzLoadBalancerFrontendIpConfig':  'Set-AzureRmLoadBalancerFrontendIpConfig',
-                       'Get-AzLoadBalancerRuleConfig':  'Get-AzureRmLoadBalancerRuleConfig',
+                       'New-AzLoadBalancerOutboundRuleConfig':  'New-AzureRmLoadBalancerOutboundRuleConfig',
                        'Get-AzExpressRouteCircuitPeeringConfig':  'Get-AzureRmExpressRouteCircuitPeeringConfig',
                        'Remove-AzApplicationGatewayBackendAddressPool':  'Remove-AzureRmApplicationGatewayBackendAddressPool',
                        'Get-AzExpressRouteCircuitAuthorization':  'Get-AzureRmExpressRouteCircuitAuthorization',
@@ -1004,6 +1007,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                        'New-AzNetworkWatcher':  'New-AzureRmNetworkWatcher',
                        'Add-AzApplicationGatewayBackendAddressPool':  'Add-AzureRmApplicationGatewayBackendAddressPool',
                        'New-AzRouteConfig':  'New-AzureRmRouteConfig',
+                       'Get-AzLoadBalancerOutboundRuleConfig':  'Get-AzureRmLoadBalancerOutboundRuleConfig',
                        'Add-AzApplicationGatewaySslCertificate':  'Add-AzureRmApplicationGatewaySslCertificate',
                        'Set-AzApplicationGatewayWebApplicationFirewallConfiguration':  'Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration',
                        'Remove-AzApplicationGatewayRedirectConfiguration':  'Remove-AzureRmApplicationGatewayRedirectConfiguration',
@@ -1023,6 +1027,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                        'New-AzApplicationSecurityGroup':  'New-AzureRmApplicationSecurityGroup',
                        'Set-AzVirtualNetworkPeering':  'Set-AzureRmVirtualNetworkPeering',
                        'New-AzLoadBalancerProbeConfig':  'New-AzureRmLoadBalancerProbeConfig',
+                       'Add-AzLoadBalancerOutboundRuleConfig':  'Add-AzureRmLoadBalancerOutboundRuleConfig',
                        'Set-AzNetworkInterface':  'Set-AzureRmNetworkInterface',
                        'New-AzNetworkInterface':  'New-AzureRmNetworkInterface',
                        'Set-AzNetworkSecurityGroup':  'Set-AzureRmNetworkSecurityGroup',
@@ -2203,7 +2208,6 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                               'Disable-AzTrafficManagerEndpoint':  'Disable-AzureRmTrafficManagerEndpoint'
                           }
 }
-
 ";
     }
 }

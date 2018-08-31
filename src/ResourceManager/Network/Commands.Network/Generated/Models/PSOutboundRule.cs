@@ -27,49 +27,36 @@
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSLoadBalancingRule : PSChildResource
+    public partial class PSOutboundRule : PSChildResource
     {
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? AllocatedOutboundPorts { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ProvisioningState { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string Protocol { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string LoadDistribution { get; set; }
-        [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
-        public int FrontendPort { get; set; }
-        [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
-        public int BackendPort { get; set; }
+        public bool? EnableTcpReset { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public int? IdleTimeoutInMinutes { get; set; }
         [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
-        public bool? EnableFloatingIP { get; set; }
-        [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
-        public bool? EnableTcpReset { get; set; }
-        [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
-        public bool? DisableOutboundSNAT { get; set; }
-        [JsonProperty(Order = 1)]
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string ProvisioningState { get; set; }
-        [JsonProperty(Order = 1)]
-        public PSResourceId FrontendIPConfiguration { get; set; }
+        public List<PSResourceId> FrontendIpConfigurations { get; set; }
         [JsonProperty(Order = 1)]
         public PSResourceId BackendAddressPool { get; set; }
-        [JsonProperty(Order = 1)]
-        public PSResourceId Probe { get; set; }
 
         [JsonIgnore]
-        public string FrontendIPConfigurationText
+        public string FrontendIpConfigurationsText
         {
-            get { return JsonConvert.SerializeObject(FrontendIPConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(FrontendIpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
@@ -78,18 +65,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(BackendAddressPool, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
-        [JsonIgnore]
-        public string ProbeText
-        {
-            get { return JsonConvert.SerializeObject(Probe, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        public bool ShouldSerializeFrontendPort()
-        {
-            return !string.IsNullOrEmpty(this.Name);
-        }
-
-        public bool ShouldSerializeBackendPort()
+        public bool ShouldSerializeFrontendIpConfigurations()
         {
             return !string.IsNullOrEmpty(this.Name);
         }

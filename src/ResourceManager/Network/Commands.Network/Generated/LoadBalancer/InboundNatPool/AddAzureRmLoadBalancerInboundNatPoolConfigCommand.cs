@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Commands.Network
         public PSLoadBalancer LoadBalancer { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Name of the inbound nat pool.")]
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The transport protocol for the endpoint.",
             ValueFromPipelineByPropertyName = true)]
         [PSArgumentCompleter(
@@ -62,19 +62,19 @@ namespace Microsoft.Azure.Commands.Network
         public string Protocol { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The first port number in the range of external ports that will be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values range between 1 and 65534.",
             ValueFromPipelineByPropertyName = true)]
         public int FrontendPortRangeStart { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The last port number in the range of external ports that will be used to provide Inbound Nat to NICs associated with a load balancer. Acceptable values range between 1 and 65535.",
             ValueFromPipelineByPropertyName = true)]
         public int FrontendPortRangeEnd { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The port used for internal connections on the endpoint. Acceptable values are between 1 and 65535.",
             ValueFromPipelineByPropertyName = true)]
         public int BackendPort { get; set; }
