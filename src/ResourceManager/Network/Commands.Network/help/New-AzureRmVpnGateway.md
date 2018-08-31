@@ -8,14 +8,14 @@ schema: 2.0.0
 # New-AzureRmVpnGateway
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a Scalable VPN Gateway.
 
 ## SYNTAX
 
 ### ByVirtualHubName (Default)
 ```
-New-AzureRmVpnGateway -Name <String> -ResourceGroupName <String> -Location <String>
- -VpnGatewayScaleUnit <UInt32> [-VirtualHubName <String>] [-BgpPeerWeight <UInt32>]
+New-AzureRmVpnGateway -Name <String> -ResourceGroupName <String> -VpnGatewayScaleUnit <UInt32>
+ [-VirtualHubName <String>] [-BgpPeerWeight <UInt32>]
  [-VpnConnection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnConnection]>]
  [-Tag <Hashtable>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -23,8 +23,8 @@ New-AzureRmVpnGateway -Name <String> -ResourceGroupName <String> -Location <Stri
 
 ### ByVirtualHubObject
 ```
-New-AzureRmVpnGateway -Name <String> -ResourceGroupName <String> -Location <String>
- -VpnGatewayScaleUnit <UInt32> [-VirtualHub <PSVirtualHub>] [-BgpPeerWeight <UInt32>]
+New-AzureRmVpnGateway -Name <String> -ResourceGroupName <String> -VpnGatewayScaleUnit <UInt32>
+ [-VirtualHub <PSVirtualHub>] [-BgpPeerWeight <UInt32>]
  [-VpnConnection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnConnection]>]
  [-Tag <Hashtable>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -32,24 +32,34 @@ New-AzureRmVpnGateway -Name <String> -ResourceGroupName <String> -Location <Stri
 
 ### ByVirtualHubResourceId
 ```
-New-AzureRmVpnGateway -Name <String> -ResourceGroupName <String> -Location <String>
- -VpnGatewayScaleUnit <UInt32> [-VirtualHubId <String>] [-BgpPeerWeight <UInt32>]
+New-AzureRmVpnGateway -Name <String> -ResourceGroupName <String> -VpnGatewayScaleUnit <UInt32>
+ [-VirtualHubId <String>] [-BgpPeerWeight <UInt32>]
  [-VpnConnection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnConnection]>]
  [-Tag <Hashtable>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+New-AzureRmVpnGateway creates a scalable VPN Gateway. This is software defined connectivity for site to site connections inside the VirtualHub. 
+
+This gateway resizes and scales based on the scale unit specified in this or the Set-AzureRmVpnGateway cmdlet. 
+
+A connection is set up from a branch/Site known as VPNSite to the scalable gateway. Each connection comprises of 2 Active-Active tunnels.
+
+The VpnGateway will be in the same location as the referenced VirtualHub.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name “westushub” -AddressPrefix "10.0.0.1/24"
+PS C:\> New-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
 ```
 
-{{ Add example description here }}
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in West US in "testRG" resource group in Azure. 
+A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
 
 ## PARAMETERS
 
@@ -57,7 +67,7 @@ PS C:\> {{ Add example code here }}
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +82,7 @@ Accept wildcard characters: False
 The BgpPeering weight for this VpnGateway.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +97,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -102,7 +112,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -113,26 +123,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, VpnGatewayName
 
@@ -147,7 +142,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +157,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +172,7 @@ Accept wildcard characters: False
 The VirtualHub this VpnGateway needs to be associated with.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
+Type: PSVirtualHub
 Parameter Sets: ByVirtualHubObject
 Aliases:
 
@@ -192,7 +187,7 @@ Accept wildcard characters: False
 The Id of the VirtualHub this VpnGateway needs to be associated with.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualHubResourceId
 Aliases:
 
@@ -207,7 +202,7 @@ Accept wildcard characters: False
 The Id of the VirtualHub this VpnGateway needs to be associated with.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualHubName
 Aliases:
 
@@ -237,7 +232,7 @@ Accept wildcard characters: False
 The scale unit for this VpnGateway.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -252,7 +247,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -268,7 +263,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

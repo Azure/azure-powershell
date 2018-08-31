@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmVpnGateway
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates a VpnGateway resource to an intended goal state.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ Set-AzureRmVpnGateway -Name <String> -ResourceGroupName <String>
 
 ### ByVpnGatewayObject
 ```
-Set-AzureRmVpnGateway -InputObject <PSVirtualWan>
+Set-AzureRmVpnGateway -InputObject <PSVpnGateway>
  [-VpnConnection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnConnection]>]
  [-VpnGatewayScaleUnit <UInt32>] [-BgpPeerWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -37,16 +37,25 @@ Set-AzureRmVpnGateway -ResourceId <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Set-AzureRmVpnGateway set a scalable VPN Gateway to the appropriate goal state . This is software defined connectivity for site to site connections inside the VirtualHub. 
+This gateway resizes and scales based on the scale unit specified by the user. 
+A connection is set up from a branch/Site known as VPNSite to the scalable gateway. Each connection comprises of 2 Active-Active tunnels
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name “westushub” -AddressPrefix "10.0.0.1/24"
+PS C:\> $vpnGateway = New-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
+PS C:\> Set-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VpnGatewayScaleUnit 3
 ```
 
-{{ Add example description here }}
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in West US in "testRG" resource group in Azure. 
+A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
+
+After the gateway has been created, it uses Set-AzureRmVpnGateway to upgrade the gateway to 3 scale units.
 
 ## PARAMETERS
 
@@ -114,7 +123,7 @@ Accept wildcard characters: False
 The virtual wan object to be modified
 
 ```yaml
-Type: PSVirtualWan
+Type: PSVpnGateway
 Parameter Sets: ByVpnGatewayObject
 Aliases: VpnGateway
 
@@ -136,7 +145,7 @@ Aliases: ResourceName, VpnGatewayName, GatewayName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -151,7 +160,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -247,8 +256,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

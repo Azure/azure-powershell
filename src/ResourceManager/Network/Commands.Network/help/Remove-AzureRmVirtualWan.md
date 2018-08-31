@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmVirtualWan
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes an Azure Virtual WAN.
 
 ## SYNTAX
 
@@ -31,16 +31,51 @@ Remove-AzureRmVirtualWan -ResourceId <String> [-Force] [-DefaultProfile <IAzureC
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Removes an Azure Virtual WAN.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Name "TestResourceGroup" -Location "Central US"
+PS C:\> New-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Location "Central US"
+PS C:\> Remove-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup"
 ```
 
-{{ Add example description here }}
+This example creates a Virtual WAN in a resource group and then immediately deletes it. 
+To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
+
+
+### Example 2
+```powershell
+PS C:\> New-AzureRmResourceGroup -Name "TestResourceGroup" -Location "Central US"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Location "Central US"
+PS C:\> Remove-AzureRmVirtualWan -InputObject $virtualWan
+```
+
+This example creates a Virtual WAN in a resource group and then immediately deletes it. This deletion happens using the virtual wan object returned by New-AzureRmVirtualWan.
+To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
+
+
+### Example 3
+```powershell
+PS C:\> New-AzureRmResourceGroup -Name "TestResourceGroup" -Location "Central US"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Location "Central US"
+PS C:\> Remove-AzureRmVirtualWan -ResourceId $virtualWan.Id
+```
+
+This example creates a Virtual WAN in a resource group and then immediately deletes it. This deletion happens using the virtual wan resource id returned by New-AzureRmVirtualWan.
+To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
+
+### Example 4
+```powershell
+PS C:\> New-AzureRmResourceGroup -Name "TestResourceGroup" -Location "Central US"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Location "Central US"
+PS C:\> Get-AzureRmVirtualWan -ResourceId $virtualWan.Id | Remove-AzureRmVirtualWan
+```
+
+This example creates a Virtual WAN in a resource group and then immediately deletes it. This deletion happens using powershell piping using the output from Get-AzureRmVirtualWan.
+To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
 
 ## PARAMETERS
 
@@ -48,7 +83,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +98,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +113,7 @@ Accept wildcard characters: False
 The virtual wan object to be deleted.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
+Type: PSVirtualWan
 Parameter Sets: ByVirtualWanObject
 Aliases: VirtualWan
 
@@ -93,7 +128,7 @@ Accept wildcard characters: False
 The virtual wan name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualWanName
 Aliases: ResourceName, VirtualWanName
 
@@ -108,7 +143,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualWanName
 Aliases:
 
@@ -123,7 +158,7 @@ Accept wildcard characters: False
 The Azure resource ID for the virtual wan to be deleted.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualWanResourceId
 Aliases: VirtualWanId
 
@@ -138,7 +173,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -154,7 +189,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -8,7 +8,9 @@ schema: 2.0.0
 # New-AzureRmVpnSite
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new Azure VpnSite resource. This is an RM representation of customer branches that are uploaded to Azure
+for S2S connectivity with a Cortex virtual hub.
+
 
 ## SYNTAX
 
@@ -41,22 +43,34 @@ New-AzureRmVpnSite -Name <String> -ResourceGroupName <String> -Location <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Creates a new Azure VpnSite resource. This is an RM representation of customer branches that are uploaded to Azure
+for S2S connectivity with a Cortex virtual hub.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+
+PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
+PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
+PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
+
+PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
+
 ```
 
-{{ Add example description here }}
+The above will create a resource group, Virtual WAN in West US in "testRG" resource group in Azure. 
+
+Then it creates a VpnSite to represent a customer branch and links it to the Virtual WAN.
+
+An IPSec connection can then be setup with this branch and a VpnGateway using the New-AzureRmVpnConnection command.
 
 ## PARAMETERS
 
 ### -AddressSpace
 The address prefixes of the virtual network.
-Use this or AddressSpaceObject but not both.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
@@ -74,7 +88,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +103,7 @@ Accept wildcard characters: False
 The BGP ASN for this VpnSite.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +118,7 @@ Accept wildcard characters: False
 The BGP Peering Address for this VpnSite.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +133,7 @@ Accept wildcard characters: False
 The BGP Peering weight for this VpnSite.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +148,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -149,7 +163,7 @@ Accept wildcard characters: False
 The device model of the remote vpn device.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +178,7 @@ Accept wildcard characters: False
 The device vendor of the remote vpn device.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -179,7 +193,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -191,17 +205,17 @@ Accept wildcard characters: False
 ```
 
 ### -IpAddress
-IP address of local network gateway.
+IP address of the branch.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -209,7 +223,7 @@ Accept wildcard characters: False
 Is this VpnSite a security site
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -224,7 +238,7 @@ Accept wildcard characters: False
 The device model of the remote vpn device.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -239,7 +253,7 @@ Accept wildcard characters: False
 The resource location.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -254,7 +268,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, VpnSiteName
 
@@ -269,7 +283,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -283,8 +297,10 @@ Accept wildcard characters: False
 ### -SiteKey
 The SiteKey for this VpnSite.
 
+This must match the Shared Key set on the VpnConnection when connecting this branch.
+
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -299,7 +315,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -313,8 +329,10 @@ Accept wildcard characters: False
 ### -VirtualWan
 The VirtualWan this VpnSite needs to be connected to.
 
+The virtual wan can be represented using the VirtualWan or VirtualWan resource id or the VirtualWan name.
+
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
+Type: PSVirtualWan
 Parameter Sets: ByVirtualWanObject
 Aliases:
 
@@ -328,8 +346,10 @@ Accept wildcard characters: False
 ### -VirtualWanId
 The ResourceId VirtualWan this VpnSite needs to be connected to.
 
+The virtual wan can be represented using the VirtualWan or VirtualWan resource id or the VirtualWan name.
+
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualWanResourceId
 Aliases:
 
@@ -343,8 +363,10 @@ Accept wildcard characters: False
 ### -VirtualWanName
 The name of the VirtualWan this VpnSite needs to be connected to.
 
+The virtual wan can be represented using the VirtualWan or VirtualWan resource id or the VirtualWan name.
+
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualWanName
 Aliases:
 
@@ -358,8 +380,10 @@ Accept wildcard characters: False
 ### -VirtualWanResourceGroupName
 The resource group name of the VirtualWan this VpnSite needs to be connected to.
 
+The virtual wan can be represented using the VirtualWan or VirtualWan resource id or the VirtualWan name.
+
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualWanName
 Aliases:
 
@@ -374,7 +398,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -390,7 +414,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

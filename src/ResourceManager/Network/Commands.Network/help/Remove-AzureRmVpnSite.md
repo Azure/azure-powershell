@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmVpnSite
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes an Azure VpnSite resource.
 
 ## SYNTAX
 
@@ -31,16 +31,47 @@ Remove-AzureRmVpnSite -ResourceId <String> [-Force] [-DefaultProfile <IAzureCont
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Removes an Azure VpnSite resource.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+
+PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
+PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
+PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
+
+PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
+
+PS C:\> Remove-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite"
+
 ```
 
-{{ Add example description here }}
+The above will create a resource group, Virtual WAN in West US in "testRG" resource group in Azure. 
+
+Then it creates a VpnSite to represent a customer branch and links it to the Virtual WAN.
+
+Once the site is created, it is immediately removed using the Remove-AzureRmVpnSite command.
+
+### Example 2
+```powershell
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+
+PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
+PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
+PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
+
+PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
+
+PS C:\> Get-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" | Remove-AzureRmVpnSite
+
+```
+
+Same as example 1 but here the removal happens using the piped output from Get-AzureRmVpnSite.
 
 ## PARAMETERS
 
@@ -48,7 +79,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +94,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +109,7 @@ Accept wildcard characters: False
 The vpnSite object to be deleted.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVpnSite
+Type: PSVpnSite
 Parameter Sets: ByVpnSiteObject
 Aliases: VpnSite
 
@@ -93,7 +124,7 @@ Accept wildcard characters: False
 The vpnSite name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnSiteName
 Aliases: ResourceName, VpnSiteName
 
@@ -108,7 +139,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnSiteName
 Aliases:
 
@@ -123,7 +154,7 @@ Accept wildcard characters: False
 The Azure resource ID for the vpnSite to be deleted.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnSiteResourceId
 Aliases: VpnSiteId
 
@@ -138,7 +169,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -154,7 +185,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

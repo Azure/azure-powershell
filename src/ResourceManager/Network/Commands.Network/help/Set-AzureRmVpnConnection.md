@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmVpnConnection
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates a VpnConnection object to a goal state.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Set-AzureRmVpnConnection -Name <String> -ResourceGroupName <String> -ParentResou
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByVpnConnectionObject
+### ByVpnConnectionResourceId
 ```
 Set-AzureRmVpnConnection -ResourceId <String> [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>]
  [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>] [-EnableRateLimiting <Boolean>]
@@ -28,17 +28,74 @@ Set-AzureRmVpnConnection -ResourceId <String> [-SharedKey <SecureString>] [-Conn
  [-Confirm] [<CommonParameters>]
 ```
 
+### ByVpnConnectionObject
+```
+Set-AzureRmVpnConnection -InputObject <PSVpnConnection> [-SharedKey <SecureString>]
+ [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>] [-EnableBgp <Boolean>]
+ [-EnableRateLimiting <Boolean>] [-EnableInternetSecurity <Boolean>] [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-{{Fill in the Description}}
+Updates a VpnConnection object to a goal state.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name “westushub” -AddressPrefix "10.0.0.1/24"
+PS C:\> New-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
+PS C:\> $vpnGateway = Get-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
+
+PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
+PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
+PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
+
+PS C:\> $vpnSite = New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
+
+PS C:\> $vpnConnection = New-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testConnection" -VpnSite $vpnSite
+
+PS C:\> $ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 1000 -SADataSizeKilobytes 2000 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
+
+PS C:\> Set-AzureRmVpnConnection -InputObject $vpnConnection -IpSecPolicy $ipsecPolicy
 ```
 
-{{ Add example description here }}
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
+A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
+
+Once the gateway has been created, it is connected to the VpnSite using the New-AzureRmVpnConnection command.
+
+The connection is then updated to have a new IpSecPolicy by using the Set-AzureRmVpnConnection command.
+
+### Example 2
+```powershell
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name “westushub” -AddressPrefix "10.0.0.1/24"
+PS C:\> New-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
+PS C:\> $vpnGateway = Get-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
+
+PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
+PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
+PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
+
+PS C:\> $vpnSite = New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
+
+PS C:\> $vpnConnection = New-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testConnection" -VpnSite $vpnSite
+
+PS C:\> $Secure_String_Pwd = Read-Host -AsSecureString
+
+PS C:\> Set-AzureRmVpnConnection -InputObject $vpnConnection -SharedKey $Secure_String_Pwd
+```
+
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
+A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
+
+Once the gateway has been created, it is connected to the VpnSite using the New-AzureRmVpnConnection command.
+
+The connection is then updated to have a new shared key using the secure string construct.
 
 ## PARAMETERS
 
@@ -46,7 +103,7 @@ PS C:\> {{ Add example code here }}
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -61,7 +118,7 @@ Accept wildcard characters: False
 The bandwith that needs to be handled by this connection in mbps.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +133,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,7 +148,7 @@ Accept wildcard characters: False
 Enable BGP for this connection
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +163,7 @@ Accept wildcard characters: False
 Enable internet security for this connection
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +178,7 @@ Accept wildcard characters: False
 Enable rate limiting for this connection
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -136,7 +193,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -147,11 +204,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IpSecPolicy
-The bandwith that needs to be handled by this connection in mbps.
+### -InputObject
+The VpnConenction object to update.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy
+Type: PSVpnConnection
+Parameter Sets: ByVpnConnectionObject
+Aliases: VpnConnection
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -IpSecPolicy
+The IPSecPolicy that is applied to this connection.
+
+```yaml
+Type: PSIpsecPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +238,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnConnectionName
 Aliases: ResourceName, VpnConnectionName
 
@@ -181,7 +253,7 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnConnectionName
 Aliases: ParentVpnGatewayName, VpnGatewayName
 
@@ -196,7 +268,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnConnectionName
 Aliases:
 
@@ -211,9 +283,9 @@ Accept wildcard characters: False
 The resource id of the VpnConenction object to update.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByVpnConnectionObject
-Aliases: VpnConnection
+Type: String
+Parameter Sets: ByVpnConnectionResourceId
+Aliases: VpnConnectionId
 
 Required: True
 Position: Named
@@ -225,8 +297,10 @@ Accept wildcard characters: False
 ### -SharedKey
 The shared key required to set this connection up.
 
+This key should match the site key set on the VpnSite.
+
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -241,7 +315,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -257,7 +331,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

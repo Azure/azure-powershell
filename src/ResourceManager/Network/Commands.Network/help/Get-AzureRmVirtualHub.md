@@ -8,12 +8,12 @@ schema: 2.0.0
 # Get-AzureRmVirtualHub
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets an Azure VirtualHub by Name and ResourceGroupName or lists all Virtual Hubs by ResourceGroupName/Subscription.
 
 ## SYNTAX
 
 ```
-Get-AzureRmVirtualHub [-Name <String>] -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmVirtualHub [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,10 +24,29 @@ Get-AzureRmVirtualHub [-Name <String>] -ResourceGroupName <String> [-DefaultProf
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+```powershell
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
+PS C:\> New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name “westushub” -AddressPrefix "10.0.1.0/24"
+PS C:\> Get-AzureRmVirtualHub -ResourceGroupName "testRG" -Name "westushub"
 ```
 
-{{ Add example description here }}
+The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have the address space "10.0.1.0/24".
+
+It then gets the virtual hub using its ResourceGroupName and ResourceName.
+
+### Example 1
+```powershell
+```powershell
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
+PS C:\> New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name “westushub” -AddressPrefix "10.0.1.0/24"
+PS C:\> Get-AzureRmVirtualHub -ResourceGroupName "testRG"
+```
+
+The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have the address space "10.0.1.0/24".
+
+It then lists all the virtual hub in the  ResourceGroup "testRG".
 
 ## PARAMETERS
 
@@ -35,7 +54,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,7 +69,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName, VirtualHubName
 
@@ -65,11 +84,11 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -80,7 +99,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -96,7 +115,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

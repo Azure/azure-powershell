@@ -8,13 +8,14 @@ schema: 2.0.0
 # Set-AzureRmVpnSite
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates a VpnSite representing a customer branch to an intended goal state.
 
 ## SYNTAX
 
 ### ByVpnSiteName (Default)
 ```
-Set-AzureRmVpnSite -Name <String> -ResourceGroupName <String> -IpAddress <String>
+Set-AzureRmVpnSite -Name <String> -ResourceGroupName <String> [-VirtualWanResourceGroupName <String>]
+ [-VirtualWanName <String>] [-VirtualWan <PSVirtualWan>] [-VirtualWanId <String>] [-IpAddress <String>]
  [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-SiteKey <SecureString>] [-IsSecuritySite] [-Tag <Hashtable>] [-AsJob] [-Force]
@@ -23,7 +24,8 @@ Set-AzureRmVpnSite -Name <String> -ResourceGroupName <String> -IpAddress <String
 
 ### ByVpnSiteObject
 ```
-Set-AzureRmVpnSite -InputObject <PSVpnSite> -IpAddress <String>
+Set-AzureRmVpnSite -InputObject <PSVpnSite> [-VirtualWanResourceGroupName <String>] [-VirtualWanName <String>]
+ [-VirtualWan <PSVirtualWan>] [-VirtualWanId <String>] [-IpAddress <String>]
  [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-SiteKey <SecureString>] [-IsSecuritySite] [-Tag <Hashtable>] [-AsJob] [-Force]
@@ -32,34 +34,8 @@ Set-AzureRmVpnSite -InputObject <PSVpnSite> -IpAddress <String>
 
 ### ByVpnSiteResourceId
 ```
-Set-AzureRmVpnSite -ResourceId <String> -IpAddress <String>
- [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
- [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
- [-BgpPeeringWeight <UInt32>] [-SiteKey <SecureString>] [-IsSecuritySite] [-Tag <Hashtable>] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByVirtualWanName
-```
-Set-AzureRmVpnSite -VirtualWanResourceGroupName <String> -VirtualWanName <String> -IpAddress <String>
- [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
- [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
- [-BgpPeeringWeight <UInt32>] [-SiteKey <SecureString>] [-IsSecuritySite] [-Tag <Hashtable>] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByVirtualWanObject
-```
-Set-AzureRmVpnSite -VirtualWan <PSVirtualWan> -IpAddress <String>
- [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
- [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
- [-BgpPeeringWeight <UInt32>] [-SiteKey <SecureString>] [-IsSecuritySite] [-Tag <Hashtable>] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByVirtualWanResourceId
-```
-Set-AzureRmVpnSite -VirtualWanId <String> -IpAddress <String>
+Set-AzureRmVpnSite -ResourceId <String> [-VirtualWanResourceGroupName <String>] [-VirtualWanName <String>]
+ [-VirtualWan <PSVirtualWan>] [-VirtualWanId <String>] [-IpAddress <String>]
  [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
  [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
  [-BgpPeeringWeight <UInt32>] [-SiteKey <SecureString>] [-IsSecuritySite] [-Tag <Hashtable>] [-AsJob] [-Force]
@@ -67,16 +43,31 @@ Set-AzureRmVpnSite -VirtualWanId <String> -IpAddress <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Updates a VpnSite representing a customer branch to an intended goal state.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+
+PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
+PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
+PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
+
+PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
+
+PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "2.3.5.5"
+
 ```
 
-{{ Add example description here }}
+The above will create a resource group, Virtual WAN in West US in "testRG" resource group in Azure. 
+
+Then it creates a VpnSite to represent a customer branch and links it to the Virtual WAN.
+
+Once the site is created, it updates the IpAddress of the site using the Set-AzureRmVpnSite command.
 
 ## PARAMETERS
 
@@ -100,7 +91,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +106,7 @@ Accept wildcard characters: False
 The BGP ASN for this VpnSite.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +121,7 @@ Accept wildcard characters: False
 The BGP Peering Address for this VpnSite.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -145,7 +136,7 @@ Accept wildcard characters: False
 The BGP Peering weight for this VpnSite.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -160,7 +151,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -175,7 +166,7 @@ Accept wildcard characters: False
 The device model of the remote vpn device.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +181,7 @@ Accept wildcard characters: False
 The device vendor of the remote vpn device.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -205,7 +196,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -220,7 +211,7 @@ Accept wildcard characters: False
 The vpn site object to be modified
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVpnSite
+Type: PSVpnSite
 Parameter Sets: ByVpnSiteObject
 Aliases: VpnSite
 
@@ -235,11 +226,11 @@ Accept wildcard characters: False
 IP address of local network gateway.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -250,7 +241,7 @@ Accept wildcard characters: False
 Is this VpnSite a security site
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -265,7 +256,7 @@ Accept wildcard characters: False
 The device model of the remote vpn device.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -280,7 +271,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnSiteName
 Aliases: ResourceName, VpnSiteName
 
@@ -295,7 +286,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnSiteName
 Aliases:
 
@@ -310,7 +301,7 @@ Accept wildcard characters: False
 The Azure resource ID for the vpn site.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnSiteResourceId
 Aliases: VpnSiteId
 
@@ -325,7 +316,7 @@ Accept wildcard characters: False
 The SiteKey for this VpnSite.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -340,7 +331,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -355,11 +346,11 @@ Accept wildcard characters: False
 The VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
-Parameter Sets: ByVirtualWanObject
+Type: PSVirtualWan
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -370,11 +361,11 @@ Accept wildcard characters: False
 The ResourceId VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByVirtualWanResourceId
+Type: String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -385,11 +376,11 @@ Accept wildcard characters: False
 The name of the VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByVirtualWanName
+Type: String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -400,11 +391,11 @@ Accept wildcard characters: False
 The resource group name of the VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByVirtualWanName
+Type: String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -415,7 +406,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -431,7 +422,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

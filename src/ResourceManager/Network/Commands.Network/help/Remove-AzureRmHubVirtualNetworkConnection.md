@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmHubVirtualNetworkConnection
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+The Remove-AzureRmVirtualHubVnetConnection cmdlet removes an Azure Virtual Network Connection which peers a remote VNET to the hub VNET.
 
 ## SYNTAX
 
@@ -32,16 +32,45 @@ Remove-AzureRmHubVirtualNetworkConnection [-ResourceId <String>] [-AsJob] [-Forc
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Remove-AzureRmVirtualHubVnetConnection cmdlet removes an Azure Virtual Network Connection which peers a remote VNET to the hub VNET.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
+PS C:\> $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+PS C:\> $backendSubnet  = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet  -AddressPrefix "10.0.2.0/24"
+PS C:\> $remoteVirtualNetwork = New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet
+
+PS C:\> New-AzureRmVirtualWan -ResourceGroupName TestResourceGroup -Name testvwan -Location?
+PS C:\> New-AzureRmVirtualHub -Name testvhub <fill in> -AddressSpaceObject <PSAddressSpace>
+PS C:\> New-AzureRmHubVirtualNetworkConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection -RemoteVirtualNetwork $remoteVirtualNetwork
+
+PS C:\> Remove-AzureRmHubVirtualNetworkConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection
 ```
 
-{{ Add example description here }}
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in Central US in that resource group in Azure. A Virtual Network Connection will be created thereafter which will peer the Virtual Network to the Virtual Hub.
+
+After the hub virtual network connection is created, it removed the hub virtual network connection using its resource group name, the hub name and the connection name.
+
+### Example 2
+```powershell
+PS C:\> New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
+PS C:\> $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+PS C:\> $backendSubnet  = New-AzureRmVirtualNetworkSubnetConfig -Name backendSubnet  -AddressPrefix "10.0.2.0/24"
+PS C:\> $remoteVirtualNetwork = New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet
+
+PS C:\> New-AzureRmVirtualWan -ResourceGroupName TestResourceGroup -Name testvwan -Location?
+PS C:\> New-AzureRmVirtualHub -Name testvhub <fill in> -AddressSpaceObject <PSAddressSpace>
+PS C:\> New-AzureRmHubVirtualNetworkConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection -RemoteVirtualNetwork $remoteVirtualNetwork
+
+PS C:\> Get-AzureRmHubVirtualNetworkConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection | Remove-AzureRmHubVnetConnection
+```
+
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in Central US in that resource group in Azure. A Virtual Network Connection will be created thereafter which will peer the Virtual Network to the Virtual Hub.
+
+After the hub virtual network connection is created, it removes the hub virtual network connection using powershell piping on the output from Get-AzureRmHubVirtualNetworkConnection.
 
 ## PARAMETERS
 
@@ -49,7 +78,7 @@ PS C:\> {{ Add example code here }}
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -79,7 +108,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -94,14 +123,14 @@ Accept wildcard characters: False
 The hubvirtualnetworkconnection resource to modify.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection
+Type: PSHubVirtualNetworkConnection
 Parameter Sets: ByHubVirtualNetworkConnectionObject
 Aliases: HubVirtualNetworkConnection
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -109,7 +138,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByHubVirtualNetworkConnectionName
 Aliases: ResourceName, HubVirtualNetworkConnectionName
 
@@ -124,7 +153,7 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByHubVirtualNetworkConnectionName
 Aliases: VirtualHubName, ParentVirtualHubName
 
@@ -139,7 +168,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByHubVirtualNetworkConnectionName
 Aliases:
 
@@ -154,7 +183,7 @@ Accept wildcard characters: False
 The resource id of the hubvirtualnetworkconnection resource to modify.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByHubVirtualNetworkConnectionResourceId
 Aliases: HubVirtualNetworkConnectionId
 
@@ -169,7 +198,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -185,7 +214,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

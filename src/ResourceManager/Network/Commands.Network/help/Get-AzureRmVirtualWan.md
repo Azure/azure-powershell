@@ -8,26 +8,33 @@ schema: 2.0.0
 # Get-AzureRmVirtualWan
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 
 ## SYNTAX
 
 ```
-Get-AzureRmVirtualWan [-Name <String>] -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmVirtualWan [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmVirtualWan -Name "myVirtualWAN" -ResourceGroupName "testRG"
 ```
 
-{{ Add example description here }}
+This command gets the Virtual WAN named myVirtualWAN in the resource group testRG.
+
+### Example 2
+```powershell
+PS C:\> Get-AzureRmVirtualWan -ResourceGroupName "testRG"
+```
+
+This command lists all Virtual WANs in the resource group testRG.
 
 ## PARAMETERS
 
@@ -35,7 +42,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,7 +57,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -65,11 +72,11 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -80,7 +87,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -96,7 +103,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

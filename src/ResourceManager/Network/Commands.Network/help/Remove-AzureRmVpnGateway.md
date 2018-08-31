@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmVpnGateway
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+The Remove-AzureRmVpnGateway cmdlet removes an Azure VPN gateway. This is a gateway specific to Azure Virtual WAN’s software defined connectivity.
 
 ## SYNTAX
 
@@ -31,16 +31,36 @@ Remove-AzureRmVpnGateway -ResourceId <String> [-Force] [-DefaultProfile <IAzureC
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Remove-AzureRmVpnGateway cmdlet removes an Azure VPN gateway. This is a gateway specific to Azure Virtual WAN’s software defined connectivity.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name “westushub” -AddressPrefix "10.0.0.1/24"
+PS C:\> New-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
+PS C:\> Remove-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
 ```
 
-{{ Add example description here }}
+This example creates a Resource group, Virtual WAN, Virtual Hub, scalable VPN gateway in Central US and then immediately deletes it. 
+To suppress the prompt when deleting the Virtual Gateway, use the -Force flag.
+This will delete the VpnGateway and all VpnConnections attached to it.
+
+### Example 2
+```powershell
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name “westushub” -AddressPrefix "10.0.0.1/24"
+PS C:\> New-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
+PS C:\> Get-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" | Remove-AzureRmVpnGateway
+```
+
+This example creates a Resource group, Virtual WAN, Virtual Hub, scalable VPN gateway in Central US and then immediately deletes it. 
+This deletion happens using powershell piping, which uses the VpnGateway object returned by the Get-AzureRmVpnGateway command.
+To suppress the prompt when deleting the Virtual Gateway, use the -Force flag.
+This will delete the VpnGateway and all VpnConnections attached to it.
 
 ## PARAMETERS
 
@@ -48,7 +68,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +83,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +98,7 @@ Accept wildcard characters: False
 The vpnGateway object to be deleted.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVpnGateway
+Type: PSVpnGateway
 Parameter Sets: ByVpnGatewayObject
 Aliases: VpnGateway
 
@@ -93,7 +113,7 @@ Accept wildcard characters: False
 The vpnGateway name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnGatewayName
 Aliases: ResourceName, VpnGatewayName
 
@@ -108,7 +128,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnGatewayName
 Aliases:
 
@@ -123,14 +143,14 @@ Accept wildcard characters: False
 The Azure resource ID for the vpnGateway to be deleted.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnGatewayResourceId
 Aliases: vpnGatewayId
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -138,7 +158,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -154,7 +174,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

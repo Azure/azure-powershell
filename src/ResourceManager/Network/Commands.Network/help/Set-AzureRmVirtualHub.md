@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmVirtualHub
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates a Virtual Hub to an intended goal state.
 
 ## SYNTAX
 
@@ -40,16 +40,22 @@ Set-AzureRmVirtualHub -InputObject <PSVirtualHub> [-VirtualWan <PSVirtualWan>] [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Updates a Virtual Hub to an intended goal state.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+```powershell
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
+PS C:\> New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name “westushub” -AddressPrefix "10.0.1.0/24"
+PS C:\> Set-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name “westushub” -AddressPrefix "10.0.1.0/24"
 ```
 
-{{ Add example description here }}
+The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have the address space "10.0.1.0/24".
+
+It then updates the virtual
 
 ## PARAMETERS
 
@@ -57,7 +63,7 @@ PS C:\> {{ Add example code here }}
 The address space string for this virtual hub.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +78,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -102,7 +108,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +138,7 @@ Accept wildcard characters: False
 The Virtual hub object to be modified.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
+Type: PSVirtualHub
 Parameter Sets: ByVirtualHubObject
 Aliases: VirtualHub
 
@@ -147,7 +153,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualHubName
 Aliases: ResourceName, VirtualHubName
 
@@ -162,7 +168,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualHubName
 Aliases:
 
@@ -177,7 +183,7 @@ Accept wildcard characters: False
 The resource id of the Virtual hub to be modified.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualHubResourceId
 Aliases: VirtualHubId
 
@@ -192,7 +198,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -207,7 +213,7 @@ Accept wildcard characters: False
 The virtual wan object this hub is linked to.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
+Type: PSVirtualWan
 Parameter Sets: (All)
 Aliases:
 
@@ -222,7 +228,7 @@ Accept wildcard characters: False
 The id of virtual wan object this hub is linked to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -237,7 +243,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -253,7 +259,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

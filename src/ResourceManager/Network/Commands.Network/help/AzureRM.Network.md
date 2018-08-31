@@ -207,7 +207,7 @@ Gets usage statistics of an ExpressRoute circuit.
 Gets a list ExpressRoute service providers and their attributes.
 
 ### [Get-AzureRmHubVirtualNetworkConnection](Get-AzureRmHubVirtualNetworkConnection.md)
-{{Fill in the Synopsis}}
+Gets a single Azure HubVirtualNetworkConnection or a list of HubVirtualNetworkConnections for a given VirtualHub.
 
 ### [Get-AzureRmLoadBalancer](Get-AzureRmLoadBalancer.md)
 Gets a load balancer.
@@ -297,7 +297,7 @@ Gets routes from a route table.
 Gets route tables.
 
 ### [Get-AzureRmVirtualHub](Get-AzureRmVirtualHub.md)
-{{Fill in the Synopsis}}
+Gets an Azure VirtualHub resource by name or lists all VirtualHub objects in a ResourceGroup or Subscription.
 
 ### [Get-AzureRmVirtualNetwork](Get-AzureRmVirtualNetwork.md)
 Gets a virtual network in a resource group.
@@ -339,10 +339,10 @@ Gets a subnet in a virtual network.
 Gets virtual network current usage.
 
 ### [Get-AzureRmVirtualWan](Get-AzureRmVirtualWan.md)
-{{Fill in the Synopsis}}
+Gets an Azure VirtualWan resource by name or lists all VirtualWan objects in a ResourceGroup or Subscription.
 
 ### [Get-AzureRmVirtualWanVpnSitesConfiguration](Get-AzureRmVirtualWanVpnSitesConfiguration.md)
-{{Fill in the Synopsis}}
+Downloads the configuration for all or a subset of VpnSites connected to a VirtualWan.
 
 ### [Get-AzureRmVpnClientConfiguration](Get-AzureRmVpnClientConfiguration.md)
 Allows users to easily download the Vpn Profile package that was generated using the New-AzureRmVpnClientConfiguration commandlet.
@@ -360,13 +360,13 @@ Gets information about VPN client-revocation certificates.
 Gets information about VPN root certificates.
 
 ### [Get-AzureRmVpnConnection](Get-AzureRmVpnConnection.md)
-{{Fill in the Synopsis}}
+Gets an Azure VpnConnection resource by name or lists all VpnConnection objects associated with a VpnGateway.
 
 ### [Get-AzureRmVpnGateway](Get-AzureRmVpnGateway.md)
-{{Fill in the Synopsis}}
+Gets an Azure VpnGateway resource by name or lists all VpnGateway objects in a ResourceGroup or Subscription.
 
 ### [Get-AzureRmVpnSite](Get-AzureRmVpnSite.md)
-{{Fill in the Synopsis}}
+Gets an Azure VpnSite resource by name or lists all VpnSite objects in a ResourceGroup or Subscription.
 
 ### [Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
 Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
@@ -447,7 +447,7 @@ Creates an ExpressRoute circuit authorization.
 Creates a new peering configuration to be added to an ExpressRoute circuit.
 
 ### [New-AzureRmHubVirtualNetworkConnection](New-AzureRmHubVirtualNetworkConnection.md)
-{{Fill in the Synopsis}}
+Creates a HubVirtualNetworkConnection resource.
 
 ### [New-AzureRmIpsecPolicy](New-AzureRmIpsecPolicy.md)
 Creates an IPSec Policy.
@@ -522,7 +522,7 @@ Creates a route filter rule for a route filter.
 Creates a route table.
 
 ### [New-AzureRmVirtualHub](New-AzureRmVirtualHub.md)
-{{Fill in the Synopsis}}
+Creates a VirtualHub resource.
 
 ### [New-AzureRmVirtualNetwork](New-AzureRmVirtualNetwork.md)
 Creates a virtual network.
@@ -540,7 +540,7 @@ Creates an IP Configuration for a Virtual Network Gateway
 Creates a virtual network subnet configuration.
 
 ### [New-AzureRmVirtualWan](New-AzureRmVirtualWan.md)
-{{Fill in the Synopsis}}
+Creates a VirtualWan resource.
 
 ### [New-AzureRmVpnClientConfiguration](New-AzureRmVpnClientConfiguration.md)
 This command allows the users to create the Vpn profile package based on pre-configured vpn settings on the VPN gateway, in addition to some additional settings that users may need to configure, for e.g. some root certificates.
@@ -558,13 +558,13 @@ Creates a new VPN client-revocation certificate.
 Creates a new VPN client root certificate.
 
 ### [New-AzureRmVpnConnection](New-AzureRmVpnConnection.md)
-{{Fill in the Synopsis}}
+Creates a VpnConnection connecting a VpnGateway to a VpnSite.
 
 ### [New-AzureRmVpnGateway](New-AzureRmVpnGateway.md)
-{{Fill in the Synopsis}}
+Creates a VpnGateway resource.
 
 ### [New-AzureRmVpnSite](New-AzureRmVpnSite.md)
-{{Fill in the Synopsis}}
+Creates a VpnSite resource representing a customer branch.
 
 ### [Remove-AzureRmApplicationGateway](Remove-AzureRmApplicationGateway.md)
 Removes an application gateway.
@@ -630,7 +630,7 @@ Removes an ExpressRoute circuit connection configuration.
 Removes an ExpressRoute circuit peering configuration.
 
 ### [Remove-AzureRmHubVirtualNetworkConnection](Remove-AzureRmHubVirtualNetworkConnection.md)
-{{Fill in the Synopsis}}
+Removes a HubVirtualNetworkConnection resource.
 
 ### [Remove-AzureRmLoadBalancer](Remove-AzureRmLoadBalancer.md)
 Removes a load balancer.
@@ -693,7 +693,7 @@ Removes a route from a route table.
 Removes a route table.
 
 ### [Remove-AzureRmVirtualHub](Remove-AzureRmVirtualHub.md)
-{{Fill in the Synopsis}}
+Removes a VirtualHub resource.
 
 ### [Remove-AzureRmVirtualNetwork](Remove-AzureRmVirtualNetwork.md)
 Removes a virtual network.
@@ -717,7 +717,7 @@ Removes a virtual network peering.
 Removes a subnet configuration from a virtual network.
 
 ### [Remove-AzureRmVirtualWan](Remove-AzureRmVirtualWan.md)
-{{Fill in the Synopsis}}
+Removes a VirtualWan resource.
 
 ### [Remove-AzureRmVpnClientIpsecParameter](Remove-AzureRmVpnClientIpsecParameter.md)
 Removes Vpn custom ipsec policy set on Virtual Network Gateway resource.
@@ -729,13 +729,13 @@ Removes a VPN client-revocation certificate.
 Removes an existing VPN client root certificate.
 
 ### [Remove-AzureRmVpnConnection](Remove-AzureRmVpnConnection.md)
-{{Fill in the Synopsis}}
+Removes a VpnConnection resource.
 
 ### [Remove-AzureRmVpnGateway](Remove-AzureRmVpnGateway.md)
-{{Fill in the Synopsis}}
+Removes a VpnGateway resource.
 
 ### [Remove-AzureRmVpnSite](Remove-AzureRmVpnSite.md)
-{{Fill in the Synopsis}}
+Removes a VpnSite resource.
 
 ### [Reset-AzureRmVirtualNetworkGateway](Reset-AzureRmVirtualNetworkGateway.md)
 
@@ -804,7 +804,7 @@ Modifies an ExpressRoute circuit.
 Saves a modified ExpressRoute peering configuration.
 
 ### [Set-AzureRmHubVirtualNetworkConnection](Set-AzureRmHubVirtualNetworkConnection.md)
-{{Fill in the Synopsis}}
+Sets a HubVirtualNetworkConnection resource to an intended goal state.
 
 ### [Set-AzureRmLoadBalancer](Set-AzureRmLoadBalancer.md)
 Sets the goal state for a load balancer.
@@ -861,7 +861,7 @@ Sets the goal state for a route.
 Sets the goal state for a route table.
 
 ### [Set-AzureRmVirtualHub](Set-AzureRmVirtualHub.md)
-{{Fill in the Synopsis}}
+Sets a VirtualHub resource to an intended goal state.
 
 ### [Set-AzureRmVirtualNetwork](Set-AzureRmVirtualNetwork.md)
 Sets the goal state for a virtual network.
@@ -891,10 +891,13 @@ Configures the goal state for a subnet configuration in a virtual network.
 Sets the vpn ipsec parameters for existing virtual network gateway.
 
 ### [Set-AzureRmVpnConnection](Set-AzureRmVpnConnection.md)
-{{Fill in the Synopsis}}
+Sets a VpnConnection resource to an intended goal state.
+
+### [Set-AzureRmVpnGateway](Set-AzureRmVpnGateway.md)
+Sets a VpnGateway resource to an intended goal state.
 
 ### [Set-AzureRmVpnSite](Set-AzureRmVpnSite.md)
-{{Fill in the Synopsis}}
+Sets a VpnSite resource to an intended goal state.
 
 ### [Start-AzureRmApplicationGateway](Start-AzureRmApplicationGateway.md)
 Starts an application gateway.
