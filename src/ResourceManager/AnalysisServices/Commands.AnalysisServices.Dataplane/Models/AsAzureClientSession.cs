@@ -20,6 +20,8 @@ using System.Security;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Enumerable = System.Linq.Enumerable;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -34,9 +36,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         public const string AsAzureClientId = "cf710c6e-dfcc-4fa8-a093-d47294e44c66";
         public static readonly Uri RedirectUri = new Uri("urn:ietf:wg:oauth:2.0:oob");
         public static string DefaultRolloutEnvironmentKey = "asazure.windows.net";
-
-        private const string TestEndpointSuffix = "asazure-int.windows.net";
-        private const string TestActiveDirectoryEndpoint = "https://login.windows-ppe.net";
 
         /// <summary>
         /// Gets or sets the token cache store.
@@ -125,25 +124,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         public static string GetAuthorityUrlForEnvironment(AsAzureEnvironment environment)
         {
             Console.Out.WriteLine("GetAuthorityUrlForEnvironment: environment.Name=" + environment.Name);
-            if (environment.Name.EndsWith(TestEndpointSuffix))
+
+            var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
+            var availableEnvironments = profile.Environments;
+
+            foreach (var env in availableEnvironments)
             {
-                return TestActiveDirectoryEndpoint;
-            }
-            else if (environment.Name.EndsWith(AzureEnvironmentConstants.AzureAnalysisServicesEndpointSuffix))
-            {
-                return AzureEnvironmentConstants.AzureActiveDirectoryEndpoint;
-            }
-            else if (environment.Name.EndsWith(AzureEnvironmentConstants.ChinaAnalysisServicesEndpointSuffix))
-            {
-                return AzureEnvironmentConstants.ChinaActiveDirectoryEndpoint;
-            }
-            else if (environment.Name.EndsWith(AzureEnvironmentConstants.USGovernmentAnalysisServicesEndpointSuffix))
-            {
-                return AzureEnvironmentConstants.USGovernmentActiveDirectoryEndpoint;
-            }
-            else if (environment.Name.EndsWith(AzureEnvironmentConstants.GermanAnalysisServicesEndpointSuffix))
-            {
-                return AzureEnvironmentConstants.GermanActiveDirectoryEndpoint;
+                if (environment.Name.EndsWith(env.AzureAnalysisServicesEndpointSuffix))
+                {
+                    return env.ActiveDirectoryAuthority;
+                }
             }
 
             throw new ArgumentException(Properties.Resources.UnknownEnvironment);

@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 GraphEndpointResourceId = AzureEnvironmentConstants.AzureGraphEndpoint,
                 DataLakeEndpointResourceId = AzureEnvironmentConstants.AzureDataLakeServiceEndpointResourceId,
                 BatchEndpointResourceId = AzureEnvironmentConstants.BatchEndpointResourceId,
+                AzureAnalysisServicesEndpointSuffix = AzureEnvironmentConstants.AzureAnalysisServicesEndpointSuffix,
                 AdTenant = "Common"
             };
             azureCloud.SetProperty(ExtendedEndpoint.OperationalInsightsEndpoint, AzureEnvironmentConstants.AzureOperationalInsightsEndpoint);
@@ -74,6 +75,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 DataLakeEndpointResourceId = null,
                 GraphEndpointResourceId = AzureEnvironmentConstants.ChinaGraphEndpoint,
                 BatchEndpointResourceId = AzureEnvironmentConstants.ChinaBatchEndpointResourceId,
+                AzureAnalysisServicesEndpointSuffix = AzureEnvironmentConstants.ChinaAnalysisServicesEndpointSuffix,
                 AdTenant = "Common"
             };
             var azureUSGovernment = new AzureEnvironment
@@ -97,6 +99,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 DataLakeEndpointResourceId = null,
                 GraphEndpointResourceId = AzureEnvironmentConstants.USGovernmentGraphEndpoint,
                 BatchEndpointResourceId = AzureEnvironmentConstants.USGovernmentBatchEndpointResourceId,
+                AzureAnalysisServicesEndpointSuffix = AzureEnvironmentConstants.USGovernmentAnalysisServicesEndpointSuffix,
                 AdTenant = "Common"
             };
             azureUSGovernment.SetProperty(ExtendedEndpoint.OperationalInsightsEndpoint, AzureEnvironmentConstants.USGovernmentOperationalInsightsEndpoint);
@@ -122,6 +125,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 DataLakeEndpointResourceId = null,
                 GraphEndpointResourceId = AzureEnvironmentConstants.GermanGraphEndpoint,
                 BatchEndpointResourceId = AzureEnvironmentConstants.GermanBatchEndpointResourceId,
+                AzureAnalysisServicesEndpointSuffix = AzureEnvironmentConstants.GermanAnalysisServicesEndpointSuffix,
                 AdTenant = "Common"
             };
             var result = new ConcurrentDictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
@@ -253,6 +257,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
 
         /// <summary>
+        /// The domain name suffix for Azure Analysis Services
+        /// </summary>
+        public string AzureAnalysisServicesEndpointSuffix { get; set; }
+
+        /// <summary>
         /// The name of the default AdTenant in this environment
         /// </summary>
         public string AdTenant { get; set; }
@@ -290,7 +299,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = "AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix",
                 AzureDataLakeStoreFileSystemEndpointSuffix = "AzureDataLakeStoreFileSystemEndpointSuffix",
                 DataLakeEndpointResourceId = "DataLakeEndpointResourceId",
-                BatchEndpointResourceId = "BatchEndpointResourceId";
+                BatchEndpointResourceId = "BatchEndpointResourceId",
+                AzureAnalysisServicesEndpointSuffix = "AzureAnalysisServicesEndpointSuffix";
         }
 
         public static class ExtendedEndpoint
