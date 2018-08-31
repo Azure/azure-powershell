@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssConfig", SupportsShouldProcess = true, DefaultParameterSetName = "DefaultParameterSet")]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssConfig", SupportsShouldProcess = true, DefaultParameterSetName = "DefaultParameterSet")]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 Overprovision = this.MyInvocation.BoundParameters.ContainsKey("Overprovision") ? this.Overprovision : (bool?) null,
                 SinglePlacementGroup = this.MyInvocation.BoundParameters.ContainsKey("SinglePlacementGroup") ? this.SinglePlacementGroup : (bool?) null,
-                ZoneBalance = this.ZoneBalance.IsPresent ? true : (bool?) null,
+                ZoneBalance = this.ZoneBalance.IsPresent ? true : (bool?)null,
                 PlatformFaultDomainCount = this.MyInvocation.BoundParameters.ContainsKey("PlatformFaultDomainCount") ? this.PlatformFaultDomainCount : (int?) null,
                 Zones = this.MyInvocation.BoundParameters.ContainsKey("Zone") ? this.Zone : null,
                 Location = this.MyInvocation.BoundParameters.ContainsKey("Location") ? this.Location : null,
