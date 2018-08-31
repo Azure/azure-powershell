@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void AddEnvironmentUpdatesContext()
         {
             var cmdlet = new AddAzureRMEnvironmentCommand()
