@@ -55,7 +55,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   possibleOutboundIpAddresses: other.PossibleOutboundIpAddresses,
                   dailyMemoryTimeQuota: other.DailyMemoryTimeQuota,
                   suspendedTill:other.SuspendedTill,
-                  snapshotInfo: other.SnapshotInfo,
                   slotSwapStatus: other.SlotSwapStatus,
                   httpsOnly: other.HttpsOnly,
                   identity: other.Identity
