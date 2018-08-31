@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
 
     public class PSServiceUnit
     {
-        public PSServiceUnit (ServiceUnit serviceUnit)
+        public PSServiceUnit(ServiceUnit serviceUnit)
         {
             this.Name = serviceUnit.Name;
             this.TargetResourceGroup = serviceUnit.TargetResourceGroup;

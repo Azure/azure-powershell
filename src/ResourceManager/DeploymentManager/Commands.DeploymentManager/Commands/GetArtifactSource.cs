@@ -18,7 +18,10 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerArtifactSource"), OutputType(typeof(PSArtifactSource))]
+    [Cmdlet(
+        VerbsCommon.Get, 
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerArtifactSource"), 
+        OutputType(typeof(PSArtifactSource))]
     public class GetArtifactSource : DeploymentManagerBaseCmdlet
     {
         [Parameter(

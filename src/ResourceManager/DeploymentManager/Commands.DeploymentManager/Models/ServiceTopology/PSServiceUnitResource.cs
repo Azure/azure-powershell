@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
             ServiceUnitResource serviceUnitResource) : base(serviceUnitResource)
         {
             this.ResourceGroupName = resourceGroup;
+            this.DeploymentMode = serviceUnitResource.DeploymentMode.ToString();
             this.ServiceTopologyName = serviceTopologyName;
             this.ServiceName = serviceName;
             this.TargetResourceGroup = serviceUnitResource.TargetResourceGroup;
@@ -37,6 +38,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
             this.ParametersUri = serviceUnitResource.ParametersUri;
             this.ParametersArtifactSourceRelativePath = serviceUnitResource.ParametersArtifactSourceRelativePath;
             this.TemplateArtifactSourceRelativePath = serviceUnitResource.TemplateArtifactSourceRelativePath;
+            this.Identity = serviceUnitResource.Identity != null ? new PSResourceIdentity(serviceUnitResource.Identity) : null;
         }
 
         /// <summary>

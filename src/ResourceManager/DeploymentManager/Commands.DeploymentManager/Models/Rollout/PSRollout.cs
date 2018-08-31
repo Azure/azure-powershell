@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
             this.BuildVersion = rollout.BuildVersion;
             this.ArtifactSourceId = rollout.ArtifactSourceId;
             this.TargetServiceTopologyId = rollout.TargetServiceTopologyId;
-            this.OperationInfo = new PSRolloutOperationInfo(rollout.OperationInfo);
+            this.OperationInfo = rollout.OperationInfo != null ?  new PSRolloutOperationInfo(rollout.OperationInfo) : null;
             this.Status = rollout.Status;
             this.TotalRetryAttempts = rollout.TotalRetryAttempts;
             this.Services = rollout.Services?.Select(s=> new PSService(s)).ToList();

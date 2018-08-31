@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerRollout"), OutputType(typeof(PSRollout))]
-    [Alias(ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RolloutStatus")]
     public class GetRollout : DeploymentManagerBaseCmdlet
     {
         [Parameter(
