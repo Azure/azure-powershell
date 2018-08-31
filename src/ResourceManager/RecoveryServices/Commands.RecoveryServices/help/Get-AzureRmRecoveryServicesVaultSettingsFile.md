@@ -20,25 +20,6 @@ Get-AzureRmRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> -SiteIdentifier
  [<CommonParameters>]
 ```
 
-### ForSiteWithCertificate
-```
-Get-AzureRmRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> -SiteIdentifier <String> -certificate <String>
- -SiteFriendlyName <String> [[-Path] <String>] [-SiteRecovery] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByDefaultWithCertificate
-```
-Get-AzureRmRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> -certificate <String> [[-Path] <String>]
- [-SiteRecovery] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ForBackupVaultTypeWithCertificate
-```
-Get-AzureRmRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> -certificate <String> [[-Path] <String>]
- [-Backup] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ### ByDefault
 ```
 Get-AzureRmRecoveryServicesVaultSettingsFile [-Vault] <ARSVault> [[-Path] <String>] [-SiteRecovery]
@@ -79,11 +60,6 @@ The command gets the vault credentials file for $Vault01 of vault type siteRecov
 PS C:\> $Credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -SiteIdentifier -Vault $Vault01
 ```
 
-### Example 4: Register with certificate String
-```
-PS C:\> $Credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $Vault01 -certificate "SELF-SIGNED Certificate string"
-```
-
 The command gets the vault credentials file for $Vault01.
 
 ## PARAMETERS
@@ -92,11 +68,26 @@ The command gets the vault credentials file for $Vault01.
 Indicates the vault credentials file is applicable to Azure Backup.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: ForBackupVaultTypeWithCertificate, ForBackupVaultType
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ForBackupVaultType
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -108,7 +99,7 @@ Specifies the path to the Azure Site Recovery vault settings file.
 You can download this file from the Azure Site Recovery vault portal and store it locally.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,8 +115,8 @@ Specifies the site friendly name.
 Use this parameter if you are downloading the vault credentials for a Hyper-V site.
 
 ```yaml
-Type: String
-Parameter Sets: ForSite, ForSiteWithCertificate
+Type: System.String
+Parameter Sets: ForSite
 Aliases:
 
 Required: True
@@ -140,8 +131,8 @@ Specifies the site identifier.
 Use this parameter if you are downloading the vault credentials for a Hyper-V site.
 
 ```yaml
-Type: String
-Parameter Sets: ForSite, ForSiteWithCertificate
+Type: System.String
+Parameter Sets: ForSite
 Aliases:
 
 Required: True
@@ -155,8 +146,8 @@ Accept wildcard characters: False
 Indicates the vault credentials file is applicable to Azure Site Recovery.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: ForSite, ForSiteWithCertificate, ByDefaultWithCertificate, ByDefault
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ForSite, ByDefault
 Aliases:
 
 Required: False
@@ -170,7 +161,7 @@ Accept wildcard characters: False
 Specifies the Azure Site Recovery vault object.
 
 ```yaml
-Type: ARSVault
+Type: Microsoft.Azure.Commands.RecoveryServices.ARSVault
 Parameter Sets: (All)
 Aliases:
 
@@ -178,36 +169,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -certificate
-Self signed certificate string .
-
-```yaml
-Type: String
-Parameter Sets: ForSiteWithCertificate, ByDefaultWithCertificate, ForBackupVaultTypeWithCertificate
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

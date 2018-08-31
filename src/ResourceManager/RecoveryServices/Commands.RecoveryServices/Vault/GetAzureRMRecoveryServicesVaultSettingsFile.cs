@@ -66,9 +66,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public ARSVault Vault { get; set; }
 
         /// <summary>
+        /// Gets or sets the path where the credential file is to be generated
+        /// </summary>
+        /// <summary>
+        /// Gets or sets vault Object.
+        /// </summary>
+        [Parameter(Position = 2)]
+        public string Path { get; set; }
+
+#if NETSTANDARD
+        /// <summary>
         /// Gets or sets Site Identifier.
         /// </summary>
-        [Parameter(ParameterSetName = ARSParameterSets.ForSite, Mandatory = true)]
         [Parameter(ParameterSetName = ARSParameterSets.ForSiteWithCertificate, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string SiteIdentifier { get; set; }
@@ -85,7 +94,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets SiteFriendlyName.
         /// </summary>
-        [Parameter(ParameterSetName = ARSParameterSets.ForSite, Mandatory = true)]
         [Parameter(ParameterSetName = ARSParameterSets.ForSiteWithCertificate, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string SiteFriendlyName { get; set; }
@@ -96,8 +104,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(Position = 2)]
-        public string Path { get; set; }
+        [Parameter(ParameterSetName = ARSParameterSets.ByDefaultWithCertificate, Mandatory = false)]
+        [Parameter(ParameterSetName = ARSParameterSets.ForSiteWithCertificate, Mandatory = false)]
+        public SwitchParameter SiteRecovery
+        {
+            get { return siteRecovery; }
+            set { siteRecovery = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the path where the credential file is to be generated
+        /// </summary>
+        /// <summary>
+        /// Gets or sets vault Object.
+        /// </summary>
+        [Parameter(ParameterSetName = ARSParameterSets.ForBackupVaultTypeWithCertificate, Mandatory = true)]
+        public SwitchParameter Backup
+        {
+            get { return backup; }
+            set { backup = value; }
+        }
+#else
+        /// <summary>
+        /// Gets or sets Site Identifier.
+        /// </summary>
+        [Parameter(ParameterSetName = ARSParameterSets.ForSite, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string SiteIdentifier { get; set; }
+
+        /// <summary>
+        /// Gets or sets certificate.
+        /// </summary>
+        [Parameter(ParameterSetName = ARSParameterSets.ForSite, Mandatory = true)]
+        [Parameter(ParameterSetName = ARSParameterSets.ByDefault, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string certificate { get; set; }
+
+        /// <summary>
+        /// Gets or sets SiteFriendlyName.
+        /// </summary>
+        [Parameter(ParameterSetName = ARSParameterSets.ForSite, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string SiteFriendlyName { get; set; }
 
         /// <summary>
         /// Gets or sets the path where the credential file is to be generated
@@ -107,14 +155,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(ParameterSetName = ARSParameterSets.ByDefault, Mandatory = false)]
         [Parameter(ParameterSetName = ARSParameterSets.ForSite, Mandatory = false)]
-        [Parameter(ParameterSetName = ARSParameterSets.ByDefaultWithCertificate, Mandatory = false)]
-        [Parameter(ParameterSetName = ARSParameterSets.ForSiteWithCertificate, Mandatory = false)]
         public SwitchParameter SiteRecovery
         {
             get { return siteRecovery; }
             set { siteRecovery = value; }
         }
-        private bool siteRecovery;
 
         /// <summary>
         /// Gets or sets the path where the credential file is to be generated
@@ -123,12 +168,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets vault Object.
         /// </summary>
         [Parameter(ParameterSetName = ARSParameterSets.ForBackupVaultType, Mandatory = true)]
-        [Parameter(ParameterSetName = ARSParameterSets.ForBackupVaultTypeWithCertificate, Mandatory = true)]
         public SwitchParameter Backup
         {
             get { return backup; }
             set { backup = value; }
         }
+#endif
+
+        private bool siteRecovery;
         private bool backup;
 
         #endregion Parameters
@@ -140,8 +187,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
-                if (this.MyInvocation.BoundParameters.ContainsKey("this.certificate"))
-                {
+#if NETSTANDARD
                     if (backup)
                     {
                         this.GetBackupCredentialsWithCertificate(certificate);
@@ -150,23 +196,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     {
                         this.GetSiteRecoveryCredentialsWithCertificate(certificate);
                     }
+               
+#else
+
+                if (backup)
+                {
+                    this.GetAzureRMRecoveryServicesVaultBackupCredentials();
                 }
                 else
                 {
-#if !NETSTANDARD
-                    if (backup)
-                    {
-                        this.GetAzureRMRecoveryServicesVaultBackupCredentials();
-                    }
-                    else
-                    {
-                        this.GetSiteRecoveryCredentials();
-                    }
-#else
-                    throw new ArgumentException(Resources.MissingCertificateForNetStandard);
-#endif
+                    this.GetSiteRecoveryCredentials();
                 }
 
+#endif
             }
             catch (AggregateException aggregateEx)
             {
@@ -254,7 +296,64 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
         private void GetSiteRecoveryCredentialsWithCertificate(string certificate)
         {
+            string subscriptionId = DefaultContext.Subscription.Id.ToString();
+            VaultCertificateResponse vaultCertificateResponse = null;
+            ASRSite site = new ASRSite();
 
+            if (!string.IsNullOrEmpty(this.SiteIdentifier)
+                   && !string.IsNullOrEmpty(this.SiteFriendlyName))
+            {
+                site.ID = this.SiteIdentifier;
+                site.Name = this.SiteFriendlyName;
+            }
+            try
+            {
+                string fileName = this.GenerateFileName();
+
+                string filePath = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
+                string fullFilePath = System.IO.Path.Combine(filePath, fileName);
+                // Upload cert into ID Mgmt
+                WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadingCertToIdmgmt));
+                byte[] bytes = Encoding.ASCII.GetBytes(certificate);
+                var certificateArgs = new CertificateRequest();
+                certificateArgs.Properties = new RawCertificateData();
+                certificateArgs.Properties.Certificate = bytes;
+                certificateArgs.Properties.AuthType = AuthType.AAD;
+
+
+                string dateString = DateTime.Now.ToString("M-d-yyyy");
+
+                var friendlyName = string.Format("{0}{1}-{2}-vaultcredentials", this.Vault.Name, subscriptionId, dateString);
+                vaultCertificateResponse = RecoveryServicesClient.GetRecoveryServicesClient.VaultCertificates.CreateWithHttpMessagesAsync(
+                    this.Vault.ResourceGroupName,
+                    this.Vault.Name,
+                    friendlyName,
+                    certificateArgs,
+                    RecoveryServicesClient.GetRequestHeaders()).Result.Body;
+                WriteDebug(string.Format(CultureInfo.InvariantCulture, Resources.UploadedCertToIdmgmt));
+
+                string vaultCredsFileContent = GenerateVaultCredsForSiteRecovery(
+                        certificate,
+                        subscriptionId,
+                        vaultCertificateResponse,
+                        site);
+
+                WriteDebug(string.Format(Resources.SavingVaultCred, fullFilePath));
+
+                AzureSession.Instance.DataStore.WriteFile(fullFilePath, Encoding.UTF8.GetBytes(vaultCredsFileContent));
+
+                VaultSettingsFilePath output = new VaultSettingsFilePath()
+                {
+                    FilePath = fullFilePath,
+                };
+
+                // Output filename back to user
+                WriteObject(output, true);
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
         }
 
         /// <summary>
@@ -282,6 +381,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string fileName = this.GenerateFileName();
 
             string filePath = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
+            filePath = ResolveUserPath(filePath);
 
             // Generate file.
             if (RecoveryServicesClient.getVaultAuthType(this.Vault.ResourceGroupName, this.Vault.Name) == 0)
@@ -376,6 +476,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public void GetAzureRMRecoveryServicesVaultBackupCredentials()
         {
             string targetLocation = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
+            targetLocation = ResolveUserPath(targetLocation);
             if (!Directory.Exists(targetLocation))
             {
                 throw new ArgumentException(Resources.VaultCredPathException);
