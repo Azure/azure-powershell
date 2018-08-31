@@ -1,40 +1,40 @@
 ---
 external help file: Azs.Backup.Admin-help.xml
 Module Name: Azs.Backup.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
-# Get-AzsBackupLocation
+# Get-AzsBackupConfiguration
 
 ## SYNOPSIS
-Returns the list of backup locations.
+Returns the list of backup configurations.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzsBackupLocation [-ResourceGroupName <String>] [-Skip <Int32>] [-Top <Int32>] [<CommonParameters>]
+Get-AzsBackupConfiguration [-ResourceGroupName <String>] [-Skip <Int32>] [-Top <Int32>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzsBackupLocation [[-Location] <String>] [-ResourceGroupName <String>] [<CommonParameters>]
+Get-AzsBackupConfiguration [[-Location] <String>] [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzsBackupLocation -ResourceId <String> [<CommonParameters>]
+Get-AzsBackupConfiguration -ResourceId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the list of backup locations.
+Returns the list of backup configurations.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsBackupLocation
+Get-AzsBackupConfiguration
 ```
 
 Get Azure Stack backup configuration.
@@ -42,15 +42,30 @@ Get Azure Stack backup configuration.
 ## PARAMETERS
 
 ### -Location
-Location to backup.
+Backup location.
 
 ```yaml
 Type: String
 Parameter Sets: Get
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of the resource group.
+
+```yaml
+Type: String
+Parameter Sets: List, Get
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -71,28 +86,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of the resource group.
-
-```yaml
-Type: String
-Parameter Sets: List, Get
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Skip
 Skip the first N items as specified by the parameter value.
 
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -108,7 +108,7 @@ Applies after the -Skip parameter.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -129,3 +129,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

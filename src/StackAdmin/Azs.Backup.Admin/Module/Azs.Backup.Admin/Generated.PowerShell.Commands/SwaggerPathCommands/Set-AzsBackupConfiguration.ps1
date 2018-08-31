@@ -21,7 +21,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     The resource id.
 
 .PARAMETER InputObject
-    Backup location configuration returned by Get-AzsBackupLocation.
+    Backup location configuration returned by Get-AzsBackupConfiguration.
 
 .PARAMETER Path
     Location where backups will be stored.
@@ -49,7 +49,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    PS C:\> Set-AzsBackupShare -Path "\\***.***.***.***\Share" -Username "asdomain1\azurestackadmin" -Password $password  -EncryptionKey $encryptionKey
+    PS C:\> Set-AzsBackupConfiguration -Path "\\***.***.***.***\Share" -Username "asdomain1\azurestackadmin" -Password $password  -EncryptionKey $encryptionKey
 
     Set Azure Stack backup configuration.
 
