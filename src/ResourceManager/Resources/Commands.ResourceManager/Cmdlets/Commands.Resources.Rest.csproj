@@ -100,7 +100,9 @@
     <Compile Include="Entities\ResourceGroup\ExportTemplateParameters.cs" />
     <Compile Include="Entities\ResourceGroup\ResourceBatchMoveParameters.cs" />
     <Compile Include="Entities\Resources\Resource.cs" />
+    <Compile Include="Entities\Resources\ResourceIdentityType.cs" />
     <Compile Include="Entities\Resources\ResourcePlan.cs" />
+    <Compile Include="Entities\Resources\ResourceIdentity.cs" />
     <Compile Include="Entities\Resources\ResourceSku.cs" />
     <Compile Include="Entities\Resources\TerminalProvisioningStates.cs" />
     <Compile Include="Extensions\AsyncExtensions.cs" />
