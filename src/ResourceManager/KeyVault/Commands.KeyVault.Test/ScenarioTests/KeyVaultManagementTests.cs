@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
-        [Fact(Skip = "Fails in playback")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkSet()
         {
