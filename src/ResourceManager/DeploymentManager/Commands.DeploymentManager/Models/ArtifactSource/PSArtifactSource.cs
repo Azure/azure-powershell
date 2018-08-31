@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Models
 {
-    using Microsoft.Azure.DeploymentManager.Models;
+    using Microsoft.Azure.Management.DeploymentManager.Models;
 
     public class PSArtifactSource : PSResource
     {

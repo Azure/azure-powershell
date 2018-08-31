@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.Azure.DeploymentManager.Models;
+    using Microsoft.Azure.Management.DeploymentManager.Models;
 
     public class PSRolloutStep
     {

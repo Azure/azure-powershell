@@ -1,7 +1,7 @@
 ﻿namespace Microsoft.Azure.Commands.DeploymentManager.Models
 {
     using System;
-    using Microsoft.Azure.DeploymentManager.Models;
+    using Microsoft.Azure.Management.DeploymentManager.Models;
 
     public class PSStepOperationInfo
     {

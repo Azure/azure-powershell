@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.DeploymentManager.Models;
+using Microsoft.Azure.Management.DeploymentManager.Models;
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Models
 {

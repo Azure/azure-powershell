@@ -15,7 +15,7 @@
 namespace Microsoft.Azure.Commands.DeploymentManager.Models
 {
     using System.Collections.Generic;
-    using Microsoft.Azure.DeploymentManager.Models;
+    using Microsoft.Azure.Management.DeploymentManager.Models;
 
     public abstract class PSResource
     {

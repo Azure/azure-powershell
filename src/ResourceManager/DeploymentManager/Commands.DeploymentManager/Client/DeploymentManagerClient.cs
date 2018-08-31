@@ -16,8 +16,8 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
 {
     using Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.DeploymentManager;
-    using Microsoft.Azure.DeploymentManager.Models;
+    using Microsoft.Azure.Management.DeploymentManager;
+    using Microsoft.Azure.Management.DeploymentManager.Models;
     using Microsoft.Azure.Management.Internal.Resources;
     using System.Collections.Generic;
     using System;
