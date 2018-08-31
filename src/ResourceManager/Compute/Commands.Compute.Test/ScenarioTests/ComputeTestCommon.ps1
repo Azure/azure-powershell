@@ -559,7 +559,7 @@ function Get-MarketplaceImage
 
 function Get-FirstMarketPlaceImage
 {
-	$img = Get-AzureRmVMImagePublisher -Location westus | where { $_.PublisherName -eq "1e" } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage | Get-AzureRmVMImage | where {$_.PurchasePlan -ne $null }
+	$img = @(Get-AzureRmVMImagePublisher -Location westus | where { $_.PublisherName -eq "1e" } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage | Get-AzureRmVMImage | where {$_.PurchasePlan -ne $null } | Select-Object -first 1);
 	
 	if ($img -eq $null)
 	{
@@ -745,5 +745,18 @@ function Verify-PSOperationStatusResponse
     Assert-NotNull $result.StartTime;
     Assert-NotNull $result.EndTime;
     Assert-Null $result.Error;
+}
+
+<# 
+.SYNOPSIS
+Sleeps but only during recording.
+#>
+ 
+function Start-TestSleep($milliseconds)
+{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        Start-Sleep -Milliseconds $milliseconds
+    }
 }
 
