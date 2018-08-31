@@ -450,6 +450,10 @@ The acceptable values for this parameter:
 - Setissuers
 - Deleteissuers
 - Manageissuers
+- Recover
+- Backup
+- Restore
+- Purge
 
 ```yaml
 Type: System.String[]
