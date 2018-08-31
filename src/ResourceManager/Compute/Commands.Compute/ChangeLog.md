@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Move dependencies on Keyvault and Storage to the common dependencies.
+
 
 ## Version 5.5.2
 * Fixed the issue that target is missing in error output.
