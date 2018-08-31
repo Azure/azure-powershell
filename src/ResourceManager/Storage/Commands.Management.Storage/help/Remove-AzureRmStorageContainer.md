@@ -14,20 +14,20 @@ Removes a Storage blob container
 
 ### AccountName (Default)
 ```
-Remove-AzureRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> [-Name] <String>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmStorageContainer [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
+ [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
-Remove-AzureRmStorageContainer [-Name] <String> -StorageAccount <PSStorageAccount> [-Force]
+Remove-AzureRmStorageContainer -Name <String> -StorageAccount <PSStorageAccount> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContainerObject
 ```
-Remove-AzureRmStorageContainer -InputObject <PSContainer> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmStorageContainer -InputObject <PSContainer> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ The **Remove-AzureRmStorageContainer** cmdlet removes a Storage blob container
 
 ### Example 1: Remove a Storage blob container with Storage account name and container name
 ```
-PS C:\>Remove-AzureRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" 
+PS C:\>Remove-AzureRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer"
 ```
 
 This command removes a Storage blob container with Storage account name and container name.
@@ -45,7 +45,7 @@ This command removes a Storage blob container with Storage account name and cont
 ### Example 2: Remove a Storage blob container with Storage account object and container name
 ```
 PS C:\>$accountObject = Get-AzureRmStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
-PS C:\>Remove-AzureRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer" 
+PS C:\>Remove-AzureRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer"
 ```
 
 This command removes a Storage blob container with Storage account object and container name.
@@ -80,7 +80,7 @@ Force to remove the container and all content in it
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -113,9 +113,24 @@ Parameter Sets: AccountName, AccountObject
 Aliases: N, ContainerName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -125,7 +140,7 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: AccountName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -140,7 +155,7 @@ Storage account object
 ```yaml
 Type: PSStorageAccount
 Parameter Sets: AccountObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -208,4 +223,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
