@@ -221,6 +221,18 @@
         {
             "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestZones.json",
             "_justification": "Legitimate test session record, rules are deleted"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagedApplicationTests\\TestManagedApplicationCRUD.json", 
+           "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagedApplicationDefinitionTests\\TestManagedApplicationDefinitionCRUD.json", 
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Resources\\Commands.Resources.Test\\Models.ResourceGroups\\ResourceClientTests.cs", 
+            "_justification": "False positive, just a mention of the literal key"
         }
-    ]
+	]
 }
