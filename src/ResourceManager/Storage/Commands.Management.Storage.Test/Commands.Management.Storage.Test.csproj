@@ -72,40 +72,10 @@
     <None Include="ScenarioTests\StorageBlobTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestGetAzureStorageAccountKey.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageBlobTests\*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestNewAzureStorageAccount.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestNewAzureStorageAccountKey.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestPipingGetAccountToGetKey.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestPipingSetStorageAccount.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestRemoveAzureStorageAccount.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestSetAzureRmStorageAccountKeySource.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestSetAzureStorageAccount.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestSetCurrentStorageAccount.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestStorageAccount.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\TestSetAzureStorageAccountStorageV2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
