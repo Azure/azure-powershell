@@ -5,7 +5,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 Microsoft.PowerShell.Core\Set-StrictMode -Version Latest
 
-Write-Warning "Preview version of the module Azs.Netowrk.Admin loaded. Future release of this module may have breaking changes."
+Write-Warning "Preview version of the module Azs.Network.Admin loaded. Future release of this module may have breaking changes."
 
 # We always import embedded version.
 Import-Module (Join-Path -Path $PSScriptRoot -ChildPath PSSwaggerUtility) -Force
