@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,6 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -32,91 +31,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected object CreateVirtualMachineScaleSetUpdateDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
-
-            var pVMScaleSetName = new RuntimeDefinedParameter();
-            pVMScaleSetName.Name = "VMScaleSetName";
-            pVMScaleSetName.ParameterType = typeof(string);
-            pVMScaleSetName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "VirtualMachineScaleSetUpdate";
-            pParameters.ParameterType = typeof(VirtualMachineScaleSetUpdate);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VirtualMachineScaleSetUpdate", pParameters);
-
-            var pArgumentList = new RuntimeDefinedParameter();
-            pArgumentList.Name = "ArgumentList";
-            pArgumentList.ParameterType = typeof(object[]);
-            pArgumentList.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pArgumentList.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ArgumentList", pArgumentList);
-
-            return dynamicParameters;
-        }
-
-        protected void ExecuteVirtualMachineScaleSetUpdateMethod(object[] invokeMethodInputParameters)
-        {
-            string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            VirtualMachineScaleSetUpdate parameters = (VirtualMachineScaleSetUpdate)ParseParameter(invokeMethodInputParameters[2]);
-            VirtualMachineScaleSet parametersOrg = (VirtualMachineScaleSet)ParseParameter(invokeMethodInputParameters[3]);
-
-            var result = (parameters == null)
-                         ? VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parametersOrg)
-                         : VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parameters);
-            WriteObject(result);
-        }
-    }
-
-    public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected PSArgument[] CreateVirtualMachineScaleSetUpdateParameters()
-        {
-            string resourceGroupName = string.Empty;
-            string vmScaleSetName = string.Empty;
-            VirtualMachineScaleSetUpdate parameters = new VirtualMachineScaleSetUpdate();
-
-            return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "VMScaleSetName", "Parameters" },
-                 new object[] { resourceGroupName, vmScaleSetName, parameters });
-        }
-    }
-
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class UpdateAzureRmVmss : ComputeAutomationBaseCmdlet
     {
@@ -1024,7 +939,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 WriteWarning("Update-AzureRmVmss: The accepted values for parameter ManagedDiskStorageAccountType will change in an upcoming breaking change release " +
                              "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
-
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
