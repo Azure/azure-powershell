@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F022ED20-7D3B-4BF4-88AF-F97CC50484DA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.DeploymentManager</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.DeploymentManager</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.DeploymentManager\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.DeploymentManager</OutputPath>
+    <DefineConstants>SIGN</DefineConstants>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <ErrorReport>prompt</ErrorReport>
+    <DelaySign>true</DelaySign>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.DeploymentManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Management.DeploymentManager.1.0.0-preview\lib\net452\Microsoft.Azure.Management.DeploymentManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Client\DeploymentManagerClient.cs" />
+    <Compile Include="Commands\DeploymentManagerBaseCmdlet.cs" />
+    <Compile Include="Commands\GetArtifactSource.cs" />
+    <Compile Include="Commands\GetRollout.cs" />
+    <Compile Include="Commands\GetService.cs" />
+    <Compile Include="Commands\GetServiceTopology.cs" />
+    <Compile Include="Commands\GetServiceUnit.cs" />
+    <Compile Include="Commands\NewArtifactSource.cs" />
+    <Compile Include="Commands\NewService.cs" />
+    <Compile Include="Commands\NewServiceTopology.cs" />
+    <Compile Include="Commands\NewServiceUnit.cs" />
+    <Compile Include="Commands\RemoveArtifactSource.cs" />
+    <Compile Include="Commands\RemoveRollout.cs" />
+    <Compile Include="Commands\RemoveService.cs" />
+    <Compile Include="Commands\RemoveServiceTopology.cs" />
+    <Compile Include="Commands\RemoveServiceUnit.cs" />
+    <Compile Include="Commands\RestartRollout.cs" />
+    <Compile Include="Commands\SetService.cs" />
+    <Compile Include="Commands\SetServiceTopology.cs" />
+    <Compile Include="Commands\SetServiceUnit.cs" />
+    <Compile Include="Commands\StopRollout.cs" />
+    <Compile Include="Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArtifactSource\PSArtifactSource.cs" />
+    <Compile Include="Models\ArtifactSource\PSAuthentication.cs" />
+    <Compile Include="Models\PSResourceIdentity.cs" />
+    <Compile Include="Models\Rollout\PSMessage.cs" />
+    <Compile Include="Models\Rollout\PSResource.cs" />
+    <Compile Include="Models\Rollout\PSResourceOperation.cs" />
+    <Compile Include="Models\Rollout\PSRollout.cs" />
+    <Compile Include="Models\Rollout\PSRolloutOperationInfo.cs" />
+    <Compile Include="Models\Rollout\PSRolloutStep.cs" />
+    <Compile Include="Models\ArtifactSource\PSSasAuthentication.cs" />
+    <Compile Include="Models\Rollout\PSService.cs" />
+    <Compile Include="Models\ServiceTopology\PSServiceTopologyResource.cs" />
+    <Compile Include="Models\ServiceTopology\PSServiceResource.cs" />
+    <Compile Include="Models\Rollout\PSServiceUnit.cs" />
+    <Compile Include="Models\ServiceTopology\PSServiceUnitResource.cs" />
+    <Compile Include="Models\Rollout\PSStepOperationInfo.cs" />
+    <Compile Include="Models\Steps\PSStepResource.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AzureRM.DeploymentManager.psd1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
