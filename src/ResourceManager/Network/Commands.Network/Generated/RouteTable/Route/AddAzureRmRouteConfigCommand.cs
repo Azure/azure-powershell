@@ -79,6 +79,12 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
 
+            var existingRoute = this.RouteTable.Routes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            if (existingRoute != null)
+            {
+                throw new ArgumentException("Route with the specified name already exists");
+            }
+
             // Routes
             if (this.RouteTable.Routes == null)
             {
