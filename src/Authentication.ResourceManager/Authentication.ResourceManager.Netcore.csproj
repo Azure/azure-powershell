@@ -1,5 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <OmitJsonPackage>true</OmitJsonPackage>
+  </PropertyGroup>
   <Import Project="$(ProjectDir)..\Dependencies.Netcore.targets" />
 
   <PropertyGroup>
@@ -35,6 +38,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.Netcore.csproj" />
     <ProjectReference Include="..\Authentication\Authentication.Netcore.csproj" />
     <ProjectReference Include="..\Common\Common.Netcore.csproj" />
