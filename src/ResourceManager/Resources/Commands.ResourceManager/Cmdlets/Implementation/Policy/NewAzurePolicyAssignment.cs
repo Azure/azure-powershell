@@ -240,7 +240,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 foreach (var param in parameters.Properties)
                 {
-                    if (param.Value is PSObject paramValue)
+                    var paramValue = param.Value as PSObject;
+                    if (paramValue != null)
                     {
                         var type = paramValue.Properties["type"];
                         var typeString = type != null ? type.Value.ToString() : string.Empty;
