@@ -37,6 +37,7 @@ namespace Common.Authentication.Test
 {
     public class ClientFactoryHandlerTests
     {
+#if !NETSTANDARD
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DelegatingHandlersAreCloned()
@@ -120,7 +121,7 @@ namespace Common.Authentication.Test
             task = autorestClient.ResourceGroups.ListWithHttpMessagesAsync();
             Assert.Throws<TaskCanceledException>(() => task.ConfigureAwait(false).GetAwaiter().GetResult());
         }
-
+#endif
         private CancelRetryHandler EnsureHyakRetryPolicy<T>( Hyak.Common.ServiceClient<T> client) where T: Hyak.Common.ServiceClient<T>
         {
             var handler = client.GetHttpPipeline().First(h => h.GetType() == typeof(CancelRetryHandler)) as CancelRetryHandler;
@@ -150,7 +151,7 @@ namespace Common.Authentication.Test
         private class RetryTestHandler : DelegatingHandler, ICloneable
         {
             private static int times = -1;
-           
+
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
                 switch (Interlocked.Increment(ref times) % 3)
