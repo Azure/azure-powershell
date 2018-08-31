@@ -13,32 +13,34 @@ Adds a front-end IP configuration to a load balancer.
 
 ## SYNTAX
 
-### SetByResourceSubnet
-```
-Add-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- [-PrivateIpAddress <String>] -Subnet <PSSubnet> [-Zone <System.Collections.Generic.List`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ### SetByResourceIdSubnet
 ```
-Add-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- [-PrivateIpAddress <String>] -SubnetId <String> [-Zone <System.Collections.Generic.List`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Add-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+ [-PrivateIpAddress <String>] [-Zone <System.Collections.Generic.List`1[System.String]>] -SubnetId <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceSubnet
+```
+Add-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+ [-PrivateIpAddress <String>] [-Zone <System.Collections.Generic.List`1[System.String]>] -Subnet <PSSubnet>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddress
 ```
-Add-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- -PublicIpAddressId <String> [-Zone <System.Collections.Generic.List`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Add-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+ [-PrivateIpAddress <String>] [-Zone <System.Collections.Generic.List`1[System.String]>]
+ -PublicIpAddressId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddress
 ```
-Add-AzureRmLoadBalancerFrontendIpConfig -Name <String> -LoadBalancer <PSLoadBalancer>
- -PublicIpAddress <PSPublicIpAddress> [-Zone <System.Collections.Generic.List`1[System.String]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Add-AzureRmLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+ [-PrivateIpAddress <String>] [-Zone <System.Collections.Generic.List`1[System.String]>]
+ -PublicIpAddress <PSPublicIpAddress> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +106,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -128,13 +130,13 @@ Specifies the private IP address to associate with a front-end IP configuration.
 
 ```yaml
 Type: System.String
-Parameter Sets: SetByResourceSubnet, SetByResourceIdSubnet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -149,7 +151,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -164,7 +166,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -179,7 +181,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -194,7 +196,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -210,6 +212,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

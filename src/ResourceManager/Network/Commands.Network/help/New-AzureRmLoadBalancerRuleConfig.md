@@ -13,20 +13,21 @@ Creates a rule configuration for a load balancer.
 
 ## SYNTAX
 
-### SetByResourceId
+### SetByResource (Default)
 ```
-New-AzureRmLoadBalancerRuleConfig -Name <String> [-FrontendIpConfigurationId <String>]
- [-BackendAddressPoolId <String>] [-ProbeId <String>] [-Protocol <String>] [-FrontendPort <Int32>]
- [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-LoadDistribution <String>] [-EnableFloatingIP]
- [-DisableOutboundSNAT] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmLoadBalancerRuleConfig -Name <String> [-Protocol <String>] [-LoadDistribution <String>]
+ [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP]
+ [-DisableOutboundSNAT] [-FrontendIpConfiguration <PSFrontendIPConfiguration>]
+ [-BackendAddressPool <PSBackendAddressPool>] [-Probe <PSProbe>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetByResource
+### SetByResourceId
 ```
-New-AzureRmLoadBalancerRuleConfig -Name <String> [-FrontendIpConfiguration <PSFrontendIPConfiguration>]
- [-BackendAddressPool <PSBackendAddressPool>] [-Probe <PSProbe>] [-Protocol <String>] [-FrontendPort <Int32>]
- [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-LoadDistribution <String>] [-EnableFloatingIP]
- [-DisableOutboundSNAT] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmLoadBalancerRuleConfig -Name <String> [-Protocol <String>] [-LoadDistribution <String>]
+ [-FrontendPort <Int32>] [-BackendPort <Int32>] [-IdleTimeoutInMinutes <Int32>] [-EnableFloatingIP]
+ [-DisableOutboundSNAT] [-FrontendIpConfigurationId <String>] [-BackendAddressPoolId <String>]
+ [-ProbeId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +64,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -78,7 +79,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -93,7 +94,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -153,7 +154,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -168,7 +169,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -183,7 +184,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -198,7 +199,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -213,12 +214,11 @@ The acceptable values for this parameter are:
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Default, SourceIP, SourceIPProtocol
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -248,7 +248,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -263,7 +263,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -275,7 +275,36 @@ The acceptable values for this parameter are: Tcp or Udp.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Tcp, Udp, All
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
