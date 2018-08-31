@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.AvailabilitySet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AvailabilitySet")]
     [OutputType(typeof(PSAvailabilitySet))]
     public class GetAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {

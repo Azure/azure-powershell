@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     /// <summary>
     /// 'Set-AzureRmServiceBusAuthorizationRule' Cmdlet updates the specified AuthorizationRule
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServiceBusAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
     public class SetAzureServiceBusAuthorizationRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -70,75 +70,81 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
         public override void ExecuteCmdlet()
         {
-            PSSharedAccessAuthorizationRuleAttributes sasRule = new PSSharedAccessAuthorizationRuleAttributes();
+            try
+            {
+                PSSharedAccessAuthorizationRuleAttributes sasRule = new PSSharedAccessAuthorizationRuleAttributes();
 
-            if (InputObject != null)
-            {
-                sasRule = InputObject;
-            }
-            else
-            {
-                sasRule.Rights = new List<AccessRights?>();
-                if (Rights != null && Rights.Length > 0)
-                    foreach (string test in Rights)
-                    {
-                        sasRule.Rights.Add(ParseAccessRights(test));
-                    }
-            }
-
-            if (ParameterSetName.Equals(AuthoRuleInputObjectParameterSet))
-            {
-                if (Topic != null)
+                if (InputObject != null)
                 {
-                    if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateTopicAuthorizationrule, Name, Topic)))
+                    sasRule = InputObject;
+                }
+                else
+                {
+                    sasRule.Rights = new List<AccessRights?>();
+                    if (Rights != null && Rights.Length > 0)
+                        foreach (string test in Rights)
+                        {
+                            sasRule.Rights.Add(ParseAccessRights(test));
+                        }
+                }
+
+                if (ParameterSetName.Equals(AuthoRuleInputObjectParameterSet))
+                {
+                    if (Topic != null)
                     {
-                        WriteObject(Client.CreateOrUpdateServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic, Name, sasRule));
+                        if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateTopicAuthorizationrule, Name, Topic)))
+                        {
+                            WriteObject(Client.CreateOrUpdateServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic, Name, sasRule));
+                        }
+                    }
+                    else if (Queue != null)
+                    {
+                        if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateQueueAuthorizationrule, Name, Queue)))
+                        {
+                            WriteObject(Client.CreateOrUpdateServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue, Name, sasRule));
+                        }
+                    }
+                    else if (Namespace != null)
+                    {
+                        if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateNamespaceAuthorizationrule, Name, Namespace)))
+                        {
+                            WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name, sasRule));
+                        }
                     }
                 }
-                else if (Queue != null)
-                {
-                    if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateQueueAuthorizationrule, Name, Queue)))
-                    {
-                        WriteObject(Client.CreateOrUpdateServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue, Name, sasRule));
-                    }
-                }
-                else if (Namespace != null)
+
+                // update Namespace Authorization Rule
+                if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                 {
                     if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateNamespaceAuthorizationrule, Name, Namespace)))
                     {
                         WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name, sasRule));
                     }
                 }
-            }
 
-            // update Namespace Authorization Rule
-            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
-            {
-                if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateNamespaceAuthorizationrule, Name, Namespace)))
+
+                // Update Topic authorizationRule
+                if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
                 {
-                    WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name, sasRule));
+                    if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateQueueAuthorizationrule, Name, Queue)))
+                    {
+                        WriteObject(Client.CreateOrUpdateServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue, Name, sasRule));
+                    }
+                }
+
+                // Update Topic authorizationRule
+                if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
+                {
+                    if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateTopicAuthorizationrule, Name, Topic)))
+                    {
+                        WriteObject(Client.CreateOrUpdateServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic, Name, sasRule));
+                    }
                 }
             }
-
-
-            // Update Topic authorizationRule
-            if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
+            catch (ErrorResponseException ex)
             {
-                if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateQueueAuthorizationrule, Name, Queue)))
-                {
-                    WriteObject(Client.CreateOrUpdateServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue, Name, sasRule));
-                }
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
             }
-
-            // Update Topic authorizationRule
-            if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
-            {
-                if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateTopicAuthorizationrule, Name, Topic)))
-                {
-                    WriteObject(Client.CreateOrUpdateServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic, Name, sasRule));
-                }
-            }
-
         }
     }
 }

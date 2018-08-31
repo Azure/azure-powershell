@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
     /// <summary>
     /// Defines the Set-AzureRmSqlServerRecommendedActionState cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerRecommendedActionState",
-        SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerRecommendedActionModel))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerRecommendedActionState",SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerRecommendedActionModel))]
     public class SetAzureSqlServerRecommendedActionState : AzureSqlServerRecommendedActionCmdletBase
     {
         /// <summary>

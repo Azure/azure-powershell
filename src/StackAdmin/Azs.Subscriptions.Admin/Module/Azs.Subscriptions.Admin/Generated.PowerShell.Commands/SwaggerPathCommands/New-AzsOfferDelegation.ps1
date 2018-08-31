@@ -75,7 +75,7 @@ function New-AzsOfferDelegation {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSCmdlet.ShouldProcess("$Name", "Create new offer delegation")) {
 

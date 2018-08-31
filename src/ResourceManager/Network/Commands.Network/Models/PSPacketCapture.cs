@@ -16,15 +16,19 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSPacketCapture : PSChildResource
     {
         public string Target { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? BytesToCapturePerPacket { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? TotalBytesPerSession { get; set; }
 
+        [Ps1Xml(Target = ViewControl.Table)]
         public int? TimeLimitInSeconds { get; set; }
 
         public PSStorageLocation StorageLocation { get; set; }

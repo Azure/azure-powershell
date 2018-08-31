@@ -140,15 +140,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
-Parameters: VM (ByPropertyName, ByValue)
 
 ### System.String
-Parameters: Id (ByPropertyName)
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference, Microsoft.Azure.Commands.Common.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Primary (ByPropertyName)
 
 ## OUTPUTS
 

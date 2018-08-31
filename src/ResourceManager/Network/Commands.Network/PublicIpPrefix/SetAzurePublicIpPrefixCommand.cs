@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network.PublicIpPrefix
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmPublicIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSPublicIpPrefix))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSPublicIpPrefix))]
     public class SetAzurePublicIpPrefixCommand : PublicIpPrefixBaseCmdlet
     {
         [Parameter(

@@ -33,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
     {
         [Fact]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPsCredential()
         {
             const string userName = "user";
@@ -68,6 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestString()
         {
             const string arg = "argument";
@@ -87,6 +89,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestInt()
         {
             const string arg = "argument";
@@ -106,6 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBool()
         {
             const string arg = "argument";
@@ -124,6 +128,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
 
         [Fact]
         [Trait(Category.Functional, Category.BVT)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestChar()
         {
             const string arg = "argument";

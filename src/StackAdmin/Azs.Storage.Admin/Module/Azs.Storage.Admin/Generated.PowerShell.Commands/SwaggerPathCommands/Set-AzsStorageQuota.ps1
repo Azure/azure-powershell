@@ -80,7 +80,7 @@ function Set-AzsStorageQuota {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $Quota = $null
 

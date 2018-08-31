@@ -318,7 +318,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Parameters: InputObject (ByValue)
 
 ### System.String
-Parameters: BackupName (ByPropertyName), DatabaseState (ByPropertyName), ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

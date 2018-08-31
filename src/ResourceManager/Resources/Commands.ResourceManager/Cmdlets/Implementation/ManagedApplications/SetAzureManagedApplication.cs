@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates the managed application.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmManagedApplication", DefaultParameterSetName = SetAzureManagedApplicationCmdlet.ManagedApplicationNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagedApplication", DefaultParameterSetName = SetAzureManagedApplicationCmdlet.ManagedApplicationNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public class SetAzureManagedApplicationCmdlet : ManagedApplicationCmdletBase
     {
         /// <summary>

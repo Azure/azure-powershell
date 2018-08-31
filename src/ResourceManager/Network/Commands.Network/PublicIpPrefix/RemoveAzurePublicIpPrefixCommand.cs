@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmPublicIpPrefix", SupportsShouldProcess = true, DefaultParameterSetName = RemoveAzurePublicIpPrefixParameterSetNames.Default), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpPrefix", SupportsShouldProcess = true, DefaultParameterSetName = RemoveAzurePublicIpPrefixParameterSetNames.Default), OutputType(typeof(bool))]
     public class RemoveAzurePublicIpPrefixCommand : PublicIpPrefixBaseCmdlet
     {
         [Alias("ResourceName")]

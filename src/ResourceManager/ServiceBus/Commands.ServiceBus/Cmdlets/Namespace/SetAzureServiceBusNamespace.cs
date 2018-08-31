@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// <summary>
     /// 'Set-AzureRmServiceBusNamespace' Cmdlet updates the specified ServiceBus Namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServiceBusNamespaceVerb  , SupportsShouldProcess = true), OutputType(typeof(PSNamespaceAttributes))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNamespace", SupportsShouldProcess = true), OutputType(typeof(PSNamespaceAttributes))]
     public class SetAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
     {
         /// <summary>
@@ -83,7 +83,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateNamespace, Name, ResourceGroupName)))
             {
-                WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary));
+                try
+                {
+                    WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary));
+                }
+                catch (Management.ServiceBus.Models.ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }
