@@ -166,8 +166,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
-Parameters: TrafficManagerProfile (ByValue)
+### Microsoft.Azure.Commands.Network.TrafficManagerProfile
+This cmdlet accepts a **TrafficManagerProfile** object.
 
 ## OUTPUTS
 

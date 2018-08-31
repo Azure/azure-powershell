@@ -203,15 +203,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
-Parameters: WorkloadType (ByPropertyName)
 
-### System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase
-Parameters: RetentionPolicy (ByPropertyName)
 
 ### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase
-Parameters: SchedulePolicy (ByPropertyName)
 
 ### System.String
 Parameters: VaultId (ByValue)

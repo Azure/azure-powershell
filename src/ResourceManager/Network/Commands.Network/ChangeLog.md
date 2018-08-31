@@ -19,6 +19,13 @@
 --->
 
 ## Current Release
+* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
+
+## Version 6.6.0
+* Fixed issue with default resource groups not being set.
+* Changed default models representation to table-view
+
+## Version 6.5.0
 * Added example for Set-AzureRmLocalNetworkGateway
 * Added examples and descriptions for Add-AzureRmVirtualNetworkGatewayIpConfig, Get-AzureRmVirtualNetworkGatewayConnectionSharedKey and New-AzureRmVirtualNetworkGatewayConnection
 * Added PublicIpPrefix Functionality. New cmdlets added
@@ -28,9 +35,18 @@
 	- Set-AzureRmPublicIpPrefix
 * Added service endpoint policies cmdlets
 * Added deprecation messages for EnableVmProtection property in VirtualNetwork
+* Added examples for Remove-AzureRmVirtualNetworkGatewayIpConfig and Reset-AzureRmVirtualNetworkGateway
+* Added example for Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey
+* Added example for Set-AzureRmVirtualNetworkGatewayConnectionSharedKey
+* Added example for Set-AzureRmVirtualNetworkGatewayConnection
+* Re-generated cmdlets for ApplicationSecurityGroup, RouteTable and Usage using latest code generator
+* Clarified error message for Get-AzureRmVirtualNetworkSubnetConfig when attempting to get a subnet that does not exist
+* Improved exception messages: added more details to output
+* Dropped outdated warnings
 
 ## Version 6.4.1
 * Updated all help files to include full parameter types and correct input/output types.
+* Updated to the latest version of the Azure ClientRuntime.
 * Added examples for LoadBalancerInboundNatPoolConfig cmdlets.
 
 ## Version 6.4.0

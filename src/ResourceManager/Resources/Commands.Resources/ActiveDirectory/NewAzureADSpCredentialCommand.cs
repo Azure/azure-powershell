@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD servicePrincipal Credential.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmADSpCredential", DefaultParameterSetName = ParameterSet.SpObjectIdWithPassword, SupportsShouldProcess = true), OutputType(typeof(PSADCredential))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADSpCredential", DefaultParameterSetName = ParameterSet.SpObjectIdWithPassword, SupportsShouldProcess = true), OutputType(typeof(PSADCredential))]
     [Alias("New-AzureRmADServicePrincipalCredential")]
     public class NewAzureADSpCredentialCommand : ActiveDirectoryBaseCmdlet
     {

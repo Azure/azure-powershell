@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkPeering"), OutputType(typeof(PSVirtualNetworkPeering))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkPeering"), OutputType(typeof(PSVirtualNetworkPeering))]
     public class SetAzureVirtualNetworkPeeringCommand : VirtualNetworkPeeringBase
     {
         [Parameter(

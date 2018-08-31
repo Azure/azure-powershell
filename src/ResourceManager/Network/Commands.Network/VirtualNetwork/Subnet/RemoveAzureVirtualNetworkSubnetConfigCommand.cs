@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.Network
 {
     [CmdletOutputBreakingChange(typeof(PSVirtualNetwork), DeprecatedOutputProperties = new string[] { "EnableVmProtection" })]
-    [Cmdlet(VerbsCommon.Remove, "AzureRmVirtualNetworkSubnetConfig"), OutputType(typeof(PSVirtualNetwork))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetConfig"), OutputType(typeof(PSVirtualNetwork))]
     public class RemoveAzureVirtualNetworkSubnetConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

@@ -121,7 +121,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ResourceId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
 Parameters: ReplicationProtectedItem (ByValue)

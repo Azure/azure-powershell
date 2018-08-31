@@ -397,19 +397,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), ZoneName (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Dns.DnsZone
 Parameters: Zone (ByValue)
 
 ### System.UInt32
-Parameters: Ttl (ByPropertyName)
 
 ### Microsoft.Azure.Management.Dns.Models.RecordType
-Parameters: RecordType (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Metadata (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Dns.DnsRecordBase[]
 Parameters: DnsRecords (ByValue)

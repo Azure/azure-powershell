@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.3.7
+* Updated to the latest version of the Azure ClientRuntime.
+
 ## Version 0.3.6
 * Updated help files to include full parameter types and correct input/output types.
 
@@ -26,7 +29,7 @@
 * Fixed formatting of OutputType in help files
 
 ## Version 0.3.4
-* Add new cmdlets for managing budget 
+* Add new cmdlets for managing budget
     - Get/New/Set/Remove-AzureRmConsumptionBudget
     - Get-AzureRmConsumptionMarketplace
     - Get-AzureRmConsumptionPriceSheet
@@ -45,7 +48,7 @@
 ## Version 0.3.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 0.2.7
 
 ## Version 0.2.6

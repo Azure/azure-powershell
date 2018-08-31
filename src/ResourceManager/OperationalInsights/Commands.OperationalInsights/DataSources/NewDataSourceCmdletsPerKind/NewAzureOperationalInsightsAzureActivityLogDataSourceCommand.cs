@@ -27,8 +27,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmOperationalInsightsAzureActivityLogDataSource", SupportsShouldProcess = true, 
-        DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsAzureActivityLogDataSource", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     [Alias("New-AzureRmOperationalInsightsAzureAuditDataSource")]
     public class NewAzureOperationalInsightsAzureActivityLogDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {

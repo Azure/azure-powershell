@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.Network
 {
     [CmdletOutputBreakingChange(typeof(PSVirtualNetwork), DeprecatedOutputProperties = new string[] { "EnableVmProtection" })]
-    [Cmdlet(VerbsCommon.Add, "AzureRmVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSVirtualNetwork))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSVirtualNetwork))]
     public class AddAzureVirtualNetworkSubnetConfigCommand : AzureVirtualNetworkSubnetConfigBase
     {
         [Parameter(

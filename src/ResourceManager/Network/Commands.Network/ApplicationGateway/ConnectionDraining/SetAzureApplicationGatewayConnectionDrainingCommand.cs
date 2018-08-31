@@ -17,8 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayConnectionDraining"),
-        OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayConnectionDraining"),OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
     public class SetAzureApplicationGatewayConnectionDrainingCommand : AzureApplicationGatewayConnectionDrainingBase
     {
         [Parameter(

@@ -193,13 +193,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
-Parameters: VirtualMachineScaleSet (ByPropertyName, ByValue)
 
 ### System.String
-Parameters: Name (ByPropertyName), ProtectedSettingFilePath (ByPropertyName), SettingFilePath (ByPropertyName), TypeHandlerVersion (ByPropertyName)
 
 ### System.Boolean
-Parameters: AutoUpgradeMinorVersion (ByPropertyName)
 
 ## OUTPUTS
 

@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuit", SupportsShouldProcess = true),
-        OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuit", SupportsShouldProcess = true),OutputType(typeof(PSExpressRouteCircuit))]
     public class NewAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -120,7 +119,6 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsExpressRouteCircuitPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,

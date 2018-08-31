@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmServiceEndpointPolicy", SupportsShouldProcess = true, DefaultParameterSetName = "GetByNameParameterSet"), OutputType(typeof(PSServiceEndpointPolicy))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceEndpointPolicy", SupportsShouldProcess = true, DefaultParameterSetName = "GetByNameParameterSet"), OutputType(typeof(PSServiceEndpointPolicy))]
     public class GetAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
     {
         [Parameter(

@@ -134,7 +134,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: BackupId (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Slot (ByPropertyName)
 
 ### Microsoft.Azure.Management.WebSites.Models.Site
 Parameters: WebApp (ByValue)

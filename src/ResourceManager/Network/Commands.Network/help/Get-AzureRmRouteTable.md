@@ -13,16 +13,16 @@ Gets route tables.
 
 ## SYNTAX
 
+### NoExpand (Default)
+```
+Get-AzureRmRouteTable [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
 ### Expand
 ```
 Get-AzureRmRouteTable -ResourceGroupName <String> -Name <String> -ExpandResource <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### NoExpand
-```
-Get-AzureRmRouteTable [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,10 +94,10 @@ Specifies the name of the route table that this cmdlet gets.
 
 ```yaml
 Type: System.String
-Parameter Sets: Expand
+Parameter Sets: NoExpand
 Aliases: ResourceName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -106,10 +106,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: NoExpand
+Parameter Sets: Expand
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -121,10 +121,10 @@ Specifies the name of the resource group that contains the route tables that thi
 
 ```yaml
 Type: System.String
-Parameter Sets: Expand
+Parameter Sets: NoExpand
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -133,10 +133,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: NoExpand
+Parameter Sets: Expand
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -149,7 +149,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ExpandResource (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

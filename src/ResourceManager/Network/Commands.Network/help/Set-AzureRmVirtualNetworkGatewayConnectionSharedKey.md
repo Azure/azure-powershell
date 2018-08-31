@@ -23,6 +23,16 @@ The **Set-AzureRmVirtualNetworkGatewayConnectionSharedKey** cmdlet configures th
 
 ## EXAMPLES
 
+### Example 1:
+```
+PS C:\Users\alzam> Set-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName VPNGatewayV3 -Name VNet1toVNet2 -Value abcd1234
+
+Confirm
+Are you sure you want to overwrite resource 'VNet1toVNet2'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+abcd1234
+```
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -137,7 +147,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), Value (ByPropertyName)
 
 ## OUTPUTS
 
