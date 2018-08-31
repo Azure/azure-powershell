@@ -34,7 +34,7 @@ Add-AzureRmIotHubRoute [-ResourceId] <String> [-RouteName] <String> [-Source] <P
 ```
 
 ## DESCRIPTION
-Create a route to send specific data source and condition to a desired endpoint. To learn about query syntax see aka.ms/RoutingQuerySyntax
+Create a route to send specific data source and condition to a desired endpoint.
 
 ## EXAMPLES
 
