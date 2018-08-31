@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = 'ef36c942-4a71-4e19-9450-05a35843deb6'
@@ -133,7 +133,7 @@ CmdletsToExport = 'Get-AzAutomationHybridWorkerGroup',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Import-AzureRmAutomationModule'
+AliasesToExport = 'Import-AzAutomationModule'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

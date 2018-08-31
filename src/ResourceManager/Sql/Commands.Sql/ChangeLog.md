@@ -18,7 +18,21 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.11.3
 * Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 4.11.2
+* Fixed issue with default resource groups not being set.
+* Deprecated cmdlets and parameters:
+	- Get-AzureRmSqlServerBackupLongTermRetentionVault cmdlet
+	- Set-AzureRmSqlServerBackupLongTermRetentionVault cmdlet
+	- Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -Current parameter
+	- Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -State parameter
+* Upcoming breaking changes:
+	- Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy
+		- -ResourceId parameter will refer to the id of the policy being set, rather than RecoveryServicesBackupPolicyResourceId
 
 ## Version 4.11.1
 * Updated to the latest version of the Azure ClientRuntime.

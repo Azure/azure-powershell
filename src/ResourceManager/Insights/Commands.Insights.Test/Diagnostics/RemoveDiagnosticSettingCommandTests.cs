@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         private Mock<ICommandRuntime> commandRuntimeMock;
         private const string ResourceId = "/subscriptions/123/resourcegroups/rg/providers/rp/resource/myresource";
         private Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResource> response;
+        private Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResourceCollection> multipleResponse;
         DiagnosticSettingsResource calledSettings = null;
 
         private string resourceIdIn;
@@ -51,20 +52,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                 MonitorManagementClient = insightsManagementClientMock.Object
             };
 
-            response = new Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResource>()
+            var resource = new DiagnosticSettingsResource(name: "service")
             {
-                RequestId = Guid.NewGuid().ToString(),
-                Response = new System.Net.Http.HttpResponseMessage
-                {
-                    StatusCode = System.Net.HttpStatusCode.OK
-                },
-                Body = new DiagnosticSettingsResource
-                {
-                    EventHubName = "",
-                    EventHubAuthorizationRuleId = "",
-                    StorageAccountId = "/subscriptions/123/resourcegroups/rg/providers/microsoft.storage/accounts/myaccount",
-                    WorkspaceId = "",
-                    Logs = new List<LogSettings>
+                
+                EventHubName = "",
+                EventHubAuthorizationRuleId = "",
+                StorageAccountId = "/subscriptions/123/resourcegroups/rg/providers/microsoft.storage/accounts/myaccount",
+                WorkspaceId = "",
+                Logs = new List<LogSettings>
                     {
                         new LogSettings
                         {
@@ -87,7 +82,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                             Enabled = false
                         }
                     },
-                    Metrics = new List<MetricSettings>
+                Metrics = new List<MetricSettings>
                     {
                         new MetricSettings
                         {
@@ -111,7 +106,16 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                             TimeGrain = TimeSpan.FromHours(1)
                         }
                     }
-                }
+            };
+
+            response = new Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResource>()
+            {
+                RequestId = Guid.NewGuid().ToString(),
+                Response = new System.Net.Http.HttpResponseMessage
+                {
+                    StatusCode = System.Net.HttpStatusCode.OK
+                },
+                Body = resource
             };
 
             insightsDiagnosticsOperationsMock.Setup(f => f.DeleteWithHttpMessagesAsync(
@@ -163,6 +167,20 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                 {
                     resourceIdIn = resourceId;
                     this.settingName = name;
+                });
+
+            multipleResponse = new Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResourceCollection>()
+            {
+                Body = new DiagnosticSettingsResourceCollection(
+                    value: new List<DiagnosticSettingsResource>() { resource })
+            };
+
+            insightsDiagnosticsOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(multipleResponse))
+                .Callback((string resourceId, Dictionary<string, List<string>> headers, CancellationToken cancellationToken) =>
+                {
+                    resourceIdIn = resourceId;
+                    this.settingName = "service";
                 });
 
             insightsManagementClientMock.SetupGet(f => f.DiagnosticSettings).Returns(this.insightsDiagnosticsOperationsMock.Object);

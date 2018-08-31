@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = '80c60f49-dd83-4f4e-92ad-5f3449de36e3'
@@ -101,7 +101,7 @@ CmdletsToExport = 'Get-AzAppServicePlan', 'Set-AzAppServicePlan',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Swap-AzureRmWebAppSlot'
+AliasesToExport = 'Swap-AzWebAppSlot'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -130,7 +130,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -19,7 +19,16 @@
 --->
 
 ## Current Release
+* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
+
+## Version 6.6.1
+* Changed default cmdlet output presentation to table view
 * Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 6.6.0
+* Fixed issue with default resource groups not being set.
+* Changed default models representation to table-view
 
 ## Version 6.5.0
 * Added example for Set-AzureRmLocalNetworkGateway
