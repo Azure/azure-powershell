@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
 		[Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void TestServerDnsAliasGet()
+        public void TestServerDnsAliasGet()
 		{
 			RunPowerShellTest("Test-GetServerDnsAlias");
 		}

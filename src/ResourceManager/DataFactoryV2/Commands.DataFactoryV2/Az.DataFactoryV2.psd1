@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = 'e3c0f6bc-fe96-41a0-88f4-5e490a91f05d'
@@ -112,9 +112,9 @@ CmdletsToExport = 'Set-AzDataFactoryV2', 'Update-AzDataFactoryV2',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'New-AzureRmDataFactoryV2', 'New-AzureRmDataFactoryV2Dataset', 
-    'New-AzureRmDataFactoryV2LinkedService', 
-    'New-AzureRmDataFactoryV2Pipeline', 'New-AzureRmDataFactoryV2Trigger'
+AliasesToExport = 'New-AzDataFactoryV2', 'New-AzDataFactoryV2Dataset', 
+    'New-AzDataFactoryV2LinkedService', 
+    'New-AzDataFactoryV2Pipeline', 'New-AzDataFactoryV2Trigger'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
