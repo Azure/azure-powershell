@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
     [Cmdlet(VerbsData.Restore, "AzureRmSqlManagedDatabase",
-        DefaultParameterSetName = PointInTimeRestoreFromNameAndResourceGroupParameterSet,
+        DefaultParameterSetName = PointInTimeSameInstanceRestoreFromNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedDatabaseModel))]
     public class RestoreAzureRmSqlManagedDatabase
