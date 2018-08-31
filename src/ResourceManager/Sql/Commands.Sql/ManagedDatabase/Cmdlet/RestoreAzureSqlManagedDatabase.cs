@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public DateTime PointInTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the target managed database to restore to.
+        /// Gets or sets the name of the target managed database to restore to
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The name of the target managed database to restore to.")]
