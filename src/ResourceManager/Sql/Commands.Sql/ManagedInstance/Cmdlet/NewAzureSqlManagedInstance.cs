@@ -29,15 +29,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// Defines the New-AzureSqlManagedInstance cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlManagedInstance",
+        DefaultParameterSetName = NewBySkuNameParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class NewAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
         protected const string NewBySkuNameParameterSet =
-            "NewBySkuNameParameterSetParameter";
+            "NewManagedInstancedBySkuNameSet";
 
         protected const string NewByEditionAndComputeGenerationParameterSet =
-            "NewByEditionAndComputeGenerationParameterSet";
+            "NewManagedInstanceByEditionAndComputeGenerationSet";
 
         /// <summary>
         /// Gets or sets the name of the managed instance name.
