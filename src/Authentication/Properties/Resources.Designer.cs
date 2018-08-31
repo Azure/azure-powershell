@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows Azure Powershell.
+        ///   Looks up a localized string similar to .Azure.
         /// </summary>
         public static string AzureDirectoryName {
             get {
@@ -444,6 +444,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string NoTenantInContext {
             get {
                 return ResourceManager.GetString("NoTenantInContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Windows Azure Powershell.
+        /// </summary>
+        public static string OldAzureDirectoryName {
+            get {
+                return ResourceManager.GetString("OldAzureDirectoryName", resourceCulture);
             }
         }
         
