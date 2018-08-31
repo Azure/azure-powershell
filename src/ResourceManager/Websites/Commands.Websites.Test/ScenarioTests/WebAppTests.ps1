@@ -527,12 +527,13 @@ Tests creating a new website on an ase
 function Test-CreateNewWebAppOnAse
 {
 	# Setup
+	# Creating and provisioning an ASE currently takes 30 mins to an hour, hence this test requires that the ASE & ASP are already created 
+	# before creating the app on the ASE
 	$rgname = "appdemorg"
 	$wname = Get-WebsiteName
 	$location = "West US"
 	$whpName = "travelproductionplan"
 	$aseName = "asedemops"
-	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	try
 	{
