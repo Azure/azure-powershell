@@ -15,7 +15,7 @@
 # Snapshots require a Premium app to exist for several hours.
 # Deploy a Premium app and update these global variables to re-record the snapshots tests.
 $snapshotRgName = 'onesdksnapshots'
-$snapshotAppName = 'onesdkpremapp'
+$snapshotAppName = 'onesdkpremapp2'
 $snapshotAppSlot = 'staging'
 
 function Test-CreateNewWebAppBackup
