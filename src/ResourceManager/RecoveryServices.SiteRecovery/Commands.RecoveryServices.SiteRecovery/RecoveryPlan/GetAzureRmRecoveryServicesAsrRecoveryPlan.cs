@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         System.IO.Path.GetDirectoryName(this.Path)));
             }
 
-            var fullFileName = this.Path;
+            var fullFileName = ResolveUserPath(this.Path);
             using (var file = new StreamWriter(
                 fullFileName,
                 false))
