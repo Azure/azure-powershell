@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -33,6 +33,13 @@
 ## Version 6.5.0
 * Added example for Set-AzureRmLocalNetworkGateway
 * Added examples and descriptions for Add-AzureRmVirtualNetworkGatewayIpConfig, Get-AzureRmVirtualNetworkGatewayConnectionSharedKey and New-AzureRmVirtualNetworkGatewayConnection
+* Added PublicIpPrefix Functionality. New cmdlets added
+	- New-AzureRmPublicIpPrefix
+	- Get-AzureRmPublicIpPrefix
+	- Remove-AzureRmPublicIpPrefix
+	- Set-AzureRmPublicIpPrefix
+* Added service endpoint policies cmdlets
+* Added deprecation messages for EnableVmProtection property in VirtualNetwork
 * Added examples for Remove-AzureRmVirtualNetworkGatewayIpConfig and Reset-AzureRmVirtualNetworkGateway
 * Added example for Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey
 * Added example for Set-AzureRmVirtualNetworkGatewayConnectionSharedKey
