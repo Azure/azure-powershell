@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string SharedKey { get; set; }
 
-        [Ps1Xml(Label = "ConnectionProtocol", Target = ViewControl.Table)]
-        public string ConnectionProtocol { get; set; }
+        [Ps1Xml(Label = "VpnConnectionProtocolType", Target = ViewControl.Table)]
+        public string VpnConnectionProtocolType { get; set; }
 
         [Ps1Xml(Label = "ConnectionStatus", Target = ViewControl.Table)]
         public string ConnectionStatus { get; set; }
