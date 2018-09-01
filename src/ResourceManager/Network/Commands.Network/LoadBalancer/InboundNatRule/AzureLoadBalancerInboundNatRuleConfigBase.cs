@@ -64,6 +64,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "EnableFloatingIP")]
         public SwitchParameter EnableFloatingIP { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "EnableTcpReset")]
+        public SwitchParameter EnableTcpReset { get; set; }
+
         public override void Execute()
         {
             
