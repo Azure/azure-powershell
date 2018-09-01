@@ -60,6 +60,34 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the selected security provider.")]
+        public string SecurityProviderName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Local breakout category for office 365 traffic.")]
+        [ValidateSet(MNM.OfficeTrafficCategory.All, MNM.OfficeTrafficCategory.None, MNM.OfficeTrafficCategory.Optimize, MNM.OfficeTrafficCategory.OptimizeAndAllow)]
+        [PSDefaultValue(Help = MNM.OfficeTrafficCategory.Optimize, Value = MNM.OfficeTrafficCategory.Optimize)]
+        public string Office365LocalBreakoutCategory { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Allow vnet to vnet traffic for VirtualWan.")]
+        [PSDefaultValue(Help = "$false", Value = false)]
+        public bool AllowVnetToVnetTraffic { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Allow branch to branch traffic for VirtualWan.")]
+        [PSDefaultValue(Help = "$true", Value = true)]
+        public bool AllowBranchToBranchTraffic { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -96,6 +124,10 @@ namespace Microsoft.Azure.Commands.Network
             virtualWan.Name = this.Name;
             virtualWan.ResourceGroupName = this.ResourceGroupName;
             virtualWan.Location = this.Location;
+            virtualWan.SecurityProviderName = this.SecurityProviderName;
+            virtualWan.Office365LocalBreakoutCategory = this.Office365LocalBreakoutCategory;
+            virtualWan.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic;
+            virtualWan.AllowVnetToVnetTraffic = this.AllowVnetToVnetTraffic;
 
             var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWAN>(virtualWan);
             virtualWanModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);

@@ -13,7 +13,9 @@ Creates an Azure Virtual WAN.
 ## SYNTAX
 
 ```
-New-AzureRmVirtualWan -Name <String> -ResourceGroupName <String> -Location <String> [-Tag <Hashtable>] [-Force]
+New-AzureRmVirtualWan -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SecurityProviderName <String>] [-Office365LocalBreakoutCategory <String>]
+ [-AllowVnetToVnetTraffic <Boolean>] [-AllowBranchToBranchTraffic <Boolean>] [-Tag <Hashtable>] [-Force]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,12 +27,42 @@ Creates a new Azure VirtualWAN resource.
 ### Example 1
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
-PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
+PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -Office365LocalBreakoutCategory OptimizeAndAllow -AllowBranchToBranchTraffic $true
 ```
 
 The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN in that resource group in Azure.
 
 ## PARAMETERS
+
+### -AllowBranchToBranchTraffic
+Allow branch to branch traffic for VirtualWan.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AllowVnetToVnetTraffic
+Allow vnet to vnet traffic for VirtualWan.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
@@ -39,6 +71,21 @@ Run cmdlet in the background
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -107,6 +154,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Office365LocalBreakoutCategory
+Local breakout category for office 365 traffic.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: All, None, Optimize, OptimizeAndAllow
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -116,6 +179,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SecurityProviderName
+The name of the selected security provider.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -134,21 +212,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

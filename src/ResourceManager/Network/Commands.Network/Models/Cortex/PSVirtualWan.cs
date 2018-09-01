@@ -20,5 +20,17 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+        [Ps1Xml(Label = "SecurityProviderName", Target = ViewControl.Table)]
+        public string SecurityProviderName { get; set; }
+
+        [Ps1Xml(Label = "Office365LocalBreakoutCategory", Target = ViewControl.Table)]
+        public string Office365LocalBreakoutCategory { get; set; }
+
+        [Ps1Xml(Label = "AllowVnetToVnetTraffic", Target = ViewControl.Table)]
+        public bool AllowVnetToVnetTraffic { get; set; }
+
+        [Ps1Xml(Label = "AllowBranchToBranchTraffic", Target = ViewControl.Table)]
+        public bool AllowBranchToBranchTraffic { get; set; }
     }
 }
