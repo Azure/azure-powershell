@@ -133,14 +133,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string SiteIdentifier { get; set; }
 
         /// <summary>
-        /// Gets or sets certificate.
-        /// </summary>
-        [Parameter(ParameterSetName = ARSParameterSets.ForSite, Mandatory = true)]
-        [Parameter(ParameterSetName = ARSParameterSets.ByDefault, Mandatory = true)]
-        [ValidateNotNullOrEmpty]
-        public string certificate { get; set; }
-
-        /// <summary>
         /// Gets or sets SiteFriendlyName.
         /// </summary>
         [Parameter(ParameterSetName = ARSParameterSets.ForSite, Mandatory = true)]
@@ -381,7 +373,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string fileName = this.GenerateFileName();
 
             string filePath = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
-            filePath = ResolveUserPath(filePath);
 
             // Generate file.
             if (RecoveryServicesClient.getVaultAuthType(this.Vault.ResourceGroupName, this.Vault.Name) == 0)
@@ -476,7 +467,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public void GetAzureRMRecoveryServicesVaultBackupCredentials()
         {
             string targetLocation = string.IsNullOrEmpty(this.Path) ? Utilities.GetDefaultPath() : this.Path;
-            targetLocation = ResolveUserPath(targetLocation);
             if (!Directory.Exists(targetLocation))
             {
                 throw new ArgumentException(Resources.VaultCredPathException);
