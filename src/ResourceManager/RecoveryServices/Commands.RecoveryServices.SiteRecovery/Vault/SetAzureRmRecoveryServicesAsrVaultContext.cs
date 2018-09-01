@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias(
         "Set-ASRVaultContext",
         "Set-ASRVaultSettings",
-        "Set-AzureRmRecoveryServicesAsrVaultSettings")]
+        "Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrVaultSettings")]
     [OutputType(typeof(ASRVaultSettings))]
     public class SetAzureRmRecoveryServicesAsrVaultSettings : SiteRecoveryCmdletBase
     {

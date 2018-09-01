@@ -17,9 +17,11 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
+    [CmdletDeprecation]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerBackupLongTermRetentionVault", SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerBackupLongTermRetentionVaultModel))]
     public class GetAzureSqlServerBackupLongTermRetentionVault : AzureSqlServerBackupLongTermRetentionVaultCmdletBase

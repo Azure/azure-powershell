@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
@@ -134,6 +134,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.RecoveryServices.Backup.Logger.Netcore", "src\ResourceManager\RecoveryServices\Commands.RecoveryServices.Backup.Logger\Commands.RecoveryServices.Backup.Logger.Netcore.csproj", "{9187418A-30A4-4320-8919-69799D99F2C2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.RecoveryServices.Backup.Models.Netcore", "src\ResourceManager\RecoveryServices\Commands.RecoveryServices.Backup.Models\Commands.RecoveryServices.Backup.Models.Netcore.csproj", "{3DC73068-DB61-4B56-AC0E-5CAA40A5C170}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools.Common.Netcore", "tools\Tools.Common\Tools.Common.Netcore.csproj", "{EE2A4BB9-2ECB-4CAE-AD82-C4882B6ECDE0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StaticAnalysis.Netcore", "tools\StaticAnalysis\StaticAnalysis.Netcore.csproj", "{493FA948-DA9C-47CD-8385-3C0261377D86}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.RedisCache.Netcore", "src\ResourceManager\RedisCache\Commands.RedisCache\Commands.RedisCache.Netcore.csproj", "{06B4370D-D375-482C-AD23-CFDAC0176147}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -937,6 +942,42 @@ Global
 		{3DC73068-DB61-4B56-AC0E-5CAA40A5C170}.Release|x64.Build.0 = Release|Any CPU
 		{3DC73068-DB61-4B56-AC0E-5CAA40A5C170}.Release|x86.ActiveCfg = Release|Any CPU
 		{3DC73068-DB61-4B56-AC0E-5CAA40A5C170}.Release|x86.Build.0 = Release|Any CPU
+		{EE2A4BB9-2ECB-4CAE-AD82-C4882B6ECDE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE2A4BB9-2ECB-4CAE-AD82-C4882B6ECDE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE2A4BB9-2ECB-4CAE-AD82-C4882B6ECDE0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EE2A4BB9-2ECB-4CAE-AD82-C4882B6ECDE0}.Debug|x64.Build.0 = Debug|Any CPU
+		{EE2A4BB9-2ECB-4CAE-AD82-C4882B6ECDE0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EE2A4BB9-2ECB-4CAE-AD82-C4882B6ECDE0}.Debug|x86.Build.0 = Debug|Any CPU
+		{EE2A4BB9-2ECB-4CAE-AD82-C4882B6ECDE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE2A4BB9-2ECB-4CAE-AD82-C4882B6ECDE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE2A4BB9-2ECB-4CAE-AD82-C4882B6ECDE0}.Release|x64.ActiveCfg = Release|Any CPU
+		{EE2A4BB9-2ECB-4CAE-AD82-C4882B6ECDE0}.Release|x64.Build.0 = Release|Any CPU
+		{EE2A4BB9-2ECB-4CAE-AD82-C4882B6ECDE0}.Release|x86.ActiveCfg = Release|Any CPU
+		{EE2A4BB9-2ECB-4CAE-AD82-C4882B6ECDE0}.Release|x86.Build.0 = Release|Any CPU
+		{493FA948-DA9C-47CD-8385-3C0261377D86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{493FA948-DA9C-47CD-8385-3C0261377D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{493FA948-DA9C-47CD-8385-3C0261377D86}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{493FA948-DA9C-47CD-8385-3C0261377D86}.Debug|x64.Build.0 = Debug|Any CPU
+		{493FA948-DA9C-47CD-8385-3C0261377D86}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{493FA948-DA9C-47CD-8385-3C0261377D86}.Debug|x86.Build.0 = Debug|Any CPU
+		{493FA948-DA9C-47CD-8385-3C0261377D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{493FA948-DA9C-47CD-8385-3C0261377D86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{493FA948-DA9C-47CD-8385-3C0261377D86}.Release|x64.ActiveCfg = Release|Any CPU
+		{493FA948-DA9C-47CD-8385-3C0261377D86}.Release|x64.Build.0 = Release|Any CPU
+		{493FA948-DA9C-47CD-8385-3C0261377D86}.Release|x86.ActiveCfg = Release|Any CPU
+		{493FA948-DA9C-47CD-8385-3C0261377D86}.Release|x86.Build.0 = Release|Any CPU
+		{06B4370D-D375-482C-AD23-CFDAC0176147}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06B4370D-D375-482C-AD23-CFDAC0176147}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06B4370D-D375-482C-AD23-CFDAC0176147}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{06B4370D-D375-482C-AD23-CFDAC0176147}.Debug|x64.Build.0 = Debug|Any CPU
+		{06B4370D-D375-482C-AD23-CFDAC0176147}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{06B4370D-D375-482C-AD23-CFDAC0176147}.Debug|x86.Build.0 = Debug|Any CPU
+		{06B4370D-D375-482C-AD23-CFDAC0176147}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06B4370D-D375-482C-AD23-CFDAC0176147}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06B4370D-D375-482C-AD23-CFDAC0176147}.Release|x64.ActiveCfg = Release|Any CPU
+		{06B4370D-D375-482C-AD23-CFDAC0176147}.Release|x64.Build.0 = Release|Any CPU
+		{06B4370D-D375-482C-AD23-CFDAC0176147}.Release|x86.ActiveCfg = Release|Any CPU
+		{06B4370D-D375-482C-AD23-CFDAC0176147}.Release|x86.Build.0 = Release|Any 
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

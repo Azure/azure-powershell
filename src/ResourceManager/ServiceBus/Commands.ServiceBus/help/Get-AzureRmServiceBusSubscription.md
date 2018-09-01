@@ -49,14 +49,14 @@ Returns a subscription description for the specified Service Bus topic.
 PS C:\> Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 ```
 
-Returns list of subscriptions for specified Service Bus topic.
+Returns list of subscriptions for specified Service Bus topic. By default 100 subscriptions will be returned, for number of subscriptions please use -MaxCount Parameter
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -MaxCount 30
+PS C:\> Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -MaxCount 150
 ```
 
-Returns list of first 30 subscriptions for specified Service Bus topic.
+Returns list of first 150 subscriptions for specified Service Bus topic.
 
 ## PARAMETERS
 

@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = 'd4877565-4778-42de-b494-79491ab9c31c'
@@ -90,8 +90,8 @@ CmdletsToExport = 'Resume-AzAnalysisServicesServer',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Resume-AzureAs', 'Suspend-AzureAs', 'Get-AzureAs', 'Remove-AzureAs', 
-    'Set-AzureAs', 'Test-AzureAs', 'New-AzureAs'
+AliasesToExport = 'Resume-AzAs', 'Suspend-AzAs', 'Get-AzAs', 'Remove-AzAs', 
+    'Set-AzAs', 'Test-AzAs', 'New-AzAs'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

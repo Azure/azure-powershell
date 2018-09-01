@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models",
             "Name": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsDataAction": "System.Boolean",
               "Operation": "System.String",
@@ -208,7 +208,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "ObjectId": "System.Guid",
@@ -475,7 +475,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "ObjectId": "System.Guid",
@@ -2415,7 +2415,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CanDelegate": "System.Boolean",
                     "ObjectId": "System.Guid",
@@ -2555,7 +2555,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "ObjectId": "System.Guid",
@@ -5446,7 +5446,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "ObjectId": "System.Guid",
@@ -7604,7 +7604,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8098,7 +8098,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8177,7 +8177,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8342,7 +8342,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8501,7 +8501,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8580,7 +8580,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8745,7 +8745,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8959,7 +8959,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -9389,7 +9389,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -9644,7 +9644,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Type": "System.String",
@@ -9707,7 +9707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -9957,7 +9957,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -10673,7 +10673,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -10819,7 +10819,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11381,7 +11381,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11454,7 +11454,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11618,7 +11618,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11763,7 +11763,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -34561,7 +34561,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -34573,7 +34573,7 @@
     "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
       "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.Commands.Resources, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
         "Type": "System.String",

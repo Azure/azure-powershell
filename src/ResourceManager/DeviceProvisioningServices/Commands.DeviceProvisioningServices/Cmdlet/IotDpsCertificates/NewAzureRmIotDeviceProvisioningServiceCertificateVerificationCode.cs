@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDeviceProvisioningServiceCertificateVerificationCode", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSVerificationCodeResponse))]
-    [Alias("New-AzureRmIoTDpsCVC")]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDpsCVC")]
     public class NewAzureRmIoTDeviceProvisioningServiceCertificateVerificationCode : IotDpsBaseCmdlet
     {
         private const string ResourceParameterSet = "ResourceSet";

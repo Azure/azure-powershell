@@ -54,7 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Monitor">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Monitor.0.19.1-preview\lib\net452\Microsoft.Azure.Management.Monitor.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Monitor.0.20.1-preview\lib\net452\Microsoft.Azure.Management.Monitor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

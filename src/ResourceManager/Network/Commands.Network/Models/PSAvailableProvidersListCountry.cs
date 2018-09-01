@@ -15,6 +15,7 @@
 // 
 
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -22,6 +23,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSAvailableProvidersListCountry
     {
+        [Ps1Xml(Target = ViewControl.Table)]
         public string CountryName { get; set; }
 
         public IList<string> Providers { get; set; }
