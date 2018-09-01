@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DeviceProvisioning
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.PolicyInsights.Test.Netcore", "ResourceManager\PolicyInsights\Commands.PolicyInsights.Test\Commands.PolicyInsights.Test.Netcore.csproj", "{AFA65D3A-FB7E-4DAB-9867-1CA4CBA41BFB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Resources.Test.Netcore", "ResourceManager\Resources\Commands.Resources.Test\Commands.Resources.Test.Netcore.csproj", "{50DEDB9D-D379-43CF-9A0F-6C366B4AE400}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -223,6 +225,18 @@ Global
 		{AFA65D3A-FB7E-4DAB-9867-1CA4CBA41BFB}.Release|x64.Build.0 = Release|Any CPU
 		{AFA65D3A-FB7E-4DAB-9867-1CA4CBA41BFB}.Release|x86.ActiveCfg = Release|Any CPU
 		{AFA65D3A-FB7E-4DAB-9867-1CA4CBA41BFB}.Release|x86.Build.0 = Release|Any CPU
+		{50DEDB9D-D379-43CF-9A0F-6C366B4AE400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50DEDB9D-D379-43CF-9A0F-6C366B4AE400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50DEDB9D-D379-43CF-9A0F-6C366B4AE400}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{50DEDB9D-D379-43CF-9A0F-6C366B4AE400}.Debug|x64.Build.0 = Debug|Any CPU
+		{50DEDB9D-D379-43CF-9A0F-6C366B4AE400}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{50DEDB9D-D379-43CF-9A0F-6C366B4AE400}.Debug|x86.Build.0 = Debug|Any CPU
+		{50DEDB9D-D379-43CF-9A0F-6C366B4AE400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50DEDB9D-D379-43CF-9A0F-6C366B4AE400}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50DEDB9D-D379-43CF-9A0F-6C366B4AE400}.Release|x64.ActiveCfg = Release|Any CPU
+		{50DEDB9D-D379-43CF-9A0F-6C366B4AE400}.Release|x64.Build.0 = Release|Any CPU
+		{50DEDB9D-D379-43CF-9A0F-6C366B4AE400}.Release|x86.ActiveCfg = Release|Any CPU
+		{50DEDB9D-D379-43CF-9A0F-6C366B4AE400}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

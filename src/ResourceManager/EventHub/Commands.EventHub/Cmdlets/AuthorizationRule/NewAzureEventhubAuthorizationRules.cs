@@ -59,24 +59,31 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             PSSharedAccessAuthorizationRuleAttributes sasRule = new PSSharedAccessAuthorizationRuleAttributes();
             sasRule.Rights = new List<string>();
 
-            foreach (string test in Rights)
+            foreach (string right in Rights)
             {
-                sasRule.Rights.Add(test);
+                sasRule.Rights.Add(right);
             }
 
-            //Create a new Namespace Authorization Rule
-            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
-                if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.CreateNamespaceAuthorizationrule, Name, Namespace)))
-                {
-                    WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name, sasRule));
-                }
+            try
+            {
+                //Create a new Namespace Authorization Rule
+                if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
+                    if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.CreateNamespaceAuthorizationrule, Name, Namespace)))
+                    {
+                        WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name, sasRule));
+                    }
 
-            // Create a new EventHub authorizationRule
-            if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
-                if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.CreateEventHubAuthorizationrule, Name, EventHub)))
-                {
-                    WriteObject(Client.CreateOrUpdateEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name, sasRule));
-                }            
+                // Create a new EventHub authorizationRule
+                if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
+                    if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.CreateEventHubAuthorizationrule, Name, EventHub)))
+                    {
+                        WriteObject(Client.CreateOrUpdateEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name, sasRule));
+                    }
+            }
+            catch (Management.EventHub.Models.ErrorResponseException ex)
+            {
+                WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+            }
         }
     }
 }

@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -25,10 +24,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.KeyVault;
-#if NETSTANDARD
-using Microsoft.Azure.Management.ResourceManager;
-#else
-using Microsoft.Azure.Management.Resources;
+#if !NETSTANDARD
 using Microsoft.Azure.Test;
 using TestBase = Microsoft.Azure.Test.TestBase;
 #endif
@@ -37,6 +33,9 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using NetworkManagementClientInternal = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient;
 using ResourceManagementClientInternal = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using Microsoft.Azure.Management.Internal.Resources;
+using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
+using PublicStorage = Microsoft.Azure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
@@ -44,7 +43,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
     {
         private readonly EnvironmentSetupHelper _helper;
 
-        public StorageManagementClient StorageClient { get; private set; }
+        public CommonStorage.StorageManagementClient StorageClient { get; private set; }
+
+        public PublicStorage.StorageManagementClient PublicStorageClient { get; private set; }
 
         public ComputeManagementClient ComputeManagementClient { get; private set; }
 
@@ -128,6 +129,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     _helper.RMProfileModule,
 #if !NETSTANDARD
                     _helper.RMStorageDataPlaneModule,
+#else
+                    _helper.RMStorageModule,
 #endif
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"),
@@ -160,6 +163,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             ResourceManagementClient = GetResourceManagementClient(context);
             InternalResourceManagementClient = GetResourceManagementClientInternal(context);
+            PublicStorageClient = GetPublicStorageManagementClient(context); 
 
             _helper.SetupSomeOfManagementClients(
                 StorageClient,
@@ -168,16 +172,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 NetworkManagementClientInternal,
                 KeyVaultManagementClient,
                 ResourceManagementClient,
-                InternalResourceManagementClient);
+                InternalResourceManagementClient,
+                PublicStorageClient);
         }
 
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-#if NETSTANDARD
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-#else
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
-#endif
         }
 
         private static ResourceManagementClientInternal GetResourceManagementClientInternal(MockContext context)
@@ -185,9 +186,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return context.GetServiceClient<ResourceManagementClientInternal>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private static StorageManagementClient GetStorageManagementClient(MockContext context)
+        private static CommonStorage.StorageManagementClient GetStorageManagementClient(MockContext context)
         {
-            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<CommonStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static PublicStorage.StorageManagementClient GetPublicStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<PublicStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)

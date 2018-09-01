@@ -203,7 +203,7 @@ namespace VersionController
         /// <returns>The path to the module manifest file.</returns>
         private static string GetModuleManifestPath(string parentFolder)
         {
-            var moduleManifest = Directory.GetFiles(parentFolder, "*.psd1").Where(f => !f.Contains("Netcore")).ToList();
+            var moduleManifest = Directory.GetFiles(parentFolder, "*.psd1").Where(f => !f.Contains("Az.")).ToList();
             if (moduleManifest.Count == 0)
             {
                 throw new FileNotFoundException("No module manifest file found in directory " + parentFolder);

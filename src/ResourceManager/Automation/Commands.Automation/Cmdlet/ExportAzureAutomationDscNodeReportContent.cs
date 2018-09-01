@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             if (ShouldProcess(ReportId.ToString(), VerbsData.Export))
             {
                 var ret = this.AutomationClient.GetDscNodeReportContent(this.ResourceGroupName,
-                    this.AutomationAccountName, this.NodeId, this.ReportId, OutputFolder, overwriteExistingFile);
+                    this.AutomationAccountName, this.NodeId, this.ReportId, ResolveUserPath(OutputFolder), overwriteExistingFile);
 
                 this.WriteObject(ret, true);
             }

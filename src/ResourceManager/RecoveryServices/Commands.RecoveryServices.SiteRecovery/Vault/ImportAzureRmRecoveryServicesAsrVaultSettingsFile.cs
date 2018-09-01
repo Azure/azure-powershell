@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
+            Path = this.ResolveUserPath(Path);
+
             if (this.ShouldProcess(
                 "Vault Setting file",
                 VerbsData.Import))
