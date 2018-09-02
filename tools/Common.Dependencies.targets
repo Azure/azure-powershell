@@ -3,6 +3,7 @@
   <PropertyGroup>
     <LibraryRoot>$(MSBuildThisFileDirectory)\..\</LibraryRoot>
     <LibraryNugetPackageFolder>$(LibraryRoot)src\packages</LibraryNugetPackageFolder>
+	<StackPackageFolder>$(LibraryRoot)src\stack</StackPackageFolder>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
