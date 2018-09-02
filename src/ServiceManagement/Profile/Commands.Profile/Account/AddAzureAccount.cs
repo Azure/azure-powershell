@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Management;
 using System;
 using Microsoft.Azure;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -38,18 +39,28 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         public string Environment { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSetName, Mandatory = false, HelpMessage = "Optional credential")]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetName, Mandatory = true, HelpMessage = "Credential")]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSetName, Mandatory = false, HelpMessage = "Credential")]
         public PSCredential Credential { get; set; }
+
+        [Parameter(ParameterSetName = ServicePrincipalParameterSetName, Mandatory = false, HelpMessage = "Certificate thumprint, requires -ClientId and cannot be used with -Credential")]
+        [ValidateNotNullOrEmpty]
+        public string CertificateThumprint { get; set; }
+
+        [Parameter(ParameterSetName = ServicePrincipalParameterSetName, Mandatory = false, HelpMessage = "Application Id/Client Id, requires -CertificateThumbprint and cannot be used with -Credential")]
+        [ValidateNotNullOrEmpty]
+        public string ClientId { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSetName, Mandatory = true)]
         public SwitchParameter ServicePrincipal { get; set; }
         
         [Parameter(ParameterSetName = UserParameterSetName, Mandatory = false, HelpMessage = "Optional tenant name or ID")]
         [Parameter(ParameterSetName = ServicePrincipalParameterSetName, Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [ValidateNotNullOrEmpty]
         [Alias("TenantId")]
         public string Tenant { get; set; }
 
         [Parameter(ParameterSetName = ServicePrincipalParameterSetName, Mandatory = false, HelpMessage = "Subscription Id")]
+        [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
         public AddAzureAccount() : base(true)
@@ -59,6 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
+            // Validate
             if(ParameterSetName.Equals(ServicePrincipalParameterSetName))
             {
                 if (string.IsNullOrEmpty(SubscriptionId))
@@ -71,6 +83,24 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                     SubscriptionId = Profile.DefaultSubscription.Id;
                 }
             }
+
+            if (Credential != null)
+            {
+                if (CertificateThumprint != null || ClientId != null)
+                {
+                    WriteErrorWithTimestamp("Credential cannot be used with CerficateThumprint and ClientId.");
+                    return;
+                }
+            }
+            else
+            {
+                if (CertificateThumprint == null || ClientId == null)
+                {
+                    WriteErrorWithTimestamp("Please provide either Credential or the pair:CerficateThumprint and ClientId to authenticate.");
+                    return;
+                }
+            }
+
             AzureAccount azureAccount = new AzureAccount();
 
             azureAccount.Type = ServicePrincipal.IsPresent
@@ -78,10 +108,17 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 : AzureAccount.AccountType.User;
             
             SecureString password = null;
+
             if (Credential != null)
             {
                 azureAccount.Id = Credential.UserName;
                 password = Credential.Password;
+            }
+
+            if (ClientId != null)
+            {
+                azureAccount.Id = ClientId;
+                azureAccount.SetProperty(AzureAccount.Property.CertificateThumbprint, CertificateThumprint); // Already validated to be not null
             }
 
             if (!string.IsNullOrEmpty(Tenant))
@@ -179,6 +216,11 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         {
             targetAccount.Id = sourceAccount.Id;
             targetAccount.Type = sourceAccount.Type;
+
+            if (sourceAccount.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
+            {
+                targetAccount.SetProperty(AzureAccount.Property.CertificateThumbprint, sourceAccount.GetProperty(AzureAccount.Property.CertificateThumbprint));
+            }
         }
     }
 }
