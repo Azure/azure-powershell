@@ -45,7 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>$(LibrarySourceFolder)\packages\Microsoft.Azure.Insights.0.10.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Insights.0.10.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
