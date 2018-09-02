@@ -65,14 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\GetAzureRmKustoCluster .cs" />
-    <Compile Include="Commands\GetAzureRmKustoDatabase.cs" />
     <Compile Include="Commands\NewAzureRmKustoCluster.cs" />
-    <Compile Include="Commands\NewAzureRmKustoDatabase.cs" />
     <Compile Include="Commands\RemoveAzureRmKustoCluster.cs" />
-    <Compile Include="Commands\RemoveAzureRmKustoDatabase.cs" />
     <Compile Include="Commands\TestAzureRmKustoClusterName.cs" />
     <Compile Include="Commands\UpdateAzureRmKustoCluster.cs" />
-    <Compile Include="Commands\UpdateAzureRmKustoDatabase.cs" />
     <Compile Include="Models\KustoClient.cs" />
     <Compile Include="Models\KustoCmdletBase.cs" />
     <Compile Include="Models\PSKustoCluster.cs" />
