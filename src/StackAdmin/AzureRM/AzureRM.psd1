@@ -33,7 +33,7 @@
     Description            = 'Azure Resource Manager Module'
 
     # Minimum version of the Windows PowerShell engine required by this module
-    PowerShellVersion      = '3.0'
+    PowerShellVersion      = '5.0'
 
     # Name of the Windows PowerShell host required by this module
     # PowerShellHostName = ''
@@ -51,16 +51,8 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.4.0'; },
-        @{ModuleName = 'Azure.Storage'; RequiredVersion = '1.0.5.4'; },
-        @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '1.2.3.4'; },
-        @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '3.4.1'; },
-        @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '3.4.1'; },
-        @{ModuleName = 'AzureRM.Network'; RequiredVersion = '1.0.5.4'; },
-        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; },
-        @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '1.0.5.4'; },
-        @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '3.4.1'; },
-        @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '3.4.1'; })
+    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.5.1'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
