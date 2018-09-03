@@ -38,9 +38,13 @@ Get the access keys of a SignalR service.
 ```powershell
 PS C:\> Get-AzureRmSignalRKey -ResourceGroupName myResourceGroup -Name mysignalr1
 
-Name       PrimaryKey                                   SecondaryKey
-----       ----------                                   ------------
-mysignalr1 vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs= 2+HkuxAA34xiZFFiDsVM0uDyzCsg6GKsdXSjN4C/YFQ=
+Name                      : mysignalr1
+PrimaryKey                : vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs=
+PrimaryConnectionString   : Endpoint=https://mysignalr1.service.signalr.net;AccessKey=vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmO
+                            QNt77PovDs=;
+SecondaryKey              : 2+HkuxAA34xiZFFiDsVM0uDyzCsg6GKsdXSjN4C/YFQ=
+SecondaryConnectionString : Endpoint=https://mysignalr1.service.signalr.net;AccessKey=2+HkuxAA34xiZFFiDsVM0uDyzCsg6GKsd
+                            XSjN4C/YFQ=;
 ```
 
 ### Get access keys from a SignalR service object in pipe
@@ -48,9 +52,13 @@ mysignalr1 vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs= 2+HkuxAA34xiZFFiDsVM0uDy
 ```powershell
 PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 | Get-AzureRmSignalRKey
 
-Name       PrimaryKey                                   SecondaryKey
-----       ----------                                   ------------
-mysignalr1 vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs= 2+HkuxAA34xiZFFiDsVM0uDyzCsg6GKsdXSjN4C/YFQ=
+Name                      : mysignalr1
+PrimaryKey                : vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs=
+PrimaryConnectionString   : Endpoint=https://mysignalr1.service.signalr.net;AccessKey=vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmO
+                            QNt77PovDs=;
+SecondaryKey              : 2+HkuxAA34xiZFFiDsVM0uDyzCsg6GKsdXSjN4C/YFQ=
+SecondaryConnectionString : Endpoint=https://mysignalr1.service.signalr.net;AccessKey=2+HkuxAA34xiZFFiDsVM0uDyzCsg6GKsd
+                            XSjN4C/YFQ=;
 ```
 
 ## PARAMETERS
@@ -59,7 +67,7 @@ mysignalr1 vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs= 2+HkuxAA34xiZFFiDsVM0uDy
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,7 +82,7 @@ Accept wildcard characters: False
 The SignalR resource object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+Type: PSSignalRResource
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -89,7 +97,7 @@ Accept wildcard characters: False
 SignalR service name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -104,7 +112,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -119,7 +127,7 @@ Accept wildcard characters: False
 The SignalR service resource ID.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
