@@ -27,30 +27,47 @@
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSIpv6ExpressRouteCircuitPeeringConfig
+    public partial class PSOutboundRule : PSChildResource
     {
+        [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string PrimaryPeerAddressPrefix { get; set; }
+        public int? AllocatedOutboundPorts { get; set; }
+        [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string SecondaryPeerAddressPrefix { get; set; }
-        public PSExpressRouteCircuitPeeringConfig MicrosoftPeeringConfig { get; set; }
-        public PSRouteFilter RouteFilter { get; set; }
+        public string ProvisioningState { get; set; }
+        [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string State { get; set; }
+        public string Protocol { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableTcpReset { get; set; }
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
+        public int? IdleTimeoutInMinutes { get; set; }
+        [JsonProperty(Order = 1)]
+        public List<PSResourceId> FrontendIpConfigurations { get; set; }
+        [JsonProperty(Order = 1)]
+        public PSResourceId BackendAddressPool { get; set; }
 
         [JsonIgnore]
-        public string MicrosoftPeeringConfigText
+        public string FrontendIpConfigurationsText
         {
-            get { return JsonConvert.SerializeObject(MicrosoftPeeringConfig, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(FrontendIpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
-        public string RouteFilterText
+        public string BackendAddressPoolText
         {
-            get { return JsonConvert.SerializeObject(RouteFilter, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(BackendAddressPool, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        public bool ShouldSerializeFrontendIpConfigurations()
+        {
+            return !string.IsNullOrEmpty(this.Name);
         }
     }
 }
