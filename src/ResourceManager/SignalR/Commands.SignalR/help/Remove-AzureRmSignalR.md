@@ -53,7 +53,7 @@ PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup | Remove-AzureRmSi
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 The SignalR resource object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+Type: PSSignalRResource
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 SignalR service name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Returns true if the removal was completed successfully.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 The SignalR service resource ID.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -174,7 +174,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
