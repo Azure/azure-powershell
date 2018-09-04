@@ -33,9 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.SignalR, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.SignalR.0.9.0-preview\lib\net452\Microsoft.Azure.Management.SignalR.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Management.SignalR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.SignalR.1.0.0\lib\net452\Microsoft.Azure.Management.SignalR.dll</HintPath>
+      <Private>true</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +46,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="ScenarioTests\AzureRmSignalRTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\**\*.json">
