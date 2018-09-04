@@ -30,9 +30,18 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact(Skip = "Needs ignite changes to be rolled out to all NRPs.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
-        public void TestVirtualNetworkExpressRouteGatewayCRUD()
+        public void TestCortexCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-CortexCRUD");
         }
+
+        [Fact(Skip = "Needs ignite changes to be rolled out to all NRPs.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
+        public void TestP2SCortexCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-P2SCortexCRUD");
+        }
+
     }
 }

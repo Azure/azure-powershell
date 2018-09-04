@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Network
                 parentGateway.Connections == null ||
                 !parentGateway.Connections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
             {
-                throw new PSArgumentException("The VpnConnection to delete could not be found.");
+                throw new PSArgumentException("The VpnConnection to delete and/or the parent VpnGateway could not be found.");
             }
 
             if (parentGateway.Connections.Any())

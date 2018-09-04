@@ -141,10 +141,10 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
                     this.ResourceId = this.InputObject.Id;
                 }
 
-                //// At this point, the resource id should not be null. If it is, customer did not specify a valid resource to delete.
+                //// At this point, the resource id should not be null. If it is, customer did not specify a valid resource to modify.
                 if (string.IsNullOrWhiteSpace(this.ResourceId))
                 {
-                    throw new PSArgumentException("No vpn connection specified. Nothing will be deleted.");
+                    throw new PSArgumentException("No vpn connection specified. Nothing will be modified.");
                 }
 
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);

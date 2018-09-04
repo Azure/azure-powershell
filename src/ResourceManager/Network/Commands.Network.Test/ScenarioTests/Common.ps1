@@ -65,23 +65,23 @@ function Get-ProviderLocation($provider)
 
 			if ($location -eq $null) 
 			{  
-				return "West US"  
+				return "centraluseuap"  
 			} 
             else 
 			{
 				if($location.Locations[0] -eq "West US")
 				{ 
-					return $location.Locations[1]
+					return "centraluseuap" #$location.Locations[1]
 				}
 				else
 				{
-					return $location.Locations[0]
+					return "centraluseuap" #$location.Locations[0]
 				} 
 			}
 		}	
-		return "West US"
+		return "centraluseuap"
 	}
-	return "WestUS"
+	return "centraluseuap"
 }
 
 <#

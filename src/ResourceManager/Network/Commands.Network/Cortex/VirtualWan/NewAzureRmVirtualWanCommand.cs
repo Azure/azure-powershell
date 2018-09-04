@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.WindowsAzure.Commands.Common;
     using MNM = Microsoft.Azure.Management.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using System.Linq;
 
     [Cmdlet(VerbsCommon.New,
         "AzureRmVirtualWan",
@@ -48,6 +49,11 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The list of PSP2SVpnServerConfigurations that are associated with this VirtualWan.")]
+        public List<PSP2SVpnServerConfiguration> P2SVpnServerConfiguration { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -78,7 +84,10 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
+            var virtualWan = new PSVirtualWan();
+
             bool shouldProcess = this.Force.IsPresent;
+
             if (!shouldProcess)
             {
                 shouldProcess = ShouldProcess(this.Name, Properties.Resources.CreatingResourceMessage);
@@ -97,12 +106,14 @@ namespace Microsoft.Azure.Commands.Network
             virtualWan.ResourceGroupName = this.ResourceGroupName;
             virtualWan.Location = this.Location;
 
-            var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWAN>(virtualWan);
-            virtualWanModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+            // PSP2SVpnServerConfigurations, if specified
+            virtualWan.P2SVpnServerConfigurations = new List<PSP2SVpnServerConfiguration>();
+            if (this.P2SVpnServerConfiguration != null && this.P2SVpnServerConfiguration.Any())
+            {
+                virtualWan.P2SVpnServerConfigurations.AddRange(this.P2SVpnServerConfiguration);
+            }
 
-            this.VirtualWanClient.CreateOrUpdate(this.ResourceGroupName, this.Name, virtualWanModel);
-
-            return this.GetVirtualWan(this.ResourceGroupName, this.Name);
+            return this.CreateOrUpdateVirtualWan(this.ResourceGroupName, this.Name, virtualWan, this.Tag);
         }
     }
 }

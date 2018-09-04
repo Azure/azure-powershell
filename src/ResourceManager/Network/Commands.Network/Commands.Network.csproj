@@ -57,8 +57,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=20.0.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.20.0.5-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=21.0.0.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.21.0.2-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -194,8 +194,15 @@
     <Compile Include="Cortex\VirtualWan\GetAzureRmVirtualWanCommand.cs" />
     <Compile Include="Cortex\VirtualWan\GetAzureRmVirtualWanVpnSitesConfigurationCommand.cs" />
     <Compile Include="Cortex\VirtualWan\NewAzureRmVirtualWanCommand.cs" />
+    <Compile Include="Cortex\VirtualWan\SetAzureRmVirtualWanCommand.cs" />
     <Compile Include="Cortex\VirtualWan\RemoveAzureRmVirtualWanCommand.cs" />
     <Compile Include="Cortex\VirtualWan\VirtualWanBaseCmdlet.cs" />
+    <Compile Include="Cortex\VirtualWan\NewAzureRmP2SVpnServerConfigurationObject.cs" />
+    <Compile Include="Cortex\VirtualWan\P2SVpnServerConfigurationParameterSets.cs" />
+    <Compile Include="Cortex\VirtualWan\P2SVpnServerConfiguration\NewAzureRmVirtualWanP2SVpnServerConfigCommand.cs" />
+    <Compile Include="Cortex\VirtualWan\P2SVpnServerConfiguration\SetAzureRmVirtualWanP2SVpnServerConfigCommand.cs" />
+    <Compile Include="Cortex\VirtualWan\P2SVpnServerConfiguration\GetAzureRmVirtualWanP2SVpnServerConfigCommand.cs" />
+    <Compile Include="Cortex\VirtualWan\P2SVpnServerConfiguration\RemoveAzureRmVirtualWanP2SVpnServerConfigCommand.cs" />
     <Compile Include="Cortex\VpnConnection\GetAzureRmVpnConnectionCommand.cs" />
     <Compile Include="Cortex\VpnConnection\NewAzureRmVpnConnectionCommand.cs" />
     <Compile Include="Cortex\VpnConnection\RemoveAzureRmVpnConnectionCommand.cs" />
@@ -206,6 +213,12 @@
     <Compile Include="Cortex\VpnGateway\RemoveAzureRmVpnGatewayCommand.cs" />
     <Compile Include="Cortex\VpnGateway\SetAzureRmVpnGatewayCommand.cs" />
     <Compile Include="Cortex\VpnGateway\VpnGatewayBaseCmdlet.cs" />
+    <Compile Include="Cortex\P2SVpnGateway\GetAzureRmP2SVpnGatewayCommand.cs" />
+    <Compile Include="Cortex\P2SVpnGateway\NewAzureRmP2SVpnGatewayCommand.cs" />
+    <Compile Include="Cortex\P2SVpnGateway\RemoveAzureRmP2SVpnGatewayCommand.cs" />
+    <Compile Include="Cortex\P2SVpnGateway\SetAzureRmP2SVpnGatewayCommand.cs" />
+    <Compile Include="Cortex\P2SVpnGateway\GenerateAzureRmP2SVpnGatewayVpnProfile.cs" />
+    <Compile Include="Cortex\P2SVpnGateway\P2SVpnGatewayBaseCmdlet.cs" />
     <Compile Include="Cortex\VpnSite\GetAzureRmVpnSiteCommand.cs" />
     <Compile Include="Cortex\VpnSite\NewAzureRmVpnSiteCommand.cs" />
     <Compile Include="Cortex\VpnSite\RemoveAzureRmVpnSiteCommand.cs" />
@@ -261,9 +274,17 @@
     <Compile Include="Models\Cortex\PSVirtualWan.cs" />
     <Compile Include="Models\Cortex\PSVpnConnection.cs" />
     <Compile Include="Models\Cortex\PSVpnGateway.cs" />
+    <Compile Include="Models\Cortex\PSP2SVpnGateway.cs" />
+    <Compile Include="Models\Cortex\PSP2SVpnProfileParameters.cs" />
+    <Compile Include="Models\Cortex\PSVpnProfileResponse.cs" />
     <Compile Include="Models\Cortex\PSVpnSite.cs" />
     <Compile Include="Models\Cortex\PSVpnSiteDeviceProperties.cs" />
     <Compile Include="Models\Cortex\PSVirtualWanVpnSitesConfiguration.cs" />
+    <Compile Include="Models\Cortex\PSP2SVpnServerConfiguration.cs" />
+    <Compile Include="Models\Cortex\PSP2SVpnServerConfigVpnClientRootCertificate.cs" />
+    <Compile Include="Models\Cortex\PSP2SVpnServerConfigVpnClientRevokedCertificate.cs" />
+    <Compile Include="Models\Cortex\PSP2SVpnServerConfigRadiusServerRootCertificate.cs" />
+    <Compile Include="Models\Cortex\PSP2SVpnServerConfigRadiusClientRootCertificate.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddress.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddressPool.cs" />
     <Compile Include="Models\PSApplicationGatewayProbeHealthResponseMatch.cs" />

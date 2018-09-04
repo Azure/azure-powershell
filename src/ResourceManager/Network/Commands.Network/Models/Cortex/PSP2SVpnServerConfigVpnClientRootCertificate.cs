@@ -12,17 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+using Newtonsoft.Json;
+
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using Microsoft.WindowsAzure.Commands.Common.Attributes;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-
-    public class PSVirtualWan : PSTopLevelResource
+    public class PSP2SVpnServerConfigVpnClientRootCertificate : PSChildResource
     {
-        public List<PSP2SVpnServerConfiguration> P2SVpnServerConfigurations { get; set; }
-
-        [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "ProvisioningState", Target = ViewControl.Table)]
+        [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
+
+        [JsonProperty(Order = 1)]
+        [Ps1Xml(Label = "PublicCertData", Target = ViewControl.Table)]
+        public string PublicCertData { get; set; }
+
+        public string Type { get; set; }
     }
 }
