@@ -58,7 +58,7 @@
 	},
 	"2017-03-09-profile": {
 		"AzureRM": ["1.2.11"],
-		"AzureRM.Profile": ["3.4.1"], 
+		"AzureRM.Profile": ["5.0.2"], 
 		"Azure.Storage": ["1.0.5.4"], 
 		"AzureRM.Compute": ["1.2.3.4"], 
 		"AzureRM.Dns": ["3.4.1"], 
@@ -71,7 +71,7 @@
 	},
 	"2018-03-01-hybrid": {
 		"AzureRM": ["2.3.0"],
-		"AzureRM.Profile": ["5.4.6.1"], 
+		"AzureRM.Profile": ["5.0.2"], 
 		"Azure.Storage": ["4.1.1"], 
 		"AzureRM.Compute": ["4.0.2"], 
 		"AzureRM.Dns": ["3.5.1"], 
