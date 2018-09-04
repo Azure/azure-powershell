@@ -91,7 +91,7 @@ Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
