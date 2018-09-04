@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updating to use the latest .NET SDK version (2.0.0) https://www.nuget.org/packages/Microsoft.Azure.Management.Websites
 
 ## Version 5.0.9
 * Fixed issue with default resource groups not being set.
