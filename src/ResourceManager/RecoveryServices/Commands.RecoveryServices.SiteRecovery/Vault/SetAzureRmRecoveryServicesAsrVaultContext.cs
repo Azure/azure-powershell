@@ -75,6 +75,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
                 catch (CloudException ex)
                 {
+                    Logger.Instance.WriteWarning(ex.Message);
                     throw new Exception(Resources.TryDownloadingVaultFile);
                 }
 
