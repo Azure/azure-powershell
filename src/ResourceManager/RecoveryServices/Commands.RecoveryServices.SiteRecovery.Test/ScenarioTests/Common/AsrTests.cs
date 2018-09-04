@@ -90,20 +90,19 @@ namespace RecoveryServices.SiteRecovery.Test
              "Test-NotificationSettings -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
 
-        [Fact(Skip = "Failing, needs service team to fix")]
+        [Fact]
         [Trait(
             Category.AcceptanceType,
             Category.CheckIn)]
         public void CIKTokenValidation()
         {
-            DateTime? dateTime = new DateTime(636604856296924385);
-            PSRecoveryServicesClient.asrVaultCreds = new ASRVaultCreds();
-            PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey = "RandomRandom";
 
-            var cikToken =  PSRecoveryServicesClient.GenerateAgentAuthenticationHeader(
+           DateTime dateTime = new DateTime(636604658296924385, DateTimeKind.Utc);
+           PSRecoveryServicesClient.asrVaultCreds = new ASRVaultCreds();
+           PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey = "RandomRandom";
+            var cikToken = PSRecoveryServicesClient.GenerateAgentAuthenticationHeader(
                   "e5ec3f71-75c6-4688-b557-6ef69d2e7514-2018-04-27 22:43:45Z-Ps",
                    dateTime);
-
             Assert.Equal(
                 cikToken,
                 "{\"NotBeforeTimestamp\":\"\\/Date(1524865429692)\\/\",\"NotAfterTimestamp\":\"\\/Date(1525470229692)\\/\",\"ClientRequestId\":\"e5ec3f71-75c6-4688-b557-6ef69d2e7514-2018-04-27 22:43:45Z-Ps\",\"HashFunction\":\"HMACSHA256\",\"Hmac\":\"cYcaVjQ7BOG/lVrrl7dhwK5WXad6mvQdqm3ce3JSRY4=\",\"Version\":{\"Major\":1,\"Minor\":2,\"Build\":-1,\"Revision\":-1,\"MajorRevision\":-1,\"MinorRevision\":-1},\"PropertyBag\":{}}");

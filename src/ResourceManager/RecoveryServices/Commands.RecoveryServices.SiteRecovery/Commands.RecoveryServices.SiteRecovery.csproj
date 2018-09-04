@@ -47,9 +47,6 @@
     <Reference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.3-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
     </Reference>
-    <Reference Include="Security.Cryptography">
-      <HintPath>Utilities\Security.Cryptography.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
@@ -142,7 +139,6 @@
     <Compile Include="Storage\Classification\GetAzureRmRecoveryServicesAsrStorageClassificationMapping.cs" />
     <Compile Include="Storage\Classification\NewAzureRmRecoveryServicesAsrStorageClassificationMapping.cs" />
     <Compile Include="Storage\Classification\RemoveAzureRmRecoveryServicesAsrStorageClassificationMapping.cs" />
-    <Compile Include="Utilities\CertUtils.cs" />
     <Compile Include="Utilities\SiteRecoveryAutoMapperProfile.cs" />
     <Compile Include="Utilities\Utilities.cs" />
     <Compile Include="Vault\SetAzureRmRecoveryServicesAsrVaultContext.cs" />

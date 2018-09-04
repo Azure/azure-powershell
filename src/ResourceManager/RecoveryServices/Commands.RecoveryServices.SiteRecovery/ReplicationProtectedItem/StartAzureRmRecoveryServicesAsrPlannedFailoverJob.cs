@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///    Starts a planned failover operation.
     /// </summary>
-    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrPlannedFailoverJob",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrPlannedFailoverJob", DefaultParameterSetName = ASRParameterSets.ByRPIObject, SupportsShouldProcess = true)]
     [Alias(
         "Start-ASRPFO",
         "Start-ASRPlannedFailoverJob")]
@@ -345,11 +345,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         #region local parameters
-
-        /// <summary>
-        ///     Gets or sets Name of the PE.
-        /// </summary>
-        private string protectionEntityName;
 
         /// <summary>
         ///     Gets or sets Name of the Protection Container.
