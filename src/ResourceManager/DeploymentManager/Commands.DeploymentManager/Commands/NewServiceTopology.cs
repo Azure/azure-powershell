@@ -20,7 +20,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeploymentManager.Models;
 
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceTopology"), OutputType(typeof(PSServiceTopologyResource))]
+    [Cmdlet(
+        VerbsCommon.New, 
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceTopology",
+        SupportsShouldProcess = true), 
+     OutputType(typeof(PSServiceTopologyResource))]
     public class NewServiceTopology : DeploymentManagerBaseCmdlet
     {
         [Parameter(
@@ -51,17 +55,25 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         public override void ExecuteCmdlet()
         {
-            var topologyResource = new PSServiceTopologyResource()
+            if (this.ShouldProcess(this.Name, Messages.CreateServiceTopology))
             {
-                ResourceGroupName = this.ResourceGroupName,
-                Name = this.Name,
-                Location = this.Location,
-                ArtifactSourceId = this.ArtifactSourceId
-            };
+                var topologyResource = new PSServiceTopologyResource()
+                {
+                    ResourceGroupName = this.ResourceGroupName,
+                    Name = this.Name,
+                    Location = this.Location,
+                    ArtifactSourceId = this.ArtifactSourceId
+                };
 
-            topologyResource = this.DeploymentManagerClient.PutServiceTopology(topologyResource);
+                if (this.DeploymentManagerClient.ServiceTopologyExists(topologyResource))
+                {
+                    throw new PSArgumentException(Messages.ServiceTopologyAlreadyExists);
+                }
 
-            this.WriteObject(topologyResource);
+                topologyResource = this.DeploymentManagerClient.PutServiceTopology(topologyResource);
+
+                this.WriteObject(topologyResource);
+            }
         }
     }
 }

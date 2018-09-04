@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     [Cmdlet(
         VerbsCommon.Set, 
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceTopology",
+        SupportsShouldProcess = true,
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName),
      OutputType(typeof(PSServiceTopologyResource))]
     public class SetServiceTopology : DeploymentManagerBaseCmdlet
@@ -35,8 +36,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         public override void ExecuteCmdlet()
         {
-            var topologyResource = this.DeploymentManagerClient.PutServiceTopology(this.ServiceTopology);
-            this.WriteObject(topologyResource);
+            if (this.ShouldProcess(this.ServiceTopology.Name, Messages.UpdateServiceTopology))
+            {
+                var topologyResource = this.DeploymentManagerClient.PutServiceTopology(this.ServiceTopology);
+                this.WriteObject(topologyResource);
+            }
         }
     }
 }

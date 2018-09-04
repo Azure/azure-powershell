@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DeploymentManager.dll'
@@ -72,25 +72,25 @@ NestedModules = @('.\Microsoft.Azure.Commands.DeploymentManager.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmDeploymentManagerArtifactSource', 
-               'New-AzureRmDeploymentManagerArtifactSource', 
-               'Set-AzureRmDeploymentManagerArtifactSource', 
-               'Remove-AzureRmDeploymentManagerArtifactSource', 
-               'Get-AzureRmDeploymentManagerRollout', 
-               'Stop-AzureRmDeploymentManagerRollout', 
-               'Restart-AzureRmDeploymentManagerRollout', 
-               'New-AzureRmDeploymentManagerServiceTopology', 
-               'Get-AzureRmDeploymentManagerServiceTopology', 
-               'Set-AzureRmDeploymentManagerServiceTopology',
-               'Remove-AzureRmDeploymentManagerServiceTopology', 
-               'Get-AzureRmDeploymentManagerService', 
-               'New-AzureRmDeploymentManagerService', 
-               'Set-AzureRmDeploymentManagerService', 
-               'Remove-AzureRmDeploymentManagerService', 
-               'Get-AzureRmDeploymentManagerServiceUnit', 
-               'New-AzureRmDeploymentManagerServiceUnit', 
-               'Set-AzureRmDeploymentManagerServiceUnit', 
-               'Remove-AzureRmDeploymentManagerServiceUnit'
+CmdletsToExport = 'Get-AzDeploymentManagerArtifactSource', 
+               'New-AzDeploymentManagerArtifactSource', 
+               'Set-AzDeploymentManagerArtifactSource', 
+               'Remove-AzDeploymentManagerArtifactSource', 
+               'Get-AzDeploymentManagerRollout', 
+               'Stop-AzDeploymentManagerRollout', 
+               'Restart-AzDeploymentManagerRollout', 
+               'New-AzDeploymentManagerServiceTopology', 
+               'Get-AzDeploymentManagerServiceTopology', 
+               'Set-AzDeploymentManagerServiceTopology',
+               'Remove-AzDeploymentManagerServiceTopology', 
+               'Get-AzDeploymentManagerService', 
+               'New-AzDeploymentManagerService', 
+               'Set-AzDeploymentManagerService', 
+               'Remove-AzDeploymentManagerService', 
+               'Get-AzDeploymentManagerServiceUnit', 
+               'New-AzDeploymentManagerServiceUnit', 
+               'Set-AzDeploymentManagerServiceUnit', 
+               'Remove-AzDeploymentManagerServiceUnit'
 
 # Variables to export from this module
 # VariablesToExport = @()

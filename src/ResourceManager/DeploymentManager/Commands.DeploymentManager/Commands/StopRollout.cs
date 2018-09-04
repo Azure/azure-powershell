@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     [Cmdlet(
         VerbsLifecycle.Stop, 
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerRollout",
-        DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName),
      OutputType(typeof(PSRollout))]
     public class StopRollout : DeploymentManagerBaseCmdlet
     {
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName, 
             ValueFromPipeline = true, 
-            HelpMessage = "The resource to be removed.")]
+            HelpMessage = "The rollout to be removed.")]
         [ValidateNotNullOrEmpty]
         public PSRollout Rollout { get; set; }
 
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
+            this.ConfirmAction(
                 this.Force.IsPresent,
                 string.Format(Messages.ConfirmStopRollout, this.Name),
                 string.Format(Messages.StoppingRollout, this.Name),

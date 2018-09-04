@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
+            this.ConfirmAction(
                 this.Force.IsPresent,
                 string.Format(Messages.ConfirmRemoveArtifactSource, this.Name),
                 string.Format(Messages.RemovingArtifactSource, this.Name),

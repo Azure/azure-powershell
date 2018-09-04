@@ -18,7 +18,3 @@
         - Additional information about change #1
 -->
 ## Current Release
-First release for private preview.
-Commands for creating topologies and monitoring rollouts.
-
-## Version 1.0.0

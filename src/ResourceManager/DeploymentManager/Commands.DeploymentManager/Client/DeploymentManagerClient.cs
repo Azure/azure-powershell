@@ -114,6 +114,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
             return new PSArtifactSource(psArtifactSource.ResourceGroupName, artifactSource);
         }
 
+        internal bool ArtifactSourceExists(PSArtifactSource psArtifactSource)
+        {
+            return DeploymentManagerClient.ResourceExists(psArtifactSource, this.GetArtifactSource);
+        }
+
         internal PSArtifactSource GetArtifactSource(PSArtifactSource psArtifactSource)
         {
             _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
@@ -142,6 +147,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
             return new PSServiceTopologyResource(psTopologyResource.ResourceGroupName, serviceTopologyResource);
         }
 
+        internal bool ServiceTopologyExists(PSServiceTopologyResource psServiceTopologyResource)
+        {
+            return DeploymentManagerClient.ResourceExists(psServiceTopologyResource, this.GetServiceTopology);
+        }
+
         internal PSServiceResource PutService(PSServiceResource psServiceResource)
         {
             _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
@@ -153,6 +163,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
                 psServiceResource.ToSdkType());
 
             return new PSServiceResource(psServiceResource.ResourceGroupName, psServiceResource.ServiceTopologyName, serviceResource);
+        }
+
+        internal bool ServiceExists(PSServiceResource psServiceResource)
+        {
+            return DeploymentManagerClient.ResourceExists(psServiceResource, this.GetService);
         }
 
         internal PSStepResource PutStep(PSStepResource psStepResource)
@@ -184,6 +199,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
                 psServiceUnitResource.ServiceTopologyName,
                 psServiceUnitResource.ServiceName,
                 serviceUnitResource);
+        }
+
+        internal bool ServiceUnitExists(PSServiceUnitResource psServiceUnitResource)
+        {
+            return DeploymentManagerClient.ResourceExists(psServiceUnitResource, this.GetServiceUnit);
         }
 
         internal PSServiceTopologyResource GetServiceTopology(PSServiceTopologyResource pSServiceTopologyResource)
@@ -252,6 +272,24 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
             _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             return _client.Operations.Get();
+        }
+
+        private static bool ResourceExists<T>(T resourceObject, Func<T, T> getFunc) where T : PSResource
+        {
+            T retrievedServiceResource = null;
+            try
+            {
+                retrievedServiceResource = getFunc(resourceObject);
+            }
+            catch (CloudException ex)
+            {
+                if (ex.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return false;
+                }
+            }
+
+            return retrievedServiceResource != null;
         }
     }
 }

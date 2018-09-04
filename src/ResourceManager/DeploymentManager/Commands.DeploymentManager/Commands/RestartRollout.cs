@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
+            this.ConfirmAction(
                 this.SkipSucceeded.IsPresent,
                 string.Format(Messages.ConfirmRestartRollout, this.Name),
                 string.Format(Messages.RestartingRollout, this.Name),

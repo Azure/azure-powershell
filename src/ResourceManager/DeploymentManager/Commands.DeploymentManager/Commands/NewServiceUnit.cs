@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceUnit"), OutputType(typeof(PSServiceUnitResource))]
+    [Cmdlet(
+        VerbsCommon.New, 
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceUnit",
+        SupportsShouldProcess = true), 
+     OutputType(typeof(PSServiceUnitResource))]
     public class NewServiceUnit : DeploymentManagerBaseCmdlet
     {
         private const string IncrementalDeploymentMode = "Incremental";
@@ -73,22 +77,22 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Mandatory = false, 
-            HelpMessage = "The deployment mode to use when deploying the resources in the service unit.")]
+            HelpMessage = "The SAS Uri to the parameters file. If ArtifactSourceId was referenced in the ServiceTopology, specify relative path using ParametersArtifactSourceRelativePath.")]
         public string ParametersUri { get; set; }
 
         [Parameter(
             Mandatory = false, 
-            HelpMessage = "The deployment mode to use when deploying the resources in the service unit.")]
+            HelpMessage = "The SAS Uri to the template file. If ArtifactSourceId was referenced in the ServiceTopology, specify relative path using TemplateArtifactSourceRelativePath.")]
         public string TemplateUri { get; set; }
 
         [Parameter(
             Mandatory = false, 
-            HelpMessage = "The deployment mode to use when deploying the resources in the service unit.")]
+            HelpMessage = "The path to the template file relative to the artifact source. Requires ArtifactSource to be referenced in ServiceTopology.")]
         public string TemplateArtifactSourceRelativePath { get; set; }
 
         [Parameter(
             Mandatory = false, 
-            HelpMessage = "The deployment mode to use when deploying the resources in the service unit.")]
+            HelpMessage = "The path to the parameters file relative to the artifact source. Requires ArtifactSource to be referenced in ServiceTopology.")]
         public string ParametersArtifactSourceRelativePath { get; set; }
 
         [Parameter(
@@ -98,24 +102,32 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         public override void ExecuteCmdlet()
         {
-            this.ValidateArguments();
-            var psServiceUnitResource = new PSServiceUnitResource()
+            if (this.ShouldProcess(this.Name, Messages.CreateServiceUnit))
             {
-                ResourceGroupName = this.ResourceGroupName,
-                ServiceTopologyName = this.ServiceTopologyName,
-                ServiceName = this.ServiceName,
-                Name = this.Name,
-                Location = this.Location,
-                TargetResourceGroup = this.TargetResourceGroup,
-                DeploymentMode = this.DeploymentMode,
-                TemplateUri = this.TemplateUri,
-                ParametersUri = this.ParametersUri,
-                TemplateArtifactSourceRelativePath = this.TemplateArtifactSourceRelativePath,
-                ParametersArtifactSourceRelativePath = this.ParametersArtifactSourceRelativePath
-            };
+                this.ValidateArguments();
+                var psServiceUnitResource = new PSServiceUnitResource()
+                {
+                    ResourceGroupName = this.ResourceGroupName,
+                    ServiceTopologyName = this.ServiceTopologyName,
+                    ServiceName = this.ServiceName,
+                    Name = this.Name,
+                    Location = this.Location,
+                    TargetResourceGroup = this.TargetResourceGroup,
+                    DeploymentMode = this.DeploymentMode,
+                    TemplateUri = this.TemplateUri,
+                    ParametersUri = this.ParametersUri,
+                    TemplateArtifactSourceRelativePath = this.TemplateArtifactSourceRelativePath,
+                    ParametersArtifactSourceRelativePath = this.ParametersArtifactSourceRelativePath
+                };
 
-            psServiceUnitResource = this.DeploymentManagerClient.PutServiceUnit(psServiceUnitResource);
-            this.WriteObject(psServiceUnitResource);
+                if (this.DeploymentManagerClient.ServiceUnitExists(psServiceUnitResource))
+                {
+                    throw new PSArgumentException(Messages.ServiceUnitAlreadyExists);
+                }
+
+                psServiceUnitResource = this.DeploymentManagerClient.PutServiceUnit(psServiceUnitResource);
+                this.WriteObject(psServiceUnitResource);
+            }
         }
         
         private void ValidateArguments()

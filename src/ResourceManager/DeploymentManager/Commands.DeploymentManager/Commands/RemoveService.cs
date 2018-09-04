@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
+            this.ConfirmAction(
                 this.Force.IsPresent,
                 string.Format(Messages.ConfirmRemoveTopologyGroup, this.Name),
                 string.Format(Messages.ConfirmRemoveTopologyGroup, this.Name),

@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     [Cmdlet(
         VerbsCommon.Set, 
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerService",
+        SupportsShouldProcess = true,
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName),
      OutputType(typeof(PSServiceResource))]
     public class SetService : DeploymentManagerBaseCmdlet
@@ -36,8 +37,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         public override void ExecuteCmdlet()
         {
-            var serviceResource = this.DeploymentManagerClient.PutService(this.Service);
-            this.WriteObject(serviceResource);
+            if (this.ShouldProcess(this.Service.Name, Messages.UpdateService))
+            {
+                var serviceResource = this.DeploymentManagerClient.PutService(this.Service);
+                this.WriteObject(serviceResource);
+            }
         }
     }
 }

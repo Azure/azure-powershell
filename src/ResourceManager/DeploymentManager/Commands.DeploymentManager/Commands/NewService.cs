@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerService"), OutputType(typeof(PSServiceResource))]
+    [Cmdlet(
+        VerbsCommon.
+        New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerService",
+        SupportsShouldProcess = true), 
+     OutputType(typeof(PSServiceResource))]
     public class NewService : DeploymentManagerBaseCmdlet
     {
         [Parameter(
@@ -62,17 +66,26 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         public override void ExecuteCmdlet()
         {
-            var serviceResource = new PSServiceResource()
+            if (this.ShouldProcess(this.Name, Messages.CreateService))
             {
-                ResourceGroupName = this.ResourceGroupName,
-                Name = this.Name,
-                Location = this.Location,
-                TargetSubscriptionId = this.TargetSubscriptionId,
-                TargetLocation = this.TargetLocation,
-                ServiceTopologyName = this.ServiceTopologyName,
-            };
-            serviceResource = this.DeploymentManagerClient.PutService(serviceResource);
-            this.WriteObject(serviceResource);
+                var serviceResource = new PSServiceResource()
+                {
+                    ResourceGroupName = this.ResourceGroupName,
+                    Name = this.Name,
+                    Location = this.Location,
+                    TargetSubscriptionId = this.TargetSubscriptionId,
+                    TargetLocation = this.TargetLocation,
+                    ServiceTopologyName = this.ServiceTopologyName,
+                };
+
+                if (this.DeploymentManagerClient.ServiceExists(serviceResource))
+                {
+                    throw new PSArgumentException(Messages.ServiceAlreadyExists);
+                }
+
+                serviceResource = this.DeploymentManagerClient.PutService(serviceResource);
+                this.WriteObject(serviceResource);
+            }
         }
     }
 }

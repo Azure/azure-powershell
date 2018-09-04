@@ -19,7 +19,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerArtifactSource"), OutputType(typeof(PSArtifactSource))]
+    [Cmdlet(
+        VerbsCommon.New, 
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerArtifactSource",
+        SupportsShouldProcess = true), 
+     OutputType(typeof(PSArtifactSource))]
     public class NewArtifactSource : DeploymentManagerBaseCmdlet
     {
         /// <summary>
@@ -60,18 +64,26 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         public override void ExecuteCmdlet()
         {
-            var psArtifactSource = new PSArtifactSource()
+            if (this.ShouldProcess(this.Name, Messages.CreateArtifactSource))
             {
-                ResourceGroupName = this.ResourceGroupName,
-                Name = this.Name,
-                Location = this.Location,
-                SourceType = this.ParameterSetName,
-                ArtifactRoot = this.ArtifactRoot,
-                Authentication = this.GetAuthentication()
-            };
+                var psArtifactSource = new PSArtifactSource()
+                {
+                    ResourceGroupName = this.ResourceGroupName,
+                    Name = this.Name,
+                    Location = this.Location,
+                    SourceType = this.ParameterSetName,
+                    ArtifactRoot = this.ArtifactRoot,
+                    Authentication = this.GetAuthentication()
+                };
 
-            psArtifactSource = this.DeploymentManagerClient.PutArtifactSource(psArtifactSource);
-            this.WriteObject(psArtifactSource);
+                if (this.DeploymentManagerClient.ArtifactSourceExists(psArtifactSource))
+                {
+                    throw new PSArgumentException(Messages.ArtifactSourceAlreadyExists);
+                }
+
+                psArtifactSource = this.DeploymentManagerClient.PutArtifactSource(psArtifactSource);
+                this.WriteObject(psArtifactSource);
+            }
         }
 
         private PSAuthentication GetAuthentication()

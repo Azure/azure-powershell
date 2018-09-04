@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified artifact source already exists..
+        /// </summary>
+        internal static string ArtifactSourceAlreadyExists {
+            get {
+                return ResourceManager.GetString("ArtifactSourceAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There might be rollouts or topologies referencing the artifact source {0}. Are you sure you want to remove the artifact source?.
         /// </summary>
         internal static string ConfirmRemoveArtifactSource {
@@ -120,6 +129,42 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         internal static string ConfirmStopRollout {
             get {
                 return ResourceManager.GetString("ConfirmStopRollout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create artifact source.
+        /// </summary>
+        internal static string CreateArtifactSource {
+            get {
+                return ResourceManager.GetString("CreateArtifactSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create service.
+        /// </summary>
+        internal static string CreateService {
+            get {
+                return ResourceManager.GetString("CreateService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create service topology.
+        /// </summary>
+        internal static string CreateServiceTopology {
+            get {
+                return ResourceManager.GetString("CreateServiceTopology", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create service unit.
+        /// </summary>
+        internal static string CreateServiceUnit {
+            get {
+                return ResourceManager.GetString("CreateServiceUnit", resourceCulture);
             }
         }
         
@@ -223,6 +268,33 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified service already exists..
+        /// </summary>
+        internal static string ServiceAlreadyExists {
+            get {
+                return ResourceManager.GetString("ServiceAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified service topology already exists..
+        /// </summary>
+        internal static string ServiceTopologyAlreadyExists {
+            get {
+                return ResourceManager.GetString("ServiceTopologyAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified service unit already exists..
+        /// </summary>
+        internal static string ServiceUnitAlreadyExists {
+            get {
+                return ResourceManager.GetString("ServiceUnitAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rollout {0} stopped..
         /// </summary>
         internal static string StoppedRollout {
@@ -246,6 +318,42 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         internal static string TemplateParametersMissing {
             get {
                 return ResourceManager.GetString("TemplateParametersMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update artifact source.
+        /// </summary>
+        internal static string UpdateArtifactSource {
+            get {
+                return ResourceManager.GetString("UpdateArtifactSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update service.
+        /// </summary>
+        internal static string UpdateService {
+            get {
+                return ResourceManager.GetString("UpdateService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update service topology.
+        /// </summary>
+        internal static string UpdateServiceTopology {
+            get {
+                return ResourceManager.GetString("UpdateServiceTopology", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update service unit.
+        /// </summary>
+        internal static string UpdateServiceUnit {
+            get {
+                return ResourceManager.GetString("UpdateServiceUnit", resourceCulture);
             }
         }
     }

@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     [Cmdlet(
         VerbsCommon.Set,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerArtifactSource",
+        SupportsShouldProcess = true,
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName),
      OutputType(typeof(PSArtifactSource))]
     public class SetArtifactSource : DeploymentManagerBaseCmdlet
@@ -36,8 +37,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         public override void ExecuteCmdlet()
         {
-            var artifactSource = this.DeploymentManagerClient.PutArtifactSource(this.ArtifactSource);
-            this.WriteObject(artifactSource);
+            if (this.ShouldProcess(this.ArtifactSource.Name, Messages.UpdateArtifactSource))
+            {
+                var artifactSource = this.DeploymentManagerClient.PutArtifactSource(this.ArtifactSource);
+                this.WriteObject(artifactSource);
+            }
         }
     }
 }

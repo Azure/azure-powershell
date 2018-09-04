@@ -180,4 +180,40 @@
   <data name="RemovedArtifactSource" xml:space="preserve">
     <value>Removed artifact source {0}.</value>
   </data>
+  <data name="ArtifactSourceAlreadyExists" xml:space="preserve">
+    <value>The specified artifact source already exists.</value>
+  </data>
+  <data name="CreateArtifactSource" xml:space="preserve">
+    <value>Create artifact source</value>
+  </data>
+  <data name="CreateService" xml:space="preserve">
+    <value>Create service</value>
+  </data>
+  <data name="CreateServiceTopology" xml:space="preserve">
+    <value>Create service topology</value>
+  </data>
+  <data name="CreateServiceUnit" xml:space="preserve">
+    <value>Create service unit</value>
+  </data>
+  <data name="ServiceAlreadyExists" xml:space="preserve">
+    <value>The specified service already exists.</value>
+  </data>
+  <data name="ServiceTopologyAlreadyExists" xml:space="preserve">
+    <value>The specified service topology already exists.</value>
+  </data>
+  <data name="ServiceUnitAlreadyExists" xml:space="preserve">
+    <value>The specified service unit already exists.</value>
+  </data>
+  <data name="UpdateArtifactSource" xml:space="preserve">
+    <value>Update artifact source</value>
+  </data>
+  <data name="UpdateService" xml:space="preserve">
+    <value>Update service</value>
+  </data>
+  <data name="UpdateServiceTopology" xml:space="preserve">
+    <value>Update service topology</value>
+  </data>
+  <data name="UpdateServiceUnit" xml:space="preserve">
+    <value>Update service unit</value>
+  </data>
 </root>
