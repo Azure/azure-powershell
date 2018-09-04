@@ -1,39 +1,42 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-ms.assetid: 9EB11283-0189-4333-8142-DCC3F770F91A
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermloadbalancerbackendaddresspoolconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermloadbalanceroutboundruleconfig
 schema: 2.0.0
 ---
 
-# Add-AzureRmLoadBalancerBackendAddressPoolConfig
+# Remove-AzureRmLoadBalancerOutboundRuleConfig
 
 ## SYNOPSIS
-Adds a backend address pool configuration to a load balancer.
+Removes an outbound rule configuration from a load balancer.
 
 ## SYNTAX
 
 ```
-Add-AzureRmLoadBalancerBackendAddressPoolConfig -LoadBalancer <PSLoadBalancer> -Name <String>
+Remove-AzureRmLoadBalancerOutboundRuleConfig -LoadBalancer <PSLoadBalancer> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmLoadBalancerBackend** cmdlet adds a backend address pool to an Azure load balancer.
+The **Remove-AzureRmLoadBalancerOutboundRuleConfig** cmdlet removes an outbound rule configuration from an Azure load balancer.
 
 ## EXAMPLES
 
-### Example 1 Add a backend address pool configuration to a load balancer
-```
-PS C:\>Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "myrg" | Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name "BackendAddressPool02" | Set-AzureRmLoadBalancer
+### Example 1: Delete an outbound rule from an Azure load balancer
+```powershell
+PS C:\>$slb = Get-AzureRmLoadBalancer -ResourceGroupName "MyResourceGroup" -Name "MyLoadBalancer"
+PS C:\>Remove-AzureRmLoadBalancerOutboundRuleConfig -Name "RuleName" -LoadBalancer $slb
+PS C:\>Set-AzureRmLoadBalancer -LoadBalancer $slb
 ```
 
-This command gets the load balancer named MyLoadBalancer, adds the backend address pool named BackendAddressPool02 to MyLoadBalancer, and then uses the **Set-AzureRmLoadBalancer** cmdlet to update MyLoadBalancer.
+The first command gets the load balancer that is associated with the outbound rule configuration you want to remove, and then stores it in the $slb variable.
+The second command removes the associated outbound rule configuration from the load balancer.
+The third command updates the load balancer.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
@@ -48,7 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -LoadBalancer
-Specifies a **LoadBalancer** object.
+The reference of the load balancer resource.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
@@ -63,14 +66,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the backend address pool configuration to add.
+The Name of outbound rule
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -93,7 +96,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -113,7 +117,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-Parameters: LoadBalancer (ByValue)
 
 ## OUTPUTS
 
@@ -122,15 +125,3 @@ Parameters: LoadBalancer (ByValue)
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzureRmLoadBalancer](./Get-AzureRmLoadBalancer.md)
-
-[Get-AzureRmNetworkInterface](./Get-AzureRmNetworkInterface.md)
-
-[Get-AzureRmLoadBalancerBackendAddressPoolConfig](./Get-AzureRmLoadBalancerBackendAddressPoolConfig.md)
-
-[New-AzureRmLoadBalancerBackendAddressPoolConfig](./New-AzureRmLoadBalancerBackendAddressPoolConfig.md)
-
-[Remove-AzureRmLoadBalancerBackendAddressPoolConfig](./Remove-AzureRmLoadBalancerBackendAddressPoolConfig.md)
-
-
