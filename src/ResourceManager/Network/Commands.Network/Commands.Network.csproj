@@ -236,6 +236,11 @@
     <Compile Include="Generated\LoadBalancer\LoadBalancingRule\RemoveAzureRmLoadBalancerRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\LoadBalancingRule\SetAzureRmLoadBalancerRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\NewAzureRMLoadBalancerCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\OutboundRule\AddAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\OutboundRule\GetAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\OutboundRule\NewAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\OutboundRule\RemoveAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
+    <Compile Include="Generated\LoadBalancer\OutboundRule\SetAzureRmLoadBalancerOutboundRuleConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\Probe\AddAzureRmLoadBalancerProbeConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\Probe\GetAzureRmLoadBalancerProbeConfigCommand.cs" />
     <Compile Include="Generated\LoadBalancer\Probe\NewAzureRmLoadBalancerProbeConfigCommand.cs" />
