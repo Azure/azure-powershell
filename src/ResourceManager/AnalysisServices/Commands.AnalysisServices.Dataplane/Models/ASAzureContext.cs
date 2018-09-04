@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         /// <summary>
         /// Gets the AS azure account.
         /// </summary>
-        public AsAzureAccount Account { get; private set; }
+        public AsAzureAccount Account { get; }
 
         /// <summary>
         /// Gets the AS Azure environment.
         /// </summary>
-        public AsAzureEnvironment Environment { get; private set; }
+        public AsAzureEnvironment Environment { get; }
 
         /// <summary>
         /// Gets or sets the token cache contents.

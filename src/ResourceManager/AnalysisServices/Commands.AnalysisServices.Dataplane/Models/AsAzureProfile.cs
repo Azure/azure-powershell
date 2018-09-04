@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         /// <summary>
         /// Gets or sets AS Azure environments.
         /// </summary>
-        public Hashtable Environments { get; set; }
+        public Hashtable Environments { get; }
 
         /// <summary>
         /// Gets or sets the AS azure context object.

@@ -18,7 +18,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Enumerable = System.Linq.Enumerable;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 {
@@ -33,22 +36,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         public const string AsAzureClientId = "cf710c6e-dfcc-4fa8-a093-d47294e44c66";
         public static readonly Uri RedirectUri = new Uri("urn:ietf:wg:oauth:2.0:oob");
         public static string DefaultRolloutEnvironmentKey = "asazure.windows.net";
-
-        public static Dictionary<string, AsAzureAuthInfo> AsAzureRolloutEnvironmentMapping = new Dictionary<string, AsAzureAuthInfo>()
-            {
-             { "asazure.windows.net", new AsAzureAuthInfo()
-                {
-                 AuthorityUrl = "https://login.windows.net" ,
-                 DefaultResourceUriSuffix = "*.asazure.windows.net"
-                }
-             },
-             { "asazure-int.windows.net", new AsAzureAuthInfo()
-                {
-                    AuthorityUrl = "https://login.windows-ppe.net" ,
-                    DefaultResourceUriSuffix = "*.asazure-int.windows.net"
-                }
-             }
-            };
 
         /// <summary>
         /// Gets or sets the token cache store.
@@ -136,14 +123,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public static string GetAuthorityUrlForEnvironment(AsAzureEnvironment environment)
         {
-            var environmentKey = AsAzureRolloutEnvironmentMapping.Keys.FirstOrDefault(s => environment.Name.Contains(s));
-            AsAzureAuthInfo authInfo = null;
-            if (string.IsNullOrEmpty(environmentKey) || !AsAzureRolloutEnvironmentMapping.TryGetValue(environmentKey, out authInfo))
+            Console.Out.WriteLine("GetAuthorityUrlForEnvironment: environment.Name=" + environment.Name);
+
+            var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
+            var availableEnvironments = profile.Environments;
+
+            foreach (var env in availableEnvironments)
             {
-                throw new ArgumentException(Properties.Resources.UnknownEnvironment);
+                if (environment.Name.EndsWith(env.AzureAnalysisServicesEndpointSuffix))
+                {
+                    return env.ActiveDirectoryAuthority;
+                }
             }
 
-            return authInfo.AuthorityUrl;
+            throw new ArgumentException(Properties.Resources.UnknownEnvironment);
         }
 
         public void SetCurrentContext(AsAzureAccount azureAccount, AsAzureEnvironment asEnvironment)
@@ -156,20 +149,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public static string GetDefaultEnvironmentName()
         {
-            return AsAzureRolloutEnvironmentMapping[DefaultRolloutEnvironmentKey].DefaultResourceUriSuffix;
+            return "*." + AzureEnvironmentConstants.AzureAnalysisServicesEndpointSuffix;
         }
 
         public static string GetResourceUriSuffix(string environmentName)
         {
             if (string.IsNullOrEmpty(environmentName))
             {
-                return AsAzureRolloutEnvironmentMapping[DefaultRolloutEnvironmentKey].DefaultResourceUriSuffix;
-            }
-
-            var authoInfo = AsAzureRolloutEnvironmentMapping.FirstOrDefault(kv => kv.Key.Equals(environmentName)).Value;
-            if (authoInfo != null)
-            {
-                return authoInfo.DefaultResourceUriSuffix;
+                return GetDefaultEnvironmentName();
             }
 
             return environmentName;

@@ -123,6 +123,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
 
         /// <summary>
+        /// The domain name suffix for Azure Analysis Services
+        /// </summary>
+        string AzureAnalysisServicesEndpointSuffix { get; set; }
+
+        /// <summary>
         /// The default Active Directory Tenant
         /// </summary>
         string AdTenant { get; set; }
