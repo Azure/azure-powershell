@@ -83,13 +83,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string SiteIdentifier { get; set; }
 
         /// <summary>
-        /// Gets or sets certificate.
+        /// Gets or sets Certificate.
         /// </summary>
         [Parameter(ParameterSetName = ARSParameterSets.ForSiteWithCertificate, Mandatory = true)]
         [Parameter(ParameterSetName = ARSParameterSets.ByDefaultWithCertificate, Mandatory = true)]
         [Parameter(ParameterSetName = ARSParameterSets.ForBackupVaultTypeWithCertificate, Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string certificate { get; set; }
+        public string Certificate { get; set; }
 
         /// <summary>
         /// Gets or sets SiteFriendlyName.
@@ -182,11 +182,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 #if NETSTANDARD
                     if (backup)
                     {
-                        this.GetBackupCredentialsWithCertificate(certificate);
+                        this.GetBackupCredentialsWithCertificate(Certificate);
                     }
                     else
                     {
-                        this.GetSiteRecoveryCredentialsWithCertificate(certificate);
+                        this.GetSiteRecoveryCredentialsWithCertificate(Certificate);
                     }
                
 #else
