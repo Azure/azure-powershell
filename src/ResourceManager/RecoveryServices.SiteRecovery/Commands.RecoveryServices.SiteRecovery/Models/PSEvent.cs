@@ -207,39 +207,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     .ToString("o");
             }
 
-            this.ErrorSource = healthError.ErrorSource;
-            this.ErrorType = healthError.ErrorType;
-            this.EntityId = healthError.EntityId;
-            this.ErrorCode = healthError.ErrorCode;
-            this.ErrorLevel = healthError.ErrorLevel;
-            this.ErrorMessage = healthError.ErrorMessage;
-            this.PossibleCauses = healthError.PossibleCauses;
-            this.RecommendedAction = healthError.RecommendedAction;
-            this.RecoveryProviderErrorMessage = healthError.RecoveryProviderErrorMessage;
-            this.childError = new List<ASRHealthError>();
-            if (healthError.InnerHealthErrors != null) {
-                foreach(var innerHealthError in healthError.InnerHealthErrors) {
-                    var childHealthError = new ASRHealthError(innerHealthError);
-                    this.childError.Add(childHealthError);
-                }
-                
-            }
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the HealthError class.
-        /// </summary>
-        /// <param name="healthError">Event health error object.</param>
-        public ASRHealthError(InnerHealthError healthError)
-        {
-            if (healthError.CreationTimeUtc.HasValue)
-            {
-                this.CreationTimeUtc = healthError.CreationTimeUtc.Value.ToUniversalTime()
-                    .ToString("o");
-            }
-
-            this.ErrorSource = healthError.ErrorSource;
-            this.ErrorType = healthError.ErrorType;
             this.EntityId = healthError.EntityId;
             this.ErrorCode = healthError.ErrorCode;
             this.ErrorLevel = healthError.ErrorLevel;
@@ -248,21 +215,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.RecommendedAction = healthError.RecommendedAction;
             this.RecoveryProviderErrorMessage = healthError.RecoveryProviderErrorMessage;
         }
-
-        /// <summary>
-        ///     Error source.
-        /// </summary>
-        public string ErrorSource { get; set; }
-
-        /// <summary>
-        ///     Error type.
-        /// </summary>
-        public string ErrorType { get; set; }
-
-        /// <summary>
-        ///     Error type.
-        /// </summary>
-        public IList<ASRHealthError> childError { get; set; }
 
         /// <summary>
         ///     Error creation time (UTC).
