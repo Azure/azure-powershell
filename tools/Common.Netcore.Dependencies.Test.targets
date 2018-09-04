@@ -6,17 +6,20 @@
   <Import Project="$(MSBuildThisFileDirectory)\Common.Netcore.Dependencies.targets" />
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.11.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="2.3.4" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.7.3" />
+    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.14.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.4" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.8.0" />
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager" Version="1.0.95-preview" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.0-preview.3" IncludeAssets="All" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="7.1.0-preview" />
   </ItemGroup>
   <PropertyGroup>
     <!-- <ScenarioTestToolsPath>$(MSBuildThisFileDirectory)..\src\packages\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.95-preview\tools\</ScenarioTestToolsPath> -->
