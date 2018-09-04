@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>$(StackPackageFolder)\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\</OutputPath>
+    <OutputPath>..\..\..\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -30,7 +30,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>$(StackPackageFolder)\Stack\Release\ResourceManager\AzureResourceManager\AzureRM.Resources\</OutputPath>
+    <OutputPath>..\..\..\Stack\Release\ResourceManager\AzureResourceManager\AzureRM.Resources\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
