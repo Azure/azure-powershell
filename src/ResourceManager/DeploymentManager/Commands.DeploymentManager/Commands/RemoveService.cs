@@ -15,37 +15,61 @@
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
     using System.Management.Automation;
+
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerService", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(
+        VerbsCommon.Remove, 
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerService", 
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
+     OutputType(typeof(bool))]
     public class RemoveService : DeploymentManagerBaseCmdlet
     {
         [Parameter(
+            Position = 0,
             Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.PropertiesParamSetName, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            Position = 1,
             Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.PropertiesParamSetName, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service topology the service belongs to.")]
         [ValidateNotNullOrEmpty]
         public string ServiceTopologyName { get; set; }
 
         [Parameter(
+            Position = 2,
             Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.PropertiesParamSetName, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
+            Position = 0,
             Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.ResourceParamSetName, ValueFromPipeline = true, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.ResourceIdParamSetName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName, 
+            ValueFromPipeline = true, 
             HelpMessage = "The resource to be removed.")]
         [ValidateNotNullOrEmpty]
         public PSServiceResource Service { get; set; }
@@ -82,20 +106,25 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         private bool Delete()
         {
-            PSServiceResource serviceToDelete = null;
-            if (this.ParameterSetName == DeploymentManagerBaseCmdlet.ResourceParamSetName)
+            if (this.Service != null)
             {
-                serviceToDelete = this.Service;
+                this.ResourceGroupName = this.Service.ResourceGroupName;
+                this.Name = this.Service.Name;
             }
-            else if (this.ParameterSetName == DeploymentManagerBaseCmdlet.PropertiesParamSetName)
+            else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {
-                serviceToDelete = new PSServiceResource()
-                {
-                    ResourceGroupName = this.ResourceGroupName,
-                    ServiceTopologyName = this.ServiceTopologyName,
-                    Name = this.Name
-                };
+                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.ServiceTopologyName = parsedResourceId.ParentResource;
+                this.Name = parsedResourceId.ResourceName;
             }
+
+             var serviceToDelete = new PSServiceResource()
+            {
+                ResourceGroupName = this.ResourceGroupName,
+                ServiceTopologyName = this.ServiceTopologyName,
+                Name = this.Name
+            };
 
             return this.DeploymentManagerClient.DeleteService(serviceToDelete);
         }

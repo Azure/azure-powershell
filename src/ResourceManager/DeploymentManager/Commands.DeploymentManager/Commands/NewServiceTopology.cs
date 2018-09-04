@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
     using System.Management.Automation;
+
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeploymentManager.Models;

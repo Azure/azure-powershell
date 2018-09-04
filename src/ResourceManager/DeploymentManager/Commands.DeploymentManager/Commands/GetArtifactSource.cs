@@ -15,30 +15,69 @@
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
     using System.Management.Automation;
+
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(
         VerbsCommon.Get, 
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerArtifactSource"), 
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerArtifactSource",
+        DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
         OutputType(typeof(PSArtifactSource))]
     public class GetArtifactSource : DeploymentManagerBaseCmdlet
     {
         [Parameter(
+            Position = 0,
             Mandatory = true, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            Position = 1,
             Mandatory = true, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the artifact source.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(
+            Position = 0,
+            Mandatory = true, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.ResourceIdParamSetName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName,
+            ValueFromPipeline = true, 
+            HelpMessage = "Artifact Source object.")]
+        [ValidateNotNullOrEmpty]
+        public PSArtifactSource ArtifactSource { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (this.ArtifactSource != null)
+            {
+                this.ResourceGroupName = this.ArtifactSource.ResourceGroupName;
+                this.Name = this.ArtifactSource.Name;
+            }
+            else if (!string.IsNullOrWhiteSpace(this.ResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.Name = parsedResourceId.ResourceName;
+            }
+
             var psArtifactSource = new PSArtifactSource()
             {
                 ResourceGroupName = this.ResourceGroupName,

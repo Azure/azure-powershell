@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DeploymentManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Azure.Management.DeploymentManager.1.0.0-preview\lib\net452\Microsoft.Azure.Management.DeploymentManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DeploymentManager.1.0.0-preview\lib\net452\Microsoft.Azure.Management.DeploymentManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.12\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
@@ -78,6 +78,7 @@
     <Compile Include="Commands\RemoveServiceTopology.cs" />
     <Compile Include="Commands\RemoveServiceUnit.cs" />
     <Compile Include="Commands\RestartRollout.cs" />
+    <Compile Include="Commands\SetArtifactSource.cs" />
     <Compile Include="Commands\SetService.cs" />
     <Compile Include="Commands\SetServiceTopology.cs" />
     <Compile Include="Commands\SetServiceUnit.cs" />

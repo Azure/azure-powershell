@@ -15,27 +15,69 @@
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
     using System.Management.Automation;
+
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceTopology"), OutputType(typeof(PSServiceTopologyResource))]
+    [Cmdlet(
+        VerbsCommon.Get, 
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceTopology",
+        DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
+        OutputType(typeof(PSServiceTopologyResource))]
     public class GetServiceTopology : DeploymentManagerBaseCmdlet
     {
         [Parameter(
+            Position = 0,
             Mandatory = true, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            Position = 1,
             Mandatory = true, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service topology.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(
+            Position = 0,
+            Mandatory = true, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.ResourceIdParamSetName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName,
+            ValueFromPipeline = true,
+            HelpMessage = "Service topology resource object.")]
+        [ValidateNotNullOrEmpty]
+        public PSServiceTopologyResource ServiceTopology { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (this.ServiceTopology != null)
+            {
+                this.ResourceGroupName = this.ServiceTopology.ResourceGroupName;
+                this.Name = this.ServiceTopology.Name;
+            }
+            else if (!string.IsNullOrWhiteSpace(this.ResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.Name = parsedResourceId.ResourceName;
+            }
+
             var psServiceTopologyResource = new PSServiceTopologyResource()
             {
                 ResourceGroupName = this.ResourceGroupName,

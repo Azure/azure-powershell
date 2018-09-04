@@ -15,30 +15,52 @@
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
     using System.Management.Automation;
+
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceTopology", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(
+        VerbsCommon.Remove, 
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceTopology", 
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
+     OutputType(typeof(bool))]
     public class RemoveServiceTopology : DeploymentManagerBaseCmdlet
     {
         [Parameter(
+            Position = 0,
             Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.PropertiesParamSetName, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            Position = 1,
             Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.PropertiesParamSetName, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service topology.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
+            Position = 0,
             Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.ResourceParamSetName, ValueFromPipeline = true, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.ResourceIdParamSetName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource identifier.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName, 
+            ValueFromPipeline = true, 
             HelpMessage = "The resource to be removed.")]
         [ValidateNotNullOrEmpty]
         public PSServiceTopologyResource ServiceTopology { get; set; }
@@ -75,19 +97,23 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         private bool Delete()
         {
-            PSServiceTopologyResource topologyToDelete = null;
-            if (this.ParameterSetName == DeploymentManagerBaseCmdlet.ResourceParamSetName)
+            if (this.ServiceTopology != null)
             {
-                topologyToDelete = this.ServiceTopology;
+                this.ResourceGroupName = this.ServiceTopology.ResourceGroupName;
+                this.Name = this.ServiceTopology.Name;
             }
-            else if (this.ParameterSetName == DeploymentManagerBaseCmdlet.PropertiesParamSetName)
+            else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {
-                topologyToDelete = new PSServiceTopologyResource()
-                {
-                    ResourceGroupName = this.ResourceGroupName,
-                    Name = this.Name
-                };
+                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.Name = parsedResourceId.ResourceName;
             }
+
+            var topologyToDelete = new PSServiceTopologyResource()
+            {
+                ResourceGroupName = this.ResourceGroupName,
+                Name = this.Name
+            };
 
             return this.DeploymentManagerClient.DeleteServiceTopology(topologyToDelete);
         }

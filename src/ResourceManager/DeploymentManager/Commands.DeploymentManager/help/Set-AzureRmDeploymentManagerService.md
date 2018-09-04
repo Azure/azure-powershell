@@ -8,26 +8,28 @@ schema: 2.0.0
 # Set-AzureRmDeploymentManagerService
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates a service in service topology.
 
 ## SYNTAX
 
 ```
-Set-AzureRmDeploymentManagerService -Service <PSServiceResource> [-DefaultProfile <IAzureContextContainer>]
+Set-AzureRmDeploymentManagerService [-Service] <PSServiceResource> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmDeploymentManagerService** cmdlet updates a service with the specified service object.
+The cmdlet returns the updated service object.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRmDeploymentManagerService -Service $serviceObject 
 ```
 
-{{ Add example description here }}
+This command updates a service whose name, service topology name and ResourceGroup match the Name, ServiceTopologyName and ResourceGroupName properties of the $serviceObject, respectively.
+The service would be updated to the properties set in the $serviceObject.
 
 ## PARAMETERS
 
@@ -35,7 +37,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,20 +52,19 @@ Accept wildcard characters: False
 The service object.
 
 ```yaml
-Type: PSServiceResource
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -76,3 +77,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmDeploymentManagerService](./New-AzureRmDeploymentManagerService.md)
+
+[Get-AzureRmDeploymentManagerService](./Set-AzureRmDeploymentManagerService.md)
+
+[Remove-AzureRmDeploymentManagerService](./Remove-AzureRmDeploymentManagerService.md)

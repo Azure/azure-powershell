@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmDeploymentManagerService
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a service in a service topology.
 
 ## SYNTAX
 
@@ -19,16 +19,18 @@ New-AzureRmDeploymentManagerService -ResourceGroupName <String> -Name <String> -
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmDeploymentManagerService** cmdlet creates a service under a service topology, and returns an object that represents that service.
+Specify the service by its name, service topology it is in and the resource group name. 
+
+The cmdlet returns a Service object. You can modify this object locally, and then apply changes to the service by using the Set-AzureRmDeploymentManagerService cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmDeploymentManagerService -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology -Name ContosoService1 -Location "Central US" -TargetLocation "East US" -TargetSubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
 ```
-
-{{ Add example description here }}
+Creates a new service with name ContosoService1 under service topology ContosoServiceTopology in Resource Group ContosoResourceGroup, in the location Central US. The TargetLocation property indicates that the service ContosoService1 should be deployed to the East US region in the subscription specified.
 
 ## PARAMETERS
 
@@ -36,7 +38,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,7 +53,7 @@ Accept wildcard characters: False
 The location of the service resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +68,7 @@ Accept wildcard characters: False
 The name of the service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +83,7 @@ Accept wildcard characters: False
 The resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +98,7 @@ Accept wildcard characters: False
 The name of the service topology this service belongs to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +113,7 @@ Accept wildcard characters: False
 Determines the location where resources under the service would be deployed to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +128,7 @@ Accept wildcard characters: False
 Determines the subscription to which resources under the service would be deployed to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -138,8 +140,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -152,3 +153,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureRmDeploymentManagerService](./Get-AzureRmDeploymentManagerService.md)
+
+[Remove-AzureRmDeploymentManagerService](./Remove-AzureRmDeploymentManagerService.md)
+
+[Set-AzureRmDeploymentManagerService](./Set-AzureRmDeploymentManagerService.md)

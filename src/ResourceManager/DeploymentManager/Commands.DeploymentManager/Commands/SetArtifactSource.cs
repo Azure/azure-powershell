@@ -19,24 +19,25 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     using Microsoft.Azure.Commands.DeploymentManager.Models;
 
     [Cmdlet(
-        VerbsCommon.Set, 
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceTopology",
+        VerbsCommon.Set,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerArtifactSource",
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName),
-     OutputType(typeof(PSServiceTopologyResource))]
-    public class SetServiceTopology : DeploymentManagerBaseCmdlet
+     OutputType(typeof(PSArtifactSource))]
+    public class SetArtifactSource : DeploymentManagerBaseCmdlet
     {
         [Parameter(
             Position = 0,
-            Mandatory = true, 
-            ValueFromPipeline = true, 
-            HelpMessage = "The service topology object.")]
+            Mandatory = true,
+            HelpMessage = "The artifact source object.",
+            ValueFromPipeline = true,
+            ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName)]
         [ValidateNotNullOrEmpty]
-        public PSServiceTopologyResource ServiceTopology { get; set; }
+        public PSArtifactSource ArtifactSource { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var topologyResource = this.DeploymentManagerClient.PutServiceTopology(this.ServiceTopology);
-            this.WriteObject(topologyResource);
+            var artifactSource = this.DeploymentManagerClient.PutArtifactSource(this.ArtifactSource);
+            this.WriteObject(artifactSource);
         }
     }
 }

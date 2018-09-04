@@ -15,15 +15,22 @@
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
     using System.Management.Automation;
+
     using Microsoft.Azure.Commands.DeploymentManager.Models;
 
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerService"), OutputType(typeof(PSServiceResource))]
+    [Cmdlet(
+        VerbsCommon.Set, 
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerService",
+        DefaultParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName),
+     OutputType(typeof(PSServiceResource))]
     public class SetService : DeploymentManagerBaseCmdlet
     {
         [Parameter(
+            Position = 0,
             Mandatory = true, 
             HelpMessage = "The service object.", 
-            ValueFromPipeline = true)]
+            ValueFromPipeline = true,
+            ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName)]
         [ValidateNotNullOrEmpty]
         public PSServiceResource Service { get; set; }
 

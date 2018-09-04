@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
     using System.Net;
     using Microsoft.Rest.TransientFaultHandling;
     using Microsoft.Azure.Commands.DeploymentManager.Models;
+    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// The client that handles all the requests from the commands.
@@ -118,7 +119,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
             _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var artifactSource = _client.ArtifactSources.Get(psArtifactSource.ResourceGroupName, psArtifactSource.Name);
-
             return new PSArtifactSource(psArtifactSource.ResourceGroupName, artifactSource);
         }
 
@@ -199,6 +199,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
             _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var serviceResource = _client.Services.Get(pSServiceResource.ResourceGroupName, pSServiceResource.ServiceTopologyName, pSServiceResource.Name);
+
             return new PSServiceResource(
                 pSServiceResource.ResourceGroupName,
                 pSServiceResource.ServiceTopologyName,
@@ -210,18 +211,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
             _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
             var serviceUnit = _client.ServiceUnits.Get(psServiceUnit.ResourceGroupName, psServiceUnit.ServiceTopologyName, psServiceUnit.ServiceName, psServiceUnit.Name);
+
             return new PSServiceUnitResource(
                 psServiceUnit.ResourceGroupName,
                 psServiceUnit.ServiceTopologyName,
                 psServiceUnit.ServiceName,
                 serviceUnit);
-        }
-
-        internal StepResource GetStep(string resourceGroupName, string stepName)
-        {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
-
-            return _client.Steps.Get(resourceGroupName, stepName);
         }
 
         internal bool DeleteServiceTopology(PSServiceTopologyResource psServiceTopologyResource)

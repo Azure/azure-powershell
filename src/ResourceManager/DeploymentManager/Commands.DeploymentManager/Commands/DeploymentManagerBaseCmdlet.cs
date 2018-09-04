@@ -30,12 +30,17 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         /// <summary>
         /// The parameter set name to be used when individual properties are given to identify a resource.
         /// </summary>
-        protected const string PropertiesParamSetName = "Properties";
+        protected const string InteractiveParamSetName = "Interactive";
+
+        /// <summary>
+        /// The parameter set name to be used for parameter set where a resource identifier is provided.
+        /// </summary>
+        protected const string ResourceIdParamSetName = "ResourceId";
 
         /// <summary>
         /// The parameter set name to be used for parameter set where a resource object is provided.
         /// </summary>
-        protected const string ResourceParamSetName = "Resource";
+        protected const string InputObjectParamSetName = "InputObject";
 
         /// <summary>
         /// Gets or sets the Azure Deployment Manager client.

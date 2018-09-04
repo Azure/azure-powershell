@@ -8,33 +8,54 @@ schema: 2.0.0
 # Remove-AzureRmDeploymentManagerRollout
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Deletes a rollout.
 
 ## SYNTAX
 
-### Properties
+### Interactive (Default)
 ```
-Remove-AzureRmDeploymentManagerRollout -ResourceGroupName <String> -Name <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzureRmDeploymentManagerRollout [-ResourceGroupName] <String> [-Name] <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Resource
+### ResourceId
 ```
-Remove-AzureRmDeploymentManagerRollout -Rollout <PSRollout> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzureRmDeploymentManagerRollout [-ResourceId] <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObject
+```
+Remove-AzureRmDeploymentManagerRollout [-Rollout] <PSRollout> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmDeploymentManagerRollout** cmdlet deletes a rollout in a terminal state.
+Specify the rollout by its name and resource group name. Alternately, you can provide the Rollout object or the ResourceId.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout
 ```
 
-{{ Add example description here }}
+This command deletes a rollout named ContosoRollout in the ContosoResourceGroup.
+
+### Example 2: Delete a rollout using the resource identifier
+```powershell
+PS C:\> Remove-AzureRmDeploymentManagerRollout -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/rollouts/ContosoRollout"
+```
+
+This command deletes a rollout named ContosoRollout in the ContosoResourceGroup.
+
+### Example 3: Delete a rollout using the rollout object.
+```powershell
+PS C:\> Remove-AzureRmDeploymentManagerRollout -Rollout $rolloutObject 
+```
+
+This command deletes a rollout whose name and ResourceGroup match the Name and ResourceGroupName properties of the $rolloutObject, respectively.
 
 ## PARAMETERS
 
@@ -42,7 +63,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -57,7 +78,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -72,12 +93,12 @@ Accept wildcard characters: False
 The name of the rollout.
 
 ```yaml
-Type: String
-Parameter Sets: Properties
+Type: System.String
+Parameter Sets: Interactive
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -87,7 +108,7 @@ Accept wildcard characters: False
 {{Fill PassThru Description}}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -102,12 +123,27 @@ Accept wildcard characters: False
 The resource group.
 
 ```yaml
-Type: String
-Parameter Sets: Properties
+Type: System.String
+Parameter Sets: Interactive
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource identifier.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceId
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -117,20 +153,50 @@ Accept wildcard characters: False
 The resource to be removed.
 
 ```yaml
-Type: PSRollout
-Parameter Sets: Resource
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSRollout
+Parameter Sets: InputObject
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -143,3 +209,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureRmDeploymentManagerRollout](./Get-AzureRmDeploymentManagerRollout.md)
+
+[Stop-AzureRmDeploymentManagerRollout](./Stop-AzureRmDeploymentManagerRollout.md)
+
+[Restart-AzureRmDeploymentManagerRollout](./Restart-AzureRmDeploymentManagerRollout.md)

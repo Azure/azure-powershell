@@ -15,12 +15,18 @@
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
     using System.Management.Automation;
+
     using Microsoft.Azure.Commands.DeploymentManager.Models;
 
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceUnit"), OutputType(typeof(PSServiceUnitResource))]
+    [Cmdlet(
+        VerbsCommon.Set, 
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerServiceUnit", 
+        DefaultParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName),
+     OutputType(typeof(PSServiceUnitResource))]
     public class SetServiceUnit : DeploymentManagerBaseCmdlet
     {
         [Parameter(
+            Position = 0,
             Mandatory = true, 
             ValueFromPipeline = true, 
             HelpMessage = "The service unit object.")]
