@@ -51,6 +51,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "SetByResourceSubnet",
+            HelpMessage = "The private IP address of the IP configuration.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdSubnet",
             HelpMessage = "The private IP address of the IP configuration.",
             ValueFromPipelineByPropertyName = true)]
         public string PrivateIpAddress { get; set; }

@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "The resource reference to be expanded.",
             ParameterSetName = "Expand",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]

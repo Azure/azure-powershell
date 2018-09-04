@@ -121,6 +121,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The outbound rules.",
+            ValueFromPipelineByPropertyName = true)]
+        public List<PSOutboundRule> OutboundRule { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
@@ -196,6 +202,7 @@ namespace Microsoft.Azure.Commands.Network
                 Probes = this.Probe,
                 InboundNatRules = this.InboundNatRule,
                 InboundNatPools = this.InboundNatPool,
+                OutboundRules = this.OutboundRule,
                 Sku = vSku,
             };
 
