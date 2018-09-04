@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmVirtualWanSupportedSecurityProvider
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the list of supported security providers for a Virtual WAN.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzureRmVirtualWanSupportedSecurityProvider -ResourceId <String> [-DefaultPro
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets the list of supported security providers for Virtual WAN.
 
 ## EXAMPLES
 
