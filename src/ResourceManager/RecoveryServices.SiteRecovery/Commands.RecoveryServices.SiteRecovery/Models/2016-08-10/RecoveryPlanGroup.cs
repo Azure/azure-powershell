@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
                     new ASRRecoveryPlanGroup_2016_08_10(recoveryPlanGroup));
             }
 
-            this.ReplicationProvider = recoveryPlan.Properties.ReplicationProviders;
+            this.ReplicationProvider = recoveryPlan.ReplicationProvider;
         }
 
         /// <summary>
