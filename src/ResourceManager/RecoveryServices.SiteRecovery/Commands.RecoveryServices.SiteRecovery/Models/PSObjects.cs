@@ -320,7 +320,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.Name = pcm.Name;
             this.ID = pcm.Id;
             this.Health = pcm.Properties.Health;
-            this.HealthErrorDetails = pcm.Properties.HealthErrorDetails;
+            if(pcm.Properties.HealthErrorDetails != null) { 
+            this.HealthErrorDetails = pcm.Properties.HealthErrorDetails.ToList().
+                    ConvertAll(healthError =>new ASRHealthError_2016_08_10(healthError));
+            }
             this.PolicyFriendlyName = pcm.Properties.PolicyFriendlyName;
             this.PolicyId = pcm.Properties.PolicyId;
             this.SourceFabricFriendlyName = pcm.Properties.SourceFabricFriendlyName;
@@ -353,7 +356,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Health Error Details
         /// </summary>
-        public IList<HealthError> HealthErrorDetails { get; set; }
+        public IList<ASRHealthError_2016_08_10> HealthErrorDetails { get; set; }
 
         /// <summary>
         ///     Gets or sets Policy Friendly Name
@@ -1207,7 +1210,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 rpi.Properties.RecoveryProtectionContainerFriendlyName;
             this.RecoveryServicesProviderId = rpi.Properties.RecoveryServicesProviderId;
             this.ReplicationHealth = rpi.Properties.ReplicationHealth;
-            this.ReplicationHealthErrors = rpi.Properties.HealthErrors.ToList().ConvertAll(healthError => new ASRHealthError_2016_08_10(healthError));
+            this.ReplicationHealthErrors = rpi.Properties.HealthErrors.ToList().ConvertAll(
+                healthError => new ASRHealthError_2016_08_10(healthError));
             this.TestFailoverState = rpi.Properties.TestFailoverState;
             this.TestFailoverStateDescription = rpi.Properties.TestFailoverStateDescription;
 

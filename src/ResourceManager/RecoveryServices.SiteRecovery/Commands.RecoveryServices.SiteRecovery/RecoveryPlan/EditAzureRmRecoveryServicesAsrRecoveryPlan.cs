@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                                 this.InputObject.Groups[this.InputObject.Groups.IndexOf(tempGroup)]
                                     .ReplicationProtectedItems
-                                    .Add(replicationProtectedItemResponse);
+                                    .Add(new ReplicationProtectedItem_2016_08_10(replicationProtectedItemResponse));
                             }
                             else
                             {
@@ -256,8 +256,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                         break;
                 }
-
-                ;
 
                 this.WriteObject(new ASRRecoveryPlan_2016_08_10(this.InputObject));
             }
