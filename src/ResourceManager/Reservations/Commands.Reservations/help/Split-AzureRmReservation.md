@@ -42,7 +42,7 @@ Split the specified `Reservation` into two `Reservation`s with the corresponding
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 Comma-separated integers for quantity field of the two `Reservation`s
 
 ```yaml
-Type: System.Int32[]
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 Pipe object parameter for `Reservation`
 
 ```yaml
-Type: Microsoft.Azure.Commands.Reservations.Models.PSReservation
+Type: PSReservation
 Parameter Sets: PipeObject
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Id of the `Reservation` to split
 
 ```yaml
-Type: System.Guid
+Type: Guid
 Parameter Sets: CommandLine
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Id of the `ReservationOrder` that contains the `Reservation` that user wants to split
 
 ```yaml
-Type: System.Guid
+Type: Guid
 Parameter Sets: CommandLine
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
