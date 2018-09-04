@@ -43,6 +43,10 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [ValidateNotNullOrEmpty]
         public string InstanceFlexibility { get; set; }
 
+        [Parameter(Mandatory = false)]
+        [ValidateNotNull]
+        public string Name { get; set; }
+
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true)]
@@ -68,7 +72,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
                     string subscriptionId = ValidateAndGetAppliedSubscription();
                     PreRegister(subscriptionId);
 
-                    Patch = new Patch(AppliedScopeType, new List<string>() { AppliedScope }, InstanceFlexibility);
+                    Patch = new Patch(AppliedScopeType, new List<string>() { AppliedScope }, InstanceFlexibility, Name);
                 }
                 else
                 {
