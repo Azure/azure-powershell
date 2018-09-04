@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added support for cross-instance managed database restore
 
 ## Version 4.8.1-preview
 * Bug fixes for cmdlets in Elastic Jobs

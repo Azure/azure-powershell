@@ -116,16 +116,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <summary>
         /// Restore a given Sql Azure Managed Database
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="restorePointInTime">A point to time to restore to (for PITR and dropped DB restore)</param>
         /// <param name="resourceId">The resource ID of the DB to restore (live, geo backup, deleted database, long term retention backup, etc.)</param>
         /// <param name="model">An object modeling the database to create via restore</param>
         /// <returns>Restored database object</returns>
-        internal AzureSqlManagedDatabaseModel RestoreManagedDatabase(string resourceGroup, string resourceId, AzureSqlManagedDatabaseModel model)
+        internal AzureSqlManagedDatabaseModel RestoreManagedDatabase(string resourceId, AzureSqlManagedDatabaseModel model)
         {
-            Management.Sql.Models.ManagedDatabase database = Communicator.RestoreDatabase(resourceGroup, model.ManagedInstanceName, model.Name, resourceId, model);
+            Management.Sql.Models.ManagedDatabase database = Communicator.RestoreDatabase(model.ResourceGroupName, model.ManagedInstanceName, model.Name, resourceId, model);
 
-            return new AzureSqlManagedDatabaseModel(resourceGroup, model.ManagedInstanceName, database);
+            return new AzureSqlManagedDatabaseModel(model.ResourceGroupName, model.ManagedInstanceName, database);
         }
 
         /// <summary>
