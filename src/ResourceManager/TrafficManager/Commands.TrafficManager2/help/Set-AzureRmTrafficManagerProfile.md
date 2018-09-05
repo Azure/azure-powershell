@@ -22,6 +22,7 @@ Set-AzureRmTrafficManagerProfile -TrafficManagerProfile <TrafficManagerProfile>
 The **Set-AzureRmTrafficManagerProfile** cmdlet updates an Azure Traffic Manager profile.
 This cmdlet updates the settings of the profile from a local profile object.
 You can specify the profile object either by using the *TrafficManagerProfile* parameter or by using the pipeline.
+
 You can obtain a local object that represents a profile by using the Get-AzureRmTrafficManagerProfile cmdlet.
 Modify the object locally and then use **Set-AzureRmTrafficManagerProfile** to commit your changes.
 
@@ -36,8 +37,10 @@ PS C:\> Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManagerP
 
 The first command gets an Azure Traffic Manager profile by using the Get-AzureRmTrafficManagerProfile cmdlet.
 The command stores the profile locally in the $TrafficManagerProfile variable.
+
 The second command changes that profile locally.
 This command disables the profile.
+
 The third command updates the Traffic Manager profile named ContosoProfile to match the local value in $TrafficManagerProfile.
 
 ## PARAMETERS
@@ -78,12 +81,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
-Parameters: TrafficManagerProfile (ByValue)
+### Microsoft.Azure.Commands.Network.TrafficManagerProfile
+This cmdlet accepts a **TrafficManagerProfile** object.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
+### Microsoft.Azure.Commands.Network.TrafficManagerProfile
+This cmdlet returns a **TrafficManagerProfile** object.
 
 ## NOTES
 
