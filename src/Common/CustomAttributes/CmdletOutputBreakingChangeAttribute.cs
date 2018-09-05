@@ -79,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
                     message.Append(Resources.BreakingChangesAttributesCmdLetOutputPropertiesRemoved);
                     foreach (string property in DeprecatedOutputProperties)
                     {
-                        message.Append(" '{property}'");
+                        message.Append(" '" + property + "'");
                     }
                 }
 
@@ -88,7 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
                     message.Append(Resources.BreakingChangesAttributesCmdLetOutputPropertiesAdded);
                     foreach (string property in NewOutputProperties)
                     {
-                        message.Append(" '{property}'");
+                        message.Append(" '" + property + "'");
                     }
                 }
             }
