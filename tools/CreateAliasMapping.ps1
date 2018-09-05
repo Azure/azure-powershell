@@ -37,7 +37,18 @@ $psd1s | ForEach-Object {
         $psd1info.CmdletsToExport | ForEach-Object {
             if ($_ -like "*Azure*")
             {
-                $cmdletalias = ($_ -replace "AzureRM", "Azure") -replace "Azure", "Az"
+                $cmdletalias = ($_ -replace "-AzureRM", "-Azure") -replace "-Azure", "-Az"
+                $mapping[$name].Add($cmdletalias, $_)
+            }
+            else
+            {
+                Write-Warning $_
+            }
+        }
+        $psd1info.AliasesToExport | ForEach-Object {
+            if ($_ -like "*Azure*")
+            {
+                $cmdletalias = ($_ -replace "-AzureRM", "-Azure") -replace "-Azure", "-Az"
                 $mapping[$name].Add($cmdletalias, $_)
             }
             else

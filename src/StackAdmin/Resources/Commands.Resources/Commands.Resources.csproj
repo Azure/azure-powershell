@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E1F5201D-6067-430E-B303-4E367652991B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.Resources</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Resources</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <CodeAnalysisAdditionalOptions>/assemblyCompareMode:StrongNameIgnoringVersion</CodeAnalysisAdditionalOptions>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\..\..\Stack\Release\ResourceManager\AzureResourceManager\AzureRM.Resources\</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Microsoft.Azure.Commands.Resources.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop\Rules</CodeAnalysisRuleDirectories>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActiveDirectory\AddAzureADGroupMemberCommand.cs" />
+    <Compile Include="ActiveDirectory\GetAzureADAppCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\GetAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\GetAzureADGroupMemberCommand.cs" />
+    <Compile Include="ActiveDirectory\GetAzureADGroupCommand.cs" />
+    <Compile Include="ActiveDirectory\GetAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\GetAzureADSpCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\GetAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADAppCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADGroupCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADSpCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADAppCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADGroupCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADGroupMemberCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADSpCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\UpdateAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\UpdateAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\UpdateAzureADUserCommand.cs" />
+    <Compile Include="Extensions\ResourceExtensions.cs" />
+    <Compile Include="Gallery\Artifact.cs" />
+    <Compile Include="Gallery\DefinitionTemplates.cs" />
+    <Compile Include="Gallery\Filter.cs" />
+    <Compile Include="Gallery\GalleryClient.cs" />
+    <Compile Include="Gallery\GalleryItem.cs" />
+    <Compile Include="Gallery\IGalleryClient.cs" />
+    <Compile Include="Gallery\IItemOperations.cs" />
+    <Compile Include="Gallery\ItemOperations.cs" />
+    <Compile Include="Gallery\Link.cs" />
+    <Compile Include="Gallery\MarketingMaterial.cs" />
+    <Compile Include="Gallery\Models\ItemGetParameters.cs" />
+    <Compile Include="Gallery\Models\ItemListParameters.cs" />
+    <Compile Include="Gallery\Models\ItemListResult.cs" />
+    <Compile Include="Gallery\OfferDetails.cs" />
+    <Compile Include="Gallery\Plan.cs" />
+    <Compile Include="Gallery\Product.cs" />
+    <Compile Include="Models.Authorization\AuthorizationHelper.cs" />
+    <Compile Include="Models.Authorization\FilterRoleDefinitionOptions.cs" />
+    <Compile Include="Models.ResourceGroups\BasePSResourceParameters.cs" />
+    <Compile Include="Models.ResourceGroups\DeploymentVariable.cs" />
+    <Compile Include="Models.ResourceGroups\FilterResourcesOptions.cs" />
+    <Compile Include="Models.ResourceGroups\PSResource.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceGroupDeployment.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceProviderOperation.cs" />
+    <Compile Include="Models.ResourceGroups\SubscriptionsClient.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Models.Authorization\FilterRoleAssignmentsOptions.cs" />
+    <Compile Include="Models.Authorization\AuthorizationClientExtensions.cs" />
+    <Compile Include="Models.Authorization\PSRoleAssignment.cs" />
+    <Compile Include="Models.Authorization\PSRoleDefinition.cs" />
+    <Compile Include="Models.Authorization\PSPermission.cs" />
+    <Compile Include="Models.ResourceGroups\PSGalleryItem.cs" />
+    <Compile Include="Models.ResourceGroups\ResourceBaseCmdlet.cs" />
+    <Compile Include="Models.ResourceGroups\ResourceIdentifier.cs" />
+    <Compile Include="Models.ResourceGroups\ResourcesBaseCmdlet.cs" />
+    <Compile Include="Models.ResourceGroups\ResourcesExtensions.cs" />
+    <Compile Include="Models.ResourceGroups\GetPSResourceGroupLogParameters.cs" />
+    <Compile Include="Models.ResourceGroups\PSDeploymentEventDataAuthorization.cs" />
+    <Compile Include="Models.ResourceGroups\PSDeploymentEventDataHttpRequest.cs" />
+    <Compile Include="Models.ResourceGroups\PSDeploymentEventData.cs" />
+    <Compile Include="Models.ResourceGroups\ResourceClient.Events.cs" />
+    <Compile Include="Models.Authorization\AuthorizationClient.cs" />
+    <Compile Include="Providers\GetAzureProviderOperationCmdlet.cs" />
+    <Compile Include="RoleAssignments\RemoveAzureRoleAssignmentCommand.cs" />
+    <Compile Include="RoleAssignments\GetAzureRoleAssignmentCommand.cs" />
+    <Compile Include="RoleAssignments\NewAzureRoleAssignmentCommand.cs" />
+    <Compile Include="RoleDefinitions\GetAzureRoleDefinitionCommand.cs" />
+    <Compile Include="RoleDefinitions\NewAzureRoleDefinitionCommand.cs" />
+    <Compile Include="RoleDefinitions\SetAzureRoleDefinitionCommand.cs" />
+    <Compile Include="RoleDefinitions\RemoveAzureRoleDefinitionCommand.cs" />
+    <Compile Include="Models.ResourceGroups\FilterPSGalleryTemplatesOptions.cs" />
+    <Compile Include="Models.ResourceGroups\GalleryTemplatesClient.cs" />
+    <Compile Include="Models.ResourceGroups\SetResourceMode.cs" />
+    <Compile Include="Models.ResourceGroups\ResourceClient.ResourceManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models.ResourceGroups\ResourceClient.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
+      <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
+      <Name>Commands.Resources.Rest</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Microsoft.Azure.Commands.Resources.format.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="AzureRM.Resources.psd1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <ItemGroup>
+      <OutFiles Include="$(OutDir)\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+  </Target>
+</Project>
