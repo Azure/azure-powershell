@@ -414,7 +414,7 @@ Please contact Microsoft for further assistance.</value>
     <value>Please provide AzureRmBackupManagementServer of BackupEngineType as DpmEngine or DpmVenusEngine and provide BackupManagementType as SCDPM. Provided AzureRmBackupManagementServer has BackupEngineType {0} and backupManagementType {1} which is not valid.</value>
   </data>
   <data name="UnsupportedContainerException" xml:space="preserve">
-    <value>Please provide Container of containerType as Windows and backupManagementType as MARS or Container of containerType as AzureSQL and backupManagementType as AzureSQL. Provided Container has containerType {0} and backupManagementType {1} which is invalid.</value>
+    <value>Please provide Container of containerType as Windows and backupManagementType as MARS or Container of containerType as AzureSQL and backupManagementType as AzureSQL or Container of containerType as AzureStorage and backupManagementType as AzureStorage. Provided Container has containerType {0} and backupManagementType {1} which is invalid.</value>
   </data>
   <data name="GetRPErrorInputDatesShouldBeInUTC" xml:space="preserve">
     <value>Please specify startdate and enddate in UTC format</value>

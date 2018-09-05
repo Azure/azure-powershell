@@ -265,6 +265,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 return GetProviderInstance(PsBackupProviderTypes.IaasVm);
             }
+            if (resourceType == "AzureFiles")
+            {
+                return GetProviderInstance(PsBackupProviderTypes.AzureFiles);
+            }
             else
             {
                 throw new ArgumentException(
