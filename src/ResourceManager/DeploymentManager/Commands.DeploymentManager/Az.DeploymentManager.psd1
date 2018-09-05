@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.9.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -128,7 +128,7 @@ PrivateData = @{
         ReleaseNotes = '* First release for private preview'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
