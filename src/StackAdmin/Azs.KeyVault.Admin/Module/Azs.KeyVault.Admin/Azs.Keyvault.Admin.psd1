@@ -29,7 +29,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Author            = 'Microsoft'
 
     # Company or vendor of this module
-    CompanyName       = 'Unknown'
+    CompanyName       = 'Microsoft'
 
     # Copyright statement for this module
     Copyright         = '(c) 2018 Microsoft. All rights reserved.'
@@ -38,7 +38,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Description       = 'KeyVault Admin Client'
 
     # Minimum version of the Windows PowerShell engine required by this module
-    # PowerShellVersion = ''
+    PowerShellVersion = '5.0'
 
     # Name of the Windows PowerShell host required by this module
     # PowerShellHostName = ''
@@ -56,7 +56,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.4'; },
+    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; },
         @{ModuleName = 'AzureRM.Resources'; ModuleVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
@@ -113,10 +113,10 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.8.12 - Version 0.2.0
+            ReleaseNotes = '## 2018.8.12
             * Module dependencies updated
-                * AzureRM.Profile >= 5.3.4
-                * AzureRM.Resources >= 6.0.2
+                * AzureRM.Profile
+                * AzureRM.Resources
             * Bug fixes
                 * Handle ErrrorAction correctly now
             '
