@@ -56,9 +56,7 @@ RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', 
     '.\Microsoft.Azure.PowerShell.Strategies.dll', 
-    '.\Microsoft.Azure.Management.Compute.dll', 
-    '.\Microsoft.Azure.Management.KeyVault.dll', 
-    '.\Microsoft.Azure.Management.Storage.dll', 
+    '.\Microsoft.Azure.Management.Compute.dll',  
     '.\Microsoft.WindowsAzure.Storage.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -182,9 +180,9 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AzureRmVmssDiskEncryptionStatus', 
-    'Get-AzureRmVmssVMDiskEncryptionStatus', 
-    'Repair-AzureRmVmssServiceFabricUD'
+AliasesToExport = 'Get-AzVmssDiskEncryptionStatus', 
+    'Get-AzVmssVMDiskEncryptionStatus', 
+    'Repair-AzVmssServiceFabricUD'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

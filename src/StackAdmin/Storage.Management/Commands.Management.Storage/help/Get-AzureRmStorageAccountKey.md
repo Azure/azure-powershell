@@ -30,10 +30,10 @@ This command gets the keys for the specified Azure Storage account.
 
 ### Example 2: Get a specific access key for a Storage account
 ```
-This command gets a specific key for a Storage account. This command works for Azure PowerShell version 1.4, and later versions.
+This command gets a specific key for a Storage account. This command works for Azure Stack PowerShell version 2.3.0, and later versions.
 PS C:\>(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" -AccountName "MyStorageAccount").Value[0]
 
-This command gets a specific key for a Storage account. This command works for Azure PowerShell version 1.3.2, and previous versions.
+This command gets a specific key for a Storage account. This command works for Azure Stack PowerShell version 1.2.11, and previous versions.
 PS C:\>(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" -AccountName "MyStorageAccount").Key1
 ```
 
@@ -43,7 +43,7 @@ PS C:\>(Get-AzureRmStorageAccountKey -ResourceGroupName "RG01" -AccountName "MyS
 Specifies the name of the Storage account for which this cmdlet gets keys.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountName, AccountName
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the Storage account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: 
 

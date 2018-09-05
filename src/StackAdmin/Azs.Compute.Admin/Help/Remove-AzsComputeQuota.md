@@ -34,26 +34,19 @@ Remove-AzsComputeQuota -Name ComputeQuota
 
 Remove a compute quota given all the parameters.
 
-### EXAMPLE 2
-```
-Remove-AzsComputeQuota -Name ComputeQuota
-```
-
-Remove a compute quota given just the name.
-
 ## PARAMETERS
 
-### -Name
-Name of the quota.
+### -Force
+Don't ask for confirmation.
 
 ```yaml
-Type: String
-Parameter Sets: Delete
+Type: SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -68,6 +61,21 @@ Parameter Sets: Delete
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the quota.
+
+```yaml
+Type: String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -89,17 +97,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Force
-Don't ask for confirmation.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -112,21 +120,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
