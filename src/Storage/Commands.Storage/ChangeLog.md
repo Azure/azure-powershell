@@ -21,9 +21,9 @@
 * Upgrade to Azure Storage Client Library 9.3.0 and Azure Storage DataMovement Library 0.8.1
 * Support create Storage Context with OAuth. 
 	- New-AzureStorageContext
-* Support Upload Blob or File with write only Sas token
-	- Set-AzureStorageBlobContent
-	- Set-AzureStorageFileContent
+* Support Static Website configuration 
+	- Enable-AzureStorageStaticWebsite
+	- Disable-AzureStorageStaticWebsite
 
 ## Version 4.5.0
 * Remove the 5TB limitation for Azure File Share quota
