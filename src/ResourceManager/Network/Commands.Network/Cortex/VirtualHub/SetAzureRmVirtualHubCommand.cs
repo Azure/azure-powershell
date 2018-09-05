@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Network
             string virtualWanRGName = null;
             string virtualWanName = null;
 
-            //// Resolve the virtual wan
+            //// Resolve the virtual wan, if specified
             if (this.VirtualWan != null)
             {
                 virtualWanRGName = this.VirtualWan.ResourceGroupName;
@@ -149,14 +149,11 @@ namespace Microsoft.Azure.Commands.Network
                 virtualWanRGName = parsedWanResourceId.ResourceGroupName;
             }
 
-            if (string.IsNullOrWhiteSpace(virtualWanRGName) || string.IsNullOrWhiteSpace(virtualWanName))
+            if (!string.IsNullOrWhiteSpace(virtualWanRGName) && !string.IsNullOrWhiteSpace(virtualWanName))
             {
-                throw new PSArgumentException("A virtual hub cannot be created without a valid virtual wan");
+                PSVirtualWan resolvedVirtualWan = new VirtualWanBaseCmdlet().GetVirtualWan(virtualWanRGName, virtualWanName);
+                virtualHubToUpdate.VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id };
             }
-
-            PSVirtualWan resolvedVirtualWan = new VirtualWanBaseCmdlet().GetVirtualWan(virtualWanRGName, virtualWanName);
-            virtualHubToUpdate.VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id };
-
 
             //// Update address prefix, if specified
             if (!string.IsNullOrWhiteSpace(this.AddressPrefix))
