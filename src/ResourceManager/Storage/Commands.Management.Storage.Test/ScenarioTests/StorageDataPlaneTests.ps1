@@ -160,7 +160,7 @@ function Test-Blob
 		$task.Wait()
 		$snapshot = $task.Result  
         $blob = Get-AzStorageBlob -Container $containerName -Context $storageContext | Where-Object {$_.Name -eq $pageBlobName1}
-        Assert-AreEqual $blob.Count 2 #INVESTIGATE, sometimes fails
+        Assert-AreEqual $blob.Count 2 
         Assert-AreEqual $blob[0].ICloudBlob.IsSnapshot $true
         Assert-AreEqual $blob[1].ICloudBlob.IsSnapshot $false
 
@@ -168,7 +168,7 @@ function Test-Blob
         # between the previously copied snapshot are transferred to the destination.
         Start-AzStorageBlobIncrementalCopy -srcContainer $containerName -SrcBlob $pageBlobName1 -SrcBlobSnapshotTime $snapshot.SnapshotTime -DestContainer $containerName -DestBlob $pageBlobName2 -Context $storageContext -DestContext $storageContext
         $blob = Get-AzStorageBlob -Container $containerName -Context $storageContext | Where-Object {$_.Name -eq $pageBlobName2}
-        Assert-AreEqual $blob.Count 2
+        Assert-AreEqual $blob.Count 2 #INVESTIGATE, sometimes fails
         Assert-AreEqual $blob[0].ICloudBlob.IsSnapshot $true
         Assert-AreEqual $blob[1].ICloudBlob.IsSnapshot $false
 
