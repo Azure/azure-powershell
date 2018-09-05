@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,12 +16,14 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmVirtualNetworkPeering"), OutputType(typeof(PSVirtualNetworkPeering))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkPeering"), OutputType(typeof(PSVirtualNetworkPeering))]
     public class AddAzureVirtualNetworkPeeringCommand : VirtualNetworkPeeringBase
     {
         [Parameter(
@@ -30,6 +32,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("VirtualNetwork", ChangeDescription = "The EnableVMProtection property for the parameter Virtualnetwork is no longer supported. Setting this property has no impact. This property will be removed in a future release. Please remove it from your scripts")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
@@ -68,7 +71,6 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
             if (this.IsVirtualNetworkPeeringPresent(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name))
             {
@@ -86,11 +88,20 @@ namespace Microsoft.Azure.Commands.Network
         {
             var vnetPeering= new PSVirtualNetworkPeering();
             vnetPeering.Name = this.Name;
+            Dictionary<string, List<string>> auxAuthHeader = null;
 
             if (!string.IsNullOrEmpty(this.RemoteVirtualNetworkId))
             {
                 vnetPeering.RemoteVirtualNetwork = new PSResourceId();
                 vnetPeering.RemoteVirtualNetwork.Id = this.RemoteVirtualNetworkId;
+                //Get the aux header for the remote vnet
+                List<string> resourceIds = new List<string>();
+                resourceIds.Add(this.RemoteVirtualNetworkId);
+                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                {
+                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                }
             }
 
             vnetPeering.AllowVirtualNetworkAccess = !this.BlockVirtualNetworkAccess.IsPresent;
@@ -102,8 +113,7 @@ namespace Microsoft.Azure.Commands.Network
             var vnetPeeringModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkPeering>(vnetPeering);
 
             // Execute the Create VirtualNetwork call
-            this.VirtualNetworkPeeringClient.CreateOrUpdate(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name, vnetPeeringModel);
-
+            this.VirtualNetworkPeeringClient.CreateOrUpdateWithHttpMessagesAsync(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name, vnetPeeringModel, auxAuthHeader).GetAwaiter().GetResult();
             var getVirtualNetworkPeering = this.GetVirtualNetworkPeering(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name);
 
             return getVirtualNetworkPeering;

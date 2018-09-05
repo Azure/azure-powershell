@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Remove an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAlertRule", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AlertRule", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmAlertRuleCommand : ManagementCmdletBase
     {
         internal const string RemoveAzureRmAlertRuleParamGroup = "RemoveAlertRules";

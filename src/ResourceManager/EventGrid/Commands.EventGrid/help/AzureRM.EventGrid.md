@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.EventGrid
 Module Guid: 53BF7132-5BB4-46EB-AC05-61A49A6CD5EB
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid
@@ -26,9 +26,6 @@ Gets the details about the topic types supported by Azure Event Grid.
 ### [New-AzureRmEventGridSubscription](New-AzureRmEventGridSubscription.md)
 Creates a new Azure Event Grid Event Subscription to a topic, Azure resource, Azure subscription or Resource Group.
 
-### [Update-AzureRmEventGridSubscription](Update-AzureRmEventGridSubscription.md)
-Updates the properties of an existing Azure Event Grid Event Subscription.
-
 ### [New-AzureRmEventGridTopic](New-AzureRmEventGridTopic.md)
 Creates a new Azure Event Grid Topic.
 
@@ -43,3 +40,7 @@ Removes an Azure Event Grid Topic.
 
 ### [Set-AzureRmEventGridTopic](Set-AzureRmEventGridTopic.md)
 Sets the properties of an Event Grid topic.
+
+### [Update-AzureRmEventGridSubscription](Update-AzureRmEventGridSubscription.md)
+Update the properties of an Event Grid event subscription.
+

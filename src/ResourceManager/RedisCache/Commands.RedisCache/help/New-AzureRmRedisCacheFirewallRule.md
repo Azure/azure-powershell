@@ -57,7 +57,7 @@ This command creates firewall rule named ruleone on Redis Cache named mycache.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 Ending IP address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 object of type RedisCacheAttributes
 
 ```yaml
-Type: RedisCacheAttributes
+Type: Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes
 Parameter Sets: RedisCacheAttributesObject
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Name of redis cache.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NormalParameterSet
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 Name of resource group in which cache exists.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NormalParameterSet
 Aliases:
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ARM Id of Redis Cache.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Name of firewall rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Starting IP address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -193,7 +193,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -210,6 +210,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+
+### Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

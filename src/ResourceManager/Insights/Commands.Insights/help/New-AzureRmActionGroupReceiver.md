@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 9830CD16-D797-47EB-BEF5-6CFE3454BCAA
@@ -63,9 +63,9 @@ This command creates a new webhook receiver in memory.
 Specifies the country code for the SMS receiver.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NewSmsReceiver
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,9 +93,9 @@ Accept wildcard characters: False
 Specifies the address for the Email receiver.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NewEmailReceiver
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -108,9 +108,9 @@ Accept wildcard characters: False
 Specifies to create an Email receiver
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: NewEmailReceiver
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -123,9 +123,9 @@ Accept wildcard characters: False
 Specifies the name for the receiver.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -138,9 +138,9 @@ Accept wildcard characters: False
 Specifies the phone number for the SMS receiver.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NewSmsReceiver
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -153,9 +153,9 @@ Accept wildcard characters: False
 Specifies the URI for the webhook receiver.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NewWebhookReceiver
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -168,9 +168,9 @@ Accept wildcard characters: False
 Specifies to create a SMS receiver
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: NewSmsReceiver
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,9 +183,9 @@ Accept wildcard characters: False
 Specifies to create a webhook receiver
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: NewWebhookReceiver
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -199,8 +199,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

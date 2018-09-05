@@ -77,12 +77,12 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         public static void AreEqualServicePathInfo(string rootPath, CloudProjectPathInfo actual)
         {
             Assert.AreEqual<string>(rootPath, actual.RootPath);
-            Assert.AreEqual<string>(Path.Combine(rootPath, Resources.ServiceDefinitionFileName), actual.Definition);
-            Assert.AreEqual<string>(Path.Combine(rootPath, Resources.CloudServiceConfigurationFileName), actual.CloudConfiguration);
-            Assert.AreEqual<string>(Path.Combine(rootPath, Resources.LocalServiceConfigurationFileName), actual.LocalConfiguration);
-            Assert.AreEqual<string>(Path.Combine(rootPath, Resources.SettingsFileName), actual.Settings);
-            Assert.AreEqual<string>(Path.Combine(rootPath, Resources.CloudPackageFileName), actual.CloudPackage);
-            Assert.AreEqual<string>(Path.Combine(rootPath, Resources.LocalPackageFileName), actual.LocalPackage);
+            Assert.AreEqual<string>(Path.Combine(rootPath, Commands.Common.Properties.Resources.ServiceDefinitionFileName), actual.Definition);
+            Assert.AreEqual<string>(Path.Combine(rootPath, Commands.Common.Properties.Resources.CloudServiceConfigurationFileName), actual.CloudConfiguration);
+            Assert.AreEqual<string>(Path.Combine(rootPath, Commands.Common.Properties.Resources.LocalServiceConfigurationFileName), actual.LocalConfiguration);
+            Assert.AreEqual<string>(Path.Combine(rootPath, Commands.Common.Properties.Resources.SettingsFileName), actual.Settings);
+            Assert.AreEqual<string>(Path.Combine(rootPath, Commands.Common.Properties.Resources.CloudPackageFileName), actual.CloudPackage);
+            Assert.AreEqual<string>(Path.Combine(rootPath, Commands.Common.Properties.Resources.LocalPackageFileName), actual.LocalPackage);
         }
 
         public static void AreEqualServiceComponents(ServiceComponents actual)
@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         public static void ScaffoldingExists(string destinationDirectory, string scaffoldFilePath, string roleName = "WebRole")
         {
-            Scaffold scaffold = Scaffold.Parse(Path.Combine(Data.TestResultDirectory, scaffoldFilePath, Resources.ScaffoldXml));
+            Scaffold scaffold = Scaffold.Parse(Path.Combine(Data.TestResultDirectory, scaffoldFilePath, Commands.Common.Properties.Resources.ScaffoldXml));
 
             foreach (ScaffoldFile file in scaffold.Files)
             {

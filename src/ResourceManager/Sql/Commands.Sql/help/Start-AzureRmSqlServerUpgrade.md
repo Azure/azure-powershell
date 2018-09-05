@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 69A26BF3-7FE7-41ED-8C21-C8DC72D09615
@@ -51,11 +51,8 @@ PS C:\> Start-AzureRmSqlServerUpgrade -ResourceGroupName "ResourceGroup01" -Serv
 The first command creates a time five minutes in the future by using the Get-Date cmdlet.
 The command stores the date in the variable $ScheduleTime.
 For more information, type `Get-Help Get-Date`.
-
 The second command creates a **RecommendedDatabaseProperties** object, and then stores that object in the variable $DatabaseMap.
-
 The next three commands assign values to properties of the object stored in $DatabaseMap.
-
 The final command upgrades the existing server named Server01 to version 12.0.
 The earliest time to upgrade is five minutes after you run the command, as specified by the $ScheduleTime variable.
 After the upgrade, the database contosodb will be running the Standard edition and have the Service Level Objective S0.
@@ -66,7 +63,7 @@ After the upgrade, the database contosodb will be running the Standard edition a
 Specifies an array of **RecommendedDatabaseProperties** objects that this cmdlet uses for the server upgrade.
 
 ```yaml
-Type: RecommendedDatabaseProperties[]
+Type: Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,7 +93,7 @@ Accept wildcard characters: False
 Specifies an array of **UpgradeRecommendedElasticPoolProperties** objects to use for the server upgrade.
 
 ```yaml
-Type: UpgradeRecommendedElasticPoolProperties[]
+Type: Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +108,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the server is assigned.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +125,7 @@ Specify a value in the ISO8601 format, in Coordinated Universal Time (UTC).
 For more information, type `Get-Help Get-Date`.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +140,7 @@ Accept wildcard characters: False
 Specifies the name of the server that this cmdlet upgrades.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +156,7 @@ Specifies the version to which this cmdlet upgrades the server.
 The only valid value is 12.0.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -175,12 +172,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.ServerUpgrade.Model.AzureSqlServerUpgradeModel
+### Microsoft.Azure.Commands.Sql.ServerUpgrade.Model.AzureSqlServerUpgradeStartModel
 
 ## NOTES
 

@@ -22,9 +22,12 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
     using Xunit.Abstractions;
     public class EventHubsConsumerGroupsSkipTopTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public EventHubsConsumerGroupsSkipTopTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
         
@@ -32,7 +35,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventHubsConsumerGroupsskiptop()
         {
-            EventHubsController.NewInstance.RunPsTest("SkipTopTests");
+            EventHubsController.NewInstance.RunPsTest(_logger, "SkipTopTests");
         }
         
     }

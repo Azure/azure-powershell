@@ -58,7 +58,6 @@ PS C:\> Set-AzureRmPolicyDefinition -Id $PolicyDefinition.ResourceId -Descriptio
 
 The first command gets a policy definition named VMPolicyDefinition by using the Get-AzureRmPolicyDefinition cmdlet.
 The command stores that object in the $PolicyDefinition variable.
-
 The second command updates the description of the policy definition identified by the **ResourceId** property of $PolicyDefinition.
 
 ## PARAMETERS
@@ -68,7 +67,7 @@ Specifies the version of the resource provider API to use.
 If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +82,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,7 +97,7 @@ Accept wildcard characters: False
 Specifies a new description for the policy definition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +112,7 @@ Accept wildcard characters: False
 Specifies a new display name for the policy definition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +127,7 @@ Accept wildcard characters: False
 Specifies the fully qualified resource ID for the policy definition that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
@@ -141,9 +140,7 @@ Accept wildcard characters: False
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
-
 The acceptable values for this parameter are:
-
 - Continue
 - Ignore
 - Inquire
@@ -152,7 +149,7 @@ The acceptable values for this parameter are:
 - Suspend
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: infa
 
@@ -167,7 +164,7 @@ Accept wildcard characters: False
 Specifies an information variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: iv
 
@@ -182,7 +179,7 @@ Accept wildcard characters: False
 The name of the management group of the policy definition to update.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ManagementGroupNameParameterSet
 Aliases:
 
@@ -197,7 +194,7 @@ Accept wildcard characters: False
 The metadata for policy definition. This can either be a path to a file name containing the metadata, or the metadata as string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -212,7 +209,7 @@ Accept wildcard characters: False
 Specifies the name of the policy definition that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet, ManagementGroupNameParameterSet, SubscriptionIdParameterSet
 Aliases:
 
@@ -227,7 +224,7 @@ Accept wildcard characters: False
 The parameters declaration for policy definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -243,7 +240,7 @@ Specifies new policy rule for the policy definition.
 You can specify the path of a .json file or a string that contains the policy in JavaScript Object Notation (JSON) format.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -258,7 +255,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -273,7 +270,7 @@ Accept wildcard characters: False
 The subscription ID of the policy definition to update.
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: SubscriptionIdParameterSet
 Aliases:
 
@@ -289,12 +286,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
-
-### System.Management.Automation.PSObject
 
 ## NOTES
 

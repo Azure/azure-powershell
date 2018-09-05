@@ -262,6 +262,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData[RestoreBackupItemParams.StorageAccountLocation].ToString();
             string storageAccountType =
                 ProviderData[RestoreBackupItemParams.StorageAccountType].ToString();
+            string targetResourceGroupName =
+                ProviderData.ContainsKey(RestoreBackupItemParams.TargetResourceGroupName) ?
+                ProviderData[RestoreBackupItemParams.TargetResourceGroupName].ToString() : null;
             bool osaOption = (bool)ProviderData[RestoreBackupItemParams.OsaOption];
 
             var response = ServiceClientAdapter.RestoreDisk(
@@ -269,6 +272,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 storageAccountId,
                 storageAccountLocation,
                 storageAccountType,
+                targetResourceGroupName,
                 osaOption,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
@@ -734,8 +738,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (ItemProtectionState)ProviderData[ItemParams.ProtectionState];
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[ItemParams.WorkloadType];
+            PolicyBase policy = (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy];
 
-            ODataQuery<ProtectedItemQueryObject> queryParams =
+            ODataQuery<ProtectedItemQueryObject> queryParams = policy != null ?
+                new ODataQuery<ProtectedItemQueryObject>(
+                    q => q.BackupManagementType
+                            == ServiceClientModel.BackupManagementType.AzureIaasVM &&
+                         q.ItemType == DataSourceType.VM &&
+                         q.PolicyName == policy.Name) :
                 new ODataQuery<ProtectedItemQueryObject>(
                     q => q.BackupManagementType
                             == ServiceClientModel.BackupManagementType.AzureIaasVM &&

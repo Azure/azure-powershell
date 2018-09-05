@@ -20,8 +20,8 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmDataMigrationTask", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Stop-AzureRmDmsTask")]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationTask", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Alias("Stop-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsTask")]
     public class StopDataMigrationTask : DataMigrationCmdlet
     {
         [Parameter(

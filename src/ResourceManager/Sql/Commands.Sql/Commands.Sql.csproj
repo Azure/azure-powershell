@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -51,6 +52,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AdvancedThreatProtection\Cmdlet\DisableAzureSqlServerAdvancedThreatProtection.cs" />
+    <Compile Include="AdvancedThreatProtection\Cmdlet\EnableAzureSqlServerAdvancedThreatProtection.cs" />
     <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
     <Compile Include="Auditing\AuditingHelpMessages.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\GetAzureSqlDatabaseAuditing.cs" />
@@ -203,6 +206,10 @@
     <Compile Include="ServerDnsAlias\Cmdlet\NewAzureSqlServerDnsAlias.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasAdapter.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasCommunicator.cs" />
+    <Compile Include="AdvancedThreatProtection\Cmdlet\GetAzureSqlServerAdvancedThreatProtectionPolicy.cs" />
+    <Compile Include="AdvancedThreatProtection\Cmdlet\SqlServerAdvancedThreatProtectionCmdletBase.cs" />
+    <Compile Include="AdvancedThreatProtection\Model\ServerAdvancedThreatProtectionPolicyModel.cs" />
+    <Compile Include="AdvancedThreatProtection\Services\SqlAdvancedThreatProtectionAdapter.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />
@@ -224,19 +231,40 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="VulnerabilityAssessment\Cmdlet\SqlDatabaseVulnerabilityAssessmentAtpCmdletBase.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\SqlDatabaseVulnerabilityAssessmentOperationCmdletBase.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\GetAzureSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\ClearSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\SetAzureSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\SqlDatabaseVulnerabilityAssessmentRuleBaselineCmdletBase.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentScan\StartAzureSqlDatabaseVulnerabilityAssessmentScan.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentScan\ConvertAzureSqlDatabaseVulnerabilityAssessmentScan.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentScan\GetAzureSqlDatabaseVulnerabilityAssessmentScanRecord.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentScan\SqlDatabaseVulnerabilityAssessmentScanCmdletBase.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentSettings\GetAzureSqlDatabaseVulnerabilityAssessmentSettings.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentSettings\ClearSqlDatabaseVulnerabilityAssessmentSettings.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentSettings\UpdateAzureSqlDatabaseVulnerabilityAssessmentSettings.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentRuleBaselineRowModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentScanExportModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentScanErrorModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentScanRecordModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentRuleBaselineModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentSettingsModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Services\BaseSqlVulnerabilityAssessmentAdapter.cs" />
+    <Compile Include="VulnerabilityAssessment\Services\SqlVulnerabilityAssessmentScanAdapter.cs" />
+    <Compile Include="VulnerabilityAssessment\Services\SqlVulnerabilityAssessmentRuleBaselineAdapter.cs" />
+    <Compile Include="VulnerabilityAssessment\Services\SqlVulnerabilityAssessmentAdapter.cs" />
+    <Compile Include="VulnerabilityAssessment\Services\VulnerabilityAssessmentEndpointsCommunicator.cs" />
     <Content Include="Microsoft.Azure.Commands.Sql.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="AzureRM.Sql.psd1">
-      <Link>AzureRM.Sql.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="StartupScripts\*.ps1">
-      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
-    </None>
+    <None Include="StartupScripts\*.ps1" />
     <None Include="..\MSSharedLibKey.snk" />
     <Content Include="Microsoft.Azure.Commands.Sql.Types.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -411,18 +439,24 @@
     <Compile Include="ServiceTierAdvisor\Services\AzureSqlServiceTierAdvisorCommunicator.cs" />
     <Compile Include="ThreatDetection\Services\SqlThreatDetectionAdapter.cs" />
     <Compile Include="ThreatDetection\Services\ThreatDetectionEndpointsCommunicator.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\AddAzureRmSqlManagedInstanceTransparentDataEncryptionCertificate.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionActivityCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlServerTransparentDataEncryptionProtectorCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlDatabaseTransparentDataEncryption.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlDatabaseTransparentDataEncryptionActivity.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\AddAzureRmSqlServerTransparentDataEncryptionCertificate.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\SetAzureSqlDatabaseTransparentDataEncryption.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlServerTransparentDataEncryptionProtector.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\SetAzureSqlServerTransparentDataEncryptionProtector.cs" />
+    <Compile Include="TransparentDataEncryption\Model\AzureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel.cs" />
+    <Compile Include="TransparentDataEncryption\Model\AzureRmSqlServerTransparentDataEncryptionCertificateModel.cs" />
     <Compile Include="TransparentDataEncryption\Model\AzureSqlDatabaseTransparentDataEncryptionActivityModel.cs" />
     <Compile Include="TransparentDataEncryption\Model\AzureSqlDatabaseTransparentDataEncryptionModel.cs" />
     <Compile Include="TransparentDataEncryption\Model\AzureSqlServerTransparentDataEncryptionProtectorModel.cs" />
+    <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionArmAdapter.cs" />
     <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionAdapter.cs" />
+    <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionArmCommunicator.cs" />
     <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionCommunicator.cs" />
     <Compile Include="ServerKeyVaultKey\Cmdlet\AddAzureSqlServerKeyVaultKey.cs" />
     <Compile Include="ServerKeyVaultKey\Cmdlet\AzureSqlServerKeyVaultKeyCmdletBase.cs" />
@@ -448,40 +482,38 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Commands.Common.Graph.RBAC.csproj">
-      <Project>{269acf73-0a34-42dc-ab9c-4b15931a489d}</Project>
-      <Name>Commands.Common.Graph.RBAC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LegacySdk\SqlManagement.csproj">
-      <Project>{04B53727-16E6-4EF0-9116-04C7F1C33842}</Project>
-      <Name>SqlManagement</Name>
-    </ProjectReference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.15.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.18.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.8.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.8.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.8.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsAzure.Storage">
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.8.7.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
+    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
+      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
+      <Name>Commands.Profile</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
+    <ProjectReference Include="..\LegacySdk\SqlManagement.csproj">
+      <Project>{04B53727-16E6-4EF0-9116-04C7F1C33842}</Project>
+      <Name>SqlManagement</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />

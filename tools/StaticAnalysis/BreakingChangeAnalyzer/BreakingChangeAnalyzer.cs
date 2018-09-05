@@ -158,7 +158,12 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                             {
                                 issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyFileName, "AssemblyFileName");
                                 processedHelpFiles.Add(assemblyFileName);
-                                var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+                                var proxy =
+#if !NETSTANDARD
+                                    EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+#else
+                                    new CmdletLoader();
+#endif
                                 var newModuleMetadata = proxy.GetModuleMetadata(assemblyFile, requiredModules);
 
                                 string fileName = assemblyFileName + ".json";

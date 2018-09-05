@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 26EC220C-5123-4CEF-8CC6-5FFD08F33481
@@ -66,7 +66,7 @@ Updates state of server recommended action named "IR_\[test_schema\]_\[test_tabl
 Specifies the name of the advisor that contains the recommended action.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Specifies the name of the recommended action for which this cmdlet updates the state.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Specifies the name of the server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -139,9 +139,7 @@ Accept wildcard characters: False
 
 ### -State
 Specifies the new value to which this cmdlet updates the recommended action state.
-
 The acceptable values for this parameter are:
-
 - Active
 - Pending
 - PendingRevert
@@ -150,7 +148,7 @@ The acceptable values for this parameter are:
 - Resolved
 
 ```yaml
-Type: RecommendedActionState
+Type: Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState
 Parameter Sets: (All)
 Aliases:
 Accepted values: Active, Pending, PendingRevert, RevertCancelled, Ignored, Resolved
@@ -166,7 +164,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -182,7 +180,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -198,8 +196,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState
 
 ## OUTPUTS
 

@@ -34,7 +34,6 @@ Enable-AzureRmRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Item] <I
 
 ## DESCRIPTION
 The **Enable-AzureRmRecoveryServicesBackupProtection** cmdlet sets Azure Backup protection policy on an item.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -49,7 +48,6 @@ co03-vm         ConfigureBackup  Completed       11-Apr-16 12:19:49 PM      11-A
 ```
 
 The first cmdlet gets a default policy object, and then stores it in the $Pol variable.
-
 The second cmdlet sets the Backup protection policy for the ARM virtual machine named V2VM using the policy in $Pol.
 
 ## PARAMETERS
@@ -58,7 +56,7 @@ The second cmdlet sets the Backup protection policy for the ARM virtual machine 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,9 +72,9 @@ Specifies the Backup item for which this cmdlet enables protection.
 To obtain an **AzureRmRecoveryServicesBackupItem**, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.
 
 ```yaml
-Type: ItemBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
 Parameter Sets: ModifyProtection
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -89,9 +87,9 @@ Accept wildcard characters: False
 Specifies the name of the Backup item.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AzureVMComputeEnableProtection, AzureVMClassicComputeEnableProtection
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -105,9 +103,9 @@ Specifies protection policy that this cmdlet associates with an item.
 To obtain an **AzureRmRecoveryServicesBackupProtectionPolicy** object, use the Get-AzureRmRecoveryServicesBackupProtectionPolicy cmdlet.
 
 ```yaml
-Type: PolicyBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -121,9 +119,9 @@ Specifies the name of the resource group.
 Specify this parameter only for ARM virtual machines.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AzureVMComputeEnableProtection
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -137,9 +135,9 @@ Specifies the service name.
 Specify this parameter only for ASM virtual machines.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AzureVMClassicComputeEnableProtection
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -152,9 +150,9 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -167,7 +165,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -182,7 +180,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -198,8 +196,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ItemBase
-Parameter 'Item' accepts value of type 'ItemBase' from the pipeline
+### System.String
+Parameters: VaultId (ByValue)
+
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
+Parameters: Item (ByValue)
 
 ## OUTPUTS
 

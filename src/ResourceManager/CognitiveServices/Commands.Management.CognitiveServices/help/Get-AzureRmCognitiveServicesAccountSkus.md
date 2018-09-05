@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
 Module Name: AzureRM.CognitiveServices
 ms.assetid: 386F09F0-2EEC-4B55-825C-F2E88D3B60AA
@@ -20,7 +20,6 @@ Get-AzureRmCognitiveServicesAccountSkus [-ResourceGroupName] <String> [-Name] <S
 
 ## DESCRIPTION
 The **Get-AzureRmCognitiveServicesAccountSkus** cmdlet gets the available SKUs for a Cognitive Services account.
-
 The SKU is the tier plan for an account.
 It defines the price, call limit, and rate for the account.
 The F0 SKU is a free tier.
@@ -45,7 +44,7 @@ S0   Standard
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -60,7 +59,7 @@ Accept wildcard characters: False
 Specifies the name of the account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: CognitiveServicesAccountName, AccountName
 
@@ -75,9 +74,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group the account is assigned to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -91,8 +90,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
@@ -101,4 +99,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-
