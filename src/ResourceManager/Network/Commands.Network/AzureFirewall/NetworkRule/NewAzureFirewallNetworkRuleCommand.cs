@@ -58,7 +58,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The protocols of the rule")]
         [ValidateSet(
             MNM.AzureFirewallNetworkRuleProtocol.Any,
-            MNM.AzureFirewallNetworkRuleProtocol.ICMP,
             MNM.AzureFirewallNetworkRuleProtocol.TCP,
             MNM.AzureFirewallNetworkRuleProtocol.UDP,
             IgnoreCase = false)]

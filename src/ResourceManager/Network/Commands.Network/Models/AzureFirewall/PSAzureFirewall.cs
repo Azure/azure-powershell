@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                 {
                     Name = AzureFirewallIpConfigurationName,
                     Subnet = new PSResourceId { Id = firewallSubnet.Id },
-                    InternalPublicIpAddress = new PSResourceId {Id =  publicIpAddress.Id}
+                    PublicIpAddress = new PSResourceId {Id =  publicIpAddress.Id}
                 }
             };
         }

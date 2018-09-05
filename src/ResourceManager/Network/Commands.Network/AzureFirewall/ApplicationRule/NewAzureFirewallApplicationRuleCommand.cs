@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Network
                 Description = this.Description,
                 SourceAddresses = this.SourceAddress,
                 Protocols = protocolsAsWeExpectThem,
-                TargetUrls = this.TargetFqdn
+                TargetFqdns = this.TargetFqdn
             };
             WriteObject(applicationRule);
         }
