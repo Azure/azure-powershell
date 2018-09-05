@@ -28,7 +28,7 @@ $psd1s | ForEach-Object {
     } 
     else
     { #>
-        $name = ($_.Name -replace "AzureRM", "Az") -replace "Azure", "Az"
+        $name = (($_.Name -replace "AzureRM", "Az") -replace "Azure", "Az") -replace ".psd1", ""
         if (!($mapping.Contains($name)))
         {
             $mapping.Add($name, @{})
@@ -37,7 +37,18 @@ $psd1s | ForEach-Object {
         $psd1info.CmdletsToExport | ForEach-Object {
             if ($_ -like "*Azure*")
             {
-                $cmdletalias = ($_ -replace "AzureRM", "Azure") -replace "Azure", "Az"
+                $cmdletalias = ($_ -replace "-AzureRM", "-Azure") -replace "-Azure", "-Az"
+                $mapping[$name].Add($cmdletalias, $_)
+            }
+            else
+            {
+                Write-Warning $_
+            }
+        }
+        $psd1info.AliasesToExport | ForEach-Object {
+            if ($_ -like "*Azure*")
+            {
+                $cmdletalias = ($_ -replace "-AzureRM", "-Azure") -replace "-Azure", "-Az"
                 $mapping[$name].Add($cmdletalias, $_)
             }
             else
@@ -50,4 +61,4 @@ $psd1s | ForEach-Object {
 }
 
 $json = ConvertTo-Json $mapping
-$json | Out-File $PSScriptRoot/AliasMapping.json
+$json -replace "`"", "`'" | Out-File $PSScriptRoot/AliasMapping.json

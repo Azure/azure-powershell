@@ -44,23 +44,30 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         /// <returns>A single Namespace</returns>
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
+            try
             {
-                // Get a namespace
-                PSNamespaceAttributes attributes = Client.GetNamespace(ResourceGroupName, Name);
-                WriteObject(attributes);
+                if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
+                {
+                    // Get a namespace
+                    PSNamespaceAttributes attributes = Client.GetNamespace(ResourceGroupName, Name);
+                    WriteObject(attributes);
+                }
+                else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
+                {
+                    // List all namespaces in given resource group 
+                    IEnumerable<PSNamespaceAttributes> namespaceList = Client.ListNamespaces(ResourceGroupName);
+                    WriteObject(namespaceList.ToList(), true);
+                }
+                else
+                {
+                    // List all namespaces in the given subscription
+                    IEnumerable<PSNamespaceAttributes> namespaceList = Client.ListAllNamespaces();
+                    WriteObject(namespaceList.ToList(), true);
+                }
             }
-            else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
+            catch (Management.ServiceBus.Models.ErrorResponseException ex)
             {
-                // List all namespaces in given resource group 
-                IEnumerable<PSNamespaceAttributes> namespaceList = Client.ListNamespaces(ResourceGroupName);
-                WriteObject(namespaceList.ToList(), true);
-            }
-            else
-            {
-                // List all namespaces in the given subscription
-                IEnumerable<PSNamespaceAttributes> namespaceList = Client.ListAllNamespaces();
-                WriteObject(namespaceList.ToList(), true);
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
             }
         }
     }

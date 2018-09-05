@@ -16,12 +16,14 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Security;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSApplicationGatewaySslCertificate : PSChildResource
     {
         public string Data { get; set; }
         public SecureString Password { get; set; }
         public string PublicCertData { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
     }
