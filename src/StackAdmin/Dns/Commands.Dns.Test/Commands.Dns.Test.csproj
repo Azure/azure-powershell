@@ -62,7 +62,7 @@
     <Compile Include="ScenarioTests\DnsTestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Resources\Commands.Resources\Commands.Resources.csproj">
+    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
       <Name>Commands.Resources</Name>
     </ProjectReference>
