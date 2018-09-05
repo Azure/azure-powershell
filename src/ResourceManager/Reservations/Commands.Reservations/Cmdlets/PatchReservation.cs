@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
                     string subscriptionId = ValidateAndGetAppliedSubscription();
                     PreRegister(subscriptionId);
 
-                    Patch = new Patch(AppliedScopeType, new List<string>() { AppliedScope }, InstanceFlexibility, Name);
+                    Patch = new Patch(AppliedScopeType, new List<string>() { AppliedScope }, InstanceFlexibility);
                 }
                 else
                 {
