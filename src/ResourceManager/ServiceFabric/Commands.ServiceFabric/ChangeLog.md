@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.3.12
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
 ## Version 0.3.11
 * Fixed issue with default resource groups not being set.
 
