@@ -178,6 +178,7 @@
     <Compile Include="ApplicationSecurityGroup\NewAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="ApplicationSecurityGroup\RemoveAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Common\ListNextLink.cs" />
+    <Compile Include="Common\DoubleFetchHandler.cs" />
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkCloudException.cs" />
