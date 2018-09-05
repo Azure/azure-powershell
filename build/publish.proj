@@ -14,7 +14,7 @@
   </Target>
 
   <Target Name="All">
-    <Message Importance="high" Text="Pack: All started" />
+    <Message Importance="high" Text="Publish: All started" />
     <ItemGroup>
       <PackagePaths Include="$(PackDir)*.nupkg" />
     </ItemGroup>
