@@ -117,19 +117,16 @@ function New-AzsComputeQuota {
             $utilityCmdParams = @{}
             $flattenedParameters = @('AvailabilitySetCount', 'CoresCount', 'VmScaleSetCount', 'VirtualMachineCount', 'StandardManagedDiskAndSnapshotSize', 'PremiumManagedDiskAndSnapshotSize' )
             $flattenedParameters | ForEach-Object {
-                if ($PSBoundParameters.ContainsKey($_)) {
-                    $NewValue = $PSBoundParameters[$_]
-                    if ($null -ne $NewValue) {
-                        if ($_ -eq 'StandardManagedDiskAndSnapshotSize') {
-                            $utilityCmdParams.MaxAllocationStandardManagedDisksAndSnapshots = $NewValue
-                        } elseif ($_ -eq 'PremiumManagedDiskAndSnapshotSize') {
-                            $utilityCmdParams.MaxAllocationPremiumManagedDisksAndSnapshots = $NewValue
-                        } elseif ($_ -eq 'CoresCount') {
-                            $utilityCmdParams.CoresLimit = $NewValue
-                        } else {
-                            $utilityCmdParams[$_] = $NewValue
-                        }
-                    }
+                $Key = $_
+                $Value = Get-Variable -Name "$Key" -ValueOnly
+                if ($Key -eq 'StandardManagedDiskAndSnapshotSize') {
+                    $utilityCmdParams.MaxAllocationStandardManagedDisksAndSnapshots = $Value
+                } elseif ($Key -eq 'PremiumManagedDiskAndSnapshotSize') {
+                    $utilityCmdParams.MaxAllocationPremiumManagedDisksAndSnapshots = $Value
+                } elseif ($Key -eq 'CoresCount') {
+                    $utilityCmdParams.CoresLimit = $Value
+                } else {
+                    $utilityCmdParams[$_] = $Value
                 }
             }
 
