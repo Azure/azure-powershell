@@ -17,45 +17,39 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// Represents Azure VM specific job class.
+    /// Represents Azure File Share specific job class.
     /// </summary>
-    public class AzureVmJob : AzureJob
-    {
-        /// <summary>
-        /// The VM version of the Azure VM associated with this job.
-        /// </summary>
-        public string VmVersion { get; set; }
-    }
+    public class AzureFileShareJob : AzureJob { }
 
     /// <summary>
-    /// Azure VM specific job details class.
+    /// Azure File Share specific job details class.
     /// </summary>
-    public class AzureVmJobDetails : AzureVmJob
+    public class AzureFileShareJobDetails : AzureFileShareJob
     {
         /// <summary>
         /// Context sensitive error message that might be helpful in debugging the issue. 
-        /// Mostly this contains trace dumps from VM.
+        /// Mostly this contains trace dumps from File Share.
         /// </summary>
         public string DynamicErrorMessage { get; set; }
 
         /// <summary>
-        /// Property bag consisting of the some Azure VM specific job details.
+        /// Property bag consisting of the some Azure File Share specific job details.
         /// </summary>
         public Dictionary<string, string> Properties { get; set; }
 
         /// <summary>
         /// List of sub tasks triggered as part of this job's operation.
         /// </summary>
-        public List<AzureVmJobSubTask> SubTasks { get; set; }
+        public List<AzureFileShareJobSubTask> SubTasks { get; set; }
     }
 
     /// <summary>
-    /// Azure VM specific job error info class.
+    /// Azure File Share specific job error info class.
     /// </summary>
-    public class AzureVmJobErrorInfo : AzureJobErrorInfo { }
+    public class AzureFileShareJobErrorInfo : AzureJobErrorInfo { }
 
     /// <summary>
-    /// Azure VM specific job sub-task class.
+    /// Azure File Share specific job sub-task class.
     /// </summary>
-    public class AzureVmJobSubTask : AzureJobSubTask { }
+    public class AzureFileShareJobSubTask : AzureJobSubTask { }
 }

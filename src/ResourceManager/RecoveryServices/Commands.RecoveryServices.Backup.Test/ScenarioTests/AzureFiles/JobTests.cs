@@ -19,34 +19,33 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class ItemTests : RMTestBase
+    public partial class JobTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        public void TestAzureFileItem()
+        public void TestAzureFileJob()
         {
             TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileItem");
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileJob");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        public void TestAzureFileShareBackup()
+        public void TestAzureFileCancelJob()
         {
             TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileShareBackup");
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileCancelJob");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        public void TestAzureFileShareGetRPs()
+        public void TestAzureFileWaitJob()
         {
             TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileShareGetRPs");
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileWaitJob");
         }
-
     }
 }

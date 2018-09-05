@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-function Test-AzureFileItem
+function Test-AzureFileJob
 {
 	$location = "southeastasia"
 	$resourceGroupName = "sam-rg-sea-can"
@@ -21,7 +21,19 @@ function Test-AzureFileItem
 	try
 	{
 		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		
+		$jobs = Get-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+
+		# Test 2: Job details
+		foreach ($job in $jobs)
+		{
+			$jobDetails = Get-AzureRmRecoveryServicesBackupJobDetails -VaultId $vault.ID -Job $job;
+			$jobDetails2 = Get-AzureRmRecoveryServicesBackupJobDetails `
+				-VaultId $vault.ID `
+				-JobId $job.JobId
+
+			Assert-AreEqual $jobDetails.JobId $job.JobId
+			Assert-AreEqual $jobDetails2.JobId $job.JobId
+		}
 	}
 	finally
 	{
@@ -29,46 +41,14 @@ function Test-AzureFileItem
 	}
 }
 
-function Test-AzureFileShareBackup
-{
-	$location = Get-ResourceGroupLocation
-	$resourceGroupName = "sisi-RSV"
-	$name = 'sisisa'
-
-	try
-	{
-		# Setup
-		#$sa = Create-SA $resourceGroupName $location
-		$sa = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $name
-		$fileshare = Create-FileShare $sa
-		
-		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName 'sisi-RSV' -Name 'sisi-RSV-29-6'
-		Get-AzureRmRecoveryServicesVault -ResourceGroupName 'sisi-RSV' -Name 'sisi-RSV-29-6' | Set-AzureRmRecoveryServicesVaultContext
-		
-		$item = Enable-Protection $vault $fileShare $sa.StorageAccountName
-		#$FSContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType “AzureStorage” -FriendlyName $saName
-		#$FSItem = Get-AzureRmRecoveryServicesBackupItem -Container $FSContainer[0] -WorkloadType “AzureFiles” -Name $fileshare.Name
-		
-		# Trigger backup and wait for completion
-		$backupJob = Backup-AzureRmRecoveryServicesBackupItem `
-			-VaultId $vault.ID `
-			-Item $FSItem[0]
-	}
-	finally
-	{
-		# Cleanup
-	}
-}
-
-function Test-AzureFileShareGetRPs
+function Test-AzureFileWaitJob
 {
 	$location = "westus"
 	$resourceGroupName = "sisi-RSV"
 
 	try
 	{
-		# Test 1: Get latest recovery point; should be only one
-
+		
 		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name "sisi-RSV-29-6"
 		$container = Get-AzureRmRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
@@ -80,20 +60,52 @@ function Test-AzureFileShareGetRPs
 			-Container $container[16] `
 			-WorkloadType AzureFiles `
 			-Name "sharetest"
-		$recoveryPoint = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
+		
+		# Trigger backup and wait for completion
+		$backupJob = Backup-AzureRmRecoveryServicesBackupItem `
 			-VaultId $vault.ID `
-			-Item $item;
-	
-		Assert-NotNull $recoveryPoint[0];
-		Assert-True { $recoveryPoint[0].Id -match $item.Id };
+			-Item $item[0]
 
-		# Test 2: Get Recovery point detail
-		$recoveryPointDetail = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
+		Assert-True { $backupJob.Status -eq "InProgress" }
+
+		$backupJob = Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID -Job $backupJob
+
+		Assert-True { $backupJob.Status -eq "Completed" }
+	}
+	finally
+	{
+		# Cleanup
+	}
+}
+
+function Test-AzureFileCancelJob
+{
+	$location = "westus"
+	$resourceGroupName = "sisi-RSV"
+
+	try
+	{
+		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name "sisi-RSV-29-6"
+		$container = Get-AzureRmRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
-			-RecoveryPointId $recoveryPoint[0].RecoveryPointId `
-			-Item $item;
-	
-		Assert-NotNull $recoveryPointDetail;
+			-ContainerType AzureStorage `
+			-Status Registered `
+			-FriendlyName "sisisa";
+ 		$item = Get-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container[16] `
+			-WorkloadType AzureFiles `
+			-Name "sharetest"
+		
+		$backupJob = Backup-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Item $item[0]
+
+		Assert-True { $backupJob.Status -eq "InProgress" }
+
+		$cancelledJob = Stop-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID -Job $backupJob
+
+		Assert-True { $cancelledJob.Status -ne "InProgress" }
 	}
 	finally
 	{
