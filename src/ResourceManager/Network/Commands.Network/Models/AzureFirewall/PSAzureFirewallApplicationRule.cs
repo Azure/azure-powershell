@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> SourceAddresses { get; set; }
 
         [JsonProperty(Order = 4)]
-        public List<string> TargetUrls { get; set; }
+        public List<string> TargetFqdns { get; set; }
 
         [JsonProperty(Order = 5)]
         public List<PSAzureFirewallApplicationRuleProtocol> Protocols { get; set; }
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string TargetUrlsText
+        public string TargetFqdnsText
         {
-            get { return JsonConvert.SerializeObject(TargetUrls, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(TargetFqdns, Formatting.Indented); }
         }
     }
 }

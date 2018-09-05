@@ -2844,8 +2844,8 @@
                 <PropertyName>SourceAddressesText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>TargetUrls</Label>
-                <PropertyName>TargetUrlsText</PropertyName>
+                <Label>TargetFqdns</Label>
+                <PropertyName>TargetFqdnsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Protocols</Label>

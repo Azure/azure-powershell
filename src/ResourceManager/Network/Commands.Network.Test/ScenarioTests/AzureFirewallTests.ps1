@@ -192,9 +192,9 @@ function Test-AzureFirewallCRUD
 		Assert-AreEqual $appRule1Port1 $appRule.Protocols[0].Port
 		Assert-AreEqual $appRule1Port2 $appRule.Protocols[1].Port
 		
-		Assert-AreEqual 2 $appRule.TargetUrls.Count 
-		Assert-AreEqual $appRule1Fqdn1 $appRule.TargetUrls[0]
-		Assert-AreEqual $appRule1Fqdn2 $appRule.TargetUrls[1]
+		Assert-AreEqual 2 $appRule.TargetFqdns.Count 
+		Assert-AreEqual $appRule1Fqdn1 $appRule.TargetFqdns[0]
+		Assert-AreEqual $appRule1Fqdn2 $appRule.TargetFqdns[1]
 
 		# Verify application rule 2
 		Assert-AreEqual $appRule2Name $appRule2.Name
@@ -206,8 +206,8 @@ function Test-AzureFirewallCRUD
 		Assert-AreEqual $appRule2ProtocolType1 $appRule2.Protocols[0].ProtocolType
 		Assert-AreEqual $appRule2Port1 $appRule2.Protocols[0].Port
 		
-		Assert-AreEqual 1 $appRule2.TargetUrls.Count 
-		Assert-AreEqual $appRule2Fqdn1 $appRule2.TargetUrls[0]
+		Assert-AreEqual 1 $appRule2.TargetFqdns.Count 
+		Assert-AreEqual $appRule2Fqdn1 $appRule2.TargetFqdns[0]
 
 		# Verify application rule collection 2 
 		$appRc2 = $getAzureFirewall.GetApplicationRuleCollectionByName($appRc2Name)
@@ -231,9 +231,9 @@ function Test-AzureFirewallCRUD
 		Assert-AreEqual $appRule1Port1 $appRule.Protocols[0].Port
 		Assert-AreEqual $appRule1Port2 $appRule.Protocols[1].Port
 		
-		Assert-AreEqual 2 $appRule.TargetUrls.Count 
-		Assert-AreEqual $appRule1Fqdn1 $appRule.TargetUrls[0]
-		Assert-AreEqual $appRule1Fqdn2 $appRule.TargetUrls[1]
+		Assert-AreEqual 2 $appRule.TargetFqdns.Count 
+		Assert-AreEqual $appRule1Fqdn1 $appRule.TargetFqdns[0]
+		Assert-AreEqual $appRule1Fqdn2 $appRule.TargetFqdns[1]
 
 		# Verify network rule collection and network rule
 		$networkRc = $getAzureFirewall.GetNetworkRuleCollectionByName($networkRcName)
