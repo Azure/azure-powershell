@@ -123,8 +123,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
         public static string GetAuthorityUrlForEnvironment(AsAzureEnvironment environment)
         {
-            Console.Out.WriteLine("GetAuthorityUrlForEnvironment: environment.Name=" + environment.Name);
-
             var profile = AzureRmProfileProvider.Instance.GetProfile<AzureRmProfile>();
             var availableEnvironments = profile.Environments;
 
