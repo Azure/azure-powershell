@@ -55,6 +55,7 @@
     <Compile Include="ScenarioTests\AzureFiles\ContainerTests.cs" />
     <Compile Include="ScenarioTests\AzureFiles\ItemTests.cs" />
     <Compile Include="ScenarioTests\AzureFiles\PolicyTests.cs" />
+    <Compile Include="ScenarioTests\AzureFiles\ProtectionCheckTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\ProtectionCheckTests.cs" />
     <Compile Include="TestConstants.cs" />
     <None Include="packages.config">
@@ -70,6 +71,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\AzureFiles\PolicyTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AzureFiles\ProtectionCheckTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\AzureSql\ContainerTests.ps1">

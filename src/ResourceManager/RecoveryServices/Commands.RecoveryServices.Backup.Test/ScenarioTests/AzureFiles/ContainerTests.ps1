@@ -28,3 +28,21 @@ function Test-AzureFileContainer
 		# Cleanup
 	}
 }
+
+function Test-AzureFileUnregisterContainer
+{
+	$location = "westus"
+	$resourceGroupName = "sisi-RSV"
+	$vaultName = "sisi-RSV-29-6"
+
+	try
+	{
+		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$containers = Get-AzureRmRecoveryServicesBackupContainer -VaultId $vault.ID -ContainerType AzureStorage -Status Registered -FriendlyName  "sisitestaccount"
+		Unregister-AzureRmRecoveryServicesBackupContainer -VaultId $vault.ID -Container $containers[0]
+	}
+	finally
+	{
+		# Cleanup
+	}
+}

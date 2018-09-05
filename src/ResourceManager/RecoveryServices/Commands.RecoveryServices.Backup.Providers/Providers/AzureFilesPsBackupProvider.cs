@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure.OData;
 using System;
@@ -553,7 +554,51 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public ResourceBackupStatus CheckBackupStatus()
         {
-            throw new NotImplementedException();
+            string azureStorageAccountName = (string)ProviderData[ProtectionCheckParams.Name];
+            string azureStorageAccountResourceGroupName =
+                (string)ProviderData[ProtectionCheckParams.ResourceGroupName];
+
+            ODataQuery<ProtectedItemQueryObject> queryParams =
+                new ODataQuery<ProtectedItemQueryObject>(
+                    q => q.BackupManagementType
+                            == ServiceClientModel.BackupManagementType.AzureStorage &&
+                         q.ItemType == DataSourceType.AzureFileShare);
+
+            var vaultIds = ServiceClientAdapter.ListVaults();
+            foreach (var vaultId in vaultIds)
+            {
+                ResourceIdentifier vaultIdentifier = new ResourceIdentifier(vaultId);
+
+                var items = ServiceClientAdapter.ListProtectedItem(
+                    queryParams,
+                    vaultName: vaultIdentifier.ResourceName,
+                    resourceGroupName: vaultIdentifier.ResourceGroupName);
+
+                if (items.Any(
+                    item =>
+                    {
+                        ResourceIdentifier storageIdentifier =
+                            new ResourceIdentifier(item.Properties.SourceResourceId);
+                        var itemStorageAccountName = storageIdentifier.ResourceName;
+                        var itemStorageAccountRgName = storageIdentifier.ResourceGroupName;
+
+                        return itemStorageAccountName.ToLower() == azureStorageAccountName.ToLower() &&
+                            itemStorageAccountRgName.ToLower() == azureStorageAccountResourceGroupName.ToLower();
+                    }))
+                {
+                    return new ResourceBackupStatus(
+                        azureStorageAccountName,
+                        azureStorageAccountResourceGroupName,
+                        vaultId,
+                        true);
+                }
+            }
+
+            return new ResourceBackupStatus(
+                azureStorageAccountName,
+                azureStorageAccountResourceGroupName,
+                null,
+                false);
         }
 
         private void ValidateAzureStorageBackupManagementType(
