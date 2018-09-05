@@ -612,8 +612,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             }
         }
 
-
-        public static string getSRSReplicationProtectedItemOperation(ASRReplicationProtectedItemOperation startGroupAction)
+        public static string getSRSReplicationProtectedItemOperation(ASRReplicationProtectedItemOperation? startGroupAction)
         {
             if (startGroupAction == null) { return null; }
             else
