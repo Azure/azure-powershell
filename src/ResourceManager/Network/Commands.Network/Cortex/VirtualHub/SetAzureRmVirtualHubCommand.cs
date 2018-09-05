@@ -162,12 +162,12 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             //// HubVirtualNetworkConnections
+            virtualHubToUpdate.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
             if (this.HubVnetConnection != null && this.HubVnetConnection.Any())
             {
-                virtualHubToUpdate.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
                 virtualHubToUpdate.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
             }
-
+            
             //// Update the virtual hub
             ConfirmAction(
                     Force.IsPresent,
