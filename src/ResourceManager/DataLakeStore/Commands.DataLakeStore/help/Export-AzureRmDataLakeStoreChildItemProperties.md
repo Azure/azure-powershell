@@ -65,7 +65,7 @@ Get the ACL usage for all subdirectories and files under /a. IncludeFile ensures
 The Data Lake Store account to execute the filesystem operation in
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -81,7 +81,7 @@ Indicates the number of files/directories processed in parallel.
 Default will be computed as a best effort based on system specification.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Retrieves the acl starting from the root path
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: GetAllProperties, GetAclDump
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Retrieves the disk usage starting from the root path
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: GetDiskUsage, GetAllProperties
 Aliases:
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 Do not show directory subtree if the ACLs are the same throughout the entire subtree. This makes it easier to see only the paths up to which the ACLs differ.For example if all files and folders under /a/b are the same, do not show the subtreeunder /a/b, and just output /a/b with 'True' in the Consistent ACL columnCannot be set if IncludeFiles is not set, because consistent Acl cannot be determined without retrieving acls for the files.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: GetAllProperties, GetAclDump
 Aliases:
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 Show stats at file level (default is to show directory-level info only)
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 Maximum depth from the root directory till which disk usage or acl is displayed
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 Path to output file. Can be a Local path or Adl Path. By default it is local. If SaveToAdl is pecified then it is an ADL path in the same account
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -201,7 +201,7 @@ Accept wildcard characters: False
 Indicates a boolean response should be returned indicating the result of the delete operation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +217,7 @@ The path in the specified Data Lake account that should be retrieve.
 Can be a file or folder In the format '/folder/file.txt', where the first '/' after the DNS indicates the root of the file system.
 
 ```yaml
-Type: DataLakeStorePathInstance
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
 Parameter Sets: (All)
 Aliases:
 
@@ -233,7 +233,7 @@ If passed then saves the dump file to ADL.
 The DumpFile wil be a ADL path in that case
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -264,7 +264,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -281,13 +281,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
-System.Management.Automation.SwitchParameter
-System.Int32
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+
+### System.Management.Automation.SwitchParameter
+
+### System.Int32
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.DataLakeStore.DataPlaneModels.DataLakeStoreChildItemSummary
+### System.Boolean
 
 ## NOTES
 

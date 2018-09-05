@@ -44,7 +44,7 @@ function Get-AzsSubscription
 
     Process {
 
-    $ErrorActionPreference = 'Stop'
+
 
     $NewServiceClient_params = @{
         FullClientTypeName = 'Microsoft.AzureStack.Management.Subscription.SubscriptionClient'

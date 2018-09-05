@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
 Module Name: AzureRM.RecoveryServices
 ms.assetid: 9591E150-54DA-48B7-8656-3891833FE61E
@@ -38,7 +38,7 @@ Specifies the name of the geographic location of the vault.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -53,7 +53,7 @@ Specifies the name of the vault to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -68,7 +68,7 @@ Specifies the name of the Azure resource group in which to create or from which 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -128,7 +128,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

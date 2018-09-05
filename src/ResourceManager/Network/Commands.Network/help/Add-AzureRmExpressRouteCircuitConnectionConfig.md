@@ -57,7 +57,7 @@ Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $
 A minimum /29 customer address space to create VxLan tunnels between Express Route Circuits
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 Authorization Key to peer Express Route Circuit in another subscription. Authorization on peer circuit can be created using existing commands.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -103,7 +103,7 @@ The ExpressRoute circuit being modified. This is Azure object returned by the
 **Get-AzureRmExpressRouteCircuit** cmdlet.
 
 ```yaml
-Type: PSExpressRouteCircuit
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The name of the circuit connection resource to be added.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -131,8 +131,9 @@ Accept wildcard characters: False
 
 ### -PeerExpressRouteCircuitPeering
 Resource Id for Private Peering of remote circuit which will be peered with the current circuit.
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -147,7 +148,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -162,7 +163,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -178,8 +179,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSExpressRouteCircuit
-Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+Parameters: ExpressRouteCircuit (ByValue)
+
+### System.String
 
 ## OUTPUTS
 

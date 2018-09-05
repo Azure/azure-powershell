@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 65BF37D3-4FCE-48A3-BC5D-01AA20FEB6CA
@@ -34,7 +34,7 @@ To obtain a credential, use the Get-Credential cmdlet.
 For more information, type `Get-Help Get-Credential`.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -49,7 +49,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet disables auto-upgrade of the minor version of the extension.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 Specifies the name of the domain.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -93,11 +93,10 @@ Accept wildcard characters: False
 ### -ForceRerun
 Indicates that this cmdlet forces a rerun of the same extension configuration on the virtual machine without uninstalling and reinstalling the extension.
 The value can be any string different from the current value.
-
 If forceUpdateTag is not changed, updates to public or protected settings are still applied by the handler.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +111,7 @@ Accept wildcard characters: False
 Specifies the join option.
 
 ```yaml
-Type: UInt32
+Type: System.Nullable`1[System.UInt32]
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +126,7 @@ Accept wildcard characters: False
 Specifies the location of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +141,7 @@ Accept wildcard characters: False
 Specifies the name of the domain extension to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
@@ -159,7 +158,7 @@ Enter the full distinguished name of the OU in quotation marks.
 The default value is the default OU for machine objects in the domain.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +173,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +189,7 @@ Indicates that this cmdlet restarts the virtual machine.
 A restart is often required to make the change effective.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -205,7 +204,7 @@ Accept wildcard characters: False
 Specifies the version of the domain extension.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: HandlerVersion, Version
 
@@ -220,7 +219,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -235,7 +234,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -248,11 +247,10 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -268,8 +266,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Management.Automation.PSCredential
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

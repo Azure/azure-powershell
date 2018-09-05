@@ -13,12 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualNetworkSubnetConfig"), OutputType(typeof(PSSubnet))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetConfig"), OutputType(typeof(PSSubnet))]
     public class GetAzureVirtualNetworkSubnetConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -26,6 +28,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the subnet")]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("VirtualNetwork", ChangeDescription = "The EnableVMProtection property for the parameter Virtualnetwork is no longer supported. Setting this property has no impact. This property will be removed in a future release. Please remove it from your scripts")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
@@ -34,14 +37,18 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-
             base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var subnet =
-                    this.VirtualNetwork.Subnets.First(
+                    this.VirtualNetwork.Subnets.FirstOrDefault(
                         resource =>
-                            string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+                            string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
+
+                if (subnet == null)
+                {
+                    throw new ArgumentException(string.Format(Properties.Resources.ResourceNotFound, this.Name));
+                }
 
                 WriteObject(subnet);
             }
@@ -50,7 +57,6 @@ namespace Microsoft.Azure.Commands.Network
                 var subnets = this.VirtualNetwork.Subnets;
                 WriteObject(subnets, true);
             }
-
         }
     }
 }

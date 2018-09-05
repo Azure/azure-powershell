@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.OperationalInsights
 Module Guid: e827799a-7abf-4538-a61f-94dc52a48bd4
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.operationalinsights
@@ -70,6 +70,9 @@ Gets the shared keys for a workspace.
 
 ### [Get-AzureRmOperationalInsightsWorkspaceUsage](Get-AzureRmOperationalInsightsWorkspaceUsage.md)
 Gets the usage data for a workspace.
+
+### [Invoke-AzureRmOperationalInsightsQuery](Invoke-AzureRmOperationalInsightsQuery.md)
+Returns search results based on the specified parameters.
 
 ### [New-AzureRmOperationalInsightsAzureActivityLogDataSource](New-AzureRmOperationalInsightsAzureActivityLogDataSource.md)
 Collect Azure Activity log from given subscription.

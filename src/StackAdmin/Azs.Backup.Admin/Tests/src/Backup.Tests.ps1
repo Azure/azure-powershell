@@ -35,66 +35,66 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
 
+$Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Backup.Admin {
 
-	Describe "Backup" -Tags @('Backup', 'Azs.Backup.Admin') {
+    Describe "Backup" -Tags @('Backup', 'Azs.Backup.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateBackup {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Backup
-				)
+            function ValidateBackup {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Backup
+                )
 
-				$Backup             | Should Not Be $null
+                $Backup             | Should Not Be $null
 
-				# Resource
-				$Backup.Id          | Should Not Be $null
-				$Backup.Name        | Should Not Be $null
-				$Backup.Type        | Should Not Be $null
+                # Resource
+                $Backup.Id          | Should Not Be $null
+                $Backup.Name        | Should Not Be $null
+                $Backup.Type        | Should Not Be $null
 
-				# Subscriber Usage Aggregate
+                # Subscriber Usage Aggregate
                 $Backup.RoleStatus          | Should Not Be $null
                 $Backup.CreatedDateTime     | Should Not Be $null
                 $Backup.BackupId            | Should Not Be $null
                 $Backup.Status              | Should Not Be $null
                 $Backup.TimeTakenToCreate   | Should Not Be $null
-			}
-		}
+            }
+        }
 
-		It "TestListBackups" {
-			$global:TestName = 'TestListBackups'
+        It "TestListBackups" -Skip:$('TestListBackups' -in $global:SkippedTests) {
+            $global:TestName = 'TestListBackups'
 
-			$backups = Get-AzsBackup -Location $global:Location
-			$backups  | Should Not Be $null
-			foreach($backup in $backups) {
-			    $result = Get-AzsBackup -Location $global:Location -Name (Select-Name $backup.Name)
-				ValidateBackup -Backup $result
-			}
-		}
+            $backups = Get-AzsBackup -Location $global:Location
+            $backups  | Should Not Be $null
+            foreach ($backup in $backups) {
+                $result = Get-AzsBackup -Location $global:Location -Name (Select-Name $backup.Name)
+                ValidateBackup -Backup $result
+            }
+        }
 
-		It "TestGetBackup" {
-			$global:TestName = 'TestGetBackup'
+        It "TestGetBackup" -Skip:$('TestGetBackup' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetBackup'
 
-			$backups = Get-AzsBackup -Location $global:Location
-			$backups  | Should Not Be $null
-			foreach($backup in $backups) {
-			    $result = Get-AzsBackup -Location $global:Location -Name (Select-Name $backup.Name)
-				ValidateBackup -Backup $result
-			}
-		}
-	}
+            $backups = Get-AzsBackup -Location $global:Location
+            $backups  | Should Not Be $null
+            foreach ($backup in $backups) {
+                $result = Get-AzsBackup -Location $global:Location -Name (Select-Name $backup.Name)
+                ValidateBackup -Backup $result
+            }
+        }
+    }
 }

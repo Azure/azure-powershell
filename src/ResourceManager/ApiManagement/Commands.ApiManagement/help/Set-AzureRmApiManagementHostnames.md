@@ -57,7 +57,7 @@ You need to import corresponding certificates and then apply the custom hostname
 Specifies the **PsApiManagement** instance that this cmdlet gets the *PortalHostnameConfiguration* and *ProxyHostnameConfiguration* parameters from.
 
 ```yaml
-Type: PsApiManagement
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
 Parameter Sets: SetFromPsApiManagementInstance
 Aliases:
 
@@ -70,9 +70,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Specifies the name of the API Management instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetSpecificService
 Aliases:
 
@@ -103,7 +103,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +119,7 @@ Specifies the custom portal hostname configuration.
 Passing $null to the cmdlet sets the default hostname.
 
 ```yaml
-Type: PsApiManagementHostnameConfiguration
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration
 Parameter Sets: SetSpecificService
 Aliases:
 
@@ -135,7 +135,7 @@ Specifies the custom proxy hostname configuration.
 Passing $null sets the default hostname.
 
 ```yaml
-Type: PsApiManagementHostnameConfiguration
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration
 Parameter Sets: SetSpecificService
 Aliases:
 
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group under which the API Management instance exists.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetSpecificService
 Aliases:
 
@@ -166,8 +166,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PsApiManagement
-Parameter 'ApiManagement' accepts value of type 'PsApiManagement' from the pipeline
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
+Parameters: ApiManagement (ByValue)
+
+### System.String
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration
 
 ## OUTPUTS
 

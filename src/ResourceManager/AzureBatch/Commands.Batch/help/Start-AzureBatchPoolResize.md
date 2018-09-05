@@ -54,7 +54,7 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 Specifies a deallocation option for the resizing operation that this cmdlet starts.
 
 ```yaml
-Type: ComputeNodeDeallocationOption
+Type: System.Nullable`1[Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Requeue, Terminate, TaskCompletion, RetainedData
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 Specifies the ID of the pool that this cmdlet resizes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ Specifies a time-out period for the resizing operation.
 If the pool does not reach the target size by this time, the resize operation stops.
 
 ```yaml
-Type: TimeSpan
+Type: System.Nullable`1[System.TimeSpan]
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 The number of target dedicated compute nodes.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases: TargetDedicated
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 The number of target low-priority compute nodes.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -162,13 +162,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.String
 
-### String
-Parameter 'Id' accepts value of type 'String' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

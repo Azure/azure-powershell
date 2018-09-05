@@ -44,7 +44,7 @@ This command gets a virtual network and uses the pipeline operator to pass it to
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 Specifies the IP address to test.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group for the virtual network.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TestByResourceId
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 Specifies a **PSVirtualNetwork** object.
 
 ```yaml
-Type: PSVirtualNetwork
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 Parameter Sets: TestByResource
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual network.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TestByResourceId
 Aliases:
 
@@ -120,8 +120,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualNetwork
-Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+Parameters: VirtualNetwork (ByValue)
 
 ## OUTPUTS
 

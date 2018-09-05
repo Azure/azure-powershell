@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// <summary>
     /// this commandlet will let you Create Eventhub namespace.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, EventHubNamespaceVerb, SupportsShouldProcess = true, DefaultParameterSetName = NamespaceParameterSet), OutputType(typeof(PSNamespaceAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubNamespace", SupportsShouldProcess = true, DefaultParameterSetName = NamespaceParameterSet), OutputType(typeof(PSNamespaceAttributes))]
     public class NewAzureEventHubNamespace : AzureEventHubsCmdletBase
     {
         /// <summary>
@@ -97,10 +97,17 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamespace, Name, ResourceGroupName)))
             {
-                if(EnableAutoInflate.IsPresent)
-                WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, true, MaximumThroughputUnits));
-                else
-                WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, false, MaximumThroughputUnits));
+                try
+                {
+                    if (EnableAutoInflate.IsPresent)
+                        WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, true, MaximumThroughputUnits));
+                    else
+                        WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, false, MaximumThroughputUnits));
+                }
+                catch (Management.EventHub.Models.ErrorResponseException ex)
+                {
+                    WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }

@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmVmssOsProfile", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssOsProfile", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class SetAzureRmVmssOsProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -351,4 +351,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

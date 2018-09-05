@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CompleteMigrationConfiguration" xml:space="preserve">
+    <value>Complete the Standard to Premium migration</value>
+  </data>
   <data name="CreateNamesapce" xml:space="preserve">
     <value>Create New Namespace:{0} for ResourceGroup:{1}</value>
   </data>
@@ -165,6 +168,9 @@
   <data name="RegenerateKeyTopic" xml:space="preserve">
     <value>Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of Topic:{1}</value>
   </data>
+  <data name="RemoveMigrationConfiguration" xml:space="preserve">
+    <value>Delete the Migration Configuration</value>
+  </data>
   <data name="RemoveNamespace" xml:space="preserve">
     <value>Delete Namespace:{0} ofthe ResourceGroup:{1}</value>
   </data>
@@ -197,6 +203,12 @@
   </data>
   <data name="RemovingTopicAuthorizationRule" xml:space="preserve">
     <value>Are you sure you want to remove AtuhorizationRule:{0} from Topic: {1} of Namespace: {2}</value>
+  </data>
+  <data name="RevertMigrationConfiguration" xml:space="preserve">
+    <value>Get the Migration configuration </value>
+  </data>
+  <data name="StartMigrationConfiguration" xml:space="preserve">
+    <value>Start Standard to Premium Migration</value>
   </data>
   <data name="UpdateNamespace" xml:space="preserve">
     <value>Update Namespace:{0} of the ResorceGroup:{1}</value>

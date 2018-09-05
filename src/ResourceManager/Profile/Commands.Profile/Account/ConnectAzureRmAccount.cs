@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet(VerbsCommunications.Connect, "AzureRmAccount", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
-    [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-AzureRmAccount")]
+    [Cmdlet("Connect", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Account", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
+    [Alias("Login-AzAccount", "Login-AzureRmAccount", "Add-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Account")]
     [OutputType(typeof(PSAzureProfile))]
     public class ConnectAzureRmAccountCommand : AzureContextModificationCmdlet, IModuleAssemblyInitializer
     {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true)]
         [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
-                    Mandatory = true)]
+                    Mandatory = false)]
         public SwitchParameter ServicePrincipal { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSet,

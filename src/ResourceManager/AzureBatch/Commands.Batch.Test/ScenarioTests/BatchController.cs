@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             _helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
             var sf = new StackTrace().GetFrame(1);
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             var mockName = sf.GetMethod().Name;
 
             RunPsTestWorkflow(
+                logger,
                 () => scripts,
                 // no custom initializer
                 null,
@@ -63,12 +65,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         public void RunPsTestWorkflow(
+            XunitTracingInterceptor logger,
             Func<string[]> scriptBuilder,
             Action initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
+            _helper.TracingInterceptor = logger;
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
@@ -92,7 +96,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "Microsoft.Azure.Commands.Batch.Test.dll",
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
                     _helper.GetRMModulePath("AzureRM.Batch.psd1"),
                     "AzureRM.Resources.ps1");
 

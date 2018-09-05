@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmWebAppSlotConfigName")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlotConfigName"), OutputType(typeof(SlotConfigNamesResource))]
     public class SetAzureWebAppSlotConfigName : WebAppBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "Names of app settings that need to marked as slot settings", ValueFromPipelineByPropertyName = true)]

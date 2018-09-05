@@ -142,7 +142,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 Specifies the name of the network interface IP configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +230,7 @@ Accept wildcard characters: False
 
 ### -Primary
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -245,7 +245,7 @@ Accept wildcard characters: False
 Specifies the static IP address of the network interface IP configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -258,14 +258,12 @@ Accept wildcard characters: False
 
 ### -PrivateIpAddressVersion
 Specifies the IP address version of a network interface IP configuration.
-
 The acceptable values for this parameter are:
-
 - IPv4
 - IPv6
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: IPv4, IPv6
@@ -282,7 +280,7 @@ Specifies a **PublicIPAddress** object.
 This cmdlet creates a reference to a public IP Address to associate with this network interface IP configuration.
 
 ```yaml
-Type: PSPublicIpAddress
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 Parameter Sets: SetByResource
 Aliases:
 
@@ -297,7 +295,7 @@ Accept wildcard characters: False
 This cmdlet creates a reference to a public IP Address to associate with this network interface IP configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -313,7 +311,7 @@ Specifies a **Subnet** object.
 This cmdlet creates a reference to a subnet in which this network interface IP configuration is created.
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: SetByResource
 Aliases:
 
@@ -328,7 +326,7 @@ Accept wildcard characters: False
 Specifies a reference to a subnet in which this network interface IP configuration is created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -344,8 +342,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup, Microsoft.Azure.Commands.Network, Version=6.4.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

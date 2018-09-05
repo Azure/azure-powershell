@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -20,44 +21,47 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
     public class AzureRmDiagnosticSettingTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public AzureRmDiagnosticSettingTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmDiagnosticSetting()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureRmDiagnosticSetting");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureRmDiagnosticSetting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSetting()
         {
-            TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSetting");
         }
 
         [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSettingWithRetention()
         {
-            TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSettingWithRetention");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSettingWithRetention");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSettingCategoriesOnly()
         {
-            TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting-CategoriesOnly");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSetting-CategoriesOnly");
         }
 
         [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSettingTimeGrainsOnly()
         {
-            TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting-TimegrainsOnly");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSetting-TimegrainsOnly");
         }
     }
 }

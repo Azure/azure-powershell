@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     public enum PsApiManagementLoggerType
     {
         AzureEventHub = 1,
-        ApplicationInsights = 2
+        ApplicationInsights = 2,
+        AzureMonitor = 3
     }
 }

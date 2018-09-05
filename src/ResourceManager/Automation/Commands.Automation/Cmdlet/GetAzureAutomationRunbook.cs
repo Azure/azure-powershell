@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation runbooks for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Runbook))]
     public class GetAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
