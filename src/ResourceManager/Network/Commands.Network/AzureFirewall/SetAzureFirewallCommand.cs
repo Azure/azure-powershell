@@ -41,13 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
-            
-            if (this.AzureFirewall.IpConfigurations.Count > 0 && this.AzureFirewall.IpConfigurations[0].PublicIpAddress != null)
-            {
-                this.AzureFirewall.IpConfigurations[0].InternalPublicIpAddress = this.AzureFirewall.IpConfigurations[0].PublicIpAddress;
-                this.AzureFirewall.IpConfigurations[0].PublicIpAddress = null;
-            }
-            
+
             // Map to the sdk object
             var secureGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(this.AzureFirewall);
             secureGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.AzureFirewall.Tag, validate: true);

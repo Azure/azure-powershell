@@ -26,9 +26,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId Subnet { get; set; }
 
         [JsonProperty(Order = 4)]
-        public PSResourceId InternalPublicIpAddress { get; set; }
-
-        [JsonProperty(Order = 4)]
         public PSResourceId PublicIpAddress { get; set; }
 
         [JsonIgnore]
