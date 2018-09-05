@@ -51,11 +51,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPacakageFolder)\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=16.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPacakageFolder)\Microsoft.Azure.Management.Network.16.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Management.Network.16.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />

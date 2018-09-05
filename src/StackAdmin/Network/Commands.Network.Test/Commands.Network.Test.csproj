@@ -44,24 +44,24 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Network, Version=16.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.16.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Management.Network.16.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.13.1-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Insights.0.13.1-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.6.1.0-preview\lib\net45\Microsoft.Azure.Management.Storage.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Management.Storage.6.1.0-preview\lib\net45\Microsoft.Azure.Management.Storage.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Management.Compute.17.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Redis">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Redis.3.1.1-preview\lib\net45\Microsoft.Azure.Management.Redis.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Management.Redis.3.1.1-preview\lib\net45\Microsoft.Azure.Management.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
