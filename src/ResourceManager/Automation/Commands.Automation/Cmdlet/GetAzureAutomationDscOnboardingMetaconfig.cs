@@ -60,6 +60,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            OutputFolder = ResolveUserPath(OutputFolder);
             this.ConfirmAction(
                 this.Force.IsPresent,
                 string.Format(CultureInfo.CurrentCulture, Resources.DscMetaMofHasKeysWarning),
