@@ -80,7 +80,7 @@ function Add-AzsPlanToOffer {
         if ($PSCmdlet.ShouldProcess("$PlanName to $OfferName" , "Connect plan to offer")) {
 
             $_offer = Get-AzsManagedOffer -Name $OfferName -ResourceGroupName $ResourceGroupName
-            $_planId = $_offer.BasePlanIds | Where-Object { $_ -like "*$PlanName" }
+            $_planId = $_offer.BasePlanIds | Where-Object { $_ -like "*/$PlanName" }
             if ($null -ne (Get-AzsPlan -ResourceId $_planId -ErrorAction SilentlyContinue)) {
                 Write-Error "A plan with the name $Name under the offer $Offername in the resource group $resourceGroupName already exists"
                 return
