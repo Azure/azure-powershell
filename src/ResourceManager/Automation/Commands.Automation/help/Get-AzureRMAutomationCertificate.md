@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: D690C903-A481-45F2-9D42-1CE2F4184A98
@@ -52,9 +52,9 @@ This command gets metadata for the certificate named ContosoCertificate.
 Specifies the name of the Automation account for which this cmdlet retrieves a certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -82,9 +82,9 @@ Accept wildcard characters: False
 Specifies the name of a certificate to retrieve.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByCertificateName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -97,9 +97,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group for which this cmdlet gets an Automation certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -113,8 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

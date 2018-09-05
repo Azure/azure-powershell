@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmDiskImageReference", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskImageReference", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDisk))]
     public partial class SetAzureRmDiskImageReferenceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -96,4 +96,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

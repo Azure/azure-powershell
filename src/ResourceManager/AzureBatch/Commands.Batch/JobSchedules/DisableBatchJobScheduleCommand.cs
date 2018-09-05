@@ -17,7 +17,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Disable, Constants.AzureBatchJobSchedule)]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchJobSchedule"), OutputType(typeof(void))]
     public class DisableBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,

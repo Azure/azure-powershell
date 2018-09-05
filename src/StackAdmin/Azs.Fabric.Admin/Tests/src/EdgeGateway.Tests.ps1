@@ -36,102 +36,102 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Fabric.Admin {
 
-	Describe "EdgeGateways" -Tags @('EdgeGateway', 'Azs.Fabric.Admin') {
+    Describe "EdgeGateways" -Tags @('EdgeGateway', 'Azs.Fabric.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateEdgeGateway {
-				param(
-					[Parameter(Mandatory=$true)]
-					$EdgeGateway
-				)
+            function ValidateEdgeGateway {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $EdgeGateway
+                )
 
-				$EdgeGateway          | Should Not Be $null
+                $EdgeGateway          | Should Not Be $null
 
-				# Resource
-				$EdgeGateway.Id       | Should Not Be $null
-				$EdgeGateway.Location | Should Not Be $null
-				$EdgeGateway.Name     | Should Not Be $null
-				$EdgeGateway.Type     | Should Not Be $null
+                # Resource
+                $EdgeGateway.Id       | Should Not Be $null
+                $EdgeGateway.Location | Should Not Be $null
+                $EdgeGateway.Name     | Should Not Be $null
+                $EdgeGateway.Type     | Should Not Be $null
 
-				# Edge Gateway
-				$EdgeGateway.NumberOfConnections  | Should Not Be $null
-				$EdgeGateway.State                | Should Not Be $null
-				$EdgeGateway.TotalCapacity        | Should Not Be $null
+                # Edge Gateway
+                $EdgeGateway.NumberOfConnections  | Should Not Be $null
+                $EdgeGateway.State                | Should Not Be $null
+                $EdgeGateway.TotalCapacity        | Should Not Be $null
 
-			}
+            }
 
-			function AssertEdgeGatewaysAreSame {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Expected,
+            function AssertEdgeGatewaysAreSame {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Expected,
 
-					[Parameter(Mandatory=$true)]
-					$Found
-				)
+                    [Parameter(Mandatory = $true)]
+                    $Found
+                )
 
-				if($Expected -eq $null) {
-					$Found | Should Be $null
-				} else {
-					$Found                  | Should Not Be $null
+                if ($Expected -eq $null) {
+                    $Found | Should Be $null
+                } else {
+                    $Found                  | Should Not Be $null
 
-					# Resource
-					$Found.Id               | Should Be $Expected.Id
-					$Found.Location         | Should Be $Expected.Location
-					$Found.Name             | Should Be $Expected.Name
-					$Found.Type             | Should Be $Expected.Type
+                    # Resource
+                    $Found.Id               | Should Be $Expected.Id
+                    $Found.Location         | Should Be $Expected.Location
+                    $Found.Name             | Should Be $Expected.Name
+                    $Found.Type             | Should Be $Expected.Type
 
-					# Edgegateway
-					$Found.NumberOfConnections  | Should Be $Expected.NumberOfConnections
-					$Found.State                | Should Be $Expected.State
-					$Found.TotalCapacity        | Should Be $Expected.TotalCapacity
-				}
-			}
-		}
+                    # Edgegateway
+                    $Found.NumberOfConnections  | Should Be $Expected.NumberOfConnections
+                    $Found.State                | Should Be $Expected.State
+                    $Found.TotalCapacity        | Should Be $Expected.TotalCapacity
+                }
+            }
+        }
 
-		It "TestListEdgeGateways" {
-			$global:TestName = 'TestListEdgeGateways'
+        It "TestListEdgeGateways" -Skip:$('TestListEdgeGateways' -in $global:SkippedTests) {
+            $global:TestName = 'TestListEdgeGateways'
 
-			$gateways = Get-AzsEdgeGateway -ResourceGroupName $ResourceGroup -Location $Location
-			$gateways | Should Not Be $null
-			foreach($gateway in $gateways) {
-				ValidateEdgeGateway -EdgeGateway $gateway
-			}
-		}
+            $gateways = Get-AzsEdgeGateway -ResourceGroupName $global:ResourceGroupName -Location $Location
+            $gateways | Should Not Be $null
+            foreach ($gateway in $gateways) {
+                ValidateEdgeGateway -EdgeGateway $gateway
+            }
+        }
 
-		It "TestGetEdgeGateway" {
-			$global:TestName = 'TestGetEdgeGateway'
+        It "TestGetEdgeGateway" -Skip:$('TestGetEdgeGateway' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetEdgeGateway'
 
-			$gateways = Get-AzsEdgeGateway -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($gateway in $gateways) {
-				$retrieved = Get-AzsEdgeGateway -ResourceGroupName $ResourceGroup -Location $Location -Name $gateway.Name
-				AssertEdgeGatewaysAreSame -Expected $gateway -Found $retrieved
-				break
-			}
-		}
+            $gateways = Get-AzsEdgeGateway -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($gateway in $gateways) {
+                $retrieved = Get-AzsEdgeGateway -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $gateway.Name
+                AssertEdgeGatewaysAreSame -Expected $gateway -Found $retrieved
+                break
+            }
+        }
 
-		It "TestGetAllEdgeGateways" {
-			$global:TestName = 'TestGetAllEdgeGateways'
+        It "TestGetAllEdgeGateways" -Skip:$('TestGetAllEdgeGateways' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllEdgeGateways'
 
-			$gateways = Get-AzsEdgeGateway -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($gateway in $gateways) {
-				$retrieved = Get-AzsEdgeGateway -ResourceGroupName $ResourceGroup -Location $Location -Name $gateway.Name
-				AssertEdgeGatewaysAreSame -Expected $gateway -Found $retrieved
-			}
-		}
-	}
+            $gateways = Get-AzsEdgeGateway -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($gateway in $gateways) {
+                $retrieved = Get-AzsEdgeGateway -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $gateway.Name
+                AssertEdgeGatewaysAreSame -Expected $gateway -Found $retrieved
+            }
+        }
+    }
 }

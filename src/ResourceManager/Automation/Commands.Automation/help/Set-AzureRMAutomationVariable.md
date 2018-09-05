@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: F344D8D1-5593-4C09-A1CA-37579D2A3A61
@@ -47,9 +47,9 @@ This command sets a new value for the variable named StringVariable22 in the Azu
 Specifies the name of the Automation account in which the variable is stored.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,9 +77,9 @@ Accept wildcard characters: False
 Specifies a description for the variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateVariableDescription
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -92,9 +92,9 @@ Accept wildcard characters: False
 Specifies whether cmdlet encrypts the value of the variable for storage.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: UpdateVariableValue
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -107,9 +107,9 @@ Accept wildcard characters: False
 Specifies the name of the variable that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -122,9 +122,9 @@ Accept wildcard characters: False
 Specifies the resource group for which this cmdlet modifies a variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -137,9 +137,9 @@ Accept wildcard characters: False
 Specifies a value for the variable.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: UpdateVariableValue
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -153,8 +153,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Boolean
+
+### System.Object
 
 ## OUTPUTS
 

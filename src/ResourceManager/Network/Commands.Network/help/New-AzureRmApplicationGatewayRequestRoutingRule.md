@@ -49,7 +49,7 @@ This command creates a basic request routing rule named Rule01 and stores the re
 Specifies the back-end address pool, as an object, for the request routing rule to create.
 
 ```yaml
-Type: PSApplicationGatewayBackendAddressPool
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool
 Parameter Sets: SetByResource
 Aliases:
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 Specifies the back-end address pool ID of the request routing rule to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 Specifies the back-end HTTP settings, as an object, for the request routing rule to create.
 
 ```yaml
-Type: PSApplicationGatewayBackendHttpSettings
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings
 Parameter Sets: SetByResource
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Specifies the back-end HTTP settings ID of the request routing rule to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Specifies the back-end HTTP listener for the request routing rule to create.
 
 ```yaml
-Type: PSApplicationGatewayHttpListener
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener
 Parameter Sets: SetByResource
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 Specifies the backend HTTP listener ID for the request routing rule to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 Specifies the name of the request routing rule that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 Application gateway RedirectConfiguration
 
 ```yaml
-Type: PSApplicationGatewayRedirectConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration
 Parameter Sets: SetByResource
 Aliases:
 
@@ -184,7 +184,7 @@ Accept wildcard characters: False
 ID of the application gateway RedirectConfiguration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 Specifies type of the request routing rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Basic, PathBasedRouting
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 
 ### -UrlPathMap
 ```yaml
-Type: PSApplicationGatewayUrlPathMap
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap
 Parameter Sets: SetByResource
 Aliases:
 
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 
 ### -UrlPathMapId
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -242,7 +242,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 

@@ -18,8 +18,8 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationSelectedDB", DefaultParameterSetName = SqlServerSqlDbParameterSet), OutputType(typeof(MigrateSqlServerSqlDbDatabaseInput))]
-    [Alias("New-AzureRmDmsSelectedDB")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationSelectedDB", DefaultParameterSetName = SqlServerSqlDbParameterSet), OutputType(typeof(MigrateSqlServerSqlDbDatabaseInput))]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsSelectedDB")]
     public class NewDataMigrationSelectedDB : DataMigrationCmdlet
     {
         private const string SqlServerSqlDbParameterSet = "MigrateSqlServerSqlDb";

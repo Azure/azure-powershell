@@ -77,7 +77,7 @@ function Remove-AzsPlanFromOffer {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSCmdlet.ShouldProcess("$PlanName to $OfferName" , "Disconnect plan from offer")) {
             if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Disconnect the plan from the offer?", "Performing operation unlink plan from offer for $PlanName to $OfferName."))) {

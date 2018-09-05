@@ -19,6 +19,19 @@
 -->
 ## Current Release
 
+## Version 0.1.8
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 0.1.7
+* Fixed issue with default resource groups not being set.
+
+## Version 0.1.6
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 0.1.5
+* Updated help files to include full parameter types and correct input/output types.
+
 ## Version 0.1.4
 * Set minimum dependency of module to PowerShell 5.0
 
@@ -34,10 +47,10 @@
 
 ## Version 0.1.0
 * Add commands to get/create/remove applicaiton insights resource
-    - Get-AzureRmApplicationInsights 
+    - Get-AzureRmApplicationInsights
     - New-AzureRmApplicationInsights
     - Remove-AzureRmApplicationInsights
-* Add commands to get/update pricing/daily cap of applicaiton insights resource        
+* Add commands to get/update pricing/daily cap of applicaiton insights resource
     - Get-AzureRmApplicationInsights -IncludeDailyCap
     - Set-AzureRmApplicationInsightsPricingPlan
     - Set-AzureRmApplicationInsightsDailyCap

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -20,30 +21,33 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
     public class ActivityLogsTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public ActivityLogsTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureLogAllParameters()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureLogAllParameters");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureLogAllParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureSubscriptionIdLogMaxEvents()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureSubscriptionIdLogMaxEvents");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureSubscriptionIdLogMaxEvents");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureSubscriptionIdLogPaged()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureSubscriptionIdLogPaged");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureSubscriptionIdLogPaged");
         }
     }
 }

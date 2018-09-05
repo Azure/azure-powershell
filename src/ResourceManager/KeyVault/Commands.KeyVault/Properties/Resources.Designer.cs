@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -1113,6 +1113,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string VaultAlreadyExists {
             get {
                 return ResourceManager.GetString("VaultAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vault &apos;{0}&apos; does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modifiy the Access Policies of this vault..
+        /// </summary>
+        internal static string VaultDoesNotExist {
+            get {
+                return ResourceManager.GetString("VaultDoesNotExist", resourceCulture);
             }
         }
         

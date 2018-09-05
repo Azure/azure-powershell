@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new Connection for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutomationConnection", DefaultParameterSetName = AutomationCmdletParameterSets.ByConnectionName)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationConnection", DefaultParameterSetName = AutomationCmdletParameterSets.ByConnectionName)]
     [OutputType(typeof(Connection))]
     public class NewAzureAutomationConnection : AzureAutomationBaseCmdlet
     {

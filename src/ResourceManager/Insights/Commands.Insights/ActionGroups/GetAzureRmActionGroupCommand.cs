@@ -17,8 +17,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Insights.ActionGroups
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// <summary>
     /// Gets an Azure Action Group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmActionGroup", DefaultParameterSetName = BySubscriptionOrResourceGroup)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionGroup", DefaultParameterSetName = BySubscriptionOrResourceGroup)]
     [OutputType(typeof(PSActionGroupResource))]
     public class GetAzureRmActionGroupCommand : ManagementCmdletBase
     {

@@ -23,7 +23,6 @@ Get-AzureRmRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-B
 ## DESCRIPTION
 The **Get-AzureRmRecoveryServicesBackupContainer** cmdlet gets a backup container.
 A Backup container encapsulates data sources that are modelled as backup items.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -48,17 +47,15 @@ The *BackupManagementType* parameter is only required for Windows containers.
 ### -BackupManagementType
 Specifies the backup management type.
 The acceptable values for this parameter are:
-
 - AzureVM
 - MARS
 - AzureSQL
-
 This parameter is used to differentiate Windows machines that are backed up using MARS agent or other backup engines.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureVM, MARS, AzureSQL
 
 Required: False
@@ -71,15 +68,14 @@ Accept wildcard characters: False
 ### -ContainerType
 Specifies the backup container type.
 The acceptable values for this parameter are:
-
 - AzureVM 
 - Windows
 - AzureSQL
 
 ```yaml
-Type: ContainerType
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureVM, Windows, AzureSQL
 
 Required: True
@@ -93,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -108,9 +104,9 @@ Accept wildcard characters: False
 Specifies the friendly name of the container to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -123,9 +119,9 @@ Accept wildcard characters: False
 Specifies the name of the container to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -139,9 +135,9 @@ Specifies the name of the resource group.
 This parameter is for Azure virtual machines only.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -153,13 +149,12 @@ Accept wildcard characters: False
 ### -Status
 Specifies the container registration status.
 The acceptable values for this parameter are:
-
 - Registered
 
 ```yaml
-Type: ContainerRegistrationStatus
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerRegistrationStatus
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Registered
 
 Required: False
@@ -173,9 +168,9 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -189,8 +184,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

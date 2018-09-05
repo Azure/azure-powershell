@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
 
     /// <summary>
@@ -23,6 +24,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     /// </summary>
     public class IntegrationAccountGeneratedIcnTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
+        public IntegrationAccountGeneratedIcnTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
+        }
+
         /// <summary>
         /// Test Get-AzureRmIntegrationAccountGeneratedIcn command to get the integration account generated interchange control number.
         /// </summary>
@@ -30,7 +39,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetIntegrationAccountGeneratedIcnWithoutAgreementType()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-GetIntegrationAccountGeneratedControlNumber-NoAgreementType");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountGeneratedControlNumber-NoAgreementType");
         }
 
         /// <summary>
@@ -40,7 +49,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetIntegrationAccountGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-GetIntegrationAccountGeneratedControlNumber");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountGeneratedControlNumber");
         }
 
         /// <summary>
@@ -50,7 +59,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateIntegrationAccountGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-UpdateIntegrationAccountGenCN");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountGenCN");
         }
 
         /// <summary>
@@ -60,7 +69,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListIntegrationAccountGeneratedIcn()
         {
-            WorkflowController.NewInstance.RunPowerShellTest("Test-ListIntegrationAccountGenCN");
+            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-ListIntegrationAccountGenCN");
         }
     }
 }

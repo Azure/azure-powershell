@@ -27,11 +27,9 @@ Remove-AzureRmRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [-Pa
 
 ## DESCRIPTION
 The **Remove-AzureRmRecoveryServicesBackupProtectionPolicy** cmdlet deletes backup policies for a vault.
-
 Before you can delete a Backup protection policy, the policy must not have any associated Backup items.
 Before you delete the policy, make sure that each associated item is associated with some other policy.
 To associate another policy with a Backup item, use the Enable-AzureRmRecoveryServicesBackupProtection cmdlet.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -43,7 +41,6 @@ PS C:\> Remove-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $Pol
 ```
 
 The first command gets the Backup protection policy named NewPolicy, and then stores it in the $Pol variable.
-
 The second command removes the policy object in $Pol.
 
 ## PARAMETERS
@@ -52,7 +49,7 @@ The second command removes the policy object in $Pol.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,9 +64,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -82,9 +79,9 @@ Accept wildcard characters: False
 Specifies the name of the Backup protection policy to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PolicyName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -97,9 +94,9 @@ Accept wildcard characters: False
 Return the policy to be deleted.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -113,9 +110,9 @@ Specifies the Backup protection policy to remove.
 To obtain an **BackupPolicy** object, use the Get-AzureRmRecoveryServicesBackupProtectionPolicy cmdlet.
 
 ```yaml
-Type: PolicyBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
 Parameter Sets: PolicyObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -128,9 +125,9 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -143,7 +140,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -159,7 +156,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -175,10 +172,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PolicyBase
-Parameter 'Policy' accepts value of type 'PolicyBase' from the pipeline
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
+Parameters: Policy (ByValue)
+
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
 
 ## NOTES
 

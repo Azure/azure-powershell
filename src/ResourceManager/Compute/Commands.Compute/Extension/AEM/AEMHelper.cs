@@ -16,8 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
@@ -46,9 +46,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
         private Dictionary<string, string> _StorageKeyCache = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
         private StorageManagementClient _StorageClient;
         private IAzureSubscription _Subscription;
+        private string _StorageEndpoint;
 
         public AEMHelper(Action<ErrorRecord> errorAction, Action<string> verboseAction, Action<string> warningAction,
-            PSHostUserInterface ui, StorageManagementClient storageClient, IAzureSubscription subscription)
+            PSHostUserInterface ui, StorageManagementClient storageClient, IAzureSubscription subscription, String storageEndpoint)
         {
             this._ErrorAction = errorAction;
             this._VerboseAction = verboseAction;
@@ -56,6 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             this._UI = ui;
             this._StorageClient = storageClient;
             this._Subscription = subscription;
+            this._StorageEndpoint = storageEndpoint;
         }
 
         internal string GetStorageAccountFromUri(string uri)
@@ -140,7 +142,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(resGroupName,
                         this._StorageClient, this._Subscription);
                     StorageCredentials sc = storageCredentialsFactory.Create(blobUri);
-                    CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(sc, true);
+                    CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(sc,  this._StorageEndpoint, true);
                     CloudBlobClient blobClient = cloudStorageAccount.CreateCloudBlobClient();
                     CloudBlobContainer blobContainer = blobClient.GetContainerReference(blobUri.BlobContainerName);
                     var cloudBlob = blobContainer.GetPageBlobReference(blobUri.BlobName);
@@ -190,6 +192,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                 case "Standard_DS2_v2":
                 case "Standard_D4s_v3":
                 case "Standard_E4s_v3":
+                case "Standard_E4-2s_v3":
                     result.HasSLA = true;
                     result.IOPS = 6400;
                     result.TP = 96;
@@ -202,6 +205,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                 case "Standard_DS3_v2":
                 case "Standard_D8s_v3":
                 case "Standard_E8s_v3":
+                case "Standard_E8-2s_v3":
+                case "Standard_E8-4s_v3":
                     result.HasSLA = true;
                     result.IOPS = 12800;
                     result.TP = 192;
@@ -214,6 +219,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                 case "Standard_DS4_v2":
                 case "Standard_D16s_v3":
                 case "Standard_E16s_v3":
+                case "Standard_E16-4s_v3":
+                case "Standard_E16-8s_v3":
                     result.HasSLA = true;
                     result.IOPS = 25600;
                     result.TP = 384;
@@ -261,6 +268,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     break;
                 case "Standard_DS14_v2":
                 case "Standard_E32s_v3":
+                case "Standard_E32-8s_v3":
+                case "Standard_E32-16s_v3":
                     result.HasSLA = true;
                     result.IOPS = 51200;
                     result.TP = 768;
@@ -295,19 +304,51 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
                     result.IOPS = 80000;
                     result.TP = 2000;
                     break;
+                case "Standard_M8-2ms":
+                case "Standard_M8-4ms":
+                case "Standard_M8ms":
+                    result.HasSLA = true;
+                    result.IOPS = 5000;
+                    result.TP = 125;
+                    break;
+                case "Standard_M16-4ms":
+                case "Standard_M16-8ms":
+                case "Standard_M16ms":
+                    result.HasSLA = true;
+                    result.IOPS = 10000;
+                    result.TP = 250;
+                    break;
+                case "Standard_M32-8ms":
+                case "Standard_M32-16ms":
+                case "Standard_M32ms":
+                case "Standard_M32ls":
+                case "Standard_M32ts":
+                    result.HasSLA = true;
+                    result.IOPS = 20000;
+                    result.TP = 500;
+                    break;
                 case "Standard_M64ms":
                 case "Standard_M64s":
+                case "Standard_M64ls":
+                case "Standard_M64-16ms":
+                case "Standard_M64-32ms":
                     result.HasSLA = true;
                     result.IOPS = 40000;
                     result.TP = 1000;
                     break;
                 case "Standard_M128s":
+                case "Standard_M128ms":
+                case "Standard_M128-32ms":
+                case "Standard_M128-64ms":
                     result.HasSLA = true;
                     result.IOPS = 80000;
                     result.TP = 2000;
                     break;
                 case "Standard_E64s_v3":
                 case "Standard_D64s_v3":
+                case "Standard_E64-16s_v3":
+                case "Standard_E64-32s_v3":
+                case "Standard_E64is_v3":
                     result.HasSLA = true;
                     result.IOPS = 80000;
                     result.TP = 1200;
@@ -729,7 +770,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
         {
             var key = this.GetAzureStorageKeyFromCache(storageAccountName);
             var credentials = new StorageCredentials(storageAccountName, key);
-            var cloudStorageAccount = new CloudStorageAccount(credentials, true);
+            var cloudStorageAccount = new CloudStorageAccount(credentials, this._StorageEndpoint, true);
             return cloudStorageAccount.CreateCloudBlobClient().GetServicePropertiesAsync().ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
