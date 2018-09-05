@@ -52,7 +52,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     Description          = 'Backup Admin Client'
 
     # Minimum version of the Windows PowerShell engine required by this module
-    # PowerShellVersion = ''
+    PowerShellVersion = '5.0'
 
     # Name of the Windows PowerShell host required by this module
     # PowerShellHostName = ''
@@ -70,7 +70,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules      = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.4'; },
+    RequiredModules      = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; },
         @{ModuleName = 'AzureRM.Resources'; ModuleVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
