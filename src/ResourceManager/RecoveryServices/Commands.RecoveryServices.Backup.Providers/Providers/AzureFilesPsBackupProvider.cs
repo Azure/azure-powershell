@@ -419,12 +419,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public RecoveryPointBase GetRecoveryPointDetails()
         {
-            throw new NotImplementedException();
+            return AzureWorkloadProviderHelper.GetRecoveryPointDetails(ProviderData);
         }
 
         public List<RecoveryPointBase> ListRecoveryPoints()
         {
-            throw new NotImplementedException();
+            return AzureWorkloadProviderHelper.ListRecoveryPoints(ProviderData);
         }
 
         public ProtectionPolicyResource CreatePolicy()

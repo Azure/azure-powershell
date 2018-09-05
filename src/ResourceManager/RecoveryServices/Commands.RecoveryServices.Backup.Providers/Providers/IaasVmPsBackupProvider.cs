@@ -297,38 +297,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>Recovery point detail as returned by the service</returns>
         public RecoveryPointBase GetRecoveryPointDetails()
         {
-            string vaultName = (string)ProviderData[VaultParams.VaultName];
-            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
-            AzureVmItem item = ProviderData[RecoveryPointParams.Item]
-                as AzureVmItem;
-
-            string recoveryPointId = ProviderData[RecoveryPointParams.RecoveryPointId].ToString();
-
-            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
-            string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
-            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
-
-            var rpResponse = ServiceClientAdapter.GetRecoveryPointDetails(
-                containerUri,
-                protectedItemName,
-                recoveryPointId,
-                vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
-
-            var rp = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item) as AzureVmRecoveryPoint;
-
-            if (rp.EncryptionEnabled && rp.KeyAndSecretDetails != null)
-            {
-                string keyFileDownloadLocation =
-                    (string)ProviderData[RecoveryPointParams.KeyFileDownloadLocation];
-                string keyFileContent = rp.KeyAndSecretDetails.KeyBackupData;
-                if (!string.IsNullOrEmpty(keyFileDownloadLocation))
-                {
-                    string absoluteFilePath = Path.Combine(keyFileDownloadLocation, "key.blob");
-                    File.WriteAllBytes(absoluteFilePath, Convert.FromBase64String(keyFileContent));
-                }
-            }
-            return rp;
+            return AzureWorkloadProviderHelper.GetRecoveryPointDetails(ProviderData);
         }
 
         /// <summary>
@@ -471,41 +440,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>List of recovery point PowerShell model objects</returns>
         public List<RecoveryPointBase> ListRecoveryPoints()
         {
-            string vaultName = (string)ProviderData[VaultParams.VaultName];
-            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
-            DateTime startDate = (DateTime)(ProviderData[RecoveryPointParams.StartDate]);
-            DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
-
-            AzureVmItem item = ProviderData[RecoveryPointParams.Item]
-                as AzureVmItem;
-
-            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
-            string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
-            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
-
-            TimeSpan duration = endDate - startDate;
-            if (duration.TotalDays > 30)
-            {
-                throw new Exception(Resources.RestoreDiskTimeRangeError);
-            }
-
-            //we need to fetch the list of RPs
-            var queryFilterString = QueryBuilder.Instance.GetQueryString(new BMSRPQueryObject()
-            {
-                StartDate = startDate,
-                EndDate = endDate
-            });
-
-            ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
-            queryFilter.Filter = queryFilterString;
-
-            List<RecoveryPointResource> rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
-                containerUri,
-                protectedItemName,
-                queryFilter,
-                vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
-            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
+            return AzureWorkloadProviderHelper.ListRecoveryPoints(ProviderData);
         }
 
         /// <summary>
