@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,89 +30,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected object CreateVirtualMachineScaleSetForceRecoveryServiceFabricPlatformUpdateDomainWalkDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
-
-            var pVMScaleSetName = new RuntimeDefinedParameter();
-            pVMScaleSetName.Name = "VMScaleSetName";
-            pVMScaleSetName.ParameterType = typeof(string);
-            pVMScaleSetName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
-
-            var pPlatformUpdateDomain = new RuntimeDefinedParameter();
-            pPlatformUpdateDomain.Name = "PlatformUpdateDomain";
-            pPlatformUpdateDomain.ParameterType = typeof(int);
-            pPlatformUpdateDomain.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pPlatformUpdateDomain.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("PlatformUpdateDomain", pPlatformUpdateDomain);
-
-            var pArgumentList = new RuntimeDefinedParameter();
-            pArgumentList.Name = "ArgumentList";
-            pArgumentList.ParameterType = typeof(object[]);
-            pArgumentList.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pArgumentList.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ArgumentList", pArgumentList);
-
-            return dynamicParameters;
-        }
-
-        protected void ExecuteVirtualMachineScaleSetForceRecoveryServiceFabricPlatformUpdateDomainWalkMethod(object[] invokeMethodInputParameters)
-        {
-            string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            int platformUpdateDomain = (int)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = VirtualMachineScaleSetsClient.ForceRecoveryServiceFabricPlatformUpdateDomainWalk(resourceGroupName, vmScaleSetName, platformUpdateDomain);
-            WriteObject(result);
-        }
-    }
-
-    public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected PSArgument[] CreateVirtualMachineScaleSetForceRecoveryServiceFabricPlatformUpdateDomainWalkParameters()
-        {
-            string resourceGroupName = string.Empty;
-            string vmScaleSetName = string.Empty;
-            int platformUpdateDomain = new int();
-
-            return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "VMScaleSetName", "PlatformUpdateDomain" },
-                 new object[] { resourceGroupName, vmScaleSetName, platformUpdateDomain });
-        }
-    }
-
-    [Cmdlet("Repair", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssServiceFabricUpdateDomain", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [Alias("Repair-AzureRmVmssServiceFabricUD")]
+    [Cmdlet(VerbsDiagnostic.Repair, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssServiceFabricUpdateDomain", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Alias("Repair-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssServiceFabricUD")]
     [OutputType(typeof(PSRecoveryWalkResponse))]
     public partial class RepairAzureRmVmssServiceFabricUpdateDomain : ComputeAutomationBaseCmdlet
     {
@@ -121,7 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.VMScaleSetName, "Repair"))
+                if (ShouldProcess(this.VMScaleSetName, VerbsDiagnostic.Repair))
                 {
                     string resourceGroupName;
                     string vmScaleSetName;
