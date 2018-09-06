@@ -26,7 +26,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AzureAnalysisServicesServer))]
-    [Alias("New-AzureAs")]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "As")]
     public class NewAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

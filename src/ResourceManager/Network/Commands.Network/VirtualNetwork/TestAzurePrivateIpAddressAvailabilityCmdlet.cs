@@ -17,12 +17,14 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PrivateIPAddressAvailability"), OutputType(typeof(PSIPAddressAvailabilityResult))]
     public class TestAzurePrivateIPAddressAvailabilityCmdlet : VirtualNetworkBaseCmdlet
     {
+        [CmdletParameterBreakingChange("VirtualNetwork", ChangeDescription = "The EnableVMProtection property for the parameter Virtualnetwork is no longer supported. Setting this property has no impact. This property will be removed in a future release. Please remove it from your scripts")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,

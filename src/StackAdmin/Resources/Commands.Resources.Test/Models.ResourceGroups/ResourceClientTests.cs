@@ -416,10 +416,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         new CancellationToken()))
                         .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>()
                         {
-                            Body = new DeploymentExtended
-                            {
-                                Id = requestId
-                            }
+                            Body = new DeploymentExtended(name: deploymentName, id: requestId)
                         }))
                         .Callback(
                             (string name, string dName, Deployment bDeploy,
@@ -617,10 +614,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         {
                             return new AzureOperationResponse<DeploymentExtended>()
                             {
-                                Body = new DeploymentExtended()
+                                Body = new DeploymentExtended(name: getDeploymentName, id: requestId)
                                 {
-                                    Name = getDeploymentName,
-                                    Id = requestId,
                                     Properties = new DeploymentPropertiesExtended(
                                         mode: DeploymentMode.Incremental,
                                         correlationId: "123",
@@ -647,9 +642,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
                         return new AzureOperationResponse<DeploymentExtended>()
                         {
-                            Body = new DeploymentExtended
+                            Body = new DeploymentExtended(name: createDeploymentName, id: requestId)
                             {
-                                Id = requestId
                             }
                         };
                     });
@@ -669,9 +663,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
                         return new AzureOperationResponse<DeploymentExtended>()
                         {
-                            Body = new DeploymentExtended
+                            Body = new DeploymentExtended(name: createDeploymentName, id: requestId)
                             {
-                                Id = requestId
                             }
                         };
                     });
@@ -777,9 +770,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             deploymentsMock.Setup(f => f.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, It.IsAny<Deployment>(), null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>()
                 {
-                    Body = new DeploymentExtended
+                    Body = new DeploymentExtended(name: deploymentName, id: requestId)
                     {
-                        Id = requestId
                     }
                 }))
                 .Callback((string name, string dName, Deployment bDeploy, Dictionary<string, List<string>> customHeaders, CancellationToken token) =>
@@ -874,9 +866,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new ResourceGroup() { Location = resourceGroupLocation })
                 ));
             deploymentsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, It.IsAny<Deployment>(), null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentExtended
+                .Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentExtended(name: deploymentName, id: requestId)
                 {
-                    Id = requestId
                 })))
                 .Callback((string name, string dName, Deployment bDeploy, Dictionary<string, List<string>> customHeaders, CancellationToken token) => { deploymentFromGet = bDeploy; });
             deploymentsMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, deploymentName, null, new CancellationToken()))
@@ -975,9 +966,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 new CancellationToken()))
             .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>()
             {
-                Body = new DeploymentExtended
+                Body = new DeploymentExtended(name: deploymentName, id: requestId)
                 {
-                    Id = requestId
                 }
             }))
             .Callback((string name, string dName, Deployment bDeploy, Dictionary<string, List<string>> customHeaders,
@@ -1187,7 +1177,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
             SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
 
-            List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null, 
+            List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null,
                 new Hashtable(new Dictionary<string, string> { { "tag1", "val1" } }), false);
 
             Assert.Equal(1, groups1.Count);
