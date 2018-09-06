@@ -116,6 +116,10 @@ InModuleScope Azs.Subscriptions.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         it "TestListOffers" -Skip:$('TestListOffers' -in $global:SkippedTests) {
             $global:TestName = 'TestListOffers'
 
@@ -169,6 +173,7 @@ InModuleScope Azs.Subscriptions.Admin {
 
         it "TestCreateUpdateThenDeleteOffer" -Skip:$('TestCreateUpdateThenDeleteOffer' -in $global:SkippedTests) {
             $global:TestName = 'TestCreateUpdateThenDeleteOffer'
+
             $plan = (Get-AzsPlan)[0]
 
             $offer = New-AzsOffer -Name $global:OfferName -DisplayName "Test Offer" -ResourceGroupName $global:OfferResourceGroupName -BasePlanIds { $plan.Id } -Location $global:Location
