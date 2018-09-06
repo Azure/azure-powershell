@@ -321,7 +321,6 @@
     <Compile Include="Models\Cortex\PSVpnSite.cs" />
     <Compile Include="Models\Cortex\PSVpnSiteDeviceProperties.cs" />
     <Compile Include="Models\Cortex\PSVirtualWanVpnSitesConfiguration.cs" />
-    <Compile Include="Models\PSApplicationGatewayBackendAddress.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddressPool.cs" />
     <Compile Include="Models\PSApplicationGatewayFrontendIPConfiguration.cs" />
     <Compile Include="Models\PSAvailableProvidersListCity.cs" />
