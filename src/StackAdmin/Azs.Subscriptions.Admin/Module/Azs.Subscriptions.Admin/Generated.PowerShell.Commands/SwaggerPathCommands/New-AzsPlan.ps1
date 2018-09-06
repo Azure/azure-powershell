@@ -122,15 +122,9 @@ function New-AzsPlan {
             }
 
             # Validate this resource does not exist.
-            $_objectCheck = $null
-            try {
-                $_objectCheck = Get-AzsPlan -Name $Name -ResourceGroupName $ResourceGroupName
-            } catch {
-                # No op
-            } finally {
-                if ($_objectCheck -ne $null) {
-                    throw "A plan with name $Name at under the resource group $ResourceGroupName already exists."
-                }
+            if ($null -ne (Get-AzsPlan -Name $Name -ResourceGroupName $ResourceGroupName -ErrorAction SilentlyContinue)) {
+                Write-Error "A plan with name $Name at under the resource group $ResourceGroupName already exists."
+                return
             }
 
             # Create object
