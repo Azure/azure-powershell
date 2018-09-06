@@ -70,8 +70,6 @@ function Remove-AzsStorageQuota {
 
     Process {
 
-
-
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/quotas/{quotaName}'
@@ -81,6 +79,8 @@ function Remove-AzsStorageQuota {
             $location = $ArmResourceIdParameterValues['location']
 
             $Name = $ArmResourceIdParameterValues['quotaName']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Delete the storage quota")) {
