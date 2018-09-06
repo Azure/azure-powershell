@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = '66466448-cfe3-4897-9956-b37a536c1603'
@@ -55,8 +55,7 @@ RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Insights.dll', 
-    '.\Microsoft.Azure.Management.Redis.dll', 
-    '.\Microsoft.WindowsAzure.Storage.dll'
+    '.\Microsoft.Azure.Management.Redis.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

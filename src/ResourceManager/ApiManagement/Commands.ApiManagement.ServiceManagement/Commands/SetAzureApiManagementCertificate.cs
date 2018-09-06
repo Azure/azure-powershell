@@ -14,11 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
+    using System.Globalization;
     using System.IO;
     using System.Management.Automation;
     using System.Security.Cryptography.X509Certificates;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Properties;
 
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementCertificate", DefaultParameterSetName = FromFile)]
     [OutputType(typeof(PsApiManagementCertificate))]
@@ -77,7 +79,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             byte[] rawBytes;
             if (ParameterSetName.Equals(FromFile))
             {
-                using (var certStream = File.OpenRead(PfxFilePath))
+                FileInfo localFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.PfxFilePath));
+                if (!localFile.Exists)
+                {
+                    throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, this.PfxFilePath));
+                }
+
+                using (var certStream = File.OpenRead(localFile.FullName))
                 {
                     rawBytes = new byte[certStream.Length];
                     certStream.Read(rawBytes, 0, rawBytes.Length);

@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = 'cd188042-f215-4657-adfe-c17ae28cf730'
@@ -124,9 +124,9 @@ CmdletsToExport = 'Add-AzKeyVaultCertificate', 'Update-AzKeyVaultCertificate',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Set-AzureKeyVaultKey', 'Set-AzureKeyVaultSecretAttribute', 
-    'Set-AzureKeyVaultKeyAttribute', 
-    'Set-AzureKeyVaultCertificateAttribute'
+AliasesToExport = 'Set-AzKeyVaultKey', 'Set-AzKeyVaultSecretAttribute', 
+    'Set-AzKeyVaultKeyAttribute', 
+    'Set-AzKeyVaultCertificateAttribute'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

@@ -67,6 +67,10 @@ InModuleScope Azs.Network.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         It "TestGetAllVirtualNetworks" -Skip:$('TestGetAllVirtualNetworks' -in $global:SkippedTests) {
             $global:TestName = "TestGetAllVirtualNetworks"
 
