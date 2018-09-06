@@ -39,7 +39,6 @@ param(
     [String[]]$Skipped = @()
 )
 
-
 Import-Module AzureRM.Profile -Force
 
 $Scheduled = $Modules | Where-Object { !($_ -in $Skipped) }
