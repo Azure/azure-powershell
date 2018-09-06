@@ -341,6 +341,7 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Set-AzureRmServiceEndpointPolicy',
                'Remove-AzureRmExpressRouteCircuitConnectionConfig',
                'New-AzureRmVirtualWan',
+			   'Set-AzureRmVirtualWan',
                'Get-AzureRmVirtualWan',
                'Remove-AzureRmVirtualWan',
                'New-AzureRmVirtualHub',
@@ -363,7 +364,8 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmHubVirtualNetworkConnection',
                'Set-AzureRmHubVirtualNetworkConnection',
                'Remove-AzureRmHubVirtualNetworkConnection',
-               'Get-AzureRmVirtualWanVpnSitesConfiguration'
+               'Get-AzureRmVirtualWanVpnSitesConfiguration',
+			   'Get-AzureRmVirtualWanSupportedSecurityProvider'
 
 # Variables to export from this module
 # VariablesToExport = @()

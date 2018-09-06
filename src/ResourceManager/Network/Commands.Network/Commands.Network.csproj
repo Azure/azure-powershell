@@ -194,9 +194,11 @@
     <Compile Include="Cortex\VirtualHub\SetAzureRmVirtualHubCommand.cs" />
     <Compile Include="Cortex\VirtualHub\VirtualHubBaseCmdlet.cs" />
     <Compile Include="Cortex\VirtualWan\GetAzureRmVirtualWanCommand.cs" />
+    <Compile Include="Cortex\VirtualWan\GetAzureRmVirtualWanSupportedSecurityProviderCommand.cs" />
     <Compile Include="Cortex\VirtualWan\GetAzureRmVirtualWanVpnSitesConfigurationCommand.cs" />
     <Compile Include="Cortex\VirtualWan\NewAzureRmVirtualWanCommand.cs" />
     <Compile Include="Cortex\VirtualWan\RemoveAzureRmVirtualWanCommand.cs" />
+    <Compile Include="Cortex\VirtualWan\SetAzureRmVirtualWanCommand.cs" />
     <Compile Include="Cortex\VirtualWan\VirtualWanBaseCmdlet.cs" />
     <Compile Include="Cortex\VpnConnection\GetAzureRmVpnConnectionCommand.cs" />
     <Compile Include="Cortex\VpnConnection\NewAzureRmVpnConnectionCommand.cs" />
@@ -316,6 +318,7 @@
     <Compile Include="Models\Cortex\PSHubVirtualNetworkConnection.cs" />
     <Compile Include="Models\Cortex\PSVirtualHub.cs" />
     <Compile Include="Models\Cortex\PSVirtualWan.cs" />
+    <Compile Include="Models\Cortex\PSVirtualWanSecurityProvider.cs" />
     <Compile Include="Models\Cortex\PSVpnConnection.cs" />
     <Compile Include="Models\Cortex\PSVpnGateway.cs" />
     <Compile Include="Models\Cortex\PSVpnSite.cs" />

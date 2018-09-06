@@ -16,21 +16,15 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-    public class PSVirtualWan : PSTopLevelResource
+    public class PSVirtualWanSecurityProvider
     {
-        [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
-        public string ProvisioningState { get; set; }
+        [Ps1Xml(Label = "Security Provider Name", Target = ViewControl.Table)]
+        public string Name { get; set; }
 
-        [Ps1Xml(Label = "SecurityProviderName", Target = ViewControl.Table)]
-        public string SecurityProviderName { get; set; }
+        [Ps1Xml(Label = "Type", Target = ViewControl.Table)]
+        public string Type { get; set; }
 
-        [Ps1Xml(Label = "Office365LocalBreakoutCategory", Target = ViewControl.Table)]
-        public string Office365LocalBreakoutCategory { get; set; }
-
-        [Ps1Xml(Label = "AllowVnetToVnetTraffic", Target = ViewControl.Table)]
-        public bool AllowVnetToVnetTraffic { get; set; }
-
-        [Ps1Xml(Label = "AllowBranchToBranchTraffic", Target = ViewControl.Table)]
-        public bool AllowBranchToBranchTraffic { get; set; }
+        [Ps1Xml(Label = "Url", Target = ViewControl.Table)]
+        public string Url { get; set; }
     }
 }

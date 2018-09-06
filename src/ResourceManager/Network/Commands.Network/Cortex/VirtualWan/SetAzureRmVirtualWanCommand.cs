@@ -26,15 +26,18 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.WindowsAzure.Commands.Common;
     using MNM = Microsoft.Azure.Management.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet(VerbsCommon.New,
+    [Cmdlet(VerbsCommon.Set,
         "AzureRmVirtualWan",
+        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVirtualWan))]
-    public class NewAzureRmVirtualWanCommand : VirtualWanBaseCmdlet
+    public class SetAzureRmVirtualWanCommand : VirtualWanBaseCmdlet
     {
         [Alias("ResourceName", "VirtualWanName")]
         [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
@@ -42,6 +45,7 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Name { get; set; }
 
         [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -49,41 +53,45 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Alias("VirtualWan")]
         [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanObject,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The virtual wan object to be modified")]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualWan InputObject { get; set; }
+
+        [Alias("VirtualWanId")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "location.")]
-        [LocationCompleter]
+            HelpMessage = "The Azure resource ID for the virtual wan.")]
+        [ResourceIdCompleter("Microsoft.Network/virtualWan")]
         [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the selected security provider.")]
         public string SecurityProviderName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Local breakout category for office 365 traffic.")]
         [ValidateSet(MNM.OfficeTrafficCategory.All, MNM.OfficeTrafficCategory.None, MNM.OfficeTrafficCategory.Optimize, MNM.OfficeTrafficCategory.OptimizeAndAllow)]
-        [PSDefaultValue(Help = MNM.OfficeTrafficCategory.Optimize, Value = MNM.OfficeTrafficCategory.Optimize)]
         public string Office365LocalBreakoutCategory { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Allow vnet to vnet traffic for VirtualWan.")]
-        [PSDefaultValue(Help = "$false", Value = false)]
-        public bool AllowVnetToVnetTraffic { get; set; }
+        public bool? AllowVnetToVnetTraffic { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Allow branch to branch traffic for VirtualWan.")]
-        [PSDefaultValue(Help = "$true", Value = true)]
-        public bool AllowBranchToBranchTraffic { get; set; }
+        public bool? AllowBranchToBranchTraffic { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -97,7 +105,7 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter Force { get; set; }
 
         [Parameter(
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -114,22 +122,51 @@ namespace Microsoft.Azure.Commands.Network
 
             if (shouldProcess)
             {
-                WriteObject(this.CreateVirtualWan());
+                WriteObject(this.UpdateVirtualWan());
             }
         }
 
-        private PSVirtualWan CreateVirtualWan()
+        private PSVirtualWan UpdateVirtualWan()
         {
-            var virtualWan = new PSVirtualWan();
-            virtualWan.Name = this.Name;
-            virtualWan.ResourceGroupName = this.ResourceGroupName;
-            virtualWan.Location = this.Location;
-            virtualWan.SecurityProviderName = this.SecurityProviderName;
-            virtualWan.Office365LocalBreakoutCategory = this.Office365LocalBreakoutCategory;
-            virtualWan.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic;
-            virtualWan.AllowVnetToVnetTraffic = this.AllowVnetToVnetTraffic;
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanObject, StringComparison.OrdinalIgnoreCase))
+            {
+                this.Name = this.InputObject.Name;
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+            }
+            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanResourceId, StringComparison.OrdinalIgnoreCase))
+            {
+                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
+                this.Name = parsedResourceId.ResourceName;
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+            }
 
-            var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWAN>(virtualWan);
+            var virtualWanToUpdate = GetVirtualWan(this.ResourceGroupName, this.Name);
+            if (virtualWanToUpdate == null)
+            {
+                throw new PSArgumentException("The VirtualWan to update could not be found");
+            }
+
+            if (this.SecurityProviderName != null)
+            {
+                virtualWanToUpdate.SecurityProviderName = this.SecurityProviderName;
+            }
+
+            if (this.Office365LocalBreakoutCategory != null)
+            {
+                virtualWanToUpdate.Office365LocalBreakoutCategory = this.Office365LocalBreakoutCategory;
+            }
+
+            if (this.AllowBranchToBranchTraffic.HasValue)
+            {
+                virtualWanToUpdate.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.Value;
+            }
+
+            if (this.AllowVnetToVnetTraffic.HasValue)
+            {
+                virtualWanToUpdate.AllowVnetToVnetTraffic = this.AllowVnetToVnetTraffic.Value;
+            }
+
+            var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWAN>(virtualWanToUpdate);
             virtualWanModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.VirtualWanClient.CreateOrUpdate(this.ResourceGroupName, this.Name, virtualWanModel);
