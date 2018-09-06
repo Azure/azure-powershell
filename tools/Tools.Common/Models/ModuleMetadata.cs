@@ -91,5 +91,10 @@ namespace Tools.Common.Models
             modulesEqual &= this.Cmdlets.Count == other.Cmdlets.Count;
             return modulesEqual;
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

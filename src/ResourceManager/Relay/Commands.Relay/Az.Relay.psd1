@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = '668e7be1-9801-496f-a7ed-25b1077d2f23'

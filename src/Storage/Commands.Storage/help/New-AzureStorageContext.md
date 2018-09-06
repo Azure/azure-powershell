@@ -13,7 +13,13 @@ Creates an Azure Storage context.
 
 ## SYNTAX
 
-### AccountNameAndKey (Default)
+### OAuthAccount (Default)
+```
+New-AzureStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
+ [-Endpoint <String>] [<CommonParameters>]
+```
+
+### AccountNameAndKey
 ```
 New-AzureStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> [-Protocol <String>]
  [-Endpoint <String>] [<CommonParameters>]
@@ -47,6 +53,12 @@ New-AzureStorageContext [-StorageAccountName] <String> -SasToken <String> [-Prot
 ```
 New-AzureStorageContext [-StorageAccountName] <String> -SasToken <String> -Environment <String>
  [<CommonParameters>]
+```
+
+### OAuthAccountEnvironment
+```
+New-AzureStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
+ -Environment <String> [<CommonParameters>]
 ```
 
 ### ConnectionString
@@ -141,6 +153,14 @@ That token is for read, add, update, and delete permissions.
 The second command creates a context for the account named ContosoGeneral that uses the SAS token stored in $SasToken, and then stores that context in the $Context variable.
 The final command lists all the blobs associated with the container named ContosoMain by using the context stored in $Context.
 
+### Example 10: Create a context by using the OAuth Authentication
+```
+C:\PS>Connect-AzureRmAccount
+C:\PS> $Context = New-AzureStorageContext -StorageAccountName "myaccountname"
+```
+
+This command creates a context by using the OAuth Authentication.
+
 ## PARAMETERS
 
 ### -Anonymous
@@ -178,7 +198,7 @@ Specifies the endpoint for the Azure Storage context.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameAndKey, AnonymousAccount, SasToken
+Parameter Sets: OAuthAccount, AccountNameAndKey, AnonymousAccount, SasToken
 Aliases:
 
 Required: False
@@ -207,7 +227,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: SasTokenWithAzureEnvironment
+Parameter Sets: SasTokenWithAzureEnvironment, OAuthAccountEnvironment
 Aliases: Name, EnvironmentName
 
 Required: True
@@ -237,7 +257,7 @@ Transfer Protocol (https/http).
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken
+Parameter Sets: OAuthAccount, AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken, OAuthAccountEnvironment
 Aliases:
 Accepted values: Http, Https
 
@@ -285,11 +305,43 @@ This cmdlet creates a context for the account that this parameter specifies.
 
 ```yaml
 Type: System.String
-Parameter Sets: AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken, SasTokenWithAzureEnvironment
+Parameter Sets: OAuthAccount, AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken, SasTokenWithAzureEnvironment, OAuthAccountEnvironment
 Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseConnectedAccount
+Indicates that this cmdlet creates an Azure Storage context with OAuth Authentication.
+The cmdlet will use OAuth Authentication by default, when other anthentication not specified.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: OAuthAccount, OAuthAccountEnvironment
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseConnectedAccount
+Indicates that this cmdlet creates an Azure Storage context with OAuth Authentication.
+The cmdlet will use OAuth Authentication by default, when other anthentication not specified.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: OAuthAccount, OAuthAccountEnvironment
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
