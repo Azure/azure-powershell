@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Management.Kusto;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Kusto.Utilities;
 using Microsoft.Azure.Management.Kusto.Models;

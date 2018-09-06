@@ -18,8 +18,6 @@ using System.Security.Permissions;
 using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Properties;
 using Microsoft.Azure.Commands.Kusto.Utilities;
-using Microsoft.Azure.Management.Kusto.Models;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Kusto
 {

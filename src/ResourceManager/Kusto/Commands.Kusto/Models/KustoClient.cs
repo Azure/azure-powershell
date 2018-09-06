@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Kusto;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
@@ -24,6 +23,7 @@ using System.Linq;
 using System.Net;
 using Microsoft.Azure.Management.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Properties;
+using Microsoft.Azure.Management.Kusto;
 
 namespace Microsoft.Azure.Commands.Kusto.Models
 {

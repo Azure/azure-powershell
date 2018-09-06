@@ -16,8 +16,6 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Utilities;
-using Microsoft.Azure.Management.Kusto;
-using Microsoft.Azure.Management.Kusto.Models;
 
 namespace Microsoft.Azure.Commands.Kusto
 {
