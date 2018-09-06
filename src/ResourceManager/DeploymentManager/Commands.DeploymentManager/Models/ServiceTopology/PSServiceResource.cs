@@ -57,13 +57,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
         internal ServiceResource ToSdkType()
         {
             return new ServiceResource(
-                this.Location, 
-                this.TargetLocation, 
-                this.TargetSubscriptionId, 
-                this.Name, 
-                this.Type, 
-                this.Id, 
-                TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true));
+                location: this.Location, 
+                targetLocation: this.TargetLocation, 
+                targetSubscriptionId: this.TargetSubscriptionId, 
+                id: this.Id, 
+                name: this.Name, 
+                type: this.Type, 
+                tags: TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true));
         }
     }
 }

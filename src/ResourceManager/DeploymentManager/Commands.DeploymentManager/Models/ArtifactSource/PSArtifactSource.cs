@@ -56,13 +56,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
             var sasAuthentication = new SasAuthentication(((PSSasAuthentication)this.Authentication).SasUri);
             return new ArtifactSource(
                 this.Location, 
+                this.SourceType, 
+                sasAuthentication, 
                 this.Name, 
                 this.Type, 
                 this.Id, 
                 TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true),
-                this.SourceType, 
-                this.ArtifactRoot, 
-                sasAuthentication);
+                this.ArtifactRoot);
         }
     }
 }

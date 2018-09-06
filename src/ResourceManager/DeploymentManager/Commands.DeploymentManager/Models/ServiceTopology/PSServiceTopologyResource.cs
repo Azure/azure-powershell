@@ -45,12 +45,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
         internal ServiceTopologyResource ToSdkType()
         {
             return new ServiceTopologyResource(
-                this.Location,
-                this.ArtifactSourceId,
-                this.Name,
-                this.Type,
-                this.Id,
-                TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true));
+                location: this.Location,
+                artifactSourceId: this.ArtifactSourceId,
+                id: this.Id,
+                name: this.Name,
+                type: this.Type,
+                tags: TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true));
         }
     }
 }

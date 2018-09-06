@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
 		/// Gets the start time of the rollout in UTC. This property will not
 		/// be set if the rollout has not completed yet.
 		/// </summary>
-		public ErrorProperties Error
+		public CloudErrorBody Error
 		{
 			get;
 			set;

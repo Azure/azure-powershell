@@ -58,13 +58,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
         internal StepResource ToSdkType()
         {
             return new StepResource(
-                this.Location,
-                this.StepType,
-                this.Attributes,
-                this.Name,
-                this.Type,
-                this.Id,
-                TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true));
+                location: this.Location,
+                stepType: this.StepType,
+                attributes: this.Attributes,
+                id: this.Id,
+                name: this.Name,
+                type: this.Type,
+                tags: TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true));
         }
     }
 }

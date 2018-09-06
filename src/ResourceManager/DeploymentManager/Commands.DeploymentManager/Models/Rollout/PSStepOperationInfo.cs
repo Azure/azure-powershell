@@ -65,7 +65,7 @@
 		/// <summary>
 		/// Gets or sets the errors, if any, for the action.
 		/// </summary>
-		public ErrorProperties Error
+		public CloudErrorBody Error
 		{
 			get;
 			set;

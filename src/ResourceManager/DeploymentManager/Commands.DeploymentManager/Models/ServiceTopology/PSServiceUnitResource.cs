@@ -96,13 +96,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
         internal ServiceUnitResource ToSdkType()
         {
             return new ServiceUnitResource(
-                this.Location, 
-                this.TargetResourceGroup, 
-                (DeploymentMode)Enum.Parse(typeof(DeploymentMode), this.DeploymentMode, ignoreCase: true),
-                this.Name, 
-                this.Type, 
-                this.Id, 
-                TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true))
+                location: this.Location, 
+                targetResourceGroup: this.TargetResourceGroup, 
+                deploymentMode: (DeploymentMode)Enum.Parse(typeof(DeploymentMode), this.DeploymentMode, ignoreCase: true),
+                id: this.Id, 
+                name: this.Name, 
+                type: this.Type, 
+                tags: TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true))
             {
                 Identity = this.Identity?.ToSdkType(),
                 TemplateUri = this.TemplateUri,

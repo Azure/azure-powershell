@@ -45,7 +45,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
 
         internal IdentityResourceIdentity ToSdkType()
         {
-            return new IdentityResourceIdentity(this.Type, this.IdentityIds);
+            return new IdentityResourceIdentity(
+                type: this.Type, 
+                identityIds: this.IdentityIds);
         }
     }
 }

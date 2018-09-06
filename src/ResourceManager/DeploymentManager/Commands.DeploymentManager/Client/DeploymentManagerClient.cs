@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
             {
                 retrievedServiceResource = getFunc(resourceObject);
             }
-            catch (ErrorInfoException ex)
+            catch (CloudException ex)
             {
                 if (ex.Response.StatusCode == HttpStatusCode.NotFound)
                 {

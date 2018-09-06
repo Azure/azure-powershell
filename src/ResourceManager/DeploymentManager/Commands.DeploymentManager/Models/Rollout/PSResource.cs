@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.DeploymentManager.Models
 {
     using System.Collections;
-    using System.Collections.Generic;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.DeploymentManager.Models;
 
