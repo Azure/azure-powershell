@@ -676,7 +676,7 @@ function Add-Module {
             $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
         }
 
-        if (Find-Module -Name $moduleName -Repository $TempRepo -RequiredVersion $moduleVersion -ErrorAction SilentlyContinue)
+        if (Find-Module -Name $moduleName -Repository $TempRepo -RequiredVersion $moduleVersion -AllowPrerelease -ErrorAction SilentlyContinue)
         {
             Write-Output "Existing module found: $moduleName"
             $moduleNupkgPath = Join-Path -Path $TempRepoPath -ChildPath ($moduleName + "." + $moduleVersion + ".nupkg")
