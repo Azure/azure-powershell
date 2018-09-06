@@ -56,6 +56,10 @@ InModuleScope Azs.Network.Admin {
 
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         It "TestGetAllLoadBalancers" -Skip:$('TestGetAllLoadBalancers' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllLoadBalancers'
 

@@ -50,7 +50,9 @@ $Ignored = @(
     "Azs.InfrastructureInsights.Admin",
     "Azs.KeyVault.Admin",
     "Azs.Network.Admin",
-    "Azs.Storage.Admin"
+    "Azs.Storage.Admin",
+    "Azs.Subscriptions",
+    "Azs.Update.Admin"
 )
 
 $Scheduled = $All | Where-Object { !($_ -in $Ignored) }
