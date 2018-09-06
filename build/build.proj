@@ -33,7 +33,7 @@
       <TestAssemblies Include="$(OutputDir)*.Tests.dll;$(OutputDir)*.Test.dll;$(OutputDir)*.UnitTest.dll" />
     </ItemGroup>
     <Message Condition="'$(Configuration)' == 'Debug'" Importance="high" Text="net452: Testing %(TestAssemblies.Filename)" />
-    <Exec Condition="'$(Configuration)' == 'Debug'" Command="$(xUnitRunner) @(TestAssemblies, ' ') -trait $(TestFilter) -html $(TestOutput)"/>
+    <Exec Condition="'$(Configuration)' == 'Debug'" Command="$(xUnitRunner) @(TestAssemblies, ' ') -trait $(TestFilter) -html $(TestOutput)" />
   </Target>
 
   <Target Name="netstandard20">
