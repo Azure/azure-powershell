@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [OutputType(typeof(HybridRunbookWorkerGroup))]
     public class GetAzureAutomationHybridWorkerGroup : AzureAutomationBaseCmdlet
     {
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName,Position = 2,  Mandatory = false, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker Group name")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2,  Mandatory = false, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker Group name")]
         [Alias("Group")]
         public string Name { get; set; }
 

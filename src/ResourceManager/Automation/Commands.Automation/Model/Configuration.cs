@@ -48,25 +48,33 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Location = configuration.Location;
             this.Tags = null;
 
-            if (configuration.Properties == null) return;
+            if (configuration == null) return;
 
-            this.CreationTime = configuration.Properties.CreationTime.ToLocalTime();
-            this.LastModifiedTime = configuration.Properties.LastModifiedTime.ToLocalTime();
-            this.Description = configuration.Properties.Description;
-            this.LogVerbose = configuration.Properties.LogVerbose;
-            this.State = configuration.Properties.State;
+            this.CreationTime = configuration.CreationTime.ToLocalTime();
+            this.LastModifiedTime = configuration.LastModifiedTime.ToLocalTime();
+            this.Description = configuration.Description;
+            this.LogVerbose = configuration.LogVerbose ?? false;
+            this.State = configuration.State;
             this.Location = configuration.Location;
 
             this.Tags = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
-            foreach (var kvp in configuration.Tags)
+
+            if (configuration.Tags != null)
             {
-                this.Tags.Add(kvp.Key, kvp.Value);
+                foreach (var kvp in configuration.Tags)
+                {
+                    this.Tags.Add(kvp.Key, kvp.Value);
+                }
             }
 
             this.Parameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
-            foreach (var kvp in configuration.Properties.Parameters)
+
+            if (configuration.Parameters != null)
             {
-                this.Parameters.Add(kvp.Key, (object)kvp.Value);
+                foreach (var kvp in configuration.Parameters)
+                {
+                    this.Parameters.Add(kvp.Key, (object)kvp.Value);
+                }
             }
         }
 

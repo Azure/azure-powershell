@@ -44,10 +44,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
             ResourceGroupName = resourceGroupName;
             AutomationAccountName = accountName;
 
-            if (automationJobSchedule != null && automationJobSchedule.Properties == null) return;
+            if (automationJobSchedule != null && automationJobSchedule == null) return;
             if (automationJobSchedule == null) return;
 
-            JobScheduleId = automationJobSchedule.Properties.Id;
+            JobScheduleId = Guid.Parse(automationJobSchedule.Id);
             JobSchedule = new JobSchedule(resourceGroupName, accountName, automationJobSchedule);
         }
 

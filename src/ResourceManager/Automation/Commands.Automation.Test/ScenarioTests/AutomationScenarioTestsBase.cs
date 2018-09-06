@@ -13,47 +13,110 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using System.IO;
+using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Azure.Management.Automation;
+using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.Test.HttpRecorder;
+using System.Reflection;
+using Microsoft.Rest;
+using System.Net.Http;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Test
 {
     public abstract class AutomationScenarioTestsBase : RMTestBase
     {
-        private readonly EnvironmentSetupHelper _helper;
+        private EnvironmentSetupHelper helper;
 
         protected AutomationScenarioTestsBase()
         {
-            _helper = new EnvironmentSetupHelper();
+            helper = new EnvironmentSetupHelper();
+        }
+
+        protected void SetupManagementClients()
+        {
+            var automationManagementClient = GetAutomationManagementClient();
+
+            helper.SetupManagementClients(automationManagementClient);
         }
 
         protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            var sf = new StackTrace().GetFrame(1);
-            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
-            var mockName = sf.GetMethod().Name;
+            const string RootNamespace = "ScenarioTests";
 
-            _helper.TracingInterceptor = logger;
-
-            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (MockContext.Start(callingClassType, mockName))
+            using (UndoContext context = UndoContext.Current)
             {
-                _helper.SetupManagementClients();
-                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
-                _helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
-                    _helper.RMProfileModule,
-                    _helper.GetRMModulePath(@"AzureRM.Automation.psd1"));
+                SetupManagementClients();
 
-                _helper.RunPowerShellTest(scripts);
+                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+
+
+                var psModuleFile = this.GetType().FullName.Contains(RootNamespace) ?
+                    this.GetType().FullName.Split(new[] { RootNamespace }, StringSplitOptions.RemoveEmptyEntries).Last().Replace(".", "\\") :
+                    $"\\{this.GetType().Name}";
+
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    $"{RootNamespace}{psModuleFile}.ps1",
+                    helper.RMProfileModule,
+                    helper.GetRMModulePath(@"AzureRM.Automation.psd1"));
+
+                helper.RunPowerShellTest(scripts);
             }
+        }
+
+        protected AutomationClient GetAutomationManagementClient()
+        {
+            AutomationClient client;
+            TestEnvironment currentEnvironment = new CSMTestEnvironmentFactory().GetTestEnvironment();
+            var credentials = currentEnvironment.AuthorizationContext.TokenCredentials[TokenAudience.Management];
+
+            HttpMockServer server;
+
+            try
+            {
+                server = HttpMockServer.CreateInstance();
+            }
+            catch (ApplicationException)
+            {
+                // mock server has never been initialized, we will need to initialize it.
+                HttpMockServer.Initialize("TestEnvironment", "InitialCreation");
+                server = HttpMockServer.CreateInstance();
+            }
+
+            if (currentEnvironment.UsesCustomUri())
+            {
+                ConstructorInfo constructor = typeof(AutomationClient).GetConstructor(new Type[] { typeof(Uri), typeof(ServiceClientCredentials), typeof(DelegatingHandler[]) });
+                client = constructor.Invoke(new object[] { currentEnvironment.BaseUri, credentials, new DelegatingHandler[] { server } }) as AutomationClient;
+            }
+            else
+            {
+                ConstructorInfo constructor = typeof(AutomationClient).GetConstructor(new Type[] { typeof(ServiceClientCredentials) });
+                client = constructor.Invoke(new object[] { credentials }) as AutomationClient;
+            }
+
+            PropertyInfo subId = typeof(AutomationClient).GetProperty("SubscriptionId", typeof(string));
+            if (subId != null)
+            {
+                subId.SetValue(client, currentEnvironment.SubscriptionId);
+            }
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                PropertyInfo initialTimeout = typeof(AutomationClient).GetProperty("LongRunningOperationInitialTimeout", typeof(int));
+                PropertyInfo retryTimeout = typeof(AutomationClient).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
+                if (initialTimeout != null && retryTimeout != null)
+                {
+                    initialTimeout.SetValue(client, 0);
+                    retryTimeout.SetValue(client, 0);
+                }
+            }
+
+            return client;
         }
     }
 }

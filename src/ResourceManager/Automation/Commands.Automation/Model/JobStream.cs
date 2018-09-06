@@ -44,18 +44,18 @@ namespace Microsoft.Azure.Commands.Automation.Model
         {
             Requires.Argument("jobStream", jobStream).NotNull();
 
-            this.StreamRecordId = jobStream.Properties.JobStreamId;
-            this.Type = jobStream.Properties.StreamType;
-            this.Time = jobStream.Properties.Time;
+            this.StreamRecordId = jobStream.JobStreamId;
+            this.Type = jobStream.StreamType;
+            this.Time = jobStream.Time;
             this.AutomationAccountName = automationAccountName;
             this.ResourceGroupName = resourceGroupName;
             this.JobId = jobId;
 
-            if (!String.IsNullOrWhiteSpace(jobStream.Properties.Summary))
+            if (!String.IsNullOrWhiteSpace(jobStream.Summary))
             {
-                this.Summary = jobStream.Properties.Summary.Length > Constants.JobSummaryLength ?
-                     jobStream.Properties.Summary.Substring(0, Constants.JobSummaryLength) + "..." :
-                     jobStream.Properties.Summary;
+                this.Summary = jobStream.Summary.Length > Constants.JobSummaryLength ?
+                     jobStream.Summary.Substring(0, Constants.JobSummaryLength) + "..." :
+                     jobStream.Summary;
             }
         }
 
