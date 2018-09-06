@@ -125,7 +125,7 @@ function Add-AzsVMExtension {
 
     Process {
 
-        if ($PSCmdlet.ShouldProcess("$Publisher/$Type/$Version" , "Add virtual machine image extension")) {
+        if ($Force.IsPresent -or $PSCmdlet.ShouldProcess("$Publisher/$Type/$Version" , "Add virtual machine image extension")) {
 
             if ( -not $PSBoundParameters.ContainsKey('Location')) {
                 $Location = (Get-AzureRMLocation).Location

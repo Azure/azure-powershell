@@ -121,7 +121,7 @@ function Add-AzsPlatformImage {
 
     Process {
 
-        if ($PSCmdlet.ShouldProcess("$Publisher/$Offer/$Sku/$Version" , "Add new virtual machine image")) {
+        if ($Force.IsPresent -or $PSCmdlet.ShouldProcess("$Publisher/$Offer/$Sku/$Version" , "Add new virtual machine image")) {
 
             if ( -not $PSBoundParameters.ContainsKey('Location')) {
                 $Location = (Get-AzureRMLocation).Location
