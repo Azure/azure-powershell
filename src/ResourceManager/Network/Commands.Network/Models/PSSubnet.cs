@@ -20,10 +20,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSSubnet : PSChildResource
     {
         [JsonProperty(Order = 1)]
-        public string AddressPrefix { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public List<string> AddressPrefixes { get; set; }
+        public List<string> AddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
         public List<PSIPConfiguration> IpConfigurations { get; set; }

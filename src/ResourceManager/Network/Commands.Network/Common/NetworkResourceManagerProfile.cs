@@ -15,10 +15,8 @@
 namespace Microsoft.Azure.Commands.Network
 {
     using AutoMapper;
-    using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Security;
+    using System.Linq;
     using WindowsAzure.Commands.Common;
     using CNM = Microsoft.Azure.Commands.Network.Models;
     using MNM = Microsoft.Azure.Management.Network.Models;
@@ -73,14 +71,39 @@ namespace Microsoft.Azure.Commands.Network
                 // Subnet
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSDhcpOptions, MNM.DhcpOptions>();
-                cfg.CreateMap<CNM.PSSubnet, MNM.Subnet>();
+                cfg.CreateMap<CNM.PSSubnet, MNM.Subnet>()
+                    .ForSourceMember(src=> src.AddressPrefix, opt => opt.Ignore())
+                    .ForMember(dest=> dest.AddressPrefixes, opt => opt.Ignore())
+                    .AfterMap((src, dest) =>
+                    {
+                        if (GeneralUtilities.HasMoreThanOneElement(src.AddressPrefix))
+                        {
+                            dest.AddressPrefixes = src.AddressPrefix;
+                        }
+                        else
+                        {
+                            dest.AddressPrefix = src.AddressPrefix?.FirstOrDefault();
+                        }
+                    });
                 cfg.CreateMap<CNM.PSIPConfiguration, MNM.IPConfiguration>();
                 cfg.CreateMap<CNM.PSResourceNavigationLink, MNM.ResourceNavigationLink>();
                 cfg.CreateMap<CNM.PSServiceEndpoint, MNM.ServiceEndpointPropertiesFormat>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.DhcpOptions, CNM.PSDhcpOptions>();
-                cfg.CreateMap<MNM.Subnet, CNM.PSSubnet>();
+                cfg.CreateMap<MNM.Subnet, CNM.PSSubnet>()
+                    .ForMember(dest => dest.AddressPrefix, opt => opt.Ignore())
+                    .AfterMap((src, dest) =>
+                    {
+                        if (!GeneralUtilities.IsNullOrEmpty(src.AddressPrefixes))
+                        {
+                            dest.AddressPrefix = src.AddressPrefixes.ToList();
+                        }
+                        else if(!string.IsNullOrEmpty(src.AddressPrefix))
+                        {
+                            dest.AddressPrefix = new List<string> {src.AddressPrefix};
+                        }
+                    });
                 cfg.CreateMap<MNM.IPConfiguration, CNM.PSIPConfiguration>();
                 cfg.CreateMap<MNM.ResourceNavigationLink, CNM.PSResourceNavigationLink>();
                 cfg.CreateMap<MNM.ServiceEndpointPropertiesFormat, CNM.PSServiceEndpoint>();
