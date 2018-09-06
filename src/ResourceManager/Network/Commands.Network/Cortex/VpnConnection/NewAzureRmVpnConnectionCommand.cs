@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewayConnectionProtocol.IKEv1,
             MNM.VirtualNetworkGatewayConnectionProtocol.IKEv2,
             IgnoreCase = true)]
-        public string ConnectionProtocol { get; set; }
+        public string VpnConnectionProtocolType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -231,9 +231,9 @@ namespace Microsoft.Azure.Commands.Network
                 vpnConnection.SharedKey = SecureStringExtensions.ConvertToString(this.SharedKey);
             }
 
-            if (!String.IsNullOrEmpty(this.ConnectionProtocol))
+            if (!String.IsNullOrEmpty(this.VpnConnectionProtocolType))
             {
-                vpnConnection.ConnectionProtocol = this.ConnectionProtocol;
+                vpnConnection.VpnConnectionProtocolType = this.VpnConnectionProtocolType;
             }
 
             //// Connection bandwidth
