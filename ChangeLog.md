@@ -1,4 +1,54 @@
-﻿## 6.8.0 - August 2018
+﻿## 6.8.1 - August 2018
+#### General
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+#### AzureRM.ApiManagement
+* Fixed issue with default resource groups not being set.
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6603
+    - Import-AzureRmApiManagementApi and *-AzureRmApiManagementCertificate cmdlets now handle relative Paths
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6879
+    - The CertificateInformation is a settable property allowing for Set-AzureRmApiManagement cmdlet to work property. Fixed by upgrading to 
+	4.0.4-preview nuget
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6853
+    - Fixed the Odata filter for Search by Name on Product
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6814
+    - Fixed the Odata filter for Search by Name on Api
+* Added support for AzureMonitor logger
+
+
+#### AzureRM.Compute
+* Fixed the issue that target is missing in error output.
+* Fixed issue with storage account type for VM with managed disk
+* Fixed issue with default resource groups not being set.
+* Fix AEM Extension cmdlets for other environments, for example Azure China
+
+#### AzureRM.Network
+* Changed default cmdlet output presentation to table view
+
+#### AzureRM.PowerBIEmbedded
+* Fix failure in Update-AzureRmPowerBIEmbeddedCapacity when trying to scale paused capacity
+
+
+#### AzureRM.Resources
+* Fixed issue with creating managed applications from the MarketPlace.
+
+#### AzureRM.ServiceBus
+* Fixed issues
+	- https://github.com/Azure/azure-powershell/issues/5058
+	- https://github.com/Azure/azure-powershell/issues/5055
+	- https://github.com/Azure/azure-powershell/issues/6891
+
+#### AzureRM.TrafficManager
+* Added Support for the MultiValue routing method
+    - New parameter 'MaxReturn' for MultiValue routing
+* Added Support for the Subnet routing method
+    - Support for IP address ranges (subnets) in endpoints
+* Added Support for Custom Headers in profiles
+* Added Support for Expected status code ranges in profiles
+* Added Support for Custom Headers in endpoints
+
+## 6.8.0 - August 2018
 #### General
 * Fixed issue with default resource groups not being set.
 

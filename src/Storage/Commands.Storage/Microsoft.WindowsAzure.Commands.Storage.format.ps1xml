@@ -413,6 +413,22 @@
                 <ScriptBlock>$_.DeleteRetentionPolicy.RetentionDays</ScriptBlock>
               </ListItem>
               <ListItem>
+                <Label>StaticWebsite.Enabled</Label>
+                <ScriptBlock>$_.StaticWebsite.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>StaticWebsite.IndexDocument</Label>
+                <ScriptBlock>$_.StaticWebsite.IndexDocument</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>StaticWebsite.ErrorDocument404Path</Label>
+                <ScriptBlock>$_.StaticWebsite.ErrorDocument404Path</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>$_.Cors</ScriptBlock>
+                <Label>Cors</Label>
+              </ListItem>
+              <ListItem>
                 <Label>DefaultServiceVersion</Label>
                 <PropertyName>DefaultServiceVersion</PropertyName>
               </ListItem>
