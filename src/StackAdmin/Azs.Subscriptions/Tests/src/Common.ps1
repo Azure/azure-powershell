@@ -12,11 +12,17 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$global:SkippedTests = @()
+
+$global:Client = $null
 
 if (-not $global:RunRaw) {
     # Load the script block
     $scriptBlock = {
-        Get-MockClient -ClassName 'SubscriptionsClient' -TestName $global:TestName
+        if ($null -eq $global:Client) {
+            $global:Client = Get-MockClient -ClassName 'SubscriptionsClient' -TestName $global:TestName
+        }
+        $global:Client
     }
     Mock New-ServiceClient $scriptBlock -ModuleName $global:ModuleName
 }
