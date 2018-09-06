@@ -67,16 +67,9 @@ function New-AzsSubscriptionPlan {
         if ($PSCmdlet.ShouldProcess("$AcquisitionId", "Create a subscription plan")) {
 
             # Validate this resource does not exist.
-            $_objectCheck = $null
-            try {
-                Write-Verbose "Checking to see if subscription plan already exists."
-                $_objectCheck = Get-AzsSubscriptionPlan -SubscriptionId $TargetSubscriptionId -AcquisitionId $AcquisitionId
-            } catch {
-                # No op
-            } finally {
-                if ($_objectCheck -ne $null) {
-                    throw "A subscription plan with acquisition id $AcquisitionId for subscription $TargetSubscriptionId under the resource group $ResourceGroupName already exists."
-                }
+            if ($null -ne (Get-AzsSubscriptionPlan -TargetSubscriptionId $TargetSubscriptionId -AcquisitionId $AcquisitionId -ErrorAction SilentlyContinue)) {
+                Write-Error "A subscription plan with acquisition id $AcquisitionId for subscription $TargetSubscriptionId under the resource group $ResourceGroupName already exists."
+                return
             }
 
             $flattenedParameters = @('PlanId', 'AcquisitionId')

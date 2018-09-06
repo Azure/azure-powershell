@@ -1,3 +1,4 @@
+
 <#
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the MIT License. See License.txt in the project root for license information.
@@ -5,13 +6,13 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Create a new backup location.
+    Set the backup configuration at the specified location.
 
 .DESCRIPTION
-    Create a new backup location.
+    Set the backup configuration at the specified location.
 
 .PARAMETER Location
-    Name of the backup location.
+    Location to configure.
 
 .PARAMETER ResourceGroupName
     Name of the resource group.
@@ -20,9 +21,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
     The resource id.
 
 .PARAMETER InputObject
-    Backup location configuration returned by Get-AzsBackupLocation.
+    Backup location configuration returned by Get-AzsBackupConfiguration.
 
-.PARAMETER BackupShare
+.PARAMETER Path
     Location where backups will be stored.
 
 .PARAMETER Username
@@ -48,12 +49,13 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    PS C:\> Set-AzsBackupShare -BackupShare "\\***.***.***.***\Share" -Username "asdomain1\azurestackadmin" -Password $password  -EncryptionKey $encryptionKey
+    PS C:\> Set-AzsBackupConfiguration -Path "\\***.***.***.***\Share" -Username "asdomain1\azurestackadmin" -Password $password  -EncryptionKey $encryptionKey
 
     Set Azure Stack backup configuration.
 
 #>
-function Set-AzsBackupShare {
+function Set-AzsBackupConfiguration {
+    [Alias('Set-AzsBackupShare')]
     [OutputType([Microsoft.AzureStack.Management.Backup.Admin.Models.BackupLocation])]
     [CmdletBinding(DefaultParameterSetName = 'Update', SupportsShouldProcess = $true)]
     param(
@@ -82,8 +84,8 @@ function Set-AzsBackupShare {
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        [Alias("Path")]
-        $BackupShare,
+        [Alias("BackupShare")]
+        $Path,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
@@ -142,7 +144,15 @@ function Set-AzsBackupShare {
 
     Process {
 
+        if ($MyInvocation.InvocationName -like '*Set-AzsBackupShare*') {
+            Write-Warning "Set-AzsBackupShare has been deprecated, please use Set-AzsBackupConfiguration"
+        }
 
+        if ($PSBoundParameters.ContainsKey('Path')) {
+            if ( $MyInvocation.Line -match "\s-BackupShare\s") {
+                Write-Warning -Message "The parameter alias BackupShare will be deprecated in future release. Please use the parameter Path instead"
+            }
+        }
 
         if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
@@ -185,42 +195,35 @@ function Set-AzsBackupShare {
 
             if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'Update' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
 
-                if ($InputObject -eq $null) {
-                    $InputObject = Get-AzsBackupLocation -ResourceGroupName $ResourceGroupName -Location $Location
+                if ($null -eq $InputObject) {
+                    $InputObject = Get-AzsBackupConfiguration -ResourceGroupName $ResourceGroupName -Location $Location
                 }
 
-                if ($PSBoundParameters.ContainsKey('BackupShare'))
-                {
-                    $InputObject.Path = $BackupShare
+                if ($PSBoundParameters.ContainsKey('Path')) {
+                    $InputObject.Path = $Path
                 }
 
-                if ($PSBoundParameters.ContainsKey('Username'))
-                {
+                if ($PSBoundParameters.ContainsKey('Username')) {
                     $InputObject.UserName = $Username
                 }
 
-                if ($PSBoundParameters.ContainsKey('Password'))
-                {
+                if ($PSBoundParameters.ContainsKey('Password')) {
                     $InputObject.Password = ConvertTo-String -SecureString $Password
                 }
 
-                if ($PSBoundParameters.ContainsKey('EncryptionKey'))
-                {
+                if ($PSBoundParameters.ContainsKey('EncryptionKey')) {
                     $InputObject.EncryptionKeyBase64 = ConvertTo-String $EncryptionKey
                 }
 
-                if ($PSBoundParameters.ContainsKey('IsBackupSchedulerEnabled'))
-                {
+                if ($PSBoundParameters.ContainsKey('IsBackupSchedulerEnabled')) {
                     $InputObject.IsBackupSchedulerEnabled = $IsBackupSchedulerEnabled
                 }
 
-                if ($PSBoundParameters.ContainsKey('BackupFrequencyInHours'))
-                {
+                if ($PSBoundParameters.ContainsKey('BackupFrequencyInHours')) {
                     $InputObject.BackupFrequencyInHours = $BackupFrequencyInHours
                 }
 
-                if ($PSBoundParameters.ContainsKey('BackupRetentionPeriodInDays'))
-                {
+                if ($PSBoundParameters.ContainsKey('BackupRetentionPeriodInDays')) {
                     $InputObject.BackupRetentionPeriodInDays = $BackupRetentionPeriodInDays
                 }
 

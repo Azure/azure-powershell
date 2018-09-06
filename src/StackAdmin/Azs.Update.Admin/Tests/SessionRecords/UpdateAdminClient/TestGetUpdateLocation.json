@@ -17,7 +17,7 @@
           "Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient/0.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/23d66fd1-4743-42ff-b391-e29dc51d799e/resourceGroups/System.Redmond/providers/Microsoft.Update.Admin/updateLocations/redmond\",\r\n      \"name\": \"redmond\",\r\n      \"type\": \"Microsoft.Update.Admin/updateLocations\",\r\n      \"location\": \"redmond\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"currentVersion\": \"1.0.180302.1\",\r\n        \"currentOemVersion\": \"1.0.1709.3\",\r\n        \"lastUpdated\": \"2018-03-03T08:09:12.8824552Z\",\r\n        \"state\": \"AppliedSuccessfully\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/23d66fd1-4743-42ff-b391-e29dc51d799e/resourceGroups/System.Redmond/providers/Microsoft.Update.Admin/updateLocations/Redmond\",\r\n      \"name\": \"Redmond\",\r\n      \"type\": \"Microsoft.Update.Admin/updateLocations\",\r\n      \"location\": \"Redmond\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"currentVersion\": \"1.0.180302.1\",\r\n        \"currentOemVersion\": \"1.0.1709.3\",\r\n        \"lastUpdated\": \"2018-03-03T08:09:12.8824552Z\",\r\n        \"state\": \"AppliedSuccessfully\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "410"
@@ -65,8 +65,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23d66fd1-4743-42ff-b391-e29dc51d799e/resourcegroups/System.Redmond/providers/Microsoft.Update.Admin/updateLocations/redmond?api-version=2016-05-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNkNjZmZDEtNDc0My00MmZmLWIzOTEtZTI5ZGM1MWQ3OTllL3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5SZWRtb25kL3Byb3ZpZGVycy9NaWNyb3NvZnQuVXBkYXRlLkFkbWluL3VwZGF0ZUxvY2F0aW9ucy9yZWRtb25kP2FwaS12ZXJzaW9uPTIwMTYtMDUtMDE=",
+      "RequestUri": "/subscriptions/23d66fd1-4743-42ff-b391-e29dc51d799e/resourcegroups/System.Redmond/providers/Microsoft.Update.Admin/updateLocations/Redmond?api-version=2016-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNkNjZmZDEtNDc0My00MmZmLWIzOTEtZTI5ZGM1MWQ3OTllL3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5SZWRtb25kL3Byb3ZpZGVycy9NaWNyb3NvZnQuVXBkYXRlLkFkbWluL3VwZGF0ZUxvY2F0aW9ucy9SZWRtb25kP2FwaS12ZXJzaW9uPTIwMTYtMDUtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -81,7 +81,71 @@
           "Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient/0.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23d66fd1-4743-42ff-b391-e29dc51d799e/resourcegroups/System.Redmond/providers/Microsoft.Update.Admin/updateLocations/redmond\",\r\n  \"name\": \"redmond\",\r\n  \"type\": \"Microsoft.Update.Admin/updateLocations\",\r\n  \"location\": \"redmond\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"currentVersion\": \"1.0.180302.1\",\r\n    \"currentOemVersion\": \"1.0.1709.3\",\r\n    \"lastUpdated\": \"2018-03-03T08:09:12.8824552Z\",\r\n    \"state\": \"AppliedSuccessfully\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23d66fd1-4743-42ff-b391-e29dc51d799e/resourcegroups/System.Redmond/providers/Microsoft.Update.Admin/updateLocations/Redmond\",\r\n  \"name\": \"Redmond\",\r\n  \"type\": \"Microsoft.Update.Admin/updateLocations\",\r\n  \"location\": \"Redmond\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"currentVersion\": \"1.0.180302.1\",\r\n    \"currentOemVersion\": \"1.0.1709.3\",\r\n    \"lastUpdated\": \"2018-03-03T08:09:12.8824552Z\",\r\n    \"state\": \"AppliedSuccessfully\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "398"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 05 Mar 2018 19:49:41 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv6KqwObp1KeZ+qXNeJRPjQ9g+YU2Ur8YoBIhzQpGZ4Kd7b6Z67aP3tfKp12Nb3kRGAX98u7apx1xlGvHhHk+1aaDqFKL6N3CP88F22G6xUYAN3JvDgLPmjzW91YVPPaHnkE/+8GSI4MzYX7+sn1Q6"
+        ],
+        "x-ms-correlation-request-id": [
+          "6ca3e2ec-cc0c-4378-9058-9b4134d9bbdf"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "12842"
+        ],
+        "x-ms-request-id": [
+          "6ca3e2ec-cc0c-4378-9058-9b4134d9bbdf"
+        ],
+        "x-ms-routing-request-id": [
+          "REDMOND:20180305T194941Z:6ca3e2ec-cc0c-4378-9058-9b4134d9bbdf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/23d66fd1-4743-42ff-b391-e29dc51d799e/resourcegroups/System.Redmond/providers/Microsoft.Update.Admin/updateLocations/Redmond?api-version=2016-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNkNjZmZDEtNDc0My00MmZmLWIzOTEtZTI5ZGM1MWQ3OTllL3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5SZWRtb25kL3Byb3ZpZGVycy9NaWNyb3NvZnQuVXBkYXRlLkFkbWluL3VwZGF0ZUxvY2F0aW9ucy9SZWRtb25kP2FwaS12ZXJzaW9uPTIwMTYtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "00ec8ef4-2112-4db6-b99e-ce9fd14fb1fb"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26011.01",
+          "Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23d66fd1-4743-42ff-b391-e29dc51d799e/resourcegroups/System.Redmond/providers/Microsoft.Update.Admin/updateLocations/Redmond\",\r\n  \"name\": \"Redmond\",\r\n  \"type\": \"Microsoft.Update.Admin/updateLocations\",\r\n  \"location\": \"Redmond\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"currentVersion\": \"1.0.180302.1\",\r\n    \"currentOemVersion\": \"1.0.1709.3\",\r\n    \"lastUpdated\": \"2018-03-03T08:09:12.8824552Z\",\r\n    \"state\": \"AppliedSuccessfully\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "398"
