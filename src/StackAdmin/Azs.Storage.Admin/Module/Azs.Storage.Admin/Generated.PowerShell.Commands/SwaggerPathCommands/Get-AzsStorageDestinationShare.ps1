@@ -58,6 +58,8 @@ function Get-AzsStorageDestinationShare {
 
     Process {
 
+        $SourceShareName = Get-ResourceNameSuffix -Resourcename $SourceShareName
+
 
 
         $NewServiceClient_params = @{

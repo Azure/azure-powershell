@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.DataMigration.Models;
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationFileShare"), OutputType(typeof(MigrateSqlServerSqlDbDatabaseInput))]
-    [Alias("New-AzureRmDmsFileShare")]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsFileShare")]
     public class NewFileShare : DataMigrationCmdlet
     {
         [Parameter(
