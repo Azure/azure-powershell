@@ -27,14 +27,10 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The address prefix of the subnet")]
-        public string AddressPrefix { get; set; }
-
-        [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The address prefixes of the subnet")]
-        public List<string> AddressPrefixes { get; set; }
+        [ValidateNotNullOrEmpty]
+        public List<string> AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,

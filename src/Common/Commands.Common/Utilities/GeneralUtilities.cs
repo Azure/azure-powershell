@@ -459,6 +459,22 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
+        /// Checks if collection is null or empty
+        /// </summary>
+        /// <typeparam name="T">Type of the collection.</typeparam>
+        /// <param name="collection">Collection.</param>
+        /// <returns></returns>
+        public static bool IsNullOrEmpty<T>(ICollection<T> collection)
+        {
+            if (collection == null)
+            {
+                return true;
+            }
+
+            return !collection.Any();
+        }
+
+        /// <summary>
         /// Clear the current storage account from the context - guarantees that only one storage account will be active 
         /// at a time.
         /// </summary>
