@@ -30,12 +30,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test
                      ""foo1"": ""bar1"",
                      ""foo2"": ""bar2"",
                      ""num"": 25,
-                     ""address"": 
+                     ""address"":
                      {
                          ""streetAddress"": ""123 Main Str"",
                          ""city"": ""Some City"",
                      },
-                     ""list"": 
+                     ""list"":
                      [
                          {
                            ""val1"": ""a"",
@@ -65,9 +65,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test
                      ""foo1"": ""bar1"",
                      ""foo2"": ""bar2"",
                      ""num"": 25,
-                     ""address"": 
+                     ""address"":
                      { },
-                     ""list"": 
+                     ""list"":
                      [ ]
                  }";
 
@@ -75,8 +75,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test
             result = JsonUtilities.DeserializeJson(json1);
             Assert.NotNull(result);
             Assert.Equal(5, result.Count);
-            Assert.Equal(0, ((Dictionary<string, object>)result["address"]).Count);
-            Assert.Equal(0, ((List<object>)result["list"]).Count);
+            Assert.Empty(((Dictionary<string, object>)result["address"]));
+            Assert.Empty(((List<object>)result["list"]));
         }
 
         [Fact]
@@ -100,12 +100,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test
                      ""foo1"": ""bar1"",
                      ""foo2"": ""bar2"",
                      ""num"": 25,
-                     ""address"": 
+                     ""address"":
                      {
                          ""streetAddress"": ""123 Main Str"",
                          ""city"": ""Some City"",
                      },
-                     ""list"": 
+                     ""list"":
                      [
                          {
                            ""val1"": ""a"",
@@ -113,7 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test
                          },
                          {
                            ""val3"": ""c"",
-                           ""val4"": ""d""                         
+                           ""val4"": ""d""
                  }";
 
             Dictionary<string, object> result;
