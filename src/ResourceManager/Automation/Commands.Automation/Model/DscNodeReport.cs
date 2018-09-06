@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.EndTime = dscNodeReport.EndTime;
             this.LastModifiedTime = dscNodeReport.LastModifiedTime;
             this.ReportType = dscNodeReport.Type;
-            this.Id = dscNodeReport.ReportId.ToString("D");
+            this.Id = dscNodeReport.ReportId;
             this.NodeId = nodeId;
             this.Status = dscNodeReport.Status;
             this.RefreshMode = dscNodeReport.RefreshMode;
@@ -71,17 +71,17 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets the start time.
         /// </summary>
-        public DateTimeOffset StartTime { get; set; }
+        public DateTimeOffset? StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the last modified time.
         /// </summary>
-        public DateTimeOffset LastModifiedTime { get; set; }
+        public DateTimeOffset? LastModifiedTime { get; set; }
 
         /// <summary>
         /// Gets or sets the end time.
         /// </summary>
-        public DateTimeOffset EndTime { get; set; }
+        public DateTimeOffset? EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets the report type.

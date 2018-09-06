@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
     [TestClass]
     public class GetAzureAutomationScheduledRunbookTest : RMTestBase
     {
-        private Mock<IAutomationClient> mockAutomationClient;
+        private Mock<IAutomationPSClient> mockAutomationClient;
 
         private MockCommandRuntime mockCommandRuntime;
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
         [TestInitialize]
         public void SetupTest()
         {
-            this.mockAutomationClient = new Mock<IAutomationClient>();
+            this.mockAutomationClient = new Mock<IAutomationPSClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
             this.cmdlet = new GetAzureAutomationScheduledRunbook
             {

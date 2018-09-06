@@ -40,14 +40,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
 
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = accountName;
-            
             this.Name = hybridRunbookWorkerGroup.Name;
-            
-            
+            this.GroupType = hybridRunbookWorkerGroup.GroupType;
             RunbookWorker = new List<HybridRunbookWorker>();
             foreach (var worker in hybridRunbookWorkerGroup.HybridRunbookWorkers)
             {
-                var hbworker = new HybridRunbookWorker(worker.IpAddress, worker.Name, worker.RegistrationDateTime);                
+                var hbworker = new HybridRunbookWorker(worker);                
                 this.RunbookWorker.Add(hbworker);
             }
         }
@@ -69,8 +67,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// <summary>
         /// Gets or sets a list of Runbook Workers 
         /// </summary>
-        public List<HybridRunbookWorker> RunbookWorker { get; set; }
+        public IList<HybridRunbookWorker> RunbookWorker { get; set; }
 
-        
+        /// <summary>
+        /// Gets or sets the group type of hybrid worker.
+        /// </summary>
+        public string GroupType { get; set; }
     }
 }

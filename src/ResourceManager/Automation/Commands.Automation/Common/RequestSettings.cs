@@ -18,15 +18,17 @@ using System;
 #if !NETSTANDARD
 using System.Diagnostics.Eventing;
 #endif
+using AutomationManagement = Microsoft.Azure.Management.Automation;
+
 namespace Microsoft.Azure.Commands.Automation
 {
     public class RequestSettings : IDisposable
     {
-        private readonly AutomationManagementClient client;
+        private readonly AutomationManagement.AutomationClient client;
 
-        public RequestSettings(IAutomationManagementClient automationClient)
+        public RequestSettings(AutomationManagement.IAutomationClient automationClient)
         {
-            client = ((AutomationManagementClient)automationClient);
+            client = ((AutomationManagement.AutomationClient)automationClient);
             client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, Guid.NewGuid().ToString());
 

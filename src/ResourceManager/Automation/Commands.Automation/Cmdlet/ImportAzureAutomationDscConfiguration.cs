@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 var configuration = this.AutomationClient.CreateConfiguration(
                     this.ResourceGroupName,
                     this.AutomationAccountName,
-                    ResolveUserPath(this.SourcePath),
+                    this.SourcePath,
                     this.Tags,
                     this.Description,
                     this.LogVerbose,

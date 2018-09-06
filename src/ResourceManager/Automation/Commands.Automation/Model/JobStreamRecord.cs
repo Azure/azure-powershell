@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         public JobStreamRecord(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId) : base(jobStream, resourceGroupName, automationAccountName, jobId)
         {
             this.Value = new Hashtable();
-            foreach (var kvp in jobStream.Properties.Value)
+            foreach (var kvp in jobStream.Value)
             {
                 object paramValue;
                 try
