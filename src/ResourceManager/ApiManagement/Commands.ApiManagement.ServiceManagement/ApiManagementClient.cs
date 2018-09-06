@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     context.ServiceName,
                     new Rest.Azure.OData.ODataQuery<ApiContract>
                     {
-                        Filter = string.Format("contains('{0}',properties/displayName)", name)
+                        Filter = string.Format("properties/displayName eq '{0}'", name)
                     }),
                 nextLink => Client.Api.ListByServiceNext(nextLink));
 
@@ -1269,7 +1269,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             var query = new Rest.Azure.OData.ODataQuery<ProductContract>();
             if (!string.IsNullOrWhiteSpace(title))
             {
-                query.Filter = string.Format("contains('{0}',properties/displayName)", title);
+                query.Filter = string.Format("properties/displayName eq '{0}'", title);
             }
 
             var results = ListPagedAndMap<PsApiManagementProduct, ProductContract>(

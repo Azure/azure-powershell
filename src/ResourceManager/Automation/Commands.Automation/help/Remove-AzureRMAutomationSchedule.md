@@ -29,12 +29,12 @@ The **Remove-AzureRmAutomationSchedule** cmdlet deletes a schedule from Azure Au
 PS C:\>Remove-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -ResourceGroupName "ResourceGroup01"
 ```
 
-This command modifies the description of the schedule named Schedule01.
+This command deletes the schedule named Schedule01 in automation account Contoso17 in resource group ResourceGroup01.
 
 ## PARAMETERS
 
 ### -AutomationAccountName
-Specifies the name of an Automation account for which this cmdlet modifies a schedule.
+Specifies the name of an Automation account for which this cmdlet removes a schedule.
 
 ```yaml
 Type: System.String
