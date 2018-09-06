@@ -26,10 +26,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set,
-         "AzureRmVirtualNetworkGateway",
-         DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default, SupportsShouldProcess = true),
-     OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway",DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default, SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetworkGateway))]
     public class SetAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(

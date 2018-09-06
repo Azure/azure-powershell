@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.StreamAnalyticsOutput, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StreamAnalyticsOutput", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureStreamAnalyticsOutputCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]

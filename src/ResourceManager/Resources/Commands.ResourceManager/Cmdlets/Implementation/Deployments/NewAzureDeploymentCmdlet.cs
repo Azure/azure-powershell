@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates a new deployment.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDeployment", SupportsShouldProcess = true,
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Deployment", SupportsShouldProcess = true,
         DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSDeployment))]
     public class NewAzureDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
     {

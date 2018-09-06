@@ -16,7 +16,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet(VerbsData.Update, "AzureRmReservation", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSReservation))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Reservation", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSReservation))]
     public class PatchReservation : AzureReservationsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet,

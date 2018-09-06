@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation variables for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationVariable", SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationVariable", SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
     public class RemoveAzureAutomationVariable : AzureAutomationBaseCmdlet
     {

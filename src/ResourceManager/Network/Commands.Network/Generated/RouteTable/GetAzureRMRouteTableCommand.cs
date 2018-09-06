@@ -40,7 +40,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmRouteTable", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSRouteTable))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteTable", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSRouteTable))]
     public partial class GetAzureRmRouteTable : NetworkBaseCmdlet
     {
         [Parameter(

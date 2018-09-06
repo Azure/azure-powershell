@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet(VerbsData.ConvertTo, "AzureRmVMManagedDisk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet("ConvertTo", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMManagedDisk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class ConvertToAzureRmVMManagedDisk : ComputeAutomationBaseCmdlet
     {

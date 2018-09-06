@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation agent registration information for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationRegistrationInfo")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationRegistrationInfo")]
     [OutputType(typeof(AgentRegistration))]
     public class GetAzureAutomationRegistrationInfo : AzureAutomationBaseCmdlet
     {

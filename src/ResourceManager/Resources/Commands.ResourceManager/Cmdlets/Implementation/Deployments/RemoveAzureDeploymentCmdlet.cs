@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Deletes a deployment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDeployment", SupportsShouldProcess = true,
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Deployment", SupportsShouldProcess = true,
         DefaultParameterSetName = RemoveAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
     public class RemoveAzureDeploymentCmdlet : ResourceManagerCmdletBase
     {

@@ -15,6 +15,7 @@
 // 
 
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -24,15 +25,19 @@ namespace Microsoft.Azure.Commands.Network.Models
     public partial class PSConnectionStateSnapshot
     {
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ConnectionState { get; set; }
 
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public DateTime? StartTime { get; set; }
 
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public DateTime? EndTime { get; set; }
 
         [JsonProperty(Order = 2)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string EvaluationState { get; set; }
 
         [JsonProperty(Order = 2)]

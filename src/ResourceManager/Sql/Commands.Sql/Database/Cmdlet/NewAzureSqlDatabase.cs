@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabase", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureSqlDatabaseModel))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabase", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureSqlDatabaseModel))]
     public class NewAzureSqlDatabase : AzureSqlDatabaseCmdletBase<AzureSqlDatabaseCreateOrUpdateModel>
     {
         /// <summary>
@@ -249,7 +248,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         {
             // Use AutoRest Sdk
             AzureSqlDatabaseModel upsertedDatabase = ModelAdapter.UpsertDatabaseWithNewSdk(this.ResourceGroupName, this.ServerName, entity);
-
+            
             return new AzureSqlDatabaseCreateOrUpdateModel
             {
                 Database = upsertedDatabase

@@ -18,11 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.New,
-        Constants.JobDefinitions.AzureHDInsightPigJobDefinition),
-    OutputType(
-        typeof(AzureHDInsightPigJobDefinition))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightPigJobDefinition"),OutputType(typeof(AzureHDInsightPigJobDefinition))]
     public class NewAzureHDInsightPigJobDefinitionCommand : HDInsightCmdletBase
     {
         private AzureHDInsightPigJobDefinition job;
