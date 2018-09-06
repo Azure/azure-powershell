@@ -30,8 +30,8 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
@@ -378,14 +378,10 @@ namespace Microsoft.Azure.Commands.Compute
                     Name,
                     new StorageAccountCreateParameters
                 {
-#if !NETSTANDARD
-                    AccountType = AccountType.PremiumLRS,
-#else
-                    Sku = new Microsoft.Azure.Management.Storage.Models.Sku
+                    Sku = new Microsoft.Azure.Management.Storage.Version2017_10_01.Models.Sku
                     {
                         Name = SkuName.PremiumLRS
                     },
-#endif
                     Location = Location
                 });
                 var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
