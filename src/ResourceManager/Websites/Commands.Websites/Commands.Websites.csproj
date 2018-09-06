@@ -97,6 +97,7 @@
     <Compile Include="Cmdlets\AppServicePlans\RemoveAppServicePlan.cs" />
     <Compile Include="Models.WebApp\AppServicePlanBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\DeploymentTemplate.cs" />
+    <Compile Include="Models.WebApp\PSAppServicePlan.cs" />
     <Compile Include="Models.WebApp\PSSite.cs" />
     <Compile Include="Models.WebApp\ResourceClient.cs" />
     <Compile Include="Models.WebApp\WebAppBaseCmdlet.cs" />

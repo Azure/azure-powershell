@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.WebSites.Models;
+using System;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
@@ -66,5 +67,8 @@ namespace Microsoft.Azure.Commands.WebApps.Models
         public string GitRemoteUri { get; set; }
         public string GitRemoteUsername { get; set; }
         public SecureString  GitRemotePassword { get; set; }
+
+        [Obsolete("This property is deprecated and will be removed in a future releases.")]
+        public string SnapshotInfo { get; set; }
     }
 }
