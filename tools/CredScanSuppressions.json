@@ -233,6 +233,30 @@
         {
             "file": "\\src\\StackAdmin\\Resources\\Commands.Resources.Test\\Models.ResourceGroups\\ResourceClientTests.cs", 
             "_justification": "False positive, just a mention of the literal key"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\ScenarioTests\\ApplicationGatewayTests.ps1", 
+            "_justification": "No secrets, use of test password"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\ScenarioTests\\VirtualNetworkGatewayTests.ps1", 
+            "_justification": "No secrets, use of test password"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\\TestApplicationGatewayCRUD2.json", 
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\\TestTroubleshoot.json", 
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\\TestResourceNavigationLinksOnSubnetCRUD.json", 
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\\TestVirtualNetworkGatewayP2SVpnProfile.json", 
+            "_justification": "Legitimate test session record"
         }
 	]
 }
