@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Models
 {
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.DeploymentManager.Models;
 
     public class PSServiceResource : PSResource
@@ -55,7 +56,14 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
 
         internal ServiceResource ToSdkType()
         {
-            return new ServiceResource(this.Location, this.TargetLocation, this.TargetSubscriptionId, this.Name, this.Type, this.Id, this.Tags);
+            return new ServiceResource(
+                this.Location, 
+                this.TargetLocation, 
+                this.TargetSubscriptionId, 
+                this.Name, 
+                this.Type, 
+                this.Id, 
+                TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true));
         }
     }
 }

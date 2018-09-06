@@ -132,20 +132,20 @@
   <data name="RemovedTopology" xml:space="preserve">
     <value>Topology {0} deleted.</value>
   </data>
-  <data name="RemovedTopologyGroup" xml:space="preserve">
-    <value>Topology group {0} deleted.</value>
+  <data name="RemovedService" xml:space="preserve">
+    <value>Service {0} deleted.</value>
   </data>
   <data name="RemovingRollout" xml:space="preserve">
     <value>Removing rollout {0}</value>
   </data>
   <data name="RemovingTopology" xml:space="preserve">
-    <value>Removing topology {0}</value>
+    <value>Removing service topology {0}</value>
   </data>
-  <data name="RemovingTopologyGroup" xml:space="preserve">
-    <value>Removing topology group {0}</value>
+  <data name="RemovingService" xml:space="preserve">
+    <value>Removing service {0}</value>
   </data>
-  <data name="RemovingTopologyUnit" xml:space="preserve">
-    <value>Removing topology unit {0}</value>
+  <data name="RemovingServiceUnit" xml:space="preserve">
+    <value>Removing service unit {0}</value>
   </data>
   <data name="ConfirmRemoveArtifactSource" xml:space="preserve">
     <value>There might be rollouts or topologies referencing the artifact source {0}. Are you sure you want to remove the artifact source?</value>
@@ -153,11 +153,11 @@
   <data name="ConfirmRemoveTopology" xml:space="preserve">
     <value>Are you sure you want to remove the topology {0}?</value>
   </data>
-  <data name="ConfirmRemoveTopologyGroup" xml:space="preserve">
-    <value>Are you sure you want to remove the topology group {0}?</value>
+  <data name="ConfirmRemoveService" xml:space="preserve">
+    <value>Are you sure you want to remove the service {0}?</value>
   </data>
-  <data name="ConfirmRemoveTopologyUnit" xml:space="preserve">
-    <value>Are you sure you want to remove the topology unit {0}?</value>
+  <data name="ConfirmRemoveServiceUnit" xml:space="preserve">
+    <value>Are you sure you want to remove the service unit {0}?</value>
   </data>
   <data name="RestartedRollout" xml:space="preserve">
     <value>Rollout {0} restarted.</value>
@@ -215,5 +215,8 @@
   </data>
   <data name="UpdateServiceUnit" xml:space="preserve">
     <value>Update service unit</value>
+  </data>
+  <data name="RemovedServiceUnit" xml:space="preserve">
+    <value>Removed service unit {0}</value>
   </data>
 </root>

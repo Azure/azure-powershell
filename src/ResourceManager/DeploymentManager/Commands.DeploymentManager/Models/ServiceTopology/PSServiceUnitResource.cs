@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.DeploymentManager.Models
 {
     using System;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.DeploymentManager.Models;
 
     public class PSServiceUnitResource : PSResource
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
                 this.Name, 
                 this.Type, 
                 this.Id, 
-                this.Tags)
+                TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true))
             {
                 Identity = this.Identity?.ToSdkType(),
                 TemplateUri = this.TemplateUri,

@@ -75,6 +75,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         public override void ExecuteCmdlet()
         {
+            this.ResolveParams();
             this.ConfirmAction(
                 this.Force.IsPresent,
                 string.Format(Messages.ConfirmRemoveTopology, this.Name),
@@ -97,6 +98,17 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         private bool Delete()
         {
+            var topologyToDelete = new PSServiceTopologyResource()
+            {
+                ResourceGroupName = this.ResourceGroupName,
+                Name = this.Name
+            };
+
+            return this.DeploymentManagerClient.DeleteServiceTopology(topologyToDelete);
+        }
+
+        private void ResolveParams()
+        {
             if (this.ServiceTopology != null)
             {
                 this.ResourceGroupName = this.ServiceTopology.ResourceGroupName;
@@ -108,14 +120,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 this.Name = parsedResourceId.ResourceName;
             }
-
-            var topologyToDelete = new PSServiceTopologyResource()
-            {
-                ResourceGroupName = this.ResourceGroupName,
-                Name = this.Name
-            };
-
-            return this.DeploymentManagerClient.DeleteServiceTopology(topologyToDelete);
         }
     }
 }

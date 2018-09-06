@@ -14,19 +14,26 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
+    using System.Collections;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(
         VerbsCommon.
         New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerService",
-        SupportsShouldProcess = true), 
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
      OutputType(typeof(PSServiceResource))]
     public class NewService : DeploymentManagerBaseCmdlet
     {
+        private const string ByServiceTopologyObjectParameterSet = "ByServiceTopologyObject";
+        private const string ByServiceTopologyResourceIdParamSet = "ByServiceTopologyResourceId";
+
         [Parameter(
+            Position = 0,
             Mandatory = true, 
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
@@ -34,16 +41,18 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            Position = 1,
+            Mandatory = true, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
+            HelpMessage = "The name of the service topology this service belongs to.")]
+        [ValidateNotNullOrEmpty]
+        public string ServiceTopologyName { get; set; }
+
+        [Parameter(
             Mandatory = true, 
             HelpMessage = "The name of the service.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true, 
-            HelpMessage = "The name of the service topology this service belongs to.")]
-        [ValidateNotNullOrEmpty]
-        public string ServiceTopologyName { get; set; }
 
         [Parameter(
             Mandatory = true, 
@@ -64,10 +73,42 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [ValidateNotNullOrEmpty]
         public string TargetSubscriptionId { get; set; }
 
+        [Parameter(
+            Position = 1,
+            Mandatory = true, 
+            ParameterSetName = NewService.ByServiceTopologyObjectParameterSet,
+            HelpMessage = "The service topology object in which the service should be created.")]
+        [ValidateNotNullOrEmpty]
+        public PSServiceTopologyResource ServiceTopology { get; set; }
+
+        [Parameter(
+            Position = 1,
+            Mandatory = true, 
+            ParameterSetName = NewService.ByServiceTopologyResourceIdParamSet,
+            HelpMessage = "The service topology resource identifier in which the service should be created.")]
+        [ValidateNotNullOrEmpty]
+        public string ServiceTopologyId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A hash table which represents resource tags.")]
+        public Hashtable Tags { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(this.Name, Messages.CreateService))
             {
+                if (this.ServiceTopology != null)
+                {
+                    this.ServiceTopologyName = this.ServiceTopology.Name;
+                }
+                else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyId))
+                {
+                    var parsedResource = new ResourceIdentifier(this.ServiceTopologyId);
+                    this.ServiceTopologyName = parsedResource.ResourceName;
+                }
+
                 var serviceResource = new PSServiceResource()
                 {
                     ResourceGroupName = this.ResourceGroupName,
@@ -76,6 +117,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                     TargetSubscriptionId = this.TargetSubscriptionId,
                     TargetLocation = this.TargetLocation,
                     ServiceTopologyName = this.ServiceTopologyName,
+                    Tags = this.Tags
                 };
 
                 if (this.DeploymentManagerClient.ServiceExists(serviceResource))

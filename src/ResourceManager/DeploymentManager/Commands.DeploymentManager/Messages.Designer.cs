@@ -88,29 +88,29 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the service {0}?.
+        /// </summary>
+        internal static string ConfirmRemoveService {
+            get {
+                return ResourceManager.GetString("ConfirmRemoveService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the service unit {0}?.
+        /// </summary>
+        internal static string ConfirmRemoveServiceUnit {
+            get {
+                return ResourceManager.GetString("ConfirmRemoveServiceUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the topology {0}?.
         /// </summary>
         internal static string ConfirmRemoveTopology {
             get {
                 return ResourceManager.GetString("ConfirmRemoveTopology", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the topology group {0}?.
-        /// </summary>
-        internal static string ConfirmRemoveTopologyGroup {
-            get {
-                return ResourceManager.GetString("ConfirmRemoveTopologyGroup", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the topology unit {0}?.
-        /// </summary>
-        internal static string ConfirmRemoveTopologyUnit {
-            get {
-                return ResourceManager.GetString("ConfirmRemoveTopologyUnit", resourceCulture);
             }
         }
         
@@ -187,20 +187,29 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Service {0} deleted..
+        /// </summary>
+        internal static string RemovedService {
+            get {
+                return ResourceManager.GetString("RemovedService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removed service unit {0}.
+        /// </summary>
+        internal static string RemovedServiceUnit {
+            get {
+                return ResourceManager.GetString("RemovedServiceUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Topology {0} deleted..
         /// </summary>
         internal static string RemovedTopology {
             get {
                 return ResourceManager.GetString("RemovedTopology", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Topology group {0} deleted..
-        /// </summary>
-        internal static string RemovedTopologyGroup {
-            get {
-                return ResourceManager.GetString("RemovedTopologyGroup", resourceCulture);
             }
         }
         
@@ -223,29 +232,29 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing topology {0}.
+        ///   Looks up a localized string similar to Removing service {0}.
+        /// </summary>
+        internal static string RemovingService {
+            get {
+                return ResourceManager.GetString("RemovingService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing service unit {0}.
+        /// </summary>
+        internal static string RemovingServiceUnit {
+            get {
+                return ResourceManager.GetString("RemovingServiceUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing service topology {0}.
         /// </summary>
         internal static string RemovingTopology {
             get {
                 return ResourceManager.GetString("RemovingTopology", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing topology group {0}.
-        /// </summary>
-        internal static string RemovingTopologyGroup {
-            get {
-                return ResourceManager.GetString("RemovingTopologyGroup", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing topology unit {0}.
-        /// </summary>
-        internal static string RemovingTopologyUnit {
-            get {
-                return ResourceManager.GetString("RemovingTopologyUnit", resourceCulture);
             }
         }
         

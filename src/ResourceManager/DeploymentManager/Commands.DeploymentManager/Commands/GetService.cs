@@ -26,10 +26,26 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
      OutputType(typeof(PSServiceResource))]
     public class GetService : DeploymentManagerBaseCmdlet
     {
+        private const string ByServiceTopologyObjectParameterSet = "ByServiceTopologyObject";
+
+        private const string ByServiceTopologyResourceIdParamSet = "ByServiceTopologyResourceId";
+
         [Parameter(
             Position = 0,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = true, 
+            ParameterSetName = GetService.ByServiceTopologyObjectParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = true, 
+            ParameterSetName = GetService.ByServiceTopologyResourceIdParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
@@ -49,6 +65,18 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Position = 2,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the service.")]
+        [Parameter(
+            Position = 2,
+            Mandatory = true, 
+            ParameterSetName = GetService.ByServiceTopologyObjectParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the service.")]
+        [Parameter(
+            Position = 2,
+            Mandatory = true, 
+            ParameterSetName = GetService.ByServiceTopologyResourceIdParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service.")]
         [ValidateNotNullOrEmpty]
@@ -72,7 +100,37 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [ValidateNotNullOrEmpty]
         public PSServiceResource Service { get; set; }
 
+        [Parameter(
+            Position = 1,
+            Mandatory = true, 
+            ParameterSetName = GetService.ByServiceTopologyObjectParameterSet,
+            HelpMessage = "The service topology object in which the service should be created.")]
+        [ValidateNotNullOrEmpty]
+        public PSServiceTopologyResource ServiceTopology { get; set; }
+
+        [Parameter(
+            Position = 1,
+            Mandatory = true, 
+            ParameterSetName = GetService.ByServiceTopologyResourceIdParamSet,
+            HelpMessage = "The service topology resource identifier in which the service should be created.")]
+        [ValidateNotNullOrEmpty]
+        public string ServiceTopologyResourceId { get; set; }
+
         public override void ExecuteCmdlet()
+        {
+            this.ResolveParams();
+            var psServiceResource = new PSServiceResource()
+            {
+                ResourceGroupName = this.ResourceGroupName,
+                ServiceTopologyName = this.ServiceTopologyName,
+                Name = this.Name
+            };
+
+            psServiceResource = this.DeploymentManagerClient.GetService(psServiceResource);
+            this.WriteObject(psServiceResource);
+        }
+
+        private void ResolveParams()
         {
             if (this.Service != null)
             {
@@ -87,16 +145,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 this.ServiceTopologyName = parsedResourceId.ParentResource;
                 this.Name = parsedResourceId.ResourceName;
             }
-
-            var psServiceResource = new PSServiceResource()
+            else if (this.ServiceTopology != null)
             {
-                ResourceGroupName = this.ResourceGroupName,
-                ServiceTopologyName = this.ServiceTopologyName,
-                Name = this.Name
-            };
-
-            psServiceResource = this.DeploymentManagerClient.GetService(psServiceResource);
-            this.WriteObject(psServiceResource);
+                this.ServiceTopologyName = this.ServiceTopology.Name;
+            }
+            else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(this.ServiceTopologyResourceId);
+                this.ServiceTopologyName = parsedResourceId.ResourceName;
+            }
         }
     }
 }

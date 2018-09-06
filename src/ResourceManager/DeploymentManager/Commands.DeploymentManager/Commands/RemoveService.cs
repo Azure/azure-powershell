@@ -28,10 +28,25 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
      OutputType(typeof(bool))]
     public class RemoveService : DeploymentManagerBaseCmdlet
     {
+        private const string ByServiceTopologyObjectParameterSet = "ByServiceTopologyObject";
+        private const string ByServiceTopologyResourceIdParamSet = "ByServiceTopologyResourceId";
+
         [Parameter(
             Position = 0,
             Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = true, 
+            ParameterSetName = RemoveService.ByServiceTopologyObjectParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = true, 
+            ParameterSetName = RemoveService.ByServiceTopologyResourceIdParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
@@ -41,16 +56,28 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [Parameter(
             Position = 1,
             Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the service topology the service belongs to.")]
+            HelpMessage = "The name of the service topology.")]
         [ValidateNotNullOrEmpty]
         public string ServiceTopologyName { get; set; }
 
         [Parameter(
             Position = 2,
             Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the service.")]
+        [Parameter(
+            Position = 2,
+            Mandatory = true, 
+            ParameterSetName = RemoveService.ByServiceTopologyObjectParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the service.")]
+        [Parameter(
+            Position = 2,
+            Mandatory = true, 
+            ParameterSetName = RemoveService.ByServiceTopologyResourceIdParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service.")]
         [ValidateNotNullOrEmpty]
@@ -68,11 +95,27 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [Parameter(
             Position = 0,
             Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName, 
-            ValueFromPipeline = true, 
-            HelpMessage = "The resource to be removed.")]
+            ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName,
+            ValueFromPipeline = true,
+            HelpMessage = "Service object.")]
         [ValidateNotNullOrEmpty]
         public PSServiceResource Service { get; set; }
+
+        [Parameter(
+            Position = 1,
+            Mandatory = true, 
+            ParameterSetName = RemoveService.ByServiceTopologyObjectParameterSet,
+            HelpMessage = "The service topology object in which the service should be created.")]
+        [ValidateNotNullOrEmpty]
+        public PSServiceTopologyResource ServiceTopology { get; set; }
+
+        [Parameter(
+            Position = 1,
+            Mandatory = true, 
+            ParameterSetName = RemoveService.ByServiceTopologyResourceIdParamSet,
+            HelpMessage = "The service topology resource identifier in which the service should be created.")]
+        [ValidateNotNullOrEmpty]
+        public string ServiceTopologyResourceId { get; set; }
 
         [Parameter(
             Mandatory = false, 
@@ -84,17 +127,18 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         public override void ExecuteCmdlet()
         {
+            this.ResolveParams();
             this.ConfirmAction(
                 this.Force.IsPresent,
-                string.Format(Messages.ConfirmRemoveTopologyGroup, this.Name),
-                string.Format(Messages.ConfirmRemoveTopologyGroup, this.Name),
+                string.Format(Messages.ConfirmRemoveService, this.Name),
+                string.Format(Messages.ConfirmRemoveService, this.Name),
                 this.Name,
                 () =>
                 {
                     var result = this.Delete();
                     if (result)
                     {
-                        this.WriteVerbose(string.Format(Messages.RemovedTopologyGroup, this.Name));
+                        this.WriteVerbose(string.Format(Messages.RemovedService, this.Name));
                     }
 
                     if (this.PassThru)
@@ -106,9 +150,22 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         private bool Delete()
         {
+             var serviceToDelete = new PSServiceResource()
+            {
+                ResourceGroupName = this.ResourceGroupName,
+                ServiceTopologyName = this.ServiceTopologyName,
+                Name = this.Name
+            };
+
+            return this.DeploymentManagerClient.DeleteService(serviceToDelete);
+        }
+
+        private void ResolveParams()
+        {
             if (this.Service != null)
             {
                 this.ResourceGroupName = this.Service.ResourceGroupName;
+                this.ServiceTopologyName = this.Service.ServiceTopologyName;
                 this.Name = this.Service.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
@@ -118,15 +175,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 this.ServiceTopologyName = parsedResourceId.ParentResource;
                 this.Name = parsedResourceId.ResourceName;
             }
-
-             var serviceToDelete = new PSServiceResource()
+            else if (this.ServiceTopology != null)
             {
-                ResourceGroupName = this.ResourceGroupName,
-                ServiceTopologyName = this.ServiceTopologyName,
-                Name = this.Name
-            };
-
-            return this.DeploymentManagerClient.DeleteService(serviceToDelete);
+                this.ServiceTopologyName = this.ServiceTopology.Name;
+            }
+            else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(this.ServiceTopologyResourceId);
+                this.ServiceTopologyName = parsedResourceId.ResourceName;
+            }
         }
     }
 }

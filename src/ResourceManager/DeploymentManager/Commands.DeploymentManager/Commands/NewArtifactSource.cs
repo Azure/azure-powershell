@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
+    using System.Collections;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.DeploymentManager.Models;
@@ -58,6 +59,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public string SasUri { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A hash table which represents resource tags.")]
+        public Hashtable Tags { get; set; }
+
+        [Parameter(
             Mandatory = false, 
             HelpMessage = "The optional directory offset under the storage container for the artifacts.")]
         public string ArtifactRoot { get; set; }
@@ -73,7 +80,8 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                     Location = this.Location,
                     SourceType = this.ParameterSetName,
                     ArtifactRoot = this.ArtifactRoot,
-                    Authentication = this.GetAuthentication()
+                    Authentication = this.GetAuthentication(),
+                    Tags = this.Tags
                 };
 
                 if (this.DeploymentManagerClient.ArtifactSourceExists(psArtifactSource))

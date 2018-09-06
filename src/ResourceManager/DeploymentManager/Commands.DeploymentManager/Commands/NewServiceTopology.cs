@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
+    using System.Collections;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.DeploymentManager.Models;
@@ -50,8 +51,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [Parameter(
             Mandatory = true, 
             HelpMessage = "The identifier of the artifact source, where the artifacts that make up the topology are stored.")]
-        [ValidateNotNullOrEmpty]
         public string ArtifactSourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A hash table which represents resource tags.")]
+        public Hashtable Tags { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -62,7 +68,8 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                     ResourceGroupName = this.ResourceGroupName,
                     Name = this.Name,
                     Location = this.Location,
-                    ArtifactSourceId = this.ArtifactSourceId
+                    ArtifactSourceId = this.ArtifactSourceId,
+                    Tags = this.Tags
                 };
 
                 if (this.DeploymentManagerClient.ServiceTopologyExists(topologyResource))

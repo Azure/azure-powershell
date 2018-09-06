@@ -14,7 +14,9 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Models
 {
+    using System.Collections;
     using System.Collections.Generic;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.DeploymentManager.Models;
 
     public abstract class PSResource
@@ -29,7 +31,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
             this.Type = trackedResource.Type;
             this.Id = trackedResource.Id;
             this.Location = trackedResource.Location;
-            this.Tags = trackedResource.Tags;
+            this.Tags = TagsConversionHelper.CreateTagHashtable(trackedResource.Tags);
         }
 
 		/// <summary>
@@ -55,6 +57,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
 		/// <summary>
 		/// Gets or sets the resource tags.
 		/// </summary>
-		public IDictionary<string, string> Tags { get; set; }
+		public Hashtable Tags { get; set; }
     }
 }

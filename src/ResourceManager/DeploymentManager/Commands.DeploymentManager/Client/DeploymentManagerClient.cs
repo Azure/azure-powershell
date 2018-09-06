@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
         {
             _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
-            var serviceTopologyResource = _client.Topologies.Get(pSServiceTopologyResource.ResourceGroupName, pSServiceTopologyResource.Name);
+            var serviceTopologyResource = _client.ServiceTopologies.Get(pSServiceTopologyResource.ResourceGroupName, pSServiceTopologyResource.Name);
             return new PSServiceTopologyResource(pSServiceTopologyResource.ResourceGroupName, serviceTopologyResource);
         }
 
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
         {
             _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
 
-            var result = _client.Topologies.DeleteWithHttpMessagesAsync(psServiceTopologyResource.ResourceGroupName, psServiceTopologyResource.Name).GetAwaiter().GetResult();
+            var result = _client.ServiceTopologies.DeleteWithHttpMessagesAsync(psServiceTopologyResource.ResourceGroupName, psServiceTopologyResource.Name).GetAwaiter().GetResult();
             return (result.Response.StatusCode == HttpStatusCode.OK || result.Response.StatusCode == HttpStatusCode.NoContent);
         }
 
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
             {
                 retrievedServiceResource = getFunc(resourceObject);
             }
-            catch (CloudException ex)
+            catch (ErrorInfoException ex)
             {
                 if (ex.Response.StatusCode == HttpStatusCode.NotFound)
                 {
