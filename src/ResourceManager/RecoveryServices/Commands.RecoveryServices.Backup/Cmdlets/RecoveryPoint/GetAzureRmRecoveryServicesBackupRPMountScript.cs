@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { VaultParams.VaultName, vaultName },
                         { VaultParams.ResourceGroupName, resourceGroupName },
                         { RestoreBackupItemParams.RecoveryPoint, RecoveryPoint },
-                        { RecoveryPointParams.FileDownloadLocation, Path }
+                        { RecoveryPointParams.FileDownloadLocation, ResolveUserPath(Path) }
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
