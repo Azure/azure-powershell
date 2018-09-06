@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable internet security for this connection.")]
-        public bool? EnableInternetSecurity { get; set; }
+        public SwitchParameter EnableInternetSecurity { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -124,10 +124,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException("The hub virtual network connection to modify could not be found");
             }
 
-            if (this.EnableInternetSecurity.HasValue)
-            {
-                connectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.Value;
-            }
+            connectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.IsPresent;
             
             ConfirmAction(
                     Force.IsPresent,
