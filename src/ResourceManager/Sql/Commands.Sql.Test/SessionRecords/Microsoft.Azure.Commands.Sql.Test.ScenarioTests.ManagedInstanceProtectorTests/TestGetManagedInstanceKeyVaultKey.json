@@ -1,0 +1,521 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/mitest-donotdelete_mitest-key_e97043455e14493ca05c3642549aedba?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL01sQW5kemljX1JHL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL21hbmFnZWRJbnN0YW5jZXMvbWlkZW1vaW5zdGFuY2ViYy9rZXlzL21pdGVzdC1kb25vdGRlbGV0ZV9taXRlc3Qta2V5X2U5NzA0MzQ1NWUxNDQ5M2NhMDVjMzY0MjU0OWFlZGJhP2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"serverKeyType\": \"AzureKeyVault\",\r\n    \"uri\": \"https://mitest-donotdelete.vault.azure.net/keys/mitest-key/e97043455e14493ca05c3642549aedba\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "173"
+        ],
+        "x-ms-client-request-id": [
+          "a885d540-ffab-4f14-a140-986d13f3f907"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.20.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpsertManagedServerEncryptionKeys\",\r\n  \"startTime\": \"2018-09-05T22:21:53.393Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "88"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "1"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/providers/Microsoft.Sql/locations/westeurope/managedInstanceKeyAzureAsyncOperation/e9fcf6aa-be0e-4eb3-b323-35c9c72af8ce?api-version=2017-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "e9fcf6aa-be0e-4eb3-b323-35c9c72af8ce"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "840242f9-917b-424d-be8b-5879adde901c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180905T222153Z:840242f9-917b-424d-be8b-5879adde901c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Sep 2018 22:21:52 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/providers/Microsoft.Sql/locations/westeurope/managedInstanceKeyOperationResults/e9fcf6aa-be0e-4eb3-b323-35c9c72af8ce?api-version=2017-10-01-preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/providers/Microsoft.Sql/locations/westeurope/managedInstanceKeyAzureAsyncOperation/e9fcf6aa-be0e-4eb3-b323-35c9c72af8ce?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0ZXVyb3BlL21hbmFnZWRJbnN0YW5jZUtleUF6dXJlQXN5bmNPcGVyYXRpb24vZTlmY2Y2YWEtYmUwZS00ZWIzLWIzMjMtMzVjOWM3MmFmOGNlP2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.20.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"e9fcf6aa-be0e-4eb3-b323-35c9c72af8ce\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-09-05T22:21:53.393Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "1"
+        ],
+        "x-ms-request-id": [
+          "a527dc82-4a92-4cd1-b75c-a19d9796716b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "9df42e68-344f-43ce-a386-cea9d838a662"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180905T222204Z:9df42e68-344f-43ce-a386-cea9d838a662"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Sep 2018 22:22:03 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/mitest-donotdelete_mitest-key_e97043455e14493ca05c3642549aedba?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL01sQW5kemljX1JHL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL21hbmFnZWRJbnN0YW5jZXMvbWlkZW1vaW5zdGFuY2ViYy9rZXlzL21pdGVzdC1kb25vdGRlbGV0ZV9taXRlc3Qta2V5X2U5NzA0MzQ1NWUxNDQ5M2NhMDVjMzY0MjU0OWFlZGJhP2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.20.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"azurekeyvault\",\r\n  \"properties\": {\r\n    \"serverKeyType\": \"AzureKeyVault\",\r\n    \"uri\": \"https://mitest-donotdelete.vault.azure.net/keys/mitest-key/e97043455e14493ca05c3642549aedba\",\r\n    \"thumbprint\": \"6AB14770F99E1B6A69078F39E3F24CB5DC5A55A1\",\r\n    \"creationDate\": \"2018-09-01T00:11:49.377Z\"\r\n  },\r\n  \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/mitest-donotdelete_mitest-key_e97043455e14493ca05c3642549aedba\",\r\n  \"name\": \"mitest-donotdelete_mitest-key_e97043455e14493ca05c3642549aedba\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "598"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "11f46a94-9387-44de-8657-0bbc9d9426cb"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "1108c754-8730-4049-bf38-c553bd3e5256"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180905T222204Z:1108c754-8730-4049-bf38-c553bd3e5256"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Sep 2018 22:22:04 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/encryptionProtector/current?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL01sQW5kemljX1JHL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL21hbmFnZWRJbnN0YW5jZXMvbWlkZW1vaW5zdGFuY2ViYy9lbmNyeXB0aW9uUHJvdGVjdG9yL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAxNy0xMC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a9b2e258-3cc7-446e-afe6-af89117cf481"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.20.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"servicemanaged\",\r\n  \"properties\": {\r\n    \"serverKeyName\": \"ServiceManaged\",\r\n    \"serverKeyType\": \"ServiceManaged\"\r\n  },\r\n  \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/encryptionProtector/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/encryptionProtector\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "355"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "23056015-379b-4358-bd96-f6b77d0d5c74"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "73644c96-bb16-48fe-8a9b-1cf330bbbf54"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180905T222205Z:73644c96-bb16-48fe-8a9b-1cf330bbbf54"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Sep 2018 22:22:04 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/encryptionProtector/current?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL01sQW5kemljX1JHL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL21hbmFnZWRJbnN0YW5jZXMvbWlkZW1vaW5zdGFuY2ViYy9lbmNyeXB0aW9uUHJvdGVjdG9yL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAxNy0xMC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.20.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"azurekeyvault\",\r\n  \"properties\": {\r\n    \"serverKeyName\": \"mitest-donotdelete_mitest-key_e97043455e14493ca05c3642549aedba\",\r\n    \"serverKeyType\": \"AzureKeyVault\",\r\n    \"uri\": \"https://mitest-donotdelete.vault.azure.net/keys/mitest-key/e97043455e14493ca05c3642549aedba\"\r\n  },\r\n  \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/encryptionProtector/current\",\r\n  \"name\": \"current\",\r\n  \"type\": \"Microsoft.Sql/managedInstances/encryptionProtector\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "501"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6cb1553a-8926-4701-8464-bbc00af8c544"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "0c6b4b3b-4024-46e1-90d2-5db6617fe241"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180905T222227Z:0c6b4b3b-4024-46e1-90d2-5db6617fe241"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Sep 2018 22:22:27 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/encryptionProtector/current?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL01sQW5kemljX1JHL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL21hbmFnZWRJbnN0YW5jZXMvbWlkZW1vaW5zdGFuY2ViYy9lbmNyeXB0aW9uUHJvdGVjdG9yL2N1cnJlbnQ/YXBpLXZlcnNpb249MjAxNy0xMC0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"serverKeyName\": \"mitest-donotdelete_mitest-key_e97043455e14493ca05c3642549aedba\",\r\n    \"serverKeyType\": \"AzureKeyVault\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "154"
+        ],
+        "x-ms-client-request-id": [
+          "89669bc1-b08b-4a44-ae8f-3b94bfbebdca"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.20.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpsertManagedServerEncryptionProtector\",\r\n  \"startTime\": \"2018-09-05T22:22:06.427Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "93"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "1"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/providers/Microsoft.Sql/locations/westeurope/managedInstanceEncryptionProtectorAzureAsyncOperation/70ac1b9c-5962-44f7-bd1c-027fb4089b13?api-version=2017-10-01-preview"
+        ],
+        "x-ms-request-id": [
+          "70ac1b9c-5962-44f7-bd1c-027fb4089b13"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "4631b3c9-d77c-495f-87e0-a4efc2fd953d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180905T222206Z:4631b3c9-d77c-495f-87e0-a4efc2fd953d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Sep 2018 22:22:05 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/providers/Microsoft.Sql/locations/westeurope/managedInstanceEncryptionProtectorOperationResults/70ac1b9c-5962-44f7-bd1c-027fb4089b13?api-version=2017-10-01-preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/providers/Microsoft.Sql/locations/westeurope/managedInstanceEncryptionProtectorAzureAsyncOperation/70ac1b9c-5962-44f7-bd1c-027fb4089b13?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0ZXVyb3BlL21hbmFnZWRJbnN0YW5jZUVuY3J5cHRpb25Qcm90ZWN0b3JBenVyZUFzeW5jT3BlcmF0aW9uLzcwYWMxYjljLTU5NjItNDRmNy1iZDFjLTAyN2ZiNDA4OWIxMz9hcGktdmVyc2lvbj0yMDE3LTEwLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.20.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"70ac1b9c-5962-44f7-bd1c-027fb4089b13\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-09-05T22:22:06.427Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "108"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "1"
+        ],
+        "x-ms-request-id": [
+          "71f7da28-7d88-4101-96da-ea0d544a5d7c"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "d7c1948a-437d-499c-8490-0b1b62057df2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180905T222216Z:d7c1948a-437d-499c-8490-0b1b62057df2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Sep 2018 22:22:16 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/providers/Microsoft.Sql/locations/westeurope/managedInstanceEncryptionProtectorAzureAsyncOperation/70ac1b9c-5962-44f7-bd1c-027fb4089b13?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0ZXVyb3BlL21hbmFnZWRJbnN0YW5jZUVuY3J5cHRpb25Qcm90ZWN0b3JBenVyZUFzeW5jT3BlcmF0aW9uLzcwYWMxYjljLTU5NjItNDRmNy1iZDFjLTAyN2ZiNDA4OWIxMz9hcGktdmVyc2lvbj0yMDE3LTEwLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.20.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"70ac1b9c-5962-44f7-bd1c-027fb4089b13\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-09-05T22:22:06.427Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "1"
+        ],
+        "x-ms-request-id": [
+          "527ced8e-5bef-47c1-a6c0-92e26f3375f9"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "dd455e0f-90ac-4cba-bf6b-6ab9926ae326"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180905T222227Z:dd455e0f-90ac-4cba-bf6b-6ab9926ae326"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Sep 2018 22:22:26 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "a8c9a924-06c0-4bde-9788-e7b1370969e1"
+  }
+}

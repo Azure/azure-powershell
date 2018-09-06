@@ -18,6 +18,9 @@ using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
+using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
 {
@@ -59,6 +62,53 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         {
             TdeCertificate tdeCertificate = new TdeCertificate(privateBlob:privateBlob, certPassword: password);
             GetCurrentSqlClient().ManagedInstanceTdeCertificates.Create(resourceGroupName, managedInstanceName, tdeCertificate);
+        }
+
+        internal ManagedInstanceKey AddAzureRmSqlManagedInstanceKeyVaultKey(string resourceGroupName, string managedInstanceName, string keyName, ManagedInstanceKey managedInstanceKeyParameters)
+        {
+            return GetCurrentSqlClient().ManagedInstanceKeys.CreateOrUpdate(
+                resourceGroupName: resourceGroupName,
+                managedInstanceName: managedInstanceName,
+                keyName: keyName,
+                parameters: managedInstanceKeyParameters);
+        }
+        
+        internal ManagedInstanceKey GetAzureRmSqlManagedInstanceKeyVaultKey(string resourceGroupName, string managedInstanceName, string keyName)
+        {
+            return GetCurrentSqlClient().ManagedInstanceKeys.Get(
+                resourceGroupName: resourceGroupName,
+                managedInstanceName: managedInstanceName,
+                keyName: keyName);
+        }
+
+        internal void RemoveAzureRmSqlManagedInstanceKeyVaultKey(string resourceGroupName, string managedInstanceName, string keyName)
+        {
+            GetCurrentSqlClient().ManagedInstanceKeys.Delete(
+                resourceGroupName: resourceGroupName,
+                managedInstanceName: managedInstanceName,
+                keyName: keyName);
+        }
+
+        internal IPage<ManagedInstanceKey> ListAzureRmSqlManagedInstanceKeyVaultKeys(string resourceGroupName, string managedInstanceName)
+        {
+            return GetCurrentSqlClient().ManagedInstanceKeys.ListByInstance(
+                resourceGroupName: resourceGroupName,
+                managedInstanceName: managedInstanceName);
+        }
+        
+        internal ManagedInstanceEncryptionProtector GetManagedInstanceEncryptionProtector(string resourceGroupName, string managedInstanceName)
+        {
+            return GetCurrentSqlClient().ManagedInstanceEncryptionProtectors.Get(
+                resourceGroupName: resourceGroupName,
+                managedInstanceName: managedInstanceName);
+        }
+
+        internal ManagedInstanceEncryptionProtector CreateOrUpdateManagedInstanceEncryptionProtector(string resourceGroupName, string managedInstanceName, ManagedInstanceEncryptionProtector managedInstanceEncryptionProtector)
+        {
+            return GetCurrentSqlClient().ManagedInstanceEncryptionProtectors.CreateOrUpdate(
+                resourceGroupName: resourceGroupName,
+                managedInstanceName: managedInstanceName,
+                parameters: managedInstanceEncryptionProtector);
         }
 
         /// <summary>
