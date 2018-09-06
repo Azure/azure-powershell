@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(dest => dest.AddressPrefix, opt => opt.Ignore())
                     .AfterMap((src, dest) =>
                     {
-                        if (!GeneralUtilities.IsNullOrEmpty(src.AddressPrefixes))
+                        if (src.AddressPrefixes != null && src.AddressPrefixes.Any())
                         {
                             dest.AddressPrefix = src.AddressPrefixes.ToList();
                         }
