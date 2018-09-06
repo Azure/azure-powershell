@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// </summary>
     public static class AzureSessionInitializer
     {
-        private const string AzureProfileFileName = "AzureProfile.json";
         private const string ContextAutosaveSettingFileName = ContextAutosaveSettings.AutoSaveSettingsFile;
         private const string DataCollectionFileName = AzurePSDataCollectionProfile.DefaultFileName;
 
@@ -80,25 +79,30 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         static bool MigrateSettings(IDataStore store, string oldProfileDirectory, string newProfileDirectory)
         {
-            var filesToMigrate = new string[] { AzureProfileFileName,
-                                                ContextAutosaveSettingFileName,
+            var filesToMigrate = new string[] { ContextAutosaveSettingFileName,
                                                 DataCollectionFileName };
             try
             {
                 if (!store.DirectoryExists(newProfileDirectory))
                 {
                     store.CreateDirectory(newProfileDirectory);
-                    if (store.DirectoryExists(oldProfileDirectory))
-                    {
-                        foreach (var oldFilePath in Directory.EnumerateFiles(oldProfileDirectory).Where(f => filesToMigrate.Contains(Path.GetFileName(f))))
-                        {
-                            var fileName = Path.GetFileName(oldFilePath);
-                            var newFilePath = Path.Combine(newProfileDirectory, fileName);
-                            store.CopyFile(oldFilePath, newFilePath);
-                        }
+                }
 
-                        return true;
+                // Only migrate if
+                // (1) all files to migrate can be found in the old directory, and
+                // (2) none of the files to migrate can be found in the new directory
+                var oldFiles = Directory.EnumerateFiles(oldProfileDirectory).Where(f => filesToMigrate.Contains(Path.GetFileName(f)));
+                var newFiles = Directory.EnumerateFiles(newProfileDirectory).Where(f => filesToMigrate.Contains(Path.GetFileName(f)));
+                if (store.DirectoryExists(oldProfileDirectory) && oldFiles.Count() == filesToMigrate.Length && !newFiles.Any())
+                {
+                    foreach (var oldFilePath in oldFiles)
+                    {
+                        var fileName = Path.GetFileName(oldFilePath);
+                        var newFilePath = Path.Combine(newProfileDirectory, fileName);
+                        store.CopyFile(oldFilePath, newFilePath);
                     }
+
+                    return true;
                 }
             }
             catch
