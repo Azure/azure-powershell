@@ -47,6 +47,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public string Name { get; set; }
 
         [Parameter(
+            Position = 2,
+            Mandatory = false, 
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The retry attempt of the rollout.")]
+        [ValidateNotNullOrEmpty]
+        public int? RetryAttempt { get; set; }
+
+        [Parameter(
             Position = 0,
             Mandatory = true, 
             ParameterSetName = DeploymentManagerBaseCmdlet.ResourceIdParamSetName,
@@ -78,7 +87,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 this.Name = parsedResourceId.ResourceName;
             }
 
-            var rollout = this.DeploymentManagerClient.GetRollout(this.ResourceGroupName, this.Name);
+            var rollout = this.DeploymentManagerClient.GetRollout(this.ResourceGroupName, this.Name, this.RetryAttempt);
             this.WriteObject(rollout);
         }
     }

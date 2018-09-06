@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 () =>
                 {
                     var restartedRollout = this.Restart();
-                    this.WriteVerbose(Messages.RestartedRollout);
+                    this.WriteVerbose(string.Format(Messages.RestartedRollout, this.Name));
                     this.WriteObject(restartedRollout);
                 });
         }

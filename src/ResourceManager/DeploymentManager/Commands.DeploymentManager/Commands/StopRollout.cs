@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 () =>
                 {
                     var canceledRollout = this.Cancel();
-                    this.WriteVerbose(Messages.StoppedRollout);
+                    this.WriteVerbose(string.Format(Messages.StoppedRollout, this.Name));
                     this.WriteObject(canceledRollout);
                 });
         }

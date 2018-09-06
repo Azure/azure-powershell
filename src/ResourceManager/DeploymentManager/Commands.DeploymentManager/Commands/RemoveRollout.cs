@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 () =>
                 {
                     var result = this.Delete();
-                    this.WriteVerbose(Messages.RemovedRollout);
+                    this.WriteVerbose(string.Format(Messages.RemovedRollout, this.Name));
 
                     if (this.PassThru)
                     {
