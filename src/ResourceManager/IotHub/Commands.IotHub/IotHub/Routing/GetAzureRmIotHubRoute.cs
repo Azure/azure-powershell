@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
@@ -24,8 +23,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIotHubRoute", DefaultParameterSetName = ResourceParameterSet)]
-    [OutputType(typeof(PSRouteMetadata), typeof(List<PSRouteProperties>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubRoute", DefaultParameterSetName = ResourceParameterSet), OutputType(
+        typeof(PSRouteMetadata), typeof(PSRouteProperties[]))]
     public class GetAzureRmIotHubRoute : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";

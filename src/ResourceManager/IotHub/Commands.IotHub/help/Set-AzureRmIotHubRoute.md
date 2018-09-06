@@ -83,7 +83,7 @@ Updating the route information.
 Condition that is evaluated to apply the routing rule
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Enable route
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 Name of the routing endpoint
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 IotHub Object
 
 ```yaml
-Type: PSIotHub
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub
 Parameter Sets: InputObjectSet
 Aliases:
 
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 Name of the Iot Hub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
 Aliases:
 
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 Name of the Resource Group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
 Aliases:
 
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 IotHub Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSet
 Aliases:
 
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 Name of the Route
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 Source of the route
 
 ```yaml
-Type: PSRoutingSource
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Invalid, DeviceMessages, TwinChangeEvents, DeviceLifecycleEvents, DeviceJobLifecycleEvents
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -250,7 +250,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

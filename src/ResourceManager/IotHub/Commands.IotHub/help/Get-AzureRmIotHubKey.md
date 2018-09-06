@@ -43,7 +43,7 @@ Gets the information for a key named "iothubowner" for the IotHub named "myiothu
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 Name of the Key
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 Name of the IoT hub. 
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -23,8 +23,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Add, "AzureRmIotHubRoutingEndpoint", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSRoutingEventHubEndpoint), typeof(PSRoutingServiceBusQueueEndpoint), typeof(PSRoutingServiceBusTopicEndpoint), typeof(PSRoutingStorageContainerEndpoint))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubRoutingEndpoint", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true), OutputType(
+        typeof(PSRoutingEventHubEndpoint), typeof(PSRoutingServiceBusQueueEndpoint),
+        typeof(PSRoutingServiceBusTopicEndpoint), typeof(PSRoutingStorageContainerEndpoint))]
     public class AddAzureRmIotHubRoutingEndpoint : IotHubBaseCmdlet, IDynamicParameters
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";

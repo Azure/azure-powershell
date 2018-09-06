@@ -23,13 +23,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
+    using WindowsAzure.Commands.Utilities.Common;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIotHubRoutingEndpoint", DefaultParameterSetName = ResourceParameterSet)]
-    [OutputType(typeof(PSRoutingEventHubEndpoint), typeof(List<PSRoutingEventHubProperties>),
-        typeof(PSRoutingServiceBusQueueEndpoint), typeof(List<PSRoutingServiceBusQueueEndpointProperties>),
-        typeof(PSRoutingServiceBusTopicEndpoint), typeof(List<PSRoutingServiceBusTopicEndpointProperties>),
-        typeof(PSRoutingStorageContainerEndpoint), typeof(List<PSRoutingStorageContainerProperties>),
-        typeof(List<PSRoutingCustomEndpoint>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubRoutingEndpoint", DefaultParameterSetName = ResourceParameterSet), OutputType(
+        typeof(PSRoutingEventHubEndpoint), typeof(List<PSRoutingEventHubProperties>),
+        typeof(PSRoutingServiceBusQueueEndpoint), typeof(PSRoutingServiceBusQueueEndpointProperties[]),
+        typeof(PSRoutingServiceBusTopicEndpoint), typeof(PSRoutingServiceBusTopicEndpointProperties[]),
+        typeof(PSRoutingStorageContainerEndpoint), typeof(PSRoutingStorageContainerProperties[]),
+        typeof(PSRoutingCustomEndpoint[]))]
     public class GetAzureRmIotHubRoutingEndpoint : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
@@ -54,7 +55,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Type of the Routing Endpoint")]
-        public PSEndpointType? EndpointType { get; set; }
+        public PSEndpointType EndpointType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the Routing Endpoint")]
         public string EndpointName { get; set; }
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
             }
 
-            if (!this.EndpointType.HasValue)
+            if (!this.IsParameterBound(c => c.EndpointType))
             {
                 List<PSRoutingCustomEndpoint> psRoutingCustomEndpointCollection = new List<PSRoutingCustomEndpoint>();
 
@@ -141,7 +142,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             }
             else
             {
-                this.WriteEndpointObject(iotHubDescription, this.EndpointType.Value, this.EndpointName);
+                this.WriteEndpointObject(iotHubDescription, this.EndpointType, this.EndpointName);
             }
         }
 
