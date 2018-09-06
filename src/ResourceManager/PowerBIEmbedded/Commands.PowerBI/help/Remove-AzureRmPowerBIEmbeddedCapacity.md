@@ -1,10 +1,8 @@
 ---
-Download Help Link: None_Azure
 external help file: Microsoft.Azure.Commands.PowerBI.dll-Help.xml
-Help Version: 0.0.1.0
-Locale: en-US
-Module Guid: acace26c-1775-4100-85c0-20c4d71eaa22
 Module Name: AzureRM.PowerBIEmbedded
+ms.assetid: 5321FC62-3585-4493-A3D2-22CD82503CA7
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.powerbiembedded/remove-azurermpowerbiembeddedcapacity
 schema: 2.0.0
 ---
 
@@ -15,14 +13,22 @@ Deletes an instance of PowerBI Embedded Capacity.
 
 ## SYNTAX
 
+### ByNameAndResourceGroup (Default)
 ```
-Remove-AzureRmPowerBIEmbeddedCapacity 
-	[-Name] <String> 
-	[[-ResourceGroupName] <String>] 
-	[-PassThru] 
-	[-WhatIf]
- 	[-Confirm] 
-	[<CommonParameters>]
+Remove-AzureRmPowerBIEmbeddedCapacity [-Name] <String> [-ResourceGroupName <String>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Remove-AzureRmPowerBIEmbeddedCapacity [-ResourceId] <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Remove-AzureRmPowerBIEmbeddedCapacity [-InputObject] <PSPowerBIEmbeddedCapacity> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,76 +49,19 @@ Administrator          : {admin@microsoft.com}
 Sku                    : A1
 Tier                   : PBIE_Azure
 Tag                    : {}
-
 ```
 
 This command will remove the capacity named testcapacity in the resourcegroup testRG
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Name of the Azure resource group to which the capacity belongs
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: String
-Parameter Sets: ByNameAndResourceGroup
-Aliases: 
-
-Required: False
-Default value: None
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the PowerBI Embedded Capacity
-
-```yaml
-Type: String
-Parameter Sets: ByNameAndResourceGroup
-Aliases: 
-
-Required: False
-Default value: None
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Azure resource ID
-
-```yaml
-Type: String
-Parameter Sets: ByResourceId
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InputObject
-Input object for Piping
-
-```yaml
-Type: PSPowerBIEmbeddedCapacity
-Parameter Sets: ByInputObject
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -PassThru
-Will return the deleted capacity details if the operation completes successfully
-
-```yaml
-Type: SwitchParameter
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -121,11 +70,86 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Input object for Piping
+
+```yaml
+Type: Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the PowerBI Embedded Capacity
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameAndResourceGroup
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Will return the deleted capacity details if the operation completes successfully
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of the Azure resource group to which the capacity belongs
+
+```yaml
+Type: System.String
+Parameter Sets: ByNameAndResourceGroup
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Azure resource ID
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts user to confirm whether to perform the operation
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -140,7 +164,7 @@ Accept wildcard characters: False
 Describes the actions the current operation will perform without actually performing them
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -155,6 +179,11 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
+
+### Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

@@ -32,10 +32,8 @@ Set-AzureRmRoleDefinition -Role <PSRoleDefinition> [-DefaultProfile <IAzureConte
 The Set-AzureRmRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control.
 Provide the updated role definition as an input to the command as a JSON file or a PSRoleDefinition object.
 The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: DisplayName, Description, Actions, AssignableScopes.
-NotActions is optional.
-
+NotActions, DataActions, NotDataActions are optional.
 Following is a sample updated role definition json for Set-AzureRmRoleDefinition
-
 {
         "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
         "Name": "Updated Role",
@@ -45,9 +43,21 @@ Following is a sample updated role definition json for Set-AzureRmRoleDefinition
             "*/read",
             "Microsoft.ClassicCompute/virtualmachines/restart/action",
             "Microsoft.ClassicCompute/virtualmachines/start/action"
-        \]
-        "AssignableScopes": \["/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"\]
-    }
+        \],
+        "NotActions":
+        \[
+            "*/write"
+        \],
+        "DataActions":
+        \[
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        \],
+        "NotDataActions":
+        \[
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        \],
+        "AssignableScopes": \["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"\]
+}
 
 ## EXAMPLES
 
@@ -56,7 +66,7 @@ Following is a sample updated role definition json for Set-AzureRmRoleDefinition
 PS C:\> $roleDef = Get-AzureRmRoleDefinition "Contoso On-Call"
           PS C:\> $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
           PS C:\> $roleDef.Description = "Can monitor all resources and start and restart virtual machines"
-          PS C:\> $roleDef.AssignableScopes = @("/subscriptions/eb910d4f-edbf-429b-94F6-d76bae7ff401", "/subscriptions/a846d197-5eac-45c7-b885-a6227fe6d388")
+          PS C:\> $roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 
           PS C:\> Set-AzureRmRoleDefinition -Role $roleDef
 ```
@@ -72,7 +82,7 @@ PS C:\> Set-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,7 +99,7 @@ Only include the properties that are to be updated in the JSON.
 Id property is Required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InputFileParameterSet
 Aliases:
 
@@ -104,7 +114,7 @@ Accept wildcard characters: False
 Role definition object to be updated
 
 ```yaml
-Type: PSRoleDefinition
+Type: Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
 Parameter Sets: RoleDefinitionParameterSet
 Aliases:
 
@@ -120,8 +130,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSRoleDefinition
-Parameter 'Role' accepts value of type 'PSRoleDefinition' from the pipeline
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
+Parameters: Role (ByValue)
 
 ## OUTPUTS
 

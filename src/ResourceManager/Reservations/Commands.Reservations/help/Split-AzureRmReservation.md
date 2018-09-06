@@ -14,14 +14,14 @@ Split a `Reservation`.
 
 ### CommandLine (Default)
 ```
-Split-AzureRmReservation -ReservationOrderId <String> -ReservationId <String> -Quantity <Nullable`1[]>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Split-AzureRmReservation -ReservationOrderId <Guid> -ReservationId <Guid> -Quantity <Int32[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PipeObject
 ```
-Split-AzureRmReservation -Quantity <Nullable`1[]> -Reservation <PSReservation> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Split-AzureRmReservation -Quantity <Int32[]> -Reservation <PSReservation>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,13 +38,28 @@ Split the specified `Reservation` into two `Reservation`s with the corresponding
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Quantity
 Comma-separated integers for quantity field of the two `Reservation`s
 
 ```yaml
-Type: Nullable`1[]
+Type: System.Int32[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -57,9 +72,9 @@ Accept wildcard characters: False
 Pipe object parameter for `Reservation`
 
 ```yaml
-Type: PSReservation
+Type: Microsoft.Azure.Commands.Reservations.Models.PSReservation
 Parameter Sets: PipeObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -72,9 +87,9 @@ Accept wildcard characters: False
 Id of the `Reservation` to split
 
 ```yaml
-Type: String
+Type: System.Guid
 Parameter Sets: CommandLine
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -87,9 +102,9 @@ Accept wildcard characters: False
 Id of the `ReservationOrder` that contains the `Reservation` that user wants to split
 
 ```yaml
-Type: String
+Type: System.Guid
 Parameter Sets: CommandLine
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -102,7 +117,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -117,7 +132,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -134,12 +149,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Reservations.Models.PSReservation
+Parameters: Reservation (ByValue)
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Reservations.Models.PSReservation, Microsoft.Azure.Commands.Reservations, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Reservations.Models.PSReservation
 
 ## NOTES
 
 ## RELATED LINKS
-

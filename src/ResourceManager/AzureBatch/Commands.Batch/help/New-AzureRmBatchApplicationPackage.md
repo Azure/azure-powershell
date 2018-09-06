@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: D53DAEB6-DC4F-473C-A193-A1E2A65326D4
@@ -45,9 +45,9 @@ This command creates and activates version 1.0 of the Litware application, and u
 Specifies the name of the Batch account to which this cmdlet adds an application package.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -60,9 +60,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet activates an application package that has already been uploaded.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ActivateOnly
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -75,9 +75,9 @@ Accept wildcard characters: False
 Specifies the ID of the application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -90,9 +90,9 @@ Accept wildcard characters: False
 Specifies the version of the application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -120,9 +120,9 @@ Accept wildcard characters: False
 Specifies the file to be uploaded as the application package binary file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UploadAndActivate
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -135,9 +135,9 @@ Accept wildcard characters: False
 Specifies the format of the application package binary file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -150,9 +150,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the Batch account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -165,6 +165,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

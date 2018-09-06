@@ -21,16 +21,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
     using Xunit.Abstractions;
     public class ServiceBusRuleTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public ServiceBusRuleTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceBusRule_CURD()
         {
-            ServiceBusController.NewInstance.RunPsTest("ServiceBusRuleTests");
+            ServiceBusController.NewInstance.RunPsTest(_logger, "ServiceBusRuleTests");
         }        
     }
 }

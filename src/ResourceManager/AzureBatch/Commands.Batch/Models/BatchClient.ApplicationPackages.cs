@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Batch.Models
@@ -117,7 +118,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             try
             {
                 CloudBlockBlob blob = new CloudBlockBlob(new Uri(storageUrl));
+#if NETSTANDARD 
+                Task.Run(() => blob.UploadFromFileAsync(filePath)).Wait();
+#else
                 blob.UploadFromFile(filePath, FileMode.Open);
+#endif
             }
             catch (Exception exception)
             {

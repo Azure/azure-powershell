@@ -35,7 +35,7 @@ This commands returns all the available web application firewall rule sets.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -61,4 +61,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 **List-AzureRmApplicationGatewayAvailableWafRuleSets** is an alias for the **Get-AzureRmApplicationGatewayAvailableWafRuleSets** cmdlet.
 
 ## RELATED LINKS
-

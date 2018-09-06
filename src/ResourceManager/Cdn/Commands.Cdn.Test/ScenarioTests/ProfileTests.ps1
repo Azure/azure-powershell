@@ -23,10 +23,10 @@ function Test-ProfileCrud
     $profileLocation = "EastUS"
     $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tag $tags
 
     Assert-NotNull $createdProfile
-    Assert-AreEqual $profileName $createdProfile.Name 
+    Assert-AreEqual $profileName $createdProfile.Name
     Assert-AreEqual $resourceGroup.ResourceGroupName $createdProfile.ResourceGroupName
     Assert-AreEqual $profileSku $createdProfile.Sku.Name
     Assert-Tags $tags $createdProfile.Tags
@@ -34,7 +34,7 @@ function Test-ProfileCrud
     $retrievedProfile = Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     Assert-NotNull $retrievedProfile
-    Assert-AreEqual $profileName $retrievedProfile.Name 
+    Assert-AreEqual $profileName $retrievedProfile.Name
     Assert-AreEqual $resourceGroup.ResourceGroupName $retrievedProfile.ResourceGroupName
     Assert-Tags $tags $createdProfile.Tags
 
@@ -44,7 +44,7 @@ function Test-ProfileCrud
     $updatedProfile = Set-AzureRmCdnProfile -CdnProfile $retrievedProfile
 
     Assert-NotNull $updatedProfile
-    Assert-AreEqual $profileName $updatedProfile.Name 
+    Assert-AreEqual $profileName $updatedProfile.Name
     Assert-AreEqual $resourceGroup.ResourceGroupName $updatedProfile.ResourceGroupName
     Assert-Tags $newTags $updatedProfile.Tags
 
@@ -70,8 +70,8 @@ function Test-ProfileDeleteWithEndpoints
     $resourceGroup = TestSetup-CreateResourceGroup
     $profileLocation = "EastUS"
     $profileSku = "Standard_Akamai"
-    
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku 
+
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku
 
     New-AzureRmCdnEndpoint -CdnProfile $createdProfile -OriginName "contoso" -OriginHostName "www.contoso.com" -EndpointName $endpointName
 
@@ -94,7 +94,7 @@ function Test-ProfileDeleteAndSsoWithPiping
     $profileLocation = "EastUS"
     $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tag $tags
 
     Assert-NotNull $createdProfile
 
@@ -121,11 +121,11 @@ function Test-ProfilePipeline
     $profileLocation = "EastUS"
     $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $createdProfile1 = New-AzureRmCdnProfile -ProfileName $profileName1 -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
+    $createdProfile1 = New-AzureRmCdnProfile -ProfileName $profileName1 -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tag $tags
 
     Assert-NotNull $createdProfile1
 
-    $createdProfile2 = New-AzureRmCdnProfile -ProfileName $profileName2 -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
+    $createdProfile2 = New-AzureRmCdnProfile -ProfileName $profileName2 -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tag $tags
 
     Assert-NotNull $createdProfile2
 
@@ -153,13 +153,33 @@ function Test-ProfileGetResourceUsages
     $resourceGroup = TestSetup-CreateResourceGroup
     $profileLocation = "EastUS"
     $profileSku = "Standard_Akamai"
-    
+
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku
 
     $profileResourceUsage = Get-AzureRmCdnProfileResourceUsage -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     Assert-True {$profileResourceUsage.Count -eq 1}
     Assert-True {$profileResourceUsage[0].CurrentValue -eq 0}
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Get supported optimization types exercise
+#>
+function Test-ProfileGetSupportedOptimizationType
+{
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $profileLocation = "EastUS"
+    $profileSku = "Standard_Akamai"
+    
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku
+
+	$supportedOptimizationTypes = Get-AzureRmCdnProfileSupportedOptimizationType -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	Assert-NotNull $supportedOptimizationTypes
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

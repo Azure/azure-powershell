@@ -51,31 +51,6 @@ function Get-KeyVaultTestMode {
 
 <#
 .SYNOPSIS
-Gets the location for the Vault. Default to West US if none found.
-#>
-function Get-Location
-{
-    if ((Get-KeyVaultTestMode) -ne 'Playback')
-	{
-		$namespace = "Microsoft.KeyVault"  
-		$type = "vaults"
-		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
-  
-		if ($location -eq $null) 
-		{  
-			return "East US"  
-		} 
-        else 
-		{  
-			return $location.Locations[0]  
-		}  
-	}
-
-	return "East US"
-}
-
-<#
-.SYNOPSIS
 Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)

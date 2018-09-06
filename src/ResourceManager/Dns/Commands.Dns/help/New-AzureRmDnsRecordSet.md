@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 Module Name: AzureRM.Dns
 ms.assetid: 45DF71E0-77E1-4D20-AD09-2C06680F659F
@@ -16,14 +16,14 @@ Creates a DNS record set.
 ### Fields
 ```
 New-AzureRmDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String> -Ttl <UInt32>
- -RecordType <RecordType> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite] [-Force]
+ -RecordType <RecordType> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Object
 ```
 New-AzureRmDnsRecordSet -Name <String> -Zone <DnsZone> -Ttl <UInt32> -RecordType <RecordType>
- [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite] [-Force]
+ [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,14 +31,10 @@ New-AzureRmDnsRecordSet -Name <String> -Zone <DnsZone> -Ttl <UInt32> -RecordType
 The **New-AzureRmDnsRecordSet** cmdlet creates a new Domain Name System (DNS) record set with the specified name and type in the specified zone.
 A **RecordSet** object is a set of DNS records with the same name and type.
 Note that the name is relative to the zone and not the fully qualified name.
-
 The *DnsRecords* parameter specifies the records in the record set.
 This parameter takes an array of DNS records, constructed using New-AzureRmDnsRecordConfig.
-
 You can use the pipeline operator to pass a **DnsZone** object to this cmdlet, or you can pass a **DnsZone** object as the *Zone* parameter, or alternatively you can specify the zone by name.
-
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
-
 If a matching **RecordSet** already exists (same name and record type), you must specify the *Overwrite* parameter, otherwise the cmdlet will not create a new **RecordSet** .
 
 ## EXAMPLES
@@ -76,7 +72,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -Resou
 This example creates a **RecordSet** named www in the zone myzone.com.
 The record set is of type AAAA and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 3: Create a RecordSet of type CNAME
@@ -89,7 +84,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType CNAME -Reso
 This example creates a **RecordSet** named www in the zone myzone.com.
 The record set is of type CNAME and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 4: Create a RecordSet of type MX
@@ -102,7 +96,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -Resou
 This command creates a **RecordSet** named www in the zone myzone.com.
 The record set is of type MX and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 5: Create a RecordSet of type NS
@@ -115,7 +108,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "ns1" -RecordType NS -Resourc
 This command creates a **RecordSet** named ns1 in the zone myzone.com.
 The record set is of type NS and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 6: Create a RecordSet of type PTR
@@ -128,7 +120,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "4" -RecordType PTR -Resource
 This command creates a **RecordSet** named 4 in the zone 3.2.1.in-addr.arpa.
 The record set is of type PTR and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 7: Create a RecordSet of type SRV
@@ -141,9 +132,7 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "_sip._tcp" -RecordType SRV -
 This command creates a **RecordSet** named _sip._tcp in the zone myzone.com.
 The record set is of type SRV and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record, pointing to the IP address 2001.2.3.4.
-
 The service (sip) and the protocol (tcp) are specified as part of the record set name, not as part of the record data.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 8: Create a RecordSet of type TXT
@@ -156,7 +145,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "text" -RecordType TXT -Resou
 This command creates a **RecordSet** named text in the zone myzone.com.
 The record set is of type TXT and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 9: Create a RecordSet at the zone apex
@@ -168,10 +156,8 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "@" -RecordType A -ResourceGr
 
 This command creates a **RecordSet** at the apex (or root) of the zone myzone.com.
 To do this, the record set name is specified as "@" (including the double-quotes).
-
 You cannot create CNAME records at the apex of a zone.
 This is a constraint of the DNS standards; it is not a limitation of Azure DNS.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 10: Create a wildcard Record Set
@@ -183,7 +169,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "*" -RecordType A -ResourceGr
 
 This command creates a **RecordSet** named * in the zone myzone.com.
 This is a wildcard record set.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 11: Create an empty record set
@@ -210,7 +195,7 @@ The *Confirm* parameter with a value of $False suppresses the confirmation promp
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -227,9 +212,9 @@ You can use the New-AzureRmDnsRecordConfig cmdlet to create DNS record objects.
 See the examples for more information.
 
 ```yaml
-Type: DnsRecordBase[]
+Type: Microsoft.Azure.Commands.Dns.DnsRecordBase[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -238,32 +223,14 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Force
-This parameter is deprecated for this cmdlet.
-It will be removed in a future release.
-
-To control whether this cmdlet prompts you for comfirmation, use the *Confirm* parameter.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Metadata
 Specifies an array of metadata to associate with the RecordSet.
 Metadata is specified using name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -276,9 +243,9 @@ Accept wildcard characters: False
 Specifies the name of the **RecordSet** to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -291,9 +258,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet overwrites the specified **RecordSet** if it already exists.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -304,9 +271,7 @@ Accept wildcard characters: False
 
 ### -RecordType
 Specifies the type of DNS record to create.
-
 Valid values are:
-
 - A
 - AAAA
 - CNAME
@@ -315,13 +280,12 @@ Valid values are:
 - PTR
 - SRV
 - TXT
-
 SOA records are created automatically when the zone is created and cannot be created manually.
 
 ```yaml
-Type: RecordType
+Type: Microsoft.Azure.Management.Dns.Models.RecordType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
 
 Required: True
@@ -334,13 +298,12 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 Specifies the resource group that contains the DNS zone.
 You must also specify the *ZoneName* parameter to specify the zone name.
-
 Alternatively, you can specify the zone and resource group by passing in a DNS Zone object using the *Zone* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -353,9 +316,9 @@ Accept wildcard characters: False
 Specifies the Time to Live (TTL) for the DNS RecordSet.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -369,9 +332,9 @@ Specifies the DnsZone in which to create the **RecordSet**.
 Alternatively, you can specify the zone using the *ZoneName* and *ResourceGroupName* parameters.
 
 ```yaml
-Type: DnsZone
+Type: Microsoft.Azure.Commands.Dns.DnsZone
 Parameter Sets: Object
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -383,13 +346,12 @@ Accept wildcard characters: False
 ### -ZoneName
 Specifies the name of the zone in which to create the **RecordSet**.
 You must also specify the resource group containing the zone using the *ResourceGroupName* parameter.
-
 Alternatively, you can specify the zone and resource group by passing in a DNS Zone object using the *Zone* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -402,7 +364,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -418,7 +380,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -434,18 +396,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ### Microsoft.Azure.Commands.Dns.DnsZone
-You can pipe a DnsZone object to this cmdlet.
+Parameters: Zone (ByValue)
+
+### System.UInt32
+
+### Microsoft.Azure.Management.Dns.Models.RecordType
+
+### System.Collections.Hashtable
+
+### Microsoft.Azure.Commands.Dns.DnsRecordBase[]
+Parameters: DnsRecords (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsRecordSet
-This cmdlet returns a **RecordSet** object.
 
 ## NOTES
 You can use the *Confirm* parameter to control whether this cmdlet prompts you for confirmation.
 By default, the cmdlet prompts you for confirmation if the $ConfirmPreference Windows PowerShell variable has a value of Medium or lower.
-
 If you specify *Confirm* or *Confirm:$True*, this cmdlet prompts you for confirmation before it runs.
 If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation.
 

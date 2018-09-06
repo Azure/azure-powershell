@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             }
 
             HostnameCertificate = new PsApiManagementHostnameCertificate(hostnameConfigurationResource.Certificate);
-            Hostname = hostnameConfigurationResource.Hostname;
+            Hostname = hostnameConfigurationResource.HostName;
         }
 
         public PsApiManagementHostnameCertificate HostnameCertificate { get; set; }

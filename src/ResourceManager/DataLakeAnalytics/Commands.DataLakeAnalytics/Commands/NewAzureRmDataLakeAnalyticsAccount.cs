@@ -23,7 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof(PSDataLakeAnalyticsAccount))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeAnalyticsAccount"), OutputType(typeof(PSDataLakeAnalyticsAccount))]
     [Alias("New-AdlAnalyticsAccount")]
     public class NewAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
@@ -51,8 +51,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this account")]
-        [Obsolete("New-AzureRmDataLakeAnalyticsAccount: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 
@@ -108,7 +106,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 }
             }
 
-            var defaultStorage = new DataLakeStoreAccountInfo
+            var defaultStorage = new AddDataLakeStoreWithAccountParameters
             {
                 Name = DefaultDataLakeStore
             };

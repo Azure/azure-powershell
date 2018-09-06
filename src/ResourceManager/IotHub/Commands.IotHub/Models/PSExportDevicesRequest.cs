@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// <summary>
         /// The export BLOB container URI.
         /// </summary>
-        [JsonProperty(PropertyName = "ExportBlobContainerUri")]
+        [JsonProperty(PropertyName = "exportBlobContainerUri")]
         public string ExportBlobContainerUri { get; set; }
 
         /// <summary>
         /// The value indicating whether keys should be excluded during export.
         /// </summary>
-        [JsonProperty(PropertyName = "ExcludeKeys")]
+        [JsonProperty(PropertyName = "excludeKeys")]
         public bool ExcludeKeys { get; set; }
     }
 }

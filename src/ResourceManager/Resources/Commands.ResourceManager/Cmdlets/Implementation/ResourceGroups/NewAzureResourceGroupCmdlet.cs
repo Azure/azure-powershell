@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Filters resource groups.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmResourceGroup", SupportsShouldProcess = true), OutputType(typeof(List<PSResourceGroup>))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroup", SupportsShouldProcess = true), OutputType(typeof(PSResourceGroup))]
     public class NewAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         [Alias("ResourceGroupName")]

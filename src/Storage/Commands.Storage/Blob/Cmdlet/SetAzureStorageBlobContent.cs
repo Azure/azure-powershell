@@ -33,8 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     /// <summary>
     /// download blob from azure
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageNouns.BlobContent, SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet),
-        OutputType(typeof(AzureStorageBlob))]
+    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobContent", SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet),OutputType(typeof(AzureStorageBlob))]
     public class SetAzureBlobContentCommand : StorageDataMovementCmdletBase
     {
         /// <summary>
@@ -224,7 +223,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
             if (this.BlobProperties != null || this.BlobMetadata != null || this.pageBlobTier != null)
             {
-                await TaskEx.WhenAll(
+                await Task.WhenAll(
                     this.SetBlobProperties(localChannel, blob, this.BlobProperties),
                     this.SetBlobMeta(localChannel, blob, this.BlobMetadata),
                     this.SetBlobTier(localChannel, blob, pageBlobTier)).ConfigureAwait(false);
@@ -241,8 +240,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
             catch (StorageException e)
             {
-                //Handle the limited read permission.
-                if (!e.IsNotFoundException())
+                //Handle the limited read permission, and handle the upload with write only permission
+                if (!e.IsNotFoundException() && !e.IsForbiddenException())
                 {
                     throw;
                 }
@@ -492,12 +491,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            FileName = ResolveUserPath(FileName);
             ValidateBlobTier(string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase)? StorageBlob.BlobType.PageBlob : StorageBlob.BlobType.Unspecified, 
                 pageBlobTier);
 
             if (BlobProperties != null)
             {
                 ValidateBlobProperties(BlobProperties);
+            }
+
+            // if FIPS policy is enabled, must use native MD5
+            if (fipsEnabled)
+            {
+                CloudStorageAccount.UseV1MD5 = false;
             }
 
             string containerName = string.Empty;

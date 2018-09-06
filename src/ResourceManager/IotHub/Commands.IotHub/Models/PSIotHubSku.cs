@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         F1 = 0,
         S1 = 1,
         S2 = 2,
-        S3 = 3
+        S3 = 3,
+        B1 = 4,
+        B2 = 5,
+        B3 = 6
     }
 }

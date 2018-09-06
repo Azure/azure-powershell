@@ -333,9 +333,10 @@ function Test-CreateNewAppServicePlanInAse
 	$whpName = Get-WebHostPlanName
 	$location = "West US"
 	$capacity = 1
-	$skuName = "S2"
-	$aseName = "asedemo"
-	$aseResourceGroupName = "appdemorg"
+	$skuName = "I1"
+	$skuTier = "Isolated"
+	$aseName = "asedemops"
+	$aseResourceGroupName = "asedemorg"
 
 	try
 	{
@@ -343,21 +344,18 @@ function Test-CreateNewAppServicePlanInAse
 		New-AzureRmResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$createResult = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Standard" -WorkerSize Medium -NumberOfWorkers $capacity -AseName $aseName -AseResourceGroupName $aseResourceGroupName
+		$createResult = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $skuTier -WorkerSize Medium -NumberOfWorkers $capacity -AseName $aseName -AseResourceGroupName $aseResourceGroupName
 		
 		# Assert
 		Assert-AreEqual $whpName $createResult.Name
-		Assert-AreEqual "Standard" $createResult.Sku.Tier
+		Assert-AreEqual "Isolated" $createResult.Sku.Tier
 		Assert-AreEqual $skuName $createResult.Sku.Name
-		Assert-AreEqual $capacity $createResult.Sku.Capacity
 
 		# Assert
-
 		$getResult = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name $whpName
 		Assert-AreEqual $whpName $getResult.Name
-		Assert-AreEqual "Standard" $getResult.Sku.Tier
+		Assert-AreEqual "Isolated" $getResult.Sku.Tier
 		Assert-AreEqual $skuName $getResult.Sku.Name
-		Assert-AreEqual $capacity $getResult.Sku.Capacity
 	}
 	finally
 	{

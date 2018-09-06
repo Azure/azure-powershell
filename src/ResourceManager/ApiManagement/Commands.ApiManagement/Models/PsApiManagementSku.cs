@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     {
         Developer = 1,
         Standard = 2,
-        Premium = 3
+        Premium = 3,
+        Basic = 4
     }
 }

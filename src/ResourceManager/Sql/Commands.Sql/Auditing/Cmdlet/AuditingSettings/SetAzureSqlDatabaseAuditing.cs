@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Sets the auditing settings properties for a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAuditing", SupportsShouldProcess = true), OutputType(typeof(DatabaseBlobAuditingSettingsModel))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAuditing", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(DatabaseBlobAuditingSettingsModel))]
     public class SetAzureSqlDatabaseAuditing : SqlDatabaseAuditingSettingsCmdletBase
     {
         /// <summary>
@@ -57,8 +57,16 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// Gets or sets the name of the storage account to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditStorageAccountNameHelpMessage)]
+        [Parameter(ParameterSetName = StorageAccountSubscriptionIdSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditStorageAccountNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets storage account subscription id.
+        /// </summary>
+        [Parameter(ParameterSetName = StorageAccountSubscriptionIdSetName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditStorageAccountSubscriptionIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public Guid StorageAccountSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets the type of the storage key.
@@ -108,17 +116,30 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                     : StorageKeyKind.Secondary;
             }
 
-            if (AuditActionGroup != null && AuditActionGroup.Length != 0)
+            if (AuditActionGroup != null)
             {
                 model.AuditActionGroup = AuditActionGroup;
             }
 
-            if (AuditAction != null && AuditAction.Length != 0)
+            if (AuditAction != null)
             {
                 model.AuditAction = AuditAction;
             }
 
+            if (!StorageAccountSubscriptionId.Equals(Guid.Empty))
+            {
+                model.StorageAccountSubscriptionId = StorageAccountSubscriptionId;
+            }
+            else if (StorageAccountName != null)
+            {
+                model.StorageAccountSubscriptionId = Guid.Parse(DefaultProfile.DefaultContext.Subscription.Id);
+            }
+
             return model;
         }
+
+        private const string StorageAccountSubscriptionIdSetName = "StorageAccountSubscriptionIdSet";
+
+        private const string DefaultParameterSetName = "DefaultParameterSet";
     }
 }

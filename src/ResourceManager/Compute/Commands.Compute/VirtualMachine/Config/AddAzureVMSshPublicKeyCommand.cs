@@ -24,11 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Add an Ssh Public Key object to VM
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Add,
-        ProfileNouns.SshPublicKey),
-    OutputType(
-        typeof(PSVirtualMachine))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMSshPublicKey"),OutputType(typeof(PSVirtualMachine))]
     public class NewAzureSshPublicKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]
@@ -57,7 +53,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-
             if (this.VM.OSProfile == null)
             {
                 this.VM.OSProfile = new OSProfile();

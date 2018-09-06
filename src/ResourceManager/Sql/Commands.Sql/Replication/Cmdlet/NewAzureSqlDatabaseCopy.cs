@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
+using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,10 +28,12 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure SQL Database Copy
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseCopy",
-        ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseCopy", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureSqlDatabaseCopyModel))]
     public class NewAzureSqlDatabaseCopy : AzureSqlDatabaseCopyCmdletBase
     {
+        private const string DtuDatabaseParameterSet = "DtuBasedDatabase";
+        private const string VcoreDatabaseParameterSet = "VcoreBasedDatabase";
+
         /// <summary>
         /// Gets or sets the name of the database to be copied.
         /// </summary>
@@ -43,7 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <summary>
         /// Gets or sets the name of the service objective to assign to the Azure SQL Database copy
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The name of the service objective to assign to the Azure SQL Database copy.")]
         [ValidateNotNullOrEmpty]
         public string ServiceObjectiveName { get; set; }
@@ -51,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <summary>
         /// Gets or sets the name of the Elastic Pool to put the database copy in
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The name of the Elastic Pool to put the database copy in.")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
@@ -93,6 +97,35 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Gets or sets the compute generation of the database copy
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The compute generation to assign to the new copy.")]
+        [Alias("Family")]
+        [PSArgumentCompleter("Gen4", "Gen5")]
+        [ValidateNotNullOrEmpty]
+        public string ComputeGeneration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Vcore numbers of the database copy
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The Vcore numbers of the Azure Sql Database copy.")]
+        [Alias("Capacity")]
+        [ValidateNotNullOrEmpty]
+        public int VCore { get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The license type for the Azure Sql database.")]
+        [PSArgumentCompleter(
+            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
+            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
+        public string LicenseType { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -146,8 +179,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             string copyLocation = copyServer.Equals(ServerName) ? location : ModelAdapter.GetServerLocation(copyResourceGroup, copyServer);
+            Database.Model.AzureSqlDatabaseModel sourceDb = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
             List<Model.AzureSqlDatabaseCopyModel> newEntity = new List<AzureSqlDatabaseCopyModel>();
-            newEntity.Add(new AzureSqlDatabaseCopyModel()
+
+            AzureSqlDatabaseCopyModel copyModel = new AzureSqlDatabaseCopyModel()
             {
                 Location = location,
                 ResourceGroupName = ResourceGroupName,
@@ -160,7 +195,32 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 ServiceObjectiveName = ServiceObjectiveName,
                 ElasticPoolName = ElasticPoolName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-            });
+                LicenseType = LicenseType // note: default license type is LicenseIncluded
+            };
+
+            if(ParameterSetName == DtuDatabaseParameterSet)
+            {
+                if (!string.IsNullOrWhiteSpace(ServiceObjectiveName))
+                {
+                    copyModel.SkuName = ServiceObjectiveName;
+                }
+                else if(string.IsNullOrWhiteSpace(ElasticPoolName))
+                {
+                    copyModel.SkuName = sourceDb.CurrentServiceObjectiveName;
+                    copyModel.Edition = sourceDb.Edition;
+                    copyModel.Capacity = sourceDb.Capacity;
+                    copyModel.Family = sourceDb.Family;
+                }
+            }
+            else
+            {
+                copyModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(sourceDb.Edition);
+                copyModel.Edition = sourceDb.Edition;
+                copyModel.Capacity = VCore;
+                copyModel.Family = ComputeGeneration;
+            }
+
+            newEntity.Add(copyModel);
             return newEntity;
         }
 
@@ -171,8 +231,9 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlDatabaseCopyModel> PersistChanges(IEnumerable<AzureSqlDatabaseCopyModel> entity)
         {
-            return new List<AzureSqlDatabaseCopyModel>() {
-                ModelAdapter.CopyDatabase(entity.First().CopyResourceGroupName, entity.First().CopyServerName, entity.First())
+            return new List<AzureSqlDatabaseCopyModel>()
+            {
+                ModelAdapter.CopyDatabaseWithNewSdk(entity.First().CopyResourceGroupName, entity.First().CopyServerName, entity.First())
             };
         }
     }

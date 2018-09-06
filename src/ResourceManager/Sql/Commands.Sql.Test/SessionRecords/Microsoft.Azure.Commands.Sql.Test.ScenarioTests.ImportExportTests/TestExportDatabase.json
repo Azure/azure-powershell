@@ -421,8 +421,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063/databases/sql-ie-cmdlet-db90063?api-version=2014-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTc3MDhkODMtNTk5OS00Yjk3LTgzNWItZDA1OWJlZDkyMjk5L3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDYzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA2My9kYXRhYmFzZXMvc3FsLWllLWNtZGxldC1kYjkwMDYzP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDE=",
+      "RequestUri": "/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063/databases/sql-ie-cmdlet-db90063?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTc3MDhkODMtNTk5OS00Yjk3LTgzNWItZDA1OWJlZDkyMjk5L3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDYzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA2My9kYXRhYmFzZXMvc3FsLWllLWNtZGxldC1kYjkwMDYzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -535,8 +535,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063/databases/sql-ie-cmdlet-db90063?api-version=2014-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTc3MDhkODMtNTk5OS00Yjk3LTgzNWItZDA1OWJlZDkyMjk5L3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDYzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA2My9kYXRhYmFzZXMvc3FsLWllLWNtZGxldC1kYjkwMDYzP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDE=",
+      "RequestUri": "/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063/databases/sql-ie-cmdlet-db90063?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTc3MDhkODMtNTk5OS00Yjk3LTgzNWItZDA1OWJlZDkyMjk5L3Jlc291cmNlR3JvdXBzL3NxbC1pZS1jbWRsZXQtdGVzdC1yZzkwMDYzL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL3NlcnZlcnMvc3FsLWllLWNtZGxldC1zZXJ2ZXI5MDA2My9kYXRhYmFzZXMvc3FsLWllLWNtZGxldC1kYjkwMDYzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"maxSizeBytes\": \"0\"\r\n  },\r\n  \"location\": \"Australia East\",\r\n  \"tags\": {}\r\n}",
       "RequestHeaders": {
@@ -578,9 +578,6 @@
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063/databases/sql-ie-cmdlet-db90063/azureAsyncOperation/0651a73c-307f-4717-8dad-6092bdadc0f3?api-version=2014-04-01-Preview"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1195"
@@ -642,9 +639,6 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063/databases/sql-ie-cmdlet-db90063/azureAsyncOperation/0651a73c-307f-4717-8dad-6092bdadc0f3?api-version=2014-04-01-Preview"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "14913"
         ],
@@ -705,9 +699,6 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063/databases/sql-ie-cmdlet-db90063/azureAsyncOperation/0651a73c-307f-4717-8dad-6092bdadc0f3?api-version=2014-04-01-Preview"
-        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "14912"
         ],
@@ -745,7 +736,7 @@
           "2c74e421-7af2-4ff7-9138-00d361172a45"
         ]
       },
-      "ResponseBody": "{\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063/databases/sql-ie-cmdlet-db90063\",\r\n  \"name\": \"sql-ie-cmdlet-db90063\",\r\n  \"type\": \"Microsoft.Sql/servers/databases\",\r\n  \"location\": \"Australia East\",\r\n  \"kind\": \"v12.0,user\",\r\n  \"properties\": {\r\n    \"databaseId\": \"c9b6c20b-efcc-4c26-a6c2-764bd61a5f43\",\r\n    \"edition\": \"Standard\",\r\n    \"status\": \"Online\",\r\n    \"serviceLevelObjective\": \"S0\",\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"maxSizeBytes\": \"268435456000\",\r\n    \"creationDate\": \"2016-04-18T17:43:17.907Z\",\r\n    \"currentServiceObjectiveId\": \"f1173c43-91bd-4aaa-973c-54e79e15235b\",\r\n    \"requestedServiceObjectiveId\": \"f1173c43-91bd-4aaa-973c-54e79e15235b\",\r\n    \"requestedServiceObjectiveName\": null,\r\n    \"defaultSecondaryLocation\": \"Australia Southeast\",\r\n    \"earliestRestoreDate\": \"2016-04-18T17:54:01.157Z\",\r\n    \"elasticPoolName\": null,\r\n    \"containmentState\": 2\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/97708d83-5999-4b97-835b-d059bed92299/resourceGroups/sql-ie-cmdlet-test-rg90063/providers/Microsoft.Sql/servers/sql-ie-cmdlet-server90063/databases/sql-ie-cmdlet-db90063\",\r\n  \"name\": \"sql-ie-cmdlet-db90063\",\r\n  \"type\": \"Microsoft.Sql/servers/databases\",\r\n  \"location\": \"Australia East\",\r\n  \"kind\": \"v12.0,user\",\r\n  \"properties\": {\r\n    \"databaseId\": \"c9b6c20b-efcc-4c26-a6c2-764bd61a5f43\",\r\n    \"edition\": \"Standard\",\r\n    \"status\": \"Online\",\r\n    \"serviceLevelObjective\": \"S0\",\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"maxSizeBytes\": \"268435456000\",\r\n    \"creationDate\": \"2016-04-18T17:43:17.907Z\",\r\n    \"currentServiceObjectiveId\": \"f1173c43-91bd-4aaa-973c-54e79e15235b\",\r\n    \"requestedServiceObjectiveId\": \"f1173c43-91bd-4aaa-973c-54e79e15235b\",\r\n    \"requestedServiceObjectiveName\": null,\r\n    \"defaultSecondaryLocation\": \"Australia Southeast\",\r\n    \"earliestRestoreDate\": \"2016-04-18T17:54:01.157Z\",\r\n    \"elasticPoolName\": null,\r\n    \"containmentState\": 2,\r\n    \"readScale\": \"Disabled\",\r\n  }\r\n, \"sku\": {    \"name\": \"S0\", \"tier\": \"Standard\" }}",
       "ResponseHeaders": {
         "Content-Length": [
           "887"

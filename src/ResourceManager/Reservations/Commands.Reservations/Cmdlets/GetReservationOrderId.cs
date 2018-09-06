@@ -9,19 +9,19 @@ using Microsoft.Azure.Management.Reservations;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmReservationOrderId"), OutputType(typeof(AppliedReservations))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ReservationOrderId"), OutputType(typeof(AppliedReservations))]
     public class GetReservationOrderId : AzureReservationsCmdletBase
     {
 
         [Parameter(Mandatory = false)]
         [ValidateNotNull]
-        public string SubscriptionId { get; set; }
+        public Guid SubscriptionId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (SubscriptionId != null)
+            if (SubscriptionId != default(Guid))
             {
-                var response = new PSAppliedReservationOrderId(AzureReservationAPIClient.GetAppliedReservationList(SubscriptionId));
+                var response = new PSAppliedReservationOrderId(AzureReservationAPIClient.GetAppliedReservationList(SubscriptionId.ToString()));
                 WriteObject(response);
             }
             else

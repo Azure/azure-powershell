@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
@@ -34,12 +34,11 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineAEMExtension)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAEMExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
     {
+        private string _StorageEndpoint;
         private AEMHelper _Helper = null;
 
         [Parameter(
@@ -59,12 +58,6 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The virtual machine name.")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
-
-        [Parameter(
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = false,
-                HelpMessage = "Deprecated - Windows Azure Diagnostics is now disabled by default")]
-        public SwitchParameter DisableWAD { get; set; }
 
         [Parameter(
                 Mandatory = false,
@@ -99,18 +92,18 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            this._StorageEndpoint = this.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
-                this.CommandRuntime.Host.UI, AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager), this.DefaultContext.Subscription);
+                this.CommandRuntime.Host.UI, 
+                AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
+                    DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager), 
+                this.DefaultContext.Subscription,
+                this._StorageEndpoint);
 
             base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
-                if (this.DisableWAD)
-                {
-                    this._Helper.WriteWarning("The parameter DisableWAD is deprecated. Windows Azure Diagnostics is disabled by default.");
-                }
-
                 this._Helper.WriteVerbose("Retrieving VM...");
 
                 var selectedVM = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
@@ -212,7 +205,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id), 
+                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id),
                         this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id));
                     if (osDiskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                     {
@@ -534,7 +527,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var key = this._Helper.GetAzureStorageKeyFromCache(storageAccountName);
             var credentials = new StorageCredentials(storageAccountName, key);
-            var cloudStorageAccount = new CloudStorageAccount(credentials, true);
+            var cloudStorageAccount = new CloudStorageAccount(credentials,  this._StorageEndpoint, true);
 
             cloudStorageAccount.CreateCloudBlobClient().SetServicePropertiesAsync(props)
                                                        .ConfigureAwait(false).GetAwaiter().GetResult();

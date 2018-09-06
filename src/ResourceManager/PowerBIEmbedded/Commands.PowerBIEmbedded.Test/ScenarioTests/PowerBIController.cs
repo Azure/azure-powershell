@@ -21,8 +21,8 @@ using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.PowerBIEmbedded;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -30,6 +30,7 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using TestBase = Microsoft.Azure.Test.TestBase;
 using TestUtilities = Microsoft.Azure.Test.TestUtilities;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
 {
@@ -63,16 +64,18 @@ namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -112,7 +115,6 @@ namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.PowerBIEmbedded.psd1"),
                     "AzureRM.Resources.ps1");
 
@@ -140,7 +142,7 @@ namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
+            ResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient();
             PowerBIClient = GetPowerBIClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
@@ -157,9 +159,9 @@ namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
             return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private SubscriptionClient GetSubscriptionClient()

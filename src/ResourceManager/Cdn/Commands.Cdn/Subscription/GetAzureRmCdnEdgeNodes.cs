@@ -22,13 +22,13 @@ using Microsoft.Azure.Commands.Cdn.EdgeNodes;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnEdgeNodes"), OutputType(typeof(PSEdgeNode))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnEdgeNodes"), OutputType(typeof(PSEdgeNode))]
     public class GetAzureRmCdnEdgeNodes : AzureCdnCmdletBase
     {
 
         public override void ExecuteCmdlet()
         {
-            var resourceUsages = CdnManagementClient.EdgeNodes.List().Value.Select(e => e.ToPsEdgeNode());
+            var resourceUsages = CdnManagementClient.EdgeNodes.List().Select(e => e.ToPsEdgeNode());
 
             WriteVerbose(Resources.Success);
             WriteObject(resourceUsages);

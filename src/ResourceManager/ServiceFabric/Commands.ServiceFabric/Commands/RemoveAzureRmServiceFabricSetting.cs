@@ -20,28 +20,34 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureRmServiceFabricSetting, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricSetting", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class RemoveAzureRmServiceFabricSetting : ServiceFabricSettingsCmdletBase
     {
         public override string Value { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
+            var cluster = GetCurrentCluster();
             var settings = FabricSettingsToDictionary(cluster.FabricSettings);
 
-            foreach (var setting in this.UpdatedSettingsSectionDescriptionListList)
+            foreach (var setting in this.UpdatedSettingsSectionDescriptionList)
             {
                 foreach (var ps in setting.Parameters)
                 {
                     if (!settings.ContainsKey(setting.Name))
                     {
-                        throw new PSArgumentException(setting.Name);
+                        throw new PSArgumentException(
+                            string.Format(
+                                Properties.Resources.FabricSettingNotFound,
+                                setting.Name));
                     }
 
                     if (!settings[setting.Name].Remove(ps.Name))
                     {
-                        throw new PSArgumentException(ps.Name);
+                        throw new PSArgumentException(
+                            string.Format(
+                                Properties.Resources.FabricSettingNotFound,
+                                $"{setting.Name}/{ps.Name}"));
                     }
                 }
             }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 234D579E-B62D-4D70-8D2E-22AC0D9AC513
@@ -48,7 +48,7 @@ This command gets the account named ContosoADL.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,9 +63,9 @@ Accept wildcard characters: False
 Specifies the name of the account to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetBySpecificAccount
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -78,9 +78,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the Data Lake Store account to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -90,9 +90,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetBySpecificAccount
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -106,13 +106,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
 
-### PSDataLakeStoreAccount
-The specific Data Lake Store account asked for.
-
-### List<PSDataLakeStoreAccountBasic>
-A list of Data Lake Store accounts in the resource group or subscription specified.
+### Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount
 
 ## NOTES
 

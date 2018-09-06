@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: 3992E6B5-F794-4C7A-BB59-C8D60E2CD7BC
@@ -23,20 +23,15 @@ The **Set-AzureRmOperationalInsightsDataSource** cmdlet updates a data source.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DataSource
 Specifies the data source that this cmdlet updates.
 
 ```yaml
-Type: PSDataSource
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -49,7 +44,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,8 +60,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSDataSource
-Parameter 'DataSource' accepts value of type 'PSDataSource' from the pipeline
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource
+Parameters: DataSource (ByValue)
 
 ## OUTPUTS
 

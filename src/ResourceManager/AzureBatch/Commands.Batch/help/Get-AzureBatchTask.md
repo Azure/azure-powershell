@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 4B5FE41A-090B-4859-B021-05CF0A8B7882
@@ -119,9 +119,9 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -150,9 +150,9 @@ Specifies an OData expand clause.
 Specify a value for this parameter to get associated entities of the main entity to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -166,9 +166,9 @@ Specifies an OData filter clause for tasks.
 If you do not specify a filter, this cmdlet returns all tasks for the Batch account or job.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ODataFilter, ParentObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -182,9 +182,9 @@ Specifies the ID of the task that this cmdlet gets.
 You cannot specify wildcard characters.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -198,9 +198,9 @@ Specifies the job that contains tasks that this cmdlet gets.
 To obtain a **PSCloudJob** object, use the Get-AzureBatchJob cmdlet.
 
 ```yaml
-Type: PSCloudJob
+Type: Microsoft.Azure.Commands.Batch.Models.PSCloudJob
 Parameter Sets: ParentObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -213,9 +213,9 @@ Accept wildcard characters: False
 Specifies the ID of the job that contains the tasks that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ODataFilter, Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -230,9 +230,9 @@ If you specify a value of zero (0) or less, the cmdlet does not use an upper lim
 The default value is 1000.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: ODataFilter, ParentObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -246,9 +246,9 @@ Specifies an OData select clause.
 Specify a value for this parameter to get specific properties rather than all object properties.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -262,15 +262,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.String
 
-### PSCloudJob
-Parameter 'Job' accepts value of type 'PSCloudJob' from the pipeline
+### Microsoft.Azure.Commands.Batch.Models.PSCloudJob
+Parameters: Job (ByValue)
+
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 
-### PSCloudTask
+### Microsoft.Azure.Commands.Batch.Models.PSCloudTask
 
 ## NOTES
 

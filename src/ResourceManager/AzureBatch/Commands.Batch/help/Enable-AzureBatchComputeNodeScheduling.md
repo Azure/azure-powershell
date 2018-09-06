@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 36EB9CE6-EAC9-471C-97D6-14E882E0F710
@@ -40,7 +40,6 @@ PS C:\> Enable-AzureBatchComputeNodeScheduling  -PoolId "myPool" -Id "tvm-178359
 These commands enable task scheduling on the compute node tvm-1783593343_34-20151117t222514z.
 To do this, the first command in the example creates an object reference containing the account keys for the batch account contosobatchaccount.
 This object reference is stored in a variable named $context.
-
 The second command then uses this object reference and the **Enable-AzureBatchComputeNodeScheduling** cmdlet to connect to the pool myPool and enable task scheduling on tvm-1783593343_34-20151117t222514z.
 
 ### Example 2: Enable task scheduling on compute nodes in a pool
@@ -52,7 +51,6 @@ PS C:\> Get-AzureBatchComputeNode -PoolId "Pool06"  -BatchContext $Context | Ena
 These commands enable task scheduling on all the compute nodes found in the pool Pool06.
 To perform this task, the first command in the example creates an object reference containing the account keys for the batch account contosobatchaccount.
 This object reference is stored in a variable named $context.
-
 The second command in the example then uses this object reference and **Get-AzureBatchComputeNode** to return a collection of all the compute nodes found in Pool06.
 That collection is then piped to the **Enable-AzureBatchComputeNodeScheduling** cmdlet, which enables task scheduling on each compute node in the collection.
 
@@ -63,9 +61,9 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -79,9 +77,9 @@ Specifies an object reference to the compute node where task scheduling is enabl
 This object reference is created by using the Get-AzureBatchComputeNode cmdlet and storing the returned compute node object in a variable.
 
 ```yaml
-Type: PSComputeNode
+Type: Microsoft.Azure.Commands.Batch.Models.PSComputeNode
 Parameter Sets: InputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -94,7 +92,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -109,9 +107,9 @@ Accept wildcard characters: False
 Specifies the ID of the compute node where task scheduling is enabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -124,9 +122,9 @@ Accept wildcard characters: False
 Specifies the ID of the batch pool that contains the compute node where task scheduling is enabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -140,13 +138,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### Microsoft.Azure.Commands.Batch.Models.PSComputeNode
+Parameters: ComputeNode (ByValue)
 
-### PSComputeNode
-Parameter 'ComputeNode' accepts value of type 'PSComputeNode' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

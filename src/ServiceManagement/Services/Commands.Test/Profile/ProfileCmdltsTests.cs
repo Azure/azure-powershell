@@ -170,15 +170,20 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DeleteCorruptedTokenCache()
         {
-            //setup
+            var corruptData = new byte[] { 0, 1 };
+            
             string testFileName = @"c:\foobar\TokenCache.dat";
-            AzureSession.Instance.DataStore.WriteFile(testFileName, new byte[] { 0, 1 });
+            AzureSession.Instance.DataStore.WriteFile(testFileName, corruptData);
 
-            //Act
+            // Should delete the file because it is corrupt and create a "good" one.
             ProtectedFileTokenCache tokenCache = new ProtectedFileTokenCache(testFileName);
 
-            //Assert
-            Assert.False(AzureSession.Instance.DataStore.FileExists(testFileName));
+            // File should still exist because it was recreated.
+            Assert.True(AzureSession.Instance.DataStore.FileExists(testFileName));
+#if !NETSTANDARD
+            // But the data should not be the same when using DPAPI..
+            Assert.NotEqual(corruptData, tokenCache.CacheData);
+#endif
         }
 
         [Fact]
@@ -506,7 +511,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
 
             // Setup
             AzureSession.Instance.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
-                Commands.Common.Test.Properties.Resources.ValidProfileChina);
+                Commands.Test.Utilities.Properties.Resources.ValidProfileChina);
             var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             AzureSMCmdlet.CurrentProfile = profile;
             ProfileClient client = new ProfileClient(profile);
@@ -550,7 +555,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             AzureSession.Instance.DataStore = new MemoryDataStore();
             // Setup
             AzureSession.Instance.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
-                Commands.Common.Test.Properties.Resources.ValidProfileChina);
+                Commands.Test.Utilities.Properties.Resources.ValidProfileChina);
             var profile = new AzureSMProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             AzureSMCmdlet.CurrentProfile = profile;
             ProfileClient client = new ProfileClient(profile);
@@ -595,7 +600,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             AzureSession.Instance.DataStore = new MemoryDataStore();
             // Setup
             AzureSession.Instance.DataStore.WriteFile("ImportPublishSettingsFileSelectsCorrectEnvironment.publishsettings",
-                Commands.Common.Test.Properties.Resources.ValidProfileChina);
+                Commands.Test.Utilities.Properties.Resources.ValidProfileChina);
             var oldProfile = new AzureSMProfile();
             AzureSMCmdlet.CurrentProfile = oldProfile;
             var profile = new AzureSMProfile();

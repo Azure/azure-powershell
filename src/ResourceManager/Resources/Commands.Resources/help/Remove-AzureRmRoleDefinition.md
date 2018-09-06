@@ -27,6 +27,12 @@ Remove-AzureRmRoleDefinition [-Name] <String> [-Scope <String>] [-Force] [-PassT
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### InputObjectParameterSet
+```
+Remove-AzureRmRoleDefinition -InputObject <PSRoleDefinition> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Remove-AzureRmRoleDefinition cmdlet deletes a custom role in Azure Role-Based Access Control.
         Provide the Id parameter of an existing custom role to delete that custom role.
@@ -52,7 +58,7 @@ Remove-AzureRmRoleDefinition -Id "52a6cc13-ff92-47a8-a39b-2a8205c3087e"
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,7 +73,7 @@ Accept wildcard characters: False
 If set, does not prompt for a confirmation before deleting the custom role
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +88,7 @@ Accept wildcard characters: False
 Id of the Role definition to be deleted
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: RoleDefinitionIdParameterSet
 Aliases:
 
@@ -93,11 +99,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The object representing the role definition to be removed.
+
+```yaml
+Type: Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the Role definition to be deleted.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RoleDefinitionNameParameterSet
 Aliases:
 
@@ -110,7 +131,7 @@ Accept wildcard characters: False
 
 ### -PassThru
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -125,8 +146,8 @@ Accept wildcard characters: False
 Role definition scope.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: RoleDefinitionIdParameterSet, RoleDefinitionNameParameterSet
 Aliases:
 
 Required: False
@@ -140,7 +161,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -153,7 +174,7 @@ Accept wildcard characters: False
 
 ### -WhatIf
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -168,6 +189,13 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.Guid
+
+### System.String
+
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

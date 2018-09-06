@@ -44,7 +44,7 @@ The command stores the result in the file named D:\RemoteDesktopFile07.rdp.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -59,9 +59,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet launches Remote Desktop after it gets the .rdp file.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Launch
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -74,9 +74,9 @@ Accept wildcard characters: False
 Specifies the local full path where this cmdlet stores the .rdp file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Download
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -86,9 +86,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Launch
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Specifies the name of the availability set that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, VMName
 
@@ -116,9 +116,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -132,9 +132,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 
 ## RELATED LINKS
-

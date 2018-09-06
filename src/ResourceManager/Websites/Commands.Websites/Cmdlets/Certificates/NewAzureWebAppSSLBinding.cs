@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmWebAppSSLBinding")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSSLBinding"), OutputType(typeof(HostNameSslState))]
     public class NewAzureWebAppSSLBinding : WebAppBaseClientCmdLet
     {
         const string CertNamePostFixSeparator = "_";
@@ -121,11 +121,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     var certificateName = GenerateCertName(certificateDetails.Thumbprint, webapp.HostingEnvironmentProfile != null ? webapp.HostingEnvironmentProfile.Name : null, webapp.Location, resourceGroupName);
                     var certificate = new Certificate(
                         webapp.Location,
-#if !NETSTANDARD
-                        pfxBlob: Convert.ToBase64String(certificateBytes),
-#else
                         pfxBlob: certificateBytes,
-#endif
                         password: CertificatePassword,
                         hostingEnvironmentProfile: (webapp.HostingEnvironmentProfile != null) ?
                                                         webapp.HostingEnvironmentProfile :

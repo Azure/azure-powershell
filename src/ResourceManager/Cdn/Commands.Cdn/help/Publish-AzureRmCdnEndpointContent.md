@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 ms.assetid: AFDBE48E-63B0-4A9E-9825-5246081AA129
@@ -30,20 +30,15 @@ The **Publish-AzureRmCdnEndpointContent** cmdlet loads content from an origin se
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnEndpoint
 Sepcifies the CDN endpoint.
 
 ```yaml
-Type: PSEndpoint
+Type: Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
 Parameter Sets: ByObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -56,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,9 +66,9 @@ Accept wildcard characters: False
 Specifies the name of the endpoint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -86,9 +81,9 @@ Accept wildcard characters: False
 Specifies an array of relative paths for the content on the origin server that this cmdlet publishes.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -102,9 +97,9 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -117,9 +112,9 @@ Accept wildcard characters: False
 Specifies the name of the profile to which the origin server belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -132,9 +127,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the origin server belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -148,8 +143,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSEndpoint
-Parameter 'CdnEndpoint' accepts value of type 'PSEndpoint' from the pipeline
+### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
+Parameters: CdnEndpoint (ByValue)
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

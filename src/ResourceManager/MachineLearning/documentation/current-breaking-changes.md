@@ -39,3 +39,10 @@
 -->
 
 ## Current Breaking Changes
+
+### Release 1.0.0 - May 2018
+
+The following cmdlets were affected this release:
+
+**Update-AzureRmMlCommitmentPlan**
+- The parameter alias `Tags` is being removed

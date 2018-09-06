@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVpnClientPackage"), OutputType(typeof(string))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnClientPackage"), OutputType(typeof(string))]
     public class GetAzureVpnClientPackage : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!this.IsVirtualNetworkGatewayPresent(ResourceGroupName, VirtualNetworkGatewayName))
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, VirtualNetworkGatewayName));
             }
 
             PSVpnClientParameters vpnClientParams = new PSVpnClientParameters();
@@ -72,4 +72,3 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
-

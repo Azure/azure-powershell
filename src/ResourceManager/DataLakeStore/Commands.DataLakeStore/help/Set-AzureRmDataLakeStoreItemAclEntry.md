@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 0671D833-8B3A-4480-A576-92F1A9E8CE92
@@ -16,15 +16,16 @@ Modifies an entry in the ACL of a file or folder in Data Lake Store.
 ### SetByACLObject (Default)
 ```
 Set-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-Recurse] [-Concurrency <Int32>] [-ShowProgress]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetSpecificACE
 ```
 Set-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-AceType] <AceType> [[-Id] <Guid>] [-Permissions] <Permission> [-Default] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AceType] <AceType> [[-Id] <Guid>] [-Permissions] <Permission> [-Default] [-PassThru] [-Recurse]
+ [-Concurrency <Int32>] [-ShowProgress] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,13 +40,27 @@ PS C:\>Set-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -A
 
 This command modifies the ACE for Patti Fuller to have all permissions.
 
+### Example 2: Modify permissions for an ACE recursively
+```
+PS C:\>Set-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -AceType User -Id (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").ObjectId -Permissions All -Recurse -Concurrency 128
+```
+
+### Example 3: Modify permissions for an ACE recursively using Acl object
+```
+PS C:\>$fullAcl="user:userid1:--x,default:user:userid1:--x"
+PS C:\>$newFullAcl = $fullAcl.Split("{,}")
+PS C:\>Set-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -Acl $newFullAcl -Recurse -Concurrency 128
+```
+
+This command recursively modifies the ACE for Patti Fuller to have all permissions to root and all its subdirectories and files.
+
 ## PARAMETERS
 
 ### -Account
 Specifies the name of the Data Lake Store account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -59,16 +74,15 @@ Accept wildcard characters: False
 ### -AceType
 Specifies the type of ACE to modify.
 The acceptable values for this parameter are:
-
 - User 
 - Group 
 - Mask 
 - Other
 
 ```yaml
-Type: AceType
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType
 Parameter Sets: SetSpecificACE
-Aliases: 
+Aliases:
 Accepted values: User, Group, Mask, Other
 
 Required: True
@@ -82,9 +96,9 @@ Accept wildcard characters: False
 Specifies the ACL object that contains the entries to modify.
 
 ```yaml
-Type: DataLakeStoreItemAce[]
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[]
 Parameter Sets: SetByACLObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -93,13 +107,28 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -Concurrency
+Number of files/directories processed in parallel. Optional: a reasonable default will be selected
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Default
 Indicates that this operation modifies the default ACE from the specified ACL.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SetSpecificACE
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -109,10 +138,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -127,9 +156,9 @@ Accept wildcard characters: False
 Specifies the object ID of the AzureActive Directory user, group, or service principal for which to modify an ACE.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: SetSpecificACE
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -142,9 +171,9 @@ Accept wildcard characters: False
 Indicates the resulting ACL should be returned.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -157,9 +186,9 @@ Accept wildcard characters: False
 Specifies the Data Lake Store path of the item for which to modify an ACE, starting with the root directory (/).
 
 ```yaml
-Type: DataLakeStorePathInstance
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -171,7 +200,6 @@ Accept wildcard characters: False
 ### -Permissions
 Specifies the permissions for the ACE.
 The acceptable values for this parameter are:
-
 - None
 - Execute
 - Write
@@ -182,9 +210,9 @@ The acceptable values for this parameter are:
 - All
 
 ```yaml
-Type: Permission
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Permission
 Parameter Sets: SetSpecificACE
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -193,11 +221,41 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Recurse
+Indicates the ACL to be modified recursively to the child subdirectories and files
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ShowProgress
+If passed then progress status is showed. Only applicable when recursive Acl modify is done.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -213,7 +271,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -229,12 +287,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### DataLakeStoreItemAce[]
-Parameter 'Acl' accepts value of type 'DataLakeStoreItemAce[]' from the pipeline
+### System.String
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[]
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType
+
+### System.Guid
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Permission
+
+### System.Management.Automation.SwitchParameter
+
+### System.Int32
 
 ## OUTPUTS
 
-### IEnumerable<DataLakeStoreItemAce>
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce
 If PassThru is specified, will return the resulting list of ACL entries.
 
 ## NOTES

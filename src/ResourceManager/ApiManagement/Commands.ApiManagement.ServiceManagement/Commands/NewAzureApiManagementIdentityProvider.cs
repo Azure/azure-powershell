@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, Constants.ApiManagementIdentityProvider, SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementIdentityProvider", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementIdentityProvider))]
     public class NewAzureApiManagementIdentityProvider : AzureApiManagementCmdletBase
     {
@@ -59,7 +59,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             if (ShouldProcess(Type.ToString("g"), "Creates a new Identity Provider"))
             {
-                var identityProvider = Client.IdentityProviderCreate(Context, Type.ToString("G"), ClientId, ClientSecret,
+                var identityProvider = Client.IdentityProviderCreate(
+                    Context,
+                    Type.ToString("G"),
+                    ClientId,
+                    ClientSecret,
                     AllowedTenants);
 
                 WriteObject(identityProvider);

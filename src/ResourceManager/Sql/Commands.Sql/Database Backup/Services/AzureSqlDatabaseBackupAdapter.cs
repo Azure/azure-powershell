@@ -17,10 +17,12 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
@@ -75,11 +77,55 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     ServerName = serverName,
                     DatabaseName = databaseName,
                     Location = restorePoint.Location,
-                    RestorePointType = restorePoint.Properties.RestorePointType,
-                    RestorePointCreationDate = restorePoint.Properties.RestorePointCreationDate,
-                    EarliestRestoreDate = restorePoint.Properties.EarliestRestoreDate
+                    RestorePointType = restorePoint.RestorePointType.ToString(),
+                    RestorePointCreationDate = restorePoint.RestorePointCreationDate,
+                    EarliestRestoreDate = restorePoint.EarliestRestoreDate,
+                    RestorePointLabel = restorePoint.RestorePointLabel
                 };
             }).ToList();
+        }
+
+        /// <summary>
+        /// Creates a new the restore point for a given Sql Azure Database.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <returns>List of restore points</returns>
+        internal IEnumerable<AzureSqlDatabaseRestorePointModel> NewRestorePoint(IEnumerable<AzureSqlDatabaseRestorePointModel> entityList)
+        {
+            AzureSqlDatabaseRestorePointModel entity = entityList.Single();
+            Management.Sql.Models.CreateDatabaseRestorePointDefinition definition = new Management.Sql.Models.CreateDatabaseRestorePointDefinition { RestorePointLabel = entity.RestorePointLabel };
+            var resp = Communicator.NewRestorePoint(entity.ResourceGroupName, entity.ServerName, entity.DatabaseName, definition);
+            return new List<AzureSqlDatabaseRestorePointModel>
+            {
+                new AzureSqlDatabaseRestorePointModel()
+                {
+                    ResourceGroupName = entity.ResourceGroupName,
+                    ServerName = entity.ServerName,
+                    DatabaseName = entity.DatabaseName,
+                    Location = resp.Location,
+                    RestorePointType = resp.RestorePointType.ToString(),
+                    RestorePointCreationDate = resp.RestorePointCreationDate,
+                    EarliestRestoreDate = resp.EarliestRestoreDate,
+                    RestorePointLabel = resp.RestorePointLabel
+                }
+            };
+        }
+
+        /// <summary>
+        /// Removes a given restore point for a given Sql Azure Database.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <param name="restorePointCreationDate">The create time of the restore point</param>
+        /// <returns>void</returns>
+        internal void RemoveRestorePoint(IEnumerable<AzureSqlDatabaseRestorePointModel> entityList)
+        {
+            AzureSqlDatabaseRestorePointModel entity = entityList.Single();
+            string restorePointName = entity.RestorePointCreationDate.Value.ToFileTimeUtc().ToString();
+            Communicator.RemoveRestorePoint(entity.ResourceGroupName, entity.ServerName, entity.DatabaseName, restorePointName);
         }
 
         /// <summary>
@@ -209,26 +255,48 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <param name="current">Whether or not the user provided the Current switch to get the current implementation of LTR policy</param>
         /// <returns>A backup LongTermRetention policy</returns>
         internal AzureSqlDatabaseBackupLongTermRetentionPolicyModel GetDatabaseBackupLongTermRetentionPolicy(
             string resourceGroup,
             string serverName,
-            string databaseName)
+            string databaseName,
+            bool current)
         {
-            var baPolicy = Communicator.GetDatabaseBackupLongTermRetentionPolicy(
-                resourceGroup,
-                serverName,
-                databaseName,
-                "Default");
-            return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
+            if (!current)
             {
-                Location = baPolicy.Location,
-                ResourceGroupName = resourceGroup,
-                ServerName = serverName,
-                DatabaseName = databaseName,
-                State = baPolicy.Properties.State,
-                RecoveryServicesBackupPolicyResourceId = baPolicy.Properties.RecoveryServicesBackupPolicyResourceId,
-            };
+                var baPolicy = Communicator.GetDatabaseBackupLongTermRetentionPolicy(
+                    resourceGroup,
+                    serverName,
+                    databaseName,
+                    "Default");
+                return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
+                {
+                    Location = baPolicy.Location,
+                    ResourceGroupName = resourceGroup,
+                    ServerName = serverName,
+                    DatabaseName = databaseName,
+                    State = baPolicy.Properties.State,
+                    RecoveryServicesBackupPolicyResourceId = baPolicy.Properties.RecoveryServicesBackupPolicyResourceId,
+                };
+            }
+            else
+            {
+                Management.Sql.Models.BackupLongTermRetentionPolicy response = Communicator.GetDatabaseLongTermRetentionPolicy(
+                    resourceGroup,
+                    serverName,
+                    databaseName);
+                return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
+                {
+                    ResourceGroupName = resourceGroup,
+                    ServerName = serverName,
+                    DatabaseName = databaseName,
+                    WeeklyRetention = response.WeeklyRetention,
+                    MonthlyRetention = response.MonthlyRetention,
+                    YearlyRetention = response.YearlyRetention,
+                    WeekOfYear = response.WeekOfYear
+                };
+            }
         }
 
         /// <summary>
@@ -276,29 +344,119 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             string databaseName,
             AzureSqlDatabaseBackupLongTermRetentionPolicyModel model)
         {
-            var baPolicy = Communicator.SetDatabaseBackupLongTermRetentionPolicy(
-                resourceGroup,
-                serverName,
-                databaseName,
-                "Default",
-                new DatabaseBackupLongTermRetentionPolicyCreateOrUpdateParameters()
-                {
-                    Location = model.Location,
-                    Properties = new DatabaseBackupLongTermRetentionPolicyProperties()
-                    {
-                        State = model.State,
-                        RecoveryServicesBackupPolicyResourceId = model.RecoveryServicesBackupPolicyResourceId,
-                    }
-                });
-            return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
+            if (!string.IsNullOrWhiteSpace(model.RecoveryServicesBackupPolicyResourceId))
             {
-                Location = baPolicy.Location,
-                ResourceGroupName = resourceGroup,
-                ServerName = serverName,
-                DatabaseName = databaseName,
-                State = baPolicy.Properties.State,
-                RecoveryServicesBackupPolicyResourceId = baPolicy.Properties.RecoveryServicesBackupPolicyResourceId,
+                var baPolicy = Communicator.SetDatabaseBackupLongTermRetentionPolicy(
+                    resourceGroup,
+                    serverName,
+                    databaseName,
+                    "Default",
+                    new DatabaseBackupLongTermRetentionPolicyCreateOrUpdateParameters()
+                    {
+                        Location = model.Location,
+                        Properties = new DatabaseBackupLongTermRetentionPolicyProperties()
+                        {
+                            State = model.State,
+                            RecoveryServicesBackupPolicyResourceId = model.RecoveryServicesBackupPolicyResourceId,
+                        }
+                    });
+                return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
+                {
+                    Location = baPolicy.Location,
+                    ResourceGroupName = resourceGroup,
+                    ServerName = serverName,
+                    DatabaseName = databaseName,
+                    State = baPolicy.Properties.State,
+                    RecoveryServicesBackupPolicyResourceId = baPolicy.Properties.RecoveryServicesBackupPolicyResourceId,
+                };
+            }
+            else
+            {
+                Management.Sql.Models.BackupLongTermRetentionPolicy response = Communicator.SetDatabaseLongTermRetentionPolicy(
+                    resourceGroup,
+                    serverName,
+                    databaseName,
+                    new Management.Sql.Models.BackupLongTermRetentionPolicy()
+                    {
+                        WeeklyRetention = model.WeeklyRetention,
+                        MonthlyRetention = model.MonthlyRetention,
+                        YearlyRetention = model.YearlyRetention,
+                        WeekOfYear = model.WeekOfYear
+                    });
+                return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
+                {
+                    ResourceGroupName = resourceGroup,
+                    ServerName = serverName,
+                    DatabaseName = databaseName,
+                    WeeklyRetention = response.WeeklyRetention,
+                    MonthlyRetention = response.MonthlyRetention,
+                    YearlyRetention = response.YearlyRetention,
+                    WeekOfYear = response.WeekOfYear
+                };
+            }
+        }
+
+        /// <summary>
+        /// Gets the Long Term Retention backups.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        /// <param name="onlyLatestPerDatabase">Whether or not to only get the latest backup per database.</param>
+        /// <param name="databaseState">The state of databases to get backups for: All, Live, Deleted.</param>
+        internal IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> GetDatabaseLongTermRetentionBackups(
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName,
+            bool? onlyLatestPerDatabase,
+            string databaseState)
+        {
+            if (!string.IsNullOrWhiteSpace(backupName))
+            {
+                return new List<AzureSqlDatabaseLongTermRetentionBackupModel>()
+                {
+                    GetBackupModel(Communicator.GetDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName), locationName)
+                };
+            }
+            else
+            {
+                return Communicator.GetDatabaseLongTermRetentionBackups(locationName, serverName, databaseName, onlyLatestPerDatabase, databaseState)
+                    .Select(b => GetBackupModel(b, locationName));
+            }
+        }
+
+        private AzureSqlDatabaseLongTermRetentionBackupModel GetBackupModel(Management.Sql.Models.LongTermRetentionBackup backup, string locationName)
+        {
+            return new AzureSqlDatabaseLongTermRetentionBackupModel()
+            {
+                BackupExpirationTime = backup.BackupExpirationTime,
+                BackupName = backup.Name,
+                BackupTime = backup.BackupTime,
+                DatabaseDeletionTime = backup.DatabaseDeletionTime,
+                DatabaseName = backup.DatabaseName,
+                Location = locationName,
+                ResourceId = backup.Id,
+                ServerCreateTime = backup.ServerCreateTime,
+                ServerName = backup.ServerName
             };
+        }
+
+        /// <summary>
+        /// Removes a Long Term Retention backup.
+        /// </summary>
+        /// <param name="locationName">The location name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="backupName">The backup name.</param>
+        internal void RemoveDatabaseLongTermRetentionBackup(
+            string locationName,
+            string serverName,
+            string databaseName,
+            string backupName)
+        {
+            Communicator.RemoveDatabaseLongTermRetentionBackup(locationName, serverName, databaseName, backupName);
         }
 
         /// <summary>
@@ -379,23 +537,56 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>Restored database object</returns>
         internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model)
         {
-            DatabaseCreateOrUpdateParameters parameters = new DatabaseCreateOrUpdateParameters()
+            // Construct the ARM resource Id of the pool
+            string elasticPoolId = string.IsNullOrWhiteSpace(model.ElasticPoolName) ? null : AzureSqlDatabaseModel.PoolIdTemplate.FormatInvariant(
+                        _subscription.Id,
+                        resourceGroup,
+                        model.ServerName,
+                        model.ElasticPoolName);
+
+            // Restore database
+            var dbModel = new Management.Sql.Models.Database()
             {
                 Location = model.Location,
-                Properties = new DatabaseCreateOrUpdateProperties()
+                CreateMode = model.CreateMode,
+                RestorePointInTime = restorePointInTime,
+                ElasticPoolId = elasticPoolId,
+                Sku = string.IsNullOrWhiteSpace(model.SkuName) ? null : new Management.Sql.Models.Sku()
                 {
-                    Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
-                    RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
-                    ElasticPoolName = model.ElasticPoolName,
-                    RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
-                    SourceDatabaseId = resourceId,
-                    RecoveryServicesRecoveryPointResourceId = resourceId,
-                    RestorePointInTime = restorePointInTime,
-                    CreateMode = model.CreateMode
-                }
+                    Name = model.SkuName,
+                    Tier = model.Edition,
+                    Family = model.Family,
+                    Capacity = model.Capacity
+                },
+                LicenseType = model.LicenseType
             };
-            var resp = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, parameters);
-            return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroup, model.ServerName, resp);
+
+            if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.Recovery))
+            {
+                dbModel.SourceDatabaseId = resourceId;
+                dbModel.RecoverableDatabaseId = resourceId;
+                dbModel.RecoveryServicesRecoveryPointId = resourceId;
+            }
+            else if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.Restore))
+            {
+                dbModel.RestorableDroppedDatabaseId = resourceId;
+                dbModel.RecoveryServicesRecoveryPointId = resourceId;
+            }
+            else if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup) && resourceId.Contains("/providers/Microsoft.Sql"))
+            {
+                // LTR V2
+                dbModel.LongTermRetentionBackupResourceId = resourceId;
+                dbModel.SourceDatabaseId = resourceId;
+            }
+            else
+            {
+                dbModel.SourceDatabaseId = resourceId;
+                dbModel.RecoveryServicesRecoveryPointId = resourceId;
+            }
+
+            Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, dbModel);
+
+            return new AzureSqlDatabaseModel(resourceGroup, model.ServerName, database);
         }
 
         /// <summary>

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     /// <summary>
     /// 'Set-AzureRmEventHubDRConfigurationFailOver' Cmdlet envokes Geo DR failover and reconfigure the alias to point to the secondary namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, EventhubDRConfigurationFailoverVerb, DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubGeoDRConfigurationFailOver", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetAzureEventHubGeoDRConfigurationFailOver : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -56,54 +56,32 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
             if (ParameterSetName == GeoDRInputObjectParameterSet)
             {
                 getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
-                
-                if(getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
-                {
-                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRFailOver, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
-                    {
-                        Client.SetEventHubDRConfigurationFailOver(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
-                        if (PassThru)
-                        {
-                            WriteObject(true);
-                        }
-                    }
-                }
-                else
-                {
-                    WriteObject(false);
-                }
+                ResourceGroupName = getParamGeoDR.ResourceGroupName;
+                Namespace = getParamGeoDR.ParentResource;
+                Name = getParamGeoDR.ResourceName;                
             }
 
             if (ParameterSetName == GeoDRConfigResourceIdParameterSet)
             {
                 getParamGeoDR = GetResourceDetailsFromId(ResourceId);
-
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
-                {
-                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRFailOver, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
-                    {
-                        Client.SetEventHubDRConfigurationFailOver(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource, getParamGeoDR.ResourceName);
-                        if (PassThru)
-                        {
-                            WriteObject(true);
-                        }
-                    }
-                }
-                else
-                {
-                    WriteObject(false);
-                }
+                ResourceGroupName = getParamGeoDR.ResourceGroupName;
+                Namespace = getParamGeoDR.ParentResource;
+                Name = getParamGeoDR.ResourceName;
             }
 
-            if(ParameterSetName == GeoDRParameterSet)
+            if (ShouldProcess(target: Name, action: string.Format(Resources.DRFailOver, Name, Namespace)))
             {
-                if (ShouldProcess(target: Name, action: string.Format(Resources.DRFailOver, getParamGeoDR.ResourceName, getParamGeoDR.ParentResource)))
+                try
                 {
                     Client.SetEventHubDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
                     if (PassThru)
                     {
                         WriteObject(true);
                     }
+                }
+                catch (Management.EventHub.Models.ErrorResponseException ex)
+                {
+                    WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
                 }
             }
         }

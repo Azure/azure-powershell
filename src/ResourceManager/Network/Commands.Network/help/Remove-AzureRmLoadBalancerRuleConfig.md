@@ -30,7 +30,6 @@ PS C:> Remove-AzureRmLoadBalancerRuleConfig -Name "MyLBruleName" -LoadBalancer $
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the $loadbalancer variable.
-
 The second command removes the rule configuration named MyLBruleName from the load balancer in $loadbalancer.
 
 ## PARAMETERS
@@ -39,7 +38,7 @@ The second command removes the rule configuration named MyLBruleName from the lo
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -54,9 +53,9 @@ Accept wildcard characters: False
 Specifies the **LoadBalancer** object that contains the rule configuration that this cmdlet removes.
 
 ```yaml
-Type: PSLoadBalancer
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -69,9 +68,9 @@ Accept wildcard characters: False
 Specifies the name of the load balancer rule configuration that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -85,8 +84,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSLoadBalancer
-Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Parameters: LoadBalancer (ByValue)
 
 ## OUTPUTS
 

@@ -39,3 +39,13 @@
 -->
 
 ## Current Breaking Changes
+
+### Release 5.0.0 - May 2018
+
+The following cmdlets were affected this release:
+
+**New-AzureRmNotificationHubsNamespace**
+- The parameter alias `Tags` is being removed
+
+**Set-AzureRmNotificationHubsNamespace**
+- The parameter alias `Tags` is being removed

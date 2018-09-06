@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,11 +20,24 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class AvailabilityZoneTests
     {
+        XunitTracingInterceptor _logger;
+
+        public AvailabilityZoneTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
+        }
+
+#if NETSTANDARD
+        [Fact(Skip = "Updated Storage, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineZone()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineZone");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineZone");
         }
     }
 }

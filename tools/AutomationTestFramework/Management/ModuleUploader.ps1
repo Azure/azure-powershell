@@ -93,6 +93,6 @@ function Upload-Modules(
         if ($failedModules.Count -gt 0) {
             throw "Modules ($failedModules) failed to upload"
         }
-    }    
+    }
     Write-Verbose "Modules have been uploaded successfully."
 }

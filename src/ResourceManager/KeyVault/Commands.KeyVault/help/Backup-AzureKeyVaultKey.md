@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: A82392AA-B12B-443E-8704-7CF5A9F8ED58
@@ -21,7 +21,7 @@ Backup-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [[-OutputFile] <S
 
 ### ByKey
 ```
-Backup-AzureKeyVaultKey [-Key] <KeyBundle> [[-OutputFile] <String>] [-Force]
+Backup-AzureKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [[-OutputFile] <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,9 +30,7 @@ The **Backup-AzureKeyVaultKey** cmdlet backs up a specified key in a key vault b
 If there are multiple versions of the key, all versions are included in the backup.
 Because the downloaded content is encrypted, it cannot be used outside of Azure Key Vault.
 You can restore a backed-up key to any key vault in the subscription that it was backed up from.
-
 Typical reasons to use this cmdlet are: 
-
 - You want to escrow a copy of your key, so that you have an offline copy in case you accidentally delete your key in your key vault.
  
 - You created a key using Key Vault and now want to clone the key into a different Azure region, so that you can use it from all instances of your distributed application.
@@ -41,23 +39,29 @@ Use the **Backup-AzureKeyVaultKey** cmdlet to retrieve the key in encrypted form
 ## EXAMPLES
 
 ### Example 1: Back up a key with an automatically generated file name
-```
-PS C:\>Backup-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey'
+```powershell
+PS C:\Users\username\> Backup-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey'
+
+C:\Users\username\mykeyvault-mykey-1527029447.01191
 ```
 
 This command retrieves the key named MyKey from the key vault named MyKeyVault and saves a backup of that key to a file that is automatically named for you, and displays the file name.
 
 ### Example 2: Back up a key to a specified file name
-```
-PS C:\>Backup-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey' -OutputFile 'C:\Backup.blob'
+```powershell
+PS C:\> Backup-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey' -OutputFile 'C:\Backup.blob'
+
+C:\Backup.blob
 ```
 
 This command retrieves the key named MyKey from the key vaultnamed MyKeyVault and saves a backup of that key to a file named Backup.blob.
 
 ### Example 3: Back up a previously retrieved key to a specified file name, overwriting the destination file without prompting.
-```
-PS C:\>$key = Get-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey'
-PS C:\>Backup-AzureKeyVaultKey -Key $key -OutputFile 'C:\Backup.blob' -Force
+```powershell
+PS C:\> $key = Get-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey'
+PS C:\> Backup-AzureKeyVaultKey -Key $key -OutputFile 'C:\Backup.blob' -Force
+
+C:\Backup.blob
 ```
 
 This command creates a backup of the key named $key.Name in the vault named $key.VaultName to a file named Backup.blob, silently overwriting the file if it exists already.
@@ -68,7 +72,7 @@ This command creates a backup of the key named $key.Name in the vault named $key
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -83,29 +87,29 @@ Accept wildcard characters: False
 Overwrite the given file if it exists
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Key
-Specifies a previously retrieved key which is to be backed up.
+### -InputObject
+Key bundle to back up, pipelined in from the output of a retrieval call.
 
 ```yaml
-Type: KeyBundle
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
 Parameter Sets: ByKey
-Aliases: 
+Aliases: Key
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -113,14 +117,14 @@ Accept wildcard characters: False
 Specifies the name of the key to back up.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByKeyName
 Aliases: KeyName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -130,14 +134,14 @@ If you do not specify this parameter, this cmdlet generates a file name for you.
 If you specify the name of an existing output file, the operation will not complete and returns an error message that the backup file already exists.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -145,14 +149,14 @@ Accept wildcard characters: False
 Specifies the name of the key vault that contains the key to back up.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByKeyName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -160,7 +164,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -176,7 +180,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -192,10 +196,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
+Parameters: InputObject (ByValue)
+
 ## OUTPUTS
 
-### String
-The cmdlet returns the path of the output file containing the backup of the key.
+### System.String
 
 ## NOTES
 

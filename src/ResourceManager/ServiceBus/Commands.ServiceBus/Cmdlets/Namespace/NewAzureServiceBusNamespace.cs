@@ -18,23 +18,20 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.ServiceBus.Models;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
     /// <summary>
     /// 'New-AzureRmServiceBusNamespace' cmdlet creates a new Servicebus NameSpace
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServiceBusNamespaceVerb, SupportsShouldProcess = true), OutputType(typeof(NamespaceAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNamespace", SupportsShouldProcess = true), OutputType(typeof(PSNamespaceAttributes))]
     public class NewAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
     {
         /// <summary>
         /// Name of the resource group.
         /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter( Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
@@ -43,11 +40,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         /// <summary>
         /// EventHub Namespace Location.
         /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "ServiceBus Namespace Location.")]
+        [Parameter( Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "ServiceBus Namespace Location")]
         [LocationCompleter("Microsoft.ServiceBus/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -55,11 +48,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         /// <summary>
         /// EventHub Namespace Name.
         /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "ServiceBus Namespace Name.")]
+        [Parameter( Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "ServiceBus Namespace Name")]
         [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -67,23 +56,21 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         /// <summary>
         /// Namespace Sku Name.
         /// </summary>
-        [Parameter(
-          Mandatory = false,
-          ValueFromPipelineByPropertyName = true,
-          HelpMessage = "Namespace Sku Name.")]
-        [ValidateSet(SKU.Basic,
-          SKU.Standard,
-          SKU.Premium,
-          IgnoreCase = true)]
+        [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Namespace Sku Name")]
+        [ValidateSet(SKU.Basic, SKU.Standard, SKU.Premium, IgnoreCase = true)]
         public string SkuName { get; set; }
+
+        /// <summary>
+        /// The Service Bus Premium namespace throughput units.
+        /// </summary>        
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Service Bus premium namespace throughput units, allowed values 1 or 2 or 4")]
+        [PSArgumentCompleter("1", "2", "4")]
+        public int? SkuCapacity { get; set; }
 
         /// <summary>
         /// Hashtables which represents resource Tags.
         /// </summary>
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hashtables which represents resource Tags.")]
+        [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Hashtables which represents resource Tags")]
         public Hashtable Tag { get; set; }
 
         /// <summary>
@@ -96,7 +83,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateNamesapce, Name, ResourceGroupName)))
             {
-                WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary));
+                try
+                {
+                    WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, SkuCapacity));
+                }
+                catch (ErrorResponseException ex)
+                {
+                   WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }

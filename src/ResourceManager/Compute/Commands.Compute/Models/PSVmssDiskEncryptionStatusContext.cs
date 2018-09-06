@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string VmScaleSetName { get; set; }
         public AzureVmssDiskEncryptionExtensionPublicSettings EncryptionSettings { get; set; }
         public IList<VirtualMachineStatusCodeCount> EncryptionSummary { get; set; }
+        // EncryptionEnabled is true when any disk reports an encrypted status
         public bool EncryptionEnabled { get; set; }
         public bool EncryptionExtensionInstalled { get; set; }
     }

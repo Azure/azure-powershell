@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.Diagnostics;
-using Microsoft.Azure.Management.Monitor.Management;
-
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
@@ -32,6 +33,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         private readonly Mock<IDiagnosticSettingsOperations> insightsDiagnosticsOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private const string ResourceId = "/subscriptions/123/resourcegroups/rg/providers/rp/resource/myresource";
+        private Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResource> response;
+        private Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResourceCollection> multipleResponse;
+        DiagnosticSettingsResource calledSettings = null;
 
         private string resourceIdIn;
         private string settingName;
@@ -46,6 +50,72 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 MonitorManagementClient = insightsManagementClientMock.Object
+            };
+
+            var resource = new DiagnosticSettingsResource(name: "service")
+            {
+                
+                EventHubName = "",
+                EventHubAuthorizationRuleId = "",
+                StorageAccountId = "/subscriptions/123/resourcegroups/rg/providers/microsoft.storage/accounts/myaccount",
+                WorkspaceId = "",
+                Logs = new List<LogSettings>
+                    {
+                        new LogSettings
+                        {
+                            RetentionPolicy = new RetentionPolicy()
+                            {
+                                Days = 10,
+                                Enabled = true
+                            },
+                            Category = "TestCategory1",
+                            Enabled = true
+                        },
+                        new LogSettings
+                        {
+                            RetentionPolicy = new RetentionPolicy()
+                            {
+                                Days = 5,
+                                Enabled = false
+                            },
+                            Category = "TestCategory2",
+                            Enabled = false
+                        }
+                    },
+                Metrics = new List<MetricSettings>
+                    {
+                        new MetricSettings
+                        {
+                            Category = "MetricCat1",
+                            RetentionPolicy = new RetentionPolicy()
+                            {
+                                Days = 7,
+                                Enabled = false
+                            },
+                            TimeGrain = TimeSpan.FromMinutes(1),
+                            Enabled = false
+                        },
+                        new MetricSettings
+                        {
+                            Category = "MetricCat2",
+                            RetentionPolicy = new RetentionPolicy()
+                            {
+                                Days = 3,
+                                Enabled = true
+                            },
+                            TimeGrain = TimeSpan.FromHours(1)
+                        }
+                    }
+            };
+
+            response = new Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResource>()
+            {
+                RequestId = Guid.NewGuid().ToString(),
+                Response = new System.Net.Http.HttpResponseMessage
+                {
+                    StatusCode = System.Net.HttpStatusCode.OK
+                },
+                Body = resource
             };
 
             insightsDiagnosticsOperationsMock.Setup(f => f.DeleteWithHttpMessagesAsync(
@@ -63,6 +133,56 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                        this.settingName = settingName;
                    });
 
+            insightsDiagnosticsOperationsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
+                It.IsAny<string>(),
+                It.IsAny<DiagnosticSettingsResource>(),
+                It.IsAny<string>(),
+                It.IsAny<Dictionary<string, List<string>>>(),
+                It.IsAny<CancellationToken>()))
+                    .Returns((string a, DiagnosticSettingsResource x, string name, Dictionary<string, List<string>> b, CancellationToken c) =>
+                    {
+                        calledSettings = new DiagnosticSettingsResource(name: name)
+                        {
+                            EventHubAuthorizationRuleId = x.EventHubAuthorizationRuleId,
+                            EventHubName = x.EventHubName,
+                            Logs = x.Logs,
+                            Metrics = x.Metrics,
+                            StorageAccountId = x.StorageAccountId,
+                            WorkspaceId = x.WorkspaceId
+                        };
+                        return Task.FromResult(new Rest.Azure.AzureOperationResponse<DiagnosticSettingsResource>
+                        {
+                            RequestId = Guid.NewGuid().ToString(),
+                            Body = x,
+                            Response = new System.Net.Http.HttpResponseMessage
+                            {
+                                StatusCode = System.Net.HttpStatusCode.OK
+                            }
+                        });
+                    });
+
+            insightsDiagnosticsOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResource>>(response))
+                .Callback((string resourceId, string name, Dictionary<string, List<string>> headers, CancellationToken cancellationToken) =>
+                {
+                    resourceIdIn = resourceId;
+                    this.settingName = name;
+                });
+
+            multipleResponse = new Microsoft.Rest.Azure.AzureOperationResponse<DiagnosticSettingsResourceCollection>()
+            {
+                Body = new DiagnosticSettingsResourceCollection(
+                    value: new List<DiagnosticSettingsResource>() { resource })
+            };
+
+            insightsDiagnosticsOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(multipleResponse))
+                .Callback((string resourceId, Dictionary<string, List<string>> headers, CancellationToken cancellationToken) =>
+                {
+                    resourceIdIn = resourceId;
+                    this.settingName = "service";
+                });
+
             insightsManagementClientMock.SetupGet(f => f.DiagnosticSettings).Returns(this.insightsDiagnosticsOperationsMock.Object);
 
             cmdlet.ResourceId = ResourceId;
@@ -78,6 +198,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveSettingTest()
         {
+            cmdlet.ResourceId = ResourceId;
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(ResourceId, resourceIdIn);
+            Assert.Equal("service", settingName);
+
+            cmdlet.ResourceId = ResourceId;
             cmdlet.Name = "MySetting";
             cmdlet.ExecuteCmdlet();
 

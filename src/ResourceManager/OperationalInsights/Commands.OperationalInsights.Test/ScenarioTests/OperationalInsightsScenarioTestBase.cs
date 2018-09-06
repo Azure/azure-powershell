@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.OperationalInsights;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -25,7 +24,10 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.OperationalInsights;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
@@ -41,7 +43,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         protected void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var operationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
-            var resourceManagementClient = GetResourceManagementClient();
+            var resourceManagementClient = GetResourceManagementClient(context);
             var subscriptionsClient = GetSubscriptionClient();
             var galleryClient = GetGalleryClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
@@ -54,8 +56,27 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
                 authorizationManagementClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        protected void SetupDataClient(RestTestFramework.MockContext context)
         {
+            var credentials = new ApiKeyClientCredentials("DEMO_KEY");
+            var operationalInsightsDataClient = new OperationalInsightsDataClient(credentials, HttpMockServer.CreateInstance());
+
+            helper.SetupManagementClients(operationalInsightsDataClient);
+        }
+
+        protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
+        {
+            RunPowerShellTest(logger, true, false, scripts);
+        }
+
+        protected void RunDataPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
+        {
+            RunPowerShellTest(logger, false, true, scripts);
+        }
+
+        protected void RunPowerShellTest(XunitTracingInterceptor logger, bool setupManagementClients, bool setupDataClient, params string[] scripts)
+        {
+            helper.TracingInterceptor = logger;
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
@@ -65,16 +86,22 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2)))
+            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(TestUtilities.GetCallingClass(3), TestUtilities.GetCurrentMethodName(3)))
             {
-                SetupManagementClients(context);
+                if (setupManagementClients)
+                {
+                    SetupManagementClients(context);
+                    helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                }
+                if (setupDataClient)
+                {
+                    SetupDataClient(context);
+                }
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.OperationalInsights.psd1"),
                     "AzureRM.Resources.ps1");
 
@@ -87,9 +114,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
             return context.GetServiceClient<OperationalInsightsManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected ResourceManagementClient GetResourceManagementClient()
+        protected ResourceManagementClient GetResourceManagementClient(RestTestFramework.MockContext context)
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected SubscriptionClient GetSubscriptionClient()

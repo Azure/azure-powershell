@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using Management.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApi, DefaultParameterSetName = AllApis)]
-    [OutputType(typeof(IList<PsApiManagementApi>), ParameterSetName = new[] { AllApis, FindByName, FindByProductId })]
-    [OutputType(typeof(PsApiManagementApi), ParameterSetName = new[] { FindById })]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementApi", DefaultParameterSetName = AllApis)]
+    [OutputType(typeof(PsApiManagementApi))]
     public class GetAzureApiManagementApi : AzureApiManagementCmdletBase
     {
         private const string FindByProductId = "GetByProductId";
@@ -42,6 +42,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             Mandatory = true,
             HelpMessage = "API identifier to look for. If specified will try to get the API by the Id. This parameter is optional.")]
         public String ApiId { get; set; }
+
+        [Parameter(
+            ParameterSetName = FindById,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Revision Identifier of the particular Api revision. This parameter is optional.")]
+        public String ApiRevision { get; set; }
 
         [Parameter(
             ParameterSetName = FindByName,
@@ -65,7 +72,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             }
             else if (ParameterSetName.Equals(FindById))
             {
-                WriteObject(Client.ApiById(Context, ApiId));
+                string id = ApiId;
+                if (ApiRevision != null)
+                {
+                    id = ApiId.ApiRevisionIdentifier(ApiRevision);
+                }
+                WriteObject(Client.ApiById(Context.ResourceGroupName, Context.ServiceName, id));
             }
             else if (ParameterSetName.Equals(FindByName))
             {

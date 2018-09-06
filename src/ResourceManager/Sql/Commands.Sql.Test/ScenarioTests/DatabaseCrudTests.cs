@@ -12,10 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -32,10 +29,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             // Only SqlClient is needed.
             var sqlClient = GetSqlClient(context);
-            var sqlLegacyClient = GetLegacySqlClient();
-            var resourcesClient = GetResourcesClient();
-            var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, resourcesClient, authorizationClient);
+            var newResourcesClient = GetResourcesClient(context);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient);
         }
 
         [Fact]
@@ -43,6 +38,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestDatabaseCreate()
         {
             RunPowerShellTest("Test-CreateDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVcoreDatabaseCreate()
+        {
+            RunPowerShellTest("Test-CreateVcoreDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVcoreDatabaseCreateWithLicenseType()
+        {
+            RunPowerShellTest("Test-CreateVcoreDatabaseWithLicenseType");
         }
 
         [Fact]
@@ -64,6 +73,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestDatabaseUpdate()
         {
             RunPowerShellTest("Test-UpdateDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVcoreDatabaseUpdate()
+        {
+            RunPowerShellTest("Test-UpdateVcoreDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVcoreDatabaseUpdateWithLicenseType()
+        {
+            RunPowerShellTest("Test-UpdateVcoreDatabaseLicenseType");
         }
 
         [Fact]

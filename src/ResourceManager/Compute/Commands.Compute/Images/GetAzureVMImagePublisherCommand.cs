@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineImagePublisher)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMImagePublisher")]
     [OutputType(typeof(PSVirtualMachineImagePublisher))]
     public class GetAzureVMImagePublisherCommand : VirtualMachineImageBaseCmdlet
     {

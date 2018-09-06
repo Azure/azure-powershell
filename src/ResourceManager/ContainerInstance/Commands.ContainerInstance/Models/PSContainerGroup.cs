@@ -90,6 +90,16 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
         public string IpAddress { get; set; }
 
         /// <summary>
+        /// Gets or sets the DNS name label.
+        /// </summary>
+        public string DnsNameLabel { get; set; }
+
+        /// <summary>
+        /// Gets the FQDN.
+        /// </summary>
+        public string Fqdn { get; set; }
+
+        /// <summary>
         /// Gets or sets the ports.
         /// </summary>
         public IList<PSPort> Ports { get; set; }
@@ -131,6 +141,8 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
                 ImageRegistryCredentials = containerGroup?.ImageRegistryCredentials,
                 RestartPolicy = containerGroup?.RestartPolicy,
                 IpAddress = containerGroup?.IpAddress?.Ip,
+                DnsNameLabel = containerGroup?.IpAddress?.DnsNameLabel,
+                Fqdn = containerGroup?.IpAddress?.Fqdn,
                 Ports = containerGroup?.IpAddress?.Ports?.Select(p => ContainerInstanceAutoMapperProfile.Mapper.Map<PSPort>(p)).ToList(),
                 OsType = containerGroup?.OsType,
                 Volumes = containerGroup?.Volumes,

@@ -9,6 +9,7 @@ schema: 2.0.0
 # Test-AzureRmDnsAvailability
 
 ## SYNOPSIS
+Checks whether a domain name in the cloudapp.azure.com zone is available for use.
 
 ## SYNTAX
 
@@ -18,12 +19,13 @@ Test-AzureRmDnsAvailability -DomainNameLabel <String> -Location <String>
 ```
 
 ## DESCRIPTION
+Checks whether a domain name in the cloudapp.azure.com zone is available for use.
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Check if contoso.cloudapp.azure.com is available for use.
 ```
-
+Test-AzureRmDnsAvailability -DomainNameLabel contoso -Location westus
 ```
 
 ## PARAMETERS
@@ -32,7 +34,7 @@ Test-AzureRmDnsAvailability -DomainNameLabel <String> -Location <String>
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -45,7 +47,7 @@ Accept wildcard characters: False
 
 ### -DomainNameLabel
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: DomainQualifiedName
 
@@ -58,9 +60,9 @@ Accept wildcard characters: False
 
 ### -Location
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -74,6 +76,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+
 ## OUTPUTS
 
 ### System.Boolean
@@ -81,4 +85,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

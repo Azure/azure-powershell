@@ -14,6 +14,8 @@
 
 using System;
 using System.Text.RegularExpressions;
+using Tools.Common.Helpers;
+using Tools.Common.Issues;
 
 namespace StaticAnalysis.DependencyAnalyzer
 {

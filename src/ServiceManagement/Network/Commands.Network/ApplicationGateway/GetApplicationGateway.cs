@@ -20,7 +20,7 @@ using PowerShellAppGwModel = Microsoft.WindowsAzure.Commands.ServiceManagement.N
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway
 {
-    [Cmdlet(VerbsCommon.Get, "AzureApplicationGateway"), OutputType(typeof(PowerShellAppGwModel.ApplicationGateway), typeof(IEnumerable<PowerShellAppGwModel.ApplicationGateway>))]
+    [Cmdlet(VerbsCommon.Get, "AzureApplicationGateway"), OutputType(typeof(PowerShellAppGwModel.ApplicationGateway))]
     public class GetApplicationGatewayCommand : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,

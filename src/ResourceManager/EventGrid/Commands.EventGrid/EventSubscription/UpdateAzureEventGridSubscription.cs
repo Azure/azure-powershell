@@ -21,12 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    [Cmdlet(
-        VerbsData.Update,
-        EventGridEventSubscriptionVerb,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ResourceGroupNameParameterSet),
-     OutputType(typeof(PSEventSubscription))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSubscription",SupportsShouldProcess = true,DefaultParameterSetName = ResourceGroupNameParameterSet),OutputType(typeof(PSEventSubscription))]
     public class UpdateAzureEventGridSubscription : AzureEventGridCmdletBase
     {
         [Parameter(
@@ -146,7 +141,6 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             HelpMessage = EventGridConstants.SubjectBeginsWithHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
         public string SubjectBeginsWith { get; set; }
 
         [Parameter(
@@ -165,7 +159,6 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             HelpMessage = EventGridConstants.SubjectEndsWithHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
         public string SubjectEndsWith { get; set; }
 
         [Parameter(

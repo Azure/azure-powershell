@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Xml;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -43,21 +44,21 @@ namespace Microsoft.Azure.Commands.Insights.Test
             DateTime dtUtc = DateTime.UtcNow;
 
             // The following should remove the " : " and the "\r\n" in the future
-            Assert.Equal(" : 1\r\n", OutputClasses.CustomPrinter.Print(x));
-            Assert.Equal(" : 1.2\r\n", OutputClasses.CustomPrinter.Print(y));
-            Assert.Equal(" : hello\r\n", OutputClasses.CustomPrinter.Print(s));
-            Assert.Equal(" : True\r\n", OutputClasses.CustomPrinter.Print(b));
-            Assert.Equal(" : " + XmlConvert.ToString(ts) + "\r\n", OutputClasses.CustomPrinter.Print(ts));
+            Assert.Equal($" : 1{Environment.NewLine}", OutputClasses.CustomPrinter.Print(x));
+            Assert.Equal($" : 1.2{Environment.NewLine}", OutputClasses.CustomPrinter.Print(y));
+            Assert.Equal($" : hello{Environment.NewLine}", OutputClasses.CustomPrinter.Print(s));
+            Assert.Equal($" : True{Environment.NewLine}", OutputClasses.CustomPrinter.Print(b));
+            Assert.Equal(" : " + XmlConvert.ToString(ts) + Environment.NewLine, OutputClasses.CustomPrinter.Print(ts));
 
             // Must be dt.ToUniversalTime().ToString("O")  in the future
-            Assert.Equal(" : " + dt + "\r\n", OutputClasses.CustomPrinter.Print(dt));
+            Assert.Equal(" : " + dt + Environment.NewLine, OutputClasses.CustomPrinter.Print(dt));
 
             // Must be dtUtc.ToString("O") in the future
-            Assert.Equal(" : " + dtUtc + "\r\n", OutputClasses.CustomPrinter.Print(dtUtc));
+            Assert.Equal(" : " + dtUtc + Environment.NewLine, OutputClasses.CustomPrinter.Print(dtUtc));
 
             // Both must be string.Empty in the future
-            Assert.Equal(" :\r\n", OutputClasses.CustomPrinter.Print(null));
-            Assert.Equal(" : \r\n", OutputClasses.CustomPrinter.Print(""));
+            Assert.Equal($" :{Environment.NewLine}", OutputClasses.CustomPrinter.Print(null));
+            Assert.Equal($" : {Environment.NewLine}", OutputClasses.CustomPrinter.Print(""));
         }
 
         [Fact]
@@ -81,10 +82,18 @@ namespace Microsoft.Azure.Commands.Insights.Test
             string result = OutputClasses.CustomPrinter.Print(eventData);
             Debug.WriteLine("EventData: ");
             Debug.WriteLine(result);
-            
+
+            var year = "2017";
+#if NETSTANDARD
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                year = "17";
+            }
+#endif
+
             // Must be [\r\nAuthorization        : [\r\n                       Action : PUT\r\n                       Role   : Sender\r\n                       Scope  : None\r\n                       ]\r\nClaims               : {\r\n                       [aud, https://management.core.windows.net/]\r\n                       [iss, https://sts.windows.net/123456/]\r\n                       [iat, h123445]\r\n                       }\r\nCaller               : caller\r\nDescription          : fake event\r\nId                   : ac7d2ab5-698a-4c33-9c19-0a93d3d7f527\r\nEventDataId          : \r\nCorrelationId        : correlation\r\nEventName            : [\r\n                       Value          : Start request\r\n                       LocalizedValue : Start request\r\n                       ]\r\nCategory             : [\r\n                       Value          : Microsoft Resources\r\n                       LocalizedValue : Microsoft Resources\r\n                       ]\r\nHttpRequest          : [\r\n                       ClientRequestId : 1234\r\n                       ClientIpAddress : 123.123.123.123\r\n                       Method          : PUT\r\n                       Uri             : http://path/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy\r\n                       ]\r\nLevel                : Informational\r\nResourceGroupName    : Default-Web-EastUS\r\nResourceProviderName : [\r\n                       Value          : Microsoft Resources\r\n                       LocalizedValue : Microsoft Resources\r\n                       ]\r\nResourceId           : /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/garyyang1\r\nResourceType         : \r\nOperationId          : c0f2e85f-efb0-47d0-bf90-f983ec8be91d\r\nOperationName        : [\r\n                       Value          : Microsoft.Resources/subscriptions/resourcegroups/deployments/write\r\n                       LocalizedValue : Microsoft.Resources/subscriptions/resourcegroups/deployments/write\r\n                       ]\r\nProperties           : {}\r\nStatus               : [\r\n                       Value          : Succeeded\r\n                       LocalizedValue : Succeeded\r\n                       ]\r\nSubStatus            : [\r\n                       Value          : Created\r\n                       LocalizedValue : Created\r\n                       ]\r\nEventTimestamp       : 2017-06-07T22:54:00.0000000Z\r\nSubmissionTimestamp  : 2017-06-07T22:54:00.0000000Z\r\nSubscriptionId       : \r\nTenantId             : \r\n] in the future
             Assert.Equal(
-                expected: "Authorization       \r\nAction : PUT\r\nRole   : Sender\r\nScope  : None\r\n\r\nClaims              \r\n     : [aud, https://management.core.windows.net/]\r\n     : [iss, https://sts.windows.net/123456/]\r\n     : [iat, h123445]\r\nCaller               : caller\r\nDescription          : fake event\r\nId                   : ac7d2ab5-698a-4c33-9c19-0a93d3d7f527\r\nEventDataId          :\r\nCorrelationId        : correlation\r\nEventName           \r\nValue          : Start request\r\nLocalizedValue : Start request\r\n\r\nCategory            \r\nValue          : Microsoft Resources\r\nLocalizedValue : Microsoft Resources\r\n\r\nHttpRequest         \r\nClientRequestId : 1234\r\nClientIpAddress : 123.123.123.123\r\nMethod          : PUT\r\nUri             : http://path/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy\r\n\r\nLevel                : Informational\r\nResourceGroupName    : Default-Web-EastUS\r\nResourceProviderName\r\nValue          : Microsoft Resources\r\nLocalizedValue : Microsoft Resources\r\n\r\nResourceId           : /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/garyyang1\r\nResourceType         :\r\nOperationId          : c0f2e85f-efb0-47d0-bf90-f983ec8be91d\r\nOperationName       \r\nValue          : Microsoft.Resources/subscriptions/resourcegroups/deployments/write\r\nLocalizedValue : Microsoft.Resources/subscriptions/resourcegroups/deployments/write\r\n\r\nProperties          \r\nStatus              \r\nValue          : Succeeded\r\nLocalizedValue : Succeeded\r\n\r\nSubStatus           \r\nValue          : Created\r\nLocalizedValue : Created\r\n\r\nEventTimestamp       : 6/7/2017 10:54:00 PM\r\nSubmissionTimestamp  : 6/7/2017 10:54:00 PM\r\nSubscriptionId       :\r\nTenantId             :\r\n\r\n", 
+                expected: $"Authorization       {Environment.NewLine}Action : PUT{Environment.NewLine}Role   : Sender{Environment.NewLine}Scope  : None{Environment.NewLine}{Environment.NewLine}Claims              {Environment.NewLine}     : [aud, https://management.core.windows.net/]{Environment.NewLine}     : [iss, https://sts.windows.net/123456/]{Environment.NewLine}     : [iat, h123445]{Environment.NewLine}Caller               : caller{Environment.NewLine}Description          : fake event{Environment.NewLine}Id                   : ac7d2ab5-698a-4c33-9c19-0a93d3d7f527{Environment.NewLine}EventDataId          :{Environment.NewLine}CorrelationId        : correlation{Environment.NewLine}EventName           {Environment.NewLine}Value          : Start request{Environment.NewLine}LocalizedValue : Start request{Environment.NewLine}{Environment.NewLine}Category            {Environment.NewLine}Value          : Microsoft Resources{Environment.NewLine}LocalizedValue : Microsoft Resources{Environment.NewLine}{Environment.NewLine}HttpRequest         {Environment.NewLine}ClientRequestId : 1234{Environment.NewLine}ClientIpAddress : 123.123.123.123{Environment.NewLine}Method          : PUT{Environment.NewLine}Uri             : http://path/subscriptions/ffce8037-a374-48bf-901d-dac4e3ea8c09/resourcegroups/foo/deployments/testdeploy{Environment.NewLine}{Environment.NewLine}Level                : Informational{Environment.NewLine}ResourceGroupName    : Default-Web-EastUS{Environment.NewLine}ResourceProviderName{Environment.NewLine}Value          : Microsoft Resources{Environment.NewLine}LocalizedValue : Microsoft Resources{Environment.NewLine}{Environment.NewLine}ResourceId           : /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/garyyang1{Environment.NewLine}ResourceType         :{Environment.NewLine}OperationId          : c0f2e85f-efb0-47d0-bf90-f983ec8be91d{Environment.NewLine}OperationName       {Environment.NewLine}Value          : Microsoft.Resources/subscriptions/resourcegroups/deployments/write{Environment.NewLine}LocalizedValue : Microsoft.Resources/subscriptions/resourcegroups/deployments/write{Environment.NewLine}{Environment.NewLine}Properties          {Environment.NewLine}Status              {Environment.NewLine}Value          : Succeeded{Environment.NewLine}LocalizedValue : Succeeded{Environment.NewLine}{Environment.NewLine}SubStatus           {Environment.NewLine}Value          : Created{Environment.NewLine}LocalizedValue : Created{Environment.NewLine}{Environment.NewLine}EventTimestamp       : 6/7/{year} 10:54:00 PM{Environment.NewLine}SubmissionTimestamp  : 6/7/{year} 10:54:00 PM{Environment.NewLine}SubscriptionId       :{Environment.NewLine}TenantId             :{Environment.NewLine}{Environment.NewLine}", 
                 actual: result);
 
             dictionarySS.Add("k1", "v1");
@@ -95,7 +104,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
             // Must be "{\r\n[k1, v1]\r\n[k2, v2]\r\n}" in the future
             Assert.Equal(
-                expected: "     : [k1, v1]\r\n     : [k2, v2]\r\n",
+                expected: $"     : [k1, v1]{Environment.NewLine}     : [k2, v2]{Environment.NewLine}",
                 actual: result);
 
             dictionarySO.Add("k1", eventData);
@@ -105,7 +114,7 @@ namespace Microsoft.Azure.Commands.Insights.Test
             Debug.WriteLine(result);
             // Must be "{\r\n[k1, Microsoft.Azure.Management.Monitor.Models.EventData]\r\n[k2, Microsoft.Azure.Management.Monitor.Models.EventData]\r\n}" in the future
             Assert.Equal(
-                expected: "     : [k1, Microsoft.Azure.Management.Monitor.Models.EventData]\r\n     : [k2, Microsoft.Azure.Management.Monitor.Models.EventData]\r\n",
+                expected: $"     : [k1, Microsoft.Azure.Management.Monitor.Models.EventData]{Environment.NewLine}     : [k2, Microsoft.Azure.Management.Monitor.Models.EventData]{Environment.NewLine}",
                 actual: result);
         }
     }

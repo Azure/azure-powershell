@@ -12,33 +12,56 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
     public class HubTests : DataFactoriesScenarioTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public HubTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestHub()
         {
-            RunPowerShellTest("Test-Hub");
+            RunPowerShellTest(_logger, "Test-Hub");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+#endif
         public void TestHubWithDataFactoryParameter()
         {
-            RunPowerShellTest("Test-HubWithDataFactoryParameter");
+            RunPowerShellTest(_logger, "Test-HubWithDataFactoryParameter");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+#endif
         public void TestHubPiping()
         {
-            RunPowerShellTest("Test-HubPiping");
+            RunPowerShellTest(_logger, "Test-HubPiping");
         }
     }
 }

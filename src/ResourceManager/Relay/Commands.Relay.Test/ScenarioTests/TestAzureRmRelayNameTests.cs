@@ -21,16 +21,20 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
     using Xunit.Abstractions;
     public class TestAzureRmRelayNameTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public TestAzureRmRelayNameTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void CheckNameAvailability()
         {
-            RelayController.NewInstance.RunPsTest("TestAzureRmRelayNameTests");
+            RelayController.NewInstance.RunPsTest(_logger, "TestAzureRmRelayNameTests");
         }
     }
 }

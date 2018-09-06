@@ -168,6 +168,9 @@
   <data name="Success" xml:space="preserve">
     <value>Success!</value>
   </data>
+  <data name="Success_NewPrivateZone" xml:space="preserve">
+    <value>Zone '{0}' was created in resource group '{1}'. The SOA record for this zone has been created automatically. Use Get-AzureRmDnsRecordSet to retrieve it.</value>
+  </data>
   <data name="Success_NewRecordSet" xml:space="preserve">
     <value>Record set '{0}' was created in zone '{1}'.The record set is empty. Use Add-AzureRmDnsRecordConfig to add {2} records to it and Set-AzureRmDnsRecordSet to save your changes.</value>
   </data>

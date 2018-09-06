@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
                     enumerationAction(item);
                 }
 
-                return TaskEx.FromResult(true);
+                return Task.FromResult(true);
             }
             else
             {
@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
         {
             if (this.availableShareNames.Contains(share.Name))
             {
-                return TaskEx.FromResult(true);
+                return Task.FromResult(true);
             }
             else
             {
@@ -108,42 +108,42 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
                 }
             }
 
-            return TaskEx.FromResult(true);
+            return Task.FromResult(true);
         }
 
         public Task CreateDirectoryAsync(CloudFileDirectory directory, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
-            return TaskEx.FromResult(true);
+            return Task.FromResult(true);
         }
 
         public Task<bool> DirectoryExistsAsync(CloudFileDirectory directory, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
-            return TaskEx.FromResult(this.availableDirectoryNames.Contains(directory.Name));
+            return Task.FromResult(this.availableDirectoryNames.Contains(directory.Name));
         }
 
         public Task<bool> FileExistsAsync(CloudFile file, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
-            return TaskEx.FromResult(true);
+            return Task.FromResult(true);
         }
 
         public Task CreateShareAsync(CloudFileShare share, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
-            return TaskEx.FromResult(share);
+            return Task.FromResult(share);
         }
 
         public Task DeleteDirectoryAsync(CloudFileDirectory directory, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
-            return TaskEx.FromResult(true);
+            return Task.FromResult(true);
         }
 
         public Task DeleteShareAsync(CloudFileShare share, DeleteShareSnapshotsOption deleteShareSnapshotsOption, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
-            return TaskEx.FromResult(true);
+            return Task.FromResult(true);
         }
 
         public Task DeleteFileAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
-            return TaskEx.FromResult(true);
+            return Task.FromResult(true);
         }
 
         public AzureStorageContext StorageContext
@@ -174,7 +174,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
         {
             if (this.availableDirectoryNames.Contains(file.Name))
             {
-                return TaskEx.FromResult(true);
+                return Task.FromResult(true);
             }
             else
             {
@@ -186,7 +186,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
         {
             if (this.availableDirectoryNames.Contains(directory.Name))
             {
-                return TaskEx.FromResult(true);
+                return Task.FromResult(true);
             }
             else
             {

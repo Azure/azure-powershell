@@ -24,6 +24,19 @@ function Start-TestSleep($milliseconds)
     }
 }
 
+function Compute-TestTimeout($seconds)
+{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        # Timeout of 3 hours, to deal with long delays in recording framework
+        return 60 * 24 * 3
+    }
+    else
+    {
+        return $seconds
+    }
+}
+
 <#
 .SYNOPSIS
 Gets a Batch account name for testing.

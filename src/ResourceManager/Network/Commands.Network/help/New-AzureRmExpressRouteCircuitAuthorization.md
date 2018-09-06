@@ -25,7 +25,6 @@ Microsoft cloud by using a connectivity provider instead of the public Internet.
 ExpressRoute circuit can create as many as 10 authorizations for each circuit; these authorizations
 generate an authorization key that can be used by a virtual network owner to connect a network to
 the circuit. There can only one authorization per virtual network.
-
 After you create an ExpressRoute circuit you can use
 **Add-AzureRmExpressRouteCircuitAuthorization** to add an authorization to that circuit.
 Alternatively, you can use **New-AzureRmExpressRouteCircuitAuthorization** to create an
@@ -43,7 +42,6 @@ that object in a variable named $Authorization. Saving the object to a variable 
 although **New-AzureRmExpressRouteCircuitAuthorization** can create a circuit authorization it
 cannot add that authorization to a circuit route. Instead, the variable $Authorization is used
 New-AzureRmExpressRouteCircuit when creating a brand-new ExpressRoute circuit.
-
 For more information, see the documentation for the New-AzureRmExpressRouteCircuit cmdlet.
 
 ## PARAMETERS
@@ -52,7 +50,7 @@ For more information, see the documentation for the New-AzureRmExpressRouteCircu
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,9 +65,9 @@ Accept wildcard characters: False
 Specifies a unique name for the new ExpressRoute circuit authorization.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -84,12 +82,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept pipelined input.
 
 ## OUTPUTS
 
-### PSExpressRouteCircuitAuthorization
-This cmdlet creates instances of the **Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization** object.
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization
 
 ## NOTES
 

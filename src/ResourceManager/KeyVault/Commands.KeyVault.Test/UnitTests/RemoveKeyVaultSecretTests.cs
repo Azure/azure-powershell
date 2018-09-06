@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         public void CanRemoveSecretWithPassThruTest()
         {
             SecureString secureSecretValue = SecretValue.ConvertToSecureString();
-            DeletedSecret expected = new DeletedSecret() { Name = SecretName, VaultName = VaultName, SecretValue = secureSecretValue };
+            PSDeletedKeyVaultSecret expected = new PSDeletedKeyVaultSecret() { Name = SecretName, VaultName = VaultName, SecretValue = secureSecretValue };
             keyVaultClientMock.Setup(kv => kv.DeleteSecret(VaultName, SecretName)).Returns(expected).Verifiable();
 
             // Mock the should process to return true
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         public void CanRemoveSecretWithNoPassThruTest()
         {
             SecureString secureSecretValue = SecretValue.ConvertToSecureString();
-            DeletedSecret expected = new DeletedSecret() { Name = SecretName, VaultName = VaultName, SecretValue = secureSecretValue };
+            PSDeletedKeyVaultSecret expected = new PSDeletedKeyVaultSecret() { Name = SecretName, VaultName = VaultName, SecretValue = secureSecretValue };
             keyVaultClientMock.Setup(kv => kv.DeleteSecret(VaultName, SecretName)).Returns(expected).Verifiable();
 
             // Mock the should process to return true
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             // Should process but without force
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(SecretName, It.IsAny<string>())).Returns(true);
 
-            Secret expected = null;
+            PSKeyVaultSecret expected = null;
 
             cmdlet.Name = SecretName;
             cmdlet.PassThru = true;
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             catch { }
 
             keyVaultClientMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<Secret>()), Times.Never());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSKeyVaultSecret>()), Times.Never());
         }
     }
 }

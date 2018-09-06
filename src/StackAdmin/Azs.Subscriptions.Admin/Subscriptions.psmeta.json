@@ -1,0 +1,2731 @@
+{
+  "info": {
+    "x-ps-code-generation-settings": {
+      "codeGenerator": "CSharp",
+      "nameSpacePrefix": "Microsoft.PowerShell.",
+      "noAssembly": false,
+      "powerShellCorePath": "",
+      "includeCoreFxAssembly": false,
+      "testBuild": false,
+      "confirmBootstrap": false,
+      "path": ".",
+      "symbolPath": ".",
+      "serviceType": "",
+      "customAuthCommand": "",
+      "hostOverrideCommand": "",
+      "noAuthChallenge": ""
+    },
+    "x-ps-module-info": {
+      "name": "SubscriptionsAdminClient",
+      "moduleVersion": "0.0.1",
+      "guid": "c4f458af-51f1-480f-9a26-1d99acb7b4ca",
+      "description": "Subscriptions Admin Client",
+      "author": "",
+      "companyName": "",
+      "CopyRight": "",
+      "licenseUri": "",
+      "projectUri": "",
+      "helpInfoUri": "",
+      "iconUri": "",
+      "releaseNotes": "",
+      "defaultCommandPrefix": "",
+      "tags": [
+        
+      ]
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{planAcquisitionId}": {
+      "put": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "New-AzsSubscriptionPlan",
+            "description": "Creates an acquired plan.",
+            "defaultParameterSet": "AcquiredPlans_Create",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsSubscriptionPlan",
+            "description": "Get an acquired plan from name.",
+            "defaultParameterSet": "AcquiredPlans_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "delete": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Remove-AzsSubscriptionPlan",
+            "description": "Deletes an acquired plan.",
+            "defaultParameterSet": "AcquiredPlans_Delete",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}/Metrics": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsPlanMetric",
+            "description": "Get the list of plans.",
+            "defaultParameterSet": "Plans_ListMetrics",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsDirectoryTenant",
+            "description": "Lists all the directory tenants under the current subscription and given resource group name.",
+            "defaultParameterSet": "DirectoryTenants_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants/{tenant}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsDirectoryTenant",
+            "description": "Get a directory tenant by name.",
+            "defaultParameterSet": "DirectoryTenants_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "delete": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Remove-AzsDirectoryTenant",
+            "description": "Delete a directory tenant under a resource group.",
+            "defaultParameterSet": "DirectoryTenants_Delete",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "put": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "New-AzsDirectoryTenant",
+            "description": "Create or updates a directory tenant.",
+            "defaultParameterSet": "DirectoryTenants_CreateOrUpdate",
+            "generateCommand": true
+          },
+          {
+            "name": "Set-AzsDirectoryTenant",
+            "description": "Create or updates a directory tenant.",
+            "defaultParameterSet": "DirectoryTenants_CreateOrUpdate",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{subscription}": {
+      "delete": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Remove-AzsUserSubscription",
+            "description": "Get the list of subscriptions.",
+            "defaultParameterSet": "Subscriptions_Delete",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "put": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Set-AzsUserSubscription",
+            "description": "Get the list of subscriptions.",
+            "defaultParameterSet": "Subscriptions_CreateOrUpdate",
+            "generateCommand": true
+          },
+          {
+            "name": "New-AzsUserSubscription",
+            "description": "Get the list of subscriptions.",
+            "defaultParameterSet": "Subscriptions_CreateOrUpdate",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsUserSubscription",
+            "description": "Get a specified subscription.",
+            "defaultParameterSet": "Subscriptions_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsPlan",
+            "description": "Get the list of plans.",
+            "defaultParameterSet": "Plans_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsPlan",
+            "description": "Get the list of plans.",
+            "defaultParameterSet": "Plans_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "put": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "New-AzsPlan",
+            "description": "Get the list of plans.",
+            "defaultParameterSet": "Plans_CreateOrUpdate",
+            "generateCommand": true
+          },
+          {
+            "name": "Set-AzsPlan",
+            "description": "Get the list of plans.",
+            "defaultParameterSet": "Plans_CreateOrUpdate",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "delete": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Remove-AzsPlan",
+            "description": "Get the list of plans.",
+            "defaultParameterSet": "Plans_Delete",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsOfferDelegation",
+            "description": "Get the list of delegated offers.",
+            "defaultParameterSet": "OfferDelegations_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{offerDelegationName}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsOfferDelegation",
+            "description": "Get the list of offers.",
+            "defaultParameterSet": "OfferDelegations_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "put": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Set-AzsOfferDelegation",
+            "description": "Get the list of offers.",
+            "defaultParameterSet": "OfferDelegations_CreateOrUpdate",
+            "generateCommand": true
+          },
+          {
+            "name": "New-AzsOfferDelegation",
+            "description": "Get the list of offers.",
+            "defaultParameterSet": "OfferDelegations_CreateOrUpdate",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "delete": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Remove-AzsOfferDelegation",
+            "description": "Get the list of offers.",
+            "defaultParameterSet": "OfferDelegations_Delete",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/updateEncryption": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Update-AzsSubscriptionEncryption",
+            "description": "Get the list of subscriptions.",
+            "defaultParameterSet": "UpdateEncryption",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/unlink": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Remove-AzsPlanToOffer",
+            "description": "Unlink a plan from an offer.",
+            "defaultParameterSet": "Offers_Unlink",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProvider}/offers": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsDelegatedProviderManagedOffer",
+            "description": "Get the list of delegated provider offers.",
+            "defaultParameterSet": "DelegatedProviderOffers_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProvider}/offers/{offer}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsDelegatedProviderManagedOffer",
+            "description": "Get the specified delegated provider offer.",
+            "defaultParameterSet": "DelegatedProviderOffers_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}/quotas": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsSubscriptionsQuota",
+            "description": "Get the list of quotas at a location.",
+            "defaultParameterSet": "Quotas_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}/quotas/{quota}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsSubscriptionsQuota",
+            "description": "Gets a quota by name.",
+            "defaultParameterSet": "Quotas_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsDelegatedProvider",
+            "description": "Get the list of delegatedProviders.",
+            "defaultParameterSet": "DelegatedProviders_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProvider}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsDelegatedProvider",
+            "description": "Get the list of delegated providers.",
+            "defaultParameterSet": "DelegatedProviders_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/offers": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsManagedOffer",
+            "description": "Get the list of offers.",
+            "defaultParameterSet": "Offers_ListAll",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsLocation",
+            "description": "Get a list of all AzureStack location.",
+            "defaultParameterSet": "Locations_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsLocation",
+            "description": "Get the specified location.",
+            "defaultParameterSet": "Locations_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsAcquiredPlan",
+            "description": "Get a collection of all acquired plans that subscription has access to.",
+            "defaultParameterSet": "AcquiredPlans_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}": {
+      "put": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Set-AzsOffer",
+            "description": "Create or update the offer.",
+            "defaultParameterSet": "Offers_CreateOrUpdate",
+            "generateCommand": true
+          },
+          {
+            "name": "New-AzsOffer",
+            "description": "Create or update the offer.",
+            "defaultParameterSet": "Offers_CreateOrUpdate",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsManagedOffer",
+            "description": "Get the specified offer.",
+            "defaultParameterSet": "Offers_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      },
+      "delete": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Remove-AzsOffer",
+            "description": "Delete the specified offer.",
+            "defaultParameterSet": "Offers_Delete",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}/MetricDefinitions": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsPlanMetricDefinition",
+            "description": "Get the list of plans.",
+            "defaultParameterSet": "Plans_ListMetricDefinitions",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/restoreData": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Restore-Datum",
+            "description": "Restores the data",
+            "defaultParameterSet": "RestoreData",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsManagedOffer",
+            "description": "Get the list of offers under a resource group.",
+            "defaultParameterSet": "Offers_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsUserSubscription",
+            "description": "Get the list of subscriptions.",
+            "defaultParameterSet": "Subscriptions_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/plans": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsPlan",
+            "description": "List all plans across all subscriptions.",
+            "defaultParameterSet": "Plans_ListAll",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/providers/Microsoft.Subscriptions.Admin/operations": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsOperation",
+            "description": "Get the list of subscriptions.",
+            "defaultParameterSet": "ListOperations",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/checkNameAvailability": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Test-AzsNameAvailability",
+            "description": "Get the list of subscriptions.",
+            "defaultParameterSet": "Subscriptions_CheckNameAvailability",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/Metrics": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsOfferMetric",
+            "description": "Get the offer metrics.",
+            "defaultParameterSet": "Offers_ListMetrics",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/link": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Add-AzsPlanToOffer",
+            "description": "Links a plan to an offer.",
+            "defaultParameterSet": "Offers_Link",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/MetricDefinitions": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsOfferMetricDefinition",
+            "description": "Get the metric definitions.",
+            "defaultParameterSet": "Offers_ListMetricDefinitions",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    }
+  },
+  "definitions": {
+    "MetricAvailability": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsMetricAvailabilityObject",
+          "description": "Metric Definition",
+          "defaultParameterSet": "MetricAvailability",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "retention": {
+          "x-ps-parameter-info": {
+            "name": "Retention",
+            "description": "the retention. Metrics may be queried for this interval."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "timeGrain": {
+          "x-ps-parameter-info": {
+            "name": "TimeGrain",
+            "description": "The time grain. Metrics will be available for this time grain."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "MetricDefinitionList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsMetricDefinitionListObject",
+          "description": "Holds an array of usage aggregates and the continuation token.",
+          "defaultParameterSet": "MetricDefinitionList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Array of usage aggregates."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "Continuation token"
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "OfferDelegationProperties": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsOfferDelegationPropertiesObject",
+          "description": "Properties for an offer delegation.",
+          "defaultParameterSet": "OfferDelegationProperties",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "subscriptionId": {
+          "x-ps-parameter-info": {
+            "name": "SubscriptionId",
+            "description": "Identifier of the subscription receiving the delegated offer."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        }
+      }
+    },
+    "DelegatedProviderOfferList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsDelegatedProviderOfferListObject",
+          "description": "Holds an array of usage aggregates and the continuation token.",
+          "defaultParameterSet": "DelegatedProviderOfferList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Array of usage aggregates."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "Continuation token"
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Operation": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsOperationObject",
+          "description": "Supported REST operation.",
+          "defaultParameterSet": "Operation",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Name of the operation being performed on an object."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "display": {
+          "x-ps-parameter-info": {
+            "name": "Display",
+            "description": "Display information for the operation."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "origin": {
+          "x-ps-parameter-info": {
+            "name": "Origin",
+            "description": "Origin for the operation."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Offer": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsOfferObject",
+          "description": "Represents an offering of services against which a subscription can be created.",
+          "defaultParameterSet": "Offer",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "PlanAcquisitionList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsPlanAcquisitionListObject",
+          "description": "List of acquired plans.",
+          "defaultParameterSet": "PlanAcquisitionList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of acquired plans."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "OfferProperties": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsOfferPropertiesObject",
+          "description": "Represents an offering of services against which a subscription can be created.",
+          "defaultParameterSet": "OfferProperties",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "subscriptionCount": {
+          "x-ps-parameter-info": {
+            "name": "SubscriptionCount",
+            "description": "Current subscription count."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "description": {
+          "x-ps-parameter-info": {
+            "name": "Description",
+            "description": "Description of offer."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "basePlanIds": {
+          "x-ps-parameter-info": {
+            "name": "BasePlanIds",
+            "description": "Identifiers of the base plans that become available to the tenant immediately when a tenant subscribes to the offer."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "addonPlanDefinition": {
+          "x-ps-parameter-info": {
+            "name": "AddonPlanDefinition",
+            "description": "References to add-on plans that a tenant can optionally acquire as a part of the offer."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "maxSubscriptionsPerAccount": {
+          "x-ps-parameter-info": {
+            "name": "MaxSubscriptionsPerAccount",
+            "description": "Maximum subscriptions per account."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "state": {
+          "x-ps-parameter-info": {
+            "name": "State",
+            "description": "Offer accessibility state."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Name of the Offer."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "externalReferenceId": {
+          "x-ps-parameter-info": {
+            "name": "ExternalReferenceId",
+            "description": "External reference identifier."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "displayName": {
+          "x-ps-parameter-info": {
+            "name": "DisplayName",
+            "description": "Display name of offer."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "DelegatedProviderOffer": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsDelegatedProviderOfferObject",
+          "description": "The delegated provider offer.",
+          "defaultParameterSet": "DelegatedProviderOffer",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "OfferDelegationList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsOfferDelegationListObject",
+          "description": ".",
+          "defaultParameterSet": "OfferDelegationList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Array of usage aggregates."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "Continuation token"
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "MetricList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsMetricListObject",
+          "description": "Holds an array of usage aggregates and the continuation token.",
+          "defaultParameterSet": "MetricList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Array of usage aggregates."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "Continuation token"
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "PlanAcquisition": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsPlanAcquisitionObject",
+          "description": "Represents the acquisition of an add-on plan for a subscription.",
+          "defaultParameterSet": "PlanAcquisition",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "PlanLink": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsPlanLinkObject",
+          "description": "Plan link type.",
+          "defaultParameterSet": "PlanLink",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "MetricUnit": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsMetricUnitObject",
+          "description": "The resource metric unit.",
+          "defaultParameterSet": "MetricUnit",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "Location": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsLocationObject",
+          "description": "Contains information about a geographical location where resource providers can be deployed.",
+          "defaultParameterSet": "Location",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "longitude": {
+          "x-ps-parameter-info": {
+            "name": "Longitude",
+            "description": "Longitude of the location."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "displayName": {
+          "x-ps-parameter-info": {
+            "name": "DisplayName",
+            "description": "Display name of the location."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "id": {
+          "x-ps-parameter-info": {
+            "name": "Id",
+            "description": "Location identifier."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Location name."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "latitude": {
+          "x-ps-parameter-info": {
+            "name": "Latitude",
+            "description": "Latitude of the location."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "SubscriptionState": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsSubscriptionStateObject",
+          "description": "Subscription notification state.",
+          "defaultParameterSet": "SubscriptionState",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "DirectoryTenantList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsDirectoryTenantListObject",
+          "description": "List of directory tenants.",
+          "defaultParameterSet": "DirectoryTenantList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of directory tenants."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "Continuation token"
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "MetricAvailabilityList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsMetricAvailabilityListObject",
+          "description": "List of metric definitions.",
+          "defaultParameterSet": "MetricAvailabilityList",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "CheckNameAvailabilityResponse": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsCheckNameAvailabilityResponseObject",
+          "description": "The check name availability response definition",
+          "defaultParameterSet": "CheckNameAvailabilityResponse",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "message": {
+          "x-ps-parameter-info": {
+            "name": "Message",
+            "description": "The message explaining the reason."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nameAvailable": {
+          "x-ps-parameter-info": {
+            "name": "NameAvailable",
+            "description": "A value indicating whether the name is available."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "reason": {
+          "x-ps-parameter-info": {
+            "name": "Reason",
+            "description": "The reason for the unavailability of the name."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        }
+      }
+    },
+    "PlanProperties": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsPlanPropertiesObject",
+          "description": "Properties of a plan.",
+          "defaultParameterSet": "PlanProperties",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "subscriptionCount": {
+          "x-ps-parameter-info": {
+            "name": "SubscriptionCount",
+            "description": "Subscription count."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "description": {
+          "x-ps-parameter-info": {
+            "name": "Description",
+            "description": "Description of the plan."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "skuIds": {
+          "x-ps-parameter-info": {
+            "name": "SkuIds",
+            "description": "SKU identifiers."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Name of the plan."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "quotaIds": {
+          "x-ps-parameter-info": {
+            "name": "QuotaIds",
+            "description": "Quota identifiers under the plan."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "externalReferenceId": {
+          "x-ps-parameter-info": {
+            "name": "ExternalReferenceId",
+            "description": "External reference identifier."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "displayName": {
+          "x-ps-parameter-info": {
+            "name": "DisplayName",
+            "description": "Display name."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "QuotaList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsSubscriptionsQuotaListObject",
+          "description": "List of quotas.",
+          "defaultParameterSet": "QuotaList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of quotas."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "SubscriptionList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsSubscriptionListObject",
+          "description": "List of subscriptions.",
+          "defaultParameterSet": "SubscriptionList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Subscription definition."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "CheckNameAvailabilityDefinition": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsCheckNameAvailabilityDefinitionObject",
+          "description": "The check name availability action definition.",
+          "defaultParameterSet": "CheckNameAvailabilityDefinition",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "The resource name to verify."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "resourceType": {
+          "x-ps-parameter-info": {
+            "name": "ResourceType",
+            "description": "The resource type to verify."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "DirectoryTenant": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsDirectoryTenantObject",
+          "description": "Directory tenant.",
+          "defaultParameterSet": "DirectoryTenant",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "AddonPlanDefinition": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsAddonPlanDefinitionObject",
+          "description": "Contains the name of the desired plan to be linked or unlinked from an offer.",
+          "defaultParameterSet": "AddonPlanDefinition",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "planId": {
+          "x-ps-parameter-info": {
+            "name": "PlanId",
+            "description": "Plan identifier."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "maxAcquisitionCount": {
+          "x-ps-parameter-info": {
+            "name": "MaxAcquisitionCount",
+            "description": "Maximum number of instances that can be acquired by a single subscription. If not specified, the assumed value is 1."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "MetricValue": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsMetricValueObject",
+          "description": "Metric value",
+          "defaultParameterSet": "MetricValue",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "count": {
+          "x-ps-parameter-info": {
+            "name": "Count",
+            "description": "Number of measurements for metric sample period."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "total": {
+          "x-ps-parameter-info": {
+            "name": "Total",
+            "description": "Total value for metric sample period."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "properties": {
+          "x-ps-parameter-info": {
+            "name": "ExtendedProperties",
+            "description": "Extended properties."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "average": {
+          "x-ps-parameter-info": {
+            "name": "Average",
+            "description": "Average value for metric sample period."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "maximum": {
+          "x-ps-parameter-info": {
+            "name": "Maximum",
+            "description": "Maximum value for metric sample period."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "minimum": {
+          "x-ps-parameter-info": {
+            "name": "Minimum",
+            "description": "Minimum value for metric sample period."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "timeStamp": {
+          "x-ps-parameter-info": {
+            "name": "TimeStamp",
+            "description": "Timestamp of when the metric value was collected."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Quota": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsSubscriptionsQuotaObject",
+          "description": "Quotas for DelegatedProviders.",
+          "defaultParameterSet": "Quota",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "OfferDelegation": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsOfferDelegationObject",
+          "description": "Offer delegation.",
+          "defaultParameterSet": "OfferDelegation",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "Metric": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsMetricObject",
+          "description": "The resource metric set that represents the metrics for a particular resource.",
+          "defaultParameterSet": "Metric",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "timeGrain": {
+          "x-ps-parameter-info": {
+            "name": "TimeGrain",
+            "description": "Timespan of the metric."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "endTime": {
+          "x-ps-parameter-info": {
+            "name": "EndTime",
+            "description": "End time of the metric."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "metricValues": {
+          "x-ps-parameter-info": {
+            "name": "MetricValues",
+            "description": "Collected metric values in the timespan."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "metricUnit": {
+          "x-ps-parameter-info": {
+            "name": "MetricUnit",
+            "description": "Unit of metrics."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "startTime": {
+          "x-ps-parameter-info": {
+            "name": "StartTime",
+            "description": "Start time of the metric."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Resource": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsResourceObject",
+          "description": "Base Resource Object",
+          "defaultParameterSet": "Resource",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "tags": {
+          "x-ps-parameter-info": {
+            "name": "Tags",
+            "description": "List of key-value pairs."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Name of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "id": {
+          "x-ps-parameter-info": {
+            "name": "Id",
+            "description": "URI of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "type": {
+          "x-ps-parameter-info": {
+            "name": "Type",
+            "description": "Type of resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "location": {
+          "x-ps-parameter-info": {
+            "name": "Location",
+            "description": "Location of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        }
+      }
+    },
+    "PlanAcquisitionProperties": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsPlanAcquisitionPropertiesObject",
+          "description": "Represents the acquisition of an add-on plan for a subscription.",
+          "defaultParameterSet": "PlanAcquisitionProperties",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "provisioningState": {
+          "x-ps-parameter-info": {
+            "name": "ProvisioningState",
+            "description": "State of the provisioning."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "acquisitionTime": {
+          "x-ps-parameter-info": {
+            "name": "AcquisitionTime",
+            "description": "Acquisition time."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "id": {
+          "x-ps-parameter-info": {
+            "name": "Id",
+            "description": "Identifier in the tenant subscription context."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "planId": {
+          "x-ps-parameter-info": {
+            "name": "PlanId",
+            "description": "Plan identifier in the tenant subscription context."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "acquisitionId": {
+          "x-ps-parameter-info": {
+            "name": "AcquisitionId",
+            "description": "Acquisition identifier."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "externalReferenceId": {
+          "x-ps-parameter-info": {
+            "name": "ExternalReferenceId",
+            "description": "External reference identifier."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "MetricValueList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsMetricValueListObject",
+          "description": "List of metric values.",
+          "defaultParameterSet": "MetricValueList",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "ProvisioningState": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsProvisioningStateObject",
+          "description": "Provisioning state for subscriptions service resources, for example, resource provider registration.",
+          "defaultParameterSet": "ProvisioningState",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "MetricPrimaryAggregationType": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsMetricPrimaryAggregationTypeObject",
+          "description": "The primary aggregation type for resource metric.",
+          "defaultParameterSet": "MetricPrimaryAggregationType",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "OperationList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsOperationListObject",
+          "description": "List of supported operations.",
+          "defaultParameterSet": "OperationList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of supported operations."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        }
+      }
+    },
+    "QuotaProperties": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsSubscriptionsQuotaPropertiesObject",
+          "description": "Quotas for DelegatedProviders.",
+          "defaultParameterSet": "QuotaProperties",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "allowCustomPortalBranding": {
+          "x-ps-parameter-info": {
+            "name": "AllowCustomPortalBranding",
+            "description": "Value indicating whether custom portal branding is allowed."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Plan": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsPlanObject",
+          "description": "A plan represents a package of quotas and capabilities that are offered tenants. A tenant can acquire this plan through an offer to upgrade his access to underlying cloud services.",
+          "defaultParameterSet": "Plan",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "OfferList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsOfferListObject",
+          "description": "List of offers.",
+          "defaultParameterSet": "OfferList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of offers."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "AccessibilityState": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsAccessibilityStateObject",
+          "description": "Represents the state of the offer",
+          "defaultParameterSet": "AccessibilityState",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "MetricDefinition": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsMetricDefinitionObject",
+          "description": "Metric Definition",
+          "defaultParameterSet": "MetricDefinition",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "primaryAggregationType": {
+          "x-ps-parameter-info": {
+            "name": "PrimaryAggregationType",
+            "description": "Type of the primary aggregation."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Metric definition name."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "metricAvailabilities": {
+          "x-ps-parameter-info": {
+            "name": "MetricAvailabilities",
+            "description": "Metric availabilities."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "unit": {
+          "x-ps-parameter-info": {
+            "name": "Unit",
+            "description": "Unit of metrics."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "DirectoryTenantProperties": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsDirectoryTenantPropertiesObject",
+          "description": "Directory tenant.",
+          "defaultParameterSet": "DirectoryTenantProperties",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "tenantId": {
+          "x-ps-parameter-info": {
+            "name": "TenantId",
+            "description": "Tenant unique identifier."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        }
+      }
+    },
+    "NameUnavailabilityReason": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsNameUnavailabilityReasonObject",
+          "description": "The reason that the name is not available.",
+          "defaultParameterSet": "NameUnavailabilityReason",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "ResourceManagerType": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsResourceManagerTypeObject",
+          "description": "Resource manager type.",
+          "defaultParameterSet": "ResourceManagerType",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "Subscription": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsSubscriptionObject",
+          "description": "List of supported operations.",
+          "defaultParameterSet": "Subscription",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "offerId": {
+          "x-ps-parameter-info": {
+            "name": "OfferId",
+            "description": "Identifier of the offer under the scope of a delegated provider."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "id": {
+          "x-ps-parameter-info": {
+            "name": "Id",
+            "description": "Fully qualified identifier."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "routingResourceManagerType": {
+          "x-ps-parameter-info": {
+            "name": "RoutingResourceManagerType",
+            "description": "Routing resource manager type."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "delegatedProviderSubscriptionId": {
+          "x-ps-parameter-info": {
+            "name": "DelegatedProviderSubscriptionId",
+            "description": "Parent DelegatedProvider subscription identifier."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "subscriptionId": {
+          "x-ps-parameter-info": {
+            "name": "SubscriptionId",
+            "description": "Subscription identifier."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "owner": {
+          "x-ps-parameter-info": {
+            "name": "Owner",
+            "description": "Subscription owner."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "tenantId": {
+          "x-ps-parameter-info": {
+            "name": "TenantId",
+            "description": "Directory tenant identifier."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "state": {
+          "x-ps-parameter-info": {
+            "name": "State",
+            "description": "Subscription state."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "externalReferenceId": {
+          "x-ps-parameter-info": {
+            "name": "ExternalReferenceId",
+            "description": "External reference identifier."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "displayName": {
+          "x-ps-parameter-info": {
+            "name": "DisplayName",
+            "description": "Subscription name."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "LocationList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsLocationListObject",
+          "description": "List of locations.",
+          "defaultParameterSet": "LocationList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of locations."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "PlanProperties2": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsPlanProperties2Object",
+          "description": "Properties of a plan.",
+          "defaultParameterSet": "PlanProperties2",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "subscriptionCount": {
+          "x-ps-parameter-info": {
+            "name": "SubscriptionCount",
+            "description": "Subscription count."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "description": {
+          "x-ps-parameter-info": {
+            "name": "Description",
+            "description": "Description of the plan."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "skuIds": {
+          "x-ps-parameter-info": {
+            "name": "SkuIds",
+            "description": "SKU identifiers."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Name of the plan."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "quotaIds": {
+          "x-ps-parameter-info": {
+            "name": "QuotaIds",
+            "description": "Quota identifiers under the plan."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "externalReferenceId": {
+          "x-ps-parameter-info": {
+            "name": "ExternalReferenceId",
+            "description": "External reference identifier."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "displayName": {
+          "x-ps-parameter-info": {
+            "name": "DisplayName",
+            "description": "Display name."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "DelegatedProviderOfferProperties": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsDelegatedProviderOfferPropertiesObject",
+          "description": "Properties for an delegated provider.",
+          "defaultParameterSet": "DelegatedProviderOfferProperties",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "usageStartTime": {
+          "x-ps-parameter-info": {
+            "name": "UsageStartTime",
+            "description": "UTC start time for the usage bucket to which this usage aggregate belongs."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "instanceData": {
+          "x-ps-parameter-info": {
+            "name": "InstanceData",
+            "description": "Key-value pairs of instance details represented as a string."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "meterId": {
+          "x-ps-parameter-info": {
+            "name": "MeterId",
+            "description": "Unique ID for the resource that was consumed (aka ResourceID)."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "usageEndTime": {
+          "x-ps-parameter-info": {
+            "name": "UsageEndTime",
+            "description": "UTC end time for the usage bucket to which this usage aggregate belongs."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "quantity": {
+          "x-ps-parameter-info": {
+            "name": "Quantity",
+            "description": "The amount of the resource consumption that occurred in this time frame."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "subscriptionId": {
+          "x-ps-parameter-info": {
+            "name": "SubscriptionId",
+            "description": "Subscription ID of tenant using plan."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "PlanList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsPlanListObject",
+          "description": "Holds an array of usage aggregates and the continuation token.",
+          "defaultParameterSet": "PlanList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "Array of usage aggregates."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "Continuation token"
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "NewPlanParameter": {
+      "x-ps-parameter-info": {
+        "name": "NewPlan",
+        "description": "New plan.",
+        "flatten": true
+      }
+    },
+    "NewOfferDelegationParameter": {
+      "x-ps-parameter-info": {
+        "name": "NewOfferDelegation",
+        "description": "New offer delegation parameter.",
+        "flatten": true
+      }
+    },
+    "OfferParameter": {
+      "x-ps-parameter-info": {
+        "name": "Offer",
+        "description": "Name of an offer.",
+        "flatten": false
+      }
+    },
+    "PlanLinkParameter": {
+      "x-ps-parameter-info": {
+        "name": "PlanLink",
+        "description": "New plan link.",
+        "flatten": true
+      }
+    },
+    "OfferDelegationParameter": {
+      "x-ps-parameter-info": {
+        "name": "OfferDelegationName",
+        "description": "Name of a offer delegation.",
+        "flatten": false
+      }
+    },
+    "SubscriptionParameter": {
+      "x-ps-parameter-info": {
+        "name": "Subscription",
+        "description": "Subscription parameter.",
+        "flatten": false
+      }
+    },
+    "NewOfferParameter": {
+      "x-ps-parameter-info": {
+        "name": "NewOffer",
+        "description": "New offer.",
+        "flatten": true
+      }
+    },
+    "ResourceGroupParameter": {
+      "x-ps-parameter-info": {
+        "name": "ResourceGroup",
+        "description": "The resource group the resource is located under.",
+        "flatten": false
+      }
+    },
+    "NewQuotaParameter": {
+      "x-ps-parameter-info": {
+        "name": "SubscriptionId",
+        "description": "New quota.",
+        "flatten": true
+      }
+    },
+    "SubscriptionIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "SubscriptionId",
+        "description": "Subscription credentials which uniquely identify Microsoft Azure subscription.The subscription ID forms part of the URI for every service call.",
+        "flatten": false
+      }
+    },
+    "NewLocationParameter": {
+      "x-ps-parameter-info": {
+        "name": "NewLocation",
+        "description": "The new location",
+        "flatten": true
+      }
+    },
+    "PlanAcquisitionIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "PlanAcquisitionId",
+        "description": "The plan acquisition Identifier",
+        "flatten": false
+      }
+    },
+    "CheckNameAvailabilityParameter": {
+      "x-ps-parameter-info": {
+        "name": "Offer",
+        "description": "Check name availability parameter",
+        "flatten": true
+      }
+    },
+    "FilterParameter": {
+      "x-ps-parameter-info": {
+        "name": "Filter",
+        "description": "OData filter parameter.",
+        "flatten": false
+      }
+    },
+    "DelegatedProviderParameter": {
+      "x-ps-parameter-info": {
+        "name": "DelegatedProvider",
+        "description": "DelegatedProvider identifier.",
+        "flatten": false
+      }
+    },
+    "DirectoryTenantParameter": {
+      "x-ps-parameter-info": {
+        "name": "Tenant",
+        "description": "Directory tenant name.",
+        "flatten": false
+      }
+    },
+    "DelegatedProviderOfferParameter": {
+      "x-ps-parameter-info": {
+        "name": "DelegatedProviderOffer",
+        "description": "The delegated offer name",
+        "flatten": false
+      }
+    },
+    "NewDelegatedProviderParameter": {
+      "x-ps-parameter-info": {
+        "name": "NewDelegatedProvider",
+        "description": "New DelegatedProvider.",
+        "flatten": false
+      }
+    },
+    "NewSubscriptionParameter": {
+      "x-ps-parameter-info": {
+        "name": "NewSubscription",
+        "description": "Subscription parameter.",
+        "flatten": true
+      }
+    },
+    "NewDirectoryTenantParameter": {
+      "x-ps-parameter-info": {
+        "name": "NewTenant",
+        "description": "New directory tenant properties.",
+        "flatten": true
+      }
+    },
+    "ApiVersionParameter": {
+      "x-ps-parameter-info": {
+        "name": "Apiversion",
+        "description": "Client Api Version.",
+        "flatten": false
+      }
+    },
+    "TargetSubscriptionIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "TargetSubscriptionId",
+        "description": "The target subscription ID.",
+        "flatten": false
+      }
+    },
+    "PlanParameter": {
+      "x-ps-parameter-info": {
+        "name": "Plan",
+        "description": "Name of the plan.",
+        "flatten": false
+      }
+    },
+    "LocationParameter": {
+      "x-ps-parameter-info": {
+        "name": "Location",
+        "description": "The AzureStack location.",
+        "flatten": false
+      }
+    },
+    "NewAcquiredPlanParameter": {
+      "x-ps-parameter-info": {
+        "name": "NewAcquiredPlan",
+        "description": "The new acquired plan.",
+        "flatten": true
+      }
+    },
+    "QuotaParameter": {
+      "x-ps-parameter-info": {
+        "name": "Quota",
+        "description": "Name of the quota.",
+        "flatten": false
+      }
+    }
+  }
+}

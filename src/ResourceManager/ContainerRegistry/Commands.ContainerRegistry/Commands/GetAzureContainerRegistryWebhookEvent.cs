@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.ContainerRegistry.Models;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Get, ContainerRegistryWebhookEventNoun, DefaultParameterSetName = ListWebhookEventsByNameResourceGroupParameterSet)]
-    [OutputType(typeof(IList<PSContainerRegistryWebhookEvent>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryWebhookEvent", DefaultParameterSetName = ListWebhookEventsByNameResourceGroupParameterSet)]
+    [OutputType(typeof(PSContainerRegistryWebhookEvent))]
     public class GetAzureContainerRegistryWebhookEvent : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ListWebhookEventsByNameResourceGroupParameterSet, HelpMessage = "Webhook Name.")]
@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public string WebhookName { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ListWebhookEventsByNameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -46,14 +47,14 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public override void ExecuteCmdlet()
         {
-            if(string.Equals(ParameterSetName, ListWebhookEventsByWebhookObjectParameterSet))
+            if (string.Equals(ParameterSetName, ListWebhookEventsByWebhookObjectParameterSet))
             {
                 ResourceId = Webhook.Id;
             }
             if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
             {
                 string resourceGroup, registryName, childResourceName;
-                if(!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName)
+                if (!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName)
                     || string.IsNullOrEmpty(childResourceName))
                 {
                     WriteInvalidResourceIdError(InvalidWebhookResourceIdErrorMessage);

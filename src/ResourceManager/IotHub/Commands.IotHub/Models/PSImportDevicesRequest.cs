@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// <summary>
         /// The input BLOB container URI.
         /// </summary>
-        [JsonProperty(PropertyName = "InputBlobContainerUri")]
+        [JsonProperty(PropertyName = "inputBlobContainerUri")]
         public string InputBlobContainerUri { get; set; }
 
         /// <summary>
         /// The output BLOB container URI.
         /// </summary>
-        [JsonProperty(PropertyName = "OutputBlobContainerUri")]
+        [JsonProperty(PropertyName = "outputBlobContainerUri")]
         public string OutputBlobContainerUri { get; set; }
     }
 }

@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 eventSubscription.Labels = new List<string>(labels);
             }
 
-            return this.Client.EventSubscriptions.Create(scope, eventSubscriptionName, eventSubscription);
+            return this.Client.EventSubscriptions.CreateOrUpdate(scope, eventSubscriptionName, eventSubscription);
         }
 
         public EventSubscription UpdateEventSubscription(

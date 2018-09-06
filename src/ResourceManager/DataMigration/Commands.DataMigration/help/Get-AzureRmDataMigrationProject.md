@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
 Module Name: AzureRM.DataMigration
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/Get-AzureRmDataMigrationProject
 schema: 2.0.0
 ---
 
@@ -15,19 +15,19 @@ Retrieves the properties of an Azure Database Migration project.
 ### ComponentNameParameterSet (Default)
 ```
 Get-AzureRmDataMigrationProject -ResourceGroupName <String> -ServiceName <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
 Get-AzureRmDataMigrationProject [-InputObject] <PSDataMigrationService> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Get-AzureRmDataMigrationProject [-ResourceId] <String> [-Name <String>]
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,14 +49,13 @@ PS C:\> Get-AzureRmDataMigrationProject -InputObject $myService
 
 The above example retrieves the  Azure Database Migration project based on PSProject object input parameter passed in. 
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,7 +70,7 @@ Accept wildcard characters: False
 PSDataMigrationService Object.
 
 ```yaml
-Type: PSDataMigrationService
+Type: Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService
 Parameter Sets: ComponentObjectParameterSet
 Aliases: DataMigrationService
 
@@ -86,7 +85,7 @@ Accept wildcard characters: False
 The name of the project.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ProjectName
 
@@ -101,9 +100,9 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -116,9 +115,9 @@ Accept wildcard characters: False
 DataMigrationService Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -128,12 +127,12 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Data Migration Service Name.
+Database Migration Service Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -142,18 +141,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService
-System.String
+Parameters: InputObject (ByValue)
 
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
-
+### Microsoft.Azure.Commands.DataMigration.Models.PSProject
 
 ## NOTES
 
 ## RELATED LINKS
-

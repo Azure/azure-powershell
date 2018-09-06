@@ -24,18 +24,18 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.ServiceFabric;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-using Microsoft.Azure.Management.KeyVault;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
-namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 {
     public class TestController
     {
@@ -84,10 +84,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             helper = new ServceFabricSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,
@@ -169,6 +171,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             ResourcesResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
             ServiceFabricClient = GetServiceFabricManagementClient(context);
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                ServiceFabricClient.LongRunningOperationRetryTimeout = 20;
+            }
+
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GraphRbacManagementClient = GetGraphRbacManagementClient(context);
@@ -222,7 +229,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         private GraphRbacManagementClient GetGraphRbacManagementClient(MockContext context)
         {
-            return context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetGraphServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private ComputeManagementClient GetComputeManagementClient(MockContext context)

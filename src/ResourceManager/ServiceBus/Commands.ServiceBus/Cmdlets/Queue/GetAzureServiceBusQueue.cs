@@ -25,48 +25,57 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
     /// <para> If Queue name provided, a single Queue detials will be returned</para>
     /// <para> If Queue name not provided, list of Queue will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusQueueVerb), OutputType(typeof(QueueAttributes))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusQueue"), OutputType(typeof(PSQueueAttributes))]
     public class GetAzureRmServiceBusQueue : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           Position = 1,
-           HelpMessage = "Queue Name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Queue Name")]
         [Alias(AliasQueueName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Queues to return.")]
+        [ValidateRange(1, 10000)]
+        public int? MaxCount { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(Name))
+            try
             {
-                var queueAttributes = Client.GetQueue(ResourceGroupName, Namespace, Name);
-                WriteObject(queueAttributes);
-            }
-            else
-            {
-                IEnumerable<QueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace);
-                WriteObject(queueAttributes,true);
-            }
+                if (!string.IsNullOrEmpty(Name))
+                {
+                    var queueAttributes = Client.GetQueue(ResourceGroupName, Namespace, Name);
+                    WriteObject(queueAttributes);
+                }
+                else
+                {
+                    if (MaxCount.HasValue)
+                    {
+                        IEnumerable<PSQueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace, MaxCount);
+                        WriteObject(queueAttributes, true);
+                    }
+                    else
+                    {
+                        IEnumerable<PSQueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace);
+                        WriteObject(queueAttributes, true);
+                    }
 
-            
+                }
+            }
+            catch (Management.ServiceBus.Models.ErrorResponseException ex)
+            {
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+            }
         }
     }
 }

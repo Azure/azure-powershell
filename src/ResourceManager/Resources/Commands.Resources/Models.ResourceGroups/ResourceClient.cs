@@ -54,10 +54,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
 
-#if !NETSTANDARD
-        public GalleryTemplatesClient GalleryTemplatesClient { get; set; }
-#endif
-
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
@@ -71,9 +67,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public ResourcesClient(IAzureContext context)
             : this(
                 AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-#if !NETSTANDARD
-                new GalleryTemplatesClient(context),
-#endif
                 AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
@@ -83,18 +76,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// Creates new ResourcesClient instance
         /// </summary>
         /// <param name="resourceManagementClient">The IResourceManagementClient instance</param>
-        /// <param name="galleryTemplatesClient">The IGalleryClient instance</param>
         /// <param name="authorizationManagementClient">The management client instance</param>
         public ResourcesClient(
             IResourceManagementClient resourceManagementClient,
-#if !NETSTANDARD
-            GalleryTemplatesClient galleryTemplatesClient,
-#endif
             IAuthorizationManagementClient authorizationManagementClient)
         {
-#if !NETSTANDARD
-            GalleryTemplatesClient = galleryTemplatesClient;
-#endif
             AuthorizationManagementClient = authorizationManagementClient;
             this.ResourceManagementClient = resourceManagementClient;
         }
@@ -331,9 +317,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         }
 
         public ProviderOperationsMetadata GetProviderOperationsMetadata(string providerNamespace) =>
-            this.AuthorizationManagementClient.ProviderOperationsMetadata.Get(providerNamespace, "2015-07-01");
+            this.AuthorizationManagementClient.ProviderOperationsMetadata.Get(providerNamespace);
 
         public IPage<ProviderOperationsMetadata> ListProviderOperationsMetadata() =>
-            this.AuthorizationManagementClient.ProviderOperationsMetadata.List("2015-07-01");
+            this.AuthorizationManagementClient.ProviderOperationsMetadata.List();
     }
 }

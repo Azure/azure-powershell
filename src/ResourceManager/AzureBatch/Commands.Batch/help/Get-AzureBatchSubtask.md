@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 7D0D8B46-4BF0-47D5-9261-3306AEB9E7DD
@@ -40,7 +40,6 @@ PS C:\> Get-AzureBatchSubtask -JobId "Job-01" -TaskID "myTask" -BatchContext $Co
 These commands return all the subtasks for the task with the ID myTask.
 To do this, the first command in the example creates an object reference to the account keys for the batch account contosobatchaccount.
 This object reference is stored in a variable named $context.
-
 The second command then uses that object reference and the **Get-AzureBatchSubtask** cmdlet to return all the subtasks for myTask, a task that runs as part of job Job-01.
 
 ## PARAMETERS
@@ -50,9 +49,9 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -65,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,9 +79,9 @@ Accept wildcard characters: False
 Specifies the ID of the job that contains the task whose subtasks this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ODataFilter
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -97,9 +96,9 @@ If you specify a value of zero (0) or less, the cmdlet does not use an upper lim
 The default value is 1000.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -113,9 +112,9 @@ Specifies an object reference to the task that contain the subtasks that this cm
 This object reference is created by using the Get-AzureBatchTask cmdlet and storing the returned object in a variable.
 
 ```yaml
-Type: PSCloudTask
+Type: Microsoft.Azure.Commands.Batch.Models.PSCloudTask
 Parameter Sets: ParentObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -128,9 +127,9 @@ Accept wildcard characters: False
 Specifies the ID of the task whose subtasks this cmdlet returns.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ODataFilter
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -144,16 +143,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.String
 
-### PSCloudTask
-Parameter 'Task' accepts value of type 'PSCloudTask' from the pipeline
+### Microsoft.Azure.Commands.Batch.Models.PSCloudTask
+Parameters: Task (ByValue)
+
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 
-###  
-This cmdlet returns instances of the **PSSubtaskInformation** object.
+### Microsoft.Azure.Commands.Batch.Models.PSSubtaskInformation
 
 ## NOTES
 

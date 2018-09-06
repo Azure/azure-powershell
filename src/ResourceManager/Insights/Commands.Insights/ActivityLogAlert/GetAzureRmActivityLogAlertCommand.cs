@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// <summary>
     /// Get an Activity Log Alert
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmActivityLogAlert"), OutputType(typeof(List<PSActivityLogAlertResource>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActivityLogAlert"), OutputType(typeof(PSActivityLogAlertResource))]
     public class GetAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
         internal const string GetActivityLogAlertDefaultParamGroup = "GetByNameAndResourceGroup";

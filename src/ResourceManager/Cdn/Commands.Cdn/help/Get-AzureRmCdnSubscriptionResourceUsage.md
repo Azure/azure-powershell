@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/get-azurermcdnsubscriptionresourceusage
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmCdnSubscriptionResourceUsage
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the resource usage for a susbscription.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -59,4 +59,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

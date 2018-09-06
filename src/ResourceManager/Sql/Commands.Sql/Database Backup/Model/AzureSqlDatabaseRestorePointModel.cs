@@ -55,5 +55,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Earliest restore time. Populated when restorePointType = DISCRETE. Null otherwise.
         /// </summary>
         public DateTime? EarliestRestoreDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the label
+        /// </summary>
+        public string RestorePointLabel { get; set; }
     }
 }

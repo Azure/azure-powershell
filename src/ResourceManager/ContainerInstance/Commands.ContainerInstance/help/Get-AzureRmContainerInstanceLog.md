@@ -87,9 +87,9 @@ Get the log from `mycontainer` in piped in container group `mycontainer`. By def
 The container group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetContainerInstanceLogByNamesParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -117,9 +117,9 @@ Accept wildcard characters: False
 The input container group object.
 
 ```yaml
-Type: PSContainerGroup
+Type: Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup
 Parameter Sets: GetContainerInstanceLogByPSContainerGroupParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -133,9 +133,9 @@ The container instance name in the container group.
 Default: the same as the container group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -148,9 +148,9 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetContainerInstanceLogByNamesParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -163,9 +163,9 @@ Accept wildcard characters: False
 The resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetContainerInstanceLogByResourceIdParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -179,9 +179,9 @@ The number of lines to tail the log.
 If not specify, the cmdlet will return up to 4MB tailed log
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -196,6 +196,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup
+Parameters: InputContainerGroup (ByValue)
+
+### System.String
 
 ## OUTPUTS
 
@@ -204,4 +207,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

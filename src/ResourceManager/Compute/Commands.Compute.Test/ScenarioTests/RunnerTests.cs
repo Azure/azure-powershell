@@ -1,5 +1,7 @@
-﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
+﻿using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,12 +11,16 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class RunnerTests
     {
+        XunitTracingInterceptor _logger;
+
         public RunnerTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExecuteRunnerTests()
         {
             var mode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
             _logger = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEndpointCrudAndAction()
@@ -47,6 +47,13 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
         public void TestEndpointCrudAndActionWithAllProperties()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCrudAndActionWithAllProperties");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointCreateWithDsa()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCreateWithDSA");
         }
 
         [Fact]
@@ -75,6 +82,13 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
         public void TestEndpointResourceUsage()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointResourceUsage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EndpointValidateProbeUrl()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointValidateProbeUrl");
         }
     }
 }

@@ -45,7 +45,6 @@ PS C:\> $AppGw =  Set-AzureRmApplicationGatewayRedirectConfiguration -Applicatio
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.
-
 The second command modifies the redirect configuration for the application gateway to redirect type Permanent and use a target url.
 
 ## PARAMETERS
@@ -54,9 +53,9 @@ The second command modifies the redirect configuration for the application gatew
 The applicationGateway
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -69,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,9 +84,9 @@ Include path in the redirected url.
 Default is true.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -101,9 +100,9 @@ Include query string in the redirected url.
 Default is true.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -116,9 +115,9 @@ Accept wildcard characters: False
 The name of the Redirect Configuration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -131,9 +130,9 @@ Accept wildcard characters: False
 The type of redirect
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Permanent, Found, SeeOther, Temporary
 
 Required: True
@@ -147,9 +146,9 @@ Accept wildcard characters: False
 HTTPListener to redirect the request to
 
 ```yaml
-Type: PSApplicationGatewayHttpListener
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -162,9 +161,9 @@ Accept wildcard characters: False
 ID of  listener to redirect the request to
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -177,9 +176,9 @@ Accept wildcard characters: False
 Target URL fo redirection
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByURL
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -194,6 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 
@@ -202,4 +202,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

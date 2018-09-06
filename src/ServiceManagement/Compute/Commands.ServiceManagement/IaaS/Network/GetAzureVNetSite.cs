@@ -27,7 +27,7 @@ using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsCommon.Get, "AzureVNetSite"), OutputType(typeof(IEnumerable<VirtualNetworkSiteContext>))]
+    [Cmdlet(VerbsCommon.Get, "AzureVNetSite"), OutputType(typeof(VirtualNetworkSiteContext))]
     public class GetAzureVNetSiteCommand : ServiceManagementBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, HelpMessage = "The virtual network name.")]

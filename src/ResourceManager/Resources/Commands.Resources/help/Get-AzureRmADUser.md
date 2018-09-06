@@ -15,27 +15,38 @@ Filters active directory users.
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzureRmADUser [-UserPrincipalName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADUser [-UserPrincipalName <String>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
-Get-AzureRmADUser -SearchString <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADUser -StartsWith <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+```
+
+### DisplayNameParameterSet
+```
+Get-AzureRmADUser -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
-Get-AzureRmADUser -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADUser -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### UPNParameterSet
 ```
-Get-AzureRmADUser -UserPrincipalName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADUser -UserPrincipalName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### MailParameterSet
 ```
-Get-AzureRmADUser -Mail <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADUser -Mail <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,26 +54,37 @@ Filters active directory users.
 
 ## EXAMPLES
 
-### Filters users using UPN
-```
-PS C:\> Get-AzureRmADUser -UPN foo@domain.com
-```
+### Example 1 - List all users
 
-Gets user with foo@domain.com
-
-### Filters users using Search String
-```
-PS C:\> Get-AzureRmADUser -SearchString Joe
-```
-
-Filters all ad users that has Joe in the display name.
-
-### List AD users
 ```
 PS C:\> Get-AzureRmADUser
 ```
 
-Gets all AD users
+Lists all AD users in a tenant.
+
+### Example 2 - List all users using paging
+
+```
+PS C:\> Get-AzureRmADUser -First 100
+```
+
+Lists the first 100 AD users in a tenant.
+
+### Example 3 - Get AD user by user principal name
+
+```
+PS C:\> Get-AzureRmADUser -UserPrincipalName foo@domain.com
+```
+
+Gets the AD user with user principal name "foo@domain.com".
+
+### Example 4 - List by search string
+
+```
+PS C:\> Get-AzureRmADUser -SearchString Joe
+```
+
+Lists all AD users whose display name starts with "Joe".
 
 ## PARAMETERS
 
@@ -70,7 +92,7 @@ Gets all AD users
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -81,9 +103,56 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Mail
+### -DisplayName
+The display name of the user.
+
 ```yaml
-Type: String
+Type: System.String
+Parameter Sets: DisplayNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -First
+The maximum number of objects to return.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeTotalCount
+Reports the number of objects in the data set. Currently, this parameter does nothing.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Mail
+The user mail.
+
+```yaml
+Type: System.String
 Parameter Sets: MailParameterSet
 Aliases:
 
@@ -98,7 +167,7 @@ Accept wildcard characters: False
 Object id of the user.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet
 Aliases:
 
@@ -109,13 +178,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SearchString
-The user display name
+### -Skip
+Ignores the first N objects and then gets the remaining objects.
 
 ```yaml
-Type: String
-Parameter Sets: SearchStringParameterSet
+Type: System.UInt64
+Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StartsWith
+Used to find users that begin with the provided string.
+
+```yaml
+Type: System.String
+Parameter Sets: SearchStringParameterSet
+Aliases: SearchString
 
 Required: True
 Position: Named
@@ -128,7 +212,7 @@ Accept wildcard characters: False
 UPN of the user.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EmptyParameterSet
 Aliases: UPN
 
@@ -140,7 +224,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UPNParameterSet
 Aliases: UPN
 
@@ -156,9 +240,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
+### System.Guid
+
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser]
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
 
 ## NOTES
 

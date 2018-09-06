@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Filters role assignments
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRoleAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSRoleAssignment>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSRoleAssignment))]
     public class GetAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
@@ -171,6 +171,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
         [ValidateNotNullOrEmpty]
+        [ScopeCompleter]
         public string Scope { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ObjectId,
@@ -236,7 +237,7 @@ namespace Microsoft.Azure.Commands.Resources
                 },
                 ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
                 IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent,
-                ExcludeAssignmentsForDeletedPrincipals = true
+                ExcludeAssignmentsForDeletedPrincipals = false
             };
 
             AuthorizationClient.ValidateScope(options.Scope, true);

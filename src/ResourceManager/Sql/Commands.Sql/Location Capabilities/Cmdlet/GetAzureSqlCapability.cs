@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,9 +25,8 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlCapability cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlCapability",
-        ConfirmImpact = ConfirmImpact.None,
-        DefaultParameterSetName = _filtered, SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlCapability",ConfirmImpact = ConfirmImpact.None,DefaultParameterSetName = _filtered, SupportsShouldProcess = true)]
+    [OutputType(typeof(LocationCapabilityModel))]
     public class GetAzureSqlCapability : AzureRMCmdlet
     {
         /// <summary>
@@ -249,7 +248,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
             var defaultServiceObjective = defaultEdition[0].SupportedServiceObjectives;
 
             // Assign defaults back to model.
-            defaultServiceObjective[0].SupportedMaxSizes = defaultServiceObjective[0].SupportedMaxSizes.Where(v => { return v.Status == "Default"; }).ToList();
+            defaultServiceObjective[0].SupportedMaxSizes = defaultServiceObjective[0].SupportedMaxSizes.Where(v => { return v.Status.Value.ToString() == "Default"; }).ToList();
             defaultEdition[0].SupportedServiceObjectives = defaultServiceObjective;
             defaultVersion[0].SupportedEditions = defaultEdition;
             model.SupportedServerVersions = defaultVersion;

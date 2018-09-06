@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 35FAA57F-B2BD-4E43-8238-12F7A8269E4D
@@ -13,8 +13,21 @@ Deletes a contact that is registered for certificate notifications from a key va
 
 ## SYNTAX
 
+### ByName (Default)
 ```
-Remove-AzureKeyVaultCertificateContact [-VaultName] <String> [-EmailAddress] <String> [-PassThru]
+Remove-AzureKeyVaultCertificateContact [-VaultName] <String> [-EmailAddress] <String[]> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByObject
+```
+Remove-AzureKeyVaultCertificateContact [-InputObject] <PSKeyVault> [-EmailAddress] <String[]> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Remove-AzureKeyVaultCertificateContact [-ResourceId] <String> [-EmailAddress] <String[]> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,11 +37,18 @@ The **Remove-AzureKeyVaultCertificateContact** cmdlet deletes a contact that is 
 ## EXAMPLES
 
 ### Example 1: Remove a certificate contact
-```
-PS C:\>Remove-AzureKeyVaultCertificateContact -VaultName "Contoso01" -EmailAddress "patti.fuller@contoso.com"
+```powershell
+PS C:\> Remove-AzureKeyVaultCertificateContact -VaultName "Contoso01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+
+Email               VaultName
+-----               ---------
+user1@microsoft.com mvault2
+user2@microsoft.com mvault2
+user3@microsoft.com mvault2
+user4@microsoft.com mvault2
 ```
 
-This command removes Patti Fuller as a certificate contact for the Contoso01 key vault.
+This command removes Patti Fuller as a certificate contact for the Contoso01 key vault.  If PassThru is specified, the cmdlet returns the list of remaining certificate contacts.
 
 ## PARAMETERS
 
@@ -36,7 +56,7 @@ This command removes Patti Fuller as a certificate contact for the Contoso01 key
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,14 +71,29 @@ Accept wildcard characters: False
 Specifies the email address of the contact to remove.
 
 ```yaml
-Type: String
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+KeyVault object.
+
+```yaml
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Parameter Sets: ByObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -67,9 +102,9 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -78,13 +113,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VaultName
-Specifies the name of a key vault.
+### -ResourceId
+KeyVault Resource Id.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
 
 Required: True
 Position: 0
@@ -93,11 +128,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -VaultName
+Specifies the name of a key vault.
+
+```yaml
+Type: System.String
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -113,7 +163,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -129,9 +179,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Parameters: InputObject (ByValue)
+
+### System.String
+
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact]
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact
 
 ## NOTES
 

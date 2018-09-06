@@ -16,39 +16,70 @@ Restores a SQL database.
 ### FromPointInTimeBackup
 ```
 Restore-AzureRmSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -ResourceId <String>
- -ServerName <String> -TargetDatabaseName <String> [-Edition <DatabaseEdition>]
- [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob] [-ResourceGroupName] <String>
+ -ServerName <String> -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>]
+ [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### FromPointInTimeBackupWithVcore
+```
+Restore-AzureRmSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -ResourceId <String>
+ -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String>
+ -VCore <Int32> [-LicenseType <String>] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FromDeletedDatabaseBackup
 ```
 Restore-AzureRmSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
- -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> [-Edition <DatabaseEdition>]
- [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob] [-ResourceGroupName] <String>
+ -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> [-Edition <String>]
+ [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### FromDeletedDatabaseBackupWithVcore
+```
+Restore-AzureRmSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
+ -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob]
+ -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FromGeoBackup
 ```
 Restore-AzureRmSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
- -TargetDatabaseName <String> [-Edition <DatabaseEdition>] [-ServiceObjectiveName <String>]
- [-ElasticPoolName <String>] [-AsJob] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>] [-ElasticPoolName <String>]
+ [-AsJob] [-LicenseType <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### FromGeoBackupWithVcore
+```
+Restore-AzureRmSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
+ -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
+ [-LicenseType <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### FromLongTermRetentionBackup
 ```
 Restore-AzureRmSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
- -TargetDatabaseName <String> [-Edition <DatabaseEdition>] [-ServiceObjectiveName <String>]
- [-ElasticPoolName <String>] [-AsJob] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>] [-ElasticPoolName <String>]
+ [-AsJob] [-LicenseType <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### FromLongTermRetentionBackupWithVcore
+```
+Restore-AzureRmSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
+ -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
+ [-LicenseType <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Restore-AzureRmSqlDatabase** cmdlet restores a SQL database from a geo-redundant backup, a backup of a deleted database, a long term retention backup, or a point in time in a live database.
 The restored database is created as a new database.
-
 You can create an elastic SQL database by setting the *ElasticPoolName* parameter to an existing elastic pool.
 
 ## EXAMPLES
@@ -60,7 +91,6 @@ PS C:\> Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime UTCDateTi
 ```
 
 The first command gets the SQL database named Database01, and then stores it in the $Database variable.
-
 The second command restores the database in $Database from the specified point-in-time backup to the database named RestoredDatabase.
 
 ### Example 2: Restore a database from a point in time to an elastic pool
@@ -70,7 +100,6 @@ PS C:\> Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime UTCDateTi
 ```
 
 The first command gets the SQL database named Database01, and then stores it in the $Database variable.
-
 The second command restores the database in $Database from the specified point-in-time backup to the SQL database named RestoredDatabase in the elastic pool named elasticpool01.
 
 ### Example 3: Restore a deleted database
@@ -98,15 +127,15 @@ PS C:\> Restore-AzureRmSqlDatabase -FromGeoBackup -ResourceGroupName "TargetReso
 ```
 
 The first command gets the geo-redundant backup for the database named Database01, and then stores it in the $GeoBackup variable.
-
 The second command restores the backup in $GeoBackup to the SQL database named RestoredDatabase.
 
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
+
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -117,11 +146,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ComputeGeneration
+The compute generation to assign to the restored database
+
+```yaml
+Type: System.String
+Parameter Sets: FromPointInTimeBackupWithVcore, FromDeletedDatabaseBackupWithVcore, FromGeoBackupWithVcore, FromLongTermRetentionBackupWithVcore
+Aliases: Family
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -137,8 +181,8 @@ Specifies the deletion date as a **DateTime** object.
 To get a **DateTime** object, use the Get-Date cmdlet.
 
 ```yaml
-Type: DateTime
-Parameter Sets: FromDeletedDatabaseBackup
+Type: System.DateTime
+Parameter Sets: FromDeletedDatabaseBackup, FromDeletedDatabaseBackupWithVcore
 Aliases:
 
 Required: True
@@ -151,24 +195,37 @@ Accept wildcard characters: False
 ### -Edition
 Specifies the edition of the SQL database.
 The acceptable values for this parameter are:
-
 - None
-- Premium
 - Basic
 - Standard
+- Premium
 - DataWarehouse
 - Free
+- Stretch
+- GeneralPurpose
+- BusinessCritical
 
 ```yaml
-Type: DatabaseEdition
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: FromPointInTimeBackup, FromDeletedDatabaseBackup, FromGeoBackup, FromLongTermRetentionBackup
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: FromPointInTimeBackupWithVcore, FromDeletedDatabaseBackupWithVcore, FromGeoBackupWithVcore, FromLongTermRetentionBackupWithVcore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -176,8 +233,8 @@ Accept wildcard characters: False
 Specifies the name of the elastic pool in which to put the SQL database.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: FromPointInTimeBackup, FromDeletedDatabaseBackup, FromGeoBackup, FromLongTermRetentionBackup
 Aliases:
 
 Required: False
@@ -192,8 +249,8 @@ Indicates that this cmdlet restores a database from a backup of a deleted SQL da
 You can use the Get-AzureRMSqlDeletedDatabaseBackup cmdlet to get the backup of a deleted SQL database.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: FromDeletedDatabaseBackup
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: FromDeletedDatabaseBackup, FromDeletedDatabaseBackupWithVcore
 Aliases:
 
 Required: True
@@ -208,8 +265,8 @@ Indicates that this cmdlet restores a SQL database from a geo-redundant backup.
 You can use the Get-AzureRMSqlDatabaseGeoBackup cmdlet to get a geo-redundant backup.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: FromGeoBackup
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: FromGeoBackup, FromGeoBackupWithVcore
 Aliases:
 
 Required: True
@@ -223,8 +280,8 @@ Accept wildcard characters: False
 Indicates that this cmdlet restores a SQL database from a long term retention backup.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: FromLongTermRetentionBackup
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: FromLongTermRetentionBackup, FromLongTermRetentionBackupWithVcore
 Aliases:
 
 Required: True
@@ -238,11 +295,26 @@ Accept wildcard characters: False
 Indicates that this cmdlet restores a SQL database from a point-in-time backup.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: FromPointInTimeBackup
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: FromPointInTimeBackup, FromPointInTimeBackupWithVcore
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type for the Azure Sql database.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -252,12 +324,11 @@ Accept wildcard characters: False
 ### -PointInTime
 Specifies the point in time, as a **DateTime** object, that you want to restore your SQL database to.
 To get a **DateTime** object, use **Get-Date** cmdlet.
-
 Use this parameter together with the *FromPointInTimeBackup* parameter.
 
 ```yaml
-Type: DateTime
-Parameter Sets: FromPointInTimeBackup
+Type: System.DateTime
+Parameter Sets: FromPointInTimeBackup, FromPointInTimeBackupWithVcore
 Aliases:
 
 Required: True
@@ -268,8 +339,8 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: DateTime
-Parameter Sets: FromDeletedDatabaseBackup
+Type: System.DateTime
+Parameter Sets: FromDeletedDatabaseBackup, FromDeletedDatabaseBackupWithVcore
 Aliases:
 
 Required: False
@@ -283,7 +354,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which this cmdlet assigns the SQL database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -298,7 +369,7 @@ Accept wildcard characters: False
 Specifies the ID of the resource to restore.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Id
 
@@ -313,7 +384,7 @@ Accept wildcard characters: False
 Specifies the name of the SQL database server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -328,8 +399,8 @@ Accept wildcard characters: False
 Specifies the name of the service objective.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: FromPointInTimeBackup, FromDeletedDatabaseBackup, FromGeoBackup, FromLongTermRetentionBackup
 Aliases:
 
 Required: False
@@ -343,9 +414,24 @@ Accept wildcard characters: False
 Specifies the name of the database to restore to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VCore
+The Vcore numbers of the restored Azure Sql Database.
+
+```yaml
+Type: System.Int32
+Parameter Sets: FromPointInTimeBackupWithVcore, FromDeletedDatabaseBackupWithVcore, FromGeoBackupWithVcore, FromLongTermRetentionBackupWithVcore
+Aliases: Capacity
 
 Required: True
 Position: Named
@@ -358,6 +444,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.DateTime
+
+### System.String
 
 ## OUTPUTS
 
