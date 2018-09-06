@@ -1140,6 +1140,14 @@
                 <Label>EnableIPForwarding</Label>
                 <PropertyName>EnableIPForwarding</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>HostedWorkloads</Label>
+                <PropertyName>HostedWorkloads</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LinkedResourceType</Label>
+                <PropertyName>LinkedResourceType</PropertyName>
+              </ListItem>
 			        <ListItem>
                 <Label>EnableAcceleratedNetworking</Label>
                 <PropertyName>EnableAcceleratedNetworking</PropertyName>
