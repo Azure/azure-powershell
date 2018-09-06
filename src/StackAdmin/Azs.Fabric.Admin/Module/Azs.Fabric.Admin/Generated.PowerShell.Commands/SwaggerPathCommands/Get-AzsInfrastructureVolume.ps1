@@ -114,7 +114,8 @@ function Get-AzsInfrastructureVolume {
 
     Process {
 
-
+        $StoragePool = Get-ResourceNameSuffix -ResourceName $StoragePool
+        $StorageSystem = Get-ResourceNameSuffix -ResourceName $StorageSystem
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
@@ -129,8 +130,6 @@ function Get-AzsInfrastructureVolume {
         }
 
         $FabricAdminClient = New-ServiceClient @NewServiceClient_params
-
-
 
         $oDataQuery = ""
         if ($Filter) {
@@ -190,6 +189,7 @@ function Get-AzsInfrastructureVolume {
             return
         }
         if ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $FabricAdminClient.'
             $TaskResult = $FabricAdminClient.Volumes.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $StorageSystem, $StoragePool, $Name)
         } elseif ('List' -eq $PsCmdlet.ParameterSetName) {
