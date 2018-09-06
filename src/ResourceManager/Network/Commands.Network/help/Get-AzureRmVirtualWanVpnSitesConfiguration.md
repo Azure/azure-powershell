@@ -17,24 +17,24 @@ configuration to a storage blob specified by the customer.
 ### ByVirtualWanName
 ```
 Get-AzureRmVirtualWanVpnSitesConfiguration -Name <String> -ResourceGroupName <String> -StorageSasUrl <String>
- [-VpnSiteIds <System.Collections.Generic.List`1[System.String]>]
- [-VpnSites <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnSite]>]
+ [-VpnSiteId <System.Collections.Generic.List`1[System.String]>]
+ [-VpnSite <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnSite]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanObject
 ```
 Get-AzureRmVirtualWanVpnSitesConfiguration -InputObject <PSVirtualWan> -StorageSasUrl <String>
- [-VpnSiteIds <System.Collections.Generic.List`1[System.String]>]
- [-VpnSites <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnSite]>]
+ [-VpnSiteId <System.Collections.Generic.List`1[System.String]>]
+ [-VpnSite <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnSite]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceId
 ```
 Get-AzureRmVirtualWanVpnSitesConfiguration -ResourceId <String> -StorageSasUrl <String>
- [-VpnSiteIds <System.Collections.Generic.List`1[System.String]>]
- [-VpnSites <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnSite]>]
+ [-VpnSiteId <System.Collections.Generic.List`1[System.String]>]
+ [-VpnSite <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnSite]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -44,7 +44,6 @@ configuration to a storage blob specified by the customer.
 
 ## EXAMPLES
 
-### Example 1
 ### Example 1
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
@@ -63,7 +62,7 @@ PS C:\> New-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupNam
 
 PS C:\> $vpnSitesForConfig = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnSite[] 2
 PS C:\> $vpnSitesForConfig[0] = $vpnSite.Id
-PS C:\> Get-AzureRmVirtualWanVpnSitesConfiguration -VirtualWan $virtualWan -StorageSasUrl "SignedSasUrl" -VpnSites $vpnSitesForConfig
+PS C:\> Get-AzureRmVirtualWanVpnSitesConfiguration -VirtualWan $virtualWan -StorageSasUrl "SignedSasUrl" -VpnSite $vpnSitesForConfig
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
@@ -167,7 +166,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VpnSiteIds
+### -VpnSiteId
 The list of VpnSite resource ids to generate configuration for.
 
 ```yaml
@@ -182,7 +181,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VpnSites
+### -VpnSite
 The list of VpnSites to generate configuration for.
 
 ```yaml
