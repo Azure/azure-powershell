@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementSsoToken"), OutputType(typeof(string))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementSsoToken"), OutputType(typeof(string))]
     public class GetAzureApiManagementSsoToken : AzureApiManagementCmdletBase
     {
         [Parameter(

@@ -18,7 +18,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Enable, Constants.AzureBatchTask, SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzurePrefix + "BatchTask", SupportsShouldProcess = true), OutputType(typeof(void))]
     [Alias("Reactivate-AzureBatchTask")]
     public class EnableBatchTaskCommand : BatchObjectModelCmdletBase
     {
