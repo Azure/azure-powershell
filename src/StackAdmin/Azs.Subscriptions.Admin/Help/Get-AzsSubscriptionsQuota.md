@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Subscriptions.Admin-help.xml
 Module Name: Azs.Subscriptions.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Get the list of quotas at a location.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 Get-AzsSubscriptionsQuota
 ```
@@ -40,21 +40,6 @@ Get-AzsSubscriptionsQuota
 Get the list of subscription resource provider quotas at a location.
 
 ## PARAMETERS
-
-### -Name
-Name of the quota.
-
-```yaml
-Type: String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Location
 The AzureStack location.
@@ -71,13 +56,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the quota.
+
+```yaml
+Type: String
+Parameter Sets: Get
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 The resource id.
 
 ```yaml
 Type: String
 Parameter Sets: ResourceId
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -98,3 +98,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

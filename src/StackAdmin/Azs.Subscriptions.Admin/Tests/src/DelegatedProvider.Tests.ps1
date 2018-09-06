@@ -103,6 +103,10 @@ InModuleScope Azs.Subscriptions.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         it "TestListDelegatedProviders" -Skip:$('TestListDelegatedProviders' -in $global:SkippedTests) {
             $global:TestName = 'TestListDelegatedProviders'
 
