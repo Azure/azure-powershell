@@ -136,5 +136,7 @@
 
     { "regex":  "ManagementPartner", "alias":  "Management Partner"  },
     { "regex": "DevSpaces", "group": "DevSpaces", "alias": "DevSpaces" },
-    { "regex": "SignalR", "alias": "SignalR" }
+    { "regex": "SignalR", "alias": "SignalR" },
+    { "regex": "Search", "alias": "Search" },
+    { "regex": "Security", "alias": "Security" }
 ]

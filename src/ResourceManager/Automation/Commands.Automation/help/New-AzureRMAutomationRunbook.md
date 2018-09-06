@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: B6E35D4D-B2C1-4527-94A6-E7E3488F510B
@@ -38,9 +38,9 @@ This command creates a runbook named Runbook02 in the Azure Automation account n
 Specifies the name of the Automation account in which this cmdlet creates a runbook.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -68,9 +68,9 @@ Accept wildcard characters: False
 Specifies a description for the runbook.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -83,9 +83,9 @@ Accept wildcard characters: False
 Specifies whether the runbook logs progress.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -98,9 +98,9 @@ Accept wildcard characters: False
 Specifies whether logging includes detailed information.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Specifies a name for the runbook.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: RunbookName
 
@@ -128,9 +128,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group for which this cmdlet creates a runbook.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -141,11 +141,10 @@ Accept wildcard characters: False
 
 ### -Tags
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: IDictionary
+Type: System.Collections.IDictionary
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -159,20 +158,18 @@ Accept wildcard characters: False
 ### -Type
 Specifies the type of runbook that this cmdlet creates.
 Valid values are:
-
 - PowerShell
 - GraphicalPowerShell
 - PowerShellWorkflow
 - GraphicalPowerShellWorkflow
 - Graph
-
 The value Graph is obsolete.
 It is equivalent to GraphicalPowerShellWorkflow.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph
 
 Required: True
@@ -187,12 +184,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Collections.IDictionary
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Automation.Model.Job
+### Microsoft.Azure.Commands.Automation.Model.Runbook
 
 ## NOTES
 

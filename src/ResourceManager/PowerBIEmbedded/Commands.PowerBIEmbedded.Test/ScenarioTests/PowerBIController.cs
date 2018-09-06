@@ -30,6 +30,7 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using TestBase = Microsoft.Azure.Test.TestBase;
 using TestUtilities = Microsoft.Azure.Test.TestUtilities;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
 {
@@ -63,16 +64,18 @@ namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -112,7 +115,6 @@ namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.PowerBIEmbedded.psd1"),
                     "AzureRM.Resources.ps1");
 

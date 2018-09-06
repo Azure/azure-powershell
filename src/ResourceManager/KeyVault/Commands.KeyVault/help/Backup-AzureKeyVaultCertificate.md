@@ -29,9 +29,7 @@ The **Backup-AzureKeyVaultCertificate** cmdlet backs up a specified certificate 
 If the certificate has multiple versions, all its versions will be included in the backup.
 Because the downloaded content is encrypted, it cannot be used outside of Azure Key Vault.
 You can restore a backed-up certificate to any key vault in the subscription that it was backed up from, as long as the vault is in the same Azure geography.
-
 Typical reasons to use this cmdlet are: 
-
 - You want to retain an offline copy of the certificate in case you accidentally delete the original from the vault.
  
 - You created a certificate using Key Vault and now want to clone the object into a different Azure region, so that you can use it from all instances of your distributed application.
@@ -74,7 +72,7 @@ This command creates a backup of the certificate named $cert.Name in the vault n
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,7 +87,7 @@ Accept wildcard characters: False
 Overwrite the given file if it exists
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +102,7 @@ Accept wildcard characters: False
 Secret to be backed up, pipelined in from the output of a retrieval call.
 
 ```yaml
-Type: PSKeyVaultCertificateIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
 Parameter Sets: ByCertificate
 Aliases: Certificate
 
@@ -120,7 +118,7 @@ Secret name.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByCertificateName
 Aliases: SecretName
 
@@ -137,7 +135,7 @@ The output file to store the backup of the certificate.
 If not specified, a default filename will be generated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +151,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByCertificateName
 Aliases:
 
@@ -168,7 +166,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -184,7 +182,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -201,11 +199,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
 ### System.String
-The cmdlet returns the path of the output file containing the backup of the certificate.
 
 ## NOTES
 

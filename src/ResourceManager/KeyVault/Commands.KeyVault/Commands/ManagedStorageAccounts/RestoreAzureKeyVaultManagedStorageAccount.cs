@@ -24,9 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Restores the managed storage account from a backup file into a vault 
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureKeyVaultManagedStorageAccount",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultManagedStorageAccount",SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultManagedStorageAccount))]
     public class RestoreAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
@@ -97,7 +95,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (ShouldProcess(VaultName, Properties.Resources.RestoreManagedStorageAccount))
             {
-                var resolvedFilePath = this.GetUnresolvedProviderPathFromPSPath(InputFile);
+                var resolvedFilePath = this.ResolveUserPath(InputFile);
 
                 if (!AzureSession.Instance.DataStore.FileExists(resolvedFilePath))
                 {

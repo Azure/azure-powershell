@@ -22,17 +22,19 @@ namespace Commands.Network.Test.ScenarioTests
 
     public class CortexTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public CortexTests(ITestOutputHelper output)
         {
+            _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact(Skip = "Needs ignite changes to be rolled out to all NRPs.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkExpressRouteGatewayCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-CortexCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexCRUD");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 8C5D29AD-0B15-4CD4-8637-86ABD19F41C8
@@ -69,7 +69,7 @@ This command gets default capabilities for SQL Databases for the specified servi
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets only defaults.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DefaultResults
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 Specifies the name of the database edition for which this cmdlet gets capabilities.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FilterResults
 Aliases:
 
@@ -115,7 +115,7 @@ Specifies the name of the Location for which this cmdlet gets capabilities.
 For more information, see Azure Regionshttp://azure.microsoft.com/en-us/regions/ (http://azure.microsoft.com/en-us/regions/).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 Specifies the name of the server version for which this cmdlet gets capabilities.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FilterResults
 Aliases:
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 Specifies the name of the service objective for which this cmdlet gets capabilities.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FilterResults
 Aliases:
 
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -176,7 +176,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -192,8 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

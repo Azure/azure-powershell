@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvirtualhub
 schema: 2.0.0
 ---
 
@@ -24,7 +24,6 @@ Get-AzureRmVirtualHub [-Name <String>] [-ResourceGroupName <String>] [-DefaultPr
 
 ### Example 1
 ```powershell
-```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
 PS C:\> New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name “westushub” -AddressPrefix "10.0.1.0/24"
@@ -36,7 +35,6 @@ The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub
 It then gets the virtual hub using its ResourceGroupName and ResourceName.
 
 ### Example 1
-```powershell
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"

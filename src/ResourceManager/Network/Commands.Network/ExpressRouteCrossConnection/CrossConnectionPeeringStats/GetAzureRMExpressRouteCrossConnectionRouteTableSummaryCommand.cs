@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMExpressRouteCrossConnectionRouteTableSummary"), OutputType(typeof(PSExpressRouteCrossConnection))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCrossConnectionRouteTableSummary"), OutputType(typeof(PSExpressRouteCrossConnection))]
     public class GetAzureRMExpressRouteCrossConnectionRouteTableSummaryCommand : ExpressRouteCrossConnectionBaseCmdlet
     {
         [Parameter(

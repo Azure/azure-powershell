@@ -95,7 +95,7 @@ Specifies the version of the resource provider API to use.
 If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 Limits list of results to only built-in policy definitions.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: BuiltinFilterParameterSet
 Aliases:
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 Limits list of results to only custom policy definitions.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CustomFilterParameterSet
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 Specifies the fully qualified resource ID for the policy definition that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
@@ -168,9 +168,7 @@ Accept wildcard characters: False
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
-
 The acceptable values for this parameter are:
-
 - Continue
 - Ignore
 - Inquire
@@ -179,7 +177,7 @@ The acceptable values for this parameter are:
 - Suspend
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: infa
 
@@ -194,7 +192,7 @@ Accept wildcard characters: False
 Specifies an information variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: iv
 
@@ -209,7 +207,7 @@ Accept wildcard characters: False
 The name of the management group of the policy definition(s) to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ManagementGroupNameParameterSet
 Aliases:
 
@@ -221,7 +219,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BuiltinFilterParameterSet, CustomFilterParameterSet
 Aliases:
 
@@ -236,7 +234,7 @@ Accept wildcard characters: False
 Specifies the name of the policy definition that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet, ManagementGroupNameParameterSet, SubscriptionIdParameterSet
 Aliases:
 
@@ -251,7 +249,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -266,7 +264,7 @@ Accept wildcard characters: False
 The subscription ID of the policy definition(s) to get.
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: SubscriptionIdParameterSet
 Aliases:
 
@@ -278,7 +276,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: BuiltinFilterParameterSet, CustomFilterParameterSet
 Aliases:
 
@@ -294,12 +292,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
-
-### System.Management.Automation.PSObject
 
 ## NOTES
 

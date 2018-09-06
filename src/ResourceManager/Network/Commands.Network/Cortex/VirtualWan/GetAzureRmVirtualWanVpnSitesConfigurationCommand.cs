@@ -27,7 +27,11 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using System.Linq;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualWanVpnSitesConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSVirtualWanVpnSitesConfiguration))]
+    [Cmdlet(VerbsCommon.Get, 
+        "AzureRmVirtualWanVpnSitesConfiguration",
+        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName,
+        SupportsShouldProcess = true), 
+        OutputType(typeof(PSVirtualWanVpnSitesConfiguration))]
     public class GetAzureRmVirtualWanVpnSitesConfigurationCommand : VirtualWanBaseCmdlet
     {
         [Alias("ResourceName", "VirtualWanName")]
@@ -74,12 +78,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of VpnSite resource ids to generate configuration for.")]
-        public List<string> VpnSiteIds { get; set; }
+        public List<string> VpnSiteId { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of VpnSites to generate configuration for.")]
-        public List<PSVpnSite> VpnSites { get; set; }
+        public List<PSVpnSite> VpnSite { get; set; }
 
         public override void Execute()
         {
@@ -106,21 +110,21 @@ namespace Microsoft.Azure.Commands.Network
             PSVirtualWan virtualWan = this.GetVirtualWan(this.ResourceGroupName, this.Name);
 
             //// Resolve the VpnSites
-            if (this.VpnSites != null && this.VpnSites.Any())
+            if (this.VpnSite != null && this.VpnSite.Any())
             {
-                this.VpnSiteIds = new List<string>();
-                foreach (PSVpnSite psVpnSite in this.VpnSites)
+                this.VpnSiteId = new List<string>();
+                foreach (PSVpnSite psVpnSite in this.VpnSite)
                 {
-                    this.VpnSiteIds.Add(psVpnSite.Id);
+                    this.VpnSiteId.Add(psVpnSite.Id);
                 }
             }
 
-            if (this.VpnSiteIds == null || !this.VpnSiteIds.Any())
+            if (this.VpnSiteId == null || !this.VpnSiteId.Any())
             {
                 throw new PSArgumentException("A list of connected VpnSites is required to generate a vpnSites configuration.");
             }
 
-            WriteObject(this.GetVirtualWanVpnSitesConfiguration(virtualWan, this.VpnSiteIds, this.StorageSasUrl));
+            WriteObject(this.GetVirtualWanVpnSitesConfiguration(virtualWan, this.VpnSiteId, this.StorageSasUrl));
         }
     }
 }

@@ -25,9 +25,7 @@ To use this cmdlet, use the *ResourceGroupName*, *ServerName*, and *DatabaseName
 After you run this cmdlet, auditing of the database is not performed.
 If the command succeeds and you have used the *PassThru* parameter, the cmdlet returns an object that describes the current auditing policy, in addition to the database identifiers.
 Database identifiers include, but are not limited to, the **ResourceGroupName**, **ServerName** and **DatabaseName**.
-
 If you remove auditing of an Azure SQL database, threat detection is also removed.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -46,7 +44,7 @@ That database is located on Server01, which is assigned to the resource group na
 Specifies the name of the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -61,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -76,7 +74,7 @@ Accept wildcard characters: False
 Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -91,7 +89,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group containing the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +104,7 @@ Accept wildcard characters: False
 Specifies the name of the server containing the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +119,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -136,7 +134,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -152,11 +150,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel
+### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel
+### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel
 
 ## NOTES
 

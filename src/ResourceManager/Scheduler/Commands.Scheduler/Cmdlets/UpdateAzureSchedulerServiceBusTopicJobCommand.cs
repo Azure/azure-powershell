@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     /// <summary>
     /// Updates existing service bus topic job.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSchedulerServiceBusTopicJob", SupportsShouldProcess = true), OutputType(typeof(PSSchedulerJobDefinition))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SchedulerServiceBusTopicJob", SupportsShouldProcess = true), OutputType(typeof(PSSchedulerJobDefinition))]
     public class UpdateAzureSchedulerServiceBusTopicJobCommand : JobBaseCmdlet, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job.")]

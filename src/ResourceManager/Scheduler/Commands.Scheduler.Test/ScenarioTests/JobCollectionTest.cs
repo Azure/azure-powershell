@@ -22,51 +22,54 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
 
     public class JobCollectionTest : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public JobCollectionTest(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateJobCollection()
         {
-            SchedulerController.NewInstance.RunPowerShellTests("Test-CreateJobCollection");
+            SchedulerController.NewInstance.RunPowerShellTests(_logger, "Test-CreateJobCollection");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateJobCollectionWithInvalidInput()
         {
-            SchedulerController.NewInstance.RunPowerShellTests("Test-CreateJobCollectionWithInvalidInput");
+            SchedulerController.NewInstance.RunPowerShellTests(_logger, "Test-CreateJobCollectionWithInvalidInput");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateJobCollectionWithNonDefaultParams()
         {
-            SchedulerController.NewInstance.RunPowerShellTests("Test-CreateJobCollectionWithNonDefaultParams");
+            SchedulerController.NewInstance.RunPowerShellTests(_logger, "Test-CreateJobCollectionWithNonDefaultParams");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateJobCollection()
         {
-            SchedulerController.NewInstance.RunPowerShellTests("Test-UpdateJobCollection");
+            SchedulerController.NewInstance.RunPowerShellTests(_logger, "Test-UpdateJobCollection");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRemoveJobCollection()
         {
-            SchedulerController.NewInstance.RunPowerShellTests("Test-GetRemoveJobCollection");
+            SchedulerController.NewInstance.RunPowerShellTests(_logger, "Test-GetRemoveJobCollection");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableDisableJobCollection()
         {
-            SchedulerController.NewInstance.RunPowerShellTests("Test-EnableDisableJobCollection");
+            SchedulerController.NewInstance.RunPowerShellTests(_logger, "Test-EnableDisableJobCollection");
         }
     }
 }

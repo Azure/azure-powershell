@@ -132,7 +132,11 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             //// Modify the connections
-            existingVpnGateway.Connections = this.VpnConnection;
+            existingVpnGateway.Connections = new List<PSVpnConnection>();
+            if (this.VpnConnection != null && this.VpnConnection.Any())
+            {
+                existingVpnGateway.Connections.AddRange(this.VpnConnection);
+            }
 
             //// Modify the peering weight if specified
             if (this.BgpPeerWeight > 0)

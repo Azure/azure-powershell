@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 Module Name: AzureRM.Dns
 ms.assetid: AD97BCAF-69BA-4C16-8B57-AB243D796B71
@@ -102,7 +102,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -Resou
 This example creates a **RecordSet** named www in the zone myzone.com.
 The record set is of type AAAA and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 3: Create a RecordSet of type CNAME
@@ -115,7 +114,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType CNAME -Reso
 This example creates a **RecordSet** named www in the zone myzone.com.
 The record set is of type CNAME and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 4: Create a RecordSet of type MX
@@ -128,7 +126,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -Resou
 This command creates a **RecordSet** named www in the zone myzone.com.
 The record set is of type MX and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 5: Create a RecordSet of type NS
@@ -141,7 +138,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "ns1" -RecordType NS -Resourc
 This command creates a **RecordSet** named ns1 in the zone myzone.com.
 The record set is of type NS and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 6: Create a RecordSet of type PTR
@@ -154,7 +150,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "4" -RecordType PTR -Resource
 This command creates a **RecordSet** named 4 in the zone 3.2.1.in-addr.arpa.
 The record set is of type PTR and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 7: Create a RecordSet of type SRV
@@ -167,9 +162,7 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "_sip._tcp" -RecordType SRV -
 This command creates a **RecordSet** named _sip._tcp in the zone myzone.com.
 The record set is of type SRV and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record, pointing to the IP address 2001.2.3.4.
-
 The service (sip) and the protocol (tcp) are specified as part of the record set name, not as part of the record data.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 8: Create a RecordSet of type TXT
@@ -182,7 +175,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "text" -RecordType TXT -Resou
 This command creates a **RecordSet** named text in the zone myzone.com.
 The record set is of type TXT and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ## PARAMETERS
@@ -191,9 +183,9 @@ To create a **RecordSet** using only one line of pn_PowerShell_short, or to crea
 The flags for the CAA record to add. Must be a number between 0 and 255.
 
 ```yaml
-Type: Byte
+Type: System.Byte
 Parameter Sets: Caa
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -206,9 +198,9 @@ Accept wildcard characters: False
 The tag field of the CAA record to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Caa
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -221,9 +213,9 @@ Accept wildcard characters: False
 The value field for the CAA record to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Caa
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -236,9 +228,9 @@ Accept wildcard characters: False
 Specifies the domain name for a canonical name (CNAME) record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -251,7 +243,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -266,9 +258,9 @@ Accept wildcard characters: False
 Specifies the mail exchange server name for a mail exchange (MX) record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Mx
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -281,9 +273,9 @@ Accept wildcard characters: False
 Specifies an IPv4 address for an A record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: A
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -296,9 +288,9 @@ Accept wildcard characters: False
 Specifies an IPv6 address for an AAAA record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Aaaa
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -311,9 +303,9 @@ Accept wildcard characters: False
 Specifies the name server name for a name server (NS) record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Ns
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -326,9 +318,9 @@ Accept wildcard characters: False
 Specifies the port for a service (SRV) record.
 
 ```yaml
-Type: UInt16
+Type: System.UInt16
 Parameter Sets: Srv
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -341,9 +333,9 @@ Accept wildcard characters: False
 Specifies the preference for an MX record.
 
 ```yaml
-Type: UInt16
+Type: System.UInt16
 Parameter Sets: Mx
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -356,9 +348,9 @@ Accept wildcard characters: False
 Specifies the priority for an SRV record.
 
 ```yaml
-Type: UInt16
+Type: System.UInt16
 Parameter Sets: Srv
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -371,9 +363,9 @@ Accept wildcard characters: False
 Specifies the target domain name of a pointer resource (PTR) record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Ptr
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -386,9 +378,9 @@ Accept wildcard characters: False
 Specifies the target for an SRV record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Srv
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -401,9 +393,9 @@ Accept wildcard characters: False
 Specifies the value for a TXT record.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Txt
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -416,9 +408,9 @@ Accept wildcard characters: False
 Specifies the weight for an SRV record.
 
 ```yaml
-Type: UInt16
+Type: System.UInt16
 Parameter Sets: Srv
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -432,7 +424,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None.
+### System.String
+
+### System.UInt16
+
+### System.Byte
 
 ## OUTPUTS
 

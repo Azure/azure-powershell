@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.WebSites
+Module Name: AzureRM.Websites
 ms.assetid: 3AB3D398-E5DB-4214-BA27-6E3B7D225550
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/remove-azurermwebappsslbinding
 schema: 2.0.0
@@ -56,10 +56,8 @@ PS C:\> Remove-AzureRmWebAppSSLBinding -WebApp $WebApp -Name "www.contoso.com"
 ```
 
 This example uses an object reference to the Web App website to remove the SSL binding for a Web App.
-
 The first command uses the Get-AzureRmWebApp cmdlet to create an object reference to the Web App named ContosoWebApp.
 That object reference is stored in a variable named $WebApp.
-
 The second command uses the object reference and the **Remove-AzureRmWebAppSSLBinding** cmdlet to remove the SSL binding.
 
 ## PARAMETERS
@@ -68,7 +66,7 @@ The second command uses the object reference and the **Remove-AzureRmWebAppSSLBi
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -83,14 +81,13 @@ Accept wildcard characters: False
 Specifies the action to take place if the SSL binding being removed is the only binding used by the certificate.
 If *DeleteCertificate* is set to $False, the certificate will not be deleted when the binding is deleted.
 If *DeleteCertificate* is set to $True or is not included in the command, the certificate will be deleted along with the SSL binding.
-
 The certificate will only be deleted if the SSL binding being removed is the only binding used by the certificate.
 If the certificate has more than one binding, the certificate will not be removed regardless of the value of the *DeleteCertificate* parameter.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -103,9 +100,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -118,9 +115,9 @@ Accept wildcard characters: False
 Specifies the name of the Web App.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -131,13 +128,12 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the certificate is assigned to.
-
 You cannot use the *ResourceGroupName* parameter and the *WebApp* parameter in the same command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -151,9 +147,9 @@ Specifies the Web App deployment slot.
 To get a deployment slot, use the Get-AzureRMWebAppSlot cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -165,13 +161,12 @@ Accept wildcard characters: False
 ### -WebApp
 Specifies a Web App.
 To get a Web App, use the Get-AzureRmWebApp cmdlet.
-
 You cannot use the *WebApp* parameter in the same command as the *ResourceGroupName* parameter and/or the *WebAppName*.
 
 ```yaml
-Type: Site
+Type: Microsoft.Azure.Management.WebSites.Models.Site
 Parameter Sets: S2
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -182,13 +177,12 @@ Accept wildcard characters: False
 
 ### -WebAppName
 Specifies the name of the Web App.
-
 You cannot use the *WebAppName* parameter and the *WebApp* parameter in the same command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -201,7 +195,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -218,7 +212,7 @@ The cmdlet is not run.Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -234,10 +228,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Site
-Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+### Microsoft.Azure.Management.WebSites.Models.Site
+Parameters: WebApp (ByValue)
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

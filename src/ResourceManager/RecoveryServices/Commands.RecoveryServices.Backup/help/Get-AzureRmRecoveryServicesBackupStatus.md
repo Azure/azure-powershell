@@ -1,5 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
+Module Name: AzureRM.RecoveryServices.Backup
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupstatus
 schema: 2.0.0
 ---
@@ -45,7 +46,7 @@ Enable-AzureRmRecoveryServicesBackupProtection -Vault $vault -Policy $defpol -Na
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -60,9 +61,9 @@ Accept wildcard characters: False
 Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -75,9 +76,9 @@ Accept wildcard characters: False
 Name of the resource group of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -90,9 +91,9 @@ Accept wildcard characters: False
 ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -105,9 +106,9 @@ Accept wildcard characters: False
 Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Name
-Aliases: 
+Aliases:
 Accepted values: AzureVM
 
 Required: True
@@ -131,4 +132,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -124,7 +124,7 @@ function Add-AzsVMExtension {
     }
 
     Process {
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSCmdlet.ShouldProcess("$Publisher/$Type/$Version" , "Add virtual machine image extension")) {
 

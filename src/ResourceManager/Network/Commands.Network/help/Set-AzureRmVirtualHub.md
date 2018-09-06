@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermvirtualhub
 schema: 2.0.0
 ---
 
@@ -45,7 +45,6 @@ Updates a Virtual Hub to an intended goal state.
 ## EXAMPLES
 
 ### Example 1
-```powershell
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"

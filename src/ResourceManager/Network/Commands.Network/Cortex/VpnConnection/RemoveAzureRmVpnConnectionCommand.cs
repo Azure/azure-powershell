@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.Remove,
         "AzureRmVpnConnection",
         DefaultParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true),
+        OutputType(typeof(bool))]
     public class RemoveVpnConnectionCommand : VpnConnectionBaseCmdlet
     {
         [Alias("ResourceName", "VpnConnectionName")]

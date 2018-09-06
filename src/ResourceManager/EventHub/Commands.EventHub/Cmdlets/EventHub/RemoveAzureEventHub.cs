@@ -14,35 +14,79 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.EventHub.Models;
+
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
     /// <summary>
     /// 'Remove-AzureRmEventHub' Cmdlet removes the specified EventHub
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, EventHubVerb, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHub", DefaultParameterSetName = EventhubDefaultParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureEventHub : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubDefaultParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubDefaultParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubDefaultParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = EventhubInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Eventhub Object")]
+        [ValidateNotNullOrEmpty]
+        public PSEventHubAttributes InputObject { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = EventhubResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Eventhub Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
+
+            if (ParameterSetName.Equals(EventhubInputObjectParameterSet))
+            {
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(InputObject.Id);
+                ResourceGroupName = identifier.ResourceGroupName;
+                Namespace = identifier.ParentResource;
+                Name = identifier.ResourceName;
+            }
+            else if (ParameterSetName.Equals(EventhubResourceIdParameterSet))
+            {
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(ResourceId);
+                ResourceGroupName = identifier.ResourceGroupName;
+                Namespace = identifier.ParentResource;
+                Name = identifier.ResourceName;
+            }
+
             // delete a EventHub 
             if(ShouldProcess(target:Name, action:string.Format(Resources.RemovingEventHub,Name,Namespace)))
             {
-                WriteObject(Client.DeleteEventHub(ResourceGroupName, Namespace, Name));
+                try
+                {
+                    var result = Client.DeleteEventHub(ResourceGroupName, Namespace, Name);
+
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(result);
+                    }
+                }
+                catch (Management.EventHub.Models.ErrorResponseException ex)
+                {
+                    WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
+                }
             }            
         }
     }

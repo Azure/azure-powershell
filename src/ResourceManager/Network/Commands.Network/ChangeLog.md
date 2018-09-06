@@ -19,6 +19,60 @@
 --->
 
 ## Current Release
+* Expose new Powershell commandlets and models for SdWan.
+    - Added New, Get, Set, Remove for VirtualWan.
+    - Added New, Get, Set, Remove for VirtualHub.
+    - Added New, Get, Set, Remove for HubVirtualNetworkConnection.
+    - Added New, Get, Set, Remove for VpnGateway.
+    - Added New, Get, Set, Remove for VpnSite.
+    - Added New, Get, Set, Remove for VpnConnection.
+    - Added Get-AzureRmVirtualWanVpnSitesConfigurationCommand to allow download of SdWan configuration.
+
+## Version 6.7.0
+* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
+
+## Version 6.6.1
+* Changed default cmdlet output presentation to table view
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 6.6.0
+* Fixed issue with default resource groups not being set.
+* Changed default models representation to table-view
+
+## Version 6.5.0
+* Added example for Set-AzureRmLocalNetworkGateway
+* Added examples and descriptions for Add-AzureRmVirtualNetworkGatewayIpConfig, Get-AzureRmVirtualNetworkGatewayConnectionSharedKey and New-AzureRmVirtualNetworkGatewayConnection
+* Added PublicIpPrefix Functionality. New cmdlets added
+	- New-AzureRmPublicIpPrefix
+	- Get-AzureRmPublicIpPrefix
+	- Remove-AzureRmPublicIpPrefix
+	- Set-AzureRmPublicIpPrefix
+* Added service endpoint policies cmdlets
+* Added deprecation messages for EnableVmProtection property in VirtualNetwork
+* Added examples for Remove-AzureRmVirtualNetworkGatewayIpConfig and Reset-AzureRmVirtualNetworkGateway
+* Added example for Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey
+* Added example for Set-AzureRmVirtualNetworkGatewayConnectionSharedKey
+* Added example for Set-AzureRmVirtualNetworkGatewayConnection
+* Re-generated cmdlets for ApplicationSecurityGroup, RouteTable and Usage using latest code generator
+* Clarified error message for Get-AzureRmVirtualNetworkSubnetConfig when attempting to get a subnet that does not exist
+* Improved exception messages: added more details to output
+* Dropped outdated warnings
+
+## Version 6.4.1
+* Updated all help files to include full parameter types and correct input/output types.
+* Updated to the latest version of the Azure ClientRuntime.
+* Added examples for LoadBalancerInboundNatPoolConfig cmdlets.
+
+## Version 6.4.0
+* Updated below cmdlets for Application Gateway
+    - New-AzureRmApplicationGateway : Added EnableFIPS flag and Zones support
+    - New-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
+    - Set-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
+* Regenerated RouteTable cmdlets with the latest generator version
+
+## Version 6.3.1
+* Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering
 
 ## Version 6.3.0
 * Expose new Skus for Zone-Redundant VirtualNetworkGateways
@@ -121,7 +175,7 @@
     - Get-AzureRmNetworkWatcherReachabilityReport
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 4.4.1
 
 ## Version 4.4.0
@@ -177,7 +231,7 @@
     - Updated New-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
     - Updated Add-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
     - Updated Set-AzureRmNetworkSecurityRuleConfig: Added optional parameters SourceApplicationSecurityGroup, SourceApplicationSecurityGroupId, DestinationApplicationSecurityGroup, and DestinationApplicationSecurityGroupId
-	
+
 ## Version 4.3.1
 
 ## Version 4.3.0
@@ -190,7 +244,7 @@
 * Marked parameter -ProbeEnabled as obsolete
     - Add-AzureRmApplicationGatewayBackendHttpSettings
     - New-AzureRmApplicationGatewayBackendHttpSettings
-    - Set-AzureRmApplicationGatewayBackendHttpSettings 
+    - Set-AzureRmApplicationGatewayBackendHttpSettings
 
 ## Version 4.2.1
 
@@ -224,12 +278,12 @@
         - New-AzureRmApplicationGatewayPathRuleConfig
         - Set-AzureRmApplicationGatewayPathRuleConfig
     - Added optional parameter -RedirectConfigurations
-        - New-AzureRmApplicationGateway 
+        - New-AzureRmApplicationGateway
         - Set-AzureRmApplicationGateway
 * Added support for azure websites in Application Gateway
     - Added New-AzureRmApplicationGatewayProbeHealthResponseMatch
     - Added optional parameters -PickHostNameFromBackendHttpSettings, -MinServers, -Match
-        - Add-AzureRmApplicationGatewayProbeConfig 
+        - Add-AzureRmApplicationGatewayProbeConfig
         - New-AzureRmApplicationGatewayProbeConfig
         - Set-AzureRmApplicationGatewayProbeConfig
     - Added optional parameters -PickHostNameFromBackendAddress, -AffinityCookieName, -ProbeEnabled, -Path
@@ -246,7 +300,7 @@
     - VpnGw1, VpnGw2, VpnGw3 are the new Skus added for Vpn gateways
 * Set-AzureRmNetworkWatcherConfigFlowLog
   * Fixed  help examples
- 
+
 ## Version 4.0.1
 
 ## Version 4.0.0
@@ -267,9 +321,9 @@
 
 ## Version 3.6.0
 * Added support for connection draining to Application Gateways
-    - Added Get-AzureRmApplicationGatewayConnectionDraining 
+    - Added Get-AzureRmApplicationGatewayConnectionDraining
     - Added New-AzureRmApplicationGatewayConnectionDraining
-    - Added Remove-AzureRmApplicationGatewayConnectionDraining 
+    - Added Remove-AzureRmApplicationGatewayConnectionDraining
     - Added Set-AzureRmApplicationGatewayConnectionDraining
     - Updated Add-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
     - Updated New-AzureRmApplicationGatewayBackendHttpSettings: Added optional parameter -ConnectionDraining
@@ -308,7 +362,7 @@
 * Set-AzureRmExpressRouteCircuitPeeringConfig
     - Added new param :-RouteFilter to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource
     - Added new param :-RouteFilterId to associate the BGP with route filter to filter out BGP communities via Microsoft peering. This parameter is set by resource id
-* New cmdlets for selective service feature 
+* New cmdlets for selective service feature
     - Get-AzureRmRouteFilter
     - New-AzureRmRouteFilter
     - Set-AzureRmRouteFilter
@@ -328,7 +382,7 @@
     - Added new param :- TunnelConnectionStatus in output Connection object to show per tunnel connection health status.
 * Reset-AzureRmVirtualNetworkGateway
     - Added optional input param:- gatewayVip to pass gateway vip for ResetGateway API in case of Active-Active feature enabled gateways.
-    - Gateway Vip can be retrieved from PublicIPs refered in VirtualNetworkGateway object. 
+    - Gateway Vip can be retrieved from PublicIPs refered in VirtualNetworkGateway object.
 
 ## Version 3.1.0
 * Add-AzureRmVirtualNetworkPeering
@@ -336,4 +390,4 @@
     - Fixed issue where UseRemoteGateway property was not being populated in the request to the server
 * Get-AzureRmEffectiveNetworkSecurityGroup
     - Add warning if there is no response from GetEffectiveNSG
-* Add Source property to EffectiveRoute 
+* Add Source property to EffectiveRoute

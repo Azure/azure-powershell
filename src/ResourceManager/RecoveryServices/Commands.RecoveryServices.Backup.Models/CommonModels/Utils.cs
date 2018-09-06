@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return (T)Enum.Parse(typeof(T), enumValue);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return default(T);
             }
@@ -227,17 +227,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <returns>PowerShell container type</returns>
         public static ContainerType GetPsContainerType(string containerType)
         {
-            if (containerType == "Microsoft.ClassicCompute/virtualMachines" ||
-                containerType == "Microsoft.Compute/virtualMachines")
+            if (containerType == ServiceClientModel.BackupManagementType.AzureIaasVM)
             {
                 return ContainerType.AzureVM;
             }
-            else if (containerType == ServiceClientModel.MabServerType.Windows.ToString())
+            else if (containerType == ServiceClientModel.BackupManagementType.MAB)
             {
                 return ContainerType.Windows;
             }
             else if (containerType ==
-                ServiceClientModel.MabServerType.AzureSqlContainer.ToString())
+                ServiceClientModel.BackupManagementType.AzureSql)
             {
                 return ContainerType.AzureSQL;
             }
