@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 494291A1-D854-4E97-B5EE-27BB5653D97C
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestorageserviceloggingproperty
 schema: 2.0.0
@@ -14,7 +15,7 @@ Gets logging properties for Azure Storage services.
 
 ```
 Get-AzureStorageServiceLoggingProperty [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,9 +37,9 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -47,22 +48,35 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServiceType
 Specifies the storage service type.
 This cmdlet gets the logging properties for the service type that this parameter specifies.
 The acceptable values for this parameter are:
-
 - Blob 
 - Table
 - Queue
 - File
-
 The value of File is not currently supported.
 
 ```yaml
-Type: StorageServiceType
+Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Blob, Table, Queue, File
 
 Required: True
@@ -77,9 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
-
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
 

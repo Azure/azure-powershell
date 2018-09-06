@@ -14,6 +14,7 @@
 
 using System;
 using System.Text.RegularExpressions;
+using Tools.Common.Issues;
 
 namespace StaticAnalysis.SignatureVerifier
 {
@@ -35,7 +36,7 @@ namespace StaticAnalysis.SignatureVerifier
         public string FormatRecord()
         {
             return
-                string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\"", 
+                string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\"",
                 AssemblyFileName, ClassName, Target, Severity, ProblemId, Description, Remediation);
         }
 
@@ -48,10 +49,11 @@ namespace StaticAnalysis.SignatureVerifier
                 result = string.Equals(record.ClassName, ClassName, StringComparison.OrdinalIgnoreCase) &&
                     string.Equals(record.Target, Target, StringComparison.OrdinalIgnoreCase) &&
                          (record.ProblemId == ProblemId) &&
-                         record.Severity == Severity;
+                         (record.Severity == Severity) &&
+                         (record.Description == Description);
 
             }
-            
+
             return result;
         }
 

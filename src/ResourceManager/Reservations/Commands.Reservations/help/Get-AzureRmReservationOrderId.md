@@ -13,7 +13,8 @@ Get list of applicable `ReservationOrder` Ids.
 ## SYNTAX
 
 ```
-Get-AzureRmReservationOrderId [-SubscriptionId <String>] [<CommonParameters>]
+Get-AzureRmReservationOrderId [-SubscriptionId <Guid>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,13 +38,28 @@ Get applied `ReservationOrder` for specified subscription
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Id of the subscription to get the applied `ReservationOrder`s
 
 ```yaml
-Type: String
+Type: System.Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -61,9 +77,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Reservations.Models.PSAppliedReservationOrderId
+### Microsoft.Azure.Management.Reservations.Models.AppliedReservations
 
 ## NOTES
 
 ## RELATED LINKS
-

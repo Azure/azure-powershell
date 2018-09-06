@@ -147,7 +147,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             public override Task DownloadAsync(CloudFile sourceFile, string destFilePath, DownloadOptions options, SingleTransferContext context, CancellationToken cancellationToken)
             {
                 validateAction(sourceFile, destFilePath);
-                return TaskEx.FromResult(true);
+                return Task.FromResult(true);
             }
         }
     }

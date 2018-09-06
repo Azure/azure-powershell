@@ -32,7 +32,6 @@ PS C:\> $AppGw = Set-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $
 
 The first command gets the application gateway named ApplicationGateway01 that belongs to the
 resource group named ResourceGroup01 and stores it in the $AppGw variable.
-
 The second command modifies the gateway in $AppGw to use port 80 for the front-end port named
 FrontEndPort01.
 
@@ -42,9 +41,9 @@ FrontEndPort01.
 Specifies the application gateway object with which this cmdlet associates the front-end port.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -57,7 +56,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,9 +71,9 @@ Accept wildcard characters: False
 Specifies the name of the front-end port to modify.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -87,9 +86,9 @@ Accept wildcard characters: False
 Specifies the port number to use for the front-end port.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -103,8 +102,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSApplicationGateway
-Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

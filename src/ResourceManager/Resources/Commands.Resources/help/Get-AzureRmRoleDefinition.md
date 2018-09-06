@@ -15,8 +15,8 @@ Lists all Azure RBAC roles that are available for assignment.
 
 ### RoleDefinitionNameParameterSet
 ```
-Get-AzureRmRoleDefinition [[-Name] <String>] [-Scope <String>] [-AtScopeAndBelow]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmRoleDefinition [[-Name] <String>] [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### RoleDefinitionIdParameterSet
@@ -27,8 +27,8 @@ Get-AzureRmRoleDefinition -Id <Guid> [-Scope <String>] [-DefaultProfile <IAzureC
 
 ### RoleDefinitionCustomParameterSet
 ```
-Get-AzureRmRoleDefinition [-Scope <String>] [-Custom] [-AtScopeAndBelow]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmRoleDefinition [-Scope <String>] [-Custom] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,26 +53,11 @@ Lists all RBAC role definitions
 
 ## PARAMETERS
 
-### -AtScopeAndBelow
-If specified, displays all role definitions.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: RoleDefinitionNameParameterSet, RoleDefinitionCustomParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Custom
 If specified, only displays the custom created roles in the directory.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: RoleDefinitionCustomParameterSet
 Aliases:
 
@@ -87,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -102,7 +87,7 @@ Accept wildcard characters: False
 Role definition Id.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: RoleDefinitionIdParameterSet
 Aliases:
 
@@ -119,7 +104,7 @@ For e.g.
 Reader, Contributor, Virtual Machine Contributor.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RoleDefinitionNameParameterSet
 Aliases:
 
@@ -134,7 +119,7 @@ Accept wildcard characters: False
 Role definition scope.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -150,12 +135,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
-Parameter 'Scope' accepts value of type 'String' from the pipeline
+### System.String
+Parameters: Scope (ByValue)
+
+### System.Guid
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment

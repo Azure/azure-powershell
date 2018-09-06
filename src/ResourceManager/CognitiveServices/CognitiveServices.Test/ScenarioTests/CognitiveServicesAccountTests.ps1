@@ -27,7 +27,7 @@ function Test-NewAzureRmCognitiveServicesAccount
         $accountname = 'csa' + $rgname;
         $skuname = 'S2';
         $accounttype = 'TextAnalytics';
-        $loc = 'West US';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
@@ -57,28 +57,31 @@ function Test-NewAzureRmAllKindsOfCognitiveServicesAccounts
 	# Setup
     $rgname = Get-CognitiveServicesManagementTestResourceName;
 
+	$locWU = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+	$locGBL = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "Global";
+
 	try
 	{
 		New-AzureRmResourceGroup -Name $rgname -Location 'West US';
 		
 		# Create all known kinds of Cognitive Services accounts.
-		Test-CreateCognitiveServicesAccount $rgname 'AcademicTest' 'Academic' 'S0' 'West US'
-		Test-CreateCognitiveServicesAccount $rgname 'BingAutosuggestTest' 'Bing.Autosuggest' 'S1' 'Global'
-		Test-CreateCognitiveServicesAccount $rgname 'BingSearchTest' 'Bing.Search' 'S1' 'Global'
-		Test-CreateCognitiveServicesAccount $rgname 'BingSpeechTest' 'Bing.Speech' 'S0' 'Global'
-		Test-CreateCognitiveServicesAccount $rgname 'BingSpellCheckTest' 'Bing.SpellCheck' 'S1' 'Global'
-		Test-CreateCognitiveServicesAccount $rgname 'ComputerVisionTest' 'ComputerVision' 'S0' 'West US'
-		Test-CreateCognitiveServicesAccount $rgname 'ContentModeratorTest' 'ContentModerator' 'S0' 'West US'
-		Test-CreateCognitiveServicesAccount $rgname 'EmotionTest' 'Emotion' 'S0' 'West US'
-		Test-CreateCognitiveServicesAccount $rgname 'FaceTest' 'Face' 'S0' 'West US'
-		Test-CreateCognitiveServicesAccount $rgname 'LUISTest' 'LUIS' 'S0' 'West US'
-		Test-CreateCognitiveServicesAccount $rgname 'RecommendationsTest' 'Recommendations' 'S1' 'West US'
-		Test-CreateCognitiveServicesAccount $rgname 'SpeakerRecognitionTest' 'SpeakerRecognition' 'S0' 'West US'
-		Test-CreateCognitiveServicesAccount $rgname 'SpeechTest' 'Speech' 'S0' 'West US'
-		Test-CreateCognitiveServicesAccount $rgname 'SpeechTranslationTest' 'SpeechTranslation' 'S1' 'Global'
-		Test-CreateCognitiveServicesAccount $rgname 'TextAnalyticsTest' 'TextAnalytics' 'S1' 'West US'
-		Test-CreateCognitiveServicesAccount $rgname 'TextTranslationTest' 'TextTranslation' 'S1' 'Global'
-		Test-CreateCognitiveServicesAccount $rgname 'WebLMTest' 'WebLM' 'S0' 'West US'
+		Test-CreateCognitiveServicesAccount $rgname 'AcademicTest' 'Academic' 'S0' $locWU
+		Test-CreateCognitiveServicesAccount $rgname 'BingAutosuggestTest' 'Bing.Autosuggest' 'S1' $locGBL
+		Test-CreateCognitiveServicesAccount $rgname 'BingSearchTest' 'Bing.Search' 'S1' $locGBL
+		Test-CreateCognitiveServicesAccount $rgname 'BingSpeechTest' 'Bing.Speech' 'S0' $locGBL
+		Test-CreateCognitiveServicesAccount $rgname 'BingSpellCheckTest' 'Bing.SpellCheck' 'S1' $locGBL
+		Test-CreateCognitiveServicesAccount $rgname 'ComputerVisionTest' 'ComputerVision' 'S0' $locWU
+		Test-CreateCognitiveServicesAccount $rgname 'ContentModeratorTest' 'ContentModerator' 'S0' $locWU
+		Test-CreateCognitiveServicesAccount $rgname 'EmotionTest' 'Emotion' 'S0' $locWU
+		Test-CreateCognitiveServicesAccount $rgname 'FaceTest' 'Face' 'S0' $locWU
+		Test-CreateCognitiveServicesAccount $rgname 'LUISTest' 'LUIS' 'S0' $locWU
+		Test-CreateCognitiveServicesAccount $rgname 'RecommendationsTest' 'Recommendations' 'S1' $locWU
+		Test-CreateCognitiveServicesAccount $rgname 'SpeakerRecognitionTest' 'SpeakerRecognition' 'S0' $locWU
+		Test-CreateCognitiveServicesAccount $rgname 'SpeechTest' 'Speech' 'S0' $locWU
+		Test-CreateCognitiveServicesAccount $rgname 'SpeechTranslationTest' 'SpeechTranslation' 'S1' $locGBL
+		Test-CreateCognitiveServicesAccount $rgname 'TextAnalyticsTest' 'TextAnalytics' 'S1' $locWU
+		Test-CreateCognitiveServicesAccount $rgname 'TextTranslationTest' 'TextTranslation' 'S1' $locGBL
+		Test-CreateCognitiveServicesAccount $rgname 'WebLMTest' 'WebLM' 'S0' $locWU
 	}
 	finally
 	{
@@ -102,7 +105,7 @@ function Test-RemoveAzureRmCognitiveServicesAccount
         $accountname = 'csa' + $rgname;
         $skuname = 'S1';
         $accounttype = 'TextAnalytics';
-        $loc = 'West US';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
@@ -134,7 +137,7 @@ function Test-GetAzureCognitiveServiceAccount
         $accountname = 'csa' + $rgname;
         $skuname = 'S2';
         $accounttype = 'TextAnalytics';
-        $loc = 'West US';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
@@ -183,7 +186,7 @@ function Test-SetAzureRmCognitiveServicesAccount
         $accountname = 'csa' + $rgname;
         $skuname = 'S2';
         $accounttype = 'TextAnalytics';
-        $loc = 'West US';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
         
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
@@ -229,7 +232,7 @@ function Test-GetAzureRmCognitiveServicesAccountKey
         $accountname = 'csa' + $rgname;
         $skuname = 'S2';
         $accounttype = 'TextAnalytics';
-        $loc = 'West US';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
@@ -262,7 +265,7 @@ function Test-NewAzureRmCognitiveServicesAccountKey
         $accountname = 'csa' + $rgname;
         $skuname = 'S2';
         $accounttype = 'TextAnalytics';
-        $loc = 'West US';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
@@ -305,7 +308,7 @@ function Test-GetAzureRmCognitiveServicesAccountSkus
         $accountname = 'csa' + $rgname;
         $skuname = 'S2';
         $accounttype = 'TextAnalytics';
-        $loc = 'West US';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
@@ -340,7 +343,7 @@ function Test-PipingGetAccountToGetKey
         $accountname = 'csa' + $rgname;
         $skuname = 'S2';
         $accounttype = 'TextAnalytics';
-        $loc = 'West US';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
@@ -372,7 +375,7 @@ function Test-PipingToSetAzureAccount
         $accountname = 'csa' + $rgname;
         $skuname = 'S2';
         $accounttype = 'TextAnalytics';
-        $loc = 'West US';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
@@ -407,7 +410,7 @@ function Test-PipingToGetAccountSkus
         $accountname = 'csa' + $rgname;
         $skuname = 'S2';
         $accounttype = 'TextAnalytics';
-        $loc = 'West US';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
@@ -444,7 +447,7 @@ function Test-MinMaxAccountName
 		$longname = 'testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttest';
         $skuname = 'S2';
         $accounttype = 'TextAnalytics';
-        $loc = 'West US';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         $shortaccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $shortname -Type $accounttype -SkuName $skuname -Location $loc -Force;
@@ -470,7 +473,7 @@ function Test-GetWithPaging
 {
 	# Setup
     $rgname = Get-CognitiveServicesManagementTestResourceName
-	$loc = 'West US'
+	$loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US"
 	
 	try
     {
@@ -495,6 +498,50 @@ function Test-GetWithPaging
 
 		$accounts = Get-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname
 		Assert-AreEqual 200 $accounts.Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Test-GetUsages
+#>
+function Test-GetUsages
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S1';
+        $accounttype = 'TextAnalytics';
+        $loc = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US"
+
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+
+        $createdAccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
+		$usages1 = Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName $rgname -Name $accountname
+		$usages2 = Get-AzureRmCognitiveServicesAccountUsage -InputObject $createdAccount
+		$usages3 = Get-AzureRmCognitiveServicesAccountUsage -ResourceId $createdAccount.Id
+
+		Assert-True {$usages1.Count -gt 0}
+		Assert-AreEqual 0.0 $usages1[0].CurrentValue
+		Assert-True {$usages1[0].Limit -gt 0}
+
+		Assert-AreEqual $usages1.Count $usages2.Count
+		Assert-AreEqual $usages2.Count $usages3.Count
+
+		Assert-AreEqual $usages1[0].CurrentValue $usages2[0].CurrentValue
+		Assert-AreEqual $usages2[0].CurrentValue $usages3[0].CurrentValue
+
+		Assert-AreEqual $usages1[0].Limit $usages2[0].Limit
+		Assert-AreEqual $usages2[0].Limit $usages3[0].Limit
     }
     finally
     {

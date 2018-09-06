@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: D79080D5-2785-4C46-86FD-FDAA11117D17
@@ -45,7 +45,7 @@ Lists all providers under the account "ContosoADL"
 The Data Lake Store account to retrieve the trusted identity provider from
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,9 +75,9 @@ Accept wildcard characters: False
 The name of the trusted identity provider to retrieve
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -90,9 +90,9 @@ Accept wildcard characters: False
 Name of resource group under which want to retrieve the specified account's specified trusted identity provider.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -106,15 +106,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
 
-### DataLakeStoreTrustedIdProvider
-The details of the specified trusted identity provider.
-
-### IList<DataLakeStoreTrustedIdProvider>
-The list of trusted identity providers in the specified account.
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider
 
 ## NOTES
 
 ## RELATED LINKS
-

@@ -15,7 +15,7 @@ Gets resource groups.
 
 ### GetByResourceGroupName (Default)
 ```
-Get-AzureRmResourceGroup [-Name <String>] [-Location <String>] [-ApiVersion <String>] [-Pre]
+Get-AzureRmResourceGroup [-Name <String>] [-Location <String>] [-Tag <Hashtable>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -29,7 +29,6 @@ Get-AzureRmResourceGroup [-Location <String>] [-Id <String>] [-ApiVersion <Strin
 The **Get-AzureRmResourceGroup** cmdlet gets Azure resource groups in the current subscription.
 You can get all resource groups, or specify a resource group by name or by other properties.
 By default, this cmdlet gets all resource groups in the current subscription.
-
 For more information about Azure resources and Azure resource groups, see the New-AzureRmResourceGroup cmdlet.
 
 ## EXAMPLES
@@ -74,7 +73,7 @@ Specifies the API version that is supported by the resource Provider.
 You can specify a different version than the default version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +88,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -105,7 +104,7 @@ Specifies the ID of the resource group to get.
 Wildcard characters are not permitted.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroupId
 Aliases: ResourceGroupId, ResourceId
 
@@ -120,7 +119,7 @@ Accept wildcard characters: False
 Specifies the location of the resource group to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -132,11 +131,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the resource group to get.
-Wildcard characters are not permitted.
+Specifies the name of the resource group to get. This parameter supports wildcards at the beginning and/or the end of the string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroupName
 Aliases: ResourceGroupName
 
@@ -151,7 +149,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -162,18 +160,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tag
+The tag hashtable to filter resource groups by.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: GetByResourceGroupName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### String
-You can pipe input to the cmdlet by property name, but not by value.
+### None
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ResourceManagement.PSResourceGroup
-This cmdlet returns resource groups.
 
 ## NOTES
 

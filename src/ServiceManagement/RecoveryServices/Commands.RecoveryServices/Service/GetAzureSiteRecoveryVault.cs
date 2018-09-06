@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Retrieves Azure Site Recovery Vault.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVault", DefaultParameterSetName = ASRParameterSets.Default)]
-    [OutputType(typeof(List<ASRVault>))]
+    [OutputType(typeof(ASRVault))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
         "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]

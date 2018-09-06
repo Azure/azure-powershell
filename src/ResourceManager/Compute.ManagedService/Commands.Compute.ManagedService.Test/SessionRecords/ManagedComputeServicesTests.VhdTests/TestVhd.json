@@ -1,0 +1,12 @@
+{
+  "Entries": [
+  ],
+  "Names": {
+    "Test-ConvertToAzureRmVhd": [
+      "crptestps9999"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "015b5c33-7725-4fc2-9c81-c9b07de44668"
+  }
+}

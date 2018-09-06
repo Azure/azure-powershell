@@ -64,7 +64,7 @@ The command gets the instance ID stored in the variable $ID for which to get the
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -79,9 +79,9 @@ Accept wildcard characters: False
 Specifies the instance ID for which to get the model view.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -94,9 +94,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets only the instance view of the virtual machine.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: FriendMethod
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -109,9 +109,9 @@ Accept wildcard characters: False
 Specifies the name of the Resource Group of the VMSS.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Species the name of the VMSS.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -140,9 +140,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
 
-### This cmdlet does not generate any output.
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVM
 
 ## NOTES
 

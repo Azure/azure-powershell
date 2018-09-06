@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
     /// <summary>
     /// Gets the git deployments.
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureWebsiteDeployment", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(List<DeployResult>))]
+    [Cmdlet(VerbsData.Restore, "AzureWebsiteDeployment", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(DeployResult))]
     public class RestoreAzureWebsiteDeploymentCommand : DeploymentBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The maximum number of results to display.")]

@@ -15,8 +15,9 @@
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Management.Automation;
 using System;
+#if !NETSTANDARD
 using System.Diagnostics.Eventing;
-
+#endif
 namespace Microsoft.Azure.Commands.Automation
 {
     public class RequestSettings : IDisposable
@@ -31,8 +32,10 @@ namespace Microsoft.Azure.Commands.Automation
 
             client.HttpClient.DefaultRequestHeaders.Remove(Constants.ActivityIdHeaderName);
             var activityId = Guid.NewGuid();
-            EventProvider.SetActivityId(ref activityId);
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ActivityIdHeaderName, activityId.ToString());
+#if !NETSTANDARD
+            EventProvider.SetActivityId(ref activityId);
+#endif
         }
 
         public void Dispose()

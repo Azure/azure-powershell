@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ServiceFabric
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/get-azurermservicefabriccluster
 schema: 2.0.0
 ---
@@ -12,13 +12,25 @@ Get the cluster resource details.
 
 ## SYNTAX
 
+### BySubscription (Default)
 ```
-Get-AzureRmServiceFabricCluster [[-ResourceGroupName] <String>] [[-Name] <String>]
+Get-AzureRmServiceFabricCluster [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceGroup
+```
+Get-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByName
+```
+Get-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmServiceFabricCluster** will get the cluster resource details.
+The **Get-AzureRmServiceFabricCluster** will get the cluster resource details.
 
 ## EXAMPLES
 
@@ -35,7 +47,7 @@ This command will get the cluster resource details for cluster 'myCluster'.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,11 +62,11 @@ Accept wildcard characters: False
 Specify the name of the cluster.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByName
 Aliases: ClusterName
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -65,11 +77,11 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Type: System.String
+Parameter Sets: ByResourceGroup, ByName
+Aliases:
 
-Required: False
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -85,9 +97,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ServiceFabric.Models.PsCluster, Microsoft.Azure.Commands.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster
 
 ## NOTES
 
 ## RELATED LINKS
-

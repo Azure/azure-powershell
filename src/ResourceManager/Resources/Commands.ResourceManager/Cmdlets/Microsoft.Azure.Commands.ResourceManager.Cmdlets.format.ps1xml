@@ -282,6 +282,56 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSDeployment</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>DeploymentName</Label>
+                <PropertyName>DeploymentName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Timestamp</Label>
+                <PropertyName>Timestamp</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Mode</Label>
+                <PropertyName>Mode</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TemplateLink</Label>
+                <PropertyName>TemplateLinkString</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Parameters</Label>
+                <PropertyName>ParametersString</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Outputs</Label>
+                <PropertyName>OutputsString</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DeploymentDebugLogLevel</Label>
+                <PropertyName>DeploymentDebugLogLevel</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType</TypeName>
@@ -336,6 +386,74 @@
           </ListEntry>
         </ListEntries>
       </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceType</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceId</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader>
+            <Label>ResourceType</Label>
+          </TableColumnHeader>
+          <TableColumnHeader/>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
     </View>
   </ViewDefinitions>
 </Configuration>

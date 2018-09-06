@@ -380,3 +380,57 @@ function Test-RouteHopTypeTest
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests RouteTableWithDisableBgpRoutePropagation.
+#>
+function Test-RouteTableWithDisableBgpRoutePropagation
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $routeTableName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/routeTables"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create RouteTable
+        $rt = New-AzureRmRouteTable -name $routeTableName -DisableBgpRoutePropagation -ResourceGroupName $rgname -Location $location
+
+        # Get RouteTable
+        $getRT = Get-AzureRmRouteTable -name $routeTableName -ResourceGroupName $rgName
+        
+        #verification
+        Assert-AreEqual $rgName $getRT.ResourceGroupName
+        Assert-AreEqual $routeTableName $getRT.Name
+		Assert-AreEqual true $getRt.DisableBGProutepropagation
+        Assert-NotNull $getRT.Etag
+        Assert-AreEqual 0 @($getRT.Routes).Count        
+
+        # list
+        $list = Get-AzureRmRouteTable -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($list).Count
+        Assert-AreEqual $list[0].ResourceGroupName $getRT.ResourceGroupName
+        Assert-AreEqual $list[0].Name $getRT.Name
+        Assert-AreEqual $list[0].DisableBGProutepropagation $getRT.DisableBGProutepropagation
+        Assert-AreEqual $list[0].Etag $getRT.Etag
+        Assert-AreEqual @($list[0].Routes).Count @($getRT.Routes).Count
+		
+        # Delete RouteTable
+        $delete = Remove-AzureRmRouteTable -ResourceGroupName $rgname -name $routeTableName -PassThru -Force
+        Assert-AreEqual true $delete
+        
+        $list = Get-AzureRmRouteTable -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

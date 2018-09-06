@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricClientCertificate, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceFabricClientCertificate", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class AddAzureRmServiceFabricClientCertificate : ServiceFabricClientCertificateBase
     {
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = SingleUpdateWithThumbprintSet,
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            var cluster = SFRPClient.Clusters.Get(ResourceGroupName, Name);
+            var cluster = GetCurrentCluster();
 
             if (ShouldProcess(target: this.Name, action: string.Format("Add client certificate")))
             {

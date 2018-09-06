@@ -13,22 +13,52 @@ Creates a VMSS configuration object.
 
 ## SYNTAX
 
+### DefaultParameterSet (Default)
 ```
 New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>]
  [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
  [[-OsProfile] <VirtualMachineScaleSetOSProfile>] [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
  [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
- [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-Zone <String[]>]
- [-PlanName <String>] [-PlanPublisher <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>]
- [-RollingUpgradePolicy <RollingUpgradePolicy>] [-AutoOSUpgrade] [-HealthProbeId <String>]
- [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-AssignIdentity]
+ [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-ZoneBalance]
+ [-PlatformFaultDomainCount <Int32>] [-Zone <String[]>] [-PlanName <String>] [-PlanPublisher <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-RollingUpgradePolicy <RollingUpgradePolicy>]
+ [-AutoOSUpgrade] [-DisableAutoRollback <Boolean>] [-HealthProbeId <String>]
+ [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-Priority <String>] [-EvictionPolicy <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ExplicitIdentityParameterSet
+```
+New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>]
+ [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
+ [[-OsProfile] <VirtualMachineScaleSetOSProfile>] [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
+ [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
+ [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-ZoneBalance]
+ [-PlatformFaultDomainCount <Int32>] [-Zone <String[]>] [-PlanName <String>] [-PlanPublisher <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-RollingUpgradePolicy <RollingUpgradePolicy>]
+ [-AutoOSUpgrade] [-DisableAutoRollback <Boolean>] [-HealthProbeId <String>]
+ [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-Priority <String>] [-EvictionPolicy <String>]
+ -IdentityType <ResourceIdentityType> [-IdentityId <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AssignIdentityParameterSet
+```
+New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag] <Hashtable>]
+ [[-SkuName] <String>] [[-SkuTier] <String>] [[-SkuCapacity] <Int32>] [[-UpgradePolicyMode] <UpgradeMode>]
+ [[-OsProfile] <VirtualMachineScaleSetOSProfile>] [[-StorageProfile] <VirtualMachineScaleSetStorageProfile>]
+ [[-NetworkInterfaceConfiguration] <VirtualMachineScaleSetNetworkConfiguration[]>]
+ [[-Extension] <VirtualMachineScaleSetExtension[]>] [-SinglePlacementGroup <Boolean>] [-ZoneBalance]
+ [-PlatformFaultDomainCount <Int32>] [-Zone <String[]>] [-PlanName <String>] [-PlanPublisher <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-RollingUpgradePolicy <RollingUpgradePolicy>]
+ [-AutoOSUpgrade] [-DisableAutoRollback <Boolean>] [-HealthProbeId <String>]
+ [-BootDiagnostic <BootDiagnostics>] [-LicenseType <String>] [-Priority <String>] [-EvictionPolicy <String>]
+ [-AssignIdentity] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzureRmVmssConfig** cmdlet creates a configurable local Virtual Manager Scale Set (VMSS)
 object. Other cmdlets are needed to configure the VMSS object. These cmdlets are:
-
 - Set-AzureRmVmssOsProfile
 - Set-AzureRmVmssStorageProfile
 - Add-AzureRmVmssNetworkInterfaceConfiguration
@@ -61,11 +91,11 @@ uses the VMSS configuration object created in the first command.
 Specify the system assigned identity for the virtual machine scale set.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AssignIdentityParameterSet
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -76,9 +106,9 @@ Accept wildcard characters: False
 Sets whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -91,9 +121,9 @@ Accept wildcard characters: False
 Specifies the virtual machine scale set boot diagnostics profile.
 
 ```yaml
-Type: BootDiagnostics
+Type: Microsoft.Azure.Management.Compute.Models.BootDiagnostics
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -106,7 +136,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -117,14 +147,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableAutoRollback
+Disable Auto Rollback for Auto OS Upgrade Policy
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EvictionPolicy
+Specifies the eviction policy for the virtual machines in the scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Extension
 Specifies the extension information object for the VMSS. You can use the
 **Add-AzureRmVmssExtension** cmdlet to add this object.
 
 ```yaml
-Type: VirtualMachineScaleSetExtension[]
+Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 10
@@ -134,15 +194,54 @@ Accept wildcard characters: False
 ```
 
 ### -HealthProbeId
-Specify the ID of a load balancer probe used to determine the health of an instance in the virtual machine scale set.
+Specifies the ID of a load balancer probe used to determine the health of an instance in the virtual machine scale set.
 HealthProbeId is in the form of '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IdentityId
+Specifies the list of user identities associated with the virtual machine scale set.
+The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+
+```yaml
+Type: System.String[]
+Parameter Sets: ExplicitIdentityParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IdentityType
+Specifies the type of identity used for the virtual machine scale set.
+The type 'SystemAssignedUserAssigned' includes both an implicitly created identity and a set of user assigned identities.
+The type 'None' will remove any identities from the virtual machine scale set.
+The acceptable values for this parameter are:
+- SystemAssigned
+- UserAssigned
+- SystemAssignedUserAssigned
+- None
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.ResourceIdentityType]
+Parameter Sets: ExplicitIdentityParameterSet
+Aliases:
+Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -153,9 +252,9 @@ Accept wildcard characters: False
 Specify the license type, which is for bringing your own license scenario.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -168,9 +267,9 @@ Accept wildcard characters: False
 Specifies the Azure location where the VMSS is created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -184,9 +283,9 @@ Specifies the network profile object that contains the networking properties for
 You can use the **Add-AzureRmVmssNetworkInterfaceConfiguration** cmdlet to add this object.
 
 ```yaml
-Type: VirtualMachineScaleSetNetworkConfiguration[]
+Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkConfiguration[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 9
@@ -200,9 +299,9 @@ Specifies the operating system profile object that contains the operating system
 You can use the **Set-AzureRmVmssOsProfile** cmdlet to set this object.
 
 ```yaml
-Type: VirtualMachineScaleSetOSProfile
+Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSProfile
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -215,9 +314,9 @@ Accept wildcard characters: False
 Indicates whether the cmdlet overprovisions the VMSS.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -230,9 +329,9 @@ Accept wildcard characters: False
 Specifies the plan name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -245,9 +344,9 @@ Accept wildcard characters: False
 Specifies the plan product.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -260,9 +359,9 @@ Accept wildcard characters: False
 Specifies the plan promotion code.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -275,9 +374,39 @@ Accept wildcard characters: False
 Specifies the plan publisher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PlatformFaultDomainCount
+Fault Domain count for each placement group.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Priority
+Specifies the priority for the virtual machines in the scale set.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -290,9 +419,9 @@ Accept wildcard characters: False
 Specifies the rolling upgrade policy.
 
 ```yaml
-Type: RollingUpgradePolicy
+Type: Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -305,9 +434,9 @@ Accept wildcard characters: False
 Specifies the single placement group.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -320,9 +449,9 @@ Accept wildcard characters: False
 Specifies the number of instances in the VMSS.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -335,7 +464,7 @@ Accept wildcard characters: False
 Specifies the size of all the instances of VMSS.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountType
 
@@ -348,14 +477,13 @@ Accept wildcard characters: False
 
 ### -SkuTier
 Specifies the tier of VMSS. The acceptable values for this parameter are:
-
 - Standard
 - Basic
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -369,9 +497,9 @@ Specifies the storage profile object that contains the disk properties for the V
 You can use the **Set-AzureRmVmssStorageProfile** cmdlet to set this object.
 
 ```yaml
-Type: VirtualMachineScaleSetStorageProfile
+Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetStorageProfile
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 8
@@ -382,13 +510,12 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -399,16 +526,14 @@ Accept wildcard characters: False
 
 ### -UpgradePolicyMode
 Specified the mode of an upgrade to virtual machines in the scale set.
-
 The acceptable values for this parameter are:
-
 - Automatic
 - Manual
 
 ```yaml
-Type: UpgradeMode
+Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.UpgradeMode]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Automatic, Manual, Rolling
 
 Required: False
@@ -422,9 +547,9 @@ Accept wildcard characters: False
 Specifies the zone list for the virtual machine scale set.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -433,11 +558,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ZoneBalance
+Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -452,7 +592,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -467,6 +607,32 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
+
+### System.Collections.Hashtable
+
+### System.Int32
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.UpgradeMode, Microsoft.Azure.Management.Compute, Version=21.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSProfile
+
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetStorageProfile
+
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkConfiguration[]
+
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension[]
+
+### System.String[]
+
+### Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy
+
+### Microsoft.Azure.Management.Compute.Models.BootDiagnostics
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.ResourceIdentityType, Microsoft.Azure.Management.Compute, Version=21.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ## OUTPUTS
 

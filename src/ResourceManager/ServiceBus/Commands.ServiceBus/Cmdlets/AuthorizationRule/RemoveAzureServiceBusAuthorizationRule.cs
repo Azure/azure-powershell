@@ -21,58 +21,40 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     /// <summary>
     /// 'Remove-AzureRmServiceBusAuthorizationRule' Cmdlet removes/deletes AuthorizationRule
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServiceBusAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureServiceBusAuthorizationRule : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1, ParameterSetName = NamespaceAuthoRuleParameterSet,
-            HelpMessage = "Namespace Name.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = QueueAuthoRuleParameterSet)]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = TopicAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = QueueAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = TopicAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = QueueAuthoRuleParameterSet,
-            HelpMessage = "Queue Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = QueueAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Queue Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasQueueName)]
         public string Queue { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = TopicAuthoRuleParameterSet,
-            HelpMessage = "Topic Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = TopicAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasTopicName)]
         public string Topic { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "AuthorizationRule Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "AuthorizationRule Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipeline = true,
-            Position = 4,
-            HelpMessage = "ServiceBus AuthorizationRule Object.")]        
+        [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 4, HelpMessage = "ServiceBus AuthorizationRule Object")]        
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthRuleObj)]
-        public SharedAccessAuthorizationRuleAttributes InputObject { get; set; }
+        public PSSharedAccessAuthorizationRuleAttributes InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -82,54 +64,61 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
         public override void ExecuteCmdlet()
         {
-            // Delete Namespace authorizationRule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
-                ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingNamespaceAuthorizationRule, Name, Namespace),
-                string.Format(Resources.RemoveNamespaceAuthorizationRule, Name, Namespace),
-                Name,
-                () =>
-                {                                        
-                    Client.DeleteNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
-
-                    if (PassThru)
+            try
+            {
+                // Delete Namespace authorizationRule
+                if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
+                    ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.RemovingNamespaceAuthorizationRule, Name, Namespace),
+                    string.Format(Resources.RemoveNamespaceAuthorizationRule, Name, Namespace),
+                    Name,
+                    () =>
                     {
-                        WriteObject(true);
-                    }
-                });
+                        Client.DeleteNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
 
-            // Delete Queue authorizationRule
-            if (ParameterSetName == QueueAuthoRuleParameterSet)
-                ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingQueueAuthorizationRule, Namespace, Queue, Name),
-                string.Format(Resources.RemoveQueueAuthorizationRule, Namespace, Queue, Name),
-                Name,
-                () =>
-                {
-                    Client.DeleteServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue, Name);
-                    if (PassThru)
-                    {
-                        WriteObject(true);
-                    }
-                });
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    });
 
-            // Delete Topic authorizationRule
-            if (ParameterSetName == TopicAuthoRuleParameterSet)
-                ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingTopicAuthorizationRule, Namespace, Topic, Name),
-                string.Format(Resources.RemoveTopicAuthorizationRule, Namespace, Topic, Name),
-                Name,
-                () =>
-                {
-                    Client.DeleteServiceBusTopicAuthorizationRule(ResourceGroupName, Namespace, Topic, Name);
-                    if (PassThru)
+                // Delete Queue authorizationRule
+                if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
+                    ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.RemovingQueueAuthorizationRule, Namespace, Queue, Name),
+                    string.Format(Resources.RemoveQueueAuthorizationRule, Namespace, Queue, Name),
+                    Name,
+                    () =>
                     {
-                        WriteObject(true);
-                    }
-                });
+                        Client.DeleteServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue, Name);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    });
+
+                // Delete Topic authorizationRule
+                if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
+                    ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.RemovingTopicAuthorizationRule, Namespace, Topic, Name),
+                    string.Format(Resources.RemoveTopicAuthorizationRule, Namespace, Topic, Name),
+                    Name,
+                    () =>
+                    {
+                        Client.DeleteServiceBusTopicAuthorizationRule(ResourceGroupName, Namespace, Topic, Name);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    });
+            }
+            catch (Management.ServiceBus.Models.ErrorResponseException ex)
+            {
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+            }
         }
     }
 }

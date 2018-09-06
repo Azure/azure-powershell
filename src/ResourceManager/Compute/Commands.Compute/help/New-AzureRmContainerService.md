@@ -34,10 +34,8 @@ PS C:\> New-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "
 
 The first command creates a resource group named ResourceGroup17 at the specified location.
 For more information, see the New-AzureRmResourceGroup cmdlet.
-
 The second command creates a container, and then stores it in the $Container variable.
 For more information, see the New-AzureRmContainerServiceConfig cmdlet.
-
 The final command creates a container service for the container stored in $Container.
 The service is named csResourceGroup17.
 
@@ -47,9 +45,9 @@ The service is named csResourceGroup17.
 RRun cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -63,9 +61,9 @@ Specifies a container service object that contains the properties for the new se
 To obtain a **ContainerService** object, use the New-AzureRmContainerServiceConfig cmdlet.
 
 ```yaml
-Type: PSContainerService
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -78,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,9 +91,9 @@ Accept wildcard characters: False
 Specifies the name of the container service that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -108,9 +106,9 @@ Accept wildcard characters: False
 Specifies the resource group in which this cmdlet deploys the container service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -123,7 +121,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -136,11 +134,10 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -156,8 +153,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ContainerService
-Parameter 'ContainerService' accepts value of type 'ContainerService' from the pipeline
+### System.String
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService
+Parameters: ContainerService (ByValue)
 
 ## OUTPUTS
 

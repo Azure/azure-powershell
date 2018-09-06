@@ -21,11 +21,15 @@ namespace Microsoft.Azure.Commands.Consumption.Common
             public const string SubscriptionItemParameterSet = "Subscription";
             public const string InvoiceItemParameterSet = "Invoice";
             public const string BillingPeriodItemParameterSet = "BillingPeriod";
+            public const string NotificationItemParameterSet = "Notification";
+            public const string PipingItemParameterSet = "Piping";
+            public const string PipingNotificationItemParameterSet = "Piping and Notification";
         }
 
         public class Expands
         {
             public const string MeterDetails = "meterDetails";
+            public const string AdditionalInfo = "additionalInfo";
             public const string AdditionalProperties = "additionalProperties";
         }
 
@@ -34,7 +38,7 @@ namespace Microsoft.Azure.Commands.Consumption.Common
             public const string SubscriptionScopeFormat = "/subscriptions/{0}";
             public const string InvoiceScopeFormat = "/subscriptions/{0}/providers/Microsoft.Billing/invoices/{1}";
             public const string BillingPeriodScopeFormat = "/subscriptions/{0}/providers/Microsoft.Billing/billingPeriods/{1}";
-            public const string DateTimeParameterFormat = "yyyy-MM-ddTHH:mm:ssZ";
+            public const string DateTimeParameterFormat = "yyyy-MM-dd";
         }
     }
 }

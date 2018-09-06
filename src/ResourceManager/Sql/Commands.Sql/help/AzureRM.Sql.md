@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.Sql
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Module Guid: 150d9544-6348-4373-806f-10cd0b4de4cb
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql
+Help Version: 4.4.0.0
 Locale: en-US
 ---
 
@@ -14,8 +14,29 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 ### [Add-AzureRmSqlDatabaseToFailoverGroup](Add-AzureRmSqlDatabaseToFailoverGroup.md)
 Adds one or more databases to an Azure SQL Database Failover Group.
 
+### [Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate.md)
+Adds a Transparent Data Encryption Certificate for the given managed instance
+
 ### [Add-AzureRmSqlServerKeyVaultKey](Add-AzureRmSqlServerKeyVaultKey.md)
 Adds a Key Vault key to a SQL server.
+
+### [Add-AzureRmSqlServerTransparentDataEncryptionCertificate](Add-AzureRmSqlServerTransparentDataEncryptionCertificate.md)
+Adds a Transparent Data Encryption Certificate for the given SQL Server instance
+
+### [Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
+Clears the vulnerability assessment rule baseline.
+
+### [Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+Clears the vulnerability assessment settings of a database.
+
+### [Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan](Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan.md)
+Converts a vulnerability assessment scan results to Excel format.
+
+### [Disable-AzureRmSqlServerAdvancedThreatProtection](Disable-AzureRmSqlServerAdvancedThreatProtection.md)
+Disables Advanced Threat Protection on a server.
+
+### [Enable-AzureRmSqlServerAdvancedThreatProtection](Enable-AzureRmSqlServerAdvancedThreatProtection.md)
+Enables Advanced Threat Protection on a server.
 
 ### [Get-AzureRmSqlCapability](Get-AzureRmSqlCapability.md)
 Gets SQL Database capabilities for the current subscription.
@@ -62,6 +83,9 @@ Gets the details of an import or export of an Azure SQL Database.
 ### [Get-AzureRmSqlDatabaseIndexRecommendations](Get-AzureRmSqlDatabaseIndexRecommendations.md)
 Gets the recommended index operations for a server or database.
 
+### [Get-AzureRmSqlDatabaseLongTermRetentionBackup](Get-AzureRmSqlDatabaseLongTermRetentionBackup.md)
+Gets one or more long term retention backups.
+
 ### [Get-AzureRmSqlDatabaseRecommendedAction](Get-AzureRmSqlDatabaseRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Database Advisor.
 
@@ -85,6 +109,15 @@ Gets the progress of a TDE scan of a database.
 
 ### [Get-AzureRmSqlDatabaseUpgradeHint](Get-AzureRmSqlDatabaseUpgradeHint.md)
 Gets pricing tier hints for a database.
+
+### [Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
+Gets the vulnerability assessment rule baseline.
+
+### [Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord](Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord.md)
+Gets all vulnerability assessment scan record(s) associated with a given database.
+
+### [Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+Gets the vulnerability assessment settings of a database.
 
 ### [Get-AzureRmSqlDeletedDatabaseBackup](Get-AzureRmSqlDeletedDatabaseBackup.md)
 Gets a deleted database that you can restore.
@@ -112,6 +145,9 @@ Returns information about SQL Database servers.
 
 ### [Get-AzureRmSqlServerActiveDirectoryAdministrator](Get-AzureRmSqlServerActiveDirectoryAdministrator.md)
 Gets information about an Azure AD administrator for SQL Server.
+
+### [Get-AzureRmSqlServerAdvancedThreatProtectionPolicy](Get-AzureRmSqlServerAdvancedThreatProtectionPolicy.md)
+Gets Advanced Threat Protection policy of a server.
 
 ### [Get-AzureRmSqlServerAdvisor](Get-AzureRmSqlServerAdvisor.md)
 Gets one or more Advisors for an Azure SQL Server.
@@ -200,6 +236,9 @@ This command creates a new Azure SQL Database Failover Group.
 ### [New-AzureRmSqlDatabaseImport](New-AzureRmSqlDatabaseImport.md)
 Imports a .bacpac file and create a new database on the server.
 
+### [New-AzureRmSqlDatabaseRestorePoint](New-AzureRmSqlDatabaseRestorePoint.md)
+Creates a new restore point from which a SQL Database can be restored.
+
 ### [New-AzureRmSqlDatabaseSecondary](New-AzureRmSqlDatabaseSecondary.md)
 Creates a secondary database for an existing database and starts data replication.
 
@@ -250,6 +289,12 @@ Removes an Azure SQL Database Failover Group.
 
 ### [Remove-AzureRmSqlDatabaseFromFailoverGroup](Remove-AzureRmSqlDatabaseFromFailoverGroup.md)
 Removes one or more databases from an Azure SQL Database Failover Group.
+
+### [Remove-AzureRmSqlDatabaseLongTermRetentionBackup](Remove-AzureRmSqlDatabaseLongTermRetentionBackup.md)
+Deletes a long term retention backup.
+
+### [Remove-AzureRmSqlDatabaseRestorePoint](Remove-AzureRmSqlDatabaseRestorePoint.md)
+Removes given restore point from a SQL Database.
 
 ### [Remove-AzureRmSqlDatabaseSecondary](Remove-AzureRmSqlDatabaseSecondary.md)
 Terminates data replication between a SQL Database and the specified secondary database.
@@ -344,6 +389,9 @@ Sets a threat detection policy on a database.
 ### [Set-AzureRmSqlDatabaseTransparentDataEncryption](Set-AzureRmSqlDatabaseTransparentDataEncryption.md)
 Modifies TDE property for a database.
 
+### [Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
+Sets the vulnerability assessment rule baseline.
+
 ### [Set-AzureRmSqlElasticPool](Set-AzureRmSqlElasticPool.md)
 Modifies properties of an elastic database pool in Azure SQL Database.
 
@@ -395,6 +443,9 @@ Modifies the configuration of an Azure SQL Server Virtual Network Rule.
 ### [Start-AzureRmSqlDatabaseExecuteIndexRecommendation](Start-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Starts the workflow that runs a recommended index operation.
 
+### [Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan](Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan.md)
+Starts a vulnerability assessment scan.
+
 ### [Start-AzureRmSqlServerUpgrade](Start-AzureRmSqlServerUpgrade.md)
 Starts the upgrade of a SQL Database server.
 
@@ -407,6 +458,9 @@ Cancels the asynchronous updates operation on the database.
 ### [Stop-AzureRmSqlDatabaseExecuteIndexRecommendation](Stop-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
 
+### [Stop-AzureRmSqlElasticPoolActivity](Stop-AzureRmSqlElasticPoolActivity.md)
+Cancels the asynchronous update operation on an elastic pool.
+
 ### [Stop-AzureRmSqlServerUpgrade](Stop-AzureRmSqlServerUpgrade.md)
 Stops the upgrade of a SQL Database server.
 
@@ -418,6 +472,9 @@ Suspends a SQL Data Warehouse database.
 
 ### [Switch-AzureRmSqlDatabaseFailoverGroup](Switch-AzureRmSqlDatabaseFailoverGroup.md)
 Executes a failover of an Azure SQL Database Failover Group.
+
+### [Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+Updates the vulnerability assessment settings of a database.
 
 ### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
 Updates an Azure SQL Database Sync Group.

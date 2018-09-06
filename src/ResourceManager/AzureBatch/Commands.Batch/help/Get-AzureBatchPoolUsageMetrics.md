@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 4B373447-3078-4C1F-932E-8337AB170DEB
@@ -65,10 +65,8 @@ VirtualMachineSize : standard_d4
 
 The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzureRmBatchAccountKeys**.
 The command stores this object reference in the $Context variable.
-
 The next two commands create **DateTime** objects by using the Get-Date cmdlet.
 The commands store these values in the $StartTime and $EndTime variables for use with the final command.
-
 The final command returns all of the pool usage metrics, aggregated by pool, across time interval between the specified start and end times.
 
 ### Example 2: Get pool usage metrics by using a filter
@@ -93,9 +91,9 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -108,7 +106,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -125,9 +123,9 @@ Specify a time at least two hours earlier.
 If you do not specify an end time, this cmdlet uses the last aggregation interval currently available.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -142,9 +140,9 @@ The only valid property is **poolId** with a string value.
 Possible operations are the following: eq, ge, gt, le, lt, startswith.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -159,9 +157,9 @@ Specify a time at least two and a half hours earlier.
 If you do not specify a start time, this cmdlet uses the last aggregation interval currently available.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -175,12 +173,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 
-### PSPoolUsageMetrics
+### Microsoft.Azure.Commands.Batch.Models.PSPoolUsageMetrics
 
 ## NOTES
 

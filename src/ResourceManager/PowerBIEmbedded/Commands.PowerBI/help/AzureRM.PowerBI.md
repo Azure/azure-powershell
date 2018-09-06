@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.PowerBIEmbedded
 Module Guid: acace26c-1775-4100-85c0-20c4d71eaa22
 Download Help Link: None_Azure

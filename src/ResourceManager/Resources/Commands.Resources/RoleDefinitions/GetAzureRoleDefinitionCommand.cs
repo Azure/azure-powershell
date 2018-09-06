@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Get the available role Definitions for certain resource types.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRoleDefinition"), OutputType(typeof(List<PSRoleDefinition>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RoleDefinition"), OutputType(typeof(PSRoleDefinition))]
     public class GetAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName, HelpMessage = "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.")]
@@ -46,16 +46,11 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "If specified, only displays the custom created roles in the directory.")]
         public SwitchParameter Custom { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName, HelpMessage = "If specified, displays the the roles at and below scope.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionCustom, HelpMessage = "If specified, displays the the roles at and below scope.")]
-        public SwitchParameter AtScopeAndBelow { get; set; }
-
         public override void ExecuteCmdlet()
         {
             FilterRoleDefinitionOptions options = new FilterRoleDefinitionOptions
             {
                 CustomOnly = Custom.IsPresent ? true : false,
-                ScopeAndBelow = AtScopeAndBelow.IsPresent ? true : false,
                 Scope = Scope,
                 ResourceIdentifier = new ResourceIdentifier
                 {

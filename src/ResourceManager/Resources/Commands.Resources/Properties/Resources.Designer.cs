@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Commands.Resources.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -20,7 +19,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Resources.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Resources.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -80,20 +79,29 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application with display name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string ApplicationWithDisplayNameDoesntExist {
+            get {
+                return ResourceManager.GetString("ApplicationWithDisplayNameDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancelling active deployment ....
+        /// </summary>
+        internal static string CancelDeploymentMessage {
+            get {
+                return ResourceManager.GetString("CancelDeploymentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to cancel the active deployment of resource group &apos;{0}&apos;?.
         /// </summary>
         internal static string CancelResourceGroupDeployment {
             get {
                 return ResourceManager.GetString("CancelResourceGroupDeployment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cancelling active resource group deployment ....
-        /// </summary>
-        internal static string CancelResourceGroupDeploymentMessage {
-            get {
-                return ResourceManager.GetString("CancelResourceGroupDeploymentMessage", resourceCulture);
             }
         }
         
@@ -116,20 +124,20 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting the deployment ....
+        /// </summary>
+        internal static string DeleteDeploymentMessage {
+            get {
+                return ResourceManager.GetString("DeleteDeploymentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete the deployment &apos;{0}&apos;?.
         /// </summary>
         internal static string DeleteResourceGroupDeployment {
             get {
                 return ResourceManager.GetString("DeleteResourceGroupDeployment", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Deleting the deployment ....
-        /// </summary>
-        internal static string DeleteResourceGroupDeploymentMessage {
-            get {
-                return ResourceManager.GetString("DeleteResourceGroupDeploymentMessage", resourceCulture);
             }
         }
         
@@ -238,6 +246,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string IncludeClassicAdminsNotSupported {
             get {
                 return ResourceManager.GetString("IncludeClassicAdminsNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The User/Application doesn&apos;t have sufficient AAD graph permissions to perform the operation..
+        /// </summary>
+        internal static string InSufficientGraphPermission {
+            get {
+                return ResourceManager.GetString("InSufficientGraphPermission", resourceCulture);
             }
         }
         
@@ -539,6 +556,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove group with object id &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveGroupConfirmation {
+            get {
+                return ResourceManager.GetString("RemoveGroupConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing resource group ....
         /// </summary>
         internal static string RemoveResourceGroupMessage {
@@ -625,6 +651,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RemovingApplication {
             get {
                 return ResourceManager.GetString("RemovingApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing group ....
+        /// </summary>
+        internal static string RemovingGroup {
+            get {
+                return ResourceManager.GetString("RemovingGroup", resourceCulture);
             }
         }
         

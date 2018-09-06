@@ -72,12 +72,16 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
         protected const string NamespaceResourceIdParameterSet = "NamespaceResourceIdParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
+        protected const string EventhubResourceIdParameterSet = "EventhubResourceIdParameterSet";
+        protected const string ConsumergroupResourceIdParameterSet = "ConsumergroupResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
         protected const string EventhubPropertiesParameterSet = "EventhubPropertiesSet";
         protected const string ConsumergroupPropertiesParameterSet = "ConsumergroupPropertiesSet";
         protected const string GeoDRParameterSet = "GeoDRParameterSet";
+
+        protected const string EventhubDefaultParameterSet = "EventhubDefaultSet";
 
         //Parametersets for Authorizationrules
         protected const string NamespaceParameterSet = "NamespaceParameterSet";
@@ -171,5 +175,34 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         }
 
         #endregion
+    }
+    public class LocalResourceIdentifier : ResourceIdentifier
+    {
+        public LocalResourceIdentifier(string strResourceID) : base(strResourceID)
+        {
+            string[] tokens = base.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+            // for upto 3 Parents 
+            switch (tokens.Length)
+            {
+                case 2:
+                    ParentResource = tokens[1];
+                    break;
+                case 4:
+                    ParentResource = tokens[1];
+                    ParentResource1 = tokens[3];
+                    break;
+                case 6:
+                    ParentResource = tokens[1];
+                    ParentResource1 = tokens[3];
+                    ParentResource2 = tokens[5];
+                    break;
+            }
+        }
+
+        public string ParentResource1 { get; set; }
+
+        public string ParentResource2 { get; set; }
+
     }
 }

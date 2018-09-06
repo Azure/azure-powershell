@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: 09CC097E-0210-4443-BCDB-5CF6C8300288
@@ -34,20 +34,15 @@ The **New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource** cmdlet
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CounterName
 Specifies the name of a counter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 5
@@ -60,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,9 +70,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -90,9 +85,9 @@ Accept wildcard characters: False
 Specifies an instance name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -105,9 +100,9 @@ Accept wildcard characters: False
 Specifies the interval of collection.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -120,9 +115,9 @@ Accept wildcard characters: False
 Specifies a name for the data source.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -135,9 +130,9 @@ Accept wildcard characters: False
 Specifies the name of an object.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -150,9 +145,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group that contains computers.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -165,9 +160,9 @@ Accept wildcard characters: False
 Use legacy collector or the default collector.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -180,9 +175,9 @@ Accept wildcard characters: False
 Specifies a workspace in which this cmdlet operates.
 
 ```yaml
-Type: PSWorkspace
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 Parameter Sets: ByWorkspaceObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -195,9 +190,9 @@ Accept wildcard characters: False
 Specifies the name of a workspace in which this cmdlet operates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -210,7 +205,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -226,7 +221,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -242,8 +237,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSWorkspace
-Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Parameters: Workspace (ByValue)
+
+### System.String
+
+### System.Int32
 
 ## OUTPUTS
 
@@ -252,4 +251,3 @@ Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
 ## NOTES
 
 ## RELATED LINKS
-

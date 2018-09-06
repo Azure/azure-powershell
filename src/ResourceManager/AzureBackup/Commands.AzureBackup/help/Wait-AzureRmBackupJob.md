@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: C5126E20-0A93-4ACE-8297-F1E8E17BEF53
@@ -22,15 +22,9 @@ Wait-AzureRmBackupJob -Job <Object> [-TimeOut <Int64>] [-DefaultProfile <IAzureC
 The **Wait-AzureRmBackupJob** cmdlet waits for an Azure Backup job to finish.
 Backup jobs can take a long time.
 If you run a backup job as part of a script, you may want to force the script to wait for job to finish before it continues to other tasks.
-
 A script that includes this cmdlet can be simpler than one that polls the Backup service for the job status.
 
 ## EXAMPLES
-
-### 1:
-```
-
-```
 
 ## PARAMETERS
 
@@ -38,7 +32,7 @@ A script that includes this cmdlet can be simpler than one that polls the Backup
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -54,9 +48,9 @@ Specifies a job that this cmdlet cancels.
 To obtain an **AzureRmBackupJob** object, use the Get-AzureRmBackupJob cmdlet.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -70,9 +64,9 @@ Specifies the maximum time, in seconds, that this cmdlet waits for the job to fi
 We recommend that you specify a time-out value.
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -86,11 +80,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupJob
+### System.Object
+Parameters: Job (ByValue)
 
 ## OUTPUTS
 
-### AzureRmBackupJob[]
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
 
 ## NOTES
 

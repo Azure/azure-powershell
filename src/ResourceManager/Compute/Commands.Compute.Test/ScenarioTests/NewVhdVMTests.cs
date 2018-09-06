@@ -20,23 +20,31 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class NewVhdVMTests
     {
+        public XunitTracingInterceptor _logger;
+
         public NewVhdVMTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWithValidVhdDiskFile()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-NewAzureRmVhdVMWithValidDiskFile");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmVhdVMWithValidDiskFile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWithInvalidVhdDiskFile()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-NewAzureRmVhdVMWithInvalidDiskFile");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmVhdVMWithInvalidDiskFile");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -21,7 +22,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Cdn</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Cdn\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,7 +34,7 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Cdn</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Cdn\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -45,21 +46,22 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Cdn">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.3.0.0-preview\lib\net45\Microsoft.Azure.Management.Cdn.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Management.Cdn, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.4.0.1-preview\lib\net452\Microsoft.Azure.Management.Cdn.dll</HintPath>
     </Reference>
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AzureCdnCmdletBase.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="CustomDomain\DisableAzureRmCdnCustomDomain.cs" />
+    <Compile Include="CustomDomain\EnableAzureRmCdnCustomDomain.cs" />
     <Compile Include="CustomDomain\GetAzureRmCdnCustomDomain.cs" />
     <Compile Include="CustomDomain\NewAzureRmCdnCustomDomain.cs" />
     <Compile Include="CustomDomain\RemoveAzureRmCdnCustomDomain.cs" />
     <Compile Include="EdgeNodes\PSCIDRIpAddress.cs" />
     <Compile Include="EdgeNodes\PSEdgeNode.cs" />
     <Compile Include="EdgeNodes\PSIpAddressGroup.cs" />
+    <Compile Include="Endpoint\ConfirmAzureRmCdnEndpointProbeUrl.cs" />
     <Compile Include="Endpoint\GetAzureRmCdnEndpointNameAvailability.cs" />
     <Compile Include="Endpoint\GetAzureRmCdnEndpoint.cs" />
     <Compile Include="Endpoint\GetAzureRmCdnEndpointResourceUsage.cs" />
@@ -74,6 +76,17 @@
     <Compile Include="Helpers\ModelExtensions.cs" />
     <Compile Include="Models\CustomDomain\PSCustomDomain.cs" />
     <Compile Include="Models\CustomDomain\PSCustomDomainResourceState.cs" />
+    <Compile Include="Models\Endpoint\PSCacheExpirationActionParameters.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryRuleCacheExpirationAction.cs" />
+    <Compile Include="Models\Endpoint\PSUrlFileExtensionConditionParameters.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryRuleUrlFileExtensionCondition.cs" />
+    <Compile Include="Models\Endpoint\PSUrlPathConditionParameters.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryRuleUrlPathCondition.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryRuleCondition.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryRuleAction.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryRule.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryPolicy.cs" />
+    <Compile Include="Models\Endpoint\PSValidateProbeOutput.cs" />
     <Compile Include="Models\Endpoint\PSCheckNameAvailabilityOutput.cs" />
     <Compile Include="Models\Endpoint\PSCustomDomainInvalidReason.cs" />
     <Compile Include="Models\Endpoint\PSDeepCreatedOrigin.cs" />
@@ -88,6 +101,7 @@
     <Compile Include="Models\Endpoint\PSValidateCustomDomainOutput.cs" />
     <Compile Include="Models\Origin\PSOrigin.cs" />
     <Compile Include="Models\Origin\PSOriginResourceState.cs" />
+    <Compile Include="Models\Profile\PSOptimizationType.cs" />
     <Compile Include="Models\Profile\PSProfile.cs" />
     <Compile Include="Models\Profile\PSProfileResourceState.cs" />
     <Compile Include="Models\PSProvisioningState.cs" />
@@ -100,6 +114,7 @@
     <Compile Include="Origin\GetAzureRmCdnOrigin.cs" />
     <Compile Include="Origin\SetAzureRmCdnOrigin.cs" />
     <Compile Include="Profile\GetAzureRmCdnProfile.cs" />
+    <Compile Include="Profile\GetAzureRmCdnProfileSupportedOptimizationType.cs" />
     <Compile Include="Profile\GetAzureRmCdnProfileSsoUrl.cs" />
     <Compile Include="Profile\GetAzureRmCdnProfileResourceUsage.cs" />
     <Compile Include="Profile\NewAzureRmCdnProfile.cs" />
@@ -115,32 +130,18 @@
     <Compile Include="Subscription\GetAzureRmCdnSubscriptionResourceUsage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
+    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
+      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
+      <Name>Commands.Profile</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Cdn.psd1">
-      <Link>AzureRM.Cdn.psd1</Link>
+    <None Include="AzureRM.Cdn.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.Cdn.dll-help.psd1" />
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="StartupScripts\*.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="packages.config" />
+    <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -151,7 +152,6 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />

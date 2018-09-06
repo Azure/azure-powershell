@@ -16,20 +16,25 @@ using System;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
     public class ActionGroupsTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public ActionGroupsTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, "Scenario")]
+        [Fact(Skip = "TODO: #7024: Needs to be recorded again")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddGetListSetRemoveActionGroup()
         {
-            TestsController.NewInstance.RunPsTest("Test-AddGetListSetRemoveActionGroup");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-AddGetListSetRemoveActionGroup");
         }
     }
 }

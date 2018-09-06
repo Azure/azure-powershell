@@ -55,7 +55,7 @@ function Is-NamespaceActive($resourceGroupName, $namespaceName)
 
         for ($i = 0; $i -lt $createdNamespace.Count; $i++)
         {
-            if ($createdNamespace[$i].Name -eq $namespaceName ) 
+            if ($createdNamespace[$i].Name -eq $namespaceName )
             {
                 $namespaceState = $createdNamespace[$i].ProvisioningState
             }
@@ -71,18 +71,18 @@ Tests NotificationHub Namespace Create List Remove operations.
 #>
 function Test-CRUDNamespace
 {
-    # Setup    
+    # Setup
     $location = "South Central US"
 	$skuTier = "Basic"
     Write-Debug "Create resource group"
     $resourceGroupName = Get-ResourceGroupName
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
-    Write-Debug "ResourceGroup name : $resourceGroupName" 
-	
+    Write-Debug "ResourceGroup name : $resourceGroupName"
+
     $namespaceName = Get-NamespaceName
-    
+
     Write-Debug " Create new notificationHub namespace"
-    Write-Debug "NamespaceName : $namespaceName" 
+    Write-Debug "NamespaceName : $namespaceName"
     $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location -skuTier $skuTier
 
     if($env:AZURE_TEST_MODE -ne "Playback")
@@ -108,24 +108,24 @@ function Test-CRUDNamespace
     }
 
     Assert-True {$found -eq 1} "Namespace created earlier is not found."
-  
+
     Write-Debug "Create one more resource group"
     $secondResourceGroup = Get-ResourceGroupName
-    Write-Debug "ResourceGroup name : $secondResourceGroup" 
-    New-AzureRmResourceGroup -Name $secondResourceGroup -Location $location -Force    
+    Write-Debug "ResourceGroup name : $secondResourceGroup"
+    New-AzureRmResourceGroup -Name $secondResourceGroup -Location $location -Force
 
     Write-Debug "Create 2nd new notificationHub namespace"
     $namespaceName2 = Get-NamespaceName
-    Write-Debug "Namespace name : $namespaceName2" 
+    Write-Debug "Namespace name : $namespaceName2"
     $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2 -Location $location
-   
+
     if($env:AZURE_TEST_MODE -ne "Playback")
     {
         Is-NamespaceActive $secondResourceGroup $namespaceName2
     }
 
     Write-Debug "Get all the namespaces created in the resourceGroup"
-    $allCreatedNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup 
+    $allCreatedNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup
 
     $found = 0
     for ($i = 0; $i -lt $allCreatedNamespace.Count; $i++)
@@ -142,9 +142,9 @@ function Test-CRUDNamespace
     }
 
     Assert-True {$found -eq 1} "Namespace created earlier is not found."
-    
+
     Write-Debug "Get all the namespaces created in the subscription"
-    $allCreatedNamespace = Get-AzureRmNotificationHubsNamespace 
+    $allCreatedNamespace = Get-AzureRmNotificationHubsNamespace
 
     $found = 0
     for ($i = 0; $i -lt $allCreatedNamespace.Count; $i++)
@@ -166,14 +166,14 @@ function Test-CRUDNamespace
         }
     }
 
-    Assert-True {$found -eq 2} "Namespaces created earlier is not found."    
+    Assert-True {$found -eq 2} "Namespaces created earlier is not found."
 
     Write-Debug " Update an existing namespace"
     $tags = @{"tag1" = "value1" ; "tag2" = "value2"}
     Write-Debug  "Tags List : $tags"
 	$skuTier = "Standard"
-    
-    $updatedNamespace = Set-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2 -Location $location -Tags $tags -skuTier $skuTier -Force
+
+    $updatedNamespace = Set-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2 -Location $location -Tag $tags -skuTier $skuTier -Force
     Assert-AreEqual 2 $updatedNamespace.Tags.Count
 
 	if($env:AZURE_TEST_MODE -ne "Playback")
@@ -183,7 +183,7 @@ function Test-CRUDNamespace
 
     Write-Debug " Get the updated namespace "
     $getUpdatedNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2
-	#uncomment once the playback mode doesnt fail on this 
+	#uncomment once the playback mode doesnt fail on this
     #Assert-AreEqual $updatedNamespace.Tags.Count $getUpdatedNamespace.Tags.Count
 	Assert-AreEqual "Standard" $updatedNamespace.SkuName
 
@@ -202,17 +202,17 @@ Tests NotificationHub Namespace AuthorizationRules Create List Remove operations
 #>
 function Test-CRUDNamespaceAuth
 {
-    # Setup    
+    # Setup
     $location = "South Central US"
 	$skuTier = "Basic"
-    
+
     Write-Debug " Create resource group"
     $resourceGroupName = Get-ResourceGroupName
     Write-Debug "ResourceGroup name : $resourceGroupName"
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
 
     $namespaceName = Get-NamespaceName
-    
+
     Write-Debug " Create new notificationHub namespace"
     Write-Debug "Namespace name : $namespaceName"
 
@@ -221,7 +221,7 @@ function Test-CRUDNamespaceAuth
     {
         Is-NamespaceActive $resourceGroupName $namespaceName
     }
-        
+
     Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
     Assert-True {$createdNamespace.Count -eq 1}
@@ -307,7 +307,7 @@ function Test-CRUDNamespaceAuth
     $createdAuthRule.Location = "South Central US"
 
     $updatedAuthRule = Set-AzureRmNotificationHubsNamespaceAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -SASRule $createdAuthRule -Force
-    
+
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
@@ -317,10 +317,10 @@ function Test-CRUDNamespaceAuth
     {
         Wait-Seconds 15
     }
-    
+
     Write-Debug "Get updated Namespace AuthorizationRules"
     $updatedAuthRule = Get-AzureRmNotificationHubsNamespaceAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -AuthorizationRule $authRuleName
-    
+
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
@@ -334,8 +334,8 @@ function Test-CRUDNamespaceAuth
     Assert-True {$namespaceListKeys.SecondaryConnectionString -ne $null}
     Assert-True {$namespaceListKeys.PrimaryKey -ne $null}
     Assert-True {$namespaceListKeys.SecondaryKey -ne $null}
-    Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($namespaceListKeys.PrimaryKey)} 
-    Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($namespaceListKeys.SecondaryKey)} 
+    Assert-True {$namespaceListKeys.PrimaryConnectionString.Contains($namespaceListKeys.PrimaryKey)}
+    Assert-True {$namespaceListKeys.SecondaryConnectionString.Contains($namespaceListKeys.SecondaryKey)}
 
     Write-Debug "Regenerate namespace authorizationRule key"
     $policyKeyName = "PrimaryKey"
@@ -345,11 +345,11 @@ function Test-CRUDNamespaceAuth
     Assert-True {$namespaceRegenerateKey.SecondaryConnectionString -ne $null}
     Assert-True {$namespaceRegenerateKey.PrimaryKey -ne $null}
     Assert-True {$namespaceRegenerateKey.SecondaryKey -ne $null}
-    Assert-True {$namespaceRegenerateKey.PrimaryConnectionString.Contains($namespaceRegenerateKey.PrimaryKey)} 
-    Assert-True {$namespaceRegenerateKey.SecondaryConnectionString.Contains($namespaceRegenerateKey.SecondaryKey)} 
-    Assert-True {$namespaceRegenerateKey.PrimaryKey -ne $namespaceListKeys.PrimaryKey} 
-    Assert-True {$namespaceRegenerateKey.SecondaryKey -eq $namespaceListKeys.SecondaryKey} 
-    
+    Assert-True {$namespaceRegenerateKey.PrimaryConnectionString.Contains($namespaceRegenerateKey.PrimaryKey)}
+    Assert-True {$namespaceRegenerateKey.SecondaryConnectionString.Contains($namespaceRegenerateKey.SecondaryKey)}
+    Assert-True {$namespaceRegenerateKey.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
+    Assert-True {$namespaceRegenerateKey.SecondaryKey -eq $namespaceListKeys.SecondaryKey}
+
      Write-Debug "Get namespace authorizationRules connectionStrings after regeneration of the primary key"
     $namespaceListKeysAfterRegenerate = Get-AzureRmNotificationHubsNamespaceListKeys -ResourceGroup $resourceGroupName -Namespace $namespaceName -AuthorizationRule $authRuleName
 
@@ -357,16 +357,16 @@ function Test-CRUDNamespaceAuth
     Assert-True {$namespaceListKeysAfterRegenerate.SecondaryConnectionString -ne $null}
     Assert-True {$namespaceListKeysAfterRegenerate.PrimaryKey -ne $null}
     Assert-True {$namespaceListKeysAfterRegenerate.SecondaryKey -ne $null}
-    Assert-True {$namespaceListKeysAfterRegenerate.PrimaryConnectionString.Contains($namespaceListKeysAfterRegenerate.PrimaryKey)} 
-    Assert-True {$namespaceListKeysAfterRegenerate.SecondaryConnectionString.Contains($namespaceListKeysAfterRegenerate.SecondaryKey)} 
-    Assert-True {$namespaceListKeysAfterRegenerate.PrimaryKey -eq $namespaceRegenerateKey.PrimaryKey} 
-    Assert-True {$namespaceListKeysAfterRegenerate.SecondaryKey -eq $namespaceRegenerateKey.SecondaryKey} 
-    Assert-True {$namespaceListKeysAfterRegenerate.PrimaryKey -ne $namespaceListKeys.PrimaryKey} 
-    Assert-True {$namespaceListKeysAfterRegenerate.SecondaryKey -eq $namespaceListKeys.SecondaryKey} 
+    Assert-True {$namespaceListKeysAfterRegenerate.PrimaryConnectionString.Contains($namespaceListKeysAfterRegenerate.PrimaryKey)}
+    Assert-True {$namespaceListKeysAfterRegenerate.SecondaryConnectionString.Contains($namespaceListKeysAfterRegenerate.SecondaryKey)}
+    Assert-True {$namespaceListKeysAfterRegenerate.PrimaryKey -eq $namespaceRegenerateKey.PrimaryKey}
+    Assert-True {$namespaceListKeysAfterRegenerate.SecondaryKey -eq $namespaceRegenerateKey.SecondaryKey}
+    Assert-True {$namespaceListKeysAfterRegenerate.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
+    Assert-True {$namespaceListKeysAfterRegenerate.SecondaryKey -eq $namespaceListKeys.SecondaryKey}
 
     Write-Debug "Delete the created Namespace AuthorizationRule"
     Remove-AzureRmNotificationHubsNamespaceAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -AuthorizationRule $authRuleName -Force
-    
+
     Write-Debug " Delete namespaces"
     Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Force
 
@@ -381,7 +381,7 @@ Tests NotificationHub Create List Remove operations.
 #>
 function Test-CRUDNotificationHub
 {
-    # Setup    
+    # Setup
     $location = "South Central US"
 	$skuTier = "Basic"
     Write-Debug "  Create resource group"
@@ -390,7 +390,7 @@ function Test-CRUDNotificationHub
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
 
     $namespaceName = Get-NamespaceName
-    
+
     Write-Debug "  Create new notificationHub namespace"
     Write-Debug " Namespace name : $namespaceName"
     $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location -skuTier $skuTier
@@ -398,7 +398,7 @@ function Test-CRUDNotificationHub
     {
         Is-NamespaceActive $resourceGroupName $namespaceName
     }
-    
+
     Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
     Assert-True {$createdNamespace.Count -eq 1}
@@ -525,7 +525,7 @@ Tests NotificationHub AuthorizationRules Create List Remove operations.
 #>
 function Test-CRUDNHAuth
 {
-    # Setup    
+    # Setup
     $location = "South Central US"
     $skuTier = "Basic"
     Write-Debug " Create resource group"
@@ -534,7 +534,7 @@ function Test-CRUDNHAuth
     New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
 
     $namespaceName = Get-NamespaceName
-    
+
     Write-Debug " Create new notificationHub namespace"
     Write-Debug "Namespace name : $namespaceName"
     $result = New-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Location $location -skuTier $skuTier
@@ -542,7 +542,7 @@ function Test-CRUDNHAuth
     {
         Is-NamespaceActive $resourceGroupName $namespaceName
     }
-    
+
     Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
     Assert-True {$createdNamespace.Count -eq 1}
@@ -592,7 +592,7 @@ function Test-CRUDNHAuth
     Assert-True { $createdAuthRule.Rights -Contains "Send" }
 
     Write-Debug "Get All notificationHub AuthorizationRule"
-    $result = Get-AzureRmNotificationHubAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName 
+    $result = Get-AzureRmNotificationHubAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName
 
     $found = 0
     for ($i = 0; $i -lt $result.Count; $i++)
@@ -614,7 +614,7 @@ function Test-CRUDNHAuth
     $createdAuthRule.Location = $location
 
     $updatedAuthRule = Set-AzureRmNotificationHubAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -SASRule $createdAuthRule -Force
-    
+
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
@@ -624,9 +624,9 @@ function Test-CRUDNHAuth
     {
         Wait-Seconds 15
     }
-    
+
     $updatedAuthRule = Get-AzureRmNotificationHubAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -AuthorizationRule $authRuleName
-    
+
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
@@ -640,8 +640,8 @@ function Test-CRUDNHAuth
     Assert-True {$notificationHubsListKeys.SecondaryConnectionString -ne $null}
     Assert-True {$notificationHubsListKeys.PrimaryKey -ne $null}
     Assert-True {$notificationHubsListKeys.SecondaryKey -ne $null}
-    Assert-True {$notificationHubsListKeys.PrimaryConnectionString.Contains($notificationHubsListKeys.PrimaryKey)} 
-    Assert-True {$notificationHubsListKeys.SecondaryConnectionString.Contains($notificationHubsListKeys.SecondaryKey)} 
+    Assert-True {$notificationHubsListKeys.PrimaryConnectionString.Contains($notificationHubsListKeys.PrimaryKey)}
+    Assert-True {$notificationHubsListKeys.SecondaryConnectionString.Contains($notificationHubsListKeys.SecondaryKey)}
 
     Write-Debug "Regenerate notificationHub authorizationRule key"
     $policyKeyName = "PrimaryKey"
@@ -651,10 +651,10 @@ function Test-CRUDNHAuth
     Assert-True {$notificationHubRegenerateKey.SecondaryConnectionString -ne $null}
     Assert-True {$notificationHubRegenerateKey.PrimaryKey -ne $null}
     Assert-True {$notificationHubRegenerateKey.SecondaryKey -ne $null}
-    Assert-True {$notificationHubRegenerateKey.PrimaryConnectionString.Contains($notificationHubRegenerateKey.PrimaryKey)} 
-    Assert-True {$notificationHubRegenerateKey.SecondaryConnectionString.Contains($notificationHubRegenerateKey.SecondaryKey)} 
-    Assert-True {$notificationHubRegenerateKey.PrimaryKey -ne $notificationHubsListKeys.PrimaryKey} 
-    Assert-True {$notificationHubRegenerateKey.SecondaryKey -eq $notificationHubsListKeys.SecondaryKey} 
+    Assert-True {$notificationHubRegenerateKey.PrimaryConnectionString.Contains($notificationHubRegenerateKey.PrimaryKey)}
+    Assert-True {$notificationHubRegenerateKey.SecondaryConnectionString.Contains($notificationHubRegenerateKey.SecondaryKey)}
+    Assert-True {$notificationHubRegenerateKey.PrimaryKey -ne $notificationHubsListKeys.PrimaryKey}
+    Assert-True {$notificationHubRegenerateKey.SecondaryKey -eq $notificationHubsListKeys.SecondaryKey}
 
      Write-Debug "Get notificationHub authorizationRules connectionStrings after regeneration of the primary key"
     $notificationHubsListKeysAfterRegenerate = Get-AzureRmNotificationHubListKeys -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -AuthorizationRule $authRuleName
@@ -663,19 +663,19 @@ function Test-CRUDNHAuth
     Assert-True {$notificationHubsListKeysAfterRegenerate.SecondaryConnectionString -ne $null}
     Assert-True {$notificationHubsListKeysAfterRegenerate.PrimaryKey -ne $null}
     Assert-True {$notificationHubsListKeysAfterRegenerate.SecondaryKey -ne $null}
-    Assert-True {$notificationHubsListKeysAfterRegenerate.PrimaryConnectionString.Contains($notificationHubsListKeysAfterRegenerate.PrimaryKey)} 
-    Assert-True {$notificationHubsListKeysAfterRegenerate.SecondaryConnectionString.Contains($notificationHubsListKeysAfterRegenerate.SecondaryKey)} 
-    Assert-True {$notificationHubsListKeysAfterRegenerate.PrimaryKey -eq $notificationHubRegenerateKey.PrimaryKey} 
-    Assert-True {$notificationHubsListKeysAfterRegenerate.SecondaryKey -eq $notificationHubRegenerateKey.SecondaryKey} 
-    Assert-True {$notificationHubsListKeysAfterRegenerate.PrimaryKey -ne $notificationHubsListKeys.PrimaryKey} 
-    Assert-True {$notificationHubsListKeysAfterRegenerate.SecondaryKey -eq $notificationHubsListKeys.SecondaryKey} 
+    Assert-True {$notificationHubsListKeysAfterRegenerate.PrimaryConnectionString.Contains($notificationHubsListKeysAfterRegenerate.PrimaryKey)}
+    Assert-True {$notificationHubsListKeysAfterRegenerate.SecondaryConnectionString.Contains($notificationHubsListKeysAfterRegenerate.SecondaryKey)}
+    Assert-True {$notificationHubsListKeysAfterRegenerate.PrimaryKey -eq $notificationHubRegenerateKey.PrimaryKey}
+    Assert-True {$notificationHubsListKeysAfterRegenerate.SecondaryKey -eq $notificationHubRegenerateKey.SecondaryKey}
+    Assert-True {$notificationHubsListKeysAfterRegenerate.PrimaryKey -ne $notificationHubsListKeys.PrimaryKey}
+    Assert-True {$notificationHubsListKeysAfterRegenerate.SecondaryKey -eq $notificationHubsListKeys.SecondaryKey}
 
     Write-Debug "Delete the created notificationHub AuthorizationRule"
     Remove-AzureRmNotificationHubAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -AuthorizationRule $authRuleName -Force
-    
+
     Write-Debug " Delete the NotificationHub"
     Remove-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -Force
-    
+
     Write-Debug " Delete namespaces"
     Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Force
 

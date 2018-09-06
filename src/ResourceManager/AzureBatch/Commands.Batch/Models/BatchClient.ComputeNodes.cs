@@ -16,6 +16,8 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -213,6 +215,32 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             PSRemoteLoginSettings psRemoteLoginSettings = new PSRemoteLoginSettings(remoteLoginSettings);
             return psRemoteLoginSettings;
+        }
+
+        public PSStartComputeNodeServiceLogUploadResult StartComputeNodeServiceLogUpload(StartComputeNodeServiceLogUploadParameters parameters)
+        {
+            UploadBatchServiceLogsResult result = null;
+
+            if (parameters.ComputeNode != null)
+            {
+                result = parameters.ComputeNode.omObject.UploadComputeNodeBatchServiceLogs(
+                    parameters.ContainerUrl,
+                    parameters.StartTime,
+                    parameters.EndTime,
+                    parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                result = parameters.Context.BatchOMClient.PoolOperations.UploadComputeNodeBatchServiceLogs(
+                    parameters.PoolId,
+                    parameters.ComputeNodeId,
+                    parameters.ContainerUrl,
+                    parameters.StartTime,
+                    parameters.EndTime,
+                    parameters.AdditionalBehaviors);
+            }
+
+            return new PSStartComputeNodeServiceLogUploadResult(result);
         }
     }
 }

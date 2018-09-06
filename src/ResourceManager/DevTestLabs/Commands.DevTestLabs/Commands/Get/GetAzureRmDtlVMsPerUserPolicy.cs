@@ -18,15 +18,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DevTestLabs
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDtlVMsPerUserPolicy",
-        HelpUri = Constants.DevTestLabsHelpUri)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DtlVMsPerUserPolicy",HelpUri = Constants.DevTestLabsHelpUri)]
     [OutputType(typeof(PSPolicy))]
     public class GetAzureRmDtlVMsPerUserPolicy : DevTestLabsCmdletBase
     {
         public override void ExecuteCmdlet()
         {
             var policy = DataServiceClient.Policies.Get(
-                ResourceGroupName,
                 LabName,
                 Constants.Default,
                 WellKnownPolicyNames.MaxVmsAllowedPerUser);

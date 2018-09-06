@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: 26B1921E-6052-471B-B5B6-F2853536A425
@@ -30,18 +30,13 @@ The **Enable-AzureRmOperationalInsightsIISLogCollection** cmdlet starts collecti
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,9 +51,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group that contains computers.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -71,9 +66,9 @@ Accept wildcard characters: False
 Specifies a workspace in which this cmdlet operates.
 
 ```yaml
-Type: PSWorkspace
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 Parameter Sets: ByWorkspaceObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -86,9 +81,9 @@ Accept wildcard characters: False
 Specifies the name of a workspace in which this cmdlet operates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -101,7 +96,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -117,7 +112,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -133,8 +128,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSWorkspace
-Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Parameters: Workspace (ByValue)
+
+### System.String
 
 ## OUTPUTS
 

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementUserSsoUrl)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementUserSsoUrl")]
     [OutputType(typeof(string))]
     public class GetAzureApiManagementUserSsoUrl : AzureApiManagementCmdletBase
     {

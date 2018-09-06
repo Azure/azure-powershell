@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 0937A390-6AC2-4611-AA6C-99936AC0ABFD
@@ -36,7 +36,7 @@ This command tests whether the file Test.csv exists in the ContosoADL account.
 Specifies the name of the Data Lake Store account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -48,10 +48,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,9 +66,9 @@ Accept wildcard characters: False
 Specifies the Data Lake Store path of the item to test, starting with the root directory (/).
 
 ```yaml
-Type: DataLakeStorePathInstance
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -80,15 +80,14 @@ Accept wildcard characters: False
 ### -PathType
 Specifies the type of item to test.
 The acceptable values for this parameter are:
-
 - Any 
 - File 
 - Folder
 
 ```yaml
-Type: PathType
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+PathType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Any, File, Folder
 
 Required: False
@@ -103,10 +102,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+PathType
+
 ## OUTPUTS
 
-### bool
-True or false indicating the existence of the specified file or folder.
+### System.Boolean
 
 ## NOTES
 

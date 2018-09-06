@@ -15,12 +15,10 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.Models;
-    using Microsoft.Azure.Commands.ApiManagement.Properties;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using ResourceManager.Common;
     using System;
     using System.Management.Automation;
+    using System.Net;
 
     public class AzureApiManagementCmdletBase : AzureRMCmdlet
     {
@@ -44,29 +42,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             }
         }
 
-        protected void WriteProgress(ApiManagementLongRunningOperation operation)
-        {
-            WriteProgress(new ProgressRecord(0, operation.OperationName, operation.Status.ToString()));
-        }
-
-        protected ApiManagementLongRunningOperation WaitForOperationToComplete(ApiManagementLongRunningOperation longRunningOperation)
-        {
-            WriteProgress(longRunningOperation);
-
-            while (longRunningOperation.Status == OperationStatus.InProgress)
-            {
-                var retryAfter = longRunningOperation.RetryAfter ?? LongRunningOperationDefaultTimeout;
-
-                WriteVerboseWithTimestamp(Resources.VerboseGetOperationStateTimeoutMessage, retryAfter);
-                TestMockSupport.Delay(retryAfter);
-
-                longRunningOperation = Client.GetLongRunningOperationStatus(longRunningOperation);
-                WriteProgress(longRunningOperation);
-            }
-
-            return longRunningOperation;
-        }
-
         protected void ExecuteCmdLetWrap(Func<object> func, bool passThru = false, object passThruValue = null)
         {
             try
@@ -76,33 +51,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 if (passThru)
                 {
                     WriteObject(passThruValue ?? result);
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                WriteError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidArgument, null));
-            }
-            catch (Exception ex)
-            {
-                WriteExceptionError(ex);
-            }
-        }
-
-        protected void ExecuteLongRunningCmdletWrap(Func<ApiManagementLongRunningOperation> func, bool passThru = false, object passThruValue = null)
-        {
-            try
-            {
-                var longRunningOperation = func();
-
-                longRunningOperation = WaitForOperationToComplete(longRunningOperation);
-                bool success = string.IsNullOrWhiteSpace(longRunningOperation.Error);
-                if (!success)
-                {
-                    WriteErrorWithTimestamp(longRunningOperation.Error);
-                }
-                else if (passThru)
-                {
-                    WriteObject(passThruValue ?? longRunningOperation.ApiManagement);
                 }
             }
             catch (ArgumentException ex)

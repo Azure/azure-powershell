@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: B423C1A1-1988-4721-81E7-3B7EC163B03A
@@ -44,7 +44,6 @@ PS C:\> New-AzureBatchCertificate -RawData $RawData -Password "Password1234" -Ba
 ```
 
 The first command reads the data from the file named MyCert.pfx into the $RawData variable.
-
 The second command adds a certificate to the specified Batch account using the raw data stored in $RawData.
 
 ## PARAMETERS
@@ -54,9 +53,9 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -69,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,9 +84,9 @@ Specifies the path of the certificate file.
 The certificate file must be in either .cer or .pfx format.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: File
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -101,9 +100,9 @@ Specifies the password to access the certificate private key.
 You must specify this parameter if you specify a certificate in .pfx format.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -116,9 +115,9 @@ Accept wildcard characters: False
 Specifies the raw certificate data in either .cer or .pfx format.
 
 ```yaml
-Type: Byte[]
+Type: System.Byte[]
 Parameter Sets: RawData
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -132,13 +131,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.Byte[]
 
-### Byte[]
-Parameter 'RawData' accepts value of type 'Byte[]' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

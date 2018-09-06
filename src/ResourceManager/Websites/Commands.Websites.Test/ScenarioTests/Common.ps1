@@ -123,14 +123,14 @@ function Get-SecondaryLocation
   
 		if ($location -eq $null) 
 		{  
-			return "East US"  
+			return "West US"  
 		} else 
 		{  
 			return $location.Locations[1]  
 		}
 	}
 
-	return "EastUS"
+	return "WestUS"
 }
 
 <#

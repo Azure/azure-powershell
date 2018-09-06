@@ -30,7 +30,6 @@ PS C:\> Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $AppG
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.
-
 The second command removes the SSL certificate named Cert02 from the application gateway stored in the $AppGW variable.
 
 ## PARAMETERS
@@ -39,9 +38,9 @@ The second command removes the SSL certificate named Cert02 from the application
 Specifies the application gateway from which this cmdlet removes an SSL certificate.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -54,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,9 +68,9 @@ Accept wildcard characters: False
 Specifies the name of an SSL certificate that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -85,7 +84,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

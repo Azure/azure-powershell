@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/get-azurermeventgridtopictype
@@ -52,7 +52,7 @@ Gets information about the StorageAccounts topic type, including the event types
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,9 +67,9 @@ Accept wildcard characters: False
 If specified, the response will include the event types supported by a topic type.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -82,9 +82,9 @@ Accept wildcard characters: False
 EventGrid Topic Type Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -99,14 +99,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance, Microsoft.Azure.Commands.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
-Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfo
+### Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfo
 
 ## NOTES
 
 ## RELATED LINKS
-

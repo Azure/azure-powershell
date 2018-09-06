@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,10 +20,11 @@ using Microsoft.Azure.Management.Storage.Models;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.New, StorageAccountNounStr), OutputType(typeof(PSStorageAccount))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccount"), OutputType(typeof(PSStorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
@@ -98,11 +99,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Storage Service that will enable encryption.")]
-        public EncryptionSupportServiceEnum? EnableEncryptionService { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "Storage Account Tags.")]
         [ValidateNotNull]
         [Alias(TagsAlias)]
@@ -174,15 +170,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (Kind != null)
             {
                 createParameters.Kind = ParseAccountKind(Kind);
-            }
-
-            if (this.EnableEncryptionService != null)
-            {
-                createParameters.Encryption = ParseEncryption(EnableEncryptionService);
-                if (createParameters.Encryption != null)
-                {
-                    createParameters.Encryption.KeySource = "Microsoft.Storage";
-                }
             }
 
             if (this.AccessTier != null)

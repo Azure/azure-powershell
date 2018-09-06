@@ -1,57 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
+  <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.Profile</AssemblyName>
-    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <RootNamespace>Microsoft.Azure.Commands.Profile</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>$(ProjectDir)..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Profile\</OutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile.Netcore\</OutputPath>
     <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Profile.Netcore\</OutputPath>
     <DocumentationFile></DocumentationFile>
-    <SignAssembly>True</SignAssembly>
-    <DelaySign>True</DelaySign>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
-    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
-  </ItemGroup>
-
   <ItemGroup>
-    <None Include="..\AzureRM.Profile.Netcore.psd1" Link="AzureRM.Profile.Netcore.psd1">
+    <None Include="Az.Profile.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
-    <PackageReference Include="Microsoft.Azure.KeyVault" Version="2.3.2" />
-    <PackageReference Include="Microsoft.Bcl.Async" Version="1.0.168" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authorization\Common.Authorization.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Common.Rbac.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Common.Network.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
-    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj" />
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -73,9 +52,6 @@
     <None Update="AzureRmProfileStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Microsoft.Azure.Commands.Profile.dll-Help.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Microsoft.Azure.Commands.Profile.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -83,9 +59,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
+  
   <ItemGroup>
     <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.ps1xml" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.ps1" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.Netcore.psd1" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.psm1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
-
 </Project>

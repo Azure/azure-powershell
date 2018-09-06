@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network		
  {			
-     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitRouteTable"),OutputType(typeof(PSExpressRouteCircuitRoutesTable))]
+     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitRouteTable"),OutputType(typeof(PSExpressRouteCircuitRoutesTable))]
      public class GetAzureRmExpressRouteCircuitRouteTable : NetworkBaseCmdlet		
      {		
          [Parameter(		
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,		
              HelpMessage = "The PeeringType")]		
          [ValidateSet(		
-            MNM.ExpressRouteCircuitPeeringType.AzurePrivatePeering,		
-            MNM.ExpressRouteCircuitPeeringType.AzurePublicPeering,		
-            MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering,		
+            MNM.ExpressRoutePeeringType.AzurePrivatePeering,		
+            MNM.ExpressRoutePeeringType.AzurePublicPeering,		
+            MNM.ExpressRoutePeeringType.MicrosoftPeering,		
             IgnoreCase = true)]		
          public string PeeringType { get; set; }
 

@@ -32,7 +32,7 @@ The **Get-AzureRmStorageAccount** cmdlet gets a specified Storage account or all
 
 ### Example 1: Get a specified Storage account
 ```
-PS C:\>Get-AzureRmStorageAccount -ResourceGroupName "RG01" -AccountName "MyStorageAccount"
+PS C:\>Get-AzureRmStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
 ```
 
 This command gets the specified Storage account.
@@ -57,7 +57,7 @@ This command gets all of the Storage accounts in the subscription.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 Specifies the name of the Storage account to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameParameterSet
 Aliases: StorageAccountName, AccountName
 
@@ -87,9 +87,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the Storage account to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -99,9 +99,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -114,6 +114,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
 
 ## OUTPUTS
 

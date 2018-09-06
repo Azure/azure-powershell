@@ -30,21 +30,21 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(this.interceptor);
         }
 
-        [Fact]
+        [Fact(Skip = "Old ResourceManager version in test controller. Update and re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateGetRemoveCommitmentPlan()
         {
             CommitmentPlansTestController.NewInstance.RunPsTest(this.interceptor, "Test-CreateGetRemoveMLCommitmentPlan");
         }
 
-        [Fact]
+        [Fact(Skip = "Old ResourceManager version in test controller. Update and re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateCommitmentPlan()
         {
             CommitmentPlansTestController.NewInstance.RunPsTest(this.interceptor, "Test-UpdateMLCommitmentPlan");
         }
 
-        [Fact]
+        [Fact(Skip = "Old ResourceManager version in test controller. Update and re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListCommitmentPlans()
         {

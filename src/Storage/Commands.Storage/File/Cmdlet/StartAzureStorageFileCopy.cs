@@ -26,7 +26,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet(VerbsLifecycle.Start, Constants.FileCopyCmdletName, SupportsShouldProcess = true)]
+    [Cmdlet("Start", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopy", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class StartAzureStorageFileCopyCommand : StorageFileDataManagementCmdletBase
     {
         private const string ContainerNameParameterSet = "ContainerName";
@@ -282,7 +282,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 taskId,
                 destFile,
                 () => this.ConfirmOverwrite(blob.SnapshotQualifiedUri.ToString(), destFile.SnapshotQualifiedUri.ToString()),
-                () => destFile.StartCopyAsync(blob.GenerateCopySourceBlob(), null, null, this.RequestOptions, this.OperationContext, CmdletCancellationToken));
+                () => destFile.StartCopyAsync(blob.GenerateCopySourceBlob(), null, null, this.RequestOptions, this.OperationContext));
 
             this.RunTask(taskGenerator);
         }
@@ -322,7 +322,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 taskId,
                 destFile,
                 () => this.ConfirmOverwrite(sourceFile.SnapshotQualifiedUri.ToString(), destFile.SnapshotQualifiedUri.ToString()),
-                () => destFile.StartCopyAsync(sourceFile.GenerateCopySourceFile(), null, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken));
+                () => destFile.StartCopyAsync(sourceFile.GenerateCopySourceFile()));
 
             this.RunTask(taskGenerator);
         }

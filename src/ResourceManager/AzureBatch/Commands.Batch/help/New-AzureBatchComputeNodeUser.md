@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: FE7689DE-4EC6-4C6B-94A4-D22C61CA569D
@@ -58,9 +58,9 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -73,9 +73,9 @@ Accept wildcard characters: False
 Specifies the compute node, as a **PSComputeNode** object, on which this cmdlet creates a user account.
 
 ```yaml
-Type: PSComputeNode
+Type: Microsoft.Azure.Commands.Batch.Models.PSComputeNode
 Parameter Sets: ParentObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -88,9 +88,9 @@ Accept wildcard characters: False
 Specifies the ID of the compute node on which this cmdlet creates a user account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -118,9 +118,9 @@ Accept wildcard characters: False
 Specifies the expiry time for the new user account.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -133,9 +133,9 @@ Accept wildcard characters: False
 Indicates that the cmdlet creates a user account that has administrative credentials.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -148,9 +148,9 @@ Accept wildcard characters: False
 Specifies the name of the new local Windows account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -163,9 +163,9 @@ Accept wildcard characters: False
 Specifies the user account password.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -178,9 +178,9 @@ Accept wildcard characters: False
 Specifies the ID of the pool that contains the compute node on which to create the user account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -194,13 +194,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### Microsoft.Azure.Commands.Batch.Models.PSComputeNode
+Parameters: ComputeNode (ByValue)
 
-### PSComputeNode
-Parameter 'ComputeNode' accepts value of type 'PSComputeNode' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

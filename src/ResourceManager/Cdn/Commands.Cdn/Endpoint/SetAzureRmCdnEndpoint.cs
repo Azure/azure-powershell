@@ -25,7 +25,7 @@ using SdkQueryStringCachingBehavior = Microsoft.Azure.Management.Cdn.Models.Quer
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmCdnEndpoint", SupportsShouldProcess = true), OutputType(typeof(PSEndpoint))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnEndpoint", SupportsShouldProcess = true), OutputType(typeof(PSEndpoint))]
     public class SetAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN endpoint object.")]
@@ -56,9 +56,11 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                     CdnEndpoint.IsCompressionEnabled,
                     CdnEndpoint.IsHttpAllowed,
                     CdnEndpoint.IsHttpsAllowed,
-                    (QueryStringCachingBehavior) Enum.Parse(typeof(QueryStringCachingBehavior), CdnEndpoint.QueryStringCachingBehavior.ToString()),
+                    (QueryStringCachingBehavior)Enum.Parse(typeof(QueryStringCachingBehavior), CdnEndpoint.QueryStringCachingBehavior.ToString()),
                     CdnEndpoint.OptimizationType,
-                    CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList()));
+                    CdnEndpoint.ProbePath,
+                    CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
+                    CdnEndpoint.DeliveryPolicy?.ToSdkDeliveryPolicy()));
 
             WriteVerbose(Resources.Success);
             WriteObject(endpoint.ToPsEndpoint());

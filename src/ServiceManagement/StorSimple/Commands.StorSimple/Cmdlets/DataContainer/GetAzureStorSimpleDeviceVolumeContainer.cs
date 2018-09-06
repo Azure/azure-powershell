@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
     
 
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleDeviceVolumeContainer"),OutputType(typeof(DataContainer), typeof(IList<DataContainer>))]
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleDeviceVolumeContainer"),OutputType(typeof(DataContainer))]
     public class GetAzureStorSimpleDeviceVolumeContainer : StorSimpleCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]

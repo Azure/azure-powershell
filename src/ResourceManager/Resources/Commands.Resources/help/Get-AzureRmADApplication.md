@@ -15,29 +15,38 @@ Lists existing azure active directory applications.
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzureRmADApplication [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADApplication [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount] [-Skip <UInt64>]
+ [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ApplicationObjectIdParameterSet
 ```
-Get-AzureRmADApplication -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADApplication -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ApplicationIdParameterSet
 ```
-Get-AzureRmADApplication -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADApplication -ApplicationId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
-### ApplicationDisplayNameParameterSet
+### SearchStringParameterSet
 ```
 Get-AzureRmADApplication -DisplayNameStartWith <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+```
+
+### DisplayNameParameterSet
+```
+Get-AzureRmADApplication -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ApplicationIdentifierUriParameterSet
 ```
 Get-AzureRmADApplication -IdentifierUri <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,19 +56,37 @@ If no parameter is provided, it fetches all applications under the tenant.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - List all applications
+
 ```
-PS E:\> Get-AzureRmADApplication
+PS C:\> Get-AzureRmADApplication
 ```
 
 Lists all the applications under a tenant.
 
-### Example 2
+### Example 2 - List applications using paging
+
 ```
-PS E:\> Get-AzureRmADApplication -IdentifierUri http://mySecretApp1
+PS C:\> Get-AzureRmADApplication -First 100
+```
+
+Lists the first 100 applications under a tenant.
+
+### Example 3 - Get application by identifier URI
+
+```
+PS C:\> Get-AzureRmADApplication -IdentifierUri http://mySecretApp1
 ```
 
 Gets the application with identifier uri as "http://mySecretApp1".
+
+### Example 4 - Get application by object id
+
+```
+PS C:\> Get-AzureRmADApplication -ObjectId 39e64ec6-569b-4030-8e1c-c3c519a05d69
+```
+
+Gets the application with the object id '39e64ec6-569b-4030-8e1c-c3c519a05d69'.
 
 ## PARAMETERS
 
@@ -67,7 +94,7 @@ Gets the application with identifier uri as "http://mySecretApp1".
 The application id of the application to fetch.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationIdParameterSet
 Aliases:
 
@@ -82,7 +109,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,12 +120,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisplayNameStartWith
-Fetch all applications starting with the display name.
+### -DisplayName
+The display name of the application.
 
 ```yaml
-Type: String
-Parameter Sets: ApplicationDisplayNameParameterSet
+Type: System.String
+Parameter Sets: DisplayNameParameterSet
 Aliases:
 
 Required: True
@@ -108,11 +135,41 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DisplayNameStartWith
+Fetch all applications starting with the display name.
+
+```yaml
+Type: System.String
+Parameter Sets: SearchStringParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -First
+The maximum number of objects to return.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentifierUri
 Unique identifier Uri of the application to fetch.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ApplicationIdentifierUriParameterSet
 Aliases:
 
@@ -123,11 +180,26 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -IncludeTotalCount
+Reports the number of objects in the data set. Currently, this parameter does nothing.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ObjectId
 The object id of the application to fetch.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationObjectIdParameterSet
 Aliases:
 
@@ -138,14 +210,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Skip
+Ignores the first N objects and then gets the remaining objects.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### System.Guid
+
+### System.String
+
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication]
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 
 ## NOTES
 

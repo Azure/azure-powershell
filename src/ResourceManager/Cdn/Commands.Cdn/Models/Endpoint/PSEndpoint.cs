@@ -48,7 +48,11 @@ namespace Microsoft.Azure.Commands.Cdn.Models.Endpoint
 
         public string OptimizationType { get; set; }
 
+        public string ProbePath { get; set; }
+
         public ICollection<PSGeoFilter> GeoFilters { get; set; }
+
+        public PSDeliveryPolicy DeliveryPolicy { get; set; }
 
         public PSEndpointResourceState ResourceState { get; set; }
 

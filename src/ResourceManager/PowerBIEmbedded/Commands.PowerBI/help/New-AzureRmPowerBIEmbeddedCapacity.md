@@ -1,10 +1,8 @@
 ---
-Download Help Link: None_Azure
 external help file: Microsoft.Azure.Commands.PowerBI.dll-Help.xml
-Help Version: 0.0.1.0
-Locale: en-US
-Module Guid: acace26c-1775-4100-85c0-20c4d71eaa22
 Module Name: AzureRM.PowerBIEmbedded
+ms.assetid: 5321FC62-3585-4493-A3D2-22CD82503CA7
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.powerbiembedded/new-azurermpowerbiembeddedcapacity
 schema: 2.0.0
 ---
 
@@ -16,16 +14,9 @@ Creates a new PowerBI Embedded Capacity.
 ## SYNTAX
 
 ```
-New-AzureRmPowerBIEmbeddedCapacity 
-	[-ResourceGroupName] <String> 
-	[-Name] <String> 
-	[-Location] <String>
- 	[-Sku] <String> 
-	[-Administrator] <String>
-	[[-Tag] <Hashtable>] 
- 	[-WhatIf] 
-	[-Confirm] 
-	[<CommonParameters>]
+New-AzureRmPowerBIEmbeddedCapacity [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [-Sku] <String> [-Administrator] <String[]> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,31 +43,33 @@ Creates a capacity named testcapacity in the Azure region West Central US and in
 
 ## PARAMETERS
 
-### -ResourceGroupName
-Name of the Azure resource group to which the capacity belongs
+### -Administrator
+A comma separated capacity names to set as administrator on the capacity
 
 ```yaml
-Type: String
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
-Position: 0
+Position: 4
 Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-Name of the PowerBI Embedded Capacity
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: String
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -84,13 +77,44 @@ Accept wildcard characters: False
 The Azure region where the PowerBI Embedded Capacity is hosted
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
 Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the PowerBI Embedded Capacity
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Name of the Azure resource group to which the capacity belongs
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -98,28 +122,15 @@ Accept wildcard characters: False
 The name of the Sku for the capacity.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: A1, A2, A3, A4, A5, A6
 
 Required: True
 Position: 3
 Default value: None
-Accept wildcard characters: False
-```
-
-### -Administrator
-A comma separated capacity names to set as administrator on the capacity
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 4
-Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -127,12 +138,14 @@ Accept wildcard characters: False
 Key-value pairs in the form of a hash table set as tags on the capacity.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
+Position: Named
 Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -140,7 +153,7 @@ Accept wildcard characters: False
 Prompts user to confirm whether to perform the operation
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -155,7 +168,7 @@ Accept wildcard characters: False
 Describes the actions the current operation will perform without actually performing them
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -170,6 +183,12 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
+
+### System.String[]
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 

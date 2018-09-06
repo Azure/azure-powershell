@@ -51,7 +51,7 @@ This command uses the Get-AzureRmOperationalInsightsWorkspace cmdlet to get the 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 Specifies the workspace name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 Specifies the Azure resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The workspace data retention in days. 730 days is the maximum allowed for all other Skus
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -110,13 +110,12 @@ Accept wildcard characters: False
 ### -Sku
 Specifies the service tier of the workspace.
 Valid values are: 
-
 - free
 - standard
 - premium
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: free, standard, premium, pernode, standalone
@@ -132,9 +131,9 @@ Accept wildcard characters: False
 The resource tags for the workspace.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: 4
@@ -147,7 +146,7 @@ Accept wildcard characters: False
 Specifies the workspace to be updated.
 
 ```yaml
-Type: PSWorkspace
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 Parameter Sets: ByObject
 Aliases:
 
@@ -163,8 +162,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSWorkspace
-Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Parameters: Workspace (ByValue)
+
+### System.String
+
+### System.Collections.Hashtable
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

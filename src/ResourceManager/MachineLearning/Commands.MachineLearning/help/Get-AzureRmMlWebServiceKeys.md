@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
 Module Name: AzureRM.MachineLearning
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/get-azurermmlwebservicekeys
@@ -29,12 +29,12 @@ Gets the access keys for the Azure Machine Learning web service's runtime APIs.
 
 ## EXAMPLES
 
-### --------------------------  Example 1 - Get the keys for a web service specified by resource group and name  --------------------------
+### Example 1 - Get the keys for a web service specified by resource group and name
 ```
 Get-AzureRmMlWebServiceKeys -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
 ```
 
-### --------------------------  Example 2 - Get keys for web service instance  --------------------------
+### Example 2 - Get keys for web service instance
 ```
 Get-AzureRmMlWebServiceKeys -MlWebService $mlService
 ```
@@ -47,7 +47,7 @@ $mlService is an object of type Microsoft.Azure.Management.MachineLearning.WebSe
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -62,9 +62,9 @@ Accept wildcard characters: False
 The name of the web service for which the access keys are retrieved.
 
 ```yaml
-Type: WebService
+Type: Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
 Parameter Sets: GetByInstance
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -77,9 +77,9 @@ Accept wildcard characters: False
 The name of the web service for which the access keys are retrieved.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -92,9 +92,9 @@ Accept wildcard characters: False
 The resource group for the web service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -108,15 +108,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### WebService
-Parameter 'MlWebService' accepts value of type 'WebService' from the pipeline
+### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
+Parameters: MlWebService (ByValue)
 
 ## OUTPUTS
 
-### None
+### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml
 
 ## RELATED LINKS
-

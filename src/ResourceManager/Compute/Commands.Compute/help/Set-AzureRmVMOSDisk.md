@@ -16,47 +16,49 @@ Sets the operating system disk properties on a virtual machine.
 ### DefaultParamSet (Default)
 ```
 Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
- [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes>
- [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <StorageAccountTypes>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-DiskSizeInGB <Int32>]
+ [-ManagedDiskId <String>] [-StorageAccountType <String>] [-WriteAccelerator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsParamSet
 ```
 Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
- [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Windows]
- [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <StorageAccountTypes>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-Windows]
+ [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <String>] [-WriteAccelerator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsDiskEncryptionParameterSet
 ```
 Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
- [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Windows]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-Windows]
  [-DiskEncryptionKeyUrl] <String> [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>]
  [[-KeyEncryptionKeyVaultId] <String>] [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>]
- [-StorageAccountType <StorageAccountTypes>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-StorageAccountType <String>] [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### LinuxParamSet
 ```
 Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
- [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Linux]
- [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <StorageAccountTypes>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-Linux]
+ [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <String>] [-WriteAccelerator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LinuxDiskEncryptionParameterSet
 ```
 Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
- [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [-CreateOption] <DiskCreateOptionTypes> [-Linux]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-Linux]
  [-DiskEncryptionKeyUrl] <String> [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>]
  [[-KeyEncryptionKeyVaultId] <String>] [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>]
- [-StorageAccountType <StorageAccountTypes>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-StorageAccountType <String>] [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMOSDisk** cmdlet set the operating system disk properties on a virtual machine.
+The **Set-AzureRmVMOSDisk** cmdlet sets the operating system disk properties on a virtual machine.
 
 ## EXAMPLES
 
@@ -120,38 +122,34 @@ This example sets the disk encryption settings on a virtual machine operating sy
 ### -Caching
 Specifies the caching mode of the operating system disk.
 Valid values are: 
-
 - ReadOnly
 - ReadWrite
-
 The default value is ReadWrite.
 Changing the caching value causes the virtual machine to restart.
-
 This setting affects the performance of the disk.
 
 ```yaml
-Type: CachingTypes
+Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.CachingTypes]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -CreateOption
 Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, or attaches an existing disk.
 Valid values are: 
-
 - Attach.
 Specify this option to create a virtual machine from a specialized disk.
 When you specify this option, do not specify the *SourceImageUri* parameter.
 Instead, use the Set-AzureRmVMSourceImage cmdlet.
-You must also use the use the *Windows* or *Linux* parameters to tell the azure2 platform the type of the operating system on the VHD.
-The *VhdUri* parameter is enough to tell the azure2 platform the location of the disk to attach. 
+You must also use the use the *Windows* or *Linux* parameters to tell the azure platform the type of the operating system on the VHD.
+The *VhdUri* parameter is enough to tell the azure platform the location of the disk to attach. 
 - FromImage.
 Specify this option to create a virtual machine from a platform image or a generalized user image.
 In the case of a generalized user image, you also need to specify the *SourceImageUri* parameter and either the *Windows* or *Linux* parameters to tell the Azure platform the location and type of the operating system disk VHD instead of using the **Set-AzureRmVMSourceImage** cmdlet.
@@ -159,15 +157,14 @@ In the case of a platform image, the *VhdUri* parameter is sufficient.
 - Empty.
 
 ```yaml
-Type: DiskCreateOptionTypes
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: FromImage, Empty, Attach
+Aliases:
 
-Required: True
+Required: False
 Position: 5
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -175,7 +172,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -190,14 +187,14 @@ Accept wildcard characters: False
 Specifies the location of the disk encryption key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 7
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -205,14 +202,14 @@ Accept wildcard characters: False
 Specifies the resource ID of the Key Vault containing the disk encryption key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 8
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -220,14 +217,14 @@ Accept wildcard characters: False
 Specifies the size, in GB, of the operating system disk.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -235,14 +232,14 @@ Accept wildcard characters: False
 Specifies the location of the key encryption key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 9
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -250,14 +247,14 @@ Accept wildcard characters: False
 Specifies the resource ID of the Key Vault containing the key encryption key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 10
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -266,14 +263,14 @@ Indicates that the operating system on the user image is Linux.
 Specify this parameter for user image based virtual machine deployment.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: LinuxParamSet, LinuxDiskEncryptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -281,14 +278,14 @@ Accept wildcard characters: False
 Specifies the ID of a managed disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -296,14 +293,14 @@ Accept wildcard characters: False
 Specifies the name of the operating system disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: OSDiskName, DiskName
 
 Required: False
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -311,14 +308,14 @@ Accept wildcard characters: False
 Specifies the URI of the VHD for user image scenarios.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: SourceImage
 
 Required: False
 Position: 4
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -326,35 +323,32 @@ Accept wildcard characters: False
 Specifies the storage account type of managed disk.
 
 ```yaml
-Type: StorageAccountTypes
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: StandardLRS, PremiumLRS
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VhdUri
 Specifies the Uniform Resource Identifier (URI) of a virtual hard disk (VHD).
-
 For an image based virtual machine, this parameter specifies the VHD file to create when a platform image or user image is specified.
 This is the location from which the image binary large object (BLOB) is copied to start the virtual machine.
-
 For a disk based virtual machine boot scenario, this parameter specifies the VHD file that the virtual machine uses directly for starting up.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: OSDiskVhdUri, DiskVhdUri
 
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -363,14 +357,14 @@ Specifies the local virtual machine object on which to set operating system disk
 To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -378,14 +372,29 @@ Accept wildcard characters: False
 Indicates that the operating system on the user image is Windows.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: WindowsParamSet, WindowsDiskEncryptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WriteAccelerator
+Specifies whether WriteAccelerator should be enabled or disabled on the OS disk.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -394,8 +403,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameters: VM (ByValue)
 
 ## OUTPUTS
 

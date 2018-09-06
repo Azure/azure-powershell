@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.TrafficManager
 ms.assetid: 8E12A392-A100-4814-9003-B2999150DCE1
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/remove-azurermtrafficmanagerendpointconfig
 schema: 2.0.0
@@ -31,7 +31,7 @@ To remove an endpoint and commit changes in a single operation, use the Remove-A
 ### Example 1: Remove an endpoint
 ```
 PS C:\>$TrafficManagerProfile = Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
-PS C:\> Remove-AzureRmTrafficManagerEndpointConfig -EndpointName "contoso" -Type AzureEndpoints -TrafficManagerProfile $TrafficManagerProfile 
+PS C:\> Remove-AzureRmTrafficManagerEndpointConfig -EndpointName "contoso" -TrafficManagerProfile $TrafficManagerProfile 
 PS C:\> Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
 ```
 
@@ -49,7 +49,7 @@ The final command updates the Traffic Manager profile named ContosoProfile to ma
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -64,9 +64,9 @@ Accept wildcard characters: False
 Specifies the name of the Traffic Manager endpoint that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -81,9 +81,9 @@ This cmdlet modifies this local object.
 To obtain a **TrafficManagerProfile** object, use the Get-AzureRmTrafficManagerProfile cmdlet.
 
 ```yaml
-Type: TrafficManagerProfile
+Type: Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

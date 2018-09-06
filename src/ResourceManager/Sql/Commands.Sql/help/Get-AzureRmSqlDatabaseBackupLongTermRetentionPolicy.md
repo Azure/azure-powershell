@@ -1,7 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-ms.assetid: 1C0AF5B2-7187-4BFA-8DBB-A771FD2E00A4
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqldatabasebackuplongtermretentionpolicy
 schema: 2.0.0
 ---
@@ -14,7 +13,7 @@ Gets a database long term retention policy.
 ## SYNTAX
 
 ```
-Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy [-ServerName] <String> [-DatabaseName] <String>
+Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy [-Current] [-ServerName] <String> [-DatabaseName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -25,18 +24,67 @@ The policy is an Azure Backup resource used to define backup storage policy.
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Get the current version of the long term retention policy
+```powershell
+PS C:\> Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -Current
+
+
+ResourceGroupName                      : resourcegroup01
+ServerName                             : server01
+DatabaseName                           : database01
+WeeklyRetention                        : P2W
+MonthlyRetention                       : PT0S
+YearlyRetention                        : PT0S
+WeekOfYear                             : 0
+State                                  :
+RecoveryServicesBackupPolicyResourceId :
+Location                               :
 ```
 
+This command gets the current version of the long term retention policy for database01
+
+### Example 2: Get the legacy version of the long term retention policy
+```powershell
+PS C:\> Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01
+
+
+ResourceGroupName                      : resourcegroup01
+ServerName                             : server01
+DatabaseName                           : database01
+WeeklyRetention                        :
+MonthlyRetention                       :
+YearlyRetention                        :
+WeekOfYear                             :
+State                                  : Enabled
+RecoveryServicesBackupPolicyResourceId : /subscriptions/4f2b42fc-4fc3-fd41-8ab8-5a382d8b30df/resourceGroups/resourcegroup01/providers/MicrosoftRecoveryServices/vaults/vault01/backupPolicies/policy01
+Location                               : Southeast Asia
 ```
+
+This command gets the legacy version of the long term retention policy for database01
 
 ## PARAMETERS
 
-### -DatabaseName
-Specifies the name of the SQL Database for which this cmdlet gets a policy.
+### -Current
+If not provided, the command returns the legacy Long Term Retention policy information.
+Otherwise, the command returns the current version of the Long Term Retention policy.
 
 ```yaml
-Type: String
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseName
+The name of the Azure SQL Database to use.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -48,10 +96,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,10 +111,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the database.
+The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -78,10 +126,10 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-Specifies the server that hosts the database.
+The name of the Azure SQL Server the database is in.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +144,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -112,7 +160,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -128,11 +176,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseBackupLongTermRetentionPolicyModel
 
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureRmSqlDatabaseLongTermRetentionBackup](./Get-AzureRmSqlDatabaseLongTermRetentionBackup.md)
+
+[Remove-AzureRmSqlDatabaseLongTermRetentionBackup](./Remove-AzureRmSqlDatabaseLongTermRetentionBackup.md)
 
 [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](./Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy.md)
 

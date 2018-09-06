@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
-            _subscriptionId = context.Subscription.GetId();
             _client = DataLakeStoreCmdletBase.CreateAdlsClient<DataLakeStoreAccountManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
+            _subscriptionId = context.Subscription.GetId();
         }
 
         public DataLakeStoreClient()

@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Management.ContainerRegistry.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsDiagnostic.Test, ContainerRegistryNameAvailabilityNoun)]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryNameAvailability")]
     [OutputType(typeof(RegistryNameStatus))]
     public class TestAzureContainerRegistryNameAvailability : ContainerRegistryCmdletBase
     {

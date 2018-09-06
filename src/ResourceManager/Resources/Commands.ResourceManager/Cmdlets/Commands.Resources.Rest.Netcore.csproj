@@ -1,50 +1,45 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
+  <Import Project="$(ProjectDir)..\..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.ResourceManager.Cmdlets</AssemblyName>
-    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
     <RootNamespace>Microsoft.Azure.Commands.ResourceManager.Cmdlets</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>$(ProjectDir)..\..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Resources\</OutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <SignAssembly>True</SignAssembly>
-    <DelaySign>True</DelaySign>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
-    <DelaySign>false</DelaySign>
-  </PropertyGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
-    <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
-    <PackageReference Include="System.Reflection" Version="4.3.0" />
-    <PackageReference Include="System.Security.SecureString" Version="4.3.0" />
-    <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
-    <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="1.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Tags\Commands.Tags\Commands.Tags.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
+      <DesignTime>true</DesignTime>
+      <AutoGen>true</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>

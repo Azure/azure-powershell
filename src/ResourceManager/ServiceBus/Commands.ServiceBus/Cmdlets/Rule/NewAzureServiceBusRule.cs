@@ -23,46 +23,31 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
     /// <summary>
     /// 'New-AzureRmServiceBusRule' Cmdlet creates a new Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServicebusRuleVerb, SupportsShouldProcess = true), OutputType(typeof(RulesAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusRule", SupportsShouldProcess = true), OutputType(typeof(PSRulesAttributes))]
     public class NewAzureRmServiceBusRule : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "Topic Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [Alias(AliasTopicName)]
         [ValidateNotNullOrEmpty]
         public string Topic { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "Subscription Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Subscription Name")]
         [Alias(AliasSubscriptionName)]
         [ValidateNotNullOrEmpty]
         public string Subscription { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 4,
-            HelpMessage = "Rule Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "Rule Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -75,14 +60,21 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
 
         public override void ExecuteCmdlet()
         {
-            RulesAttributes ruleAttributes = new RulesAttributes();
+            PSRulesAttributes ruleAttributes = new PSRulesAttributes();
 
             if (!string.IsNullOrEmpty(SqlExpression))
                 ruleAttributes.SqlFilter.SqlExpression = SqlExpression;
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateRule, Name, Topic,Namespace)))
             {
-                WriteObject(Client.CreateUpdateRules(ResourceGroupName, Namespace, Topic, Subscription, Name, ruleAttributes));
+                try
+                {
+                    WriteObject(Client.CreateUpdateRules(ResourceGroupName, Namespace, Topic, Subscription, Name, ruleAttributes));
+                }
+                catch (ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }

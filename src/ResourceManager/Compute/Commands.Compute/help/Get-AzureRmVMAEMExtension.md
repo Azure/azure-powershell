@@ -36,7 +36,7 @@ This command gets information for the AEM extension for the virtual machine name
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -52,7 +52,7 @@ Specifies the name of a virtual machine.
 This cmdlet gets information for the AEM extension on the virtual machine that this cmdlet specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
@@ -69,9 +69,9 @@ If the operating system disk does not have a type, you must specify this paramet
 The acceptable values for this parameter are: Windows and Linux.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -85,9 +85,9 @@ Specifies the name of the resource group of a virtual machine.
 This cmdlet gets information for the AEM extension on that virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -100,9 +100,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets only the instance view of the AEM extension.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -116,7 +116,7 @@ Specifies the name of a virtual machine.
 This cmdlet gets information about AEM extension for the virtual machine that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -131,6 +131,10 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

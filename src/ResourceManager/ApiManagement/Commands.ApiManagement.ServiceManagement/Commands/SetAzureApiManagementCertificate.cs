@@ -14,13 +14,15 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
+    using System.Globalization;
     using System.IO;
     using System.Management.Automation;
     using System.Security.Cryptography.X509Certificates;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Properties;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementCertificate, DefaultParameterSetName = FromFile)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementCertificate", DefaultParameterSetName = FromFile)]
     [OutputType(typeof(PsApiManagementCertificate))]
     public class SetAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
@@ -77,7 +79,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             byte[] rawBytes;
             if (ParameterSetName.Equals(FromFile))
             {
-                using (var certStream = File.OpenRead(PfxFilePath))
+                FileInfo localFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.PfxFilePath));
+                if (!localFile.Exists)
+                {
+                    throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, this.PfxFilePath));
+                }
+
+                using (var certStream = File.OpenRead(localFile.FullName))
                 {
                     rawBytes = new byte[certStream.Length];
                     certStream.Read(rawBytes, 0, rawBytes.Length);
@@ -96,7 +104,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             new X509Certificate2(rawBytes, PfxPassword);
 
             var certificate = Client.CertificateSet(Context, CertificateId, rawBytes, PfxPassword);
-            WriteObject(certificate);
+            if (PassThru)
+            {
+                WriteObject(certificate);
+            }
         }
     }
 }

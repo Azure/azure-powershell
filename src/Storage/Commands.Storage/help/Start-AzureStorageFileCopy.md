@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: A96A1A67-6C9C-499F-9935-B90F7ACEB50E
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/start-azurestoragefilecopy
 schema: 2.0.0
@@ -16,72 +17,82 @@ Starts to copy a source file.
 ```
 Start-AzureStorageFileCopy -SrcBlobName <String> -SrcContainerName <String> -DestShareName <String>
  -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ContainerInstance
 ```
 Start-AzureStorageFileCopy -SrcBlobName <String> -SrcContainer <CloudBlobContainer> -DestShareName <String>
  -DestFilePath <String> [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstanceFilePath
 ```
 Start-AzureStorageFileCopy -SrcBlob <CloudBlob> -DestShareName <String> -DestFilePath <String>
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobInstanceFileInstance
 ```
 Start-AzureStorageFileCopy -SrcBlob <CloudBlob> -DestFile <CloudFile> [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ShareName
 ```
 Start-AzureStorageFileCopy -SrcFilePath <String> -SrcShareName <String> -DestShareName <String>
  -DestFilePath <String> [-Context <IStorageContext>] [-DestContext <IStorageContext>] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ShareInstance
 ```
 Start-AzureStorageFileCopy -SrcFilePath <String> -SrcShare <CloudFileShare> -DestShareName <String>
  -DestFilePath <String> [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstanceToFilePath
 ```
 Start-AzureStorageFileCopy -SrcFile <CloudFile> -DestShareName <String> -DestFilePath <String>
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FileInstanceToFileInstance
 ```
 Start-AzureStorageFileCopy -SrcFile <CloudFile> -DestFile <CloudFile> [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UriToFilePath
 ```
 Start-AzureStorageFileCopy -AbsoluteUri <String> -DestShareName <String> -DestFilePath <String>
  [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UriToFileInstance
 ```
 Start-AzureStorageFileCopy -AbsoluteUri <String> -DestFile <CloudFile> [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,9 +123,9 @@ Specifies the URI of the source file.
 If the source location requires a credential, you must provide one.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UriToFilePath, UriToFileInstance
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -129,9 +140,9 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -148,9 +159,9 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -164,7 +175,7 @@ Specifies an Azure Storage context.
 To obtain a context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: ContainerName, ShareName
 Aliases: SrcContext
 
@@ -175,14 +186,29 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DestContext
 Specifies the Azure Storage context of the destination.
 To obtain a context, use **New-AzureStorageContext**.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: ContainerName, ContainerInstance, BlobInstanceFilePath, ShareName, ShareInstance, FileInstanceToFilePath, UriToFilePath
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -196,9 +222,9 @@ Specifies a **CloudFile** object.
 You can create a cloud file or obtain one by using the Get-AzureStorageFile cmdlet.
 
 ```yaml
-Type: CloudFile
+Type: Microsoft.WindowsAzure.Storage.File.CloudFile
 Parameter Sets: BlobInstanceFileInstance, FileInstanceToFileInstance, UriToFileInstance
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -211,9 +237,9 @@ Accept wildcard characters: False
 Specifies the path of the destination file relative to the destination share.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ContainerName, ContainerInstance, BlobInstanceFilePath, ShareName, ShareInstance, FileInstanceToFilePath, UriToFilePath
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -226,9 +252,9 @@ Accept wildcard characters: False
 Specifies the name of the destination share.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ContainerName, ContainerInstance, BlobInstanceFilePath, ShareName, ShareInstance, FileInstanceToFilePath, UriToFilePath
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -241,9 +267,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -256,9 +282,9 @@ Accept wildcard characters: False
 Specifies the length of the time-out period for the server part of a request.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -272,7 +298,7 @@ Specifies a **CloudBlob** object.
 You can create a cloud blob or obtain one by using the Get-AzureStorageBlob cmdlet.
 
 ```yaml
-Type: CloudBlob
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlob
 Parameter Sets: BlobInstanceFilePath, BlobInstanceFileInstance
 Aliases: ICloudBlob
 
@@ -287,9 +313,9 @@ Accept wildcard characters: False
 Specifies the name of the source blob.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ContainerName, ContainerInstance
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -303,9 +329,9 @@ Specifies a cloud blob container object.
 You can create cloud blob container object or use the Get-AzureStorageContainer cmdlet.
 
 ```yaml
-Type: CloudBlobContainer
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
 Parameter Sets: ContainerInstance
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -318,9 +344,9 @@ Accept wildcard characters: False
 Specifies the name of the source container.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ContainerName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -334,9 +360,9 @@ Specifies a **CloudFile** object.
 You can create a cloud file or obtain one by using **Get-AzureStorageFile**.
 
 ```yaml
-Type: CloudFile
+Type: Microsoft.WindowsAzure.Storage.File.CloudFile
 Parameter Sets: FileInstanceToFilePath, FileInstanceToFileInstance
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -349,9 +375,9 @@ Accept wildcard characters: False
 Specifies the path of the source file relative to the source directory or source share.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ShareName, ShareInstance
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -365,9 +391,9 @@ Specifies a cloud file share object.
 You can create a cloud file share or obtain one by using the Get-AzureStorageShare cmdlet.
 
 ```yaml
-Type: CloudFileShare
+Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
 Parameter Sets: ShareInstance
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -380,9 +406,9 @@ Accept wildcard characters: False
 Specifies the name of the source share.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ShareName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -395,7 +421,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -411,7 +437,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -427,15 +453,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### CloudBlob
+### Microsoft.WindowsAzure.Storage.Blob.CloudBlob
 
-Parameter 'SrcBlob' accepts value of type 'CloudBlob' from the pipeline
+### Microsoft.WindowsAzure.Storage.File.CloudFile
+Parameters: SrcFile (ByValue)
 
-### CloudFile
-
-Parameter 'SrcFile' accepts value of type 'CloudFile' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

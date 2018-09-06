@@ -65,8 +65,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
                     new AzureOperationHeaderResponse<JobAddHeaders>(),
                     request =>
                         {
-                            Assert.Equal(request.Parameters.OnAllTasksComplete, OnAllTasksComplete.TerminateJob);
-                            Assert.Equal(request.Parameters.OnTaskFailure, OnTaskFailure.PerformExitOptionsJobAction);
+                            Assert.Equal(OnAllTasksComplete.TerminateJob, request.Parameters.OnAllTasksComplete);
+                            Assert.Equal(OnTaskFailure.PerformExitOptionsJobAction, request.Parameters.OnTaskFailure);
                         });
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };

@@ -33,7 +33,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StartAzureSqlServerUpgradeAttributes()
         {
+#pragma warning disable 618
             Type type = typeof(StartAzureSqlServerUpgrade);
+#pragma warning restore 618
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
             UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.Low);
 
@@ -45,7 +47,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StopAzureSqlServerUpgradeAttributes()
         {
+#pragma warning disable 618
             Type type = typeof(StopAzureSqlServerUpgrade);
+#pragma warning restore 618
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
@@ -55,7 +59,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSqlServerUpgradeAttributes()
         {
+#pragma warning disable 618
             Type type = typeof(GetAzureSqlServerUpgrade);
+#pragma warning restore 618
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
             UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.None);
 

@@ -23,10 +23,12 @@ The **Register-AzureRmProviderFeature** cmdlet registers an Azure provider featu
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Register a feature
+```
+PS C:\>Register-AzureRmProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
-```
+This adds the AllowApplicationSecurityGroups feature for Microsoft.Network to your account.
 
 ## PARAMETERS
 
@@ -34,7 +36,7 @@ The **Register-AzureRmProviderFeature** cmdlet registers an Azure provider featu
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -49,7 +51,7 @@ Accept wildcard characters: False
 Specifies the name of the feature that this cmdlet registers.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +66,7 @@ Accept wildcard characters: False
 Specifies a namespace for which this cmdlet registers a provider feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +81,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -95,7 +97,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -112,8 +114,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
-
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature]
 
 ## NOTES
 

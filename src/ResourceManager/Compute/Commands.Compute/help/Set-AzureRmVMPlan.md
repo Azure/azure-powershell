@@ -20,7 +20,6 @@ Set-AzureRmVMPlan [-VM] <PSVirtualMachine> [-Name] <String> [[-Product] <String>
 
 ## DESCRIPTION
 The **Set-AzureRmVMPlan** cmdlet sets the Azure Marketplace plan information for a virtual machine.
-
 Before being able to deploy a Marketplace image through the command-line, programmatic access must be enabled or the virtual machine must be deployed by using the Azure portal.
 
 ## EXAMPLES
@@ -31,7 +30,7 @@ Before being able to deploy a Marketplace image through the command-line, progra
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -48,9 +47,9 @@ This is the same value that is returned by the Get-AzureRmVMImageSku cmdlet.
 For more information about how to find image information, see Navigating and Selecting Azure Virtual Machine images with PowerShell and the Azure CLIhttps://azure.microsoft.com/documentation/articles/resource-groups-vm-searching/ (https://azure.microsoft.com/documentation/articles/resource-groups-vm-searching/) in the Microsoft Azure documentation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -64,9 +63,9 @@ Specifies the product of the image from the Marketplace.
 This is the same information as the **Offer** value of the **imageReference** element.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -79,9 +78,9 @@ Accept wildcard characters: False
 Specifies a promotion code.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -95,9 +94,9 @@ Specifies the publisher of the image.
 You can find this information by using the Get-AzureRmVMImagePublisher cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -112,7 +111,7 @@ You can use the Get-AzureRmVM cmdlet to obtain a virtual machine object.
 You can use the New-AzureRmVMConfig cmdlet to create a virtual machine object.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 
@@ -128,8 +127,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### System.String
 
 ## OUTPUTS
 

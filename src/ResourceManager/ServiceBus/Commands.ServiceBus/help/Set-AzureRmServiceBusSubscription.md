@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/set-azurermservicebussubscription
 schema: 2.0.0
 ---
@@ -14,7 +14,7 @@ Updates a subscription description for a Service Bus topic in the specified Serv
 
 ```
 Set-AzureRmServiceBusSubscription [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [-InputObject] <SubscriptionAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-InputObject] <PSSubscriptionAttributes> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -30,6 +30,20 @@ PS C:\> $subscriptionObj = Get-AzureRmServiceBusSubscription -ResourceGroup Defa
 PS C:\> $subscriptionObj.DeadLetteringOnMessageExpiration = $True
 PS C:\> $subscriptionObj.MaxDeliveryCount = 9
 
+Name                                      : SB-TopicSubscription-Example1
+AccessedAt                                : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
+CountDetails                              : 
+CreatedAt                                 : 1/20/2017 9:59:15 PM
+DefaultMessageTimeToLive                  : 10675199.02:48:05.4775807
+DeadLetteringOnMessageExpiration          : True
+EnableBatchedOperations                   : True
+LockDuration                              : 00:01:00
+MaxDeliveryCount                          : 9
+MessageCount                              : 0
+RequiresSession                           : False
+Status                                    : Active
+UpdatedAt                                 : 1/20/2017 9:59:15 PM
 PS C:\> Set-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionObj $subscriptionObj
 ```
 
@@ -41,7 +55,7 @@ Updates the description for the specified subscription to the given topic. This 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,14 +70,14 @@ Accept wildcard characters: False
 ServiceBus Subscription definition.
 
 ```yaml
-Type: SubscriptionAttributes
+Type: Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes
 Parameter Sets: (All)
 Aliases: SubscriptionObj
 
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -71,7 +85,7 @@ Accept wildcard characters: False
 Namespace Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: NamespaceName
 
@@ -86,7 +100,7 @@ Accept wildcard characters: False
 The name of the resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -101,7 +115,7 @@ Accept wildcard characters: False
 Topic Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: TopicName
 
@@ -116,7 +130,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -132,7 +146,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -148,37 +162,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
- System.String
+### System.String
 
-### -NamespaceName
- System.String
-
-### -TopicName
- System.String
-
-### -SubscriptionObj
- Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
-Name                                      : SB-TopicSubscription-Example1
-AccessedAt                                : 1/1/0001 12:00:00 AM
-AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
-CountDetails                              : 
-CreatedAt                                 : 1/20/2017 9:59:15 PM
-DefaultMessageTimeToLive                  : 10675199.02:48:05.4775807
-DeadLetteringOnMessageExpiration          : True
-EnableBatchedOperations                   : True
-LockDuration                              : 00:01:00
-MaxDeliveryCount                          : 9
-MessageCount                              : 0
-RequiresSession                           : False
-Status                                    : Active
-UpdatedAt                                 : 1/20/2017 9:59:15 PM
+### Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes
 
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
 Module Name: AzureRM.DataMigration
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/Remove-AzureRmDataMigrationTask
 schema: 2.0.0
 ---
 
@@ -16,18 +16,19 @@ Removes an Azure Database Migration Service task from Azure.
 ```
 Remove-AzureRmDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
  -Name <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
 Remove-AzureRmDataMigrationTask [-InputObject] <PSProjectTask> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Remove-AzureRmDataMigrationTask [-ResourceId] <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,43 +38,26 @@ The Remove-AzureRmDataMigrationTask cmdlet removes an Azure Database Migration S
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmDataMigrationTask –TaskName TestTask -ProjectName myTestProject -ServiceName MyTestService
+PS C:\> Remove-AzureRmDataMigrationTask -TaskName TestTask -ProjectName myTestProject -ServiceName MyTestService
  -ResourceGroupName MyResourceGroup
-
 ```
 
 The preceding example removes an Azure Database Migration Service task named TestTask from Azure based on task name parameter.
 
 ### Example 2
 ```
-PS C:\> Remove-AzureRmDataMigrationTask –InputObject $TestTask
-
+PS C:\> Remove-AzureRmDataMigrationTask -InputObject $TestTask
 ```
 
 The preceding example removes an Azure Database Migration Service task based on PSProjectTask object passed in.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,9 +72,9 @@ Accept wildcard characters: False
 Skip confirmation message for performing the action
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -103,7 +87,7 @@ Accept wildcard characters: False
 PSProjectTask Object.
 
 ```yaml
-Type: PSProjectTask
+Type: Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask
 Parameter Sets: ComponentObjectParameterSet
 Aliases: ProjectTask
 
@@ -118,7 +102,7 @@ Accept wildcard characters: False
 The name of the task.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
 Aliases: TaskName
 
@@ -134,9 +118,9 @@ Returns an true/false.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -149,9 +133,9 @@ Accept wildcard characters: False
 The name of the project.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -164,9 +148,9 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -179,9 +163,9 @@ Accept wildcard characters: False
 Project Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -191,14 +175,29 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Data Migration Service Name.
+Database Migration Service Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -210,7 +209,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -221,19 +220,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask
-System.String
+Parameters: InputObject (ByValue)
 
+### System.String
 
 ## OUTPUTS
 
 ### System.Boolean
 
-
 ## NOTES
 
 ## RELATED LINKS
-
-

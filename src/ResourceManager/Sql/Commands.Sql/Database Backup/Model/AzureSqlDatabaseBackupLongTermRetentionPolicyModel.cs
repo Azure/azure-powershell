@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Model
 {
@@ -19,6 +20,26 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// Gets or sets the name of the database
         /// </summary>
         public string DatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the weekly retention
+        /// </summary>
+        public string WeeklyRetention { get; set; }
+
+        /// <summary>
+        /// Gets or sets the monthly retention
+        /// </summary>
+        public string MonthlyRetention { get; set; }
+
+        /// <summary>
+        /// Gets or sets the yearly retention
+        /// </summary>
+        public string YearlyRetention { get; set; }
+
+        /// <summary>
+        /// Gets or sets the week of year for yearly retention
+        /// </summary>
+        public int? WeekOfYear { get; set; }
 
         /// <summary>
         /// Gets or sets the backup archival state

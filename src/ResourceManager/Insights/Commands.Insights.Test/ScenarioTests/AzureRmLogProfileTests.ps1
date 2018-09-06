@@ -18,7 +18,7 @@ Tests getting log profiles
 #>
 function Test-GetAzureRmLogProfile
 {
-    try 
+    try
     {
         # Test
         $actual = Get-AzureRmLogProfile -Name default
@@ -49,11 +49,11 @@ Tests adding log profile
 #>
 function Test-AddAzureRmLogProfile
 {
-    try 
+    try
     {
-        $actual = Add-AzureRmLogProfile -Name default -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777 -Locations global -Categories Delete,Write,Action
+        $actual = Add-AzureRmLogProfile -Name default -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777 -Location global -Category Delete,Write,Action
 
-        Assert-AreEqual $true $actual 
+        Assert-AreEqual $true $actual
     }
     finally
     {
@@ -68,11 +68,11 @@ Tests adding log profile
 #>
 function Test-AddAzureRmLogProfileWithRetention
 {
-    try 
+    try
     {
-        $actual = Add-AzureRmLogProfile -Name default -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777 -Locations global -Categories Delete,Write,Action -RetentionInDays 90
+        $actual = Add-AzureRmLogProfile -Name default -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777 -Location global -Category Delete,Write,Action -RetentionInDays 90
 
-        Assert-AreEqual $true $actual 
+        Assert-AreEqual $true $actual
     }
     finally
     {

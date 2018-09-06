@@ -23,7 +23,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
     public class PSDataLakeAnalyticsComputePolicy : ComputePolicy
     {
         public PSDataLakeAnalyticsComputePolicy(ComputePolicy basePolicy) :
-            base(basePolicy.Name,
+            base(basePolicy.Id,
+                basePolicy.Name,
+                basePolicy.Type,
                 basePolicy.ObjectId,
                 basePolicy.ObjectType,
                 basePolicy.MaxDegreeOfParallelismPerJob,

@@ -78,7 +78,7 @@ Gets all the replications of a container registry
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Container Registry Replication Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ShowReplicationByNameResourceGroupParameterSet, ShowReplicationByRegistryObjectParameterSet
 Aliases: ReplicationName, ResourceName
 
@@ -108,9 +108,9 @@ Accept wildcard characters: False
 Container Registry Object.
 
 ```yaml
-Type: PSContainerRegistry
+Type: Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
 Parameter Sets: ShowReplicationByRegistryObjectParameterSet, ListReplicationByRegistryObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 Container Registry Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListReplicationByNameResourceGroupParameterSet, ShowReplicationByNameResourceGroupParameterSet
 Aliases: ContainerRegistryName
 
@@ -138,9 +138,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListReplicationByNameResourceGroupParameterSet, ShowReplicationByNameResourceGroupParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 The container registry replication resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases: Id
 
@@ -170,12 +170,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
-System.String
+Parameters: Registry (ByValue)
+
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication
-Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication[]
 
 ## NOTES
 

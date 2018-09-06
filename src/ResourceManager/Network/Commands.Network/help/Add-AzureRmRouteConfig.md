@@ -14,9 +14,9 @@ Adds a route to a route table.
 ## SYNTAX
 
 ```
-Add-AzureRmRouteConfig -RouteTable <PSRouteTable> [-AddressPrefix <String>] [-NextHopType <String>]
- [-NextHopIpAddress <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Add-AzureRmRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-AddressPrefix <String>]
+ [-NextHopType <String>] [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,6 @@ PS C:\> Add-AzureRmRouteConfig -Name "Route13" -AddressPrefix 10.3.0.0/16 -NextH
 
 The first command gets a route table named RouteTable01 by using the Get-AzureRmRouteTable cmdlet.
 The command stores the table in the $RouteTable variable.
-
 The second command adds a route named Route13 to the route table stored in $RouteTable.
 This route forwards packets to the local virtual network.
 
@@ -91,9 +90,9 @@ The current cmdlet adds the route named Route02, and then passes the result to t
 Specifies the destination, in Classless Interdomain Routing (CIDR) format, to which the route applies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -106,7 +105,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -121,9 +120,9 @@ Accept wildcard characters: False
 Specifies a name of the route to add to the route table.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -138,9 +137,9 @@ This route forwards packets to that address.
 Specify this parameter only if you specify a value of VirtualAppliance for the *NextHopType* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -152,7 +151,6 @@ Accept wildcard characters: False
 ### -NextHopType
 Specifies how this route forwards packets.
 The acceptable values for this parameter are:
-
 - Internet.
 The default Internet gateway provided by Azure. 
 - None.
@@ -166,9 +164,9 @@ The local virtual network.
 If you have two subnets, 10.1.0.0/16 and 10.2.0.0/16 in the same virtual network, select a value of VnetLocal for each subnet to forward to the other subnet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -181,9 +179,9 @@ Accept wildcard characters: False
 Specifies the route table to which this cmdlet adds a route.
 
 ```yaml
-Type: PSRouteTable
+Type: Microsoft.Azure.Commands.Network.Models.PSRouteTable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -196,7 +194,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -211,7 +209,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -227,8 +225,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSRouteTable
-Parameter 'RouteTable' accepts value of type 'PSRouteTable' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSRouteTable
+
+### System.String
 
 ## OUTPUTS
 

@@ -41,9 +41,7 @@ PS C:\> Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $
 ```
 
 This example assigns a VPN client address pool to a virtual network gateway named ContosoVirtualGateway.
-
 The first command creates an object reference to the gateway and the object is stored in a variable named $Gateway.
-
 The second command in the example then uses the **Set-AzureRmVirtualNetworkGatewayVpnClientConfig** cmdlet to assign the address pool 10.0.0.0/16 to ContosoVirtualGateway.
 
 ### Example 2: Configure external radius based authentication on existing gateway
@@ -54,9 +52,7 @@ PS C:\> Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $
 ```
 
 This example assigns a VPN client address pool to a virtual network gateway named ContosoVirtualGateway.
-
 The first command creates an object reference to the gateway and the object is stored in a variable named $Gateway.
-
 The second command in the example then uses the **Set-AzureRmVirtualNetworkGatewayVpnClientConfig** cmdlet to assign the address pool 10.0.0.0/16 to ContosoVirtualGateway. It also configures the external radius server "TestRadiusServer" to be used for authentication for vpn clients.
 
 ## PARAMETERS
@@ -65,7 +61,7 @@ The second command in the example then uses the **Set-AzureRmVirtualNetworkGatew
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,9 +76,9 @@ Accept wildcard characters: False
 P2S External Radius server address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RadiusServerConfiguration
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -95,9 +91,9 @@ Accept wildcard characters: False
 P2S External Radius server secret.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: RadiusServerConfiguration
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -111,9 +107,9 @@ Specifies an object reference to the virtual network gateway that contains the V
 You can create an object reference to a virtual network gateway by using the Get-AzureRmVirtualNetworkGateway and specifying the name of the gateway.
 
 ```yaml
-Type: PSVirtualNetworkGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -128,7 +124,7 @@ Specifies the IP addresses to be assigned to clients connecting to this gateway
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -141,7 +137,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -156,7 +152,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -172,13 +168,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-This cmdlet accepts pipelined instances of the **Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway** object.
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Parameters: VirtualNetworkGateway (ByValue)
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
+
+### System.Security.SecureString
 
 ## OUTPUTS
 
-###  
-This cmdlet modifies existing instances of the **Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway** object.
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 
 ## NOTES
 

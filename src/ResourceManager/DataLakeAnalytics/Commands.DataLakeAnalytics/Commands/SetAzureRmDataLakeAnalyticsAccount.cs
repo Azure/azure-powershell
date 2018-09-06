@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof(PSDataLakeAnalyticsAccount))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeAnalyticsAccount"), OutputType(typeof(PSDataLakeAnalyticsAccount))]
     [Alias("Set-AdlAnalyticsAccount")]
     public class SetAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
@@ -34,8 +34,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             HelpMessage =
                 "A string,string dictionary of tags associated with this account that should replace the current set of tags"
             )]
-        [Obsolete("Set-AzureRmDataLakeAnalyticsAccount: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         [ValidateNotNull]
         public Hashtable Tag { get; set; }
 

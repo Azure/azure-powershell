@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Network
+namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class SubnetStrategy
     {
@@ -30,8 +29,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
 
         public static NestedResourceConfig<Subnet, VirtualNetwork> CreateSubnet(
             this ResourceConfig<VirtualNetwork> virtualNetwork, string name, string addressPrefix)
-            => Strategy.CreateConfig(
-                parent: virtualNetwork,
+            => virtualNetwork.CreateNested(
+                strategy: Strategy,
                 name: name,
                 createModel: _ => new Subnet { Name = name, AddressPrefix = addressPrefix });
     }

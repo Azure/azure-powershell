@@ -37,7 +37,7 @@ This command sets 40 percent for MaxBatchInstance, 35 percent for MaxUnhealthyIn
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -54,9 +54,9 @@ As this is a maximum, unhealthy instances in previous or future batches can caus
 If the value is not specified, it is set to 20.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -71,9 +71,9 @@ This constraint will be checked prior to starting any batch.
 If the value is not specified, it is set to 20.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -89,9 +89,9 @@ If this percentage is ever exceeded, the rolling update aborts.
 If the value is not specified, it is set to 20.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -106,9 +106,9 @@ The time duration should be specified in ISO 8601 format.
 The default value is 0 seconds (PT0S).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -122,9 +122,9 @@ Specifies the VMSS object.
 You can use the New-AzureRmVmssConfig cmdlet to create the object.
 
 ```yaml
-Type: PSVirtualMachineScaleSet
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -153,7 +153,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -170,8 +170,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
-System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-System.String
+
+### System.Int32
+
+### System.String
 
 ## OUTPUTS
 
@@ -180,4 +182,3 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
-

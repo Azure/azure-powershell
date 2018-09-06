@@ -15,34 +15,38 @@
 namespace Microsoft.Azure.Commands.PowerBI.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
 
     public class PowerBITests : PowerBITestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public PowerBITests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPBIECapacity()
         {
-            NewInstance.RunPsTest("Test-PowerBIEmbeddedCapacity");
+            NewInstance.RunPsTest(_logger, "Test-PowerBIEmbeddedCapacity");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPBIECapacityScale()
         {
-            NewInstance.RunPsTest("Test-PowerBIEmbeddedCapacityScale");
+            NewInstance.RunPsTest(_logger, "Test-PowerBIEmbeddedCapacityScale");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativePBIECapacity()
         {
-            NewInstance.RunPsTest("Test-NegativePowerBIEmbeddedCapacity");
+            NewInstance.RunPsTest(_logger, "Test-NegativePowerBIEmbeddedCapacity");
         }
     }
 }

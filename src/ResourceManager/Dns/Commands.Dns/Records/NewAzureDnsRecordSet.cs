@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Creates a new record set.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDnsRecordSet", SupportsShouldProcess = true),
-        OutputType(typeof(DnsRecordSet))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DnsRecordSet", SupportsShouldProcess = true),OutputType(typeof(DnsRecordSet))]
     public class NewAzureDnsRecordSet : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
@@ -64,10 +63,6 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, HelpMessage = "Do not fail if the record set already exists.")]
         public SwitchParameter Overwrite { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        [Obsolete("This parameter is obsolete; use Confirm instead")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             string zoneName = null;
@@ -90,7 +85,7 @@ namespace Microsoft.Azure.Commands.Dns
                 resourceGroupname = this.Zone.ResourceGroupName;
             }
             if(this.Name.EndsWith(zoneName.ToString()))
-            {   
+            {
                 this.WriteWarning(string.Format(ProjectResources.Error_RecordSetNameEndsWithZoneName, this.Name, zoneName.ToString()));
             }
 

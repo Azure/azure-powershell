@@ -135,6 +135,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 }
             }
 
+            RegisterDynamicParameters(dynamicParameters);
+
             return dynamicParameters;
         }
 
@@ -146,7 +148,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 foreach (var parameterKey in templateParameterObject.Keys)
                 {
-                    prameterObject[parameterKey] = new Hashtable { { "value", templateParameterObject[parameterKey] } };
+                    // Let default behavior of a value parameter if not a KeyVault reference Hashtable
+                    var hashtableParameter = templateParameterObject[parameterKey] as Hashtable;
+                    if (hashtableParameter != null && hashtableParameter.ContainsKey("reference"))
+                    {
+                        prameterObject[parameterKey] = templateParameterObject[parameterKey];
+                    }
+                    else
+                    {
+                        prameterObject[parameterKey] = new Hashtable { { "value", templateParameterObject[parameterKey] } };
+                    }
                 }
             }
 
@@ -172,7 +183,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             // Load dynamic parameters
-            IEnumerable<RuntimeDefinedParameter> parameters = PowerShellUtilities.GetUsedDynamicParameters(dynamicParameters, MyInvocation);
+            IEnumerable<RuntimeDefinedParameter> parameters = PowerShellUtilities.GetUsedDynamicParameters(this.AsJobDynamicParameters, MyInvocation);
             if (parameters.Any())
             {
                 parameters.ForEach(dp => prameterObject[((ParameterAttribute)dp.Attributes[0]).HelpMessage] = new Hashtable { { "value", dp.Value } });

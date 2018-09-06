@@ -13,21 +13,41 @@ Updates the state of a VMSS.
 
 ## SYNTAX
 
+### DefaultParameter (Default)
 ```
 Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
- [-EnableAutomaticUpdate <Boolean>] [-ManagedDiskStorageAccountType <StorageAccountTypes>]
- [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>] [-BootDiagnosticsEnabled <Boolean>]
- [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>] [-TimeZone <String>]
- [-BootDiagnosticsStorageUri <String>] [-AutomaticOSUpgrade <Boolean>] [-SinglePlacementGroup <Boolean>]
- [-CustomData <String>] [-UpgradePolicyMode <UpgradeMode>] [-ImageReferenceId <String>]
- [-DisablePasswordAuthentication <Boolean>] [-Tag <Hashtable>] [-PlanName <String>]
- [-MaxUnhealthyUpgradedInstancePercent <Int32>] [-ImageReferencePublisher <String>] [-PlanProduct <String>]
- [-ImageUri <String>] [-SkuTier <String>] [-VhdContainer <String[]>] [-LicenseType <String>]
- [-IdentityType <ResourceIdentityType>] [-SkuName <String>] [-PlanPromotionCode <String>]
- [-MaxUnhealthyInstancePercent <Int32>] [-SkuCapacity <Int32>] [-ImageReferenceOffer <String>]
- [-PauseTimeBetweenBatches <String>] [-OsDiskCaching <CachingTypes>] [-ImageReferenceVersion <String>] [-AsJob]
+ [-ManagedDiskStorageAccountType <String>] [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>]
+ [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>]
+ [-TimeZone <String>] [-BootDiagnosticsStorageUri <String>] [-AutomaticOSUpgrade <Boolean>]
+ [-DisableAutoRollback <Boolean>] [-SinglePlacementGroup <Boolean>] [-CustomData <String>]
+ [-UpgradePolicyMode <UpgradeMode>] [-ImageReferenceId <String>] [-DisablePasswordAuthentication <Boolean>]
+ [-Tag <Hashtable>] [-PlanName <String>] [-MaxUnhealthyUpgradedInstancePercent <Int32>]
+ [-ImageReferencePublisher <String>] [-PlanProduct <String>] [-VhdContainer <String[]>] [-ImageUri <String>]
+ [-SkuTier <String>] [-EnableAutomaticUpdate <Boolean>] [-LicenseType <String>] [-SkuName <String>]
+ [-PlanPromotionCode <String>] [-MaxUnhealthyInstancePercent <Int32>] [-SkuCapacity <Int32>]
+ [-OsDiskWriteAccelerator <Boolean>] [-ImageReferenceOffer <String>] [-PauseTimeBetweenBatches <String>]
+ [-OsDiskCaching <CachingTypes>] [-ImageReferenceVersion <String>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ExplicitIdentityParameterSet
+```
+Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
+ [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>] [-IdentityId <String[]>]
+ [-ManagedDiskStorageAccountType <String>] [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>]
+ [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>]
+ [-TimeZone <String>] [-BootDiagnosticsStorageUri <String>] [-AutomaticOSUpgrade <Boolean>]
+ [-DisableAutoRollback <Boolean>] [-SinglePlacementGroup <Boolean>] [-CustomData <String>]
+ [-UpgradePolicyMode <UpgradeMode>] [-ImageReferenceId <String>] [-DisablePasswordAuthentication <Boolean>]
+ [-Tag <Hashtable>] [-PlanName <String>] [-MaxUnhealthyUpgradedInstancePercent <Int32>]
+ [-ImageReferencePublisher <String>] [-PlanProduct <String>] [-VhdContainer <String[]>] [-ImageUri <String>]
+ [-SkuTier <String>] [-EnableAutomaticUpdate <Boolean>] [-LicenseType <String>]
+ -IdentityType <ResourceIdentityType> [-SkuName <String>] [-PlanPromotionCode <String>]
+ [-MaxUnhealthyInstancePercent <Int32>] [-SkuCapacity <Int32>] [-OsDiskWriteAccelerator <Boolean>]
+ [-ImageReferenceOffer <String>] [-PauseTimeBetweenBatches <String>] [-OsDiskCaching <CachingTypes>]
+ [-ImageReferenceVersion <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,10 +57,10 @@ The **Update-AzureRmVmss** cmdlet updates the state of a Virtual Machine Scale S
 
 ### Example 1: Update the state of a VMSS to the state of a local VMSS object.
 ```
-PS C:\> Update-AzureRmVmss -ResourceGroupName "Group001" -Name "VMSS001" -VirtualMachineScaleSet "LocalVMSS"
+PS C:\> Update-AzureRmVmss -ResourceGroupName "Group001" -Name "VMSS001" -VirtualMachineScaleSet $LocalVMSS
 ```
 
-This command updates the state of the VMSS named VMSS001 that belongs to the resource group named Group001 to the state of a local VMSS object named LocalVMSS.
+This command updates the state of the VMSS named VMSS001 that belongs to the resource group named Group001 to the state of a local VMSS object, $LocalVMSS.
 
 ## PARAMETERS
 
@@ -48,9 +68,9 @@ This command updates the state of the VMSS named VMSS001 that belongs to the res
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -63,9 +83,9 @@ Accept wildcard characters: False
 Sets whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -78,9 +98,9 @@ Accept wildcard characters: False
 Whether boot diagnostics should be enabled on the virtual machine scale set.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -93,9 +113,9 @@ Accept wildcard characters: False
 URI of the storage account to use for placing the console output and screenshot.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,9 +130,9 @@ This is decoded to a binary array that is saved as a file on the virtual machine
 The maximum length of the binary array is 65535 bytes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -125,9 +145,24 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableAutoRollback
+Disable Auto Rollback for Auto OS Upgrade Policy
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -140,9 +175,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet disables password authentication for Linux OS.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -155,9 +190,25 @@ Accept wildcard characters: False
 Indicates whether the Windows virtual machines in the VMSS are enabled for automatic updates.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityId
+Specifies the list of user identities associated with the virtual machine scale set.
+The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
+
+```yaml
+Type: System.String[]
+Parameter Sets: ExplicitIdentityParameterSet
+Aliases:
 
 Required: False
 Position: Named
@@ -167,18 +218,22 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Specify the identity for the virtual machine scale set.
+Specifies the type of identity used for the virtual machine scale set.
+The type 'SystemAssignedUserAssigned' includes both an implicitly created identity and a set of user assigned identities.
+The type 'None' will remove any identities from the virtual machine scale set.
 The acceptable values for this parameter are:
-
 - SystemAssigned
+- UserAssigned
+- SystemAssignedUserAssigned
+- None
 
 ```yaml
-Type: ResourceIdentityType
-Parameter Sets: (All)
-Aliases: 
-Accepted values: SystemAssigned
+Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.ResourceIdentityType]
+Parameter Sets: ExplicitIdentityParameterSet
+Aliases:
+Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -189,9 +244,9 @@ Accept wildcard characters: False
 Specifies the image reference ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -205,9 +260,9 @@ Specifies the type of virtual machine image (VMImage) offer.
 To obtain an image offer, use the Get-AzureRmVMImageOffer cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -221,9 +276,9 @@ Specifies the name of a publisher of a VMImage.
 To obtain a publisher, use the Get-AzureRmVMImagePublisher cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -237,9 +292,9 @@ Specifies the VMImage SKU.
 To obtain SKUs, use the Get-AzureRmVMImageSku cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -253,9 +308,9 @@ Specifies the version of the VMImage.
 To use the latest version, specify a value of latest instead of a particular version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -269,9 +324,9 @@ Specifies the blob URI for the user image.
 VMSS creates an operating system disk in the same container of the user image.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -284,9 +339,9 @@ Accept wildcard characters: False
 Specify the license type, which is for bringing your own license scenario.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -298,15 +353,13 @@ Accept wildcard characters: False
 ### -ManagedDiskStorageAccountType
 Specifies the storage account type for managed disk.
 The acceptable values for this parameter are:
-
 - StandardLRS
 - PremiumLRS
 
 ```yaml
-Type: StorageAccountTypes
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: StandardLRS, PremiumLRS
+Aliases:
 
 Required: False
 Position: Named
@@ -321,9 +374,9 @@ As this is a maximum, unhealthy instances in previous or future batches can caus
 If the value is not specified, it is set to 20.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -338,9 +391,9 @@ This constraint will be checked prior to starting any batch.
 If the value is not specified, it is set to 20.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -356,9 +409,9 @@ If this percentage is ever exceeded, the rolling update aborts.
 If the value is not specified, it is set to 20.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -370,21 +423,33 @@ Accept wildcard characters: False
 ### -OsDiskCaching
 Specifies the caching mode of the operating system disk. 
 The acceptable values for this parameter are:
-
 - None
 - ReadOnly
 - ReadWrite
-
 The default value is ReadWrite.
 If you change the caching value, the cmdlet will restart the virtual machine.
-
 This setting affects the consistency and performance of the disk.
 
 ```yaml
-Type: CachingTypes
+Type: Microsoft.Azure.Management.Compute.Models.CachingTypes
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, ReadOnly, ReadWrite
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OsDiskWriteAccelerator
+Specifies whether WriteAccelerator should be enabled or disabled on the OS disk.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -397,9 +462,9 @@ Accept wildcard characters: False
 Indicates whether the cmdlet overprovisions the VMSS.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -414,9 +479,9 @@ The time duration should be specified in ISO 8601 format.
 The default value is 0 seconds (PT0S).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -429,9 +494,9 @@ Accept wildcard characters: False
 Specifies the plan name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -444,9 +509,9 @@ Accept wildcard characters: False
 Specifies the plan product.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -459,9 +524,9 @@ Accept wildcard characters: False
 Specifies the plan promotion code.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -474,9 +539,9 @@ Accept wildcard characters: False
 Specifies the plan publisher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -489,9 +554,9 @@ Accept wildcard characters: False
 Indicates whether virtual machine agent should be provisioned on the Windows virtual machines in the VMSS.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -504,9 +569,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group the VMSS belongs to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -519,9 +584,9 @@ Accept wildcard characters: False
 Specifies the single placement group.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -534,9 +599,9 @@ Accept wildcard characters: False
 Specifies the number of instances in the VMSS.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -549,9 +614,9 @@ Accept wildcard characters: False
 Specifies the size of all the instances of VMSS.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -563,14 +628,13 @@ Accept wildcard characters: False
 ### -SkuTier
 Specifies the tier of VMSS.
 The acceptable values for this parameter are:
-
 - Standard
 - Basic
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -581,13 +645,12 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -600,9 +663,9 @@ Accept wildcard characters: False
 Specifies the time zone for Windows OS.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -614,15 +677,14 @@ Accept wildcard characters: False
 ### -UpgradePolicyMode
 Specified the mode of an upgrade to virtual machines in the scale set.
 The acceptable values for this parameter are:
-
 - Automatic
 - Manual
 - Rolling
 
 ```yaml
-Type: UpgradeMode
+Type: Microsoft.Azure.Management.Compute.Models.UpgradeMode
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Automatic, Manual, Rolling
 
 Required: False
@@ -636,9 +698,9 @@ Accept wildcard characters: False
 Specifies the container URLs that are used to store operating system disks for the VMSS.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -653,9 +715,9 @@ To obtain a VMSS object, use the Get-AzureRmVmss cmdlet.
 This virtual machine object contains the updated state for the VMSS.
 
 ```yaml
-Type: PSVirtualMachineScaleSet
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -668,7 +730,7 @@ Accept wildcard characters: False
 Specifies the name of the VMSS that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -683,7 +745,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -696,11 +758,10 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -716,8 +777,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### VirtualMachineScaleSet
-Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
+### System.String
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+Parameters: VirtualMachineScaleSet (ByValue)
 
 ## OUTPUTS
 

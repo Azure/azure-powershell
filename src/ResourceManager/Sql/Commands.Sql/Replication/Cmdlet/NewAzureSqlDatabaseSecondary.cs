@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
+using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,10 +28,12 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure SQL Database Secondary and Replication Link
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseSecondary",
-        ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseSecondary",ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureReplicationLinkModel))]
     public class NewAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
     {
+        private const string DtuDatabaseParameterSet = "DtuBasedDatabase";
+        private const string VcoreDatabaseParameterSet = "VcoreBasedDatabase";
+
         /// <summary>
         /// Gets or sets the name of the Azure SQL Database to act as primary.
         /// </summary>
@@ -43,7 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <summary>
         /// Gets or sets the name of the service objective to assign to the secondary.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The name of the service objective to assign to the secondary.")]
         [ValidateNotNullOrEmpty]
         public string SecondaryServiceObjectiveName { get; set; }
@@ -51,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <summary>
         /// Gets or sets the name of the Elastic Pool to put the secondary in.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The name of the Elastic Pool to put the secondary in.")]
         [ValidateNotNullOrEmpty]
         public string SecondaryElasticPoolName { get; set; }
@@ -84,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// Gets or sets the read intent of the secondary (ReadOnly is not yet supported).
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The read intent of the secondary (ReadOnly is not yet supported).")]
+            HelpMessage = "The read intent of the secondary (Non-Readable secondary is not supported anymore).")]
         [ValidateNotNullOrEmpty]
         public AllowConnections AllowConnections { get; set; }
 
@@ -93,6 +97,35 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Gets or sets the compute generation of the database copy
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The compute generation of teh Azure Sql Database secondary.")]
+        [Alias("Family")]
+        [PSArgumentCompleter("Gen4", "Gen5")]
+        [ValidateNotNullOrEmpty]
+        public string SecondaryComputeGeneration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Vcore numbers of the database copy
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The Vcore numbers of the Azure Sql Database secondary.")]
+        [Alias("Capacity")]
+        [ValidateNotNullOrEmpty]
+        public int SecondaryVCore { get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The license type for the Azure Sql database.")]
+        [PSArgumentCompleter(
+            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
+            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
+        public string LicenseType { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -140,7 +173,9 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         {
             string location = ModelAdapter.GetServerLocation(this.PartnerResourceGroupName, this.PartnerServerName);
             List<Model.AzureReplicationLinkModel> newEntity = new List<AzureReplicationLinkModel>();
-            newEntity.Add(new AzureReplicationLinkModel()
+            Database.Model.AzureSqlDatabaseModel primaryDb = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
+            
+            AzureReplicationLinkModel linkModel = new AzureReplicationLinkModel()
             {
                 PartnerLocation = location,
                 ResourceGroupName = this.ResourceGroupName,
@@ -148,11 +183,35 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 DatabaseName = this.DatabaseName,
                 PartnerResourceGroupName = this.PartnerResourceGroupName,
                 PartnerServerName = this.PartnerServerName,
-                SecondaryServiceObjectiveName = this.SecondaryServiceObjectiveName,
                 SecondaryElasticPoolName = this.SecondaryElasticPoolName,
                 AllowConnections = this.AllowConnections,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-            });
+                LicenseType = LicenseType
+            };
+
+            if(ParameterSetName == DtuDatabaseParameterSet)
+            {
+                if (!string.IsNullOrWhiteSpace(SecondaryServiceObjectiveName))
+                {
+                    linkModel.SkuName = SecondaryServiceObjectiveName;
+                }
+                else if(string.IsNullOrWhiteSpace(SecondaryElasticPoolName))
+                {
+                    linkModel.SkuName = primaryDb.CurrentServiceObjectiveName;
+                    linkModel.Edition = primaryDb.Edition;
+                    linkModel.Capacity = primaryDb.Capacity;
+                    linkModel.Family = primaryDb.Family;
+                }
+            }
+            else
+            {
+                linkModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(primaryDb.Edition);
+                linkModel.Edition = primaryDb.Edition;
+                linkModel.Capacity = SecondaryVCore;
+                linkModel.Family = SecondaryComputeGeneration;
+            }
+
+            newEntity.Add(linkModel);
             return newEntity;
         }
 
@@ -163,8 +222,9 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureReplicationLinkModel> PersistChanges(IEnumerable<AzureReplicationLinkModel> entity)
         {
-            return new List<AzureReplicationLinkModel>() {
-                ModelAdapter.CreateLink(entity.First().PartnerResourceGroupName, entity.First().PartnerServerName, entity.First())
+            return new List<AzureReplicationLinkModel>()
+            {
+                ModelAdapter.CreateLinkWithNewSdk(entity.First().PartnerResourceGroupName, entity.First().PartnerServerName, entity.First())
             };
         }
     }

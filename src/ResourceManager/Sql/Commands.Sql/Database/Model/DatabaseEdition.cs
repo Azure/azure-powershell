@@ -58,6 +58,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// PremiumRS database edition
         /// </summary>
         PremiumRS = 9,
+
+        /// <summary>
+        /// General Purpose edition for SqlAzure database
+        /// </summary>
+        GeneralPurpose = 10,
+
+        /// <summary>
+        /// Business Critical edition for SqlAzure database
+        /// </summary>
+        BusinessCritical = 11,
     }
 }
 

@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
     public class RemoveKeyVaultKeyTests : KeyVaultUnitTestBase
     {
         private RemoveAzureKeyVaultKey cmdlet;
-        private KeyAttributes keyAttributes;
+        private PSKeyVaultKeyAttributes keyAttributes;
         private WebKey.JsonWebKey webKey;
-        private DeletedKeyBundle keyBundle;
+        private PSDeletedKeyVaultKey keyBundle;
 
         public RemoveKeyVaultKeyTests()
         {
@@ -39,16 +39,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 VaultName = VaultName
             };
 
-            keyAttributes = new KeyAttributes(true, DateTime.Now, DateTime.Now, "HSM", new string[] { "All" }, null);
+            keyAttributes = new PSKeyVaultKeyAttributes(true, DateTime.Now, DateTime.Now, "HSM", new string[] { "All" }, null);
             webKey = new WebKey.JsonWebKey();
-            keyBundle = new DeletedKeyBundle() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName };
+            keyBundle = new PSDeletedKeyVaultKey() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanRemoveKeyWithPassThruTest()
         {
-            DeletedKeyBundle expected = keyBundle;
+            PSDeletedKeyVaultKey expected = keyBundle;
             keyVaultClientMock.Setup(kv => kv.DeleteKey(VaultName, KeyName)).Returns(expected).Verifiable();
 
             // Mock the should process to return true
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanRemoveKeyWithNoPassThruTest()
         {
-            DeletedKeyBundle expected = keyBundle;
+            PSDeletedKeyVaultKey expected = keyBundle;
             keyVaultClientMock.Setup(kv => kv.DeleteKey(VaultName, KeyName)).Returns(expected).Verifiable();
 
             // Mock the should process to return true
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             // Should process but without force
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(KeyName, It.IsAny<string>())).Returns(true);
 
-            KeyBundle expected = null;
+            PSKeyVaultKey expected = null;
 
             cmdlet.Name = KeyName;
             cmdlet.PassThru = true;
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             catch { }
 
             keyVaultClientMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<KeyBundle>()), Times.Never());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSKeyVaultKey>()), Times.Never());
         }
     }
 }

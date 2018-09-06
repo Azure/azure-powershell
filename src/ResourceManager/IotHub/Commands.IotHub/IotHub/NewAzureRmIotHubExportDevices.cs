@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceProperties = Microsoft.Azure.Commands.Management.IotHub.Properties;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmIotHubExportDevices", SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubExportDevices", SupportsShouldProcess = true)]
     [OutputType(typeof(PSIotHubJobResponse))]
     public class NewAzureRmIotHubExportDevices : IotHubBaseCmdlet
     {
@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string ExportBlobContainerUri { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Allows to export devices without keys")]
         public SwitchParameter ExcludeKeys { get; set; }
 
         public override void ExecuteCmdlet()

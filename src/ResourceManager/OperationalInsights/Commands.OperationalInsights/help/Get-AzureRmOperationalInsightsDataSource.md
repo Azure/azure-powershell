@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: 1F094EBA-E4AE-4B3E-BA20-858818C6FD12
@@ -49,18 +49,13 @@ You can filter the results based on the kind of data source.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,7 +69,6 @@ Accept wildcard characters: False
 ### -Kind
 Specifies the kind of data sources to get.
 The acceptable values for this parameter are:
-
 - AzureActivityLog 
 - CustomLog 
 - LinuxPerformanceObject 
@@ -83,9 +77,9 @@ The acceptable values for this parameter are:
 - WindowsPerformanceCounter
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceObjectByKind
-Aliases: 
+Aliases:
 Accepted values: AzureAuditLog, AzureActivityLog, CustomLog, LinuxPerformanceObject, LinuxSyslog, WindowsEvent, WindowsPerformanceCounter
 
 Required: False
@@ -96,9 +90,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceNameByKind
-Aliases: 
+Aliases:
 Accepted values: AzureAuditLog, AzureActivityLog, CustomLog, LinuxPerformanceObject, LinuxSyslog, WindowsEvent, WindowsPerformanceCounter
 
 Required: True
@@ -112,9 +106,9 @@ Accept wildcard characters: False
 Specifies the name of a data source to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceObjectByName
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -124,9 +118,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceNameByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -139,9 +133,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group that contains data sources to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceNameByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -151,9 +145,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceNameByKind
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -166,9 +160,9 @@ Accept wildcard characters: False
 Specifies a workspace in which this cmdlet operates.
 
 ```yaml
-Type: PSWorkspace
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 Parameter Sets: ByWorkspaceObjectByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -178,9 +172,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSWorkspace
+Type: Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 Parameter Sets: ByWorkspaceObjectByKind
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -193,9 +187,9 @@ Accept wildcard characters: False
 Specifies the name of a workspace in which this cmdlet operates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceNameByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -205,9 +199,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByWorkspaceNameByKind
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -221,15 +215,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSWorkspace
-Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Parameters: Workspace (ByValue)
 
-### PSWorkspace
-Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+### System.String
 
 ## OUTPUTS
-
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource]
 
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource
 

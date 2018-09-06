@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-using System.Web.Script.Serialization;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
+using CertificateRequest = Microsoft.Azure.Management.RecoveryServices.Models.CertificateRequest;
 using rpError = Microsoft.Azure.Commands.RecoveryServices.RestApiInfra;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -150,8 +150,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 if (cloudException != null && cloudException.Response != null
                     && !string.IsNullOrEmpty(cloudException.Response.Content))
                 {
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    rpError.Error error = serializer.Deserialize<rpError.Error>(cloudException.Response.Content);
+                    rpError.Error error = JsonConvert.DeserializeObject<rpError.Error>(
+                        cloudException.Response.Content,
+                        new JsonSerializerSettings { DateFormatHandling = DateFormatHandling.MicrosoftDateFormat });
 
                     if (error.ErrorCode.Equals(
                         RpErrorCode.ResourceExtendedInfoNotFound.ToString(),
@@ -241,13 +242,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="vault">vault object</param>
         /// <returns>credential object</returns>
-        public long? getVaultAuthType(string resourceGroupName,string vaultName)
+        public long? getVaultAuthType(string resourceGroupName, string vaultName)
         {
             var usages = GetRecoveryServicesClient.Usages.ListByVaultsWithHttpMessagesAsync(
                 resourceGroupName,
                 vaultName,
                 GetRequestHeaders()).Result.Body;
-           
+
             foreach (var u in usages)
             {
                 if (Constants.RecoveryServicesProviderAuthType.Equals(u.Name.Value, StringComparison.CurrentCultureIgnoreCase))

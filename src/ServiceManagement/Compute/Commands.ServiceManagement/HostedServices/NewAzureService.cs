@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
@@ -77,6 +78,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             set;
         }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "ParameterSetAffinityGroup", HelpMessage = "Extended Properties.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "ParameterSetLocation", HelpMessage = "Extended Properties.")]
+        public Hashtable ExtendedProperty
+        {
+            get;
+            set;
+        }
+
         public void ExecuteCommand()
         {
             var parameter = new HostedServiceCreateParameters()
@@ -86,7 +95,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                 ReverseDnsFqdn = this.ReverseDnsFqdn,
                 Description = this.Description,
                 AffinityGroup =  this.AffinityGroup,
-                Location = this.Location
+                Location = this.Location,
+                ExtendedProperties = this.ExtendedProperty != null ? ConvertToDictionary(this.ExtendedProperty) : null
             };
 
             ExecuteClientActionNewSM(null,

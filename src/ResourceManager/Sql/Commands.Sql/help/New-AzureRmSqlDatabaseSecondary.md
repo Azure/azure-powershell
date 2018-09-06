@@ -13,10 +13,20 @@ Creates a secondary database for an existing database and starts data replicatio
 
 ## SYNTAX
 
+### DtuBasedDatabase (Default)
 ```
 New-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> [-SecondaryServiceObjectiveName <String>]
  [-SecondaryElasticPoolName <String>] [-Tags <Hashtable>] -PartnerResourceGroupName <String>
- -PartnerServerName <String> [-AllowConnections <AllowConnections>] [-AsJob] [-ServerName] <String>
+ -PartnerServerName <String> [-AllowConnections <AllowConnections>] [-AsJob] [-LicenseType <String>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### VcoreBasedDatabase
+```
+New-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> [-Tags <Hashtable>] -PartnerResourceGroupName <String>
+ -PartnerServerName <String> [-AllowConnections <AllowConnections>] [-AsJob]
+ -SecondaryComputeGeneration <String> -SecondaryVCore <Int32> [-LicenseType <String>] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -39,12 +49,11 @@ $database | New-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName $secondary
 ### -AllowConnections
 Specifies the read intent of the secondary Azure SQL Database.
 The acceptable values for this parameter are:
-
 - No
 - All
 
 ```yaml
-Type: AllowConnections
+Type: Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections
 Parameter Sets: (All)
 Aliases:
 Accepted values: No, All
@@ -58,8 +67,9 @@ Accept wildcard characters: False
 
 ### -AsJob
 Run cmdlet in the background
+
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +84,7 @@ Accept wildcard characters: False
 Specifies the name of the database to act as primary.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,9 +99,24 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type for the Azure Sql database.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -104,7 +129,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure Resource Group to which this cmdlet assigns the secondary database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +144,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure SQL database server to act as secondary.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +159,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure Resource Group to which this cmdlet assigns the primary database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -145,12 +170,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SecondaryComputeGeneration
+The compute generation of teh Azure Sql Database secondary.
+
+```yaml
+Type: System.String
+Parameter Sets: VcoreBasedDatabase
+Aliases: Family
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SecondaryElasticPoolName
 Specifies the name of the elastic pool in which to put the secondary database.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: DtuBasedDatabase
 Aliases:
 
 Required: False
@@ -164,11 +204,26 @@ Accept wildcard characters: False
 Specifies the name of the service objective to assign to the secondary database.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: DtuBasedDatabase
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecondaryVCore
+The Vcore numbers of the Azure Sql Database secondary.
+
+```yaml
+Type: System.Int32
+Parameter Sets: VcoreBasedDatabase
+Aliases: Capacity
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -179,7 +234,7 @@ Accept wildcard characters: False
 Specifies the name of the SQL Server of the primary  SQL Database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -192,11 +247,10 @@ Accept wildcard characters: False
 
 ### -Tags
 Specifies the Key-value pairs in the form of a hash table to associate with the SQL Database replication link. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -211,7 +265,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -227,7 +281,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -243,10 +297,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.Replication.Model.AzureReplicationLinkModel
-This cmdlet returns **ReplicationLink** objects.
 
 ## NOTES
 

@@ -22,13 +22,13 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnSubscriptionResourceUsage"), OutputType(typeof(PSResourceUsage))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CdnSubscriptionResourceUsage"), OutputType(typeof(PSResourceUsage))]
     public class GetAzureRmCdnSubscriptionResourceUsage : AzureCdnCmdletBase
     {
 
         public override void ExecuteCmdlet()
         {
-            var resourceUsages = CdnManagementClient.CheckResourceUsage().Select(r => r.ToPsResourceUsage());
+            var resourceUsages = CdnManagementClient.ResourceUsage.List().Select(r => r.ToPsResourceUsage());
 
             WriteVerbose(Resources.Success);
             WriteObject(resourceUsages);

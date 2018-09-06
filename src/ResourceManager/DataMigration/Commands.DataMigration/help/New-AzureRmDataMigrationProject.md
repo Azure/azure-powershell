@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
 Module Name: AzureRM.DataMigration
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/New-AzureRmDataMigrationProject
 schema: 2.0.0
 ---
 
@@ -15,25 +15,25 @@ Creates a new Azure Database Migration Service project.
 ### ComponentNameParameterSet (Default)
 ```
 New-AzureRmDataMigrationProject -ResourceGroupName <String> -ServiceName <String> -Location <String>
- -Name <String> -SourceType <ProjectSourcePlatform> -TargetType <ProjectTargetPlatform>
- [-SourceConnection <ConnectionInfo>] [-TargetConnection <ConnectionInfo>] [-DatabaseInfo <DatabaseInfo[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -Name <String> -SourceType <String> -TargetType <String> [-SourceConnection <ConnectionInfo>]
+ [-TargetConnection <ConnectionInfo>] [-DatabaseInfo <DatabaseInfo[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
 New-AzureRmDataMigrationProject [-InputObject] <PSDataMigrationService> -Location <String> -Name <String>
- -SourceType <ProjectSourcePlatform> -TargetType <ProjectTargetPlatform> [-SourceConnection <ConnectionInfo>]
+ -SourceType <String> -TargetType <String> [-SourceConnection <ConnectionInfo>]
  [-TargetConnection <ConnectionInfo>] [-DatabaseInfo <DatabaseInfo[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzureRmDataMigrationProject [-ResourceId] <String> -Location <String> -Name <String>
- -SourceType <ProjectSourcePlatform> -TargetType <ProjectTargetPlatform> [-SourceConnection <ConnectionInfo>]
- [-TargetConnection <ConnectionInfo>] [-DatabaseInfo <DatabaseInfo[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzureRmDataMigrationProject [-ResourceId] <String> -Location <String> -Name <String> -SourceType <String>
+ -TargetType <String> [-SourceConnection <ConnectionInfo>] [-TargetConnection <ConnectionInfo>]
+ [-DatabaseInfo <DatabaseInfo[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,32 +48,15 @@ PS C:\> New-AzureRmDataMigrationProject -ResourceGroupName MyResourceGroup -Serv
 
 The above example shows how to create new project named MyDMSProject located in Central US region under the Azure Database Migration Service instance named TestService.
 
-
-
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DatabaseInfo
+Database Infos.
 
 ```yaml
-Type: SwitchParameter
+Type: Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[]
 Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatabaseInfo[]
-Database information
-
-```yaml
-Type: DatabaseInfo[]
-Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -86,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -97,13 +80,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+PSDataMigrationService Object.
+
+```yaml
+Type: Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService
+Parameter Sets: ComponentObjectParameterSet
+Aliases: DataMigrationService
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 The location of the Azure Database Migration Service instance.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -112,13 +110,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProjectName
+### -Name
 The name of the project.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ProjectName
 
 Required: True
 Position: Named
@@ -131,9 +129,9 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Type: System.String
+Parameter Sets: ComponentNameParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -142,13 +140,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+DataMigrationService Resource Id.
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ServiceName
 The name of the Azure Database Migration Service instance.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Type: System.String
+Parameter Sets: ComponentNameParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -161,9 +174,9 @@ Accept wildcard characters: False
 Source Connection Info.
 
 ```yaml
-Type: ConnectionInfo
+Type: Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -176,10 +189,9 @@ Accept wildcard characters: False
 Source platform type for project.
 
 ```yaml
-Type: ProjectSourcePlatform
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: SQL
+Aliases:
 
 Required: True
 Position: Named
@@ -192,9 +204,9 @@ Accept wildcard characters: False
 Target connection information.
 
 ```yaml
-Type: ConnectionInfo
+Type: Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -207,10 +219,9 @@ Accept wildcard characters: False
 Target platform type for project.
 
 ```yaml
-Type: ProjectTargetPlatform
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: SQLDB
+Aliases:
 
 Required: True
 Position: Named
@@ -219,15 +230,50 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService
+Parameters: InputObject (ByValue)
+
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataMigration.Models.PSProject
 
-
 ## NOTES
 
 ## RELATED LINKS
-

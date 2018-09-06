@@ -32,7 +32,7 @@ The **Get-AzureRmVMImage** cmdlet gets all the versions of a VMImage.
 
 ### Example 1: Get VMImage objects
 ```
-PS C:\> Get-AzureRmVMImage -Location "Central US" -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "15.04-DAILY"
+PS C:\> Get-AzureRmVMImage -Location "Central US" -PublisherName "MicrosoftWindowsServer" -Offer "windowsserver" -Skus "2012-R2-Datacenter"
 ```
 
 This command gets all the versions of VMImage that match the specified values.
@@ -43,7 +43,7 @@ This command gets all the versions of VMImage that match the specified values.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -58,9 +58,9 @@ Accept wildcard characters: False
 Specifies a filter expression.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListVMImage
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -73,9 +73,9 @@ Accept wildcard characters: False
 Specifies the location of a VMImage.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -89,9 +89,9 @@ Specifies the type of VMImage offer.
 To obtain an image offer, use the Get-AzureRmVMImageOffer cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -105,9 +105,9 @@ Specifies the publisher of a VMImage.
 To obtain an image publisher, use the Get-AzureRmVMImagePublisher cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -121,9 +121,9 @@ Specifies a VMImage SKU.
 To obtain an SKU, use the Get-AzureRmVMImageSku cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -136,9 +136,9 @@ Accept wildcard characters: False
 Specifies the version of the VMImage.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetVMImageDetail
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -151,6 +151,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
 
 ## OUTPUTS
 

@@ -1,0 +1,116 @@
+{
+  "AnalysisServices": [
+    "Management.Analysis"
+  ],
+  "ApiManagement.ServiceManagement": [
+    "Management.ApiManagement"
+  ],
+  "AzureBackup": [
+    "Management.BackupServices",
+    "WindowsAzure.Management.Scheduler"
+  ],
+  "Batch": [
+    "Azure.Batch",
+    "Management.Batch"
+  ],
+  "Management.CognitiveServices": [
+    "Management.CognitiveServices"
+  ],
+  "Compute": [
+    "Management.Compute",
+    "Management.KeyVault"
+  ],
+  "DataFactories": [
+    "Management.DataFactories",
+    "DataTransfer.Gateway.Encryption"
+  ],
+  "DataFactoryV2": [
+    "Management.DataFactory"
+  ],
+  "DataLakeAnalytics": [
+    "Management.DataLake.Analytics"
+  ],
+  "DataLakeStore": [
+    "Management.DataLake.Store"
+  ],
+  "HDInsight": [
+    "Management.HDInsight",
+    "Management.HDInsight.Job"
+  ],
+  "Insights": [
+    "Management.Monitor"
+  ],
+  "KeyVault": [
+    "Azure.KeyVault",
+    "Azure.KeyVault.WebKey",
+    "Management.KeyVault"
+  ],
+  "LogicApp": [
+    "Management.Logic",
+    "Management.WebSites"
+  ],
+  "OperationalInsights": [
+    "Management.OperationalInsights",
+    "Azure.OperationalInsights"
+  ],
+  "Partner": [
+    "Management.ManagementPartner"
+  ],
+  "PowerBI": [
+    "Management.PowerBIDedicated"
+  ],
+  "Management.PowerBIEmbedded": [
+    "Management.PowerBIEmbedded"
+  ],
+  "RecoveryServices.Backup.Cmdlets": [
+    "Management.RecoveryServices.Backup"
+  ],
+  "RecoveryServices.Backup.Helpers": [
+    "Management.RecoveryServices.Backup"
+  ],
+  "RecoveryServices.Backup.Models": [
+    "Management.RecoveryServices.Backup"
+  ],
+  "RecoveryServices.Backup.Providers": [
+    "Management.RecoveryServices.Backup"
+  ],
+  "RecoveryServices.Backup.ServiceClientAdapter": [
+    "Management.RecoveryServices",
+    "Management.RecoveryServices.Backup"
+  ],
+  "RecoveryServices.SiteRecovery": [
+    "Management.RecoveryServices",
+    "Management.RecoveryServices.SiteRecovery"
+  ],
+  "RedisCache": [
+    "Azure.Insights",
+    "Management.Redis"
+  ],
+  "Resources": [
+    "Management.Authorization"
+  ],
+  "Resources.Rest": [
+    "Management.ResourceManager"
+  ],
+  "ServiceFabric": [
+    "Azure.KeyVault",
+    "Azure.KeyVault.WebKey",
+    "Management.Compute",
+    "Management.KeyVault",
+    "Management.Network",
+    "Management.ResourceManager",
+    "Management.ServiceFabric",
+    "Management.Storage"
+  ],
+  "Sql": [
+    "Management.Sql",
+    "Microsoft.Azure.Management.Storage",
+    "WindowsAzure.Management.Storage"
+  ],
+  "Management.Storage": [
+    "Management.Storage"
+  ],
+  "UsageAggregates": [
+    "Commerce.UsageAggregates"
+  ]
+}

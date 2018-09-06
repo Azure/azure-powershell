@@ -24,11 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Add an Additional Unattend Content Object to VM
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Add,
-        ProfileNouns.AdditionalUnattendContent),
-    OutputType(
-        typeof(PSVirtualMachine))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAdditionalUnattendContent"),OutputType(typeof(PSVirtualMachine))]
     public class NewAzureAdditionalUnattendContentCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private const ComponentNames defaultComponentName = ComponentNames.MicrosoftWindowsShellSetup;

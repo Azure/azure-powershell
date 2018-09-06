@@ -1,7 +1,7 @@
-﻿---
+---
 Module Name: AzureRM.EventHub
 Module Guid: 5728d353-7ad5-42d8-b00a-46aaecf07b91
-Download Help Link: None_Azure
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub
 Help Version: 4.0.0.0
 Locale: en-US
 ---
@@ -21,7 +21,7 @@ Gets the details of an authorization rule, or gets a list of authorization rules
 Gets the details of a specified Event Hubs consumer group, or gets a list of consumer groups in an Event Hub.
 
 ### [Get-AzureRmEventHubGeoDRConfiguration](Get-AzureRmEventHubGeoDRConfiguration.md)
-Gets a description Alias(Disaster Recovery configuration) for primary or secondary namespace
+Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ### [Get-AzureRmEventHubKey](Get-AzureRmEventHubKey.md)
 Gets the primary key details of the specified Event Hubs authorization rule.
@@ -45,19 +45,19 @@ Creates an new Alias(Disaster Recovery configuration)
 Creates a new primary or secondary key for the specified Event Hubs authorization rule.
 
 ### [New-AzureRmEventHubNamespace](New-AzureRmEventHubNamespace.md)
-Creates an Event Hub namespace.
+Creates an Event Hubs namespace.
 
 ### [Remove-AzureRmEventHub](Remove-AzureRmEventHub.md)
 Removes the specified Event Hub.
 
 ### [Remove-AzureRmEventHubAuthorizationRule](Remove-AzureRmEventHubAuthorizationRule.md)
-Removes the specified Event Hub or Namespace authorization rule.
+Removes the specified Event Hub authorization rule.
 
 ### [Remove-AzureRmEventHubConsumerGroup](Remove-AzureRmEventHubConsumerGroup.md)
 Deletes the specified Event Hubs consumer group.
 
 ### [Remove-AzureRmEventHubGeoDRConfiguration](Remove-AzureRmEventHubGeoDRConfiguration.md)
-Removes an Alias(Disaster Recovery configuration)
+Deletes an Alias(Disaster Recovery configuration)
 
 ### [Remove-AzureRmEventHubNamespace](Remove-AzureRmEventHubNamespace.md)
 Removes the specified Event Hubs namespace.
@@ -66,19 +66,20 @@ Removes the specified Event Hubs namespace.
 Updates the specified Event Hub.
 
 ### [Set-AzureRmEventHubAuthorizationRule](Set-AzureRmEventHubAuthorizationRule.md)
-Updates the specified authorization rule on an Event Hub or Namespace.
+Updates the specified authorization rule on an Event Hub.
 
 ### [Set-AzureRmEventHubConsumerGroup](Set-AzureRmEventHubConsumerGroup.md)
 Updates the specified Event Hubs consumer group.
 
 ### [Set-AzureRmEventHubGeoDRConfigurationBreakPair](Set-AzureRmEventHubGeoDRConfigurationBreakPair.md)
-Disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
+This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
 
 ### [Set-AzureRmEventHubGeoDRConfigurationFailOver](Set-AzureRmEventHubGeoDRConfigurationFailOver.md)
-Invokes Disaster Recovery failover and reconfigure the alias to point to the secondary namespace
+Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ### [Set-AzureRmEventHubNamespace](Set-AzureRmEventHubNamespace.md)
 Updates the specified Event Hubs namespace.
 
 ### [Test-AzureRmEventHubName](Test-AzureRmEventHubName.md)
-Checks the availability of name for Namespace or Alias - DR Configuration
+Checks the Availability of the given NameSpace Name or Alias (DR Configuration Name)
+

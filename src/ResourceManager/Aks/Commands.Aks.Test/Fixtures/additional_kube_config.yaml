@@ -1,0 +1,32 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: foo
+    server: overwritten
+  name: hello
+- cluster:
+    certificate-authority-data: foo
+    server: new-server
+  name: something-new
+contexts:
+- context:
+    cluster: hello
+    user: clusterUser_test_hello
+  name: hello
+- context:
+    cluster: something-new
+    user: clusterUser_test_hello
+  name: new-context
+current-context: baz
+kind: Config
+users:
+- name: clusterUser_test_hello
+  user:
+    client-certificate-data: hello
+    client-key-data: world
+    token: boo
+- name: new-user
+  user:
+    client-certificate-data: hello1
+    client-key-data: world1
+    token: boo1

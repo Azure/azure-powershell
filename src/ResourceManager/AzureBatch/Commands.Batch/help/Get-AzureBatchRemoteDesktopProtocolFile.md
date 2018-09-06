@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: D077DB50-12BC-45AB-8EAC-57810DA83035
@@ -68,7 +68,6 @@ PS C:\> Get-AzureBatchRemoteDesktopProtocolFile "Pool06" -ComputeNodeId "Compute
 ```
 
 The first command creates a stream by using the New-Object cmdlet, and then stores it in the $Stream variable.
-
 The second command gets an .rdp file from the compute node that has the ID ComputeNode03 in the pool that has the ID Pool06.
 The command directs file contents to the stream in $Stream.
 
@@ -79,9 +78,9 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -95,9 +94,9 @@ Specifies a compute node, as a **PSComputeNode** object, to which the .rdp file 
 To obtain a compute node object, use the Get-AzureBatchComputeNode cmdlet.
 
 ```yaml
-Type: PSComputeNode
+Type: Microsoft.Azure.Commands.Batch.Models.PSComputeNode
 Parameter Sets: InputObject_Path, InputObject_Stream
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -110,9 +109,9 @@ Accept wildcard characters: False
 Specifies the ID of the compute node to which the .rdp file points.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id_Path, Id_Stream
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -125,7 +124,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -140,9 +139,9 @@ Accept wildcard characters: False
 Specifies the file path where this cmdlet saves the .rdp file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id_Path, InputObject_Path
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -156,9 +155,9 @@ Specifies the stream into which this cmdlet directs the RDP data.
 This cmdlet does not close or rewind this stream.
 
 ```yaml
-Type: Stream
+Type: System.IO.Stream
 Parameter Sets: Id_Stream, InputObject_Stream
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -171,9 +170,9 @@ Accept wildcard characters: False
 Specifies the ID of the pool that contains the compute node from which this cmdlet gets an .rdp file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id_Path, Id_Stream
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -187,13 +186,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.String
 
-### PSComputeNode
-Parameter 'ComputeNode' accepts value of type 'PSComputeNode' from the pipeline
+### Microsoft.Azure.Commands.Batch.Models.PSComputeNode
+Parameters: ComputeNode (ByValue)
+
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

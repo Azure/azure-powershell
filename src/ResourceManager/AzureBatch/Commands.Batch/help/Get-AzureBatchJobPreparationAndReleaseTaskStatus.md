@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchjobpreparationandreleasetaskstatus
@@ -66,9 +66,9 @@ The BatchAccountContext instance to use when interacting with the Batch service.
 Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -97,9 +97,9 @@ Specifies an Open Data Protocol (OData) expand clause.
 Specify a value for this parameter to get associated entities of the main entity that you get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -113,9 +113,9 @@ Specifies an OData filter clause.
 If you do not specify a filter, this cmdlet returns all job preparation and release task status' for the job.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,9 +129,9 @@ Specifies the ID of the job whose preparation and release tasks should be retrie
 You cannot specify wildcard characters.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -145,9 +145,9 @@ Specifies a **PSCloudJob** object that represents the job to get the preparation
 To obtain a **PSCloudJob** object, use the Get-AzureBatchJob cmdlet.
 
 ```yaml
-Type: PSCloudJob
+Type: Microsoft.Azure.Commands.Batch.Models.PSCloudJob
 Parameter Sets: InputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -162,9 +162,9 @@ If you specify a value of zero (0) or less, the cmdlet does not use an upper lim
 The default value is 1000.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -178,9 +178,9 @@ Specifies an OData select clause.
 Specify a value for this parameter to get specific properties rather than all object properties.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -194,9 +194,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.Batch.Models.PSCloudJob
-Microsoft.Azure.Commands.Batch.BatchAccountContext
+### Microsoft.Azure.Commands.Batch.Models.PSCloudJob
+Parameters: InputObject (ByValue)
+
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 

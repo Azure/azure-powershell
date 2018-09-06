@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
 Module Name: AzureRM.DataMigration
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/Start-AzureRmDataMigrationService
 schema: 2.0.0
 ---
 
@@ -15,19 +15,19 @@ Starts an instance of the Azure Database Migration Service in a stopped state.
 ### ComponentNameParameterSet (Default)
 ```
 Start-AzureRmDataMigrationService -ResourceGroupName <String> -Name <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
 Start-AzureRmDataMigrationService [-InputObject] <PSDataMigrationService> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Start-AzureRmDataMigrationService [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ The Start-AzureRmDataMigrationService cmdlet starts an instance of the Azure Dat
 
 ### Example 1
 ```
-PS C:\> Start-AzureRmDataMigrationService -ResourceGroupName MyResourceGroup –ServiceName TestService
+PS C:\> Start-AzureRmDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
 ```
 
 The above example starts an Azure Database Migration Service instance named Test Service in a stopped state based on service name passed in as input
@@ -51,26 +51,11 @@ The above example starts an Azure Database Migration Service instance based on P
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,7 +70,7 @@ Accept wildcard characters: False
 PSDataMigrationService Object.
 
 ```yaml
-Type: PSDataMigrationService
+Type: Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService
 Parameter Sets: ComponentObjectParameterSet
 Aliases: DataMigrationService
 
@@ -97,10 +82,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Data Migration Service Name.
+Database Migration Service Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
 Aliases: ServiceName
 
@@ -116,9 +101,9 @@ Returns an true/false.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -131,9 +116,9 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComponentNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -146,9 +131,9 @@ Accept wildcard characters: False
 DataMigrationService Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -157,12 +142,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -173,19 +173,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService
-System.String
+Parameters: InputObject (ByValue)
 
+### System.String
 
 ## OUTPUTS
 
 ### System.Boolean
 
-
 ## NOTES
 
 ## RELATED LINKS
-
-

@@ -22,13 +22,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     ///     Gets the status of an Azure Web App backup
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppBackupList"), OutputType(typeof(AzureWebAppBackup[]))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppBackupList"), OutputType(typeof(AzureWebAppBackup))]
     public class GetAzureWebAppBackupList : WebAppOptionalSlotBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            var list = WebsitesClient.ListSiteBackups(ResourceGroupName, Name, Slot).Value();
+            var list = WebsitesClient.ListSiteBackups(ResourceGroupName, Name, Slot);
             AzureWebAppBackup[] backups = new AzureWebAppBackup[list.Count()];
             for (int i = 0; i < backups.Length; i++)
             {

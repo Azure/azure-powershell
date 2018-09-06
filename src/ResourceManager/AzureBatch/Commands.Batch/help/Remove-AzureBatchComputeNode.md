@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 0BB79553-26DA-413C-8086-740DB6B31A85
@@ -69,9 +69,9 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -84,9 +84,9 @@ Accept wildcard characters: False
 Specifies the **PSComputeNode** object that represents the compute node that this cmdlet removes.
 
 ```yaml
-Type: PSComputeNode
+Type: Microsoft.Azure.Commands.Batch.Models.PSComputeNode
 Parameter Sets: InputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -100,9 +100,9 @@ Specifies a deallocation option for the removal operation that this cmdlet start
 The default value is Requeue.
 
 ```yaml
-Type: ComputeNodeDeallocationOption
+Type: System.Nullable`1[Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Requeue, Terminate, TaskCompletion, RetainedData
 
 Required: False
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -131,9 +131,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 Specifies an array of IDs of compute nodes that this cmdlet removes from the pool.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Id
 Aliases: Id
 
@@ -161,9 +161,9 @@ Accept wildcard characters: False
 Specifies the ID of the pool that contains the compute nodes that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -178,9 +178,9 @@ The default value is 10 minutes.
 The minimum value is 5 minutes.
 
 ```yaml
-Type: TimeSpan
+Type: System.Nullable`1[System.TimeSpan]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -209,7 +209,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -225,13 +225,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### Microsoft.Azure.Commands.Batch.Models.PSComputeNode
+Parameters: ComputeNode (ByValue)
 
-### PSComputeNode
-Parameter 'ComputeNode' accepts value of type 'PSComputeNode' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

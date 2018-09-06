@@ -22,51 +22,98 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class WebAppBackupRestoreTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public WebAppBackupRestoreTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppBackup()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppBackup");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppBackup");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppBackupPiping()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppBackupPiping");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppBackupPiping");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppBackup()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppBackup");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppBackup");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppBackupList()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppBackupList");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppBackupList");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEditAndGetWebAppBackupConfiguration()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-EditAndGetWebAppBackupConfiguration");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-EditAndGetWebAppBackupConfiguration");
+        }
+
+#if NETSTANDARD
+        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEditAndGetWebAppBackupConfigurationPiping()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-EditAndGetWebAppBackupConfigurationPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestEditAndGetWebAppBackupConfigurationPiping()
+        public void TestGetWebAppSnapshot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-EditAndGetWebAppBackupConfigurationPiping");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppSnapshot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreWebAppSnapshot()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RestoreWebAppSnapshot");
         }
     }
 }

@@ -15,30 +15,22 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Policy;
+    using System;
     using System.Management.Automation;
 
     /// <summary>
-    /// Removes the policy definition.
+    /// Removes the policy set definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmPolicySetDefinition", SupportsShouldProcess = true,
-        DefaultParameterSetName = RemoveAzurePolicySetDefinitionCmdlet.PolicySetDefinitionNameParameterSet), 
-        OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PolicySetDefinition", SupportsShouldProcess = true, DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(bool))]
     public class RemoveAzurePolicySetDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
-        /// The policy Id parameter set.
-        /// </summary>
-        internal const string PolicySetDefinitionIdParameterSet = "RemoveById";
-
-        /// <summary>
-        /// The policy name parameter set.
-        /// </summary>
-        internal const string PolicySetDefinitionNameParameterSet = "RemoveByNameAndResourceGroup";
-
-        /// <summary>
         /// Gets or sets the policy set definition name parameter.
         /// </summary>
-        [Parameter(ParameterSetName = RemoveAzurePolicySetDefinitionCmdlet.PolicySetDefinitionNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The policy set definition name.")]
+        [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicySetDefinitionNameHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.ManagementGroupNameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicySetDefinitionNameHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.SubscriptionIdParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicySetDefinitionNameHelp)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -46,15 +38,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the policy set definition id parameter
         /// </summary>
         [Alias("ResourceId")]
-        [Parameter(ParameterSetName = RemoveAzurePolicySetDefinitionCmdlet.PolicySetDefinitionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The fully qualified policy set definition Id, including the subscription. e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}")]
+        [Parameter(ParameterSetName = PolicyCmdletBase.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicySetDefinitionIdHelp)]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the force parameter.
+        /// Gets or sets the force switch.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy set definition management group name parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.ManagementGroupNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicySetDefinitionManagementGroupHelp)]
+        [ValidateNotNullOrEmpty]
+        public string ManagementGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the policy set definition subscription id parameter.
+        /// </summary>
+        [Parameter(ParameterSetName = PolicyCmdletBase.SubscriptionIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicySetDefinitionSubscriptionIdHelp)]
+        [ValidateNotNullOrEmpty]
+        public Guid? SubscriptionId { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -72,7 +78,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private void RunCmdlet()
         {
             base.OnProcessRecord();
-            string resourceId = this.Id ?? this.GetResourceId();
+            string resourceId = this.GetResourceId();
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicySetDefintionApiVersion : this.ApiVersion;
 
             this.ConfirmAction(
@@ -108,13 +114,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets the resource Id from the supplied PowerShell parameters.
         /// </summary>
-        protected string GetResourceId()
+        private string GetResourceId()
         {
-            var subscriptionId = DefaultContext.Subscription.Id;
-            return string.Format("/subscriptions/{0}/providers/{1}/{2}",
-                subscriptionId.ToString(),
-                Constants.MicrosoftAuthorizationPolicySetDefinitionType,
-                this.Name);
+            return this.Id ?? this.MakePolicySetDefinitionId(this.ManagementGroupName, this.SubscriptionId, this.Name);
         }
     }
 }

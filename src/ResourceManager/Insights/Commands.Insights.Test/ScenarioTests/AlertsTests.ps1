@@ -18,7 +18,7 @@ Tests the creation of an alert rule webhook action.
 #>
 function Test-NewAzureRmAlertRuleWebhook
 {
-    try 
+    try
     {
         # Test
         Assert-Throws { New-AzureRmAlertRuleWebhook } "Cannot process command because of one or more missing mandatory parameters: ServiceUri."
@@ -46,12 +46,12 @@ Tests the creation of an alert rule e-mail action.
 #>
 function Test-NewAzureRmAlertRuleEmail
 {
-    try 
+    try
     {
         # Test
 		Assert-Throws { New-AzureRmAlertRuleEmail } "Either SendToServiceOwners must be set or at least one custom email must be present"
 
-        $actual = New-AzureRmAlertRuleEmail -SendToServiceOwners
+        $actual = New-AzureRmAlertRuleEmail -SendToServiceOwner
 		Assert-NotNull $actual "Result is null 1"
 		Assert-Null $actual.CustomEmails "Result is not null 1"
 		Assert-True { $actual.SendToServiceOwners } "a1"
@@ -66,12 +66,12 @@ function Test-NewAzureRmAlertRuleEmail
 		Assert-NotNull $actual.CustomEmails "Result is null #7"
 		Assert-False { $actual.SendToServiceOwners } "a3"
 
-		$actual = New-AzureRmAlertRuleEmail hu@megasoft.net -SendToServiceOwners
+		$actual = New-AzureRmAlertRuleEmail hu@megasoft.net -SendToServiceOwner
 		Assert-NotNull $actual "Result is null #8"
 		Assert-NotNull $actual.CustomEmails "Result is null #9"
 		Assert-True { $actual.SendToServiceOwners } "a4"
 
-		$actual = New-AzureRmAlertRuleEmail gu@macrosoft.com, hu@megasoft.net -SendToServiceOwners
+		$actual = New-AzureRmAlertRuleEmail gu@macrosoft.com, hu@megasoft.net -SendToServiceOwner
 		Assert-NotNull $actual "Result is null #11"
 		Assert-NotNull $actual.CustomEmails "Result is null #12"
 		Assert-True { $actual.SendToServiceOwners } "a5"
@@ -89,7 +89,7 @@ Tests adding an alert rule.
 #>
 function Test-AddAzureRmMetricAlertRule
 {
-    try 
+    try
     {
         # Test
         $actual = Add-AzureRmMetricAlertRule -Name chiricutin -Location "East US" -ResourceGroup Default-Web-EastUS -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -TargetResourceId /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo -MetricName Requests -Description "Pura Vida" -TimeAggre Total
@@ -110,10 +110,10 @@ Tests adding an alert rule.
 #>
 function Test-AddAzureRmWebtestAlertRule
 {
-    try 
+    try
     {
         # Test
-        $actual = Add-AzureRmWebtestAlertRule -Name chiricutin -Location "East US" -ResourceGroup Default-Web-EastUS -WindowSize 00:05:00 -Failed 3 -MetricName Requests -TargetResourceUri /subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/components/misitiooeltuyo -Description "Pura Vida" 
+        $actual = Add-AzureRmWebtestAlertRule -Name chiricutin -Location "East US" -ResourceGroup Default-Web-EastUS -WindowSize 00:05:00 -Failed 3 -MetricName Requests -TargetResourceUri /subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/components/misitiooeltuyo -Description "Pura Vida"
 
         # Assert TODO add more asserts
 		Assert-AreEqual $actual.RequestId '47af504c-88a1-49c5-9766-e397d54e490b'
@@ -134,9 +134,9 @@ function Test-GetAzureRmAlertRule
     # Setup
     $rgname = 'Default-Web-EastUS'
 
-    try 
+    try
     {
-	    $actual = Get-AzureRmAlertRule -ResourceGroup $rgname 
+	    $actual = Get-AzureRmAlertRule -ResourceGroup $rgname
 		Assert-NotNull $actual
 		Assert-AreEqual $actual.Count 1
     }
@@ -156,7 +156,7 @@ function Test-GetAzureRmAlertRuleByName
     # Setup
     $rgname = 'Default-Web-EastUS'
 
-    try 
+    try
     {
         $actual = Get-AzureRmAlertRule -ResourceGroup $rgname -Name 'MyruleName'
 		Assert-NotNull $actual
@@ -178,7 +178,7 @@ function Test-RemoveAzureRmAlertRule
     # Setup
     $rgname = 'Default-Web-EastUS'
 
-    try 
+    try
     {
 		Remove-AzureRmAlertRule -ResourceGroup $rgname -name chiricutin
     }
@@ -195,7 +195,7 @@ Tests getting the logs associated to a alerts in a subscription.
 #>
 function Test-GetAzureRmAlertHistory
 {
-    try 
+    try
     {
 		$actual = Get-AzureRmAlertHistory -endTime 2015-02-11T20:00:00Z -detailedOutput
 

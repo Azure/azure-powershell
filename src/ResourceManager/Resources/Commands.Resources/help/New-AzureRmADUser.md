@@ -15,8 +15,8 @@ Creates a new active directory user.
 
 ```
 New-AzureRmADUser -DisplayName <String> -UserPrincipalName <String> -Password <SecureString>
- [-ImmutableId <String>] [-ForceChangePasswordNextLogin] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ImmutableId <String>] [-MailNickname <String>] [-ForceChangePasswordNextLogin]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,12 +25,13 @@ For more information: https://msdn.microsoft.com/en-us/library/azure/ad/graph/ap
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - Create a new AD user
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
+PS C:\> New-AzureRmADUser -DisplayName "MyDisplayName" -UserPrincipalName "myemail@domain.com" -Password $SecureStringPassword -MailNickname "MyMailNickName"
 ```
 
-{{ Add example description here }}
+Creates a new AD user with the name "MyDisplayName" and user principal name "myemail@domain.com" in a tenant.
 
 ## PARAMETERS
 
@@ -38,7 +39,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -54,7 +55,7 @@ The name to display in the address book for the user.
 example 'Alex Wu'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +71,7 @@ It must be specified if the user must change the password on the next successful
 Default behavior is (false) to not change the password on the next successful login.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +86,22 @@ Accept wildcard characters: False
 It needs to be specified only if you are using a federated domain for the user's user principal name (upn) property.
 
 ```yaml
-Type: String
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MailNickname
+The mail alias for the user.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +118,7 @@ It must meet the tenant's password complexity requirements.
 It is recommended to set a strong password.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +134,7 @@ The user principal name.
 Example-'someuser@contoso.com'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +149,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -145,8 +161,11 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -161,6 +180,12 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### System.String
+
+### System.Security.SecureString
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

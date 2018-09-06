@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
     public static class HelpMessages
     {
         public const string VMProfile = "The virtual machine profile.";
+        public const string VmssVMProfile = "The virtual machine scale set VM profile.";
         public const string VMSize = "The virtual machine size.";
         public const string VMComputerName = "The virtual machine's omputer name.";
         public const string VMCredential = "The virtual machine's credential.";

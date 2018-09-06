@@ -19,8 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayProbeConfig"),
-        OutputType(typeof(PSApplicationGatewayProbe), typeof(IEnumerable<PSApplicationGatewayProbe>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayProbeConfig"),OutputType(typeof(PSApplicationGatewayProbe))]
     public class GetAzureApplicationGatewayProbeConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

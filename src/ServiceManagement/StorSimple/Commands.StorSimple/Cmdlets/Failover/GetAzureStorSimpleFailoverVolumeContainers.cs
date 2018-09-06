@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
 
 
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleFailoverVolumeContainers"), OutputType(typeof(IList<DataContainerGroup>))]
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleFailoverVolumeContainers"), OutputType(typeof(DataContainerGroup))]
     public class GetAzureStorSimpleFailoverVolumeContainers : StorSimpleCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.DeviceId)]

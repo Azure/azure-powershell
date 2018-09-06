@@ -30,6 +30,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static readonly string MicrosoftAuthorizationNamespace = "Microsoft.Authorization";
 
         /// <summary>
+        /// The <c>Microsoft.Management</c> namespace.
+        /// </summary>
+        public static readonly string MicrosoftManagementNamespace = "Microsoft.Management";
+
+        /// <summary>
         /// The <c>Microsoft.Solutions</c> namespace.
         /// </summary>
         public static readonly string MicrosoftSolutionNamespace = "Microsoft.Solutions";
@@ -72,17 +77,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The default policy definition API version.
         /// </summary>
-        public static readonly string PolicyDefinitionApiVersion = "2016-12-01";
+        public static readonly string PolicyDefinitionApiVersion = "2018-03-01";
 
         /// <summary>
         /// The default policy set definition API version.
         /// </summary>
-        public static readonly string PolicySetDefintionApiVersion = "2017-06-01-preview";
+        public static readonly string PolicySetDefintionApiVersion = "2018-03-01";
 
         /// <summary>
         /// The default policy assignment API version.
         /// </summary>
-        public static readonly string PolicyAssignmentApiVersion = "2017-06-01-preview";
+        public static readonly string PolicyAssignmentApiVersion = "2018-03-01";
 
         /// <summary>
         /// The default providers API version.
@@ -97,7 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The default deployment operation API version.
         /// </summary>
-        public static readonly string DeploymentOperationApiVersion = "2016-02-01";
+        public static readonly string DeploymentOperationApiVersion = "2018-05-01";
 
         /// <summary>
         /// The move action.
@@ -138,6 +143,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// The policy definition resource type.
         /// </summary>
         public static readonly string MicrosoftAuthorizationPolicyAssignmentType = Constants.MicrosoftAuthorizationNamespace + "/policyassignments";
+
+        /// <summary>
+        /// The management group resource type.
+        /// </summary>
+        public static readonly string MicrosoftManagementGroupDefinitionType = Constants.MicrosoftManagementNamespace + "/managementgroups";
 
         /// <summary>
         /// The application definition resource type.

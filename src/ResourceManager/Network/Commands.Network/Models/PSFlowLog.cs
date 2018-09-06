@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -20,6 +21,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSFlowLog
     {
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool Enabled { get; set; }
 
         public PSRetentionPolicyParameters RetentionPolicy { get; set; }
@@ -29,10 +31,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public string TargetResourceId { get; set; }
 
+        [JsonProperty(Order = 1)]
+        public PSTrafficAnalyticsProperties FlowAnalyticsConfiguration { get; set; }
+
         [JsonIgnore]
         public string RetentionPolicyText
         {
             get { return JsonConvert.SerializeObject(RetentionPolicy, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string FlowAnalyticsConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(FlowAnalyticsConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

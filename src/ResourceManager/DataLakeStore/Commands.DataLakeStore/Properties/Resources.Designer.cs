@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login..
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRMAccount to login..
         /// </summary>
         internal static string NoSubscriptionInContext {
             get {
@@ -570,6 +570,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string SetFileExpiry {
             get {
                 return ResourceManager.GetString("SetFileExpiry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Acls are being set recursively without the Access Acls. Default Acls will not change the access acls of existing files..
+        /// </summary>
+        internal static string SetOnlyDefaultAclRecursively {
+            get {
+                return ResourceManager.GetString("SetOnlyDefaultAclRecursively", resourceCulture);
             }
         }
         

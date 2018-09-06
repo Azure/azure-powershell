@@ -61,7 +61,16 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create New NameSpace:{0} for ResourceGroup:{1}.
+        ///   Looks up a localized string similar to Complete the Standard to Premium migration.
+        /// </summary>
+        internal static string CompleteMigrationConfiguration {
+            get {
+                return ResourceManager.GetString("CompleteMigrationConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create New Namespace:{0} for ResourceGroup:{1}.
         /// </summary>
         internal static string CreateNamesapce {
             get {
@@ -133,6 +142,42 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling the Disaster Recovery and stops replicating changes from primary namespace {0} to secondary namespace {1}.
+        /// </summary>
+        internal static string DRBreakPairing {
+            get {
+                return ResourceManager.GetString("DRBreakPairing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating new Alias :{0} under Namespace:{1}.
+        /// </summary>
+        internal static string DRCreateAlias {
+            get {
+                return ResourceManager.GetString("DRCreateAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoking Geo DR failover and reconfigure the alias - {0} to point to the secondary namespace - {1}.
+        /// </summary>
+        internal static string DRFailOver {
+            get {
+                return ResourceManager.GetString("DRFailOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Alias: {0} of Nnamespace{1}.
+        /// </summary>
+        internal static string DRRemoveAlias {
+            get {
+                return ResourceManager.GetString("DRRemoveAlias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File {0} does not exist.
         /// </summary>
         internal static string FileDoesNotExist {
@@ -169,6 +214,15 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete the Migration Configuration.
+        /// </summary>
+        internal static string RemoveMigrationConfiguration {
+            get {
+                return ResourceManager.GetString("RemoveMigrationConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Namespace:{0} ofthe ResourceGroup:{1}.
         /// </summary>
         internal static string RemoveNamespace {
@@ -187,7 +241,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting Queue:{0} of NameSpace:{1}.
+        ///   Looks up a localized string similar to Deleting Queue:{0} of Namespace:{1}.
         /// </summary>
         internal static string RemoveQueue {
             get {
@@ -205,7 +259,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting Rule:{0} for Subscription:{1} of NameSpace:{2}.
+        ///   Looks up a localized string similar to Deleting Rule:{0} for Subscription:{1} of Namespace:{2}.
         /// </summary>
         internal static string RemoveRule {
             get {
@@ -214,7 +268,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting Subscription:{0} for Topic:{1} of NameSpace:{2}.
+        ///   Looks up a localized string similar to Deleting Subscription:{0} for Topic:{1} of Namespace:{2}.
         /// </summary>
         internal static string RemoveSubscription {
             get {
@@ -223,7 +277,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting Topic:{0} of NameSpace:{1}.
+        ///   Looks up a localized string similar to Deleting Topic:{0} of Namespace:{1}.
         /// </summary>
         internal static string RemoveTopic {
             get {
@@ -268,6 +322,24 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get the Migration configuration .
+        /// </summary>
+        internal static string RevertMigrationConfiguration {
+            get {
+                return ResourceManager.GetString("RevertMigrationConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Standard to Premium Migration.
+        /// </summary>
+        internal static string StartMigrationConfiguration {
+            get {
+                return ResourceManager.GetString("StartMigrationConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Namespace:{0} of the ResorceGroup:{1}.
         /// </summary>
         internal static string UpdateNamespace {
@@ -286,7 +358,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating Queue:{0} of the NameSpace:{1}.
+        ///   Looks up a localized string similar to Updating Queue:{0} of the Namespace:{1}.
         /// </summary>
         internal static string UpdateQueue {
             get {
@@ -322,7 +394,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update Topic:{0} of NameSpace:{1}.
+        ///   Looks up a localized string similar to Update Topic:{0} of Namespace:{1}.
         /// </summary>
         internal static string UpdateTopic {
             get {

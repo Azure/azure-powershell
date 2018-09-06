@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleDeviceVolume"), OutputType(typeof(VirtualDisk), typeof(IList<VirtualDisk>))]
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleDeviceVolume"), OutputType(typeof(VirtualDisk))]
     public class GetAzureStorSimpleDeviceVolume : StorSimpleCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]

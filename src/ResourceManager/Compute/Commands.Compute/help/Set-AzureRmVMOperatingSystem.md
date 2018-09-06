@@ -28,6 +28,21 @@ Set-AzureRmVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### WindowsDisableVMAgent
+```
+Set-AzureRmVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
+ [-Credential] <PSCredential> [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
+ [[-TimeZone] <String>] [-WinRMHttp] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### WindowsDisableVMAgentWinRmHttps
+```
+Set-AzureRmVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
+ [-Credential] <PSCredential> [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
+ [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### Linux
 ```
 Set-AzureRmVMOperatingSystem [-VM] <PSVirtualMachine> [-Linux] [-ComputerName] <String>
@@ -56,20 +71,15 @@ PS C:\> $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -Win
 
 The first command converts a password to a secure string, and then stores it in the $SecurePassword variable.
 For more information, type `Get-Help ConvertTo-SecureString`.
-
 The second command creates a credential for the user FullerP and the password stored in $SecurePassword, and then stores the credential in the $Credential variable.
 For more information, type `Get-Help New-Object`.
-
 The third command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
-
 The fourth command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
 The virtual machine belongs to the availability set stored in $AvailabilitySet.
-
 The next four commands assign values to variables to use in the following command.
 Because you could specify these strings directly in the **Set-AzureRmVMOperatingSystem** command, this approach is used only for readability.
 However, you might use an approach such as this in scripts.
-
 The final command sets operating system properties for the virtual machine stored in $VirtualMachine.
 The command uses the credentials stored in $Credential.
 The command uses variables assigned in previous commands for some parameters.
@@ -80,9 +90,9 @@ The command uses variables assigned in previous commands for some parameters.
 Specifies the name of the computer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -97,9 +107,9 @@ To obtain a credential, use the Get-Credential cmdlet.
 For more information, type `Get-Help Get-Credential`.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -114,9 +124,9 @@ This is decoded to a binary array that is saved as a file on the virtual machine
 The maximum length of the binary array is 65535 bytes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -129,7 +139,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -144,9 +154,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet disables password authentication.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Linux
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -155,13 +165,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DisableVMAgent
+Disable Provision VM Agent.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableAutoUpdate
 Indicates that this cmdlet enables auto update.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Windows, WindowsWinRmHttps
-Aliases: 
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Windows, WindowsWinRmHttps, WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
+Aliases:
 
 Required: False
 Position: 6
@@ -174,9 +199,9 @@ Accept wildcard characters: False
 Indicates that the type of operating system is Linux.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Linux
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -189,9 +214,9 @@ Accept wildcard characters: False
 Indicates that the settings require that the virtual machine agent be installed on the virtual machine.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Windows, WindowsWinRmHttps
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -204,9 +229,9 @@ Accept wildcard characters: False
 Specifies the time zone for the virtual machine.
 
 ```yaml
-Type: String
-Parameter Sets: Windows, WindowsWinRmHttps
-Aliases: 
+Type: System.String
+Parameter Sets: Windows, WindowsWinRmHttps, WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
+Aliases:
 
 Required: False
 Position: 7
@@ -221,7 +246,7 @@ To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
 Create a virtual machine object by using the New-AzureRmVMConfig cmdlet.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 
@@ -236,9 +261,9 @@ Accept wildcard characters: False
 Indicates that the type of operating system is Windows.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Windows, WindowsWinRmHttps
-Aliases: 
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Windows, WindowsWinRmHttps, WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
+Aliases:
 
 Required: True
 Position: 1
@@ -252,9 +277,9 @@ Specifies the URI of a WinRM certificate.
 This needs to be stored in a Key Vault.
 
 ```yaml
-Type: Uri
-Parameter Sets: WindowsWinRmHttps
-Aliases: 
+Type: System.Uri
+Parameter Sets: WindowsWinRmHttps, WindowsDisableVMAgentWinRmHttps
+Aliases:
 
 Required: True
 Position: 10
@@ -267,9 +292,9 @@ Accept wildcard characters: False
 Indicates that this operating system uses HTTP WinRM.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Windows, WindowsWinRmHttps
-Aliases: 
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Windows, WindowsWinRmHttps, WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
+Aliases:
 
 Required: False
 Position: 8
@@ -282,9 +307,9 @@ Accept wildcard characters: False
 Indicates that this operating system uses HTTPS WinRM.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: WindowsWinRmHttps
-Aliases: 
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: WindowsWinRmHttps, WindowsDisableVMAgentWinRmHttps
+Aliases:
 
 Required: True
 Position: 9
@@ -298,8 +323,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### System.Management.Automation.SwitchParameter
+
+### System.String
+
+### System.Management.Automation.PSCredential
+
+### System.Uri
 
 ## OUTPUTS
 

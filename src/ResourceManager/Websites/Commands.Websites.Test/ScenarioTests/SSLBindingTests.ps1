@@ -17,12 +17,12 @@ assign a custom domain to it and update global variable values.
 #>
 
 #Global variables
-$rgname = "webappsslbindingrb"
-$appname = "webappsslbindingtest"
+$rgname = "lketmtestantps10"
+$appname = "lketmtestantps10"
 $slot = "testslot"
-$prodHostname = "www.webappsslbindingtests.com"
-$slotHostname = "testslot.webappsslbindingtests.com"
-$thumbprint = "40D6600B0B8740C41BA4B3D13B967DDEF6ED1918"
+$prodHostname = "www.adorenow.net"
+$slotHostname = "testslot.adorenow.net"
+$thumbprint = "ECC61863C674D5CEE90AB06373D37342368F0413"
 
 <#
 .SYNOPSIS
@@ -62,7 +62,7 @@ function Test-GetNewWebAppSSLBinding
 
 		# Test - Get commands for web app
 		$getResult = Get-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname
-		Assert-AreEqual 2 $getResult.Count
+		Assert-AreEqual 1 $getResult.Count
 		$currentHostNames = $getResult | Select -expand Name
 		Assert-True { $currentHostNames -contains $createWebAppResult.Name }
 		$getResult = Get-AzureRMWebAppSSLBinding -ResourceGroupName $rgname -WebAppName  $appname -Name $prodHostname
@@ -138,7 +138,7 @@ function Test-WebAppSSLBindingPipeSupport
 
 		# Test - Retrieve Ssl bindings using web app and web app slot objects
 		$getResult = $webapp |  Get-AzureRMWebAppSSLBinding
-		Assert-AreEqual 2 $getResult.Count
+		Assert-AreEqual 1 $getResult.Count
 
 		$getResult = $webappslot | Get-AzureRMWebAppSSLBinding
 		Assert-AreEqual 1 $getResult.Count

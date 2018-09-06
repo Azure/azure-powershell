@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -42,22 +43,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Batch, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Azure.Batch.8.0.0\lib\net452\Microsoft.Azure.Batch.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Azure.Batch.8.1.1\lib\net452\Microsoft.Azure.Batch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Batch, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.4.2.0\lib\net45\Microsoft.Azure.Management.Batch.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\WindowsAzure.Storage.6.2.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -69,12 +75,15 @@
     <Compile Include="BatchAccounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="BatchAccounts\SetBatchAccountCommand.cs" />
     <Compile Include="ApplicationPackages\NewBatchApplicationPackageCommand.cs" />
+    <Compile Include="ComputeNodes\StartBatchComputeNodeServiceLogUploadCommand.cs" />
     <Compile Include="Jobs\GetBatchJobPreparationAndReleaseTaskStatusCommand.cs" />
     <Compile Include="Jobs\GetBatchJobStatisticsCommand.cs" />
     <Compile Include="Models\AccountCreateParameters.cs" />
     <Compile Include="Models\BatchClient.ApplicationPackages.cs" />
+    <Compile Include="Models\StartComputeNodeServiceLogUploadParameters.cs" />
     <Compile Include="Models\ListJobPreparationAndReleaseStatusOptions.cs" />
     <Compile Include="Models\GetTaskCountsOptions.cs" />
+    <Compile Include="Models\ListPoolNodeCountsOptions.cs" />
     <Compile Include="Models\NewBulkTaskParameters.cs" />
     <Compile Include="Models\PSApplicationPackage.cs" />
     <Compile Include="Models\PSApplication.cs" />
@@ -153,6 +162,7 @@
     <Compile Include="Models\NodeFileOperationParameters.cs" />
     <Compile Include="Models\PoolOperationParameters.cs" />
     <Compile Include="Models\PSBatchLocationQuotas.cs" />
+    <Compile Include="Models\PSNodeCounts.FormatObject.cs" />
     <Compile Include="Models\PSPagedEnumerable.cs" />
     <Compile Include="Models\PoolResizeParameters.cs" />
     <Compile Include="Models\ComputeNodeUserOperationParameters.cs" />
@@ -166,6 +176,7 @@
     <Compile Include="Models\UpdateComputeNodeUserParameters.cs" />
     <Compile Include="Pools\DisableBatchAutoScaleCommand.cs" />
     <Compile Include="Pools\EnableBatchAutoScaleCommand.cs" />
+    <Compile Include="Pools\GetBatchPoolNodeCountsCommand.cs" />
     <Compile Include="Pools\GetBatchPoolStatisticsCommand.cs" />
     <Compile Include="Pools\GetBatchPoolUsageMetricsCommand.cs" />
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
@@ -205,11 +216,9 @@
     <Compile Include="Models.Generated\**\*.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Batch.psd1">
-      <Link>AzureRM.Batch.psd1</Link>
+    <None Include="AzureRM.Batch.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.Batch.dll-Help.psd1" />
     <None Include="Microsoft.Azure.Commands.Batch.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -218,9 +227,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="StartupScripts\*.ps1">
-      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
-    </None>
+    <None Include="StartupScripts\*.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -230,22 +237,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
+    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
+      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
+      <Name>Commands.Profile</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
