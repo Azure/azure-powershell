@@ -27,6 +27,7 @@
     - Added New, Get, Set, Remove for VpnSite.
     - Added New, Get, Set, Remove for VpnConnection.
     - Added Get-AzureRmVirtualWanVpnSitesConfigurationCommand to allow download of SdWan configuration.
+	- Added Get-AzureRmVirtualWanSupportedSecurityProvider command to get supported security providers for VirtualWan.
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
