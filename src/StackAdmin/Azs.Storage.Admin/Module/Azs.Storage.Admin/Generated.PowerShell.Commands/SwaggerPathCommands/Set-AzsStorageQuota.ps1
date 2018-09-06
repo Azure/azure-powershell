@@ -80,8 +80,6 @@ function Set-AzsStorageQuota {
 
     Process {
 
-
-
         $Quota = $null
 
         if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
@@ -99,6 +97,8 @@ function Set-AzsStorageQuota {
             $location = $ArmResourceIdParameterValues['location']
 
             $Name = $ArmResourceIdParameterValues['quotaName']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         # Should process
@@ -125,7 +125,7 @@ function Set-AzsStorageQuota {
             if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
 
                 # Get quota if not set
-                if ($Quota -eq $null) {
+                if ($null -eq $Quota) {
                     $Quota = Get-AzsStorageQuota -Location $Location -Name $Name
                 }
 
