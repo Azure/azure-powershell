@@ -74,8 +74,6 @@ function Restore-AzsStorageAccount {
 
     Process {
 
-
-
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Storage.Admin/farms/{FarmName}/storageaccounts/{accountId}'
@@ -87,6 +85,8 @@ function Restore-AzsStorageAccount {
 
             $FarmName = $ArmResourceIdParameterValues['FarmName']
             $Name = $ArmResourceIdParameterValues['accountId']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         # Should process
