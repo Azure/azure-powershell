@@ -43,6 +43,10 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [ValidateNotNullOrEmpty]
         public string InstanceFlexibility { get; set; }
 
+        [Parameter(Mandatory = false)]
+        [ValidateNotNull]
+        public string Name { get; set; }
+
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true)]
