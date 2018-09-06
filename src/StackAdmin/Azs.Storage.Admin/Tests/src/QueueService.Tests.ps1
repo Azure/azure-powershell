@@ -87,12 +87,16 @@ InModuleScope Azs.Storage.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         it "TestGetQueueService" -Skip:$('TestGetQueueService' -in $global:SkippedTests) {
             $global:TestName = 'TestGetQueueService'
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $queueService = Get-AzsQueueService -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $queueService = Get-AzsQueueService -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 ValidateQueueService -queueService $queueService
             }
         }
@@ -102,7 +106,7 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                Get-AzsQueueServiceMetricDefinition -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) | Out-Null
+                Get-AzsQueueServiceMetricDefinition -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name | Out-Null
             }
         }
 
@@ -111,7 +115,7 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                Get-AzsQueueServiceMetric -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) | Out-Null
+                Get-AzsQueueServiceMetric -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name | Out-Null
             }
         }
     }
