@@ -181,6 +181,46 @@
         {
             "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfileChina.PublishSettings", 
             "_justification": "Legitimate test publishsettings file"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\\TestTroubleshoot.json", 
+            "_justification": "Legitimate test session record, resources are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestFirewallRule.json",
+            "_justification": "Legitimate test session record, rules are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestGeoReplication.json",
+            "_justification": "Legitimate test session record, rules are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestDiagnosticOperations.json",
+            "_justification": "Legitimate test session record, rules are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestImportExportReboot.json",
+            "_justification": "Legitimate test session record, rules are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestRedisCache.json",
+            "_justification": "Legitimate test session record, rules are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestRedisCacheClustering.json",
+            "_justification": "Legitimate test session record, rules are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestRedisCachePatchSchedules.json",
+            "_justification": "Legitimate test session record, rules are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestRedisCachePipeline.json",
+            "_justification": "Legitimate test session record, rules are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestZones.json",
+            "_justification": "Legitimate test session record, rules are deleted"
         }
     ]
 }
