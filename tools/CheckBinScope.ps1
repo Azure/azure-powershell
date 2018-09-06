@@ -11,16 +11,14 @@ param(
     [System.String] $Scope
 )
 
-if ($Scope -like "Stack")
+$RMFolders = Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ResourceManager/AzureResourceManager -Directory
+$RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ServiceManagement/Azure -Directory
+$RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/Storage -Directory
+
+if ($Scope -like 'All' -or $Scope -like 'Stack')
 {
-    $RMFolders = Get-ChildItem $PSScriptRoot/../src/Stack/$BuildConfig/ResourceManager/AzureResourceManager -Directory
+    $RMFolders += Get-ChildItem $PSScriptRoot/../src/Stack/$BuildConfig/ResourceManager/AzureResourceManager -Directory
     $RMFolders += Get-ChildItem $PSScriptRoot/../src/Stack/$BuildConfig/Storage -Directory
-}
-else
-{
-    $RMFolders = Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ResourceManager/AzureResourceManager -Directory
-    $RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ServiceManagement/Azure -Directory
-    $RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/Storage -Directory
 }
 
 $RMFolders | ForEach-Object {

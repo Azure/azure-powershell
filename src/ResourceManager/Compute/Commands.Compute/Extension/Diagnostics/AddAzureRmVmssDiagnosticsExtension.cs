@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using System;
 using System.Collections;
 using System.Collections.Generic;
