@@ -34,7 +34,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRouteConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
     public partial class RemoveAzureRmRouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -77,4 +77,3 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
-

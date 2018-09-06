@@ -1,0 +1,2 @@
+"Directory","AssemblyName","Expected Version","Actual Version","Parent Assembly","Severity","ProblemId","Description","Remediation"
+"src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.RedisCache","Microsoft.WindowsAzure.Storage","6.0.0.0","6.1.0.0","Microsoft.Azure.Insights","1","1010","Assembly Microsoft.WindowsAzure.Storage version 6.0.0.0 referenced from Microsoft.Azure.Insights.dll does not match assembly version on disk: 6.1.0.0","Update any references to version 6.0.0.0 of assembly Microsoft.WindowsAzure.Storage"

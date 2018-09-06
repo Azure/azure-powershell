@@ -15,6 +15,7 @@
 // 
 
 using Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,9 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public IList<string> Providers { get; set; }
         public IList<string> AzureLocations { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public DateTime StartTime { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
         public DateTime EndTime { get; set; }
         public PSAzureReachabilityReportLocation ProviderLocation { get; set; }
     }

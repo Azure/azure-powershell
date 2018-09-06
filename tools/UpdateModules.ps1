@@ -52,7 +52,8 @@ function New-ModulePsm1 {
     param(
         [string]$ModulePath,
         [string]$TemplatePath,
-        [switch]$IsRMModule
+        [switch]$IsRMModule,
+        [switch]$IsNetcore
     )
 
     PROCESS {
@@ -117,7 +118,6 @@ function New-ModulePsm1 {
         Write-Host "Writing psm1 manifest to $templateOutputPath"
         $template | Out-File -FilePath $templateOutputPath -Force
         $file = Get-Item -Path $templateOutputPath
-
     }
 }
 
@@ -383,27 +383,23 @@ function Update-Netcore {
 
     # Publish the Netcore modules and rollup module, if specified.
     Write-Host "Updating profile module"
-    New-ModulePsm1 -ModulePath "$script:AzureRMRoot\AzureRM.Profile.Netcore" -TemplatePath $script:TemplateLocation -IsRMModule
+    New-ModulePsm1 -ModulePath "$script:AzureRMRoot\Az.Profile" -TemplatePath $script:TemplateLocation -IsRMModule -IsNetcore
     Write-Host "Updated profile module"
 
-    $storageModulePath = "$script:AzurePackages\$buildConfig\Storage\Azure.Storage.Netcore"
-    Write-Host "Updating AzureStorage module from $modulePath"
-    New-ModulePsm1 -ModulePath $storageModulePath -TemplatePath $script:TemplateLocation
-
-    $env:PSModulePath += "$([IO.Path]::PathSeparator)$script:AzureRMRoot\AzureRM.Profile.Netcore";
+    $env:PSModulePath += "$([IO.Path]::PathSeparator)$script:AzureRMRoot\Az.Profile";
 
     foreach ($module in $AzureRMModules) {
-        if (($module.Name -ne "AzureRM.Profile.Netcore")) {
+        if (($module.Name -ne "Az.Profile")) {
             $modulePath = $module.FullName
             Write-Host "Updating $module module from $modulePath"
-            New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsRMModule
+            New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsRMModule -IsNetcore
             Write-Host "Updated $module module"
         }
     }
 
-    $modulePath = "$PSScriptRoot\AzureRM.Netcore"
+    $modulePath = "$PSScriptRoot\Az"
     Write-Host "Updating Netcore module from $modulePath"
-    New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation
+    New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsNetcore
     Write-Host "Updated Netcore module"
 }
 

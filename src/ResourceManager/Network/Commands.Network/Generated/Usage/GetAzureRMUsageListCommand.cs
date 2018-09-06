@@ -38,7 +38,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkUsage"), OutputType(typeof(PSUsage))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkUsage"), OutputType(typeof(PSUsage))]
     public partial class GetAzureRmNetworkUsage : NetworkBaseCmdlet
     {
         [Parameter(

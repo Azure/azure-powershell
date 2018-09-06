@@ -856,4 +856,3 @@ Returns whether the packet is allowed or denied to or from a particular destinat
 
 ### [Test-AzureRmPrivateIPAddressAvailability](Test-AzureRmPrivateIPAddressAvailability.md)
 Test availability of a private IP address in a virtual network.
-

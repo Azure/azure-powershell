@@ -32,16 +32,38 @@ namespace NetCoreCsProjSync
         private const string NetCoreFilter = @"*" + NetCoreCsProjExtension;
 
         private const string CommandsFilter = @"Commands.*";
-        private const string TestFolderDenoter = @".Test";
-        private const string TestFolderDenoter2 = @".UnitTest";
+        private static readonly string[] TestFolderDenoters = {@".Test", @".UnitTest", @".Tests"};
+
+        private static bool IsTestFolder(string path) => TestFolderDenoters.Any(path.EndsWith);
+
+        private static bool HasCsProj(string path, bool ignoreExisting = false) => 
+            Directory.EnumerateFiles(path, CsProjFilter, SearchOption.TopDirectoryOnly).Any() && 
+            (ignoreExisting || !Directory.EnumerateFiles(path, NetCoreFilter, SearchOption.TopDirectoryOnly).Any());
 
         // https://stackoverflow.com/a/25245678/294804
         public static IEnumerable<string> GetProjectFolderPaths(string rmPath, bool ignoreExisting = false) =>
             Directory.EnumerateDirectories(rmPath).SelectMany(md =>
                 Directory.EnumerateDirectories(md, CommandsFilter).Where(pd =>
-                    !pd.EndsWith(TestFolderDenoter) && !pd.EndsWith(TestFolderDenoter2) &&
-                    Directory.EnumerateFiles(pd, CsProjFilter, SearchOption.TopDirectoryOnly).Any() &&
-                    (ignoreExisting || !Directory.EnumerateFiles(pd, NetCoreFilter, SearchOption.TopDirectoryOnly).Any())));
+                    !IsTestFolder(pd) && HasCsProj(pd, ignoreExisting)));
+
+        private static readonly List<(string[] FolderNames, Func<string, IEnumerable<string>> GetTestDirs)?> TestFolderMapper = 
+            new List<(string[] FolderNames, Func<string, IEnumerable<string>> GetTestDirs)?>
+        {
+            (new []{"Common", "Storage"}, 
+                dir => Directory.EnumerateDirectories(dir).Where(IsTestFolder)),
+            (new []{"ResourceManager", "StackAdmin"}, 
+                dir => Directory.EnumerateDirectories(dir).SelectMany(md => Directory.EnumerateDirectories(md).Where(IsTestFolder)))
+        };
+
+        //https://stackoverflow.com/a/5229311/294804
+        public static IEnumerable<string> GetTestProjectFolderPaths(string srcPath, bool ignoreExisting = false) =>
+            Directory.EnumerateDirectories(srcPath)
+                .SelectMany(dir => TestFolderMapper.FirstOrDefault(m => m?.FolderNames?.Contains(new DirectoryInfo(dir).Name) ?? false)?.GetTestDirs(dir) ?? Enumerable.Empty<string>())
+                .Where(pd => HasCsProj(pd, ignoreExisting));
+
+        public static IEnumerable<string> GetTestDesktopFilePaths(IEnumerable<string> testProjectPaths) =>
+            testProjectPaths.Select(pd => Directory.EnumerateFiles(pd).Where(f => TestFolderDenoters.Any(tfd => f.EndsWith(tfd + CsProjExtension)))
+                .First(f => !f.Contains(NetCoreCsProjExtension)));
 
         public static IEnumerable<string> GetDesktopFilePaths(IEnumerable<string> projectPaths) =>
             projectPaths.Select(pd => Directory.EnumerateFiles(pd, CsProjFilter, SearchOption.TopDirectoryOnly).First(f => !f.Contains(NetCoreCsProjExtension)));
@@ -119,7 +141,11 @@ namespace NetCoreCsProjSync
             var slashParts = hintPath.Split('\\');
             if (slashParts[0] != "..") return null;
 
-            var parts = slashParts[4].Split('.');
+            var slashPartIndex = slashParts.Select((sp, i) => ((int Index, string SlashPart)?)(Index: i, SlashPart: sp))
+                .FirstOrDefault(t => t?.SlashPart?.ToLower()?.Contains("packages") ?? false)?.Index;
+            if (slashPartIndex == null) return null;
+
+            var parts = slashParts[slashPartIndex.Value + 1].Split('.');
             //https://stackoverflow.com/a/18251942/294804
             var firstDigitIndex = parts.Select((p, i) => (Index: i, Part: p)).First(a => a.Part.All(Char.IsDigit)).Index;
             //https://stackoverflow.com/a/14435083/294804
@@ -135,11 +161,11 @@ namespace NetCoreCsProjSync
             return version ?? (hasVersion ? oldReference.Include.Split(',')[1].Replace(versionToken, String.Empty) : null);
         }
 
-        private static NewPackageReference ConvertOldToNewPackageReference(OldReference oldReference)
+        public static NewPackageReference ConvertOldToNewPackageReference(OldReference oldReference, IEnumerable<string> skipList)
         {
             var version = GetVersionString(oldReference);
             var include = oldReference.Include.Split(',').First();
-            return version == null || include == "System.Management.Automation" ? null : new NewPackageReference { Include = include, Version = version };
+            return version == null || skipList.Contains(include) ? null : new NewPackageReference { Include = include, Version = version };
         }
 
         private static string ModifyOutputPath(string outputPath)
@@ -165,7 +191,8 @@ namespace NetCoreCsProjSync
             {"Commands.Common.Strategies.csproj",                   "Common.Strategies.Netcore.csproj"},
             {"Commands.ResourceManager.Common.csproj",              "Common.ResourceManager.Netcore.csproj"},
 
-            {"Commands.Resources.Rest.csproj",                      "Commands.Resources.Rest.Netcore.csproj"}
+            {"Commands.Resources.Rest.csproj",                      "Commands.Resources.Rest.Netcore.csproj"},
+            {"Commands.ScenarioTests.ResourceManager.Common.csproj","Common.ResourceManager.ScenarioTests.Netcore.csproj"}
         };
 
         private static string ModifyProjectReferencePath(string includePath)
@@ -180,7 +207,7 @@ namespace NetCoreCsProjSync
         public static NewProjectDefinition ConvertOldToNewNetCore(OldProjectDefinition oldDefinition)
         {
             var oldReferences = oldDefinition.ItemGroups.Where(ig => ig.References?.Any() ?? false).SelectMany(ig => ig.References);
-            var newPackageReferences = oldReferences.Select(ConvertOldToNewPackageReference).Where(r => r != null).ToList();
+            var newPackageReferences = oldReferences.Select(or => ConvertOldToNewPackageReference(or, new []{ "System.Management.Automation" })).Where(r => r != null).ToList();
             var packageReferencesItemGroup = !newPackageReferences.Any() ? null : new NewItemGroup
             {
                 PackageReferences = newPackageReferences
@@ -302,6 +329,137 @@ namespace NetCoreCsProjSync
                             }
                         }
                     }
+                }
+            };
+        }
+
+        private static readonly List<string> TestReferenceSkipList = new List<string>
+        {
+            "Hyak.Common",
+            "Microsoft.Azure.Common",
+            "Microsoft.Azure.Common.NetFramework",
+            "Microsoft.Azure.Gallery",
+            "Microsoft.Azure.Management.Authorization",
+            "Microsoft.Azure.Management.ResourceManager",
+            "Microsoft.Azure.ResourceManager",
+            "Microsoft.Azure.Test.Framework",
+            "Microsoft.Azure.Test.HttpRecorder",
+            "Microsoft.IdentityModel.Clients.ActiveDirectory",
+            "Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms",
+            "Microsoft.Rest.ClientRuntime",
+            "Microsoft.Rest.ClientRuntime.Azure",
+            "Microsoft.Rest.ClientRuntime.Azure.Authentication",
+            "Microsoft.Rest.ClientRuntime.Azure.TestFramework",
+            "Microsoft.Threading.Tasks",
+            "Microsoft.Threading.Tasks.Extensions",
+            "Microsoft.Threading.Tasks.Extensions.Desktop",
+            "Microsoft.WindowsAzure.Management",
+            "Microsoft.Bcl.Build",
+            "Microsoft.Data.Edm",
+            "Microsoft.Data.OData",
+            "Microsoft.Data.Services.Client",
+            "Newtonsoft.Json",
+            "System.Net.Http.Extensions",
+            "System.Net.Http.Primitives",
+            "System.Spatial",
+            "xunit.abstractions",
+            "xunit.assert",
+            "xunit.core",
+            "xunit.execution.desktop"
+        };
+
+        public static NewProjectDefinition ConvertOldTestToNewTestNetCore(OldProjectDefinition oldDefinition)
+        {
+            var oldReferences = oldDefinition.ItemGroups.Where(ig => ig.References?.Any() ?? false).SelectMany(ig => ig.References);
+            var newPackageReferences = oldReferences.Select(or => ConvertOldToNewPackageReference(or, TestReferenceSkipList)).Where(r => r != null).ToList();
+            var packageReferencesItemGroup = !newPackageReferences.Any() ? null : new NewItemGroup
+            {
+                PackageReferences = newPackageReferences
+            };
+
+            var newAssemblyName = oldDefinition.PropertyGroups.First(pg => pg.AssemblyName != null).AssemblyName;
+            var testDenoter = TestFolderDenoters.First(tfd => oldDefinition.FilePath.Contains(tfd));
+            var newDllReferenceInclude = newAssemblyName.Replace(testDenoter, String.Empty);
+            var projectName = newDllReferenceInclude.Split('.').Last();
+            var isRmModule = oldDefinition.FilePath.Contains("ResourceManager");
+
+            var newProjectReferences = oldDefinition.ItemGroups.Where(ig => ig.ProjectReferences?.Any() ?? false).SelectMany(ig => ig.ProjectReferences)
+                .Where(pr => !(isRmModule && pr.Include.Contains(projectName)))
+                .Select(pr => new NewProjectReference { Include = ModifyProjectReferencePath(pr.Include) }).ToList();
+            var projectReferencesItemGroup = !newProjectReferences.Any() ? null : new NewItemGroup
+            {
+                ProjectReferences = newProjectReferences
+            };
+            
+            var dllReferenceItemGroup = !isRmModule ? null : new NewItemGroup
+            {
+                References = new List<NewReference>
+                {
+                    new NewReference
+                    {
+                        Include = newDllReferenceInclude,
+                        HintPath = $"..\\..\\..\\Package\\$(Configuration)\\ResourceManager\\AzureResourceManager\\AzureRM.{projectName}.Netcore\\{newDllReferenceInclude}.dll"
+                    }
+                }
+            };
+
+            var projectFolder = Path.GetDirectoryName(oldDefinition.FilePath);
+            var hasSessionRecords = Directory.Exists(Path.Combine(projectFolder, "SessionRecords"));
+            var hasScenarioTests = Directory.Exists(Path.Combine(projectFolder, "ScenarioTests"));
+            var noneItemGroup = !(hasSessionRecords || hasScenarioTests) ? null : new NewItemGroup
+            {
+                NoneItems = new List<NewNone>
+                {
+                    !hasSessionRecords ? null : new NewNone
+                    {
+                        Update = @"SessionRecords\**\*.json",
+                        CopyToOutputDirectory = "PreserveNewest"
+                    },
+                    !hasScenarioTests ? null : new NewNone
+                    {
+                        Update = @"ScenarioTests\*.ps1",
+                        CopyToOutputDirectory = "PreserveNewest"
+                    }
+                }
+            };
+
+            return new NewProjectDefinition
+            {
+                Sdk = "Microsoft.NET.Sdk",
+                Import = new NewImport
+                {
+                    Project = @"..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets"
+                },
+                PropertyGroups = new List<NewPropertyGroup>
+                {
+                    new NewPropertyGroup
+                    {
+                        TargetFramework = "netcoreapp2.0",
+                        AssemblyName = newAssemblyName,
+                        RootNamespace = oldDefinition.PropertyGroups.First(pg => pg.RootNamespace != null).RootNamespace,
+                        GenerateAssemblyInfo = false
+                    },
+                    new NewPropertyGroup
+                    {
+                        Condition = "'$(Configuration)|$(Platform)'=='Debug|AnyCPU'",
+                        DelaySign = false,
+                        DefineConstants = "TRACE;DEBUG;NETSTANDARD"
+                    },
+                    new NewPropertyGroup
+                    {
+                        Condition = "'$(Configuration)|$(Platform)'=='Release|AnyCPU'",
+                        SignAssembly = true,
+                        DelaySign = true,
+                        AssemblyOriginatorKeyFile = "MSSharedLibKey.snk",
+                        DefineConstants = "TRACE;RELEASE;NETSTANDARD;SIGN"
+                    }
+                },
+                ItemGroups = new List<NewItemGroup>
+                {
+                    packageReferencesItemGroup,
+                    projectReferencesItemGroup,
+                    dllReferenceItemGroup,
+                    noneItemGroup
                 }
             };
         }
