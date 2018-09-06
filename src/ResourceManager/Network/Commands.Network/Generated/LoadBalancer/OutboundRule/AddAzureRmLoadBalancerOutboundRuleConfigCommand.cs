@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Network
             vOutboundRules.AllocatedOutboundPorts = this.AllocatedOutboundPort;
             vOutboundRules.Protocol = this.Protocol;
             vOutboundRules.EnableTcpReset = this.EnableTcpReset;
-            vOutboundRules.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
+            vOutboundRules.IdleTimeoutInMinutes = this.MyInvocation.BoundParameters.ContainsKey("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : 4;
             vOutboundRules.Name = this.Name;
             if(this.FrontendIpConfiguration != null && this.FrontendIpConfiguration.Count > 0)
             {
