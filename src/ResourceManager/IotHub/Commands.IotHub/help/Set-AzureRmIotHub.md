@@ -89,7 +89,7 @@ Update the retention time in days to 4 for both the telemetry and operationsmoni
 The properties for the cloud to device command queue. 
 
 ```yaml
-Type: PSCloudToDeviceProperties
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSCloudToDeviceProperties
 Parameter Sets: UpdateCloudToDeviceProperties
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 Flag that specifies whether notifications should be enabled for file upload. 
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: UpdateFileUploadProperties
 Aliases:
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 Retention time in days. 
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: UpdateEventHubEndpointProperties
 Aliases:
 
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 Fallback Route for Routing
 
 ```yaml
-Type: PSFallbackRouteMetadata
+Type: Microsoft.Azure.Management.IotHub.Models.PSFallbackRouteMetadata
 Parameter Sets: UpdateFallbackRouteProperty
 Aliases:
 
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 The name of the container to upload the files to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateFileUploadProperties
 Aliases:
 
@@ -179,7 +179,7 @@ Accept wildcard characters: False
 The maximum delivery count for file upload notifications.  
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: UpdateFileUploadProperties
 Aliases:
 
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 Time to live value for the messages in the file upload notification queue. 
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: UpdateFileUploadProperties
 Aliases:
 
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 Time to live for the for the SAS Uri thats generated for file upload. 
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: UpdateFileUploadProperties
 Aliases:
 
@@ -224,7 +224,7 @@ Accept wildcard characters: False
 The storage connection string to upload the files to. 
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateFileUploadProperties
 Aliases:
 
@@ -239,7 +239,7 @@ Accept wildcard characters: False
 Name of the IotHub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -254,7 +254,7 @@ Accept wildcard characters: False
 The properties related to operations monitoring. 
 
 ```yaml
-Type: PSOperationsMonitoringProperties
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSOperationsMonitoringProperties
 Parameter Sets: UpdateOperationsMonitoringProperties
 Aliases:
 
@@ -269,7 +269,7 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -299,7 +299,7 @@ Accept wildcard characters: False
 The Routing properties for routing messages to external endpoints 
 
 ```yaml
-Type: PSRoutingProperties
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingProperties
 Parameter Sets: UpdateRoutingProperties
 Aliases:
 
@@ -314,7 +314,7 @@ Accept wildcard characters: False
 Name of the Sku.
 
 ```yaml
-Type: PSIotHubSku
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku
 Parameter Sets: UpdateSku
 Aliases:
 Accepted values: F1, S1, S2, S3, B1, B2, B3
@@ -330,7 +330,7 @@ Accept wildcard characters: False
 Number of Units
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: UpdateSku
 Aliases:
 
@@ -345,7 +345,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -361,7 +361,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

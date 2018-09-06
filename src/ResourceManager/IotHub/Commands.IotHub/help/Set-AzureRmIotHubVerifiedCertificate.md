@@ -61,7 +61,7 @@ Verifies ownership of the MyCertificate private key.
 Name of the Certificate
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 Etag of the Certificate
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet, ResourceIdSet
 Aliases:
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 Certificate Object
 
 ```yaml
-Type: PSCertificateDescription
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription
 Parameter Sets: InputObjectSet
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Name of the Iot Hub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
 Aliases:
 
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 base-64 representation of X509 certificate .cer file or .pem file path.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 Name of the Resource Group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceSet
 Aliases:
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 Certificate Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdSet
 Aliases:
 
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -197,7 +197,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

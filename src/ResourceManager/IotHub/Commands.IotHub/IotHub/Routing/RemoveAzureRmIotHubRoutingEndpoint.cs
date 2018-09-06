@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
+    using WindowsAzure.Commands.Utilities.Common;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIotHubRoutingEndpoint", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IotHubRoutingEndpoint", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmIotHubRoutingEndpoint : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string EndpointName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Type of the Routing Endpoint")]
-        public PSEndpointType? EndpointType { get; set; }
+        public PSEndpointType EndpointType { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "Allows to return the boolean object. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -81,9 +81,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             {
                 if (string.IsNullOrEmpty(this.EndpointName))
                 {
-                    if (this.EndpointType.HasValue)
+                    if (this.IsParameterBound(c => c.EndpointType))
                     {
-                        switch (this.EndpointType.Value)
+                        switch (this.EndpointType)
                         {
                             case PSEndpointType.EventHub:
                                 iotHubDescription.Properties.Routing.Endpoints.EventHubs = new List<RoutingEventHubProperties>();

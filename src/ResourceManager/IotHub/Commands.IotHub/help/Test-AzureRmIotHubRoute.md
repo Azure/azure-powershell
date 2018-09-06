@@ -103,7 +103,7 @@ Test a specific route and showing the reason of failure.
 App properties of the route message
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Body of the route message
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 IotHub Object
 
 ```yaml
-Type: PSIotHub
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub
 Parameter Sets: InputObjectTestRouteSet, InputObjectTestAllRouteSet
 Aliases:
 
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 Name of the Iot Hub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TestRouteSet, TestAllRouteSet
 Aliases:
 
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 Name of the Resource Group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TestRouteSet, TestAllRouteSet
 Aliases:
 
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 IotHub Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdTestRouteSet, ResourceIdTestAllRouteSet
 Aliases:
 
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 Name of the Route
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InputObjectTestRouteSet, TestRouteSet, ResourceIdTestRouteSet
 Aliases:
 
@@ -223,7 +223,7 @@ Accept wildcard characters: False
 Show detailed error, if exist
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: InputObjectTestRouteSet, TestRouteSet, ResourceIdTestRouteSet
 Aliases:
 
@@ -238,7 +238,7 @@ Accept wildcard characters: False
 Source of the route
 
 ```yaml
-Type: PSRoutingSource
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSRoutingSource
 Parameter Sets: InputObjectTestAllRouteSet, TestAllRouteSet, ResourceIdTestAllRouteSet
 Aliases:
 Accepted values: Invalid, DeviceMessages, TwinChangeEvents, DeviceLifecycleEvents, DeviceJobLifecycleEvents
@@ -254,7 +254,7 @@ Accept wildcard characters: False
 System properties of the route message
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

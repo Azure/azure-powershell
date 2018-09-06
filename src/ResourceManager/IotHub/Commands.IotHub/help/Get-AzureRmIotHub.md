@@ -57,7 +57,7 @@ Gets information about the IotHub named "myiothub".
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 Name of the IotHub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetIotHubByName
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Name of the ResourceGroup
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListIotHubsByResourceGroup
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetIotHubByName
 Aliases:
 
