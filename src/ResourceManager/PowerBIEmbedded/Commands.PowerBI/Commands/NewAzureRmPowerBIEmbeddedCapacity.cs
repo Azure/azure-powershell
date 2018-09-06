@@ -16,7 +16,6 @@ using System;
 using System.Collections;
 using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
 using Microsoft.Azure.Commands.PowerBI.Models;
 using Microsoft.Azure.Commands.PowerBI.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -24,8 +23,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.PowerBI
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmPowerBIEmbeddedCapacity", SupportsShouldProcess = true), 
-        OutputType(typeof(PSPowerBIEmbeddedCapacity))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PowerBIEmbeddedCapacity", SupportsShouldProcess = true), OutputType(typeof(PSPowerBIEmbeddedCapacity))]
     public class NewPowerBIEmbeddedCapacity : PowerBICmdletBase
     {
         [Parameter(
