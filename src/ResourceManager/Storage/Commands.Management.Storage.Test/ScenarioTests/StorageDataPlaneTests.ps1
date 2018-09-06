@@ -160,14 +160,15 @@ function Test-Blob
 		$task.Wait()
 		$snapshot = $task.Result  
         $blob = Get-AzStorageBlob -Container $containerName -Context $storageContext | Where-Object {$_.Name -eq $pageBlobName1}
-        Assert-AreEqual $blob.Count 2 #INVESTIGATE, sometimes fails
+        Assert-AreEqual $blob.Count 2
         Assert-AreEqual $blob[0].ICloudBlob.IsSnapshot $true
         Assert-AreEqual $blob[1].ICloudBlob.IsSnapshot $false
 
         # Copy snapshot of the source page blob to a destination page blob. The snapshot is copied such that only differential changes 
         # between the previously copied snapshot are transferred to the destination.
         Start-AzStorageBlobIncrementalCopy -srcContainer $containerName -SrcBlob $pageBlobName1 -SrcBlobSnapshotTime $snapshot.SnapshotTime -DestContainer $containerName -DestBlob $pageBlobName2 -Context $storageContext -DestContext $storageContext
-        $blob = Get-AzStorageBlob -Container $containerName -Context $storageContext | Where-Object {$_.Name -eq $pageBlobName2}
+        Get-AzStorageBlobCopyState -WaitForComplete -Container $containerName -Blob $pageBlobName2 -Context $storageContext
+		$blob = Get-AzStorageBlob -Container $containerName -Context $storageContext | Where-Object {$_.Name -eq $pageBlobName2}
         Assert-AreEqual $blob.Count 2
         Assert-AreEqual $blob[0].ICloudBlob.IsSnapshot $true
         Assert-AreEqual $blob[1].ICloudBlob.IsSnapshot $false
@@ -375,14 +376,44 @@ function Test-Common
         $LoggingOperations = "All"
 
         Set-AzStorageServiceLoggingProperty -ServiceType blob -RetentionDays $retentionDays -Version $version -LoggingOperations $LoggingOperations -Context $storageContext
-        $property = Get-AzStorageServiceLoggingProperty -ServiceType blob -Context $storageContext
-        Assert-AreEqual $LoggingOperations $property.LoggingOperations.ToString()  #INVESTIGATE, sometimes fails
+        $i = 0
+		$propertyUpdated = $false
+		while (($i -lt 120) -and ($propertyUpdated -eq $false))
+		{
+			$property = Get-AzureStorageServiceLoggingProperty -ServiceType blob -Context $storageContext
+			if (($property.RetentionDays -eq $retentionDays+1) -and ($property.Version -eq $version) -and ($property.LoggingOperations -eq $LoggingOperations))
+			{
+				$propertyUpdated = $true
+			}
+			else
+			{
+				sleep 5
+				$i = $i + 5
+			}
+		} 
+		$property = Get-AzStorageServiceLoggingProperty -ServiceType blob -Context $storageContext
+		Assert-AreEqual $LoggingOperations $property.LoggingOperations.ToString() 
         Assert-AreEqual $version $property.Version 
         Assert-AreEqual $retentionDays $property.RetentionDays  
 
         $MetricsLevel = "Service"
         Set-AzStorageServiceMetricsProperty -ServiceType blob -Version $version -MetricsType Hour -RetentionDays $retentionDays -MetricsLevel $MetricsLevel -Context $storageContext
-        $property = Get-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour -Context $storageContext
+        $i = 0
+		$propertyUpdated = $false
+		while (($i -lt 120) -and ($propertyUpdated -eq $false))
+		{
+			$property = Get-AzureStorageServiceLoggingProperty -ServiceType blob -Context $storageContext
+			if (($property.RetentionDays -eq $retentionDays+1) -and ($property.Version -eq $version) -and ($property.MetricsLevel.ToString()  -eq $MetricsLevel))
+			{
+				$propertyUpdated = $true
+			}
+			else
+			{
+				sleep 5
+				$i = $i + 5
+			}
+		} 				
+		$property = Get-AzStorageServiceMetricsProperty -ServiceType Blob -MetricsType Hour -Context $storageContext
         Assert-AreEqual $MetricsLevel $property.MetricsLevel.ToString() 
         Assert-AreEqual $version $property.Version 
         Assert-AreEqual $retentionDays $property.RetentionDays 
@@ -398,9 +429,40 @@ function Test-Common
             AllowedHeaders=@("x-ms-meta-target*","x-ms-meta-customheader");
             MaxAgeInSeconds=30;
             AllowedMethods=@("Put")})
+		$i = 0
+		$corsRuleUpdated = $false
+		while (($i -lt 120) -and ($corsRuleUpdated -eq $false))
+		{
+			$cors = Get-AzStorageCORSRule -ServiceType blob -Context $storageContext
+			if ($cors.Count -eq 2)
+			{
+				$corsRuleUpdated = $true
+			}
+			else
+			{
+				sleep 5
+				$i = $i + 5
+			}
+		}
         $cors = Get-AzStorageCORSRule -ServiceType blob -Context $storageContext
         Assert-AreEqual 2 $cors.Count 
+
         Remove-AzStorageCORSRule -ServiceType blob -Context $storageContext
+		$i = 0
+		$corsRuleUpdated = $false
+		while (($i -lt 120) -and ($corsRuleUpdated -eq $false))
+		{
+			$cors = Get-AzStorageCORSRule -ServiceType blob -Context $storageContext
+			if ($cors.Count -eq 0)
+			{
+				$corsRuleUpdated = $true
+			}
+			else
+			{
+				sleep 5
+				$i = $i + 5
+			}
+		}
         $cors = Get-AzStorageCORSRule -ServiceType blob -Context $storageContext
         Assert-AreEqual 0 $cors.Count     
     }
