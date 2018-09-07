@@ -54,7 +54,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
 #>
 function Add-AzsPlatformImage {
-    [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImage])]
+    [OutputType([PlatformImageObject])]
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $true)]
@@ -121,94 +121,88 @@ function Add-AzsPlatformImage {
 
     Process {
 
+        if ($Force.IsPresent -or $PSCmdlet.ShouldProcess("$Publisher/$Offer/$Sku/$Version" , "Add new virtual machine image")) {
 
-        if ($PSCmdlet.ShouldProcess("$Publisher/$Offer/$Sku/$Version" , "Add new virtual machine image")) {
-
-            if ( [System.String]::IsNullOrEmpty($Location)) {
+            if ( -not $PSBoundParameters.ContainsKey('Location')) {
                 $Location = (Get-AzureRMLocation).Location
             }
-            $dontCheck = $true
-            try {
-                $result = Get-AzsPlatformImage -Publisher $Publisher -Offer $Offer -Sku $Sku -Version $Version -Location $Location
-                $dontCheck = $result -eq $null
-            } catch {
-                # No-op
+
+            if ($null -ne (Get-AzsPlatformImage -Publisher $Publisher -Offer $Offer -Sku $Sku -Version $Version -Location $Location -ErrorAction SilentlyContinue)) {
+                Write-Error "A platform image with the same publisher $publisher, offer $offer, sku $sku, and version $version at location $location already exists"
+                return
             }
 
-            if ($dontCheck -or ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Virtual machine image exists with values $Publisher/$Offer/$Sku/$Version, overwrite?", "Performing operation add virtual machine image with publisher $Publisher, offer $Offer, SKU $Sku, and version $Version."))) {
+            $NewServiceClient_params = @{
+                FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
+            }
 
-                $NewServiceClient_params = @{
-                    FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
-                }
+            $GlobalParameterHashtable = @{}
+            $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
 
-                $GlobalParameterHashtable = @{}
-                $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+            $GlobalParameterHashtable['SubscriptionId'] = $null
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
+            }
 
-                $GlobalParameterHashtable['SubscriptionId'] = $null
-                if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
-                    $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
-                }
+            $ComputeAdminClient = New-ServiceClient @NewServiceClient_params
 
-                $ComputeAdminClient = New-ServiceClient @NewServiceClient_params
-
-                # Create object
-                $flattenedParameters = @('DataDisks')
-                $utilityCmdParams = @{}
-                $utilityCmdParams['OsDisk'] = New-OSDiskObject -OsType $OsType -Uri $OsUri
-                if ($PSBoundParameters.ContainsKey('BillingPartNumber')) {
-                    $utilityCmdParams['Details'] = New-ImageDetailsObject -BillingPartNumber $PSBoundParameters['BillingPartNumber']
-                }
-                $flattenedParameters | ForEach-Object {
-                    if ($PSBoundParameters.ContainsKey($_)) {
-                        $utilityCmdParams[$_] = $PSBoundParameters[$_]
-                    }
-                }
-                $NewImage = New-PlatformImageParametersObject @utilityCmdParams
-
-                Write-Verbose -Message 'Performing operation add on $ComputeAdminClient.'
-                $TaskResult = $ComputeAdminClient.PlatformImages.CreateWithHttpMessagesAsync($Location, $Publisher, $Offer, $Sku, $Version, $NewImage)
-
-                Write-Verbose -Message "Waiting for the operation to complete."
-
-                $PSSwaggerJobScriptBlock = {
-                    [CmdletBinding()]
-                    param(
-                        [Parameter(Mandatory = $true)]
-                        [System.Threading.Tasks.Task]
-                        $TaskResult,
-
-                        [Parameter(Mandatory = $true)]
-                        [System.String]
-                        $TaskHelperFilePath
-                    )
-                    if ($TaskResult) {
-                        . $TaskHelperFilePath
-                        $GetTaskResult_params = @{
-                            TaskResult = $TaskResult
-                        }
-                        Get-TaskResult @GetTaskResult_params
-                    }
-                }
-
-                $PSCommonParameters = Get-PSCommonParameter -CallerPSBoundParameters $PSBoundParameters
-                $TaskHelperFilePath = Join-Path -Path $ExecutionContext.SessionState.Module.ModuleBase -ChildPath 'Get-TaskResult.ps1'
-                if ($AsJob) {
-                    $ScriptBlockParameters = New-Object -TypeName 'System.Collections.Generic.Dictionary[string,object]'
-                    $ScriptBlockParameters['TaskResult'] = $TaskResult
-                    $ScriptBlockParameters['AsJob'] = $true
-                    $ScriptBlockParameters['TaskHelperFilePath'] = $TaskHelperFilePath
-                    $PSCommonParameters.GetEnumerator() | ForEach-Object { $ScriptBlockParameters[$_.Name] = $_.Value }
-
-                    Start-PSSwaggerJobHelper -ScriptBlock $PSSwaggerJobScriptBlock `
-                        -CallerPSBoundParameters $ScriptBlockParameters `
-                        -CallerPSCmdlet $PSCmdlet `
-                        @PSCommonParameters
-                } else {
-                    Invoke-Command -ScriptBlock $PSSwaggerJobScriptBlock `
-                        -ArgumentList $TaskResult, $TaskHelperFilePath `
-                        @PSCommonParameters
+            # Create object
+            $flattenedParameters = @('DataDisks')
+            $utilityCmdParams = @{}
+            $utilityCmdParams['OsDisk'] = New-OSDiskObject -OsType $OsType -Uri $OsUri
+            if ($PSBoundParameters.ContainsKey('BillingPartNumber')) {
+                $utilityCmdParams['Details'] = New-ImageDetailsObject -BillingPartNumber $PSBoundParameters['BillingPartNumber']
+            }
+            $flattenedParameters | ForEach-Object {
+                if ($PSBoundParameters.ContainsKey($_)) {
+                    $utilityCmdParams[$_] = $PSBoundParameters[$_]
                 }
             }
+            $NewImage = New-PlatformImageParametersObject @utilityCmdParams
+
+            Write-Verbose -Message 'Performing operation add on $ComputeAdminClient.'
+            $TaskResult = $ComputeAdminClient.PlatformImages.CreateWithHttpMessagesAsync($Location, $Publisher, $Offer, $Sku, $Version, $NewImage)
+
+            Write-Verbose -Message "Waiting for the operation to complete."
+
+            $PSSwaggerJobScriptBlock = {
+                [CmdletBinding()]
+                param(
+                    [Parameter(Mandatory = $true)]
+                    [System.Threading.Tasks.Task]
+                    $TaskResult,
+
+                    [Parameter(Mandatory = $true)]
+                    [System.String]
+                    $TaskHelperFilePath
+                )
+                if ($TaskResult) {
+                    . $TaskHelperFilePath
+                    $GetTaskResult_params = @{
+                        TaskResult = $TaskResult
+                    }
+                    ConvertTo-PlatformImageObject -PlatformImage (Get-TaskResult @GetTaskResult_params)
+                }
+            }
+        }
+
+        $PSCommonParameters = Get-PSCommonParameter -CallerPSBoundParameters $PSBoundParameters
+        $TaskHelperFilePath = Join-Path -Path $ExecutionContext.SessionState.Module.ModuleBase -ChildPath 'Get-TaskResult.ps1'
+        if ($AsJob) {
+            $ScriptBlockParameters = New-Object -TypeName 'System.Collections.Generic.Dictionary[string,object]'
+            $ScriptBlockParameters['TaskResult'] = $TaskResult
+            $ScriptBlockParameters['AsJob'] = $true
+            $ScriptBlockParameters['TaskHelperFilePath'] = $TaskHelperFilePath
+            $PSCommonParameters.GetEnumerator() | ForEach-Object { $ScriptBlockParameters[$_.Name] = $_.Value }
+
+            Start-PSSwaggerJobHelper -ScriptBlock $PSSwaggerJobScriptBlock `
+                -CallerPSBoundParameters $ScriptBlockParameters `
+                -CallerPSCmdlet $PSCmdlet `
+                @PSCommonParameters
+        } else {
+            Invoke-Command -ScriptBlock $PSSwaggerJobScriptBlock `
+                -ArgumentList $TaskResult, $TaskHelperFilePath `
+                @PSCommonParameters
         }
     }
 
