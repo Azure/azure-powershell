@@ -54,7 +54,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 #>
 function Add-AzsVMExtension {
-    [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtension])]
+    [OutputType([VMExtensionObject])]
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $true)]
@@ -125,93 +125,86 @@ function Add-AzsVMExtension {
 
     Process {
 
+        if ($Force.IsPresent -or $PSCmdlet.ShouldProcess("$Publisher/$Type/$Version" , "Add virtual machine image extension")) {
 
-        if ($PSCmdlet.ShouldProcess("$Publisher/$Type/$Version" , "Add virtual machine image extension")) {
-
-            $dontCheck = $true
-            try {
-                $result = Get-AzsVMExtension -Publisher $Publisher -Type $Type -Sku $Sku
-                $dontCheck = $result -eq $null
-            } catch {
-                # No-op
+            if ( -not $PSBoundParameters.ContainsKey('Location')) {
+                $Location = (Get-AzureRMLocation).Location
             }
 
-            if ($dontCheck -or ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Virtual machine image extension exists with values $Publisher/$Type/$Sku, overwrite?", "Performing operation add virtual machine image extension with publisher $Publisher, type $Type, and version $Version."))) {
+            if ($null -ne (Get-AzsVMExtension -Publisher $Publisher -Type $Type -Version $Version -Location $Location -ErrorAction SilentlyContinue)) {
+                Write-Error "A VM extension with the publisher $publisher, type $type, and version $Version at location $location already exists"
+                return
+            }
 
-                $NewServiceClient_params = @{
-                    FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
+            $NewServiceClient_params = @{
+                FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
+            }
+
+            $GlobalParameterHashtable = @{}
+            $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+
+            $GlobalParameterHashtable['SubscriptionId'] = $null
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
+            }
+
+            $ComputeAdminClient = New-ServiceClient @NewServiceClient_params
+
+            $SourceBlob = New-AzureBlobObject -Uri $SourceBlob
+
+            # Create object
+            $utilityCmdParams = @{}
+            $utilityCmdParams["SourceBlob"] = $SourceBlob
+            $flattenedParameters = @('VmOsType', 'ComputeRole', 'VmScaleSetEnabled', 'SupportMultipleExtensions', 'IsSystemExtension')
+            $flattenedParameters | ForEach-Object {
+                if ($PSBoundParameters.ContainsKey($_)) {
+                    $utilityCmdParams[$_] = $PSBoundParameters[$_]
                 }
+            }
+            $Extension = New-VMExtensionParametersObject @utilityCmdParams
 
-                $GlobalParameterHashtable = @{}
-                $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+            Write-Verbose -Message 'Performing operation add on $ComputeAdminClient.'
+            $TaskResult = $ComputeAdminClient.VMExtensions.CreateWithHttpMessagesAsync($Location, $Publisher, $Type, $Version, $Extension)
 
-                $GlobalParameterHashtable['SubscriptionId'] = $null
-                if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
-                    $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
-                }
+            Write-Verbose -Message "Waiting for the operation to complete."
 
-                $ComputeAdminClient = New-ServiceClient @NewServiceClient_params
+            $PSSwaggerJobScriptBlock = {
+                [CmdletBinding()]
+                param(
+                    [Parameter(Mandatory = $true)]
+                    [System.Threading.Tasks.Task]
+                    $TaskResult,
 
-                $SourceBlob = New-AzureBlobObject -Uri $SourceBlob
-
-                # Create object
-                $utilityCmdParams = @{}
-                $utilityCmdParams["SourceBlob"] = $SourceBlob
-                $flattenedParameters = @('VmOsType', 'ComputeRole', 'VmScaleSetEnabled', 'SupportMultipleExtensions', 'IsSystemExtension')
-                $flattenedParameters | ForEach-Object {
-                    if ($PSBoundParameters.ContainsKey($_)) {
-                        $utilityCmdParams[$_] = $PSBoundParameters[$_]
+                    [Parameter(Mandatory = $true)]
+                    [System.String]
+                    $TaskHelperFilePath
+                )
+                if ($TaskResult) {
+                    . $TaskHelperFilePath
+                    $GetTaskResult_params = @{
+                        TaskResult = $TaskResult
                     }
+                    ConvertTo-VmExtensionObject -VmExtension (Get-TaskResult @GetTaskResult_params)
                 }
-                $Extension = New-VMExtensionParametersObject @utilityCmdParams
+            }
 
-                if ( -not $PSBoundParameters.ContainsKey('Location')) {
-                    $Location = (Get-AzureRMLocation).Location
-                }
+            $PSCommonParameters = Get-PSCommonParameter -CallerPSBoundParameters $PSBoundParameters
+            $TaskHelperFilePath = Join-Path -Path $ExecutionContext.SessionState.Module.ModuleBase -ChildPath 'Get-TaskResult.ps1'
+            if (-not $AsJob.IsPresent) {
+                Invoke-Command -ScriptBlock $PSSwaggerJobScriptBlock `
+                    -ArgumentList $TaskResult, $TaskHelperFilePath `
+                    @PSCommonParameters
+            } else {
+                $ScriptBlockParameters = New-Object -TypeName 'System.Collections.Generic.Dictionary[string,object]'
+                $ScriptBlockParameters['TaskResult'] = $TaskResult
+                $ScriptBlockParameters['AsJob'] = $true
+                $ScriptBlockParameters['TaskHelperFilePath'] = $TaskHelperFilePath
+                $PSCommonParameters.GetEnumerator() | ForEach-Object { $ScriptBlockParameters[$_.Name] = $_.Value }
 
-                Write-Verbose -Message 'Performing operation add on $ComputeAdminClient.'
-                $TaskResult = $ComputeAdminClient.VMExtensions.CreateWithHttpMessagesAsync($Location, $Publisher, $Type, $Version, $Extension)
-
-                Write-Verbose -Message "Waiting for the operation to complete."
-
-                $PSSwaggerJobScriptBlock = {
-                    [CmdletBinding()]
-                    param(
-                        [Parameter(Mandatory = $true)]
-                        [System.Threading.Tasks.Task]
-                        $TaskResult,
-
-                        [Parameter(Mandatory = $true)]
-                        [System.String]
-                        $TaskHelperFilePath
-                    )
-                    if ($TaskResult) {
-                        . $TaskHelperFilePath
-                        $GetTaskResult_params = @{
-                            TaskResult = $TaskResult
-                        }
-                        Get-TaskResult @GetTaskResult_params
-                    }
-                }
-
-                $PSCommonParameters = Get-PSCommonParameter -CallerPSBoundParameters $PSBoundParameters
-                $TaskHelperFilePath = Join-Path -Path $ExecutionContext.SessionState.Module.ModuleBase -ChildPath 'Get-TaskResult.ps1'
-                if (-not $AsJob.IsPresent) {
-                    Invoke-Command -ScriptBlock $PSSwaggerJobScriptBlock `
-                        -ArgumentList $TaskResult, $TaskHelperFilePath `
-                        @PSCommonParameters
-                } else {
-                    $ScriptBlockParameters = New-Object -TypeName 'System.Collections.Generic.Dictionary[string,object]'
-                    $ScriptBlockParameters['TaskResult'] = $TaskResult
-                    $ScriptBlockParameters['AsJob'] = $true
-                    $ScriptBlockParameters['TaskHelperFilePath'] = $TaskHelperFilePath
-                    $PSCommonParameters.GetEnumerator() | ForEach-Object { $ScriptBlockParameters[$_.Name] = $_.Value }
-
-                    Start-PSSwaggerJobHelper -ScriptBlock $PSSwaggerJobScriptBlock `
-                        -CallerPSBoundParameters $ScriptBlockParameters `
-                        -CallerPSCmdlet $PSCmdlet `
-                        @PSCommonParameters
-                }
+                Start-PSSwaggerJobHelper -ScriptBlock $PSSwaggerJobScriptBlock `
+                    -CallerPSBoundParameters $ScriptBlockParameters `
+                    -CallerPSCmdlet $PSCmdlet `
+                    @PSCommonParameters
             }
         }
     }

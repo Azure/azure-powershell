@@ -50,7 +50,9 @@ function Test-NetworkWatcherCRUD
         Assert-AreEqual 1 @($listNWByRg).Count
 
         # Delete Network Watcher
-        $delete = Remove-AzureRmNetworkWatcher -ResourceGroupName $rgname -name $nwName
+        $job = Remove-AzureRmNetworkWatcher -ResourceGroupName $rgname -name $nwName -AsJob
+		$job | Wait-Job
+		$delete = $job | Receive-Job
 
         $list = Get-AzureRmNetworkWatcher -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
