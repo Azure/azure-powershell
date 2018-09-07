@@ -642,7 +642,7 @@
                 <Label>VpnClientRootCertificates</Label> 
                 <PropertyName>VpnClientRootCertificatesText</PropertyName> 
               </ListItem>
-	      <ListItem> 
+        <ListItem> 
                  <Label>VpnClientIpsecPolicies</Label> 
                 <PropertyName>VpnClientIpsecPoliciesText</PropertyName>
               </ListItem> 
@@ -751,7 +751,7 @@
          </ListEntries> 
       </ListControl> 
     </View>	 
-	<View> 	
+  <View> 	
       <Name>Microsoft.Azure.Commands.Network.Models.PSSubnet</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSSubnet</TypeName>
@@ -1148,7 +1148,7 @@
                 <Label>LinkedResourceType</Label>
                 <PropertyName>LinkedResourceType</PropertyName>
               </ListItem>
-			        <ListItem>
+              <ListItem>
                 <Label>EnableAcceleratedNetworking</Label>
                 <PropertyName>EnableAcceleratedNetworking</PropertyName>
               </ListItem>
@@ -2637,7 +2637,7 @@
         </ListEntries>
       </ListControl>
     </View>
-	<View>
+  <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSBgpServiceCommunity</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSBgpServiceCommunity</TypeName>
