@@ -93,40 +93,12 @@ function Get-AzsComputeQuota {
 
             $Location = $ArmResourceIdParameterValues['locationName']
             $Name = $ArmResourceIdParameterValues['quotaName']
-        } elseif ( -not $PSBoundParameters.ContainsKey('Location')) {
+        } elseif ([System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
         }
 
-        $filterInfos = @(
-            @{
-                'Type'     = 'powershellWildcard'
-                'Value'    = $Name
-                'Property' = 'Name'
-            })
-        $applicableFilters = Get-ApplicableFilters -Filters $filterInfos
-        if ($applicableFilters | Where-Object { $_.Strict }) {
-            Write-Verbose -Message 'Performing server-side call ''Get-AzsComputeQuota -'''
-            $serverSideCall_params = @{
-
-            }
-
-            $serverSideResults = Get-AzsComputeQuota @serverSideCall_params
-            foreach ($serverSideResult in $serverSideResults) {
-                $valid = $true
-                foreach ($applicableFilter in $applicableFilters) {
-                    if (-not (Test-FilteredResult -Result $serverSideResult -Filter $applicableFilter.Filter)) {
-                        $valid = $false
-                        break
-                    }
-                }
-                if ($valid) {
-                    $serverSideResult
-                }
-            }
-            return
-        }
-
         if ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $ComputeAdminClient.'
             $TaskResult = $ComputeAdminClient.Quotas.GetWithHttpMessagesAsync($Location, $Name)
         } elseif ('List' -eq $PsCmdlet.ParameterSetName) {
@@ -141,7 +113,6 @@ function Get-AzsComputeQuota {
             $GetTaskResult_params = @{
                 TaskResult = $TaskResult
             }
-            
             Get-TaskResult @GetTaskResult_params | ForEach-Object { ConvertTo-ComputeQuota -Quota $_ }
         }
     }

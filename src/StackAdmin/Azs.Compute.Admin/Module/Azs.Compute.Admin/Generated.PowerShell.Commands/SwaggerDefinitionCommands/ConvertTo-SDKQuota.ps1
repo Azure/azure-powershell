@@ -12,7 +12,7 @@ function ConvertTo-SdkQuota
         [ComputeQuotaObject]
         $CustomQuota
     )
-    
+
     # Create object
     # This object should not set "Name" as its a read only property
     $flattenedParameters = @('AvailabilitySetCount', 'CoresLimit', 'VmScaleSetCount', 'VirtualMachineCount', 'MaxAllocationStandardManagedDisksAndSnapshots', 'MaxAllocationPremiumManagedDisksAndSnapshots', 'Location')
