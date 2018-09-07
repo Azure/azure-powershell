@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> HostedWorkloads { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public string LinkedResrouceType { get; set; }
+        public string LinkedResourceType { get; set; }
 
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 
