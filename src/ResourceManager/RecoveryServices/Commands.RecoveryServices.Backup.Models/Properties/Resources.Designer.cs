@@ -776,6 +776,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ParentContainerFabricId is NULL or Empty. Please enter valid ParentContainerFabricId.
+        /// </summary>
+        public static string ParentContainerFabricIdIsEmptyOrNull {
+            get {
+                return ResourceManager.GetString("ParentContainerFabricIdIsEmptyOrNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A backup policy with the specified name already exists: {0}.
         /// </summary>
         public static string PolicyAlreadyExistException {

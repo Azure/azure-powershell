@@ -48,5 +48,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileShareGetRPs");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureFile)]
+        public void TestAzureFileProtection()
+        {
+            TestController.NewInstance.RunPsTest(
+                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileProtection");
+        }
     }
 }

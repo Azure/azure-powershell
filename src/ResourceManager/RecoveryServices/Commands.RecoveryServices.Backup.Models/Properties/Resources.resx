@@ -532,4 +532,7 @@ Please contact Microsoft for further assistance.</value>
   <data name="TriggerEnquiryFailureErrorCode" xml:space="preserve">
     <value>Trigger Enquiry operation failed with ErrorCode: {0}</value>
   </data>
+  <data name="ParentContainerFabricIdIsEmptyOrNull" xml:space="preserve">
+    <value>ParentContainerFabricId is NULL or Empty. Please enter valid ParentContainerFabricId</value>
+  </data>
 </root>
