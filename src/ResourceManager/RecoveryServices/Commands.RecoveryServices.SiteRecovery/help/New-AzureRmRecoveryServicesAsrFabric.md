@@ -50,26 +50,11 @@ Starts the azure fabric creation with passed name and returns the ASR job used t
 Switch parameter indicates creation of azure fabric.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Azure
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -81,7 +66,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,7 +81,7 @@ Accept wildcard characters: False
 Specifies the Azure region corresponding to the Fabric object being created. The Azure Site Recovery fabric object represents a region. For virtual machines being replicated between two Azure regions  a primary fabric represents the primary Azure region and the recovery fabric .
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Azure
 Aliases:
 
@@ -111,7 +96,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure Site Recovery Fabric.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -126,10 +111,25 @@ Accept wildcard characters: False
 Specifies the Azure Site Recovery Fabric Type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases:
 Accepted values: HyperVSite
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

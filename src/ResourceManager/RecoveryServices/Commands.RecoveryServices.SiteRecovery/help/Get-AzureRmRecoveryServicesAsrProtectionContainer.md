@@ -83,7 +83,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 Look for the protection container in the specified ASR fabric.
 
 ```yaml
-Type: ASRFabric
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Specifies the friendly name of the ASR protection container to look for.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByObjectWithFriendlyName
 Aliases:
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 Specifies the name of the ASR protection container to look for.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByObjectWithName
 Aliases:
 

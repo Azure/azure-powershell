@@ -73,10 +73,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     vaultExtendedInfo = this.RecoveryServicesClient
                     .GetVaultExtendedInfo(this.Vault.ResourceGroupName, this.Vault.Name);
                 }
-                catch (CloudException ex)
+                catch (Exception ex)
                 {
+                    // code interanally handled the cloud exception thrown earlier.But still there are changes of other exception.
+                    // suggesting alternate way to user to unblock if this command is failing.
                     Logger.Instance.WriteWarning(ex.Message);
-                    // throw new Exception(Resources.TryDownloadingVaultFile);
+                    throw new Exception(Resources.TryDownloadingVaultFile);
                 }
 
                 ASRVaultCreds asrVaultCreds = new ASRVaultCreds();
