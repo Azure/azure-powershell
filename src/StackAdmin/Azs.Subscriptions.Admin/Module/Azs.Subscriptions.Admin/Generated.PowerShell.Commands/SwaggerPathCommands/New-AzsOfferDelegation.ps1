@@ -85,15 +85,9 @@ function New-AzsOfferDelegation {
             }
 
             # Validate this resource does not exist.
-            $_objectCheck = $null
-            try {
-                $_objectCheck = Get-AzsOfferDelegation -ResourceGroupName $ResourceGroupName -OfferName $OfferName -Name $Name
-            } catch {
-                # No op
-            } finally {
-                if ($_objectCheck -ne $null) {
-                    throw "A delegated offer with name $Name for Offer $OfferName under the resource group $ResourceGroupName already exists."
-                }
+            if ($null -ne (Get-AzsOfferDelegation -ResourceGroupName $ResourceGroupName -OfferName $OfferName -Name $Name -ErrorAction SilentlyContinue)) {
+                Write-Error "A delegated offer with name $Name for Offer $OfferName under the resource group $ResourceGroupName already exists."
+                return
             }
 
             $flattenedParameters = @('SubscriptionId', 'Location')

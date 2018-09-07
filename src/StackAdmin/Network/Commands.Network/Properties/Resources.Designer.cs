@@ -61,6 +61,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding Resource.
+        /// </summary>
+        public static string AddingResourceMessage {
+            get {
+                return ResourceManager.GetString("AddingResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to authenticationCertificates.
+        /// </summary>
+        public static string ApplicationGatewayAuthenticationCertificateName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayAuthenticationCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to backendAddressPools.
         /// </summary>
         public static string ApplicationGatewayBackendAddressPoolName {
@@ -142,6 +160,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to redirectConfigurations.
+        /// </summary>
+        public static string ApplicationGatewayRedirectConfigurationName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayRedirectConfigurationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to requestRoutingRules.
         /// </summary>
         public static string ApplicationGatewayRequestRoutingRuleName {
@@ -165,6 +192,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string ApplicationGatewayUrlPathMapName {
             get {
                 return ResourceManager.GetString("ApplicationGatewayUrlPathMapName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating Resource.
+        /// </summary>
+        public static string CreatingResourceMessage {
+            get {
+                return ResourceManager.GetString("CreatingResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The effective network security group list is empty because the specified network interface is not associated with a network security group or the subnet that is referenced by the network interface is also not associated with a network security group..
+        /// </summary>
+        public static string EmptyEffectiveNetworkSecurityGroupOnNic {
+            get {
+                return ResourceManager.GetString("EmptyEffectiveNetworkSecurityGroupOnNic", resourceCulture);
             }
         }
         
@@ -198,9 +243,9 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         /// <summary>
         ///   Looks up a localized string similar to inboundNatPools.
         /// </summary>
-        public static string LoadBalancerInboundNatPoolsName {
+        public static string LoadBalancerInboundNatPoolName {
             get {
-                return ResourceManager.GetString("LoadBalancerInboundNatPoolsName", resourceCulture);
+                return ResourceManager.GetString("LoadBalancerInboundNatPoolName", resourceCulture);
             }
         }
         
@@ -241,6 +286,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Moving ExpressRoute Circuit.
+        /// </summary>
+        public static string MovingExpressRoutCircuitMessage {
+            get {
+                return ResourceManager.GetString("MovingExpressRoutCircuitMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to overwriteresource &apos;{0}&apos;.
         /// </summary>
         public static string OverwritingResource {
@@ -273,6 +327,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string RemovingResource {
             get {
                 return ResourceManager.GetString("RemovingResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resetting Resource.
+        /// </summary>
+        public static string ResettingResourceMessage {
+            get {
+                return ResourceManager.GetString("ResettingResourceMessage", resourceCulture);
             }
         }
         
@@ -322,6 +385,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SetByIpConfiguration.
+        /// </summary>
+        public static string SetByIpConfiguration {
+            get {
+                return ResourceManager.GetString("SetByIpConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SetByIpConfigurationResourceId.
+        /// </summary>
+        public static string SetByIpConfigurationResourceId {
+            get {
+                return ResourceManager.GetString("SetByIpConfigurationResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SetByResource.
         /// </summary>
         public static string SetByResource {
@@ -340,11 +421,38 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting Resource.
+        /// </summary>
+        public static string SettingResourceMessage {
+            get {
+                return ResourceManager.GetString("SettingResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PrivateIpAddress needs to be specified in Static allocation.
         /// </summary>
         public static string StaticIpAddressErrorMessage {
             get {
                 return ResourceManager.GetString("StaticIpAddressErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds..
+        /// </summary>
+        public static string UltraPerformaceGatewayWarning {
+            get {
+                return ResourceManager.GetString("UltraPerformaceGatewayWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds..
+        /// </summary>
+        public static string UltraPerformanceGatewayWarningMessage {
+            get {
+                return ResourceManager.GetString("UltraPerformanceGatewayWarningMessage", resourceCulture);
             }
         }
         
@@ -358,7 +466,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to virtualNetworkGatewayIpConfigurations.
+        ///   Looks up a localized string similar to virtualNetworkGatewayIpConfiguration.
         /// </summary>
         public static string VirtualNetworkGatewayIpConfigName {
             get {

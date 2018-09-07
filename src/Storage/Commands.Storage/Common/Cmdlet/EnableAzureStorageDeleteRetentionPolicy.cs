@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// Enable azure storage service DeleteRetentionPolicy, currently only enabled on Blob service
     /// </summary>
     [Cmdlet("Enable", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageDeleteRetentionPolicy", SupportsShouldProcess = true),OutputType(typeof(PSDeleteRetentionPolicy))]
-    [Alias("Enable-AzureStorageSoftDelete")]
+    [Alias("Enable-" + Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix+ "StorageSoftDelete")]
     public class EnableAzureStorageServiceDeleteRetentionPolicyCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = "Sets the number of retention days for the DeleteRetentionPolicy.")]

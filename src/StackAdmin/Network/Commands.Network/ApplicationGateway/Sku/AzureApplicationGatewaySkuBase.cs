@@ -12,37 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
     public class AzureApplicationGatewaySkuBase : NetworkBaseCmdlet
     {
         [Parameter(
-               Mandatory = true, 
+               Mandatory = true,
                HelpMessage = "The name of the SKU")]
-        [ValidateSet("Standard_Small", "Standard_Medium", "Standard_Large", IgnoreCase = true)]
+        [ValidateSet("Standard_Small", "Standard_Medium", "Standard_Large", "WAF_Medium", "WAF_Large", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
-               Mandatory = true, 
+               Mandatory = true,
                HelpMessage = "Application gateway tier")]
-        [ValidateSet("Standard", IgnoreCase = true)]
+        [ValidateSet("Standard", "WAF", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Tier { get; set; }
 
         [Parameter(
-               Mandatory = true, 
+               Mandatory = true,
                HelpMessage = "Application gateway instance count")]
         [ValidateNotNullOrEmpty]
-        public int Capacity { get; set; }        
+        public int Capacity { get; set; }
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();            
+            base.ExecuteCmdlet();
         }
     }
 }
