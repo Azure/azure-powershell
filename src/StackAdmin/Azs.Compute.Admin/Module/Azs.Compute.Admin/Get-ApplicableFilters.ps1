@@ -24,7 +24,7 @@ function Get-ApplicableFilters {
         $Filters
     )
 
-    $ErrorActionPreference = 'Stop'
+
     foreach ($filter in $Filters) {
         $res = @{
             Filter = $filter
@@ -34,7 +34,7 @@ function Get-ApplicableFilters {
             if (Test-WildcardFilter -Filter $filter) {
                 $res['Strict'] = $true
             }
-        } 
+        }
         elseif ($filter.Type -eq 'equalityOperator') {
             if (Test-EqualityFilter -Filter $filter) {
                 $res['Strict'] = $true
