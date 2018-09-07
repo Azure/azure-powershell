@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
@@ -60,33 +61,30 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ExpandResource { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var vnet = this.GetVirtualNetwork(this.ResourceGroupName, this.Name, this.ExpandResource);
 
                 WriteObject(vnet);
             }
-            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
-            {
-                var vnetList = this.VirtualNetworkClient.List(this.ResourceGroupName);
-
-                var psVnets = new List<PSVirtualNetwork>();
-                foreach (var virtualNetwork in vnetList)
-                {
-                    var psVnet = this.ToPsVirtualNetwork(virtualNetwork);
-                    psVnet.ResourceGroupName = this.ResourceGroupName;
-                    psVnets.Add(psVnet);
-                }
-
-                WriteObject(psVnets, true);
-            }
             else
             {
-                var vnetList = this.VirtualNetworkClient.ListAll();
+                IPage<VirtualNetwork> vnetPage;
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    vnetPage = this.VirtualNetworkClient.List(this.ResourceGroupName);
+                }
+                else
+                {
+                    vnetPage = this.VirtualNetworkClient.ListAll();
+                }
+
+                // Get all resources by polling on next page link
+                var vnetList = ListNextLink<VirtualNetwork>.GetAllResourcesByPollingNextLink(vnetPage, this.VirtualNetworkClient.ListNext);
 
                 var psVnets = new List<PSVirtualNetwork>();
                 foreach (var virtualNetwork in vnetList)
