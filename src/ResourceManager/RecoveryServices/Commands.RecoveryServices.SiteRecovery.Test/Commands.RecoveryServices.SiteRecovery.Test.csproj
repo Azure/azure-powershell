@@ -55,7 +55,6 @@
     <Compile Include="ScenarioTests\A2A\AsrA2ATestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AzureRm.Resources.ps1" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -193,9 +192,6 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ScenarioTests\A2A\" />
-    <Folder Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

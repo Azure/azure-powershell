@@ -48,7 +48,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 Specifies the friendly name of the recovery plan to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFriendlyName
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 Specifies the name of the recovery plan to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Specifies the file path to which this cmdlet saves the recovery plan json definition. The json definition can be edited to modify the recovery plan and used to update the recovery plan through the Update-AzureRmRecoveryServicesASRRecoveryPlan cmdlet
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName, ByFriendlyName
 Aliases:
 

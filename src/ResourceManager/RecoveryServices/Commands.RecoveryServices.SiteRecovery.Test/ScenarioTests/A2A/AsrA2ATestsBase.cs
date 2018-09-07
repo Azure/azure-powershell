@@ -55,10 +55,8 @@ namespace RecoveryServices.SiteRecovery.Test
         public RecoveryServicesClient RecoveryServicesMgmtClient { get; private set; }
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
 
-        public SubscriptionClient SubscriptionClient { get; private set; }
-
         public ComputeManagementClient ComputeManagementClient { get; private set; }
-        public Microsoft.Azure.Management.ResourceManager.ResourceManagementClient ResourceManagementRestClient { get; private set; }
+        public Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient ResourceManagementRestClient { get; private set; }
 
         public void RunPowerShellTest(
              XunitTracingInterceptor logger,
@@ -95,8 +93,6 @@ namespace RecoveryServices.SiteRecovery.Test
             providers.Add("Microsoft.Authorization", null);
 
             var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10");
             providersToIgnore.Add("Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-09-01");
 
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(
@@ -163,13 +159,11 @@ namespace RecoveryServices.SiteRecovery.Test
             this.ResourceManagementRestClient = this.GetResourceManagementClientRestClient(context);
             this.RecoveryServicesMgmtClient = this.GetRecoveryServicesManagementClient(context);
             this.SiteRecoveryMgmtClient = this.GetSiteRecoveryManagementClient(context);
-            this.SubscriptionClient = this.GetSubscriptionClient(context);
             
             this.helper.SetupManagementClients(
                 this.RmRestClient,
                 this.RecoveryServicesMgmtClient,
                 this.SiteRecoveryMgmtClient,
-                this.SubscriptionClient,
                 this.ResourceManagementRestClient);
         }
 
@@ -177,13 +171,6 @@ namespace RecoveryServices.SiteRecovery.Test
             RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<RecoveryServicesClient>(
-                RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private SubscriptionClient GetSubscriptionClient(
-            RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<SubscriptionClient>(
                 RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
@@ -201,10 +188,10 @@ namespace RecoveryServices.SiteRecovery.Test
                 RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private Microsoft.Azure.Management.ResourceManager.ResourceManagementClient GetResourceManagementClientRestClient(
+        private Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient GetResourceManagementClientRestClient(
             RestTestFramework.MockContext context)
         {
-            return context.GetServiceClient<Microsoft.Azure.Management.ResourceManager.ResourceManagementClient>(
+            return context.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>(
                 RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 

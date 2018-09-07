@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     [Cmdlet(
         VerbsData.Edit,
-        "AzureRmRecoveryServicesAsrRecoveryPlan",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",
         DefaultParameterSetName = ASRParameterSets.AppendGroup,
         SupportsShouldProcess = true)]
     [Alias(

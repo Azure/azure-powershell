@@ -75,10 +75,10 @@ function Test-NewAsrFabric {
         $recoveryFabricName = getRecoveryFabric
         
         New-AzureRmResourceGroup -name $vaultRg -location $vaultRgLocation -force
-        [Microsoft.Azure.Test.TestUtilities]::Wait(20 * 1000)
+        [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
     # vault Creation
         New-azureRmRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
-        [Microsoft.Azure.Test.TestUtilities]::Wait(20 * 1000)
+        [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
         $Vault = Get-AzureRMRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
         Set-ASRVaultContext -Vault $Vault
     # fabric Creation    
@@ -114,10 +114,10 @@ function Test-NewContainer{
         $RecoveryTargetDiskAccountType = "Premium_LRS"
 
         New-AzureRmResourceGroup -name $vaultRg -location $vaultRgLocation -force
-        [Microsoft.Azure.Test.TestUtilities]::Wait(20 * 1000)
+        [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
     # vault Creation
         New-azureRmRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
-        [Microsoft.Azure.Test.TestUtilities]::Wait(20 * 1000)
+        [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
         $Vault = Get-AzureRMRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
         Set-ASRVaultContext -Vault $Vault
     # fabric Creation    
