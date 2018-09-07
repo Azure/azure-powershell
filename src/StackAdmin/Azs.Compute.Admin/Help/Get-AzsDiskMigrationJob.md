@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Compute.Admin-help.xml
 Module Name: Azs.Compute.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -32,19 +32,19 @@ Returns a list of disk migration jobs.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> Get-AzsDiskMigrationJob -location local
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-
-Returns a list of managed disk migration jobs at the location local. 
-
-### Example 2
-```
-Get-AzsDiskMigrationJob -location local -Name "mymigrationName"
+$migration = Get-AzsDiskMigrationJob -location local -Name "mymigrationName"
 ```
 
 Get a specific managed disk migration job.
+
+### -------------------------- EXAMPLE 2 --------------------------
+```
+$migration = Get-AzsDiskMigrationJob -location local
+```
+
+Returns a list of managed disk migration jobs at the location local.
 
 ## PARAMETERS
 
@@ -54,7 +54,7 @@ Location of the resource.
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -99,7 +99,7 @@ The parameters of disk migration job status.
 ```yaml
 Type: String
 Parameter Sets: List
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -120,3 +120,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -16,7 +16,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Xunit;
 
-// General Information about an assembly is controlled through the following 
+// General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Microsoft.Azure.Commands.Network.Test")]
@@ -32,6 +32,6 @@ using Xunit;
 
 [assembly: Guid("d1e9969e-7b83-4dfc-a7a2-523d4f7e6cc9")]
 
-[assembly: AssemblyVersion("5.0.0")]
-[assembly: AssemblyFileVersion("5.0.0")]
+[assembly: AssemblyVersion("5.0.1")]
+[assembly: AssemblyFileVersion("5.0.1")]
 [assembly: CollectionBehavior(DisableTestParallelization = true)]

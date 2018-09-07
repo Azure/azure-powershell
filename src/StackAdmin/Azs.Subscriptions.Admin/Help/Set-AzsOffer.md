@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Subscriptions.Admin-help.xml
 Module Name: Azs.Subscriptions.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ Update the offer.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 Set-AzsOffer -Name offer1 -ResourceGroupName rg1 -State Private
 ```
@@ -44,55 +44,13 @@ Update the offer.
 
 ## PARAMETERS
 
-### -Name
-Name of an offer.
+### -AddonPlanDefinition
+References to add-on plans that a tenant can optionally acquire as a part of the offer.
 
 ```yaml
-Type: String
+Type: AddonPlanDefinition[]
 Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group the resource is located under.
-
-```yaml
-Type: String
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: InputObject
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Display name of offer.
-
-```yaml
-Type: String
-Parameter Sets: Update
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -107,27 +65,12 @@ Identifiers of the base plans that become available to the tenant immediately wh
 ```yaml
 Type: String[]
 Parameter Sets: Update
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Offer.
-
-```yaml
-Type: Offer
-Parameter Sets: InputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -137,7 +80,22 @@ Description of offer.
 ```yaml
 Type: String
 Parameter Sets: Update
-Aliases:
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+Display name of offer.
+
+```yaml
+Type: String
+Parameter Sets: Update
+Aliases: 
 
 Required: False
 Position: Named
@@ -152,7 +110,7 @@ External reference identifier.
 ```yaml
 Type: String
 Parameter Sets: Update
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -161,18 +119,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -State
-Offer accessibility state.
+### -InputObject
+The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Offer.
 
 ```yaml
-Type: String
-Parameter Sets: Update
-Aliases:
+Type: Offer
+Parameter Sets: InputObject
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -191,28 +149,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionCount
-Current subscription count.
-
-```yaml
-Type: Int64
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MaxSubscriptionsPerAccount
 Maximum subscriptions per account.
 
 ```yaml
 Type: Int64
 Parameter Sets: Update
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -221,13 +164,40 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AddonPlanDefinition
-References to add-on plans that a tenant can optionally acquire as a part of the offer.
+### -Name
+Name of an offer.
 
 ```yaml
-Type: AddonPlanDefinition[]
+Type: String
 Parameter Sets: Update
-Aliases:
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group the resource is located under.
+
+```yaml
+Type: String
+Parameter Sets: Update
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: InputObject
+Aliases: 
 
 Required: False
 Position: Named
@@ -242,7 +212,7 @@ The resource id.
 ```yaml
 Type: String
 Parameter Sets: ResourceId
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -251,18 +221,32 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -State
+Offer accessibility state.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Type: String
+Parameter Sets: Update
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionCount
+Current subscription count.
+
+```yaml
+Type: Int64
+Parameter Sets: Update
+Aliases: 
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -274,6 +258,22 @@ Prompts you for confirmation before running the cmdlet.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -294,3 +294,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

@@ -51,15 +51,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-<!--    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference> -->
     <Reference Include="Microsoft.Azure.Management.Network, Version=16.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.16.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.Management.Network.16.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -178,6 +174,7 @@
     <Compile Include="ApplicationSecurityGroup\NewAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="ApplicationSecurityGroup\RemoveAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Common\ListNextLink.cs" />
+    <Compile Include="Common\DoubleFetchHandler.cs" />
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkCloudException.cs" />
@@ -558,24 +555,6 @@
     <Compile Include="VirtualNetwork\VirtualNetworkBaseCmdlet.cs" />
     <Compile Include="VirtualNetwork\VirtualNetworkListUsageMethod.cs" />
   </ItemGroup>
-<!--  <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Commands.Common.Network.csproj">
-      <Project>{1338f7ae-7111-4ed3-8916-2d0fecc876f4}</Project>
-      <Name>Commands.Common.Network</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
-    </ProjectReference>
-  </ItemGroup>-->
   <ItemGroup>
     <Folder Include="Microsoft\Azure\Commands\Network\Models\" />
   </ItemGroup>
