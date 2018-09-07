@@ -86,12 +86,16 @@ InModuleScope Azs.Storage.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         it "TestGetTableService" -Skip:$('TestGetTableService' -in $global:SkippedTests) {
             $global:TestName = 'TestGetTableService'
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $tableService = Get-AzsTableService -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $tableService = Get-AzsTableService -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 ValidatetableService -tableService $tableService
             }
         }
@@ -101,7 +105,7 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $result = Get-AzsTableServiceMetricDefinition -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $result = Get-AzsTableServiceMetricDefinition -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
             }
         }
 
@@ -110,7 +114,7 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $result = Get-AzsTableServiceMetric -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $result = Get-AzsTableServiceMetric -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
             }
         }
     }

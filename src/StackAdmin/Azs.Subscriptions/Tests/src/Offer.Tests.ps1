@@ -90,6 +90,10 @@ InModuleScope Azs.Subscriptions {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         it "TestListRootOffers" -Skip:$('TestListRootOffers' -in $global:SkippedTests) {
             $global:TestName = 'TestListRootOffers'
 

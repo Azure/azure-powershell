@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Compute.Admin-help.xml
 Module Name: Azs.Compute.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -21,10 +21,9 @@ Cancel a disk migration job.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> $migration =New-AzsDiskMigrationJob -Name "mymigrationJob" -Disks $list -location local -TargetShare "\\SU1FileServer.azurestack.local\SU1_ObjStore"
-PS C:\> Stop-AzsDiskMigrationJob -Location local -Name $migration.MigrationId
+### -------------------------- EXAMPLE 1 --------------------------
+```
+Stop-AzsDiskMigrationJob -Location local -MigrationId $migration.MigrationId
 ```
 
 Cancel a managed disk migration job.
@@ -37,7 +36,7 @@ Location of the resource.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
@@ -73,3 +72,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
