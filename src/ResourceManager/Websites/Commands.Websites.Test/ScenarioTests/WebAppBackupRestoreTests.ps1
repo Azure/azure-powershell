@@ -18,6 +18,13 @@ $snapshotRgName = 'onesdksnapshots'
 $snapshotAppName = 'onesdkpremapp2'
 $snapshotAppSlot = 'staging'
 
+# Restoring a deleted web app requires an app to have a snapshot available.
+# Deploy a web app and wait at least an hour for a snapshot.
+# Update these global variables to re-record Test-RestoreDeletedWebApp.
+$undeleteRgName = 'ps8425'
+$undeleteAppName = 'ps1705'
+$undeleteSlot = 'testslot'
+
 function Test-CreateNewWebAppBackup
 {
     $rgName = Get-ResourceGroupName
@@ -372,6 +379,103 @@ function Test-RestoreWebAppSnapshot
 	# Test piping and background job
 	$job = $snapshot | Restore-AzureRmWebAppSnapshot -Force -AsJob
 	$job | Wait-Job
+}
+
+function Test-GetDeletedWebApp
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$wname = Get-WebsiteName
+	$slotName = "staging"
+	$location = Get-WebLocation
+	$whpName = Get-WebHostPlanName
+	$tier = "Standard"
+
+	try
+	{
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
+		New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
+		New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName -AppServicePlan $planName
+		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName -Force
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
+
+		$deletedApp = Get-AzureRmDeletedWebApp -ResourceGroupName $rgname -Name $wname -Slot "Production"
+		Assert-NotNull $deletedApp
+		Assert-AreEqual $rgname $deletedApp.ResourceGroupName
+		Assert-AreEqual $wname $deletedApp.Name
+
+		$deletedSlot = Get-AzureRmDeletedWebApp -ResourceGroupName $rgname -Name $wname -Slot $slotName
+		Assert-NotNull $deletedSlot
+		Assert-AreEqual $rgname $deletedSlot.ResourceGroupName
+		Assert-AreEqual $wname $deletedSlot.Name
+		Assert-AreEqual $slotName $deletedSlot.Slot
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+	}
+}
+
+function Test-RestoreDeletedWebAppToExisting
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$wname = Get-WebsiteName
+	$slotName = "staging"
+	$location = Get-WebLocation
+	$whpName = Get-WebHostPlanName
+	$tier = "Standard"
+
+	try
+	{
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
+		New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
+		New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName -AppServicePlan $planName
+		$deletedApp = Get-AzureRmDeletedWebApp -ResourceGroupName $undeleteRgName -Name $undeleteAppName -Slot "Production"
+		$deletedSlot = Get-AzureRmDeletedWebApp -ResourceGroupName $undeleteRgName -Name $undeleteAppName -Slot $undeleteSlot
+		Restore-AzureRmDeletedWebApp $deletedApp -TargetResourceGroupName $rgname -TargetName $wname -Force
+		Restore-AzureRmDeletedWebApp $deletedSlot -TargetResourceGroupName $rgname -TargetName $wname  -TargetSlot $slotName -Force
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName -Force
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+	}
+}
+
+function Test-RestoreDeletedWebAppToNew
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$location = Get-WebLocation
+	$whpName = Get-WebHostPlanName
+	$tier = "Standard"
+
+	try
+	{
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
+		$deletedApp = Get-AzureRmDeletedWebApp -ResourceGroupName $undeleteRgName -Name $undeleteAppName -Slot "Production"
+		$job = $deletedApp | Restore-AzureRmDeletedWebApp -TargetResourceGroupName $rgname -TargetAppServicePlanName $whpName -Force -AsJob
+		$job | Wait-Job
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $undeleteAppName -Force
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+	}
 }
 
 # Utility functions
