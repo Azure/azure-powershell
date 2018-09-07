@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public EventHubsClient(IAzureContext context)
         {
-            this.Client = AzureSession.Instance.ClientFactory.CreateArmClient<EventHubManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.Client = AzureSession.Instance.ClientFactory.CreateArmClient<EventHub2018PreviewManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
 
         }
-        public EventHubManagementClient Client
+        public EventHub2018PreviewManagementClient Client
         {
             get;
             private set;
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             return resourceList;
         }
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits)
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits, bool? zoneRedundant)
         {
             EHNamespace parameter = new EHNamespace();
             parameter.Location = location;
@@ -96,11 +96,14 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (maximumThroughputUnits.HasValue)
                 parameter.MaximumThroughputUnits = maximumThroughputUnits;
 
+            if (zoneRedundant.HasValue)
+                parameter.ZoneRedundant = zoneRedundant;
+
             var response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);
             return new PSNamespaceAttributes(response);
         }
 
-        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, NamespaceState? state, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits)
+        public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, NamespaceState? state, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits, bool? zoneRedundant)
         {
 
             var parameter = new EHNamespace()
@@ -134,6 +137,9 @@ namespace Microsoft.Azure.Commands.Eventhub
             if (maximumThroughputUnits.HasValue)
                 parameter.MaximumThroughputUnits = maximumThroughputUnits;
 
+            if (zoneRedundant.HasValue)
+                parameter.ZoneRedundant = zoneRedundant;
+
             var response = Client.Namespaces.Update(resourceGroupName, namespaceName, parameter);
 
             return new PSNamespaceAttributes(response);
@@ -144,6 +150,7 @@ namespace Microsoft.Azure.Commands.Eventhub
             Client.Namespaces.Delete(resourceGroupName, namespaceName);
         }
 
+        /*
         public PSSharedAccessAuthorizationRuleAttributes GetNamespaceAuthorizationRule(string resourceGroupName, string namespaceName, string authRuleName)
         {
             var response = Client.Namespaces.GetAuthorizationRule(resourceGroupName, namespaceName, authRuleName);
@@ -200,9 +207,10 @@ namespace Microsoft.Azure.Commands.Eventhub
 
             return new PSListKeysAttributes(regenerateKeyslistKeys);
         }
-
+        */
         #endregion
 
+        /*
         #region EventHub
         public PSEventHubAttributes GetEventHub(string resourceGroupName, string namespaceName, string eventHubName)
         {
@@ -482,6 +490,93 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSCheckNameAvailabilityResultAttributes(response);
         }
 
+        #endregion
+    */
+
+        #region IP Filter Rule
+        public PSIpFilterRuleAttributes CreateOrUpdateIPFilterRule(string resourceGroupName, string namespaceName, string ipfiltername, PSIpFilterRuleAttributes parameter)
+        {
+            var Parameter1 = new Management.EventHub.Models.IpFilterRule();
+
+            if (!string.IsNullOrEmpty(parameter.Action))
+            {
+                Parameter1.Action = parameter.Action;
+            }
+
+            if (!string.IsNullOrEmpty(parameter.Name) )
+            {
+                Parameter1.FilterName = parameter.Name;
+            }
+
+            if (!string.IsNullOrEmpty(parameter.IpMask))
+            {
+                Parameter1.IpMask = parameter.IpMask;
+            }
+
+            var response = Client.Namespaces.CreateOrUpdateIpFilterRule(resourceGroupName, namespaceName, ipfiltername, Parameter1);
+            return new PSIpFilterRuleAttributes(response);
+        }
+
+        // get the IP Filter by name
+        public PSIpFilterRuleAttributes GetIPFilterRule(string resourceGroupName, string namespaceName, string ipfiltername)
+        {
+            var response = Client.Namespaces.GetIpFilterRule(resourceGroupName, namespaceName, ipfiltername);
+            return new PSIpFilterRuleAttributes(response);
+        }
+
+        //  List IP Filters by Namespace  
+        public IEnumerable<PSIpFilterRuleAttributes> ListIPFilterRule(string resourceGroupName, string namespaceName)
+        {
+            IEnumerable<PSIpFilterRuleAttributes> resourcelist = Enumerable.Empty<PSIpFilterRuleAttributes>();
+            var response = Client.Namespaces.ListIPFilterRules(resourceGroupName, namespaceName);
+            resourcelist = response.Select(resource => new PSIpFilterRuleAttributes(resource));
+            return resourcelist;
+        }
+
+        // delete the IP Filter by name
+        public bool DeleteIPFilterRule(string resourceGroupName, string namespaceName, string ipfiltername)
+        {
+            Client.Namespaces.DeleteIpFilterRule(resourceGroupName, namespaceName, ipfiltername);
+            return true;
+        }
+        #endregion
+
+        #region VNet Rule
+        public PSVirtualNetWorkRuleAttributes CreateOrUpdateVNetRule(string resourceGroupName, string namespaceName, string vNetRuleName, PSVirtualNetWorkRuleAttributes parameter)
+        {
+            var Parameter1 = new Management.EventHub.Models.VirtualNetworkRule();
+
+            if (!string.IsNullOrEmpty(parameter.VirtualNetworkSubnetId))
+            {
+                Parameter1.VirtualNetworkSubnetId = parameter.VirtualNetworkSubnetId;
+            }
+
+            var response = Client.Namespaces.CreateOrUpdateVirtualNetworkRule(resourceGroupName, namespaceName, vNetRuleName, Parameter1);
+            return new PSVirtualNetWorkRuleAttributes(response);
+        }
+
+        // get the VNet Rule by name
+        public PSVirtualNetWorkRuleAttributes GetVNetRule(string resourceGroupName, string namespaceName, string ipfiltername)
+        {
+            var response = Client.Namespaces.GetVirtualNetworkRule(resourceGroupName, namespaceName, ipfiltername);
+            return new PSVirtualNetWorkRuleAttributes(response);
+        }
+
+        //  List VNet Rule by Namespace  
+        public IEnumerable<PSVirtualNetWorkRuleAttributes> ListVNetRule(string resourceGroupName, string namespaceName)
+        {
+            IEnumerable<PSVirtualNetWorkRuleAttributes> resourcelist = Enumerable.Empty<PSVirtualNetWorkRuleAttributes>();
+            var listVnetRules = Client.Namespaces.ListVirtualNetworkRules(resourceGroupName, namespaceName);
+            resourcelist = listVnetRules.Select(resource => new PSVirtualNetWorkRuleAttributes(resource));
+            return resourcelist;
+        }
+
+        // delete the VNet Rule by name
+        public bool DeleteVNetRule(string resourceGroupName, string namespaceName, string ipfiltername)
+        {
+            Client.Namespaces.DeleteVirtualNetworkRule(resourceGroupName, namespaceName, ipfiltername);
+            return true;
+        }
         #endregion
 
         public static int ReturnmaxCountvalueForSwtich(int? maxcount)

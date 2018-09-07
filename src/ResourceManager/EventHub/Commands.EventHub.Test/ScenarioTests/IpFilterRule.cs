@@ -16,24 +16,27 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ScenarioTest;
     using ServiceManagemenet.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class NamespaceTests : RMTestBase
+    public class IpFilterRuleTests : RMTestBase
     {
         public XunitTracingInterceptor _logger;
 
-        public NamespaceTests(ITestOutputHelper output)
+        public IpFilterRuleTests(ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
+            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NamespaceCRUD()
+        public void IpFilterRuleCRUD()
         {
-            EventHubsController.NewInstance.RunPsTest(_logger, "NamespaceTests");
-        }        
+            EventHubsController.NewInstance.RunPsTest(_logger, "IpFilterRuleTests");
+        }
+
     }
 }

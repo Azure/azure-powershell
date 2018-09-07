@@ -77,6 +77,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [ValidateRange(0,20)]        
         public int? MaximumThroughputUnits { get; set; }
 
+        /// <summary>
+        /// Indicates whether ZoneRedundant is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "Indicates whether ZoneRedundant is enabled")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "Hashtables which represents resource Tags.")]
+        public SwitchParameter EnableZoneRedundant { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // Update a EventHub namespace 
@@ -87,9 +94,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
                 try
                 {
                     if (EnableAutoInflate.IsPresent)
-                        WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, State, tagDictionary, true, MaximumThroughputUnits));
+                        WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, State, tagDictionary, true, MaximumThroughputUnits, EnableZoneRedundant));
                     else
-                        WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, State, tagDictionary, false, MaximumThroughputUnits));
+                        WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, State, tagDictionary, false, MaximumThroughputUnits, EnableZoneRedundant));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {
