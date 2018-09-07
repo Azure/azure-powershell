@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.3.0-preview" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.15.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="21.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="3.1.1-preview" />
