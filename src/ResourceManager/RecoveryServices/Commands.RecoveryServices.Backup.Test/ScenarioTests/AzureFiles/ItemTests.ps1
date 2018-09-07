@@ -60,6 +60,49 @@ function Test-AzureFileShareBackup
 	}
 }
 
+function Test-AzureFileProtection
+{
+	$location = "westus"
+	$resourceGroupName = "sisi-RSV"
+
+	try
+	{
+	    $vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName 'sisi-RSV' -Name 'sisi-RSV-29-6'
+		
+		$policyName = "AFSBackupPolicy";
+		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-WorkloadType "AzureFiles"
+		$enableJob = Enable-AzureRmRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Policy $Policy `
+			-Name "igniteshare7" `
+			-StorageAccountName "sisisa"
+
+		$container = Get-AzureRmRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureStorage `
+			-Status Registered `
+			-FriendlyName "sisisa";
+
+		$item = Get-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-Container $container[16] `
+			-WorkloadType AzureFiles `
+			-Name "igniteshare7"
+
+		# Disable protection
+		Disable-AzureRmRecoveryServicesBackupProtection `
+			-VaultId $vault.ID `
+			-Item $item `
+			-Force;
+	}
+	finally
+	{
+		# Cleanup
+	}
+}
+
 function Test-AzureFileShareGetRPs
 {
 	$location = "westus"
