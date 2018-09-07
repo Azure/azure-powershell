@@ -1,0 +1,131 @@
+---
+external help file: Microsoft.Azure.Commands.ResourceGraph.dll-Help.xml
+Module Name: AzureRM.ResourceGraph
+online version:
+schema: 2.0.0
+---
+
+# Invoke-AzureRmResourceGraphQuery
+
+## SYNOPSIS
+Queries the resources managed by Azure Resource Manager.
+
+## SYNTAX
+
+```
+Invoke-AzureRmResourceGraphQuery [-Query] <String> [-Subscriptions <String[]>] [-First <Int32>] [-Skip <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Learn more about the query syntax here: https://aka.ms/resource-graph/learntoquery
+
+## EXAMPLES
+
+### Example 1
+```powershell
+PS C:\> Invoke-AzureRmResourceGraphQuery "project id, name, type, location, tags" -First 3
+```
+
+Simple resources query requesting a subset of resource fields.
+
+### Example 2
+```powershell
+PS C:\> Invoke-AzureRmResourceGraphQuery "project id, name, type, location | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location | top 3 by count_"
+```
+
+A complex query on resources featuring field selection, filtering and summarizing.
+
+## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Query
+Resource Graph query
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Subscriptions
+List of subscriptions to run query against
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Skip
+Ignores the first N objects and then gets the remaining objects
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -First
+The maximum number of objects to return.
+Default value is 100.
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### System.String
+
+## OUTPUTS
+
+### System.Management.Automation.PSObject
+
+## NOTES
+
+## RELATED LINKS
