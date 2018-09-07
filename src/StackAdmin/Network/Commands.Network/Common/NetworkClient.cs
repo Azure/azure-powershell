@@ -448,6 +448,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualNetworkGatewayName");
             }
+
             // Construct URL
             var url = new Uri(new Uri(baseUrl + (baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/" +
                                                                                      "providers/Microsoft.Network/virtualnetworkgateways/{virtualNetworkGatewayName}/getvpnprofilepackageurl").ToString();
@@ -460,6 +461,7 @@ namespace Microsoft.Azure.Commands.Network
             HttpRequestMessage httpRequest = new HttpRequestMessage();
             httpRequest.Method = new HttpMethod("POST");
             httpRequest.RequestUri = new Uri(url);
+
             // Set Headers
             httpRequest.Headers.TryAddWithoutValidation("x-ms-client-request-id", Guid.NewGuid().ToString());
 

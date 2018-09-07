@@ -967,7 +967,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>()
             {
                 Body = new DeploymentExtended(name: deploymentName, id: requestId)
-                {
+                { 
                 }
             }))
             .Callback((string name, string dName, Deployment bDeploy, Dictionary<string, List<string>> customHeaders,
@@ -1177,7 +1177,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
             SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResource>() { CreateGenericResource(null, null, "resource") });
 
-            List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null,
+            List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null, 
                 new Hashtable(new Dictionary<string, string> { { "tag1", "val1" } }), false);
 
             Assert.Equal(1, groups1.Count);
