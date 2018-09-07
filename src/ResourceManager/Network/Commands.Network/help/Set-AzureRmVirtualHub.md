@@ -17,8 +17,8 @@ Updates a Virtual Hub to an intended goal state.
 Set-AzureRmVirtualHub -Name <String> -ResourceGroupName <String> [-VirtualWan <PSVirtualWan>]
  [-VirtualWanId <String>] [-AddressPrefix <String>]
  [-HubVnetConnection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection]>]
- [-Tag <Hashtable>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
@@ -26,8 +26,8 @@ Set-AzureRmVirtualHub -Name <String> -ResourceGroupName <String> [-VirtualWan <P
 Set-AzureRmVirtualHub -ResourceId <String> [-VirtualWan <PSVirtualWan>] [-VirtualWanId <String>]
  [-AddressPrefix <String>]
  [-HubVnetConnection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection]>]
- [-Tag <Hashtable>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
@@ -35,8 +35,8 @@ Set-AzureRmVirtualHub -ResourceId <String> [-VirtualWan <PSVirtualWan>] [-Virtua
 Set-AzureRmVirtualHub -InputObject <PSVirtualHub> [-VirtualWan <PSVirtualWan>] [-VirtualWanId <String>]
  [-AddressPrefix <String>]
  [-HubVnetConnection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection]>]
- [-Tag <Hashtable>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,13 +48,26 @@ Updates a Virtual Hub to an intended goal state.
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
-PS C:\> New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name “westushub” -AddressPrefix "10.0.1.0/24"
-PS C:\> Set-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name “westushub” -AddressPrefix "10.0.1.0/24"
+PS C:\> New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
+PS C:\> Set-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
 ```
 
 The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have the address space "10.0.1.0/24".
 
-It then updates the virtual
+### Example 2
+```powershell
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
+PS C:\> New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
+PS C:\> $route1 = New-AzureRmVirtualHubRoute -AddressPrefix @("10.0.0.0/16", "11.0.0.0/16") -NextHopIpAddress "12.0.0.5"
+PS C:\> $route2 = New-AzureRmVirtualHubRoute -AddressPrefix @("13.0.0.0/16") -NextHopIpAddress "14.0.0.5"
+PS C:\> $routeTable = New-AzureRmVirtualHubRouteTable -Route @($route1, $route2)
+PS C:\> Set-AzureRmVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -RouteTable $routeTable
+```
+
+The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have the address space "10.0.1.0/24".
+
+This example is similar to Example 1, but also attaches a route table to the virtual hub.
 
 ## PARAMETERS
 
@@ -80,6 +93,21 @@ Run cmdlet in the background
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -193,6 +221,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -RouteTable
+The route table associated with this Virtual Hub.
+
+```yaml
+Type: PSVirtualHubRouteTable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Tag
 A hashtable which represents resource tags.
 
@@ -235,21 +278,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

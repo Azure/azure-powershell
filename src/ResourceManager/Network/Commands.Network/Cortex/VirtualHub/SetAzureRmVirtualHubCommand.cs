@@ -101,6 +101,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The route table associated with this Virtual Hub.")]
+        public PSVirtualHubRouteTable RouteTable { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -162,12 +168,18 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             //// HubVirtualNetworkConnections
-            virtualHubToUpdate.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
-            if (this.HubVnetConnection != null && this.HubVnetConnection.Any())
+            if (this.HubVnetConnection != null)
             {
+                virtualHubToUpdate.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
                 virtualHubToUpdate.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
             }
-            
+
+            //// VirtualHubRouteTable
+            if(this.RouteTable != null)
+            {
+                virtualHubToUpdate.RouteTable = this.RouteTable;
+            }
+
             //// Update the virtual hub
             ConfirmAction(
                     Force.IsPresent,

@@ -21,6 +21,7 @@
 ## Current Release
 * Expose new Powershell commandlets and models for SdWan.
     - Added New, Get, Set, Remove for VirtualWan.
+    - Added New for VirtualHubRoute and VirtualHubRouteTable.
     - Added New, Get, Set, Remove for VirtualHub.
     - Added New, Get, Set, Remove for HubVirtualNetworkConnection.
     - Added New, Get, Set, Remove for VpnGateway.
