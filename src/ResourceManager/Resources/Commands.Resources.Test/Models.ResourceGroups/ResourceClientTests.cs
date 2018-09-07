@@ -212,11 +212,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 };
             serializedProperties = JsonConvert.SerializeObject(properties, new JsonSerializerSettings
             {
-#if NETSTANDARD
-                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
-#else
-                TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple,
-#endif
                 TypeNameHandling = TypeNameHandling.None
             });
             templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleTemplateFile.json");
