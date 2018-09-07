@@ -75,13 +75,17 @@ InModuleScope Azs.Backup.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         It "TestListBackups" -Skip:$('TestListBackups' -in $global:SkippedTests) {
             $global:TestName = 'TestListBackups'
 
             $backups = Get-AzsBackup -Location $global:Location
             $backups  | Should Not Be $null
             foreach ($backup in $backups) {
-                $result = Get-AzsBackup -Location $global:Location -Name (Select-Name $backup.Name)
+                $result = Get-AzsBackup -Location $global:Location -Name $backup.Name
                 ValidateBackup -Backup $result
             }
         }
@@ -92,7 +96,7 @@ InModuleScope Azs.Backup.Admin {
             $backups = Get-AzsBackup -Location $global:Location
             $backups  | Should Not Be $null
             foreach ($backup in $backups) {
-                $result = Get-AzsBackup -Location $global:Location -Name (Select-Name $backup.Name)
+                $result = Get-AzsBackup -Location $global:Location -Name $backup.Name
                 ValidateBackup -Backup $result
             }
         }

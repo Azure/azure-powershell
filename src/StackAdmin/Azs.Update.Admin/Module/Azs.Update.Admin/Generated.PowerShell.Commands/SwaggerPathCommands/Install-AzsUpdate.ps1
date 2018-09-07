@@ -78,9 +78,6 @@ function Install-AzsUpdate {
 
     Process {
 
-
-
-
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updates/{update}'
@@ -91,6 +88,8 @@ function Install-AzsUpdate {
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroup']
             $Location = $ArmResourceIdParameterValues['updateLocation']
             $Name = $ArmResourceIdParameterValues['update']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PsCmdlet.ShouldProcess($Name, "Install the update")) {
