@@ -175,9 +175,9 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             //// VirtualHubRouteTable
-			if(this.RouteTable != null)
-			{
-				virtualHubToUpdate.RouteTable = this.RouteTable;
+            if(this.RouteTable != null)
+            {
+                virtualHubToUpdate.RouteTable = this.RouteTable;
             }
 
             //// Update the virtual hub

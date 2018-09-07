@@ -151,9 +151,12 @@ namespace Microsoft.Azure.Commands.Network
                     AddressPrefix = this.AddressPrefix,
                     Location = this.Location
                 };
-                
+
                 virtualHub.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
-                virtualHub.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
+                if (this.HubVnetConnection != null)
+                {
+                    virtualHub.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
+                }
 
                 virtualHub.RouteTable = this.RouteTable;
 
