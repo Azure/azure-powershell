@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using AutoMapper;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Network.Models;
-
-using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Network;
+using System.Management.Automation;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Reset, "AzureRmVirtualNetworkGatewayConnectionSharedKey"), OutputType(typeof(string))]
+    [Cmdlet(VerbsCommon.Reset, "AzureRmVirtualNetworkGatewayConnectionSharedKey", SupportsShouldProcess = true),
+        OutputType(typeof(string))]
     public class ResetAzureVirtualNetworkGatewayConnectionSharedKeyCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -54,36 +53,28 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
-            if (this.IsVirtualNetworkGatewayConnectionSharedKeyPresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => ResetVirtualNetworkGatewayConnectionSharedKey());
-
-                WriteObject(this.GetVirtualNetworkGatewayConnectionSharedKey(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var virtualNetworkGatewayConnectionSharedKey = ResetVirtualNetworkGatewayConnectionSharedKey();
-
-                WriteObject(virtualNetworkGatewayConnectionSharedKey);
-            }
-        }
+            base.Execute();
+            var present = this.IsVirtualNetworkGatewayConnectionSharedKeyPresent(this.ResourceGroupName, this.Name);            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Properties.Resources.OverwritingResource, Name),
+                Properties.Resources.ResettingResourceMessage,
+                Name,
+                () =>
+                {
+                    var virtualNetworkGatewayConnectionSharedKey = ResetVirtualNetworkGatewayConnectionSharedKey();
+                    WriteObject(virtualNetworkGatewayConnectionSharedKey);
+                },
+                () => present);        }
 
         private string ResetVirtualNetworkGatewayConnectionSharedKey()
         {
             var vnetGatewayConnectionSharedKey = new PSConnectionResetSharedKey();
-            vnetGatewayConnectionSharedKey.KeyLength = KeyLength;
+            vnetGatewayConnectionSharedKey.KeyLength = (int)KeyLength;
 
             // Map to the sdk object
-            var vnetGatewayConnectionSharedKeyModel = Mapper.Map<MNM.ConnectionResetSharedKey>(vnetGatewayConnectionSharedKey);
+            var vnetGatewayConnectionSharedKeyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ConnectionResetSharedKey>(vnetGatewayConnectionSharedKey);
 
             // Execute the Set VirtualNetworkConnectionSharedKey call
             this.VirtualNetworkGatewayConnectionClient.ResetSharedKey(this.ResourceGroupName, this.Name, vnetGatewayConnectionSharedKeyModel);

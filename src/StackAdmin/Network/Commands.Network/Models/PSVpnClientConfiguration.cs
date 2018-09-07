@@ -11,8 +11,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -24,7 +24,12 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSVpnClientRootCertificate> VpnClientRootCertificates { get; set; }
 
+        public string RadiusServerAddress;
 
+        public string RadiusServerSecret;
+
+        public List<string> VpnClientProtocols { get; set; }
+        
         [JsonIgnore]
         public string VpnClientAddressPoolText
         {
