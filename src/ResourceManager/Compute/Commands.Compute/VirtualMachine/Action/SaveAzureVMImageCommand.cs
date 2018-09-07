@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Compute
                 result.EndTime = DateTime.Now;
                 if (!string.IsNullOrWhiteSpace(this.Path))
                 {
-                    File.WriteAllText(this.Path, op.Body.Resources[0].ToString());
+                    File.WriteAllText(ResolveUserPath(this.Path), op.Body.Resources[0].ToString());
                 }
                 WriteObject(result);
             });

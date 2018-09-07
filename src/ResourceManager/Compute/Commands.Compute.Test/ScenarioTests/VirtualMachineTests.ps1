@@ -130,11 +130,13 @@ function Test-VirtualMachine
         $a = $vm1 | Out-String;
         Write-Verbose("Get-AzureRmVM output:");
         Write-Verbose($a);
+        Assert-NotNull $a
         Assert-True {$a.Contains("Sku");}
 
         # VM Compact output
         $vm1.DisplayHint = "Compact";
         $a = $vm1 | Out-String;
+		Assert-NotNull $a
         Assert-False {$a.Contains("Sku");}
 
         # Table format output
@@ -207,16 +209,20 @@ function Test-VirtualMachine
         $a = $vms | Out-String;
         Write-Verbose("Get-AzureRmVM (List) output:");
         Write-Verbose($a);
+		Assert-NotNull $a
         Assert-True{$a.Contains("NIC");}
         Assert-AreNotEqual $vms $null;
 
+		Assert-NotNull $vms[0]
         # VM Compact output
         $a = $vms[0] | Format-Custom | Out-String;
+		Assert-NotNull $a
         Assert-False {$a.Contains("Sku");}
 
         # VM Expand output
         $vms[0].DisplayHint = "Expand";
         $a = $vms[0] | Format-Custom | Out-String;
+		Assert-NotNull $a
         Assert-True {$a.Contains("Sku");}
 
         # Remove All VMs
@@ -3307,6 +3313,9 @@ function Test-VirtualMachineWriteAcceleratorUpdate
         Assert-ThrowsContains {
             $st = $vm1 | Update-AzureRmVM -OsDiskWriteAccelerator $true; } `
              "not supported on disks with Write Accelerator enabled";
+
+        $output = $error | Out-String;
+        Assert-True {$output.Contains("Target");}
 
         $st = $vm1 | Update-AzureRmVM -OsDiskWriteAccelerator $false;
     }

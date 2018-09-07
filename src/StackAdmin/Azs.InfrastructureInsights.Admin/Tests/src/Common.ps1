@@ -12,20 +12,19 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$global:SkippedTests = @()
+
 $global:ResourceGroupName = "System.local"
 $global:Location = "local"
 
-function Extract-Name {
-    param(
-        $Name
-    )
-    $Name = $Name.Split('/')
-    return $Name[-1]
-}
+$global:Client = $null
 
 if (-not $global:RunRaw) {
     $scriptBlock = {
-        Get-MockClient -ClassName 'InfrastructureInsightsAdminClient' -TestName $global:TestName
+        if ($null -eq $global:Client) {
+            $global:Client = Get-MockClient -ClassName 'InfrastructureInsightsAdminClient' -TestName $global:TestName
+        }
+        $global:Client
     }
     Mock New-ServiceClient $scriptBlock -ModuleName $global:ModuleName
 }
