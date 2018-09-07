@@ -1299,9 +1299,9 @@ function Test-LoadBalancerInboundNatPoolConfigCRUD-InternalLB
     $domainNameLabel = Get-ResourceName
     $lbName = Get-ResourceName
     $frontendName = Get-ResourceName
-    $rglocation = "westus2" 
+    $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/loadBalancers"
-    $location = "westus2" 
+    $location = Get-ProviderLocation $resourceTypeParent
     
     try 
     {
@@ -1391,9 +1391,9 @@ function Test-LoadBalancerInboundNatPoolConfigCRUD-PublicLB
     $lbName = Get-ResourceName
     $frontendName = Get-ResourceName
     $inboundNatPoolName = Get-ResourceName
-    $rglocation = "westus2" 
+    $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/loadBalancers"
-    $location = "westus2" 
+    $location = Get-ProviderLocation $resourceTypeParent
     
     try 
     {
@@ -2251,9 +2251,8 @@ function Test-LoadBalancerZones
 
     $zones = "1";
     $rglocation = Get-ProviderLocation ResourceManagement
-    # TODO: replace hardcoded location
-    # $resourceTypeParent = "Microsoft.Network/loadBalancers"
-    $location = "westus2"; # = Get-ProviderLocation $resourceTypeParent
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = Get-ProviderLocation $resourceTypeParent
 
     try
      {
