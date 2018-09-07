@@ -11,28 +11,56 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Security;
 
-namespace Microsoft.Azure.Commands.Common.Authentication
+namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     /// <summary>
     /// Helper class to store service principal keys and retrieve them
     /// from the Windows Credential Store.
     /// </summary>
-    public static class ServicePrincipalKeyStore
+    public class AzureRmServicePrincipalKeyStore : IServicePrincipalKeyStore
     {
-        private static IDictionary<string, SecureString> _credentials = new Dictionary<string, SecureString>();
+        public const string Name = "ServicePrincipalKeyStore";
+        private IDictionary<string, SecureString> _credentials { get; set; }
 
-        public static void SaveKey(string appId, string tenantId, SecureString serviceKey)
+        public AzureRmServicePrincipalKeyStore() : this(null) { }
+
+        public AzureRmServicePrincipalKeyStore(IAzureContextContainer profile)
+        {
+            _credentials = new Dictionary<string, SecureString>();
+            if (profile != null && profile.Accounts != null)
+            {
+                foreach (var account in profile.Accounts)
+                {
+                    if (account != null && account.ExtendedProperties.ContainsKey(AzureAccount.Property.ServicePrincipalSecret))
+                    {
+                        var appId = account.Id;
+                        var tenantId = account.GetTenants().FirstOrDefault();
+                        var key = CreateKey(appId, tenantId);
+                        var servicePrincipalSecret = account.ExtendedProperties[AzureAccount.Property.ServicePrincipalSecret];
+                        _credentials[key] = ConvertToSecureString(servicePrincipalSecret);
+                    }
+                }
+            }
+        }
+
+        public void SaveKey(string appId, string tenantId, SecureString serviceKey)
         {
             var key = CreateKey(appId, tenantId);
             _credentials[key] = serviceKey;
         }
 
-        public static SecureString GetKey(string appId, string tenantId)
+        public SecureString GetKey(string appId, string tenantId)
         {
             IntPtr pCredential = IntPtr.Zero;
             try
@@ -50,7 +78,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
 
 
-        public static void DeleteKey(string appId, string tenantId)
+        public void DeleteKey(string appId, string tenantId)
         {
             try
             {
@@ -62,12 +90,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        private static string CreateKey(string appId, string tenantId)
+        private string CreateKey(string appId, string tenantId)
         {
             return $"{appId}_{tenantId}";
         }
 
-        internal static SecureString ConvertToSecureString(string password)
+        internal SecureString ConvertToSecureString(string password)
         {
             if (password == null)
                 throw new ArgumentNullException("password");
