@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-
+using System;
+using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -32,9 +31,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The NetworkInterface")]
         public PSNetworkInterface NetworkInterface { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
 
             if (!this.IsNetworkInterfacePresent(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name))
             {
@@ -42,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Verify if PublicIpAddress is empty
-            foreach(var ipconfig in NetworkInterface.IpConfigurations)
+            foreach (var ipconfig in NetworkInterface.IpConfigurations)
             {
                 if (ipconfig.PublicIpAddress != null &&
                     string.IsNullOrEmpty(ipconfig.PublicIpAddress.Id))
@@ -50,10 +52,13 @@ namespace Microsoft.Azure.Commands.Network
                     ipconfig.PublicIpAddress = null;
                 }
             }
-            
+
             // Map to the sdk object
-            var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(this.NetworkInterface);
-            networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkInterface.Tag, validate: true);
+            var networkInterfaceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterface>(this.NetworkInterface);
+
+			this.NullifyApplicationSecurityGroupIfAbsent(networkInterfaceModel);
+
+			networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkInterface.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name, networkInterfaceModel);
 

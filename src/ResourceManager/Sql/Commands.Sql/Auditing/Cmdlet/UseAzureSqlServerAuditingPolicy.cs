@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// Marks the given database as using its server's default policy instead of its own policy.
     /// </summary>
     [Cmdlet("Use", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAuditingPolicy"), OutputType(typeof(AuditingPolicyModel))]
-    [Alias("Use-AzureRmSqlDatabaseServerAuditingPolicy")]
+    [Alias("Use-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseServerAuditingPolicy")]
     [Obsolete("Note that Table auditing is deprecated and this command will be removed in a future release. Please use the 'Set-AzureRmSqlDatabaseAuditing' command to configure Blob auditing.", false)]
     public class UseAzureSqlServerAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
