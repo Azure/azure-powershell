@@ -451,11 +451,6 @@
     <Compile Include="Generated\RouteTable\Route\RemoveAzureRmRouteConfigCommand.cs" />
     <Compile Include="Generated\RouteTable\Route\SetAzureRmRouteConfigCommand.cs" />
     <Compile Include="Generated\RouteTable\SetAzureRMRouteTableCommand.cs" />
-    <Compile Include="SubnetDelegation\AzureSubnetDelegationBaseCmdlet.cs" />
-    <Compile Include="SubnetDelegation\GetAzureServiceEndpointPolicyCommand.cs" />
-    <Compile Include="SubnetDelegation\NewAzureServiceEndpointPolicyCommand.cs" />
-    <Compile Include="SubnetDelegation\RemoveAzureServiceEndpointPolicyCommand.cs" />
-    <Compile Include="SubnetDelegation\SetAzureServiceEndpointPolicyCommand.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\GetAzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\GetAzureRmVirtualNetworkGatewaySupportedVpnDevice.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\NewAzureRmIpsecPolicyCommand.cs" />
