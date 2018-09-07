@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSDhcpOptions, MNM.DhcpOptions>();
                 cfg.CreateMap<CNM.PSSubnet, MNM.Subnet>()
-                    .ForSourceMember(src=> src.AddressPrefix, opt => opt.Ignore())
+                    .ForMember(dest => dest.AddressPrefix, opt => opt.Ignore())
                     .ForMember(dest=> dest.AddressPrefixes, opt => opt.Ignore())
                     .AfterMap((src, dest) =>
                     {

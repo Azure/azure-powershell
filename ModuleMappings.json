@@ -8,8 +8,9 @@
     "src/ResourceManager/SignalR":[
         "AzureRM.SignalR"
     ],
-    "NuGet.config":[
-        ],
+    "src/ResourceManager/Aks":[
+        "AzureRM.Aks"
+    ],
     "src/ResourceManager/Search":[
         "AzureRM.Search"
     ],
@@ -21,13 +22,13 @@
     ],
     "src/Local.testsettings.Name":[
         ],
+    "NuGet.Config":[
+        ],
     "src/Local.x64.testsettings.Name":[
         ],
     "src/ResourceManager/Subscription":[
         "AzureRM.Subscription"
     ],
-    "src/Stack.sln.Name":[
-        ],
     ".gitignore":[
         ],
     "src/ResourceManager/OperationalInsights":[
@@ -97,6 +98,9 @@
         ],
     ".gitattributes":[
         ],
+    "src/ResourceManager/Security":[
+        "AzureRM.Security"
+    ],
     "src/ResourceManager/DataLakeStore":[
         "AzureRM.DataLakeStore"
     ],
@@ -106,8 +110,8 @@
     "src/ResourceManager/ContainerRegistry":[
         "AzureRM.ContainerRegistry"
     ],
-    "src/ResourceManager/AzureBatch":[
-        "AzureRM.Batch"
+    "src/ResourceManager/ServiceFabric":[
+        "AzureRM.ServiceFabric"
     ],
     "src/ResourceManager/LogicApp":[
         "AzureRM.LogicApp"
@@ -146,9 +150,6 @@
     "src/ResourceManager/Consumption":[
         "AzureRM.Consumption"
     ],
-    "src/ResourceManager/ServiceFabric":[
-        "AzureRM.ServiceFabric"
-    ],
     "src/ResourceManager/Websites":[
         "AzureRM.Websites"
     ],
@@ -182,7 +183,12 @@
     "src/ResourceManager/RecoveryServices":[
         "AzureRM.RecoveryServices",
         "AzureRM.RecoveryServices.Backup",
+        "AzureRM.Profile",
+        "AzureRM.Profile",
+        "AzureRM.Profile",
+        "AzureRM.Profile",
         "AzureRM.RecoveryServices",
+        "AzureRM.Profile",
         "AzureRM.RecoveryServices"
     ],
     "src/ResourceManager.ForRefactoringOnly.sln.Name":[
@@ -221,8 +227,8 @@
     "src/ResourceManager/Automation":[
         "AzureRM.Automation"
     ],
-    "src/ResourceManager/Aks":[
-        "AzureRM.Aks"
+    "src/ResourceManager/AzureBatch":[
+        "AzureRM.Batch"
     ],
     "src/ResourceManager/DevSpaces":[
         "AzureRM.DevSpaces"

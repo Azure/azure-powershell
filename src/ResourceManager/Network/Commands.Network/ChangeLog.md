@@ -20,6 +20,7 @@
 
 ## Current Release
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
+* Updated cmdlet New-AzureRmVirtualNetworkSubnetConfig, Set-AzureRmVirtualNetworkSubnetConfig and Add-AzureRmVirtualNetworkSubnetConfig by adding support for multiple AddressPrefixes
 
 ## Version 6.6.1
 * Changed default cmdlet output presentation to table view
