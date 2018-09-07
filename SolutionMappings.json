@@ -14,8 +14,9 @@
         ".\\src\\ResourceManager\\IotHub\\IotHub.sln",
         ".\\src\\ResourceManager\\EventGrid\\EventGrid.sln"
     ],
-    "NuGet.config":[
-        ],
+    "src/ResourceManager/Websites/":[
+        ".\\src\\ResourceManager\\Websites\\WebSites.sln"
+    ],
     "src/ResourceManager/DeviceProvisioningServices/":[
         ".\\src\\ResourceManager\\DeviceProvisioningServices\\DeviceProvisioningServices.sln"
     ],
@@ -39,7 +40,6 @@
         ".\\src\\ResourceManager\\UsageAggregates\\UsageAggregates.sln"
     ],
     "src/ResourceManager/TrafficManager/":[
-        ".\\src\\Storage\\Storage.sln",
         ".\\src\\ServiceManagement\\ServiceManagement.sln",
         ".\\src\\ResourceManager\\TrafficManager\\TrafficManager.sln"
     ],
@@ -52,11 +52,10 @@
     "src/ResourceManager/DataFactoryV2/":[
         ],
     "src/ResourceManager/Storage/":[
-        ".\\src\\ResourceManager\\Compute.ManagedService\\Compute.ManagedService.sln",
         ".\\src\\ResourceManager\\Storage\\Storage.sln",
         ".\\src\\ResourceManager\\RecoveryServices\\RecoveryServices.sln",
-        ".\\src\\ResourceManager\\Network\\Network.sln",
-        ".\\src\\ResourceManager\\Compute\\Compute.sln"
+        ".\\src\\ResourceManager\\Compute\\Compute.sln",
+        ".\\src\\ResourceManager\\ApiManagement\\ApiManagement.sln"
     ],
     "src/ResourceManager/Dns/":[
         ".\\src\\ResourceManager\\Dns\\Dns.sln"
@@ -91,7 +90,8 @@
         ".\\src\\ResourceManager\\Media\\Media.sln"
     ],
     "src/ResourceManager/KeyVault/":[
-        ".\\src\\ResourceManager\\KeyVault\\KeyVault.sln"
+        ".\\src\\ResourceManager\\KeyVault\\KeyVault.sln",
+        ".\\src\\ResourceManager\\Compute\\Compute.sln"
     ],
     "src/ResourceManager/Common/":[
         ],
@@ -101,17 +101,13 @@
     "src/ResourceManager/AzureBatch/":[
         ".\\src\\ResourceManager\\AzureBatch\\AzureBatch.sln"
     ],
-    "src/ResourceManager/Websites/":[
-        ".\\src\\ResourceManager\\Websites\\WebSites.sln"
-    ],
     "src/ResourceManager/HDInsight/":[
         ".\\src\\ResourceManager\\HDInsight\\HDInsight.sln"
     ],
     "setup":[
         ],
     "src/ResourceManager/RedisCache/":[
-        ".\\src\\ResourceManager\\RedisCache\\RedisCache.sln",
-        ".\\src\\ResourceManager\\Network\\Network.sln"
+        ".\\src\\ResourceManager\\RedisCache\\RedisCache.sln"
     ],
     "src/ResourceManager/StorageSync/":[
         ".\\src\\ResourceManager\\StorageSync\\StorageSync.sln"
@@ -122,6 +118,8 @@
     "TestMappings.json":[
         ],
     "ModuleMappings.json":[
+        ],
+    "NuGet.Config":[
         ],
     "src/ResourceManager/StreamAnalytics/":[
         ".\\src\\ResourceManager\\StreamAnalytics\\StreamAnalytics.sln"
@@ -161,7 +159,6 @@
     "src/Storage/":[
         ".\\src\\ResourceManager\\Sql\\Sql.sln",
         ".\\src\\Storage\\Storage.sln",
-        ".\\src\\ResourceManager\\Compute.ManagedService\\Compute.ManagedService.sln",
         ".\\src\\ResourceManager\\Storage\\Storage.sln",
         ".\\src\\ServiceManagement\\ServiceManagement.sln",
         ".\\src\\ResourceManager\\RecoveryServices\\RecoveryServices.sln",
@@ -183,8 +180,6 @@
     "src/ResourceManager/SignalR/":[
         ".\\src\\ResourceManager\\SignalR\\SignalR.sln"
     ],
-    "src/Stack.sln.Name":[
-        ],
     "src/ResourceManager/DataFactories/":[
         ".\\src\\ResourceManager\\DataFactories\\DataFactories.sln"
     ],
@@ -192,9 +187,7 @@
         ],
     "src/ResourceManager/Network/":[
         ".\\src\\ResourceManager\\Sql\\Sql.sln",
-        ".\\src\\ResourceManager\\Compute.ManagedService\\Compute.ManagedService.sln",
         ".\\src\\ResourceManager\\Dns\\Dns.sln",
-        ".\\src\\ResourceManager\\KeyVault\\KeyVault.sln",
         ".\\src\\ResourceManager\\RecoveryServices\\RecoveryServices.sln",
         ".\\src\\ResourceManager\\Network\\Network.sln",
         ".\\src\\ResourceManager\\Compute\\Compute.sln"
@@ -217,7 +210,6 @@
     "src/after.Azure.PowerShell.Netcore.Test.sln.targets.Name":[
         ],
     "src/ResourceManager/Automation/":[
-        ".\\src\\Storage\\Storage.sln",
         ".\\src\\ServiceManagement\\ServiceManagement.sln",
         ".\\src\\ResourceManager\\Automation\\Automation.sln"
     ],
@@ -233,19 +225,82 @@
         ".\\src\\ResourceManager\\AnalysisServices\\AnalysisServices.sln"
     ],
     "src/ResourceManager/Profile/":[
+        ".\\src\\ResourceManager\\Aks\\Aks.sln",
+        ".\\src\\ResourceManager\\AzureBackup\\AzureBackup.sln",
+        ".\\src\\ResourceManager\\DataLakeStore\\DataLakeStore.sln",
+        ".\\src\\ResourceManager\\Sql\\Sql.sln",
+        ".\\src\\ResourceManager\\Security\\Security.sln",
         ".\\src\\Storage\\Storage.sln",
+        ".\\src\\ResourceManager\\DevTestLabs\\DevTestLabs.sln",
+        ".\\src\\ResourceManager\\ApplicationInsights\\ApplicationInsights.sln",
+        ".\\src\\ResourceManager\\Billing\\Billing.sln",
+        ".\\src\\ResourceManager\\NotificationHubs\\NotificationHubs.sln",
+        ".\\src\\ResourceManager\\ContainerInstance\\ContainerInstance.sln",
+        ".\\src\\ResourceManager\\Media\\Media.sln",
+        ".\\src\\ResourceManager\\PolicyInsights\\PolicyInsights.sln",
+        ".\\src\\ResourceManager\\ManagementPartner\\ManagementPartner.sln",
         ".\\src\\ResourceManager\\Compute.ManagedService\\Compute.ManagedService.sln",
+        ".\\src\\ResourceManager\\EventHub\\Eventhubs.sln",
+        ".\\src\\ResourceManager\\Dns\\Dns.sln",
+        ".\\src\\ResourceManager\\Relay\\Relay.sln",
+        ".\\src\\ResourceManager\\DataMigration\\DataMigration.sln",
+        ".\\src\\ResourceManager\\Storage\\Storage.sln",
+        ".\\src\\ResourceManager\\KeyVault\\KeyVault.sln",
+        ".\\src\\ResourceManager\\PowerBIEmbedded\\PowerBIEmbedded.sln",
+        ".\\src\\ResourceManager\\RedisCache\\RedisCache.sln",
+        ".\\src\\ResourceManager\\CognitiveServices\\CognitiveServices.sln",
+        ".\\src\\ResourceManager\\DataFactoryV2\\DataFactoryV2.sln",
+        ".\\src\\ResourceManager\\Scheduler\\Scheduler.sln",
         ".\\src\\ServiceManagement\\ServiceManagement.sln",
-        ".\\src\\ResourceManager\\Profile\\Profile.sln"
+        ".\\src\\ResourceManager\\Resources\\Resources.sln",
+        ".\\src\\ResourceManager\\RecoveryServices\\RecoveryServices.sln",
+        ".\\src\\ResourceManager\\HDInsight\\HDInsight.sln",
+        ".\\src\\ResourceManager\\ServiceBus\\ServiceBus.sln",
+        ".\\src\\ResourceManager\\Maps\\Maps.sln",
+        ".\\src\\ResourceManager\\MachineLearning\\MachineLearning.sln",
+        ".\\src\\ResourceManager\\AnalysisServices\\AnalysisServices.sln",
+        ".\\src\\ResourceManager\\IotHub\\IotHub.sln",
+        ".\\src\\ResourceManager\\ServiceFabric\\ServiceFabric.sln",
+        ".\\src\\ResourceManager\\LogicApp\\LogicApp.sln",
+        ".\\src\\ResourceManager\\Search\\Search.sln",
+        ".\\src\\ResourceManager\\ManagedServiceIdentity\\ManagedServiceIdentity.sln",
+        ".\\src\\ResourceManager\\ContainerRegistry\\ContainerRegistry.sln",
+        ".\\src\\ResourceManager\\MachineLearningCompute\\MachineLearningCompute.sln",
+        ".\\src\\ResourceManager\\DevSpaces\\DevSpaces.sln",
+        ".\\src\\ResourceManager\\Websites\\WebSites.sln",
+        ".\\src\\ResourceManager\\DeviceProvisioningServices\\DeviceProvisioningServices.sln",
+        ".\\src\\ResourceManager\\EventGrid\\EventGrid.sln",
+        ".\\src\\ResourceManager\\DataLakeAnalytics\\DataLakeAnalytics.sln",
+        ".\\src\\ResourceManager\\Network\\Network.sln",
+        ".\\src\\ResourceManager\\RecoveryServices.SiteRecovery\\RecoveryServices.SiteRecovery.sln",
+        ".\\src\\ResourceManager\\Compute\\Compute.sln",
+        ".\\src\\ResourceManager\\Subscription\\Subscription.sln",
+        ".\\src\\ResourceManager\\OperationalInsights\\OperationalInsights.sln",
+        ".\\src\\ResourceManager\\AzureBatch\\AzureBatch.sln",
+        ".\\src\\ResourceManager\\Cdn\\Cdn.sln",
+        ".\\src\\ResourceManager\\DataFactories\\DataFactories.sln",
+        ".\\src\\ResourceManager\\Profile\\Profile.sln",
+        ".\\src\\ResourceManager\\StreamAnalytics\\StreamAnalytics.sln",
+        ".\\src\\ResourceManager\\UsageAggregates\\UsageAggregates.sln",
+        ".\\src\\ResourceManager\\ApiManagement\\ApiManagement.sln",
+        ".\\src\\ResourceManager\\TrafficManager\\TrafficManager.sln",
+        ".\\src\\ResourceManager\\Automation\\Automation.sln",
+        ".\\src\\ResourceManager\\Consumption\\Consumption.sln",
+        ".\\src\\ResourceManager\\Insights\\Insights.sln",
+        ".\\src\\ResourceManager\\Reservations\\Reservations.sln",
+        ".\\src\\ResourceManager\\StorageSync\\StorageSync.sln",
+        ".\\src\\ResourceManager\\MarketplaceOrdering\\MarketplaceOrdering.sln",
+        ".\\src\\ResourceManager\\Tags\\Tags.sln",
+        ".\\src\\ResourceManager\\SignalR\\SignalR.sln"
     ],
     "appveyor.yml":[
         ],
     "src/ResourceManager/Tags/":[
+        ".\\src\\ResourceManager\\DevSpaces\\DevSpaces.sln",
         ".\\src\\ResourceManager\\Tags\\Tags.sln"
     ],
     "src/ResourceManager/Resources/":[
         ".\\src\\ResourceManager\\Aks\\Aks.sln",
-        ".\\src\\ResourceManager\\Sql\\Sql.sln",
         ".\\src\\ResourceManager\\KeyVault\\KeyVault.sln",
         ".\\src\\ResourceManager\\DataFactoryV2\\DataFactoryV2.sln",
         ".\\src\\ResourceManager\\Resources\\Resources.sln",
@@ -253,20 +308,18 @@
         ".\\src\\ResourceManager\\Maps\\Maps.sln",
         ".\\src\\ResourceManager\\MachineLearning\\MachineLearning.sln",
         ".\\src\\ResourceManager\\ServiceFabric\\ServiceFabric.sln",
+        ".\\src\\ResourceManager\\LogicApp\\LogicApp.sln",
+        ".\\src\\ResourceManager\\DevSpaces\\DevSpaces.sln",
         ".\\src\\ResourceManager\\Network\\Network.sln",
-        ".\\src\\ResourceManager\\Profile\\Profile.sln"
+        ".\\src\\ResourceManager\\Profile\\Profile.sln",
+        ".\\src\\ResourceManager\\Consumption\\Consumption.sln"
     ],
     ".gitignore":[
         ],
     "src/ServiceManagement/":[
-        ".\\src\\Storage\\Storage.sln",
         ".\\src\\ServiceManagement\\ServiceManagement.sln",
         ".\\src\\ResourceManager\\Automation\\Automation.sln",
-        ".\\src\\ResourceManager\\Compute.ManagedService\\Compute.ManagedService.sln",
-        ".\\src\\ResourceManager\\RecoveryServices\\RecoveryServices.sln",
-        ".\\src\\ResourceManager\\Network\\Network.sln",
-        ".\\src\\ResourceManager\\Compute\\Compute.sln",
-        ".\\src\\ResourceManager\\Profile\\Profile.sln",
+        ".\\src\\Storage\\Storage.sln",
         ".\\src\\ResourceManager\\TrafficManager\\TrafficManager.sln"
     ],
     "src/ResourceManager/DataMigration/":[
@@ -293,17 +346,17 @@
         ".\\src\\ResourceManager\\Relay\\Relay.sln"
     ],
     "src/ResourceManager/Insights/":[
-        ".\\src\\ResourceManager\\Sql\\Sql.sln",
         ".\\src\\ResourceManager\\Resources\\Resources.sln",
         ".\\src\\ResourceManager\\Network\\Network.sln",
-        ".\\src\\ResourceManager\\Profile\\Profile.sln",
         ".\\src\\ResourceManager\\Insights\\Insights.sln"
     ],
     "src/ResourceManager/ManagedServiceIdentity/":[
         ".\\src\\ResourceManager\\ManagedServiceIdentity\\ManagedServiceIdentity.sln"
     ],
+    "src/ResourceManager/Security/":[
+        ".\\src\\ResourceManager\\Security\\Security.sln"
+    ],
     "src/ResourceManager/Compute/":[
-        ".\\src\\ResourceManager\\Compute.ManagedService\\Compute.ManagedService.sln",
         ".\\src\\ResourceManager\\RecoveryServices\\RecoveryServices.sln",
         ".\\src\\ResourceManager\\Network\\Network.sln",
         ".\\src\\ResourceManager\\Compute\\Compute.sln"
