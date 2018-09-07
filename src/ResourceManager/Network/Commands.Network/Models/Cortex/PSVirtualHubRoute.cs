@@ -17,23 +17,12 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-    public class PSVirtualHub : PSTopLevelResource
+    public class PSVirtualHubRoute
     {
-        [Ps1Xml(Label = "Virtual Wan Id", Target = ViewControl.Table, ScriptBlock = "$_.VirtualWan.Id")]
-        public PSResourceId VirtualWan { get; set; }
+        [Ps1Xml(Label = "Address Prefixes", Target = ViewControl.Table)]
+        public List<string> AddressPrefixes { get; set; }
 
-        public PSResourceId VpnGateway { get; set; }
-
-        public PSResourceId ExpressRouteGateway { get; set; }
-
-        public List<PSHubVirtualNetworkConnection> VirtualNetworkConnections { get; set; }
-
-        public PSVirtualHubRouteTable RouteTable { get; set; }
-
-        [Ps1Xml(Label = "Address Prefix", Target = ViewControl.Table)]
-        public string AddressPrefix { get; set; }
-
-        [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
-        public string ProvisioningState { get; set; }
+        [Ps1Xml(Label = "Next Hop IpAddress", Target = ViewControl.Table)]
+        public string NextHopIpAddress { get; set; }
     }
 }

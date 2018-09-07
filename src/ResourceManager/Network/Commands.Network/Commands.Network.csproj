@@ -190,6 +190,8 @@
     <Compile Include="Cortex\HubVnetConnection\SetAzureRmHubVirtualNetworkConnectionCommand.cs" />
     <Compile Include="Cortex\VirtualHub\GetAzureRmVirtualHubCommand.cs" />
     <Compile Include="Cortex\VirtualHub\NewAzureRmVirtualHubCommand.cs" />
+    <Compile Include="Cortex\VirtualHub\NewAzureRmVirtualHubRouteCommand.cs" />
+    <Compile Include="Cortex\VirtualHub\NewAzureRmVirtualHubRouteTableCommand.cs" />
     <Compile Include="Cortex\VirtualHub\RemoveAzureRmVirtualHubCommand.cs" />
     <Compile Include="Cortex\VirtualHub\SetAzureRmVirtualHubCommand.cs" />
     <Compile Include="Cortex\VirtualHub\VirtualHubBaseCmdlet.cs" />
@@ -317,6 +319,8 @@
     <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
     <Compile Include="Models\Cortex\PSHubVirtualNetworkConnection.cs" />
     <Compile Include="Models\Cortex\PSVirtualHub.cs" />
+    <Compile Include="Models\Cortex\PSVirtualHubRoute.cs" />
+    <Compile Include="Models\Cortex\PSVirtualHubRouteTable.cs" />
     <Compile Include="Models\Cortex\PSVirtualWan.cs" />
     <Compile Include="Models\Cortex\PSVirtualWanSecurityProvider.cs" />
     <Compile Include="Models\Cortex\PSVpnConnection.cs" />
