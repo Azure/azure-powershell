@@ -576,7 +576,7 @@ InModuleScope AzureRM.Bootstrapper {
                     # Get LastWriteTime for ProfileMap
                     $lastWriteTime = (Get-Item -Path (Get-LatestProfileMapPath).FullName).LastWriteTime
                     (((Get-Date) - $lastWriteTime).TotalMinutes -gt 3) | Should Be $true
-                    Assert-VerifiableMocks
+                    Assert-VerifiableMock
                 }
             }
 
