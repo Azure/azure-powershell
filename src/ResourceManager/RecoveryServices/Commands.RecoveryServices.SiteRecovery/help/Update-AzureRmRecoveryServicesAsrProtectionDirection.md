@@ -57,7 +57,8 @@ Update-AzureRmRecoveryServicesAsrProtectionDirection [-AzureToAzure]
  -ProtectionContainerMapping <ASRProtectionContainerMapping> -LogStorageAccountId <String>
  [-RecoveryAzureStorageAccountId <String>] -ReplicationProtectedItem <ASRReplicationProtectedItem>
  [-RecoveryResourceGroupId <String>] [-RecoveryCloudServiceId <String>] [-RecoveryAvailabilitySetId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RecoveryBootDiagStorageAccountId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AzureToAzureWithMultipleStorageAccount
@@ -67,7 +68,8 @@ Update-AzureRmRecoveryServicesAsrProtectionDirection [-AzureToAzure]
  -AzureToAzureDiskReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>
  -ReplicationProtectedItem <ASRReplicationProtectedItem> [-RecoveryResourceGroupId <String>]
  [-RecoveryCloudServiceId <String>] [-RecoveryAvailabilitySetId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RecoveryBootDiagStorageAccountId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByRPObject
@@ -202,6 +204,7 @@ Accept wildcard characters: False
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
+
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
@@ -217,6 +220,7 @@ Accept wildcard characters: False
 ### -Direction
 Specifies the direction to be used for the update operation post a failover.
 The acceptable values for this parameter are:
+
 - PrimaryToRecovery
 - RecoveryToPrimary
 
@@ -341,6 +345,21 @@ Specifies the ID of the Azure storage account to replicate to.
 ```yaml
 Type: System.String
 Parameter Sets: VMwareToAzure, HyperVToAzure, AzureToAzure
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryBootDiagStorageAccountId
+Specifies the storage account for boot diagnostics for recovery azure VM.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
 Aliases:
 
 Required: False
@@ -491,10 +510,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan
-Parameters: RecoveryPlan (ByValue)
-
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
-Parameters: ReplicationProtectedItem (ByValue)
+Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
 
 ## OUTPUTS
 

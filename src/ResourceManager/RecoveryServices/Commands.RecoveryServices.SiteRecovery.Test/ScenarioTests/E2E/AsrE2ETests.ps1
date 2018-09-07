@@ -60,7 +60,7 @@ function WaitForJobCompletion
 
             if($isJobLeftForProcessing)
             {
-                [Microsoft.Azure.Test.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
+                [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
             }
         }While($isJobLeftForProcessing)
 }
@@ -95,7 +95,7 @@ Function WaitForIRCompletion
 
             if($isProcessingLeft)
             {
-                [Microsoft.Azure.Test.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
+                [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
             }
         }While($isProcessingLeft)
 
