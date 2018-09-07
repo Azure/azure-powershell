@@ -266,7 +266,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -700,7 +700,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
               "ResourceGroupName": "System.String",
@@ -764,7 +764,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -935,7 +935,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1038,7 +1038,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -1098,7 +1098,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -1165,7 +1165,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -1236,7 +1236,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -1398,7 +1398,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -1515,7 +1515,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1691,7 +1691,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -1951,7 +1951,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2175,7 +2175,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2531,7 +2531,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2735,7 +2735,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -2799,7 +2799,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -2973,7 +2973,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -3396,7 +3396,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -3829,7 +3829,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3970,7 +3970,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5055,7 +5055,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
               "ResourceGroupName": "System.String",
@@ -5119,7 +5119,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -5198,7 +5198,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -5415,7 +5415,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -5482,7 +5482,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5684,7 +5684,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5862,7 +5862,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6112,7 +6112,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6299,7 +6299,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -6363,7 +6363,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -6743,7 +6743,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -8155,7 +8155,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -8384,7 +8384,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -9039,7 +9039,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -9249,7 +9249,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -9879,7 +9879,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
               "ResourceGroupName": "System.String",
@@ -10108,7 +10108,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
                     "ResourceGroupName": "System.String",
@@ -10691,7 +10691,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -10865,7 +10865,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -11303,7 +11303,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
               "ResourceGroupName": "System.String",
@@ -11514,7 +11514,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
                     "ResourceGroupName": "System.String",
@@ -12001,7 +12001,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -12175,7 +12175,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -13616,7 +13616,7 @@
     "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum": {
       "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
       "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.4.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.6.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],

@@ -19,6 +19,19 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Move dependencies on Keyvault and Storage to the common dependencies.
+* Add support for more virutal machine sizes to AEM cmdlets
+
+
+## Version 5.5.2
+* Fixed the issue that target is missing in error output.
+* Fixed issue with storage account type for VM with managed disk
+* Fixed issue with default resource groups not being set.
+* Fix AEM Extension cmdlets for other environments, for example Azure China
+* Updated common runtime assemblies
+
+## Version 5.5.1
+* Fixed the issue that target is missing in error output.
 * Fixed issue with storage account type for VM with managed disk
 * Fixed issue with default resource groups not being set.
 * Fix AEM Extension cmdlets for other environments, for example Azure China

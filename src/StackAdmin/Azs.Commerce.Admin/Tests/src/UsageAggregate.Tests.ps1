@@ -77,6 +77,10 @@ InModuleScope Azs.Commerce.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         # Record again.
         It "TestListSubscriberUsageAggregatesFromLastTwoDays" -Skip:$('TestListSubscriberUsageAggregatesFromLastTwoDays' -in $global:SkippedTests) {
             $global:TestName = 'TestListSubscriberUsageAggregatesFromLastTwoDays'
