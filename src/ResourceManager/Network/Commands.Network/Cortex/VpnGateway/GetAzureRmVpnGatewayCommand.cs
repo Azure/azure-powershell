@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get,
-        "AzureRmVpnGateway",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnGateway",
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnGateway))]
     public class GetAzureRmVpnGatewayCommand : VpnGatewayBaseCmdlet
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 //// ResourceName has not been specified - List all gateways
-                WriteObject(this.ListVpnGateways(this.ResourceGroupName));
+                WriteObject(this.ListVpnGateways(this.ResourceGroupName), true);
             }
         }
     }

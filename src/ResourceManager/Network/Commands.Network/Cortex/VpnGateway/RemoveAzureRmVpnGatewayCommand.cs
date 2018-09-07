@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Remove,
-        "AzureRmVpnGateway",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnGateway",
         DefaultParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
@@ -64,10 +64,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayResourceId,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID for the vpnGateway to be deleted.")]
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Network/vpnGateways")]
         public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -100,7 +104,11 @@ namespace Microsoft.Azure.Commands.Network
                     () =>
                     {
                         this.VpnGatewayClient.Delete(this.ResourceGroupName, this.Name);
-                        WriteObject(true);
+
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
                     });
         }
     }

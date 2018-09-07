@@ -22,7 +22,6 @@ Get-AzureRmVpnSite [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfi
 ## DESCRIPTION
 Gets an Azure VpnSite resource by name OR lists all VpnSites in a ResourceGroup or SubscriptionId. 
 
-
 ## EXAMPLES
 
 ### Example 1
@@ -38,7 +37,6 @@ PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
 PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
 
 PS C:\> Get-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite"
-
 ```
 
 The above will create a resource group, Virtual WAN in West US in "testRG" resource group in Azure. 
@@ -60,11 +58,9 @@ PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
 PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
 
 PS C:\> Get-AzureRmVpnSite -ResourceGroupName "testRG"
-
 ```
 
 Same as example 1, but this time it lists all VpnSites present in the ResourceGroup "testRG".
-
 
 ## PARAMETERS
 
@@ -72,7 +68,7 @@ Same as example 1, but this time it lists all VpnSites present in the ResourceGr
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,14 +83,14 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, VpnSiteName
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -102,14 +98,14 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -117,7 +113,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -133,7 +129,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

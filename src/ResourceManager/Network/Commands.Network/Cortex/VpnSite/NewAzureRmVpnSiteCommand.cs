@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.New,
-        "AzureRmVpnSite",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnSite",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnSite))]
@@ -38,13 +38,11 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Alias("ResourceName", "VpnSiteName")]
         [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -52,7 +50,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource location.")]
         [LocationCompleter]
         [ValidateNotNullOrEmpty]
@@ -84,7 +81,6 @@ namespace Microsoft.Azure.Commands.Network
         public string VirtualWanId { get; set; }
 
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         public string IpAddress { get; set; }
 
@@ -136,7 +132,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -144,11 +139,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         public override void Execute()
         {
@@ -218,17 +208,13 @@ namespace Microsoft.Azure.Commands.Network
                 vpnSiteToCreate.SiteKey = SecureStringExtensions.ConvertToString(this.SiteKey);
             }
 
-            bool shouldProcess = this.Force.IsPresent;
-
-            if (!shouldProcess)
-            {
-                shouldProcess = ShouldProcess(this.Name, Properties.Resources.CreatingResourceMessage);
-            }
-
-            if (shouldProcess)
-            {
-                WriteObject(this.CreateOrUpdateVpnSite(this.ResourceGroupName, this.Name, vpnSiteToCreate, this.Tag));
-            }
+            ConfirmAction(
+                Properties.Resources.CreatingResourceMessage,
+                this.Name,
+                () =>
+                {
+                    WriteObject(this.CreateOrUpdateVpnSite(this.ResourceGroupName, this.Name, vpnSiteToCreate, this.Tag));
+                });
         }
     }
 }

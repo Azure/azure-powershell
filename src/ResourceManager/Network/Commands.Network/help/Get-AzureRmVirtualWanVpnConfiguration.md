@@ -1,22 +1,21 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvirtualwanvpnsitesconfiguration
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvirtualwanvpnconfiguration
 schema: 2.0.0
 ---
 
-# Get-AzureRmVirtualWanVpnSitesConfiguration
+# Get-AzureRmVirtualWanVpnConfiguration
 
 ## SYNOPSIS
 Gets the Vpn configuration for a subset of VpnSites connected to this WAN via VpnConnections. Uploads the generated Vpn
 configuration to a storage blob specified by the customer.
 
-
 ## SYNTAX
 
-### ByVirtualWanName
+### ByVirtualWanName (Default)
 ```
-Get-AzureRmVirtualWanVpnSitesConfiguration -Name <String> -ResourceGroupName <String> -StorageSasUrl <String>
+Get-AzureRmVirtualWanVpnConfiguration -Name <String> -ResourceGroupName <String> -StorageSasUrl <String>
  [-VpnSiteId <System.Collections.Generic.List`1[System.String]>]
  [-VpnSite <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnSite]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -24,7 +23,7 @@ Get-AzureRmVirtualWanVpnSitesConfiguration -Name <String> -ResourceGroupName <St
 
 ### ByVirtualWanObject
 ```
-Get-AzureRmVirtualWanVpnSitesConfiguration -InputObject <PSVirtualWan> -StorageSasUrl <String>
+Get-AzureRmVirtualWanVpnConfiguration -InputObject <PSVirtualWan> -StorageSasUrl <String>
  [-VpnSiteId <System.Collections.Generic.List`1[System.String]>]
  [-VpnSite <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnSite]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -32,7 +31,7 @@ Get-AzureRmVirtualWanVpnSitesConfiguration -InputObject <PSVirtualWan> -StorageS
 
 ### ByVirtualWanResourceId
 ```
-Get-AzureRmVirtualWanVpnSitesConfiguration -ResourceId <String> -StorageSasUrl <String>
+Get-AzureRmVirtualWanVpnConfiguration -ResourceId <String> -StorageSasUrl <String>
  [-VpnSiteId <System.Collections.Generic.List`1[System.String]>]
  [-VpnSite <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnSite]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -62,7 +61,7 @@ PS C:\> New-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupNam
 
 PS C:\> $vpnSitesForConfig = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnSite[] 2
 PS C:\> $vpnSitesForConfig[0] = $vpnSite.Id
-PS C:\> Get-AzureRmVirtualWanVpnSitesConfiguration -VirtualWan $virtualWan -StorageSasUrl "SignedSasUrl" -VpnSite $vpnSitesForConfig
+PS C:\> Get-AzureRmVirtualWanVpnConfiguration -VirtualWan $virtualWan -StorageSasUrl "SignedSasUrl" -VpnSite $vpnSitesForConfig
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
@@ -115,7 +114,7 @@ Aliases: ResourceName, VirtualWanName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -130,7 +129,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -145,14 +144,12 @@ Aliases: VirtualWanId
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -StorageSasUrl
 The SAS Url for the storage location where the configuration is to be generated.
-
-Must be a valid Blob SAS Url of a storage blob.
 
 ```yaml
 Type: String
@@ -166,11 +163,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VpnSiteId
-The list of VpnSite resource ids to generate configuration for.
+### -VpnSite
+The list of VpnSites to generate configuration for.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnSite]
 Parameter Sets: (All)
 Aliases:
 
@@ -181,11 +178,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VpnSite
-The list of VpnSites to generate configuration for.
+### -VpnSiteId
+The list of VpnSite resource ids to generate configuration for.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnSite]
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -228,13 +225,14 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSVirtualWan
 
-### Microsoft.Azure.Commands.Network.Models.PSVpnSite
+### System.String
 
 ## OUTPUTS
 

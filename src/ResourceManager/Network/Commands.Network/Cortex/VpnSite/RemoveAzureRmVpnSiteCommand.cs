@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Remove,
-        "AzureRmVpnSite",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnSite",
         DefaultParameterSetName = CortexParameterSetNames.ByVpnSiteName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
@@ -75,6 +75,9 @@ namespace Microsoft.Azure.Commands.Network
            HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void Execute()
         {
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnSiteObject, StringComparison.OrdinalIgnoreCase))
@@ -100,7 +103,11 @@ namespace Microsoft.Azure.Commands.Network
                     () =>
                     {
                         this.VpnSiteClient.Delete(this.ResourceGroupName, this.Name);
-                        WriteObject(true);
+
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
                     });
         }
     }

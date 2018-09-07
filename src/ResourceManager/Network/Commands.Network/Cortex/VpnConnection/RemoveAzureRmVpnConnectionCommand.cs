@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Remove,
-        "AzureRmVpnConnection",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnConnection",
         DefaultParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "VpnConnectionName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -57,7 +55,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ParentVpnGatewayName", "VpnGatewayName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
             HelpMessage = "The parent resource name.")]
         [ValidateNotNullOrEmpty]
@@ -83,6 +80,9 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void Execute()
         {
@@ -142,7 +142,10 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-            WriteObject(true);
+            if (PassThru)
+            {
+                WriteObject(true);
+            }
         }
     }
 }

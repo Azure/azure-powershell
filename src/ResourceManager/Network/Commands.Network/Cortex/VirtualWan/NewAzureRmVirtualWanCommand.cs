@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.New,
-        "AzureRmVirtualWan",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualWan",
         SupportsShouldProcess = true),
         OutputType(typeof(PSVirtualWan))]
     public class NewAzureRmVirtualWanCommand : VirtualWanBaseCmdlet
@@ -36,14 +36,12 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "VirtualWanName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -51,7 +49,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "location.")]
         [LocationCompleter]
         [ValidateNotNullOrEmpty]
@@ -59,14 +56,8 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         [Parameter(
             Mandatory = false, 
@@ -78,16 +69,13 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
-            bool shouldProcess = this.Force.IsPresent;
-            if (!shouldProcess)
-            {
-                shouldProcess = ShouldProcess(this.Name, Properties.Resources.CreatingResourceMessage);
-            }
-
-            if (shouldProcess)
-            {
-                WriteObject(this.CreateVirtualWan());
-            }
+            ConfirmAction(
+                Properties.Resources.CreatingResourceMessage,
+                this.Name,
+                () =>
+                {
+                    WriteObject(this.CreateVirtualWan());
+                });
         }
 
         private PSVirtualWan CreateVirtualWan()

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Set,
-        "AzureRmVpnConnection",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnConnection",
         DefaultParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnConnection))]
@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         [Alias("ResourceName", "VpnConnectionName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -57,7 +55,6 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         [Alias("ParentVpnGatewayName", "VpnGatewayName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVpnConnectionName,
             HelpMessage = "The parent resource name.")]
         [ValidateNotNullOrEmpty]
@@ -81,47 +78,39 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The shared key required to set this connection up.")]
         [ValidateNotNullOrEmpty]
         public SecureString SharedKey { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The bandwith that needs to be handled by this connection in mbps.")]
         public uint ConnectionBandwidthInMbps { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The bandwith that needs to be handled by this connection in mbps.")]
         public PSIpsecPolicy IpSecPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable BGP for this connection")]
-        public bool? EnableBgp { get; set; }
+        public SwitchParameter EnableBgp { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable rate limiting for this connection")]
-        public bool? EnableRateLimiting { get; set; }
+        public SwitchParameter EnableRateLimiting { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable internet security for this connection")]
-        public bool? EnableInternetSecurity { get; set; }
+        public SwitchParameter EnableInternetSecurity { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         public override void Execute()
         {
@@ -175,20 +164,9 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
                 vpnConnectionToModify.ConnectionBandwidth = Convert.ToInt32(this.ConnectionBandwidthInMbps);
             }
 
-            if (this.EnableBgp.HasValue)
-            {
-                vpnConnectionToModify.EnableBgp = this.EnableBgp.Value;
-            }
-
-            if (this.EnableRateLimiting.HasValue)
-            {
-                vpnConnectionToModify.EnableRateLimiting = this.EnableRateLimiting.Value;
-            }
-
-            if (this.EnableInternetSecurity.HasValue)
-            {
-                vpnConnectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.Value;
-            }
+            vpnConnectionToModify.EnableBgp = this.EnableBgp.IsPresent;
+            vpnConnectionToModify.EnableRateLimiting = this.EnableRateLimiting.IsPresent;
+            vpnConnectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.IsPresent;
 
             if (this.IpSecPolicy != null)
             {
@@ -196,8 +174,6 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             }
 
             ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Properties.Resources.SettingResourceMessage, this.Name),
                     Properties.Resources.SettingResourceMessage,
                     this.Name,
                     () =>

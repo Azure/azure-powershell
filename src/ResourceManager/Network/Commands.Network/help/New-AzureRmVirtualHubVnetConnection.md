@@ -1,43 +1,40 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermhubvirtualnetworkconnection
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermvirtualhubvnetconnection
 schema: 2.0.0
 ---
 
-# New-AzureRmHubVirtualNetworkConnection
+# New-AzureRmVirtualHubVnetConnection
 
 ## SYNOPSIS
-The New-AzureRmVirtualHubVnetConnection cmdlet creates a HubVirtualNetworkConnection resource that peers a Virtual Network to the Azure Virtual Hub. 
+The New-AzureRmVirtualHubVnetConnection cmdlet creates a HubVirtualNetworkConnection resource that peers a Virtual Network to the Azure Virtual Hub.
 
 ## SYNTAX
 
 ### ByVirtualHubName (Default)
 ```
-New-AzureRmHubVirtualNetworkConnection -Name <String> -ResourceGroupName <String>
- [-ParentResourceName <String>] [-RemoteVirtualNetwork <PSVirtualNetwork>] [-RemoteVirtualNetworkId <String>]
- [-EnableInternetSecurity <Boolean>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmVirtualHubVnetConnection -Name <String> -ResourceGroupName <String> -ParentResourceName <String>
+ [-RemoteVirtualNetwork <PSVirtualNetwork>] [-RemoteVirtualNetworkId <String>] [-EnableInternetSecurity]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
-New-AzureRmHubVirtualNetworkConnection -Name <String> [-ParentResource <PSVirtualHub>]
- [-RemoteVirtualNetwork <PSVirtualNetwork>] [-RemoteVirtualNetworkId <String>]
- [-EnableInternetSecurity <Boolean>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmVirtualHubVnetConnection -Name <String> -ParentObject <PSVirtualHub>
+ [-RemoteVirtualNetwork <PSVirtualNetwork>] [-RemoteVirtualNetworkId <String>] [-EnableInternetSecurity]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
-New-AzureRmHubVirtualNetworkConnection -Name <String> [-ParentResourceId <String>]
- [-RemoteVirtualNetwork <PSVirtualNetwork>] [-RemoteVirtualNetworkId <String>]
- [-EnableInternetSecurity <Boolean>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmVirtualHubVnetConnection -Name <String> -ParentResourceId <String>
+ [-RemoteVirtualNetwork <PSVirtualNetwork>] [-RemoteVirtualNetworkId <String>] [-EnableInternetSecurity]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmVirtualHubVnetConnection cmdlet creates a HubVirtualNetworkConnection resource that peers a Virtual Network to the Azure Virtual Hub. 
+The New-AzureRmVirtualHubVnetConnection cmdlet creates a HubVirtualNetworkConnection resource that peers a Virtual Network to the Azure Virtual Hub.
 
 ## EXAMPLES
 
@@ -50,7 +47,7 @@ PS C:\> $remoteVirtualNetwork = New-AzureRmVirtualNetwork -Name MyVirtualNetwork
 
 PS C:\> New-AzureRmVirtualWan -ResourceGroupName TestResourceGroup -Name testvwan -Location?
 PS C:\> New-AzureRmVirtualHub -Name testvhub <fill in> -AddressSpaceObject <PSAddressSpace>
-PS C:\> New-AzureRmHubVirtualNetworkConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection -RemoteVirtualNetwork $remoteVirtualNetwork
+PS C:\> New-AzureRmVirtualHubVnetConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection -RemoteVirtualNetwork $remoteVirtualNetwork
 
 ```
 
@@ -92,21 +89,6 @@ Accept wildcard characters: False
 Enable internet security for this connection.
 
 ```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Do not ask for confirmation if you want to overrite a resource
-
-```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
@@ -129,11 +111,11 @@ Aliases: ResourceName, HubVirtualNetworkConnectionName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParentResource
+### -ParentObject
 The parent resource.
 
 ```yaml
@@ -141,10 +123,10 @@ Type: PSVirtualHub
 Parameter Sets: ByVirtualHubObject
 Aliases: VirtualHub, ParentVirtualHub
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -156,10 +138,10 @@ Type: String
 Parameter Sets: ByVirtualHubResourceId
 Aliases: VirtualHubId, ParentVirtualHubId
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -171,10 +153,10 @@ Type: String
 Parameter Sets: ByVirtualHubName
 Aliases: VirtualHubName, ParentVirtualHubName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -189,7 +171,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -204,7 +186,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -219,7 +201,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -255,15 +237,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.Network.Models.PSVirtualHub
-
-### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+### None
 
 ## OUTPUTS
 

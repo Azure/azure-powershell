@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Set,
-        "AzureRmVirtualHub",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHub",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVirtualHub))]
@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "VirtualHubName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -67,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("VirtualHub")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The Virtual hub object to be modified.")]
         [ValidateNotNullOrEmpty]
@@ -75,38 +73,32 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual wan object this hub is linked to.")]
         public PSVirtualWan VirtualWan { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The id of virtual wan object this hub is linked to.")]
         [ResourceIdCompleter("Microsoft.Network/virtualWans")]
         public string VirtualWanId { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address space string for this virtual hub.")]
         public string AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The hub virtual network connections associated with this Virtual Hub.")]
         public List<PSHubVirtualNetworkConnection> HubVnetConnection { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The route table associated with this Virtual Hub.")]
         public PSVirtualHubRouteTable RouteTable { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -114,11 +106,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         public override void Execute()
         {
@@ -182,8 +169,6 @@ namespace Microsoft.Azure.Commands.Network
 
             //// Update the virtual hub
             ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Properties.Resources.SettingResourceMessage, this.Name),
                     Properties.Resources.SettingResourceMessage,
                     this.Name,
                     () =>

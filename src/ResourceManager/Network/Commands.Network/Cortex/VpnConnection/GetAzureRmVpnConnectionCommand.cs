@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
     using System.Linq;
 
     [Cmdlet(VerbsCommon.Get,
-        "AzureRmVpnConnection",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnConnection",
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnConnection))]
     public class GetAzureRmVpnConnectionCommand : VpnConnectionBaseCmdlet
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             }
             else
             {
-                WriteObject(this.ListVpnConnections(this.ResourceGroupName, this.ParentResourceName));
+                WriteObject(this.ListVpnConnections(this.ResourceGroupName, this.ParentResourceName), true);
             }
         }
     }

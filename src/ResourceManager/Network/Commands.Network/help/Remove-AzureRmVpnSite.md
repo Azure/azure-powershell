@@ -14,20 +14,20 @@ Removes an Azure VpnSite resource.
 
 ### ByVpnSiteName (Default)
 ```
-Remove-AzureRmVpnSite -Name <String> -ResourceGroupName <String> [-Force]
+Remove-AzureRmVpnSite -Name <String> -ResourceGroupName <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnSiteObject
 ```
-Remove-AzureRmVpnSite -InputObject <PSVpnSite> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmVpnSite -InputObject <PSVpnSite> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnSiteResourceId
 ```
-Remove-AzureRmVpnSite -ResourceId <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmVpnSite -ResourceId <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,6 @@ PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
 PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
 
 PS C:\> Remove-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite"
-
 ```
 
 The above will create a resource group, Virtual WAN in West US in "testRG" resource group in Azure. 
@@ -68,7 +67,6 @@ PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
 PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
 
 PS C:\> Get-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" | Remove-AzureRmVpnSite
-
 ```
 
 Same as example 1 but here the removal happens using the piped output from Get-AzureRmVpnSite.
@@ -79,7 +77,7 @@ Same as example 1 but here the removal happens using the piped output from Get-A
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,7 +92,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +107,7 @@ Accept wildcard characters: False
 The vpnSite object to be deleted.
 
 ```yaml
-Type: PSVpnSite
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnSite
 Parameter Sets: ByVpnSiteObject
 Aliases: VpnSite
 
@@ -124,7 +122,7 @@ Accept wildcard characters: False
 The vpnSite name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnSiteName
 Aliases: ResourceName, VpnSiteName
 
@@ -135,11 +133,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnSiteName
 Aliases:
 
@@ -154,7 +167,7 @@ Accept wildcard characters: False
 The Azure resource ID for the vpnSite to be deleted.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnSiteResourceId
 Aliases: VpnSiteId
 
@@ -169,7 +182,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -185,7 +198,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

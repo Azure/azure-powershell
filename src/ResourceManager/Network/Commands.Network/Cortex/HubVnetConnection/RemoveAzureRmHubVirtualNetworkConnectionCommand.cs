@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Remove,
-        "AzureRmHubVirtualNetworkConnection",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubVnetConnection",
         DefaultParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSHubVirtualNetworkConnection))]
@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "HubVirtualNetworkConnectionName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionName,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -57,7 +55,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("VirtualHubName", "ParentVirtualHubName")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionName,
             HelpMessage = "The parent resource name.")]
         public string ParentResourceName { get; set; }
@@ -87,6 +84,9 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void Execute()
         {
@@ -128,7 +128,11 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         parentVirtualHub.VirtualNetworkConnections.Remove(connectionToRemove);
                         this.CreateOrUpdateVirtualHub(this.ResourceGroupName, this.ParentResourceName, parentVirtualHub, parentVirtualHub.Tag);
-                        WriteObject(true);
+
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
                     });
             }
         }

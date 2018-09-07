@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.New,
-        "AzureRmVirtualHub",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHub",
         SupportsShouldProcess = true),
         OutputType(typeof(PSVirtualHub))]
     public class NewAzureRmVirtualHubCommand : VirtualHubBaseCmdlet
@@ -38,14 +38,12 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "VirtualHubName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -53,27 +51,23 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual wan object this hub is linked to.")]
         public PSVirtualWan VirtualWan { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The id of virtual wan object this hub is linked to.")]
         [ResourceIdCompleter("Microsoft.Network/virtualWans")]
         public string VirtualWanId { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address space string for this virtual hub.")]
         [ValidateNotNullOrEmpty]
         public string AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "location.")]
         [LocationCompleter]
         [ValidateNotNullOrEmpty]
@@ -81,19 +75,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The hub virtual network connections associated with this Virtual Hub.")]
         public List<PSHubVirtualNetworkConnection> HubVnetConnection { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The route table associated with this Virtual Hub.")]
         public PSVirtualHubRouteTable RouteTable { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -101,11 +92,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         public override void Execute()
         {
@@ -135,37 +121,34 @@ namespace Microsoft.Azure.Commands.Network
 
             PSVirtualWan resolvedVirtualWan = new VirtualWanBaseCmdlet().GetVirtualWan(virtualWanRGName, virtualWanName);
 
-            bool shouldProcess = this.Force.IsPresent;
-            if (!shouldProcess)
-            {
-                shouldProcess = ShouldProcess(this.Name, Properties.Resources.CreatingResourceMessage);
-            }
-
-            if (shouldProcess)
-            {
-                PSVirtualHub virtualHub = new PSVirtualHub
+            ConfirmAction(
+                Properties.Resources.CreatingResourceMessage,
+                this.Name,
+                () =>
                 {
-                    ResourceGroupName = this.ResourceGroupName,
-                    Name = this.Name,
-                    VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id },
-                    AddressPrefix = this.AddressPrefix,
-                    Location = this.Location
-                };
+                    PSVirtualHub virtualHub = new PSVirtualHub
+                    {
+                        ResourceGroupName = this.ResourceGroupName,
+                        Name = this.Name,
+                        VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id },
+                        AddressPrefix = this.AddressPrefix,
+                        Location = this.Location
+                    };
 
-                virtualHub.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
-                if (this.HubVnetConnection != null)
-                {
-                    virtualHub.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
-                }
+                    virtualHub.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
+                    if (this.HubVnetConnection != null)
+                    {
+                        virtualHub.VirtualNetworkConnections.AddRange(this.HubVnetConnection);
+                    }
 
-                virtualHub.RouteTable = this.RouteTable;
+                    virtualHub.RouteTable = this.RouteTable;
 
-                WriteObject(this.CreateOrUpdateVirtualHub(
-                    this.ResourceGroupName,
-                    this.Name,
-                    virtualHub,
-                    this.Tag));
-            }
+                    WriteObject(this.CreateOrUpdateVirtualHub(
+                        this.ResourceGroupName,
+                        this.Name,
+                        virtualHub,
+                        this.Tag));
+                });
         }
     }
 }

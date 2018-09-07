@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get,
-        "AzureRmVirtualWan",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualWan",
         SupportsShouldProcess = true),
         OutputType(typeof(PSVirtualWan))]
     public class GetAzureRmVirtualWanCommand : VirtualWanBaseCmdlet
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                WriteObject(this.ListVirtualWans(this.ResourceGroupName));
+                WriteObject(this.ListVirtualWans(this.ResourceGroupName), true);
             }
         }
     }

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.New,
-        "AzureRmHubVirtualNetworkConnection",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubVnetConnection",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSHubVirtualNetworkConnection))]
@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "HubVirtualNetworkConnectionName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -55,24 +53,21 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("VirtualHubName", "ParentVirtualHubName")]
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The parent resource name.")]
         public string ParentResourceName { get; set; }
 
         [Alias("VirtualHub", "ParentVirtualHub")]
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The parent resource.")]
-        public PSVirtualHub ParentResource { get; set; }
+        public PSVirtualHub ParentObject { get; set; }
 
         [Alias("VirtualHubId", "ParentVirtualHubId")]
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId,
             HelpMessage = "The parent resource id.")]
         [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
@@ -80,33 +75,25 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The remote virtual network to which this hub virtual network connection is connected.")]
         [ResourceGroupCompleter]
         public PSVirtualNetwork RemoteVirtualNetwork { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The remote virtual network id to which this hub virtual network connection is connected.")]
-        [ResourceGroupCompleter]
         [ResourceIdCompleter("Microsoft.Network/virtualNetworks")]
         public string RemoteVirtualNetworkId { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable internet security for this connection.")]
-        public bool? EnableInternetSecurity { get; set; }
+        public SwitchParameter EnableInternetSecurity { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         public override void Execute()
         {
@@ -115,8 +102,8 @@ namespace Microsoft.Azure.Commands.Network
 
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
             {
-                this.ResourceGroupName = this.ParentResource.ResourceGroupName;
-                this.ParentResourceName = this.ParentResource.Name;
+                this.ResourceGroupName = this.ParentObject.ResourceGroupName;
+                this.ParentResourceName = this.ParentObject.Name;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubResourceId, StringComparison.OrdinalIgnoreCase))
             {
@@ -134,7 +121,7 @@ namespace Microsoft.Azure.Commands.Network
 
             PSHubVirtualNetworkConnection hubVnetConnection = new PSHubVirtualNetworkConnection();
             hubVnetConnection.Name = this.Name;
-            hubVnetConnection.EnableInternetSecurity = this.EnableInternetSecurity.HasValue ? this.EnableInternetSecurity.Value : false;
+            hubVnetConnection.EnableInternetSecurity = this.EnableInternetSecurity.IsPresent;
 
             //// Resolve the remote virtual network
             //// Let's not try to resolve this since this can be in other RG/Sub/Location
@@ -158,19 +145,16 @@ namespace Microsoft.Azure.Commands.Network
 
             parentVirtualHub.VirtualNetworkConnections.Add(hubVnetConnection);
 
-            bool shouldProcess = this.Force.IsPresent;
-            if (!shouldProcess)
-            {
-                shouldProcess = ShouldProcess(Name, Properties.Resources.CreatingResourceMessage);
-            }
+            ConfirmAction(
+                Properties.Resources.CreatingResourceMessage,
+                this.Name,
+                () =>
+                {
+                    this.CreateOrUpdateVirtualHub(this.ResourceGroupName, this.ParentResourceName, parentVirtualHub, parentVirtualHub.Tag);
+                    var createdVirtualHub = this.GetVirtualHub(this.ResourceGroupName, this.ParentResourceName);
 
-            if (shouldProcess)
-            {
-                this.CreateOrUpdateVirtualHub(this.ResourceGroupName, this.ParentResourceName, parentVirtualHub, parentVirtualHub.Tag);
-                var createdVirtualHub = this.GetVirtualHub(this.ResourceGroupName, this.ParentResourceName);
-
-                WriteObject(createdVirtualHub.VirtualNetworkConnections.FirstOrDefault(hubConnection => hubConnection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)));
-            }
+                    WriteObject(createdVirtualHub.VirtualNetworkConnections.FirstOrDefault(hubConnection => hubConnection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)));
+                });
         }
     }
 }

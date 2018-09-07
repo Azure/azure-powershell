@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Remove,
-        "AzureRmVirtualHub",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHub",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "VirtualHubName")]
         [Parameter(
            Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
            ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
            HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -83,6 +81,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void Execute()
         {
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
@@ -109,7 +110,11 @@ namespace Microsoft.Azure.Commands.Network
                     () =>
                     {
                         this.VirtualHubClient.Delete(this.ResourceGroupName, this.Name);
-                        WriteObject(true);
+
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
                     });
         }
     }

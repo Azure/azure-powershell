@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get,
-        "AzureRmVpnSite",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnSite",
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnSite))]
     public class GetAzureRmVpnSiteCommand : VpnSiteBaseCmdlet
@@ -29,14 +29,12 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "VpnSiteName")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -59,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 //// Resource name has not been specified - list all vpnsites
-                WriteObject(this.ListVpnSites(this.ResourceGroupName));
+                WriteObject(this.ListVpnSites(this.ResourceGroupName), true);
             }
         }
     }

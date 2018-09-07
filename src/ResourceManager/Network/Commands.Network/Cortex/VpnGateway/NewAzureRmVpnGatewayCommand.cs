@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.New,
-        "AzureRmVpnGateway",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnGateway",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnGateway))]
@@ -39,14 +39,12 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "VpnGatewayName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -58,21 +56,20 @@ namespace Microsoft.Azure.Commands.Network
         public uint VpnGatewayScaleUnit { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The VirtualHub this VpnGateway needs to be associated with.")]
         public PSVirtualHub VirtualHub { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId,
             HelpMessage = "The Id of the VirtualHub this VpnGateway needs to be associated with.")]
         [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
         public string VirtualHubId { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The Id of the VirtualHub this VpnGateway needs to be associated with.")]
         public string VirtualHubName { get; set; }
@@ -96,11 +93,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         public override void Execute()
         {
@@ -159,17 +151,13 @@ namespace Microsoft.Azure.Commands.Network
                 };
             }
 
-            bool shouldProcess = this.Force.IsPresent;
-
-            if (!shouldProcess)
-            {
-                shouldProcess = ShouldProcess(this.Name, Properties.Resources.CreatingResourceMessage);
-            }
-
-            if (shouldProcess)
-            {
-                WriteObject(this.CreateOrUpdateVpnGateway(this.ResourceGroupName, this.Name, vpnGateway, this.Tag));
-            }
+            ConfirmAction(
+                Properties.Resources.CreatingResourceMessage,
+                this.Name,
+                () =>
+                {
+                    WriteObject(this.CreateOrUpdateVpnGateway(this.ResourceGroupName, this.Name, vpnGateway, this.Tag));
+                });
         }
     }
 }

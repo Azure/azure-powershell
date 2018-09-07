@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Set,
-        "AzureRmHubVirtualNetworkConnection",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubVnetConnection",
         DefaultParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSHubVirtualNetworkConnection))]
@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "HubVirtualNetworkConnectionName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionName,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -57,7 +55,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("VirtualHubName", "ParentVirtualHubName")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionName,
             HelpMessage = "The parent resource name.")]
         [ResourceGroupCompleter]
@@ -88,11 +85,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         public override void Execute()
         {
@@ -127,9 +119,7 @@ namespace Microsoft.Azure.Commands.Network
             connectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.IsPresent;
             
             ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Properties.Resources.SettingResourceMessage, this.Name),
-                    Properties.Resources.SettingResourceMessage,
+                    string.Format(Properties.Resources.SettingResourceMessage),
                     this.Name,
                     () =>
                     {

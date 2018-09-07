@@ -1,38 +1,38 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermhubvirtualnetworkconnection
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermvirtualhubvnetconnection
 schema: 2.0.0
 ---
 
-# Set-AzureRmHubVirtualNetworkConnection
+# Set-AzureRmVirtualHubVnetConnection
 
 ## SYNOPSIS
-Updates a HubVirtualNetworkConnection to an intended goal state.
+Updates a VirtualHubVnetConnection to an intended goal state.
 
 ## SYNTAX
 
 ### ByHubVirtualNetworkConnectionName (Default)
 ```
-Set-AzureRmHubVirtualNetworkConnection -Name <String> -ResourceGroupName <String>
- [-ParentResourceName <String>] [-EnableInternetSecurity] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmVirtualHubVnetConnection -Name <String> -ResourceGroupName <String> [-ParentResourceName <String>]
+ [-EnableInternetSecurity] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByHubVirtualNetworkConnectionObject
 ```
-Set-AzureRmHubVirtualNetworkConnection [-InputObject <PSHubVirtualNetworkConnection>] [-EnableInternetSecurity]
- [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmVirtualHubVnetConnection [-InputObject <PSHubVirtualNetworkConnection>] [-EnableInternetSecurity]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByHubVirtualNetworkConnectionResourceId
 ```
-Set-AzureRmHubVirtualNetworkConnection [-ResourceId <String>] [-EnableInternetSecurity] [-AsJob] [-Force]
+Set-AzureRmVirtualHubVnetConnection [-ResourceId <String>] [-EnableInternetSecurity] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates a HubVirtualNetworkConnection to an intended goal state.
+Updates a VirtualHubVnetConnection to an intended goal state.
 
 ## EXAMPLES
 
@@ -45,14 +45,14 @@ PS C:\> $remoteVirtualNetwork = New-AzureRmVirtualNetwork -Name MyVirtualNetwork
 
 PS C:\> New-AzureRmVirtualWan -ResourceGroupName TestResourceGroup -Name testvwan -Location?
 PS C:\> New-AzureRmVirtualHub -Name testvhub <fill in> -AddressSpaceObject <PSAddressSpace>
-PS C:\> $hubVnetConnection = New-AzureRmHubVirtualNetworkConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection -RemoteVirtualNetwork $remoteVirtualNetwork
-PS C:\> Set-AzureRmHubVirtualNetworkConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection -EnableInternetSecurity
+PS C:\> $hubVnetConnection = New-AzureRmVirtualHubVnetConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection -RemoteVirtualNetwork $remoteVirtualNetwork
+PS C:\> Set-AzureRmVirtualHubVnetConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection -EnableInternetSecurity
 
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in Central US in that resource group in Azure. A Virtual Network Connection will be created thereafter which will peer the Virtual Network to the Virtual Hub
 
-After the resource is created, it uses Set-AzureRmHubVirtualNetworkConnection to enable internet security on the connection.
+After the resource is created, it uses Set-AzureRmVirtualHubVnetConnection to enable internet security on the connection.
 
 ## PARAMETERS
 
@@ -101,21 +101,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Do not ask for confirmation if you want to overrite a resource
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 The hubvirtualnetworkconnection resource to modify.
 
@@ -142,7 +127,7 @@ Aliases: ResourceName, HubVirtualNetworkConnectionName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -157,7 +142,7 @@ Aliases: VirtualHubName, ParentVirtualHubName
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -172,7 +157,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -223,13 +208,14 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection
+
+### System.String
 
 ## OUTPUTS
 

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.New,
-        "AzureRmVpnConnection",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnConnection",
         DefaultParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnConnection))]
@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -72,7 +71,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "VpnConnectionName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -103,13 +101,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The bandwith that needs to be handled by this connection in mbps.")]
         public PSIpsecPolicy IpSecPolicy { get; set; }
 
         [Parameter(
         Mandatory = false,
-        ValueFromPipelineByPropertyName = true,
         HelpMessage = "Gateway connection protocol:IKEv1/IKEv2")]
         [ValidateSet(
             MNM.VirtualNetworkGatewayConnectionProtocol.IKEv1,
@@ -120,44 +116,29 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable BGP for this connection")]
-        public bool? EnableBgp { get; set; }
+        public SwitchParameter EnableBgp { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable rate limiting for this connection")]
-        public bool? EnableRateLimiting { get; set; }
+        public SwitchParameter EnableRateLimiting { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Enable internet security for this connection")]
-        public bool? EnableInternetSecurity { get; set; }
+        public SwitchParameter EnableInternetSecurity { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
-
         public override void Execute()
         {
             base.Execute();
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
-            bool shouldProcess = this.Force.IsPresent;
-
-            if (!shouldProcess)
-            {
-                shouldProcess = ShouldProcess(this.Name, Properties.Resources.CreatingResourceMessage);
-            }
-
-            if (shouldProcess)
-            {
-                WriteObject(this.CreateVpnConnection());
-            }
+            WriteObject(this.CreateVpnConnection());
         }
 
         private PSVpnConnection CreateVpnConnection()
@@ -205,9 +186,9 @@ namespace Microsoft.Azure.Commands.Network
             PSVpnConnection vpnConnection = new PSVpnConnection
             {
                 Name = this.Name,
-                EnableBgp = this.EnableBgp.HasValue ? this.EnableBgp.Value : false,
-                EnableRateLimiting = this.EnableRateLimiting.HasValue ? this.EnableRateLimiting.Value : false,
-                EnableInternetSecurity = this.EnableInternetSecurity.HasValue ? this.EnableInternetSecurity.Value : false
+                EnableBgp = this.EnableBgp.IsPresent,
+                EnableRateLimiting = this.EnableRateLimiting.IsPresent,
+                EnableInternetSecurity = this.EnableInternetSecurity.IsPresent
             };
 
             //// Resolve the VpnSite reference
@@ -248,21 +229,19 @@ namespace Microsoft.Azure.Commands.Network
 
             parentVpnGateway.Connections.Add(vpnConnection);
 
-            bool shouldProcess = this.Force.IsPresent;
-            if (!shouldProcess)
-            {
-                shouldProcess = ShouldProcess(Name, Properties.Resources.AddingResourceMessage);
-            }
+            PSVpnConnection connectionToReturn = null;
+            ConfirmAction(
+                Properties.Resources.CreatingResourceMessage,
+                this.Name,
+                () =>
+                {
+                    this.CreateOrUpdateVpnGateway(this.ResourceGroupName, this.ParentResourceName, parentVpnGateway, parentVpnGateway.Tag);
 
-            if (shouldProcess)
-            {
-                this.CreateOrUpdateVpnGateway(this.ResourceGroupName, this.ParentResourceName, parentVpnGateway, parentVpnGateway.Tag);
+                    var createdOrUpdatedVpnGateway = this.GetVpnGateway(this.ResourceGroupName, this.ParentResourceName);
+                    connectionToReturn = createdOrUpdatedVpnGateway.Connections.Where(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+                });
 
-                var createdOrUpdatedVpnGateway = this.GetVpnGateway(this.ResourceGroupName, this.ParentResourceName);
-                return createdOrUpdatedVpnGateway.Connections.Where(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
-            }
-
-            return null;
+            return connectionToReturn;
         }
     }
 }

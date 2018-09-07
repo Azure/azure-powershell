@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using System.Linq;
 
-    [Cmdlet(VerbsCommon.Get, 
-        "AzureRmVirtualWanVpnSitesConfiguration",
+    [Cmdlet(VerbsCommon.Get,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualWanVpnConfiguration",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName,
         SupportsShouldProcess = true), 
         OutputType(typeof(PSVirtualWanVpnSitesConfiguration))]
@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -46,7 +45,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -65,6 +63,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID for the virtual wan.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

@@ -20,7 +20,9 @@ namespace Microsoft.Azure.Commands.Network
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     
-    [Cmdlet(VerbsCommon.New, "AzureRmVirtualHubRoute"),
+    [Cmdlet(
+        VerbsCommon.New,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRoute"),
         OutputType(typeof(PSVirtualHubRoute))]
     public class NewAzureRmVirtualHubRouteCommand : NetworkBaseCmdlet
     {
@@ -36,12 +38,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string NextHopIpAddress { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The hub virtual network connections associated with this Virtual Hub.")]
-        public List<PSHubVirtualNetworkConnection> HubVnetConnection { get; set; }
-        
         public override void Execute()
         {
             base.Execute();

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Ip Address", Target = ViewControl.Table)]
         public string IpAddress { get; set; }
 
-        [Ps1Xml(Label = "Address Space", Target = ViewControl.Table, ScriptBlock = "$_.VirtualWan.Id")]
+        [Ps1Xml(Label = "Virtual WAN Id", Target = ViewControl.Table, ScriptBlock = "$_.VirtualWan.Id")]
         public PSResourceId VirtualWan { get; set; }
 
         [Ps1Xml(Label = "IsSecuritySite", Target = ViewControl.Table)]

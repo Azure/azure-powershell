@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Set,
-        "AzureRmVpnSite",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnSite",
         DefaultParameterSetName = CortexParameterSetNames.ByVpnSiteName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnSite))]
@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVpnSiteName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -48,7 +47,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVpnSiteName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -147,7 +145,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -155,11 +152,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         public override void Execute()
         {
@@ -273,8 +265,6 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             ConfirmAction(
-                    this.Force.IsPresent,
-                    string.Format(Properties.Resources.SettingResourceMessage, this.Name),
                     Properties.Resources.SettingResourceMessage,
                     this.Name,
                     () =>

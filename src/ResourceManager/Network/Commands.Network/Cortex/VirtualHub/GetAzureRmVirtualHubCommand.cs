@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get,
-        "AzureRmVirtualHub",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHub",
         SupportsShouldProcess = true),
         OutputType(typeof(PSVirtualHub))]
     public class GetAzureRmVirtualHubCommand : VirtualHubBaseCmdlet
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 //// Resource name has not been specified - list all hubs
-                WriteObject(this.ListVirtualHubs(this.ResourceGroupName));
+                WriteObject(this.ListVirtualHubs(this.ResourceGroupName), true);
             }
         }
     }

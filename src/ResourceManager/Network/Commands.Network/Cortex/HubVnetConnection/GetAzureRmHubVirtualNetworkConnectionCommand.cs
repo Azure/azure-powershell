@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get,
-        "AzureRmHubVirtualNetworkConnection",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubVnetConnection",
         SupportsShouldProcess = true),
         OutputType(typeof(PSHubVirtualNetworkConnection))]
     public class GetHubVirtualNetworkConnectionCommand : HubVnetConnectionBaseCmdlet
@@ -29,14 +29,12 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "HubVirtualNetworkConnectionName")]
         [Parameter(
            Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -44,8 +42,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("VirtualHubName", "ParentVirtualHubName")]
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "The parent resource name.")]
         [ResourceGroupCompleter]
         public string ParentResourceName { get; set; }
@@ -60,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                WriteObject(this.ListHubVnetConnections(this.ResourceGroupName, this.ParentResourceName));
+                WriteObject(this.ListHubVnetConnections(this.ResourceGroupName, this.ParentResourceName), true);
             }
         }
     }

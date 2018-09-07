@@ -14,20 +14,20 @@ Removes an Azure Virtual WAN.
 
 ### ByVirtualWanName (Default)
 ```
-Remove-AzureRmVirtualWan -Name <String> -ResourceGroupName <String> [-Force]
+Remove-AzureRmVirtualWan -Name <String> -ResourceGroupName <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanObject
 ```
-Remove-AzureRmVirtualWan -InputObject <PSVirtualWan> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmVirtualWan -InputObject <PSVirtualWan> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceId
 ```
-Remove-AzureRmVirtualWan -ResourceId <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmVirtualWan -ResourceId <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +45,6 @@ PS C:\> Remove-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestRe
 This example creates a Virtual WAN in a resource group and then immediately deletes it. 
 To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
 
-
 ### Example 2
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Name "TestResourceGroup" -Location "Central US"
@@ -55,7 +54,6 @@ PS C:\> Remove-AzureRmVirtualWan -InputObject $virtualWan
 
 This example creates a Virtual WAN in a resource group and then immediately deletes it. This deletion happens using the virtual wan object returned by New-AzureRmVirtualWan.
 To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
-
 
 ### Example 3
 ```powershell
@@ -83,7 +81,7 @@ To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,7 +96,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +111,7 @@ Accept wildcard characters: False
 The virtual wan object to be deleted.
 
 ```yaml
-Type: PSVirtualWan
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
 Parameter Sets: ByVirtualWanObject
 Aliases: VirtualWan
 
@@ -128,7 +126,7 @@ Accept wildcard characters: False
 The virtual wan name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanName
 Aliases: ResourceName, VirtualWanName
 
@@ -139,11 +137,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanName
 Aliases:
 
@@ -158,7 +171,7 @@ Accept wildcard characters: False
 The Azure resource ID for the virtual wan to be deleted.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanResourceId
 Aliases: VirtualWanId
 
@@ -173,7 +186,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -189,7 +202,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
