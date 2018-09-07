@@ -81,7 +81,7 @@ To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The virtual wan object to be deleted.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
+Type: PSVirtualWan
 Parameter Sets: ByVirtualWanObject
 Aliases: VirtualWan
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 The virtual wan name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualWanName
 Aliases: ResourceName, VirtualWanName
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 {{Fill PassThru Description}}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualWanName
 Aliases:
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 The Azure resource ID for the virtual wan to be deleted.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVirtualWanResourceId
 Aliases: VirtualWanId
 
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -202,7 +202,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

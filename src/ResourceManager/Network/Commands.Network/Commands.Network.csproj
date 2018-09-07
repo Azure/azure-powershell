@@ -173,6 +173,7 @@
     <Compile Include="ApplicationGateway\UrlPathMap\NewAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="Cortex\VirtualWan\SetAzureRmVirtualWanCommand.cs" />
     <Compile Include="Generated\ApplicationSecurityGroup\GetAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Generated\ApplicationSecurityGroup\NewAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Generated\ApplicationSecurityGroup\RemoveAzureRMApplicationSecurityGroupCommand.cs" />

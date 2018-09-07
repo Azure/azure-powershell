@@ -20,5 +20,11 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+        [Ps1Xml(Label = "AllowVnetToVnetTraffic", Target = ViewControl.Table)]
+        public bool AllowVnetToVnetTraffic { get; set; }
+
+        [Ps1Xml(Label = "AllowBranchToBranchTraffic", Target = ViewControl.Table)]
+        public bool AllowBranchToBranchTraffic { get; set; }
     }
 }

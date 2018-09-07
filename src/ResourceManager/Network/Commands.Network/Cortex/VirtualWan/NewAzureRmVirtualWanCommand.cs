@@ -55,6 +55,20 @@ namespace Microsoft.Azure.Commands.Network
         public string Location { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Allow vnet to vnet traffic for VirtualWan.")]
+        [PSDefaultValue(Help = "$false", Value = false)]
+        public bool AllowVnetToVnetTraffic { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Allow branch to branch traffic for VirtualWan.")]
+        [PSDefaultValue(Help = "$true", Value = true)]
+        public bool AllowBranchToBranchTraffic { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -84,6 +98,8 @@ namespace Microsoft.Azure.Commands.Network
             virtualWan.Name = this.Name;
             virtualWan.ResourceGroupName = this.ResourceGroupName;
             virtualWan.Location = this.Location;
+            virtualWan.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic;
+            virtualWan.AllowVnetToVnetTraffic = this.AllowVnetToVnetTraffic;
 
             var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWAN>(virtualWan);
             virtualWanModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);

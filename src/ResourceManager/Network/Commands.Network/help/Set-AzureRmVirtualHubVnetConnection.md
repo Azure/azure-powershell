@@ -47,7 +47,6 @@ PS C:\> New-AzureRmVirtualWan -ResourceGroupName TestResourceGroup -Name testvwa
 PS C:\> New-AzureRmVirtualHub -Name testvhub <fill in> -AddressSpaceObject <PSAddressSpace>
 PS C:\> $hubVnetConnection = New-AzureRmVirtualHubVnetConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection -RemoteVirtualNetwork $remoteVirtualNetwork
 PS C:\> Set-AzureRmVirtualHubVnetConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection -EnableInternetSecurity
-
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in Central US in that resource group in Azure. A Virtual Network Connection will be created thereafter which will peer the Virtual Network to the Virtual Hub
@@ -208,8 +207,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

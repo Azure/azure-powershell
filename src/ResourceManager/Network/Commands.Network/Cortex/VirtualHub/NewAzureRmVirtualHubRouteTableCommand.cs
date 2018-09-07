@@ -21,7 +21,8 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.New,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRouteTable"),
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRouteTable",
+        SupportsShouldProcess = false),
         OutputType(typeof(PSVirtualHubRouteTable))]
     public class NewAzureRmVirtualHubRouteTableCommand : NetworkBaseCmdlet
     {

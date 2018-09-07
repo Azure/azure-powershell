@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Network
     
     [Cmdlet(
         VerbsCommon.New,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRoute"),
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRoute",
+        SupportsShouldProcess = false),
         OutputType(typeof(PSVirtualHubRoute))]
     public class NewAzureRmVirtualHubRouteCommand : NetworkBaseCmdlet
     {

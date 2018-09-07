@@ -40,7 +40,6 @@ The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hu
 
 After the hub virtual network connection is created, it gets the hub virtual network connection using its resource group name, the hub name and the connection name.
 
-
 ### Example 2
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
@@ -153,8 +152,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
