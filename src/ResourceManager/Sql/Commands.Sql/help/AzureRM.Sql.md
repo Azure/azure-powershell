@@ -14,6 +14,9 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 ### [Add-AzureRmSqlDatabaseToFailoverGroup](Add-AzureRmSqlDatabaseToFailoverGroup.md)
 Adds one or more databases to an Azure SQL Database Failover Group.
 
+### [Add-AzureRmSqlManagedInstanceKeyVaultKey](Add-AzureRmSqlManagedInstanceKeyVaultKey.md)
+Adds a key vault key to the provided Managed Instance. 
+
 ### [Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given managed instance
 
@@ -139,6 +142,12 @@ Gets elastic pool recommendations.
 
 ### [Get-AzureRmSqlElasticPoolRecommendedAction](Get-AzureRmSqlElasticPoolRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Elastic Pool Advisor.
+
+### [Get-AzureRmSqlManagedInstanceKeyVaultKey](Get-AzureRmSqlManagedInstanceKeyVaultKey.md)
+Gets a SQL managed instance's Key Vault keys.
+
+### [Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector](Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector.md)
+Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
 ### [Get-AzureRmSqlServer](Get-AzureRmSqlServer.md)
 Returns information about SQL Database servers.
@@ -305,6 +314,9 @@ Removes the threat detection policy from a database.
 ### [Remove-AzureRmSqlElasticPool](Remove-AzureRmSqlElasticPool.md)
 Deletes an elastic database pool.
 
+### [Remove-AzureRmSqlManagedInstanceKeyVaultKey](Remove-AzureRmSqlManagedInstanceKeyVaultKey.md)
+Removes a Key Vault key from a SQL managed instance
+
 ### [Remove-AzureRmSqlServer](Remove-AzureRmSqlServer.md)
 Removes an Azure SQL Database server.
 
@@ -400,6 +412,9 @@ Updates auto execute status of an Azure SQL Elastic Pool Advisor.
 
 ### [Set-AzureRmSqlElasticPoolRecommendedActionState](Set-AzureRmSqlElasticPoolRecommendedActionState.md)
 Updates the state of an Azure SQL Elastic Pool recommended action.
+
+### [Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector](Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector.md)
+Sets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
 ### [Set-AzureRmSqlServer](Set-AzureRmSqlServer.md)
 Modifies properties of a SQL Database server.

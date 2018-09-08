@@ -231,6 +231,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="TransparentDataEncryption\Cmdlet\AddAzureRmRmSqlManagedInstanceKeyVaultKey.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorBase.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureRmSqlManagedInstanceKeyVaultKey.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\SetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\RemoveAzureRmSqlManagedInstanceKeyVaultKey.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\AzureRmSqlManagedInstanceKeyVaultKeyBase.cs" />
+    <Compile Include="TransparentDataEncryption\Model\AzureRmSqlManagedInstanceKeyVaultKeyModel.cs" />
+    <Compile Include="TransparentDataEncryption\Model\AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel.cs" />
+    <Compile Include="TransparentDataEncryption\Model\EncryptionProtectorType.cs" />
+    <Compile Include="TransparentDataEncryption\Model\ManagedInstanceKeyHelper.cs" />
+    <Compile Include="TransparentDataEncryption\Model\ServerKeyType.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\SqlDatabaseVulnerabilityAssessmentAtpCmdletBase.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\SqlDatabaseVulnerabilityAssessmentOperationCmdletBase.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\GetAzureSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
@@ -484,7 +496,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.18.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+        <HintPath>..\..\..\..\temp\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">

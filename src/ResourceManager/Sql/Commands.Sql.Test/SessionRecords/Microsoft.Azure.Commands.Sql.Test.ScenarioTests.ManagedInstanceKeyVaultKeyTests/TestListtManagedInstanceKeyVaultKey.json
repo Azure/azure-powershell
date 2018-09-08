@@ -1,0 +1,71 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYThjOWE5MjQtMDZjMC00YmRlLTk3ODgtZTdiMTM3MDk2OWUxL3Jlc291cmNlR3JvdXBzL01sQW5kemljX1JHL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL21hbmFnZWRJbnN0YW5jZXMvbWlkZW1vaW5zdGFuY2ViYy9rZXlzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1c2ac15e-1b17-4fcb-b515-df62fe852c1d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.21.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-9538.vault.azure.net/keys/sqlcrudtest-9909/f2f9e154f2724c88a645ec61f7e60237\",\r\n        \"thumbprint\": \"40ADC9DCE4AEE5CC396BD3AB0FA553BEC91CCA2E\",\r\n        \"creationDate\": \"2018-08-28T22:45:45.403Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-9538_sqlcrudtest-9909_f2f9e154f2724c88a645ec61f7e60237\",\r\n      \"name\": \"sqlcrudtest-9538_sqlcrudtest-9909_f2f9e154f2724c88a645ec61f7e60237\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-9016.vault.azure.net/keys/sqlcrudtest-1636/dd86299ebf274b0eb1c309507edfd827\",\r\n        \"thumbprint\": \"91105E52D1F02283075E202384D65FD32369EBAE\",\r\n        \"creationDate\": \"2018-08-30T01:00:23.443Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-9016_sqlcrudtest-1636_dd86299ebf274b0eb1c309507edfd827\",\r\n      \"name\": \"sqlcrudtest-9016_sqlcrudtest-1636_dd86299ebf274b0eb1c309507edfd827\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-8925.vault.azure.net/keys/sqlcrudtest-1656/027b4407ca994671bcfea7dfa0345604\",\r\n        \"thumbprint\": \"60CC004C6ABBF5930707CF005FEC93B08FB999F5\",\r\n        \"creationDate\": \"2018-09-04T20:26:03.607Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-8925_sqlcrudtest-1656_027b4407ca994671bcfea7dfa0345604\",\r\n      \"name\": \"sqlcrudtest-8925_sqlcrudtest-1656_027b4407ca994671bcfea7dfa0345604\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-8705.vault.azure.net/keys/sqlcrudtest-6003/5d7b8541c33b4a51801338e8ad6ff8cc\",\r\n        \"thumbprint\": \"3F2496D60BC1E0C0B080365DDACBB9BE0AE37A40\",\r\n        \"creationDate\": \"2018-09-04T20:23:46.683Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-8705_sqlcrudtest-6003_5d7b8541c33b4a51801338e8ad6ff8cc\",\r\n      \"name\": \"sqlcrudtest-8705_sqlcrudtest-6003_5d7b8541c33b4a51801338e8ad6ff8cc\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-8272.vault.azure.net/keys/sqlcrudtest-5621/ba62788d01f84aaf8118e2fbb05e4965\",\r\n        \"thumbprint\": \"3C7B573A94181F5F7D5B5B9110B9E38A5077929E\",\r\n        \"creationDate\": \"2018-08-29T01:31:52.453Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-8272_sqlcrudtest-5621_ba62788d01f84aaf8118e2fbb05e4965\",\r\n      \"name\": \"sqlcrudtest-8272_sqlcrudtest-5621_ba62788d01f84aaf8118e2fbb05e4965\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-4798.vault.azure.net/keys/sqlcrudtest-8677/36b9d234c4124b78bb1254f391c26bf5\",\r\n        \"thumbprint\": \"08F89AF71831DA91B468B754B44A9A53721F981A\",\r\n        \"creationDate\": \"2018-08-29T01:16:33.687Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-4798_sqlcrudtest-8677_36b9d234c4124b78bb1254f391c26bf5\",\r\n      \"name\": \"sqlcrudtest-4798_sqlcrudtest-8677_36b9d234c4124b78bb1254f391c26bf5\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-3596.vault.azure.net/keys/sqlcrudtest-6967/9de6d2007fbb4a7eac0d286da886ab3e\",\r\n        \"thumbprint\": \"0C914E70979F6C409494819D9249A98BEE598DB3\",\r\n        \"creationDate\": \"2018-08-29T01:51:22.647Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-3596_sqlcrudtest-6967_9de6d2007fbb4a7eac0d286da886ab3e\",\r\n      \"name\": \"sqlcrudtest-3596_sqlcrudtest-6967_9de6d2007fbb4a7eac0d286da886ab3e\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-3163.vault.azure.net/keys/sqlcrudtest-3017/f700e78532664f7db703f9b04b22631a\",\r\n        \"thumbprint\": \"D4AA21CDBB211AC798C527B550A115A2DF898B27\",\r\n        \"creationDate\": \"2018-09-04T22:34:55.043Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-3163_sqlcrudtest-3017_f700e78532664f7db703f9b04b22631a\",\r\n      \"name\": \"sqlcrudtest-3163_sqlcrudtest-3017_f700e78532664f7db703f9b04b22631a\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-285.vault.azure.net/keys/sqlcrudtest-1798/4ffe3f14d5a14938a5a15be01000293e\",\r\n        \"thumbprint\": \"9D0FDBB6607E363A16C72085486C358FD2FAC00E\",\r\n        \"creationDate\": \"2018-08-29T01:22:46.327Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-285_sqlcrudtest-1798_4ffe3f14d5a14938a5a15be01000293e\",\r\n      \"name\": \"sqlcrudtest-285_sqlcrudtest-1798_4ffe3f14d5a14938a5a15be01000293e\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-2810.vault.azure.net/keys/sqlcrudtest-9448/5f8cae494a5c4ec8b4f706f258a3e536\",\r\n        \"thumbprint\": \"09257B0804FF2BEBDDE6F90F8585274BED19EA6D\",\r\n        \"creationDate\": \"2018-08-29T01:12:31.313Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-2810_sqlcrudtest-9448_5f8cae494a5c4ec8b4f706f258a3e536\",\r\n      \"name\": \"sqlcrudtest-2810_sqlcrudtest-9448_5f8cae494a5c4ec8b4f706f258a3e536\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-2581.vault.azure.net/keys/sqlcrudtest-5053/934ac33fc95249d784caea6791592325\",\r\n        \"thumbprint\": \"B048CCDD61BEC9BAD8ACECBBBED30922D87DB27D\",\r\n        \"creationDate\": \"2018-08-29T01:41:18.563Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-2581_sqlcrudtest-5053_934ac33fc95249d784caea6791592325\",\r\n      \"name\": \"sqlcrudtest-2581_sqlcrudtest-5053_934ac33fc95249d784caea6791592325\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-2374.vault.azure.net/keys/sqlcrudtest-9129/6a3013ccd127495a9495834151cd08ff\",\r\n        \"thumbprint\": \"4441501090479DBD33450D7D498DEC87C667F854\",\r\n        \"creationDate\": \"2018-08-29T01:33:21.173Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-2374_sqlcrudtest-9129_6a3013ccd127495a9495834151cd08ff\",\r\n      \"name\": \"sqlcrudtest-2374_sqlcrudtest-9129_6a3013ccd127495a9495834151cd08ff\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-1782.vault.azure.net/keys/sqlcrudtest-5017/b9114ad07f3c448d96824a91432d9ad1\",\r\n        \"thumbprint\": \"0A9294735ECF535DA01F185A3ABF42509FFDFC3F\",\r\n        \"creationDate\": \"2018-08-29T01:24:50.873Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-1782_sqlcrudtest-5017_b9114ad07f3c448d96824a91432d9ad1\",\r\n      \"name\": \"sqlcrudtest-1782_sqlcrudtest-5017_b9114ad07f3c448d96824a91432d9ad1\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://sqlcrudtest-104.vault.azure.net/keys/sqlcrudtest-5236/a5cc60d7eb654a21af353d26a9155e95\",\r\n        \"thumbprint\": \"29BD7FB65E76FAB962AD143F65F44CD67DBF8D62\",\r\n        \"creationDate\": \"2018-09-04T22:35:55.213Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/sqlcrudtest-104_sqlcrudtest-5236_a5cc60d7eb654a21af353d26a9155e95\",\r\n      \"name\": \"sqlcrudtest-104_sqlcrudtest-5236_a5cc60d7eb654a21af353d26a9155e95\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"azurekeyvault\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"AzureKeyVault\",\r\n        \"uri\": \"https://mitest-donotdelete.vault.azure.net/keys/mitest-key/e97043455e14493ca05c3642549aedba\",\r\n        \"thumbprint\": \"6AB14770F99E1B6A69078F39E3F24CB5DC5A55A1\",\r\n        \"creationDate\": \"2018-09-01T00:11:49.377Z\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/mitest-donotdelete_mitest-key_e97043455e14493ca05c3642549aedba\",\r\n      \"name\": \"mitest-donotdelete_mitest-key_e97043455e14493ca05c3642549aedba\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    },\r\n    {\r\n      \"kind\": \"servicemanaged\",\r\n      \"properties\": {\r\n        \"serverKeyType\": \"ServiceManaged\"\r\n      },\r\n      \"id\": \"/subscriptions/a8c9a924-06c0-4bde-9788-e7b1370969e1/resourceGroups/MlAndzic_RG/providers/Microsoft.Sql/managedInstances/midemoinstancebc/keys/ServiceManaged\",\r\n      \"name\": \"ServiceManaged\",\r\n      \"type\": \"Microsoft.Sql/managedInstances/keys\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "9465"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b349f0b4-1f84-43ed-b825-bb1bc2d9a3d8"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "9508d127-d171-4e56-b94e-70c6bf8950c1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180905T004051Z:9508d127-d171-4e56-b94e-70c6bf8950c1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 05 Sep 2018 00:40:50 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "a8c9a924-06c0-4bde-9788-e7b1370969e1"
+  }
+}
