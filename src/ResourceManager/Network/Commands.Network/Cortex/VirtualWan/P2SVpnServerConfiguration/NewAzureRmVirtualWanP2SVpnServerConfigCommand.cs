@@ -37,19 +37,21 @@
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Alias("VirtualWan")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanObject,
             HelpMessage = "The VirtualWan this P2SVpnServerConfiguration needs to be associated with.")]
-        public PSVirtualWan VirtualWan { get; set; }
+        public PSVirtualWan InputObject { get; set; }
 
+        [Alias("VirtualWanId")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId,
             HelpMessage = "The Id of the parent VirtualWan this P2SVpnServerConfiguration needs to be associated with.")]
         [ResourceIdCompleter("Microsoft.Network/virtualWans")]
         [ValidateNotNullOrEmpty]
-        public string VirtualWanId { get; set; }
+        public string ResourceId { get; set; }
 
         [Alias("ResourceName", "P2SVpnServerConfigurationName")]
         [Parameter(
@@ -103,11 +105,11 @@
             //// Verify the parent virtual wan exists
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanObject, StringComparison.OrdinalIgnoreCase))
             {
-                this.VirtualWanName = this.VirtualWan.Name;
+                this.VirtualWanName = this.InputObject.Name;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanResourceId, StringComparison.OrdinalIgnoreCase))
             {
-                var parsedResourceId = new ResourceIdentifier(this.VirtualWanId);
+                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 this.VirtualWanName = parsedResourceId.ResourceName;
             }
 

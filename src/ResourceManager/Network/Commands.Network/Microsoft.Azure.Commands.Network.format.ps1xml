@@ -2781,8 +2781,16 @@
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualWan</TypeName>
       </ViewSelectedBy>
-      <TableControl>
+            <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>          
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Number of attached P2SVpnServerConfigurations</Label>
+          </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>Provisioning State</Label>
@@ -2790,7 +2798,15 @@
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
-            <TableColumnItems>		
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name</ScriptBlock>                
+              </TableColumnItem>               
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.P2SVpnServerConfigurations.Count</ScriptBlock>
+              </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
@@ -3008,48 +3024,24 @@
         </TableRowEntries>
       </TableControl>
     </View>
-    <View>
+     <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration</TypeName>
       </ViewSelectedBy>
       <TableControl>
-        <TableHeaders>
+        <TableHeaders>        
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>          
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>VpnProtocols</Label>
-          </TableColumnHeader>
+          </TableColumnHeader>  
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>VpnClientRootCertificates</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>VpnClientRevokedCertificates</Label>
-          </TableColumnHeader>		  
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>RadiusServerAddress</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>RadiusServerSecret</Label>
-          </TableColumnHeader>			
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>RadiusServerRootCertificates</Label>
-          </TableColumnHeader>
-		  <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>RadiusClientRootCertificates</Label>
-          </TableColumnHeader>
-		  <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>VpnClientIpsecPolicies</Label>
-          </TableColumnHeader>	  
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>ProvisioningState</Label>
+            <Label>Provisioning State</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -3057,40 +3049,16 @@
             <TableColumnItems>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name</ScriptBlock>                
+              </TableColumnItem>              
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
                 <PropertyName>VpnProtocols</PropertyName>
               </TableColumnItem>
-			  <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>VpnClientRootCertificatesText</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>VpnClientRevokedCertificatesText</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>RadiusServerAddress</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>RadiusServerSecret</PropertyName>
-              </TableColumnItem>		
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>RadiusServerRootCertificatesText</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>RadiusClientRootCertificatesText</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>VpnClientIpsecPoliciesText</PropertyName>
-              </TableColumnItem> 
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>			  
+              </TableColumnItem>	  
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
@@ -3121,36 +3089,16 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSP2SVpnProfileParameters</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSP2SVpnProfileParameters</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>AuthenticationMethod for P2SVpnGateway Client Profile</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>AuthenticationMethod</PropertyName>
-              </TableColumnItem>			  
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>	
-    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfigVpnClientRootCertificate</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfigVpnClientRootCertificate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>          
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>PublicCertData</Label>
@@ -3163,6 +3111,10 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name</ScriptBlock>                
+              </TableColumnItem>               
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>PublicCertData</PropertyName>
@@ -3185,6 +3137,10 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>          
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Thumbprint</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -3195,6 +3151,10 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name</ScriptBlock>                
+              </TableColumnItem>               
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Thumbprint</PropertyName>
@@ -3217,6 +3177,10 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>          
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>PublicCertData</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -3227,6 +3191,10 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name</ScriptBlock>                
+              </TableColumnItem>               
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>PublicCertData</PropertyName>
@@ -3249,6 +3217,10 @@
         <TableHeaders>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>          
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>Thumbprint</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -3259,6 +3231,10 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name</ScriptBlock>                
+              </TableColumnItem>               
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>Thumbprint</PropertyName>
@@ -3279,6 +3255,10 @@
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>          
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>Address Space</Label>
@@ -3302,19 +3282,15 @@
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
-            <TableColumnItems>		
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name</ScriptBlock>                
+              </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <ScriptBlock>$_.VpnClientAddressPool.AddressPrefixes</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>P2SVpnServerConfigurationText</PropertyName>
-              </TableColumnItem>			  
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <ScriptBlock>$_.VirtualHub.Id</ScriptBlock>
-              </TableColumnItem>
+              </TableColumnItem>              
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>VpnGatewayScaleUnit</PropertyName>

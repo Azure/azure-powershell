@@ -35,29 +35,31 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Alias("VirtualWan")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanObject,
             HelpMessage = "The VirtualWan this P2SVpnServerConfiguration is associated with.")]
-        public PSVirtualWan VirtualWan { get; set; }
+        public PSVirtualWan InputObject { get; set; }
 
+        [Alias("VirtualWanId")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId,
             HelpMessage = "The Id of the parent VirtualWan this P2SVpnServerConfiguration is associated with.")]
         [ResourceIdCompleter("Microsoft.Network/virtualWans")]
         [ValidateNotNullOrEmpty]
-        public string VirtualWanId { get; set; }
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The name of the p2sVpnServerConfiguration")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         public override void Execute()
@@ -67,11 +69,11 @@ namespace Microsoft.Azure.Commands.Network
             //// Verify the parent virtual wan exists
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanObject, StringComparison.OrdinalIgnoreCase))
             {
-                this.VirtualWanName = this.VirtualWan.Name;
+                this.VirtualWanName = this.InputObject.Name;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanResourceId, StringComparison.OrdinalIgnoreCase))
             {
-                var parsedResourceId = new ResourceIdentifier(this.VirtualWanId);
+                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 this.VirtualWanName = parsedResourceId.ResourceName;
             }
 

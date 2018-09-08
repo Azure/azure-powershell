@@ -326,7 +326,32 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
     'New-AzureRMNetworkWatcherProtocolConfiguration', 
     'Add-AzureRmExpressRouteCircuitConnectionConfig', 
     'Get-AzureRmExpressRouteCircuitConnectionConfig', 
-    'Remove-AzureRmExpressRouteCircuitConnectionConfig'
+    'Remove-AzureRmExpressRouteCircuitConnectionConfig',
+    'New-AzureRmVirtualWan',
+    'Get-AzureRmVirtualWan',
+    'Remove-AzureRmVirtualWan',
+    'New-AzureRmVirtualHub',
+    'Get-AzureRmVirtualHub',
+    'Set-AzureRmVirtualHub',
+    'Remove-AzureRmVirtualHub',
+    'New-AzureRmVpnGateway',
+    'Get-AzureRmVpnGateway',
+    'Set-AzureRmVpnGateway',
+    'Remove-AzureRmVpnGateway',
+    'New-AzureRmVpnSite',
+    'Get-AzureRmVpnSite',
+    'Set-AzureRmVpnSite', 
+    'Remove-AzureRmVpnSite',
+    'New-AzureRmVpnConnection', 
+    'Get-AzureRmVpnConnection', 
+    'Set-AzureRmVpnConnection', 
+    'Remove-AzureRmVpnConnection', 
+    'New-AzureRmHubVirtualNetworkConnection', 
+    'Get-AzureRmHubVirtualNetworkConnection', 
+    'Set-AzureRmHubVirtualNetworkConnection', 
+    'Remove-AzureRmHubVirtualNetworkConnection', 
+    'Get-AzureRmVirtualWanVpnSitesConfiguration'
+
 
 # Variables to export from this module
 # VariablesToExport = @()

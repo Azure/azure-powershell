@@ -53,26 +53,28 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Alias("VirtualWan")]
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVirtualWanObject,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The virtual wan object to be modified")]
         [ValidateNotNullOrEmpty]
-        public PSVirtualWan VirtualWan { get; set; }
+        public PSVirtualWan InputObject { get; set; }
 
+        [Alias("VirtualWanId")]
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Azure resource ID of the VirtualWan to be modified.")]
         [ValidateNotNullOrEmpty]
-        public string VirtualWanId { get; set; }
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of PSP2SVpnServerConfigurations that are associated with this VirtualWan.")]
-        public List<PSP2SVpnServerConfiguration> P2SVpnServerConfiguration { get; set; }
+        public PSP2SVpnServerConfiguration[] P2SVpnServerConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -92,14 +94,16 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+	    base.Execute();
+
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanObject))
             {
-                Name = VirtualWan.Name;
-                ResourceGroupName = VirtualWan.ResourceGroupName;
+                Name = InputObject.Name;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanResourceId))
             {
-                var parsedResourceId = new ResourceIdentifier(VirtualWanId);
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
                 Name = parsedResourceId.ResourceName;
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
             }
@@ -113,7 +117,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Modify the P2SVpnServerConfigurations
-            existingVirtualWan.P2SVpnServerConfigurations = this.P2SVpnServerConfiguration;
+            existingVirtualWan.P2SVpnServerConfigurations = new List<PSP2SVpnServerConfiguration>(this.P2SVpnServerConfiguration);
 
             ConfirmAction(
                                 this.Force.IsPresent,

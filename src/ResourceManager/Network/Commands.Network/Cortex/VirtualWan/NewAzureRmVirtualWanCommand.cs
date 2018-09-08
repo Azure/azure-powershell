@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of PSP2SVpnServerConfigurations that are associated with this VirtualWan.")]
-        public List<PSP2SVpnServerConfiguration> P2SVpnServerConfiguration { get; set; }
+        public PSP2SVpnServerConfiguration[] P2SVpnServerConfiguration { get; set; }
 
         [Parameter(
             Mandatory = true,

@@ -58,20 +58,22 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ParentResourceName { get; set; }
 
+        [Alias("P2SVpnServerConfigurationId")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationResourceId,
             HelpMessage = "The resource id of the P2SVpnServerConfiguration object to delete.")]
         [ValidateNotNullOrEmpty]
-        public string P2SVpnServerConfigurationId { get; set; }
+        public string ResourceId { get; set; }
 
+        [Alias("P2SVpnServerConfiguration")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationObject,
             HelpMessage = "The P2SVpnServerConfiguration object to update.")]
-        public PSP2SVpnServerConfiguration P2SVpnServerConfiguration { get; set; }
+        public PSP2SVpnServerConfiguration InputObject { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -107,16 +109,16 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnServerConfigurationObject, StringComparison.OrdinalIgnoreCase))
                 {
-                    this.P2SVpnServerConfigurationId = this.P2SVpnServerConfiguration.Id;
+                    this.ResourceId = this.InputObject.Id;
                 }
 
                 //// At this point, the resource id should not be null. If it is, customer did not specify a valid resource to modify.
-                if (string.IsNullOrWhiteSpace(this.P2SVpnServerConfigurationId))
+                if (string.IsNullOrWhiteSpace(this.ResourceId))
                 {
                     throw new PSArgumentException("No P2SVpnServerConfiguration specified. Nothing will be modified.");
                 }
 
-                var parsedResourceId = new ResourceIdentifier(this.P2SVpnServerConfigurationId);
+                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
                 this.Name = parsedResourceId.ResourceName;

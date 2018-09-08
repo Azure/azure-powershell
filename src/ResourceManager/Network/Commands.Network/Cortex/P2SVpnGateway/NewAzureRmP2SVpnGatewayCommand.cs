@@ -49,7 +49,7 @@
         [Parameter(
             Mandatory = false,
             HelpMessage = "The scale unit for this P2SVpnGateway.")]
-        public uint P2SVpnGatewayScaleUnit { get; set; }
+        public uint VpnGatewayScaleUnit { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -82,7 +82,7 @@
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "P2S VpnClient AddressPool for this P2SVpnGateway.")]
         [ValidateNotNullOrEmpty]
-        public List<string> VpnClientAddressPool { get; set; }
+        public string[] VpnClientAddressPool { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -140,14 +140,14 @@
             else
             {
                 p2sVpnGateway.VpnClientAddressPool = new PSAddressSpace();
-                p2sVpnGateway.VpnClientAddressPool.AddressPrefixes = this.VpnClientAddressPool;
+                p2sVpnGateway.VpnClientAddressPool.AddressPrefixes = new List<string>(this.VpnClientAddressPool);
             }
 
             //// Scale unit, if specified
             p2sVpnGateway.VpnGatewayScaleUnit = 0;
-            if (this.P2SVpnGatewayScaleUnit > 0)
+            if (this.VpnGatewayScaleUnit > 0)
             {
-                p2sVpnGateway.VpnGatewayScaleUnit = Convert.ToInt32(this.P2SVpnGatewayScaleUnit);
+                p2sVpnGateway.VpnGatewayScaleUnit = Convert.ToInt32(this.VpnGatewayScaleUnit);
             }
 
             bool shouldProcess = this.Force.IsPresent;

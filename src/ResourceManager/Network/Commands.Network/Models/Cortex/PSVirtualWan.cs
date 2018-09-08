@@ -19,10 +19,17 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
 
     public class PSVirtualWan : PSTopLevelResource
-    {
+    {        
+        [Ps1Xml(Label = "Number of attached P2SVpnServerConfigurations", Target = ViewControl.Table, ScriptBlock = "$_.Count")]
         public List<PSP2SVpnServerConfiguration> P2SVpnServerConfigurations { get; set; }
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
+
+        [JsonIgnore]
+        public string P2SVpnServerConfigurationsText
+        {
+            get { return JsonConvert.SerializeObject(P2SVpnServerConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }

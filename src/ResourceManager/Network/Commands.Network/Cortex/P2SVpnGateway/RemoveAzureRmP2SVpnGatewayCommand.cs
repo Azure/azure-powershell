@@ -37,14 +37,16 @@
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Alias("P2SVpnGateway")]
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayObject,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The P2SVpnGateway object to be deleted.")]
         [ValidateNotNullOrEmpty]
-        public PSP2SVpnGateway P2SVpnGateway { get; set; }
+        public PSP2SVpnGateway InputObject { get; set; }
 
+        [Alias("P2SVpnGatewayId")]
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayResourceId,
             Mandatory = true,
@@ -52,7 +54,7 @@
             HelpMessage = "The Azure resource ID for the p2sVpnGateway to be deleted.")]
         [ResourceIdCompleter("Microsoft.Network/p2sVpnGateways")]
         [ValidateNotNullOrEmpty]
-        public string P2SVpnGatewayId { get; set; }
+        public string ResourceId { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -63,12 +65,12 @@
         {
             if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnGatewayObject, StringComparison.OrdinalIgnoreCase))
             {
-                Name = P2SVpnGateway.Name;
-                ResourceGroupName = P2SVpnGateway.ResourceGroupName;
+                Name = InputObject.Name;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnGatewayResourceId, StringComparison.OrdinalIgnoreCase))
             {
-                var parsedResourceId = new ResourceIdentifier(P2SVpnGatewayId);
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
                 Name = parsedResourceId.ResourceName;
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
             }

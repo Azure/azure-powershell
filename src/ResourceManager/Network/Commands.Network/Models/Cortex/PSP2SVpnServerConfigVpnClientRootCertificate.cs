@@ -26,7 +26,5 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         [Ps1Xml(Label = "PublicCertData", Target = ViewControl.Table)]
         public string PublicCertData { get; set; }
-
-        public string Type { get; set; }
     }
 }

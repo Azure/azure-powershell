@@ -45,8 +45,9 @@
             ValueFromPipeline = true,
             HelpMessage = "The P2SVpnGateway object to be modified")]
         [ValidateNotNullOrEmpty]
-        public PSP2SVpnGateway P2SVpnGateway { get; set; }
+        public PSP2SVpnGateway InputObject { get; set; }
 
+        [Alias("P2SVpnGatewayId")]
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayResourceId,
             Mandatory = true,
@@ -54,7 +55,7 @@
             HelpMessage = "The Azure resource ID of the P2SVpnGateway to be modified.")]
         [ResourceIdCompleter("Microsoft.Network/p2sVpnGateways")]
         [ValidateNotNullOrEmpty]
-        public string P2SVpnGatewayId { get; set; }
+        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -66,12 +67,12 @@
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "P2S VpnClient AddressPool for this P2SVpnGateway.")]
         [ValidateNotNullOrEmpty]
-        public List<string> VpnClientAddressPool { get; set; }
+        public string[] VpnClientAddressPool { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The scale unit for this P2SVpnGateway.")]
-        public uint P2SVpnGatewayScaleUnit { get; set; }
+        public uint VpnGatewayScaleUnit { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -91,14 +92,16 @@
 
         public override void Execute()
         {
+            base.Execute();
+
             if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnGatewayObject))
             {
-                Name = P2SVpnGateway.Name;
-                ResourceGroupName = P2SVpnGateway.ResourceGroupName;
+                Name = InputObject.Name;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnGatewayResourceId))
             {
-                var parsedResourceId = new ResourceIdentifier(P2SVpnGatewayId);
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
                 Name = parsedResourceId.ResourceName;
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
             }
@@ -112,9 +115,9 @@
             }
 
             //// Modify scale unit if specified
-            if (this.P2SVpnGatewayScaleUnit > 0)
+            if (this.VpnGatewayScaleUnit > 0)
             {
-                existingP2SVpnGateway.VpnGatewayScaleUnit = Convert.ToInt32(this.P2SVpnGatewayScaleUnit);
+                existingP2SVpnGateway.VpnGatewayScaleUnit = Convert.ToInt32(this.VpnGatewayScaleUnit);
             }
 
             //// Update P2SVpnServerConfiguration to be attached
@@ -124,7 +127,7 @@
             if (this.VpnClientAddressPool != null)
             {
                 existingP2SVpnGateway.VpnClientAddressPool = new PSAddressSpace();
-                existingP2SVpnGateway.VpnClientAddressPool.AddressPrefixes = this.VpnClientAddressPool;
+                existingP2SVpnGateway.VpnClientAddressPool.AddressPrefixes = new List<string>(this.VpnClientAddressPool);
             }
 
             ConfirmAction(
