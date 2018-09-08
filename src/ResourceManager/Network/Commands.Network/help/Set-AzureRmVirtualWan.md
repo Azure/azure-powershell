@@ -36,6 +36,8 @@ Set-AzureRmVirtualWan -ResourceId <String> [-AllowVnetToVnetTraffic <Boolean>]
 ## DESCRIPTION
 Updates an Azure Virtual WAN.
 
+## EXAMPLES
+
 ### Example 1
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
