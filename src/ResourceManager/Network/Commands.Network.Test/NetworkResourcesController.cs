@@ -53,22 +53,6 @@ namespace Commands.Network.Test
 
         public NetworkResourcesController()
         {
-#if NET472
-            string libDirectory = null;
-            DirectoryInfo currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-            while (!string.Equals("src", currentDirectory.Name, StringComparison.OrdinalIgnoreCase) && currentDirectory.Exists)
-            {
-                currentDirectory = Directory.GetParent(currentDirectory.FullName);
-            }
-
-            if (string.Equals("src", currentDirectory.Name, StringComparison.OrdinalIgnoreCase))
-            {
-                libDirectory = Path.Combine(currentDirectory.FullName, "lib");
-            }
-
-            AppDomain.CurrentDomain.Load(File.ReadAllBytes(Path.Combine(libDirectory, "Newtonsoft.Json.9.dll")));
-            AppDomain.CurrentDomain.Load(File.ReadAllBytes(Path.Combine(libDirectory, "Newtonsoft.Json.10.dll")));
-#endif
             _helper = new EnvironmentSetupHelper();
         }
 

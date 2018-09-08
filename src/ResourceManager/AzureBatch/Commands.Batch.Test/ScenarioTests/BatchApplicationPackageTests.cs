@@ -28,22 +28,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         public BatchApplicationPackageTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-#if NET472
-            string libDirectory = null;
-            System.IO.DirectoryInfo currentDirectory = new System.IO.DirectoryInfo(System.AppDomain.CurrentDomain.BaseDirectory);
-            while (!string.Equals("src", currentDirectory.Name, System.StringComparison.OrdinalIgnoreCase) && currentDirectory.Exists)
-            {
-                currentDirectory = System.IO.Directory.GetParent(currentDirectory.FullName);
-            }
-
-            if (string.Equals("src", currentDirectory.Name, System.StringComparison.OrdinalIgnoreCase))
-            {
-                libDirectory = System.IO.Path.Combine(currentDirectory.FullName, "lib");
-            }
-
-            System.AppDomain.CurrentDomain.Load(System.IO.File.ReadAllBytes(System.IO.Path.Combine(libDirectory, "Newtonsoft.Json.9.dll")));
-            System.AppDomain.CurrentDomain.Load(System.IO.File.ReadAllBytes(System.IO.Path.Combine(libDirectory, "Newtonsoft.Json.10.dll")));
-#endif
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
         }

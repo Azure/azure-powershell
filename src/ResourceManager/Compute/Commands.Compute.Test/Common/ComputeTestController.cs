@@ -66,22 +66,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public ComputeTestController()
         {
-#if NET472
-            string libDirectory = null;
-            DirectoryInfo currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-            while (!string.Equals("src", currentDirectory.Name, StringComparison.OrdinalIgnoreCase) && currentDirectory.Exists)
-            {
-                currentDirectory = Directory.GetParent(currentDirectory.FullName);
-            }
-
-            if (string.Equals("src", currentDirectory.Name, StringComparison.OrdinalIgnoreCase))
-            {
-                libDirectory = Path.Combine(currentDirectory.FullName, "lib");
-            }
-
-            AppDomain.CurrentDomain.Load(File.ReadAllBytes(Path.Combine(libDirectory, "Newtonsoft.Json.9.dll")));
-            AppDomain.CurrentDomain.Load(File.ReadAllBytes(Path.Combine(libDirectory, "Newtonsoft.Json.10.dll")));
-#endif
             _helper = new EnvironmentSetupHelper();
         }
 
@@ -128,20 +112,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10");
             providersToIgnore.Add("Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-09-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
-
-            string libDirectory = null;
-            DirectoryInfo currentDirectory = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-            while (!string.Equals("src", currentDirectory.Name, StringComparison.OrdinalIgnoreCase) && currentDirectory.Exists)
-            {
-                currentDirectory = Directory.GetParent(currentDirectory.FullName);
-            }
-
-            if (string.Equals("src", currentDirectory.Name, StringComparison.OrdinalIgnoreCase))
-            {
-                libDirectory = Path.Combine(currentDirectory.FullName, "lib");
-            }
-
-
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
@@ -171,13 +141,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 try
                 {
                     var psScripts = scriptBuilder?.Invoke();
-#if NET472
-                    List<string> scripts = new List<string>();
-                    scripts.Add($"[System.AppDomain]::CurrentDomain.Load([System.IO.File]::ReadAllBytes('{Path.Combine(libDirectory, "Newtonsoft.Json.9.dll")}'))");
-                        scripts.Add($"[System.AppDomain]::CurrentDomain.Load([System.IO.File]::ReadAllBytes('{Path.Combine(libDirectory, "Newtonsoft.Json.10.dll")}'))");
-                        scripts.AddRange(psScripts);
-                        psScripts = scripts.ToArray();
-#endif
                     if (psScripts != null)
                     {
                         _helper.RunPowerShellTest(psScripts);
