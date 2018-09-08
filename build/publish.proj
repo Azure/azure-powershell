@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="All" InitialTargets="CheckApiKey" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="All" InitialTargets="CheckRequiredParameters" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Root>$(MSBuildThisFileDirectory)..\</Root>
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
@@ -7,10 +7,14 @@
     <Tools>$(Root)tools\</Tools>
     <NuGet>$(Tools)NuGet-4.7.0\nuget.exe</NuGet>
     <PackDir>$(Artifacts)Package\$(Configuration)\</PackDir>
+    <PowerShell>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShell>
   </PropertyGroup>
 
-  <Target Name="CheckApiKey">
-    <Error Text="ApiKey is not assigned a value!" Condition="'$(ApiKey)' == ''" />
+  <Target Name="CheckRequiredParameters">
+    <Error Text="NuGetApiKey is not assigned a value!" Condition="'$(NuGetApiKey)' == ''" />
+    <Error Text="GitHubAccessToken is not assigned a value!" Condition="'$(GitHubAccessToken)' == ''" />
+    <Error Text="ReleaseVersion is not assigned a value!" Condition="'$(ReleaseVersion)' == ''" />
+    <Error Text="CommitId is not assigned a value!" Condition="'$(CommitId)' == ''" />
   </Target>
 
   <Target Name="All">
@@ -18,6 +22,20 @@
     <ItemGroup>
       <PackagePaths Include="$(PackDir)*.nupkg" />
     </ItemGroup>
-    <Exec Command="$(NuGet) push %(PackagePaths.FullPath) -ApiKey $(ApiKey) -Source https://www.myget.org/F/azure-powershell/api/v2/package" />
+    <!-- <Exec Command="$(NuGet) push %(PackagePaths.FullPath) -ApiKey $(NuGetApiKey) -Source https://www.myget.org/F/azure-powershell/api/v2/package" /> -->
+    <PropertyGroup>
+      <ReleaseCommand>Invoke-WebRequest `
+    -Uri 'https://api.github.com/repos/Azure/azure-powershell-common/releases' `
+    -Headers @{ 'Authorization' = 'Token $(GitHubAccessToken)' } `
+    -Method Post `
+    -Body @{ 'tag_name' = $(ReleaseVersion); `
+        'target_commitish' = $(CommitId); `
+        'name' = $(ReleaseVersion); `
+        'body' = 'Azure PowerShell Common version $(ReleaseVersion)'; `
+        'draft' = $false; `
+        'prerelease' = $false }</ReleaseCommand>
+    </PropertyGroup>
+    <Message Importance="high" Text="Publish: Creating GitHub release" />
+    <Exec Command="$(PowerShell) -NonInteractive -NoLogo -NoProfile -Command &quot;$(ReleaseCommand)&quot;" />
   </Target>
 </Project>
