@@ -2911,10 +2911,6 @@
             <Alignment>Left</Alignment>
             <Label>Provisioning State</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>Internet Security Enabled</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -2926,10 +2922,6 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>EnableInternetSecurity</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -2987,6 +2979,14 @@
             <Alignment>Left</Alignment>
             <Label>Provisioning State</Label>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AllowVnetToVnetTraffic</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>AllowBranchToBranchTraffic</Label>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -2994,6 +2994,14 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AllowVnetToVnetTraffic</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>AllowBranchToBranchTraffic</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -3061,10 +3069,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Internet Security Enabled</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
             <Label>Provisioning State</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -3098,10 +3102,6 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>EnableRateLimiting</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>EnableInternetSecurity</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
@@ -3173,10 +3173,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>IsSecuritySite</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
             <Label>Provisioning State</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -3194,10 +3190,6 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <ScriptBlock>$_.VirtualWan.Id</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>IsSecuritySite</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>

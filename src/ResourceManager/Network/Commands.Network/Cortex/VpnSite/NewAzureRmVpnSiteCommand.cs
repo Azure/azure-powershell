@@ -127,11 +127,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Is this VpnSite a security site")]
-        public SwitchParameter IsSecuritySite { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -148,7 +143,6 @@ namespace Microsoft.Azure.Commands.Network
             PSVpnSite vpnSiteToCreate = new PSVpnSite();
             vpnSiteToCreate.ResourceGroupName = this.ResourceGroupName;
             vpnSiteToCreate.Name = this.Name;
-            vpnSiteToCreate.IsSecuritySite = this.IsSecuritySite.IsPresent;
             vpnSiteToCreate.Location = this.Location;
 
             //// Resolve the virtual wan

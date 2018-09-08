@@ -44,6 +44,7 @@ PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
 PS C:\> Set-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -AllowBranchToBranchTraffic $true -AllowVnetToVnetTraffic $false
 ```
+
  The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN in that resource group in Azure. VirtualWan is updated with new properties.
 
 ## PARAMETERS

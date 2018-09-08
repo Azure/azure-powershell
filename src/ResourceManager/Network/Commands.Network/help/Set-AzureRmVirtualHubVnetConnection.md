@@ -15,20 +15,19 @@ Updates a VirtualHubVnetConnection to an intended goal state.
 ### ByHubVirtualNetworkConnectionName (Default)
 ```
 Set-AzureRmVirtualHubVnetConnection -Name <String> -ResourceGroupName <String> [-ParentResourceName <String>]
- [-EnableInternetSecurity] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByHubVirtualNetworkConnectionObject
 ```
-Set-AzureRmVirtualHubVnetConnection [-InputObject <PSHubVirtualNetworkConnection>] [-EnableInternetSecurity]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmVirtualHubVnetConnection [-InputObject <PSHubVirtualNetworkConnection>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByHubVirtualNetworkConnectionResourceId
 ```
-Set-AzureRmVirtualHubVnetConnection [-ResourceId <String>] [-EnableInternetSecurity] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmVirtualHubVnetConnection [-ResourceId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +45,7 @@ PS C:\> $remoteVirtualNetwork = New-AzureRmVirtualNetwork -Name MyVirtualNetwork
 PS C:\> New-AzureRmVirtualWan -ResourceGroupName TestResourceGroup -Name testvwan -Location?
 PS C:\> New-AzureRmVirtualHub -Name testvhub <fill in> -AddressSpaceObject <PSAddressSpace>
 PS C:\> $hubVnetConnection = New-AzureRmVirtualHubVnetConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection -RemoteVirtualNetwork $remoteVirtualNetwork
-PS C:\> Set-AzureRmVirtualHubVnetConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection -EnableInternetSecurity
+PS C:\> Set-AzureRmVirtualHubVnetConnection -ResourceGroupName TestResourceGroup -VirtualHubName testvhub -Name testvnetconnection
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in Central US in that resource group in Azure. A Virtual Network Connection will be created thereafter which will peer the Virtual Network to the Virtual Hub
@@ -77,21 +76,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableInternetSecurity
-Enable internet security for this connection.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

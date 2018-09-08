@@ -125,11 +125,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Enable internet security for this connection")]
-        public SwitchParameter EnableInternetSecurity { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -187,8 +182,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 EnableBgp = this.EnableBgp.IsPresent,
-                EnableRateLimiting = this.EnableRateLimiting.IsPresent,
-                EnableInternetSecurity = this.EnableInternetSecurity.IsPresent
+                EnableRateLimiting = this.EnableRateLimiting.IsPresent
             };
 
             //// Resolve the VpnSite reference

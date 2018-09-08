@@ -31,9 +31,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Virtual WAN Id", Target = ViewControl.Table, ScriptBlock = "$_.VirtualWan.Id")]
         public PSResourceId VirtualWan { get; set; }
 
-        [Ps1Xml(Label = "IsSecuritySite", Target = ViewControl.Table)]
-        public bool IsSecuritySite { get; set; }
-
         public string SiteKey { get; set; }
 
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]

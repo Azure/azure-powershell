@@ -104,11 +104,6 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Enable internet security for this connection")]
-        public SwitchParameter EnableInternetSecurity { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -166,7 +161,6 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
             vpnConnectionToModify.EnableBgp = this.EnableBgp.IsPresent;
             vpnConnectionToModify.EnableRateLimiting = this.EnableRateLimiting.IsPresent;
-            vpnConnectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.IsPresent;
 
             if (this.IpSecPolicy != null)
             {

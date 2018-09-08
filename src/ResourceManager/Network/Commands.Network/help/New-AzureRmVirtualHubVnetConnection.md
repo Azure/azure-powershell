@@ -15,22 +15,22 @@ The New-AzureRmVirtualHubVnetConnection cmdlet creates a HubVirtualNetworkConnec
 ### ByVirtualHubName (Default)
 ```
 New-AzureRmVirtualHubVnetConnection -Name <String> -ResourceGroupName <String> -ParentResourceName <String>
- [-RemoteVirtualNetwork <PSVirtualNetwork>] [-RemoteVirtualNetworkId <String>] [-EnableInternetSecurity]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RemoteVirtualNetwork <PSVirtualNetwork>] [-RemoteVirtualNetworkId <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
 New-AzureRmVirtualHubVnetConnection -Name <String> -ParentObject <PSVirtualHub>
- [-RemoteVirtualNetwork <PSVirtualNetwork>] [-RemoteVirtualNetworkId <String>] [-EnableInternetSecurity]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RemoteVirtualNetwork <PSVirtualNetwork>] [-RemoteVirtualNetworkId <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
 New-AzureRmVirtualHubVnetConnection -Name <String> -ParentResourceId <String>
- [-RemoteVirtualNetwork <PSVirtualNetwork>] [-RemoteVirtualNetworkId <String>] [-EnableInternetSecurity]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RemoteVirtualNetwork <PSVirtualNetwork>] [-RemoteVirtualNetworkId <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,21 +76,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableInternetSecurity
-Enable internet security for this connection.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
