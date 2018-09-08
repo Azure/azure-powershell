@@ -22,24 +22,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class JobTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        static JobTests()
-        {
-            string libDirectory = null;
-            System.IO.DirectoryInfo currentDirectory = new System.IO.DirectoryInfo(System.AppDomain.CurrentDomain.BaseDirectory);
-            while (!string.Equals("src", currentDirectory.Name, System.StringComparison.OrdinalIgnoreCase) && currentDirectory.Exists)
-            {
-                currentDirectory = System.IO.Directory.GetParent(currentDirectory.FullName);
-            }
-
-            if (string.Equals("src", currentDirectory.Name, System.StringComparison.OrdinalIgnoreCase))
-            {
-                libDirectory = System.IO.Path.Combine(currentDirectory.FullName, "lib");
-            }
-
-            System.AppDomain.CurrentDomain.Load(System.IO.File.ReadAllBytes(System.IO.Path.Combine(libDirectory, "Newtonsoft.Json.9.dll")));
-            System.AppDomain.CurrentDomain.Load(System.IO.File.ReadAllBytes(System.IO.Path.Combine(libDirectory, "Newtonsoft.Json.10.dll")));
-        }
-
         public XunitTracingInterceptor _logger;
 
         public JobTests(Xunit.Abstractions.ITestOutputHelper output)
