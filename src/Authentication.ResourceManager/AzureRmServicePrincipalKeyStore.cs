@@ -24,8 +24,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     /// Helper class to store service principal keys and retrieve them
     /// from the Windows Credential Store.
     /// </summary>
-    public class ServicePrincipalKeyStore : IServicePrincipalKeyStore
+    public class AzureRmServicePrincipalKeyStore : IServicePrincipalKeyStore
     {
+        public const string Name = "ServicePrincipalKeyStore";
         private const string keyStoreUserName = "PowerShellServicePrincipalKey";
         private const string targetNamePrefix = "AzureSession:target=";
 

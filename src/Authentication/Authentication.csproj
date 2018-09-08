@@ -76,6 +76,7 @@
     <Compile Include="Factories\ClientFactory.cs" />
     <Compile Include="HttpClientOperationsFactory.cs" />
     <Compile Include="KeyStore\IServicePrincipalKeyStore.cs" />
+    <Compile Include="KeyStore\ServicePrincipalKeyStore.cs" />
     <Compile Include="Utilities\HttpClientWithRetry.cs" />
     <Compile Include="ICacheable.cs" />
     <Compile Include="IHttpOperations.cs" />

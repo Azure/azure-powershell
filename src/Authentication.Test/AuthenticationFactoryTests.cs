@@ -76,7 +76,7 @@ namespace Common.Authentication.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
        public void VerifyValidateAuthorityFalseForOnPremise()
         {
-            AzureSessionInitializer.InitializeAzureSession(new ServicePrincipalKeyStore());
+            AzureSessionInitializer.InitializeAzureSession();
             var authFactory = new AuthenticationFactory
             {
                 TokenProvider = new MockAccessTokenProvider("testtoken", "testuser")

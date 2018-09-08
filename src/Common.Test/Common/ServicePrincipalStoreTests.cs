@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public ServicePrincipalStoreTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-            _keyStore = new ServicePrincipalKeyStore();
+            _keyStore = new AzureRmServicePrincipalKeyStore();
         }
 
         [Fact]

@@ -79,7 +79,7 @@
     <Compile Include="Serialization\LegacyAzureRMProfile.cs" />
     <Compile Include="Serialization\LegacyAzureTenant.cs" />
     <Compile Include="Serialization\ModelConversionExtensions.cs" />
-    <Compile Include="ServicePrincipalKeyStore.cs" />
+    <Compile Include="AzureRmServicePrincipalKeyStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

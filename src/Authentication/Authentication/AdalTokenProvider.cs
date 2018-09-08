@@ -41,12 +41,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public AdalTokenProvider(IWin32Window parentWindow)
         {
             this.userTokenProvider = new UserTokenProvider(parentWindow);
+            this.servicePrincipalTokenProvider = new ServicePrincipalTokenProvider();
         }
 
-        public AdalTokenProvider(IServicePrincipalKeyStore keyStore)
+        public AdalTokenProvider(Func<IServicePrincipalKeyStore> getKeyStore)
         {
             this.userTokenProvider = new UserTokenProvider(new ConsoleParentWindow());
-            this.servicePrincipalTokenProvider = new ServicePrincipalTokenProvider(keyStore);
+            this.servicePrincipalTokenProvider = new ServicePrincipalTokenProvider(getKeyStore);
         }
 
         public IAccessToken GetAccessToken(
