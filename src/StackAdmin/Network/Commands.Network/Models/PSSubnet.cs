@@ -14,10 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-    using System.Runtime.CompilerServices;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSSubnet : PSChildResource
     {
@@ -28,10 +26,16 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSIPConfiguration> IpConfigurations { get; set; }
 
         [JsonProperty(Order = 1)]
+        public List<PSResourceNavigationLink> ResourceNavigationLinks { get; set; }
+
+        [JsonProperty(Order = 1)]
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 
         [JsonProperty(Order = 1)]
         public PSRouteTable RouteTable { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public List<PSServiceEndpoint> ServiceEndpoints { get; set; }
 
         [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
@@ -40,6 +44,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string IpConfigurationsText
         {
             get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ResourceNavigationLinksText
+        {
+            get { return JsonConvert.SerializeObject(ResourceNavigationLinks, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
@@ -57,6 +67,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool ShouldSerializeIpConfigurations()
         {
             return !string.IsNullOrEmpty(this.Name);
+        }
+
+         [JsonIgnore]
+        public string ServiceEndpointText
+        {
+            get { return JsonConvert.SerializeObject(ServiceEndpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

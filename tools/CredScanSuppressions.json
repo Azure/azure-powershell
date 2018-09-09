@@ -182,45 +182,45 @@
             "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfileChina.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
-		{
+		    {
             "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\\TestTroubleshoot.json",
             "_justification": "Legitimate test session record, resources are deleted"
         },
         {
             "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestFirewallRule.json",
-            "_justification": "Legitimate test session record, rules are deleted"
+            "_justification": "Legitimate test session record, keys are deleted"
         },
         {
             "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestGeoReplication.json",
-            "_justification": "Legitimate test session record, rules are deleted"
+            "_justification": "Legitimate test session record, keys are deleted"
         },
         {
             "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestDiagnosticOperations.json",
-            "_justification": "Legitimate test session record, rules are deleted"
+            "_justification": "Legitimate test session record, keys are deleted"
         },
         {
             "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestImportExportReboot.json",
-            "_justification": "Legitimate test session record, rules are deleted"
+            "_justification": "Legitimate test session record, keys are deleted"
         },
         {
             "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestRedisCache.json",
-            "_justification": "Legitimate test session record, rules are deleted"
+            "_justification": "Legitimate test session record, keys are deleted"
         },
         {
             "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestRedisCacheClustering.json",
-            "_justification": "Legitimate test session record, rules are deleted"
+            "_justification": "Legitimate test session record, keys are deleted"
         },
         {
             "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestRedisCachePatchSchedules.json",
-            "_justification": "Legitimate test session record, rules are deleted"
+            "_justification": "Legitimate test session record, keys are deleted"
         },
         {
             "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestRedisCachePipeline.json",
-            "_justification": "Legitimate test session record, rules are deleted"
+            "_justification": "Legitimate test session record, keys are deleted"
         },
         {
             "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestZones.json",
-            "_justification": "Legitimate test session record, rules are deleted"
+            "_justification": "Legitimate test session record, keys are deleted"
         },
         {
             "file": "\\src\\StackAdmin\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagedApplicationTests\\TestManagedApplicationCRUD.json",
@@ -233,6 +233,86 @@
         {
             "file": "\\src\\StackAdmin\\Resources\\Commands.Resources.Test\\Models.ResourceGroups\\ResourceClientTests.cs",
             "_justification": "False positive, just a mention of the literal key"
+        },        
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestPipingSetStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestPipingGetAccountToGetKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestGetAzureStorageAccountKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestNewAzureStorageAccountKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestNewAzureStorageAccountKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestNewAzureStorageAccountKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestNewAzureStorageAccountKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestNewAzureStorageAccountKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestSetCurrentStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\ScenarioTests\\ApplicationGatewayTests.ps1", 
+            "_justification": "No secrets, use of test password"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\ScenarioTests\\VirtualNetworkGatewayTests.ps1", 
+            "_justification": "No secrets, use of test password"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\\TestApplicationGatewayCRUD2.json", 
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\\TestTroubleshoot.json", 
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\\TestResourceNavigationLinksOnSubnetCRUD.json", 
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\\TestVirtualNetworkGatewayP2SVpnProfile.json", 
+            "_justification": "Legitimate test session record"
         },
         {
             "file": "src\\StackAdmin\\Azs.Backup.Admin\\Tests\\src\\Common.ps1",
