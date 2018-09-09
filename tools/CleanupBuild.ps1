@@ -2,7 +2,7 @@
 Param
 (
     [Parameter()]
-    [string]$BuildConfig
+    [string]$BuildConfig ="Debug"
 )
 
 $output = Join-Path (Get-Item $PSScriptRoot).Parent.FullName "src\Package\$BuildConfig"
@@ -53,12 +53,13 @@ foreach($RMPath in $resourceManagerPaths)
         
         $acceptedDlls = @()
         $acceptedDlls += $ModuleMetadata.NestedModules
-        $acceptedDlls += $ModuleMetadata.RequiredAssemblies
-
-        $acceptedDlls = $acceptedDlls | where { $_ -ne $null } | % { $_.Substring(2) }
+        foreach($assembly in $ModuleMetadata.RequiredAssemblies)
+        {
+            $acceptedDlls += $assembly.Split("\")[-1]
+        }
         
         Write-Verbose "Removing redundant dlls in $($RMFolder.Name)"
-        $removedDlls = Get-ChildItem -Path $RMFolder.FullName -Filter "*.dll" | where { $acceptedDlls -notcontains $_.Name}
+        $removedDlls = Get-ChildItem -Path $RMFolder.FullName -Filter "*.dll" -Recurse | where { $acceptedDlls -notcontains $_.Name}
         $removedDlls | % { Write-Verbose "Removing $($_.Name)"; Remove-Item $_.FullName -Force }
 
         Write-Verbose "Removing scripts and psd1 in $($RMFolder.FullName)"
