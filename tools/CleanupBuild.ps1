@@ -52,7 +52,14 @@ foreach($RMPath in $resourceManagerPaths)
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $psd1.DirectoryName -FileName $psd1.Name
         
         $acceptedDlls = @()
-        $acceptedDlls += $ModuleMetadata.NestedModules
+
+        # NestedModule Assemblies may have a folder path, just getting the dll name alone
+        foreach($cmdAssembly in $ModuleMetadata.NestedModules)
+        {
+            $acceptedDlls += $cmdAssembly.Split("\")[-1]
+        }
+
+        # RequiredAssmeblies may have a folder path, just getting the dll name alone
         foreach($assembly in $ModuleMetadata.RequiredAssemblies)
         {
             $acceptedDlls += $assembly.Split("\")[-1]
