@@ -50,6 +50,8 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     Update a compute quota.
 
 #>
+using module '..\CustomObjects\ComputeQuotaObject.psm1'
+
 function Set-AzsComputeQuota {
     [OutputType([ComputeQuotaObject])]
     [CmdletBinding(DefaultParameterSetName = 'Update', SupportsShouldProcess = $true)]
