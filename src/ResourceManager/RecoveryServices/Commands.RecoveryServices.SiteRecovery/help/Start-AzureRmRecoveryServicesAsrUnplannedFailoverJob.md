@@ -84,6 +84,7 @@ Accept wildcard characters: False
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
+
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
@@ -99,6 +100,7 @@ Accept wildcard characters: False
 ### -Direction
 Specifies the failover direction.
 The acceptable values for this parameter are:
+
 - PrimaryToRecovery
 - RecoveryToPrimary
 
@@ -167,7 +169,7 @@ Specifies the recovery tag to failover to.
 Type: System.String
 Parameter Sets: ByRPObject
 Aliases:
-Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent
+Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent, Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent
 
 Required: False
 Position: Named
@@ -180,7 +182,7 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: ByRPIObjectWithRecoveryTag
 Aliases:
-Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent
+Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent, Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent
 
 Required: True
 Position: Named
@@ -240,10 +242,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan
-Parameters: RecoveryPlan (ByValue)
-
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
-Parameters: ReplicationProtectedItem (ByValue)
+Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
 
 ## OUTPUTS
 

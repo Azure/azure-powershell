@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayBackendAddressPool"), OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), 
+        OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
     public class RemoveAzureApplicationGatewayBackendAddressPoolCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -35,17 +36,20 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            var backendAddressPool = this.ApplicationGateway.BackendAddressPools.SingleOrDefault
-                (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-            if (backendAddressPool != null)
+            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.RemoveResourceMessage))
             {
-                this.ApplicationGateway.BackendAddressPools.Remove(backendAddressPool);
-            }
+                base.ExecuteCmdlet();
 
-            WriteObject(this.ApplicationGateway);
+                var backendAddressPool = this.ApplicationGateway.BackendAddressPools.SingleOrDefault
+                    (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+                if (backendAddressPool != null)
+                {
+                    this.ApplicationGateway.BackendAddressPools.Remove(backendAddressPool);
+                }
+
+                WriteObject(this.ApplicationGateway);
+            }
         }
     }
 }

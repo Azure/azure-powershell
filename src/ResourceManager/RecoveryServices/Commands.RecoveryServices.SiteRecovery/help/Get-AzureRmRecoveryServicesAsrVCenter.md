@@ -127,14 +127,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
-Parameters: Fabric (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRvCenter
+### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRvCenter, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 

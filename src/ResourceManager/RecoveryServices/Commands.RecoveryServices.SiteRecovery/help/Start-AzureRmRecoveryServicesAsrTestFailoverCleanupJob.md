@@ -162,13 +162,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan
-Parameters: RecoveryPlan (ByValue)
-
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
-Parameters: ReplicationProtectedItem (ByValue)
+Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
 
 ## OUTPUTS
 
