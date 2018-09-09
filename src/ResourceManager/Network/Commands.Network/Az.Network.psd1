@@ -344,6 +344,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'Remove-AzureRmFirewall',
     'New-AzureRmFirewallApplicationRuleCollection',
     'New-AzureRmFirewallApplicationRule',
+    'New-AzureRmFirewallNatRuleCollection',
+    'New-AzureRmFirewallNatRule',
     'New-AzureRmFirewallNetworkRuleCollection',
     'New-AzureRmFirewallNetworkRule'
 
