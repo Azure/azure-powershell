@@ -55,5 +55,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(DestinationPorts, Formatting.Indented); }
         }
+
+        public void AddProtocol(string protocolType)
+        {
+            (Protocols ?? (Protocols = new List<string>())).Add(AzureFirewallNetworkRuleProtocolHelper.MapUserInputToNetworkProtocol(protocolType));
+        }
     }
 }

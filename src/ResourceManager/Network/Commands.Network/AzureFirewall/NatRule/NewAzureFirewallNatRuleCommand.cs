@@ -12,20 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmFirewallApplicationRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallApplicationRule))]
-    public class NewAzureFirewallApplicationRuleCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmFirewallNatRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallNatRule))]
+    public class NewAzureFirewallNatRuleCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the Application Rule")]
+            HelpMessage = "The name of the NAT Rule")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
@@ -36,43 +35,61 @@ namespace Microsoft.Azure.Commands.Network
         public string Description { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
         public List<string> SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The target FQDNs of the rule")]
+            HelpMessage = "The destination addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> TargetFqdn { get; set; }
+        public List<string> DestinationAddress { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The destination ports of the rule")]
+        [ValidateNotNullOrEmpty]
+        public List<string> DestinationPort { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "The protocols of the rule")]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            MNM.AzureFirewallNetworkRuleProtocol.Any,
+            MNM.AzureFirewallNetworkRuleProtocol.TCP,
+            MNM.AzureFirewallNetworkRuleProtocol.UDP,
+            IgnoreCase = false)]
         public List<string> Protocol { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The translated address for this NAT rule")]
+        [ValidateNotNullOrEmpty]
+        public string TranslatedAddress { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The translated port for this NAT rule")]
+        [ValidateNotNullOrEmpty]
+        public string TranslatedPort { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            var protocolsAsWeExpectThem = MapUserProtocolsToFirewallProtocols(Protocol);
-
-            var applicationRule = new PSAzureFirewallApplicationRule
+            var networkRule = new PSAzureFirewallNatRule
             {
                 Name = this.Name,
                 Description = this.Description,
+                Protocols = this.Protocol,
                 SourceAddresses = this.SourceAddress,
-                Protocols = protocolsAsWeExpectThem,
-                TargetFqdns = this.TargetFqdn
+                DestinationAddresses = this.DestinationAddress,
+                DestinationPorts = this.DestinationPort,
+                TranslatedAddress = this.TranslatedAddress,
+                TranslatedPort = this.TranslatedPort
             };
-            WriteObject(applicationRule);
-        }
-
-        private List<PSAzureFirewallApplicationRuleProtocol> MapUserProtocolsToFirewallProtocols(List<string> userProtocols)
-        {
-            return userProtocols.Select(PSAzureFirewallApplicationRuleProtocol.MapUserInputToApplicationRuleProtocol).ToList();
+            WriteObject(networkRule);
         }
     }
 }

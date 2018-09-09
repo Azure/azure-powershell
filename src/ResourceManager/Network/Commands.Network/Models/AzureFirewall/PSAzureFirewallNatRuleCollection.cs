@@ -20,13 +20,13 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallNetworkRuleCollection : PSAzureFirewallBaseRuleCollection
+    public class PSAzureFirewallNatRuleCollection : PSAzureFirewallBaseRuleCollection
     {
         [JsonProperty(Order = 3)]
-        public PSAzureFirewallRCAction Action { get; set; }
+        public PSAzureFirewallNatRCAction Action { get; set; }
 
         [JsonProperty(Order = 4)]
-        public List<PSAzureFirewallNetworkRule> Rules { get; set; }
+        public List<PSAzureFirewallNatRule> Rules { get; set; }
 
         [JsonIgnore]
         public string ActionText
@@ -40,25 +40,25 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(Rules, Formatting.Indented); }
         }
 
-        public void AddRule(PSAzureFirewallNetworkRule rule)
+        public void AddRule(PSAzureFirewallNatRule rule)
         {
             // Validate
             if (this.Rules != null)
             {
                 if (this.Rules.Any(rc => rc.Name.Equals(rule.Name)))
                 {
-                    throw new ArgumentException($"Network Rule names must be unique. {rule.Name} name is already used.");
+                    throw new ArgumentException($"NAT Rule names must be unique. {rule.Name} name is already used.");
                 }
             }
             else
             {
-                this.Rules = new List<PSAzureFirewallNetworkRule>();
+                this.Rules = new List<PSAzureFirewallNatRule>();
             }
 
             this.Rules.Add(rule);
         }
 
-        public PSAzureFirewallNetworkRule GetRuleByName(string ruleName)
+        public PSAzureFirewallNatRule GetRuleByName(string ruleName)
         {
             if (string.IsNullOrEmpty(ruleName))
             {
