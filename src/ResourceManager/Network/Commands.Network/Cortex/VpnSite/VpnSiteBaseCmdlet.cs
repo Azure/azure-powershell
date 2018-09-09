@@ -70,11 +70,6 @@ namespace Microsoft.Azure.Commands.Network
 
         protected PSVpnSiteDeviceProperties ValidateAndCreateVpnSiteDeviceProperties(string deviceModel, string deviceVendor, uint linkSpeedInMbps)
         {
-            if (string.IsNullOrWhiteSpace(deviceModel) || string.IsNullOrWhiteSpace(deviceVendor))
-            {
-                throw new PSArgumentException("Please specify both device model and device vendor to identify the device");
-            }
-
             return new PSVpnSiteDeviceProperties
             {
                 DeviceModel = deviceModel,

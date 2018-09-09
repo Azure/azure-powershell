@@ -84,8 +84,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-
+            
             //// Resolve the VirtualHub
             if (ParameterSetName.Equals(CortexParameterSetNames.ByHubVirtualNetworkConnectionObject, StringComparison.OrdinalIgnoreCase))
             {
@@ -108,7 +107,7 @@ namespace Microsoft.Azure.Commands.Network
             var connectionToModify = parentVirtualHub.VirtualNetworkConnections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
             if (connectionToModify == null)
             {
-                throw new PSArgumentException("The hub virtual network connection to modify could not be found");
+                throw new PSArgumentException(Properties.Resources.HubVnetConnectionNotFound);
             }
             
             ConfirmAction(

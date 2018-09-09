@@ -46,14 +46,15 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ParentVpnGatewayName", "VpnGatewayName")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The resource name of the parent VpnGateway for this connection.")]
         [ValidateNotNullOrEmpty]
         public string ParentResourceName { get; set; }
 
         [Alias("ParentVpnGateway", "VpnGateway")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayObject,
             HelpMessage = "The parent VpnGateway for this connection.")]
         [ValidateNotNullOrEmpty]
@@ -61,7 +62,8 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ParentVpnGatewayId", "VpnGatewayId")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayResourceId,
             HelpMessage = "The resource id of the parent VpnGateway for this connection.")]
         [ValidateNotNullOrEmpty]
@@ -131,16 +133,13 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-
+            
             WriteObject(this.CreateVpnConnection());
         }
 
         private PSVpnConnection CreateVpnConnection()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-
             PSVpnGateway parentVpnGateway = null;
 
             //// Resolve the VpnGateway
@@ -161,7 +160,7 @@ namespace Microsoft.Azure.Commands.Network
             parentVpnGateway = this.GetVpnGateway(this.ResourceGroupName, this.ParentResourceName);
             if (parentVpnGateway == null)
             {
-                throw new PSArgumentException("The parent VpnGateway for this connection cannot be found.");
+                throw new PSArgumentException(Properties.Resources.ParentVpnGatewayNotFound);
             }
 
             //// Validate if there is a conenction with this name on this vpn connection
@@ -170,7 +169,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (parentVpnGateway.Connections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
                 {
-                    throw new PSArgumentException("The parent VpnGateway already contains a connection with this name. If you wish to change the properties of the connection, please use the SET operation instead.");
+                    throw new PSArgumentException(Properties.Resources.ParentVpnGatewayDuplicateConnection);
                 }
             }
             else
@@ -194,7 +193,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (string.IsNullOrWhiteSpace(this.VpnSiteId))
             {
-                throw new PSArgumentException("A valid VpnSite is required to create a VpnConnection");
+                throw new PSArgumentException(Properties.Resources.VpnSiteRequiredForVpnConnection);
             }
 
             //// Let's not resolve the vpnSite here. If this does not exist, NRP/GWM will fail the call.

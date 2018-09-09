@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
                 {
-                    throw new PSArgumentException("ResourceGroupName must be specified if ResourceName is specified.");
+                    throw new PSArgumentException(Properties.Resources.ResouceGroupNameMustBeSpecified);
                 }
 
                 var vpnGateway = this.GetVpnGateway(this.ResourceGroupName, this.Name);

@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (string.IsNullOrWhiteSpace(this.ResourceGroupName) || string.IsNullOrWhiteSpace(this.Name))
             {
-                throw new PSArgumentException("A valid Virtual WAN is required to generate a vpnSites configuration.");
+                throw new PSArgumentException(Properties.Resources.VirtualWanRequiredForVpnSiteConfiguration);
             }
 
             PSVirtualWan virtualWan = this.GetVirtualWan(this.ResourceGroupName, this.Name);
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.VpnSiteId == null || !this.VpnSiteId.Any())
             {
-                throw new PSArgumentException("A list of connected VpnSites is required to generate a vpnSites configuration.");
+                throw new PSArgumentException(Properties.Resources.VpnSiteListRequiredForVpnSiteConfiguration);
             }
 
             WriteObject(this.GetVirtualWanVpnSitesConfiguration(virtualWan, this.VpnSiteId, this.StorageSasUrl));

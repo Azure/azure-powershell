@@ -151,8 +151,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-
+            
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnSiteObject, StringComparison.OrdinalIgnoreCase))
             {
                 this.Name = this.InputObject.Name;
@@ -168,7 +167,7 @@ namespace Microsoft.Azure.Commands.Network
             var vpnSiteToUpdate = this.GetVpnSite(this.ResourceGroupName, this.Name);
             if (vpnSiteToUpdate == null)
             {
-                throw new PSArgumentException("The VpnSite to update could not be found");
+                throw new PSArgumentException(Properties.Resources.VpnSiteNotFound);
             }
 
             //// Resolve the virtual wan, if specified
@@ -190,7 +189,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (resolvedVirtualWan == null)
                 {
-                    throw new PSArgumentException("The referenced virtual wan cannot be resolved.");
+                    throw new PSArgumentException(Properties.Resources.VirtualWanNotFound);
                 }
 
                 vpnSiteToUpdate.VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id };
@@ -227,7 +226,10 @@ namespace Microsoft.Azure.Commands.Network
             //// VpnSite device settings
             if (!string.IsNullOrWhiteSpace(this.DeviceModel) || !string.IsNullOrWhiteSpace(this.DeviceVendor))
             {
-                vpnSiteToUpdate.DeviceProperties = this.ValidateAndCreateVpnSiteDeviceProperties(this.DeviceModel, this.DeviceVendor, this.LinkSpeedInMbps);
+                vpnSiteToUpdate.DeviceProperties = this.ValidateAndCreateVpnSiteDeviceProperties(
+                    this.DeviceModel ?? string.Empty, 
+                    this.DeviceVendor ?? string.Empty, 
+                    this.LinkSpeedInMbps);
             }
 
             //// IpAddress
@@ -236,7 +238,7 @@ namespace Microsoft.Azure.Commands.Network
                 System.Net.IPAddress ipAddress;
                 if (!System.Net.IPAddress.TryParse(this.IpAddress, out ipAddress))
                 {
-                    throw new PSArgumentException("The IPAddress specified is invalid.");
+                    throw new PSArgumentException(Properties.Resources.InvalidIPAddress);
                 }
 
                 vpnSiteToUpdate.IpAddress = this.IpAddress;

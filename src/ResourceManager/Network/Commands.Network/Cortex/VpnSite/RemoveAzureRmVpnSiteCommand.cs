@@ -93,8 +93,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-
+            
             ConfirmAction(
                     this.Force.IsPresent,
                     string.Format(Properties.Resources.RemovingResource, this.Name),

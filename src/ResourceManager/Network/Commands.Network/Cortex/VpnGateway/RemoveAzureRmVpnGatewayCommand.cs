@@ -93,8 +93,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-            WriteWarning("Removing a VpnGateway will also remove all VpnConnections associated with it.");
+            WriteWarning(Properties.Resources.RemovingVpnGatewayWarning);
 
             ConfirmAction(
                     this.Force.IsPresent,

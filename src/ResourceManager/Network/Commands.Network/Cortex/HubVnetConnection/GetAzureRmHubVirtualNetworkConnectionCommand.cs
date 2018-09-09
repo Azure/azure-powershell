@@ -16,12 +16,15 @@ namespace Microsoft.Azure.Commands.Network
 {
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Network.Models;
+    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubVnetConnection",
+        DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSHubVirtualNetworkConnection))]
     public class GetHubVirtualNetworkConnectionCommand : HubVnetConnectionBaseCmdlet
@@ -35,6 +38,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -43,13 +47,43 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("VirtualHubName", "ParentVirtualHubName")]
         [Parameter(
             Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The parent resource name.")]
         [ResourceGroupCompleter]
         public string ParentResourceName { get; set; }
 
+        [Alias("VirtualHub", "ParentVirtualHub")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
+            HelpMessage = "The parent resource.")]
+        public PSVirtualHub ParentObject { get; set; }
+
+        [Alias("VirtualHubId", "ParentVirtualHubId")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId,
+            HelpMessage = "The parent resource id.")]
+        [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
+        public string ParentResourceId { get; set; }
+
         public override void Execute()
         {
             base.Execute();
+
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
+            {
+                this.ParentResourceName = this.ParentObject.Name;
+                this.ResourceGroupName = this.ParentObject.ResourceGroupName;
+            }
+            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubResourceId, StringComparison.OrdinalIgnoreCase))
+            {
+                var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
+                this.ParentResourceName = parsedResourceId.ResourceName;
+                ResourceGroupName = parsedResourceId.ResourceGroupName;
+            }
 
             if (!string.IsNullOrWhiteSpace(this.Name))
             {

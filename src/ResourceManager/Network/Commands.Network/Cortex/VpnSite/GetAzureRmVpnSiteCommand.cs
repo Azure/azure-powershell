@@ -43,13 +43,12 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-
+            
             if (!string.IsNullOrWhiteSpace(this.Name))
             {
                 if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
                 {
-                    throw new PSArgumentException("ResourceGroupName must be specified if ResourceName is specified.");
+                    throw new PSArgumentException(Properties.Resources.ResouceGroupNameMustBeSpecified);
                 }
 
                 WriteObject(this.GetVpnSite(this.ResourceGroupName, this.Name));

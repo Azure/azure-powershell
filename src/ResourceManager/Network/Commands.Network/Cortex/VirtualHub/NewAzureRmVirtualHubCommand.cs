@@ -96,8 +96,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-
+            
             string virtualWanRGName = null;
             string virtualWanName = null;
 
@@ -116,7 +115,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (string.IsNullOrWhiteSpace(virtualWanRGName) || string.IsNullOrWhiteSpace(virtualWanName))
             {
-                throw new PSArgumentException("A virtual hub cannot be created without a valid virtual wan");
+                throw new PSArgumentException(Properties.Resources.VirtualWanReferenceNeededForVirtualHub);
             }
 
             PSVirtualWan resolvedVirtualWan = new VirtualWanBaseCmdlet().GetVirtualWan(virtualWanRGName, virtualWanName);

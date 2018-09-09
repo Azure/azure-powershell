@@ -138,8 +138,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-
+            
             PSVpnSite vpnSiteToCreate = new PSVpnSite();
             vpnSiteToCreate.ResourceGroupName = this.ResourceGroupName;
             vpnSiteToCreate.Name = this.Name;
@@ -162,7 +161,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (resolvedVirtualWan == null)
             {
-                throw new PSArgumentException("The referenced virtual wan cannot be resolved.");
+                throw new PSArgumentException(Properties.Resources.VirtualWanNotFound);
             }
 
             vpnSiteToCreate.VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id };
@@ -174,16 +173,19 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             //// VpnSite device settings
-            if (!string.IsNullOrWhiteSpace(this.DeviceModel) || string.IsNullOrWhiteSpace(this.DeviceVendor))
+            if (!string.IsNullOrWhiteSpace(this.DeviceModel) || !string.IsNullOrWhiteSpace(this.DeviceVendor))
             {
-                vpnSiteToCreate.DeviceProperties = this.ValidateAndCreateVpnSiteDeviceProperties(this.DeviceModel, this.DeviceVendor, this.LinkSpeedInMbps);
+                vpnSiteToCreate.DeviceProperties = this.ValidateAndCreateVpnSiteDeviceProperties(
+                    this.DeviceModel??string.Empty, 
+                    this.DeviceVendor??string.Empty, 
+                    this.LinkSpeedInMbps);
             }
 
             //// IpAddress
             System.Net.IPAddress ipAddress;
             if (!System.Net.IPAddress.TryParse(this.IpAddress, out ipAddress))
             {
-                throw new PSArgumentException("The IPAddress specified is invalid.");
+                throw new PSArgumentException(Properties.Resources.InvalidIPAddress);
             }
 
             vpnSiteToCreate.IpAddress = this.IpAddress;

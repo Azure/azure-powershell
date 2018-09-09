@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("VirtualHub", "ParentVirtualHub")]
         [Parameter(
             Mandatory = true,
+            ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The parent resource.")]
         public PSVirtualHub ParentObject { get; set; }
@@ -68,6 +69,7 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("VirtualHubId", "ParentVirtualHubId")]
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId,
             HelpMessage = "The parent resource id.")]
         [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
@@ -93,8 +95,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-
+            
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
             {
                 this.ResourceGroupName = this.ParentObject.ResourceGroupName;
@@ -111,7 +112,7 @@ namespace Microsoft.Azure.Commands.Network
             PSVirtualHub parentVirtualHub = this.GetVirtualHub(this.ResourceGroupName, this.ParentResourceName);
             if (parentVirtualHub == null)
             {
-                throw new PSArgumentException("The parent virtual hub mentioned could not be found.");
+                throw new PSArgumentException(Properties.Resources.ParentVirtualHubNotFound);
             }
 
             PSHubVirtualNetworkConnection hubVnetConnection = new PSHubVirtualNetworkConnection();
@@ -129,7 +130,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                throw new PSArgumentException("A remote virtual network reference is required to create a HubVirtualNetworkConnection.");
+                throw new PSArgumentException(Properties.Resources.VirtualNetworkReferenceRequiredToCreateHubVnetConnection);
             }
 
             if (parentVirtualHub.VirtualNetworkConnections == null)

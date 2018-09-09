@@ -27,16 +27,18 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
     using MNM = Microsoft.Azure.Management.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using System.Linq;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnConnection",
+        DefaultParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVpnConnection))]
     public class GetAzureRmVpnConnectionCommand : VpnConnectionBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -45,15 +47,33 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         [Alias("ParentVpnGatewayName", "VpnGatewayName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
             HelpMessage = "The parent resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string ParentResourceName { get; set; }
 
+        [Alias("ParentVpnGateway", "VpnGateway")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = CortexParameterSetNames.ByVpnGatewayObject,
+            HelpMessage = "The parent VpnGateway for this connection.")]
+        [ValidateNotNullOrEmpty]
+        public PSVpnGateway ParentObject { get; set; }
+
+        [Alias("ParentVpnGatewayId", "VpnGatewayId")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByVpnGatewayResourceId,
+            HelpMessage = "The resource id of the parent VpnGateway for this connection.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Network/vpnGateways")]
+        public string ParentResourceId { get; set; }
+
         [Alias("ResourceName", "VpnConnectionName")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -61,7 +81,18 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
+
+            if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnGatewayObject, StringComparison.OrdinalIgnoreCase))
+            {
+                this.ResourceGroupName = this.ParentObject.ResourceGroupName;
+                this.ParentResourceName = this.ParentObject.Name;
+            }
+            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnGatewayResourceId, StringComparison.OrdinalIgnoreCase))
+            {
+                var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.ParentResourceName = parsedResourceId.ResourceName;
+            }
 
             if (!string.IsNullOrWhiteSpace(this.Name))
             {

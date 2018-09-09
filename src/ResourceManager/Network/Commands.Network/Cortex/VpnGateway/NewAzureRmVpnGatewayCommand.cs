@@ -97,8 +97,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-
+            
             var vpnGateway = new PSVpnGateway();
             vpnGateway.Name = this.Name;
             vpnGateway.ResourceGroupName = this.ResourceGroupName;
@@ -118,7 +117,7 @@ namespace Microsoft.Azure.Commands.Network
             //// At this point, we should have the virtual hub name resolved. Fail this operation if it is not.
             if (string.IsNullOrWhiteSpace(this.VirtualHubName))
             {
-                throw new PSArgumentException("A valid VirtualHub reference is required to create a VpnGateway");
+                throw new PSArgumentException(Properties.Resources.VirtualHubRequiredForVpnGateway);
             }
 
             var resolvedVirtualHub = new VirtualHubBaseCmdlet().GetVirtualHub(this.ResourceGroupName, this.VirtualHubName);

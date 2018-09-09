@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (parentVirtualHub == null)
             {
-                throw new PSArgumentException("The parent hub object could not be found");
+                throw new PSArgumentException(Properties.Resources.ParentVirtualHubNotFound);
             }
 
             var connectionToRemove = parentVirtualHub.VirtualNetworkConnections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));

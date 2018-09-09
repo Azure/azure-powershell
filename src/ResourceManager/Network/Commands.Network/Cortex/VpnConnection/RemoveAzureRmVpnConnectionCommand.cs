@@ -92,13 +92,10 @@ namespace Microsoft.Azure.Commands.Network
                 this.ParentResourceName = this.ParentResourceName;
                 this.Name = this.Name;
             }
-            else 
+            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnConnectionObject, StringComparison.OrdinalIgnoreCase))
             {
-                if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnConnectionObject, StringComparison.OrdinalIgnoreCase))
-                {
-                    this.ResourceId = this.InputObject.Id;
-                }
-                
+                this.ResourceId = this.InputObject.Id;
+
                 //// At this point, the resource id should not be null. If it is, customer did not specify a valid resource to delete.
                 if (string.IsNullOrWhiteSpace(this.ResourceId))
                 {
@@ -114,7 +111,7 @@ namespace Microsoft.Azure.Commands.Network
             //// Get the vpngateway object - this will throw not found if the object is not found
             PSVpnGateway parentGateway = this.GetVpnGateway(this.ResourceGroupName, this.ParentResourceName);
 
-            if (parentGateway == null || 
+            if (parentGateway == null ||
                 parentGateway.Connections == null ||
                 !parentGateway.Connections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
             {
@@ -127,7 +124,6 @@ namespace Microsoft.Azure.Commands.Network
                 if (vpnConnectionToRemove != null)
                 {
                     base.Execute();
-                    WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
                     ConfirmAction(
                         Force.IsPresent,

@@ -99,8 +99,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-            WriteWarning("Removing a VirtualHub will also remove all HubVirtualNetworkConnections associated with it.");
+            WriteWarning(Properties.Resources.RemovingVirtualHubWarning);
 
             ConfirmAction(
                     Force.IsPresent,

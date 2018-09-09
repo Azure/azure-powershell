@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (existingVpnGateway == null)
             {
-                throw new PSArgumentException("The VpnGateway to modify could not be found");
+                throw new PSArgumentException(Properties.Resources.VpnGatewayNotFound);
             }
 
             //// Modify scale unit if specified

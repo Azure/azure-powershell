@@ -110,25 +110,20 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-
+            
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnConnectionName, StringComparison.OrdinalIgnoreCase))
             {
                 this.ResourceGroupName = this.ResourceGroupName;
                 this.ParentResourceName = this.ParentResourceName;
                 this.Name = this.Name;
             }
-            else
+            else if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnConnectionObject, StringComparison.OrdinalIgnoreCase))
             {
-                if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnConnectionObject, StringComparison.OrdinalIgnoreCase))
-                {
-                    this.ResourceId = this.InputObject.Id;
-                }
+                this.ResourceId = this.InputObject.Id;
 
-                //// At this point, the resource id should not be null. If it is, customer did not specify a valid resource to delete.
                 if (string.IsNullOrWhiteSpace(this.ResourceId))
                 {
-                    throw new PSArgumentException("No vpn connection specified. Nothing will be deleted.");
+                    throw new PSArgumentException(Properties.Resources.VpnConnectionNotFound);
                 }
 
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
@@ -144,7 +139,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
                 parentGateway.Connections == null ||
                 !parentGateway.Connections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
             {
-                throw new PSArgumentException("The VpnConnection and/or the parent VpnGateway to modify does not exist");
+                throw new PSArgumentException(Properties.Resources.VpnConnectionNotFound);
             }
 
             var vpnConnectionToModify = parentGateway.Connections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
