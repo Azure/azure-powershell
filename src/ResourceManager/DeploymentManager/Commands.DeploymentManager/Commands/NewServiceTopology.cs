@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public string Location { get; set; }
 
         [Parameter(
-            Mandatory = true, 
+            Mandatory = false, 
             HelpMessage = "The identifier of the artifact source, where the artifacts that make up the topology are stored.")]
         public string ArtifactSourceId { get; set; }
 

@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
             this.BuildVersion = rollout.BuildVersion;
             this.ArtifactSourceId = rollout.ArtifactSourceId;
             this.TargetServiceTopologyId = rollout.TargetServiceTopologyId;
+            this.Identity = rollout.Identity != null ? new PSIdentity(rollout.Identity) : null;
             this.OperationInfo = rollout.OperationInfo != null ?  new PSRolloutOperationInfo(rollout.OperationInfo) : null;
             this.Status = rollout.Status;
             this.TotalRetryAttempts = rollout.TotalRetryAttempts;
@@ -88,6 +89,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
 			get;
 			private set;
 		}
+
+        /// <summary>
+        /// Gets or sets the identity information for the rollout.
+        /// </summary>
+        public PSIdentity Identity
+        {
+            get;
+            set;
+        }
 
 		/// <summary>
 		/// Gets or sets operational information of the rollout.

@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
             this.ParametersUri = serviceUnitResource.ParametersUri;
             this.ParametersArtifactSourceRelativePath = serviceUnitResource.ParametersArtifactSourceRelativePath;
             this.TemplateArtifactSourceRelativePath = serviceUnitResource.TemplateArtifactSourceRelativePath;
-            this.Identity = serviceUnitResource.Identity != null ? new PSResourceIdentity(serviceUnitResource.Identity) : null;
         }
 
         /// <summary>
@@ -88,11 +87,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
         /// </summary>
         public string TemplateArtifactSourceRelativePath { get; set; }
 
-        /// <summary>
-        /// Gets or sets the identity information.
-        /// </summary>
-        public PSResourceIdentity Identity { get; set; }
-
         internal ServiceUnitResource ToSdkType()
         {
             return new ServiceUnitResource(
@@ -104,7 +98,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
                 type: this.Type, 
                 tags: TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true))
             {
-                Identity = this.Identity?.ToSdkType(),
                 TemplateUri = this.TemplateUri,
                 ParametersUri = this.ParametersUri,
                 TemplateArtifactSourceRelativePath = this.TemplateArtifactSourceRelativePath,

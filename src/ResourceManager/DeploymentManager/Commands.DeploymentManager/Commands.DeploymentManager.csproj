@@ -80,7 +80,7 @@
     </Compile>
     <Compile Include="Models\ArtifactSource\PSArtifactSource.cs" />
     <Compile Include="Models\ArtifactSource\PSAuthentication.cs" />
-    <Compile Include="Models\PSResourceIdentity.cs" />
+    <Compile Include="Models\PSIdentity.cs" />
     <Compile Include="Models\Rollout\PSMessage.cs" />
     <Compile Include="Models\Rollout\PSResource.cs" />
     <Compile Include="Models\Rollout\PSResourceOperation.cs" />

@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
     using System.Collections.Generic;
     using Microsoft.Azure.Management.DeploymentManager.Models;
 
-    public class PSResourceIdentity
+    public class PSIdentity
     {
-        public PSResourceIdentity(IdentityResourceIdentity identity)
+        public PSIdentity(Identity identity)
         {
             this.Type = identity.Type;
             this.IdentityIds = identity.IdentityIds;
@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
 			set;
 		}
 
-        internal IdentityResourceIdentity ToSdkType()
+        internal Identity ToSdkType()
         {
-            return new IdentityResourceIdentity(
+            return new Identity(
                 type: this.Type, 
                 identityIds: this.IdentityIds);
         }
