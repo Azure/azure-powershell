@@ -44,13 +44,19 @@ namespace Microsoft.Azure.Commands.Network
         public List<string> SourceAddress { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The target FQDNs of the rule")]
         [ValidateNotNullOrEmpty]
         public List<string> TargetFqdn { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
+            HelpMessage = "The FQDN Tags of the rule")]
+        [ValidateNotNullOrEmpty]
+        public List<string> FqdnTag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The protocols of the rule")]
         [ValidateNotNullOrEmpty]
         public List<string> Protocol { get; set; }
@@ -58,7 +64,31 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            
+
+            if (FqdnTag == null)
+            {
+                if (TargetFqdn == null)
+                {
+                    throw new ArgumentException($"Either {nameof(TargetFqdn)} or {nameof(FqdnTag)} must be specified for a rule.");
+                }
+            }
+            else
+            {
+                if (TargetFqdn != null)
+                {
+                    throw new ArgumentException($"{nameof(TargetFqdn)} and {nameof(FqdnTag)} cannot be specified in the same rule.");
+                }
+
+                // We do not allow user protocols in this case
+                if (Protocol != null)
+                {
+                    throw new ArgumentException($"Protocol parameter is not allowed when using {nameof(FqdnTag)}.");
+                }
+
+                this.Protocol = new List<string> { "http", "https" };
+                FqdnTag = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTag);
+            }
+
             var protocolsAsWeExpectThem = MapUserProtocolsToFirewallProtocols(Protocol);
 
             var applicationRule = new PSAzureFirewallApplicationRule
@@ -67,7 +97,8 @@ namespace Microsoft.Azure.Commands.Network
                 Description = this.Description,
                 SourceAddresses = this.SourceAddress,
                 Protocols = protocolsAsWeExpectThem,
-                TargetFqdns = this.TargetFqdn
+                TargetFqdns = this.TargetFqdn,
+                FqdnTags = this.FqdnTag
             };
             WriteObject(applicationRule);
         }

@@ -3048,6 +3048,10 @@
                 <PropertyName>TargetFqdnsText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>FqdnTags</Label>
+                <PropertyName>FqdnTagsText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Protocols</Label>
                 <PropertyName>ProtocolsText</PropertyName>
               </ListItem>
