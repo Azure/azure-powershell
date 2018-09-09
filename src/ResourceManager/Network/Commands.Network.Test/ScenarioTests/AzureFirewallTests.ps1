@@ -22,7 +22,7 @@ function Test-AzureFirewallCRUD
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
-    $location = "eastus2euap" #Get-ProviderLocation $resourceTypeParent
+    $location = "westcentralus" #Get-ProviderLocation $resourceTypeParent
 
     $vnetName = Get-ResourceName
     $subnetName = "AzureFirewallSubnet"
@@ -288,7 +288,7 @@ function Test-AzureFirewallAllocateAndDeallocate
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
-    $location = "eastus2euap" #Get-ProviderLocation $resourceTypeParent
+    $location = "westcentralus" #Get-ProviderLocation $resourceTypeParent
 
     $vnetName = Get-ResourceName
     $subnetName = "AzureFirewallSubnet"
