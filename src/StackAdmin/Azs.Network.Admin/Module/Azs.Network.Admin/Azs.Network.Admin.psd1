@@ -118,13 +118,14 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.8.12
+            ReleaseNotes = '## 2018.9.10
             * Module dependencies updated
                 * AzureRM.Profile
                 * AzureRM.Resources
             * Support handling names of nested resources
                 * Get-AzsQuota
                 * Remove-AzsQuota
+            * Deprecated the parameter MigrationPhase for New-AzsNetworkQuota
             * Bug fixes
                 * Handle ErrrorAction correctly now
             '
