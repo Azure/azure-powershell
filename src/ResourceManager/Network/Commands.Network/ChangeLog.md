@@ -20,6 +20,15 @@
 
 ## Current Release
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
+* Added new commands for feature: Azure Firewall via ARM
+    - Added Get-AzureRmFirewall
+    - Added Set-AzureRmFirewall
+    - Added New-AzureRmFirewall
+    - Added Remove-AzureRmFirewall
+    - Added New-AzureRmFirewallApplicationRuleCollection
+    - Added New-AzureRmFirewallApplicationRule
+    - Added New-AzureRmFirewallNetworkRuleCollection
+    - Added New-AzureRmFirewallNetworkRule
 
 ## Version 6.6.1
 * Changed default cmdlet output presentation to table view
@@ -63,17 +72,6 @@
 
 ## Version 6.3.1
 * Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering
-
-## Version 6.4.0-preview
-* Added new commands for feature: Azure Firewall via ARM
-    - Added Get-AzureRmFirewall
-    - Added Set-AzureRmFirewall
-    - Added New-AzureRmFirewall
-    - Added Remove-AzureRmFirewall
-    - Added New-AzureRmFirewallApplicationRuleCollection
-	- Added New-AzureRmFirewallApplicationRule
-	- Added New-AzureRmFirewallNetworkRuleCollection
-    - Added New-AzureRmFirewallNetworkRule
 
 
 ## Version 6.3.0
