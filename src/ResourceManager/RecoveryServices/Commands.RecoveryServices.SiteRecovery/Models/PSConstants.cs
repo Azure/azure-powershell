@@ -311,6 +311,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string OSWindows = "Windows";
 
         /// <summary>
+        ///     Represents Premium_LRS storage account.
+        /// </summary>
+        public const string Premium_LRS = "Premium_LRS";
+
+        /// <summary>
         ///     Represents primary location.
         /// </summary>
         public const string PrimaryLocation = "Primary";
@@ -443,6 +448,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Sync = "Sync";
 
         /// <summary>
+        ///     Represents Premium_LRS storage account.
+        /// </summary>
+        public const string Standard_LRS = "Standard_LRS";
+
+        /// <summary>
         ///     Azure VM temporary disk name, to be excluded as part of switch protection.
         /// </summary>
         public const string TemporaryStorage = "Temporary Storage";
@@ -534,6 +544,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string AzureNetwork = "azureNetwork";
 
         /// <summary>
+        /// Compute namespace.
+        /// </summary>
+        public const string Compute = "Microsoft.Compute";
+
+        /// <summary>
         ///     Events resource name.
         /// </summary>
         public const string Events = "replicationEvents";
@@ -598,6 +613,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Recovery Services Vault
         /// </summary>
         public const string RecoveryServicesVault = "vaults";
+
+        /// <summary>
+        ///      ARM resource type for virtual machines
+        /// </summary>
+        public static string VirtualMachine = "virtualMachines";
 
         /// <summary>
         ///     Replication Fabrics
