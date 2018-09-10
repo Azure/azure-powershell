@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
     /// <summary>
     /// 'Remove-AzureRmServiceBusRule' Cmdlet removes the specified Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusRuleVerb, DefaultParameterSetName = RuleResourceParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusRule", DefaultParameterSetName = RuleResourceParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = RuleResourceParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
@@ -89,21 +89,28 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
                 Name = Namespace = identifier.ResourceName;
             }
 
-            // delete a Rule            
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemoveRule, Name, Subscription, Namespace),
-                string.Format(Resources.RemoveRule, Name, Subscription, Namespace),
-                Name,
-                () =>
-                {
-                   var result = Client.DeleteRule(ResourceGroupName, Namespace, Topic, Subscription, Name);
-
-                    if (PassThru)
+            try
+            {
+                // delete a Rule            
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.RemoveRule, Name, Subscription, Namespace),
+                    string.Format(Resources.RemoveRule, Name, Subscription, Namespace),
+                    Name,
+                    () =>
                     {
-                        WriteObject(result);
-                    }
-                });
+                        var result = Client.DeleteRule(ResourceGroupName, Namespace, Topic, Subscription, Name);
+
+                        if (PassThru)
+                        {
+                            WriteObject(result);
+                        }
+                    });
+            }
+            catch (Management.ServiceBus.Models.ErrorResponseException ex)
+            {
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
 {
-    [Cmdlet(VerbsCommon.Get, StorageUsageNounStr), OutputType(typeof(PSUsage))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageUsage"), OutputType(typeof(PSUsage))]
     public class GetAzureStorageUsageCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
         {
             base.ExecuteCmdlet();
 
-            //Get usage
+            foreach (var usage in this.StorageClient.Usages.List())
             IEnumerable<Usage> usages;
             if (Location == null)
             {

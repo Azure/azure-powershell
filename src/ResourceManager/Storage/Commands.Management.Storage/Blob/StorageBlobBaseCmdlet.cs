@@ -30,8 +30,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         
         protected const string AccountNameAlias = "AccountName";
 
-        protected const string StorageBlobNounStr = "AzureRmStorageBlob";
-        protected const string StorageContainerNounStr = "AzureRmStorageContainer";
+        protected const string StorageContainerNounStr = "StorageContainer";
         protected const string StorageContainerImmutabilityPolicyNounStr = StorageContainerNounStr + "ImmutabilityPolicy";
         protected const string StorageContainerLegalHoldNounStr = StorageContainerNounStr + "LegalHold";
         protected const string StorageContainerLeaseNounStr = StorageContainerNounStr + "Lease";

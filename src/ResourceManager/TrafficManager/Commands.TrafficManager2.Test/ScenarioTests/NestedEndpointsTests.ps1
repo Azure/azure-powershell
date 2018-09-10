@@ -28,12 +28,12 @@ function Test-NestedEndpointsCreateUpdate
 
 	try
 	{
-	$createdChildProfile = New-AzureRmTrafficManagerProfile -Name $childProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $childProfileRelativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+	$createdChildProfile = New-AzureRmTrafficManagerProfile -Name $childProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $childProfileRelativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -ProfileStatus "Enabled"
 	Assert-NotNull $createdChildProfile.Id
 
-	$createdParentProfile = New-AzureRmTrafficManagerProfile -Name $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $parentProfileRelativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
-	$createdParentProfile = Add-AzureRmTrafficManagerEndpointConfig -EndpointName "MyNestedEndpoint" -TrafficManagerProfile $createdParentProfile -Type "NestedEndpoints" -TargetResourceId $createdChildProfile.Id -EndpointStatus "Enabled" -EndpointLocation "North Europe" -MinChildEndpoints 2
-	$updatedParentProfile = Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $createdParentProfile
+	$createdParentProfile = New-AzureRmTrafficManagerProfile -Name $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $parentProfileRelativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -ProfileStatus "Enabled"
+	$createdEndpoint = New-AzureRmTrafficManagerEndpoint -Name "MyNestedEndpoint" -ProfileName $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "NestedEndpoints" -TargetResourceId $createdChildProfile.Id -EndpointStatus "Enabled" -EndpointLocation "North Europe" -MinChildEndpoints 2
+	$updatedParentProfile = Get-AzureRmTrafficManagerProfile -Name $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
 	Assert-NotNull $updatedParentProfile
 	Assert-AreEqual 1 $updatedParentProfile.Endpoints.Count
@@ -47,7 +47,7 @@ function Test-NestedEndpointsCreateUpdate
 	Assert-AreEqual 2 $retrievedParentProfile.Endpoints[0].MinChildEndpoints
 	Assert-AreEqual "North Europe" $retrievedParentProfile.Endpoints[0].Location
 
-	$anotherCreatedChildProfile = New-AzureRmTrafficManagerProfile -Name $anotherChildProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $anotherChildProfileRelativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+	$anotherCreatedChildProfile = New-AzureRmTrafficManagerProfile -Name $anotherChildProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $anotherChildProfileRelativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -ProfileStatus "Enabled"
 	Assert-NotNull $anotherCreatedChildProfile.Id
 
 	$anotherNestedEndpoint = New-AzureRmTrafficManagerEndpoint -Name "MySecondNestedEndpoint" -ProfileName $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "NestedEndpoints" -TargetResourceId $anotherCreatedChildProfile.Id -EndpointStatus "Enabled" -EndpointLocation "West Europe" -MinChildEndpoints 3
@@ -100,14 +100,11 @@ function Test-ProfileWithNestedEndpointsGetPut
 
 	try
 	{
-	$createdChildProfile = New-AzureRmTrafficManagerProfile -Name $childProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $childProfileRelativeName -Ttl 30 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testchild.asp" 
+	$createdChildProfile = New-AzureRmTrafficManagerProfile -Name $childProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $childProfileRelativeName -Ttl 30 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testchild.asp" -ProfileStatus "Enabled"
 	Assert-NotNull $createdChildProfile.Id
 
-	$createdParentProfile = New-AzureRmTrafficManagerProfile -Name $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $parentProfileRelativeName -Ttl 51 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTPS" -MonitorPort 111 -MonitorPath "/testparent.asp" 
+	$createdParentProfile = New-AzureRmTrafficManagerProfile -Name $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $parentProfileRelativeName -Ttl 51 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTPS" -MonitorPort 111 -MonitorPath "/testparent.asp" -ProfileStatus "Enabled"
 	$nestedEndpoint = New-AzureRmTrafficManagerEndpoint -Name "MyNestedEndpoint" -ProfileName $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "NestedEndpoints" -TargetResourceId $createdChildProfile.Id -EndpointStatus "Enabled" -EndpointLocation "West Europe" -MinChildEndpoints 1
-
-	$retrievedParentProfile = Get-AzureRmTrafficManagerProfile -Name $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName
-	$retrievedParentProfile | Set-AzureRmTrafficManagerProfile
 
 	$retrievedParentProfile = Get-AzureRmTrafficManagerProfile -Name $parentProfileName -ResourceGroupName $resourceGroup.ResourceGroupName
 

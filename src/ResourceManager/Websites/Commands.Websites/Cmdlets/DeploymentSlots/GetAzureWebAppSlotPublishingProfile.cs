@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// <summary>
     /// this commandlet will get the publishing creds of the given Azure Web app slot using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSlotPublishingProfile")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlotPublishingProfile")]
     [OutputType(typeof(string))]
     public class GetAzureWebAppSlotPublishingProfileCmdlet : WebAppSlotBaseCmdlet
     {
@@ -49,6 +49,3 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
     }
 }
-
-
-

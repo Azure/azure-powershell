@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHubsNamespaceKey", SupportsShouldProcess = true), OutputType(typeof(ResourceListKeys))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubsNamespaceKey", SupportsShouldProcess = true), OutputType(typeof(ResourceListKeys))]
     public class NewAzureNotificationHubsNamespaceKey : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,

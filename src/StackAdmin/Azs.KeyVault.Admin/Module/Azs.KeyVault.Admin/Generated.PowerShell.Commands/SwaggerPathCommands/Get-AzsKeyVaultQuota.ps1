@@ -41,7 +41,7 @@ function Get-AzsKeyVaultQuota {
     }
 
     Process {
-        $ErrorActionPreference = 'Stop'
+
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.KeyVault.Admin.KeyVaultAdminClient'

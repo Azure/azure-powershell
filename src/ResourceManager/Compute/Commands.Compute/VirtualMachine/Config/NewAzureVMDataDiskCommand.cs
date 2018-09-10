@@ -21,12 +21,7 @@ using Microsoft.Azure.Commands.Compute;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.New,
-        ProfileNouns.DataDisk,
-        DefaultParameterSetName = NormalDiskParameterSet),
-    OutputType(
-        typeof(PSVirtualMachineDataDisk))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMDataDisk",DefaultParameterSetName = NormalDiskParameterSet),OutputType(typeof(PSVirtualMachineDataDisk))]
     public class NewAzureVMDataDiskCommand : ComputeClientBaseCmdlet
     {
         private const string NormalDiskParameterSet = "NormalDiskParameterSetName";
@@ -137,13 +132,7 @@ namespace Microsoft.Azure.Commands.Compute
                     DiskSizeGB = this.DiskSizeInGB,
                     Lun = this.Lun,
                     CreateOption = this.CreateOption,
-                    ManagedDisk = (this.ManagedDiskId == null && this.StorageAccountType == null)
-                              ? null
-                              : new ManagedDiskParameters
-                              {
-                                  Id = this.ManagedDiskId,
-                                  StorageAccountType = this.StorageAccountType
-                              },
+                    ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.StorageAccountType),
                     WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
                 };
 

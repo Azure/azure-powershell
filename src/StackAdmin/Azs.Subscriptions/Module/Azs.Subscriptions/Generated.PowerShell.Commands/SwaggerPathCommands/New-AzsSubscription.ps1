@@ -88,7 +88,7 @@ function New-AzsSubscription {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSBoundParameters.ContainsKey('Location')) {
             if ( $MyInvocation.Line -match "\s-ArmLocation\s") {
@@ -106,18 +106,12 @@ function New-AzsSubscription {
 
         if ($PSCmdlet.ShouldProcess("$SubscriptionId", "Create new subscription")) {
 
-            # Validate this resource does not exist.
-            $_objectCheck = $null
-            try {
-                $_objectCheck = Get-AzsSubscription -SubscriptionId $SubscriptionId
-            } catch {
-                # No op
-            } finally {
-                if ($_objectCheck -ne $null) {
-                    throw "A subscription with identifier $SubscriptionId already exists."
-                }
+            # Validate this resource does not exist
+            if ($null -ne (Get-AzsSubscription -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue)) {
+                Write-Error "A subscription with identifier $SubscriptionId already exists."
+                return
             }
-        
+
             $NewServiceClient_params = @{
                 FullClientTypeName = 'Microsoft.AzureStack.Management.Subscription.SubscriptionClient'
             }

@@ -128,7 +128,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: PrimaryServerName (ByPropertyName), SecondaryServerName (ByPropertyName)
 
 ## OUTPUTS
 

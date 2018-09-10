@@ -140,13 +140,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AzureKeyVaultUrl (ByPropertyName), CredentialName (ByPropertyName), ResourceGroupName (ByPropertyName), ServicePrincipalName (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Enable (ByPropertyName)
 
 ### System.Security.SecureString
-Parameters: ServicePrincipalSecret (ByPropertyName)
 
 ## OUTPUTS
 

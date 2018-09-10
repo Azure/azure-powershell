@@ -23,7 +23,11 @@
             <ScriptMethod>
                 <Name>ToString</Name>
                 <Script>
-		            $this | fl | Out-String
+                    Write-Output "`n"
+                    Write-Output "Hero     : $($this.Hero)`n"
+                    Write-Output "Large    : $($this.Large)`n"
+                    Write-Output "Medium   : $($this.Medium)`n"
+                    Write-Output "Small    : $($this.Small)`n"
                 </Script>
             </ScriptMethod>
         </Members>
@@ -34,10 +38,10 @@
             <ScriptMethod>
                 <Name>ToString</Name>
                 <Script>
-		            $this | fl | Out-String
+		            $this.Version
                 </Script>
             </ScriptMethod>
         </Members>
     </Type>
-    
+
 </Types>

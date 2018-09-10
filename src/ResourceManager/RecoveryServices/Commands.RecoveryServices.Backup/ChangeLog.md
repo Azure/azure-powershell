@@ -18,8 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.4.1
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 4.4.0
 * Added policy filter to Get-AzureRmRecoveryServicesBackItem cmdlet. The command returns the list of backup items protected by the given policy id.
 * Updated Microsoft.Azure.Management.RecoveryServices.Backup to version 3.0.0-preview.
+* Updated to the latest version of the Azure ClientRuntime.
+* Added TargetResourceGroupName parameter to Restore-AzureRmRecoveryServicesBackupItem. The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks.
 
 ## Version 4.3.1
 * Updated all help files to include full parameter types and correct input/output types.

@@ -19,6 +19,18 @@
 -->
 ## Current Release
 
+## Version 3.1.8
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+* Fixed examples for New-AzureRmIotHubExportDevices and New-AzureRmIotHubImportDevices
+
+## Version 3.1.7
+* Fixed issue with default resource groups not being set.
+* Fix examples for New-AzureRmIotHubExportDevices and New-AzureRmIotHubImportDevices
+
+## Version 3.1.6
+* Updated to the latest version of the Azure ClientRuntime.
+
 ## Version 3.1.5
 * Updated all help files to include full parameter types and correct input/output types.
 
@@ -43,7 +55,7 @@
 ## Version 3.0.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 2.4.1
 
 ## Version 2.4.0
