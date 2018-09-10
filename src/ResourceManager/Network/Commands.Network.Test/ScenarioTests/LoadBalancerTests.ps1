@@ -2252,7 +2252,7 @@ function Test-LoadBalancerZones
     $zones = "1";
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/loadBalancers"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = "centralus";
 
     try
      {
