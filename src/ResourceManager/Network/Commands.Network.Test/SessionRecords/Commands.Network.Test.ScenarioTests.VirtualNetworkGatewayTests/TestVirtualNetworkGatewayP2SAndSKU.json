@@ -24631,6 +24631,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/19.3.0.0"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "\"https://by0nfvetwgwmprod.blob.core.windows.net/cmakexe/1aa59e9e-47b2-44cc-8056-77239f29ab26/amd64/1aa59e9e-47b2-44cc-8056-77239f29ab26.exe?sv=2017-04-17&sr=b&sig=Qjowiwgq94UaOGNUOyGyAC%2BTJGs1O3YDz19b5wNNhqs%3D&st=2018-09-08T11%3A45%3A15Z&se=2018-09-08T12%3A45%3A15Z&sp=r&fileExtension=.exe\"",
       "ResponseHeaders": {
         "Content-Length": [
