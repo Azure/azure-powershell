@@ -27,6 +27,8 @@
     - Added Remove-AzureRmFirewall
     - Added New-AzureRmFirewallApplicationRuleCollection
     - Added New-AzureRmFirewallApplicationRule
+    - Added New-AzureRmFirewallNatRuleCollection
+    - Added New-AzureRmFirewallNatRule
     - Added New-AzureRmFirewallNetworkRuleCollection
     - Added New-AzureRmFirewallNetworkRule
 
