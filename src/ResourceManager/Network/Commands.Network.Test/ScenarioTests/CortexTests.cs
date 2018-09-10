@@ -42,7 +42,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestP2SCortexCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-P2SCortexCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-P2SCortexCRUD");
         }
 
     }

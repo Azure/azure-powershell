@@ -29,7 +29,6 @@ namespace Microsoft.Azure.Commands.Network
     using System.Linq;
     using System.Management.Automation;
     using System.Security;
-    using System.Security;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
     namespace Microsoft.Azure.Commands.Network
