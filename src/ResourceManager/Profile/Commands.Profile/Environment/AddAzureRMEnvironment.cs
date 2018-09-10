@@ -308,8 +308,6 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(AzureOperationalInsightsEndpointResourceId));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint,
                                     nameof(AzureOperationalInsightsEndpoint));
-                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.StorageOAuthEndpointResourceId,
-                                    nameof(StorageOAuthEndpointResourceId));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });

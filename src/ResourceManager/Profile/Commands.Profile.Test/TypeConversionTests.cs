@@ -59,7 +59,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Null(environment.BatchEndpointResourceId);
             Assert.Null(environment.AzureOperationalInsightsEndpointResourceId);
             Assert.Null(environment.AzureOperationalInsightsEndpoint);
-            Assert.Null(environment.StorageOAuthEndpointResourceId); 
         }
 
         [Theory]
@@ -129,8 +128,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 environment.AzureOperationalInsightsEndpointResourceId);
             CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, azEnvironment,
                 environment.AzureOperationalInsightsEndpoint);
-            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.StorageOAuthEndpointResourceId, azEnvironment,
-                environment.StorageOAuthEndpointResourceId); 
             Assert.Equal(azEnvironment.Name, environment.Name);
             Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
         }
@@ -208,8 +205,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 TrafficManagerDnsSuffix = trafficManagerSuffix,
                 BatchEndpointResourceId = batchResource,
                 AzureOperationalInsightsEndpointResourceId = azureOperationalInsightsEndpointResourceId,
-                AzureOperationalInsightsEndpoint = azureOperationalInsightsEndpoint,
-                StorageOAuthEndpointResourceId = StorageOAuthEndpointResourceId,                
+                AzureOperationalInsightsEndpoint = azureOperationalInsightsEndpoint,              
             };
             var azEnvironment = (AzureEnvironment)environment;
             Assert.NotNull(environment);
@@ -255,8 +251,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 environment.AzureOperationalInsightsEndpointResourceId);
             CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, azEnvironment,
                 environment.AzureOperationalInsightsEndpoint);
-            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.StorageOAuthEndpointResourceId, azEnvironment,
-                environment.StorageOAuthEndpointResourceId); 
             Assert.Equal(azEnvironment.Name, environment.Name);
             Assert.Equal(azEnvironment.OnPremise, environment.EnableAdfsAuthentication);
         }
@@ -312,8 +306,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 azureOperationalInsightsEndpointResourceId);
             CheckEndpoint(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, environment,
                 azureOperationalInsightsEndpoint);
-            CheckEndpoint(AzureEnvironment.ExtendedEndpoint.StorageOAuthEndpointResourceId, environment,
-                StorageOAuthEndpointResourceId); 
             return environment;
 
         }
