@@ -432,7 +432,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(cmdlet.DataLakeAudience, actual.DataLakeEndpointResourceId);
             Assert.Equal(cmdlet.AzureOperationalInsightsEndpointResourceId, actual.AzureOperationalInsightsEndpointResourceId);
             Assert.Equal(cmdlet.AzureOperationalInsightsEndpoint, actual.AzureOperationalInsightsEndpoint);
-            Assert.Equal(cmdlet.StorageOAuthEndpointResourceId, actual.StorageOAuthEndpointResourceId);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.GetEnvironment("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);
