@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 45F35BDD-969E-4521-9E8D-3499A15434A6
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmextensionimagetype
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Gets the type of an Azure extension.
 ## SYNTAX
 
 ```
-Get-AzureRmVMExtensionImageType -Location <String> -PublisherName <String> [<CommonParameters>]
+Get-AzureRmVMExtensionImageType -Location <String> -PublisherName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,21 @@ PS C:\> Get-AzureRmVMExtensionImageType -Location "Central US" -PublisherName "F
 This command gets the extension image type for the specified publisher and location.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Specifies the location of an extension.
@@ -68,10 +84,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineExtensionImageType
 
 ## NOTES
 

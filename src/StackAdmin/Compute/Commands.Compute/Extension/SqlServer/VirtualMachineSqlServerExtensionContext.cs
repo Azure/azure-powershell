@@ -27,14 +27,19 @@ namespace Microsoft.Azure.Commands.Compute
         public const string ExtensionPublishedNamespace = "Microsoft.SqlServer.Management";
 
         /// <summary>
+        /// SQLVM Extension's type
+        /// </summary>
+        public const string ExtensionPublishedType = "SqlIaaSAgent";
+
+        /// <summary>
         /// SQLVM Extension's name
         /// </summary>
-        public const string ExtensionPublishedName = "SqlIaaSAgent";
+        public const string ExtensionPublishedName = "SqlIaaSExtension";
 
         /// <summary>
         /// SQLVM Extension's default version 
         /// </summary>
-        public const string ExtensionDefaultVersion = "1.*";
+        public const string ExtensionDefaultVersion = "1.2";
 
         /// <summary>
         /// Auto-patching settings
@@ -45,5 +50,15 @@ namespace Microsoft.Azure.Commands.Compute
         /// Auto-backup settings
         /// </summary>
         public AutoBackupSettings AutoBackupSettings;
+
+        /// <summary>
+        /// Key Vault Credential settings
+        /// </summary>
+        public KeyVaultCredentialSettings KeyVaultCredentialSettings;
+
+        /// <summary>
+        /// Auto Telemetry settings
+        /// </summary>
+        public AutoTelemetrySettings AutoTelemetrySettings;
     }
 }

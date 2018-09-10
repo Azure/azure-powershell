@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -28,16 +29,16 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmVmssSecret")]
-    [OutputType(typeof(VirtualMachineScaleSet))]
-    public class AddAzureRmVmssSecretCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [Cmdlet("Add", "AzureRmVmssSecret", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSVirtualMachineScaleSet))]
+    public partial class AddAzureRmVmssSecretCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
+        public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -52,6 +53,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public VaultCertificate[] VaultCertificate { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("VirtualMachineScaleSet", "Add"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
@@ -73,10 +82,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vSecrets = new Microsoft.Azure.Management.Compute.Models.VaultSecretGroup();
 
-            // SourceVault
-            vSecrets.SourceVault = new Microsoft.Azure.Management.Compute.Models.SubResource();
-
-            vSecrets.SourceVault.Id = this.SourceVaultId;
+            if (this.SourceVaultId != null)
+            {
+                // SourceVault
+                vSecrets.SourceVault = new Microsoft.Azure.Management.Compute.Models.SubResource();
+                vSecrets.SourceVault.Id = this.SourceVaultId;
+            }
             vSecrets.VaultCertificates = this.VaultCertificate;
             this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets.Add(vSecrets);
             WriteObject(this.VirtualMachineScaleSet);

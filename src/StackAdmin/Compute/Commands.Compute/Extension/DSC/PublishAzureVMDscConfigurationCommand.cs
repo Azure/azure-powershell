@@ -1,12 +1,11 @@
-using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -17,8 +16,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
     /// </summary>
     [Cmdlet(
         VerbsData.Publish,
-        ProfileNouns.VirtualMachineDscConfiguration, 
-        SupportsShouldProcess = true, 
+        ProfileNouns.VirtualMachineDscConfiguration,
+        SupportsShouldProcess = true,
         DefaultParameterSetName = UploadArchiveParameterSetName),
     OutputType(
          typeof(String))]
@@ -33,7 +32,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             ParameterSetName = UploadArchiveParameterSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group that contains the storage account.")]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -91,12 +89,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// <summary>  
         /// Suffix for the storage end point, e.g. core.windows.net  
         /// </summary>  
-        [Parameter(  
-           ValueFromPipelineByPropertyName = true,  
-           ParameterSetName = UploadArchiveParameterSetName,  
-           HelpMessage = "Suffix for the storage end point, e.g. core.windows.net")]  
-        [ValidateNotNullOrEmpty]  
-        public string StorageEndpointSuffix { get; set; }  
+        [Parameter(
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = UploadArchiveParameterSetName,
+           HelpMessage = "Suffix for the storage end point, e.g. core.windows.net")]
+        [ValidateNotNullOrEmpty]
+        public string StorageEndpointSuffix { get; set; }
 
         /// <summary>
         /// By default Publish-AzureRmVMDscConfiguration will not overwrite any existing blobs. 
@@ -174,7 +172,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         OutputArchivePath = GetUnresolvedProviderPathFromPSPath(OutputArchivePath);
                         break;
                     case UploadArchiveParameterSetName:
-                        _storageCredentials = this.GetStorageCredentials(ResourceGroupName,StorageAccountName);
+                        _storageCredentials = this.GetStorageCredentials(ResourceGroupName, StorageAccountName);
                         if (ContainerName == null)
                         {
                             ContainerName = DscExtensionCmdletConstants.DefaultContainerName;
