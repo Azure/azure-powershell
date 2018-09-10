@@ -213,9 +213,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         /// <summary>
         ///     Gets or sets if encryption should be enabled or disabled.
+        ///  todo : vipin add in breaking changes list.Mark obsolete for now.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.HyperVToAzure)]
         [DefaultValue(Constants.Disable)]
+        [Obsolete("cmdlet parameter will be removed in upcoming breaking release")]
         [ValidateSet(
             Constants.Enable,
             Constants.Disable)]
@@ -229,7 +231,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(DontShow = true, ParameterSetName = ASRParameterSets.AzureToAzure)]
         [ValidateNotNullOrEmpty]
         [DefaultValue(Constants.Enable)]
-        [ValidateSet(Constants.Enable, Constants.Disable)]
+        [ValidateSet(SetMultiVmSyncStatus.Enable, SetMultiVmSyncStatus.Disable)]
         public string MultiVmSyncStatus { get; set; }
 
         /// <summary>
@@ -300,10 +302,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 ApplicationConsistentSnapshotFrequencyInHours =
                     this.ApplicationConsistentSnapshotFrequencyInHours,
-                Encryption =
-                    this.MyInvocation.BoundParameters.ContainsKey(
-                        Utilities.GetMemberName(() => this.Encryption)) ? this.Encryption
-                        : Constants.Disable,
                 OnlineReplicationStartTime =
                     this.ReplicationStartTime == null ? null : this.ReplicationStartTime.ToString(),
                 RecoveryPointHistoryDuration = this.NumberOfRecoveryPointsToRetain,
@@ -510,9 +508,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryPointHistory =
                         this.RecoveryPointRetentionInHours * 60, // Convert from hours to minutes.
                     RecoveryPointThresholdInMinutes = this.RPOWarningThresholdInMinutes,
-                    MultiVmSyncStatus = (SetMultiVmSyncStatus)Enum.Parse(
-                                            typeof(SetMultiVmSyncStatus),
-                                            this.MultiVmSyncStatus),
+                    MultiVmSyncStatus = this.MultiVmSyncStatus,
                     CrashConsistentFrequencyInMinutes = crashConsistentFrequencyInMinutes
                 };
             }
@@ -526,9 +522,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryPointHistory =
                         this.RecoveryPointRetentionInHours * 60, // Convert from hours to minutes.
                     RecoveryPointThresholdInMinutes = this.RPOWarningThresholdInMinutes,
-                    MultiVmSyncStatus = (SetMultiVmSyncStatus)Enum.Parse(
-                                            typeof(SetMultiVmSyncStatus),
-                                            this.MultiVmSyncStatus)
+                    MultiVmSyncStatus = this.MultiVmSyncStatus
                 };
             }
 
@@ -556,9 +550,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 AppConsistentFrequencyInMinutes = this.ApplicationConsistentSnapshotFrequencyInHours * 60,
                 CrashConsistentFrequencyInMinutes = crashConsistentFrequencyInMinutes,
-                MultiVmSyncStatus = (SetMultiVmSyncStatus)Enum.Parse(
-                                            typeof(SetMultiVmSyncStatus),
-                                            this.MultiVmSyncStatus),
+                MultiVmSyncStatus = this.MultiVmSyncStatus,
                 RecoveryPointHistory = this.RecoveryPointRetentionInHours * 60
             };
 

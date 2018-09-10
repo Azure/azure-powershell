@@ -35,6 +35,8 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     Get a specific compute quota.
 
 #>
+using module '..\CustomObjects\ComputeQuotaObject.psm1'
+
 function Get-AzsComputeQuota {
     [OutputType([ComputeQuotaObject])]
     [CmdletBinding(DefaultParameterSetName = 'List')]

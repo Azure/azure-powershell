@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: CBFFBF1B-1AF0-4D2F-9315-C3790A4E9346
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmbackupextension
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Sets the backup extension properties on a virtual machine.
 
 ```
 Set-AzureRmVMBackupExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name] <String> [-Tag] <String>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,10 +23,25 @@ Set-AzureRmVMBackupExtension [-ResourceGroupName] <String> [-VMName] <String> [-
 
 ### 1:
 ```
-PS C:\> 
+PS C:\>
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 ```yaml
@@ -85,10 +100,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 

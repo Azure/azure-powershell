@@ -39,7 +39,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.3-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.2.0-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +51,8 @@
     <Compile Include="ScenarioTests\E2E\AsrE2ETests.cs" />
     <Compile Include="ScenarioTests\AsrTestsBase.cs" />
     <Compile Include="ScenarioTests\V2A\AsrV2ATests.cs" />
+    <Compile Include="ScenarioTests\A2A\AsrA2ATests.cs" />
+    <Compile Include="ScenarioTests\A2A\AsrA2ATestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
@@ -167,6 +169,15 @@
     <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrV2ATests\V2AUpdatePolicy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\A2A\AsrA2ATests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\A2A\A2ATestsHelper.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj">
@@ -181,9 +192,6 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ScenarioTests\A2A\" />
-    <Folder Include="SessionRecords\RecoveryServices.SiteRecovery.Test.AsrA2ATests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
