@@ -12,8 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -78,6 +81,26 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
+            // Add some validation based on the type of RuleCollection (SNAT will be supported later)
+            // if (MNM.AzureFirewallNatRCActionType.Dnat.Equals(ActionType))
+            {
+                if (DestinationAddress.Count != 1)
+                {
+                    throw new ArgumentException("Only one destination address is accepted.", nameof(DestinationAddress));
+                }
+
+                if (DestinationPort.Count != 1)
+                {
+                    throw new ArgumentException("Only one destination port is accepted.", nameof(DestinationPort));
+                }
+
+                ValidateIsSingleIpNotRange(DestinationAddress.Single());
+                ValidateIsSingleIpNotRange(TranslatedAddress);
+
+                ValidateIsSinglePortNotRange(DestinationPort.Single());
+                ValidateIsSinglePortNotRange(TranslatedPort);
+            }
+
             var networkRule = new PSAzureFirewallNatRule
             {
                 Name = this.Name,
@@ -90,6 +113,24 @@ namespace Microsoft.Azure.Commands.Network
                 TranslatedPort = this.TranslatedPort
             };
             WriteObject(networkRule);
+        }
+
+        private void ValidateIsSingleIpNotRange(string ipStr)
+        {
+            var singleIpRegEx = new Regex("^((\\d){1,3}\\.){3}((\\d){1,3})$");
+
+            if (!singleIpRegEx.IsMatch(ipStr))
+            {
+                throw new ArgumentException($"Invalid value {ipStr}. Only a single IPv4 value is accepted (e.g. 10.1.2.3).");
+            }
+        }
+
+        private void ValidateIsSinglePortNotRange(string portStr)
+        {
+            if (!uint.TryParse(portStr, out uint parsed))
+            {
+                throw new ArgumentException($"Invalid value {portStr}. Only a single port value is accepted (e.g. 8080).");
+            }
         }
     }
 }
