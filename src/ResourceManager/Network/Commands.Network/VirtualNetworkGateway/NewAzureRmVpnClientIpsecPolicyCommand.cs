@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Commands.Network
             MNM.IpsecEncryption.GCMAES256,
             MNM.IpsecEncryption.GCMAES128,
             MNM.IpsecEncryption.AES256,
-            MNM.IpsecEncryption.AES128)]
+            MNM.IpsecEncryption.AES128,
+            MNM.IpsecEncryption.None)]
         public string IpsecEncryption { get; set; }
 
         [Parameter(

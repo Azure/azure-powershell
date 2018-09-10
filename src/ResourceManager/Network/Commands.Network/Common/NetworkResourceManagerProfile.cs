@@ -723,27 +723,46 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.DdosProtectionPlan, CNM.PSDdosProtectionPlan>();
 
                 //// SDWAN
+				
+		// CNM to MNM
                 cfg.CreateMap<CNM.PSVirtualHub, MNM.VirtualHub>();
                 cfg.CreateMap<CNM.PSVirtualWan, MNM.VirtualWAN>();
                 cfg.CreateMap<CNM.PSHubVirtualNetworkConnection, MNM.HubVirtualNetworkConnection>();
                 cfg.CreateMap<CNM.PSVirtualHubRouteTable, MNM.VirtualHubRouteTable>();
                 cfg.CreateMap<CNM.PSVirtualHubRoute, MNM.VirtualHubRoute>();
                 cfg.CreateMap<CNM.PSVpnGateway, MNM.VpnGateway>();
+                cfg.CreateMap<CNM.PSP2SVpnGateway, MNM.P2SVpnGateway>();
+                cfg.CreateMap<CNM.PSVpnProfileResponse, MNM.VpnProfileResponse>();
+                cfg.CreateMap<CNM.PSP2SVpnProfileParameters, MNM.P2SVpnProfileParameters>();
                 cfg.CreateMap<CNM.PSVpnConnection, MNM.VpnConnection>();
                 cfg.CreateMap<CNM.PSVpnSite, MNM.VpnSite>();
                 cfg.CreateMap<CNM.PSVpnSiteDeviceProperties, MNM.DeviceProperties>();
+                cfg.CreateMap<CNM.PSP2SVpnServerConfiguration, MNM.P2SVpnServerConfiguration>();
+                cfg.CreateMap<CNM.PSP2SVpnServerConfigVpnClientRootCertificate, MNM.P2SVpnServerConfigVpnClientRootCertificate>();
+                cfg.CreateMap<CNM.PSP2SVpnServerConfigVpnClientRevokedCertificate, MNM.P2SVpnServerConfigVpnClientRevokedCertificate>();
+                cfg.CreateMap<CNM.PSP2SVpnServerConfigRadiusServerRootCertificate, MNM.P2SVpnServerConfigRadiusServerRootCertificate>();
+                cfg.CreateMap<CNM.PSP2SVpnServerConfigRadiusClientRootCertificate, MNM.P2SVpnServerConfigRadiusClientRootCertificate>();
 
+		// MNM to CNM
                 cfg.CreateMap<MNM.VirtualWAN, CNM.PSVirtualWan>();
                 cfg.CreateMap<MNM.VirtualHub, CNM.PSVirtualHub>();
                 cfg.CreateMap<MNM.HubVirtualNetworkConnection, CNM.PSHubVirtualNetworkConnection>();
                 cfg.CreateMap<MNM.VirtualHubRouteTable, CNM.PSVirtualHubRouteTable>();
                 cfg.CreateMap<MNM.VirtualHubRoute, CNM.PSVirtualHubRoute>();
                 cfg.CreateMap<MNM.VpnGateway, CNM.PSVpnGateway>();
+                cfg.CreateMap<MNM.P2SVpnGateway, CNM.PSP2SVpnGateway>();
+                cfg.CreateMap<MNM.VpnProfileResponse, CNM.PSVpnProfileResponse>();
+                cfg.CreateMap<MNM.P2SVpnProfileParameters, CNM.PSP2SVpnProfileParameters>();
                 cfg.CreateMap<MNM.VpnConnection, CNM.PSVpnConnection>();
                 cfg.CreateMap<MNM.VpnSite, CNM.PSVpnSite>();
                 cfg.CreateMap<MNM.DeviceProperties, CNM.PSVpnSiteDeviceProperties>();
+                cfg.CreateMap<MNM.P2SVpnServerConfiguration, CNM.PSP2SVpnServerConfiguration>();
+                cfg.CreateMap<MNM.P2SVpnServerConfigVpnClientRootCertificate, CNM.PSP2SVpnServerConfigVpnClientRootCertificate>();
+                cfg.CreateMap<MNM.P2SVpnServerConfigVpnClientRevokedCertificate, CNM.PSP2SVpnServerConfigVpnClientRevokedCertificate>();
+                cfg.CreateMap<MNM.P2SVpnServerConfigRadiusServerRootCertificate, CNM.PSP2SVpnServerConfigRadiusServerRootCertificate>();
+                cfg.CreateMap<MNM.P2SVpnServerConfigRadiusClientRootCertificate, CNM.PSP2SVpnServerConfigRadiusClientRootCertificate>();
 
-                // Service Endpoint Policy
+		// Service Endpoint Policy
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSServiceEndpointPolicy, MNM.ServiceEndpointPolicy>();
 

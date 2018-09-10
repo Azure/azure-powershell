@@ -341,6 +341,15 @@ Gets virtual network current usage.
 ### [Get-AzureRmVirtualWan](Get-AzureRmVirtualWan.md)
 Gets an Azure VirtualWan resource by name or lists all VirtualWan objects in a ResourceGroup or Subscription.
 
+### [Get-AzureRmVirtualWanP2SVpnServerConfiguration](Get-AzureRmVirtualWanP2SVpnServerConfiguration.md)
+Gets a p2sVpnServerConfiguration associated with a virtual wan.
+
+### [Get-AzureRmP2SVpnGateway](Get-AzureRmP2SVpnGateway.md)
+Gets a point to site vpn gateway.
+
+### [Get-AzureRmP2SVpnGatewayVpnProfile](Get-AzureRmP2SVpnGatewayVpnProfile.md)
+Generates vpn profile for point to site vpn gateway.
+
 ### [Get-AzureRmVirtualWanVpnSitesConfiguration](Get-AzureRmVirtualWanVpnSitesConfiguration.md)
 Downloads the configuration for all or a subset of VpnSites connected to a VirtualWan.
 
@@ -542,6 +551,15 @@ Creates a virtual network subnet configuration.
 ### [New-AzureRmVirtualWan](New-AzureRmVirtualWan.md)
 Creates a VirtualWan resource.
 
+### [New-AzureRmP2SVpnServerConfigurationObject](New-AzureRmP2SVpnServerConfigurationObject.md)
+Creates a p2sVpnServerConfiguration in-memory object associated with virtual wan.
+
+### [New-AzureRmVirtualWanP2SVpnServerConfiguration](New-AzureRmVirtualWanP2SVpnServerConfiguration.md)
+Creates a p2sVpnServerConfiguration associated with virtual wan.
+
+### [New-AzureRmP2SVpnGateway](New-AzureRmP2SVpnGateway.md)
+Creates a point to site vpn gateway.
+
 ### [New-AzureRmVpnClientConfiguration](New-AzureRmVpnClientConfiguration.md)
 This command allows the users to create the Vpn profile package based on pre-configured vpn settings on the VPN gateway, in addition to some additional settings that users may need to configure, for e.g. some root certificates.
 
@@ -718,6 +736,12 @@ Removes a subnet configuration from a virtual network.
 
 ### [Remove-AzureRmVirtualWan](Remove-AzureRmVirtualWan.md)
 Removes a VirtualWan resource.
+
+### [Remove-AzureRmVirtualWanP2SVpnServerConfiguration](Remove-AzureRmVirtualWanP2SVpnServerConfiguration.md)
+Removes a p2sVpnServerConfiguration associated with the virtual wan.
+
+### [Remove-AzureRmP2SVpnGateway](Remove-AzureRmP2SVpnGateway.md)
+Removes a point to site vpn gateway.
 
 ### [Remove-AzureRmVpnClientIpsecParameter](Remove-AzureRmVpnClientIpsecParameter.md)
 Removes Vpn custom ipsec policy set on Virtual Network Gateway resource.
@@ -898,6 +922,15 @@ Sets a VpnGateway resource to an intended goal state.
 
 ### [Set-AzureRmVpnSite](Set-AzureRmVpnSite.md)
 Sets a VpnSite resource to an intended goal state.
+
+### [Set-AzureRmVirtualWan](Set-AzureRmVirtualWan.md)
+Updates a virtual wan.
+
+### [Set-AzureRmVirtualWanP2SVpnServerConfiguration](Set-AzureRmVirtualWanP2SVpnServerConfiguration.md)
+Updates the p2sVpnServerConfiguration associated with the virtual wan.
+
+### [Set-AzureRmP2SVpnGateway](Set-AzureRmP2SVpnGateway.md)
+Updates a point to site vpn gateway.
 
 ### [Start-AzureRmApplicationGateway](Start-AzureRmApplicationGateway.md)
 Starts an application gateway.

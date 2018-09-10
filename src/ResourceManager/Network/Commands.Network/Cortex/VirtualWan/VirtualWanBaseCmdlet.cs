@@ -14,16 +14,20 @@
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using System.Collections;
+    using System.Collections.Generic;
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
     using Microsoft.Azure.Management.Network.Models;
-    using System.Collections.Generic;
-    using System.Net;
+    using Rest.Azure;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
     public class VirtualWanBaseCmdlet : NetworkBaseCmdlet
     {
+
+        #region VirtualWan
+
         public IVirtualWANsOperations VirtualWanClient
         {
             get
@@ -41,10 +45,10 @@ namespace Microsoft.Azure.Commands.Network
         }
 
         /// <summary>
-        /// 
+        /// Converts to PS Virtual wan object
         /// </summary>
-        /// <param name="virtualWan"></param>
-        /// <returns></returns>
+        /// <param name="virtualWan">Virtual wan object</param>
+        /// <returns>PS Virtual wan object</returns>
         public PSVirtualWan ToPsVirtualWan(Management.Network.Models.VirtualWAN virtualWan)
         {
             var psVirtualWan = NetworkResourceManagerProfile.Mapper.Map<PSVirtualWan>(virtualWan);
@@ -55,15 +59,17 @@ namespace Microsoft.Azure.Commands.Network
         }
 
         /// <summary>
-        /// 
+        /// Gets Virtual Wan
         /// </summary>
-        /// <param name="resourceGroupName"></param>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="resourceGroupName">Resource group name</param>
+        /// <param name="name">Virtual wan name</param>
+        /// <returns>Created or updated Virtual wan object</returns>
         public PSVirtualWan GetVirtualWan(string resourceGroupName, string name)
         {
             var virtualWan = this.VirtualWanClient.Get(resourceGroupName, name);
+
             var psVirtualWan = ToPsVirtualWan(virtualWan);
+            
             psVirtualWan.ResourceGroupName = resourceGroupName;
 
             return psVirtualWan;
@@ -75,14 +81,14 @@ namespace Microsoft.Azure.Commands.Network
             request.OutputBlobSasUrl = outputBlobSasUrl;
             request.VpnSites = new List<string>();
 
-            foreach(string vpnSiteId in vpnSiteIds)
+            foreach (string vpnSiteId in vpnSiteIds)
             {
                 request.VpnSites.Add(vpnSiteId);
             }
 
             this.VpnSitesConfigurationClient.Download(virtualWan.ResourceGroupName, virtualWan.Name, request);
 
-            return new PSVirtualWanVpnSitesConfiguration() { SasUrl = outputBlobSasUrl};
+            return new PSVirtualWanVpnSitesConfiguration() { SasUrl = outputBlobSasUrl };
         }
 
         public List<PSVirtualWan> ListVirtualWans(string resourceGroupName)
@@ -104,5 +110,114 @@ namespace Microsoft.Azure.Commands.Network
 
             return wansToReturn;
         }
+
+        /// <summary>
+        /// Create or update Virtual wan
+        /// </summary>
+        /// <param name="resourceGroupName">Resource group name</param>
+        /// <param name="virtualWanName">Virtual wan name</param>
+        /// <param name="virtualWan">Virtual wan PS object</param>
+        /// <param name="tags">Tag</param>
+        /// <returns>Virtual wan object</returns>
+        public PSVirtualWan CreateOrUpdateVirtualWan(string resourceGroupName, string virtualWanName, PSVirtualWan virtualWan, Hashtable tags)
+        {
+            var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<VirtualWAN>(virtualWan);
+            virtualWanModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
+
+            var virtualWanCreatedOrUpdated = this.VirtualWanClient.CreateOrUpdate(resourceGroupName, virtualWanName, virtualWanModel);
+            return this.ToPsVirtualWan(virtualWanCreatedOrUpdated);
+        }
+
+        #endregion
+
+        #region VirtualWan P2SVpnServerConfiguration
+
+        public IP2SVpnServerConfigurationsOperations P2SVpnServerConfigurationClient
+        {
+            get
+            {
+                return NetworkClient.NetworkManagementClient.P2SVpnServerConfigurations;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="virtualWanP2SVpnServerConfiguration"></param>
+        /// <returns></returns>
+        public PSP2SVpnServerConfiguration ToPsVirtualWanP2SVpnServerConfiguration(Management.Network.Models.P2SVpnServerConfiguration virtualWanP2SVpnServerConfiguration)
+        {
+            var psVirtualWanP2SVpnServerConfiguration = NetworkResourceManagerProfile.Mapper.Map<PSP2SVpnServerConfiguration>(virtualWanP2SVpnServerConfiguration);
+            psVirtualWanP2SVpnServerConfiguration.Etag = virtualWanP2SVpnServerConfiguration.Etag;
+            return psVirtualWanP2SVpnServerConfiguration;
+        }
+
+        /// <summary>
+        /// Gets VirtualWan P2SVpnServerConfiguration
+        /// </summary>
+        /// <param name="resourceGroupName">Resource group name</param>
+        /// <param name="virtualWanName">Parent Virtual wan name</param>
+        /// <param name="p2sVpnServerConfigurationName">P2SVpnServerConfiguration name</param>
+        /// <returns>Virtual Wan P2SVpnServerConfiguration object</returns>
+        public PSP2SVpnServerConfiguration GetVirtualWanP2SVpnServerConfiguration(string resourceGroupName, string virtualWanName, string p2sVpnServerConfigurationName)
+        {
+            var virtualWanP2SVpnServerConfiguration = this.P2SVpnServerConfigurationClient.Get(resourceGroupName, virtualWanName, p2sVpnServerConfigurationName);
+
+            var psvirtualWanP2SVpnServerConfiguration = ToPsVirtualWanP2SVpnServerConfiguration(virtualWanP2SVpnServerConfiguration);
+
+            return psvirtualWanP2SVpnServerConfiguration;
+        }
+
+        /// <summary>
+        /// Get list of VirtualWan P2SVpnServerConfigurations
+        /// </summary>
+        /// <param name="resourceGroupName">Resource group name</param>
+        /// <param name="virtualWanName">Parent Virtual wan name</param>
+        /// <returns>Virtual Wan P2SVpnServerConfigurations list</returns>
+        public List<PSP2SVpnServerConfiguration> ListVirtualWanP2SVpnServerConfigurations(string resourceGroupName, string virtualWanName)
+        {
+            IPage<P2SVpnServerConfiguration> p2sVpnServerConfigurationList = this.P2SVpnServerConfigurationClient.ListByVirtualWan(resourceGroupName, virtualWanName);
+
+            var p2sVpnServerConfigurations = new List<PSP2SVpnServerConfiguration>();
+            foreach (var p2sVpnServerConfiguration in p2sVpnServerConfigurationList)
+            {
+                var psP2SVpnServerConfiguration = this.ToPsVirtualWanP2SVpnServerConfiguration(p2sVpnServerConfiguration);
+                p2sVpnServerConfigurations.Add(psP2SVpnServerConfiguration);
+            }
+
+            return p2sVpnServerConfigurations;
+        }
+
+        /// <summary>
+        /// Create or update Virtual Wan P2SVpnServerConfiguration
+        /// </summary>
+        /// <param name="resourceGroupName">>Resource group name</param>
+        /// <param name="virtualWanName">>Parent Virtual wan name</param>
+        /// <param name="p2sVpnServerConfigurationName">P2SVpnServerConfiguration name</param>
+        /// <param name="p2sVpnServerConfiguration">P2SVpnServerConfiguration object</param>
+        /// <param name="tags">Tag</param>
+        /// <returns>Created or updated Virtual Wan P2SVpnServerConfiguration object</returns>
+        public PSP2SVpnServerConfiguration CreateOrUpdateVirtualWanP2SVpnServerConfiguration(string resourceGroupName, string virtualWanName, string p2sVpnServerConfigurationName, PSP2SVpnServerConfiguration p2sVpnServerConfiguration)
+        {
+            var virtualWanP2SVpnServerConfigurationModel = NetworkResourceManagerProfile.Mapper.Map<P2SVpnServerConfiguration>(p2sVpnServerConfiguration);
+
+            var virtualWanP2SVpnServerConfigurationCreatedOrUpdated = this.P2SVpnServerConfigurationClient.CreateOrUpdate(resourceGroupName, virtualWanName, p2sVpnServerConfigurationName, virtualWanP2SVpnServerConfigurationModel);
+            return this.ToPsVirtualWanP2SVpnServerConfiguration(virtualWanP2SVpnServerConfigurationCreatedOrUpdated);
+        }
+
+        /// <summary>
+        /// Delete Virtual Wan P2SVpnServerConfiguration
+        /// </summary>
+        /// <param name="resourceGroupName">>Resource group name</param>
+        /// <param name="virtualWanName">>Parent Virtual wan name</param>
+        /// <param name="p2sVpnServerConfigurationName">P2SVpnServerConfiguration name</param>
+        /// <returns>Deletes Virtual Wan P2SVpnServerConfiguration object</returns>
+        public void DeleteVirtualWanP2SVpnServerConfiguration(string resourceGroupName, string virtualWanName, string p2sVpnServerConfigurationName)
+        {
+            this.P2SVpnServerConfigurationClient.Delete(resourceGroupName, virtualWanName, p2sVpnServerConfigurationName);
+        }
+
+        #endregion
+
     }
 }

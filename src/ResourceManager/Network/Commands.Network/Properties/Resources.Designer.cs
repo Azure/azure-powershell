@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -331,6 +331,60 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to p2sVpnServerConfigRadiusClientRootCertificates.
+        /// </summary>
+        public static string P2SVpnServerConfigRadiusClientRootCertificateName {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigRadiusClientRootCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p2sVpnServerConfigRadiusServerRootCertificates.
+        /// </summary>
+        public static string P2SVpnServerConfigRadiusServerRootCertificateName {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigRadiusServerRootCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to P2SVpnServerConfigurationNameNotSet.
+        /// </summary>
+        public static string P2SVpnServerConfigurationNameNotSet {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigurationNameNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualWans/{2}/p2sVpnServerConfigurations/{3}/{4}/{5}.
+        /// </summary>
+        public static string P2SVpnServerConfigurationResourceId {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigurationResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p2sVpnServerConfigVpnClientRevokedCertificates.
+        /// </summary>
+        public static string P2SVpnServerConfigVpnClientRevokedCertificateName {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigVpnClientRevokedCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p2sVpnServerConfigVpnClientRootCertificates.
+        /// </summary>
+        public static string P2SVpnServerConfigVpnClientRootCertificateName {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigVpnClientRootCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The parent virtual hub mentioned could not be found..
         /// </summary>
         public static string ParentVirtualHubNotFound {
@@ -579,6 +633,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string VirtualNetworkReferenceRequiredToCreateHubVnetConnection {
             get {
                 return ResourceManager.GetString("VirtualNetworkReferenceRequiredToCreateHubVnetConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VirtualWanNameNotSet.
+        /// </summary>
+        public static string VirtualWanNameNotSet {
+            get {
+                return ResourceManager.GetString("VirtualWanNameNotSet", resourceCulture);
             }
         }
         

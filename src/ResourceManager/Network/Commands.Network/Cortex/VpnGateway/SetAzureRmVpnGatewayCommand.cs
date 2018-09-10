@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVpnGatewayName,
             Mandatory = true,
-            HelpMessage = "The virtual wan name.")]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The vpn gateway name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
