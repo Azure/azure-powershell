@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-{{Fill ResourceId Description}}
+The resource id.
 
 ```yaml
 Type: String
