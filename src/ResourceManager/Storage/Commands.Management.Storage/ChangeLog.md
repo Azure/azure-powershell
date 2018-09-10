@@ -18,6 +18,29 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Upgrade to Azure Storage Client Library 9.3.0 
+* Support Immutability Policy in AzureRm.Storage 
+    - Remove-AzureRmStorageAccountNetworkRule
+    - Get-AzureRmStorageContainer
+    - Update-AzureRmStorageContainer
+    - New-AzureRmStorageContainer
+    - Remove-AzureRmStorageContainer
+    - Add-AzureRmStorageContainerLegalHold
+    - Remove-AzureRmStorageContainerLegalHold
+    - Set-AzureRmStorageContainerImmutabilityPolicy
+    - Get-AzureRmStorageContainerImmutabilityPolicy
+    - Remove-AzureRmStorageContainerImmutabilityPolicy
+    - Lock-AzureRmStorageContainerImmutabilityPolicy
+
+## Version 5.0.4
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 5.0.3
+* Fixed issue with default resource groups not being set.
+
+## Version 5.0.2
+* Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 5.0.1
 * Updated all help files to include full parameter types and correct input/output types.
@@ -92,7 +115,7 @@
 ## Version 4.0.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 3.4.1
 
 ## Version 3.4.0

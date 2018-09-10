@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,9 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to remove Azure Sql Databases from a Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseFromFailoverGroup",
-        ConfirmImpact = ConfirmImpact.Medium,
-        SupportsShouldProcess = true), OutputType(typeof(AzureSqlFailoverGroupModel))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseFromFailoverGroup",ConfirmImpact = ConfirmImpact.Medium,SupportsShouldProcess = true), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class RemoveAzureSqlDatabaseFromFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>

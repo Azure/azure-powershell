@@ -19,6 +19,16 @@
 -->
 ## Current Release
 
+## Version 0.9.10
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 0.9.9
+* Fixed issue with default resource groups not being set.
+
+## Version 0.9.8
+* Updated to the latest version of the Azure ClientRuntime.
+
 ## Version 0.9.7
 * Updated all help files to include full parameter types and correct input/output types.
 
@@ -47,7 +57,7 @@
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
-    
+
 ## Version 0.8.7
 
 ## Version 0.8.6

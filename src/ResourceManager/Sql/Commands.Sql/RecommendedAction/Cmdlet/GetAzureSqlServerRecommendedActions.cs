@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlServerRecommendedActions cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerRecommendedAction")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerRecommendedAction")]
     [OutputType(typeof(AzureSqlServerRecommendedActionModel))]
     public class GetAzureSqlServerRecommendedAction : AzureSqlServerRecommendedActionCmdletBase
     {

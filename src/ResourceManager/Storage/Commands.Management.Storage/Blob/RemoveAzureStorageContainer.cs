@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Remove, StorageContainerNounStr, DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + StorageContainerNounStr, DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureStorageContainerCommand : StorageBlobBaseCmdlet
     {
         /// <summary>
@@ -93,6 +93,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(HelpMessage = "Force to remove the container and all content in it")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -118,6 +121,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                        this.ResourceGroupName,
                        this.StorageAccountName,
                        this.Name);
+
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
                 }
             }
         }

@@ -19,8 +19,40 @@
 -->
 ## Current Release
 
+## Version 6.1.5
+* Fixed issue with default resource groups not being set.
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6603
+    - Import-AzureRmApiManagementApi and *-AzureRmApiManagementCertificate cmdlets now handle relative Paths
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6879
+    - The CertificateInformation is a settable property allowing for Set-AzureRmApiManagement cmdlet to work property. Fixed by upgrading to 
+	4.0.4-preview nuget
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6853
+    - Fixed the Odata filter for Search by Name on Product
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6814
+    - Fixed the Odata filter for Search by Name on Api
+* Added support for AzureMonitor logger
+* Updated common runtime assemblies
+
+
+## Version 6.1.4
+* Fixed issue with default resource groups not being set.
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6603
+    - Import-AzureRmApiManagementApi and *-AzureRmApiManagementCertificate cmdlets now handle relative Paths
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6879
+    - The CertificateInformation is a settable property allowing for Set-AzureRmApiManagement cmdlet to work property. Fixed by upgrading to 
+	4.0.4-preview nuget
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6853
+    - Fixed the Odata filter for Search by Name on Product
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6814
+    - Fixed the Odata filter for Search by Name on Api
+* Added support for AzureMonitor logger
+
+## Version 6.1.3
+* Updated to the latest version of the Azure ClientRuntime.
+
 ## Version 6.1.2
 * Updated help files to include full parameter types and correct input/output types.
+* Updated to the latest version of the Azure ClientRuntime.
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6370
     - Fixed bug in Automapper to translate PsApiManagementApi to ApiContract
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6515

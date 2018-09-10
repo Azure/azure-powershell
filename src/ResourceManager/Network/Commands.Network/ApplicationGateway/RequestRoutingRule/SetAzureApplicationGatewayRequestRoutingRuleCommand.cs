@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayRequestRoutingRule"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayRequestRoutingRule"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayRequestRoutingRuleCommand : AzureApplicationGatewayRequestRoutingRuleBase
     {
         [Parameter(

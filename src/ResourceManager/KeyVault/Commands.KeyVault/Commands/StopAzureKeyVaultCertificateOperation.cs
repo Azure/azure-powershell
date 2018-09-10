@@ -22,9 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Cancels the certificate operation for the selected certificate
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, CmdletNoun.AzureKeyVaultCertificateOperation,
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificateOperation",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class StopAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {

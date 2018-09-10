@@ -21,8 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// <summary>
     /// Show azure storage service properties
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, StorageNouns.StorageServiceMetrics),
-        OutputType(typeof(MetricsProperties))]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageServiceMetricsProperty"),OutputType(typeof(MetricsProperties))]
     public class GetAzureStorageServiceMetricsCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]

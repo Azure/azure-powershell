@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementTenantAccess)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementTenantAccess")]
     [OutputType(typeof(PsApiManagementAccessInformation))]
     public class GetAzureRmApiManagementTenantAccess : AzureApiManagementCmdletBase
     {

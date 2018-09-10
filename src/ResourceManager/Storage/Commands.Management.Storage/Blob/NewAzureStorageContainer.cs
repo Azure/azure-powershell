@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.New, StorageContainerNounStr, DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSContainer))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + StorageContainerNounStr, DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSContainer))]
     public class NewAzureStorageContainerCommand : StorageBlobBaseCmdlet
     {
         /// <summary>

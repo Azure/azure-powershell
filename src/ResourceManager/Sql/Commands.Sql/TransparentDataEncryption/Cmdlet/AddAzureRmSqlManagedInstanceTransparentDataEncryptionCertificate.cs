@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// <summary>
     /// Defines the Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class AddAzureRmSqlManagedInstanceTransparentDataEncryptionCertificate : AzureSqlCmdletBase<IEnumerable<AzureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel>, AzureSqlDatabaseTransparentDataEncryptionArmAdapter>
     {

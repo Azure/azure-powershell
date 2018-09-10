@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmDiskUpdateDiskEncryptionKey", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiskUpdateDiskEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDiskUpdate))]
     public partial class SetAzureRmDiskUpdateDiskEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -101,4 +101,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

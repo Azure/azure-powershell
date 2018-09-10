@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Get, StorageContainerNounStr, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSContainer))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + StorageContainerNounStr, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSContainer))]
     public class GetAzureStorageContainerCommand : StorageBlobBaseCmdlet
     {
         /// <summary>

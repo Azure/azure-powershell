@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerCommunicationLink",
-        SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerCommunicationLink",SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
     public class RemoveAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
     {
         /// <summary>

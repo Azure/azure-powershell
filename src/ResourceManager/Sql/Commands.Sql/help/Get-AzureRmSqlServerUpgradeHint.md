@@ -136,10 +136,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ### System.Boolean
-Parameters: ExcludeElasticPools (ByPropertyName)
 
 ## OUTPUTS
 

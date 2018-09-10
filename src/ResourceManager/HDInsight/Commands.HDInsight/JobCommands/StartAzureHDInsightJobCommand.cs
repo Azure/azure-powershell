@@ -24,9 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsLifecycle.Start,
-        Constants.CommandNames.AzureHDInsightJob),
-    OutputType(typeof(AzureHDInsightJob))]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "HDInsightJob"),OutputType(typeof(AzureHDInsightJob))]
     public class StartAzureHDInsightJobCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
