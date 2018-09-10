@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added an example of the `SimpleParameterSet` to New-AzureRmVmss cmdlet help.
 * Move dependencies on Keyvault and Storage to the common dependencies.
 * Add support for more virutal machine sizes to AEM cmdlets
 
