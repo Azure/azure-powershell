@@ -35,6 +35,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResourceReference()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ResourceReference");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetCrud()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetCrud");
