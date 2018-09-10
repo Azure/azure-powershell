@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Virtual network express route gateway tests
+CortexCRUD
 #>
 function Test-CortexCRUD
 {
@@ -53,29 +53,34 @@ function Test-CortexCRUD
 		Assert-AreEqual $createdVirtualHub.Name $virtualHub.Name
 
 		# Create the VpnSite
-		$vpnSiteAddressSpaces = New-Object string[] 2
+		$vpnSiteAddressSpaces = New-Object string[] 1
 		$vpnSiteAddressSpaces[0] = "192.168.2.0/24"
-		$vpnSiteAddressSpaces[1] = "192.168.3.0/24"
-		$createdVpnSite = New-AzureRmVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Location $rglocation -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
+		$createdVpnSite = New-AzureRmVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Location $rglocation -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps 10
+		Set-AzureRmVpnSite -VpnSite $createdVpnSite -DeviceModel "SomeDevice1" -DeviceVendor "SomeDeviceVendor1" -LinkSpeedInMbps 20
 		$vpnSite = Get-AzureRmVpnSite -ResourceGroupName $rgname -Name $vpnSiteName
 		Assert.AreEqual $createdVpnSite.ResourceGroupName $vpnSite.ResourceGroupName
 		Assert.AreEqual $createdVpnSite.Name $vpnSite.Name
 
 		# Create the VpnGateway
-		$createdVpnGateway = New-AzureRmVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1
+		$createdVpnGateway = New-AzureRmVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3
+		Set-AzureRmVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VpnGatewayScaleUnit 3
 		$vpnGateway = Get-AzureRmVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		Assert.AreEqual $createdVpnGateway.ResourceGroupName $vpnGateway.ResourceGroupName
 		Assert.AreEqual $createdVpnGateway.Name $vpnGateway.Name
 
 		# Create the VpnConnection
 		$createdVpnConnection = New-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name $vpnConnectionName -VpnSite $vpnSite -ConnectionBandwidth 20
+		Set-AzureRmVpnConnection -VpnConnection $vpnConnection -ConnectionBandwidth 30
 		$vpnConnection = Get-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name $vpnConnectionName
 		Assert.AreEqual $createdVpnConnection.ResourceGroupName $vpnConnection.ResourceGroupName
 		Assert.AreEqual $createdVpnConnection.Name $vpnConnection.Name
 
 		# Create a HubVirtualNetworkConnection
-		$createdHubVnetConnection = New-AzureRmHubVirtualNetworkConnection -ResourceGroupName $rgName -VirtualHubName $virtualHub.Name -Name $hubVnetConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork
-		$hubVnetConnection = Get-AzureRmHubVirtualNetworkConnection -ResourceGroupName $rgName -VirtualHubName $virtualHub.Name -Name $hubVnetConnectionName
+		$remoteVirtualNetwork = New-AzureRmVirtualNetwork -ResourceGroupName $rgname -Name $remoteVirtualNetworkName -Location $rglocation -AddressPrefix "10.0.1.0/24"
+		$createdHubVnetConnection = New-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHub.Name -Name $hubVnetConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork
+		$hubVnetConnection = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHub.Name -Name $hubVnetConnectionName
+		Assert.AreEqual $createdHubVnetConnection.ResourceGroupName $hubVnetConnection.ResourceGroupName
+		Assert.AreEqual $createdHubVnetConnection.Name $hubVnetConnection.Name
 	}
 	finally
 	{
@@ -85,5 +90,6 @@ function Test-CortexCRUD
 		Remove-AzureRmVpnSite -ResourceGroupName $rgname -Name $vpnSiteName
 		Remove-AzureRmVirtualHub -ResourceGroupName $rgname -Name $virtualHubName
 		Remove-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		$resourceGroup | Remove-AzureRmResourceGroup
 	}
 }
