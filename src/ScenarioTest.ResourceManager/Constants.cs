@@ -82,6 +82,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         // Windows Azure NRP dev team
         public const string wanrpdev = "wanrpdev";
 
+        //Azure NRP Firewall dev team
+        public const string azurefirewall = "azurefirewall";
+
         // Acceptance type
         public const string AcceptanceType = "AcceptanceType";
 
