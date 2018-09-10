@@ -63,6 +63,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         public IList<FirewallRule> FirewallRules { get; private set; }
 
         /// <summary>
+        /// Gets or sets the list of firewall rules associated with this Data
+        /// Lake store account.
+        /// </summary>
+        [Obsolete("This property is in DataLakeStoreAccount but removed in DataLakeStoreAccountBasic because the server does not return this property when listing accounts. This will be removed in a future release.")]
+        public IList<VirtualNetworkRule> VirtualNetworkRules { get; private set; }
+
+        /// <summary>
         /// Gets or sets the current state of the trusted identity provider
         /// feature for this Data Lake store account. Possible values include:
         /// 'Enabled', 'Disabled'

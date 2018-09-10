@@ -61,10 +61,14 @@
     <Reference Include="System.Runtime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddAzureRmDataLakeStoreVirtualNetworkRule.cs" />
     <Compile Include="Commands\EnableAzureRmDataLakeStoreKeyVault.cs" />
+    <Compile Include="Commands\GetAzureRmDataLakeStoreVirtualNetworkRule.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreTrustedIdProvider.cs" />
+    <Compile Include="Commands\RemoveAzureRmDataLakeStoreVirtualNetworkRule.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreFirewallRule.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeStoreVirtualNetworkRule.cs" />
     <Compile Include="DataPlaneCommands\ExportAzureRmDataLakeStoreChildItemProperties.cs" />
     <Compile Include="DataPlaneCommands\GetAzureRmDataLakeStoreChildItemSummary.cs" />
     <Compile Include="DataPlaneCommands\SetAzureRmDataLakeStoreItemExpiry.cs" />
@@ -108,6 +112,7 @@
     <Compile Include="DataPlaneModels\DataLakeStoreFileSystemCmdletBase.cs" />
     <Compile Include="Models\DataLakeStoreTracingInterceptor.cs" />
     <Compile Include="Models\DataLakeStoreTraceLogger.cs" />
+    <Compile Include="Models\DataLakeStoreVirtualNetworkRule.cs" />
     <Compile Include="Models\FileSystemCmdletProviderEncoding.cs" />
     <Compile Include="Models\PSDataLakeStoreAccountBasic.cs" />
     <Compile Include="Models\PSDataLakeStoreAccount.cs" />

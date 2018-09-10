@@ -233,6 +233,29 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 });
         }
 
+        public VirtualNetworkRule AddOrUpdateVirtualNetworkRule(string resourceGroupName, string accountName, string ruleName, string subnetId, Cmdlet runningCommand)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccount(accountName);
+            }
+
+            if (_client.Accounts.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)//must be enabled?
+            {
+                runningCommand.WriteWarning(string.Format(Properties.Resources.FirewallDisabledWarning, accountName));
+            }
+
+            return _client.VirtualNetworkRules.CreateOrUpdate(
+                resourceGroupName,
+                accountName,
+                ruleName,
+                new CreateOrUpdateVirtualNetworkRuleParameters
+                {
+                    SubnetId = subnetId
+
+                });
+        }
+
         public void DeleteFirewallRule(string resourceGroupName, string accountName, string ruleName, Cmdlet runningCommand)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -248,6 +271,21 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             _client.FirewallRules.Delete(resourceGroupName, accountName, ruleName);
         }
 
+        public void DeleteVirtualNetworkRule(string resourceGroupName, string accountName, string ruleName, Cmdlet runningCommand)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccount(accountName);
+            }
+
+            if (_client.Accounts.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)//must be enabled?
+            {
+                runningCommand.WriteWarning(string.Format(Properties.Resources.FirewallDisabledWarning, accountName));
+            }
+
+            _client.VirtualNetworkRules.Delete(resourceGroupName, accountName, ruleName);
+        }
+
         public FirewallRule GetFirewallRule(string resourceGroupName, string accountName, string ruleName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -256,6 +294,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             return _client.FirewallRules.Get(resourceGroupName, accountName, ruleName);
+        }
+
+        public VirtualNetworkRule GetVirtualNetworkRule(string resourceGroupName, string accountName, string ruleName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccount(accountName);
+            }
+
+            return _client.VirtualNetworkRules.Get(resourceGroupName, accountName, ruleName);
         }
 
         public TrustedIdProvider AddOrUpdateTrustedProvider(string resourceGroupName, string accountName, string providerName, string providerEndpoint, Cmdlet runningCommand)
@@ -326,6 +374,27 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return toReturn;
         }
 
+        public List<VirtualNetworkRule> ListVirtualNetworkRules(string resourceGroupName, string accountName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccount(accountName);
+            }
+
+            var toReturn = new List<VirtualNetworkRule>();
+            var response = _client.VirtualNetworkRules.ListByAccount(resourceGroupName, accountName);
+
+            toReturn.AddRange(response);
+
+            while (!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = ListVirtualNetworkRulesWithNextLink(response.NextPageLink);
+                toReturn.AddRange(response);
+            }
+
+            return toReturn;
+        }
+
         public List<TrustedIdProvider> ListTrustedProviders(string resourceGroupName, string accountName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -385,6 +454,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         private IPage<FirewallRule> ListFirewallRulesWithNextLink(string nextLink)
         {
             return _client.FirewallRules.ListByAccountNext(nextLink);
+        }
+
+        private IPage<VirtualNetworkRule> ListVirtualNetworkRulesWithNextLink(string nextLink)
+        {
+            return _client.VirtualNetworkRules.ListByAccountNext(nextLink);
         }
 
         private string GetResourceGroupByAccount(string accountName)
