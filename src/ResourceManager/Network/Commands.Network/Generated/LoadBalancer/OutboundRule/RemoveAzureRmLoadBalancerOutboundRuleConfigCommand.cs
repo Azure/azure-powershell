@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSLoadBalancer LoadBalancer { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The Name of outbound rule")]
         public string Name { get; set; }
 
