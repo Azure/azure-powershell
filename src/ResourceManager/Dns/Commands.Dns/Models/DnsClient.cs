@@ -122,6 +122,36 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return ToDnsZone(this.DnsManagementClient.Zones.Get(resourceGroupName, name));
         }
 
+        public IList<DnsResourceReference> GetDnsTargetResources(IList<SubResource> subResources)
+        {
+            List<DnsResourceReference> resourceReferences = new List<DnsResourceReference>();
+
+            if (subResources != null)
+            {
+                List<Sdk.SubResource> requestedResources = new List<Sdk.SubResource>();
+                foreach (SubResource subresource in subResources)
+                {
+                    requestedResources.Add(new Sdk.SubResource(subresource.Id));
+                }
+
+                IList<Sdk.DnsResourceReference> resourcesResponse = this.DnsManagementClient.DnsResourceReference.GetByTargetResources(requestedResources).DnsResourceReferences;
+
+                if (resourcesResponse != null)
+                {
+                    foreach(Sdk.DnsResourceReference reference in resourcesResponse)
+                    {
+                        resourceReferences.Add(new DnsResourceReference()
+                        {
+                            DnsResources = reference.DnsResources == null ? new List<SubResource>() : reference.DnsResources.Select(sr => new SubResource() { Id = sr.Id }).ToList(),
+                            TargetResource = new SubResource() { Id = reference.TargetResource.Id }
+                        });
+                    }
+                }
+            }
+
+            return resourceReferences;
+        }
+
         public List<DnsZone> ListDnsZonesInResourceGroup(string resourceGroupName)
         {
             List<DnsZone> results = new List<DnsZone>();
@@ -168,14 +198,14 @@ namespace Microsoft.Azure.Commands.Dns.Models
             string zoneName,
             string resourceGroupName,
             string relativeRecordSetName,
-            uint ttl,
+            long? ttl,
             RecordType recordType,
             Hashtable tags,
             bool overwrite,
             DnsRecordBase[] resourceRecords,
-            string aliasTargetResourceId)
+            string targetResourceId)
         {
-            var recordSet = ConstructRecordSetPropeties(relativeRecordSetName, recordType, ttl, tags, resourceRecords, aliasTargetResourceId);
+            var recordSet = ConstructRecordSetPropeties(relativeRecordSetName, recordType, ttl, tags, resourceRecords, targetResourceId);
 
             var response = this.DnsManagementClient.RecordSets.CreateOrUpdate(
                 resourceGroupName,
@@ -192,10 +222,10 @@ namespace Microsoft.Azure.Commands.Dns.Models
         private RecordSet ConstructRecordSetPropeties(
             string recordSetName,
             RecordType recordType,
-            uint ttl,
+            long? ttl,
             Hashtable tags,
             DnsRecordBase[] resourceRecords,
-            string aliasTargetResourceId)
+            string targetResourceId)
         {
 
             var properties = new RecordSet
@@ -219,9 +249,9 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 FillEmptyRecordsForType( properties, recordType);
 
-                if (!string.IsNullOrEmpty(aliasTargetResourceId))
+                if (!string.IsNullOrEmpty(targetResourceId))
                 {
-                    properties.TargetResource = new SubResource(aliasTargetResourceId);
+                    properties.TargetResource = new Sdk.SubResource(targetResourceId);
                 }
             }
 
@@ -294,6 +324,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 new RecordSet
                 {
                     TTL = recordSet.Ttl,
+                    TargetResource = string.IsNullOrWhiteSpace(recordSet.TargetResourceId) ? null : new Sdk.SubResource(recordSet.TargetResourceId),
                     Metadata = TagsConversionHelper.CreateTagDictionary(recordSet.Metadata, validate: true),
                     AaaaRecords =
                         recordSet.RecordType == RecordType.AAAA
@@ -437,6 +468,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return new DnsRecordSet
             {
                 Etag = mamlRecordSet.Etag,
+                Id = mamlRecordSet.Id,
                 Name = mamlRecordSet.Name,
                 RecordType = recordType,
                 Records = GetPowerShellRecords(mamlRecordSet),
@@ -444,7 +476,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 ResourceGroupName = resourceGroupName,
                 Ttl = (uint) mamlRecordSet.TTL.GetValueOrDefault(),
                 ZoneName = zoneName,
-                AliasTargetResourceId = mamlRecordSet.TargetResource != null ? mamlRecordSet.TargetResource.Id : string.Empty,
+                TargetResourceId = mamlRecordSet.TargetResource != null ? mamlRecordSet.TargetResource.Id : string.Empty,
                 ProvisioningState = mamlRecordSet.ProvisioningState,
             };
         }
