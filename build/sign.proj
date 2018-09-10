@@ -40,10 +40,11 @@
   <Target Name="netstandard20">
     <Message Importance="high" Text="Sign: netstandard20 started" />
     <PropertyGroup>
-      <OutputDir>$(Artifacts)$(Configuration)\netstandard2.0\</OutputDir>
+      <OutputDir>$(Artifacts)$(Configuration)</OutputDir>
     </PropertyGroup>
     <ItemGroup>
-      <NetStandard20Files Include="$(OutputDir)Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)Microsoft.Azure.PowerShell*.Test.dll" />
+      <NetStandard20Files Include="$(OutputDir)\netstandard2.0\Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)\netstandard2.0\Microsoft.Azure.PowerShell*.Test.dll" />
+      <NetStandard20Files Include="$(OutputDir)\netcoreapp2.1\Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)\netcoreapp2.1\Microsoft.Azure.PowerShell*.Test.dll" />
     </ItemGroup>
     <CodeSigningTask
       Description="$(Description)"

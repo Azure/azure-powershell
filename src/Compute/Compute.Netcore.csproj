@@ -35,11 +35,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.Netcore.csproj" />
-    <ProjectReference Include="..\ResourceManager\ResourceManager.Netcore.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Remove="Properties\AssemblyInfo.cs" />
     <None Remove="Properties\AssemblyInfo.cs" />
