@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 result = converter == null? JsonConvert.DeserializeObject<T>(serialization) : JsonConvert.DeserializeObject<T>(serialization, converter);
                 success = true;
             }
-            catch (Exception)
+            catch (JsonException)
             {
 
             }

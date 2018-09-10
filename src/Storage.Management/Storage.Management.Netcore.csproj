@@ -37,7 +37,8 @@
     <DelaySign>false</DelaySign>
   </PropertyGroup>
 
-  <ItemGroup>    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
+  <ItemGroup>
+    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>

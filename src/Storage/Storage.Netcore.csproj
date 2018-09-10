@@ -41,7 +41,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-  <ItemGroup>    <Compile Remove="Adapters\**" />
+    <Compile Remove="Adapters\**" />
     <EmbeddedResource Remove="Adapters\**" />
     <None Remove="Adapters\**" />
     <Content Include="Adapters\**">
