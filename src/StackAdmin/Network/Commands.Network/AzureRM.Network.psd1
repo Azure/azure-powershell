@@ -299,15 +299,7 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmVirtualNetworkGatewayBgpPeerStatus', 
                'Get-AzureRmVirtualNetworkGatewayAdvertisedRoute', 
                'Get-AzureRmVirtualNetworkGatewayLearnedRoute', 
-               'Get-AzureRmNetworkUsage', 'Get-AzureRmVirtualNetworkUsageList',
-			   'Get-AzureRmFirewall',
-               'Set-AzureRmFirewall',
-               'New-AzureRmFirewall',
-               'Remove-AzureRmFirewall',
-               'New-AzureRmFirewallApplicationRuleCollection',
-               'New-AzureRmFirewallApplicationRule',
-			   'New-AzureRmFirewallNetworkRuleCollection',
-               'New-AzureRmFirewallNetworkRule'
+               'Get-AzureRmNetworkUsage', 'Get-AzureRmVirtualNetworkUsageList'
 
 # Variables to export from this module
 # VariablesToExport = @()
