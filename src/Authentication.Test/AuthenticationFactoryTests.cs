@@ -70,6 +70,7 @@ namespace Common.Authentication.Test
             Assert.Equal(subscriptionId, new Guid(((AccessTokenCredential)credential).SubscriptionId));
         }
 
+#if !NETSTANDARD
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
        public void VerifyValidateAuthorityFalseForOnPremise()
@@ -106,9 +107,10 @@ namespace Common.Authentication.Test
             );
 
             var credential = authFactory.Authenticate(context.Account, context.Environment, "common", null, ShowDialog.Always, null);
-           
-            Assert.False(((MockAccessTokenProvider)authFactory.TokenProvider).AdalConfiguration.ValidateAuthority);            
+
+            Assert.False(((MockAccessTokenProvider)authFactory.TokenProvider).AdalConfiguration.ValidateAuthority);
         }
+#endif
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

@@ -36,12 +36,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
-    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Adapters\**" />
+  <ItemGroup>    <Compile Remove="Adapters\**" />
     <EmbeddedResource Remove="Adapters\**" />
     <None Remove="Adapters\**" />
     <Content Include="Adapters\**">
