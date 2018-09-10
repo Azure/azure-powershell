@@ -35,7 +35,6 @@ Get-AzureRmRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-RecoveryPoin
 ## DESCRIPTION
 The **Get-AzureRmRecoveryServicesBackupRecoveryPoint** cmdlet gets the recovery points for a backed up Azure Backup item.
 After an item has been backed up, an **AzureRmRecoveryServicesBackupRecoveryPoint** object has one or more recovery points.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -50,13 +49,9 @@ PS C:\> $RP = Get-AzureRmRecoveryServicesBackupRecoveryPoint -Item $BackupItem -
 ```
 
 The first command gets the date from seven days ago, and then stores it in the $StartDate variable.
-
 The second command gets today's date, and then stores it in the $EndDate variable.
-
 The third command gets AzureVM backup containers, and stores them in the $Containers variable.
-
 The fourth command gets the backup item named V2VM, and then stores it in the $BackupItem variable.
-
 The last command gets an array of recovery points for the item in $BackupItem, and then stores them in the $RP variable.
 
 ## PARAMETERS
@@ -65,7 +60,7 @@ The last command gets an array of recovery points for the item in $BackupItem, a
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,9 +75,9 @@ Accept wildcard characters: False
 Specifies the end of the date range.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: DateTimeFilter
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -96,9 +91,9 @@ Specifies the item for which this cmdlet gets recovery points.
 To obtain an **AzureRmRecoveryServicesBackupItem** object, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.
 
 ```yaml
-Type: ItemBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -111,9 +106,9 @@ Accept wildcard characters: False
 Specifies the location to download the input file to restore the KeyVault key for an encrypted virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RecoveryPointId
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -126,9 +121,9 @@ Accept wildcard characters: False
 Specifies the recovery point ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RecoveryPointId
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -141,9 +136,9 @@ Accept wildcard characters: False
 Specifies the start of the date range.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: DateTimeFilter
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -156,9 +151,9 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -172,8 +167,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ItemBase
-Parameter 'Item' accepts value of type 'ItemBase' from the pipeline
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
+Parameters: Item (ByValue)
+
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

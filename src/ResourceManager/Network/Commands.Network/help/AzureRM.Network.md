@@ -168,7 +168,7 @@ Gets the WAF configuration of an application gateway.
 Gets an application security group.
 
 ### [Get-AzureRmBgpServiceCommunity](Get-AzureRmBgpServiceCommunity.md)
-
+Provides a list of all services / regions, BGP communities, and associated prefixes.
 
 ### [Get-AzureRmDdosProtectionPlan](Get-AzureRmDdosProtectionPlan.md)
 Gets a DDoS protection plan.
@@ -213,7 +213,7 @@ Gets a load balancer.
 Gets a backend address pool configuration for a load balancer.
 
 ### [Get-AzureRmLoadBalancerFrontendIpConfig](Get-AzureRmLoadBalancerFrontendIpConfig.md)
-Gets a front-end IP configuration for a load balancer.
+Gets a front-end IP configuration in a load balancer.
 
 ### [Get-AzureRmLoadBalancerInboundNatPoolConfig](Get-AzureRmLoadBalancerInboundNatPoolConfig.md)
 Gets an inbound NAT pool configuration for a load balancer.
@@ -473,6 +473,9 @@ Creates a connection monitor.
 ### [New-AzureRmNetworkWatcherPacketCapture](New-AzureRmNetworkWatcherPacketCapture.md)
 Creates a new packet capture resource and starts a packet capture session on a VM.
 
+### [New-AzureRmNetworkWatcherProtocolConfiguration](New-AzureRmNetworkWatcherProtocolConfiguration.md)
+Creates a new protocol configuration object.
+
 ### [New-AzureRmPacketCaptureFilterConfig](New-AzureRmPacketCaptureFilterConfig.md)
 Creates a new packet capture filter object.
 
@@ -501,7 +504,7 @@ Creates a virtual network.
 Creates a Virtual Network Gateway
 
 ### [New-AzureRmVirtualNetworkGatewayConnection](New-AzureRmVirtualNetworkGatewayConnection.md)
-
+Creates the Site-to-Site VPN connection between the virtual network gateway and the on-prem VPN device.
 
 ### [New-AzureRmVirtualNetworkGatewayIpConfig](New-AzureRmVirtualNetworkGatewayIpConfig.md)
 Creates an IP Configuration for a Virtual Network Gateway
@@ -669,7 +672,7 @@ Removes a virtual network peering.
 Removes a subnet configuration from a virtual network.
 
 ### [Remove-AzureRmVpnClientIpsecParameter](Remove-AzureRmVpnClientIpsecParameter.md)
-Deletes the set vpn ipsec parameters set on the Virtual Network Gateway
+Removes Vpn custom ipsec policy set on Virtual Network Gateway resource.
 
 ### [Remove-AzureRmVpnClientRevokedCertificate](Remove-AzureRmVpnClientRevokedCertificate.md)
 Removes a VPN client-revocation certificate.
@@ -843,7 +846,7 @@ Stop a connection monitor
 Stops a running packet capture session
 
 ### [Test-AzureRmDnsAvailability](Test-AzureRmDnsAvailability.md)
-
+Checks whether a domain name in the cloudapp.azure.com zone is available for use.
 
 ### [Test-AzureRmNetworkWatcherConnectivity](Test-AzureRmNetworkWatcherConnectivity.md)
 Returns connectivity information for a specified source VM and a destination.
@@ -853,4 +856,3 @@ Returns whether the packet is allowed or denied to or from a particular destinat
 
 ### [Test-AzureRmPrivateIPAddressAvailability](Test-AzureRmPrivateIPAddressAvailability.md)
 Test availability of a private IP address in a virtual network.
-

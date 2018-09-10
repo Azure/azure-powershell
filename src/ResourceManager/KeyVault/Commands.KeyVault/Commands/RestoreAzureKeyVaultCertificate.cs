@@ -24,9 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Restores a certificate from a backup file into a vault 
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureKeyVaultCertificate",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificate",SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificate))]
     public class RestoreAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
@@ -97,7 +95,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (ShouldProcess(VaultName, Properties.Resources.RestoreCertificate))
             {
-                var resolvedFilePath = this.GetUnresolvedProviderPathFromPSPath(InputFile);
+                var resolvedFilePath = this.ResolveUserPath(InputFile);
 
                 if (!AzureSession.Instance.DataStore.FileExists(resolvedFilePath))
                 {

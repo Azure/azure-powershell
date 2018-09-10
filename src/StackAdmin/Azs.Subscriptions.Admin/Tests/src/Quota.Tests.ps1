@@ -37,8 +37,10 @@ param(
     [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
@@ -46,9 +48,9 @@ InModuleScope Azs.Subscriptions.Admin {
 
     Describe "Quota" -Tags @('Quotas', 'SubscriptionsAdmin') {
 
-        BeforeEach {
+        . $PSScriptRoot\Common.ps1
 
-            . $PSScriptRoot\Common.ps1
+        BeforeEach {
 
             function ValidateQuota {
                 param(
@@ -66,14 +68,14 @@ InModuleScope Azs.Subscriptions.Admin {
             }
         }
 
-        It "TestListQuotas" {
+        it "TestListQuotas" -Skip:$('TestListQuotas' -in $global:SkippedTests) {
             $global:TestName = 'TestListQuotas'
 
-            $allQuotas = Get-AzsSubscriptionsQuota -Location redmond
-            $resourceGroups = New-Object  -TypeName System.Collections.Generic.HashSet[System.String]
+            $allQuotas = Get-AzsSubscriptionsQuota -Location $global:Location
+            $global:ResourceGroupNames = New-Object -TypeName System.Collections.Generic.HashSet[System.String]
 
-            foreach($Quota in $allQuotas) {
-				ValidateQuota $Quota
+            foreach ($Quota in $allQuotas) {
+                ValidateQuota $Quota
             }
         }
     }

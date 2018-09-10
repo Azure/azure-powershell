@@ -23,7 +23,6 @@ Remove-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName <String>
 The **Remove-AzureRmVpnClientRootCertificate** cmdlet removes the specified root certificate from a virtual network gateway.
 Root certificates are X.509 certificates that identify your Root Certification Authority: all other certificates used on the gateway trust the root certificate.
 If you remove a root certificate computers that use the certificate for authentication purposes will no longer be able to connect to the gateway.
-
 When you use **Remove-AzureRmVpnClientRootCertificate**, you must supply both the certificate name and a text representation of the certificate data.
 For more information about the text representation of a certificate see the *PublicCertData* parameter description.
 
@@ -37,12 +36,9 @@ PS C:\> Remove-AzureRmVpnClientRootCertificate -PublicCertData $CertificateText 
 ```
 
 This example removes a client root certificate named ContosoRootCertificate from the virtual network gateway ContosoVirtualGateway.
-
 The first command uses the **Get-Content** cmdlet to get a previously-exported text representation of the certificate; this text representation is stored in a variable named $Text.
-
 The second command then uses a for loop to extract all the text in $Text except for the first line and the last line.
 This extracted text is stored in a variable named $CertificateText.
-
 The third command uses the information stored in the $CertificateText variable along with the **Remove-AzureRmVpnClientRootCertificate** cmdlet to remove the certificate from the gateway.
 
 ## PARAMETERS
@@ -51,7 +47,7 @@ The third command uses the information stored in the $CertificateText variable a
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,19 +62,16 @@ Accept wildcard characters: False
 Specifies the text representation of the root certificate to be removed.
 To obtain the text representation, export your certificate in .cer format (using Base64) encoding, then open the resulting file in a text editor.
 You should see output similar to the following (note that the actual output will contain many more lines of text than the abbreviated sample shown here):
-
 ----- BEGIN CERTIFICATE -----
 MIIC13FAAXC3671Auij9HHgUNEW8343NMJklo09982CVVFAw8w
 ----- END CERTIFICATE -----
-
 The PublicCertData is made up of all the lines between the first line (----- BEGIN CERTIFICATE -----) and the last line (----- END CERTIFICATE -----) in the file.
 You can retrieve the PublicCertData using Windows PowerShell commands similar to this:
-
 $Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
 $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text\[$i\]}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,11 +84,10 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the virtual network gateway is assigned to.
-
 Resource groups categorize items to help simplify inventory management and general Azure administration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +102,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual network gateway that the certificate is removed from.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +117,7 @@ Accept wildcard characters: False
 Specifies the name of the client root certificate that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -141,10 +133,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 

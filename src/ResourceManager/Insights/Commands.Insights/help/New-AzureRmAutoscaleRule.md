@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 5E854358-CA9D-4336-BA6A-BF7B1FADAB50
@@ -48,7 +48,6 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 ```
 
 The first command creates a rule for the Requests metric, and then stores it in the $Rule1 variable.
-
 The second command creates a second rule for the Requests metric, and then stores it in the $Rule2 variable.
 
 ## PARAMETERS
@@ -57,7 +56,7 @@ The second command creates a second rule for the Requests metric, and then store
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,9 +71,9 @@ Accept wildcard characters: False
 Specifies the name of the metric.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -87,9 +86,9 @@ Accept wildcard characters: False
 Specifies the metric resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -101,16 +100,15 @@ Accept wildcard characters: False
 ### -MetricStatistic
 Specifies the metric statistic.
 The acceptable values for this parameter are:
-
 - Average
 - Min
 - Max
 - Sum
 
 ```yaml
-Type: MetricStatisticType
+Type: Microsoft.Azure.Management.Monitor.Management.Models.MetricStatisticType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Average, Min, Max, Sum
 
 Required: True
@@ -123,7 +121,6 @@ Accept wildcard characters: False
 ### -Operator
 Specifies the operator.
 The acceptable values for this parameter are:
-
 - Equals
 - NotEquals
 - GreaterThan
@@ -132,9 +129,9 @@ The acceptable values for this parameter are:
 - LessThanOrEqual
 
 ```yaml
-Type: ComparisonOperationType
+Type: Microsoft.Azure.Management.Monitor.Management.Models.ComparisonOperationType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Equals, NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual
 
 Required: True
@@ -148,9 +145,9 @@ Accept wildcard characters: False
 Specifies the Autoscale action cooldown time.
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -162,15 +159,14 @@ Accept wildcard characters: False
 ### -ScaleActionDirection
 Specifies the scale action direction.
 The acceptable values for this parameter are:
-
 - None
 - Increase
 - Decrease
 
 ```yaml
-Type: ScaleDirection
+Type: Microsoft.Azure.Management.Monitor.Management.Models.ScaleDirection
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Increase, Decrease
 
 Required: True
@@ -183,16 +179,15 @@ Accept wildcard characters: False
 ### -ScaleActionScaleType
 Specifies the scale type.
 The acceptable values for this parameter are:
-
 - ChangeSize
 - ChangeCount
 - PercentChangeCount
 - ExactCount
 
 ```yaml
-Type: ScaleType
+Type: Microsoft.Azure.Management.Monitor.Management.Models.ScaleType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: ChangeCount, PercentChangeCount, ExactCount
 
 Required: False
@@ -206,9 +201,9 @@ Accept wildcard characters: False
 Specifies the action value.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -221,9 +216,9 @@ Accept wildcard characters: False
 Specifies the threshold of the metric value.
 
 ```yaml
-Type: Double
+Type: System.Double
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -235,7 +230,6 @@ Accept wildcard characters: False
 ### -TimeAggregationOperator
 Specifies the time aggregation operator.
 The acceptable values for this parameter are:
-
 - Average
 - Minimum
 - Maximum
@@ -243,9 +237,9 @@ The acceptable values for this parameter are:
 - Total, Count
 
 ```yaml
-Type: TimeAggregationType
+Type: Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Average, Minimum, Maximum, Total, Count
 
 Required: False
@@ -259,9 +253,9 @@ Accept wildcard characters: False
 Specifies the time grain.
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -274,9 +268,9 @@ Accept wildcard characters: False
 Specifies the time window.
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -290,8 +284,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Management.Monitor.Management.Models.ComparisonOperationType
+
+### Microsoft.Azure.Management.Monitor.Management.Models.MetricStatisticType
+
+### System.Double
+
+### Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationType
+
+### System.TimeSpan
+
+### Microsoft.Azure.Management.Monitor.Management.Models.ScaleDirection
+
+### Microsoft.Azure.Management.Monitor.Management.Models.ScaleType
 
 ## OUTPUTS
 

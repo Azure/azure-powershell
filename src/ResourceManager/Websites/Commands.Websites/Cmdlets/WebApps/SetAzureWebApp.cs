@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmWebApp")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp"), OutputType(typeof(Site))]
     public class SetAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         {
                             DefaultDocuments = parameters.Contains("DefaultDocuments") ? DefaultDocuments : null,
                             NetFrameworkVersion = parameters.Contains("NetFrameworkVersion") ? NetFrameworkVersion : null,
-                            PhpVersion = parameters.Contains("PhpVersion") ? PhpVersion : null,
+                            PhpVersion = parameters.Contains("PhpVersion") ? PhpVersion.ToLower() == "off" ? "" : PhpVersion : null,
                             RequestTracingEnabled =
                                 parameters.Contains("RequestTracingEnabled") ? (bool?)RequestTracingEnabled : null,
                             HttpLoggingEnabled = parameters.Contains("HttpLoggingEnabled") ? (bool?)HttpLoggingEnabled : null,
@@ -153,26 +153,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         {
                             Location = location,
                             ServerFarmId = WebApp.ServerFarmId,
-                            Identity = parameters.Contains("AssignIdentity") && AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : WebApp.Identity,
+                            Identity = parameters.Contains("AssignIdentity") ? AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : new ManagedServiceIdentity("None", null, null) : WebApp.Identity,
                             HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
                         };
 
-                        Dictionary<string, string> appSettings = WebApp.SiteConfig?.AppSettings?.ToDictionary(x => x.Name, x => x.Value);
-                        if (parameters.Contains("AssignIdentity"))
-                        {
-
-                            // Add or update the appsettings property
-                            appSettings["WEBSITE_DISABLE_MSI"] = (!AssignIdentity).ToString();
-                            WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, WebApp.SiteConfig, appSettings,
-                                                                     WebApp.SiteConfig.ConnectionStrings.
-                                                                        ToDictionary(nvp => nvp.Name,
-                                                                        nvp => new ConnStringValueTypePair
-                                                                        {
-                                                                            Type = nvp.Type.Value,
-                                                                            Value = nvp.ConnectionString
-                                                                        },
-                                                                        StringComparer.OrdinalIgnoreCase));
-                        }
                         WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, WebApp.ServerFarmId, site);
                     }
 

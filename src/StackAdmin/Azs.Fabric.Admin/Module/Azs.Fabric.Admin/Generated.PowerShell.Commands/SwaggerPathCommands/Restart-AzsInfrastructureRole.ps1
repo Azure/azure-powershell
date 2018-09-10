@@ -80,7 +80,7 @@ function Restart-AzsInfrastructureRole {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoles/{infraRole}'

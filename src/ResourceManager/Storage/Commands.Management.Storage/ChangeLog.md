@@ -19,6 +19,24 @@
 -->
 ## Current Release
 
+## Version 5.0.4
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 5.0.3
+* Fixed issue with default resource groups not being set.
+
+## Version 5.0.2
+* Updated to the latest version of the Azure ClientRuntime.
+
+## Version 5.0.1
+* Updated all help files to include full parameter types and correct input/output types.
+* Add Ps1XmlAttribute to cmdlets output types properties
+* Show StorageAccount cmdlet output in table view
+    - Get-AzureRmStorageAccount
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
 * Introduced multiple breaking changes
@@ -55,7 +73,7 @@
 ## Version 4.0.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 3.4.1
 
 ## Version 3.4.0

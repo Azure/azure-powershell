@@ -85,19 +85,15 @@ PS C:\> New-AzureRmPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -Po
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet.
 The command stores that object in the $ResourceGroup variable.
-
 The second command gets the built-in policy definition for allowed locations by using the Get-AzureRmPolicyDefinition cmdlet.
 The command stores that object in the $Policy variable.
-
 The third and fourth commands create an object containing all Azure regions with "east" in the name.
 The commands store that object in the $AllowedLocations variable.
-
 The final command assigns the policy in $Policy at the level of a resource group using the policy parameter object in $AllowedLocations.
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 ### Example 3: Policy assignment at resource group level with policy parameter file
 Create a file called _AllowedLocations.json_ in the local working directory with the following content.
-
 
 ```
 {
@@ -128,7 +124,7 @@ Specifies the version of the resource provider API to use.
 If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +139,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -158,7 +154,7 @@ Accept wildcard characters: False
 The description for policy assignment
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +169,7 @@ Accept wildcard characters: False
 Specifies a display name for the policy assignment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -186,9 +182,7 @@ Accept wildcard characters: False
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
-
 The acceptable values for this parameter are:
-
 - Continue
 - Ignore
 - Inquire
@@ -197,7 +191,7 @@ The acceptable values for this parameter are:
 - Suspend
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: infa
 
@@ -212,7 +206,7 @@ Accept wildcard characters: False
 Specifies an information variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: iv
 
@@ -227,7 +221,7 @@ Accept wildcard characters: False
 The metadata for the new policy assignment. This can either be a path to a file name containing the metadata, or the metadata as a string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -242,7 +236,7 @@ Accept wildcard characters: False
 Specifies a name for the policy assignment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -257,7 +251,7 @@ Accept wildcard characters: False
 The not scopes for policy assignment.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -272,7 +266,7 @@ Accept wildcard characters: False
 Specifies a policy, as a **PsPolicyDefinition** object that contains the policy rule.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: DefaultParameterSet
 Aliases:
 
@@ -284,7 +278,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: PolicyParameterObjectParameterSet, PolicyParameterStringParameterSet
 Aliases:
 
@@ -296,7 +290,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: PolicySetParameterObjectParameterSet, PolicySetParameterStringParameterSet
 Aliases:
 
@@ -311,7 +305,7 @@ Accept wildcard characters: False
 The policy parameter file path or policy parameter string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PolicyParameterStringParameterSet, PolicySetParameterStringParameterSet
 Aliases:
 
@@ -326,7 +320,7 @@ Accept wildcard characters: False
 The policy parameter object.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: PolicyParameterObjectParameterSet, PolicySetParameterObjectParameterSet
 Aliases:
 
@@ -341,7 +335,7 @@ Accept wildcard characters: False
 The policy set definition object.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: DefaultParameterSet
 Aliases:
 
@@ -353,7 +347,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: PolicyParameterObjectParameterSet, PolicyParameterStringParameterSet
 Aliases:
 
@@ -365,7 +359,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: PolicySetParameterObjectParameterSet, PolicySetParameterStringParameterSet
 Aliases:
 
@@ -380,7 +374,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -394,11 +388,10 @@ Accept wildcard characters: False
 ### -Scope
 Specifies the scope at which to assign the policy.
 For instance, to assign a policy to a resource group, specify the following:
-
 `/subscriptions/`subscription ID`/resourcegroups/`resource group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -413,7 +406,7 @@ Accept wildcard characters: False
 A hash table which represents sku properties. Defaults to Free Sku: Name = A0, Tier = Fre
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: SkuObject
 
@@ -429,12 +422,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
-
-### System.Management.Automation.PSObject
 
 ## NOTES
 

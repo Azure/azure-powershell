@@ -21,8 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to cancel the synchronization of sync group
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlSyncGroupSync", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlSyncGroupSync", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
     public class StopAzureRmSqlSyncGroupSync : AzureSqlSyncGroupCmdletBase
     {
         /// <summary>

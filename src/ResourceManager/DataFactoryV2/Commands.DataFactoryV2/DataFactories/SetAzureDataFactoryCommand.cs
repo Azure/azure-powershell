@@ -20,8 +20,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Set, Constants.DataFactory, SupportsShouldProcess = true), OutputType(typeof(PSDataFactory))]
-    [Alias(VerbsCommon.New + "-" + Constants.DataFactory)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2", SupportsShouldProcess = true), OutputType(typeof(PSDataFactory))]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2")]
     public class SetAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -37,13 +37,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string Name { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The geographic region to create the data factory.")]
-        [LocationCompleter("Microsoft.DataFactory/factories")]
+            HelpMessage = Constants.HelpFactoryLocation)]
+        [LocationCompleter(Constants.DataFactoryQualifiedType)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The tags of the data factory.")]
+            HelpMessage = Constants.HelpTagsForFactory)]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]

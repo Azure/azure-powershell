@@ -24,7 +24,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsLifecycle.Submit, "AzureRmDataLakeAnalyticsJob"), OutputType(typeof(JobInformation))]
+    [Cmdlet("Submit", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeAnalyticsJob"), OutputType(typeof(JobInformation))]
     [Alias("Submit-AdlJob")]
     public class SubmitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {

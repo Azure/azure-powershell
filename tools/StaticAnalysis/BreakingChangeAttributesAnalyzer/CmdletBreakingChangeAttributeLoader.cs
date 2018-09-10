@@ -18,7 +18,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Management.Automation;
+#if !NETSTANDARD
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+#endif
 using Tools.Common.Extensions;
 
 namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
@@ -38,7 +40,9 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
     {
         public Type CmdletType { get; set; }
         public string CmdletName { get; set; }
+#if !NETSTANDARD
         public List<GenericBreakingChangeAttribute> BreakingChangeAttributes { get; set; }
+#endif
     }
 
     public class CmdletBreakingChangeAttributeLoader : MarshalByRefObject
@@ -58,15 +62,19 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                 foreach (var type in assembly.GetCmdletTypes())
                 {
                     var cmdlet = type.GetAttribute<CmdletAttribute>();
+#if !NETSTANDARD
                     var attributes = type.GetAttributes<GenericBreakingChangeAttribute>();
 
                     if (attributes != null && (attributes.Count() > 0)) { }
+#endif
                     var cmdletMetadata = new BreakingChangeAttributesInCmdlet
                     {
                         CmdletType = type,
                         CmdletName = cmdlet.VerbName + "-" + cmdlet.NounName,
+#if !NETSTANDARD
                         BreakingChangeAttributes = attributes.ToList()
-                    };
+#endif
+                        };
 
                     results.Add(cmdletMetadata);
                 }
