@@ -28,9 +28,6 @@
 
   <ItemGroup>
     <None Include="Az.Storage.psd1">
-  </ItemGroup>
-
-  <ItemGroup>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
