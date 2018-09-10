@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         {
             if (quResource != null)
             {
+                Id = quResource.Id;
                 Name = quResource.Name;               
                 LockDuration = XmlConvert.ToString((TimeSpan)quResource.LockDuration);
                 AccessedAt = quResource.AccessedAt;
@@ -51,9 +52,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 ForwardTo = quResource.ForwardTo;
                 ForwardDeadLetteredMessagesTo = quResource.ForwardDeadLetteredMessagesTo;
                 EnableBatchedOperations = quResource.EnableBatchedOperations;
-
             }
         }
+
+        /// <summary>
+        /// Queue ID.
+        /// </summary> 
+        public string Id{ get; set; }
 
         /// <summary>
         /// Queue name.

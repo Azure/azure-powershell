@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmNetworkInterfaceIpConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNetworkInterface))]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkInterfaceIpConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNetworkInterface))]
     public class AddAzureNetworkInterfaceIpConfigCommand : AzureNetworkInterfaceIpConfigBase
     {
         [Parameter(

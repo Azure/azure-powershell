@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 86D8965D-D999-48A4-A4EE-9E054E5486EE
@@ -28,7 +28,7 @@ For more information: https://msdn.microsoft.com/en-us/library/azure/ad/graph/ap
 ### Example 1 - Create a new AD user
 ```
 PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
-PS C:\> New-AzureRmADUser -DisplayName "MyDisplayName" -UserPrincipalName "myemail@domain.com" -Password $SecureStringPassword
+PS C:\> New-AzureRmADUser -DisplayName "MyDisplayName" -UserPrincipalName "myemail@domain.com" -Password $SecureStringPassword -MailNickname "MyMailNickName"
 ```
 
 Creates a new AD user with the name "MyDisplayName" and user principal name "myemail@domain.com" in a tenant.
@@ -39,7 +39,7 @@ Creates a new AD user with the name "MyDisplayName" and user principal name "mye
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -55,7 +55,7 @@ The name to display in the address book for the user.
 example 'Alex Wu'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +71,7 @@ It must be specified if the user must change the password on the next successful
 Default behavior is (false) to not change the password on the next successful login.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 It needs to be specified only if you are using a federated domain for the user's user principal name (upn) property.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The mail alias for the user.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +118,7 @@ It must meet the tenant's password complexity requirements.
 It is recommended to set a strong password.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +134,7 @@ The user principal name.
 Example-'someuser@contoso.com'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -165,7 +165,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -181,9 +181,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
-This cmdlet does not accept any input.
+### System.Security.SecureString
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

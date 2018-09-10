@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.Media
 Module Guid: c66edca6-2e57-4550-905e-f5cc104de25e
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.media

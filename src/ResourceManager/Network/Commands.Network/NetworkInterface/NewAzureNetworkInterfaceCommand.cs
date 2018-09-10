@@ -1,4 +1,4 @@
-
+﻿
 
 // ----------------------------------------------------------------------------------
 //
@@ -26,8 +26,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmNetworkInterface", SupportsShouldProcess = true,
-        DefaultParameterSetName = "SetByIpConfigurationResource"), OutputType(typeof(PSNetworkInterface))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkInterface", SupportsShouldProcess = true,DefaultParameterSetName = "SetByIpConfigurationResource"), OutputType(typeof(PSNetworkInterface))]
     public class NewAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -245,7 +244,6 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {           
           base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsNetworkInterfacePresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
@@ -437,4 +435,3 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
-

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DevTestLabs.dll-Help.xml
 Module Name: AzureRM.DevTestLabs
 ms.assetid: 3FADEC2E-4A2B-46EB-8A94-CF48D717C7FC
@@ -39,9 +39,9 @@ The cmdlet uses the specified resource group and name of the lab to set the poli
 Specifies, as an array, the days of the week for when the virtual machines of the lab must be started.
 
 ```yaml
-Type: DayOfWeek[]
+Type: System.DayOfWeek[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
 
 Required: False
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,9 +70,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet disables the policy for the virtual machines in the lab.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Disable
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -85,9 +85,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet enables the policy for the virtual machines in the lab.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Enable
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -100,9 +100,9 @@ Accept wildcard characters: False
 Specifies the name of the lab for which this cmdlet sets the automatic start policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -115,9 +115,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that the lab belongs to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -130,9 +130,9 @@ Accept wildcard characters: False
 Specifies the time when the virtual machines of the lab must be started.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -161,7 +161,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -177,13 +177,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule
-This cmdlet returns the schedule that specifies when the virtual machines of the lab must be started.
 
 ## NOTES
 

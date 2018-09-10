@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: E0E2617F-F6F1-434E-AD7C-27D309C2C3DA
@@ -45,7 +45,7 @@ This command removes the data source named AzureStorage01 from the account named
 Specifies the Data Lake Analytics account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 Specifies the name of the AzureBlob Storage account to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveBlobStorageAccount
 Aliases: AzureBlob
 
@@ -75,9 +75,9 @@ Accept wildcard characters: False
 Specifies the name of the AzureData Lake Store account to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RemoveDataLakeStorageAccount
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -105,9 +105,9 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -121,9 +121,9 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -136,9 +136,9 @@ Accept wildcard characters: False
 Specifies the resource group name of the Data Lake Analytics account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -167,7 +167,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -183,13 +183,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### bool
-If PassThru is specified, returns true upon completion of the operation.
+### System.Boolean
 
 ## NOTES
 

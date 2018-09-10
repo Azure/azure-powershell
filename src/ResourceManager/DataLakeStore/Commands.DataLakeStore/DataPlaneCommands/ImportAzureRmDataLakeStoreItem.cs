@@ -21,7 +21,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Import, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(string))]
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeStoreItem", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(string))]
     [Alias("Import-AdlStoreItem")]
     public class ImportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            var powerShellSourcePath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Path);
+            var powerShellSourcePath = ResolveUserPath(Path);
             ConfirmAction(
                 Resources.UploadFileMessage,
                 Destination.TransformedPath,
@@ -128,8 +128,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     {
                         if (ParameterSetName.Equals(DiagnosticParameterSetName) && DiagnosticLogLevel != LogLevel.None)
                         {
-                            var diagnosticPath =
-                                SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
+                            var diagnosticPath = ResolveUserPath(DiagnosticLogPath);
                             DataLakeStoreFileSystemClient.SetupFileLogging(DiagnosticLogLevel, diagnosticPath);
                         }
 

@@ -1358,7 +1358,7 @@ function Test-VirtualMachineScaleSetPriority
         $extname2 = 'csetest2';
 
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg -Priority 'Regular' `
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A1' -UpgradePolicyMode 'Manual' -NetworkInterfaceConfiguration $netCfg -Priority 'Low' -EvictionPolicy 'Delete' `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
             | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
             | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
@@ -1368,15 +1368,18 @@ function Test-VirtualMachineScaleSetPriority
 
         $result = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        Assert-AreEqual "Regular" $vmssResult.VirtualMachineProfile.Priority;
+        Assert-AreEqual "Low" $vmssResult.VirtualMachineProfile.Priority;
+        Assert-AreEqual "Delete" $vmssResult.VirtualMachineProfile.EvictionPolicy;
         $output = $vmssResult | Out-String;
         Assert-True {$output.Contains("Priority")};
+        Assert-True {$output.Contains("EvictionPolicy")};
 
         Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssResult;
         $vmssResult = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        Assert-AreEqual "Regular" $vmssResult.VirtualMachineProfile.Priority;
+        Assert-AreEqual "Low" $vmssResult.VirtualMachineProfile.Priority;
+        Assert-AreEqual "Delete" $vmssResult.VirtualMachineProfile.EvictionPolicy;
 
-        $vmssResult.VirtualMachineProfile.Priority = "Low";
+        $vmssResult.VirtualMachineProfile.Priority = "Regular";
         Assert-ThrowsContains { Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmssResult; } `
             "Changing property 'priority' is not allowed";
     }

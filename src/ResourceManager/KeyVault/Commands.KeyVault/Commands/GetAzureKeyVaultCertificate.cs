@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// The Get-AzureKeyVaultCertificate cmdlet gets the certificates in an Azure Key Vault or the current version of the certificate.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificate,        
-        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificate",        DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateIdentityItem), typeof(PSKeyVaultCertificate), typeof(PSDeletedKeyVaultCertificate), typeof(PSDeletedKeyVaultCertificateIdentityItem))]
     public class GetAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
@@ -186,6 +185,20 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ParameterSetName = ResourceIdByVaultNameParameterSet,
                    HelpMessage = "Specifies whether to show the previously deleted certificates in the output.")]
         public SwitchParameter InRemovedState { get; set; }
+
+        /// <summary>
+        /// Switch specifying whether to include the pending certificates in the enumeration.
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   ParameterSetName = ByVaultNameParameterSet,
+                   HelpMessage = "Specifies whether to include the pending certificates in the output.")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = InputObjectByVaultNameParameterSet,
+                   HelpMessage = "Specifies whether to include the pending certificates in the output.")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = ResourceIdByVaultNameParameterSet,
+                   HelpMessage = "Specifies whether to include the pending certificates in the output.")]
+        public SwitchParameter IncludePending { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
@@ -241,10 +254,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void GetAndWriteCertificates(string vaultName)
         {
-            KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
+            var options = new KeyVaultCertificateFilterOptions
             {
                 VaultName = VaultName,
-                NextLink = null
+                NextLink = null,
+                IncludePending = IncludePending
             };
 
             do
@@ -272,10 +286,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void GetAndWriteDeletedCertificates( string vaultName )
         {
-            KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
+            var options = new KeyVaultCertificateFilterOptions
             {
                 VaultName = VaultName,
-                NextLink = null
+                NextLink = null,
+                IncludePending = IncludePending
             };
 
             do

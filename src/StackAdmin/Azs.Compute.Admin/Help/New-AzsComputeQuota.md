@@ -13,8 +13,9 @@ Create a new compute quota used to limit compute resources.
 ## SYNTAX
 
 ```
-New-AzsComputeQuota [-Name] <String> [[-AvailabilitySetCount] <Int32>] [[-CoresLimit] <Int32>]
- [[-VmScaleSetCount] <Int32>] [[-VirtualMachineCount] <Int32>] [[-Location] <String>] [-WhatIf] [-Confirm]
+New-AzsComputeQuota [-Name] <String> [[-AvailabilitySetCount] <Int32>] [[-CoresCount] <Int32>]
+ [[-VmScaleSetCount] <Int32>] [[-VirtualMachineCount] <Int32>] [[-StandardManagedDiskAndSnapshotSize] <Int32>]
+ [[-PremiumManagedDiskAndSnapshotSize] <Int32>] [[-Location] <String>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,12 +26,57 @@ Create a new compute quota.
 
 ### EXAMPLE 1
 ```
-New-AzsComputeQuota -Name testQuota5 -AvailabilitySetCount 1000 -CoresLimit 1000 -VmScaleSetCount 1000 -VirtualMachineCount 1000
+New-AzsComputeQuota -Name testQuota5 -AvailabilitySetCount 1000 -CoresCount 1000 -VmScaleSetCount 1000 -VirtualMachineCount 1000 -StandardManagedDiskAndSnapshotSize 1024 -PremiumManagedDiskAndSnapshotSize 1024
 ```
 
 Create a new compute quota.
 
 ## PARAMETERS
+
+### -AvailabilitySetCount
+Number  of availability sets allowed.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: 10
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CoresCount
+Number  of cores allowed.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: CoresLimit
+
+Required: False
+Position: 3
+Default value: 100
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the resource.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Name of the quota.
@@ -47,8 +93,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AvailabilitySetCount
-Maximum number of availability sets allowed.
+### -PremiumManagedDiskAndSnapshotSize
+Size for standard managed disks and snapshots allowed.
 
 ```yaml
 Type: Int32
@@ -56,14 +102,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
-Default value: 10
+Position: 7
+Default value: 2048
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CoresLimit
-Maximum number of cores allowed.
+### -StandardManagedDiskAndSnapshotSize
+Size for standard managed disks and snapshots allowed.
 
 ```yaml
 Type: Int32
@@ -71,29 +117,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
-Default value: 100
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VmScaleSetCount
-Maximum number of scale sets allowed.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: 100
+Position: 6
+Default value: 2048
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VirtualMachineCount
-Maximum number of virtual machines allowed.
+Number  of virtual machines allowed.
 
 ```yaml
 Type: Int32
@@ -107,16 +138,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of the resource.
+### -VmScaleSetCount
+Number  of scale sets allowed.
 
 ```yaml
-Type: String
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 4
+Default value: 100
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -138,21 +184,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -160,8 +191,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.AzureStack.Management.Compute.Admin.Models.Quota
-
+### ComputeQuotaObject
 ## NOTES
 
 ## RELATED LINKS

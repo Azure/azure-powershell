@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherNextHop", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNextHopResult))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherNextHop", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNextHopResult))]
 
     public class GetAzureNetworkWatcherNextHopCommand : NetworkWatcherBaseCmdlet
     {

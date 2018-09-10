@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,11 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     // <summary>
     /// Pairs storage classification
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Remove,
-        "AzureRmRecoveryServicesAsrStorageClassificationMapping",
-        DefaultParameterSetName = ASRParameterSets.Default,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrStorageClassificationMapping",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [Alias("Remove-ASRStorageClassificationMapping")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrStorageClassificationMapping :

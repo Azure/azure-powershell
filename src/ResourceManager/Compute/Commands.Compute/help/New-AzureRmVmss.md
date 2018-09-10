@@ -30,8 +30,8 @@ New-AzureRmVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJ
  [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
  [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-NatBackendPort <Int32[]>]
- [-DataDiskSizeInGb <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DataDiskSizeInGb <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-SinglePlacementGroup] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,7 +149,7 @@ The nineteenth command uses the **New-AzureRmVmss** cmdlet to create the VMSS.
 Allocation method for the Public IP Address of the Scale Set (Static or Dynamic).  If no value is supplied, allocation will be static.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 Accepted values: Static, Dynamic
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 Run cmdlet in the background and return a Job to track progress.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 The name of the backend address pool to use in the load balancer for this Scale Set.  If no value is provided, a new backend pool will be created, with the same name as the Scale Set.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 Backend port numbers used by the Scale Set load balancer to communicate with VMs in the Scale Set.  If no values are specified, ports 3389 and 5985 will be used for Windows VMS, and port 22 will be used for Linux VMs.
 
 ```yaml
-Type: Int32[]
+Type: System.Int32[]
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 The administrator credentials (username and password) for VMs in this Scale Set.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -225,7 +225,7 @@ Accept wildcard characters: False
 Specifies the sizes of data disks in GB.
 
 ```yaml
-Type: Int32[]
+Type: System.Int32[]
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -255,7 +255,7 @@ Accept wildcard characters: False
 The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set. This is the first component of the domain name that is automatically assiged to the Scale Set. Automatically assigned Domain names use the form (<DomainNameLabel>.<Location>.cloudapp.azure.com). If no value is supplied, the default domain name label will be the concatenation of <ScaleSetName> and <ResourceGroupName>.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -270,7 +270,7 @@ Accept wildcard characters: False
 The name of the frontend address pool to usein the Scale Set locad balancer.  If no value is supplied, a new Frontend Address Pool will be created, with the same name as the scale set.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -285,7 +285,7 @@ Accept wildcard characters: False
 The name of the image for VMs in this Scale Set. If no value is provided, the "Windows Server 2016 DataCenter" image will be used.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -300,7 +300,7 @@ Accept wildcard characters: False
 The number of VM images in the Scale Set.  If no value is provided, 2 instances will be created.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -315,7 +315,7 @@ Accept wildcard characters: False
 The name of the load balancer to use with this Scale Set.  A new load balancer using the same name as the Scale Set will be created if no value is specified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -330,7 +330,7 @@ Accept wildcard characters: False
 The Azure location where this Scale Set will be created.  If no value is specified, the location will be inferred from the location of other resources referenced in the parameters.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -345,7 +345,7 @@ Accept wildcard characters: False
 Backend port for inbound network address translation.
 
 ```yaml
-Type: Int32[]
+Type: System.Int32[]
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -360,7 +360,7 @@ Accept wildcard characters: False
 The name of the public IP Address to use with this scale set.  A new Public IPAddress with the same name as the Scale Set will be created if no value is provided.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -375,7 +375,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the VMSS.  If no value is specified, a new ResourceGroup will be created using the same name as the Scale Set.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -387,7 +387,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -402,7 +402,22 @@ Accept wildcard characters: False
 The name of the network security group to apply to this Scale Set.  If no value is provided, a default network security group with the same name as the Scale Set will be created and applied to the Scale Set.
 
 ```yaml
-Type: String
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SinglePlacementGroup
+Use this to create the Scale set in a single placement group, default is multiple groups
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -417,7 +432,7 @@ Accept wildcard characters: False
 The address prefix of the Subnet this ScaleSet will use. Default Subnet settings (192.168.1.0/24) will be applied if no value is provided.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -432,7 +447,7 @@ Accept wildcard characters: False
 The name of the subnet to use with this Scale Set.  A new Subnet will be created with the same name as the Scale Set if no value is provided.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -447,7 +462,7 @@ Accept wildcard characters: False
 If the parameter is present then the VM(s) in the scale set is(are) assingned a managed system identity that is auto generated.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -462,7 +477,7 @@ Accept wildcard characters: False
 The upgrade policy mode for VM instances in this Scale Set.  Upgrade policy could specify Automatic, Manual, or Rolling upgrades.
 
 ```yaml
-Type: UpgradeMode
+Type: Microsoft.Azure.Management.Compute.Models.UpgradeMode
 Parameter Sets: SimpleParameterSet
 Aliases:
 Accepted values: Automatic, Manual, Rolling
@@ -478,7 +493,7 @@ Accept wildcard characters: False
 The name of a managed service identity that should be assigned to the VM(s) in the scale set.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -493,7 +508,7 @@ Accept wildcard characters: False
 Specifies the **VirtualMachineScaleSet** object that contains the properties of the VMSS that this cmdlet creates.
 
 ```yaml
-Type: PSVirtualMachineScaleSet
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -508,7 +523,7 @@ Accept wildcard characters: False
 The name fo the Virtual Network to use with this scale set.  If no value is supplied, a new virtual network with the same name as the Scale Set will be created.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -523,7 +538,7 @@ Accept wildcard characters: False
 Specifies the name of the VMSS that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases: Name
 
@@ -535,7 +550,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases: Name
 
@@ -550,7 +565,7 @@ Accept wildcard characters: False
 The size of the VM instances in this scale set.  A default size (Standard_DS1_v2) will be used if no Size is specified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -565,7 +580,7 @@ Accept wildcard characters: False
 The address prefix for the virtual network used with this Scale Set.  Default virtual network address prefix settings (192.168.0.0/16) will be used if no value is supplied.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SimpleParameterSet
 Aliases:
 
@@ -595,7 +610,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -608,11 +623,10 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -628,12 +642,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### VirtualMachineScaleSet
-Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
+### System.String
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+Parameters: VirtualMachineScaleSet (ByValue)
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### This cmdlet does not generate any output.
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 
 ## NOTES
 

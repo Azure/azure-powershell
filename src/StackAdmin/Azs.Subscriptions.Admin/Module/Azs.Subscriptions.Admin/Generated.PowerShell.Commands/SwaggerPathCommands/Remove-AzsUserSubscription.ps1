@@ -48,7 +48,7 @@ function Remove-AzsUserSubscription {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSCmdlet.ShouldProcess("$SubscriptionId" , "Delete user subscription")) {
             if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Delete user subscription?", "Performing operation DeleteWithHttpMessagesAsync on $SubscriptionId."))) {

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: D40BA2E2-50DF-4D51-A4D2-2D02AECBF20F
@@ -32,7 +32,6 @@ PS C:\> $Jobs[0] | Get-AzureRmAutomationDscCompilationJobOutput -Stream "Any"
 
 The first command gets the compilation jobs in the Automation account named Contoso17 by using the Get-AzureRmAutomationDscCompilationJob cmdlet.
 The command stores those objects in the $Jobs variable.
-
 The second command gets the compilation job output for any stream for the first member of the $Jobs array.
 
 ## PARAMETERS
@@ -41,9 +40,9 @@ The second command gets the compilation job output for any stream for the first 
 Specifies the name of the Automation account that contains the DSC compilation job.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -56,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,7 +70,7 @@ Accept wildcard characters: False
 Specifies the unique ID of the DSC compilation job for which this cmdlet gets output.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: (All)
 Aliases: JobId
 
@@ -86,9 +85,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the DSC compilation job for which this cmdlet gets stream records.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -102,9 +101,9 @@ Specifies a start time.
 This cmdlet gets stream records that the DSC compilation job outputs after this time.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -116,16 +115,15 @@ Accept wildcard characters: False
 ### -Stream
 Specifies the type of stream for the output that this cmdlet gets.
 Valid values are: 
-
 - Any 
 - Warning 
 - Error 
 - Verbose
 
 ```yaml
-Type: CompilationJobStreamType
+Type: Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Warning, Error, Verbose, Any
 
 Required: False
@@ -140,8 +138,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+
+### Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType
+
+### System.Nullable`1[[System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
 
 ## OUTPUTS
 
