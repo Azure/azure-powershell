@@ -12,7 +12,7 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 
 ## SYNTAX
 
-### GeoDRBreakPairFailOverPropertiesSet (Default)
+### GeoDRPropertiesSet (Default)
 ```
 Set-AzureRmServiceBusGeoDRConfigurationFailOver [-ResourceGroupName] <String> [-Namespace] <String>
  [-Name] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -49,7 +49,7 @@ Invokes the Failover over alias "SampleDRCongifName", reconfigures and point to 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 Service Bus GeoDR Configuration Object
 
 ```yaml
-Type: PSServiceBusDRConfigurationAttributes
+Type: Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes
 Parameter Sets: GeoDRConfigurationInputObjectSet
 Aliases:
 
@@ -79,8 +79,8 @@ Accept wildcard characters: False
 DR Configuration Name - Alias
 
 ```yaml
-Type: String
-Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Type: System.String
+Parameter Sets: GeoDRPropertiesSet
 Aliases:
 
 Required: True
@@ -94,8 +94,8 @@ Accept wildcard characters: False
 Namespace Name - Secondary Namespace
 
 ```yaml
-Type: String
-Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Type: System.String
+Parameter Sets: GeoDRPropertiesSet
 Aliases:
 
 Required: True
@@ -110,7 +110,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -125,8 +125,8 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
-Parameter Sets: GeoDRBreakPairFailOverPropertiesSet
+Type: System.String
+Parameter Sets: GeoDRPropertiesSet
 Aliases:
 
 Required: True
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 GeoDRConfiguration Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GeoDRConfigResourceIdParameterSet
 Aliases:
 
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -171,7 +171,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -183,19 +183,18 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes
 
+### Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
 ### System.Boolean
-
 
 ## NOTES
 

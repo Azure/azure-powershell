@@ -30,7 +30,7 @@ Add-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-Caching] <C
 
 ### VmScaleSetVMParameterSetName
 ```
-Add-AzureRmVMDataDisk -VirtualMachineScaleSetVM <PSVirtualMachineScaleSetVM> [[-Caching] <CachingTypes>]
+Add-AzureRmVMDataDisk [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM> [[-Caching] <CachingTypes>]
  [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [-ManagedDiskId] <String>
  [[-StorageAccountType] <String>] [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -55,10 +55,8 @@ PS C:\> $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataD
 
 The first command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
-
 The next three commands assign paths of three data disks to the $DataDiskVhdUri01, $DataDiskVhdUri02, and $DataDiskVhdUri03 variables.
 This approach is only for readability of the following commands.
-
 The final three commands each adds a data disk to the virtual machine stored in $VirtualMachine.
 The command specifies the name and location for the disk, and other properties of the disk.
 The URI of each disk is stored in $DataDiskVhdUri01, $DataDiskVhdUri02, and $DataDiskVhdUri03.
@@ -72,9 +70,7 @@ PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachin
 
 The first command gets the virtual machine named VirtualMachine07 by using the [Get-AzureRmVM](./Get-AzureRmVM.md) cmdlet.
 The command stores the virtual machine in the $VirtualMachine variable.
-
 The second command adds a data disk to the virtual machine stored in $VirtualMachine.
-
 The final command updates the state of the virtual machine stored in $VirtualMachine in ResourceGroup11.
 
 ### Example 3: Add a data disk to a new virtual machine from a generalized user image
@@ -87,10 +83,8 @@ PS C:\> $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1
 
 The first command creates a virtual machine object and stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
-
 The next two commands assign paths for the data image and data disks to the $DataImageUri and $DataDiskUri variables respectively.
 This approach is used to improve the readability of the following commands.
-
 The final commands adds a data disk to the virtual machine stored in $VirtualMachine.
 The command specifies the name and location for the disk and other properties of the disk.
 
@@ -103,10 +97,8 @@ PS C:\> $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "dd1" 
 
 The first command creates a virtual machine object and stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
-
 The next commands assigns paths of the data disk to the $DataDiskUri variable.
 This approach is used to improve the readability of the following commands.
-
 The final command add a data disk to the virtual machine stored in $VirtualMachine.
 The command specifies the name and location for the disk, and other properties of the disk.
 
@@ -128,18 +120,15 @@ The final command updates the Vmss VM with added data disk.
 ### -Caching
 Specifies the caching mode of the disk.
 The acceptable values for this parameter are:
-
 - ReadOnly
 - ReadWrite
 - None
-
 The default value is ReadWrite.
 Changing this value causes the virtual machine to restart.
-
 This setting affects the consistency and performance of the disk.
 
 ```yaml
-Type: CachingTypes
+Type: Microsoft.Azure.Management.Compute.Models.CachingTypes
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, ReadOnly, ReadWrite
@@ -154,7 +143,6 @@ Accept wildcard characters: False
 ### -CreateOption
 Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk.
 The acceptable values for this parameter are:
-
 - Attach.
 Specify this option to create a virtual machine from a specialized disk.
 When you specify this option, do not specify the *SourceImageUri* parameter.
@@ -167,7 +155,7 @@ When you specify this option, you must specify the *SourceImageUri* parameter al
 The *VhdUri* parameter is used as the location identifying where the data disk VHD will be stored when it is used by the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -182,7 +170,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -197,7 +185,7 @@ Accept wildcard characters: False
 Specifies the size, in gigabytes, of an empty disk to attach to a virtual machine.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -212,7 +200,7 @@ Accept wildcard characters: False
 Specifies the logical unit number (LUN) for a data disk.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -227,7 +215,7 @@ Accept wildcard characters: False
 Specifies the ID of a managed disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VmManagedDiskParameterSetName
 Aliases:
 
@@ -239,7 +227,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VmScaleSetVMParameterSetName
 Aliases:
 
@@ -254,7 +242,7 @@ Accept wildcard characters: False
 Specifies the name of the data disk to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VmNormalDiskParameterSetName, VmManagedDiskParameterSetName
 Aliases:
 
@@ -269,7 +257,7 @@ Accept wildcard characters: False
 Specifies the source URI of the disk that this cmdlet attaches.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VmNormalDiskParameterSetName
 Aliases: SourceImage
 
@@ -284,7 +272,7 @@ Accept wildcard characters: False
 Specifies the storage account type of managed disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VmManagedDiskParameterSetName, VmScaleSetVMParameterSetName
 Aliases:
 
@@ -301,7 +289,7 @@ This cmdlet copies the image binary large object (blob) to this location.
 This is the location from which to start the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VmNormalDiskParameterSetName
 Aliases:
 
@@ -317,12 +305,12 @@ Specifies the local virtual machine scale set VM object to which to add a data d
 You can use the **Get-AzureRmVmssVM** cmdlet to obtain a virtual machine scale set VM object.
 
 ```yaml
-Type: PSVirtualMachineScaleSetVM
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVM
 Parameter Sets: VmScaleSetVMParameterSetName
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -334,7 +322,7 @@ You can use the **Get-AzureRmVM** cmdlet to obtain a virtual machine object.
 You can use the **New-AzureRmVMConfig** cmdlet to create a virtual machine object.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: VmNormalDiskParameterSetName, VmManagedDiskParameterSetName
 Aliases: VMProfile
 
@@ -349,7 +337,7 @@ Accept wildcard characters: False
 Specifies whether WriteAccelerator should be enabled or disabled on a managed data disk.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: VmManagedDiskParameterSetName, VmScaleSetVMParameterSetName
 Aliases:
 
@@ -365,12 +353,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVM
+
+### System.String
+
+### Microsoft.Azure.Management.Compute.Models.CachingTypes
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVM
 
 ## NOTES
 

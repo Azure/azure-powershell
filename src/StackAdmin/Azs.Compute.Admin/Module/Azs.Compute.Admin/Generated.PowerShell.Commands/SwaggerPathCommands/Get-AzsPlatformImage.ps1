@@ -93,7 +93,7 @@ function Get-AzsPlatformImage {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
@@ -184,4 +184,3 @@ function Get-AzsPlatformImage {
         }
     }
 }
-

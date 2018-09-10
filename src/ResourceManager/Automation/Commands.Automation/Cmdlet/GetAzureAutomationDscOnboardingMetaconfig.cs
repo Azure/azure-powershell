@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation dsc onboarding meta configuration information for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationDscOnboardingMetaconfig", SupportsShouldProcess = true)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationDscOnboardingMetaconfig", SupportsShouldProcess = true)]
     [OutputType(typeof(DscOnboardingMetaconfig))]
     public class GetAzureAutomationDscOnboardingMetaconfig : AzureAutomationBaseCmdlet
     {
@@ -60,6 +60,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            OutputFolder = ResolveUserPath(OutputFolder);
             this.ConfirmAction(
                 this.Force.IsPresent,
                 string.Format(CultureInfo.CurrentCulture, Resources.DscMetaMofHasKeysWarning),

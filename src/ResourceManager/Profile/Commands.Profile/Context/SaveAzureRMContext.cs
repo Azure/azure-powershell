@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Saves Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsData.Save, "AzureRmContext", SupportsShouldProcess = true), OutputType(typeof(PSAzureProfile))]
-    [Alias("Save-AzureRmProfile")]
+    [Cmdlet("Save", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", SupportsShouldProcess = true), OutputType(typeof(PSAzureProfile))]
+    [Alias("Save-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Profile")]
     public class SaveAzureRMContextCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipeline = true)]
@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
+            Path = this.ResolveUserPath(Path);
             if (Profile != null)
             {
                 if (ShouldProcess(string.Format(Resources.ProfileArgumentWrite, Path),

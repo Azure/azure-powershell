@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// <summary>
     /// 'New-AzureRmServicebusGeoDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServicebusDRConfigurationVerb, DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServiceBusDRConfigurationAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServiceBusDRConfigurationAttributes))]
     public class NewAzureRmEventHubGeoDRConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -66,37 +66,31 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 
             if (ParameterSetName == NamespaceInputObjectParameterSet)
             {
-                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
-
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
-                {
-                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRCreateAlias, Name, getParamGeoDR.ResourceName)))
-                    {
-                        WriteObject(Client.CreateServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
-                    }
-                }
+                LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(InputObject.Id);
+                ResourceGroupName = getParamGeoDR.ResourceGroupName;
+                Namespace = getParamGeoDR.ResourceName;
             }
 
             if (ParameterSetName == NamespaceResourceIdParameterSet)
             {
-                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
+                LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(ResourceId);
+                ResourceGroupName = getParamGeoDR.ResourceGroupName;
+                Namespace = getParamGeoDR.ResourceName;
+            }           
 
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
-                {
-                    if (ShouldProcess(target: Name, action: string.Format(Resources.DRCreateAlias, Name, getParamGeoDR.ResourceName)))
-                    {
-                        WriteObject(Client.CreateServiceBusDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
-                    }
-                }
-            }
-
-            if (ParameterSetName == GeoDRParameterSet)
+            try
             {
                 if (ShouldProcess(target: Name, action: string.Format(Resources.DRCreateAlias, Name, Namespace)))
                 {
                     WriteObject(Client.CreateServiceBusDRConfiguration(ResourceGroupName, Namespace, Name, drConfiguration));
                 }
             }
+            catch (ErrorResponseException ex)
+            {
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+            }
+
+
         }
     }
 }

@@ -60,27 +60,11 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
         }
-
-        public void RunPsTest(params string[] scripts)
-        {
-            TestExecutionHelpers.SetUpSessionAndProfile();
-            var sf = new StackTrace().GetFrame(1);
-            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
-            var mockName = sf.GetMethod().Name;
-
-            RunPsTestWorkflow(
-                () => scripts,
-                // no custom cleanup 
-                null,
-                callingClassType,
-                mockName);
-        }
-
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
@@ -109,8 +93,11 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
+#if NETSTANDARD
+                    _helper.RMStorageModule,
+#else
                     _helper.RMStorageDataPlaneModule,
-                    _helper.RMResourceModule,
+#endif
                     _helper.GetRMModulePath(@"AzureRM.Websites.psd1"),
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");

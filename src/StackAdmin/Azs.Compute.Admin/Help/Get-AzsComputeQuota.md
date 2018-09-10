@@ -34,7 +34,7 @@ Get a list of existing quotas.
 
 ### EXAMPLE 1
 ```
-Get-AzsComputeQuota
+Get-AzsComputeQuota -Location 'local'
 ```
 
 Get all compute quotas at the specified location.
@@ -48,6 +48,21 @@ Get a specific compute quota.
 
 ## PARAMETERS
 
+### -Location
+{{Fill Location Description}}
+
+```yaml
+Type: String
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the quota.
 
@@ -58,21 +73,6 @@ Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Location of the resource.
-
-```yaml
-Type: String
-Parameter Sets: List, Get
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -100,8 +100,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.AzureStack.Management.Compute.Admin.Models.Quota
-
+### ComputeQuotaObject
 ## NOTES
 
 ## RELATED LINKS

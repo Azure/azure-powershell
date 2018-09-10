@@ -66,7 +66,7 @@ function Start-AzsReclaimStorageCapacity {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         # Should process
         if ($PSCmdlet.ShouldProcess("$FarmName" , "Start garbage collection")) {

@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.Monitor.Management.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.ActionGroups
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// <summary>
     /// Create an ActionGroup receiver
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmActionGroupReceiver", DefaultParameterSetName = NewEmailReceiver)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionGroupReceiver", DefaultParameterSetName = NewEmailReceiver)]
     [OutputType(typeof(PSActionGroupReceiverBase))]
     public class NewAzureRmActionGroupReceiverCommand : AzureRMCmdlet
     {

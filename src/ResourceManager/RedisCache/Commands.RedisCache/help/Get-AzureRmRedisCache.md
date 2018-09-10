@@ -153,7 +153,7 @@ This command gets every Redis Cache in the current subscription.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -169,7 +169,7 @@ Specifies the name of the Redis Cache to get.
 Use with the *ResourceGroupName* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -182,11 +182,10 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that contains the Redis Cache to get.
-
 If you specify only the *ResourceGroupName* parameter, this operation gets every Redis Cache in the specified resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -202,13 +201,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet by name, but not by value.
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes
-Returns an array of **RedisCacheAttributes** objects.
 
 ## NOTES
 
