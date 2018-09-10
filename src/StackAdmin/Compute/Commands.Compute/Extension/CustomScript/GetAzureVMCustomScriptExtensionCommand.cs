@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using System;
 using System.Management.Automation;
@@ -23,20 +22,16 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Get,
-        ProfileNouns.VirtualMachineCustomScriptExtension,
-        DefaultParameterSetName = GetCustomScriptExtensionParamSetName),
-    OutputType(
+        ProfileNouns.VirtualMachineCustomScriptExtension)]
+    [OutputType(
         typeof(VirtualMachineCustomScriptExtensionContext))]
     public class GetAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
-        protected const string GetCustomScriptExtensionParamSetName = "GetCustomScriptExtension";
-
         [Parameter(
            Mandatory = true,
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

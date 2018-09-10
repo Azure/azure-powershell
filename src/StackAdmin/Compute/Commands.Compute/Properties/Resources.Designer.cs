@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -66,6 +66,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string AddAzureVhdCommandSASUriNotSupportedInPatchMode {
             get {
                 return ResourceManager.GetString("AddAzureVhdCommandSASUriNotSupportedInPatchMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add diagnostics extension to the VM scale set.
+        /// </summary>
+        public static string AddVmssDiagnosticsExtensionAction {
+            get {
+                return ResourceManager.GetString("AddVmssDiagnosticsExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Azure Enhanced Monitoring extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
+        /// </summary>
+        public static string AEMExtensionNotFound {
+            get {
+                return ResourceManager.GetString("AEMExtensionNotFound", resourceCulture);
             }
         }
         
@@ -224,12 +242,22 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot deserialize settings string from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
+        ///   Looks up a localized string similar to Cannot find sql server configuration info in substatuses. Updating your Azure PowerShell SDK to the latest version may solve this problem. Substatuses string:
         ///{0}.
         /// </summary>
-        public static string AzureVMSqlServerWrongSettingsFormat {
+        public static string AzureVMSqlServerSqlConfigurationNotFound {
             get {
-                return ResourceManager.GetString("AzureVMSqlServerWrongSettingsFormat", resourceCulture);
+                return ResourceManager.GetString("AzureVMSqlServerSqlConfigurationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot deserialize sql configuration substatus message from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
+        ///{0}.
+        /// </summary>
+        public static string AzureVMSqlServerWrongConfigFormat {
+            get {
+                return ResourceManager.GetString("AzureVMSqlServerWrongConfigFormat", resourceCulture);
             }
         }
         
@@ -248,6 +276,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string BothWindowsAndLinuxConfigurationsSpecified {
             get {
                 return ResourceManager.GetString("BothWindowsAndLinuxConfigurationsSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No chef extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
+        /// </summary>
+        public static string ChefExtensionNotFound {
+            get {
+                return ResourceManager.GetString("ChefExtensionNotFound", resourceCulture);
             }
         }
         
@@ -279,20 +316,56 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WadCfg or xmlCfg is not defined in configuration file..
+        ///   Looks up a localized string similar to No DiagnosticMonitorConfiguration element defined in the configuration file..
         /// </summary>
-        public static string DiagnosticsExtensionConfigNoWadCfgOrXmlCfg {
+        public static string DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined {
             get {
-                return ResourceManager.GetString("DiagnosticsExtensionConfigNoWadCfgOrXmlCfg", resourceCulture);
+                return ResourceManager.GetString("DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid diagnostics configuration file. It should be in Invalid diagnostics configuration file. It should be in either xml or json format.either xml or json format..
+        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element defined in the json configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionIaaSConfigElementNotDefinedInJson {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefinedInJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No WadCfg or WadCfgBlob element defined in the xml configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionIaaSConfigElementNotDefinedInXml {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefinedInXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid diagnostics configuration file. It should be in xml or json format..
         /// </summary>
         public static string DiagnosticsExtensionInvalidConfigFileFormat {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionInvalidConfigFileFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The resourceId defined in the config file does not match the actual resource&apos;s id..
+        /// </summary>
+        public static string DiagnosticsExtensionMetricsResourceIdNotMatch {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionMetricsResourceIdNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account names provided in public and private configs do not match..
+        /// </summary>
+        public static string DiagnosticsExtensionMismatchStorageAccountName {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionMismatchStorageAccountName", resourceCulture);
             }
         }
         
@@ -306,7 +379,16 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage account endpoint is not defined or can not be retrieved automatically...
+        ///   Looks up a localized string similar to No matching diagnostics extension found..
+        /// </summary>
+        public static string DiagnosticsExtensionNotFoundForVMSS {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNotFoundForVMSS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account endpoint is not defined or can not be retrieved automatically..
         /// </summary>
         public static string DiagnosticsExtensionNullStorageAccountEndpoint {
             get {
@@ -333,29 +415,56 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find the WadCfg end element in the config..
+        ///   Looks up a localized string similar to Overwriting existing diagnostics extension..
         /// </summary>
-        public static string DiagnosticsExtensionXmlConfigNoWadCfgEndTag {
+        public static string DiagnosticsExtensionOverwriting {
             get {
-                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigNoWadCfgEndTag", resourceCulture);
+                return ResourceManager.GetString("DiagnosticsExtensionOverwriting", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find the WadCfg element in the config..
+        ///   Looks up a localized string similar to Diagnostics extension overwritting operation .
         /// </summary>
-        public static string DiagnosticsExtensionXmlConfigNoWadCfgStartTag {
+        public static string DiagnosticsExtensionOverwrittingCaption {
             get {
-                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigNoWadCfgStartTag", resourceCulture);
+                return ResourceManager.GetString("DiagnosticsExtensionOverwrittingCaption", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WadCfg start element in the config is not matching the end element..
+        ///   Looks up a localized string similar to This cmdlet will overwrite existing diagnostics extension. Do you want to continue?.
         /// </summary>
-        public static string DiagnosticsExtensionXmlConfigWadCfgTagNotMatch {
+        public static string DiagnosticsExtensionOverwrittingConfirmation {
             get {
-                return ResourceManager.GetString("DiagnosticsExtensionXmlConfigWadCfgTagNotMatch", resourceCulture);
+                return ResourceManager.GetString("DiagnosticsExtensionOverwrittingConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable AzureDiskEncryption on the VM.
+        /// </summary>
+        public static string DisableAzureDiskEncryptionCaption {
+            get {
+                return ResourceManager.GetString("DisableAzureDiskEncryptionCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet disables encryption on the VM which may reboot the machine. Please save your work on the VM before confirming. Do you want to continue?.
+        /// </summary>
+        public static string DisableAzureDiskEncryptionConfirmation {
+            get {
+                return ResourceManager.GetString("DisableAzureDiskEncryptionConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable disk encryption.
+        /// </summary>
+        public static string DisableDiskEncryptionAction {
+            get {
+                return ResourceManager.GetString("DisableDiskEncryptionAction", resourceCulture);
             }
         }
         
@@ -396,6 +505,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable disk encryption.
+        /// </summary>
+        public static string EnableDiskEncryptionAction {
+            get {
+                return ResourceManager.GetString("EnableDiskEncryptionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error occurred when choosing existing standard storage account for boot diagnostics: {0}.
         /// </summary>
         public static string ErrorDuringChoosingStandardStorageAccount {
@@ -419,6 +537,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string ErrorDuringGettingStorageAccountForBootDiagnostics {
             get {
                 return ResourceManager.GetString("ErrorDuringGettingStorageAccountForBootDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given disk is not a managed disk..
+        /// </summary>
+        public static string NotManagedDisk {
+            get {
+                return ResourceManager.GetString("NotManagedDisk", resourceCulture);
             }
         }
         
@@ -928,6 +1055,69 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove VM access extension.
+        /// </summary>
+        public static string RemoveAccessExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveAccessExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove disk encryption.
+        /// </summary>
+        public static string RemoveDiskEncryptionAction {
+            get {
+                return ResourceManager.GetString("RemoveDiskEncryptionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove &apos;{0}&apos; extension.
+        /// </summary>
+        public static string RemoveExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove custom script extension.
+        /// </summary>
+        public static string RemoveScriptExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveScriptExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove diagnostics extension from the VM scale set.
+        /// </summary>
+        public static string RemoveVmssDiagnosticsExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveVmssDiagnosticsExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove the specified resource.  Do you want to continue?.
+        /// </summary>
+        public static string ResourceRemovalConfirmation {
+            get {
+                return ResourceManager.GetString("ResourceRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will stop the specified resource.  Do you want to continue?.
+        /// </summary>
+        public static string ResourceStoppingConfirmation {
+            get {
+                return ResourceManager.GetString("ResourceStoppingConfirmation", resourceCulture);
             }
         }
         
