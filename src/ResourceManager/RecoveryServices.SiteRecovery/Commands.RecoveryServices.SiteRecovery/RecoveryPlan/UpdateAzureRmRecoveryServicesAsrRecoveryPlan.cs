@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,11 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Updates the contents of an Azure Site recovery plan.
     /// </summary>
-    [Cmdlet(
-        VerbsData.Update,
-        "AzureRmRecoveryServicesAsrRecoveryPlan",
-        DefaultParameterSetName = ASRParameterSets.ByRPObject,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.ByRPObject,SupportsShouldProcess = true)]
     [Alias("Update-ASRRecoveryPlan")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
@@ -72,16 +68,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         break;
                     case ASRParameterSets.ByRPFile:
 
-                        if (!File.Exists(this.Path))
+                        var filePath = ResolveUserPath(this.Path);
+
+                        if (!File.Exists(filePath))
                         {
                             throw new FileNotFoundException(
                                 string.Format(
                                     Resources.FileNotFound,
-                                    this.Path));
+                                    filePath));
                             ;
                         }
-
-                        var filePath = this.Path;
 
                         RecoveryPlan recoveryPlan = null;
 

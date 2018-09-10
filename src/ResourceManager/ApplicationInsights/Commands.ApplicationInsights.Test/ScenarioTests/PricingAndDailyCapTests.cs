@@ -23,44 +23,47 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
 {
     public class PricingAndDailyCapTests : RMTestBase
     {
-        public PricingAndDailyCapTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public PricingAndDailyCapTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPricingPlan()
         {
-            TestController.NewInstance.RunPsTest("Test-GetApplicationInsightsPricingPlan");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetApplicationInsightsPricingPlan");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetPricingPlan()
         {
-            TestController.NewInstance.RunPsTest("Test-SetApplicationInsightsPricingPlan");
+            TestController.NewInstance.RunPsTest(_logger, "Test-SetApplicationInsightsPricingPlan");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetApplicationInsightsDailyCap()
         {
-            TestController.NewInstance.RunPsTest("Test-GetApplicationInsightsDailyCap");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetApplicationInsightsDailyCap");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetApplicationInsightsDailyCap()
         {
-            TestController.NewInstance.RunPsTest("Test-SetApplicationInsightsDailyCap");
+            TestController.NewInstance.RunPsTest(_logger, "Test-SetApplicationInsightsDailyCap");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDailyCapStatus()
         {
-            TestController.NewInstance.RunPsTest("Test-GetApplicationInsightsDailyCapStatus");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetApplicationInsightsDailyCapStatus");
         }
     }
 }

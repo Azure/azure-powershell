@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
     using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmIoTDeviceProvisioningService", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [Alias("New-AzureRmIoTDps")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDeviceProvisioningService", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDps")]
     [OutputType(typeof(PSProvisioningServiceDescription))]
     public class NewAzureRmIoTDeviceProvisioningService : IotDpsBaseCmdlet
     {

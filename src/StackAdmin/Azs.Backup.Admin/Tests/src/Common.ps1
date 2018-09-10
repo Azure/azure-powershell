@@ -1,33 +1,36 @@
 ﻿
-$global:Location = "local"
-$global:TenantVMName = "502828aa-de3a-4ba9-a66c-5ae6d49589d7"
-$global:Provider = "Microsoft.Backup.Admin"
-$global:ResourceGroup = "System.local"
+$global:SkippedTests = @(
+    'TestCreateBackup',
+    'TestRestoreBackup'
+)
 
-if(-not $RunRaw) {
-	$scriptBlock = {
-		Get-MockClient -ClassName 'BackupAdminClient' -TestName $global:TestName -Verbose
-	}
-	Mock New-ServiceClient $scriptBlock -ModuleName "Azs.Backup.Admin"
+$global:Location = "local"
+$global:Provider = "Microsoft.Backup.Admin"
+$global:ResourceGroupName = "System.local"
+$global:username = "azurestack\AzureStackAdmin"
+[SecureString]$global:password = ConvertTo-SecureString -String "password" -AsPlainText -Force
+$global:path = "\\su1fileserver\SU1_Infrastructure_2\BackupStore"
+[SecureString]$global:encryptionKey = ConvertTo-SecureString -String "Q09WR3dOUEtia0VFeFZFbGdqVXFySm9TbEtxaHNNZ2VxQkdzUUZaVGRCbWtpbHplR2N3Z2hmR05wY2lqTElIbw==" -AsPlainText -Force
+$global:isBackupSchedulerEnabled = $false
+$global:backupFrequencyInHours = 10
+$global:backupRetentionPeriodInDays = 6
+
+if (-not $global:RunRaw) {
+    $scriptBlock = {
+        Get-MockClient -ClassName 'BackupAdminClient' -TestName $global:TestName -Verbose
+    }
+    Mock New-ServiceClient $scriptBlock -ModuleName $global:ModuleName
 }
 
 # Extracts the name needed for parameters
 function Select-Name {
-	param($Name)
-	if($name.contains("/")) {
-		$Name = $Name.Substring($Name.LastIndexOf("/")+ 1)
-	}
-	$Name
+    param($Name)
+    if ($name.contains("/")) {
+        $Name = $Name.Substring($Name.LastIndexOf("/") + 1)
+    }
+    $Name
 }
 
-function Repeat{
-	param(
-		[int]$Times,
-		[ScriptBLock]$Script
-	)
-
-	while($Times -gt 0) {
-		Invoke-Command -ScriptBlock $Script
-		$Times = $Times - 1
-	}
+if (Test-Path "$PSScriptRoot\Override.ps1") {
+    . $PSScriptRoot\Override.ps1
 }

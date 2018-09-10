@@ -46,7 +46,7 @@ The final command then removes the region named East US from that instance then 
 Specifies the **PsApiManagement** instance that this cmdlet removes the additional deployment region from.
 
 ```yaml
-Type: PsApiManagement
+Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
 Parameter Sets: (All)
 Aliases:
 
@@ -58,10 +58,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,13 +73,12 @@ Accept wildcard characters: False
 
 ### -Location
 Specifies the location of the region that this cmdlet removes.
-
 Specifies the location of the new deployment region amongst the supported region for Api Management service.
 To obtain valid locations, use the cmdlet
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,8 +94,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PsApiManagement
-Parameter 'ApiManagement' accepts value of type 'PsApiManagement' from the pipeline
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
+Parameters: ApiManagement (ByValue)
+
+### System.String
 
 ## OUTPUTS
 

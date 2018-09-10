@@ -81,19 +81,24 @@ namespace Microsoft.Azure.Commands.Insights
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            string code = null;
+            HttpStatusCode? statusCode = null;
+            string reasonPhrase = null;
+            string message = null;
+            string exName = null;
+
             try
             {
+                WriteWarningWithTimestamp("*** The namespace for all the model classes will change from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models in future releases.");
+                WriteWarningWithTimestamp("*** The namespace for output classes will be uniform for all classes in future releases to make it independent of modifications in the model classes.");
                 this.ProcessRecordInternal();
             }
             catch (AggregateException ex)
             {
                 // Process the exception to be as informative as possible to the user
                 var exTemp = ex.Flatten().InnerException ?? ex;
-                string exName = exTemp.GetType().Name;
-                string message = exTemp.Message;
-                string code = null;
-                HttpStatusCode? statusCode = null;
-                string reasonPhrase = null;
+                exName = exTemp.GetType().Name;
+                message = exTemp.Message;
 
                 if (exTemp is RestException)
                 {
@@ -119,19 +124,7 @@ namespace Microsoft.Azure.Commands.Insights
                         }
                         else
                         {
-                            // New model to report errors (from Swagger Spec)
-                            var errorResponse2 = exTemp as Microsoft.Azure.Management.Monitor.Management.Models.ErrorResponseException;
-                            if (errorResponse2 != null)
-                            {
-                                message = errorResponse2.Body.Message;
-                                code = errorResponse2.Body.Code;
-                                statusCode = errorResponse2.Response.StatusCode;
-                                reasonPhrase = errorResponse2.Response.ReasonPhrase;
-                            }
-                            else
-                            {
-                                message = exTemp.Message;
-                            }
+                            message = exTemp.ToString();
                         }
                     }
                 }
@@ -146,6 +139,22 @@ namespace Microsoft.Azure.Commands.Insights
                         statusCode.HasValue ? statusCode.Value.ToString() : "Null",
                         reasonPhrase ?? "Null"),
                     exTemp);
+            }
+            catch (Exception ex)
+            {
+                exName = ex.GetType().Name;
+                message = ex.ToString();
+
+                throw new PSInvalidOperationException(
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        "Exception type: {0}, Message: {1}, Code: {2}, Status code:{3}, Reason phrase: {4}",
+                        exName,
+                        string.IsNullOrWhiteSpace(message) ? "Null/Empty" : message,
+                        code ?? "Null",
+                        statusCode.HasValue ? statusCode.Value.ToString() : "Null",
+                        reasonPhrase ?? "Null"),
+                    ex);
             }
         }
     }

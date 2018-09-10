@@ -35,96 +35,96 @@
     Date:   February 20, 2018
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Storage.Admin {
 
-	Describe "Containers" -Tags @('Containers', 'Azs.Storage.Admin') {
+    Describe "Containers" -Tags @('Containers', 'Azs.Storage.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateContainer {
-				param(
-					[Parameter(Mandatory=$true)]
-					$container
-				)
-				# Resource
-				$container											| Should Not Be $null
+            function ValidateContainer {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $container
+                )
+                # Resource
+                $container											| Should Not Be $null
 
-				# Validate Container properties
-				$container.Accountid								| Should Not Be $null
-				$container.Accountname								| Should Not Be $null
-				$container.Containerid								| Should Not Be $null
-				$container.Containername							| Should Not Be $null
-				$container.ContainerState							| Should Not Be $null
-				$container.Sharename								| Should Not Be $null
-				$container.UsedBytesInPrimaryVolume					| Should Not Be $null
+                # Validate Container properties
+                $container.Accountid								| Should Not Be $null
+                $container.Accountname								| Should Not Be $null
+                $container.Containerid								| Should Not Be $null
+                $container.Containername							| Should Not Be $null
+                $container.ContainerState							| Should Not Be $null
+                $container.Sharename								| Should Not Be $null
+                $container.UsedBytesInPrimaryVolume					| Should Not Be $null
 
-			}
+            }
 
-			function ValidateDestinationShare {
-				param(
-					[Parameter(Mandatory=$true)]
-					$share
-				)
-				# Resource
-				$share								| Should Not Be $null
+            function ValidateDestinationShare {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $share
+                )
+                # Resource
+                $share								| Should Not Be $null
 
-				# Validate Share properties
-				$share.FreeCapacity					| Should Not Be $null
-				$share.HealthStatus					| Should Not Be $null
-				$share.Id							| Should Not Be $null
-				$share.Location						| Should Not Be $null
-				$share.Name							| Should Not Be $null
-				$share.ShareName					| Should Not Be $null
-				$share.TotalCapacity				| Should Not Be $null
-				$share.Type							| Should Not Be $null
-				$share.UncPath						| Should Not Be $null
-				$share.UsedCapacity					| Should Not Be $null
-			}
-		}
+                # Validate Share properties
+                $share.FreeCapacity					| Should Not Be $null
+                $share.HealthStatus					| Should Not Be $null
+                $share.Id							| Should Not Be $null
+                $share.Location						| Should Not Be $null
+                $share.Name							| Should Not Be $null
+                $share.ShareName					| Should Not Be $null
+                $share.TotalCapacity				| Should Not Be $null
+                $share.Type							| Should Not Be $null
+                $share.UncPath						| Should Not Be $null
+                $share.UsedCapacity					| Should Not Be $null
+            }
+        }
 
-		It "TestListContainers" {
-			$global:TestName = 'TestListContainers'
+        it "TestListContainers" -Skip:$('TestListContainers' -in $global:SkippedTests) {
+            $global:TestName = 'TestListContainers'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-				foreach($share in $shares) {
-					$containers = Get-AzsStorageContainer -ResourceGroupName $global:ResourceGroup -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name) -StartIndex 0 -MaxCount 10
-					$containers  | Should Not Be $null
-					foreach($container in $containers) {
-						$container  | Should Not Be $null
-						ValidateContainer -container $container
-					}
-				}
-			}
-		}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                foreach ($share in $shares) {
+                    $containers = Get-AzsStorageContainer -ResourceGroupName $global:ResourceGroupName -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name) -StartIndex 0 -MaxCount 10
+                    $containers  | Should Not Be $null
+                    foreach ($container in $containers) {
+                        $container  | Should Not Be $null
+                        ValidateContainer -container $container
+                    }
+                }
+            }
+        }
 
-		It "TestListDestinationShares" {
-			$global:TestName = 'TestListDestinationShares'
+        it "TestListDestinationShares" -Skip:$('TestListDestinationShares' -in $global:SkippedTests) {
+            $global:TestName = 'TestListDestinationShares'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-				foreach($share in $shares) {
-					$destinationShares = Get-AzsStorageDestinationShare -ResourceGroupName $global:ResourceGroup -SourceShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
-					foreach($destinationShare in $destinationShares) {
-						$destinationShare  | Should Not Be $null
-						ValidateDestinationShare -share $destinationShare
-					}
-				}
-			}
-		}
-	}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                foreach ($share in $shares) {
+                    $destinationShares = Get-AzsStorageDestinationShare -ResourceGroupName $global:ResourceGroupName -SourceShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
+                    foreach ($destinationShare in $destinationShares) {
+                        $destinationShare  | Should Not Be $null
+                        ValidateDestinationShare -share $destinationShare
+                    }
+                }
+            }
+        }
+    }
 }

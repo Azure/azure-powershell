@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,15 +25,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Sets the Recovery Services vault context to be used for subsequent Azure Site Recovery operations in the current PowerShell session.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Set,
-        "AzureRmRecoveryServicesAsrVaultContext",
-        DefaultParameterSetName = ASRParameterSets.ARSVault,
-        SupportsShouldProcess = true)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrVaultContext",DefaultParameterSetName = ASRParameterSets.ARSVault,SupportsShouldProcess = true)]
     [Alias(
         "Set-ASRVaultContext",
         "Set-ASRVaultSettings",
-        "Set-AzureRmRecoveryServicesAsrVaultSettings")]
+        "Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrVaultSettings")]
     [OutputType(typeof(ASRVaultSettings))]
     public class SetAzureRmRecoveryServicesAsrVaultSettings : SiteRecoveryCmdletBase
     {

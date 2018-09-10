@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 89C931AE-DA81-47A7-80E4-159C36497DA0
@@ -65,9 +65,9 @@ This command gets metadata for a DSC node configuration with the name ContosoCon
 Specifies the name of an Automation account that contains the DSC node configurations for which this cmdlet gets metadata.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -80,9 +80,9 @@ Accept wildcard characters: False
 Specifies the name of DSC configuration for which this cmdlet gets node configuration metadata.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByConfigurationName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 Specifies the name of the DSC node configuration for which this cmdlet gets metadata.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNodeConfigurationName
 Aliases: NodeConfigurationName
 
@@ -126,9 +126,9 @@ Specifies the name of a resource group.
 This cmdlet gets metadata for DSC node configurations in the resource group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -140,14 +140,13 @@ Accept wildcard characters: False
 ### -RollupStatus
 Specifies the rollup status of DSC node configurations that this cmdlet gets.
 Valid values are: 
-
 - Bad 
 - Good
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAll, ByConfigurationName
-Aliases: 
+Aliases:
 Accepted values: Good, Bad
 
 Required: False
@@ -162,8 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
