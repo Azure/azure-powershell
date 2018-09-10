@@ -85,6 +85,7 @@ function Update-Help {
             } catch {
                 $Failures += 1
                 Write-Error "$($_.Exception)"
+                break
             } finally {
                 Pop-Location | Out-Null
             }
