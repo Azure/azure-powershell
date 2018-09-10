@@ -96,7 +96,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (MNM.VirtualWAN virtualWan in virtualWans)
                 {
-                    wansToReturn.Add(ToPsVirtualWan(virtualWan));
+                    PSVirtualWan wanToReturn = ToPsVirtualWan(virtualWan);
+                    wanToReturn.ResourceGroupName = resourceGroupName;
+                    wansToReturn.Add(wanToReturn);
                 }
             }
 

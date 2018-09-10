@@ -63,7 +63,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (MNM.VpnGateway gateway in vpnGateways)
                 {
-                    gatewaysToReturn.Add(ToPsVpnGateway(gateway));
+                    PSVpnGateway gatewayToReturn = ToPsVpnGateway(gateway);
+                    gatewayToReturn.ResourceGroupName = resourceGroupName;
+                    gatewaysToReturn.Add(gatewayToReturn);
                 }
             }
 
@@ -76,7 +78,10 @@ namespace Microsoft.Azure.Commands.Network
             vpnGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
 
             var vpnGatewayCreatedOrUpdated = this.VpnGatewayClient.CreateOrUpdate(resourceGroupName, vpnGatewayName, vpnGatewayModel);
-            return this.ToPsVpnGateway(vpnGatewayCreatedOrUpdated);
+            PSVpnGateway gatewayToReturn = this.ToPsVpnGateway(vpnGatewayCreatedOrUpdated);
+            gatewayToReturn.ResourceGroupName = resourceGroupName;
+
+            return gatewayToReturn;
         }
     }
 }

@@ -30,9 +30,9 @@ namespace Commands.Network.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Needs ignite changes to be rolled out to all NRPs.")]
+        [Fact]
         [Trait(Category.Owner, Category.brooklynft)]
-        public void TestVirtualNetworkExpressRouteGatewayCRUD()
+        public void TestCortexCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexCRUD");
         }

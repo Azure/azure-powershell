@@ -59,7 +59,10 @@ namespace Microsoft.Azure.Commands.Network
             virtualHubModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
 
             var virtualHubCreatedOrUpdated = this.VirtualHubClient.CreateOrUpdate(resourceGroupName, virtualHubName, virtualHubModel);
-            return this.ToPsVirtualHub(virtualHubCreatedOrUpdated);
+            PSVirtualHub hubToReturn = this.ToPsVirtualHub(virtualHubCreatedOrUpdated);
+            hubToReturn.ResourceGroupName = resourceGroupName;
+
+            return hubToReturn;
         }
 
         public List<PSVirtualHub> ListVirtualHubs(string resourceGroupName)
@@ -67,12 +70,15 @@ namespace Microsoft.Azure.Commands.Network
             var virtualHubs = string.IsNullOrWhiteSpace(resourceGroupName) ?
                 this.VirtualHubClient.List() :                                       //// List by SubId
                 this.VirtualHubClient.ListByResourceGroup(resourceGroupName);        //// List by RG Name
+
             List<PSVirtualHub> hubsToReturn = new List<PSVirtualHub>();
             if (virtualHubs != null)
             {
                 foreach (MNM.VirtualHub virtualHub in virtualHubs)
                 {
-                    hubsToReturn.Add(ToPsVirtualHub(virtualHub));
+                    PSVirtualHub virtualHubToReturn = ToPsVirtualHub(virtualHub);
+                    virtualHubToReturn.ResourceGroupName = resourceGroupName;
+                    hubsToReturn.Add(virtualHubToReturn);
                 }
             }
 

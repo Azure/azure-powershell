@@ -85,7 +85,10 @@ namespace Microsoft.Azure.Commands.Network
             vpnSiteModel.Tags = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
 
             var vpnSiteCreatedOrUpdated = this.VpnSiteClient.CreateOrUpdate(resourceGroupName, vpnSiteName, vpnSiteModel);
-            return this.ToPsVpnSite(vpnSiteCreatedOrUpdated);
+            PSVpnSite siteToReturn = ToPsVpnSite(vpnSiteCreatedOrUpdated);
+            siteToReturn.ResourceGroupName = resourceGroupName;
+
+            return siteToReturn;
         }
 
         public List<PSVpnSite> ListVpnSites(string resourceGroupName)
@@ -99,7 +102,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (MNM.VpnSite vpnSite in vpnSites)
                 {
-                    sitesToReturn.Add(ToPsVpnSite(vpnSite));
+                    PSVpnSite siteToReturn = ToPsVpnSite(vpnSite);
+                    siteToReturn.ResourceGroupName = resourceGroupName;
+                    sitesToReturn.Add(siteToReturn);
                 }
             }
 
