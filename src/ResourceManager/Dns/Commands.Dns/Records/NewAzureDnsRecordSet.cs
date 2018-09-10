@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "AliasObject")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "AliasFields")]
         [ValidateNotNullOrEmpty]
-        public uint Ttl { get; set; }
+        public long? Ttl { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of DNS records in this record set.")]
         [ValidateNotNullOrEmpty]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = true, HelpMessage = "Alias Target Resource Id.", ParameterSetName = "AliasFields")]
         [Parameter(Mandatory = true, HelpMessage = "Alias Target Resource Id.", ParameterSetName = "AliasObject")]
-        public string AliasTargetResourceId { get; set; }
+        public string TargetResourceId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Metadata { get; set; }
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Dns
                 this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneName));
             }
 
-            if (this.DnsRecords == null)
+            if (this.DnsRecords == null && string.IsNullOrEmpty(this.TargetResourceId))
             {
                 this.WriteWarning(ProjectResources.Warning_DnsRecordsParamNeedsToBeSpecified);
             }
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Dns
                         this.Metadata,
                         this.Overwrite,
                         this.DnsRecords,
-                        this.AliasTargetResourceId);
+                        this.TargetResourceId);
 
                     if (result != null)
                     {

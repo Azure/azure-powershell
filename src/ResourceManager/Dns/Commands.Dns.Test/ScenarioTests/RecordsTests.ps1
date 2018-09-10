@@ -101,13 +101,11 @@ function Test-AliasRecordSet
 	# non alias record
 	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType $recordType -DnsRecords @()
 	$record = $record | Add-AzureRmDnsRecordConfig -Ipv4Address 1.1.1.1
-	$record = $record | Add-AzureRmDnsRecordConfig -Ipv4Address 2.2.2.2
 	$record = $record | Set-AzureRmDnsRecordSet
 	
 	# alias record pointing to non-alias record
 	$aliasRecordName = "alias" + $(getAssetname)
-	$aliasResourceId = "/subscriptions/$subscription/resourceGroups/$($resourceGroup.ResourceGroupName)/providers/Microsoft.Network/dnszones/$zoneName/$($record.RecordType)/$($record.Name)"
-	$createdRecord = New-AzureRmDnsRecordSet -Name $aliasRecordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType -AliasTargetResourceId $aliasResourceId
+	$createdRecord = New-AzureRmDnsRecordSet -Name $aliasRecordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType -TargetResourceId $record.Id
 
 	Assert-NotNull $createdRecord
 	Assert-AreEqual $zoneName $createdRecord.ZoneName 
@@ -116,12 +114,68 @@ function Test-AliasRecordSet
 
 	$aliasRecord = $zone | Get-AzureRmDnsRecordSet -Name $aliasRecordName -RecordType $recordType
 	$nonaliasRecord = $zone | Get-AzureRmDnsRecordSet -Name $recordName -RecordType $recordType
-	Assert-AreEqual $aliasResourceId $aliasRecord.AliasTargetResourceId
+	Assert-AreEqual $record.Id $aliasRecord.TargetResourceId
 
 	$nonaliasRecord | Remove-AzureRmDnsRecordSet
 
 	Assert-ThrowsLike { Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType } "*does not exist*"
+
+	$aliasRecord = $zone | Get-AzureRmDnsRecordSet -Name $aliasRecordName -RecordType $recordType
+	Assert-Null $nonaliasRecord.TargetResourceId
+	$aliasRecord | Remove-AzureRmDnsRecordSet
+
 	Assert-ThrowsLike { Get-AzureRmDnsRecordSet -Name $aliasRecordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType } "*does not exist*"
+
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Test Resource Reference API
+#>
+function Test-ResourceReference
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+	$subscription = getSubscription
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$recordType = "A"
+	$zone = $resourceGroup | New-AzureRmDnsZone -Name $zoneName
+
+	# non alias record
+	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType $recordType -DnsRecords @()
+	$record = $record | Add-AzureRmDnsRecordConfig -Ipv4Address 1.1.1.1
+	$record = $record | Set-AzureRmDnsRecordSet
+	
+	$ref = Get-AzureRmDnsResourceReference -ResourceId $record.Id
+	Assert-AreEqual $ref.DnsResources.Count 0
+	Assert-AreEqual $ref.TargetResource.Id $record.Id
+
+	# alias record pointing to non-alias record
+	$aliasRecordName = "alias" + $(getAssetname)
+	$alias1 = New-AzureRmDnsRecordSet -Name $aliasRecordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType -TargetResourceId $record.Id
+
+	Assert-NotNull $alias1
+	Assert-AreEqual $zoneName $alias1.ZoneName 
+	Assert-AreEqual $aliasRecordName $alias1.Name 
+	Assert-AreEqual $resourceGroup.ResourceGroupName $alias1.ResourceGroupName
+	Assert-AreEqual $alias1.TargetResourceId $record.Id
+
+	$aliasRecordName2 = "alias" + $(getAssetname)
+	$alias2 = New-AzureRmDnsRecordSet -Name $aliasRecordName2 -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType -TargetResourceId $record.Id
+
+	Assert-NotNull $alias2
+	Assert-AreEqual $zoneName $alias2.ZoneName 
+	Assert-AreEqual $aliasRecordName2 $alias2.Name 
+	Assert-AreEqual $resourceGroup.ResourceGroupName $alias2.ResourceGroupName
+	Assert-AreEqual $alias2.TargetResourceId $record.Id
+
+	$ref = Get-AzureRmDnsResourceReference -ResourceId $record.Id
+	Assert-AreEqual $ref.DnsResources.Count 2
+	Assert-True { $ref.DnsResources.Id -contains $alias1.Id }
+	Assert-True { $ref.DnsResources.Id -contains $alias2.Id }
+	Assert-AreEqual $ref.TargetResource.Id $record.Id
 
 	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
