@@ -25,6 +25,19 @@ Learn more about the query syntax here: https://aka.ms/resource-graph/learntoque
 ### Example 1
 ```powershell
 PS C:\> Invoke-AzureRmResourceGraphQuery "project id, name, type, location, tags" -First 3
+
+
+id         : /subscriptions/1ef51df4-f8a9-4b69-9919-1ef51df4eff6/resourceGroups/Service-INT-a/providers/Microsoft.Compute/virtualMachineScaleSets/nt
+name       : nt
+type       : microsoft.compute/virtualmachinescalesets
+location   : eastus
+tags       : @{resourceType=Service Fabric; clusterName=gov-art-int-nt-a}
+
+id         : /subscriptions/1ef51df4-f8a9-4b69-9919-1ef51df4eff6/resourceGroups/Service-INT-a/providers/Microsoft.EventGrid/topics/egtopic-1
+name       : egtopic-1
+type       : microsoft.eventgrid/topics
+location   : westus2
+tags       :
 ```
 
 Simple resources query requesting a subset of resource fields.
@@ -32,6 +45,12 @@ Simple resources query requesting a subset of resource fields.
 ### Example 2
 ```powershell
 PS C:\> Invoke-AzureRmResourceGraphQuery "project id, name, type, location | where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location | top 3 by count_"
+
+location      count_
+--------      ------
+eastus            66
+westcentralus     32
+westus            26
 ```
 
 A complex query on resources featuring field selection, filtering and summarizing.
