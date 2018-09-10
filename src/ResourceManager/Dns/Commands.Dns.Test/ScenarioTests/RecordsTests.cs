@@ -34,14 +34,14 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAliasRecordSet()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-AliasRecordSet");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-AliasRecordSet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceReference()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ResourceReference");
+            DnsTestsBase.NewInstance.RunPowerShellTest(_logger, "Test-ResourceReference");
         }
 
         [Fact]
