@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -28,92 +29,161 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmVmssConfig")]
-    [OutputType(typeof(VirtualMachineScaleSet))]
-    public class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [Cmdlet("New", "AzureRmVmssConfig", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSVirtualMachineScaleSet))]
+    public partial class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
-        public string ProvisioningState { get; set; }
+        public bool? Overprovision { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        public bool? OverProvision { get; set; }
+        public string Location { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public string Location { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tag { get; set; }
+        [Alias("AccountType")]
+        public string SkuName { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 4,
             ValueFromPipelineByPropertyName = true)]
-        public string SkuName { get; set; }
+        public string SkuTier { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true)]
-        public string SkuTier { get; set; }
+        public int? SkuCapacity { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 6,
             ValueFromPipelineByPropertyName = true)]
-        public Int64? SkuCapacity { get; set; }
+        public UpgradeMode? UpgradePolicyMode { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 7,
             ValueFromPipelineByPropertyName = true)]
-        public UpgradeMode? UpgradePolicyMode { get; set; }
+        public VirtualMachineScaleSetOSProfile OsProfile { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 8,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetOSProfile OsProfile { get; set; }
+        public VirtualMachineScaleSetStorageProfile StorageProfile { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 9,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetStorageProfile StorageProfile { get; set; }
+        public VirtualMachineScaleSetNetworkConfiguration[] NetworkInterfaceConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 10,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetNetworkConfiguration[] NetworkInterfaceConfiguration { get; set; }
+        public VirtualMachineScaleSetExtension[] Extension { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 11,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetExtension[] Extension { get; set; }
+        public bool? SinglePlacementGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string PlanName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string PlanPublisher { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string PlanProduct { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string PlanPromotionCode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public RollingUpgradePolicy RollingUpgradePolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false)]
+        public SwitchParameter AutoOSUpgrade { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string HealthProbeId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public BootDiagnostics BootDiagnostic { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string LicenseType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false)]
+        public SwitchParameter AssignIdentity { get; set; }
 
         protected override void ProcessRecord()
         {
+            if (ShouldProcess("VirtualMachineScaleSet", "New"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
+        {
             // Sku
             Microsoft.Azure.Management.Compute.Models.Sku vSku = null;
+
+            // Plan
+            Microsoft.Azure.Management.Compute.Models.Plan vPlan = null;
 
             // UpgradePolicy
             Microsoft.Azure.Management.Compute.Models.UpgradePolicy vUpgradePolicy = null;
 
             // VirtualMachineProfile
             Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile vVirtualMachineProfile = null;
+
+            // Identity
+            Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity vIdentity = null;
 
             if (this.SkuName != null)
             {
@@ -142,6 +212,42 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vSku.Capacity = this.SkuCapacity;
             }
 
+            if (this.PlanName != null)
+            {
+                if (vPlan == null)
+                {
+                    vPlan = new Microsoft.Azure.Management.Compute.Models.Plan();
+                }
+                vPlan.Name = this.PlanName;
+            }
+
+            if (this.PlanPublisher != null)
+            {
+                if (vPlan == null)
+                {
+                    vPlan = new Microsoft.Azure.Management.Compute.Models.Plan();
+                }
+                vPlan.Publisher = this.PlanPublisher;
+            }
+
+            if (this.PlanProduct != null)
+            {
+                if (vPlan == null)
+                {
+                    vPlan = new Microsoft.Azure.Management.Compute.Models.Plan();
+                }
+                vPlan.Product = this.PlanProduct;
+            }
+
+            if (this.PlanPromotionCode != null)
+            {
+                if (vPlan == null)
+                {
+                    vPlan = new Microsoft.Azure.Management.Compute.Models.Plan();
+                }
+                vPlan.PromotionCode = this.PlanPromotionCode;
+            }
+
             if (this.UpgradePolicyMode != null)
             {
                 if (vUpgradePolicy == null)
@@ -149,6 +255,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
                 }
                 vUpgradePolicy.Mode = this.UpgradePolicyMode;
+            }
+
+            if (this.RollingUpgradePolicy != null)
+            {
+                if (vUpgradePolicy == null)
+                {
+                    vUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                }
+                vUpgradePolicy.RollingUpgradePolicy = this.RollingUpgradePolicy;
+            }
+
+            if (this.AutoOSUpgrade.IsPresent)
+            {
+                if (vUpgradePolicy == null)
+                {
+                    vUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                }
+                vUpgradePolicy.AutomaticOSUpgrade = true;
             }
 
             if (this.OsProfile != null)
@@ -169,6 +293,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.StorageProfile = this.StorageProfile;
             }
 
+            if (this.HealthProbeId != null)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.NetworkProfile == null)
+                {
+                    vVirtualMachineProfile.NetworkProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkProfile();
+                }
+                if (vVirtualMachineProfile.NetworkProfile.HealthProbe == null)
+                {
+                    vVirtualMachineProfile.NetworkProfile.HealthProbe = new Microsoft.Azure.Management.Compute.Models.ApiEntityReference();
+                }
+                vVirtualMachineProfile.NetworkProfile.HealthProbe.Id = this.HealthProbeId;
+            }
+
             if (this.NetworkInterfaceConfiguration != null)
             {
                 if (vVirtualMachineProfile == null)
@@ -180,6 +321,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.NetworkProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkProfile();
                 }
                 vVirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations = this.NetworkInterfaceConfiguration;
+            }
+
+            if (this.BootDiagnostic != null)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.DiagnosticsProfile == null)
+                {
+                    vVirtualMachineProfile.DiagnosticsProfile = new Microsoft.Azure.Management.Compute.Models.DiagnosticsProfile();
+                }
+                vVirtualMachineProfile.DiagnosticsProfile.BootDiagnostics = this.BootDiagnostic;
             }
 
             if (this.Extension != null)
@@ -195,16 +349,37 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.ExtensionProfile.Extensions = this.Extension;
             }
 
-
-            var vVirtualMachineScaleSet = new VirtualMachineScaleSet
+            if (this.LicenseType != null)
             {
-                ProvisioningState = this.ProvisioningState,
-                OverProvision = this.OverProvision,
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                vVirtualMachineProfile.LicenseType = this.LicenseType;
+            }
+
+            if (this.AssignIdentity.IsPresent)
+            {
+                if (vIdentity == null)
+                {
+                    vIdentity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                }
+                vIdentity.Type = ResourceIdentityType.SystemAssigned;
+            }
+
+
+            var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
+            {
+                Overprovision = this.Overprovision,
+                SinglePlacementGroup = this.SinglePlacementGroup,
+                Zones = this.Zone,
                 Location = this.Location,
                 Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),
                 Sku = vSku,
+                Plan = vPlan,
                 UpgradePolicy = vUpgradePolicy,
                 VirtualMachineProfile = vVirtualMachineProfile,
+                Identity = vIdentity,
             };
 
             WriteObject(vVirtualMachineScaleSet);

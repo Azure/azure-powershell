@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption;
-using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption;
+using Microsoft.Azure.Commands.Compute.StorageServices;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
@@ -29,11 +30,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.WindowsAzure.Commands.Sync.Upload;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
     /// </summary>
     public class AzureVMBackupExtensionUtil
     {
-        public const string extensionPublisher = "Microsoft.OSTCExtensions";
+        public const string extensionPublisher = "Microsoft.Azure.Security";
         public const string extensionType = "VMBackupForLinuxExtension";
         public const string extensionDefaultVersion = "0.1";
         public const string backupExtensionName = "vmbackupextension";
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         /// <param name="taskId"></param>
         /// <param name="storageCredentialsFactory"></param>
         /// <returns></returns>
-        public List<CloudPageBlob> FindSnapshot(List<string> blobUris, Dictionary<string, string> snapshotQuery, StorageCredentialsFactory storageCredentialsFactory)
+        public List<CloudPageBlob> FindSnapshot(IAzureContext azContext, List<string> blobUris, List<StorageCredentialsFactory> storageCredentialsFactory, Dictionary<string, string> snapshotQuery)
         {
             List<CloudPageBlob> snapshots = new List<CloudPageBlob>();
             for (int i = 0; i < blobUris.Count; i++)
@@ -88,11 +88,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
                 BlobUri blobUri = null;
                 if (BlobUri.TryParseUri(new Uri(blobUris[i]), out blobUri))
                 {
-                    StorageCredentials sc = storageCredentialsFactory.Create(blobUri);
-                    CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(sc, true);
+                    StorageCredentials sc = storageCredentialsFactory[i].Create(blobUri);
+                    CloudStorageAccount cloudStorageAccount = new CloudStorageAccount(sc, azContext.Environment.GetEndpointSuffix(AzureEnvironment.Endpoint.StorageEndpointSuffix), true);
                     CloudBlobClient blobClient = cloudStorageAccount.CreateCloudBlobClient();
                     CloudBlobContainer blobContainer = blobClient.GetContainerReference(blobUri.BlobContainerName);
-                    IEnumerable<IListBlobItem> blobs = blobContainer.ListBlobs(null, true, BlobListingDetails.All);
+                    IEnumerable<IListBlobItem> blobs = blobContainer.ListContainerBlobs(true, BlobListingDetails.All, null);
                     foreach (var blob in blobs)
                     {
                         if (blob is CloudPageBlob)
@@ -124,8 +124,19 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             return snapshots;
         }
 
+        internal string GetResourceGroupFromId(string id)
+        {
+            var matcher = new Regex("/subscriptions/([^/]+)/resourceGroups/([^/]+)/providers/(\\w+)");
+            var result = matcher.Match(id);
+            if (!result.Success || result.Groups == null || result.Groups.Count < 3)
+            {
+                throw new InvalidOperationException(string.Format("Cannot find resource group name and storage account name from resource identity {0}", id));
+            }
 
-        public AzureVMBackupBlobSasUris GenerateBlobSasUris(List<string> blobUris, CloudPageBlobObjectFactory cloudPageBlobObjectFactory)
+            return result.Groups[2].Value;
+        }
+
+        public AzureVMBackupBlobSasUris GenerateBlobSasUris(List<string> blobUris, IAzureContext azContext)
         {
             AzureVMBackupBlobSasUris blobSASUris = new AzureVMBackupBlobSasUris();
 
@@ -135,6 +146,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
                 BlobUri osBlobUri = null;
                 if (BlobUri.TryParseUri(new Uri(blobUri), out osBlobUri))
                 {
+                    StorageManagementClient storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(azContext, AzureEnvironment.Endpoint.ResourceManager);
+
+                    // Need to convert osBlobUri.StorageAccountName into corresponding resource group name
+
+                    var listResponse = storageClient.StorageAccounts.List();
+                    var account = listResponse.First(accTemp => accTemp.Name.Equals(osBlobUri.StorageAccountName, StringComparison.InvariantCultureIgnoreCase));
+                    string resourceGroupName = GetResourceGroupFromId(account.Id);
+
+                    StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(resourceGroupName, storageClient, azContext.Subscription);
+
+                    CloudPageBlobObjectFactory cloudPageBlobObjectFactory = new CloudPageBlobObjectFactory(storageCredentialsFactory, TimeSpan.FromMinutes(1));
+
                     CloudPageBlob pageBlob = cloudPageBlobObjectFactory.Create(osBlobUri);
 
                     SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy();
@@ -143,10 +166,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 
                     string sasUri = osBlobUri.Uri + pageBlob.GetSharedAccessSignature(sasConstraints);
                     blobSASUris.blobSASUri.Add(sasUri);
+                    blobSASUris.pageBlobUri.Add(blobUri);
+                    blobSASUris.storageCredentialsFactory.Add(storageCredentialsFactory);
                 }
                 else
                 {
-                    throw new AzureVMBackupException(AzureVMBackupErrorCodes.WrongBlobUriFormat,"the blob uri is not in correct format.");
+                    throw new AzureVMBackupException(AzureVMBackupErrorCodes.WrongBlobUriFormat, "the blob uri is not in correct format.");
                 }
             }
             return blobSASUris;
@@ -166,17 +191,26 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         public void RemoveSnapshot(AzureVMBackupConfig vmConfig, string snapshotTag, VirtualMachineExtensionBaseCmdlet virtualMachineExtensionBaseCmdlet)
         {
             var virtualMachineResponse = virtualMachineExtensionBaseCmdlet.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(vmConfig.ResourceGroupName, vmConfig.VMName);
-            StorageManagementClient storageClient = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            StorageManagementClient storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
             StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(vmConfig.ResourceGroupName, storageClient, virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext.Subscription);
 
             List<string> blobUris = this.GetDiskBlobUris(virtualMachineResponse.Body);
+            AzureVMBackupBlobSasUris blobSASUris = this.GenerateBlobSasUris(blobUris, virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext);
 
             Dictionary<string, string> snapshotQuery = new Dictionary<string, string>();
-            List<CloudPageBlob> snapshots = this.FindSnapshot(blobUris, snapshotQuery, storageCredentialsFactory);
-            foreach (CloudPageBlob snapshot in snapshots)
+            snapshotQuery.Add(backupExtensionMetadataName, snapshotTag);
+            List<CloudPageBlob> snapshots = this.FindSnapshot(virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext, blobSASUris.pageBlobUri, blobSASUris.storageCredentialsFactory, snapshotQuery);
+            if (snapshots == null || snapshots.Count == 0)
             {
-                snapshot.Delete();
+                throw new AzureVMBackupException(AzureVMBackupErrorCodes.NoSnapshotFound, "snapshot with the tag not found.");
+            }
+            else
+            {
+                foreach (CloudPageBlob snapshot in snapshots)
+                {
+                    snapshot.DeleteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+                }
             }
         }
 
@@ -196,15 +230,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             var virtualMachine = virtualMachineExtensionBaseCmdlet.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(
                 vmConfig.ResourceGroupName,
                 vmConfig.VMName);
-            StorageManagementClient storageClient = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-
-            StorageCredentialsFactory storageCredentialsFactory = new StorageCredentialsFactory(vmConfig.ResourceGroupName, storageClient, virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext.Subscription);
-
-            CloudPageBlobObjectFactory cloudPageBlobObjectFactory = new CloudPageBlobObjectFactory(storageCredentialsFactory, TimeSpan.FromMinutes(1));
 
             List<string> vmPageBlobUris = this.GetDiskBlobUris(virtualMachine.Body);
 
-            AzureVMBackupBlobSasUris blobSASUris = this.GenerateBlobSasUris(vmPageBlobUris, cloudPageBlobObjectFactory);
+            AzureVMBackupBlobSasUris blobSASUris = this.GenerateBlobSasUris(vmPageBlobUris, virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext);
 
             string taskId = Guid.NewGuid().ToString();
 
@@ -258,7 +287,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
             int i = 0;
             for (; i < loopingTimes; i++)
             {
-                List<CloudPageBlob> snapshotsFound = this.FindSnapshot(vmPageBlobUris, snapshotQuery, storageCredentialsFactory);
+                List<CloudPageBlob> snapshotsFound = this.FindSnapshot(virtualMachineExtensionBaseCmdlet.DefaultProfile.DefaultContext, blobSASUris.pageBlobUri, blobSASUris.storageCredentialsFactory, snapshotQuery);
                 if (snapshotsFound.Count == vmPageBlobUris.Count)
                 {
                     break;
