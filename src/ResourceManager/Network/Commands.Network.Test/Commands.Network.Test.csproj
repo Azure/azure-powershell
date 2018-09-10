@@ -300,7 +300,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\TestFlowLog.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\TestGetNextHop.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -318,10 +318,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestApplicationGatewayCRUD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestApplicationGatewayCRUD3.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTests\TestExpressRouteRouteFilterCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -525,7 +525,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\TestSetVirtualNetworkGatewayCRUD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\TestVirtualNetworkExpressRouteGatewayCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -579,13 +579,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\VirtualNetworkGatewayOpenVPNTest.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\VirtualNetworkGatewayRouteApiTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\VirtualNetworkGatewayVpnCustomIpsecPolicySetTest.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestResourceNavigationLinksOnSubnetCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
