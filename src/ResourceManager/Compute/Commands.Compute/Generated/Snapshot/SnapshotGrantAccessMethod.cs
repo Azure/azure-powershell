@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,104 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected object CreateSnapshotGrantAccessDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
-
-            var pSnapshotName = new RuntimeDefinedParameter();
-            pSnapshotName.Name = "SnapshotName";
-            pSnapshotName.ParameterType = typeof(string);
-            pSnapshotName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pSnapshotName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("SnapshotName", pSnapshotName);
-
-            var pAccess = new RuntimeDefinedParameter();
-            pAccess.Name = "Access";
-            pAccess.ParameterType = typeof(string);
-            pAccess.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = false
-            });
-            pAccess.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Access", pAccess);
-
-            var pDurationInSecond = new RuntimeDefinedParameter();
-            pDurationInSecond.Name = "DurationInSecond";
-            pDurationInSecond.ParameterType = typeof(int);
-            pDurationInSecond.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 4,
-                Mandatory = false
-            });
-            pDurationInSecond.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DurationInSecond", pDurationInSecond);
-
-            var pArgumentList = new RuntimeDefinedParameter();
-            pArgumentList.Name = "ArgumentList";
-            pArgumentList.ParameterType = typeof(object[]);
-            pArgumentList.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParameters",
-                Position = 5,
-                Mandatory = true
-            });
-            pArgumentList.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ArgumentList", pArgumentList);
-
-            return dynamicParameters;
-        }
-
-        protected void ExecuteSnapshotGrantAccessMethod(object[] invokeMethodInputParameters)
-        {
-            string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string snapshotName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            var grantAccessData = new GrantAccessData();
-            var pAccess = (string) ParseParameter(invokeMethodInputParameters[2]);
-            grantAccessData.Access = pAccess;
-            var pDurationInSeconds = (int) ParseParameter(invokeMethodInputParameters[3]);
-            grantAccessData.DurationInSeconds = pDurationInSeconds;
-
-            var result = SnapshotsClient.GrantAccess(resourceGroupName, snapshotName, grantAccessData);
-            WriteObject(result);
-        }
-    }
-
-    public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected PSArgument[] CreateSnapshotGrantAccessParameters()
-        {
-            string resourceGroupName = string.Empty;
-            string snapshotName = string.Empty;
-            GrantAccessData grantAccessData = new GrantAccessData();
-
-            return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "SnapshotName", "GrantAccessData" },
-                 new object[] { resourceGroupName, snapshotName, grantAccessData });
-        }
-    }
-
-    [Cmdlet("Grant", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsSecurity.Grant, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAccessUri))]
     public partial class GrantAzureRmSnapshotAccess : ComputeAutomationBaseCmdlet
     {

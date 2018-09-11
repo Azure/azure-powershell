@@ -55,14 +55,14 @@ Returns the description of the specified topic for the given Service Bus namespa
 PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
 ```
 
-Returns list of topic for given Service Bus namespace.
+Returns list of topics for given Service Bus namespace. By default 100 topics will be returned, if more than 100 topics to be returned, please use -MaxCount Parameter.
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -MaxCount 30
+PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -MaxCount 150
 ```
 
-Returns list of first 30 topic for given Service Bus namespace.
+Returns list of first 150 topics for given Service Bus namespace.
 
 ## PARAMETERS
 

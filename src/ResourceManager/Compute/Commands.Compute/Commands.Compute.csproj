@@ -13,7 +13,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <CodeAnalysisAdditionalOptions>/assemblyCompareMode:StrongNameIgnoringVersion</CodeAnalysisAdditionalOptions>
   </PropertyGroup>
@@ -56,13 +56,6 @@
     <Reference Include="Microsoft.Azure.Management.Compute">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.21.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.4.1\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.Storage">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.4.1.0-preview\lib\net45\Microsoft.Azure.Management.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.8.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
@@ -311,10 +304,10 @@
     <Compile Include="VirtualMachine\Config\NewAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\VirtualMachineCmdletHelper.cs" />
-    <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.4\ARMStorageProvider.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.Common.2017_10_01\ARMStorageProvider.cs">
       <Link>Common\ARMStorageProvider.cs</Link>
     </Compile>
-    <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.4\ARMStorageService.cs">
+    <Compile Include="$(StorageToolsPath)Adapters\ARM.Storage.Common.2017_10_01\ARMStorageService.cs">
       <Link>Common\ARMStorageService.cs</Link>
     </Compile>
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">

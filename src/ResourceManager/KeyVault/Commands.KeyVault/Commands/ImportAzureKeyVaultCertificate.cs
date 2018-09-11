@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         internal X509Certificate2Collection InitializeCertificateCollection()
         {
-            FileInfo certFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.FilePath));
+            FileInfo certFile = new FileInfo(ResolveUserPath(this.FilePath));
             if (!certFile.Exists)
             {
                 throw new FileNotFoundException(string.Format(KeyVaultProperties.Resources.CertificateFileNotFound, this.FilePath));

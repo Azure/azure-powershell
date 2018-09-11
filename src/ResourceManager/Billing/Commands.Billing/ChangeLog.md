@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.14.6
+* Updated common runtime assemblies
+
 ## Version 0.14.5
 * Updated to the latest version of the Azure ClientRuntime.
 

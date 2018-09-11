@@ -299,6 +299,10 @@
     <value>Confirm</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="SourceFileNotFound" xml:space="preserve">
+    <value>File '{0}' does not exist.</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="SubscriptionRemoveDescription" xml:space="preserve">
     <value>Removing Subscription "{0}".</value>
     <comment>Process workflow</comment>
