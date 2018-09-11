@@ -113,8 +113,6 @@ function Set-AzsSubscription {
 
     Process {
 
-
-
         if ($PSBoundParameters.ContainsKey('Location')) {
             if ( $MyInvocation.Line -match "\s-ArmLocation\s") {
                 Write-Warning -Message "The parameter alias ArmLocation will be deprecated in future release. Please use the parameter Location instead"

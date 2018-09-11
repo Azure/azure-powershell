@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -35,10 +34,10 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The load balancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             var existingInboundNatPool = this.LoadBalancer.InboundNatPools.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (existingInboundNatPool != null)
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
             inboundNatPool.FrontendPortRangeStart = this.FrontendPortRangeStart;
             inboundNatPool.FrontendPortRangeEnd = this.FrontendPortRangeEnd;
             inboundNatPool.BackendPort = this.BackendPort;
-            
+
             if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
             {
                 inboundNatPool.FrontendIPConfiguration = new PSResourceId() { Id = this.FrontendIpConfigurationId };
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
                     this.LoadBalancer.ResourceGroupName,
                     this.LoadBalancer.Name,
-                    Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerInboundNatPoolsName,
+                    Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerInboundNatPoolName,
                     this.Name);
 
             this.LoadBalancer.InboundNatPools.Add(inboundNatPool);

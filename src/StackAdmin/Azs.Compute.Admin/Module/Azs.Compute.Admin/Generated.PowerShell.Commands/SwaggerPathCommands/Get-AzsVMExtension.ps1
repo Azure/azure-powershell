@@ -38,16 +38,20 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Get specific VM extension.
 
 #>
+using module '..\CustomObjects\VmExtensionObject.psm1'
+
 function Get-AzsVMExtension {
-    [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.VMExtension])]
+    [OutputType([VmExtensionObject])]
     [CmdletBinding(DefaultParameterSetName = 'List')]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Publisher,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Type,
@@ -82,8 +86,6 @@ function Get-AzsVMExtension {
 
     Process {
 
-
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
         }
@@ -109,39 +111,10 @@ function Get-AzsVMExtension {
             $publisher = $ArmResourceIdParameterValues['publisher']
             $type = $ArmResourceIdParameterValues['type']
             $version = $ArmResourceIdParameterValues['version']
-        } elseif ( -not $PSBoundParameters.ContainsKey('Location')) {
+        } elseif ( [System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
         }
 
-        $filterInfos = @(
-            @{
-                'Type'     = 'powershellWildcard'
-                'Value'    = $Version
-                'Property' = 'Name'
-            })
-        $applicableFilters = Get-ApplicableFilters -Filters $filterInfos
-        if ($applicableFilters | Where-Object { $_.Strict }) {
-            Write-Verbose -Message 'Performing server-side call ''Get-AzsVMExtension -'''
-            $serverSideCall_params = @{
-
-            }
-
-            $serverSideResults = Get-AzsVMExtension @serverSideCall_params
-            foreach ($serverSideResult in $serverSideResults) {
-                $valid = $true
-                foreach ($applicableFilter in $applicableFilters) {
-                    if (-not (Test-FilteredResult -Result $serverSideResult -Filter $applicableFilter.Filter)) {
-                        $valid = $false
-                        break
-                    }
-                }
-
-                if ($valid) {
-                    $serverSideResult
-                }
-            }
-            return
-        }
         if ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $ComputeAdminClient.'
             $TaskResult = $ComputeAdminClient.VMExtensions.GetWithHttpMessagesAsync($Location, $Publisher, $Type, $Version)
@@ -158,8 +131,22 @@ function Get-AzsVMExtension {
                 TaskResult = $TaskResult
             }
 
-            Get-TaskResult @GetTaskResult_params
+            Get-TaskResult @GetTaskResult_params | ForEach-Object {
+                [VmExtensionObject]$Object = ConvertTo-VmExtensionObject -VMExtension $_
 
+                # Filter
+                [bool]$add = $true
+                if ($add -and (-not [System.String]::IsNullOrEmpty($Publisher))) {
+                    $add = $Object.Publisher -like "*$Publisher*"
+                }
+                if ($add -and (-not [System.String]::IsNullOrEmpty($Type))) {
+                    $add = $Object.ExtensionType -like "*$Type*"
+                }
+
+                if ($add) {
+                    $Object
+                }
+            }
         }
     }
 
@@ -170,4 +157,3 @@ function Get-AzsVMExtension {
         }
     }
 }
-

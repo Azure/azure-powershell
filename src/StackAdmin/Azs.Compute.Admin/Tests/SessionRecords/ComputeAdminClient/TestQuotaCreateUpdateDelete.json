@@ -1,623 +1,619 @@
 {
-  "Entries": [    
-    {
-      "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f43532ff-7b9e-42b8-93f7-bd18656af876"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 10 Aug 2018 23:26:21 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "WWW-Authenticate": [
-          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvKAVyp/BTcRitP8fk/udaFvWJDw+E6n1UWejjogpKUhw4UQHztCIWUyqdxPaPGLLpVFgp4p1h4XNd+RskVE3uSfsdYDhcJYtbQfvanTPqCvv1MK4g25dqwYw8fVAcZH964J7Ga8IaFJHSw3PT0daX"
-        ],
-        "x-ms-correlation-request-id": [
-          "d682ddff-1409-4dfc-b424-257eabcd0dec"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14992"
-        ],
-        "x-ms-request-id": [
-          "d682ddff-1409-4dfc-b424-257eabcd0dec"
-        ],
-        "x-ms-routing-request-id": [
-          "LOCAL:20180810T232622Z:d682ddff-1409-4dfc-b424-257eabcd0dec"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Content-Length": [
-          "439"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 1,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 1,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"availabilitySetCount\": 1,\r\n    \"coresLimit\": 1,\r\n    \"virtualMachineCount\": 1,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "ba448b23-aed6-4a19-8381-d707de434431"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "252"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 10 Aug 2018 23:26:21 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "WWW-Authenticate": [
-          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvTv53RGj6rrtZRLOfBdldGIjydqyyfZ/jpEY8Rbx5iAeuaJKTUNs65/mVAHWH3OG2OA1PtKwgzq1PsClfA6R4z1lgpVHrpJCGY11kOXuu2/7eV8/pvZDusquy+n3Ls/jrnLdiKp2eUbtHKmZL50JZ"
-        ],
-        "x-ms-correlation-request-id": [
-          "fc6430c3-4a9b-443a-994b-b0685439ed39"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
-        ],
-        "x-ms-request-id": [
-          "fc6430c3-4a9b-443a-994b-b0685439ed39"
-        ],
-        "x-ms-routing-request-id": [
-          "LOCAL:20180810T232622Z:fc6430c3-4a9b-443a-994b-b0685439ed39"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Content-Length": [
-          "439"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 1,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 1,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"availabilitySetCount\": 1,\r\n    \"coresLimit\": 1,\r\n    \"virtualMachineCount\": 2,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  },\r\n  \"location\": \"local\"\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "9d71e06f-40b0-44f2-bea7-b131c238fda3"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "276"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 10 Aug 2018 23:26:21 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "WWW-Authenticate": [
-          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvqqFVaeq8etq0J2tEGdLy6Lznc9p+CIVhqHiZc5WaJUW5L2/+8sjQ54W043VhH3ODigSGPDDaOkrl8h9b2FY6OsmjuhLeOcP2CV74GXJkp4pBIWvhLwaNPGtOgYFowt9DhL+xvrnE443E5APlbcEN"
-        ],
-        "x-ms-correlation-request-id": [
-          "4bb9a801-8b7a-4cf5-9833-ecef93effbb1"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
-        ],
-        "x-ms-request-id": [
-          "4bb9a801-8b7a-4cf5-9833-ecef93effbb1"
-        ],
-        "x-ms-routing-request-id": [
-          "LOCAL:20180810T232622Z:4bb9a801-8b7a-4cf5-9833-ecef93effbb1"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Content-Length": [
-          "439"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 2,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 1,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"availabilitySetCount\": 2,\r\n    \"coresLimit\": 1,\r\n    \"virtualMachineCount\": 2,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  },\r\n  \"location\": \"local\"\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "0f549459-23e1-442c-9362-ce0c978e294c"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "276"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 10 Aug 2018 23:26:21 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "WWW-Authenticate": [
-          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvhxIdXCCDRNFl637m/hw5y4LscqeJyRWvT06vJTKPR0uCI+ICNd7fzyQOqBoI+uJHtqK+NWbAxDaJfWRJ+KBfT3s9Gizp3ll+cBHzy9cFS5Ge3Rep1CTYO49CmKbnAASLCpoO8hNLKZYALYNocoLj"
-        ],
-        "x-ms-correlation-request-id": [
-          "da889d4b-0c84-448f-99af-12cdcc53a77d"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
-        ],
-        "x-ms-request-id": [
-          "da889d4b-0c84-448f-99af-12cdcc53a77d"
-        ],
-        "x-ms-routing-request-id": [
-          "LOCAL:20180810T232622Z:da889d4b-0c84-448f-99af-12cdcc53a77d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Content-Length": [
-          "439"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 2,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 2,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"availabilitySetCount\": 2,\r\n    \"coresLimit\": 1,\r\n    \"virtualMachineCount\": 2,\r\n    \"vmScaleSetCount\": 2,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  },\r\n  \"location\": \"local\"\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "6ee03e6d-2dde-4e52-ab33-2145c762669f"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "276"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 10 Aug 2018 23:26:22 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "WWW-Authenticate": [
-          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvakUnW9uZ0dfjp3KWtirFtlo65mrBmcneq2aGeYAKTVbtJs/HRvUNgOgmvFwRgMQXAY6afiM6XoVbaHJSNty3WEhSs6KfNZwRRkRDaB0DZXna5LOcL1CTXLHoObQzKB5HwTRkxhXlrD19zUnnP6hL"
-        ],
-        "x-ms-correlation-request-id": [
-          "d41efcf1-0961-4204-8509-7e80dc377bf2"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
-        ],
-        "x-ms-request-id": [
-          "d41efcf1-0961-4204-8509-7e80dc377bf2"
-        ],
-        "x-ms-routing-request-id": [
-          "LOCAL:20180810T232622Z:d41efcf1-0961-4204-8509-7e80dc377bf2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Content-Length": [
-          "439"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 2,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 2,\r\n    \"vmScaleSetCount\": 2,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"availabilitySetCount\": 2,\r\n    \"coresLimit\": 2,\r\n    \"virtualMachineCount\": 2,\r\n    \"vmScaleSetCount\": 2,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  },\r\n  \"location\": \"local\"\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "07cc9328-840c-4aa7-9d52-6ea8e9520d4b"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "276"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 10 Aug 2018 23:26:22 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "WWW-Authenticate": [
-          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvNDiabT8G7DLHa0J/atFPhyqVKHUnueO8kxaBPFebdCXBQfmSG8lE5vKTfWUzEDGHe0zRU5miVpwPC9FLKJ2db9+S3FE9r9sLv/Z7ltshbCL8nkjrl74q1f21dTHfAKV9j2icrs3sXA01mq8miPG9"
-        ],
-        "x-ms-correlation-request-id": [
-          "2598bfe3-4eec-4d25-b410-99c0b4c50936"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1193"
-        ],
-        "x-ms-request-id": [
-          "2598bfe3-4eec-4d25-b410-99c0b4c50936"
-        ],
-        "x-ms-routing-request-id": [
-          "LOCAL:20180810T232622Z:2598bfe3-4eec-4d25-b410-99c0b4c50936"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Content-Length": [
-          "439"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 2,\r\n    \"coresLimit\": 2,\r\n    \"availabilitySetCount\": 2,\r\n    \"vmScaleSetCount\": 2,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"availabilitySetCount\": 2,\r\n    \"coresLimit\": 2,\r\n    \"virtualMachineCount\": 2,\r\n    \"vmScaleSetCount\": 2,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 2,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  },\r\n  \"location\": \"local\"\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "c6a64c9c-e72c-492a-be14-dbdb7970e21d"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "276"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 10 Aug 2018 23:26:22 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "WWW-Authenticate": [
-          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvo5weas9NApo1wg4dkeBWnlhjZ3HdKcGIKICoFpKEHE/2lJqpj068B7tNCcZnNtJtkRDE52YqsJphWqXIWeO9u2IiYcipMnD6YCJaShYifiThHwwlHjIIJbmRctRpLakQ7RvfzkiXMKiICrGoozIm"
-        ],
-        "x-ms-correlation-request-id": [
-          "f973137f-42fc-4fd3-a307-fdf25956ff38"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1192"
-        ],
-        "x-ms-request-id": [
-          "f973137f-42fc-4fd3-a307-fdf25956ff38"
-        ],
-        "x-ms-routing-request-id": [
-          "LOCAL:20180810T232622Z:f973137f-42fc-4fd3-a307-fdf25956ff38"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Content-Length": [
-          "439"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 2,\r\n    \"coresLimit\": 2,\r\n    \"availabilitySetCount\": 2,\r\n    \"vmScaleSetCount\": 2,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 2,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"availabilitySetCount\": 2,\r\n    \"coresLimit\": 2,\r\n    \"virtualMachineCount\": 2,\r\n    \"vmScaleSetCount\": 2,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 2,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 2\r\n  },\r\n  \"location\": \"local\"\r\n}",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3ffe5820-7ee3-4315-8ccf-72b2d0a611bf"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "276"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 10 Aug 2018 23:26:22 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "WWW-Authenticate": [
-          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvCJt3XNzuU7Myh6pGi+DSTIDxO5I4LFVQnTcITWAPbHXL1Mxe5sij5yyPRa2Ue/8hb3x0Umq3J8Qc505AKgMnJXl0MBeUPsa6MWskMb6F8BzMj0I/CdDzD4pqh8hFHzBdrNNlEBntVjzLhqX7oehy"
-        ],
-        "x-ms-correlation-request-id": [
-          "951054af-f132-43e6-a6ec-9be16ca87cbe"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1191"
-        ],
-        "x-ms-request-id": [
-          "951054af-f132-43e6-a6ec-9be16ca87cbe"
-        ],
-        "x-ms-routing-request-id": [
-          "LOCAL:20180810T232622Z:951054af-f132-43e6-a6ec-9be16ca87cbe"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Content-Length": [
-          "439"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 2,\r\n    \"coresLimit\": 2,\r\n    \"availabilitySetCount\": 2,\r\n    \"vmScaleSetCount\": 2,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 2,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 2\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
-      "RequestMethod": "DELETE",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "e97ff085-5c02-41e2-9b18-efb3797e632c"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.26614.01",
-          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 10 Aug 2018 23:26:22 GMT"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "WWW-Authenticate": [
-          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvtwT6pcCkJ78doPkoGVV7nxvnzST/jB9E2PzUASJqz7YDLtuZ9QReHAZWlv61ZE3Hvik8okOBwv1n42PC0j3/Gb+sL5bOiXcNfv4JFlMQB9Fq1tIb2tKxV/A55CaK2owR4lVGVrhVxEz5SoFX/8U2"
-        ],
-        "x-ms-correlation-request-id": [
-          "c435714e-36b7-4ff9-b8f7-e27e2b37a073"
-        ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
-        ],
-        "x-ms-request-id": [
-          "c435714e-36b7-4ff9-b8f7-e27e2b37a073"
-        ],
-        "x-ms-routing-request-id": [
-          "LOCAL:20180810T232623Z:c435714e-36b7-4ff9-b8f7-e27e2b37a073"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Content-Length": [
-          "0"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 200
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "x-ms-client-request-id": [
+                    "f43532ff-7b9e-42b8-93f7-bd18656af876"
+                ],
+                "accept-language": [
+                    "en-US"
+                ],
+                "User-Agent": [
+                    "FxVersion/4.6.26614.01",
+                    "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
+                ]
+            },
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Fri, 10 Aug 2018 23:26:21 GMT"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Server": [
+                    "Microsoft-HTTPAPI/2.0"
+                ],
+                "WWW-Authenticate": [
+                    "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvKAVyp/BTcRitP8fk/udaFvWJDw+E6n1UWejjogpKUhw4UQHztCIWUyqdxPaPGLLpVFgp4p1h4XNd+RskVE3uSfsdYDhcJYtbQfvanTPqCvv1MK4g25dqwYw8fVAcZH964J7Ga8IaFJHSw3PT0daX"
+                ],
+                "x-ms-correlation-request-id": [
+                    "d682ddff-1409-4dfc-b424-257eabcd0dec"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "14992"
+                ],
+                "x-ms-request-id": [
+                    "d682ddff-1409-4dfc-b424-257eabcd0dec"
+                ],
+                "x-ms-routing-request-id": [
+                    "LOCAL:20180810T232622Z:d682ddff-1409-4dfc-b424-257eabcd0dec"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "Content-Length": [
+                    "439"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Expires": [
+                    "-1"
+                ]
+            },
+            "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 1,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 1,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
+            "StatusCode": 200
+        },
+        {
+            "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
+            "RequestMethod": "PUT",
+            "RequestBody": "{\r\n  \"properties\": {\r\n    \"availabilitySetCount\": 1,\r\n    \"coresLimit\": 1,\r\n    \"virtualMachineCount\": 1,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
+            "RequestHeaders": {
+                "x-ms-client-request-id": [
+                    "ba448b23-aed6-4a19-8381-d707de434431"
+                ],
+                "accept-language": [
+                    "en-US"
+                ],
+                "User-Agent": [
+                    "FxVersion/4.6.26614.01",
+                    "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Content-Length": [
+                    "252"
+                ]
+            },
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Fri, 10 Aug 2018 23:26:21 GMT"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Server": [
+                    "Microsoft-HTTPAPI/2.0"
+                ],
+                "WWW-Authenticate": [
+                    "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvTv53RGj6rrtZRLOfBdldGIjydqyyfZ/jpEY8Rbx5iAeuaJKTUNs65/mVAHWH3OG2OA1PtKwgzq1PsClfA6R4z1lgpVHrpJCGY11kOXuu2/7eV8/pvZDusquy+n3Ls/jrnLdiKp2eUbtHKmZL50JZ"
+                ],
+                "x-ms-correlation-request-id": [
+                    "fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1197"
+                ],
+                "x-ms-request-id": [
+                    "fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "x-ms-routing-request-id": [
+                    "LOCAL:20180810T232622Z:fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "Content-Length": [
+                    "439"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Expires": [
+                    "-1"
+                ]
+            },
+            "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 1,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 1,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
+            "StatusCode": 200
+        },
+        {
+            "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "x-ms-client-request-id": [
+                    "f43532ff-7b9e-42b8-93f7-bd18656af876"
+                ],
+                "accept-language": [
+                    "en-US"
+                ],
+                "User-Agent": [
+                    "FxVersion/4.6.26614.01",
+                    "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
+                ]
+            },
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Fri, 10 Aug 2018 23:26:21 GMT"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Server": [
+                    "Microsoft-HTTPAPI/2.0"
+                ],
+                "WWW-Authenticate": [
+                    "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvKAVyp/BTcRitP8fk/udaFvWJDw+E6n1UWejjogpKUhw4UQHztCIWUyqdxPaPGLLpVFgp4p1h4XNd+RskVE3uSfsdYDhcJYtbQfvanTPqCvv1MK4g25dqwYw8fVAcZH964J7Ga8IaFJHSw3PT0daX"
+                ],
+                "x-ms-correlation-request-id": [
+                    "d682ddff-1409-4dfc-b424-257eabcd0dec"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "14992"
+                ],
+                "x-ms-request-id": [
+                    "d682ddff-1409-4dfc-b424-257eabcd0dec"
+                ],
+                "x-ms-routing-request-id": [
+                    "LOCAL:20180810T232622Z:d682ddff-1409-4dfc-b424-257eabcd0dec"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "Content-Length": [
+                    "439"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Expires": [
+                    "-1"
+                ]
+            },
+            "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 1,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 1,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
+            "StatusCode": 200
+        },
+        {
+            "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
+            "RequestMethod": "PUT",
+            "RequestBody": "{\r\n  \"properties\": {\r\n    \"availabilitySetCount\": 1,\r\n    \"coresLimit\": 1,\r\n    \"virtualMachineCount\": 2,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
+            "RequestHeaders": {
+                "x-ms-client-request-id": [
+                    "ba448b23-aed6-4a19-8381-d707de434431"
+                ],
+                "accept-language": [
+                    "en-US"
+                ],
+                "User-Agent": [
+                    "FxVersion/4.6.26614.01",
+                    "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Content-Length": [
+                    "252"
+                ]
+            },
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Fri, 10 Aug 2018 23:26:21 GMT"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Server": [
+                    "Microsoft-HTTPAPI/2.0"
+                ],
+                "WWW-Authenticate": [
+                    "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvTv53RGj6rrtZRLOfBdldGIjydqyyfZ/jpEY8Rbx5iAeuaJKTUNs65/mVAHWH3OG2OA1PtKwgzq1PsClfA6R4z1lgpVHrpJCGY11kOXuu2/7eV8/pvZDusquy+n3Ls/jrnLdiKp2eUbtHKmZL50JZ"
+                ],
+                "x-ms-correlation-request-id": [
+                    "fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1197"
+                ],
+                "x-ms-request-id": [
+                    "fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "x-ms-routing-request-id": [
+                    "LOCAL:20180810T232622Z:fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "Content-Length": [
+                    "439"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Expires": [
+                    "-1"
+                ]
+            },
+            "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 2,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 1,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
+            "StatusCode": 200
+        },
+        {
+            "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "x-ms-client-request-id": [
+                    "f43532ff-7b9e-42b8-93f7-bd18656af876"
+                ],
+                "accept-language": [
+                    "en-US"
+                ],
+                "User-Agent": [
+                    "FxVersion/4.6.26614.01",
+                    "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
+                ]
+            },
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Fri, 10 Aug 2018 23:26:21 GMT"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Server": [
+                    "Microsoft-HTTPAPI/2.0"
+                ],
+                "WWW-Authenticate": [
+                    "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvKAVyp/BTcRitP8fk/udaFvWJDw+E6n1UWejjogpKUhw4UQHztCIWUyqdxPaPGLLpVFgp4p1h4XNd+RskVE3uSfsdYDhcJYtbQfvanTPqCvv1MK4g25dqwYw8fVAcZH964J7Ga8IaFJHSw3PT0daX"
+                ],
+                "x-ms-correlation-request-id": [
+                    "d682ddff-1409-4dfc-b424-257eabcd0dec"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "14992"
+                ],
+                "x-ms-request-id": [
+                    "d682ddff-1409-4dfc-b424-257eabcd0dec"
+                ],
+                "x-ms-routing-request-id": [
+                    "LOCAL:20180810T232622Z:d682ddff-1409-4dfc-b424-257eabcd0dec"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "Content-Length": [
+                    "439"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Expires": [
+                    "-1"
+                ]
+            },
+            "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 2,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 1,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
+            "StatusCode": 200
+        },
+        {
+            "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
+            "RequestMethod": "PUT",
+            "RequestBody": "{\r\n  \"properties\": {\r\n    \"availabilitySetCount\": 2,\r\n    \"coresLimit\": 1,\r\n    \"virtualMachineCount\": 2,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
+            "RequestHeaders": {
+                "x-ms-client-request-id": [
+                    "ba448b23-aed6-4a19-8381-d707de434431"
+                ],
+                "accept-language": [
+                    "en-US"
+                ],
+                "User-Agent": [
+                    "FxVersion/4.6.26614.01",
+                    "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Content-Length": [
+                    "252"
+                ]
+            },
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Fri, 10 Aug 2018 23:26:21 GMT"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Server": [
+                    "Microsoft-HTTPAPI/2.0"
+                ],
+                "WWW-Authenticate": [
+                    "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvTv53RGj6rrtZRLOfBdldGIjydqyyfZ/jpEY8Rbx5iAeuaJKTUNs65/mVAHWH3OG2OA1PtKwgzq1PsClfA6R4z1lgpVHrpJCGY11kOXuu2/7eV8/pvZDusquy+n3Ls/jrnLdiKp2eUbtHKmZL50JZ"
+                ],
+                "x-ms-correlation-request-id": [
+                    "fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1197"
+                ],
+                "x-ms-request-id": [
+                    "fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "x-ms-routing-request-id": [
+                    "LOCAL:20180810T232622Z:fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "Content-Length": [
+                    "439"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Expires": [
+                    "-1"
+                ]
+            },
+            "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 2,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 2,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
+            "StatusCode": 200
+        },
+        {
+            "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "x-ms-client-request-id": [
+                    "ba448b23-aed6-4a19-8381-d707de434431"
+                ],
+                "accept-language": [
+                    "en-US"
+                ],
+                "User-Agent": [
+                    "FxVersion/4.6.26614.01",
+                    "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Content-Length": [
+                    "0"
+                ]
+            },
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Fri, 10 Aug 2018 23:26:21 GMT"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Server": [
+                    "Microsoft-HTTPAPI/2.0"
+                ],
+                "WWW-Authenticate": [
+                    "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvTv53RGj6rrtZRLOfBdldGIjydqyyfZ/jpEY8Rbx5iAeuaJKTUNs65/mVAHWH3OG2OA1PtKwgzq1PsClfA6R4z1lgpVHrpJCGY11kOXuu2/7eV8/pvZDusquy+n3Ls/jrnLdiKp2eUbtHKmZL50JZ"
+                ],
+                "x-ms-correlation-request-id": [
+                    "fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1197"
+                ],
+                "x-ms-request-id": [
+                    "fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "x-ms-routing-request-id": [
+                    "LOCAL:20180810T232622Z:fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "Content-Length": [
+                    "439"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Expires": [
+                    "-1"
+                ]
+            },
+            "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 2,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 2,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
+            "StatusCode": 200
+        },
+        {
+            "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
+            "RequestMethod": "PUT",
+            "RequestBody": "{\r\n  \"properties\": {\r\n    \"availabilitySetCount\": 2,\r\n    \"coresLimit\": 2,\r\n    \"virtualMachineCount\": 2,\r\n    \"vmScaleSetCount\": 1,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
+            "RequestHeaders": {
+                "x-ms-client-request-id": [
+                    "ba448b23-aed6-4a19-8381-d707de434431"
+                ],
+                "accept-language": [
+                    "en-US"
+                ],
+                "User-Agent": [
+                    "FxVersion/4.6.26614.01",
+                    "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Content-Length": [
+                    "252"
+                ]
+            },
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Fri, 10 Aug 2018 23:26:21 GMT"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Server": [
+                    "Microsoft-HTTPAPI/2.0"
+                ],
+                "WWW-Authenticate": [
+                    "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvTv53RGj6rrtZRLOfBdldGIjydqyyfZ/jpEY8Rbx5iAeuaJKTUNs65/mVAHWH3OG2OA1PtKwgzq1PsClfA6R4z1lgpVHrpJCGY11kOXuu2/7eV8/pvZDusquy+n3Ls/jrnLdiKp2eUbtHKmZL50JZ"
+                ],
+                "x-ms-correlation-request-id": [
+                    "fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1197"
+                ],
+                "x-ms-request-id": [
+                    "fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "x-ms-routing-request-id": [
+                    "LOCAL:20180810T232622Z:fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "Content-Length": [
+                    "439"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Expires": [
+                    "-1"
+                ]
+            },
+            "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete\",\r\n  \"name\": \"testQuotaCreateUpdateDelete\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 2,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 2,\r\n    \"vmScaleSetCount\": 2,\r\n    \"maxAllocationStandardManagedDisksAndSnapshots\": 1,\r\n    \"maxAllocationPremiumManagedDisksAndSnapshots\": 1\r\n  }\r\n}",
+            "StatusCode": 200
+        },
+        {
+            "RequestUri": "/subscriptions/3433a2e6-258d-490e-81d3-7a88ea48d031/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuotaCreateUpdateDelete?api-version=2018-02-09",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzQzM2EyZTYtMjU4ZC00OTBlLTgxZDMtN2E4OGVhNDhkMDMxL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL3Rlc3RRdW90YUNyZWF0ZVVwZGF0ZURlbGV0ZT9hcGktdmVyc2lvbj0yMDE4LTAyLTA5",
+            "RequestMethod": "DELETE",
+            "RequestHeaders": {
+                "x-ms-client-request-id": [
+                    "ba448b23-aed6-4a19-8381-d707de434431"
+                ],
+                "accept-language": [
+                    "en-US"
+                ],
+                "User-Agent": [
+                    "FxVersion/4.6.26614.01",
+                    "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.2.0.0"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Content-Length": [
+                    "0"
+                ]
+            },
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Fri, 10 Aug 2018 23:26:21 GMT"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Server": [
+                    "Microsoft-HTTPAPI/2.0"
+                ],
+                "WWW-Authenticate": [
+                    "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvTv53RGj6rrtZRLOfBdldGIjydqyyfZ/jpEY8Rbx5iAeuaJKTUNs65/mVAHWH3OG2OA1PtKwgzq1PsClfA6R4z1lgpVHrpJCGY11kOXuu2/7eV8/pvZDusquy+n3Ls/jrnLdiKp2eUbtHKmZL50JZ"
+                ],
+                "x-ms-correlation-request-id": [
+                    "fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1197"
+                ],
+                "x-ms-request-id": [
+                    "fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "x-ms-routing-request-id": [
+                    "LOCAL:20180810T232622Z:fc6430c3-4a9b-443a-994b-b0685439ed39"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ],
+                "Content-Length": [
+                    "0"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Expires": [
+                    "-1"
+                ]
+            },
+            "ResponseBody": "",
+            "StatusCode": 200
+        }
+    ],
+    "Names": {},
+    "Variables": {
+        "SubscriptionId": "3433a2e6-258d-490e-81d3-7a88ea48d031"
     }
-  ],
-  "Names": {},
-  "Variables": {
-    "SubscriptionId": "3433a2e6-258d-490e-81d3-7a88ea48d031"
-  }
 }
