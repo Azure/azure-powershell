@@ -66,6 +66,21 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public List<PSNetworkInterfaceIPConfiguration> IpConfiguration { get; set; }
 
+        //[Parameter(
+        //    Mandatory = true,
+        //    ValueFromPipelineByPropertyName = true,
+        //    ParameterSetName = "SetByIpConfigurationResourceId",
+        //    HelpMessage = "List of IpConfigurations")]
+        //public List<PSNetworkInterfaceTapConfiguration> TapConfigurationId { get; set; }
+
+        //[Parameter(
+        //    Mandatory = true,
+        //    ValueFromPipelineByPropertyName = true,
+        //    ParameterSetName = "SetByResource",
+        //    HelpMessage = "List of IpConfigurations")]
+        //[ValidateNotNullOrEmpty]
+        //public List<PSNetworkInterfaceTapConfiguration> TapConfiguration { get; set; }
+
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -284,6 +299,23 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         this.NetworkSecurityGroupId = this.NetworkSecurityGroup.Id;
                     }
+
+                    //if (TapConfigurationId != null &&
+                    //    TapConfigurationId.Count > 0)
+                    //{
+                    //    if (TapConfiguration != null)
+                    //    {
+                    //        TapConfiguration = new List<PSNetworkInterfaceTapConfiguration>();
+                    //    }
+
+                    //    foreach (PSNetworkInterfaceTapConfiguration tapConfiguration in TapConfigurationId)
+                    //    {
+                    //        var nicTapConfiguration = new PSNetworkInterfaceTapConfiguration();
+                    //        nicTapConfiguration.Id = tapConfiguration.Id;
+
+                    //        TapConfiguration.Add(nicTapConfiguration);
+                    //    }
+                    //}
                 }
             }
             else
@@ -420,6 +452,11 @@ namespace Microsoft.Azure.Commands.Network
                 networkInterface.NetworkSecurityGroup = new PSNetworkSecurityGroup();
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
+
+            //if (this.TapConfiguration != null)
+            //{
+            //    networkInterface.TapConfigurations = TapConfiguration;
+            //}
 
             var networkInterfaceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterface>(networkInterface);
 
