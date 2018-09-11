@@ -17,8 +17,10 @@ Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicat
  [-Name <String>] [-Size <String>] [-PrimaryNic <String>] [-RecoveryNetworkId <String>]
  [-RecoveryCloudServiceId <String>] [-RecoveryNicSubnetName <String>] [-RecoveryNicStaticIPAddress <String>]
  [-NicSelectionType <String>] [-RecoveryResourceGroupId <String>] [-LicenseType <String>]
- [-RecoveryAvailabilitySet <String>] [-UseManagedDisk <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RecoveryAvailabilitySet <String>] [-RecoveryBootDiagStorageAccountId <String>]
+ [-AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>]
+ [-UseManagedDisk <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,8 +37,24 @@ Starts the operation of updating the replication protect item settings using the
 
 ## PARAMETERS
 
+### -AzureToAzureUpdateReplicationConfiguration
+Specifies the update relication configration.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAzuretoAzureDiskReplicationConfig[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
@@ -130,6 +148,21 @@ Accept wildcard characters: False
 
 ### -RecoveryAvailabilitySet
 Availability set for replication protected item after failover.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryBootDiagStorageAccountId
+Specifies the storage account for boot diagnostics for recovery azure VM.
 
 ```yaml
 Type: System.String
@@ -286,7 +319,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
-Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

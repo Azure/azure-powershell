@@ -81,7 +81,7 @@ function WaitForJobCompletion
                     Write-Host $($($Job.JobType) + " in Progress...") -ForegroundColor Yellow
                 }
 		        Write-Host $("Waiting for: " + $JobQueryWaitTimeInSeconds.ToString() + " Seconds") -ForegroundColor Yellow
-		        [Microsoft.Azure.Test.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
+		        [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
 	        }
         }While($isJobLeftForProcessing)
 }
@@ -119,7 +119,7 @@ Function WaitForIRCompletion
             {
                 Write-Host $("IR in Progress...") -ForegroundColor Yellow
                 Write-Host $("Waiting for: " + $JobQueryWaitTimeInSeconds.ToString() + " Seconds") -ForegroundColor Yellow
-                [Microsoft.Azure.Test.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
+                [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait($JobQueryWaitTimeInSeconds * 1000)
             }
         }While($isProcessingLeft)
 

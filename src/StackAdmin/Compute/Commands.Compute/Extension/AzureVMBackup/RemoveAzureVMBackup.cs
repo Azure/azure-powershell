@@ -14,28 +14,11 @@
 
 
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption;
-using Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.Compute.StorageServices;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.WindowsAzure.Commands.Sync.Download;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 {
@@ -50,7 +33,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

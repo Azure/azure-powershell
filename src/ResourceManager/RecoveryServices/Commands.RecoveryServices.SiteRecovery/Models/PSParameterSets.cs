@@ -55,6 +55,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         internal const string AzureToAzure = "AzureToAzure";
 
         /// </summary>
+        /// Handle ASR Vault - A2A Fabric.
+        /// </summary>
+        internal const string AzureToAzureWithoutDiskDetails = "AzureToAzureWithoutDiskDetails";
+        
+        /// </summary>
+        /// Handle ASR Vault - Paramset for A2a ManagedDisk.
+        /// </summary>
+        internal const string AzureToAzureManagedDisk = "AzureToAzureManagedDisk";
+
+        /// </summary>
         /// Handle ASR Vault - A2A Fabric name.
         /// </summary>
         internal const string AzureToAzureWithFabricName = "AzureToAzureWithFabricName";
@@ -63,7 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// Handle ASR Vault - A2A Fabric -AzureToAzureWithMultipleStorageAccount.
         /// </summary>
         internal const string AzureToAzureWithMultipleStorageAccount = "AzureToAzureWithMultipleStorageAccount";
-        
+
         /// </summary>
         /// Handle ASR Vault.
         /// </summary>
@@ -288,7 +298,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     When only RPI Object is passed along with Logical VM network to the command.
         /// </summary>
         internal const string ByRPIObjectWithAzureVMNetworkIdAndRecoveryTag = "ByRPIObjectWithAzureVMNetworkIdAndRecoveryTag";
-        
+
         /// <summary>
         ///     When only RPI Object is passed along with Logical VM network to the command.
         /// </summary>
@@ -303,12 +313,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     When only RPI Object is passed along with VM network to the command.
         /// </summary>
         internal const string ByRPIObjectWithVMNetwork = "ByRPIObjectWithVMNetwork";
-        
+
         /// <summary>
         ///     When only RPI Object is passed along with VM network to the command.
         /// </summary>
         internal const string ByRPIObjectWithVMNetworkAndRecoveryTag = "ByRPIObjectWithVMNetworkAndRecoveryTag";
-        
+
         /// <summary>
         ///     When only RPI Object is passed along with VM network to the command.
         /// </summary>
@@ -338,7 +348,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     When only RP Object is passed along with Azure VM Network Id to the command.
         /// </summary>
         internal const string ByRPObjectWithAzureVMNetworkIdAndRecoveryTag = "ByRPObjectWithAzureVMNetworkIdAndRecoveryTag";
-        
+
         /// <summary>
         ///     When only RP object is passed along with logical network ID to the command.
         /// </summary>
@@ -352,7 +362,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     When only RP Object is passed along with VM network to the command.
         /// </summary>
-        internal const string ByRPObjectWithVMNetworkAndRecoveryTag = "ByRPObjectWithVMNetworkAndRecoveryTag"; 
+        internal const string ByRPObjectWithVMNetworkAndRecoveryTag = "ByRPObjectWithVMNetworkAndRecoveryTag";
         /// <summary>
         ///     When only RP Object is passed along with VM network ID to the command.
         /// </summary>
@@ -467,7 +477,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Mapping between HyperV Site to Azure Recovery Plan.
         /// </summary>
         internal const string HyperVSiteToAzureRP = "HyperVSiteToAzureRP";
-        
+
         /// <summary>
         ///     Mapping between HyperV to Azure Recovery Plan.
         /// </summary>

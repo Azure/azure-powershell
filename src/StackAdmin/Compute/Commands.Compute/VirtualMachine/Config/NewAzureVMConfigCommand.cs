@@ -15,6 +15,8 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
+using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -50,6 +52,35 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string AvailabilitySetId { get; set; }
 
+        [Parameter(
+            Position = 3,
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public string LicenseType { get; set; }
+
+        [Parameter(
+            Position = 4,
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        [Obsolete("This parameter is obsolete.  Use AssignIdentity parameter instead.", false)]
+        public ResourceIdentityType? IdentityType { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        public string [] Zone { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+		[Alias("Tag")]
+		public Hashtable Tags { get; set; }
+
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
@@ -63,9 +94,17 @@ namespace Microsoft.Azure.Commands.Compute
                 AvailabilitySetReference = string.IsNullOrEmpty(this.AvailabilitySetId) ? null : new SubResource
                 {
                     Id = this.AvailabilitySetId
-                }
+                },
+                LicenseType = this.LicenseType,
+                Identity = this.AssignIdentity.IsPresent ? new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned) : null,
+                Tags = this.Tags != null ? this.Tags.ToDictionary() : null,
+                Zones = this.Zone,
             };
 
+            if (this.IdentityType != null)
+            {
+                vm.Identity = new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned);
+            }
             if (!string.IsNullOrEmpty(this.VMSize))
             {
                 vm.HardwareProfile = new HardwareProfile();
