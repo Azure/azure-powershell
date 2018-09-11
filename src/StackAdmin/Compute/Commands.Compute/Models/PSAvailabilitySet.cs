@@ -34,6 +34,20 @@ namespace Microsoft.Azure.Commands.Compute.Models
             }
         }
 
+        public bool? Managed {
+            get
+            {
+                if (string.IsNullOrEmpty(this.Sku))
+                {
+                    return null;
+                }
+                else
+                {
+                    return Sku.Equals("Aligned") || Sku.Equals("Managed");
+                }
+            }
+        }
+
         // Gets or sets the property of 'Id'
         public string Id { get; set; }
 
@@ -47,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string Location { get; set; }
 
         // Gets or sets the property of 'Tags'
-        public IDictionary<string,string> Tags { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
 
         [JsonIgnore]
         public string TagsText
@@ -78,5 +92,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get { return JsonConvert.SerializeObject(VirtualMachinesReferences, Formatting.Indented); }
         }
+
+        public string Sku { get; set; }
     }
 }

@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var vnetGatewayConnection = this.GetVirtualNetworkGatewayConnection(this.ResourceGroupName, this.Name);
@@ -51,7 +51,10 @@ namespace Microsoft.Azure.Commands.Network
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var connectionList = this.VirtualNetworkGatewayConnectionClient.List(this.ResourceGroupName);
+                var connectionPage = this.VirtualNetworkGatewayConnectionClient.List(this.ResourceGroupName);
+
+                // Get all resources by polling on next page link
+                var connectionList = ListNextLink<VirtualNetworkGatewayConnection>.GetAllResourcesByPollingNextLink(connectionPage, this.VirtualNetworkGatewayConnectionClient.ListNext);
 
                 var psVnetGatewayConnections = new List<PSVirtualNetworkGatewayConnection>();
                 foreach (var virtualNetworkGatewayConnection in connectionList)

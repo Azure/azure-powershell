@@ -94,6 +94,10 @@ InModuleScope Azs.Fabric.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         It "TestListFabricLocations" -Skip:$('TestListFabricLocations' -in $global:SkippedTests) {
             $global:TestName = 'TestListFabricLocations'
             $fabricLocations = Get-AzsInfrastructureLocation -ResourceGroupName $global:ResourceGroupName
