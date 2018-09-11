@@ -127,7 +127,8 @@ namespace Microsoft.Azure.Commands.Network
 
         private void ValidateIsSinglePortNotRange(string portStr)
         {
-            if (!uint.TryParse(portStr, out uint parsed))
+            uint parsed;
+            if (!uint.TryParse(portStr, out parsed))
             {
                 throw new ArgumentException($"Invalid value {portStr}. Only a single port value is accepted (e.g. 8080).");
             }
