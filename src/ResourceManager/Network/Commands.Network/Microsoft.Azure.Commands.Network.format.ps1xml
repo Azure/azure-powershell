@@ -2946,6 +2946,10 @@
                 <PropertyName>ApplicationRuleCollectionsText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>NatRuleCollections</Label>
+                <PropertyName>NatRuleCollectionsText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>NetworkRuleCollections</Label>
                 <PropertyName>NetworkRuleCollectionsText</PropertyName>
               </ListItem>
