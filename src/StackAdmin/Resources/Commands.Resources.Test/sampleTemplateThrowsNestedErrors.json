@@ -1,0 +1,28 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"regions": {
+			"type": "array",
+			"defaultValue": ["West US"]
+		}
+	},
+	"variables": {
+		
+	},
+	"resources": [{
+		"type": "Microsoft.Storage/storageAccounts",
+		"name": "[toLower(replace(concat('storagetest2dddddddddddddddddddddddssffeszaasdffff', parameters('regions')[copyIndex()]), ' ', ''))]",
+		"apiVersion": "2015-06-15",
+		"location": "[parameters('regions')[copyIndex()]]",
+		"copy": {
+			"name": "storagecopy",
+			"count": "[length(parameters('regions'))]"
+		},
+		"properties": {
+			"accountType": "Standard_LRS"
+		}
+	}],
+	"outputs": {	
+	}
+}

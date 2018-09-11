@@ -26,36 +26,42 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     The migration job guid name.
 
 .EXAMPLE
-
-    PS C:\> $migrations = Get-AzsDiskMigrationJob -location local
     PS C:\> $migration = Get-AzsDiskMigrationJob -location local -Name "mymigrationName"
+
+    Get a specific managed disk migration job.
+
+.EXAMPLE
+    PS C:\> $migration = Get-AzsDiskMigrationJob -location local
+
+    Returns a list of managed disk migration jobs at the location local.
+
 #>
 function Get-AzsDiskMigrationJob
 {
     [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.DiskMigrationJob])]
     [CmdletBinding(DefaultParameterSetName='List')]
-    param(    
+    param(
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
         [System.String]
         [Alias('Id')]
         $ResourceId,
-    
+
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [System.String]
         $Status,
-    
+
         [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [System.String]
         $Location,
-    
+
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
         [Alias('MigrationId')]
         [System.String]
         $Name
     )
 
-    Begin 
+    Begin
     {
 	    Initialize-PSSwaggerDependencies -Azure
         $tracerObject = $null
@@ -75,7 +81,7 @@ function Get-AzsDiskMigrationJob
 
 		$GlobalParameterHashtable = @{}
 		$NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-     
+
 		$GlobalParameterHashtable['SubscriptionId'] = $null
 		if($PSBoundParameters.ContainsKey('SubscriptionId')) {
 			$GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
@@ -85,7 +91,7 @@ function Get-AzsDiskMigrationJob
 
 		$MigrationId = $Name
 
- 
+
 		if('ResourceId' -eq $PsCmdlet.ParameterSetName) {
 			$GetArmResourceIdParameterValue_params = @{
 				IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/diskmigrationjobs/{migrationId}'
@@ -104,7 +110,7 @@ function Get-AzsDiskMigrationJob
 		@{
 			'Type' = 'powershellWildcard'
 			'Value' = $MigrationId
-			'Property' = 'Name' 
+			'Property' = 'Name'
 		})
 		$applicableFilters = Get-ApplicableFilters -Filters $filterInfos
 		if ($applicableFilters | Where-Object { $_.Strict }) {
@@ -144,9 +150,9 @@ function Get-AzsDiskMigrationJob
 			$GetTaskResult_params = @{
 				TaskResult = $TaskResult
 			}
-            
+
 			Get-TaskResult @GetTaskResult_params
-        
+
 		}
     }
 

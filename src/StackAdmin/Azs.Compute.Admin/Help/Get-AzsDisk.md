@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Compute.Admin-help.xml
 Module Name: Azs.Compute.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -33,16 +33,17 @@ Returns a list of disks.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> Get-AzsDisk -location local
+### -------------------------- EXAMPLE 1 --------------------------
+```
+$disks = Get-AzsDisk -location local
 ```
 
-Returns a list of managed disks at the location local. By default, it will the first 100 disks
+Returns a list of managed disks at the location local.
+By default, it will the first 100 disks
 
-### Example 2
+### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsDisk -location local -name $DiskId
+$disk = Get-AzsDisk -location local -name $DiskId
 ```
 
 Get a specific managed disk.
@@ -55,7 +56,7 @@ The maximum number of disks to return.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -70,7 +71,7 @@ Location of the resource.
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -115,7 +116,7 @@ The source share which the resource belongs to.
 ```yaml
 Type: String
 Parameter Sets: List
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -130,7 +131,7 @@ The start index of disks in query.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -145,7 +146,7 @@ The parameters of disk state.
 ```yaml
 Type: String
 Parameter Sets: List
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -160,7 +161,7 @@ Tenant Subscription Id which the resource belongs to.
 ```yaml
 Type: String
 Parameter Sets: List
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -181,3 +182,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

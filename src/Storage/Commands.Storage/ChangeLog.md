@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Upgrade to Azure Storage Client Library 9.3.0 and Azure Storage DataMovement Library 0.8.1
+* Support create Storage Context with OAuth. 
+	- New-AzureStorageContext
 
 ## Version 4.5.0
 * Remove the 5TB limitation for Azure File Share quota
