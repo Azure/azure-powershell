@@ -92,6 +92,5 @@ namespace Microsoft.Azure.Commands.Reservations.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetCatalog");
         }
-
     }
 }

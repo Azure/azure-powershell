@@ -300,7 +300,7 @@ When the type of the output is a generic, and one of the arguments of the generi
 For example, if we had a cmdlet `Get-SomeObject` that returned a list of `Foo` objects
 
 ```cs
-[Cmdlet(VerbsCommon.Get, "SomeObject"), OutputType(typeof(List<Foo>))]
+[Cmdlet(VerbsCommon.Get, "SomeObject"), OutputType(typeof(Foo))]
 public class GetSomeObject : Cmdlet
 {
     protected override void BeginProcessing()
@@ -313,7 +313,7 @@ public class GetSomeObject : Cmdlet
 but it now returns a list of `Bar` objects
 
 ```cs
-[Cmdlet(VerbsCommon.Get, "SomeObject"), OutputType(typeof(List<Bar>))]
+[Cmdlet(VerbsCommon.Get, "SomeObject"), OutputType(typeof(Bar))]
 ```
 
 the following script will no longer work since we are accessing properties of the `Foo` object that may not be a part of the `Bar` object 

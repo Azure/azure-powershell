@@ -14,14 +14,37 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 ### [Add-AzureRmSqlDatabaseToFailoverGroup](Add-AzureRmSqlDatabaseToFailoverGroup.md)
 Adds one or more databases to an Azure SQL Database Failover Group.
 
+<<<<<<< HEAD
 ### [Add-AzureRmSqlElasticJobStep](Add-AzureRmSqlElasticJobStep.md)
 Adds a job step to a job
 
 ### [Add-AzureRmSqlElasticJobTarget](Add-AzureRmSqlElasticJobTarget.md)
 Adds a target to a target group
+=======
+### [Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate.md)
+Adds a Transparent Data Encryption Certificate for the given managed instance
+>>>>>>> 50100a495684c557703d672de3447cbdfc555842
 
 ### [Add-AzureRmSqlServerKeyVaultKey](Add-AzureRmSqlServerKeyVaultKey.md)
 Adds a Key Vault key to a SQL server.
+
+### [Add-AzureRmSqlServerTransparentDataEncryptionCertificate](Add-AzureRmSqlServerTransparentDataEncryptionCertificate.md)
+Adds a Transparent Data Encryption Certificate for the given SQL Server instance
+
+### [Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
+Clears the vulnerability assessment rule baseline.
+
+### [Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+Clears the vulnerability assessment settings of a database.
+
+### [Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan](Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan.md)
+Converts a vulnerability assessment scan results to Excel format.
+
+### [Disable-AzureRmSqlServerAdvancedThreatProtection](Disable-AzureRmSqlServerAdvancedThreatProtection.md)
+Disables Advanced Threat Protection on a server.
+
+### [Enable-AzureRmSqlServerAdvancedThreatProtection](Enable-AzureRmSqlServerAdvancedThreatProtection.md)
+Enables Advanced Threat Protection on a server.
 
 ### [Get-AzureRmSqlCapability](Get-AzureRmSqlCapability.md)
 Gets SQL Database capabilities for the current subscription.
@@ -98,6 +121,15 @@ Gets the progress of a TDE scan of a database.
 ### [Get-AzureRmSqlDatabaseUpgradeHint](Get-AzureRmSqlDatabaseUpgradeHint.md)
 Gets pricing tier hints for a database.
 
+### [Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
+Gets the vulnerability assessment rule baseline.
+
+### [Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord](Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord.md)
+Gets all vulnerability assessment scan record(s) associated with a given database.
+
+### [Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+Gets the vulnerability assessment settings of a database.
+
 ### [Get-AzureRmSqlDeletedDatabaseBackup](Get-AzureRmSqlDeletedDatabaseBackup.md)
 Gets a deleted database that you can restore.
 
@@ -154,6 +186,9 @@ Returns information about SQL Database servers.
 
 ### [Get-AzureRmSqlServerActiveDirectoryAdministrator](Get-AzureRmSqlServerActiveDirectoryAdministrator.md)
 Gets information about an Azure AD administrator for SQL Server.
+
+### [Get-AzureRmSqlServerAdvancedThreatProtectionPolicy](Get-AzureRmSqlServerAdvancedThreatProtectionPolicy.md)
+Gets Advanced Threat Protection policy of a server.
 
 ### [Get-AzureRmSqlServerAdvisor](Get-AzureRmSqlServerAdvisor.md)
 Gets one or more Advisors for an Azure SQL Server.
@@ -242,9 +277,12 @@ This command creates a new Azure SQL Database Failover Group.
 ### [New-AzureRmSqlDatabaseImport](New-AzureRmSqlDatabaseImport.md)
 Imports a .bacpac file and create a new database on the server.
 
+<<<<<<< HEAD
 ### [New-AzureRmSqlDatabaseInstanceFailoverGroup](New-AzureRmSqlDatabaseInstanceFailoverGroup.md)
 This command creates a new Azure SQL Database Instance Failover Group.
 
+=======
+>>>>>>> 50100a495684c557703d672de3447cbdfc555842
 ### [New-AzureRmSqlDatabaseRestorePoint](New-AzureRmSqlDatabaseRestorePoint.md)
 Creates a new restore point from which a SQL Database can be restored.
 
@@ -449,6 +487,7 @@ Sets a threat detection policy on a database.
 ### [Set-AzureRmSqlDatabaseTransparentDataEncryption](Set-AzureRmSqlDatabaseTransparentDataEncryption.md)
 Modifies TDE property for a database.
 
+<<<<<<< HEAD
 ### [Set-AzureRmSqlElasticJob](Set-AzureRmSqlElasticJob.md)
 Updates a job
 
@@ -460,6 +499,10 @@ Updates a job credential
 
 ### [Set-AzureRmSqlElasticJobStep](Set-AzureRmSqlElasticJobStep.md)
 Updates a job step
+=======
+### [Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
+Sets the vulnerability assessment rule baseline.
+>>>>>>> 50100a495684c557703d672de3447cbdfc555842
 
 ### [Set-AzureRmSqlElasticPool](Set-AzureRmSqlElasticPool.md)
 Modifies properties of an elastic database pool in Azure SQL Database.
@@ -515,8 +558,13 @@ Modifies the configuration of an Azure SQL Server Virtual Network Rule.
 ### [Start-AzureRmSqlDatabaseExecuteIndexRecommendation](Start-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Starts the workflow that runs a recommended index operation.
 
+<<<<<<< HEAD
 ### [Start-AzureRmSqlElasticJob](Start-AzureRmSqlElasticJob.md)
 Starts a job, returning a job execution id that can be polled to view it's status
+=======
+### [Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan](Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan.md)
+Starts a vulnerability assessment scan.
+>>>>>>> 50100a495684c557703d672de3447cbdfc555842
 
 ### [Start-AzureRmSqlServerUpgrade](Start-AzureRmSqlServerUpgrade.md)
 Starts the upgrade of a SQL Database server.
@@ -548,11 +596,16 @@ Suspends a SQL Data Warehouse database.
 ### [Switch-AzureRmSqlDatabaseFailoverGroup](Switch-AzureRmSqlDatabaseFailoverGroup.md)
 Executes a failover of an Azure SQL Database Failover Group.
 
+<<<<<<< HEAD
 ### [Switch-AzureRmSqlDatabaseInstanceFailoverGroup](Switch-AzureRmSqlDatabaseInstanceFailoverGroup.md)
 Executes a failover of an Instance Failover Group.
 
 ### [Update-AzureRmSqlManagedInstance](Update-AzureRmSqlManagedInstance.md)
 Modifies properties of a SQL Database Managed instance. Only properties that are explicitly set will be updated.
+=======
+### [Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+Updates the vulnerability assessment settings of a database.
+>>>>>>> 50100a495684c557703d672de3447cbdfc555842
 
 ### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
 Updates an Azure SQL Database Sync Group.

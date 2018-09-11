@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Switch, "AzureRmSqlDatabaseInstanceFailoverGroup",
+    [Cmdlet(VerbsCommon.Switch, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseInstanceFailoverGroup",
         DefaultParameterSetName = SwitchIfgDefaultSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]

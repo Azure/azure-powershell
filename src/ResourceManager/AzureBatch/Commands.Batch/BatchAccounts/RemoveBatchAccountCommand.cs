@@ -19,7 +19,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureRmBatchAccount, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchAccount", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveBatchAccountCommand : BatchCmdletBase
     {
         private static string mamlCall = "RemoveAccount";

@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseInstanceFailoverGroup"), OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseInstanceFailoverGroup"), OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
     public class GetAzureSqlInstanceFailoverGroup : AzureSqlInstanceFailoverGroupCmdletBase
     {
         /// <summary>

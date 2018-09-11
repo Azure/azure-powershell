@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     /// <summary>
     /// Defines the Remove-AzureRmSqlElasticJobCredential Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlElasticJobCredential",
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlElasticJobCredential",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureSqlElasticJobCredentialModel))]

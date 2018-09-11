@@ -23,8 +23,7 @@ using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsJobRecurrence", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(List<PSJobRecurrenceInformation>), typeof(PSJobRecurrenceInformation))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataLakeAnalyticsJobRecurrence", DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(PSJobRecurrenceInformation))]
     [Alias("Get-AdlJobRecurrence")]
     public class GetAzureDataLakeAnalyticsJobRecurrence : DataLakeAnalyticsCmdletBase
     {

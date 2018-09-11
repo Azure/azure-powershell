@@ -18,15 +18,15 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
     /// Fetches containers registered to the vault according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupContainer"),
-        OutputType(typeof(ContainerBase), typeof(IList<ContainerBase>))]
-    public class GetAzureRmRecoveryServicesBackupContainer : RecoveryServicesBackupCmdletBase
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupContainer"),OutputType(typeof(ContainerBase))]
+    public class GetAzureRmRecoveryServicesBackupContainer : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// The type of the container(s) to be fetched.
@@ -83,6 +83,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 BackupManagementType? backupManagementTypeNullable = null;
                 BackupManagementType backupManagementType;
                 if (BackupManagementType != null)
@@ -97,14 +101,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(new Dictionary<Enum, object>()
-                {
-                    {ContainerParams.ContainerType, ContainerType},
-                    {ContainerParams.BackupManagementType, backupManagementTypeNullable},
-                    {ContainerParams.Name, Name},
-                    {ContainerParams.FriendlyName, FriendlyName},
-                    {ContainerParams.ResourceGroupName, ResourceGroupName},
-                    {ContainerParams.Status, Status},
-                }, ServiceClientAdapter);
+                    {
+                        { VaultParams.VaultName, vaultName },
+                        { VaultParams.ResourceGroupName, resourceGroupName },
+                        { ContainerParams.ContainerType, ContainerType },
+                        { ContainerParams.BackupManagementType, backupManagementTypeNullable },
+                        { ContainerParams.Name, Name },
+                        { ContainerParams.FriendlyName, FriendlyName },
+                        { ContainerParams.ResourceGroupName, ResourceGroupName },
+                        { ContainerParams.Status, Status },
+                    }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider =
                     providerManager.GetProviderInstance(ContainerType, backupManagementTypeNullable);

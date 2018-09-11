@@ -55,7 +55,7 @@ When using shared key authentication, the primary access key is used by default.
 To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -86,7 +86,7 @@ Specifies the job that contains tasks that this cmdlet gets.
 To obtain a **PSCloudJob** object, use the Get-AzureBatchJob cmdlet.
 
 ```yaml
-Type: PSCloudJob
+Type: Microsoft.Azure.Commands.Batch.Models.PSCloudJob
 Parameter Sets: ParentObject
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The id of the job for which to get task counts.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id
 Aliases:
 
@@ -118,8 +118,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Batch.Models.PSCloudJob
-Microsoft.Azure.Commands.Batch.BatchAccountContext
+
+### Microsoft.Azure.Commands.Batch.Models.PSCloudJob
+Parameters: Job (ByValue)
+
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 

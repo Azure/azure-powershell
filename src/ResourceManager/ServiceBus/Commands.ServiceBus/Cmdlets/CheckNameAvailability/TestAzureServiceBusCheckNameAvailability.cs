@@ -18,13 +18,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.ServiceBus.Models;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
     /// <summary>
     /// 'Test-AzureRmCheckNameAvailability' Cmdlet Check Availability of the NameSpace Name
     /// </summary>
-    [Cmdlet("Test", "AzureRmServiceBusName"), OutputType(typeof(List<PSCheckNameAvailabilityResultAttributes>))]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusName"), OutputType(typeof(PSCheckNameAvailabilityResultAttributes))]
     public class TestAzureServiceBusCheckNameAvailability : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = AliasCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
@@ -43,18 +44,24 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName.Equals(NamespaceCheckNameAvailabilityParameterSet))
+            try
             {
-                PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetCheckNameAvailability(Namespace);
-                WriteObject(checkNameAvailabilityResult, true);
-            }
+                if (ParameterSetName.Equals(NamespaceCheckNameAvailabilityParameterSet))
+                {
+                    PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetCheckNameAvailability(Namespace);
+                    WriteObject(checkNameAvailabilityResult, true);
+                }
 
-            if (ParameterSetName.Equals(AliasCheckNameAvailabilityParameterSet))
+                if (ParameterSetName.Equals(AliasCheckNameAvailabilityParameterSet))
+                {
+                    PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetAliasCheckNameAvailability(ResourceGroupName, Namespace, AliasName);
+                    WriteObject(checkNameAvailabilityResult, true);
+                }
+            }
+            catch (ErrorResponseException ex)
             {
-                PSCheckNameAvailabilityResultAttributes checkNameAvailabilityResult = Client.GetAliasCheckNameAvailability(ResourceGroupName, Namespace, AliasName);
-                WriteObject(checkNameAvailabilityResult, true);
+                WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
             }
-
         }
     }
 }

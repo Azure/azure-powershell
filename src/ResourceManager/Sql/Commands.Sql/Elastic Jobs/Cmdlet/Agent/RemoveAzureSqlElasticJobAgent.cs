@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     /// <summary>
     /// Defines the Remove-AzureRmSqlElasticJobAgent cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlElasticJobAgent",
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlElasticJobAgent",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureSqlElasticJobAgentModel))]

@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     /// <summary>
     /// Stop the specified device job if its in progress and is cancellable.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleJob"), OutputType(typeof(IList<DeviceJobDetails>), typeof(DeviceJobDetails))]
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleJob"), OutputType(typeof(DeviceJobDetails))]
     public class GetAzureStorSimpleJob : StorSimpleCmdletBase
     {
         #region params

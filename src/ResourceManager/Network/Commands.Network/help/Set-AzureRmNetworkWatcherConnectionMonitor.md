@@ -99,7 +99,7 @@ In this example we update existing connection monitor by changing destinationAdd
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 Configure connection monitor, but do not start it
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 The Ip address of the connection monitor destination.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 Destination port.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 The ID of the connection monitor destination.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 Connection monitor object.
 
 ```yaml
-Type: PSConnectionMonitorResult
+Type: Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
 Parameter Sets: SetByInputObject
 Aliases:
 
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 Location of the network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByLocation
 Aliases:
 
@@ -219,7 +219,7 @@ Accept wildcard characters: False
 Monitoring interval in seconds.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 The connection monitor name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName, SetByResource, SetByLocation
 Aliases: ConnectionMonitorName
 
@@ -249,7 +249,7 @@ Accept wildcard characters: False
 The network watcher resource.
 
 ```yaml
-Type: PSNetworkWatcher
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
 Parameter Sets: SetByResource
 Aliases:
 
@@ -264,7 +264,7 @@ Accept wildcard characters: False
 The name of network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases:
 
@@ -279,7 +279,7 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases:
 
@@ -294,7 +294,7 @@ Accept wildcard characters: False
 Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -309,7 +309,7 @@ Accept wildcard characters: False
 Source port.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -324,7 +324,7 @@ Accept wildcard characters: False
 The ID of the connection monitor source.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -339,7 +339,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -354,7 +354,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -370,7 +370,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -387,7 +387,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-System.String Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
+Parameters: NetworkWatcher (ByValue)
+
+### System.String
+
+### Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

@@ -36,7 +36,7 @@ This command gets the ACL for the root directory of the specified Data Lake Stor
 Specifies the name of the Data Lake Store account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 Specifies the Data Lake Store path of the item for which this cmdlet gets an ACE, starting with the root directory (/).
 
 ```yaml
-Type: DataLakeStorePathInstance
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
 Parameter Sets: (All)
 Aliases:
 
@@ -82,13 +82,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
 
 ## OUTPUTS
 
-### IEnumerable<DataLakeStoreItemAce>
-The list of ACL entries for the specified folder or file.
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce
 
 ## NOTES
 

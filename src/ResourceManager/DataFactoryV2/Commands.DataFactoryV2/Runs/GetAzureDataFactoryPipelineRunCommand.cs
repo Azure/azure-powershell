@@ -21,8 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Get, Constants.PipelineRun, DefaultParameterSetName = ParameterSetNames.ByFactoryNameByRunId),
-        OutputType(typeof(List<PSPipelineRun>), typeof(PSPipelineRun))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactoryV2PipelineRun", DefaultParameterSetName = ParameterSetNames.ByFactoryNameByRunId),OutputType(typeof(PSPipelineRun))]
     public class GetAzureDataFactoryPipelineRunCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObjectByRunId, Position = 0, Mandatory = true, ValueFromPipeline = true,

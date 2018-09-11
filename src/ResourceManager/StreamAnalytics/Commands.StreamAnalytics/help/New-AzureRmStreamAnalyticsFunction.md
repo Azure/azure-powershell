@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.StreamAnalytics.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.StreamAnalytics
 ms.assetid: 79EB2AD9-BFE1-49BE-870F-7DFC99D6FE17
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsfunction
 schema: 2.0.0
@@ -22,10 +22,8 @@ New-AzureRmStreamAnalyticsFunction [-JobName] <String> [[-Name] <String>] [-File
 ## DESCRIPTION
 The **New-AzureRmStreamAnalyticsFunction** cmdlet creates a function in an Azure Stream Analytics job or replaces an existing function.
 Define the function in a JavaScript Object Notation (JSON) file.
-
 You can specify the name of the function by using the *Name* parameter or in the .json file.
 If you specify the name in both ways, the names must match.
-
 To replace an existing function, specify the name of the existing function.
 
 ## EXAMPLES
@@ -58,7 +56,7 @@ This command replaces the definition of the existing function named ScoreTweet w
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -73,9 +71,9 @@ Accept wildcard characters: False
 Specifies the path of a .json file that contains the JSON representation of the Stream Analytics function.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -88,9 +86,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet replaces an existing Stream Analytics function without prompting you for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -103,9 +101,9 @@ Accept wildcard characters: False
 Specifies the name of the Stream Analytics job under which this cmdlet creates a Stream Analytics function.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -118,9 +116,9 @@ Accept wildcard characters: False
 Specifies the name of the Stream Analytics function that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -133,9 +131,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group under which this cmdlet creates a Stream Analytics function.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -148,7 +146,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -164,7 +162,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -180,8 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

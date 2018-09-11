@@ -33,8 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     /// <summary>
     /// download blob from azure
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageNouns.BlobContent, SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet),
-        OutputType(typeof(AzureStorageBlob))]
+    [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlobContent", SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet),OutputType(typeof(AzureStorageBlob))]
     public class SetAzureBlobContentCommand : StorageDataMovementCmdletBase
     {
         /// <summary>
@@ -241,8 +240,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             }
             catch (StorageException e)
             {
-                //Handle the limited read permission.
-                if (!e.IsNotFoundException())
+                //Handle the limited read permission, and handle the upload with write only permission
+                if (!e.IsNotFoundException() && !e.IsForbiddenException())
                 {
                     throw;
                 }
@@ -492,6 +491,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            FileName = ResolveUserPath(FileName);
             ValidateBlobTier(string.Equals(blobType, PageBlobType, StringComparison.InvariantCultureIgnoreCase)? StorageBlob.BlobType.PageBlob : StorageBlob.BlobType.Unspecified, 
                 pageBlobTier);
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
 Module Name: AzureRM.NotificationHubs
 ms.assetid: F0981A7A-1B17-4141-A267-927E5B78BE5F
@@ -30,15 +30,12 @@ Set-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] <String>
 ## DESCRIPTION
 The **Set-AzureRmNotificationHubsNamespaceAuthorizationRules** cmdlet modifies a Shared Access Signature (SAS) authorization rule assigned to a notification hub namespace.
 Authorization rules manage user rights to the namespace and to the notification hubs contained in that namespace.
-
 This cmdlet provides two ways to modify an authorization rule assigned to a namespace.
 For one, you can create an instance of the **SharedAccessAuthorizationRuleAttributes** object and then configure that object with the property values you want the rule to possess.
 You can use the .NET Framework to accomplish this.
 You can then copy those property values to the rule through the *SASRule* parameter.
-
 Alternatively, you can create a JSON (JavaScript Object Notation) file containing the relevant configuration values and then apply those values through the *InputFile* parameter.
 A JSON file is a text file that uses syntax similar to this:
-
 {  
     "Name": "ContosoAuthorizationRule",  
     "PrimaryKey": "WE4qH0398AyXjlekt56gg1gMR3NHoMs29KkUnnpUk01Y=",  
@@ -47,7 +44,6 @@ A JSON file is a text file that uses syntax similar to this:
         "Send"  
     \]  
 }
-
 When used in conjunction with the **Set-AzureRmNotificationHubsNamespaceAuthorizationRules** cmdlet, the preceding JSON sample modifies an authorization rule named ContosoAuthorizationRule to give users Listen and Send rights to the namespace.
 
 ## EXAMPLES
@@ -68,7 +64,7 @@ Instead, that information is obtained from the input file C:\Configuration\Autho
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -83,9 +79,9 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -98,9 +94,9 @@ Accept wildcard characters: False
 Specifies the path to a JSON file containing configuration information for the new rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InputFileParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -114,9 +110,9 @@ Specifies the namespace that contains the authorization rules that this cmdlet m
 Namespaces provide a way to group and categorize notification hubs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -127,13 +123,12 @@ Accept wildcard characters: False
 
 ### -ResourceGroup
 Specifies the resource group to which the namespace is assigned.
-
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -146,9 +141,9 @@ Accept wildcard characters: False
 Specifies the **SharedAccessAuthorizationRuleAttributes** object that contains configuration information for the authorization rules that this cmdlet modifies.
 
 ```yaml
-Type: SharedAccessAuthorizationRuleAttributes
+Type: Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes
 Parameter Sets: SASRuleParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -161,7 +156,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -176,7 +171,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -192,8 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

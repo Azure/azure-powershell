@@ -53,5 +53,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             DebugInfo,
             Statistics
         };
+
+        public enum PermissionType
+        {
+            None,
+            Read,
+            ReadWrite
+        };
     }
 }

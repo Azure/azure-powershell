@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.WebSites
+Module Name: AzureRM.Websites
 ms.assetid: 7DBF937E-2D01-4356-9A5F-C5A4CB6D1A10
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/set-azurermwebappslotconfigname
 schema: 2.0.0
@@ -45,9 +45,9 @@ This command removes all app settings and connection strings for Web App Contoso
 App Settings Names String Array
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -60,9 +60,9 @@ Accept wildcard characters: False
 Connection String Names String Array
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -90,9 +90,9 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -105,9 +105,9 @@ Accept wildcard characters: False
 Remove All App Setting Names Option
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -120,9 +120,9 @@ Accept wildcard characters: False
 Remove All Connection String Names Option
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -135,9 +135,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -150,9 +150,9 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Site
+Type: Microsoft.Azure.Management.WebSites.Models.Site
 Parameter Sets: S2
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -166,12 +166,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Site
-Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+### System.String[]
+
+### System.String
+
+### Microsoft.Azure.Management.WebSites.Models.Site
+Parameters: WebApp (ByValue)
 
 ## OUTPUTS
+
+### Microsoft.Azure.Management.WebSites.Models.SlotConfigNamesResource
 
 ## NOTES
 
 ## RELATED LINKS
-

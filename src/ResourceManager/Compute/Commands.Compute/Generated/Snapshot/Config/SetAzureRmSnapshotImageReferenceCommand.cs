@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Set", "AzureRmSnapshotImageReference", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotImageReference", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshot))]
     public partial class SetAzureRmSnapshotImageReferenceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -96,4 +96,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

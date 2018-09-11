@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.JobExecution
     /// <summary>
     /// Defines the Get-AzureRmSqlElasticJobExecution Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticJobExecution",
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlElasticJobExecution",
         DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureSqlElasticJobExecutionModel))]
     public class GetAzureSqlElasticJobExecution : AzureSqlElasticJobExecutionCmdletBase<AzureSqlElasticJobAgentModel>

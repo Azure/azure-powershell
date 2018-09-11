@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebusrule
@@ -8,13 +8,14 @@ schema: 2.0.0
 # Get-AzureRmServiceBusRule
 
 ## SYNOPSIS
-Gets a description of the specified rule for a given Subscription of  Topic. 
+Creates a new rule for a given Subscription of Topic. 
 
 ## SYNTAX
 
 ```
 Get-AzureRmServiceBusRule [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [-Subscription] <String> [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Subscription] <String> [[-Name] <String>] [-MaxCount <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,18 +25,32 @@ The **Get-AzureRmServiceBusRule** cmdlet gets the description of the specified r
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -NAme SBRule
+PS C:\> Get-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -Name SBRule
 ```
 
 Returns the specified rule description for a specified subscription.
 
+### Example 2
+```
+PS C:\> Get-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription
+```
+
+Returns list of rule descriptions for a specified subscription.  By default 100 rule will be returned, if more than 100 rule to be returned, please use -MaxCount Parameter.
+
+### Example 3
+```
+PS C:\> Get-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -MaxCount 150
+```
+
+Returns list of first 150 rules descriptions for a specified subscription.
+
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -46,13 +61,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Rule Name.
+### -MaxCount
+Determine the maximum number of Rules to return.
 
 ```yaml
-Type: String
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Rule Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: 4
@@ -62,10 +92,10 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: NamespaceName
 
@@ -80,7 +110,7 @@ Accept wildcard characters: False
 The name of the resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -92,10 +122,10 @@ Accept wildcard characters: False
 ```
 
 ### -Subscription
-Subscription Name.
+Subscription Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: SubscriptionName
 
@@ -107,10 +137,10 @@ Accept wildcard characters: False
 ```
 
 ### -Topic
-Topic Name.
+Topic Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: TopicName
 
@@ -135,4 +165,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

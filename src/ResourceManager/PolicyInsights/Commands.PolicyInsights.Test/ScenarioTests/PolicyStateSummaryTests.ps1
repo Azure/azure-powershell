@@ -18,7 +18,10 @@ Get policy states summary at management group scope
 #>
 function Get-AzureRmPolicyStateSummary-ManagementGroupScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -ManagementGroupName "AzGovTest1"
+    $managementGroupName = Get-TestManagementGroupName
+	$from = Get-TestQueryIntervalStart
+
+	$policyStateSummary = Get-AzureRmPolicyStateSummary -ManagementGroupName $managementGroupName -Top 10 -From $from
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -28,7 +31,9 @@ Get policy states summary at subscription scope
 #>
 function Get-AzureRmPolicyStateSummary-SubscriptionScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary
+	$from = Get-TestQueryIntervalStart
+
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -Top 10 -From $from
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -38,7 +43,10 @@ Get policy states summary at resource group scope
 #>
 function Get-AzureRmPolicyStateSummary-ResourceGroupScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceGroupName defaultresourcegroup-eus
+	$resourceGroupName = Get-TestResourceGroupName
+	$from = Get-TestQueryIntervalStart
+
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceGroupName $resourceGroupName -Top 10 -From $from
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -48,7 +56,10 @@ Get policy states summary at resource scope
 #>
 function Get-AzureRmPolicyStateSummary-ResourceScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceId "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/defaultresourcegroup-eus/providers/Microsoft.OperationsManagement/solutions/LogicAppsManagement(defaultworkspace-d0610b27-9663-4c05-89f8-5b4be01e86a5-eus)"
+	$resourceId = Get-TestResourceId
+	$from = Get-TestQueryIntervalStart
+
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceId $resourceId -Top 10 -From $from
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -58,7 +69,9 @@ Get policy states summary at policy set definition scope
 #>
 function Get-AzureRmPolicyStateSummary-PolicySetDefinitionScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicySetDefinitionName a03db67e-a286-43c3-9098-b2da83d361ad
+	$policySetDefinitionName = Get-TestPolicySetDefinitionName
+
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicySetDefinitionName $policySetDefinitionName -Top 10
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -68,7 +81,9 @@ Get policy states summary at policy definition scope
 #>
 function Get-AzureRmPolicyStateSummary-PolicyDefinitionScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicyDefinitionName 71ff7afc-0e90-481b-b19d-38106ce490f1
+	$policyDefinitionName = Get-TestPolicyDefinitionName
+
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicyDefinitionName $policyDefinitionName -Top 10
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -78,7 +93,9 @@ Get policy states summary at subscription level policy assignment scope
 #>
 function Get-AzureRmPolicyStateSummary-SubscriptionLevelPolicyAssignmentScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicyAssignmentName 0727ffc1697048c5b4884aef
+	$policyAssignmentName = Get-TestPolicyAssignmentName
+
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicyAssignmentName $policyAssignmentName -Top 10
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -88,6 +105,9 @@ Get policy states summary at resource group level policy assignment scope
 #>
 function Get-AzureRmPolicyStateSummary-ResourceGroupLevelPolicyAssignmentScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceGroupName bulenttestrg -PolicyAssignmentName f4d1645d-9180-4968-99df-17234d0f7019
+	$resourceGroupName = Get-TestResourceGroupNameForPolicyAssignmentStates
+	$policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevelStates
+
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10
 	Validate-PolicyStateSummary $policyStateSummary
 }

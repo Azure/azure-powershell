@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         /// with this account.
         /// </summary>
         [Obsolete("This property is in DataLakeAnalyticsAccount but removed in DataLakeAnalyticsAccountBasic because the server does not return this property when listing accounts. This will be removed in a future release.")]
-        public IList<StorageAccountInfo> StorageAccounts { get; private set; }
+        public IList<StorageAccountInformation> StorageAccounts { get; private set; }
 
         /// <summary>
         /// Gets or sets the commitment tier for the next month. Possible
@@ -146,21 +146,21 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         /// account.
         /// </summary>
         [Obsolete("This property is in DataLakeAnalyticsAccount but removed in DataLakeAnalyticsAccountBasic because the server does not return this property when listing accounts. This will be removed in a future release.")]
-        public IList<ComputePolicyAccountCreateParameters> ComputePolicies { get; private set; }
+        public IList<CreateComputePolicyWithAccountParameters> ComputePolicies { get; private set; }
 
         public PSDataLakeAnalyticsAccountBasic(DataLakeAnalyticsAccountBasic baseAccount) :
             base(
-                baseAccount.Location,
                 baseAccount.Id,
                 baseAccount.Name,
                 baseAccount.Type,
+                baseAccount.Location,
                 baseAccount.Tags,
+                baseAccount.AccountId,
                 baseAccount.ProvisioningState,
                 baseAccount.State,
                 baseAccount.CreationTime,
                 baseAccount.LastModifiedTime,
-                baseAccount.Endpoint,
-                baseAccount.AccountId)
+                baseAccount.Endpoint)
         {
         }
     }

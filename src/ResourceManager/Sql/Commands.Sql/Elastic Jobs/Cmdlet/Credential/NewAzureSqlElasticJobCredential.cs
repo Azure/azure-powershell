@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     /// <summary>
     /// Defines the New-AzureRmSqlElasticJobCredential Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlElasticJobCredential",
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlElasticJobCredential",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureSqlElasticJobCredentialModel))]

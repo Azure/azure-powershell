@@ -21,30 +21,33 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
     public class WorkspaceTests : OperationalInsightsScenarioTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public WorkspaceTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWorkspaceCreateUpdateDelete()
         {
-            RunPowerShellTest("Test-WorkspaceCreateUpdateDelete");
+            RunPowerShellTest(_logger, "Test-WorkspaceCreateUpdateDelete");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWorkspaceActions()
         {
-            RunPowerShellTest("Test-WorkspaceActions");
+            RunPowerShellTest(_logger, "Test-WorkspaceActions");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWorkspaceEnableDisableListIntelligencePacks()
         {
-            RunPowerShellTest("Test-WorkspaceEnableDisableListIntelligencePacks");
+            RunPowerShellTest(_logger, "Test-WorkspaceEnableDisableListIntelligencePacks");
         }
     }
 }

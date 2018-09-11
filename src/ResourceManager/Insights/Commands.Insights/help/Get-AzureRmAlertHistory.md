@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 1EDFCAC4-6A66-4124-8192-B7F0D3C5BCFC
@@ -269,9 +269,9 @@ This command gets the alert rule-related events for a specified resource.
 Specifies the caller.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -284,7 +284,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -299,9 +299,9 @@ Accept wildcard characters: False
 Displays full details in the output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -315,9 +315,9 @@ Specifies the end time of the query in local time.
 The default is the current time.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -330,9 +330,9 @@ Accept wildcard characters: False
 Specifies the resource ID the rule is associated with.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -346,9 +346,9 @@ Specifies the start time of the query in local time.
 The default is the current local time minus one hour.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -361,9 +361,9 @@ Accept wildcard characters: False
 Specifies the status.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -377,12 +377,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData>
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData
 
 ## NOTES
 

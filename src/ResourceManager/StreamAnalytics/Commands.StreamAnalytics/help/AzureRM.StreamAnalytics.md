@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.StreamAnalytics
 Module Guid: 59713673-194f-418a-b1f2-ac60db82edf9
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.streamanalytics

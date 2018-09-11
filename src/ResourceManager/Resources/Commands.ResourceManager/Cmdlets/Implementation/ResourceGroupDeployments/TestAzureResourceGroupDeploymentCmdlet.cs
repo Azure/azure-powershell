@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Validate a template to see whether it's using the right syntax, resource providers, resource types, etc.
     /// </summary>
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmResourceGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(List<PSResourceManagerError>))]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceManagerError))]
     public class TestAzureResourceGroupDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            PSValidateResourceGroupDeploymentParameters parameters = new PSValidateResourceGroupDeploymentParameters()
+            PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 ParameterUri = TemplateParameterUri
             };
 
-            WriteObject(ResourceManagerSdkClient.ValidatePSResourceGroupDeployment(parameters, Mode));
+            WriteObject(ResourceManagerSdkClient.ValidateDeployment(parameters, Mode));
         }
     }
 }

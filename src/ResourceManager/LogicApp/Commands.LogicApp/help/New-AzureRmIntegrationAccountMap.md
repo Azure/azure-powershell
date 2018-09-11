@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
 Module Name: AzureRM.LogicApp
 ms.assetid: DF71430C-F33F-409B-A550-CC7285252E91
@@ -23,9 +23,7 @@ New-AzureRmIntegrationAccountMap -ResourceGroupName <String> -Name <String> -Map
 The **New-AzureRmIntegrationAccountMap** cmdlet creates an integration account map.
 This cmdlet returns an object that represents the integration account map.
 Specifying the integration account name, resource group name, map name, and map definition.
-
 Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -58,9 +56,9 @@ Specifies a content type for the integration account map.
 This cmdlet supports application/xml as a map content type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -73,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,9 +87,9 @@ Specifies a definition object for integration account map.
 Specify either this parameter or the *MapFilePath* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -105,9 +103,9 @@ Specifies the file path of a definition for the integration account map.
 Specify either this parameter or the *MapDefinition* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -120,9 +118,9 @@ Accept wildcard characters: False
 Specifies a name for the integration account map.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -136,9 +134,9 @@ Specifies the type for the integration account map.
 This cmdlet supports Xslt as a map type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Xslt
 
 Required: False
@@ -152,9 +150,9 @@ Accept wildcard characters: False
 Specifies a metadata object for the map.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -167,7 +165,7 @@ Accept wildcard characters: False
 Specifies a name for the integration account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: IntegrationAccountName, ResourceName
 
@@ -182,9 +180,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -197,7 +195,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -213,7 +211,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -229,8 +227,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 

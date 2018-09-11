@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Regenerates the agent registration key based on the key name.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutomationKey")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationKey")]
     [OutputType(typeof(AgentRegistration))]
     public class NewAzureAutomationKey : AzureAutomationBaseCmdlet
     {

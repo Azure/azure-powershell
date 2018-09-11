@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: FC6BC096-DBC4-48DA-A366-B87EB18A0496
@@ -25,11 +25,17 @@ Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-I
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### OSUpgradeHistoryMethodParameter
+```
+Get-AzureRmVmss [[-ResourceGroupName] <String>] [[-VMScaleSetName] <String>] [-OSUpgradeHistory]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzureRmVmss** cmdlet gets the model and instance view of a Virtual Machine Scale Set (VMSS).
-The model view is the user specified properties of the virtual machine.
-The instance view is the instance level status of the virtual machine.
-Specify the *Status* parameter to get only the instance view of a virtual machine.
+The model view is the user specified properties of the virtual machine scale set.
+The instance view is the instance level status of the virtual machine scale set.
+Specify the *InstanceView* parameter to get only the instance view of a virtual machine scale set.
 
 ## EXAMPLES
 
@@ -39,7 +45,7 @@ PS C:\> Get-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 This command gets the properties of the VMSS named VMSS001 that belongs to the resource group named Group001.
-Since the command does not specify the *InstanceView* switch parameter, the cmdlet gets the model view of the virtual machine.
+Since the command does not specify the *InstanceView* switch parameter, the cmdlet gets the model view of the virtual machine scale set.
 
 ## PARAMETERS
 
@@ -47,7 +53,7 @@ Since the command does not specify the *InstanceView* switch parameter, the cmdl
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -59,11 +65,26 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceView
-Indicates that this cmdlet gets only the instance view of the virtual machine.
+Indicates that this cmdlet gets only the instance view of the virtual machine scale set.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: FriendMethod
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OSUpgradeHistory
+Indicates that this cmdlet lists the os upgrade history of the virtual machine scale set.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: OSUpgradeHistoryMethodParameter
 Aliases:
 
 Required: True
@@ -77,7 +98,7 @@ Accept wildcard characters: False
 Specifies the name of the Resource Group of the VMSS.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +113,7 @@ Accept wildcard characters: False
 Species the name of the VMSS.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -108,12 +129,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### This cmdlet does not generate any output.
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 
 ## NOTES
 

@@ -14,32 +14,71 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ServiceBus.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
     /// <summary>
     /// 'Remove-AzureRmServiceBusNamespace' Cmdlet deletes the specified ServiceBus Namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServiceBusNamespaceVerb, SupportsShouldProcess = true)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNamespace", DefaultParameterSetName = NamespacePropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ParameterSetName = NamespacePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = NamespacePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name.")]
         [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Service Bus Namespace Object")]
+        [ValidateNotNullOrEmpty]
+        public PSNamespaceAttributes InputObject { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Service Bus Namespace Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            if (ParameterSetName.Equals(NamespaceInputObjectParameterSet))
+            {
+                ResourceGroupName = InputObject.ResourceGroup;
+                Name = InputObject.Name;
+            }
+            else if (ParameterSetName.Equals(NamespaceResourceIdParameterSet))
+            {
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(InputObject.Id);
+                ResourceGroupName = identifier.ResourceGroupName;
+                Name = identifier.ResourceName;
+            }
+
             // delete a namespace             
             if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveNamespace, Name, ResourceGroupName)))
             {
-                Client.BeginDeleteNamespace(ResourceGroupName, Name);
+                try
+                {
+                    var result = Client.BeginDeleteNamespace(ResourceGroupName, Name);
+                    if (PassThru)
+                    {
+                        WriteObject(result);
+                    }
+                }
+                catch (Management.ServiceBus.Models.ErrorResponseException ex)
+                {
+                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                }
             }
         }
     }

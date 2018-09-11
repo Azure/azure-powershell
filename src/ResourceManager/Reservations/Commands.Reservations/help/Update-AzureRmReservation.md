@@ -14,14 +14,16 @@ Update a `Reservation`.
 
 ### CommandLine (Default)
 ```
-Update-AzureRmReservation -ReservationOrderId <String> -ReservationId <String> -AppliedScopeType <String>
- [-AppliedScope <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmReservation -ReservationOrderId <Guid> -ReservationId <Guid> -AppliedScopeType <String>
+ [-AppliedScope <String>] [-InstanceFlexibility <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PipeObject
 ```
-Update-AzureRmReservation -AppliedScopeType <String> [-AppliedScope <String>] -Reservation <PSReservation>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmReservation -AppliedScopeType <String> [-AppliedScope <String>] [-InstanceFlexibility <String>]
+ -Reservation <PSReservation> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,17 +33,17 @@ Updates the applied scopes of the `Reservation`.
 
 ### Example 1
 ```
-PS C:\> Update-AzureRmReservation -ReservationOrderId "11111111-1111-1111-1111-1111111111" -ReservationId "00000000-1111-1111-1111-0000000000" -appliedScopeType "Single" -appliedscope "/subscriptions/1111aaaa-b1b2-c0c2-d0d2-00000fffff"
+PS C:\> Update-AzureRmReservation -ReservationOrderId "11111111-1111-1111-1111-1111111111" -ReservationId "00000000-1111-1111-1111-0000000000" -appliedScopeType "Single" -appliedscope "/subscriptions/1111aaaa-b1b2-c0c2-d0d2-00000fffff" -InstanceFlexibility "On"
 ```
 
-Updates the AppliedScopeType of the specified reservation to Single
+Updates the AppliedScopeType of the specified `Reservation` to Single and InstanceFlexibility to On.
 
 ### Example 2
 ```
-PS C:\> Update-AzureRmReservation -ReservationOrderId "11111111-1111-1111-1111-1111111111" -ReservationId "00000000-1111-1111-1111-0000000000" -appliedscopetype "Shared"
+PS C:\> Update-AzureRmReservation -ReservationOrderId "11111111-1111-1111-1111-1111111111" -ReservationId "00000000-1111-1111-1111-0000000000" -appliedscopetype "Shared" -InstanceFlexibility "Off"
 ```
 
-Updates the AppliedScopeType of the specified reservation to Shared
+Updates the AppliedScopeType of the specified `Reservation` to Shared and InstanceFlexibility to Off.
 
 ## PARAMETERS
 
@@ -49,9 +51,9 @@ Updates the AppliedScopeType of the specified reservation to Shared
 SubscriptionId for this `Reservation` to be applied
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -61,13 +63,12 @@ Accept wildcard characters: False
 ```
 
 ### -AppliedScopeType
-Type of the `Reservation` to be updated
+Type of the Applied Scope
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: Single, Shared
+Aliases:
 
 Required: True
 Position: Named
@@ -80,9 +81,24 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceFlexibility
+If present, updates the InstanceFlexibility value of the `Reservation`. If not specified, the existing value remains unchanged.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -95,9 +111,9 @@ Accept wildcard characters: False
 Pipe object parameter for `Reservation`
 
 ```yaml
-Type: PSReservation
+Type: Microsoft.Azure.Commands.Reservations.Models.PSReservation
 Parameter Sets: PipeObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -110,9 +126,9 @@ Accept wildcard characters: False
 Id of the `Reservation` to update
 
 ```yaml
-Type: String
+Type: System.Guid
 Parameter Sets: CommandLine
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -125,9 +141,9 @@ Accept wildcard characters: False
 Id of the `ReservationOrder` to update
 
 ```yaml
-Type: String
+Type: System.Guid
 Parameter Sets: CommandLine
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -140,7 +156,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -155,7 +171,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -172,6 +188,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Reservations.Models.PSReservation
+Parameters: Reservation (ByValue)
 
 ## OUTPUTS
 
@@ -180,4 +197,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

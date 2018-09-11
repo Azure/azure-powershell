@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsDiagnostic.Test, ContainerRegistryNameAvailabilityNoun)]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryNameAvailability")]
     [OutputType(typeof(RegistryNameStatus))]
     public class TestAzureContainerRegistryNameAvailability : ContainerRegistryCmdletBase
     {

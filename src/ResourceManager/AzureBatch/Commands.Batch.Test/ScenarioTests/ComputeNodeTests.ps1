@@ -35,7 +35,8 @@ function Test-RemoveComputeNodes
     $select = "id,state"
     $computeNodes = Get-AzureBatchComputeNode -PoolId $poolId -Select $select -BatchContext $context
     $start = [DateTime]::Now
-    $end = $start.AddSeconds(30)
+    $timeout = Compute-TestTimeout 30
+    $end = $start.AddSeconds($timeout)
     while ($computeNodes[0].State -ne 'LeavingPool' -and $computeNodes[1].State -ne 'LeavingPool')
     {
         if ([DateTime]::Now -gt $end)

@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Scheduler.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Scheduler
 ms.assetid: D9FA686C-48BB-48A1-926C-56B8151F8F82
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.scheduler/set-azurermschedulerhttpjob
 schema: 2.0.0
@@ -23,10 +23,8 @@ Set-AzureRmSchedulerHttpJob -ResourceGroupName <String> -JobCollectionName <Stri
 
 ## DESCRIPTION
 The **Set-AzureRmSchedulerHttpJob** cmdlet modifies an HTTP job in Azure Scheduler.
-
 This cmdlet supports dynamic parameters based on the *ErrorActionType* and *HttpAuthenticationType* parameters.
 Dynamic parameters become available based on other parameter values.
-
 To discover the names of dynamic parameters after you specify the other parameters, type a hyphen (-), and then press the Tab key repeatedly to cycle through the available parameters.
 If you omit a required parameter, the cmdlet prompts you for the value.
 
@@ -38,7 +36,7 @@ If you omit a required parameter, the cmdlet prompts you for the value.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -54,9 +52,9 @@ Specifies an end time, as a **DateTime** object, for the job.
 To obtain a **DateTime** object, use the Get-Date cmdlet.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -68,7 +66,6 @@ Accept wildcard characters: False
 ### -ErrorActionType
 Specifies an error action setting for the job.
 The acceptable values for this parameter are:
-
 - Http 
 - Https 
 - StorageQueue 
@@ -76,9 +73,9 @@ The acceptable values for this parameter are:
 - ServiceBusTopic
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Http, Https, StorageQueue, ServiceBusQueue, ServiceBusTopic
 
 Required: False
@@ -93,9 +90,9 @@ Specifies how many times the job runs.
 By default, a job recurs indefinitely.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -107,7 +104,6 @@ Accept wildcard characters: False
 ### -Frequency
 Specifies the maximum frequency for the job.
 The acceptable values for this parameter are:
-
 - Minute 
 - Hour 
 - Day 
@@ -115,9 +111,9 @@ The acceptable values for this parameter are:
 - Month
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Minute, Hour, Day, Week, Month
 
 Required: False
@@ -131,9 +127,9 @@ Accept wildcard characters: False
 Specifies a hash table that contains headers.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -145,16 +141,15 @@ Accept wildcard characters: False
 ### -HttpAuthenticationType
 Specifies the HTTP authentication type.
 The acceptable values for this parameter are:
-
 - None 
 - ClientCertificate 
 - ActiveDirectoryOAuth 
 - Basic
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, ClientCertificate, ActiveDirectoryOAuth, Basic
 
 Required: False
@@ -168,9 +163,9 @@ Accept wildcard characters: False
 Specifies an interval of recurrence for the job.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,7 +178,7 @@ Accept wildcard characters: False
 Specifies the name of the job collection to which the job belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name, ResourceName
 
@@ -198,9 +193,9 @@ Accept wildcard characters: False
 Specifies the name of the job that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -212,14 +207,13 @@ Accept wildcard characters: False
 ### -JobState
 Specifies the state of the job.
 The acceptable values for this parameter are:
-
 - Enabled 
 - Disabled
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled
 
 Required: False
@@ -232,16 +226,15 @@ Accept wildcard characters: False
 ### -Method
 Specifies the method for the action types for this job.
 The acceptable values for this parameter are:
-
 - GET 
 - PUT 
 - POST 
 - DELETE
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: GET, PUT, POST, DELETE
 
 Required: False
@@ -255,9 +248,9 @@ Accept wildcard characters: False
 Specifies the value of the body for PUT and POST job actions.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -270,9 +263,9 @@ Accept wildcard characters: False
 Specifies the resource group to which the job belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -285,9 +278,9 @@ Accept wildcard characters: False
 Specifies the start time, as a **DateTime** object, for the job.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -300,9 +293,9 @@ Accept wildcard characters: False
 Specifies a URI for the job action.
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -315,7 +308,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -331,7 +324,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -347,8 +340,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Collections.Hashtable
 
 ## OUTPUTS
 

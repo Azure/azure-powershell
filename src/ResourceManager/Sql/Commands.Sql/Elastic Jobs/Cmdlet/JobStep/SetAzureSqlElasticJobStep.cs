@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     /// <summary>
     /// Defines the Set-AzureRmSqlElasticJobStep Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlElasticJobStep",
+    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlElasticJobStep",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureSqlElasticJobStepModel))]

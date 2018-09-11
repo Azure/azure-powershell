@@ -1,4 +1,4 @@
-
+﻿
 
 // ----------------------------------------------------------------------------------
 //
@@ -26,8 +26,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmPublicIpAddress", SupportsShouldProcess = true),
-        OutputType(typeof(PSPublicIpAddress))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpAddress", SupportsShouldProcess = true),OutputType(typeof(PSPublicIpAddress))]
     public class NewAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -102,6 +101,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The PublicIpPrefix to use for Public IP address")]
+        public PSPublicIpPrefix PublicIpPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Reverse FQDN.")]
         public string ReverseFqdn { get; set; }
 
@@ -134,7 +139,6 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsPublicIpAddressPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
@@ -157,6 +161,7 @@ namespace Microsoft.Azure.Commands.Network
             publicIp.PublicIpAllocationMethod = this.AllocationMethod;
             publicIp.PublicIpAddressVersion = this.IpAddressVersion;
             publicIp.Zones = this.Zone;
+            publicIp.PublicIpPrefix = this.PublicIpPrefix;
 
             if (!string.IsNullOrEmpty(this.Sku))
             {
@@ -193,4 +198,3 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
-

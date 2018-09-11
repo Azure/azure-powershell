@@ -45,13 +45,18 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 Name = subscriptionResource.Name;
                 ForwardTo = subscriptionResource.ForwardTo;
                 ForwardDeadLetteredMessagesTo = subscriptionResource.ForwardDeadLetteredMessagesTo;
-                DeadLetteringOnFilterEvaluationExceptions = subscriptionResource.DeadLetteringOnFilterEvaluationExceptions;            
+                DeadLetteringOnFilterEvaluationExceptions = subscriptionResource.DeadLetteringOnFilterEvaluationExceptions;
+                Id = subscriptionResource.Id;       
             }
         }
 
+        /// <summary>
+        /// Subscription name.
+        /// </summary> 
+        public string Id { get; set; }
 
         /// <summary>
-        /// Queue name.
+        /// Subscription name.
         /// </summary> 
         public string Name { get; set; }
 

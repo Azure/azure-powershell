@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,9 +24,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsData.Restore, "AzureRmSqlDatabase",
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabase",
         DefaultParameterSetName = FromPointInTimeBackupSetName,
-        ConfirmImpact = ConfirmImpact.None)]
+        ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlDatabaseModel))]
     public class RestoreAzureRmSqlDatabase
         : AzureSqlCmdletBase<Database.Model.AzureSqlDatabaseModel, AzureSqlDatabaseBackupAdapter>
     {
@@ -238,13 +238,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets the compute generation of the database copy
         /// </summary>
         [Parameter(ParameterSetName = FromPointInTimeBackupWithVcoreSetName, Mandatory = true,
-            HelpMessage = "The compute generation of the restored Azure Sql Database.")]
+            HelpMessage = "The compute generation to assign to the restored database.")]
         [Parameter(ParameterSetName = FromDeletedDatabaseBackupWithVcoreSetName, Mandatory = true,
-            HelpMessage = "The compute generation of the restored Azure Sql Database.")]
+            HelpMessage = "The compute generation to assign to the restored database.")]
         [Parameter(ParameterSetName = FromGeoBackupWithVcoreSetName, Mandatory = true,
-            HelpMessage = "The compute generation of the restored Azure Sql Database.")]
+            HelpMessage = "The compute generation to assign to the restored database.")]
         [Parameter(ParameterSetName = FromLongTermRetentionBackupWithVcoreSetName, Mandatory = true,
-            HelpMessage = "The compute generation of the restored Azure Sql Database.")]
+            HelpMessage = "The compute generation to assign to the restored database.")]
         [Alias("Family")]
         [PSArgumentCompleter("Gen4", "Gen5")]
         [ValidateNotNullOrEmpty]

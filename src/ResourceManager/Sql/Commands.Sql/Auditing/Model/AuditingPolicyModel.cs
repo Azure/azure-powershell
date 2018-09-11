@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 {
     /// <summary>
@@ -54,6 +56,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         /// Gets or sets the storage account name
         /// </summary>
         public string StorageAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the id of the storage account subscription.
+        /// </summary>
+        public Guid StorageAccountSubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets the storage key type

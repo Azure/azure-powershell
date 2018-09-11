@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSubnet))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSubnet))]
     public class NewAzureVirtualNetworkSubnetConfigCommand : AzureVirtualNetworkSubnetConfigBase
     {
         [Parameter(
@@ -71,6 +71,10 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            if (this.ServiceEndpointPolicy != null)
+            {
+                subnet.ServiceEndpointPolicies = this.ServiceEndpointPolicy;
+            }
 
             WriteObject(subnet);
         }

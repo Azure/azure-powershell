@@ -18,7 +18,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsCommon.Get, Constants.StreamAnalyticsFunction), OutputType(typeof(List<PSFunction>), typeof(PSFunction))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StreamAnalyticsFunction"), OutputType(typeof(PSFunction))]
     public class GetAzureStreamAnalyticsFunctionCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]

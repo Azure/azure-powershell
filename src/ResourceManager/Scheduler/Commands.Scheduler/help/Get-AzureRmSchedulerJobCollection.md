@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Scheduler.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Scheduler
 ms.assetid: 600B621A-1311-4A05-9807-7B0E49D5A63C
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.scheduler/get-azurermschedulerjobcollection
 schema: 2.0.0
@@ -29,7 +29,7 @@ The **Get-AzureRmSchedulerJobCollection** cmdlet gets job collections in Azure S
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -44,7 +44,7 @@ Accept wildcard characters: False
 Specifies the name of a job collection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name, ResourceName
 
@@ -59,9 +59,9 @@ Accept wildcard characters: False
 Specifies resource group from which this cmdlet gets job collections.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -75,12 +75,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition
 
 ## NOTES
 

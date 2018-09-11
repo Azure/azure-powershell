@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,11 +28,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New,
-         "AzureRmVirtualNetworkGateway",
-         SupportsShouldProcess = true,
-         DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default),
-     OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGateway",SupportsShouldProcess = true,DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default),OutputType(typeof(PSVirtualNetworkGateway))]
     public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -127,6 +123,12 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw1AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw2AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw3AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw1AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw2AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw3AZ,
             IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
@@ -149,7 +151,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The list of P2S VPN client tunneling protocols")]
         [ValidateSet(
             MNM.VpnClientProtocol.SSTP,
-            MNM.VpnClientProtocol.IkeV2)]
+            MNM.VpnClientProtocol.IkeV2,
+            MNM.VpnClientProtocol.OpenVPN)]
         [ValidateNotNullOrEmpty]
         public List<string> VpnClientProtocol { get; set; }
 
@@ -216,7 +219,6 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.Name);
             string warningMsg = string.Empty;
             string continueMsg = Properties.Resources.CreatingResourceMessage;
@@ -272,16 +274,6 @@ namespace Microsoft.Azure.Commands.Network
             if (this.EnableActiveActiveFeature.IsPresent && !this.VpnType.Equals(MNM.VpnType.RouteBased))
             {
                 throw new ArgumentException("Virtual Network Gateway VpnType should be " + MNM.VpnType.RouteBased + " when Active-Active feature flag is set to True.");
-            }
-
-            if (this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Count != 2)
-            {
-                throw new ArgumentException("Virtual Network Gateway should have 2 Gateway IpConfigurations specified when Active-Active feature flag is True.");
-            }
-
-            if (!this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Count == 2)
-            {
-                throw new ArgumentException("Virtual Network Gateway should have Active-Active feature flag set to True as there are 2 Gateway IpConfigurations specified. OR there should be only one Gateway IpConfiguration specified.");
             }
 
             if (this.IpConfigurations != null)

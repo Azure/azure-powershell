@@ -32,7 +32,6 @@ PS C:\> Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Applic
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and then stores it in the $AppGw variable.
-
 The second command enables the firewall configuration for the application gateway stored in $AppGw and sets the firewall mode to "Detection", RuleSetType to "OWASP" and the RuleSetVersion to "3.0".
 
 ## PARAMETERS
@@ -42,7 +41,7 @@ Specifies an application gateway object.
 You can use the Get-AzureRmApplicationGateway cmdlet to get an application gateway object.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -57,7 +56,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,7 +86,7 @@ Accept wildcard characters: False
 Indicates whether the web application firewall is enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -101,12 +100,11 @@ Accept wildcard characters: False
 ### -FirewallMode
 Specifies the web application firewall mode.
 The acceptable values for this parameter are:
-
 - Detection
 - Prevention
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Detection, Prevention
@@ -121,11 +119,10 @@ Accept wildcard characters: False
 ### -RuleSetType
 The type of the web application firewall rule set. 
 The acceptable values for this parameter are: 
-
 - OWASP
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: OWASP
@@ -140,12 +137,11 @@ Accept wildcard characters: False
 ### -RuleSetVersion
 The version of the rule set type.
 The acceptable values for this parameter are: 
-
 - 3.0
 - 2.2.9
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: 3.0, 2.2.9
@@ -161,7 +157,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -176,7 +172,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -192,8 +188,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSApplicationGateway
-Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models",
             "Name": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.PSResourceProviderOperation, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsDataAction": "System.Boolean",
               "Operation": "System.String",
@@ -206,16 +206,56 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
+            "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "CanDelegate": "System.Boolean",
+              "ObjectId": "System.Guid",
+              "RoleAssignmentId": "System.String",
+              "Scope": "System.String",
+              "DisplayName": "System.String",
+              "SignInName": "System.String",
+              "RoleDefinitionName": "System.String",
+              "RoleDefinitionId": "System.String",
+              "ObjectType": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -435,7 +475,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "ObjectId": "System.Guid",
@@ -2375,7 +2415,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CanDelegate": "System.Boolean",
                     "ObjectId": "System.Guid",
@@ -2513,16 +2553,56 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
+            "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "CanDelegate": "System.Boolean",
+              "ObjectId": "System.Guid",
+              "RoleAssignmentId": "System.String",
+              "Scope": "System.String",
+              "DisplayName": "System.String",
+              "SignInName": "System.String",
+              "RoleDefinitionName": "System.String",
+              "RoleDefinitionId": "System.String",
+              "ObjectType": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -5366,7 +5446,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CanDelegate": "System.Boolean",
               "ObjectId": "System.Guid",
@@ -7522,16 +7602,56 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
+            "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "IsCustom": "System.Boolean",
+              "Actions": "System.Collections.Generic.List`1[System.String]",
+              "NotActions": "System.Collections.Generic.List`1[System.String]",
+              "DataActions": "System.Collections.Generic.List`1[System.String]",
+              "NotDataActions": "System.Collections.Generic.List`1[System.String]",
+              "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Description": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -7978,7 +8098,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8057,7 +8177,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8222,7 +8342,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8381,7 +8501,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8460,7 +8580,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8625,7 +8745,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -8839,7 +8959,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
             "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "IsCustom": "System.Boolean",
               "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -9269,7 +9389,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "IsCustom": "System.Boolean",
                     "Actions": "System.Collections.Generic.List`1[System.String]",
@@ -9524,7 +9644,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Id": "System.String",
               "Type": "System.String",
@@ -9587,7 +9707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -9647,21 +9767,6 @@
                 ]
               }
             ]
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -9852,7 +9957,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -10568,7 +10673,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -10714,7 +10819,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11276,7 +11381,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11349,7 +11454,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
             "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
               "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11513,7 +11618,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -11658,7 +11763,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
                   "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
                     "UpdatedTime": "System.Nullable`1[System.DateTime]",
@@ -12346,7 +12451,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -12499,7 +12604,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -12614,7 +12719,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -12729,7 +12834,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -12882,7 +12987,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -12997,7 +13102,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -13064,7 +13169,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -13692,16 +13797,56 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory",
+            "Name": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication",
+            "AssemblyQualifiedName": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "AvailableToOtherTenants": "System.Boolean",
+              "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
+              "AppPermissions": "System.Collections.Generic.IList`1[System.String]",
+              "ReplyUrls": "System.Collections.Generic.IList`1[System.String]",
+              "ObjectId": "System.Guid",
+              "ApplicationId": "System.Guid",
+              "DisplayName": "System.String",
+              "HomePage": "System.String",
+              "Type": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -14230,16 +14375,50 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADObject]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADObject, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory",
+            "Name": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADObject",
+            "AssemblyQualifiedName": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADObject, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Id": "System.Guid",
+              "DisplayName": "System.String",
+              "Type": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADObject"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -14676,16 +14855,52 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory",
+            "Name": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup",
+            "AssemblyQualifiedName": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Id": "System.Guid",
+              "SecurityEnabled": "System.Nullable`1[System.Boolean]",
+              "MailNickname": "System.String",
+              "DisplayName": "System.String",
+              "Type": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -15111,16 +15326,52 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory",
+            "Name": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal",
+            "AssemblyQualifiedName": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ApplicationId": "System.Guid",
+              "Id": "System.Guid",
+              "DisplayName": "System.String",
+              "Type": "System.String",
+              "ServicePrincipalNames": "System.String[]"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -16392,16 +16643,51 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory",
+            "Name": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser",
+            "AssemblyQualifiedName": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Id": "System.Guid",
+              "UserPrincipalName": "System.String",
+              "DisplayName": "System.String",
+              "Type": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -24471,7 +24757,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -24624,7 +24910,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -24739,7 +25025,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -24854,7 +25140,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -25007,7 +25293,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -25122,7 +25408,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -25189,7 +25475,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": true,
+              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -34250,58 +34536,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment": {
-      "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
-      "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "CanDelegate": "System.Boolean",
-        "ObjectId": "System.Guid",
-        "RoleAssignmentId": "System.String",
-        "Scope": "System.String",
-        "DisplayName": "System.String",
-        "SignInName": "System.String",
-        "RoleDefinitionName": "System.String",
-        "RoleDefinitionId": "System.String",
-        "ObjectType": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
     "System.Guid": {
       "Namespace": "System",
       "Name": "System.Guid",
@@ -34311,58 +34545,6 @@
       "GenericTypeArguments": [],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition": {
-      "Namespace": "Microsoft.Azure.Commands.Resources.Models.Authorization",
-      "Name": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "IsCustom": "System.Boolean",
-        "Actions": "System.Collections.Generic.List`1[System.String]",
-        "NotActions": "System.Collections.Generic.List`1[System.String]",
-        "DataActions": "System.Collections.Generic.List`1[System.String]",
-        "NotDataActions": "System.Collections.Generic.List`1[System.String]",
-        "AssignableScopes": "System.Collections.Generic.List`1[System.String]",
-        "Name": "System.String",
-        "Id": "System.String",
-        "Description": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
     },
     "System.Collections.Generic.List`1[System.String]": {
       "Namespace": "System.Collections.Generic",
@@ -34379,7 +34561,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -34391,7 +34573,7 @@
     "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo": {
       "Namespace": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups",
       "Name": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.Commands.Resources, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo, Microsoft.Azure.Commands.Resources, Version=6.4.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Children": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupChildInfo]",
         "Type": "System.String",
@@ -34480,200 +34662,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication": {
-      "Namespace": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory",
-      "Name": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication",
-      "AssemblyQualifiedName": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "AvailableToOtherTenants": "System.Boolean",
-        "IdentifierUris": "System.Collections.Generic.IList`1[System.String]",
-        "AppPermissions": "System.Collections.Generic.IList`1[System.String]",
-        "ReplyUrls": "System.Collections.Generic.IList`1[System.String]",
-        "ObjectId": "System.Guid",
-        "ApplicationId": "System.Guid",
-        "DisplayName": "System.String",
-        "HomePage": "System.String",
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADObject": {
-      "Namespace": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory",
-      "Name": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADObject",
-      "AssemblyQualifiedName": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADObject, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Id": "System.Guid",
-        "DisplayName": "System.String",
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup": {
-      "Namespace": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory",
-      "Name": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup",
-      "AssemblyQualifiedName": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Id": "System.Guid",
-        "SecurityEnabled": "System.Nullable`1[System.Boolean]",
-        "MailNickname": "System.String",
-        "DisplayName": "System.String",
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal": {
-      "Namespace": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory",
-      "Name": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal",
-      "AssemblyQualifiedName": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "ApplicationId": "System.Guid",
-        "Id": "System.Guid",
-        "DisplayName": "System.String",
-        "Type": "System.String",
-        "ServicePrincipalNames": "System.String[]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
     "System.String[]": {
       "Namespace": "System",
       "Name": "System.String[]",
@@ -34683,53 +34671,6 @@
       "GenericTypeArguments": [],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser": {
-      "Namespace": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory",
-      "Name": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser",
-      "AssemblyQualifiedName": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser, Microsoft.Azure.Commands.Common.Graph.RBAC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Id": "System.Guid",
-        "UserPrincipalName": "System.String",
-        "DisplayName": "System.String",
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
     },
     "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADPasswordCredential": {
       "Namespace": "Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory",

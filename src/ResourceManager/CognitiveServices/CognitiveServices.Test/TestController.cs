@@ -64,11 +64,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
         public void RunPsTest(XunitTracingInterceptor traceInterceptor, params string[] scripts)
         {
             helper.TracingInterceptor = traceInterceptor;
-            RunPsTest(scripts);
-        }
-
-        public void RunPsTest(params string[] scripts)
-        {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
@@ -76,7 +71,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -119,7 +114,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     "AzureRM.Resources.ps1",
                     helper.GetRMModulePath("AzureRM.CognitiveServices.psd1")
                 );

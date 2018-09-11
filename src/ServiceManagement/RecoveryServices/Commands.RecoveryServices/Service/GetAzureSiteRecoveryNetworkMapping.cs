@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Retrieves Azure Site Recovery Network mappings.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryNetworkMapping")]
-    [OutputType(typeof(IEnumerable<ASRNetworkMapping>))]
+    [OutputType(typeof(ASRNetworkMapping))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
         "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]

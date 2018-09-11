@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     /// <summary>
     /// Get a list of Storage accounts from the StorSimple Service config or retrieves a specified Storage Account Cred
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleStorageAccountCredential"), OutputType(typeof(StorageAccountCredential), typeof(IList<StorageAccountCredential>))]
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleStorageAccountCredential"), OutputType(typeof(StorageAccountCredential))]
     public class GetAzureStorSimpleStorageAccountCredential : StorSimpleCmdletBase
     {
         [Alias("Name")]

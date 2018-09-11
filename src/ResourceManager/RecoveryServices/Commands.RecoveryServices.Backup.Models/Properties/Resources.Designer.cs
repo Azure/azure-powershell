@@ -1031,7 +1031,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("UnExpectedWorkLoadTypeException", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///  Looks up a localized string similar to The backup VM is unmanaged and hence the disks will be restored to the storage account provided.
+        /// </summary>
+        public static string UnManagedBackupVmWarning {
+            get {
+                return ResourceManager.GetString("UnManagedBackupVmException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Please provide AzureRmBackupManagementServer of BackupEngineType as DpmEngine or DpmVenusEngine and provide BackupManagementType as SCDPM. Provided AzureRmBackupManagementServer has BackupEngineType {0} and backupManagementType {1} which is not valid..
         /// </summary>
@@ -1065,6 +1074,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string UnsupportedJobWarning {
             get {
                 return ResourceManager.GetString("UnsupportedJobWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The resource type {0} is currently not supported..
+        /// </summary>
+        public static string UnsupportedResourceTypeException {
+            get {
+                return ResourceManager.GetString("UnsupportedResourceTypeException", resourceCulture);
             }
         }
         

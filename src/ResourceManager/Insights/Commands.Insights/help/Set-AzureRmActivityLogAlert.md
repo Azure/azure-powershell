@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 7436F31F-9DCB-4365-BA6D-41BDB5D7FCB6
@@ -48,7 +48,6 @@ Set-AzureRmActivityLogAlert [-Scope <System.Collections.Generic.List`1[System.St
 The **Set-AzureRmActivityLogAlert** cmdlet creates a new or sets an existing activity log alert.
 For tags, conditions, and actions the objects must be created in advance and passed as parameters in this call as a comma separated (see the example below).
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating/modifying the resource.
-
 **NOTE**: This cmdlet and its related ones replaces the deprecated (November 2017) **Add-AzureRmLogAlertRule**.
 
 ## EXAMPLES
@@ -112,7 +111,7 @@ The list of action groups for the activity log alert.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]
 Parameter Sets: SetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -124,7 +123,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -136,7 +135,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]
 Parameter Sets: SetByInputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -147,13 +146,12 @@ Accept wildcard characters: False
 
 ### -Condition
 The list of conditions for the activity log alert.
-
 **NOTE**: In the list of conditions there must be at least one with the Field equal to "Category". The backend responds with 400 (BadRequest) if this condition is not present.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]
 Parameter Sets: SetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -165,7 +163,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -177,7 +175,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]
 Parameter Sets: SetByInputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -190,7 +188,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -205,9 +203,9 @@ Accept wildcard characters: False
 The description of the alert resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameAndResourceGroup, SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -217,9 +215,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByInputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -232,9 +230,9 @@ Accept wildcard characters: False
 Allows the user to create a disabled the activity log alert. If not given, the alerts are created enabled.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SetByNameAndResourceGroup, SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -247,9 +245,9 @@ Accept wildcard characters: False
 Sets the InputObject tags property of the call to extract the required name, and resource group name properties.
 
 ```yaml
-Type: PSActivityLogAlertResource
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource
 Parameter Sets: SetByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -262,9 +260,9 @@ Accept wildcard characters: False
 The location where the activity log alert will exist.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -274,9 +272,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -289,9 +287,9 @@ Accept wildcard characters: False
 The name of the activity log alert.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -304,9 +302,9 @@ Accept wildcard characters: False
 The name of the resource group where the alert resource is going to exist.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -319,9 +317,9 @@ Accept wildcard characters: False
 Sets the ResourceId tags property of the call to extract the required name, resource group name properties.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -336,7 +334,7 @@ The list of scopes for the activity log alert.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -348,7 +346,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -360,7 +358,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByInputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -375,7 +373,7 @@ Sets the tags property of the activity log alert resource.
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
 Parameter Sets: SetByNameAndResourceGroup, SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -387,7 +385,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
 Parameter Sets: SetByInputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -400,7 +398,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -415,7 +413,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -431,8 +429,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition, Microsoft.Azure.Commands.Insights, Version=5.1.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup, Microsoft.Azure.Commands.Insights, Version=5.1.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
