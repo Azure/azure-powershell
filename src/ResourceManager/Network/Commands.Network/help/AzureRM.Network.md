@@ -63,7 +63,7 @@ Adds a backend address pool configuration to a load balancer.
 Adds a front-end IP configuration to a load balancer.
 
 ### [Add-AzureRmLoadBalancerInboundNatPoolConfig](Add-AzureRmLoadBalancerInboundNatPoolConfig.md)
-Adds an inbound NAT pool configuration to a load balancer.
+
 
 ### [Add-AzureRmLoadBalancerInboundNatRuleConfig](Add-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Adds an inbound NAT rule configuration to a load balancer.
@@ -85,6 +85,9 @@ Adds a route to a route table.
 
 ### [Add-AzureRmRouteFilterRuleConfig](Add-AzureRmRouteFilterRuleConfig.md)
 Adds a route filter rule to a route filter.
+
+### [Add-AzureRmServiceEndpointPolicyDefinition](Add-AzureRmServiceEndpointPolicyDefinition.md)
+{{Fill in the Synopsis}}
 
 ### [Add-AzureRmVirtualNetworkGatewayIpConfig](Add-AzureRmVirtualNetworkGatewayIpConfig.md)
 Adds an IP configuration to a virtual network gateway.
@@ -216,7 +219,7 @@ Gets a backend address pool configuration for a load balancer.
 Gets a front-end IP configuration in a load balancer.
 
 ### [Get-AzureRmLoadBalancerInboundNatPoolConfig](Get-AzureRmLoadBalancerInboundNatPoolConfig.md)
-Gets an inbound NAT pool configuration for a load balancer.
+
 
 ### [Get-AzureRmLoadBalancerInboundNatRuleConfig](Get-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Gets an inbound NAT rule configuration for a load balancer.
@@ -266,7 +269,7 @@ Gets information and properties and status of a packet capture resource.
 ### [Get-AzureRmNetworkWatcherReachabilityProvidersList](Get-AzureRmNetworkWatcherReachabilityProvidersList.md)
 Lists all available internet service providers for a specified Azure region.
 
-### [Get-AzureRMNetworkWatcherReachabilityReport](Get-AzureRMNetworkWatcherReachabilityReport.md)
+### [Get-AzureRmNetworkWatcherReachabilityReport](Get-AzureRmNetworkWatcherReachabilityReport.md)
 Gets the relative latency score for internet service providers from a specified location to Azure regions.
 
 ### [Get-AzureRmNetworkWatcherSecurityGroupView](Get-AzureRmNetworkWatcherSecurityGroupView.md)
@@ -281,6 +284,9 @@ Gets the troubleshooting result from the previously run or currently running tro
 ### [Get-AzureRmPublicIpAddress](Get-AzureRmPublicIpAddress.md)
 Gets a public IP address.
 
+### [Get-AzureRmPublicIpPrefix](Get-AzureRmPublicIpPrefix.md)
+Gets a public IP prefix
+
 ### [Get-AzureRmRouteConfig](Get-AzureRmRouteConfig.md)
 Gets routes from a route table.
 
@@ -292,6 +298,12 @@ Gets routes from a route table.
 
 ### [Get-AzureRmRouteTable](Get-AzureRmRouteTable.md)
 Gets route tables.
+
+### [Get-AzureRmServiceEndpointPolicy](Get-AzureRmServiceEndpointPolicy.md)
+{{Fill in the Synopsis}}
+
+### [Get-AzureRmServiceEndpointPolicyDefinition](Get-AzureRmServiceEndpointPolicyDefinition.md)
+{{Fill in the Synopsis}}
 
 ### [Get-AzureRmVirtualNetwork](Get-AzureRmVirtualNetwork.md)
 Gets a virtual network in a resource group.
@@ -312,7 +324,7 @@ Lists an Azure virtual network gateway's BGP peers
 Gets a Virtual Network Gateway Connection
 
 ### [Get-AzureRmVirtualNetworkGatewayConnectionSharedKey](Get-AzureRmVirtualNetworkGatewayConnectionSharedKey.md)
-
+Displays the shared key used for the connection.
 
 ### [Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript](Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript.md)
 This commandlet takes the connection resource, VPN device brand, model, firmware version, and return the corresponding configuration script that customers can apply directly on their on-premises VPN devices. The script will follow the syntax of the selected device, and fill in the necessary parameters such as Azure gateway public IP addresses, virtual network address prefixes, VPN tunnel pre-shared key, etc. so customers can simply copy-paste to their VPN device configurations.
@@ -438,7 +450,7 @@ Creates a backend address pool configuration for a load balancer.
 Creates a front-end IP configuration for a load balancer.
 
 ### [New-AzureRmLoadBalancerInboundNatPoolConfig](New-AzureRmLoadBalancerInboundNatPoolConfig.md)
-Creates an inbound NAT pool configuration for a load balancer.
+
 
 ### [New-AzureRmLoadBalancerInboundNatRuleConfig](New-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Creates an inbound NAT rule configuration for a load balancer.
@@ -482,6 +494,9 @@ Creates a new packet capture filter object.
 ### [New-AzureRmPublicIpAddress](New-AzureRmPublicIpAddress.md)
 Creates a public IP address.
 
+### [New-AzureRmPublicIpPrefix](New-AzureRmPublicIpPrefix.md)
+Creates a Public IP Prefix
+
 ### [New-AzureRmPublicIpTag](New-AzureRmPublicIpTag.md)
 Creates an IP Tag.
 
@@ -496,6 +511,12 @@ Creates a route filter rule for a route filter.
 
 ### [New-AzureRmRouteTable](New-AzureRmRouteTable.md)
 Creates a route table.
+
+### [New-AzureRmServiceEndpointPolicy](New-AzureRmServiceEndpointPolicy.md)
+{{Fill in the Synopsis}}
+
+### [New-AzureRmServiceEndpointPolicyDefinition](New-AzureRmServiceEndpointPolicyDefinition.md)
+{{Fill in the Synopsis}}
 
 ### [New-AzureRmVirtualNetwork](New-AzureRmVirtualNetwork.md)
 Creates a virtual network.
@@ -600,7 +621,7 @@ Removes a backend address pool configuration from a load balancer.
 Removes a front-end IP configuration from a load balancer.
 
 ### [Remove-AzureRmLoadBalancerInboundNatPoolConfig](Remove-AzureRmLoadBalancerInboundNatPoolConfig.md)
-Removes an inbound NAT pool configuration from a load balancer.
+
 
 ### [Remove-AzureRmLoadBalancerInboundNatRuleConfig](Remove-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Removes an inbound NAT rule configuration from a load balancer.
@@ -638,6 +659,9 @@ Removes a packet capture resource.
 ### [Remove-AzureRmPublicIpAddress](Remove-AzureRmPublicIpAddress.md)
 Removes a public IP address.
 
+### [Remove-AzureRmPublicIpPrefix](Remove-AzureRmPublicIpPrefix.md)
+Removes a public IP prefix
+
 ### [Remove-AzureRmRouteConfig](Remove-AzureRmRouteConfig.md)
 Removes a route from a route table.
 
@@ -649,6 +673,12 @@ Removes a route from a route table.
 
 ### [Remove-AzureRmRouteTable](Remove-AzureRmRouteTable.md)
 Removes a route table.
+
+### [Remove-AzureRmServiceEndpointPolicy](Remove-AzureRmServiceEndpointPolicy.md)
+{{Fill in the Synopsis}}
+
+### [Remove-AzureRmServiceEndpointPolicyDefinition](Remove-AzureRmServiceEndpointPolicyDefinition.md)
+{{Fill in the Synopsis}}
 
 ### [Remove-AzureRmVirtualNetwork](Remove-AzureRmVirtualNetwork.md)
 Removes a virtual network.
@@ -663,7 +693,7 @@ Deletes a Virtual Network Gateway Connection
 Removes the default site from a virtual network gateway.
 
 ### [Remove-AzureRmVirtualNetworkGatewayIpConfig](Remove-AzureRmVirtualNetworkGatewayIpConfig.md)
-Removes a virtual network gateway ip configuration.
+Removes an IP Configuration from a Virtual Network Gateway
 
 ### [Remove-AzureRmVirtualNetworkPeering](Remove-AzureRmVirtualNetworkPeering.md)
 Removes a virtual network peering.
@@ -681,10 +711,10 @@ Removes a VPN client-revocation certificate.
 Removes an existing VPN client root certificate.
 
 ### [Reset-AzureRmVirtualNetworkGateway](Reset-AzureRmVirtualNetworkGateway.md)
-Resets Virtual network gateway instance.
+Resets the Virtual Network Gateway
 
 ### [Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey](Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey.md)
-Resets Virtual network gateway connection shared key.
+Resets the shared key of the virtual network gateway connection.
 
 ### [Resize-AzureRmVirtualNetworkGateway](Resize-AzureRmVirtualNetworkGateway.md)
 Resizes an existing virtual network gateway.
@@ -753,7 +783,7 @@ Sets the goal state for a load balancer.
 Sets the goal state for a front-end IP configuration in a load balancer.
 
 ### [Set-AzureRmLoadBalancerInboundNatPoolConfig](Set-AzureRmLoadBalancerInboundNatPoolConfig.md)
-Sets an inbound NAT pool configuration for a load balancer.
+
 
 ### [Set-AzureRmLoadBalancerInboundNatRuleConfig](Set-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Sets an inbound NAT rule configuration for a load balancer.
@@ -788,6 +818,9 @@ Update a connection monitor.
 ### [Set-AzureRmPublicIpAddress](Set-AzureRmPublicIpAddress.md)
 Sets the goal state for a public IP address.
 
+### [Set-AzureRmPublicIpPrefix](Set-AzureRmPublicIpPrefix.md)
+Sets the Tags for an existing PublicIpPrefix
+
 ### [Set-AzureRmRouteConfig](Set-AzureRmRouteConfig.md)
 Sets the goal state for a route.
 
@@ -799,6 +832,12 @@ Sets the goal state for a route.
 
 ### [Set-AzureRmRouteTable](Set-AzureRmRouteTable.md)
 Sets the goal state for a route table.
+
+### [Set-AzureRmServiceEndpointPolicy](Set-AzureRmServiceEndpointPolicy.md)
+{{Fill in the Synopsis}}
+
+### [Set-AzureRmServiceEndpointPolicyDefinition](Set-AzureRmServiceEndpointPolicyDefinition.md)
+{{Fill in the Synopsis}}
 
 ### [Set-AzureRmVirtualNetwork](Set-AzureRmVirtualNetwork.md)
 Sets the goal state for a virtual network.
@@ -856,3 +895,4 @@ Returns whether the packet is allowed or denied to or from a particular destinat
 
 ### [Test-AzureRmPrivateIPAddressAvailability](Test-AzureRmPrivateIPAddressAvailability.md)
 Test availability of a private IP address in a virtual network.
+
