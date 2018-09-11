@@ -93,8 +93,6 @@ function Get-AzsBackup {
 
     Process {
 
-
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Backup.Admin.BackupAdminClient'
         }
@@ -144,6 +142,7 @@ function Get-AzsBackup {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $BackupAdminClient.'
             $TaskResult = $BackupAdminClient.Backups.ListWithHttpMessagesAsync($ResourceGroupName, $Location)
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $BackupAdminClient.'
             $TaskResult = $BackupAdminClient.Backups.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $Name)
         } else {

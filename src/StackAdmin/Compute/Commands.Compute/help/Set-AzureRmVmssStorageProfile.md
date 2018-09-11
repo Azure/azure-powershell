@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 230DAE05-C197-451F-A24C-F4A2DAE4AD04
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmssstorageprofile
 schema: 2.0.0
 ---
 
@@ -13,12 +13,13 @@ Sets the storage profile properties for the VMSS.
 ## SYNTAX
 
 ```
-Set-AzureRmVmssStorageProfile [-VirtualMachineScaleSet] <VirtualMachineScaleSet>
+Set-AzureRmVmssStorageProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
  [[-ImageReferencePublisher] <String>] [[-ImageReferenceOffer] <String>] [[-ImageReferenceSku] <String>]
- [[-ImageReferenceVersion] <String>] [-OsDiskName <String>] [[-OsDiskCaching] <CachingTypes>]
+ [[-ImageReferenceVersion] <String>] [[-OsDiskName] <String>] [[-OsDiskCaching] <CachingTypes>]
  [[-OsDiskCreateOption] <DiskCreateOptionTypes>] [[-OsDiskOsType] <OperatingSystemTypes>] [[-Image] <String>]
  [[-VhdContainer] <String[]>] [-ImageReferenceId <String>] [-ManagedDisk <StorageAccountTypes>]
- [-DataDisk <VirtualMachineScaleSetDataDisk[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DataDisk <VirtualMachineScaleSetDataDisk[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,6 +50,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -219,7 +235,7 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: False
-Position: Named
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -262,7 +278,7 @@ Specifies the VMSS object.
 To obtain the object, use the New-AzureRmVmssConfig object.
 
 ```yaml
-Type: VirtualMachineScaleSet
+Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases: 
 
@@ -312,6 +328,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 This cmdlet does not generate any output.
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 
 ## NOTES
 

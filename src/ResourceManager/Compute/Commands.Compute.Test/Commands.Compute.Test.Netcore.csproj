@@ -27,7 +27,8 @@
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="21.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.3.0-preview" />
+	<PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.0-preview" />
     <PackageReference Include="Moq" Version="4.7.145" />
   </ItemGroup>
 
@@ -59,14 +60,10 @@
     <None Include="$(ScenarioTestToolsPath)Assert.ps1" Link="ScenarioTests\Assert.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="$(ScenarioTestToolsPath)AzureRM.Resources.ps1" Link="ScenarioTests\AzureRM.Resources.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="..\..\Resources\Commands.Resources.Test\ScenarioTests\Common.ps1" Link="ScenarioTests\Common.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Remove="AzureRM.Resources.ps1" />
-    <None Include="AzureRM.Resources.Netcore.ps1" Link="ScenarioTests\AzureRM.Resources.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="AzureRM.Resources.Netcore.ps1" Link="AzureRM.Resources.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

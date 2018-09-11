@@ -33,7 +33,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
 .PARAMETER StandardManagedDiskAndSnapshotSize
     Size for standard managed disks and snapshots allowed.
-    
+
 .PARAMETER PremiumManagedDiskAndSnapshotSize
     Size for standard managed disks and snapshots allowed.
 
@@ -117,8 +117,7 @@ function Set-AzsComputeQuota {
                 Write-Warning -Message "The parameter alias CoresLimit will be deprecated in future release. Please use the parameter CoresCount instead"
             }
         }
-
-        $NewQuota = $null
+        [ComputeQuotaObject]$QuotaObject = $null
 
         if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
@@ -129,12 +128,14 @@ function Set-AzsComputeQuota {
                 $GetArmResourceIdParameterValue_params['Id'] = $ResourceId
             } else {
                 $GetArmResourceIdParameterValue_params['Id'] = $InputObject.Id
-                $NewQuota = $InputObject
+                $QuotaObject = $InputObject
             }
             $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
 
             $Location = $ArmResourceIdParameterValues['location']
             $Name = $ArmResourceIdParameterValues['quotaName']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Update compute quota")) {
@@ -159,36 +160,27 @@ function Set-AzsComputeQuota {
 
             if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
 
-                if ($NewQuota -eq $null) {
-                    $NewQuota = Get-AzsComputeQuota -Location $Location -Name $Name
+                if ($null -eq $QuotaObject) {
+                    $QuotaObject = Get-AzsComputeQuota -Location $Location -Name $Name
                 }
-
-                $QuotaToBeSet = ConvertTo-SdkQuota -CustomQuota $NewQuota
 
                 # Update the Quota object from anything passed in
                 $flattenedParameters = @('AvailabilitySetCount', 'CoresCount', 'VmScaleSetCount', 'VirtualMachineCount', 'StandardManagedDiskAndSnapshotSize', 'PremiumManagedDiskAndSnapshotSize' )
                 $flattenedParameters | ForEach-Object {
                     if ($PSBoundParameters.ContainsKey($_)) {
-                        
                         $NewValue = $PSBoundParameters[$_]
-                        
-                        if($NewValue -ne $null)
-                        {
-                            if($_ -eq 'StandardManagedDiskAndSnapshotSize') {
-                                $QuotaToBeSet.MaxAllocationStandardManagedDisksAndSnapshots = $NewValue 
-                            } elseif($_ -eq 'PremiumManagedDiskAndSnapshotSize') {
-                                $QuotaToBeSet.MaxAllocationPremiumManagedDisksAndSnapshots = $NewValue 
-                            } elseif($_ -eq 'CoresCount') {
-                                $QuotaToBeSet.CoresLimit = $NewValue 
-                            } else {
-                                $QuotaToBeSet.$($_) = $NewValue 
+                        if ($null -ne $NewValue) {
+                            if($_ -eq 'CoresCount') {
+                                $_ = 'CoresLimit'
                             }
+                            $QuotaObject.$_ = $NewValue
                         }
                     }
                 }
+                $sdkObject = ConvertTo-SdkQuota -CustomQuota $QuotaObject
 
                 Write-Verbose -Message 'Performing operation update on $ComputeAdminClient.'
-                $TaskResult = $ComputeAdminClient.Quotas.CreateOrUpdateWithHttpMessagesAsync($Location, $Name, $QuotaToBeSet)
+                $TaskResult = $ComputeAdminClient.Quotas.CreateOrUpdateWithHttpMessagesAsync($Location, $Name, $sdkObject)
             } else {
                 Write-Verbose -Message 'Failed to map parameter set to operation method.'
                 throw 'Module failed to find operation to execute.'

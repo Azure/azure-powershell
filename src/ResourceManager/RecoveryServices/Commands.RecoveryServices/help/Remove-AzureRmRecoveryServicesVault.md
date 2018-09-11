@@ -32,26 +32,11 @@ Deletes a Recovery Services vault.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Vault
 Specifies an Azure Site Recovery vault object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.RecoveryServices.ARSVault
+Type: ARSVault
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +51,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -81,9 +66,24 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
