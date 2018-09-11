@@ -1,40 +1,39 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
-ms.assetid: 6C7A7E1A-87A2-4F0D-9091-413C111F47F0
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/remove-azurermdatalakestorefirewallrule
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDataLakeStoreFirewallRule
+# Remove-AzureRmDataLakeStoreVirtualNetworkRule
 
 ## SYNOPSIS
-Removes the specified firewall rule in the specified Data Lake Store.
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
 ```
-Remove-AzureRmDataLakeStoreFirewallRule [-Account] <String> [[-Name] <String>] [-PassThru]
+Remove-AzureRmDataLakeStoreVirtualNetworkRule [-Account] <String> [[-Name] <String>] [-PassThru]
  [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDataLakeStoreFirewallRule** cmdlet removes the specified firewall rule in the specified Data Lake Store.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
-### Example 1: Remove a firewall rule from an account
-```
-PS C:\> Remove-AzureRmDataLakeStoreFirewallRule -AccountName "ContosoADL" -Name MyFirewallRule
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-Removes firewall rule "MyFirewallRule" from account "ContosoADL"
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Account
-The Data Lake Store account to update the firewall rule in
+The Data Lake Store account to update the virtual network rule in
 
 ```yaml
 Type: String
@@ -49,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -64,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the firewall rule to delete.
+The name of the virtual network rule.
 
 ```yaml
 Type: String
@@ -94,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that contains the account to remove the firewall rule from.
+Name of resource group under which want to retrieve the account.
 
 ```yaml
 Type: String
@@ -124,6 +123,9 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -137,7 +139,8 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
