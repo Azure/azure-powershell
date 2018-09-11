@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
-Module Name: AzureRM.Dns
+Module Name: Microsoft.Azure.Commands.Dns
 ms.assetid: 45DF71E0-77E1-4D20-AD09-2C06680F659F
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/new-azurermdnsrecordset
 schema: 2.0.0
@@ -13,17 +13,31 @@ Creates a DNS record set.
 
 ## SYNTAX
 
-### Fields
+### Fields (Default)
 ```
-New-AzureRmDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String> -Ttl <UInt32>
+New-AzureRmDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String> -Ttl <Int64>
  -RecordType <RecordType> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### AliasFields
+```
+New-AzureRmDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String> [-Ttl <Int64>]
+ -RecordType <RecordType> -TargetResourceId <String> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>]
+ [-Overwrite] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### Object
 ```
-New-AzureRmDnsRecordSet -Name <String> -Zone <DnsZone> -Ttl <UInt32> -RecordType <RecordType>
+New-AzureRmDnsRecordSet -Name <String> -Zone <DnsZone> -Ttl <Int64> -RecordType <RecordType>
  [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AliasObject
+```
+New-AzureRmDnsRecordSet -Name <String> -Zone <DnsZone> [-Ttl <Int64>] -RecordType <RecordType>
+ -TargetResourceId <String> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -302,7 +316,7 @@ Alternatively, you can specify the zone and resource group by passing in a DNS Z
 
 ```yaml
 Type: System.String
-Parameter Sets: Fields
+Parameter Sets: Fields, AliasFields
 Aliases:
 
 Required: True
@@ -312,15 +326,40 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -TargetResourceId
+Alias Target Resource Id.```yaml
+Type: System.String
+Parameter Sets: AliasFields, AliasObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Ttl
 Specifies the Time to Live (TTL) for the DNS RecordSet.
 
 ```yaml
-Type: System.UInt32
-Parameter Sets: (All)
+Type: System.Nullable`1[System.Int64]
+Parameter Sets: Fields, Object
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Nullable`1[System.Int64]
+Parameter Sets: AliasFields, AliasObject
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -333,7 +372,7 @@ Alternatively, you can specify the zone using the *ZoneName* and *ResourceGroupN
 
 ```yaml
 Type: Microsoft.Azure.Commands.Dns.DnsZone
-Parameter Sets: Object
+Parameter Sets: Object, AliasObject
 Aliases:
 
 Required: True
@@ -350,7 +389,7 @@ Alternatively, you can specify the zone and resource group by passing in a DNS Z
 
 ```yaml
 Type: System.String
-Parameter Sets: Fields
+Parameter Sets: Fields, AliasFields
 Aliases:
 
 Required: True
