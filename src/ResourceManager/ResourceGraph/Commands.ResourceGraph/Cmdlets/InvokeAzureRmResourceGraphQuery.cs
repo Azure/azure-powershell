@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             Mandatory = false,
             HelpMessage = "The maximum number of objects to return. Default value is 100.")]
         [ValidateRange(1, 5000), PSDefaultValue(Value = 100)]
-        public int? First
+        public int First
         {
             get;
             set;
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             Mandatory = false,
             HelpMessage = "Ignores the first N objects and then gets the remaining objects")]
         [ValidateRange(1, int.MaxValue), PSDefaultValue(Value = 0)]
-        public int? Skip
+        public int Skip
         {
             get;
             set;
@@ -89,8 +89,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         {
             var subscriptions =
                 (this.Subscriptions ?? this.DefaultContext.Account.GetSubscriptions()).ToList();
-            var first = this.First ?? 100;
-            var skip = this.Skip ?? 0;
+            var first = MyInvocation.BoundParameters.ContainsKey("First") ? this.First : 100;
+            var skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.Skip : 0;
 
             var results = new List<PSObject>();
             QueryResponse response = null;
