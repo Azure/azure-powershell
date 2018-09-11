@@ -31,22 +31,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             if (recoveryPlanGroup != null)
             {
-                this.GroupType = recoveryPlanGroup.GroupType.ToString(); //TODO
-                this.StartGroupActions = recoveryPlanGroup.StartGroupActions;
-                this.EndGroupActions = recoveryPlanGroup.EndGroupActions;
+                this.GroupType = recoveryPlanGroup.GroupType.ToString();
+                if (recoveryPlanGroup.StartGroupActions != null)
+                {
+                    this.StartGroupActions = recoveryPlanGroup.StartGroupActions.ToList().
+                        ConvertAll(startGroupAction => new RecoveryPlanAction_2016_08_10(startGroupAction));
+                }
+
+                if (recoveryPlanGroup.EndGroupActions != null)
+                {
+                    this.EndGroupActions = recoveryPlanGroup.StartGroupActions.ToList().
+                        ConvertAll(endGroupActions => new RecoveryPlanAction_2016_08_10(endGroupActions));
+                }
 
                 if (replicationProtectedItems != null)
                 {
                     var replicationProtectedItemList =
                         recoveryPlanGroup.ReplicationProtectedItems.Select(
                             item => item.Id.ToLower());
-                    this.ReplicationProtectedItems = replicationProtectedItems.Where(
+                    var replicationProtectedItemsTemp = replicationProtectedItems.Where(
                             rpi => replicationProtectedItemList.Contains(rpi.Id.ToLower()))
                         .ToList();
+                    if (replicationProtectedItemsTemp != null)
+                    {
+                        this.ReplicationProtectedItems = replicationProtectedItemsTemp.ConvertAll(
+                            temp => new ReplicationProtectedItem_2016_08_10(temp));
+                    }
+
                 }
                 else
                 {
-                    this.ReplicationProtectedItems = new List<ReplicationProtectedItem>();
+                    this.ReplicationProtectedItems = new List<ReplicationProtectedItem_2016_08_10>();
                 }
             }
         }
@@ -68,7 +83,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
         // Summary:
         //     Optional. Recovery plan end group actions.
-        public IList<RecoveryPlanAction> EndGroupActions { get; set; }
+        public IList<RecoveryPlanAction_2016_08_10> EndGroupActions { get; set; }
 
         //
         // Summary:
@@ -78,12 +93,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         //
         // Summary:
         //     Optional. List of protected items.
-        public IList<ReplicationProtectedItem> ReplicationProtectedItems { get; set; }
+        public IList<ReplicationProtectedItem_2016_08_10> ReplicationProtectedItems { get; set; }
 
         //
         // Summary:
         //     Optional. Recovery plan start group actions.
-        public IList<RecoveryPlanAction> StartGroupActions { get; set; }
+        public IList<RecoveryPlanAction_2016_08_10> StartGroupActions { get; set; }
     }
 
     /// <summary>
