@@ -939,13 +939,7 @@
     <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TDECertificateTests\TestAddTdeCertificateForSqlServerWithPiping.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceKeyVaultKeyTests\TestAddManagedInstanceKeyVaultKey.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceKeyVaultKeyTests\TestGetManagedInstanceKeyVaultKey.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceKeyVaultKeyTests\TestListManagedInstanceKeyVaultKey.json">
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceKeyVaultKeyTests\TestManagedInstanceKeyVaultKey.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceProtectorTests\TestSetGetManagedInstanceEncryptionProtectorByok.json">
