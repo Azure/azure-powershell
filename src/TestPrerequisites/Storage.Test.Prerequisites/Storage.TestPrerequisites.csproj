@@ -18,8 +18,8 @@
 
 
   <ItemGroup>
-    <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.1" PrivateAssets="All"/>
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.8.1" PrivateAssets="All"/>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
