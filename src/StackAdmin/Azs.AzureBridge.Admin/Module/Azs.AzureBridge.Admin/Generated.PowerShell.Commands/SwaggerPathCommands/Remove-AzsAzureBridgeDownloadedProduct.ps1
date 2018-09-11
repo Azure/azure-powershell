@@ -22,6 +22,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER Name
     Name of the product.
 
+.PARAMETER AsJob
+    Run asynchronous as a job and return the job object.
+
 .PARAMETER Force
     Don't ask for confirmation.
 

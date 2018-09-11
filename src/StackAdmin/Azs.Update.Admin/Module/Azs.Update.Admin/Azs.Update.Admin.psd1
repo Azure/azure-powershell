@@ -114,7 +114,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.8.12
+            ReleaseNotes = '## 2018.9.10
             * Module dependencies updated
                 * AzureRM.Profile
                 * AzureRM.Resources
@@ -124,7 +124,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
                 * Install-AzsUpdate
                 * Resume-AzsUpdate
             * Deprecations
-                * Get-AzsBackup, the parameter Update is now an alias for Name
+                * Get-AzsUpdate, the parameter Update is now an alias for Name
+                * Get-AzsUpdateLocation, the parameter Location is now an alias for Name
             * Bug fixes
                 * Handle ErrrorAction correctly now
             '
