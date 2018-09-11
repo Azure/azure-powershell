@@ -327,7 +327,9 @@ Accept wildcard characters: False
 ```
 
 ### -TargetResourceId
-Alias Target Resource Id.```yaml
+Alias Target Resource Id.
+
+```yaml
 Type: System.String
 Parameter Sets: AliasFields, AliasObject
 Aliases:
