@@ -75,7 +75,7 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzureRmDnsRecordSet', 'New-AzureRmDnsRecordConfig', 
                'Remove-AzureRmDnsRecordSet', 'Set-AzureRmDnsRecordSet', 
                'Remove-AzureRmDnsRecordConfig', 'Add-AzureRmDnsRecordConfig', 
-               'New-AzureRmDnsRecordSet', 'Get-AzureRmDnsZone', 'Get-AzureRmDnsResourceReference',
+               'New-AzureRmDnsRecordSet', 'Get-AzureRmDnsZone',
                'Remove-AzureRmDnsZone', 'Set-AzureRmDnsZone', 'New-AzureRmDnsZone'
 
 # Variables to export from this module

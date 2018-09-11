@@ -19,7 +19,6 @@
 -->
 ## Current Release
 * Added support for alias record during dns record creation
-* Added command for retrieving reference to resource record
 
 ## Version 5.0.4
 * Fixed issue with default resource groups not being set.
