@@ -31,6 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "Need to re-record test after changes are deployed in Gateway Manager.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, "azurefirewall")]
         public void TestAzureFirewallFqdnTagList()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-AzureFirewallFqdnTagList");
