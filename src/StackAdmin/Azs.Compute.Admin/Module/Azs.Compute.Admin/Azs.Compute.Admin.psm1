@@ -24,10 +24,17 @@ if (Test-Path -Path $ClrPath -PathType Container) {
     Get-ChildItem -Path $allDllsPath -File | ForEach-Object { Add-Type -Path $_.FullName -ErrorAction SilentlyContinue }
 }
 
+# Load all CustomObjects
+
 . (Join-Path -Path $PSScriptRoot -ChildPath 'New-ServiceClient.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Get-TaskResult.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Get-ApplicableFilters.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Test-FilteredResult.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Get-ArmResourceIdParameterValue.ps1')
+. (Join-Path -Path $PSScriptRoot -ChildPath 'Get-ResourceNameSuffix.ps1')
+
+# Scripts
 $allPs1FilesPath = Join-Path -Path $PSScriptRoot -ChildPath 'Generated.PowerShell.Commands' | Join-Path -ChildPath '*.ps1'
 Get-ChildItem -Path $allPs1FilesPath -Recurse -File | ForEach-Object { . $_.FullName}
+
+

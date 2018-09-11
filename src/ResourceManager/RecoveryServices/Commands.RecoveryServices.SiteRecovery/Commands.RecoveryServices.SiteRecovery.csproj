@@ -45,7 +45,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.3-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.2.0-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
@@ -53,6 +53,7 @@
     <Compile Include="AlertSetting\SetAzureRmRecoveryServicesAsrAlertSetting.cs" />
     <Compile Include="AlertSetting\GetAzureRmRecoveryServicesAsrAlertSetting.cs" />
     <Compile Include="Common\PSAsrAlertSettingClient.cs" />
+    <Compile Include="Common\PSAsrComputeManagementClient.cs" />
     <Compile Include="Common\PSAsrEventClient.cs" />
     <Compile Include="Common\PSAsrNetworkClient.cs" />
     <Compile Include="Common\PSAsrNetworkMappingClient.cs" />
@@ -77,6 +78,9 @@
     <Compile Include="Fabrics\RemoveAzureRmRecoveryServicesAsrFabric.cs" />
     <Compile Include="Fabrics\StartAzureRmRecoveryServicesAsrSwitchProcessServerJob.cs" />
     <Compile Include="Job\StopAzureRmRecoveryServicesAsrJob.cs" />
+    <Compile Include="Models\2016-08-10\ASRPSObjects.cs" />
+    <Compile Include="Models\2016-08-10\RecoveryPlanGroup.cs" />
+    <Compile Include="Models\2016-08-10\ReplicationProtectedItem.cs" />
     <Compile Include="Models\PSAlertSetting.cs" />
     <Compile Include="Models\PSConstants.cs" />
     <Compile Include="Models\PSEvent.cs" />
