@@ -131,6 +131,10 @@ namespace VersionController.Models
             {
                 var serializedCmdletName = nestedModule + ".dll.json";
                 var serializedCmdletFile = Directory.GetFiles(serializedCmdletsDirectory, serializedCmdletName).FirstOrDefault();
+                if (serializedCmdletFile == null)
+                {
+                    continue;
+                }
                 var file = File.ReadAllLines(serializedCmdletFile);
                 var pattern = nestedModule + @"(\s*),(\s*)Version(\s*)=(\s*)" + _oldVersion;
                 var updatedFile = file.Select(l => Regex.Replace(l, pattern, nestedModule + ", Version=" + _newVersion));

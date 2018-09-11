@@ -1,186 +1,649 @@
 {
     "tool": "Credential Scanner",
-        "suppressions": [
+    "suppressions": [
         {
-            "file": "\\documentation\\development-docs\\azure-powershell-developer-guide.md", 
+            "file": "\\documentation\\development-docs\\azure-powershell-developer-guide.md",
             "_justification": "Documentation with non-live passwords in sample connection strings"
         },
         {
-            "file": "\\src\\ResourceManager\\Compute\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem", 
+            "file": "\\src\\ResourceManager\\Compute\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\bvtdata\\pfxtest.pfx", 
+            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\bvtdata\\pfxtest.pfx",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Resources\\pshtest.pfx", 
+            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Resources\\pshtest.pfx",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\commondata\\importpfx01.pfx", 
+            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\commondata\\importpfx01.pfx",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\proddata\\pfxtest.pfx", 
+            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\proddata\\pfxtest.pfx",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\proddata\\pfxtest1024.pfx", 
+            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\proddata\\pfxtest1024.pfx",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\bvtdata\\pfxtest1024.pfx", 
+            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\bvtdata\\pfxtest1024.pfx",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\ScenarioTests\\Data\\ApplicationGatewaySslCert1.pfx", 
+            "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\ScenarioTests\\Data\\ApplicationGatewaySslCert1.pfx",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\ScenarioTests\\Data\\ApplicationGatewaySslCert2.pfx", 
+            "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\ScenarioTests\\Data\\ApplicationGatewaySslCert2.pfx",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\ChefExtension\\tstorgnztn-validator.pem", 
+            "file": "\\src\\ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\ChefExtension\\tstorgnztn-validator.pem",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Compute\\Commands.ServiceManagement.Test\\Resources\\rdpcert.pfx", 
+            "file": "\\src\\ServiceManagement\\Compute\\Commands.ServiceManagement.Test\\Resources\\rdpcert.pfx",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestSSLCert.pfx", 
+            "file": "\\src\\ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestSSLCert.pfx",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestClientCert.pfx", 
+            "file": "\\src\\ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestClientCert.pfx",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ResourceManager\\ApiManagement\\Commands.ApiManagement.Test\\testcertificate.pfx", 
+            "file": "\\src\\ResourceManager\\ApiManagement\\Commands.ApiManagement.Test\\testcertificate.pfx",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ResourceManager\\ApiManagement\\Commands.SMAPI.Test\\Resources\\testcertificate.pfx", 
+            "file": "\\src\\ResourceManager\\ApiManagement\\Commands.SMAPI.Test\\Resources\\testcertificate.pfx",
             "_justification": "Legitimate test certificate file"
         },
-
         {
-            "file": "\\src\\Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfile3.PublishSettings", 
-            "_justification": "Legitimate test publishsettings file"
-        },    
-        {
-            "file": "\\src\\Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfile2.PublishSettings", 
+            "file": "\\src\\Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfile3.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfileChinaOld.PublishSettings", 
+            "file": "\\src\\Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfile2.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\Common\\Commands.Common.Authentication.Test\\Resources\\Azure.publishsettings", 
+            "file": "\\src\\Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfileChinaOld.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfileChina.PublishSettings", 
+            "file": "\\src\\Common\\Commands.Common.Authentication.Test\\Resources\\Azure.publishsettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfile.PublishSettings", 
+            "file": "\\src\\Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfileChina.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfile.PublishSettings", 
+            "file": "\\src\\Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfile.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfileChinaOld.PublishSettings", 
+            "file": "\\src\\ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfile.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Common\\Commands.Common.Test\\Resources\\Azure.publishsettings", 
+            "file": "\\src\\ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfileChinaOld.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfileChina.PublishSettings", 
+            "file": "\\src\\ServiceManagement\\Common\\Commands.Common.Test\\Resources\\Azure.publishsettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfile2.PublishSettings", 
+            "file": "\\src\\ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfileChina.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfile3.PublishSettings", 
+            "file": "\\src\\ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfile2.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\tipsf003.publishsettings", 
+            "file": "\\src\\ServiceManagement\\Common\\Commands.Common.Test\\Resources\\ValidProfile3.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\tipsf001.publishsettings", 
+            "file": "\\src\\ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\tipsf003.publishsettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\tipsf002.publishsettings", 
+            "file": "\\src\\ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\tipsf001.publishsettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ResourceManager\\Compute\\Stack\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem", 
+            "file": "\\src\\ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\tipsf002.publishsettings",
+            "_justification": "Legitimate test publishsettings file"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Compute\\Stack\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem",
             "_justification": "Legitimate test certificate file"
         },
         {
-            "file": "\\src\\ResourceManager\\EventHub\\Commands.EventHub.Test\\SessionRecords\\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.DRConfigurationTests\\DRConfigurationsCURD.json", 
+            "file": "\\src\\ResourceManager\\EventHub\\Commands.EventHub.Test\\SessionRecords\\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.DRConfigurationTests\\DRConfigurationsCURD.json",
             "_justification": "Legitimate test session record, rules are deleted"
         },
         {
-            "file": "\\src\\ResourceManager\\EventHub\\Commands.EventHub.Test\\SessionRecords\\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.DRConfigurationTests\\DRConfigurationsCURDAlternateName.json", 
+            "file": "\\src\\ResourceManager\\EventHub\\Commands.EventHub.Test\\SessionRecords\\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.DRConfigurationTests\\DRConfigurationsCURDAlternateName.json",
             "_justification": "Legitimate test session record, rules are deleted"
         },
         {
-            "file": "\\src\\ResourceManager\\EventHub\\Commands.EventHub.Test\\SessionRecords\\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.EventHubsTests\\EventHubsAuthorizationRulesCRUD.json", 
+            "file": "\\src\\ResourceManager\\EventHub\\Commands.EventHub.Test\\SessionRecords\\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.EventHubsTests\\EventHubsAuthorizationRulesCRUD.json",
             "_justification": "Legitimate test session record, rules are deleted"
         },
         {
-            "file": "\\src\\ResourceManager\\EventHub\\Commands.EventHub.Test\\SessionRecords\\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceTests\\NamespaceAuthorizationRulesCRUD.json", 
+            "file": "\\src\\ResourceManager\\EventHub\\Commands.EventHub.Test\\SessionRecords\\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceTests\\NamespaceAuthorizationRulesCRUD.json",
             "_justification": "Legitimate test session record, rules are deleted"
         },
         {
-            "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusDRConfigurationTests\\ServiceBusDRConfigurationsCURD.json", 
+            "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusDRConfigurationTests\\ServiceBusDRConfigurationsCURD.json",
             "_justification": "Legitimate test session record, rules are deleted"
         },
         {
-            "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusQueueTests\\ServiceBusQueueAuth_CURD.json", 
+            "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusQueueTests\\ServiceBusQueueAuth_CURD.json",
             "_justification": "Legitimate test session record, rules are deleted"
         },
         {
-            "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusServiceTests\\ServiceBusNameSpaceAuth_CURD_Tests.json", 
+            "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusServiceTests\\ServiceBusNameSpaceAuth_CURD_Tests.json",
             "_justification": "Legitimate test session record, rules are deleted"
         },
         {
-            "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusTopicTests\\ServiceBusTopicAuth_CURD.json", 
+            "file": "\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\SessionRecords\\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusTopicTests\\ServiceBusTopicAuth_CURD.json",
             "_justification": "Legitimate test session record, rules are deleted"
         },
         {
-            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfile3.PublishSettings", 
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfile3.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfile2.PublishSettings", 
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfile2.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfile.PublishSettings", 
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfile.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\Azure.publishsettings", 
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\Azure.publishsettings",
             "_justification": "Legitimate test publishsettings file"
         },
         {
-            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfileChina.PublishSettings", 
+            "file": "\\src\\ServiceManagement\\Services\\Commands.Test.Utilities\\Resources\\ValidProfileChina.PublishSettings",
             "_justification": "Legitimate test publishsettings file"
+        },
+		{
+            "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\\TestTroubleshoot.json",
+            "_justification": "Legitimate test session record, resources are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestFirewallRule.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestGeoReplication.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestDiagnosticOperations.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestImportExportReboot.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestRedisCache.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestRedisCacheClustering.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestRedisCachePatchSchedules.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestRedisCachePipeline.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\SessionRecords\\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\\TestZones.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagedApplicationTests\\TestManagedApplicationCRUD.json",
+           "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagedApplicationDefinitionTests\\TestManagedApplicationDefinitionCRUD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Resources\\Commands.Resources.Test\\Models.ResourceGroups\\ResourceClientTests.cs",
+            "_justification": "False positive, just a mention of the literal key"
+        },        
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestPipingSetStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestPipingGetAccountToGetKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestGetAzureStorageAccountKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestNewAzureStorageAccountKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestNewAzureStorageAccountKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestNewAzureStorageAccountKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestNewAzureStorageAccountKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestNewAzureStorageAccountKey.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestSetCurrentStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\SessionRecords\\Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests.StorageAccountTests\\TestStorageAccount.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\ScenarioTests\\DiagnosticsExtensionTests.ps1",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxMD_DSeries.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinux.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinux.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxMD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxMD_ESeries.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindows.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindows.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindowsMD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindowsWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindowsWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindowsWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindowsWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicLinux.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicLinux.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicLinuxWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicLinuxWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicWindows.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicWindows.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedWindowsWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AddVhdTests\\TestAddVhd.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicLinux.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicWindowsWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicWindowsWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicWindowsWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicWindows.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionAdvancedLinuxWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicLinuxWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\\TestDiagnosticsExtensionBasic.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicWindowsWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\\TestDiagnosticsExtensionCantListSepcifyStorageAccountKey.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\\TestDiagnosticsExtensionBasic.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiskRPTests\\TestDisk.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiskRPTests\\TestDisk.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\\TestDiagnosticsExtensionSupportJsonConfig.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\\TestDiagnosticsExtensionSepcifyStorageAccountName.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\\TestDiagnosticsExtensionSupportJsonConfig.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\\TestDiagnosticsExtensionSepcifyStorageAccountName.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\\TestVmssDiagnosticsExtension.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\\TestVmssDiagnosticsExtension.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\\TestDiagnosticsExtensionBasic.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiskRPTests\\TestSnapshot.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiskRPTests\\TestSnapshot.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.AEMExtensionTests\\TestAEMExtensionBasicLinuxWAD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\\TestDiagnosticsExtensionSepcifyStorageAccountName.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\\TestDiagnosticsExtensionSupportJsonConfig.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineBootDiagnosticsTests\\TestVirtualMachineBootDiagnostics.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineBootDiagnosticsTests\\TestVirtualMachineBootDiagnostics.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.SqlIaaSExtensionTests\\TestSqlIaaSExtensionWith2016Image.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineADDomainExtensionDomainJoin.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineAccessExtension.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineADDomainExtension.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineBginfoExtension.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineCustomScriptExtension.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineCustomScriptExtensionFileUri.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineCustomScriptExtensionSecureExecution.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineCustomScriptExtensionWrongStorage.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineCustomScriptExtensionFileUri.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineCustomScriptExtensionFileUri.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineExtension.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineCustomScriptExtensionFileUri.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineCustomScriptExtensionFileUri.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineExtensionWithSwitch.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineCustomScriptExtensionFileUri.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\SessionRecords\\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\\TestVirtualMachineExtensionUsingHashTable.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Compute\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\ScenarioTests\\ApplicationGatewayTests.ps1",
+            "_justification": "No secrets, use of test password"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\ScenarioTests\\VirtualNetworkGatewayTests.ps1",
+            "_justification": "No secrets, use of test password"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\\TestApplicationGatewayCRUD2.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\\TestTroubleshoot.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\\TestResourceNavigationLinksOnSubnetCRUD.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\\TestVirtualNetworkGatewayP2SVpnProfile.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "src\\StackAdmin\\Azs.Backup.Admin\\Tests\\src\\Common.ps1",
+            "_justification": "randomly generated base64 encoding."
         }
-    ]
+	]
 }

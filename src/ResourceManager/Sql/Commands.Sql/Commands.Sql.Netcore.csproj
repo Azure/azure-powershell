@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.18.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.0-preview" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
   </ItemGroup>
 

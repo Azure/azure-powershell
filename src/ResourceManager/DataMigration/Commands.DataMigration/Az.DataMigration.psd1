@@ -15,7 +15,7 @@
 ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core', 'Desktop'
+CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
 GUID = '9c9b7917-1d7b-4ef2-ba49-ae1e65dc6d3d'
@@ -89,13 +89,13 @@ CmdletsToExport = 'New-AzDataMigrationDatabaseInfo',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AzureRmDms', 'Get-AzureRmDmsTask', 'Get-AzureRmDmsProject', 
-    'New-AzureRmDms', 'New-AzureRmDmsConnInfo', 'New-AzureRmDmsDBInfo', 
-    'New-AzureRmDmsTask', 'New-AzureRmDmsProject', 
-    'Remove-AzureRmDmsProject', 'Remove-AzureRmDms', 
-    'Remove-AzureRmDmsTask', 'Start-AzureRmDmsService', 
-    'Stop-AzureRmDmsTask', 'Stop-AzureRmDmsService', 
-    'New-AzureRmDmsSelectedDB', 'New-AzureRmDmsFileShare'
+AliasesToExport = 'Get-AzDms', 'Get-AzDmsTask', 'Get-AzDmsProject', 
+    'New-AzDms', 'New-AzDmsConnInfo', 'New-AzDmsDBInfo', 
+    'New-AzDmsTask', 'New-AzDmsProject', 
+    'Remove-AzDmsProject', 'Remove-AzDms', 
+    'Remove-AzDmsTask', 'Start-AzDmsService', 
+    'Stop-AzDmsTask', 'Stop-AzDmsService', 
+    'New-AzDmsSelectedDB', 'New-AzDmsFileShare'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -125,7 +125,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = ''
+        ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''

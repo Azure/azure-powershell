@@ -74,8 +74,6 @@ function Stop-AzsStorageContainerMigration {
 
     Process {
 
-
-
         # Should process
         if ($PSCmdlet.ShouldProcess("$JobId" , "Stop container migration")) {
             if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Stop container migration?", "Performing operation cancel migration using Job Id $JobId.")) {

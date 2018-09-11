@@ -37,13 +37,13 @@
       <HintPath>$(LibraryNugetPackageFolder)\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Commands.ScenarioTest.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.1.0.0-preview\lib\net452\Microsoft.WindowsAzure.Commands.ScenarioTest.Common.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Commands.ScenarioTest.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.1.1.0-preview\lib\net452\Microsoft.WindowsAzure.Commands.ScenarioTest.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <PropertyGroup>
-    <ScenarioTestToolsPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.1.0.0-preview\tools\</ScenarioTestToolsPath>
+    <ScenarioTestToolsPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.1.1.0-preview\tools\</ScenarioTestToolsPath>
   </PropertyGroup>
   <ItemGroup>
     <None Include="$(ScenarioTestToolsPath)Assert.ps1">
