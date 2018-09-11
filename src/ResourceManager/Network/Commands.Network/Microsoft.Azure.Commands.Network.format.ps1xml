@@ -1145,10 +1145,6 @@
                 <PropertyName>HostedWorkloads</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>LinkedResourceType</Label>
-                <PropertyName>LinkedResourceType</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>EnableAcceleratedNetworking</Label>
                 <PropertyName>EnableAcceleratedNetworking</PropertyName>
               </ListItem>
@@ -2714,10 +2710,6 @@
         <ListEntries>
           <ListEntry>
             <ListItems>
-              <ListItem>
-                <Label>LinkedResourceType</Label>
-                <PropertyName>LinkedResourceType</PropertyName>
-              </ListItem>
               <ListItem>
                 <Label>Link</Label>
                 <PropertyName>Link</PropertyName>
