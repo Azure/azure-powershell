@@ -58,12 +58,27 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
         [ValidateNotNullOrEmpty]
         public string SqlExpression { get; set; }
 
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Action SqlFillter Expression")]
+        [ValidateNotNullOrEmpty]
+        public string ActionSqlExpression { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Action Requires Preprocessing")]
+        public SwitchParameter RequiresPreprocessing { get; set; }
+
         public override void ExecuteCmdlet()
         {
             PSRulesAttributes ruleAttributes = new PSRulesAttributes();
 
             if (!string.IsNullOrEmpty(SqlExpression))
                 ruleAttributes.SqlFilter.SqlExpression = SqlExpression;
+
+            if (!string.IsNullOrEmpty(ActionSqlExpression))
+                ruleAttributes.Action.SqlExpression = ActionSqlExpression;
+
+            if (RequiresPreprocessing.IsPresent)
+                ruleAttributes.Action.RequiresPreprocessing = true;
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateRule, Name, Topic,Namespace)))
             {
