@@ -26,6 +26,14 @@ The Get-AzureRmSqlManagedInstanceKeyVaultKey cmdlet gets information about the K
 ### Example 1: Get all Key Vault keys
 ```powershell
 PS C:\> Get-AzureRmSqlManagedInstanceKeyVaultKey -ResourceGroupName 'ContosoResourceGroup' -ManagedInstanceName 'ContosoManagedInstanceName'
+
+ResourceGroupName      : ContosoResourceGroup
+ManagedInstanceName    : ContosoManagedInstanceName
+KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
+ManagedInstanceKeyName : contoso_contosokey_01234567890123456789012345678901
+CreationDate           : 9/1/2018 12:11:49 AM
+Thumbprint             : 6AB10000F99E1B6A22222F39E3F11CB5DC5A55A1
+Type                   : AzureKeyVault
 ```
 
 This command gets all the Key Vault keys on a SQL managed instance.

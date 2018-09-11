@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// <summary>
     /// Defines the Set-AzureRmSqlServerTransparentDataEncryptionProtector cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlManagedInstanceTransparentDataEncryptionProtector", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlManagedInstanceTransparentDataEncryptionProtector", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel))]
     public class SetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector : AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorBase
     {

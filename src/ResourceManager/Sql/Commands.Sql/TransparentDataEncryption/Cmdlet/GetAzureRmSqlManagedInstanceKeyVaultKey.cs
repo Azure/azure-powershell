@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlManagedInstanceKeyVaultKey cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlManagedInstanceKeyVaultKey", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlManagedInstanceKeyVaultKey", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureRmSqlManagedInstanceKeyVaultKeyModel))]
     public class GetAzureRmSqlManagedInstanceKeyVaultKey : AzureRmSqlManagedInstanceKeyVaultKeyBase
     {

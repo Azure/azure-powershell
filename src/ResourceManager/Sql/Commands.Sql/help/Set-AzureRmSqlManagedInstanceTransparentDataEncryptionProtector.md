@@ -26,6 +26,12 @@ The Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector cmdlet sets 
 ### Example 1: Set the Transparent Data Encryption (TDE) protector type to ServiceManaged
 ```powershell
 PS C:\> Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ResourceGroupName 'ContosoResourceGroup' -ManagedInstanceName 'ContosoManagedInstanceName' -Type ServiceManaged
+
+ResourceGroupName              : ContosoResourceGroup
+ManagedInstanceName            : ContosoManagedInstanceName
+Type                           : ServiceManaged
+ManagedInstanceKeyVaultKeyName : ServiceManaged
+KeyId                          :
 ```
 
 This command updates a managed instance's TDE protector type to Service Managed.
@@ -33,6 +39,12 @@ This command updates a managed instance's TDE protector type to Service Managed.
 ### Example 2: Set the Transparent Data Encryption protector type to Azure Key Vault
 ```powershell
 PS C:\> Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ResourceGroupName 'ContosoResourceGroup' -ManagedInstanceName 'ContosoManagedInstanceName' -Type AzureKeyVault -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+
+ResourceGroupName              : ContosoResourceGroup
+ManagedInstanceName            : ContosoManagedInstanceName
+Type                           : AzureKeyVault
+ManagedInstanceKeyVaultKeyName : contoso_contosokey_01234567890123456789012345678901
+KeyId                          : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
 ```
 
 This command updates the specified managed instance to use the Managed instance Key Vault Key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' as the TDE protector.

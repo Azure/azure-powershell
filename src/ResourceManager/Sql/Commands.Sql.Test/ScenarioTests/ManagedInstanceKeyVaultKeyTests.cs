@@ -28,24 +28,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact(Skip = "Skip due to long setup time for managed instance")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddManagedInstanceKeyVaultKey()
+        public void TestManagedInstanceKeyVaultKey()
         {
-            RunPowerShellTest("Test-AddManagedInstanceKeyVaultKey");
-        }
-
-        [Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetManagedInstanceKeyVaultKey()
-        {
-            RunPowerShellTest("Test-GetManagedInstanceKeyVaultKey");
-        }
-
-
-        [Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListManagedInstanceKeyVaultKey()
-        {
-            RunPowerShellTest("Test-ListManagedInstanceKeyVaultKey");
+            RunPowerShellTest("Test-ManagedInstanceKeyVaultKey");
         }
     }
 }

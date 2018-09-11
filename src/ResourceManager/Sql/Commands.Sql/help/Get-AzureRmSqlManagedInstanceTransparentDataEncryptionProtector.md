@@ -26,6 +26,12 @@ The Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector cmdlet gets 
 ### Example 1
 ```powershell
 PS C:\> Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ResourceGroupName 'ContosoResourceGroup' -ManagedInstanceName 'ContosoManagedInstanceName'
+
+ResourceGroupName              : ContosoResourceGroup
+ManagedInstanceName            : ContosoManagedInstanceName
+Type                           : AzureKeyVault
+ManagedInstanceKeyVaultKeyName : contoso_contosokey_01234567890123456789012345678901
+KeyId                          : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
 ```
 
 This command gets the TDE protector for the managed instance named ContosoManagedInstanceName in resource group named ContosoResourceGroup.

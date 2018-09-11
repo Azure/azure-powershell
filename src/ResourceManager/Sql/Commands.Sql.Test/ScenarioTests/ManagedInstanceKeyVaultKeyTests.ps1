@@ -24,33 +24,24 @@ $tdeKeyName = $keyVaultName + "_" + $keyName + "_" + $keyVersion
 	.SYNOPSIS
 	Tests adding TDE keyVaultKey to managed instance
 #>
-function Test-AddManagedInstanceKeyVaultKey
+function Test-ManagedInstanceKeyVaultKey
 {
+	# Test Add
 	$keyResult = Add-AzureRmSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -KeyId $keyId
 
-	Assert-AreEqual $keyId $keyResult.KeyId 
-	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName
-}
+	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after calling Add-AzureRmSqlManagedInstanceKeyVaultKey"
+	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Add-AzureRmSqlManagedInstanceKeyVaultKey"
 
-<#
-	.SYNOPSIS
-	Tests getting TDE keyVaultKey from managed instance
-#>
-function Test-GetManagedInstanceKeyVaultKey
-{
-	$keyResult = Get-AzureRmSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -KeyId $keyId
+	
+	# Test Get
+	$keyResult2 = Get-AzureRmSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -KeyId $keyId
 
-	Assert-AreEqual $keyId $keyResult.KeyId 
-	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName
-}
+	Assert-AreEqual $keyId $keyResult2.KeyId "KeyId mismatch after calling Get-AzureRmSqlManagedInstanceKeyVaultKey"
+	Assert-AreEqual $tdeKeyName $keyResult2.ManagedInstanceKeyName "ManagedInstanceKeyName mismatch after calling Get-AzureRmSqlManagedInstanceKeyVaultKey"
 
-<#
-	.SYNOPSIS
-	Tests listing TDE keyVaultKeys for a managed instance
-#>
-function Test-ListManagedInstanceKeyVaultKey
-{
+	
+	# Test List
 	$keyResults = Get-AzureRmSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName
 	
-	Assert-True {$keyResults.Count -gt 0}
+	Assert-True {$keyResults.Count -gt 0} "List count <= 0 after calling (List) Get-AzureRmSqlManagedInstanceKeyVaultKey without KeyId"
 }
