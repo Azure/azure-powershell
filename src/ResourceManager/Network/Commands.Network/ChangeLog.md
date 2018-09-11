@@ -22,6 +22,12 @@
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
+* Adding support to perform CRUD operations for subnet delegation.
+  - New-AzureRmDelegation
+  - Get-AzureRmDelegation
+  - Remove-AzureRmDelegation: Takes in a subnet and removes the provided delegation name from that subnet
+  - Add-AzureRmDelegation: Takes in a subnet and adds the provided service name as a delegation to that subnet
+  - Get-AzureRmAvailableDelegations
 
 ## Version 6.6.1
 * Changed default cmdlet output presentation to table view
