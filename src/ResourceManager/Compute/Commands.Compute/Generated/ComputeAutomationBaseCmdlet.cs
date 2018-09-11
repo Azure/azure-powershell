@@ -81,14 +81,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             return objects;
         }
 
-        public IAvailabilitySetsOperations AvailabilitySetsClient
-        {
-            get
-            {
-                return ComputeClient.ComputeManagementClient.AvailabilitySets;
-            }
-        }
-
         public IContainerServicesOperations ContainerServicesClient
         {
             get
@@ -134,14 +126,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             get
             {
                 return ComputeClient.ComputeManagementClient.Snapshots;
-            }
-        }
-
-        public IVirtualMachineExtensionsOperations VirtualMachineExtensionsClient
-        {
-            get
-            {
-                return ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
             }
         }
 

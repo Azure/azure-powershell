@@ -25,7 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Dns" Version="2.2.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.3.0-preview" />
     <PackageReference Include="Moq" Version="4.2.1510.2205" />
   </ItemGroup>
 

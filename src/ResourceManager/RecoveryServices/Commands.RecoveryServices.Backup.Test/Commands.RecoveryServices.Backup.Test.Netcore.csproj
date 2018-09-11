@@ -25,14 +25,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="18.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.3.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="2.1.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="4.1.0-preview" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj" />
   </ItemGroup>
 
   <ItemGroup>

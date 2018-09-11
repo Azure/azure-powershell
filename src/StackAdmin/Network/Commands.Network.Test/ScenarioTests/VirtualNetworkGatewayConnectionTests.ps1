@@ -174,8 +174,10 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 	  $ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 3000 -SADataSizeKilobytes 10000 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
 
       # Create & Get VirtualNetworkGatewayConnection w/ policy based TS
-      $actual = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp $false -UsePolicyBasedTrafficSelectors $true -IpsecPolicies $ipsecPolicy
-      $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+      $job = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp $false -UsePolicyBasedTrafficSelectors $true -IpsecPolicies $ipsecPolicy -AsJob
+      $job | Wait-Job
+	  $actual = $job | Receive-Job
+	  $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
       
 	  # Verify IpsecPolicies and policy-based TS
 	  Assert-AreEqual $connection.UsePolicyBasedTrafficSelectors $actual.UsePolicyBasedTrafficSelectors
@@ -190,7 +192,9 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 	  Assert-AreEqual $connection.IpsecPolicies[0].PfsGroup $actual.IpsecPolicies[0].PfsGroup
     
 	  # Set & Get VirtualNetworkGatewayConnection with policy cleared
-      $actual = Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection -UsePolicyBasedTrafficSelectors $false -IpsecPolicies @() -Force
+      $job = Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection -UsePolicyBasedTrafficSelectors $false -IpsecPolicies @() -Force -AsJob
+	  $job | Wait-Job
+	  $actual = $job | Receive-Job
 	  $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
 
 	  # Verify cleared policies
@@ -199,7 +203,7 @@ function Test-VirtualNetworkGatewayConnectionWithIpsecPoliciesCRUD
 
       # Delete VirtualNetworkGatewayConnection
       $delete = Remove-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
-      Assert-AreEqual true $delete
+	  Assert-AreEqual true $delete
      }
      finally
      {
@@ -454,7 +458,7 @@ function Test-VirtualNetworkGatewayConnectionSharedKeyCRUD
       #Assert-AreEqual "TestSharedKeyValue" $expected
 
       # Reset VirtualNetworkGatewayConnectionSharedKey
-      #$actual = Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName -KeyLength 50 -Force   
+      #$actual = Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName -KeyLength 50 -Force
 	  #Assert-AreNotEqual "TestSharedKeyValue" $actual
 
       # Get VirtualNetworkGatewayConnectionSharedKey after Reset-VirtualNetworkGatewayConnectionSharedKey
@@ -466,4 +470,76 @@ function Test-VirtualNetworkGatewayConnectionSharedKeyCRUD
       # Cleanup
       Clean-ResourceGroup $rgname
     }
+}
+
+<#
+.SYNOPSIS
+Virtual network gateway vpn device configuration tests
+#>
+function Test-VirtualNetworkGatewayConnectionVpnDeviceConfigurations
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $localnetName = Get-ResourceName
+    $vnetConnectionName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/connections"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+	try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+    
+      # Create the Virtual Network
+      $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+      $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+      $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+      $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+      # Create the publicip
+      $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel    
+
+      # Create VirtualNetworkGateway
+      $vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard
+      $vnetGateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+
+      # Create LocalNetworkGateway    
+      $actual = New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.10
+      $localnetGateway = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $localnetName
+
+	  # Create IpsecPolicy and test defaults creation
+	  $ipsecPolicy = New-AzureRmIpsecPolicy -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
+	  Assert-AreEqual $ipsecPolicy.SALifeTimeSeconds 27000
+	  Assert-AreEqual $ipsecPolicy.SADataSizeKilobytes 102400000 
+	  $ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 3000 -SADataSizeKilobytes 10000 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
+
+      # Create & Get VirtualNetworkGatewayConnection w/ policy based TS
+      $actual = New-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -EnableBgp $false -UsePolicyBasedTrafficSelectors $true -IpsecPolicies $ipsecPolicy
+      $connection = Get-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
+      
+	  # List supported vpn devices
+	  $supportedVpnDevices = Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice -ResourceGroupName $rgname -name $rname
+
+	  $supportedDevicesXml = [xml]$supportedVpnDevices
+	  $vendorNode = $supportedDevicesXml.SelectSingleNode("//Vendor")
+      $deviceNode = $vendorNode.FirstChild
+      $vendorName = $vendorNode.Attributes["name"].Value
+      $deviceName = $deviceNode.Attributes["name"].Value
+      $firmwareVersion = $deviceNode.FirstChild.Attributes["name"].Value
+
+	  $vpnDeviceConfigurationScript = Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript -ResourceGroupName $rgname -name $vnetConnectionName -DeviceVendor $vendorName -DeviceFamily $deviceName -FirmwareVersion $firmwareVersion
+	  Write-Host $vpnDeviceConfigurationScript
+     }
+     finally
+     {
+      # Cleanup
+        Clean-ResourceGroup $rgname
+     }
 }
