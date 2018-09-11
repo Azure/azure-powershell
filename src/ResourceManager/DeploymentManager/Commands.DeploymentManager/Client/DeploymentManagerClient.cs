@@ -14,16 +14,16 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Client
 {
-    using Common.Authentication.Abstractions;
-    using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Management.DeploymentManager;
-    using Microsoft.Azure.Management.DeploymentManager.Models;
-    using Microsoft.Azure.Management.Internal.Resources;
     using System.Collections.Generic;
     using System;
     using System.Net;
-    using Microsoft.Rest.TransientFaultHandling;
+
+    using Common.Authentication.Abstractions;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.DeploymentManager.Models;
+    using Microsoft.Azure.Management.DeploymentManager;
+    using Microsoft.Azure.Management.DeploymentManager.Models;
+    using Microsoft.Azure.Management.Internal.Resources;
     using Microsoft.Rest.Azure;
 
     /// <summary>
@@ -49,10 +49,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
         {
             this._client = AzureSession.Instance.ClientFactory.CreateArmClient<AzureDeploymentManagerClient>(context, AzureEnvironment.Endpoint.ResourceManager);
             this._resourceManagementClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-
-            var retryPolicy = new RetryPolicy<HttpStatusCodeErrorDetectionStrategy>(
-                new FixedIntervalRetryStrategy(retryCount: 10, retryInterval: TimeSpan.FromSeconds(10)));
-            this._client.SetRetryPolicy(retryPolicy);
         }
 
         /// <summary>
