@@ -380,7 +380,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 DataLakeAudience = "DataLakeAudience",
                 AzureOperationalInsightsEndpointResourceId = "AzureOperationalInsightsEndpointResourceId",
                 AzureOperationalInsightsEndpoint = "https://AzureOperationalInsights",
-                StorageOAuthEndpointResourceId = "https://storage.azure.com",
             };
 
             var dict = new Dictionary<string, object>();
@@ -404,7 +403,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             dict["DataLakeAudience"] = "DataLakeAudience";
             dict["AzureOperationalInsightsEndpointResourceId"] = "AzureOperationalInsightsEndpointResourceId";
             dict["AzureOperationalInsightsEndpoint"] = "https://AzureOperationalInsights";
-            dict["StorageOAuthEndpointResourceId"] = "https://storage.azure.com";
             cmdlet.SetBoundParameters(dict);
 
             cmdlet.InvokeBeginProcessing();
