@@ -38,6 +38,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Get specific VM extension.
 
 #>
+using module '..\CustomObjects\VmExtensionObject.psm1'
 
 function Get-AzsVMExtension {
     [OutputType([VmExtensionObject])]
