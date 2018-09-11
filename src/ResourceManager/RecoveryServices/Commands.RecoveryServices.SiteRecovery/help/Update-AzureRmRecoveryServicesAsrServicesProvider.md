@@ -34,6 +34,7 @@ Starts the operation of refreshing the information from the specified ASR servic
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
+
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
@@ -97,11 +98,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryServicesProvider
-Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
+### System.Object
 
 ## NOTES
 

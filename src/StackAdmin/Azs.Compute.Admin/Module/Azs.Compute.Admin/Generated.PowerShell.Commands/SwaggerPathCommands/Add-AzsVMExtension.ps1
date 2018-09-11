@@ -53,6 +53,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Add a new platform image extension.
 
 #>
+using module '..\CustomObjects\VmExtensionObject.psm1'
+
 function Add-AzsVMExtension {
     [OutputType([VMExtensionObject])]
     [CmdletBinding(SupportsShouldProcess = $true)]
