@@ -68,6 +68,7 @@
     <Compile Include="CultureHandler.cs" />
     <Compile Include="CommonHelpers.cs" />
     <Compile Include="ClientRequestIdHandler.cs" />
+    <Compile Include="RMAPIs\ResourceAPIs.cs" />
     <Compile Include="RpNamespaceHandler.cs" />
     <Compile Include="QueryBuilder.cs" />
     <Compile Include="ServiceClientAdapter.cs" />

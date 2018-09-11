@@ -18,6 +18,12 @@ $vaultName = "PSTestFSRSV1bca8f8e"
 $fileShareFriendlyName = "pstestfs1bca8f8e"
 $fileShareName = "AzureFileShare;pstestfs1bca8f8e"
 $saName = "pstestsa1bca8f8e"
+$saRgName = "pstestFSRG1bca8f8e"
+$targetSaName = "pstestsa3rty7d7s"
+$targetFileShareName = "pstestfs3rty7d7s"
+$targetFolder = "pstestfolder3rty7d7s"
+$folderPath = "pstestfolder1bca8f8e"
+$filePath = "pstestfolder1bca8f8e/pstestfile1bca8f8e.txt"
 $skuName="Standard_LRS"
 $policyName = "AFSBackupPolicy"
 
@@ -225,6 +231,92 @@ function Test-AzureFSGetRPs
 			-Item $item;
 	
 		Assert-NotNull $recoveryPointDetail;
+	}
+	finally
+	{
+		Cleanup-Vault $vault $item $container
+	}
+}
+
+function Test-AzureFSFullRestore
+{
+	try
+	{
+		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		$item = Enable-Protection $vault $fileShareFriendlyName $saName
+		$container = Get-AzureRmRecoveryServicesBackupContainer `
+			-VaultId $vault.ID `
+			-ContainerType AzureStorage `
+			-Status Registered `
+			-Name $saName
+		$backupJob = Backup-Item $vault $item
+
+		$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+		$backupEndTime = $backupJob.EndTime.AddMinutes(1);
+
+		$recoveryPoint = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
+			-VaultId $vault.ID `
+			-StartDate $backupStartTime `
+			-EndDate $backupEndTime `
+			-Item $item;
+
+		# Item level restore at alternate location
+		$restoreJob1 = Restore-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $recoveryPoint[0] `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $saRgName `
+			-ResolveConflict Overwrite `
+			-SourceFilePath $folderPath `
+			-SourceFileType Directory `
+			-TargetStorageAccountName $targetSaName `
+			-TargetFileShareName $targetFileShareName `
+			-TargetFolder $targetFolder | `
+				Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJob1.Status -eq "Completed" }
+
+		# Full share restore at alternate location		
+		$restoreJob2 = Restore-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $recoveryPoint[0] `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $saRgName `
+			-ResolveConflict Overwrite `
+			-TargetStorageAccountName $targetSaName `
+			-TargetFileShareName $targetFileShareName `
+			-TargetFolder $targetFolder | `
+				Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+		
+		Assert-True { $restoreJob2.Status -eq "Completed" }
+
+		# Item level restore at original location
+		$restoreJob3 = Restore-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $recoveryPoint[0] `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $saRgName `
+			-ResolveConflict Overwrite `
+			-SourceFilePath $filePath `
+			-SourceFileType File | `
+				Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob3.Status -eq "Completed" }
+
+		# Full share restore at original location
+		$restoreJob4 = Restore-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $recoveryPoint[0] `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $saRgName `
+			-ResolveConflict Overwrite | `
+				Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob4.Status -eq "Completed" }
 	}
 	finally
 	{
