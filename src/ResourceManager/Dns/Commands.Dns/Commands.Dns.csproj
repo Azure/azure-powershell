@@ -57,9 +57,6 @@
     <Compile Include="Models\DnsBaseCmdlet.cs" />
     <Compile Include="Models\DnsRecordSet.cs" />
     <Compile Include="Models\DnsZone.cs" />
-    <Compile Include="Models\DnsResourceReference.cs" />
-    <Compile Include="Models\SubResource.cs" />
-    <Compile Include="ResourceReference\GetAzureDnsResourceReference.cs" />
     <Compile Include="Records\GetAzureDnsRecordSet.cs" />
     <Compile Include="Records\NewAzureRmDnsRecordConfig.cs" />
     <Compile Include="Records\RemoveAzureDnsRecordSet.cs" />

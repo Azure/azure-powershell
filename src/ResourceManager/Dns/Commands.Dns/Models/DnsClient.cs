@@ -122,36 +122,6 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return ToDnsZone(this.DnsManagementClient.Zones.Get(resourceGroupName, name));
         }
 
-        public IList<DnsResourceReference> GetDnsTargetResources(IList<SubResource> subResources)
-        {
-            List<DnsResourceReference> resourceReferences = new List<DnsResourceReference>();
-
-            if (subResources != null)
-            {
-                List<Sdk.SubResource> requestedResources = new List<Sdk.SubResource>();
-                foreach (SubResource subresource in subResources)
-                {
-                    requestedResources.Add(new Sdk.SubResource(subresource.Id));
-                }
-
-                IList<Sdk.DnsResourceReference> resourcesResponse = this.DnsManagementClient.DnsResourceReference.GetByTargetResources(requestedResources).DnsResourceReferences;
-
-                if (resourcesResponse != null)
-                {
-                    foreach(Sdk.DnsResourceReference reference in resourcesResponse)
-                    {
-                        resourceReferences.Add(new DnsResourceReference()
-                        {
-                            DnsResources = reference.DnsResources == null ? new List<SubResource>() : reference.DnsResources.Select(sr => new SubResource() { Id = sr.Id }).ToList(),
-                            TargetResource = new SubResource() { Id = reference.TargetResource.Id }
-                        });
-                    }
-                }
-            }
-
-            return resourceReferences;
-        }
-
         public List<DnsZone> ListDnsZonesInResourceGroup(string resourceGroupName)
         {
             List<DnsZone> results = new List<DnsZone>();
