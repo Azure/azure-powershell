@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
         {
             base.ExecuteCmdlet();
 
-            foreach (var usage in this.StorageClient.Usage.List())
+            foreach (var usage in this.StorageClient.Usages.List())
             {
                 WriteObject(new PSUsage()
                 {

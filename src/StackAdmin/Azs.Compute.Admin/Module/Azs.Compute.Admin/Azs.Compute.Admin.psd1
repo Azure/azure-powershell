@@ -63,11 +63,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # RequiredAssemblies = @()
 
     # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-    ScriptsToProcess  = @(
-        'Generated.PowerShell.Commands\CustomObjects\ComputeQuotaObject.ps1',
-        'Generated.PowerShell.Commands\CustomObjects\PlatformImageObject.ps1',
-        'Generated.PowerShell.Commands\CustomObjects\VmExtensionObject.ps1'
-    )
+    ScriptsToProcess  = @()
 
     # Type files (.ps1xml) to be loaded when importing this module
     TypesToProcess    = @('Generated.PowerShell.Commands\FormatFiles\Azs.Compute.Admin.Type.ps1xml')

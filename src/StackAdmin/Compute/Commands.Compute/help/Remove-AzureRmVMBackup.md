@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 2AB1B227-68C4-49AE-84C0-E1421E609DE7
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmbackup
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Removes the backup from a virtual machine.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMBackup [-ResourceGroupName] <String> [-VMName] <String> [-Tag] <String> [<CommonParameters>]
+Remove-AzureRmVMBackup [-ResourceGroupName] <String> [-VMName] <String> [-Tag] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,10 +23,25 @@ Remove-AzureRmVMBackup [-ResourceGroupName] <String> [-VMName] <String> [-Tag] <
 
 ### 1:
 ```
-PS C:\> 
+PS C:\>
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ResourceGroupName
 ```yaml
@@ -71,10 +87,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 
