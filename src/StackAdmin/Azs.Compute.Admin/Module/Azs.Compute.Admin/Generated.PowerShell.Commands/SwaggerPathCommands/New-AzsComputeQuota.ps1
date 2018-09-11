@@ -44,6 +44,8 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     Create a new compute quota.
 
 #>
+using module '..\CustomObjects\ComputeQuotaObject.psm1'
+
 function New-AzsComputeQuota {
     [OutputType([ComputeQuotaObject])]
     [CmdletBinding(SupportsShouldProcess = $true)]

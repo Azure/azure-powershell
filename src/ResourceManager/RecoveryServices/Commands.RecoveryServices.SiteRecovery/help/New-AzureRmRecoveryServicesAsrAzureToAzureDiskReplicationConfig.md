@@ -12,9 +12,18 @@ Creates a disk mapping object for Azure virtual machine disks to be replicated.
 
 ## SYNTAX
 
+### AzureToAzure (Default)
 ```
 New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig -VhdUri <String> -LogStorageAccountId <String>
  -RecoveryAzureStorageAccountId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### AzureToAzureManagedDisk
+```
+New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig [-ManagedDisk] -LogStorageAccountId <String>
+ -DiskId <String> -RecoveryResourceGroupId <String> -RecoveryReplicaDiskAccountType <String>
+ -RecoveryTargetDiskAccountType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -47,6 +56,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiskId
+Specifies the disk id of managed disk.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LogStorageAccountId
 Specifies the log or cache storage account Id to be used to store replication logs.
 
@@ -62,13 +86,75 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedDisk
+Specifies the input is for managed disk.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RecoveryAzureStorageAccountId
 Specifies the ID of the Azure storage account to replicate to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AzureToAzure
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryReplicaDiskAccountType
+Specifies the account type of replicated managed disk.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+Accepted values: Premium_LRS, Standard_LRS
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryResourceGroupId
+Specifies the recovery resource group id for replicated managed disk.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryTargetDiskAccountType
+Specifies the recovery target disk for replicated managed disk.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+Accepted values: Premium_LRS, Standard_LRS
 
 Required: True
 Position: Named
@@ -82,7 +168,7 @@ Specify the VHD URI of the disk that this mapping corresponds to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AzureToAzure
 Aliases:
 
 Required: True
@@ -132,7 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAzuretoAzureDiskReplicationConfig
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig
 
 ## NOTES
 

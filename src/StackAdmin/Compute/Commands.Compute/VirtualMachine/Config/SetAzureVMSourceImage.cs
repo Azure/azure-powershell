@@ -19,32 +19,37 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Set, ProfileNouns.SourceImage, DefaultParameterSetName = ImageReferenceParameterSet),
+    [Cmdlet(VerbsCommon.Set, ProfileNouns.SourceImage, DefaultParameterSetName = ImageReferenceSkuParameterSet),
     OutputType(typeof(PSVirtualMachine))]
     public class SetAzureVMSourceImageCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
-        protected const string ImageReferenceParameterSet = "ImageReferenceParameterSet";
+        protected const string ImageReferenceSkuParameterSet = "ImageReferenceSkuParameterSet";
+        protected const string ImageReferenceIdParameterSet = "ImageReferenceIdParameterSet";
 
         [Alias("VMProfile")]
         [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
-        [Parameter(ParameterSetName = ImageReferenceParameterSet, Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ImageReferenceSkuParameterSet, Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PublisherName { get; set; }
 
-        [Parameter(ParameterSetName = ImageReferenceParameterSet, Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ImageReferenceSkuParameterSet, Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Offer { get; set; }
 
-        [Parameter(ParameterSetName = ImageReferenceParameterSet, Mandatory = true, Position = 3, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ImageReferenceSkuParameterSet, Mandatory = true, Position = 3, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Skus { get; set; }
 
-        [Parameter(ParameterSetName = ImageReferenceParameterSet, Mandatory = true, Position = 4, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ImageReferenceSkuParameterSet, Mandatory = true, Position = 4, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
+
+        [Parameter(ParameterSetName = ImageReferenceIdParameterSet, Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -53,13 +58,23 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.StorageProfile = new StorageProfile();
             }
 
-            this.VM.StorageProfile.ImageReference = new ImageReference
+            if (ParameterSetName.Equals(ImageReferenceSkuParameterSet))
             {
-                Publisher = PublisherName,
-                Offer = Offer,
-                Sku = Skus,
-                Version = Version
-            };
+                this.VM.StorageProfile.ImageReference = new ImageReference
+                {
+                    Publisher = PublisherName,
+                    Offer = Offer,
+                    Sku = Skus,
+                    Version = Version
+                };
+            }
+            else
+            {
+                this.VM.StorageProfile.ImageReference = new ImageReference
+                {
+                    Id = this.Id
+                };
+            }
 
             WriteObject(this.VM);
         }
