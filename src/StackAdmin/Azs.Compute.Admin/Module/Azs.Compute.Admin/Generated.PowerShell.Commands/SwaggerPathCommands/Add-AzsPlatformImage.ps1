@@ -53,6 +53,8 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     Add a new platform image.
 
 #>
+using module '..\CustomObjects\PlatformImageObject.psm1'
+
 function Add-AzsPlatformImage {
     [OutputType([PlatformImageObject])]
     [CmdletBinding(SupportsShouldProcess = $true)]
