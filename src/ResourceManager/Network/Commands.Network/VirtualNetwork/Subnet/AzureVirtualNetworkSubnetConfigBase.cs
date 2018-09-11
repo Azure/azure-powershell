@@ -71,5 +71,11 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Endpoint Policies")]
         public List<PSServiceEndpointPolicy> ServiceEndpointPolicy { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Delegations")]
+        public List<PSDelegation> Delegations { get; set; }
     }
 }

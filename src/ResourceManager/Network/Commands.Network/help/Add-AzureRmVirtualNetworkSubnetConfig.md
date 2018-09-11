@@ -50,6 +50,17 @@ New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
     Add-AzureRmVirtualNetworkSubnetConfig is then used to add a subnet to the in-memory representation of the virtual network. The Set-AzureRmVirtualNetwork command updates the existing virtual 
     network with the new subnet.
 
+### 2: Add a delegation to a subnet being added to an existing virtual network
+```powershell
+PS C:\> $vnet = Get-AzureRmVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
+PS C:\> $delegation = New-AzureRmDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/servers"
+PS C:\> Add-AzureRmVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet -AddressPrefix "10.0.2.0/24" -Delegation $delegation | Set-AzureRmVirtualNetwork
+```
+
+This example first gets an existing vnet.
+Then, it creates a delegation object in memory.
+Finally, it creates a new subnet with that delegation that is added to the vnet. The modified configuration is then sent to the server.
+
 ## PARAMETERS
 
 ### -AddressPrefix

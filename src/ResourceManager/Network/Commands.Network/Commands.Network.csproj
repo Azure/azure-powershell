@@ -404,6 +404,8 @@
     <Compile Include="Models\AzureFirewall\PSAzureFirewallNetworkRuleCollection.cs" />
     <Compile Include="Models\AzureFirewall\PSAzureFirewallRCAction.cs" />
     <Compile Include="Models\PSApplicationGatewayAutoscaleConfiguration.cs" />
+    <Compile Include="Models\PSAvailableDelegation.cs" />
+    <Compile Include="Models\PSDelegation.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddressPool.cs" />
     <Compile Include="Models\PSApplicationGatewayFrontendIPConfiguration.cs" />
     <Compile Include="Models\PSAvailableProvidersListCity.cs" />
@@ -597,6 +599,12 @@
     <Compile Include="ServiceEndpointPolicy\NewAzureServiceEndpointPolicyCommand.cs" />
     <Compile Include="ServiceEndpointPolicy\RemoveAzureServiceEndpointPolicyCommand.cs" />
     <Compile Include="ServiceEndpointPolicy\SetAzureServiceEndpointPolicyCommand.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\AzureDelegationBase.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\AddAzureDelegationCommand.cs" />
+    <Compile Include="AvailableDelegation\GetAzureAvailableServiceDelegationsCommand.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\GetAzureDelegationCommand.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\RemoveAzureDelegationCommand.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\NewAzureDelegationCommand.cs" />
     <Compile Include="VirtualNetwork\TestAzurePrivateIPAddressAvailabilityCmdlet.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />
