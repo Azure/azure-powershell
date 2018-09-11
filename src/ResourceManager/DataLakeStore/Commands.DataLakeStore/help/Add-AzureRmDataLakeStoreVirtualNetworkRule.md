@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/add-azurermdatalakestorevirtualnetworkrule
 schema: 2.0.0
 ---
 
 # Add-AzureRmDataLakeStoreVirtualNetworkRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Adds a virtual network rule to the specified Data Lake Store account.
 
 ## SYNTAX
 

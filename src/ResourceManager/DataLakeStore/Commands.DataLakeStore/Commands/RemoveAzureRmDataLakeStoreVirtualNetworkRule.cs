@@ -33,23 +33,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Alias("AccountName")]
         public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             HelpMessage = "The name of the virtual network rule.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+        [Parameter(Mandatory = false,
             HelpMessage =
                 "Indicates a boolean response should be returned indicating the result of the delete operation."
             )]
         public SwitchParameter PassThru { get; set; }
-
-        [Parameter(Position = 4,
-            ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "Name of resource group under which want to retrieve the account.")]
-        [ResourceGroupCompleter()]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -58,7 +51,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Name,
                 () =>
                 {
-                    DataLakeStoreClient.DeleteVirtualNetworkRule(ResourceGroupName, Account, Name, this);
+                    DataLakeStoreClient.DeleteVirtualNetworkRule(Account, Name, this);
                     if (PassThru)
                     {
                         WriteObject(true);

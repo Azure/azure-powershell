@@ -42,13 +42,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
-        [Parameter(Position = 4,
-            ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "Name of resource group under which want to retrieve the account.")]
-        [ResourceGroupCompleter()]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         public override void ExecuteCmdlet()
         {
             ConfirmAction(
@@ -56,7 +49,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Name,
                 () =>
                     WriteObject(new DataLakeStoreVirtualNetworkRule(DataLakeStoreClient.AddOrUpdateVirtualNetworkRule(
-                        ResourceGroupName, Account, Name, SubnetId, this)))
+                        Account, Name, SubnetId, this)))
             );
         }
     }

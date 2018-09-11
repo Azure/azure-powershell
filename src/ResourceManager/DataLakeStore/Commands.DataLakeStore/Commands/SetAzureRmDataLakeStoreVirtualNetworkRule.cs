@@ -37,23 +37,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The start of the valid ip range for the virtual network rule")]
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
-        [Parameter(Position = 3,
-            ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "Name of resource group under which want to retrieve the account.")]
-        [ResourceGroupCompleter()]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         public override void ExecuteCmdlet()
         {
             // get the current virtual network rule
-            var rule = DataLakeStoreClient.GetVirtualNetworkRule(ResourceGroupName, Account, Name);
-            if( rule == null)
+            VirtualNetworkRule rule = DataLakeStoreClient.GetVirtualNetworkRule(Account, Name);
+            if (rule == null)
             {
                 throw new PSInvalidOperationException(string.Format(Resources.VirtualNetworkRuleNotFound, Name));
             }
@@ -64,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Name,
                 () => 
                     WriteObject(new DataLakeStoreVirtualNetworkRule(DataLakeStoreClient.AddOrUpdateVirtualNetworkRule(
-                        ResourceGroupName, Account, Name, subnetId, this)))
+                        Account, Name, subnetId, this)))
             );
         }
     }

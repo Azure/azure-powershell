@@ -33,30 +33,23 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Alias("AccountName")]
         public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The name of the virtual network rule.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Position = 2,
-            ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "Name of resource group under which want to retrieve the account.")]
-        [ResourceGroupCompleter()]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // get the current virtual network rule
             if (string.IsNullOrEmpty(Name))
             {
-                WriteObject(DataLakeStoreClient.ListVirtualNetworkRules(ResourceGroupName, Account)
+                WriteObject(DataLakeStoreClient.ListVirtualNetworkRules(Account)
                     .Select(element => new DataLakeStoreVirtualNetworkRule(element))
                     .ToList(), true);
             }
             else
             {
-                WriteObject(new DataLakeStoreVirtualNetworkRule(DataLakeStoreClient.GetVirtualNetworkRule(ResourceGroupName, Account, Name)));
+                WriteObject(new DataLakeStoreVirtualNetworkRule(DataLakeStoreClient.GetVirtualNetworkRule(Account, Name)));
             }
         }
     }

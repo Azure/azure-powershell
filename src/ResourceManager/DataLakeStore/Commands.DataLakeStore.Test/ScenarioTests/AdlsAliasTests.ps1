@@ -6,7 +6,7 @@ function Test-DataLakeStoreTrustedIdProvider
 {
     param
 	(
-		$location = "West US"
+		$location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 	)
 	
 	try
@@ -919,7 +919,6 @@ function Test-NegativeDataLakeStoreAccount
 #>
 function CreateAndGetVirtualNetwork ($resourceGroupName, $vnetName, $location = "westcentralus")
 {
-    Import-Module AzureRM.Network
 	$subnetName = "Public"
 
 	$addressPrefix = "10.0.0.0/24"

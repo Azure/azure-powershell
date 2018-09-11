@@ -1,14 +1,15 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/get-azurermdatalakestorevirtualnetworkrule
 schema: 2.0.0
 ---
 
 # Get-AzureRmDataLakeStoreVirtualNetworkRule
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the specified virtual network rules in the specified Data Lake Store.
+If no virtual network rule is specified, then lists all virtual network rules for the account.
 
 ## SYNTAX
 
