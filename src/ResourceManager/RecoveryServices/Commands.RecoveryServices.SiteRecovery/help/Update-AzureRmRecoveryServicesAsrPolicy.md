@@ -172,6 +172,7 @@ Accept wildcard characters: False
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
+
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
@@ -185,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -Encryption
-Specifies if encryption should be enabled or disabled.
+{{Fill Encryption Description}}
 
 ```yaml
 Type: System.String
@@ -264,6 +265,7 @@ Accept wildcard characters: False
 ### -RecoveryAzureStorageAccountId
 Specifies the Azure storage account ID of the replication target. Used as the target storage account for replication if an alternate is not provided while enabling replication using the New-AzureRmRecoveryServicesASRReplicationProtectedItem cmdlet.
 
+
 ```yaml
 Type: System.String
 Parameter Sets: Default, HyperVToAzure
@@ -310,6 +312,7 @@ Accept wildcard characters: False
 ### -ReplicationFrequencyInSeconds
 Specifies the replication frequency interval in seconds.
 Valid values are:
+
 - 30
 - 300
 - 900
@@ -455,11 +458,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy
-Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
+### System.Object
 
 ## NOTES
 

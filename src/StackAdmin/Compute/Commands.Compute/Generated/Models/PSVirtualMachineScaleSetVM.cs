@@ -24,7 +24,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public class PSVirtualMachineScaleSetVM : VirtualMachineScaleSetVM
+    public partial class PSVirtualMachineScaleSetVM : VirtualMachineScaleSetVM
     {
         // Gets or sets the property of 'ResourceGroupName'
         public string ResourceGroupName
