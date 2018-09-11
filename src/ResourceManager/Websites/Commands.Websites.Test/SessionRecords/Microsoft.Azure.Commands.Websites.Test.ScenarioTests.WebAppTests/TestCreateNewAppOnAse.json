@@ -7,22 +7,22 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "191d217f-0b9b-4e8c-9a43-77d590168ebc"
+          "06e431cf-8faf-4b0b-8850-ae79a4b3b916"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "FxVersion/4.7.3133.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travelproductionplan\",\r\n  \"name\": \"travelproductionplan\",\r\n  \"type\": \"Microsoft.Web/serverfarms\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"serverFarmId\": 2,\r\n    \"name\": \"travelproductionplan\",\r\n    \"workerSize\": \"Default\",\r\n    \"workerSizeId\": 0,\r\n    \"workerTierName\": null,\r\n    \"numberOfWorkers\": 0,\r\n    \"currentWorkerSize\": \"Default\",\r\n    \"currentWorkerSizeId\": 0,\r\n    \"currentNumberOfWorkers\": 0,\r\n    \"status\": \"Creating\",\r\n    \"webSpace\": \"appdemorg-asedemopsappseWestUSwebspace\",\r\n    \"subscription\": \"0d3ae56c-deaf-4982-b514-33d016d4a683\",\r\n    \"adminSiteName\": null,\r\n    \"hostingEnvironment\": \"asedemops\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemops\",\r\n      \"name\": \"asedemops\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"maximumNumberOfWorkers\": 100,\r\n    \"planName\": \"VirtualDedicatedPlan\",\r\n    \"adminRuntimeSiteName\": null,\r\n    \"computeMode\": \"Dedicated\",\r\n    \"siteMode\": null,\r\n    \"geoRegion\": \"West US\",\r\n    \"perSiteScaling\": false,\r\n    \"numberOfSites\": 0,\r\n    \"hostingEnvironmentId\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemops\",\r\n    \"isSpot\": false,\r\n    \"spotExpirationTime\": null,\r\n    \"freeOfferExpirationTime\": null,\r\n    \"tags\": null,\r\n    \"kind\": \"app\",\r\n    \"resourceGroup\": \"appdemorg\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"mdmId\": \"waws-prod-bay-950c1bb7_2\",\r\n    \"targetWorkerCount\": 1,\r\n    \"targetWorkerSizeId\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"webSiteId\": null\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"I1\",\r\n    \"tier\": \"Isolated\",\r\n    \"size\": \"I1\",\r\n    \"family\": \"I\",\r\n    \"capacity\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travelproductionplan\",\r\n  \"name\": \"travelproductionplan\",\r\n  \"type\": \"Microsoft.Web/serverfarms\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"serverFarmId\": 2,\r\n    \"name\": \"travelproductionplan\",\r\n    \"workerSize\": \"Default\",\r\n    \"workerSizeId\": 0,\r\n    \"workerTierName\": null,\r\n    \"numberOfWorkers\": 1,\r\n    \"currentWorkerSize\": \"Default\",\r\n    \"currentWorkerSizeId\": 0,\r\n    \"currentNumberOfWorkers\": 1,\r\n    \"status\": \"Ready\",\r\n    \"webSpace\": \"appdemorg-asedemopsappseWestUSwebspace\",\r\n    \"subscription\": \"0d3ae56c-deaf-4982-b514-33d016d4a683\",\r\n    \"adminSiteName\": null,\r\n    \"hostingEnvironment\": \"asedemops\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemops\",\r\n      \"name\": \"asedemops\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"maximumNumberOfWorkers\": 100,\r\n    \"planName\": \"VirtualDedicatedPlan\",\r\n    \"adminRuntimeSiteName\": null,\r\n    \"computeMode\": \"Dedicated\",\r\n    \"siteMode\": null,\r\n    \"geoRegion\": \"West US\",\r\n    \"perSiteScaling\": false,\r\n    \"numberOfSites\": 0,\r\n    \"hostingEnvironmentId\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemops\",\r\n    \"isSpot\": false,\r\n    \"spotExpirationTime\": null,\r\n    \"freeOfferExpirationTime\": null,\r\n    \"tags\": null,\r\n    \"kind\": \"app\",\r\n    \"resourceGroup\": \"appdemorg\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"mdmId\": \"waws-prod-bay-950c1bb7_2\",\r\n    \"targetWorkerCount\": 0,\r\n    \"targetWorkerSizeId\": 0,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"webSiteId\": null\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"I1\",\r\n    \"tier\": \"Isolated\",\r\n    \"size\": \"I1\",\r\n    \"family\": \"I\",\r\n    \"capacity\": 1\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1591"
+          "1588"
         ],
         "Content-Type": [
           "application/json"
@@ -37,16 +37,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7ecc5c2b-00f8-49c4-bf69-4c6be4b7c93d"
+          "db3543f8-321b-405a-9071-b77e99ce854c"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11998"
         ],
         "x-ms-correlation-request-id": [
-          "a02e1fa1-1564-4358-838d-47568bc92958"
+          "b0494e24-2298-44be-925a-774573bbeed0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180905T191804Z:a02e1fa1-1564-4358-838d-47568bc92958"
+          "WESTUS2:20180909T013323Z:b0494e24-2298-44be-925a-774573bbeed0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -55,7 +55,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 05 Sep 2018 19:18:03 GMT"
+          "Sun, 09 Sep 2018 01:33:22 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -70,8 +70,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczQ3OTA/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczgxMTg/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"serverFarmId\": \"travelproductionplan\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourcegroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemops\"\r\n    }\r\n  },\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
@@ -82,19 +82,19 @@
           "288"
         ],
         "x-ms-client-request-id": [
-          "ecef67ca-ac2e-4fbe-a038-93ad62507b84"
+          "6a84d31f-96ce-4a59-83c5-22706ca0ec10"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "FxVersion/4.7.3133.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790\",\r\n  \"name\": \"ps4790\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"name\": \"ps4790\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"ps4790.asedemops.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemopsappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-950c1bb7.api.p.azurewebsites.windows.net:454/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/webspaces/appdemorg-asedemopsappseWestUSwebspace/sites/ps4790\",\r\n    \"repositorySiteName\": \"ps4790\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"ps4790.asedemops.p.azurewebsites.net\",\r\n      \"ps4790.scm.asedemops.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"ps4790.asedemops.p.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"ps4790.scm.asedemops.p.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travelproductionplan\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"lastModifiedTimeUtc\": \"2018-09-05T19:18:24.7933333\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"ps4790\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Isolated\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemops\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemops\",\r\n      \"name\": \"asedemops\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": \"app\",\r\n    \"outboundIpAddresses\": \"40.112.134.23\",\r\n    \"possibleOutboundIpAddresses\": \"40.112.134.23,40.112.134.23\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-bay-950c1bb7\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemops\",\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"appdemorg\",\r\n    \"defaultHostName\": \"ps4790.asedemops.p.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118\",\r\n  \"name\": \"ps8118\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"name\": \"ps8118\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"ps8118.asedemops.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemopsappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-950c1bb7.api.p.azurewebsites.windows.net:454/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/webspaces/appdemorg-asedemopsappseWestUSwebspace/sites/ps8118\",\r\n    \"repositorySiteName\": \"ps8118\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"ps8118.asedemops.p.azurewebsites.net\",\r\n      \"ps8118.scm.asedemops.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"ps8118.asedemops.p.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"ps8118.scm.asedemops.p.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travelproductionplan\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"lastModifiedTimeUtc\": \"2018-09-09T01:33:25.7666667\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"ps8118\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Isolated\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemops\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemops\",\r\n      \"name\": \"asedemops\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": \"app\",\r\n    \"outboundIpAddresses\": \"40.112.134.23\",\r\n    \"possibleOutboundIpAddresses\": \"40.112.134.23,40.112.134.23\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-bay-950c1bb7\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemops\",\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"appdemorg\",\r\n    \"defaultHostName\": \"ps8118.asedemops.p.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": false\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "2983"
@@ -112,16 +112,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "40fed3ee-8ad7-4fab-8fd3-c043b7ec2331"
+          "906fb7bf-d472-4c8f-9bdb-334516fb8906"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "499"
         ],
         "x-ms-correlation-request-id": [
-          "b40848a2-532a-4e00-bb70-5e963e400c1c"
+          "99c49395-bd09-4486-8b39-4ae41f2226bf"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180905T191832Z:b40848a2-532a-4e00-bb70-5e963e400c1c"
+          "WESTUS2:20180909T013346Z:99c49395-bd09-4486-8b39-4ae41f2226bf"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -130,10 +130,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 05 Sep 2018 19:18:32 GMT"
+          "Sun, 09 Sep 2018 01:33:46 GMT"
         ],
         "ETag": [
-          "\"1D4454D3ADF5460\""
+          "\"1D447DD25A06480\""
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -148,25 +148,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790/config/web?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczQ3OTAvY29uZmlnL3dlYj9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118/config/web?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczgxMTgvY29uZmlnL3dlYj9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "00fe9fcf-c1db-4484-bd36-54f578fa8c66"
+          "25bb3ecd-5b39-4989-83b6-9b00af196afd"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "FxVersion/4.7.3133.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790/config/web\",\r\n  \"name\": \"ps4790\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"5.6\",\r\n    \"pythonVersion\": \"\",\r\n    \"nodeVersion\": \"\",\r\n    \"linuxFxVersion\": \"\",\r\n    \"windowsFxVersion\": null,\r\n    \"requestTracingEnabled\": false,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": null,\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$ps4790\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"azureStorageAccounts\": {},\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"machineKey\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"appCommandLine\": \"\",\r\n    \"managedPipelineMode\": \"Integrated\",\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": \"LeastRequests\",\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": null,\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"additionalLoginParams\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"push\": null,\r\n    \"apiDefinition\": null,\r\n    \"autoSwapSlotName\": null,\r\n    \"localMySqlEnabled\": false,\r\n    \"managedServiceIdentityId\": null,\r\n    \"xManagedServiceIdentityId\": null,\r\n    \"ipSecurityRestrictions\": null,\r\n    \"http20Enabled\": false,\r\n    \"minTlsVersion\": \"1.2\",\r\n    \"ftpsState\": \"AllAllowed\",\r\n    \"reservedInstanceCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118/config/web\",\r\n  \"name\": \"ps8118\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"5.6\",\r\n    \"pythonVersion\": \"\",\r\n    \"nodeVersion\": \"\",\r\n    \"linuxFxVersion\": \"\",\r\n    \"windowsFxVersion\": null,\r\n    \"requestTracingEnabled\": false,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": null,\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$ps8118\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"azureStorageAccounts\": {},\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"machineKey\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"appCommandLine\": \"\",\r\n    \"managedPipelineMode\": \"Integrated\",\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": \"LeastRequests\",\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": null,\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"additionalLoginParams\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"push\": null,\r\n    \"apiDefinition\": null,\r\n    \"autoSwapSlotName\": null,\r\n    \"localMySqlEnabled\": false,\r\n    \"managedServiceIdentityId\": null,\r\n    \"xManagedServiceIdentityId\": null,\r\n    \"ipSecurityRestrictions\": null,\r\n    \"http20Enabled\": false,\r\n    \"minTlsVersion\": \"1.2\",\r\n    \"ftpsState\": \"AllAllowed\",\r\n    \"reservedInstanceCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "2495"
@@ -184,16 +184,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "d94c82f8-2229-4b23-99ba-557532089e3a"
+          "f21cc42e-5e5a-4ec2-93ff-1a669f9bfb24"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "aedb37b5-8273-47af-a6a3-7f8a034a6485"
+          "6f4a7c98-6632-4832-acff-f51fe16f664c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180905T191833Z:aedb37b5-8273-47af-a6a3-7f8a034a6485"
+          "WESTUS2:20180909T013347Z:6f4a7c98-6632-4832-acff-f51fe16f664c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -202,7 +202,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 05 Sep 2018 19:18:33 GMT"
+          "Sun, 09 Sep 2018 01:33:46 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -217,25 +217,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790/config/web?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczQ3OTAvY29uZmlnL3dlYj9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118/config/web?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczgxMTgvY29uZmlnL3dlYj9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "abf97271-2607-4578-9a6b-232ec52e0da8"
+          "b2826565-00a1-43e4-9fc7-edcd04c8587a"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "FxVersion/4.7.3133.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790/config/web\",\r\n  \"name\": \"ps4790\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"5.6\",\r\n    \"pythonVersion\": \"\",\r\n    \"nodeVersion\": \"\",\r\n    \"linuxFxVersion\": \"\",\r\n    \"windowsFxVersion\": null,\r\n    \"requestTracingEnabled\": false,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": null,\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$ps4790\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"azureStorageAccounts\": {},\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"machineKey\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"appCommandLine\": \"\",\r\n    \"managedPipelineMode\": \"Integrated\",\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": \"LeastRequests\",\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": null,\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"additionalLoginParams\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"push\": null,\r\n    \"apiDefinition\": null,\r\n    \"autoSwapSlotName\": null,\r\n    \"localMySqlEnabled\": false,\r\n    \"managedServiceIdentityId\": null,\r\n    \"xManagedServiceIdentityId\": null,\r\n    \"ipSecurityRestrictions\": null,\r\n    \"http20Enabled\": false,\r\n    \"minTlsVersion\": \"1.2\",\r\n    \"ftpsState\": \"AllAllowed\",\r\n    \"reservedInstanceCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118/config/web\",\r\n  \"name\": \"ps8118\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"5.6\",\r\n    \"pythonVersion\": \"\",\r\n    \"nodeVersion\": \"\",\r\n    \"linuxFxVersion\": \"\",\r\n    \"windowsFxVersion\": null,\r\n    \"requestTracingEnabled\": false,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": null,\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$ps8118\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"azureStorageAccounts\": {},\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"machineKey\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"appCommandLine\": \"\",\r\n    \"managedPipelineMode\": \"Integrated\",\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": \"LeastRequests\",\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": null,\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"additionalLoginParams\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"push\": null,\r\n    \"apiDefinition\": null,\r\n    \"autoSwapSlotName\": null,\r\n    \"localMySqlEnabled\": false,\r\n    \"managedServiceIdentityId\": null,\r\n    \"xManagedServiceIdentityId\": null,\r\n    \"ipSecurityRestrictions\": null,\r\n    \"http20Enabled\": false,\r\n    \"minTlsVersion\": \"1.2\",\r\n    \"ftpsState\": \"AllAllowed\",\r\n    \"reservedInstanceCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "2495"
@@ -253,16 +253,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9a114951-9e6d-4e23-a832-64268484e1b4"
+          "c3eb70e9-a702-4605-b00a-8032826c2a82"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11988"
+          "11995"
         ],
         "x-ms-correlation-request-id": [
-          "64a329f3-b801-477b-8a62-b6de89d306fc"
+          "5d315a6b-ed25-4a1f-8f48-62dfeea9315f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180905T191836Z:64a329f3-b801-477b-8a62-b6de89d306fc"
+          "WESTUS2:20180909T013349Z:5d315a6b-ed25-4a1f-8f48-62dfeea9315f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -271,7 +271,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 05 Sep 2018 19:18:36 GMT"
+          "Sun, 09 Sep 2018 01:33:49 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -286,25 +286,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790/config/appsettings/list?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczQ3OTAvY29uZmlnL2FwcHNldHRpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118/config/appsettings/list?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczgxMTgvY29uZmlnL2FwcHNldHRpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9a2ac50e-c957-4b9c-be5c-0e1d31279e29"
+          "62e806be-5435-4485-97ea-33f5ead59871"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "FxVersion/4.7.3133.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"6.9.1\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"6.9.1\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "273"
@@ -322,16 +322,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "072f70fa-aaf6-4253-a073-d1923a593172"
+          "6327332f-b868-45cf-81e3-1dd2f6434d52"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "d0f70515-2c7a-49ec-bc38-02e38c08cabd"
+          "cdb5ccd1-8981-4008-a8d8-b6558f74eb20"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180905T191833Z:d0f70515-2c7a-49ec-bc38-02e38c08cabd"
+          "WESTUS2:20180909T013347Z:cdb5ccd1-8981-4008-a8d8-b6558f74eb20"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -340,7 +340,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 05 Sep 2018 19:18:33 GMT"
+          "Sun, 09 Sep 2018 01:33:47 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -355,25 +355,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790/config/appsettings/list?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczQ3OTAvY29uZmlnL2FwcHNldHRpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118/config/appsettings/list?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczgxMTgvY29uZmlnL2FwcHNldHRpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bc715531-8637-4898-9d84-fcb42ebfd0c9"
+          "b54c1875-a7b8-4abc-9e38-72398856c26b"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "FxVersion/4.7.3133.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"6.9.1\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"6.9.1\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "273"
@@ -391,16 +391,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e7092050-0db2-4cef-8c03-b7d46e551bd4"
+          "0be29365-2578-4ab5-9b78-530b28bf2b37"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "11997"
         ],
         "x-ms-correlation-request-id": [
-          "736fab79-153e-4bbd-b250-453735842b1d"
+          "0bfa9107-634d-44f3-80d2-30798e1342e4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180905T191836Z:736fab79-153e-4bbd-b250-453735842b1d"
+          "WESTUS2:20180909T013349Z:0bfa9107-634d-44f3-80d2-30798e1342e4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -409,7 +409,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 05 Sep 2018 19:18:36 GMT"
+          "Sun, 09 Sep 2018 01:33:49 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -424,25 +424,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790/config/connectionstrings/list?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczQ3OTAvY29uZmlnL2Nvbm5lY3Rpb25zdHJpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118/config/connectionstrings/list?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczgxMTgvY29uZmlnL2Nvbm5lY3Rpb25zdHJpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "981e7b4c-043a-4126-911c-82037b91db66"
+          "e3b16301-5157-40fd-8712-50e4d2e1903b"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "FxVersion/4.7.3133.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {}\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "247"
@@ -460,16 +460,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "cd9522ce-87c7-4fc9-b009-8e029fb77882"
+          "266fb412-18a2-4743-88f2-3426792add2c"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "1721aedc-beea-44f7-898b-abb8d91b6503"
+          "9400a6a1-4c46-40f7-86c3-fa0492a50bd3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180905T191834Z:1721aedc-beea-44f7-898b-abb8d91b6503"
+          "WESTUS2:20180909T013347Z:9400a6a1-4c46-40f7-86c3-fa0492a50bd3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -478,7 +478,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 05 Sep 2018 19:18:34 GMT"
+          "Sun, 09 Sep 2018 01:33:47 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -493,25 +493,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790/config/connectionstrings/list?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczQ3OTAvY29uZmlnL2Nvbm5lY3Rpb25zdHJpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118/config/connectionstrings/list?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczgxMTgvY29uZmlnL2Nvbm5lY3Rpb25zdHJpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9618abb3-a382-47d1-af1d-69a6620a1e2f"
+          "9bd0a2b0-dabc-4fc3-a6db-5a8f20831b6a"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "FxVersion/4.7.3133.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {}\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "247"
@@ -529,16 +529,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "67f695f6-9693-46dd-8e79-327c615a0975"
+          "fe570333-84a8-42a8-8057-0e9d4d74eb83"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "11996"
         ],
         "x-ms-correlation-request-id": [
-          "d3c96585-033f-434b-81e0-1667ec5dd31a"
+          "a18a11c4-b13b-4433-a597-550a08ef9701"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180905T191837Z:d3c96585-033f-434b-81e0-1667ec5dd31a"
+          "WESTUS2:20180909T013350Z:a18a11c4-b13b-4433-a597-550a08ef9701"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -547,7 +547,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 05 Sep 2018 19:18:36 GMT"
+          "Sun, 09 Sep 2018 01:33:49 GMT"
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -562,25 +562,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790?api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczQ3OTA/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczgxMTg/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "39a212d2-0c37-4cf8-9440-35230d6940f2"
+          "d690407f-ef38-4f18-861e-7b7d72cb7cda"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "FxVersion/4.7.3133.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790\",\r\n  \"name\": \"ps4790\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"name\": \"ps4790\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"ps4790.asedemops.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemopsappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-950c1bb7.api.p.azurewebsites.windows.net:454/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/webspaces/appdemorg-asedemopsappseWestUSwebspace/sites/ps4790\",\r\n    \"repositorySiteName\": \"ps4790\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"ps4790.asedemops.p.azurewebsites.net\",\r\n      \"ps4790.scm.asedemops.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"ps4790.asedemops.p.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"ps4790.scm.asedemops.p.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travelproductionplan\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"lastModifiedTimeUtc\": \"2018-09-05T19:18:30.31\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"ps4790\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Isolated\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemops\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemops\",\r\n      \"name\": \"asedemops\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": \"app\",\r\n    \"outboundIpAddresses\": \"40.112.134.23\",\r\n    \"possibleOutboundIpAddresses\": \"40.112.134.23,40.112.134.23\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-bay-950c1bb7\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemops\",\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"appdemorg\",\r\n    \"defaultHostName\": \"ps4790.asedemops.p.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118\",\r\n  \"name\": \"ps8118\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"name\": \"ps8118\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"ps8118.asedemops.p.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"appdemorg-asedemopsappseWestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-950c1bb7.api.p.azurewebsites.windows.net:454/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/webspaces/appdemorg-asedemopsappseWestUSwebspace/sites/ps8118\",\r\n    \"repositorySiteName\": \"ps8118\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"ps8118.asedemops.p.azurewebsites.net\",\r\n      \"ps8118.scm.asedemops.p.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [\r\n        {\r\n          \"name\": \"LinuxFxVersion\",\r\n          \"value\": \"\"\r\n        },\r\n        {\r\n          \"name\": \"WindowsFxVersion\",\r\n          \"value\": null\r\n        }\r\n      ],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"ps8118.asedemops.p.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"ps8118.scm.asedemops.p.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/serverfarms/travelproductionplan\",\r\n    \"reserved\": false,\r\n    \"isXenon\": false,\r\n    \"lastModifiedTimeUtc\": \"2018-09-09T01:33:44.52\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"ps8118\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Isolated\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": \"asedemops\",\r\n    \"hostingEnvironmentProfile\": {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemops\",\r\n      \"name\": \"asedemops\",\r\n      \"type\": \"Microsoft.Web/hostingEnvironments\"\r\n    },\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": \"app\",\r\n    \"outboundIpAddresses\": \"40.112.134.23\",\r\n    \"possibleOutboundIpAddresses\": \"40.112.134.23,40.112.134.23\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-bay-950c1bb7\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/hostingEnvironments/asedemops\",\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"appdemorg\",\r\n    \"defaultHostName\": \"ps8118.asedemops.p.azurewebsites.net\",\r\n    \"slotSwapStatus\": null,\r\n    \"httpsOnly\": false\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "2978"
@@ -598,16 +598,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a3316b68-a39a-4866-9d87-ccc1ce4b5053"
+          "bd7b39b5-2c21-4180-a185-00a69faa92bf"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11989"
+          "11996"
         ],
         "x-ms-correlation-request-id": [
-          "d40be62c-7385-4dd3-a15e-39b141482e0f"
+          "778dd17d-8995-40a6-bac2-9901664d701e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180905T191836Z:d40be62c-7385-4dd3-a15e-39b141482e0f"
+          "WESTUS2:20180909T013349Z:778dd17d-8995-40a6-bac2-9901664d701e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -616,10 +616,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 05 Sep 2018 19:18:36 GMT"
+          "Sun, 09 Sep 2018 01:33:49 GMT"
         ],
         "ETag": [
-          "\"1D4454D3ADF5460\""
+          "\"1D447DD25A06480\""
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -634,21 +634,21 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps4790?deleteMetrics=true&deleteEmptyServerFarm=false&api-version=2018-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczQ3OTA/ZGVsZXRlTWV0cmljcz10cnVlJmRlbGV0ZUVtcHR5U2VydmVyRmFybT1mYWxzZSZhcGktdmVyc2lvbj0yMDE4LTAyLTAx",
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/appdemorg/providers/Microsoft.Web/sites/ps8118?deleteMetrics=true&deleteEmptyServerFarm=false&api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL2FwcGRlbW9yZy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczgxMTg/ZGVsZXRlTWV0cmljcz10cnVlJmRlbGV0ZUVtcHR5U2VydmVyRmFybT1mYWxzZSZhcGktdmVyc2lvbj0yMDE4LTAyLTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c8f8f60f-ad7e-493c-9cf2-cea59b92f09f"
+          "3fe2ed57-d944-45d0-ba51-baec5caae84a"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.3132.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
+          "FxVersion/4.7.3133.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
@@ -667,16 +667,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "b70c6118-3b97-4b8f-bded-035d87015e1d"
+          "2db7ad1f-023a-4e34-b661-d46eb33e0745"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "6187964d-55b7-4270-8f0f-3c8148765cf3"
+          "63794d07-c45a-4bbb-b98d-e03c1cae5ba3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180905T191838Z:6187964d-55b7-4270-8f0f-3c8148765cf3"
+          "WESTUS2:20180909T013351Z:63794d07-c45a-4bbb-b98d-e03c1cae5ba3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -685,10 +685,10 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 05 Sep 2018 19:18:38 GMT"
+          "Sun, 09 Sep 2018 01:33:51 GMT"
         ],
         "ETag": [
-          "\"1D4454D3ADF5460\""
+          "\"1D447DD25A06480\""
         ],
         "Server": [
           "Microsoft-IIS/10.0"
@@ -705,7 +705,7 @@
   ],
   "Names": {
     "Test-CreateNewWebAppOnAse": [
-      "ps4790"
+      "ps8118"
     ]
   },
   "Variables": {

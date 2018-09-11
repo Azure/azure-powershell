@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
             AppServicePlan.Sku.Size = AppServicePlan.Sku.Name;
             AppServicePlan.Sku.Family = AppServicePlan.Sku.Name.Substring(0, 1);
 
-            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, AppServicePlan.Location, AdminSiteName, AppServicePlan.Sku, null, null, AppServicePlan.PerSiteScaling), true);
+            WriteObject(WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, AppServicePlan), true);
         }
     }
 }
