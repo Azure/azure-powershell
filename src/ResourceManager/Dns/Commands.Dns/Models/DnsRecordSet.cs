@@ -91,6 +91,7 @@ namespace Microsoft.Azure.Commands.Dns
 
             clone.Name = this.Name;
             clone.TargetResourceId = this.TargetResourceId;
+            clone.ProvisioningState = this.ProvisioningState;
             clone.Id = this.Id;
             clone.ZoneName = this.ZoneName;
             clone.ResourceGroupName = this.ResourceGroupName;
