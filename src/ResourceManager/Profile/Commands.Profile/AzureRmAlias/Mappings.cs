@@ -1300,6 +1300,9 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                        'Get-AzStorageFileCopyState':  'Get-AzureStorageFileCopyState',
                        'Get-AzStorageAccount':  'Get-AzureRmStorageAccount',
                        'Set-AzRmStorageContainerImmutabilityPolicy':  'Set-AzureRmStorageContainerImmutabilityPolicy'
+                       'Set-AzRmStorageAccountManagementPolicy':  'Set-AzureRmStorageAccountManagementPolicy'
+                       'Get-AzRmStorageAccountManagementPolicy':  'Get-AzureRmStorageAccountManagementPolicy'
+                       'Remove-AzRmStorageAccountManagementPolicy':  'Remove-AzureRmStorageAccountManagementPolicy'
                    },
     'Az.Insights':  {
                         'Remove-AzAlertRule':  'Remove-AzureRmAlertRule',

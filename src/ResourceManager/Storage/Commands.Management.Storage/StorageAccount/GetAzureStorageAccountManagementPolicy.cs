@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Get, StorageAccountManagementPolicyNounStr, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSManagementPolicy))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + StorageAccountManagementPolicyNounStr, DefaultParameterSetName = AccountNameParameterSet), OutputType(typeof(PSManagementPolicy))]
     public class GetAzureStorageAccountManagementPolicyCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
