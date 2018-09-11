@@ -200,6 +200,7 @@ param
       Assert-AreEqual "RouteBased" $expected.VpnType
       
       # Update P2S VPNClient Configuration
+      #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
 	  $Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -AsPlainText -Force
       Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $expected -VpnClientAddressPool 200.168.0.0/16 -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd 
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
