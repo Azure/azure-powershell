@@ -20,6 +20,7 @@
 
 ## Current Release
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
+* Added cmdlets for Azure SdWan
 
 ## Version 6.6.1
 * Changed default cmdlet output presentation to table view
