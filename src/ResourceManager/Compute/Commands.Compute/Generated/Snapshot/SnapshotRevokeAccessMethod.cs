@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,73 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected object CreateSnapshotRevokeAccessDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
-
-            var pSnapshotName = new RuntimeDefinedParameter();
-            pSnapshotName.Name = "SnapshotName";
-            pSnapshotName.ParameterType = typeof(string);
-            pSnapshotName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pSnapshotName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("SnapshotName", pSnapshotName);
-
-            var pArgumentList = new RuntimeDefinedParameter();
-            pArgumentList.Name = "ArgumentList";
-            pArgumentList.ParameterType = typeof(object[]);
-            pArgumentList.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pArgumentList.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ArgumentList", pArgumentList);
-
-            return dynamicParameters;
-        }
-
-        protected void ExecuteSnapshotRevokeAccessMethod(object[] invokeMethodInputParameters)
-        {
-            string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string snapshotName = (string)ParseParameter(invokeMethodInputParameters[1]);
-
-            SnapshotsClient.RevokeAccess(resourceGroupName, snapshotName);
-        }
-    }
-
-    public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected PSArgument[] CreateSnapshotRevokeAccessParameters()
-        {
-            string resourceGroupName = string.Empty;
-            string snapshotName = string.Empty;
-
-            return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "SnapshotName" },
-                 new object[] { resourceGroupName, snapshotName });
-        }
-    }
-
-    [Cmdlet("Revoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsSecurity.Revoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SnapshotAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class RevokeAzureRmSnapshotAccess : ComputeAutomationBaseCmdlet
     {

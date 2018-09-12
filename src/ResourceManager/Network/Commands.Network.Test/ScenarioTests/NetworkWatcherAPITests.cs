@@ -69,8 +69,8 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PacketCapture");
         }
 
-        [Fact(Skip = "Skipped for due to playback mode failures.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestTroubleshoot()
         {

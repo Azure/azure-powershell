@@ -2252,8 +2252,8 @@ function Test-LoadBalancerZones
     $zones = "1";
     $rglocation = Get-ProviderLocation ResourceManagement
     # TODO: replace hardcoded location
-    # $resourceTypeParent = "Microsoft.Network/loadBalancers"
-    $location = "eastus2"; # = Get-ProviderLocation $resourceTypeParent
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = "centralus";
 
     try
      {

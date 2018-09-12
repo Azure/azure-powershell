@@ -168,10 +168,14 @@ function Get-AzsUpdateRun {
             }
             return
         }
+
+        $UpdateName = Get-ResourceNameSuffix -ResourceName $UpdateName
+
         if ('List' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $UpdateAdminClient.'
             $TaskResult = $UpdateAdminClient.UpdateRuns.ListWithHttpMessagesAsync($ResourceGroupName, $Location, $UpdateName)
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $UpdateName = Get-ResourceNameSuffix -ResourceName $UpdateName
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $UpdateAdminClient.'
             $TaskResult = $UpdateAdminClient.UpdateRuns.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $UpdateName, $Name)
         } else {

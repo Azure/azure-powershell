@@ -670,7 +670,20 @@ function Add-Module {
         $moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
         $file = Get-Item $moduleSourcePath
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
+        
+        $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
+        if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null) {
+            $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
+        }
 
+        if (Find-Module -Name $moduleName -Repository $TempRepo -RequiredVersion $moduleVersion -AllowPrerelease -ErrorAction SilentlyContinue)
+        {
+            Write-Output "Existing module found: $moduleName"
+            $moduleNupkgPath = Join-Path -Path $TempRepoPath -ChildPath ($moduleName + "." + $moduleVersion + ".nupkg")
+            Write-Output "Deleting the module: $moduleNupkgPath"
+            Remove-Item -Path $moduleNupkgPath -Force
+        }
+        
         Write-Output "Publishing the module $moduleName"
         Publish-Module -Path $Path -Repository $TempRepo -Force | Out-Null
         Write-Output "$moduleName published"
@@ -682,11 +695,6 @@ function Add-Module {
             return
         }
         Write-Output "No root module found, creating"
-
-        $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
-        if ((!$IsNetCore) -and ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null)) {
-            $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
-        }
 
         Write-Output "Changing to local repository directory for module modifications $TempRepoPath"
         Push-Location $TempRepoPath
