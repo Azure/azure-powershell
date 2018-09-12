@@ -100,6 +100,10 @@ InModuleScope Azs.Fabric.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         It "TestListInfraRoles" -Skip:$('TestListInfraRoles' -in $global:SkippedTests) {
             $global:TestName = 'TestListInfraRoles'
             $InfrastructureRoles = Get-AzsInfrastructureRole -ResourceGroupName $global:ResourceGroupName -Location $Location
