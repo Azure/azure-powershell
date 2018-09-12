@@ -39,8 +39,8 @@
   </ItemGroup>
 
     <ItemGroup>
-    <StorageDependencies Include="$(NugetPackageRoot)\WindowsAzure.Storage\9.3.0\lib\netstandard1.3\Microsoft.WindowsAzure.Storage.dll"/>
-    <StorageDependencies Include="$(NugetPackageRoot)\Microsoft.Azure.Storage.DataMovement\0.8.1\lib\netstandard2.0\Microsoft.WindowsAzure.Storage.DataMovement.dll"/>
+    <StorageDependencies Include="$(ProjectDir)..\..\..\lib\Microsoft.WindowsAzure.Storage.dll"/>
+    <StorageDependencies Include="$(ProjectDir)..\..\..\lib\Microsoft.WindowsAzure.Storage.DataMovement.dll"/>
   </ItemGroup>
 
 
