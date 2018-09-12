@@ -644,6 +644,14 @@
         {
             "file": "src\\StackAdmin\\Azs.Backup.Admin\\Tests\\src\\Common.ps1",
             "_justification": "randomly generated base64 encoding."
+        },
+        {
+            "file": "\\src\\ResourceManager\\SignalR\\Commands.SignalR.Test\\SessionRecords\\Microsoft.Azure.Commands.SignalR.Test.ScenarioTests.AzureRmSignalRTests\\TestAzureRmSignalR.json",
+            "_justification": "Legitimate test session record"
+        },
+        {
+            "file": "\\src\\ResourceManager\\SignalR\\Commands.SignalR.Test\\SessionRecords\\Microsoft.Azure.Commands.SignalR.Test.ScenarioTests.AzureRmSignalRTests\\TestAzureRmSignalRWithDefaultArgs.json",
+            "_justification": "Legitimate test session record"
         }
 	]
 }
