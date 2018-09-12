@@ -30,7 +30,7 @@ New-AzureRmVpnConnection -ResourceGroupName <String> -ParentResourceName <String
 
 ### ByVpnGatewayObjectByVpnSiteObject
 ```
-New-AzureRmVpnConnection -ParentObject <PSVpnGateway> -Name <String> -VpnSite <PSVpnSite>
+New-AzureRmVpnConnection -Name <String> -ParentObject <PSVpnGateway> -VpnSite <PSVpnSite>
  [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -38,7 +38,7 @@ New-AzureRmVpnConnection -ParentObject <PSVpnGateway> -Name <String> -VpnSite <P
 
 ### ByVpnGatewayObjectByVpnSiteResourceId
 ```
-New-AzureRmVpnConnection -ParentObject <PSVpnGateway> -Name <String> -VpnSiteId <String>
+New-AzureRmVpnConnection -Name <String> -ParentObject <PSVpnGateway> -VpnSiteId <String>
  [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -46,7 +46,7 @@ New-AzureRmVpnConnection -ParentObject <PSVpnGateway> -Name <String> -VpnSiteId 
 
 ### ByVpnGatewayResourceIdByVpnSiteObject
 ```
-New-AzureRmVpnConnection -ParentResourceId <String> -Name <String> -VpnSite <PSVpnSite>
+New-AzureRmVpnConnection -Name <String> -ParentResourceId <String> -VpnSite <PSVpnSite>
  [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -54,7 +54,7 @@ New-AzureRmVpnConnection -ParentResourceId <String> -Name <String> -VpnSite <PSV
 
 ### ByVpnGatewayResourceIdByVpnSiteResourceId
 ```
-New-AzureRmVpnConnection -ParentResourceId <String> -Name <String> -VpnSiteId <String>
+New-AzureRmVpnConnection -Name <String> -ParentResourceId <String> -VpnSiteId <String>
  [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -68,7 +68,6 @@ Creates a IPSec connection that connects a VpnGateway to a remote customer branc
 ### Example 1
 
 ```powershell
-
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
 PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
@@ -81,15 +80,7 @@ PS C:\> $vpnSite = New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpn
 
 PS C:\> New-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testConnection" -VpnSite $vpnSite -ConnectionBandwidth 20
 
-```
-
-The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
-A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
-
-Once the gateway has been created, it is connected to the VpnSite using the New-AzureRmVpnConnection command.
-
-The above snippet produces the following output:
-
+Output:
 RemoteVpnSite             : Microsoft.Azure.Commands.Network.Models.PSResourceId
 SharedKey                 :
 VpnConnectionProtocolType : IKEv2
@@ -103,6 +94,12 @@ ProvisioningState         : testConnection
 Name                      : ps9709
 Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
 Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection
+```
+
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
+A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
+
+Once the gateway has been created, it is connected to the VpnSite using the New-AzureRmVpnConnection command.
 
 ## PARAMETERS
 
@@ -110,7 +107,7 @@ Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps936
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +122,7 @@ Accept wildcard characters: False
 The bandwith that needs to be handled by this connection in mbps.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -140,7 +137,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -155,7 +152,7 @@ Accept wildcard characters: False
 Enable BGP for this connection
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +167,7 @@ Accept wildcard characters: False
 The bandwith that needs to be handled by this connection in mbps.
 
 ```yaml
-Type: PSIpsecPolicy
+Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -185,7 +182,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, VpnConnectionName
 
@@ -200,7 +197,7 @@ Accept wildcard characters: False
 The parent VpnGateway for this connection.
 
 ```yaml
-Type: PSVpnGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnGateway
 Parameter Sets: ByVpnGatewayObjectByVpnSiteObject, ByVpnGatewayObjectByVpnSiteResourceId
 Aliases: ParentVpnGateway, VpnGateway
 
@@ -215,7 +212,7 @@ Accept wildcard characters: False
 The resource id of the parent VpnGateway for this connection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnGatewayResourceIdByVpnSiteObject, ByVpnGatewayResourceIdByVpnSiteResourceId
 Aliases: ParentVpnGatewayId, VpnGatewayId
 
@@ -230,7 +227,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnGatewayNameByVpnSiteObject, ByVpnGatewayNameByVpnSiteResourceId
 Aliases: ParentVpnGatewayName, VpnGatewayName
 
@@ -245,7 +242,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnGatewayNameByVpnSiteObject, ByVpnGatewayNameByVpnSiteResourceId
 Aliases:
 
@@ -260,7 +257,7 @@ Accept wildcard characters: False
 The shared key required to set this connection up.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -275,7 +272,7 @@ Accept wildcard characters: False
 Gateway connection protocol:IKEv1/IKEv2
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: IKEv1, IKEv2
@@ -291,7 +288,7 @@ Accept wildcard characters: False
 The remote vpn site to which this hub virtual network connection is connected.
 
 ```yaml
-Type: PSVpnSite
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnSite
 Parameter Sets: ByVpnGatewayNameByVpnSiteObject, ByVpnGatewayObjectByVpnSiteObject, ByVpnGatewayResourceIdByVpnSiteObject
 Aliases:
 
@@ -306,7 +303,7 @@ Accept wildcard characters: False
 The remote vpn site to which this hub virtual network connection is connected.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnGatewayNameByVpnSiteResourceId, ByVpnGatewayObjectByVpnSiteResourceId, ByVpnGatewayResourceIdByVpnSiteResourceId
 Aliases:
 
@@ -321,7 +318,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -337,7 +334,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -349,8 +346,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

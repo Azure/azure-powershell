@@ -27,7 +27,6 @@ Get-AzureRmVirtualHub [-ResourceGroupName <String>] [-Name <String>] [-DefaultPr
 ## DESCRIPTION
 Gets an Azure VirtualHub by Name and ResourceGroupName or lists all Virtual Hubs by ResourceGroupName/Subscription.
 
-
 ## EXAMPLES
 
 ### Example 1
@@ -37,13 +36,8 @@ PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
 PS C:\> New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
 PS C:\> Get-AzureRmVirtualHub -ResourceGroupName "testRG" -Name "westushub"
-```
 
-The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have the address space "10.0.1.0/24".
-
-It then gets the virtual hub using its ResourceGroupName and ResourceName.
-
-The above snippet produces the following output:
+Output:
 
 VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
@@ -55,7 +49,11 @@ VirtualNetworkConnections : {}
 Location                  : West US
 Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
+```
 
+The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have the address space "10.0.1.0/24".
+
+It then gets the virtual hub using its ResourceGroupName and ResourceName.
 
 ## PARAMETERS
 
@@ -63,7 +61,7 @@ ProvisioningState         : Succeeded
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,7 +76,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, VirtualHubName
 
@@ -93,7 +91,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByResourceGroupName
 Aliases:
 
@@ -105,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListBySubscriptionId
 Aliases:
 
@@ -117,8 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

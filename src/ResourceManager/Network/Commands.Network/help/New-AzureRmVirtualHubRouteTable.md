@@ -13,9 +13,8 @@ Creates an Azure Virtual Hub Route Table object.
 ## SYNTAX
 
 ```
-New-AzureRmVirtualHubRouteTable
- -Route <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualHubRoute]>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmVirtualHubRouteTable -Route <PSVirtualHubRoute[]> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +31,18 @@ PS C:\> $routeTable = New-AzureRmVirtualHubRouteTable -Route @($route1, $route2)
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
 PS C:\> New-AzureRmVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -RouteTable $routeTable
+
+Output:
+VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+ResourceGroupName         : testRG
+Name                      : westushub
+Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+AddressPrefix             : 10.0.1.0/24
+RouteTable                : Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable
+VirtualNetworkConnections : {}
+Location                  : West US
+Type                      : Microsoft.Network/virtualHubs
+ProvisioningState         : Succeeded
 ```
 
 The above will create a route table composed of multiple routes and attached to a new virtual hub.
@@ -59,7 +70,7 @@ Accept wildcard characters: False
 List of virtual hub routes.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualHubRoute]
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHubRoute[]
 Parameter Sets: (All)
 Aliases:
 

@@ -13,9 +13,9 @@ Creates an Azure Virtual WAN.
 ## SYNTAX
 
 ```
-New-AzureRmVirtualWan -Name <String> -ResourceGroupName <String> -Location <String>
- [-AllowVnetToVnetTraffic <Boolean>] [-AllowBranchToBranchTraffic <Boolean>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmVirtualWan -ResourceGroupName <String> -Name <String> -Location <String> [-AllowVnetToVnetTraffic]
+ [-AllowBranchToBranchTraffic] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +28,15 @@ Creates a new Azure VirtualWAN resource.
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
 PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true
+
+Output:
+Name                       : testRG
+Id                         : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+AllowVnetToVnetTraffic     : False
+AllowBranchToBranchTraffic : True
+Location                   : West US
+Type                       : Microsoft.Network/virtualWans
+ProvisioningState          : Succeeded
 ```
 
 The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN with branch to branch traffic allowed in that resource group in Azure.
@@ -38,14 +47,14 @@ The above will create a resource group "testRG" in region "West US" and an Azure
 Allow branch to branch traffic for VirtualWan.
 
 ```yaml
-Type: System.Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -53,14 +62,14 @@ Accept wildcard characters: False
 Allow vnet to vnet traffic for VirtualWan.
 
 ```yaml
-Type: System.Boolean
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

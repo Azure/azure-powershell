@@ -13,8 +13,8 @@ Creates an Azure Virtual Hub Route object.
 ## SYNTAX
 
 ```
-New-AzureRmVirtualHubRoute -AddressPrefix <System.Collections.Generic.List`1[System.String]>
- -NextHopIpAddress <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmVirtualHubRoute -AddressPrefix <String[]> -NextHopIpAddress <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,12 @@ Creates an Azure Virtual Hub Route object.
 ### Example 1
 
 ```powershell
-PS C:\> $route1 = New-AzureRmVirtualHubRoute -AddressPrefix @("10.0.0.0/16", "11.0.0.0/16") -NextHopIpAddress "12.0.0.5"
+PS C:\> $route1 = 
+
+Output:
+AddressPrefixes            NextHopIpAddress
+---------------            ----------------
+{10.0.0.0/16, 11.0.0.0/16} 12.0.0.5
 ```
 
 The above will create a virtual hub route object that can be included in the virtual hub route table.
@@ -38,7 +43,7 @@ The virtual hub route is an in-memory object that can be used to create a Virtua
 List of Address Prefixes.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

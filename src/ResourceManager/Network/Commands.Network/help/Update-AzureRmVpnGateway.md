@@ -14,24 +14,21 @@ Update-AzureRmVpnGateway updates a scalable VPN Gateway to the appropriate goal 
 
 ### ByVpnGatewayName (Default)
 ```
-Update-AzureRmVpnGateway -Name <String> -ResourceGroupName <String>
- [-VpnConnection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnConnection]>]
+Update-AzureRmVpnGateway -ResourceGroupName <String> -Name <String> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayScaleUnit <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayObject
 ```
-Update-AzureRmVpnGateway -InputObject <PSVpnGateway>
- [-VpnConnection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnConnection]>]
+Update-AzureRmVpnGateway -InputObject <PSVpnGateway> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayScaleUnit <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayResourceId
 ```
-Update-AzureRmVpnGateway -ResourceId <String>
- [-VpnConnection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnConnection]>]
+Update-AzureRmVpnGateway -ResourceId <String> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayScaleUnit <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -51,15 +48,8 @@ PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVi
 PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
 PS C:\> $vpnGateway = New-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
 PS C:\> Set-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VpnGatewayScaleUnit 3
-```
 
-The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in West US in "testRG" resource group in Azure. 
-A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
-
-After the gateway has been created, it uses Set-AzureRmVpnGateway to upgrade the gateway to 3 scale units.
-
-The above snippet produces the following output:
-
+Output:
 ResourceGroupName   : testRG
 Name                : testvpngw
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnGateways/testvpngw
@@ -69,7 +59,12 @@ VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/Ali_pS_Test
 BgpSettings         : {}
 Type                : Microsoft.Network/vpnGateways
 ProvisioningState   : Succeeded
+```
 
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in West US in "testRG" resource group in Azure. 
+A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
+
+After the gateway has been created, it uses Set-AzureRmVpnGateway to upgrade the gateway to 3 scale units.
 
 ## PARAMETERS
 
@@ -77,7 +72,7 @@ ProvisioningState   : Succeeded
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +87,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -107,7 +102,7 @@ Accept wildcard characters: False
 The vpn gateway object to be modified
 
 ```yaml
-Type: PSVpnGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnGateway
 Parameter Sets: ByVpnGatewayObject
 Aliases: VpnGateway
 
@@ -122,7 +117,7 @@ Accept wildcard characters: False
 The virtual wan name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnGatewayName
 Aliases: ResourceName, VpnGatewayName, GatewayName
 
@@ -137,7 +132,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnGatewayName
 Aliases:
 
@@ -152,7 +147,7 @@ Accept wildcard characters: False
 The Azure resource ID of the VpnGateway to be modified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVpnGatewayResourceId
 Aliases:
 
@@ -167,7 +162,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -182,7 +177,7 @@ Accept wildcard characters: False
 The list of VpnConnections that this VpnGateway needs to have.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnConnection]
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -197,7 +192,7 @@ Accept wildcard characters: False
 The scale unit for this VpnGateway.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -212,7 +207,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -228,7 +223,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -240,8 +235,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

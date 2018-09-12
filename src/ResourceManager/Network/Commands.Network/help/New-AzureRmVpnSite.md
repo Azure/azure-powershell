@@ -57,16 +57,8 @@ PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
 PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
 
 PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
-```
 
-The above will create a resource group, Virtual WAN in West US in "testRG" resource group in Azure. 
-
-Then it creates a VpnSite to represent a customer branch and links it to the Virtual WAN.
-
-An IPSec connection can then be setup with this branch and a VpnGateway using the New-AzureRmVpnConnection command.
-
-The above snippet produces the following output:
-
+Output:
 ResourceGroupName : testRG
 Name              : testVpnSite
 Id                : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnSites/testVpnSite
@@ -77,7 +69,13 @@ AddressSpace      : {192.168.2.0/24, 192.168.3.0/24}
 BgpSettings       :
 Type              : Microsoft.Network/vpnSites
 ProvisioningState : Succeeded
+```
 
+The above will create a resource group, Virtual WAN in West US in "testRG" resource group in Azure. 
+
+Then it creates a VpnSite to represent a customer branch and links it to the Virtual WAN.
+
+An IPSec connection can then be setup with this branch and a VpnGateway using the New-AzureRmVpnConnection command.
 
 ## PARAMETERS
 
@@ -86,7 +84,7 @@ The address prefixes of the virtual network.
 Use this or AddressSpaceObject but not both.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +99,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +114,7 @@ Accept wildcard characters: False
 The BGP ASN for this VpnSite.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +129,7 @@ Accept wildcard characters: False
 The BGP Peering Address for this VpnSite.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +144,7 @@ Accept wildcard characters: False
 The BGP Peering weight for this VpnSite.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +159,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -176,7 +174,7 @@ Accept wildcard characters: False
 The device model of the remote vpn device.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +189,7 @@ Accept wildcard characters: False
 The device vendor of the remote vpn device.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -206,7 +204,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -221,7 +219,7 @@ Accept wildcard characters: False
 The device model of the remote vpn device.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -236,7 +234,7 @@ Accept wildcard characters: False
 The resource location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -251,7 +249,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, VpnSiteName
 
@@ -266,7 +264,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -281,7 +279,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -296,7 +294,7 @@ Accept wildcard characters: False
 The VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
-Type: PSVirtualWan
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
 Parameter Sets: ByVirtualWanObject
 Aliases:
 
@@ -311,7 +309,7 @@ Accept wildcard characters: False
 The ResourceId VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanResourceId
 Aliases:
 
@@ -326,7 +324,7 @@ Accept wildcard characters: False
 The name of the VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanName
 Aliases:
 
@@ -341,7 +339,7 @@ Accept wildcard characters: False
 The resource group name of the VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanName
 Aliases:
 
@@ -356,7 +354,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -372,7 +370,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -384,8 +382,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

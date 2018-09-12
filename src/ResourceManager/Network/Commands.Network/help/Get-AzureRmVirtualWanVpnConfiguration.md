@@ -13,13 +13,7 @@ configuration to a storage blob specified by the customer.
 
 ## SYNTAX
 
-### ByVirtualWanObjectByVpnSiteObject (Default)
-```
-Get-AzureRmVirtualWanVpnConfiguration -InputObject <PSVirtualWan> -StorageSasUrl <String>
- -VpnSite <PSVpnSite[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByVirtualWanNameByVpnSiteObject
+### ByVirtualWanNameByVpnSiteObject (Default)
 ```
 Get-AzureRmVirtualWanVpnConfiguration -ResourceGroupName <String> -Name <String> -StorageSasUrl <String>
  -VpnSite <PSVpnSite[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -29,6 +23,12 @@ Get-AzureRmVirtualWanVpnConfiguration -ResourceGroupName <String> -Name <String>
 ```
 Get-AzureRmVirtualWanVpnConfiguration -ResourceGroupName <String> -Name <String> -StorageSasUrl <String>
  -VpnSiteId <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByVirtualWanObjectByVpnSiteObject
+```
+Get-AzureRmVirtualWanVpnConfiguration -InputObject <PSVirtualWan> -StorageSasUrl <String>
+ -VpnSite <PSVpnSite[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanObjectByVpnSiteResourceId
@@ -89,7 +89,7 @@ The configuration is then downloaded using this commandlet.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The vpn site object to be modified
 
 ```yaml
-Type: PSVirtualWan
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
 Parameter Sets: ByVirtualWanObjectByVpnSiteObject, ByVirtualWanObjectByVpnSiteResourceId
 Aliases: VirtualWan
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanNameByVpnSiteObject, ByVirtualWanNameByVpnSiteResourceId
 Aliases: ResourceName, VirtualWanName
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanNameByVpnSiteObject, ByVirtualWanNameByVpnSiteResourceId
 Aliases:
 
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 The Azure resource ID for the virtual wan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualWanResourceIdByVpnSiteObject, ByVirtualWanResourceIdByVpnSiteResourceId
 Aliases: VirtualWanId
 
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 The SAS Url for the storage location where the configuration is to be generated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -179,8 +179,8 @@ Accept wildcard characters: False
 The list of VpnSite resource ids to generate configuration for.
 
 ```yaml
-Type: PSVpnSite[]
-Parameter Sets: ByVirtualWanObjectByVpnSiteObject, ByVirtualWanNameByVpnSiteObject, ByVirtualWanResourceIdByVpnSiteObject
+Type: Microsoft.Azure.Commands.Network.Models.PSVpnSite[]
+Parameter Sets: ByVirtualWanNameByVpnSiteObject, ByVirtualWanObjectByVpnSiteObject, ByVirtualWanResourceIdByVpnSiteObject
 Aliases:
 
 Required: True
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 The list of VpnSite resource ids to generate configuration for.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByVirtualWanNameByVpnSiteResourceId, ByVirtualWanObjectByVpnSiteResourceId, ByVirtualWanResourceIdByVpnSiteResourceId
 Aliases:
 
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -225,7 +225,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -237,8 +237,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
