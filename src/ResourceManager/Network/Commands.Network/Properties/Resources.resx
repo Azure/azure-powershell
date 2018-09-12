@@ -280,10 +280,10 @@
     <value>The parent VpnGateway for this connection cannot be found.</value>
   </data>
   <data name="RemovingVirtualHubWarning" xml:space="preserve">
-    <value>Removing a VirtualHub will also remove all HubVirtualNetworkConnections associated with it.</value>
+    <value>Removing a VirtualHub will also remove all HubVirtualNetworkConnections associated with it. Are you sure you want to remove resource '{0}'</value>
   </data>
   <data name="RemovingVpnGatewayWarning" xml:space="preserve">
-    <value>Removing a VpnGateway will also remove all VpnConnections associated with it.</value>
+    <value>Removing a VpnGateway will also remove all VpnConnections associated with it. Are you sure you want to remove resource '{0}'</value>
   </data>
   <data name="ResouceGroupNameMustBeSpecified" xml:space="preserve">
     <value>ResourceGroupName must be specified if ResourceName is specified.</value>

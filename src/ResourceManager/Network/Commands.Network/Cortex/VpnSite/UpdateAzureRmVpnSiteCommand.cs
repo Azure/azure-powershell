@@ -137,18 +137,6 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = CortexParameterSetNames.ByVpnSiteName + CortexParameterSetNames.ByVirtualWanName,
             Mandatory = true,
             HelpMessage = "The resource group name of the VirtualWan this VpnSite needs to be connected to.")]
-        [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteResourceId + "NoVirtualWanUpdate",
-            Mandatory = false,
-            HelpMessage = "The resource group name of the VirtualWan this VpnSite needs to be connected to.")]
-        [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteObject + "NoVirtualWanUpdate",
-            Mandatory = false,
-            HelpMessage = "The resource group name of the VirtualWan this VpnSite needs to be connected to.")]
-        [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteName + "NoVirtualWanUpdate",
-            Mandatory = false,
-            HelpMessage = "The resource group name of the VirtualWan this VpnSite needs to be connected to.")]
         public string VirtualWanResourceGroupName { get; set; }
 
         [Parameter(
@@ -162,18 +150,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByVpnSiteName + CortexParameterSetNames.ByVirtualWanName,
             Mandatory = true,
-            HelpMessage = "The name of the VirtualWan this VpnSite needs to be connected to.")]
-        [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteResourceId + "NoVirtualWanUpdate",
-            Mandatory = false,
-            HelpMessage = "The name of the VirtualWan this VpnSite needs to be connected to.")]
-        [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteObject + "NoVirtualWanUpdate",
-            Mandatory = false,
-            HelpMessage = "The name of the VirtualWan this VpnSite needs to be connected to.")]
-        [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteName + "NoVirtualWanUpdate",
-            Mandatory = false,
             HelpMessage = "The name of the VirtualWan this VpnSite needs to be connected to.")]
         public string VirtualWanName { get; set; }
 
@@ -189,18 +165,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVpnSiteResourceId + CortexParameterSetNames.ByVirtualWanObject,
             HelpMessage = "The VirtualWan this VpnSite needs to be connected to.")]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteName + "NoVirtualWanUpdate",
-            HelpMessage = "The VirtualWan this VpnSite needs to be connected to.")]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteObject + "NoVirtualWanUpdate",
-            HelpMessage = "The VirtualWan this VpnSite needs to be connected to.")]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteResourceId + "NoVirtualWanUpdate",
-            HelpMessage = "The VirtualWan this VpnSite needs to be connected to.")]
         public PSVirtualWan VirtualWan { get; set; }
 
         [Parameter(
@@ -214,18 +178,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVpnSiteObject + CortexParameterSetNames.ByVirtualWanResourceId,
-            HelpMessage = "The ResourceId VirtualWan this VpnSite needs to be connected to.")]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteResourceId + "NoVirtualWanUpdate",
-            HelpMessage = "The ResourceId VirtualWan this VpnSite needs to be connected to.")]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteName + "NoVirtualWanUpdate",
-            HelpMessage = "The ResourceId VirtualWan this VpnSite needs to be connected to.")]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = CortexParameterSetNames.ByVpnSiteObject + "NoVirtualWanUpdate",
             HelpMessage = "The ResourceId VirtualWan this VpnSite needs to be connected to.")]
         [ResourceIdCompleter("Microsoft.Network/virtualWans")]
         public string VirtualWanId { get; set; }
@@ -403,7 +355,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.Name,
                     () =>
                     {
-                        WriteWarning(String.Format(Properties.Resources.UpdatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                        WriteVerbose(String.Format(Properties.Resources.UpdatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
                         WriteObject(this.CreateOrUpdateVpnSite(this.ResourceGroupName, this.Name, vpnSiteToUpdate, this.Tag));
                     });
         }

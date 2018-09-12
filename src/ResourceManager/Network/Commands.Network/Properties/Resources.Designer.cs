@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing a VirtualHub will also remove all HubVirtualNetworkConnections associated with it..
+        ///   Looks up a localized string similar to Removing a VirtualHub will also remove all HubVirtualNetworkConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
         public static string RemovingVirtualHubWarning {
             get {
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing a VpnGateway will also remove all VpnConnections associated with it..
+        ///   Looks up a localized string similar to Removing a VpnGateway will also remove all VpnConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
         public static string RemovingVpnGatewayWarning {
             get {

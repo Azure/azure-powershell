@@ -199,14 +199,12 @@ namespace Microsoft.Azure.Commands.Network
                 vpnSiteToCreate.AddressSpace.AddressPrefixes.AddRange(this.AddressSpace);
             }
 
-            WriteWarning(string.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,
                 this.Name,
                 () =>
                 {
-                    WriteWarning(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                    WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
                     WriteObject(this.CreateOrUpdateVpnSite(this.ResourceGroupName, this.Name, vpnSiteToCreate, this.Tag));
                 });
         }
