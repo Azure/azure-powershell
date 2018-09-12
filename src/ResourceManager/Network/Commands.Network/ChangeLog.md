@@ -20,6 +20,7 @@
 
 ## Current Release
 * Added new HostedWorkloads property for PSNetworkInterface
+* Updated cmdlet New-AzureRmVirtualNetworkSubnetConfig, Set-AzureRmVirtualNetworkSubnetConfig, Add-AzureRmVirtualNetworkSubnetConfig, Get-AzureRmVirtualNetworkSubnetConfig, Add-AzureRmApplicationGatewayAuthenticationCertificate, Add-AzureRmApplicationGatewayFrontendIPConfig, New-AzureRmApplicationGatewayFrontendIPConfig, Set-AzureRmApplicationGatewayFrontendIPConfig, Add-AzureRmApplicationGatewayIPConfiguration, New-AzureRmApplicationGatewayIPConfiguration, Set-AzureRmApplicationGatewayIPConfiguration, Add-AzureRmNetworkInterfaceIpConfig, New-AzureRmNetworkInterfaceIpConfig, Set-AzureRmNetworkInterfaceIpConfig, New-AzureRmVirtualNetworkGatewayIpConfig, Add-AzureRmVirtualNetworkGatewayIpConfig, Set-AzureRmLoadBalancerFrontendIpConfig, Add-AzureRmLoadBalancerFrontendIpConfig, New-AzureRmLoadBalancerFrontendIpConfig and New-AzureRmNetworkInterface by adding support for multiple AddressPrefixes in subnet
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
