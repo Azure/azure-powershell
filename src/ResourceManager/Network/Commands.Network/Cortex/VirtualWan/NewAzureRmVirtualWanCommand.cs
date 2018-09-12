@@ -105,7 +105,6 @@ namespace Microsoft.Azure.Commands.Network
             var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWAN>(virtualWan);
             virtualWanModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-            WriteWarning(string.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
             this.VirtualWanClient.CreateOrUpdate(this.ResourceGroupName, this.Name, virtualWanModel);
 
             return this.GetVirtualWan(this.ResourceGroupName, this.Name);

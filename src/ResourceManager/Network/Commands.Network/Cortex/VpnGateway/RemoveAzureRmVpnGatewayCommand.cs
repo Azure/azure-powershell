@@ -95,11 +95,10 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             base.Execute();
-            WriteWarning(Properties.Resources.RemovingVpnGatewayWarning);
-
+            
             ConfirmAction(
                     this.Force.IsPresent,
-                    string.Format(Properties.Resources.RemovingResource, this.Name),
+                    string.Format(Properties.Resources.RemovingVpnGatewayWarning, this.Name),
                     Properties.Resources.RemoveResourceMessage,
                     this.Name,
                     () =>

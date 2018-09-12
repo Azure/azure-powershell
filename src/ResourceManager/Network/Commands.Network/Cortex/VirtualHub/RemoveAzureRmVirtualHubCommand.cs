@@ -101,11 +101,10 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             base.Execute();
-            WriteWarning(Properties.Resources.RemovingVirtualHubWarning);
-
+            
             ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Properties.Resources.RemovingResource, this.Name),
+                    string.Format(Properties.Resources.RemovingVirtualHubWarning, this.Name),
                     Properties.Resources.RemoveResourceMessage,
                     this.Name,
                     () =>
