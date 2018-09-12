@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("OSDiskName", "DiskName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskName)]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("OSDiskVhdUri", "DiskVhdUri")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskVhdUri)]
@@ -170,6 +170,20 @@ namespace Microsoft.Azure.Commands.Compute
         [AllowNull]
         public int? DiskSizeInGB { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMManagedDiskId)]
+        [ValidateNotNullOrEmpty]
+        public string ManagedDiskId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMManagedDiskAccountType)]
+        [ValidateNotNullOrEmpty]
+        public StorageAccountTypes? StorageAccountType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
@@ -223,7 +237,14 @@ namespace Microsoft.Azure.Commands.Compute
                         },
                     }
                 }
-                : null
+                : null,
+                ManagedDisk = (this.ManagedDiskId == null && this.StorageAccountType == null)
+                              ? null
+                              : new ManagedDiskParameters
+                              {
+                                  Id = this.ManagedDiskId,
+                                  StorageAccountType = this.StorageAccountType
+                              }
             };
 
             WriteObject(this.VM);
