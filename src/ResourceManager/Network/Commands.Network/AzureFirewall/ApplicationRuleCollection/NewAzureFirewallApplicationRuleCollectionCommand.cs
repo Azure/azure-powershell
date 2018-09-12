@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmFirewallApplicationRuleCollection", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallApplicationRuleCollection))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallApplicationRuleCollection", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallApplicationRuleCollection))]
     public class NewAzureFirewallApplicationRuleCollectionCommand : NetworkBaseCmdlet
     {
         [Parameter(

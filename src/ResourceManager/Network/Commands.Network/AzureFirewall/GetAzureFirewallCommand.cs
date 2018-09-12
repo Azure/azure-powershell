@@ -22,7 +22,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmFirewall"), OutputType(typeof(PSAzureFirewall), typeof(IEnumerable<PSAzureFirewall>))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Firewall"), OutputType(typeof(PSAzureFirewall), typeof(IEnumerable<PSAzureFirewall>))]
     public class GetAzureFirewallCommand : AzureFirewallBaseCmdlet
     {
         [Alias("ResourceName")]
