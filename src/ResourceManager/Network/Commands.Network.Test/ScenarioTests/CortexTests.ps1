@@ -61,9 +61,8 @@ function Test-CortexCRUD
 		$virtualHub = Get-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
 		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
-		Assert-AreEqual $virtualHub.RouteTable.Routes.Count, 2
-		Assert-AreEqual $virtualHub.RouteTable.Routes[0].Count, 1
-		Assert-AreEqual $virtualHub.RouteTable.Routes[1].Count, 1
+		$routes = $virtualHub.RouteTable.Routes
+		Assert-AreEqual 2 @($routes).Count
 		
 		# Create the VpnSite
 		$vpnSiteAddressSpaces = New-Object string[] 1
