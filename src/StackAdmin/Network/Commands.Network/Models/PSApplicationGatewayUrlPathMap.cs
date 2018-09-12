@@ -15,13 +15,15 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     public class PSApplicationGatewayUrlPathMap : PSChildResource
-     {
+    {
         public PSResourceId DefaultBackendAddressPool { get; set; }
         public PSResourceId DefaultBackendHttpSettings { get; set; }
+        public PSResourceId DefaultRedirectConfiguration { get; set; }
         public List<PSApplicationGatewayPathRule> PathRules { get; set; }
+        public string Type { get; set; }
         public string ProvisioningState { get; set; }
         [JsonIgnore]
         public string DefaultBackendAddressPoolText
@@ -36,9 +38,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string DefaultRedirectConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(DefaultRedirectConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
         public string PathRulesText
         {
             get { return JsonConvert.SerializeObject(PathRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
-     }
+    }
 }

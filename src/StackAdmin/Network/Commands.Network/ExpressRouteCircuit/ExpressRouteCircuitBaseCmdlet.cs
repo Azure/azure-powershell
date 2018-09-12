@@ -13,17 +13,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Management.Network;
-using Hyak.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using Microsoft.Azure.Management.Network.Models;
-
     public abstract class ExpressRouteCircuitBaseCmdlet : NetworkBaseCmdlet
     {
         public IExpressRouteCircuitsOperations ExpressRouteCircuitClient
@@ -58,18 +55,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             var circuit = this.ExpressRouteCircuitClient.Get(resourceGroupName, name);
 
-            var psExpressRouteCircuit = Mapper.Map<PSExpressRouteCircuit>(circuit);
+            var psExpressRouteCircuit = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuit>(circuit);
             psExpressRouteCircuit.ResourceGroupName = resourceGroupName;
 
             psExpressRouteCircuit.Tag =
                 TagsConversionHelper.CreateTagHashtable(circuit.Tags);
-            
+
             return psExpressRouteCircuit;
         }
 
-        public PSExpressRouteCircuit ToPsExpressRouteCircuit(ExpressRouteCircuit circuit)
+        public PSExpressRouteCircuit ToPsExpressRouteCircuit(Management.Network.Models.ExpressRouteCircuit circuit)
         {
-            var psCircuit = Mapper.Map<PSExpressRouteCircuit>(circuit);
+            var psCircuit = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuit>(circuit);
 
             psCircuit.Tag = TagsConversionHelper.CreateTagHashtable(circuit.Tags);
 

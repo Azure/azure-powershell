@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure.OData;
 using System.Linq;
@@ -24,9 +25,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(VerbsCommon.Get,
         ProfileNouns.VirtualMachineImage)]
     [OutputType(typeof(PSVirtualMachineImage),
-        ParameterSetName = new [] {ListVMImageParamSetName})]
+        ParameterSetName = new[] { ListVMImageParamSetName })]
     [OutputType(typeof(PSVirtualMachineImageDetail),
-        ParameterSetName = new [] {GetVMImageDetailParamSetName})]
+        ParameterSetName = new[] { GetVMImageDetailParamSetName })]
     public class GetAzureVMImageCommand : VirtualMachineImageBaseCmdlet
     {
         protected const string ListVMImageParamSetName = "ListVMImage";
