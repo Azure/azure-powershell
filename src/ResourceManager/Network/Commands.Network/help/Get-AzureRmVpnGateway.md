@@ -31,14 +31,21 @@ Gets a VpnGateway resource using ResourceGroupName and GatewayName OR lists all 
 
 ### Example 1
 
-```
+```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
 PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
 PS C:\> New-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
 PS C:\> Get-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
+```
 
-Output:
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in West US in "testRG" resource group in Azure. 
+A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
+
+It then gets the VpnGateway using its resourceGroupName and the gateway name.
+
+The above snippet produces the following output:
+
 ResourceGroupName   : testRG
 Name                : testvpngw
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnGateways/testvpngw
@@ -48,12 +55,6 @@ VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/Ali_pS_Test
 BgpSettings         : {}
 Type                : Microsoft.Network/vpnGateways
 ProvisioningState   : Succeeded
-
-```
-The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in West US in "testRG" resource group in Azure. 
-A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
-
-It then gets the VpnGateway using its resourceGroupName and the gateway name.
 
 
 ## PARAMETERS

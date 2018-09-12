@@ -41,26 +41,19 @@ Creates a IPSec connection that connects a VpnGateway to a remote customer branc
 
 ### Example 1
 
-```
-
+```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
 PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
 PS C:\> New-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
 PS C:\> $vpnGateway = Get-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
-
 PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
 PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
 PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
-
 PS C:\> $vpnSite = New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
-
 PS C:\> $vpnConnection = New-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testConnection" -VpnSite $vpnSite
-
 PS C:\> $ipsecPolicy = New-AzureRmIpsecPolicy -SALifeTimeSeconds 1000 -SADataSizeKilobytes 2000 -IpsecEncryption "GCMAES256" -IpsecIntegrity "GCMAES256" -IkeEncryption "AES256" -IkeIntegrity "SHA256" -DhGroup "DHGroup14" -PfsGroup "PFS2048"
-
 PS C:\> Update-AzureRmVpnConnection -InputObject $vpnConnection -IpSecPolicy $ipsecPolicy
-
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
@@ -70,28 +63,38 @@ Once the gateway has been created, it is connected to the VpnSite using the New-
 
 The connection is then updated to have a new IpSecPolicy by using the Set-AzureRmVpnConnection command.
 
+The above snippet produces the following output:
+
+RemoteVpnSite             : Microsoft.Azure.Commands.Network.Models.PSResourceId
+SharedKey                 :
+VpnConnectionProtocolType : IKEv2
+ConnectionStatus          :
+EgressBytesTransferred    : 0
+IngressBytesTransferred   : 0
+IpsecPolicies             : {Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy}
+ConnectionBandwidth       : 20
+EnableBgp                 : False
+ProvisioningState         : testConnection
+Name                      : ps9709
+Etag                      : W/"4580a2e2-2fab-4cff-88eb-92013a76b5a8"
+Id                        : /subscriptions/{subscriptionId}/resourceGroups/ps9361/providers/Microsoft.Network/vpnGateways/testvpngw/vpnConnections/testConnection
+
+
 ### Example 2
 
-```
-
+```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
 PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
 PS C:\> New-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
 PS C:\> $vpnGateway = Get-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
-
 PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
 PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
 PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
-
 PS C:\> $vpnSite = New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
-
 PS C:\> $vpnConnection = New-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testConnection" -VpnSite $vpnSite
-
 PS C:\> $Secure_String_Pwd = Read-Host -AsSecureString
-
 PS C:\> Update-AzureRmVpnConnection -InputObject $vpnConnection -SharedKey $Secure_String_Pwd
-
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 

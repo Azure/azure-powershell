@@ -48,8 +48,7 @@ for S2S connectivity with a Cortex virtual hub.
 
 ### Example 1
 
-```
-
+```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
 
@@ -58,7 +57,6 @@ PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
 PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
 
 PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
-
 ```
 
 The above will create a resource group, Virtual WAN in West US in "testRG" resource group in Azure. 
@@ -66,6 +64,20 @@ The above will create a resource group, Virtual WAN in West US in "testRG" resou
 Then it creates a VpnSite to represent a customer branch and links it to the Virtual WAN.
 
 An IPSec connection can then be setup with this branch and a VpnGateway using the New-AzureRmVpnConnection command.
+
+The above snippet produces the following output:
+
+ResourceGroupName : testRG
+Name              : testVpnSite
+Id                : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnSites/testVpnSite
+Location          : eastus2euap
+IpAddress         : 1.2.3.4
+VirtualWan        : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+AddressSpace      : {192.168.2.0/24, 192.168.3.0/24}
+BgpSettings       :
+Type              : Microsoft.Network/vpnSites
+ProvisioningState : Succeeded
+
 
 ## PARAMETERS
 
