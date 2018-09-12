@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Network
                     this.Name,
                     () =>
                     {
-                        WriteWarning(String.Format(Properties.Resources.UpdatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                        WriteVerbose(String.Format(Properties.Resources.UpdatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
                         WriteObject(this.CreateOrUpdateVirtualHub(
                             this.ResourceGroupName,
                             this.Name,

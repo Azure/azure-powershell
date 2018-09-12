@@ -70,7 +70,9 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceIdCompleter("Microsoft.Network/vpnGateways")]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Returns an object representing the item on which this operation is being performed.")]
         public SwitchParameter PassThru { get; set; }
 
         [Parameter(

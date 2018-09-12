@@ -27,7 +27,6 @@ Creates an Azure Virtual Hub Route object.
 ```powershell
 PS C:\> $route1 = 
 
-Output:
 AddressPrefixes            NextHopIpAddress
 ---------------            ----------------
 {10.0.0.0/16, 11.0.0.0/16} 12.0.0.5

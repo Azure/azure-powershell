@@ -22,14 +22,10 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet(VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnGateway",
-        DefaultParameterSetName = "ListByResourceGroupName"),
+        DefaultParameterSetName = "ListBySubscriptionId"),
         OutputType(typeof(PSVpnGateway))]
     public class GetAzureRmVpnGatewayCommand : VpnGatewayBaseCmdlet
     {
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = "ListBySubscriptionId",
-            HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = "ListByResourceGroupName",
@@ -41,6 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "VpnGatewayName")]
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "ListByResourceGroupName",
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]

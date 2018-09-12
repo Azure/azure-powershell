@@ -12,15 +12,14 @@ Gets a VpnGateway resource using ResourceGroupName and GatewayName OR lists all 
 
 ## SYNTAX
 
-### ListByResourceGroupName (Default)
+### ListBySubscriptionId (Default)
 ```
-Get-AzureRmVpnGateway -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmVpnGateway [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ListBySubscriptionId
+### ListByResourceGroupName
 ```
-Get-AzureRmVpnGateway [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmVpnGateway -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -38,7 +37,6 @@ PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGro
 PS C:\> New-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
 PS C:\> Get-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
 
-Output:
 ResourceGroupName   : testRG
 Name                : testvpngw
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnGateways/testvpngw
@@ -77,7 +75,7 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListByResourceGroupName
 Aliases: ResourceName, VpnGatewayName
 
 Required: False
@@ -96,18 +94,6 @@ Parameter Sets: ListByResourceGroupName
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ListBySubscriptionId
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

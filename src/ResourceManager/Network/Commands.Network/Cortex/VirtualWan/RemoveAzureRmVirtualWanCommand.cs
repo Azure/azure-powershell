@@ -74,7 +74,9 @@ namespace Microsoft.Azure.Commands.Network
            HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Returns an object representing the item on which this operation is being performed.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void Execute()

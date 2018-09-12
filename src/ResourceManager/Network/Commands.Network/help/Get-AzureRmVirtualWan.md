@@ -12,15 +12,14 @@ Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 
 ## SYNTAX
 
-### ListByResourceGroupName (Default)
+### ListBySubscriptionId (Default)
 ```
-Get-AzureRmVirtualWan -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmVirtualWan [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ListBySubscriptionId
+### ListByResourceGroupName
 ```
-Get-AzureRmVirtualWan [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmVirtualWan -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -36,7 +35,6 @@ PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true
 PS C:\> Get-AzureRmVirtualWan -Name "myVirtualWAN" -ResourceGroupName "testRG"
 
-Output:
 Name                       : testRG
 Id                         : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 AllowVnetToVnetTraffic     : False
@@ -70,7 +68,7 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListByResourceGroupName
 Aliases: ResourceName
 
 Required: False
@@ -89,18 +87,6 @@ Parameter Sets: ListByResourceGroupName
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ListBySubscriptionId
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

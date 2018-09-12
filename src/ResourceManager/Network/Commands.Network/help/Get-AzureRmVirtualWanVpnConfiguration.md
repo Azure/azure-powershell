@@ -75,12 +75,9 @@ PS C:\> $vpnSitesForConfig = New-Object Microsoft.Azure.Commands.Network.Models.
 PS C:\> $vpnSitesForConfig[0] = $vpnSite
 PS C:\> Get-AzureRmVirtualWanVpnConfiguration -VirtualWan $virtualWan -StorageSasUrl "SignedSasUrl" -VpnSite $vpnSitesForConfig
 
-Output:
-
 SasUrl
 ------
 SignedSasUrl
-
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 

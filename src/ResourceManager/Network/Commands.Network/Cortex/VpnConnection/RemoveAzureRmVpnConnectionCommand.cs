@@ -81,7 +81,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Returns an object representing the item on which this operation is being performed.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void Execute()
@@ -99,7 +101,7 @@ namespace Microsoft.Azure.Commands.Network
                 //// At this point, the resource id should not be null. If it is, customer did not specify a valid resource to delete.
                 if (string.IsNullOrWhiteSpace(this.ResourceId))
                 {
-                    throw new PSArgumentException("No vpn connection specified. Nothing will be deleted.");
+                    throw new PSArgumentException(Properties.Resources.VpnConnectionNotFound);
                 }
 
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
@@ -115,7 +117,7 @@ namespace Microsoft.Azure.Commands.Network
                 parentGateway.Connections == null ||
                 !parentGateway.Connections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
             {
-                throw new PSArgumentException("The VpnConnection to delete could not be found.");
+                throw new PSArgumentException(Properties.Resources.VpnConnectionNotFound);
             }
 
             if (parentGateway.Connections.Any())

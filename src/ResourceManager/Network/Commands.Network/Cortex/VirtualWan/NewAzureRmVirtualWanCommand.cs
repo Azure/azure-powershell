@@ -57,13 +57,11 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = false,
            HelpMessage = "Allow vnet to vnet traffic for VirtualWan.")]
-        [PSDefaultValue(Help = "$false", Value = false)]
         public SwitchParameter AllowVnetToVnetTraffic { get; set; }
 
         [Parameter(
            Mandatory = false,
            HelpMessage = "Allow branch to branch traffic for VirtualWan.")]
-        [PSDefaultValue(Help = "$true", Value = true)]
         public SwitchParameter AllowBranchToBranchTraffic { get; set; }
 
         [Parameter(
@@ -85,7 +83,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name,
                 () =>
                 {
-                    WriteWarning(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                    WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
                     WriteObject(this.CreateVirtualWan());
                 });
         }

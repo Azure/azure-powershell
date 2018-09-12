@@ -60,13 +60,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ParentResourceName { get; set; }
 
-        [Alias("ResourceName", "VpnConnectionName")]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         [Alias("ParentVpnGateway", "VpnGateway")]
         [Parameter(
             Mandatory = true,
@@ -95,6 +88,13 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         [ResourceIdCompleter("Microsoft.Network/vpnGateways")]
         public string ParentResourceId { get; set; }
+
+        [Alias("ResourceName", "VpnConnectionName")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name,
                 () =>
                 {
-                    WriteWarning(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                    WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
                     this.CreateOrUpdateVpnGateway(this.ResourceGroupName, this.ParentResourceName, parentVpnGateway, parentVpnGateway.Tag);
 
                     var createdOrUpdatedVpnGateway = this.GetVpnGateway(this.ResourceGroupName, this.ParentResourceName);

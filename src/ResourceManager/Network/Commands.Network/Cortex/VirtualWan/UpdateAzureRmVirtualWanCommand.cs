@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet("Update",
-        "AzureRmVirtualWan",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualWan",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSVirtualWan))]
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name,
                 () =>
                 {
-                    WriteWarning(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                    WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
                     WriteObject(this.UpdateVirtualWan());
                 });
         }

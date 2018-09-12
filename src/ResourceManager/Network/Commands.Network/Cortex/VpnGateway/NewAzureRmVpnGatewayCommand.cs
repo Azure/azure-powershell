@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name,
                 () =>
                 {
-                    WriteWarning(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                    WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
                     WriteObject(this.CreateOrUpdateVpnGateway(this.ResourceGroupName, this.Name, vpnGateway, this.Tag));
                 });
         }

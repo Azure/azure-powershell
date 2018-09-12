@@ -12,15 +12,14 @@ Gets an Azure VirtualHub by Name and ResourceGroupName or lists all Virtual Hubs
 
 ## SYNTAX
 
-### ListByResourceGroupName (Default)
+### ListBySubscriptionId (Default)
 ```
-Get-AzureRmVirtualHub -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmVirtualHub [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ListBySubscriptionId
+### ListByResourceGroupName
 ```
-Get-AzureRmVirtualHub [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmVirtualHub -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -36,8 +35,6 @@ PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
 PS C:\> New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
 PS C:\> Get-AzureRmVirtualHub -ResourceGroupName "testRG" -Name "westushub"
-
-Output:
 
 VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
@@ -77,7 +74,7 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListByResourceGroupName
 Aliases: ResourceName, VirtualHubName
 
 Required: False
@@ -96,18 +93,6 @@ Parameter Sets: ListByResourceGroupName
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ListBySubscriptionId
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

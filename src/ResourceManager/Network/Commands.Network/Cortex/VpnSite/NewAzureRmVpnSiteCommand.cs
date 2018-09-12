@@ -82,12 +82,12 @@ namespace Microsoft.Azure.Commands.Network
         public string VirtualWanId { get; set; }
 
         [Parameter(Mandatory = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The IpAddress for this VpnSite.")]
         public string IpAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The address prefixes of the virtual network. Use this or AddressSpaceObject but not both.")]
+            HelpMessage = "The address prefixes of the virtual network.")]
         [ValidateNotNullOrEmpty]
         public string[] AddressSpace { get; set; }
 
