@@ -141,7 +141,10 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
     'Set-AzRmStorageContainerImmutabilityPolicy',
     'Get-AzRmStorageContainerImmutabilityPolicy',
     'Remove-AzRmStorageContainerImmutabilityPolicy',
-    'Lock-AzRmStorageContainerImmutabilityPolicy'
+    'Lock-AzRmStorageContainerImmutabilityPolicy',
+    'Set-AzStorageAccountManagementPolicy', 
+    'Get-AzStorageAccountManagementPolicy', 
+    'Remove-AzStorageAccountManagementPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()
