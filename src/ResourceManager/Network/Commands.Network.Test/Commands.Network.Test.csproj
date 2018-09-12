@@ -67,7 +67,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NetworkResourcesController.cs" />
     <Compile Include="ScenarioTests\ApplicationGatewayTests.cs" />
-    <Compile Include="ScenarioTests\AzureFirewallFqdnTagTests.cs" />
     <Compile Include="ScenarioTests\AzureFirewallTests.cs" />
     <Compile Include="ScenarioTests\DdosProtectionPlanTests.cs" />
     <Compile Include="ScenarioTests\ApplicationSecurityGroupTests.cs" />
@@ -101,9 +100,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ScenarioTests\ApplicationGatewayTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\AzureFirewallFqdnTagTests.ps1" >
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\DdosProtectionPlanTests.ps1">
