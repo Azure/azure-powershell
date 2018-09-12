@@ -15,28 +15,28 @@ Creates a DNS record set.
 
 ### Fields (Default)
 ```
-New-AzureRmDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String> -Ttl <Int64>
+New-AzureRmDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String> -Ttl <UInt32>
  -RecordType <RecordType> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AliasFields
 ```
-New-AzureRmDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String> [-Ttl <Int64>]
+New-AzureRmDnsRecordSet -Name <String> -ZoneName <String> -ResourceGroupName <String> [-Ttl <UInt32>]
  -RecordType <RecordType> -TargetResourceId <String> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>]
  [-Overwrite] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Object
 ```
-New-AzureRmDnsRecordSet -Name <String> -Zone <DnsZone> -Ttl <Int64> -RecordType <RecordType>
+New-AzureRmDnsRecordSet -Name <String> -Zone <DnsZone> -Ttl <UInt32> -RecordType <RecordType>
  [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AliasObject
 ```
-New-AzureRmDnsRecordSet -Name <String> -Zone <DnsZone> [-Ttl <Int64>] -RecordType <RecordType>
+New-AzureRmDnsRecordSet -Name <String> -Zone <DnsZone> [-Ttl <UInt32>] -RecordType <RecordType>
  -TargetResourceId <String> [-Metadata <Hashtable>] [-DnsRecords <DnsRecordBase[]>] [-Overwrite]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -345,7 +345,7 @@ Accept wildcard characters: False
 Specifies the Time to Live (TTL) for the DNS RecordSet.
 
 ```yaml
-Type: System.Nullable`1[System.Int64]
+Type: System.UInt32
 Parameter Sets: Fields, Object
 Aliases:
 
@@ -357,7 +357,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.Nullable`1[System.Int64]
+Type: System.UInt32
 Parameter Sets: AliasFields, AliasObject
 Aliases:
 

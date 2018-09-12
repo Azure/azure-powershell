@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.Dns
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DnsRecordSet", DefaultParameterSetName = "Fields", SupportsShouldProcess = true),OutputType(typeof(DnsRecordSet))]
     public class NewAzureDnsRecordSet : DnsBaseCmdlet
     {
+        private uint? ttl_value;
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -53,7 +55,17 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "AliasObject")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "AliasFields")]
         [ValidateNotNullOrEmpty]
-        public long? Ttl { get; set; }
+        public uint Ttl
+        {
+            get
+            {
+                return this.ttl_value.HasValue ? this.ttl_value.Value : 0; ;
+            }
+            set
+            {
+                this.ttl_value = value;
+            }
+        }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of DNS records in this record set.")]
         [ValidateNotNullOrEmpty]
@@ -119,7 +131,7 @@ namespace Microsoft.Azure.Commands.Dns
                         zoneName,
                         resourceGroupname,
                         this.Name, 
-                        this.Ttl,
+                        this.ttl_value,
                         this.RecordType,
                         this.Metadata,
                         this.Overwrite,

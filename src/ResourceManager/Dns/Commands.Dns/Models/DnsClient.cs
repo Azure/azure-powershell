@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             string zoneName,
             string resourceGroupName,
             string relativeRecordSetName,
-            long? ttl,
+            uint? ttl,
             RecordType recordType,
             Hashtable tags,
             bool overwrite,
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
         private RecordSet ConstructRecordSetPropeties(
             string recordSetName,
             RecordType recordType,
-            long? ttl,
+            uint? ttl,
             Hashtable tags,
             DnsRecordBase[] resourceRecords,
             string targetResourceId)
