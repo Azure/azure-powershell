@@ -105,14 +105,18 @@ InModuleScope Azs.Storage.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         it "TestGetShare" -Skip:$('TestGetShare' -in $global:SkippedTests) {
             $global:TestName = 'TestGetShare'
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 foreach ($share in $shares) {
-                    $result = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
+                    $result = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -Name $share.Name -FarmName $farm.Name
                     $result  | Should Not Be $null
                     ValidateShare -share $result
                     AssertAreEqual -expected $share -found $result
@@ -125,9 +129,9 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 foreach ($share in $shares) {
-                    $result = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
+                    $result = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -Name $share.Name -FarmName $farm.Name
                     $result  | Should Not Be $null
                     ValidateShare -share $result
                     AssertAreEqual -expected $share -found $result
@@ -140,7 +144,7 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 foreach ($share in $shares) {
                     ValidateShare -share $share
                 }
@@ -152,9 +156,9 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 foreach ($share in $shares) {
-                    $metricDefinitions = Get-AzsStorageShareMetricDefinition -ResourceGroupName $global:ResourceGroupName -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
+                    $metricDefinitions = Get-AzsStorageShareMetricDefinition -ResourceGroupName $global:ResourceGroupName -Name $share.Name -FarmName $farm.Name
                     $metricDefinitions  | Should Not Be $null
                 }
             }
@@ -165,9 +169,9 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 foreach ($share in $shares) {
-                    $metrics = Get-AzsStorageShareMetric -ResourceGroupName $global:ResourceGroupName -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
+                    $metrics = Get-AzsStorageShareMetric -ResourceGroupName $global:ResourceGroupName -Name $share.Name -FarmName $farm.Name
                     $metrics  | Should Not Be $null
                 }
             }
