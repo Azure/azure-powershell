@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Commands.Network
                         }
                     });
                 cfg.CreateMap<CNM.PSIPConfiguration, MNM.IPConfiguration>();
+                cfg.CreateMap<CNM.PSServiceAssocationLink, MNM.ServiceAssociationLink>();
                 cfg.CreateMap<CNM.PSResourceNavigationLink, MNM.ResourceNavigationLink>();
                 cfg.CreateMap<CNM.PSServiceEndpoint, MNM.ServiceEndpointPropertiesFormat>();
 
@@ -105,6 +106,7 @@ namespace Microsoft.Azure.Commands.Network
                         }
                     });
                 cfg.CreateMap<MNM.IPConfiguration, CNM.PSIPConfiguration>();
+                cfg.CreateMap<MNM.ServiceAssociationLink, CNM.PSServiceAssocationLink>();
                 cfg.CreateMap<MNM.ResourceNavigationLink, CNM.PSResourceNavigationLink>();
                 cfg.CreateMap<MNM.ServiceEndpointPropertiesFormat, CNM.PSServiceEndpoint>();
 
@@ -758,6 +760,23 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ServiceEndpointPolicyDefinition, CNM.PSServiceEndpointPolicyDefinition>();
+
+                // Network Profile
+                // MNM to CNM
+                cfg.CreateMap<MNM.ContainerNetworkInterfaceIpConfiguration, CNM.PSContainerNetworkInterfaceIPConfiguration>();
+                cfg.CreateMap<MNM.NetworkProfile, CNM.PSNetworkProfile>();
+                cfg.CreateMap<MNM.ContainerNetworkInterface, CNM.PSContainerNetworkInterface>();
+                cfg.CreateMap<MNM.Container, CNM.PSContainer>();
+                cfg.CreateMap<MNM.ContainerNetworkInterfaceConfiguration, CNM.PSContainerNetworkInterfaceConfiguration>();
+                cfg.CreateMap<MNM.IPConfigurationProfile, CNM.PSIPConfigurationProfile>();
+
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSNetworkProfile, MNM.NetworkProfile>();
+                cfg.CreateMap<CNM.PSContainerNetworkInterface, MNM.ContainerNetworkInterface>();
+                cfg.CreateMap<CNM.PSContainerNetworkInterfaceIPConfiguration, MNM.ContainerNetworkInterfaceIpConfiguration>();
+                cfg.CreateMap<CNM.PSContainer, MNM.Container>();
+                cfg.CreateMap<CNM.PSContainerNetworkInterfaceConfiguration, MNM.ContainerNetworkInterfaceConfiguration>();
+                cfg.CreateMap<CNM.PSIPConfigurationProfile, MNM.IPConfigurationProfile>();
             });
 
             _mapper = config.CreateMapper();

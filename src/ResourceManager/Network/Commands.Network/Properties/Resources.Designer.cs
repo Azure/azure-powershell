@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -196,6 +196,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ContainerNetworkInterfaceConfigurationNameNotSet.
+        /// </summary>
+        public static string ContainerNetworkInterfaceConfigurationNameNotSet {
+            get {
+                return ResourceManager.GetString("ContainerNetworkInterfaceConfigurationNameNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating Resource.
         /// </summary>
         public static string CreatingResourceMessage {
@@ -291,6 +300,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string MovingExpressRoutCircuitMessage {
             get {
                 return ResourceManager.GetString("MovingExpressRoutCircuitMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NetworkProfileNameNotSet.
+        /// </summary>
+        public static string NetworkProfileNameNotSet {
+            get {
+                return ResourceManager.GetString("NetworkProfileNameNotSet", resourceCulture);
             }
         }
         
@@ -475,22 +493,20 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to virtualNetworkGatewayName.
+        /// </summary>
+        public static string VirtualNetworkGatewayName {
+            get {
+                return ResourceManager.GetString("VirtualNetworkGatewayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VirtualNetworkGatewayNameNotSet.
         /// </summary>
         public static string VirtualNetworkGatewayNameNotSet {
             get {
                 return ResourceManager.GetString("VirtualNetworkGatewayNameNotSet", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to virtualNetworkGateway name.
-        /// </summary>
-        public static string VirtualNetworkGatewayName
-        {
-            get
-            {
-                return ResourceManager.GetString("VirtualNetworkGatewayName", resourceCulture);
             }
         }
     }

@@ -23,6 +23,11 @@
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
+* Added NetworkProfile functionality. New cmdlets added
+    - New-AzureRmNetworkProfile
+    - Get-AzureRmNetworkProfile
+    - Remove-AzureRmNetworkProfile
+    - Set-AzureRmNetworkProfile
 
 ## Version 6.6.1
 * Changed default cmdlet output presentation to table view
