@@ -76,15 +76,17 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            d.Add("Microsoft.Compute", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-02-01");
-            providersToIgnore.Add("Microsoft.Azure.Management.Storage.StorageManagementClient", "2015-05-01-preview");
+            Dictionary<string, string> d = new Dictionary<string, string> {
+                { "Microsoft.Resources", null },
+                { "Microsoft.Features", null },
+                { "Microsoft.Authorization", null },
+                { "Microsoft.Compute", null }
+            };
+            var providersToIgnore = new Dictionary<string, string> {
+                { "Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01" },
+                { "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-02-01" },
+                { "Microsoft.Azure.Management.Storage.StorageManagementClient", "2016-01-01" }
+            };
 
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
@@ -93,10 +95,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
-                if(initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
+                initialize?.Invoke(this.csmTestFactory);
 
                 SetupManagementClients(context);
 
@@ -127,10 +126,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
                 }
                 finally
                 {
-                    if(cleanup !=null)
-                    {
-                        cleanup();
-                    }
+                    cleanup?.Invoke();
                 }
             }
         }
@@ -138,7 +134,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             LegacyResourceManagementClient = GetLegacyResourceManagementClient(context);
-            StorageClient = GetStorageManagementClient();
+            StorageClient = GetStorageManagementClient(context);
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
 
@@ -164,9 +160,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
-        private StorageManagementClient GetStorageManagementClient()
+        private StorageManagementClient GetStorageManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
+            //return TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<StorageManagementClient>(Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
