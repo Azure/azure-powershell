@@ -242,13 +242,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="vault">vault object</param>
         /// <returns>credential object</returns>
-        public long? getVaultAuthType(string resourceGroupName,string vaultName)
+        public long? getVaultAuthType(string resourceGroupName, string vaultName)
         {
             var usages = GetRecoveryServicesClient.Usages.ListByVaultsWithHttpMessagesAsync(
                 resourceGroupName,
                 vaultName,
                 GetRequestHeaders()).Result.Body;
-           
+
             foreach (var u in usages)
             {
                 if (Constants.RecoveryServicesProviderAuthType.Equals(u.Name.Value, StringComparison.CurrentCultureIgnoreCase))
