@@ -26,15 +26,11 @@
 -->
 
 # Upcoming Breaking Changes
-## Release 6.0.0 - Nov 2018
+
 
 The following cmdlets were affected by this release:
 
-**Get-AzureRmAppServicePlan**
-- The property AppServicePlanName has been removed
-
-**Set-AzureRmAppServicePlan**
-- The property AppServicePlanName has been removed
+## Release 6.0.0 - May 2018
 
 **New-AzureRmAppServicePlan**
 - Output type changed from ServerFarmWithRichSku to AppServicePlan

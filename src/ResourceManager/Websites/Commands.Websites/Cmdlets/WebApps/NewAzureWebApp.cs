@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp", DefaultParameterSetName = SimpleParameterSet, SupportsShouldProcess = true), OutputType(typeof(Site))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp", DefaultParameterSetName = SimpleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSite))]
     public class NewAzureWebAppCmdlet : WebAppBaseClientCmdLet
     {
         const string CopyWebAppParameterSet = "WebAppParameterSet";
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The source web app to clone", ValueFromPipeline = true, ParameterSetName = CopyWebAppParameterSet)]
         [ValidateNotNullOrEmpty]
-        public Site SourceWebApp { get; set; }
+        public PSSite SourceWebApp { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, HelpMessage = "Resource Id of existing traffic manager profile", ParameterSetName = CopyWebAppParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -204,6 +204,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     ConfigureLoadBalancing = !string.IsNullOrEmpty(TrafficManagerProfile),
                     AppSettingsOverrides = AppSettingsOverrides == null ? null : AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
                 };
+                cloningInfo = new PSCloningInfo(cloningInfo);
             }
 
             var cloneWebAppSlots = false;

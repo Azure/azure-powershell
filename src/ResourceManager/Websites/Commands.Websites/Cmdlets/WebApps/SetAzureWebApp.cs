@@ -14,6 +14,7 @@
 
 
 using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Validations;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp"), OutputType(typeof(Site))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp"), OutputType(typeof(PSSite))]
     public class SetAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
@@ -133,7 +134,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             switch (ParameterSetName)
             {
                 case ParameterSet1Name:
-                    WebApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, null);
+                    WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
                     location = WebApp.Location;
                     var parameters = new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
                     if (parameters.Any(p => CmdletHelpers.SiteConfigParameters.Contains(p)))
@@ -220,7 +221,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, siteConfig, appSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
 
                     //Update WebApp object after configuration update
-                    WebApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, null);
+                    WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
 
                     if (parameters.Any(p => CmdletHelpers.SiteParameters.Contains(p)))
                     {
@@ -233,7 +234,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
                         };
 
-                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, WebApp.ServerFarmId, site);
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, WebApp.ServerFarmId, new PSSite(site));
                     }
 
                     if (parameters.Contains("AppServicePlan"))
@@ -267,8 +268,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                                                         nvp => nvp.Name, 
                                                         nvp => nvp.Value, 
                                                         StringComparer.OrdinalIgnoreCase), 
-                        WebApp.SiteConfig == null ? null : WebApp.SiteConfig
-                                                    .ConnectionStrings
+                        WebApp.SiteConfig?.ConnectionStrings
                                                     .ToDictionary(
                                                         nvp => nvp.Name, 
                                                         nvp => new ConnStringValueTypePair
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     break;
             }
 
-            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
+            WriteObject(new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null)));
         }
     }
 }

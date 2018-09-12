@@ -16,6 +16,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// <summary>
     /// this commandlet will let you create a new Azure Web app slot using ARM APIs
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlot"), OutputType(typeof(Site))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlot"), OutputType(typeof(PSSite))]
     public class NewAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
     {
 
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The source web app to clone", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public Site SourceWebApp { get; set; }
+        public PSSite SourceWebApp { get; set; }
 
         [Parameter(Position = 6, Mandatory = false, HelpMessage = "Ignore source control on source web app")]
         [ValidateNotNullOrEmpty]
@@ -161,6 +162,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 		public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            
             CloningInfo cloningInfo = null;
             if (SourceWebApp != null)
             {
@@ -172,11 +174,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     ConfigureLoadBalancing = false,
                     AppSettingsOverrides = AppSettingsOverrides == null ? null : AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
                 };
+                cloningInfo = new PSCloningInfo(cloningInfo);
             }
 
-            var webApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, null);
-			var site = WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan == null ? webApp.ServerFarmId : AppServicePlan, cloningInfo, AseName, AseResourceGroupName);
+            var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
+			var site = new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan==null?webApp.ServerFarmId : AppServicePlan, cloningInfo, AseName, AseResourceGroupName));
 			UpdateConfigIfNeeded(site);
-		}
+        }
     }
 }
