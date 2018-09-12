@@ -353,17 +353,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
-* Changed type of parameter -Password from String to SecureString for the following cmdlets:
-    - Add-AzureRmApplicationGatewaySslCertificate
-    - New-AzureRmApplicationGatewaySslCertificate
-    - Set-AzureRmApplicationGatewaySslCertificate
-* Added cmdlet to list available internet service providers for a specified Azure region
-    - Get-AzureRmNetworkWatcherReachabilityProvidersList
-* Added cmdlet to get the relative latency score for internet service providers from a specified location to Azure regions
-    - Get-AzureRmNetworkWatcherReachabilityReport
-* Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser'
+        ReleaseNotes = '* Network module supported for the profile 2018-03-01-hybrid
+* This version supports azure stack with the update 1808
+* Apiversion supported by the module is 2017-10-01
+* This module includes functionalities up to the existing AzureRm.Network module version 5.0.0'        
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

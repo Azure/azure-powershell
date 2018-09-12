@@ -111,7 +111,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* Dns module supported for the profile 2018-03-01-hybrid
+* This version supports azure stack with the update 1808
+* Api version supported by the module is 2016-04-01
+* This module includes functionalities up to the existing AzureRm.Dns module version 3.4.1 with the changes for azure powershell common dependencies'        
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

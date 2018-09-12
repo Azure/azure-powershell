@@ -210,8 +210,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed issue where long running POST operations return no results.'
-
+        ReleaseNotes = '* Compute module supported for the profile 2018-03-01-hybrid
+* This version supports azure stack
+* Apiversion supported by the module is 2017-03-30
+* This module includes functionalities up to the existing AzureRm.Compute module version 4.0.1 with additional bug fixes'        
+        
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
 
