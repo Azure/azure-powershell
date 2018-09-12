@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: C2C608E5-3351-4D01-8533-9668B2E9F1D1
@@ -151,7 +151,7 @@ This command gets the resource with the provided resource id, which is a virtual
 ### -ApiVersion
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 When specified, expands the properties of the resource.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 The name of the resource(s) to be retrieved. This parameter supports wildcards at the beginning and/or end of the string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTagNameValueParameterSet, ByTagObjectParameterSet
 Aliases: ResourceName
 
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 ### -ODataQuery
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTagNameValueParameterSet, ByTagObjectParameterSet
 Aliases:
 
@@ -224,7 +224,7 @@ Accept wildcard characters: False
 ### -Pre
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -238,9 +238,8 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The resource group the resource(s) that is retireved belongs in. This parameter supports wildcards at the beginning and/or end of the string.
 
-
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTagNameValueParameterSet, ByTagObjectParameterSet
 Aliases:
 
@@ -253,18 +252,17 @@ Accept wildcard characters: False
 
 ### -ResourceId
 Specifies the fully qualified resource ID, as in the following example
-
 `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Compute/virtualMachines`
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases: Id
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -272,7 +270,7 @@ Accept wildcard characters: False
 The resource type of the resource(s) to be retrieved. For example, Microsoft.Compute/virtualMachines
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTagNameValueParameterSet, ByTagObjectParameterSet
 Aliases:
 
@@ -288,7 +286,7 @@ Accept wildcard characters: False
 Gets resources that have the specified Azure tag. Enter a hash table with a Name key or Name and Value keys. Wildcard characters are not supported.A "tag" is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. To add a tag to a resource, use the Tag parameter of the New-AzureRmResource or Set-AzureRmResource cmdlets. To create a predefined tag, use the New-AzureRmTag cmdlet. For help with hash tables in Windows PowerShell, run 'Get-Help about_Hashtables'.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: ByTagObjectParameterSet
 Aliases:
 
@@ -303,7 +301,7 @@ Accept wildcard characters: False
 The key in the tag of the resource(s) to be retrieved.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTagNameValueParameterSet
 Aliases:
 
@@ -318,7 +316,7 @@ Accept wildcard characters: False
 The value in the tag of the resource(s) to be retrieved.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByTagNameValueParameterSet
 Aliases:
 
@@ -336,11 +334,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-This cmdlet does not accept any input.
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource
+### Microsoft.Azure.Commands.ResourceManagement.Models.PSResource
 
 ## NOTES
 

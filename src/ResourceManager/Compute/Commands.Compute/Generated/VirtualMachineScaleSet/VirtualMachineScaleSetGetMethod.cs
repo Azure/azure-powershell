@@ -30,115 +30,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected object CreateVirtualMachineScaleSetGetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
-
-            var pVMScaleSetName = new RuntimeDefinedParameter();
-            pVMScaleSetName.Name = "VMScaleSetName";
-            pVMScaleSetName.ParameterType = typeof(string);
-            pVMScaleSetName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
-
-            var pArgumentList = new RuntimeDefinedParameter();
-            pArgumentList.Name = "ArgumentList";
-            pArgumentList.ParameterType = typeof(object[]);
-            pArgumentList.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pArgumentList.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ArgumentList", pArgumentList);
-
-            return dynamicParameters;
-        }
-
-        protected void ExecuteVirtualMachineScaleSetGetMethod(object[] invokeMethodInputParameters)
-        {
-            string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
-
-            if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName))
-            {
-                var result = VirtualMachineScaleSetsClient.Get(resourceGroupName, vmScaleSetName);
-                WriteObject(result);
-            }
-            else if (!string.IsNullOrEmpty(resourceGroupName))
-            {
-                var result = VirtualMachineScaleSetsClient.List(resourceGroupName);
-                var resultList = result.ToList();
-                var nextPageLink = result.NextPageLink;
-                while (!string.IsNullOrEmpty(nextPageLink))
-                {
-                    var pageResult = VirtualMachineScaleSetsClient.ListNext(nextPageLink);
-                    foreach (var pageItem in pageResult)
-                    {
-                        resultList.Add(pageItem);
-                    }
-                    nextPageLink = pageResult.NextPageLink;
-                }
-                WriteObject(resultList, true);
-            }
-            else
-            {
-                var result = VirtualMachineScaleSetsClient.ListAll();
-                var resultList = result.ToList();
-                var nextPageLink = result.NextPageLink;
-                while (!string.IsNullOrEmpty(nextPageLink))
-                {
-                    var pageResult = VirtualMachineScaleSetsClient.ListAllNext(nextPageLink);
-                    foreach (var pageItem in pageResult)
-                    {
-                        resultList.Add(pageItem);
-                    }
-                    nextPageLink = pageResult.NextPageLink;
-                }
-                WriteObject(resultList, true);
-            }
-        }
-
-    }
-
-    public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected PSArgument[] CreateVirtualMachineScaleSetGetParameters()
-        {
-            string resourceGroupName = string.Empty;
-            string vmScaleSetName = string.Empty;
-
-            return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "VMScaleSetName" },
-                 new object[] { resourceGroupName, vmScaleSetName });
-        }
-    }
-
-    [Cmdlet(VerbsCommon.Get, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter")]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class GetAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 string resourceGroupName = this.ResourceGroupName;
@@ -152,6 +50,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         var psObject = new PSVirtualMachineScaleSetInstanceView();
                         ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetInstanceView, PSVirtualMachineScaleSetInstanceView>(result, psObject);
                         WriteObject(psObject);
+                    }
+                    else if (this.ParameterSetName.Equals("OSUpgradeHistoryMethodParameter"))
+                    {
+                        var result = VirtualMachineScaleSetsClient.GetOSUpgradeHistory(resourceGroupName, vmScaleSetName);
+                        var resultList = result.ToList();
+                        var nextPageLink = result.NextPageLink;
+                        while (!string.IsNullOrEmpty(nextPageLink))
+                        {
+                            var pageResult = VirtualMachineScaleSetsClient.GetOSUpgradeHistoryNext(nextPageLink);
+                            foreach (var pageItem in pageResult)
+                            {
+                                resultList.Add(pageItem);
+                            }
+                            nextPageLink = pageResult.NextPageLink;
+                        }
+                        var psObject = new List<PSUpgradeOperationHistoricalStatusInfo>();
+                        foreach (var r in resultList)
+                        {
+                            psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<UpgradeOperationHistoricalStatusInfo, PSUpgradeOperationHistoricalStatusInfo>(r));
+                        }
+                        WriteObject(psObject, true);
                     }
                     else
                     {
@@ -207,22 +126,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 1,
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            ParameterSetName = "FriendMethod",
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 2,
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            ParameterSetName = "FriendMethod",
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
         [Alias("Name")]
@@ -232,5 +141,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "FriendMethod",
             Mandatory = true)]
         public SwitchParameter InstanceView { get; set; }
+
+        [Parameter(
+            ParameterSetName = "OSUpgradeHistoryMethodParameter",
+            Mandatory = true)]
+        public SwitchParameter OSUpgradeHistory { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     /// <summary>
     /// Defines the Start-AzureRmSqlElasticJob Cmdlet
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmSqlElasticJob",
+    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlElasticJob",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureSqlElasticJobExecutionModel))]

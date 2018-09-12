@@ -18,6 +18,7 @@ namespace Tools.Common.Helpers
 {
     public static class EnvironmentHelpers
     {
+#if !NETSTANDARD
         /// <summary>
         /// Create a new AppDomain and create a remote instance of AssemblyLoader we can use there
         /// </summary>
@@ -43,6 +44,7 @@ namespace Tools.Common.Helpers
             return testDomain.CreateInstanceFromAndUnwrap(typeof(T).Assembly.Location,
                 typeof(T).FullName) as T;
         }
+#endif
 
         /// <summary>
         /// Get the name of the directory from a directory path

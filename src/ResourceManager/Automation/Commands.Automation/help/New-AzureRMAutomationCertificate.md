@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: A504099E-BA96-45C9-A7A6-195E7087A0D4
@@ -33,7 +33,6 @@ PS C:\> New-AzureRmAutomationCertificate -AutomationAccountName "Contoso17" -Nam
 
 The first command converts a plain text password to be a secure string by using the ConvertTo-SecureString cmdlet.
 The command stores that object in the $Password variable.
-
 The second command creates a certificate named ContosoCertificate.
 The command uses the password stored in $Password.
 The command specifies the account name and the path of the file that it uploads.
@@ -44,9 +43,9 @@ The command specifies the account name and the path of the file that it uploads.
 Specifies the name of the Automation account for which this cmdlet stores the certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -59,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,9 +73,9 @@ Accept wildcard characters: False
 Specifies a description for the certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -89,9 +88,9 @@ Accept wildcard characters: False
 Specifies whether the certificate can be exported.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -104,9 +103,9 @@ Accept wildcard characters: False
 Specifies the name for the certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -119,9 +118,9 @@ Accept wildcard characters: False
 Specifies the password for the certificate file.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -135,9 +134,9 @@ Specifies the path to a script file that this cmdlet uploads.
 The file can be a .cer or a .pfx file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -150,9 +149,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group for which this cmdlet creates a certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -166,8 +165,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+
+### System.Security.SecureString
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

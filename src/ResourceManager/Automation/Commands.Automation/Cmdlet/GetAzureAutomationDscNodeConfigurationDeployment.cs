@@ -28,7 +28,7 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationDscNodeConfigurationDeployment", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationDscNodeConfigurationDeployment", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(NodeConfigurationDeployment))]
     public class GetAzureAutomationDscNodeConfigurationDeployment : AzureAutomationBaseCmdlet
     {

@@ -6,7 +6,7 @@ All MAML files containing the help content for cmdlets have been removed from th
 
 ## Installing `platyPS`
 
-In order to use the cmdlets necessary to update the markdown help files (or generate MAML help locally from these markdown files), you must first install the `platyPS` module mentioned previously.
+In order to use the cmdlets necessary to update the markdown help files (or generate MAML help locally from these markdown files), you must first install the `platyPS` module mentioned previously.  You will need to install a minimum version of 0.11.0.
 
 To do so, you can can follow the below steps (which are outlined in the [**Quick start**](https://github.com/PowerShell/platyPS#quick-start) section of the `platyPS` README):
 
@@ -62,10 +62,14 @@ $PathToModuleManifest = "../../<module.psd1" # Full path to the module manifest 
 Import-Module -Name $PathToModuleManifest
 
 $PathToHelpFolder = "../../help" # Full path to help folder containing markdown files to be updated
-Update-MarkdownHelpModule -Path $PathToHelpFolder -RefreshModulePage -AlphabeticParamsOrder
+Update-MarkdownHelpModule -Path $PathToHelpFolder -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName
 ```
 
+If you would like to update the inputs/outputs for a markdown file, please run this cmdlet with the -UpdateInputOutput parameter.  Keep in mind that this will overwrite any customized descriptions of inputs and outputs, so you will need to add these descriptions back if still relevant.
+
 This will update all of the markdown files with public interface changes made to corresponding cmdlets, add markdown files for any new cmdlets, remove markdown files for any deleted cmdlets, and update the module page (_e.g.,_ `AzureRM.Profile.md`) with any added or removed cmdlets.
+
+_This seems to work better when run from within the `help` folder itself (For e.g. to generate the help files for the [`Network`](https://github.com/Azure/azure-powershell/tree/preview/src/ResourceManager/Network) module run the cmd from under [`Commands.Network/help`](https://github.com/Azure/azure-powershell/tree/preview/src/ResourceManager/Network/Commands.Network/help)). Also, you will have to import the profile module from under <Repo base path>/src/Package/Debug/ResourceManager/AzureResourceManager/AzureRM.Profile/AzureRM.Profile.psd1_
 
 #### Updating a single markdown file
 
@@ -76,8 +80,10 @@ $PathToModuleManifest = "../../<module>.psd1" # Full path to the module manifest
 Import-Module -Name $PathToModuleManifest
 
 $PathToMarkdownFile = "../../<cmdlet>.md" # Full path to the markdown file to be updated
-Update-MarkdownHelp -Path $PathToMarkdownFile -AlphabeticParamsOrder
+Update-MarkdownHelp -Path $PathToMarkdownFile -AlphabeticParamsOrder -UseFullTypeName
 ```
+
+If you would like to update the inputs/outputs for a markdown file, please run this cmdlet with the -UpdateInputOutput parameter.  Keep in mind that this will overwrite any customized descriptions of inputs and outputs, so you will need to add these descriptions back if still relevant.
 
 #### Generating and viewing the MAML help
 

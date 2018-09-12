@@ -72,7 +72,7 @@ This command gets the API with the specified name.
 Specifies the ID of the API to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByApiId
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Revision Identifier of the particular Api revision. This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByApiId
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -115,9 +115,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 Specifies the name of the API to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName
 Aliases:
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Specifies the ID of the product for which to get the API.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByProductId
 Aliases:
 
@@ -163,16 +163,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi
-The details of the Api in a given ApiManagement service
-
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi>
-The list of Apis in a given ApiManagement service
 
 ## NOTES
 

@@ -34,7 +34,6 @@ The **New-AzureRmDnsZone** cmdlet creates a new Domain Name System (DNS) zone in
 resource group. You must specify a unique DNS zone name for the *Name* parameter or the cmdlet will
 return an error. After the zone is created, use the New-AzureRmDnsRecordSet cmdlet to create record
 sets in the zone.
-
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control
 whether the cmdlet prompts you for confirmation.
 
@@ -73,7 +72,7 @@ in the $Zone variable.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,7 +87,7 @@ Accept wildcard characters: False
 Specifies the name of the DNS zone to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +162,7 @@ Accept wildcard characters: False
 Specifies the resource group in which to create the zone.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -176,11 +175,10 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -195,7 +193,7 @@ Accept wildcard characters: False
 The type of the zone, Public or Private. Zones without a type or with a type of Public are made available on the public DNS serving plane for use in the DNS hierarchy. Zones with a type of Private are only visible from with the set of associated virtual networks (this feature is in preview). This property cannot be changed for a zone.
 
 ```yaml
-Type: ZoneType
+Type: System.Nullable`1[Microsoft.Azure.Management.Dns.Models.ZoneType]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Public, Private
@@ -211,7 +209,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -226,7 +224,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -242,18 +240,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-You cannot pipe input to this cmdlet.
+### System.String
+
+### System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.ZoneType, Microsoft.Azure.Management.Dns, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+
+### System.Collections.Hashtable
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference, Microsoft.Azure.Commands.Common.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsZone
-This cmdlet returns a Microsoft.Azure.Commands.Dns.DnsZone object that represents the new DNS zone.
 
 ## NOTES
 You can use the *Confirm* parameter to control whether this cmdlet prompts you for confirmation.
 By default, the cmdlet prompts you for confirmation if the $ConfirmPreference Windows PowerShell variable has a value of Medium or lower.
-
 If you specify *Confirm* or *Confirm:$True*, this cmdlet prompts you for confirmation before it runs.
 If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation.
 

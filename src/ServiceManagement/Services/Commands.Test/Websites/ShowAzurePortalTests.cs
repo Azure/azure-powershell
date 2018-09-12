@@ -26,6 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
     public class ShowAzurePortalTests : WebsitesTestBase
     {
         [Fact(Skip = "Consider removing these.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessGetAzurePublishSettingsTest()
         {
             ShowAzurePortalCommand showAzurePortalCommand = new ShowAzurePortalCommand

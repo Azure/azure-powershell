@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites.WebHostingPlan
     /// <summary>
     /// Gets an azure website.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureWebHostingPlan"), OutputType(typeof(SiteWithConfig), typeof(IEnumerable<Utilities.Websites.Services.WebEntities.WebHostingPlan>))]
+    [Cmdlet(VerbsCommon.Get, "AzureWebHostingPlan"), OutputType(typeof(SiteWithConfig), typeof(Utilities.Websites.Services.WebEntities.WebHostingPlan))]
     public class GetAzureWebHostingPlanCommand : WebHostingPlanContextBaseCmdlet
     {  
         public override void ExecuteCmdlet()

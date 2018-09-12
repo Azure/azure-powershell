@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         // Currently the test runs too long to be marked as a check-in test.
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolCreate()
         {
             RunPowerShellTest("Test-CreateElasticPool");
@@ -42,12 +43,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestVcoreElasticPoolCreateWithLicenseType()
         {
             RunPowerShellTest("Test-CreateVcoreElasticPoolWithLicenseType");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolCreateWithZoneRedundancy()
         {
             RunPowerShellTest("Test-CreateElasticPoolWithZoneRedundancy");

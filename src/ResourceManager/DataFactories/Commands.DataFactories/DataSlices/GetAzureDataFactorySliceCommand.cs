@@ -22,7 +22,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Get, Constants.DataSlice, DefaultParameterSetName = ByFactoryName), OutputType(typeof(List<PSDataSlice>))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataFactorySlice", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataSlice))]
     public class GetAzureDataFactorySliceCommand : DataSliceContextBaseCmdlet
     {
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The data slice range end time.")]

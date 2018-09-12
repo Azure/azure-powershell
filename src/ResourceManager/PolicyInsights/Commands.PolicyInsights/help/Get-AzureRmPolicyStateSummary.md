@@ -156,7 +156,7 @@ Gets the summary view of latest policy compliance states generated in the last d
 
 ### Example 13: Get latest non-compliant policy states summary for a policy assignment in the specified resource group in the current subscription
 ```powershell
-PS C:\> Get-AzureRmPolicyStateSummary -ResourceGroupName "myResourceGroup" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1" 
+PS C:\> Get-AzureRmPolicyStateSummary -ResourceGroupName "myResourceGroup" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
 ```
 
 Gets the summary view of latest policy compliance states generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists in the resource group in the subscription in current session context).
@@ -190,7 +190,7 @@ The command limits the results returned by filtering based on policy definition 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 Filter expression using OData notation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -221,7 +221,7 @@ ISO 8601 formatted timestamp specifying the start time of the interval to query.
 When not specified, defaults to 'To' parameter value minus 1 day.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -236,7 +236,7 @@ Accept wildcard characters: False
 Management group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ManagementGroupScope
 Aliases:
 
@@ -251,7 +251,7 @@ Accept wildcard characters: False
 Policy assignment name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionLevelPolicyAssignmentScope, ResourceGroupLevelPolicyAssignmentScope
 Aliases:
 
@@ -266,7 +266,7 @@ Accept wildcard characters: False
 Policy definition name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PolicyDefinitionScope
 Aliases:
 
@@ -281,7 +281,7 @@ Accept wildcard characters: False
 Policy set definition name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: PolicySetDefinitionScope
 Aliases:
 
@@ -296,7 +296,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupScope, ResourceGroupLevelPolicyAssignmentScope
 Aliases:
 
@@ -311,7 +311,7 @@ Accept wildcard characters: False
 Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceScope
 Aliases:
 
@@ -326,7 +326,7 @@ Accept wildcard characters: False
 Subscription ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubscriptionScope, ResourceGroupScope, PolicySetDefinitionScope, PolicyDefinitionScope, SubscriptionLevelPolicyAssignmentScope, ResourceGroupLevelPolicyAssignmentScope
 Aliases:
 
@@ -338,11 +338,11 @@ Accept wildcard characters: False
 ```
 
 ### -To
-ISO 8601 formatted timestamp specifying the start time of the interval to query.
-When not specified, defaults to 'To' parameter value minus 1 day.
+ISO 8601 formatted timestamp specifying the end time of the interval to query.
+When not specified, defaults to time of request.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -357,7 +357,7 @@ Accept wildcard characters: False
 Maximum number of records to return.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -373,7 +373,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
 
 ## OUTPUTS
 

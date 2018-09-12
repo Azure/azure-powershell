@@ -106,7 +106,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.RunPowerShellTest("Run-NewAzureComputeParameterObjectTests");
         }
 
-        [Fact]
+        [Fact(Skip = "Investigate why PIR.psd1 is being deleted during the build from IncrementalClean task.")]
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
@@ -205,7 +205,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.RunPowerShellTest("Test-MigrationAzureReservedIP");
         }
 
-        [Fact]        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureReservedIPWithIPTags()
         {

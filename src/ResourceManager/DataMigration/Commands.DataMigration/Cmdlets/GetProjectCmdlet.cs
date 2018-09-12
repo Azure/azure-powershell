@@ -24,8 +24,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// <summary>
     /// Class for the command let that creates a new instance of the Data Migration Service.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataMigrationProject", DefaultParameterSetName = ComponentNameParameterSet), OutputType(typeof(IList<PSProject>))]
-    [Alias("Get-AzureRmDmsProject")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationProject", DefaultParameterSetName = ComponentNameParameterSet), OutputType(typeof(PSProject))]
+    [Alias("Get-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsProject")]
     public class GetProjectCmdlet : DataMigrationCmdlet
     {
         [Parameter(

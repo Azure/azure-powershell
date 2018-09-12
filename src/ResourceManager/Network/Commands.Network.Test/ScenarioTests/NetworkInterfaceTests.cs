@@ -21,9 +21,12 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class NetworkInterfaceTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        public NetworkInterfaceTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public NetworkInterfaceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -31,7 +34,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestNetworkInterfaceCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceCRUD");
         }
 
         [Fact]
@@ -39,7 +42,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestNetworkInterfaceCRUDUsingId()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceCRUDUsingId");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceCRUDUsingId");
         }
 
         [Fact]
@@ -47,7 +50,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestNetworkInterfaceCRUDStaticAllocation()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceCRUDStaticAllocation");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceCRUDStaticAllocation");
         }
 
         [Fact]
@@ -55,7 +58,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestNetworkInterfaceNoPublicIpAddress()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceNoPublicIpAddress");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceNoPublicIpAddress");
         }
 
         [Fact]
@@ -63,7 +66,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestNetworkInterfaceSet()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceSet");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceSet");
         }
 
         [Fact]
@@ -71,7 +74,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestNetworkInterfaceIDns()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceIDns");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceIDns");
         }
 
         [Fact]
@@ -79,7 +82,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestNetworkInterfaceEnableIPForwarding()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceEnableIPForwarding");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceEnableIPForwarding");
         }
 
         [Fact]
@@ -87,7 +90,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestNetworkInterfaceExpandResource()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceExpandResource");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceExpandResource");
         }
 
         [Fact]
@@ -95,7 +98,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestNetworkInterfaceIpv6()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceIpv6");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceIpv6");
         }
 
         [Fact]
@@ -103,7 +106,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestNetworkInterfaceWithIpConfiguration()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceWithIpConfiguration");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceWithIpConfiguration");
         }
 
         [Fact]
@@ -111,7 +114,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestNetworkInterfaceWithAcceleratedNetworking()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceWithAcceleratedNetworking");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-NetworkInterfaceWithAcceleratedNetworking");
         }
     }
 }

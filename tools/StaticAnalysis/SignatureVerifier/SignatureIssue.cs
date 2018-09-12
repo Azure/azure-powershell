@@ -49,7 +49,8 @@ namespace StaticAnalysis.SignatureVerifier
                 result = string.Equals(record.ClassName, ClassName, StringComparison.OrdinalIgnoreCase) &&
                     string.Equals(record.Target, Target, StringComparison.OrdinalIgnoreCase) &&
                          (record.ProblemId == ProblemId) &&
-                         record.Severity == Severity;
+                         (record.Severity == Severity) &&
+                         (record.Description == Description);
 
             }
 

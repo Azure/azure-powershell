@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the New-AzureSqlManagedInstance cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlManagedInstance",
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstance",
         DefaultParameterSetName = NewBySkuNameParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceModel))]

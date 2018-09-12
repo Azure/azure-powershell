@@ -21,8 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// <summary>
     /// Show azure storage service properties
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, StorageNouns.StorageServiceLogging),
-        OutputType(typeof(LoggingProperties))]
+    [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageServiceLoggingProperty"),OutputType(typeof(LoggingProperties))]
     public class GetAzureStorageServiceLoggingCommand : StorageCloudBlobCmdletBase
     {
         public const string ServiceTypeHelpMessage = "Azure storage service type(Blob, Table, Queue).";

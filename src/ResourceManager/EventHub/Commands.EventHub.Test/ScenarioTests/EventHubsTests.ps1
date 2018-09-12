@@ -24,6 +24,7 @@ function EventHubsTests
 	$resourceGroupName = getAssetName "RSG"
 	$namespaceName = getAssetName "Eventhub-Namespace-"
 	$eventHubName = getAssetName "EventHub-"
+	$eventHubName2 = getAssetName "EventHub-"
 
 	# Create Resource Group
 	Write-Debug "Create resource group"    
@@ -46,12 +47,9 @@ function EventHubsTests
 	Assert-AreEqual $createdNamespace.Name $namespaceName "Get Namespace: Namespace created earlier is not found."
 	
 	# Create a EventHub
-	Write-Debug " Create new eventHub "    
-	$msgRetentionInDays = 3
-	$partionCount = 2
-	$result = New-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
-	
-		
+	Write-Debug " Create new eventHub "	
+	$result = New-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $eventHubName
+			
 	Write-Debug " Get the created Eventhub "
 	$createdEventHub = Get-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $result.Name
 
@@ -69,7 +67,7 @@ function EventHubsTests
 	Set-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHub.Name  -InputObject $createdEventHub
 	
 	# Update the Created EventHub
-	Write-Debug " Update the first EventHub"    
+	Write-Debug " Update the first EventHub"
 	$createdEventHub.MessageRetentionInDays = 4	
 	$createdEventHub.CaptureDescription = New-Object -TypeName Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes
 	$createdEventHub.CaptureDescription.Enabled = $true
@@ -87,6 +85,13 @@ function EventHubsTests
 	Assert-AreEqual $result.MessageRetentionInDays $createdEventHub.MessageRetentionInDays
 	Assert-AreEqual $result.CaptureDescription.Destination.BlobContainer "container01"
 
+	# Create New EventHub with InputObject
+	$resultNew = New-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHub.Name  -InputObject $result
+
+	# Assert
+	Assert-AreEqual $resultNew.MessageRetentionInDays $createdEventHub.MessageRetentionInDays
+	Assert-AreEqual $resultNew.CaptureDescription.Destination.BlobContainer "container01"
+	
 	# Cleanup
 	# Delete all Created Eventhub
 	Write-Debug " Delete the EventHub"
@@ -216,14 +221,19 @@ function EventHubsAuthTests
 	# Regentrate the Keys 
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeys = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey
-	Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
+	$namespaceRegenerateKeysDefault = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey
+	Assert-True {$namespaceRegenerateKeysDefault.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
+
+	$namespaceRegenerateKeys = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey -KeyValue $namespaceListKeys.PrimaryKey
+	Assert-AreEqual $namespaceRegenerateKeys.PrimaryKey $namespaceListKeys.PrimaryKey
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey1
-	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
+	$namespaceRegenerateKeys1 = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey1 -KeyValue $namespaceListKeys.PrimaryKey
+	Assert-AreEqual $namespaceRegenerateKeys1.SecondaryKey $namespaceListKeys.PrimaryKey
 
+	$namespaceRegenerateKeys1 = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -EventHub $eventHubName -Name $authRuleName -RegenerateKey $policyKey1
+	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.PrimaryKey}	
 
 	# Cleanup
 	Write-Debug "Delete the created EventHub AuthorizationRule"

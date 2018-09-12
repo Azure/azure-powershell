@@ -49,12 +49,11 @@ $database | New-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName $secondary
 ### -AllowConnections
 Specifies the read intent of the secondary Azure SQL Database.
 The acceptable values for this parameter are:
-
 - No
 - All
 
 ```yaml
-Type: AllowConnections
+Type: Microsoft.Azure.Commands.Sql.Replication.Model.AllowConnections
 Parameter Sets: (All)
 Aliases:
 Accepted values: No, All
@@ -68,8 +67,9 @@ Accept wildcard characters: False
 
 ### -AsJob
 Run cmdlet in the background
+
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 Specifies the name of the database to act as primary.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -112,11 +112,11 @@ Accept wildcard characters: False
 
 ### -LicenseType
 The license type for the Azure Sql database.
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: LicenseIncluded, BasePrice
 
 Required: False
 Position: Named
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure Resource Group to which this cmdlet assigns the secondary database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure SQL database server to act as secondary.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure Resource Group to which this cmdlet assigns the primary database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 The compute generation of teh Azure Sql Database secondary.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VcoreBasedDatabase
 Aliases: Family
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 Specifies the name of the elastic pool in which to put the secondary database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DtuBasedDatabase
 Aliases:
 
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 Specifies the name of the service objective to assign to the secondary database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DtuBasedDatabase
 Aliases:
 
@@ -219,7 +219,7 @@ Accept wildcard characters: False
 The Vcore numbers of the Azure Sql Database secondary.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: VcoreBasedDatabase
 Aliases: Capacity
 
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 Specifies the name of the SQL Server of the primary  SQL Database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -247,11 +247,10 @@ Accept wildcard characters: False
 
 ### -Tags
 Specifies the Key-value pairs in the form of a hash table to associate with the SQL Database replication link. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -266,7 +265,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -282,7 +281,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -298,13 +297,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.Replication.Model.AzureReplicationLinkModel
-This cmdlet returns **ReplicationLink** objects.
 
 ## NOTES
 

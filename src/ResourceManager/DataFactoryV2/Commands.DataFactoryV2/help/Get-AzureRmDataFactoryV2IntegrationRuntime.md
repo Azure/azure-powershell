@@ -117,9 +117,9 @@ This command displays information about the integration runtime named 'test-dedi
 The data factory name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByIntegrationRuntimeName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -147,9 +147,9 @@ Accept wildcard characters: False
 The integration runtime object.
 
 ```yaml
-Type: PSIntegrationRuntime
+Type: Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
 Parameter Sets: ByIntegrationRuntimeObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 The integration runtime name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByIntegrationRuntimeName
 Aliases: IntegrationRuntimeName
 
@@ -177,9 +177,9 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByIntegrationRuntimeName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -192,7 +192,7 @@ Accept wildcard characters: False
 The Azure resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases: Id
 
@@ -207,9 +207,9 @@ Accept wildcard characters: False
 The integration runtime detail status.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -224,13 +224,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
+
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime, Microsoft.Azure.Commands.DataFactoryV2, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null]]
-Microsoft.Azure.Commands.DataFactoryV2.Models.PSManagedIntegrationRuntime
-Microsoft.Azure.Commands.DataFactoryV2.Models.PSSelfHostedIntegrationRuntime
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
+
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSManagedIntegrationRuntime
+
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSSelfHostedIntegrationRuntime
+
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedIntegrationRuntime
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories, copy, activities, integration runtime

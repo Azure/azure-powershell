@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the Update-AzureRmSqlManagedInstance cmdlet
     /// </summary>
-    [Cmdlet(VerbsData.Update, "AzureRmSqlManagedInstance",
+    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstance",
         DefaultParameterSetName = UpdateByNameAndResourceGroupParameterSet,
         SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceModel))]

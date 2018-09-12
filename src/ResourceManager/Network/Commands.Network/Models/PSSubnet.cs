@@ -16,10 +16,12 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using WindowsAzure.Commands.Common.Attributes;
 
     public class PSSubnet : PSChildResource
     {
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string AddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -29,15 +31,20 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSResourceNavigationLink> ResourceNavigationLinks { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Label = "NetworkSecurityGroup Name", Target = ViewControl.Table, ScriptBlock = "$_.NetworkSecurityGroup.Name")]
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Label = "RouteTable Name", Target = ViewControl.Table, ScriptBlock = "$_.RouteTable.Name")]
         public PSRouteTable RouteTable { get; set; }
 
         [JsonProperty(Order = 1)]
         public List<PSServiceEndpoint> ServiceEndpoints { get; set; }
 
+        public List<PSServiceEndpointPolicy> ServiceEndpointPolicies { get; set; }
+
         [JsonProperty(Order = 1)]
+        [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
@@ -73,6 +80,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ServiceEndpointText
         {
             get { return JsonConvert.SerializeObject(ServiceEndpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ServiceEndpointPoliciesText
+        {
+            get { return JsonConvert.SerializeObject(ServiceEndpointPolicies, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

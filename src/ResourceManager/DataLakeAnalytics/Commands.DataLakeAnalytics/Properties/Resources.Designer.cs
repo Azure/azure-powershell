@@ -250,11 +250,29 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid empty catalog path. A catalog path is required when listing or updating ACLs for catalog item..
+        /// </summary>
+        internal static string MissingCatalogPathForAclOperation {
+            get {
+                return ResourceManager.GetString("MissingCatalogPathForAclOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to -MaxAnalyticsUnitsPerJob or -MinPriorityPerJob or both must be specified when creating or updating a compute policy..
         /// </summary>
         internal static string MissingComputePolicyField {
             get {
                 return ResourceManager.GetString("MissingComputePolicyField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -ObjectId must be specified when updating or removing ACLs..
+        /// </summary>
+        internal static string MissingPrincipalId {
+            get {
+                return ResourceManager.GetString("MissingPrincipalId", resourceCulture);
             }
         }
         
@@ -295,11 +313,20 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login..
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRMAccount to login..
         /// </summary>
         internal static string NoSubscriptionInContext {
             get {
                 return ResourceManager.GetString("NoSubscriptionInContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find principal using the specified object id.
+        /// </summary>
+        internal static string PrincipalNotFound {
+            get {
+                return ResourceManager.GetString("PrincipalNotFound", resourceCulture);
             }
         }
         
@@ -322,6 +349,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Data Lake Analytics catalog ACL for &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsCatalogAcl {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsCatalogAcl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Data Lake Analytics catalog credential &apos;{0}&apos; ....
         /// </summary>
         internal static string RemoveDataLakeAnalyticsCatalogCredential {
@@ -336,6 +372,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string RemoveDataLakeAnalyticsCatalogCredentialCascade {
             get {
                 return ResourceManager.GetString("RemoveDataLakeAnalyticsCatalogCredentialCascade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Data Lake Analytics catalog ACL at path: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsCatalogItemAcl {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsCatalogItemAcl", resourceCulture);
             }
         }
         
@@ -399,6 +444,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string RemovingDataLakeAnalyticsBlobAccount {
             get {
                 return ResourceManager.GetString("RemovingDataLakeAnalyticsBlobAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics catalog ACL for &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingDataLakeAnalyticsCatalogAcl {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeAnalyticsCatalogAcl", resourceCulture);
             }
         }
         
@@ -475,11 +529,29 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting Data Lake Analytics catalog ACL entry for &apos;{0}&apos; ... .
+        /// </summary>
+        internal static string SetDataLakeCatalogAclEntry {
+            get {
+                return ResourceManager.GetString("SetDataLakeCatalogAclEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating Data Lake Analytics catalog credential &apos;{0}&apos; in database &apos;{1}&apos; ....
         /// </summary>
         internal static string SetDataLakeCatalogCredential {
             get {
                 return ResourceManager.GetString("SetDataLakeCatalogCredential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting Data Lake Analytics catalog item ACL entry at path: &apos;{0}&apos;  ....
+        /// </summary>
+        internal static string SetDataLakeCatalogItemAclEntry {
+            get {
+                return ResourceManager.GetString("SetDataLakeCatalogItemAclEntry", resourceCulture);
             }
         }
         
