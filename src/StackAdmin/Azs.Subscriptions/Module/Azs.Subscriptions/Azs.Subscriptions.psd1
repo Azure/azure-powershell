@@ -56,7 +56,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; },
+    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; },
         @{ModuleName = 'AzureRM.Resources'; ModuleVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
