@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayBackendAddressPool"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), 
+        OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
     {
         [Parameter(
@@ -31,20 +31,23 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            var backendAddressPool = this.ApplicationGateway.BackendAddressPools.SingleOrDefault
-                (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-            if (backendAddressPool != null)
+            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
             {
-                throw new ArgumentException("Backend address pool with the specified name already exists");
+                base.ExecuteCmdlet();
+
+                var backendAddressPool = this.ApplicationGateway.BackendAddressPools.SingleOrDefault
+                    (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+                if (backendAddressPool != null)
+                {
+                    throw new ArgumentException("Backend address pool with the specified name already exists");
+                }
+
+                backendAddressPool = base.NewObject();
+                this.ApplicationGateway.BackendAddressPools.Add(backendAddressPool);
+
+                WriteObject(this.ApplicationGateway);
             }
-
-            backendAddressPool = base.NewObject();
-            this.ApplicationGateway.BackendAddressPools.Add(backendAddressPool);
-
-            WriteObject(this.ApplicationGateway);
         }
     }
 }

@@ -69,8 +69,6 @@ function Remove-AzsComputeQuota {
 
     Process {
 
-
-
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{locationName}/quotas/{quotaName}'
@@ -81,6 +79,8 @@ function Remove-AzsComputeQuota {
 
             $Location = $ArmResourceIdParameterValues['locationName']
             $Name = $ArmResourceIdParameterValues['quotaName']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Delete compute quota")) {

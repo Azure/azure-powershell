@@ -165,12 +165,17 @@ InModuleScope Azs.Update.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         It "TestGetUpdateLocation" -Skip:$('TestGetUpdateLocation' -in $global:SkippedTests) {
             $global:TestName = "TestGetUpdateLocation"
 
-            $list = Get-AzsUpdateLocation -ResourceGroup System.Redmond -Location redmond
+            $list = Get-AzsUpdateLocation -ResourceGroup $global:ResourceGroupName
+            $list | Should not be $null
             foreach ($location in $list) {
-                $location1 = Get-AzsUpdateLocation -Location $location.Name -ResourceGroup System.Redmond
+                $location1 = Get-AzsUpdateLocation -Location $location.Name -ResourceGroup $global:ResourceGroupName
                 ValidateSameUpdateLocation $location $location1
             }
         }
@@ -178,7 +183,7 @@ InModuleScope Azs.Update.Admin {
         It "TestListUpdates" -Skip:$('TestListUpdates' -in $global:SkippedTests) {
             $global:TestName = "TestListUpdates"
 
-            $list = Get-AzsUpdate -ResourceGroup System.Redmond -Location redmond
+            $list = Get-AzsUpdate -ResourceGroup $global:ResourceGroupName -Location $global:Location
             $list | Should Not Be $null
             foreach ($update in $list) {
                 ValidateUpdate $update
@@ -188,9 +193,9 @@ InModuleScope Azs.Update.Admin {
         It "TestGetUdate" -Skip:$('TestGetUpdate' -in $global:SkippedTests) {
             $global:TestName = "TestGetUpdate"
 
-            $list = Get-AzsUpdate -ResourceGroup System.Redmond -Location redmond
+            $list = Get-AzsUpdate -ResourceGroup $global:ResourceGroupName -Location $global:Location
             foreach ($update in $list) {
-                $update1 = Get-AzsUpdate -Name $update.Name -ResourceGroup System.Redmond -Location redmond
+                $update1 = Get-AzsUpdate -Name $update.Name -ResourceGroup $global:ResourceGroupName -Location $global:Location
                 ValidateSameUpdate $update $update1
             }
         }
@@ -198,9 +203,9 @@ InModuleScope Azs.Update.Admin {
         It "TestListUpdateRuns" -Skip:$('TestListUpdateRuns' -in $global:SkippedTests) {
             $global:TestName = "TestListUpdateRuns"
 
-            $list = Get-AzsUpdate -ResourceGroup System.Redmond -Location redmond
+            $list = Get-AzsUpdate -ResourceGroup $global:ResourceGroupName -Location $global:Location
             foreach ($update in $list) {
-                $runList = Get-AzsUpdateRun -UpdateName $update.Name -ResourceGroup System.Redmond -Location redmond
+                $runList = Get-AzsUpdateRun -UpdateName $update.Name -ResourceGroup $global:ResourceGroupName -Location $global:Location
                 foreach ($run in $runList) {
                     ValidateUpdateRun $run
                 }
@@ -210,12 +215,12 @@ InModuleScope Azs.Update.Admin {
         it "TestGetUpdateRun" -Skip:$('TestGetUpdateRun' -in $global:SkippedTests) {
             $global:TestName = "TestGetUpdateRun"
 
-            $list = Get-AzsUpdate -ResourceGroup System.Redmond -Location redmond
+            $list = Get-AzsUpdate -ResourceGroup $global:ResourceGroupName -Location $global:Location
+            $list | Should not be $null
             foreach ($update in $list) {
-                $update | fl
-                $runList = Get-AzsUpdateRun -UpdateName $update.Name -ResourceGroup System.Redmond -Location redmond
+                $runList = Get-AzsUpdateRun -UpdateName $update.Name -ResourceGroup $global:ResourceGroupName -Location $global:Location
                 foreach ($run in $runList) {
-                    $run1 = Get-AzsUpdateRun -Name $run.Name -ResourceGroup System.Redmond -Location redmond -UpdateName $update.Name
+                    $run1 = Get-AzsUpdateRun -Name $run.Name -ResourceGroup $global:ResourceGroupName -Location $global:Location -UpdateName $update.Name
                     ValidateSameUpdateRun $run $run1
                 }
             }
