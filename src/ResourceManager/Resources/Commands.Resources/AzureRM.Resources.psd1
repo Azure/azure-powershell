@@ -131,7 +131,7 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
                'Test-AzureRmDeployment', 'Remove-AzureRmDeployment', 
                'Stop-AzureRmDeployment', 'Save-AzureRmDeploymentTemplate', 
                'Get-AzureRmDeploymentOperation',
-               'Get-AzureRmPolicyAliases'
+               'Get-AzureRmPolicyAlias'
 
 # Variables to export from this module
 # VariablesToExport = @()

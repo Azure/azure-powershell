@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         /// <summary>
         /// An instance of the cmdlet
         /// </summary>
-        private readonly GetAzurePolicyAliases cmdlet;
+        private readonly GetAzurePolicyAlias cmdlet;
 
         /// <summary>
         /// A mock of the provider operations
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 .SetupGet(client => client.Providers)
                 .Returns(() => this.providerOperationsMock.Object);
 
-            this.cmdlet = new GetAzurePolicyAliases { ResourceManagerSdkClient = new ResourceManagerSdkClient(resourceManagementClient.Object) };
+            this.cmdlet = new GetAzurePolicyAlias { ResourceManagerSdkClient = new ResourceManagerSdkClient(resourceManagementClient.Object) };
 
             var mockRuntime = new MockCommandRuntime();
             this.commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureRmPolicyAliasesByNamespaceNoAliases()
+        public void TestGetAzureRmPolicyAliasByNamespaceNoAliases()
         {
             var providers = new ProviderListBuilder();
             providers.AddProvider("Name1");
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureRmPolicyAliasesByNamespace()
+        public void TestGetAzureRmPolicyAliasByNamespace()
         {
             var providers = new ProviderListBuilder();
             providers.AddProvider("Provider1").AddResourceType("ResourceType1").AddAlias("Alias1");
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureRmPolicyAliasesByResourceType()
+        public void TestGetAzureRmPolicyAliasByResourceType()
         {
             var providers = new ProviderListBuilder();
             var provider1 = providers.AddProvider("Provider1");
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureRmPolicyAliasesByAlias()
+        public void TestGetAzureRmPolicyAliasByAlias()
         {
             var providers = new ProviderListBuilder();
             var resourceType = providers.AddProvider("Provider1").AddResourceType("ResourceType1");
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureRmPolicyAliasesAllParameters()
+        public void TestGetAzureRmPolicyAliasAllParameters()
         {
             var providers = new ProviderListBuilder();
             providers.AddProvider("Provider1");
