@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -26,11 +25,11 @@ namespace Microsoft.Azure.Commands.Network
             base.ExecuteCmdlet();
 
             PSApplicationGatewaySku sku = new PSApplicationGatewaySku()
-                {
-                    Name = this.Name,
-                    Tier = this.Tier,
-                    Capacity = this.Capacity
-                };
+            {
+                Name = this.Name,
+                Tier = this.Tier,
+                Capacity = this.Capacity
+            };
 
             WriteObject(sku);
         }

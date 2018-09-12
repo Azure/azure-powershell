@@ -96,8 +96,6 @@ function Get-AzsStorageAccount {
 
     Process {
 
-
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
         }
@@ -132,6 +130,7 @@ function Get-AzsStorageAccount {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $StorageAdminClient.'
             $TaskResult = $StorageAdminClient.StorageAccounts.ListWithHttpMessagesAsync($ResourceGroupName, $FarmName, $Summary.IsPresent)
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $StorageAdminClient.'
             $TaskResult = $StorageAdminClient.StorageAccounts.GetWithHttpMessagesAsync($ResourceGroupName, $FarmName, $Name)
         } else {

@@ -156,6 +156,12 @@
   <data name="VirtualMachineStoppingConfirmation" xml:space="preserve">
     <value>This cmdlet will stop the specified virtual machine. Do you want to continue?</value>
   </data>
+  <data name="ResourceRemovalConfirmation" xml:space="preserve">
+    <value>This cmdlet will remove the specified resource.  Do you want to continue?</value>
+  </data>
+  <data name="ResourceStoppingConfirmation" xml:space="preserve">
+    <value>This cmdlet will stop the specified resource.  Do you want to continue?</value>
+  </data>
   <data name="AzureVMDscCannotFindConfigurationDataFile" xml:space="preserve">
     <value>Cannot find configuration data file: {0}</value>
   </data>
@@ -362,10 +368,10 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
   <data name="DataDiskNotAssignedForVM" xml:space="preserve">
     <value>A data disk, {0}, is not currently assigned for this VM. Use Add-AzureRmVMDataDisk to add it.</value>
   </data>
-  <data name="AzureVMSqlServerWrongSettingsFormat" xml:space="preserve">
-    <value>Cannot deserialize settings string from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
+  <data name="AzureVMSqlServerWrongConfigFormat" xml:space="preserve">
+    <value>Cannot deserialize sql configuration substatus message from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
 {0}</value>
-    <comment>{0} settings json string</comment>
+    <comment>{0} sql configuration string</comment>
   </data>
   <data name="PublishVMDscExtensionAdditionalContentPathNotExist" xml:space="preserve">
     <value>Path '{0}' not found.</value>
@@ -480,25 +486,86 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Storage account name is not defined.</value>
   </data>
   <data name="DiagnosticsExtensionNullStorageAccountEndpoint" xml:space="preserve">
-    <value>Storage account endpoint is not defined or can not be retrieved automatically..</value>
+    <value>Storage account endpoint is not defined or can not be retrieved automatically.</value>
   </data>
-  <data name="DiagnosticsExtensionConfigNoWadCfgOrXmlCfg" xml:space="preserve">
-    <value>WadCfg or xmlCfg is not defined in configuration file.</value>
+  <data name="DiagnosticsExtensionIaaSConfigElementNotDefinedInJson" xml:space="preserve">
+    <value>No WadCfg, WadCfgBlob or xmlCfg element defined in the json configuration file.</value>
   </data>
   <data name="DiagnosticsExtensionInvalidConfigFileFormat" xml:space="preserve">
-    <value>Invalid diagnostics configuration file. It should be in Invalid diagnostics configuration file. It should be in either xml or json format.either xml or json format.</value>
+    <value>Invalid diagnostics configuration file. It should be in xml or json format.</value>
   </data>
-  <data name="DiagnosticsExtensionXmlConfigNoWadCfgEndTag" xml:space="preserve">
-    <value>Cannot find the WadCfg end element in the config.</value>
+  <data name="DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined" xml:space="preserve">
+    <value>No DiagnosticMonitorConfiguration element defined in the configuration file.</value>
   </data>
-  <data name="DiagnosticsExtensionXmlConfigNoWadCfgStartTag" xml:space="preserve">
-    <value>Cannot find the WadCfg element in the config.</value>
+  <data name="DiagnosticsExtensionMetricsResourceIdNotMatch" xml:space="preserve">
+    <value>The resourceId defined in the config file does not match the actual resource's id.</value>
   </data>
-  <data name="DiagnosticsExtensionXmlConfigWadCfgTagNotMatch" xml:space="preserve">
-    <value>WadCfg start element in the config is not matching the end element.</value>
+  <data name="DiagnosticsExtensionIaaSConfigElementNotDefinedInXml" xml:space="preserve">
+    <value>No WadCfg or WadCfgBlob element defined in the xml configuration file.</value>
+  </data>
+  <data name="AEMExtensionNotFound" xml:space="preserve">
+    <value>No Azure Enhanced Monitoring extension found under resource group '{0}', virtual machine '{1}'.</value>
+    <comment>{0} = resource group name, {1} = virtual machine name</comment>
+  </data>
+  <data name="DisableAzureDiskEncryptionCaption" xml:space="preserve">
+    <value>Disable AzureDiskEncryption on the VM</value>
+  </data>
+  <data name="DisableAzureDiskEncryptionConfirmation" xml:space="preserve">
+    <value>This cmdlet disables encryption on the VM which may reboot the machine. Please save your work on the VM before confirming. Do you want to continue?</value>
   </data>
   <data name="ErrorDuringChoosingStandardStorageAccount" xml:space="preserve">
     <value>Error occurred when choosing existing standard storage account for boot diagnostics: {0}</value>
     <comment>{0} = an error message</comment>
+  </data>
+  <data name="DisableDiskEncryptionAction" xml:space="preserve">
+    <value>Disable disk encryption</value>
+  </data>
+  <data name="EnableDiskEncryptionAction" xml:space="preserve">
+    <value>Enable disk encryption</value>
+  </data>
+  <data name="RemoveAccessExtensionAction" xml:space="preserve">
+    <value>Remove VM access extension</value>
+  </data>
+  <data name="RemoveDiskEncryptionAction" xml:space="preserve">
+    <value>Remove disk encryption</value>
+  </data>
+  <data name="RemoveExtensionAction" xml:space="preserve">
+    <value>Remove '{0}' extension</value>
+  </data>
+  <data name="RemoveScriptExtensionAction" xml:space="preserve">
+    <value>Remove custom script extension</value>
+  </data>
+  <data name="ChefExtensionNotFound" xml:space="preserve">
+    <value>No chef extension found under resource group '{0}', virtual machine '{1}'.</value>
+    <comment>{0} = resource group name, {1} = virtual machine name</comment>
+  </data>
+  <data name="DiagnosticsExtensionNotFoundForVMSS" xml:space="preserve">
+    <value>No matching diagnostics extension found.</value>
+  </data>
+  <data name="DiagnosticsExtensionOverwriting" xml:space="preserve">
+    <value>Overwriting existing diagnostics extension.</value>
+  </data>
+  <data name="AddVmssDiagnosticsExtensionAction" xml:space="preserve">
+    <value>Add diagnostics extension to the VM scale set</value>
+  </data>
+  <data name="DiagnosticsExtensionOverwrittingCaption" xml:space="preserve">
+    <value>Diagnostics extension overwritting operation </value>
+  </data>
+  <data name="DiagnosticsExtensionOverwrittingConfirmation" xml:space="preserve">
+    <value>This cmdlet will overwrite existing diagnostics extension. Do you want to continue?</value>
+  </data>
+  <data name="RemoveVmssDiagnosticsExtensionAction" xml:space="preserve">
+    <value>Remove diagnostics extension from the VM scale set</value>
+  </data>
+  <data name="AzureVMSqlServerSqlConfigurationNotFound" xml:space="preserve">
+    <value>Cannot find sql server configuration info in substatuses. Updating your Azure PowerShell SDK to the latest version may solve this problem. Substatuses string:
+{0}</value>
+    <comment>{0} = substatuses string</comment>
+  </data>
+  <data name="DiagnosticsExtensionMismatchStorageAccountName" xml:space="preserve">
+    <value>Storage account names provided in public and private configs do not match.</value>
+  </data>
+  <data name="NotManagedDisk" xml:space="preserve">
+    <value>The given disk is not a managed disk.</value>
   </data>
 </root>
