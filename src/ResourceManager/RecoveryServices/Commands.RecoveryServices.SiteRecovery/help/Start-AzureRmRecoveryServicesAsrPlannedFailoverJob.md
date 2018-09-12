@@ -46,6 +46,7 @@ Starts the planned failover for the specified ASR recovery plan and returns the 
 
 ### -CreateVmIfNotFound
 Create the virtual machine if not found while failing back to the primary region (used in alternate location recovery.) The acceptable values for this parameter are:
+
 - Yes
 - No
 
@@ -95,6 +96,7 @@ Accept wildcard characters: False
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
+
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
@@ -110,6 +112,7 @@ Accept wildcard characters: False
 ### -Direction
 Specifies the direction of the failover.
 The acceptable values for this parameter are:
+
 - PrimaryToRecovery
 - RecoveryToPrimary
 
@@ -130,12 +133,15 @@ Accept wildcard characters: False
 Specifies what to optimize for.
 This parameter applies when failover is done from an Azure site to an on-premise site which requires substantial data synchronization.
 Valid values are:
+
 - ForDowntime
 - ForSynchronization
+
 When **ForDowntime** is specified, this indicates that data is synchronized before failover to minimize downtime.
 Synchronization is performed without shutting down the virtual machine.
 After synchronization is complete, the job is suspended.
 Resume the job to do an additional synchronization operation that shuts down the virtual machine.
+
 When **ForSynchronization** is specified, this indicates that data is synchronized during failover only so data synchronization is minimized.
 With this setting enabled, the virtual machine is shut down immediately.
 Synchronization starts after shutdown to complete the failover operation.
@@ -234,10 +240,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan
-Parameters: RecoveryPlan (ByValue)
-
-### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
-Parameters: ReplicationProtectedItem (ByValue)
+Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
 
 ## OUTPUTS
 
