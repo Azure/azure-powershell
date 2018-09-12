@@ -108,6 +108,10 @@ InModuleScope Azs.Fabric.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         It "TestListIpPools" -Skip:$('TestListIpPools' -in $global:SkippedTests) {
             $global:TestName = 'TestListIpPools'
             $IpPools = Get-AzsIpPool -ResourceGroupName $global:ResourceGroupName -Location $Location
