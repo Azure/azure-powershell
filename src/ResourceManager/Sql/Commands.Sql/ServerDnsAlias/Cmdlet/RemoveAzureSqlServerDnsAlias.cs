@@ -24,13 +24,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 	public class RemoveAzureSqlServerDNSAlias : AzureSqlServerDnsAliasCmdletBase
 	{
 		protected const string RemoveByNameAndResourceGroupParameterSet =
-			"Remove a Server Dns Alias from cmdlet input parameters";
+            "RemoveServerDnsAliasByInputParameters";
 
-		protected const string RemoveByInputObjectParameterSet =
-			"Remove a Server Dns Alias from AzureSqlServerDnsAliasModel instance definition";
+        protected const string RemoveByInputObjectParameterSet =
+            "RemoveServerDnsAliasByAzureSqlServerDnsAliasModel";
 
-		protected const string RemoveByResourceIdParameterSet =
-			"Remove a Server Dns Alias from an Azure resource id";
+        protected const string RemoveByResourceIdParameterSet =
+            "RemoveServerDnsAliasByResourceId";
 
 		/// <summary>
 		/// Gets or sets the name of the server dns alias to remove
