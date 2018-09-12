@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         {
             base.ExecuteCmdlet();
             WebsitesClient.StartWebApp(ResourceGroupName, Name, Slot);
-            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+            WriteObject(new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot)));
         }
     }
 }

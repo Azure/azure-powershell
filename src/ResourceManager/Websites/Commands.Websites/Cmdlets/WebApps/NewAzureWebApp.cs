@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 WriteVerboseWithTimestamp("Cloning source web app '{0}' to destination web app {1}", srcwebAppName, Name);
             }
 
-            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName));
+            WriteObject(new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName)));
 
             if (cloneWebAppSlots)
             {
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     repoPath,
                     exception.Message));
             }
-            adapter.WriteObject(output);
+            adapter.WriteObject(new PSSite(output));
         }
 
 

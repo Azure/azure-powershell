@@ -227,8 +227,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         private void GetByAppServicePlan()
         {
-            WriteObject(WebsitesClient.ListWebAppsForAppServicePlan(AppServicePlan.ResourceGroup,
-                AppServicePlan.Name).ToList(), true);
+            var sites = new List<PSSite>();
+            var output = WebsitesClient.ListWebAppsForAppServicePlan(AppServicePlan.ResourceGroup, AppServicePlan.Name);
+            foreach (var site in output)
+            {
+                sites.Add(new PSSite(site));
+            }
+
+            WriteObject(sites, true);
         }
     }
 }

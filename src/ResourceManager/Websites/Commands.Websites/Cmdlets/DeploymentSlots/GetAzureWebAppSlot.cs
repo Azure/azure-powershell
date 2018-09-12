@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
@@ -66,11 +67,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
             if (string.IsNullOrWhiteSpace(Slot))
             {
-                WriteObject(WebsitesClient.ListWebApps(ResourceGroupName, Name), true);
+                var output = WebsitesClient.ListWebApps(ResourceGroupName, Name);
+                var slots = new List<PSSite>();
+                foreach(var slot in output)
+                {
+                    slots.Add(new PSSite(slot));
+                }
+                WriteObject(slots, true);
             }
             else
             {
-                WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+                WriteObject(new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot)));
             }
         }
     }
