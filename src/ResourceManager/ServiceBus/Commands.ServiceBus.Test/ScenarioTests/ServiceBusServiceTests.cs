@@ -41,6 +41,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
         public void ServiceBusNameSpaceAuth_CURD_Tests()
         {
             ServiceBusController.NewInstance.RunPsTest(_logger, "ServiceBusNameSpaceAuthTests");
-        }        
+        }
     }
 }

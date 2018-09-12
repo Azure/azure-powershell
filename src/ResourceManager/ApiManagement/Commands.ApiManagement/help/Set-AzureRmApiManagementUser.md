@@ -202,19 +202,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
-Parameters: Context (ByPropertyName)
 
 ### System.String
-Parameters: Email (ByPropertyName), FirstName (ByPropertyName), LastName (ByPropertyName), Note (ByPropertyName), UserId (ByPropertyName)
 
 ### System.Security.SecureString
-Parameters: Password (ByPropertyName)
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUserState
-Parameters: State (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: PassThru (ByPropertyName)
 
 ## OUTPUTS
 

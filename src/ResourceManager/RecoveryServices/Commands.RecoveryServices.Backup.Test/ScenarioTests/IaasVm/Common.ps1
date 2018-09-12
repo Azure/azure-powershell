@@ -48,9 +48,14 @@ function Get-RandomSuffix(
 }
 
 function Create-ResourceGroup(
-	[string] $location)
+	[string] $location,
+	[int] $nick = -1)
 {
 	$name = "PSTestRG" + @(Get-RandomSuffix)
+	if($nick -gt -1)
+	{
+		$name += $nick
+	}
 
 	$resourceGroup = Get-AzureRmResourceGroup -Name $name -ErrorAction Ignore
 	
@@ -242,10 +247,25 @@ function Create-SA(
 	return $name
 }
 
+<# 
+.SYNOPSIS
+Sleeps but only during recording.
+#>
+ 
+function Start-TestSleep($milliseconds)
+{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        Start-Sleep -Milliseconds $milliseconds
+    }
+}
+
 function Enable-Protection(
 	$vault, 
 	$vm)
 {
+    # Sleep to give the service time to add the default policy to the vault
+    Start-TestSleep 5000
 	$container = Get-AzureRmRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType AzureVM `

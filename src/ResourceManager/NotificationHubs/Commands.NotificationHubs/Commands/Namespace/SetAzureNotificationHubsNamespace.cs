@@ -21,7 +21,7 @@ using System;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmNotificationHubsNamespace", SupportsShouldProcess = true), OutputType(typeof(NamespaceAttributes))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NotificationHubsNamespace", SupportsShouldProcess = true), OutputType(typeof(NamespaceAttributes))]
     public class SetAzureNotificationHubsNamespace : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,

@@ -35,7 +35,6 @@ function Test-StorageAccount
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 		
-        $loc = Get-ProviderLocation_Stage;
         $job = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -AccessTier $accessTier -AsJob
         $job | Wait-Job
         $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
@@ -128,7 +127,6 @@ function Test-NewAzureStorageAccount
         $loc = Get-ProviderLocation ResourceManagement;
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 		
-        $loc = Get-ProviderLocation_Stage;
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
         $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         $stotype = 'StandardLRS';
@@ -169,7 +167,6 @@ function Test-GetAzureStorageAccount
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
         Write-Output ("Resource Group created")
 		
-        $loc = Get-ProviderLocation_Stage;
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype ;
 
         Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
@@ -648,7 +645,6 @@ function Test-SetAzureStorageAccountStorageV2
 
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 		
-        $loc = Get-ProviderLocation_Stage;
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
 
         Retry-IfException { $global:sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }

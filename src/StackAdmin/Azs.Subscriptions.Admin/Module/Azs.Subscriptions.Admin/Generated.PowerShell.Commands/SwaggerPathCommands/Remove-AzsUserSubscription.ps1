@@ -25,7 +25,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 function Remove-AzsUserSubscription {
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
-        [Parameter(Mandatory = $true, Position = 0)]
+        [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, Position = 0)]
         [ValidateNotNull()]
         [System.Guid]
         $SubscriptionId,
@@ -48,7 +48,7 @@ function Remove-AzsUserSubscription {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSCmdlet.ShouldProcess("$SubscriptionId" , "Delete user subscription")) {
             if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Delete user subscription?", "Performing operation DeleteWithHttpMessagesAsync on $SubscriptionId."))) {

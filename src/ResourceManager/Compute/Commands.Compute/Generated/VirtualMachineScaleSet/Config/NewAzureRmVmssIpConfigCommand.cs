@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", "AzureRmVmssIpConfig", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssIpConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIPConfiguration))]
     public partial class NewAzureRmVmssIpConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             vIpConfigurations.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
             vIpConfigurations.Primary = this.Primary.IsPresent;
-            vIpConfigurations.PrivateIPAddressVersion = this.MyInvocation.BoundParameters.ContainsKey("PrivateIPAddressVersion") ? (IPVersion?) this.PrivateIPAddressVersion : null;
+            vIpConfigurations.PrivateIPAddressVersion = this.MyInvocation.BoundParameters.ContainsKey("PrivateIPAddressVersion") ? (IPVersion?)this.PrivateIPAddressVersion : null;
             vIpConfigurations.Id = this.MyInvocation.BoundParameters.ContainsKey("Id") ? this.Id : null;
 
             // SubnetId
@@ -232,4 +232,3 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
-

@@ -21,10 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ProfileNouns.VirtualMachineAccessExtension),
-    OutputType(typeof(VirtualMachineAccessExtensionContext))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMAccessExtension"),OutputType(typeof(VirtualMachineAccessExtensionContext))]
     public class GetAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(

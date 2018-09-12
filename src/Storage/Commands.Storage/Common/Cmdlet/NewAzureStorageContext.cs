@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// </summary>
     [GenericBreakingChange("Default parameter set has changed from 'AccountNameAndKey' to 'OAuthAccount'")]
     [Cmdlet(VerbsCommon.New, StorageNouns.StorageContext, DefaultParameterSetName = OAuthParameterSet),
-        OutputType(typeof(AzureStorageContext))]
+       OutputType(typeof(AzureStorageContext))]
     public class NewAzureStorageContext : AzureDataCmdlet
     {
         /// <summary>

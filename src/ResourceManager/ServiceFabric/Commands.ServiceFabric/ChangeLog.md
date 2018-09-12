@@ -19,6 +19,16 @@
 -->
 ## Current Release
 
+## Version 0.3.12
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 0.3.11
+* Fixed issue with default resource groups not being set.
+
+## Version 0.3.10
+* Updated to the latest version of the Azure ClientRuntime.
+
 ## Version 0.3.9
 * Updated help files to include full parameter types and correct input/output types.
 
@@ -29,7 +39,7 @@
 * Fixed formatting of OutputType in help files
 
 ## Version 0.3.6
-* Fixed server authentication usage with generated certificates (Issue #5998) 
+* Fixed server authentication usage with generated certificates (Issue #5998)
 
 ## Version 0.3.5
 * Update default Linux image version sku
@@ -61,7 +71,7 @@
 ## Version 0.3.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 0.2.7
 
 ## Version 0.2.6
