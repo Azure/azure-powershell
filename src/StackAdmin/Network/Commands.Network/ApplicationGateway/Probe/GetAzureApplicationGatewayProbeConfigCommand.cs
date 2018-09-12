@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayProbeConfig"), 
-        OutputType(typeof(PSApplicationGatewayProbe))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayProbeConfig"),
+        OutputType(typeof(PSApplicationGatewayProbe), typeof(IEnumerable<PSApplicationGatewayProbe>))]
     public class GetAzureApplicationGatewayProbeConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Name of the probe")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-        
+
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
+
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var probe =
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
                 var probes = this.ApplicationGateway.Probes;
                 WriteObject(probes, true);
             }
-            
+
         }
     }
 }
