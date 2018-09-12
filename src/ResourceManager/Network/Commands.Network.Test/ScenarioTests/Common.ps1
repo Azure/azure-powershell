@@ -55,6 +55,7 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
+    return "westcentralus";
 	if ((Get-NetworkTestMode) -ne 'Playback')
 	{
 		$namespace = $provider.Split("/")[0]  
@@ -65,7 +66,7 @@ function Get-ProviderLocation($provider)
 
 			if ($location -eq $null) 
 			{  
-				return "West US"  
+				return "WestUS2"  
 			} 
             else 
 			{
