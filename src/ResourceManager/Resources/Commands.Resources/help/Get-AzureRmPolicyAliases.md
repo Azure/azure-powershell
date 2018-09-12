@@ -1,7 +1,7 @@
 ---
-external help file: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermpolicyaliases
+external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRm.Resources
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermpolicyaliases
 schema: 2.0.0
 ---
 
@@ -95,7 +95,8 @@ Lists all provider resource types with alpha api version or containing an alias 
 ## PARAMETERS
 
 ### -AliasMatch
-Includes in the output items with aliases whose name matches this value.```yaml
+Includes in the output items with aliases whose name matches this value.
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: Alias
@@ -108,7 +109,8 @@ Accept wildcard characters: False
 ```
 
 ### -ApiVersion
-When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.```yaml
+When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
@@ -121,7 +123,8 @@ Accept wildcard characters: False
 ```
 
 ### -ApiVersionMatch
-Includes in the output items whose resource types or aliases have a matching api version.```yaml
+Includes in the output items whose resource types or aliases have a matching api version.
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
@@ -134,7 +137,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.```yaml
+The credentials, account, tenant, and subscription used for communication with Azure.
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -147,7 +151,8 @@ Accept wildcard characters: False
 ```
 
 ### -ListAvailable
-Includes in the output matching items with and without aliases.```yaml
+Includes in the output matching items with and without aliases.
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: ShowAll
@@ -160,7 +165,8 @@ Accept wildcard characters: False
 ```
 
 ### -LocationMatch
-Includes in the output items whose resource types have a matching location.```yaml
+Includes in the output items whose resource types have a matching location.
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: Location
@@ -173,7 +179,8 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceMatch
-Limits the output to items whose namespace matches this value.```yaml
+Limits the output to items whose namespace matches this value.
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: Name, Namespace
@@ -186,7 +193,8 @@ Accept wildcard characters: False
 ```
 
 ### -PathMatch
-Includes in the output items with aliases containing a path that matches this value.```yaml
+Includes in the output items with aliases containing a path that matches this value.
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: Path
@@ -199,7 +207,8 @@ Accept wildcard characters: False
 ```
 
 ### -Pre
-When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.```yaml
+When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
@@ -212,7 +221,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceTypeMatch
-Limits the output to items whose resource type matches this value.```yaml
+Limits the output to items whose resource type matches this value.
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ResourceType, Resource
