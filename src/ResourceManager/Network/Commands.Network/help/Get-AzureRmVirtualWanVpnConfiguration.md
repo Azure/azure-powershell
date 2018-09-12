@@ -74,6 +74,13 @@ PS C:\> New-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupNam
 PS C:\> $vpnSitesForConfig = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnSite[] 1
 PS C:\> $vpnSitesForConfig[0] = $vpnSite
 PS C:\> Get-AzureRmVirtualWanVpnConfiguration -VirtualWan $virtualWan -StorageSasUrl "SignedSasUrl" -VpnSite $vpnSitesForConfig
+
+Output:
+
+SasUrl
+------
+SignedSasUrl
+
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite in West US in "testRG" resource group in Azure. 
@@ -82,6 +89,8 @@ A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
 Once the gateway has been created, it is connected to the VpnSite using the New-AzureRmVpnConnection command.
 
 The configuration is then downloaded using this commandlet.
+
+If the commandlet is successful, then the download configuration will be written to the blob indicated by the SignedSasUrl.
 
 ## PARAMETERS
 
