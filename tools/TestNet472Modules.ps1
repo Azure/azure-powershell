@@ -31,7 +31,7 @@ $rmItems | %{`
     -Wait `
     -WorkingDirectory $PSScriptRoot\..\src\Package `
     -NoNewWindow `
-    -ArgumentList $_.FullName, $testConfig, '-trait "AcceptanceType=CheckIn"'`
+    -ArgumentList $_.FullName, $testConfig, '-trait "AcceptanceType=CheckIn"', '-notrait "Runtype=DesktopOnly"'`
 }
 
 $storageItems | %{`
