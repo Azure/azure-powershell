@@ -1,6 +1,6 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermimageosdisk
 schema: 2.0.0
 ---
 
@@ -12,10 +12,10 @@ Sets the operating system disk properties on an image object.
 ## SYNTAX
 
 ```
-Set-AzureRmImageOsDisk [-Image] <Image> [[-OsType] <OperatingSystemTypes>]
+Set-AzureRmImageOsDisk [-Image] <PSImage> [[-OsType] <OperatingSystemTypes>]
  [[-OsState] <OperatingSystemStateTypes>] [[-BlobUri] <String>] [-Caching <CachingTypes>] [-DiskSizeGB <Int32>]
- [-StorageAccountType <StorageAccountTypes>] [-SnapshotId <String>] [-ManagedDiskId <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-StorageAccountType <StorageAccountTypes>] [-SnapshotId <String>] [-ManagedDiskId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,6 +78,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DiskSizeGB
 Specifies the size of the disk in GB.
 
@@ -97,7 +112,7 @@ Accept wildcard characters: False
 Specifies a local image object.
 
 ```yaml
-Type: Image
+Type: PSImage
 Parameter Sets: (All)
 Aliases: 
 
@@ -177,6 +192,7 @@ The Storage Account type of Os Image Disk
 Type: StorageAccountTypes
 Parameter Sets: (All)
 Aliases: 
+Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: Named

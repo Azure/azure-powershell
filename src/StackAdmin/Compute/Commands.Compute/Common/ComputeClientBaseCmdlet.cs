@@ -34,11 +34,13 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (computeClient == null)
                 {
-                    computeClient = new ComputeClient(DefaultProfile.DefaultContext);
+                    computeClient = new ComputeClient(DefaultProfile.DefaultContext)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp
+                    };
                 }
 
-                this.computeClient.VerboseLogger = WriteVerboseWithTimestamp;
-                this.computeClient.ErrorLogger = WriteErrorWithTimestamp;
                 return computeClient;
             }
 
@@ -48,7 +50,6 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            ComputeAutoMapperProfile.Initialize();
         }
 
         protected void ExecuteClientAction(Action action)

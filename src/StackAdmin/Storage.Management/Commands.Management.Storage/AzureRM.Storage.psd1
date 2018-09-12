@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.5.4'
+ModuleVersion = '1.1.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -33,7 +33,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 Description = 'Microsoft Azure PowerShell - Storage service management cmdlets for Azure Resource Manager.  Creates and manages storage accounts in Azure Resource Manager.'
 
 # Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = '3.0'
+PowerShellVersion = '5.0'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
@@ -51,11 +51,14 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.1.1'; }, 
-               @{ModuleName = 'Azure.Storage'; ModuleVersion = '1.0.5.4'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; },
+               @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.1.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-# RequiredAssemblies = @()
+RequiredAssemblies = @('.\Microsoft.Azure.Management.Storage.dll', 
+               '.\Microsoft.Data.Edm.dll', '.\Microsoft.Data.OData.dll', 
+               '.\Microsoft.Data.Services.Client.dll', 
+               '.\Microsoft.WindowsAzure.Storage.dll', '.\System.Spatial.dll')
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -73,11 +76,11 @@ NestedModules = @('.\Microsoft.Azure.Commands.Management.Storage.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmStorageAccount', 'Get-AzureRmStorageAccountKey', 
-               'New-AzureRmStorageAccount', 'New-AzureRmStorageAccountKey', 
-               'Remove-AzureRmStorageAccount', 'Set-AzureRmCurrentStorageAccount', 
-               'Set-AzureRmStorageAccount', 
-               'Get-AzureRmStorageAccountNameAvailability', 
+CmdletsToExport = 'Get-AzureRmStorageAccount', 'Get-AzureRmStorageAccountKey',
+               'New-AzureRmStorageAccount', 'New-AzureRmStorageAccountKey',
+               'Remove-AzureRmStorageAccount', 'Set-AzureRmCurrentStorageAccount',
+               'Set-AzureRmStorageAccount',
+               'Get-AzureRmStorageAccountNameAvailability',
                'Get-AzureRmStorageUsage'
 
 # Variables to export from this module
@@ -119,7 +122,7 @@ PrivateData = @{
         # ExternalModuleDependencies = ''
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
