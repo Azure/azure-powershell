@@ -6,7 +6,7 @@ function Test-DataLakeStoreTrustedIdProvider
 {
     param
 	(
-		$location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
+		$location = "West US"
 	)
 	
 	try
@@ -178,7 +178,7 @@ function Test-DataLakeStoreVirtualNetwork
 {
     param
 	(
-		$location = "West US"
+		$location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 	)
 
 	try
@@ -911,23 +911,4 @@ function Test-NegativeDataLakeStoreAccount
 		Invoke-HandledCmdlet -Command {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -Force -ErrorAction SilentlyContinue} -IgnoreFailures
 	}
-}
-
-<#
-	.SYNOPSIS
-	Create a virtual network
-#>
-function CreateAndGetVirtualNetwork ($resourceGroupName, $vnetName, $location = "westcentralus")
-{
-	$subnetName = "Public"
-
-	$addressPrefix = "10.0.0.0/24"
-	$serviceEndpoint = "Microsoft.DataLakeStore"
-
-	$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix $addressPrefix -ServiceEndpoint $serviceEndpoint
-	$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-
-	$getVnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
-
-	return $getVnet
 }

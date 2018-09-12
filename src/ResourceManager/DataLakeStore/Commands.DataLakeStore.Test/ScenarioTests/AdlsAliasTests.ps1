@@ -178,7 +178,7 @@ function Test-DataLakeStoreVirtualNetwork
 {
     param
 	(
-		$location = "West US"
+		$location = Get-Location -providerNamespace "Microsoft.CognitiveServices" -resourceType "accounts" -preferredLocation "West US";
 	)
 	
 	try
