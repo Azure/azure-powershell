@@ -19,6 +19,17 @@
 --->
 
 ## Current Release
+* Replaced LoadBalancer cmdlets with generated code
+    - LoadBalancerInboundNatPoolConfig: added parameters IdleTimeoutInMinutes, EnableFloatingIp and EnableTcpReset
+    - LoadBalancerInboundNatRuleConfig: added parameter EnableTcpReset
+    - LoadBalancerRuleConfig: added parameter EnableTcpReset
+    - LoadBalancerProbeConfig: added support for value "Https" for parameter Protocol
+* Added new commands for new LoadBalancer's subresource OutboundRule
+    - Add-AzureRmLoadBalancerOutboundRuleConfig
+    - Get-AzureRmLoadBalancerOutboundRuleConfig
+    - New-AzureRmLoadBalancerOutboundRuleConfig
+    - Set-AzureRmLoadBalancerOutboundRuleConfig
+    - Remove-AzureRmLoadBalancerOutboundRuleConfig
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
