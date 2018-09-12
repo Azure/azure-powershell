@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public bool? EnableFloatingIP { get; set; }
 
+        [JsonProperty(Order = 1)]
+        public bool? DisableOutboundSNAT { get; set; }
+
         [JsonIgnore]
         public string BackendAddressPoolText
         {

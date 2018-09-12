@@ -13,11 +13,13 @@
 # ----------------------------------------------------------------------------------
 
 $global:SkippedTests = @(
-    'TestCreateUpdateThenDeletePlan'
+    'TestCreateUpdateThenDeletePlan',
+    'TestTestMoveSubscription'
 )
 
 # Multiple tests
 $global:Location = "local"
+$global:ResourceGroupName = "System.local"
 
 # Acquired plan tests
 $global:TargetSubscriptionId = "8158498d-27b1-4ccf-9aa1-de0f925731e6"
@@ -40,10 +42,15 @@ $global:Owner = 'user@microsoft.com'
 $global:TestAvailability = "Test Sub"
 $global:ResourceType = "Microsoft.Subscriptions.Admin/plans"
 
+$global:Client = $null
+
 if (-not $global:RunRaw) {
     # Load the script block
     $scriptBlock = {
-        Get-MockClient -ClassName 'SubscriptionsAdminClient' -TestName $global:TestName
+        if ($null -eq $global:Client) {
+            $global:Client = Get-MockClient -ClassName 'SubscriptionsAdminClient' -TestName $global:TestName
+        }
+        $global:Client
     }
     Mock New-ServiceClient $scriptBlock -ModuleName $global:ModuleName
 }
