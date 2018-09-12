@@ -87,6 +87,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestCreateNewAppServicePlan.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestCreateNewAppServicePlanHyperV.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestCreateNewAppServicePlanInAse.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -178,6 +181,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCreateNewWebApp.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCreateNewWebAppHyperV.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCreateNewWebAppSimple.json">
