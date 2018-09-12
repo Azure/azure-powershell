@@ -23,7 +23,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmFirewallFqdnTag"), OutputType(typeof(PSAzureFirewallFqdnTag), typeof(IEnumerable<PSAzureFirewallFqdnTag>))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallFqdnTag"), OutputType(typeof(PSAzureFirewallFqdnTag), typeof(IEnumerable<PSAzureFirewallFqdnTag>))]
     public class GetAzureFirewallFqdnTagCommand : NetworkBaseCmdlet
     {
         private IAzureFirewallFqdnTagsOperations AzureFirewallFqdnTagClient
