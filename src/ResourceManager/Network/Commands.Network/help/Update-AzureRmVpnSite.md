@@ -12,7 +12,7 @@ Updates a VpnSite representing a customer branch to an intended goal state.
 
 ## SYNTAX
 
-### ByVpnSiteName (Default)
+### ByVpnSiteNameNoVirtualWanUpdate (Default)
 ```
 Update-AzureRmVpnSite -ResourceGroupName <String> -Name <String> [-VirtualWanResourceGroupName <String>]
  [-VirtualWanName <String>] [-VirtualWan <PSVirtualWan>] [-VirtualWanId <String>] [-IpAddress <String>]
@@ -22,7 +22,62 @@ Update-AzureRmVpnSite -ResourceGroupName <String> -Name <String> [-VirtualWanRes
  [-Confirm] [<CommonParameters>]
 ```
 
-### ByVpnSiteObject
+### ByVpnSiteNameByVirtualWanName
+```
+Update-AzureRmVpnSite -ResourceGroupName <String> -Name <String> -VirtualWanResourceGroupName <String>
+ -VirtualWanName <String> [-IpAddress <String>]
+ [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
+ [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
+ [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByVpnSiteNameByVirtualWanResourceId
+```
+Update-AzureRmVpnSite -ResourceGroupName <String> -Name <String> -VirtualWanId <String> [-IpAddress <String>]
+ [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
+ [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
+ [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByVpnSiteNameByVirtualWanObject
+```
+Update-AzureRmVpnSite -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtualWan>
+ [-IpAddress <String>] [-AddressSpace <System.Collections.Generic.List`1[System.String]>]
+ [-DeviceModel <String>] [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>]
+ [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByVpnSiteObjectByVirtualWanName
+```
+Update-AzureRmVpnSite -InputObject <PSVpnSite> -VirtualWanResourceGroupName <String> -VirtualWanName <String>
+ [-IpAddress <String>] [-AddressSpace <System.Collections.Generic.List`1[System.String]>]
+ [-DeviceModel <String>] [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>]
+ [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByVpnSiteObjectByVirtualWanResourceId
+```
+Update-AzureRmVpnSite -InputObject <PSVpnSite> -VirtualWanId <String> [-IpAddress <String>]
+ [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
+ [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
+ [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByVpnSiteObjectByVirtualWanObject
+```
+Update-AzureRmVpnSite -InputObject <PSVpnSite> -VirtualWan <PSVirtualWan> [-IpAddress <String>]
+ [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
+ [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
+ [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByVpnSiteObjectNoVirtualWanUpdate
 ```
 Update-AzureRmVpnSite -InputObject <PSVpnSite> [-VirtualWanResourceGroupName <String>]
  [-VirtualWanName <String>] [-VirtualWan <PSVirtualWan>] [-VirtualWanId <String>] [-IpAddress <String>]
@@ -32,7 +87,34 @@ Update-AzureRmVpnSite -InputObject <PSVpnSite> [-VirtualWanResourceGroupName <St
  [-Confirm] [<CommonParameters>]
 ```
 
-### ByVpnSiteResourceId
+### ByVpnSiteResourceIdByVirtualWanName
+```
+Update-AzureRmVpnSite -ResourceId <String> -VirtualWanResourceGroupName <String> -VirtualWanName <String>
+ [-IpAddress <String>] [-AddressSpace <System.Collections.Generic.List`1[System.String]>]
+ [-DeviceModel <String>] [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>]
+ [-BgpPeeringAddress <String>] [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByVpnSiteResourceIdByVirtualWanResourceId
+```
+Update-AzureRmVpnSite -ResourceId <String> -VirtualWanId <String> [-IpAddress <String>]
+ [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
+ [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
+ [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByVpnSiteResourceIdByVirtualWanObject
+```
+Update-AzureRmVpnSite -ResourceId <String> -VirtualWan <PSVirtualWan> [-IpAddress <String>]
+ [-AddressSpace <System.Collections.Generic.List`1[System.String]>] [-DeviceModel <String>]
+ [-DeviceVendor <String>] [-LinkSpeedInMbps <UInt32>] [-BgpAsn <UInt32>] [-BgpPeeringAddress <String>]
+ [-BgpPeeringWeight <UInt32>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByVpnSiteResourceIdNoVirtualWanUpdate
 ```
 Update-AzureRmVpnSite -ResourceId <String> [-VirtualWanResourceGroupName <String>] [-VirtualWanName <String>]
  [-VirtualWan <PSVirtualWan>] [-VirtualWanId <String>] [-IpAddress <String>]
@@ -205,7 +287,7 @@ The vpn site object to be modified
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVpnSite
-Parameter Sets: ByVpnSiteObject
+Parameter Sets: ByVpnSiteObjectByVirtualWanName, ByVpnSiteObjectByVirtualWanResourceId, ByVpnSiteObjectByVirtualWanObject, ByVpnSiteObjectNoVirtualWanUpdate
 Aliases: VpnSite
 
 Required: True
@@ -250,7 +332,7 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVpnSiteName
+Parameter Sets: ByVpnSiteNameNoVirtualWanUpdate, ByVpnSiteNameByVirtualWanName, ByVpnSiteNameByVirtualWanResourceId, ByVpnSiteNameByVirtualWanObject
 Aliases: ResourceName, VpnSiteName
 
 Required: True
@@ -265,7 +347,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVpnSiteName
+Parameter Sets: ByVpnSiteNameNoVirtualWanUpdate, ByVpnSiteNameByVirtualWanName, ByVpnSiteNameByVirtualWanResourceId, ByVpnSiteNameByVirtualWanObject
 Aliases:
 
 Required: True
@@ -280,7 +362,7 @@ The Azure resource ID for the vpn site.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByVpnSiteResourceId
+Parameter Sets: ByVpnSiteResourceIdByVirtualWanName, ByVpnSiteResourceIdByVirtualWanResourceId, ByVpnSiteResourceIdByVirtualWanObject, ByVpnSiteResourceIdNoVirtualWanUpdate
 Aliases: VpnSiteId
 
 Required: True
@@ -310,10 +392,22 @@ The VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
-Parameter Sets: (All)
+Parameter Sets: ByVpnSiteNameNoVirtualWanUpdate, ByVpnSiteObjectNoVirtualWanUpdate, ByVpnSiteResourceIdNoVirtualWanUpdate
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
+Parameter Sets: ByVpnSiteNameByVirtualWanObject, ByVpnSiteObjectByVirtualWanObject, ByVpnSiteResourceIdByVirtualWanObject
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -325,10 +419,22 @@ The ResourceId VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByVpnSiteNameNoVirtualWanUpdate, ByVpnSiteObjectNoVirtualWanUpdate, ByVpnSiteResourceIdNoVirtualWanUpdate
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByVpnSiteNameByVirtualWanResourceId, ByVpnSiteObjectByVirtualWanResourceId, ByVpnSiteResourceIdByVirtualWanResourceId
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -340,10 +446,22 @@ The name of the VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByVpnSiteNameNoVirtualWanUpdate, ByVpnSiteObjectNoVirtualWanUpdate, ByVpnSiteResourceIdNoVirtualWanUpdate
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByVpnSiteNameByVirtualWanName, ByVpnSiteObjectByVirtualWanName, ByVpnSiteResourceIdByVirtualWanName
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -355,10 +473,22 @@ The resource group name of the VirtualWan this VpnSite needs to be connected to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByVpnSiteNameNoVirtualWanUpdate, ByVpnSiteObjectNoVirtualWanUpdate, ByVpnSiteResourceIdNoVirtualWanUpdate
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByVpnSiteNameByVirtualWanName, ByVpnSiteObjectByVirtualWanName, ByVpnSiteResourceIdByVirtualWanName
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
