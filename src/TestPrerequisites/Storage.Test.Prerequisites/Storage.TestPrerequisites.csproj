@@ -7,7 +7,7 @@
     <AssemblyName>Microsoft.Azure.PowerShell.Storage.TestPrerequisites</AssemblyName>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <RootNamespace>Microsoft.Azure.PowerShell.Test</RootNamespace>
-    <OutputPath>..\..\Package\Artifacts</OutputPath>
+    <OutputPath>..\..\local-artifacts</OutputPath>
     <IsPackable>true</IsPackable>
     <HideReferenceDependencies>true</HideReferenceDependencies>
     <Description>Wrapper test package to enable NetStandard testing using Storage</Description>
