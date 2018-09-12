@@ -120,8 +120,16 @@
             # ReleaseNotes of this module
             ReleaseNotes = '## 2018.09 - Version 2.3.0
             * The release 2.3.0 comes with a list of breaking changes. To upgrade from the 1.2.11 version, we have created a migration guide at https://aka.ms/azspowershellmigration
-            * Tag
-                * -Force parmeter has been removed from the cmdlet Remove-AzureRmTag'
+            * This release corresponds to the azurestack specific api profile 2018-03-01-hybrid
+            * All the modules are taking greater than or equal to dependency on the AzureRm.Profile module.
+            * Api veesion suppoerted by  each of the modules are updated. 
+                * Compute - 2017-03-30
+                * Network - 2017-10-01
+                * Storage - 2016-01-01
+                * Resources - 2018-02-01
+                * Keyvault - 2016-10-01
+                * Dns - 2016-04-01
+            * The complete api version map for each of the resource types can be found at https://github.com/Azure/azure-rest-api-specs/blob/master/profile/2018-03-01-hybrid.json'
 
             # External dependent modules of this module
             # ExternalModuleDependencies = ''

@@ -71,7 +71,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
     # Modules that must be imported into the global environment prior to importing this module
     RequiredModules      = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; },
-        @{ModuleName = 'AzureRM.Resources'; ModuleVersion = '6.0.2'; })
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @('.\ref\fullclr\Microsoft.AzureStack.Management.Backup.Admin.dll')
