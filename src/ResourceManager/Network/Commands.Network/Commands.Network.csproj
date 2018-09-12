@@ -59,7 +59,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=19.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.3.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.4.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime" />
   </ItemGroup>
@@ -282,6 +282,8 @@
     <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
+    <Compile Include="Models\PSAvailableDelegation.cs" />
+    <Compile Include="Models\PSDelegation.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddressPool.cs" />
     <Compile Include="Models\PSApplicationGatewayFrontendIPConfiguration.cs" />
     <Compile Include="Models\PSAvailableProvidersListCity.cs" />
@@ -476,6 +478,11 @@
     <Compile Include="ServiceEndpointPolicy\NewAzureServiceEndpointPolicyCommand.cs" />
     <Compile Include="ServiceEndpointPolicy\RemoveAzureServiceEndpointPolicyCommand.cs" />
     <Compile Include="ServiceEndpointPolicy\SetAzureServiceEndpointPolicyCommand.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\AzureDelegationBase.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\AddAzureDelegationCommand.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\GetAzureDelegationCommand.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\RemoveAzureDelegationCommand.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\NewAzureDelegationCommand.cs" />
     <Compile Include="VirtualNetwork\TestAzurePrivateIPAddressAvailabilityCmdlet.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />

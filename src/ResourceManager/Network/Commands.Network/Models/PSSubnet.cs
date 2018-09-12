@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSServiceEndpointPolicy> ServiceEndpointPolicies { get; set; }
 
+        public List<PSDelegation> Delegations { get; set; }
+
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
@@ -86,6 +88,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ServiceEndpointPoliciesText
         {
             get { return JsonConvert.SerializeObject(ServiceEndpointPolicies, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string DelegationsText
+        {
+            get { return JsonConvert.SerializeObject(Delegations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
