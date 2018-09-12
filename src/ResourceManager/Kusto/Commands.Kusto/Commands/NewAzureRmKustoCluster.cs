@@ -21,7 +21,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Kusto
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmKustoCluster", SupportsShouldProcess = true),
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", SupportsShouldProcess = true),
         OutputType(typeof(PSKustoCluster))]
     public class NewKustoCluster : KustoCmdletBase
     {
@@ -60,7 +60,6 @@ namespace Microsoft.Azure.Commands.Kusto
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Position = 4,
             Mandatory = false,
             HelpMessage = "Name of the Tier used to create the cluster")]
         [ValidateSet("Standard", IgnoreCase = true)]

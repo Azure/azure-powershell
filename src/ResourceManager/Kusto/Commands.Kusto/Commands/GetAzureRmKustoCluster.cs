@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kusto.Models;
@@ -21,8 +22,8 @@ using Microsoft.Azure.Management.Kusto.Models;
 
 namespace Microsoft.Azure.Commands.Kusto
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmKustoCluster", DefaultParameterSetName = ParameterSet),
-        OutputType(typeof(List<PSKustoCluster>))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", DefaultParameterSetName = ParameterSet),
+        OutputType(typeof(Array))]
     public class GetAzureRmKustoCluster : KustoCmdletBase
     {
         protected const string ParameterSet = "ByClusterOrResourceGroupOrSubscription";
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Commands.Kusto
             else
             {
                 // List all capacities in given resource group if available otherwise all capacities in the subscription
-                var list = KustoClient.ListClusters(resourceGroupName);
+                var list = KustoClient.ListClusters(resourceGroupName).ToArray();
                 WriteObject(list, true);
             }
         }

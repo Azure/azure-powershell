@@ -14,6 +14,7 @@
 
 using System;
 using System.Management.Automation;
+using System.Resources;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Properties;
@@ -23,7 +24,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Kusto
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmKustoCluster", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet),
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet),
         OutputType(typeof(PSKustoCluster))]
     public class RemoveAzureRmKustoCluster : KustoCmdletBase
     {
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Kusto
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
             Mandatory = true,
-            Position = 0,
+            Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Kusto cluster ResourceID.")]
         [ValidateNotNullOrEmpty]
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Kusto
         [Parameter(
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
-            Position = 0,
+            Position = 2,
             ValueFromPipeline = true,
             HelpMessage = "Kusto cluster object.")]
         [ValidateNotNullOrEmpty]
