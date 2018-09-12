@@ -338,16 +338,16 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'Set-AzServiceEndpointPolicyDefinition',
     'Add-AzServiceEndpointPolicyDefinition',
     'Set-AzServiceEndpointPolicy',
-    'Get-AzureRmFirewall',
-    'Set-AzureRmFirewall',
-    'New-AzureRmFirewall',
-    'Remove-AzureRmFirewall',
-    'New-AzureRmFirewallApplicationRuleCollection',
-    'New-AzureRmFirewallApplicationRule',
-    'New-AzureRmFirewallNatRuleCollection',
-    'New-AzureRmFirewallNatRule',
-    'New-AzureRmFirewallNetworkRuleCollection',
-    'New-AzureRmFirewallNetworkRule'
+    'Get-AzFirewall',
+    'Set-AzFirewall',
+    'New-AzFirewall',
+    'Remove-AzFirewall',
+    'New-AzFirewallApplicationRuleCollection',
+    'New-AzFirewallApplicationRule',
+    'New-AzFirewallNatRuleCollection',
+    'New-AzFirewallNatRule',
+    'New-AzFirewallNetworkRuleCollection',
+    'New-AzFirewallNetworkRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
