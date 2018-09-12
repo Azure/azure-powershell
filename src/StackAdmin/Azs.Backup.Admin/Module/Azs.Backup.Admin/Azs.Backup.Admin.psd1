@@ -74,7 +74,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
         @{ModuleName = 'AzureRM.Resources'; ModuleVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
-    # RequiredAssemblies = @()
+    RequiredAssemblies = @('.\ref\fullclr\Microsoft.AzureStack.Management.Backup.Admin.dll')
 
     # Script files (.ps1) that are run in the caller's environment prior to importing this module.
     # ScriptsToProcess = @()
