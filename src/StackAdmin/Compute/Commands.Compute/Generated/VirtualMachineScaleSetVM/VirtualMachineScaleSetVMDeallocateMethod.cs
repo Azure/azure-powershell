@@ -92,7 +92,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
             string instanceId = (string)ParseParameter(invokeMethodInputParameters[2]);
 
-            VirtualMachineScaleSetVMsClient.Deallocate(resourceGroupName, vmScaleSetName, instanceId);
+            var result = VirtualMachineScaleSetVMsClient.Deallocate(resourceGroupName, vmScaleSetName, instanceId);
+            WriteObject(result);
         }
     }
 

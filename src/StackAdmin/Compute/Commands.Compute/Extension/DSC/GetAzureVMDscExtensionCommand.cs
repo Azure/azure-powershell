@@ -1,6 +1,5 @@
 ﻿using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Newtonsoft.Json;
@@ -27,7 +26,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -47,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-       
+
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To show the status.")]
