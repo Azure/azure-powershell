@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
     using Microsoft.Azure.Management.ResourceGraph.Models;
 
     /// <summary>
-    /// Invoke-AzureRmResourceGraphQuery cmdlet
+    /// Search-AzureRmGraph cmdlet
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.ResourceGraph.Utilities.ResourceGraphBaseCmdlet" />
-    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ResourceGraphQuery"), OutputType(typeof(PSObject))]
-    public class InvokeAzureRmResourceGraphQuery : ResourceGraphBaseCmdlet
+    [Cmdlet(VerbsCommon.Search, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Graph"), OutputType(typeof(PSObject))]
+    public class SearchAzureRmGraph : ResourceGraphBaseCmdlet
     {
         /// <summary>
         /// The rows per page
@@ -106,17 +106,29 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
                     var request = new QueryRequest(subscriptions, this.Query, requestOptions);
 
-                    response = this.ResourceGraphClient.ResourcesWithHttpMessagesAsync(request).Result
+                    response = this.ResourceGraphClient.ResourcesWithHttpMessagesAsync(request)
+                        .Result
                         .Body;
 
                     results.AddRange(response.Data.ToPsObjects());
-                }
-                while (results.Count < first && response.SkipToken != null);
+                } while (results.Count < first && response.SkipToken != null);
             }
-            catch (AggregateException ex)
-                when (ex.InnerException != null && ex.InnerExceptions.Count == 1)
+            catch (Exception ex)
             {
-                throw ex.InnerException;
+                var aggregateEx = ex as AggregateException;
+                if (aggregateEx?.InnerException != null && aggregateEx.InnerExceptions.Count == 1)
+                {
+                    var errorResponseEx = aggregateEx.InnerException as ErrorResponseException;
+                    if (errorResponseEx != null)
+                    {
+                        this.WriteError(new ErrorRecord(errorResponseEx,
+                            errorResponseEx.ToDisplayableJson(), ErrorCategory.CloseError, null));
+                        return;
+                    }
+                }
+
+                this.WriteExceptionError(ex);
+                return;
             }
 
             this.WriteObject(results, true);
