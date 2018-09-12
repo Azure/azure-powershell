@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Imports dsc node configuration script
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureRmAutomationDscNodeConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationDscNodeConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(NodeConfiguration))]
     public class ImportAzureAutomationDscNodeConfiguration : AzureAutomationBaseCmdlet
     {
@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             if (ShouldProcess(Path, VerbsData.Import))
             {
+                Path = ResolveUserPath(Path);
                 var nodeName = System.IO.Path.GetFileNameWithoutExtension(Path);
                 var nodeConfigurationName = ConfigurationName + "." + nodeName;
                 NodeConfiguration nodeConfigurationModel = null;

@@ -143,16 +143,16 @@
                 <Label>DeleteRetentionPolicy.RetentionDays</Label>
               </ListItem>
               <ListItem>
-                <ScriptBlock>$_.StaticWebsite.Enabled</ScriptBlock>
                 <Label>StaticWebsite.Enabled</Label>
+                <ScriptBlock>$_.StaticWebsite.Enabled</ScriptBlock>
               </ListItem>
               <ListItem>
-                <ScriptBlock>$_.StaticWebsite.IndexDocument</ScriptBlock>
                 <Label>StaticWebsite.IndexDocument</Label>
+                <ScriptBlock>$_.StaticWebsite.IndexDocument</ScriptBlock>
               </ListItem>
               <ListItem>
-                <ScriptBlock>$_.StaticWebsite.ErrorDocument404Path</ScriptBlock>
                 <Label>StaticWebsite.ErrorDocument404Path</Label>
+                <ScriptBlock>$_.StaticWebsite.ErrorDocument404Path</ScriptBlock>
               </ListItem>
               <ListItem>
                 <ScriptBlock>$_.Cors</ScriptBlock>

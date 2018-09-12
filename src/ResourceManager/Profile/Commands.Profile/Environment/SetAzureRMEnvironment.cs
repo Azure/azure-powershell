@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to set Azure Environment in Profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmEnvironment", SupportsShouldProcess = true, DefaultParameterSetName = EnvironmentPropertiesParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Environment", SupportsShouldProcess = true, DefaultParameterSetName = EnvironmentPropertiesParameterSet)]
     [OutputType(typeof(PSAzureEnvironment))]
     public class SetAzureRMEnvironmentCommand : AzureContextModificationCmdlet
     {
@@ -159,10 +159,6 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Position = 22, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The endpoint to use when communicating with the Azure Log Analytics API.")]
         public string AzureOperationalInsightsEndpoint { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The audience for tokens authenticating with Azure Storage.")]
-        public string StorageOAuthEndpointResourceId { get; set; }
 
         protected override void BeginProcessing()
         {
@@ -309,8 +305,6 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(AzureOperationalInsightsEndpointResourceId));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint,
                                     nameof(AzureOperationalInsightsEndpoint));
-                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.StorageOAuthEndpointResourceId,
-                                    nameof(StorageOAuthEndpointResourceId));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });

@@ -108,11 +108,11 @@ function New-AzsUserSubscription {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         # Use defaults so that can be documented
         if (-not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters.Add("SubscriptionId", $SubscriptionId) 
+            $PSBoundParameters.Add("SubscriptionId", $SubscriptionId)
         }
         if (-not $PSBoundParameters.ContainsKey('RoutingResourceManagerType')) {
             $PSBoundParameters.Add("RoutingResourceManagerType", $RoutingResourceManagerType)
@@ -120,19 +120,13 @@ function New-AzsUserSubscription {
         if (-not $PSBoundParameters.ContainsKey('State')) {
             $PSBoundParameters.Add("State", $State)
         }
-        
+
         if ($PSCmdlet.ShouldProcess("$SubscriptionId", "Create a new user subscription")) {
 
             # Validate this resource does not exist.
-            $_objectCheck = $null
-            try {
-                $_objectCheck = Get-AzsUserSubscription -SubscriptionId $SubscriptionId
-            } catch {
-                # No op
-            } finally {
-                if ($_objectCheck -ne $null) {
-                    throw "A user subsription with identifier $SubscriptionId already exists."
-                }
+            if ($null -ne (Get-AzsUserSubscription -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue)) {
+                Write-Error "A user subsription with identifier $SubscriptionId already exists."
+                return
             }
 
             $NewServiceClient_params = @{

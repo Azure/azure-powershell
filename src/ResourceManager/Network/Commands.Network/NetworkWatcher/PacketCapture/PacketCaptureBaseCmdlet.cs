@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 GetPacketCapture(resourceGroupName, name, packetCaptureName);
             }
-            catch (Microsoft.Rest.Azure.CloudException exception)
+            catch (MNM.ErrorResponseException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {

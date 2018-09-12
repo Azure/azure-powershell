@@ -152,10 +152,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: Detailed (ByPropertyName)
 
 ## OUTPUTS
 

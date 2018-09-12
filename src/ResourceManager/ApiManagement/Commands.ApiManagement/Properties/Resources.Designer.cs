@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File at path &apos;{0}&apos; does not exist.
+        /// </summary>
+        internal static string SourceFileNotFound {
+            get {
+                return ResourceManager.GetString("SourceFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update an Api Management Service..
         /// </summary>
         internal static string UpdateApiManagementService {

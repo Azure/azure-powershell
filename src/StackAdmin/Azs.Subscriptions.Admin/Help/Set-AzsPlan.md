@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Subscriptions.Admin-help.xml
 Module Name: Azs.Subscriptions.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -34,7 +34,7 @@ Updates the specified plan
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 Set-AzsPlan -Name "plan1" -ResourceGroupName "rg1" -Description "This plan is meant to be used by accounting only."
 ```
@@ -43,40 +43,13 @@ Updates the specified plan
 
 ## PARAMETERS
 
-### -Name
-Name of the plan.
+### -Description
+Description of the plan.
 
 ```yaml
 Type: String
 Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group the resource is located under.
-
-```yaml
-Type: String
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: InputObject
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -91,52 +64,7 @@ Display name.
 ```yaml
 Type: String
 Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -QuotaIds
-Quota identifiers under the plan.
-
-```yaml
-Type: String[]
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Plan.
-
-```yaml
-Type: Plan
-Parameter Sets: InputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -SkuIds
-SKU identifiers.
-
-```yaml
-Type: String[]
-Parameter Sets: Update
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -151,7 +79,7 @@ External reference identifier.
 ```yaml
 Type: String
 Parameter Sets: Update
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -160,18 +88,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-Description of the plan.
+### -InputObject
+The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Plan.
 
 ```yaml
-Type: String
-Parameter Sets: Update
-Aliases:
+Type: Plan
+Parameter Sets: InputObject
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -190,17 +118,59 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionCount
-Subscription count.
+### -Name
+Name of the plan.
 
 ```yaml
-Type: Int64
+Type: String
 Parameter Sets: Update
-Aliases:
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -QuotaIds
+Quota identifiers under the plan.
+
+```yaml
+Type: String[]
+Parameter Sets: Update
+Aliases: 
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group the resource is located under.
+
+```yaml
+Type: String
+Parameter Sets: Update
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: InputObject
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -211,7 +181,7 @@ The resource id.
 ```yaml
 Type: String
 Parameter Sets: ResourceId
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -220,18 +190,32 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -SkuIds
+SKU identifiers.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Type: String[]
+Parameter Sets: Update
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionCount
+Subscription count.
+
+```yaml
+Type: Int64
+Parameter Sets: Update
+Aliases: 
+
+Required: False
+Position: Named
+Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -243,6 +227,22 @@ Prompts you for confirmation before running the cmdlet.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -263,3 +263,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

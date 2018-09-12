@@ -213,13 +213,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AvailabilitySetId (ByPropertyName), VMName (ByPropertyName), VMSize (ByPropertyName)
 
 ### System.String[]
-Parameters: IdentityId (ByPropertyName), Zone (ByPropertyName)
 
 ### System.Collections.Hashtable
-Parameters: Tags (ByPropertyName)
 
 ## OUTPUTS
 

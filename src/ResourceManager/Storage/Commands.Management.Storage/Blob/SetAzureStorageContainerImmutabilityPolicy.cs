@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Set, StorageContainerImmutabilityPolicyNounStr, DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSImmutabilityPolicy))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMStoragePrefix + StorageContainerImmutabilityPolicyNounStr, DefaultParameterSetName = AccountNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSImmutabilityPolicy))]
     public class SetAzureStorageContainerImmutabilityPolicyCommand : StorageBlobBaseCmdlet
     {
         /// <summary>
