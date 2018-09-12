@@ -271,6 +271,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint:
                         environment.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, propertyValue);
                         break;
+                    case AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix:
+                        environment.SetProperty(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, propertyValue);
+                        break;
+
                 }
             }
         }
