@@ -41,6 +41,25 @@
     - Added New-AzureRmFirewallApplicationRule
     - Added New-AzureRmFirewallNetworkRuleCollection
     - Added New-AzureRmFirewallNetworkRule
+* Added support for Trusted Root certificate and Autoscale configuration in Application Gateway
+    - New Cmdlets added:
+        - Add-AzureRmApplicationGatewayTrustedRootCertificate
+        - Get-AzureRmApplicationGatewayTrustedRootCertificate
+        - New-AzureRmApplicationGatewayTrustedRootCertificate
+        - Remove-AzureRmApplicationGatewayTrustedRootCertificate
+        - Set-AzureRmApplicationGatewayTrustedRootCertificate
+        - Get-AzureRmApplicationGatewayAutoscaleConfiguration
+        - New-AzureRmApplicationGatewayAutoscaleConfiguration
+        - Remove-AzureRmApplicationGatewayAutoscaleConfiguration
+        - Set-AzureRmApplicationGatewayAutoscaleConfiguration
+    - Cmdlets updated with optonal parameter -TrustedRootCertificates
+        - New-AzureRmApplicationGateway
+        - Set-AzureRmApplicationGateway
+        - New-AzureRmApplicationGatewayBackendHttpSetting
+        - Set-AzureRmApplicationGatewayBackendHttpSetting
+    - Cmdlets updated with optonal parameter -AutoscaleConfiguration
+        - New-AzureRmApplicationGateway
+        - Set-AzureRmApplicationGateway
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
