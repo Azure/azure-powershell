@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -56,6 +57,20 @@ namespace Commands.Network.Test.ScenarioTests
         public void VirtualNetworkGatewayRouteApiTest()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayBgpRouteApi");
+        }
+
+        [Fact(Skip ="Recorded with an older version of network, rerecord #4631")]
+        public void TestVirtualNetworkGatewayP2SVpnProfile()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(string.Format(
+                "Test-VirtualNetworkGatewayGenerateVpnProfile -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VirtualNetworkGatewayIkeV2Test()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayIkeV2");
         }
     }
 }

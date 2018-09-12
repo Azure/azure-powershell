@@ -27,7 +27,14 @@ if ($Env:ACC_CLOUD -eq $null)
         {
             $global:PSDefaultParameterValues.Add($_,
                 {
-                    $context = Get-AzureRmContext
+                    if ((Get-Command Get-AzContext -ErrorAction Ignore) -eq $null)
+                    {
+                        $context = Get-AzureRmContext
+                    }
+                    else
+                    {
+                        $context = Get-AzContext
+                    }
                     if (($context -ne $null) -and $context.ExtendedProperties.ContainsKey("Default Resource Group")) {
                         $context.ExtendedProperties["Default Resource Group"]
                     } 

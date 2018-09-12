@@ -13,13 +13,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Hyak.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -57,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var appGateway = this.ApplicationGatewayClient.Get(resourceGroupName, name);
 
-            var psApplicationGateway = Mapper.Map<PSApplicationGateway>(appGateway);
+            var psApplicationGateway = NetworkResourceManagerProfile.Mapper.Map<PSApplicationGateway>(appGateway);
             psApplicationGateway.ResourceGroupName = resourceGroupName;
             psApplicationGateway.Tag =
                 TagsConversionHelper.CreateTagHashtable(appGateway.Tags);
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSApplicationGateway ToPsApplicationGateway(ApplicationGateway appGw)
         {
-            var psAppGw = Mapper.Map<PSApplicationGateway>(appGw);
+            var psAppGw = NetworkResourceManagerProfile.Mapper.Map<PSApplicationGateway>(appGw);
 
             psAppGw.Tag = TagsConversionHelper.CreateTagHashtable(appGw.Tags);
 

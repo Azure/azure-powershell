@@ -59,13 +59,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
 
+            var pInstanceIds = new RuntimeDefinedParameter();
+            pInstanceIds.Name = "InstanceId";
+            pInstanceIds.ParameterType = typeof(string[]);
+            pInstanceIds.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 3,
+                Mandatory = false
+            });
+            pInstanceIds.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("InstanceId", pInstanceIds);
+
             var pArgumentList = new RuntimeDefinedParameter();
             pArgumentList.Name = "ArgumentList";
             pArgumentList.ParameterType = typeof(object[]);
             pArgumentList.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByStaticParameters",
-                Position = 3,
+                Position = 4,
                 Mandatory = true
             });
             pArgumentList.Attributes.Add(new AllowNullAttribute());
@@ -78,8 +90,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            System.Collections.Generic.IList<string> instanceIds = null;
+            if (invokeMethodInputParameters[2] != null)
+            {
+                var inputArray2 = Array.ConvertAll((object[]) ParseParameter(invokeMethodInputParameters[2]), e => e.ToString());
+                instanceIds = inputArray2.ToList();
+            }
 
-            VirtualMachineScaleSetsClient.Reimage(resourceGroupName, vmScaleSetName);
+            var result = VirtualMachineScaleSetsClient.Reimage(resourceGroupName, vmScaleSetName, instanceIds);
+            WriteObject(result);
         }
     }
 
@@ -89,69 +108,103 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = string.Empty;
             string vmScaleSetName = string.Empty;
+            var instanceIds = new string[0];
 
             return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "VMScaleSetName" },
-                 new object[] { resourceGroupName, vmScaleSetName });
+                 new string[] { "ResourceGroupName", "VMScaleSetName", "InstanceIds" },
+                 new object[] { resourceGroupName, vmScaleSetName, instanceIds });
         }
     }
 
-    [Cmdlet("Set", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
-    public partial class SetAzureRmVmss : InvokeAzureComputeMethodCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzureRmVmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSOperationStatusResponse))]
+    public partial class SetAzureRmVmss : ComputeAutomationBaseCmdlet
     {
-        public override string MethodName { get; set; }
-
         protected override void ProcessRecord()
         {
-            this.MethodName = "VirtualMachineScaleSetReimage";
-            base.ProcessRecord();
+            ExecuteClientAction(() =>
+            {
+                if (ShouldProcess(this.VMScaleSetName, VerbsCommon.Set))
+                {
+                    string resourceGroupName = this.ResourceGroupName;
+                    string vmScaleSetName = this.VMScaleSetName;
+                    System.Collections.Generic.IList<string> instanceIds = this.InstanceId;
+
+                    if (this.ParameterSetName.Equals("FriendMethod"))
+                    {
+                        var result = VirtualMachineScaleSetsClient.ReimageAll(resourceGroupName, vmScaleSetName, instanceIds);
+                        var psObject = new PSOperationStatusResponse();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else
+                    {
+                        var result = VirtualMachineScaleSetsClient.Reimage(resourceGroupName, vmScaleSetName, instanceIds);
+                        var psObject = new PSOperationStatusResponse();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        WriteObject(psObject);
+                    }
+
+                }
+            });
         }
 
-        public override object GetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string ResourceGroupName { get; set; }
 
-            var pVMScaleSetName = new RuntimeDefinedParameter();
-            pVMScaleSetName.Name = "VMScaleSetName";
-            pVMScaleSetName.ParameterType = typeof(string);
-            pVMScaleSetName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true,
-                ValueFromPipelineByPropertyName = true,
-                ValueFromPipeline = false
-            });
-            pVMScaleSetName.Attributes.Add(new AliasAttribute("Name"));
-            pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Alias("Name")]
+        [AllowNull]
+        public string VMScaleSetName { get; set; }
 
-            var pReimage = new RuntimeDefinedParameter();
-            pReimage.Name = "Reimage";
-            pReimage.ParameterType = typeof(SwitchParameter);
-            pReimage.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pReimage.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Reimage", pReimage);
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Position = 3,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Position = 3,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false)]
+        [AllowNull]
+        public string [] InstanceId { get; set; }
 
-            return dynamicParameters;
-        }
+        [Parameter(
+            ParameterSetName = "DefaultParameter",
+            Mandatory = true)]
+        [AllowNull]
+        public SwitchParameter Reimage { get; set; }
+
+        [Parameter(
+            ParameterSetName = "FriendMethod",
+            Mandatory = true)]
+        [AllowNull]
+        public SwitchParameter ReimageAll { get; set; }
     }
 }

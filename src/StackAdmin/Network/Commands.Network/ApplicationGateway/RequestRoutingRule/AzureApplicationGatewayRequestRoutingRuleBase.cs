@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -81,10 +79,23 @@ namespace Microsoft.Azure.Commands.Network
                 HelpMessage = "Application gateway UrlPathMap")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayUrlPathMap UrlPathMap { get; set; }
+
+        [Parameter(
+                ParameterSetName = "SetByResourceId",
+                HelpMessage = "ID of the application gateway RedirectConfiguration")]
+        [ValidateNotNullOrEmpty]
+        public string RedirectConfigurationId { get; set; }
+
+        [Parameter(
+                ParameterSetName = "SetByResource",
+                HelpMessage = "Application gateway RedirectConfiguration")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayRedirectConfiguration RedirectConfiguration { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
+
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (BackendHttpSettings != null)
@@ -102,6 +113,10 @@ namespace Microsoft.Azure.Commands.Network
                 if (UrlPathMap != null)
                 {
                     this.UrlPathMapId = this.UrlPathMap.Id;
+                }
+                if (RedirectConfiguration != null)
+                {
+                    this.RedirectConfigurationId = this.RedirectConfiguration.Id;
                 }
             }
         }
@@ -133,12 +148,17 @@ namespace Microsoft.Azure.Commands.Network
                 requestRoutingRule.UrlPathMap = new PSResourceId();
                 requestRoutingRule.UrlPathMap.Id = this.UrlPathMapId;
             }
+            if (!string.IsNullOrEmpty(this.RedirectConfigurationId))
+            {
+                requestRoutingRule.RedirectConfiguration = new PSResourceId();
+                requestRoutingRule.RedirectConfiguration.Id = this.RedirectConfigurationId;
+            }
 
             requestRoutingRule.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                                 this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                 Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayRequestRoutingRuleName,
                                 this.Name);
-            
+
             return requestRoutingRule;
         }
     }
