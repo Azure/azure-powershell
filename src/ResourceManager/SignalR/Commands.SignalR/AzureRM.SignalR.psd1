@@ -112,7 +112,7 @@ PrivateData = @{
         ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime.'
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
