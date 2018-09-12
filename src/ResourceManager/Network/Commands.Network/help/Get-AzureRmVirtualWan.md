@@ -27,7 +27,6 @@ Get-AzureRmVirtualWan [-ResourceGroupName <String>] [-Name <String>] [-DefaultPr
 ## DESCRIPTION
 Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 
-
 ## EXAMPLES
 
 ### Example 1
@@ -36,12 +35,8 @@ Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
 PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true
 PS C:\> Get-AzureRmVirtualWan -Name "myVirtualWAN" -ResourceGroupName "testRG"
-```
 
-This command gets the Virtual WAN named myVirtualWAN in the resource group testRG.
-
-The above snippet produces the following output:
-
+Output:
 Name                       : testRG
 Id                         : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 AllowVnetToVnetTraffic     : False
@@ -49,7 +44,9 @@ AllowBranchToBranchTraffic : True
 Location                   : West US
 Type                       : Microsoft.Network/virtualWans
 ProvisioningState          : Succeeded
+```
 
+This command gets the Virtual WAN named myVirtualWAN in the resource group testRG.
 
 ## PARAMETERS
 
@@ -57,7 +54,7 @@ ProvisioningState          : Succeeded
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,7 +69,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -87,7 +84,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListByResourceGroupName
 Aliases:
 
@@ -99,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListBySubscriptionId
 Aliases:
 
@@ -111,8 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

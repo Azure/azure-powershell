@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet(VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualWanVpnConfiguration",
-        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanObject + CortexParameterSetNames.ByVpnSiteObject,
+        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName + CortexParameterSetNames.ByVpnSiteObject,
         SupportsShouldProcess = true), 
         OutputType(typeof(PSVirtualWanVpnSitesConfiguration))]
     public class GetAzureRmVirtualWanVpnSitesConfigurationCommand : VirtualWanBaseCmdlet

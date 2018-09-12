@@ -14,7 +14,7 @@ Removes an Azure Virtual WAN.
 
 ### ByVirtualWanName (Default)
 ```
-Remove-AzureRmVirtualWan -Name <String> -ResourceGroupName <String> [-Force] [-PassThru]
+Remove-AzureRmVirtualWan -ResourceGroupName <String> -Name <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,7 +46,6 @@ PS C:\> Remove-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestRe
 This example creates a Virtual WAN in a resource group and then immediately deletes it. 
 To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
 
-
 ### Example 2
 
 ```powershell
@@ -58,20 +57,16 @@ PS C:\> Remove-AzureRmVirtualWan -InputObject $virtualWan -Passthru
 This example creates a Virtual WAN in a resource group and then immediately deletes it. This deletion happens using the virtual wan object returned by New-AzureRmVirtualWan.
 To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
 
-
 ### Example 3
 
 ```powershell
-
 PS C:\> New-AzureRmResourceGroup -Name "TestResourceGroup" -Location "Central US"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Location "Central US"
 PS C:\> Remove-AzureRmVirtualWan -ResourceId $virtualWan.Id -Passthru
-
 ```
 
 This example creates a Virtual WAN in a resource group and then immediately deletes it. This deletion happens using the virtual wan resource id returned by New-AzureRmVirtualWan.
 To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
-
 
 ## PARAMETERS
 
@@ -136,7 +131,8 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Returns an object representing the item with which you are working.
+By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

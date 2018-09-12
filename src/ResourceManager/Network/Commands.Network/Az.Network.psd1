@@ -362,7 +362,6 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'Remove-AzVpnConnection',
     'New-AzVirtualHubVnetConnection',
     'Get-AzVirtualHubVnetConnection',
-    'Update-AzVirtualHubVnetConnection',
     'Remove-AzVirtualHubVnetConnection',
     'Get-AzVirtualWanVpnConfiguration'
     

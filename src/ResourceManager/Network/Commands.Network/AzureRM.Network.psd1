@@ -363,7 +363,6 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Remove-AzureRmVpnConnection',
                'New-AzureRmVirtualHubVnetConnection',
                'Get-AzureRmVirtualHubVnetConnection',
-               'Update-AzureRmVirtualHubVnetConnection',
                'Remove-AzureRmVirtualHubVnetConnection',
                'Get-AzureRmVirtualWanVpnConfiguration'
 
