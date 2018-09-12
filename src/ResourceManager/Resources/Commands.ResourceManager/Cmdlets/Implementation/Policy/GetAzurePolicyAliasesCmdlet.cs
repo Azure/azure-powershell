@@ -19,7 +19,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Linq;
     using System.Management.Automation;
 
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.ResourceManager;
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the provider namespace match string
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The namespace match value.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "Limits the output to items whose namespace matches this value.")]
         [Alias("Name", "Namespace")]
         [ValidateNotNullOrEmpty]
         public string NamespaceMatch { get; set; } = string.Empty;
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the resource type match string
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource type match value.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "Limits the output to items whose resource type matches this value.")]
         [Alias("ResourceType", "Resource")]
         [ValidateNotNullOrEmpty]
         public string ResourceTypeMatch { get; set; } = string.Empty;
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the alias match string
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The alias match value.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "Includes in the output items with aliases whose name matches this value.")]
         [Alias("Alias")]
         [ValidateNotNullOrEmpty]
         public string AliasMatch { get; set; } = string.Empty;
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the alias path match string
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The alias path match value.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "Includes in the output items with aliases containing a path that matches this value.")]
         [Alias("Path")]
         [ValidateNotNullOrEmpty]
         public string PathMatch { get; set; } = string.Empty;
@@ -67,14 +66,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the api version match string
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The alias api version match value.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "Includes in the output items whose resource types or aliases have a matching api version.")]
         [ValidateNotNullOrEmpty]
         public string ApiVersionMatch { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the alias match string
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The location match value.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "Includes in the output items whose resource types have a matching location.")]
         [Alias("Location")]
         [ValidateNotNullOrEmpty]
         [LocationCompleter("Microsoft.Resources/resourceGroups")]
@@ -83,17 +82,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets list available flag
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "Switch that causes output to include resource types with no aliases.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "Includes in the output matching items with and without aliases.")]
         [Alias("ShowAll")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter ListAvailable { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource provider input collection (e.g. from Get-AzureRmResourceProvider)
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, ValueFromPipeline = true, HelpMessage = "Set of resource providers to examine.")]
-        [ValidateNotNullOrEmpty]
-        public PSResourceProvider[] InputObject { get; set; }
 
         /// <summary>
         /// Executes the cmdlet
@@ -112,9 +104,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             this.WriteObject(resourceTypes, enumerateCollection: true);
         }
 
-        private bool IsMatch(string input, string match)
+        private bool IsStringMatch(string input, string match)
         {
             return input.IndexOf(match, StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+
+        private bool IsMatch(string input, string match)
+        {
+            return string.IsNullOrEmpty(match) || this.IsStringMatch(input, match);
         }
 
         private IEnumerable<Provider> GetAllProviders()
@@ -122,58 +119,48 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             return this.ResourceManagerSdkClient.ResourceManagementClient.Providers.List(expand: "resourceTypes/aliases");
         }
 
-        private IEnumerable<Provider> GetProviders(IEnumerable<Provider> input, string namespaceMatch)
+        private IEnumerable<Provider> GetMatchingProviders(IEnumerable<Provider> input, string namespaceMatch, string resourceTypeMatch)
         {
-            // Filter the list of all operation names to what matches the wildcard
-            return input.Where(item => string.IsNullOrEmpty(namespaceMatch) || this.IsMatch(item.NamespaceProperty, namespaceMatch));
-        }
-
-        private IEnumerable<Provider> GetProviders(IEnumerable<Provider> inputEnumerable, IEnumerable<string> namespaceMatches)
-        {
-            // Filter the list of all operation names to what matches the wildcard
-            var input = inputEnumerable.ToList();
-            foreach (var match in namespaceMatches)
-            {
-                yield return input.First(item => this.IsMatch(item.NamespaceProperty, match));
-            }
+            // Filter the list of all providers to what matches on namespace and resource type
+            return input.Where(item => this.IsMatch(item.NamespaceProperty, namespaceMatch) && item.ResourceTypes.Any(r => IsMatch(r.ResourceType, resourceTypeMatch)));
         }
 
         private bool FilterFunction(ProviderResourceType providerResourceType, bool listAvailable, string resourceTypesMatch, string aliasMatch, string pathMatch, string apiVersionMatch, string locationMatch)
         {
             return
-                // include everything if list available switch is provided
-                listAvailable ||
+                // if resource type match was provided, the resource type name must match
+                (string.IsNullOrEmpty(resourceTypesMatch) || this.IsStringMatch(providerResourceType.ResourceType, resourceTypesMatch)) &&
 
-                // otherwise perform full matching logic
-                providerResourceType.Aliases.Coalesce().Any() &&
+                // include everything remaining if list available switch is provided
+                (listAvailable ||
 
-                // if no match strings provided, match everything
-                (string.IsNullOrEmpty(resourceTypesMatch) && string.IsNullOrEmpty(locationMatch) && string.IsNullOrEmpty(aliasMatch) && string.IsNullOrEmpty(pathMatch) && string.IsNullOrEmpty(apiVersionMatch) ||
+                 // otherwise just those with aliases that match the rest of the parameters
+                 providerResourceType.Aliases.Coalesce().Any() &&
 
-                 // if resource type match was provided, match resource type
-                 !string.IsNullOrEmpty(resourceTypesMatch) && this.IsMatch(providerResourceType.ResourceType, resourceTypesMatch) ||
+                 // if no match strings provided, include everything
+                 (string.IsNullOrEmpty(locationMatch) && string.IsNullOrEmpty(aliasMatch) && string.IsNullOrEmpty(pathMatch) && string.IsNullOrEmpty(apiVersionMatch) ||
 
-                 // if location match was provided, match location
-                 !string.IsNullOrEmpty(locationMatch) && providerResourceType.Locations.Coalesce().Any(l => this.IsMatch(l, locationMatch)) ||
+                  // if location match was provided, include those with matching location
+                  !string.IsNullOrEmpty(locationMatch) && providerResourceType.Locations.Coalesce().Any(l => this.IsStringMatch(l, locationMatch)) ||
 
-                 // if API match was provided, match resource type API version
-                 !string.IsNullOrEmpty(apiVersionMatch) && providerResourceType.ApiVersions.Coalesce().Any(v => this.IsMatch(v, apiVersionMatch)) ||
+                  // if API match was provided, include those with matching resource type API version
+                  !string.IsNullOrEmpty(apiVersionMatch) && providerResourceType.ApiVersions.Coalesce().Any(v => this.IsStringMatch(v, apiVersionMatch)) ||
 
-                 // if alias match was provided, match alias name
-                 !string.IsNullOrEmpty(aliasMatch) && providerResourceType.Aliases.Coalesce().Any(a => this.IsMatch(a.Name, aliasMatch)) ||
+                  // if alias match was provided, include those with matching alias name
+                  !string.IsNullOrEmpty(aliasMatch) && providerResourceType.Aliases.Coalesce().Any(a => this.IsStringMatch(a.Name, aliasMatch)) ||
 
-                 // if alias path match was provided, match alias name
-                 !string.IsNullOrEmpty(pathMatch) && providerResourceType.Aliases.Coalesce().Any(a => a.Paths.Any(p => this.IsMatch(p.Path, pathMatch))) ||
+                  // if alias path match was provided, includes those with matching path
+                  !string.IsNullOrEmpty(pathMatch) && providerResourceType.Aliases.Coalesce().Any(a => a.Paths.Any(p => this.IsStringMatch(p.Path, pathMatch))) ||
 
-                 // if API version match was provided, match resource type API version or alias API version
-                 !string.IsNullOrEmpty(apiVersionMatch) && providerResourceType.Aliases.Coalesce().Any(a => a.Paths.Coalesce().Any(p => p.ApiVersions.Coalesce().Any(v => this.IsMatch(v, apiVersionMatch)))));
+                  // if API version match was provided, also include those with matching alias API version
+                  !string.IsNullOrEmpty(apiVersionMatch) && providerResourceType.Aliases.Coalesce().Any(a => a.Paths.Coalesce().Any(p => p.ApiVersions.Coalesce().Any(v => this.IsStringMatch(v, apiVersionMatch))))));
         }
 
         private IEnumerable<PsResourceProviderAlias> GetProviderResourceTypes(bool listAvailable, string namespaceMatch, string resourceTypeMatch, string aliasMatch, string pathMatch, string apiVersionMatch, string locationMatch)
         {
-            var allProviders = this.GetProviders(this.GetAllProviders(), namespaceMatch);
+            var allProviders = this.GetAllProviders();
+            var providers = this.GetMatchingProviders(allProviders, namespaceMatch, resourceTypeMatch);
             var rv = new List<PsResourceProviderAlias>();
-            var providers = this.InputObject == null ? this.GetProviders(allProviders, namespaceMatch) : this.GetProviders(allProviders, this.InputObject.Select(o => o.ProviderNamespace));
             foreach (var provider in providers)
             {
                 var match = provider.ResourceTypes.Where(r => this.FilterFunction(r, listAvailable, resourceTypeMatch, aliasMatch, pathMatch, apiVersionMatch, locationMatch));
