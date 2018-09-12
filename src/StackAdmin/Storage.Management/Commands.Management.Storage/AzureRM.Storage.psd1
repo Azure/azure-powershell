@@ -116,7 +116,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* Storage module supported for the profile 2018-03-01-hybrid
+* This version supports azure stack with the update 1808
+* Apiversion supported by the module is 2016-01-01
+* This module includes functionalities up to the existing AzureRm.Storage module version 1.1.0 with the changes for azure powersehll common dependencies'        
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

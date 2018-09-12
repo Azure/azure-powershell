@@ -159,21 +159,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0
-* Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
-* Include assignments to deleted Users/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
-* Add convenience cmdlet for creating ServicePrincipals
-* Add Tab completers for Scope and ResourceType
-* Merge Get- and Find- functionality in Get-AzureRmResource
-* Add AD Cmdlets:
-  - Remove-AzureRmADGroupMember
-  - Get-AzureRmADGroup
-  - New-AzureRmADGroup
-  - Remove-AzureRmADGroup
-  - Remove-AzureRmADUser
-  - Update-AzureRmADApplication
-  - Update-AzureRmADServicePrincipal
-  - Update-AzureRmADUser'
+        ReleaseNotes = '* Resources module supported for the profile 2018-03-01-hybrid
+* This version supports azure stack with the update 1808
+* Apiversion supported by the module is 2018-02-01 for resources, 2016-09-01 for locks, 2015-07-01 for role assignments
+* This module includes functionalities up to the existing AzureRm.Resources module version 6.0.1 with back ported support for role assignment api version'        
 
         # Prerelease string of this module
         # Prerelease = ''
