@@ -52,19 +52,6 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public bool? AutoUpgradeMinorVersion { get; set; }
 
         public string ForceUpdateTag { get; set; }
-
-        [JsonIgnore]
-        public string StatusesText
-        {
-            get { return JsonConvert.SerializeObject(Statuses, Formatting.Indented); }
-        }
-
-        [JsonIgnore]
-        public string SubStatusesText
-        {
-            get { return JsonConvert.SerializeObject(SubStatuses, Formatting.Indented); }
-        }
-
     }
 
     public static class PSVirtualMachineExtensionConversions

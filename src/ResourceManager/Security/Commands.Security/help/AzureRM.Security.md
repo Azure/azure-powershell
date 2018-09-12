@@ -1,7 +1,7 @@
 ---
 Module Name: AzureRM.Security
 Module Guid: 5e312bb4-9d3a-4c88-94c3-8e5bbb2e3da4
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.policyinsights
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.security
 Help Version: 0.1.0
 Locale: en-US
 ---
@@ -39,7 +39,7 @@ Gets the location where Azure Security Center will automatically save data for t
 Gets the pricing tier data for Azure Security Center for a scope.
 
 ### [Get-AzureRmSecurityTask](Get-AzureRmSecurityTask.md)
-Gets the security tasks that Azure Security Center recommands you to do in order to strengthen your security posture.
+Gets the security tasks that Azure Security Center recommends you to do in order to strengthen your security posture.
 
 ### [Get-AzureRmSecurityWorkspaceSetting](Get-AzureRmSecurityWorkspaceSetting.md)
 Gets the configured security workspace settings on a subscription.
