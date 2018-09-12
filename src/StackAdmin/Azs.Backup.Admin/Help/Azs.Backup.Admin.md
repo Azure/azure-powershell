@@ -8,23 +8,23 @@ Locale: en-US
 
 # Azs.Backup.Admin Module
 ## Description
-Preview release of the Backup administrator module that allows administrators to  
-- Configure where backups are stored 
-- Perform backups  
-- List and restore completed backup
+{{Manually Enter Description Here}}
 
 ## Azs.Backup.Admin Cmdlets
 ### [Get-AzsBackup](Get-AzsBackup.md)
 Returns a backup from a location based on name.
 
-### [Get-AzsBackupLocation](Get-AzsBackupLocation.md)
-Returns the list of backup locations.
+### [Get-AzsBackupConfiguration](Get-AzsBackupConfiguration.md)
+Returns the list of backup configurations.
+
+### [New-AzsEncryptionKeyBase64](New-AzsEncryptionKeyBase64.md)
+Generate encryption key for infrastructure backups.
 
 ### [Restore-AzsBackup](Restore-AzsBackup.md)
 Restore a backup.
 
-### [Set-AzsBackupShare](Set-AzsBackupShare.md)
-Create a new backup location.
+### [Set-AzsBackupConfiguration](Set-AzsBackupConfiguration.md)
+Set the backup configuration at the specified location.
 
 ### [Start-AzsBackup](Start-AzsBackup.md)
 Back up a specific location.

@@ -13,14 +13,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-
-using Hyak.Common;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var lb = this.LoadBalancerClient.Get(resourceGroupName, name, expandResource);
 
-            var psLoadBalancer = Mapper.Map<PSLoadBalancer>(lb);
+            var psLoadBalancer = NetworkResourceManagerProfile.Mapper.Map<PSLoadBalancer>(lb);
             psLoadBalancer.ResourceGroupName = resourceGroupName;
             psLoadBalancer.Tag =
                 TagsConversionHelper.CreateTagHashtable(lb.Tags);
@@ -68,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSLoadBalancer ToPsLoadBalancer(LoadBalancer lb)
         {
-            var psLb = Mapper.Map<PSLoadBalancer>(lb);
+            var psLb = NetworkResourceManagerProfile.Mapper.Map<PSLoadBalancer>(lb);
 
             psLb.Tag = TagsConversionHelper.CreateTagHashtable(lb.Tags);
 

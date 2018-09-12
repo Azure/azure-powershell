@@ -96,8 +96,6 @@ function Get-AzsScaleUnit {
 
     Process {
 
-
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
         }
@@ -168,6 +166,7 @@ function Get-AzsScaleUnit {
             return
         }
         if ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $FabricAdminClient.'
             $TaskResult = $FabricAdminClient.ScaleUnits.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $Name)
         } elseif ('List' -eq $PsCmdlet.ParameterSetName) {
