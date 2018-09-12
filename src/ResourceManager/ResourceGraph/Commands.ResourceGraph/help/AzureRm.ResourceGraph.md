@@ -11,6 +11,6 @@ Locale: en-US
 This topic displays help for the Azure Resource Graph cmdlets.
 
 ## AzureRm.ResourceGraph Cmdlets
-### [Invoke-AzureRmResourceGraphQuery](Invoke-AzureRmResourceGraphQuery.md)
+### [Search-AzureRmGraph](Search-AzureRmGraph.md)
 Queries the resources managed by Azure Resource Manager.
 

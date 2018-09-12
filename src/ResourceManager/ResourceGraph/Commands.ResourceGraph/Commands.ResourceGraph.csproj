@@ -47,8 +47,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Cmdlets\InvokeAzureRmResourceGraphQuery.cs" />
+    <Compile Include="Cmdlets\SearchAzureRmGraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\ErrorResponseExceptionExtensions.cs" />
     <Compile Include="Utilities\JTokenExtensions.cs" />
     <Compile Include="Utilities\ResourceGraphBaseCmdlet.cs" />
     <Compile Include="Utilities\TableExtensions.cs" />
@@ -59,7 +60,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="help\AzureRm.ResourceGraph.md" />
-    <None Include="help\Invoke-AzureRmResourceGraphQuery.md" />
+    <None Include="help\Search-AzureRmGraph.md" />
     <None Include="Microsoft.Azure.Commands.ResourceGraph.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
