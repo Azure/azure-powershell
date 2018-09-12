@@ -80,7 +80,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public string Name { get; set; }
 
         [Parameter(
-            Position = 4,
             Mandatory = true, 
             HelpMessage = "The location of the service unit resource.")]
         [ValidateNotNullOrEmpty]
@@ -88,14 +87,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public string Location { get; set; }
 
         [Parameter(
-            Position = 5,
             Mandatory = true, 
             HelpMessage = "Determines the location where resources under the service unit would be deployed to.")]
         [ValidateNotNullOrEmpty]
         public string TargetResourceGroup { get; set; }
 
         [Parameter(
-            Position = 6,
             Mandatory = true, 
             HelpMessage = "The deployment mode to use when deploying the resources in the service unit.")]
         [ValidateSet(NewServiceUnit.IncrementalDeploymentMode, NewServiceUnit.CompleteDeploymentMode)]
@@ -126,7 +123,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             Position = 1,
@@ -184,7 +181,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                     ParametersUri = this.ParametersUri,
                     TemplateArtifactSourceRelativePath = this.TemplateArtifactSourceRelativePath,
                     ParametersArtifactSourceRelativePath = this.ParametersArtifactSourceRelativePath,
-                    Tags = this.Tags
+                    Tags = this.Tag
                 };
 
                 if (this.DeploymentManagerClient.ServiceUnitExists(psServiceUnitResource))

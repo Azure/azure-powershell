@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                     Name = this.Name,
                     Location = this.Location,
                     ArtifactSourceId = this.ArtifactSourceId,
-                    Tags = this.Tags
+                    Tags = this.Tag
                 };
 
                 if (this.DeploymentManagerClient.ServiceTopologyExists(topologyResource))

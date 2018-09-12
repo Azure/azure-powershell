@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false, 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                     SourceType = this.ParameterSetName,
                     ArtifactRoot = this.ArtifactRoot,
                     Authentication = this.GetAuthentication(),
-                    Tags = this.Tags
+                    Tags = this.Tag
                 };
 
                 if (this.DeploymentManagerClient.ArtifactSourceExists(psArtifactSource))
