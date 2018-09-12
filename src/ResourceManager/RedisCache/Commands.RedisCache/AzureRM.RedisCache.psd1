@@ -55,7 +55,9 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; }
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Insights.dll', 
-               '.\Microsoft.Azure.Management.Redis.dll'
+               '.\Microsoft.Azure.Management.Redis.dll',
+               '.\Microsoft.Data.Edm.dll', '.\Microsoft.Data.OData.dll', 
+               '.\Microsoft.Data.Services.Client.dll', '.\System.Spatial.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
