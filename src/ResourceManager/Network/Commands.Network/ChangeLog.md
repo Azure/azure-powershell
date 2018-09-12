@@ -19,9 +19,6 @@
 --->
 
 ## Current Release
-
-## Version 6.7.0
-* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
 * Added new commands for feature: Azure Firewall via ARM
     - Added Get-AzureRmFirewall
     - Added Set-AzureRmFirewall
@@ -31,6 +28,9 @@
     - Added New-AzureRmFirewallApplicationRule
     - Added New-AzureRmFirewallNetworkRuleCollection
     - Added New-AzureRmFirewallNetworkRule
+
+## Version 6.7.0
+* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
 
 ## Version 6.6.1
 * Changed default cmdlet output presentation to table view
