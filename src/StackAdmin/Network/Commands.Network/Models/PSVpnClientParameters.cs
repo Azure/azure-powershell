@@ -11,12 +11,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using System.Collections.Generic;
+
     public class PSVpnClientParameters
     {
         public string ProcessorArchitecture { get; set; }
+
+        public string AuthenticationMethod { get; set; }
+
+        public string RadiusServerAuthCertificate { get; set; }
+
+        public List<string> ClientRootCertificates { get; set; }
     }
 }

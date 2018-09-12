@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Internal.Network.Version2017_03_01;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -60,8 +60,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = true,
-            Position = 3, 
-            HelpMessage = "Start a remote desktop session to the specified role instance.", 
+            Position = 3,
+            HelpMessage = "Start a remote desktop session to the specified role instance.",
             ParameterSetName = "Launch")]
         public SwitchParameter Launch
         {
@@ -169,10 +169,10 @@ namespace Microsoft.Azure.Commands.Compute
                 if (Launch.IsPresent)
                 {
                     var startInfo = new ProcessStartInfo
-                                        {
-                                            CreateNoWindow = true,
-                                            WindowStyle = ProcessWindowStyle.Hidden
-                                        };
+                    {
+                        CreateNoWindow = true,
+                        WindowStyle = ProcessWindowStyle.Hidden
+                    };
 
                     if (this.LocalPath == null)
                     {
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Commands.Compute
         private string GetAddressFromPublicIPResource(string resourceId)
         {
             string address = string.Empty;
-            
+
             // Get IpAddress from public IPAddress resource
             var publicIPResourceGroupName = this.GetResourceGroupName(resourceId);
             var publicIPName = this.GetResourceName(resourceId, PublicIPAddressResource);
