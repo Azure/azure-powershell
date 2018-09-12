@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Updates the contents of an Azure Site recovery plan.
     /// </summary>
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.ByRPObject,SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan", DefaultParameterSetName = ASRParameterSets.ByRPObject, SupportsShouldProcess = true)]
     [Alias("Update-ASRRecoveryPlan")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
@@ -68,16 +68,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         break;
                     case ASRParameterSets.ByRPFile:
 
-                        var filePath = ResolveUserPath(this.Path);
-
-                        if (!File.Exists(filePath))
+                        if (!File.Exists(this.Path))
                         {
                             throw new FileNotFoundException(
                                 string.Format(
                                     Resources.FileNotFound,
-                                    filePath));
+                                    this.Path));
                             ;
                         }
+
+                        var filePath = this.Path;
 
                         RecoveryPlan recoveryPlan = null;
 
@@ -108,9 +108,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 var recoveryPlanGroup = new RecoveryPlanGroup
                 {
-                    GroupType = (RecoveryPlanGroupType)Enum.Parse(
-                        typeof(RecoveryPlanGroupType),
-                        asrRecoveryPlanGroup.GroupType),
+                    GroupType = asrRecoveryPlanGroup.GroupType,
 
                     // Initialize ReplicationProtectedItems with empty List if asrRecoveryPlanGroup.ReplicationProtectedItems is null
                     // otherwise assign respective values
@@ -127,35 +125,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                         if (item.Properties.ProviderSpecificDetails.GetType() ==
                                             typeof(HyperVReplicaAzureReplicationDetails))
                                         {
-                                            VmId = ((HyperVReplicaAzureReplicationDetails)item
+                                            VmId = ((HyperVReplicaAzureReplicationDetails_2016_08_10)item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
                                                      .GetType() ==
                                                  typeof(HyperVReplicaReplicationDetails))
                                         {
-                                            VmId = ((HyperVReplicaReplicationDetails)item.Properties
+                                            VmId = ((HyperVReplicaReplicationDetails_2016_08_10)item.Properties
                                                 .ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
                                                      .GetType() ==
                                                  typeof(HyperVReplicaBlueReplicationDetails))
                                         {
-                                            VmId = ((HyperVReplicaBlueReplicationDetails)item
+                                            VmId = ((HyperVReplicaBlueReplicationDetails_2016_08_10)item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
                                                     .GetType() ==
                                                  typeof(InMageAzureV2ReplicationDetails))
                                         {
-                                            VmId = ((InMageAzureV2ReplicationDetails)item
+                                            VmId = ((InMageAzureV2ReplicationDetails_2016_08_10)item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
                                         else if (item.Properties.ProviderSpecificDetails
                                                     .GetType() ==
                                                  typeof(InMageReplicationDetails))
                                         {
-                                            VmId = ((InMageReplicationDetails)item
+                                            VmId = ((InMageReplicationDetails_2016_08_10)item
                                                 .Properties.ProviderSpecificDetails).VmId;
                                         }
 
@@ -164,8 +162,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                         return newItem;
                                     })
                                 .ToList(),
-                    StartGroupActions = asrRecoveryPlanGroup.StartGroupActions,
-                    EndGroupActions = asrRecoveryPlanGroup.EndGroupActions
+                    StartGroupActions = asrRecoveryPlanGroup.StartGroupActions == null ?
+                    null : asrRecoveryPlanGroup.StartGroupActions.ToList().ConvertAll(
+                        action => RecoveryPlanAction_2016_08_10.GetSrsRecoveryPlanAction(action)),
+                    EndGroupActions = asrRecoveryPlanGroup.EndGroupActions == null ?
+                    null : asrRecoveryPlanGroup.EndGroupActions.ToList().ConvertAll(
+                        action => RecoveryPlanAction_2016_08_10.GetSrsRecoveryPlanAction(action)),
                 };
 
                 updateRecoveryPlanInputProperties.Groups.Add(recoveryPlanGroup);

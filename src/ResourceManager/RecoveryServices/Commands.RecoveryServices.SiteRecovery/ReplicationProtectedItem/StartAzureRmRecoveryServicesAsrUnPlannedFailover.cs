@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                    Constants.A2A,
                    StringComparison.OrdinalIgnoreCase))
                 {
-                    A2ARpRecoveryPointType recoveryPointType = A2ARpRecoveryPointType.Latest;
+                    string recoveryPointType = A2ARpRecoveryPointType.Latest;
 
                     switch (this.RecoveryTag)
                     {

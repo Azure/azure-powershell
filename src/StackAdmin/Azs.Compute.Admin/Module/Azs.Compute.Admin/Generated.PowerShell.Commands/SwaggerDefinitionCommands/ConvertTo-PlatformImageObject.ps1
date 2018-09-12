@@ -1,4 +1,10 @@
 
+<#
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the MIT License. See License.txt in the project root for license information.
+#>
+
+using module '..\CustomObjects\PlatformImageObject.psm1'
 function ConvertTo-PlatformImageObject {
     [cmdletbinding()]
     [OutputType([PlatformImageObject])]

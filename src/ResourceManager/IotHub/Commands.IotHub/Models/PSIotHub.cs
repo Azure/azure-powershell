@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
     using System.Collections.Generic;
+    using Common;
     using Newtonsoft.Json;
 
     public class PSIotHub
@@ -60,7 +61,14 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// within the user subscriptionId.
         /// </summary>
         [JsonProperty(PropertyName = "resourcegroup")]
-        public string Resourcegroup { get; set; }
+        public string Resourcegroup
+        {
+            get
+            {
+                return IotHubUtils.GetResourceGroupName(Id);
+            }
+            set { }
+        }
 
         /// <summary>
         /// </summary>
