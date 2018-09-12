@@ -976,7 +976,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"7EyZcSIdTh3zFX9I6UOn+c2c0nR62UMlM1BXyvbsv/ar4x66pXSyYwKRko2teG2AGiREhhi+SCySPcFZLXqHzw==\",\r\n  \"key2\": \"XHSn3OLpg1gd7ml+lgW8uY5Q//Hqe40SnPrTpzBkBLmZBkHlLo7NO50CZghnCkY8aG5bhi52kWcq4jTxbazZYw==\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"REDACTED\",\r\n  \"key2\": \"REDACTED\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -1024,7 +1024,7 @@
       "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps2763/providers/Microsoft.Web/sites/ps1803/backup?api-version=2018-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL3BzMjc2My9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczE4MDMvYmFja3VwP2FwaS12ZXJzaW9uPTIwMTgtMDItMDE=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupName\": \"ps3275\",\r\n    \"storageAccountUrl\": \"https://stops2763.blob.core.windows.net/containerps2763?sv=2017-07-29&sr=b&sig=3YT6I1LMnD6LV9TDhpGDpOLYLdj1l4n4ooW8tk%2BRQg0%3D&se=2018-08-31T01%3A51%3A48Z&sp=rwdl\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupName\": \"ps3275\",\r\n    \"storageAccountUrl\": \"REDACTED\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1045,7 +1045,7 @@
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps2763/providers/Microsoft.Web/sites/ps1803\",\r\n  \"name\": \"ps1803\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"id\": 184,\r\n    \"storageAccountUrl\": \"https://stops2763.blob.core.windows.net/containerps2763?sv=2017-07-29&sr=b&sig=3YT6I1LMnD6LV9TDhpGDpOLYLdj1l4n4ooW8tk%2BRQg0%3D&se=2018-08-31T01%3A51%3A48Z&sp=rwdl\",\r\n    \"blobName\": \"ps3275\",\r\n    \"name\": \"ps3275\",\r\n    \"backupName\": \"ps3275\",\r\n    \"status\": \"Created\",\r\n    \"sizeInBytes\": 0,\r\n    \"created\": \"2018-08-30T23:51:48.8925272Z\",\r\n    \"log\": null,\r\n    \"databases\": null,\r\n    \"scheduled\": false,\r\n    \"correlationId\": \"5445ea74-dec0-4636-a13a-fe8c3783fc5a\",\r\n    \"websiteSizeInBytes\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps2763/providers/Microsoft.Web/sites/ps1803\",\r\n  \"name\": \"ps1803\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"id\": 184,\r\n    \"storageAccountUrl\": \"REDACTED\",\r\n    \"blobName\": \"ps3275\",\r\n    \"name\": \"ps3275\",\r\n    \"backupName\": \"ps3275\",\r\n    \"status\": \"Created\",\r\n    \"sizeInBytes\": 0,\r\n    \"created\": \"2018-08-30T23:51:48.8925272Z\",\r\n    \"log\": null,\r\n    \"databases\": null,\r\n    \"scheduled\": false,\r\n    \"correlationId\": \"5445ea74-dec0-4636-a13a-fe8c3783fc5a\",\r\n    \"websiteSizeInBytes\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "656"
@@ -1114,7 +1114,7 @@
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps2763/providers/Microsoft.Web/sites/ps1803/backups/184\",\r\n      \"name\": \"184\",\r\n      \"type\": \"Microsoft.Web/sites/backups\",\r\n      \"location\": \"West US\",\r\n      \"properties\": {\r\n        \"id\": 184,\r\n        \"storageAccountUrl\": \"https://stops2763.blob.core.windows.net/containerps2763?sv=2017-07-29&sr=b&sig=3YT6I1LMnD6LV9TDhpGDpOLYLdj1l4n4ooW8tk%2BRQg0%3D&se=2018-08-31T01%3A51%3A48Z&sp=rwdl\",\r\n        \"blobName\": \"ps3275\",\r\n        \"name\": \"ps3275\",\r\n        \"backupName\": \"ps3275\",\r\n        \"status\": \"Created\",\r\n        \"sizeInBytes\": 0,\r\n        \"created\": \"2018-08-30T23:51:48.8925272\",\r\n        \"log\": null,\r\n        \"databases\": null,\r\n        \"scheduled\": false,\r\n        \"correlationId\": \"5445ea74-dec0-4636-a13a-fe8c3783fc5a\",\r\n        \"websiteSizeInBytes\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps2763/providers/Microsoft.Web/sites/ps1803/backups/184\",\r\n      \"name\": \"184\",\r\n      \"type\": \"Microsoft.Web/sites/backups\",\r\n      \"location\": \"West US\",\r\n      \"properties\": {\r\n        \"id\": 184,\r\n        \"storageAccountUrl\": \"REDACTED\",\r\n        \"blobName\": \"ps3275\",\r\n        \"name\": \"ps3275\",\r\n        \"backupName\": \"ps3275\",\r\n        \"status\": \"Created\",\r\n        \"sizeInBytes\": 0,\r\n        \"created\": \"2018-08-30T23:51:48.8925272\",\r\n        \"log\": null,\r\n        \"databases\": null,\r\n        \"scheduled\": false,\r\n        \"correlationId\": \"5445ea74-dec0-4636-a13a-fe8c3783fc5a\",\r\n        \"websiteSizeInBytes\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "710"
@@ -1183,7 +1183,7 @@
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps2763/providers/Microsoft.Web/sites/ps1803/backups/184\",\r\n      \"name\": \"184\",\r\n      \"type\": \"Microsoft.Web/sites/backups\",\r\n      \"location\": \"West US\",\r\n      \"properties\": {\r\n        \"id\": 184,\r\n        \"storageAccountUrl\": \"https://stops2763.blob.core.windows.net/containerps2763?sv=2017-07-29&sr=b&sig=3YT6I1LMnD6LV9TDhpGDpOLYLdj1l4n4ooW8tk%2BRQg0%3D&se=2018-08-31T01%3A51%3A48Z&sp=rwdl\",\r\n        \"blobName\": \"ps3275.zip\",\r\n        \"name\": \"ps3275\",\r\n        \"backupName\": \"ps3275\",\r\n        \"status\": \"InProgress\",\r\n        \"sizeInBytes\": 0,\r\n        \"created\": \"2018-08-30T23:51:48.8925272\",\r\n        \"log\": null,\r\n        \"databases\": null,\r\n        \"scheduled\": false,\r\n        \"correlationId\": \"5445ea74-dec0-4636-a13a-fe8c3783fc5a\",\r\n        \"websiteSizeInBytes\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps2763/providers/Microsoft.Web/sites/ps1803/backups/184\",\r\n      \"name\": \"184\",\r\n      \"type\": \"Microsoft.Web/sites/backups\",\r\n      \"location\": \"West US\",\r\n      \"properties\": {\r\n        \"id\": 184,\r\n        \"storageAccountUrl\": \"REDACTED\",\r\n        \"blobName\": \"ps3275.zip\",\r\n        \"name\": \"ps3275\",\r\n        \"backupName\": \"ps3275\",\r\n        \"status\": \"InProgress\",\r\n        \"sizeInBytes\": 0,\r\n        \"created\": \"2018-08-30T23:51:48.8925272\",\r\n        \"log\": null,\r\n        \"databases\": null,\r\n        \"scheduled\": false,\r\n        \"correlationId\": \"5445ea74-dec0-4636-a13a-fe8c3783fc5a\",\r\n        \"websiteSizeInBytes\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "717"
