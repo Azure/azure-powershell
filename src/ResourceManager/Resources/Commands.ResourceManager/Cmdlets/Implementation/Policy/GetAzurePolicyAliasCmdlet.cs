@@ -27,9 +27,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Get an existing resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmPolicyAliases"), OutputType(typeof(PsResourceProviderAlias))]
-    [Alias("Get-AzureRmPolicyAliases")]
-    public class GetAzurePolicyAliases : ResourceManagerCmdletBase
+    [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "PolicyAlias"), OutputType(typeof(PsResourceProviderAlias))]
+    public class GetAzurePolicyAlias : ResourceManagerCmdletBase
     {
         /// <summary>
         /// Gets or sets the provider namespace match string

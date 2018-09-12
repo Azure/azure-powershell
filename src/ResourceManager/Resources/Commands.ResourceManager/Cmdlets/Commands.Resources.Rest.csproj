@@ -137,7 +137,7 @@
     <Compile Include="Implementation\ManagedApplications\NewAzureManagedApplication.cs" />
     <Compile Include="Implementation\ManagedApplications\ManagedApplicationCmdletBase.cs" />
     <Compile Include="Implementation\Policy\GetAzurePolicySetDefinition.cs" />
-    <Compile Include="Implementation\Policy\GetAzurePolicyAliasesCmdlet.cs" />
+    <Compile Include="Implementation\Policy\GetAzurePolicyAliasCmdlet.cs" />
     <Compile Include="Implementation\Policy\PolicyHelpStrings.cs" />
     <Compile Include="Implementation\Policy\NewAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\Policy\PolicyCmdletBase.cs" />
