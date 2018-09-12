@@ -25,6 +25,11 @@ $undeleteRgName = 'ps8425'
 $undeleteAppName = 'ps1705'
 $undeleteSlot = 'testslot'
 
+# !!! Storage keys and SAS URIs will be stored in the backup test recordings !!!
+# To find them, open the json files in a text editor and search for "listkeys"
+# to find the storage keys. Search for StorageAccountUrl to find the SAS URIs.
+# Remove them when re-recording the tests so that secrets are not shared.
+
 function Test-CreateNewWebAppBackup
 {
     $rgName = Get-ResourceGroupName
