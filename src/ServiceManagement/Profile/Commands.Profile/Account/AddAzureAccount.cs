@@ -11,18 +11,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-
+using System;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Management;
-using System;
-using Microsoft.Azure;
-using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -34,32 +32,37 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     public class AddAzureAccount : SubscriptionCmdletBase
     {
         private const string UserParameterSetName = "User";
-        private const string ServicePrincipalParameterSetName = "ServicePrincipal";
+        private const string ServicePrincipalByCredentialsParameterSetName = "ServicePrincipalByCredentialsParameterSetName";
+        private const string ServicePrincipalByCertificateParameterSetName = "ServicePrincipalByCertificateParameterSetName";
+
         [Parameter(Mandatory = false, HelpMessage = "Environment containing the account to log into")]
         public string Environment { get; set; }
 
         [Parameter(ParameterSetName = UserParameterSetName, Mandatory = false, HelpMessage = "Optional credential")]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetName, Mandatory = false, HelpMessage = "Credential")]
+        [Parameter(ParameterSetName = ServicePrincipalByCredentialsParameterSetName, Mandatory = true, HelpMessage = "Credential")]
         public PSCredential Credential { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetName, Mandatory = false, HelpMessage = "Certificate thumprint, requires -ClientId and cannot be used with -Credential")]
+        [Parameter(ParameterSetName = ServicePrincipalByCertificateParameterSetName, Mandatory = true, HelpMessage = "Certificate thumprint")]
         [ValidateNotNullOrEmpty]
         public string CertificateThumprint { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetName, Mandatory = false, HelpMessage = "Application Id/Client Id, requires -CertificateThumbprint and cannot be used with -Credential")]
+        [Parameter(ParameterSetName = ServicePrincipalByCertificateParameterSetName, Mandatory = true, HelpMessage = "Application/Client Id")]
         [ValidateNotNullOrEmpty]
         public string ClientId { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetName, Mandatory = true)]
+        [Parameter(ParameterSetName = ServicePrincipalByCredentialsParameterSetName, Mandatory = true)]
+        [Parameter(ParameterSetName = ServicePrincipalByCertificateParameterSetName, Mandatory = true)]
         public SwitchParameter ServicePrincipal { get; set; }
         
         [Parameter(ParameterSetName = UserParameterSetName, Mandatory = false, HelpMessage = "Optional tenant name or ID")]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetName, Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = ServicePrincipalByCredentialsParameterSetName, Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = ServicePrincipalByCertificateParameterSetName, Mandatory = true, HelpMessage = "Tenant name or ID")]
         [ValidateNotNullOrEmpty]
         [Alias("TenantId")]
         public string Tenant { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetName, Mandatory = false, HelpMessage = "Subscription Id")]
+        [Parameter(ParameterSetName = ServicePrincipalByCredentialsParameterSetName, Mandatory = false, HelpMessage = "Subscription Id")]
+        [Parameter(ParameterSetName = ServicePrincipalByCertificateParameterSetName, Mandatory = false, HelpMessage = "Subscription Id")]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
@@ -70,9 +73,11 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            // Validate
-            if(ParameterSetName.Equals(ServicePrincipalParameterSetName))
+            bool IsLoginViaSPN = false;
+            if(ParameterSetName.Equals(ServicePrincipalByCredentialsParameterSetName) ||
+                ParameterSetName.Equals(ServicePrincipalByCertificateParameterSetName))
             {
+                IsLoginViaSPN = true;
                 if (string.IsNullOrEmpty(SubscriptionId))
                 {
                     if (Profile.DefaultSubscription == null)
@@ -81,23 +86,6 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                         return;
                     }
                     SubscriptionId = Profile.DefaultSubscription.Id;
-                }
-            }
-
-            if (Credential != null)
-            {
-                if (CertificateThumprint != null || ClientId != null)
-                {
-                    WriteErrorWithTimestamp("Credential cannot be used with CerficateThumprint and ClientId.");
-                    return;
-                }
-            }
-            else
-            {
-                if (CertificateThumprint == null || ClientId == null)
-                {
-                    WriteErrorWithTimestamp("Please provide either Credential or the pair:CerficateThumprint and ClientId to authenticate.");
-                    return;
                 }
             }
 
@@ -114,8 +102,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 azureAccount.Id = Credential.UserName;
                 password = Credential.Password;
             }
-
-            if (ClientId != null)
+            else if(ParameterSetName.Equals(ServicePrincipalByCertificateParameterSetName))
             {
                 azureAccount.Id = ClientId;
                 azureAccount.SetProperty(AzureAccount.Property.CertificateThumbprint, CertificateThumprint); // Already validated to be not null
@@ -129,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             IAzureAccount account = null;
             IAzureEnvironment environment = ProfileClient.GetEnvironmentOrDefault(Environment);
 
-            if (ParameterSetName.Equals(ServicePrincipalParameterSetName))
+            if (IsLoginViaSPN)
             {
                 account = AddAcountFromSPNAndLoadSubscription(azureAccount, environment, password);
             }
