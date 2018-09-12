@@ -8770,6 +8770,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "\"https://cy0nfvetwgwmprod.blob.core.windows.net/cmakexe/ebb26d9c-5afe-4640-a3b2-5bbe72ce16ba/vpnclientconfiguration.zip?sv=2017-04-17&sr=b&sig=bQLPmn7%2B%2FFnh3lrrVAFw1%2Ft7F5Z5CUdGxr2NBdjIiCc%3D&st=2018-09-09T00%3A37%3A58Z&se=2018-09-09T01%3A37%3A58Z&sp=r&fileExtension=.zip\"",
       "ResponseHeaders": {
         "Content-Length": [
