@@ -39,3 +39,18 @@
 -->
 
 ## Current Breaking Changes
+
+## Release 4.0.0 - November 2017
+
+The following cmdlets were affected this release:
+
+**Set-AzureRmVMAccessExtension**
+- Parameters "UserName" and "Password" are being replaced in favor of a PSCredential
+
+```powershell
+# Old
+Set-AzureRmVMAccessExtension [other required parameters] -UserName "plain-text string" -Password "plain-text string"
+
+# New
+Set-AzureRmVMAccessExtension [other required parameters] -Credential $PSCredential
+```

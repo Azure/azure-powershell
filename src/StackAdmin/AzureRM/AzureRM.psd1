@@ -12,7 +12,7 @@
     RootModule             = "AzureRM.psm1"
 
     # Version number of this module.
-    ModuleVersion          = '1.2.11'
+    ModuleVersion          = '2.3.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -33,7 +33,7 @@
     Description            = 'Azure Resource Manager Module'
 
     # Minimum version of the Windows PowerShell engine required by this module
-    PowerShellVersion      = '3.0'
+    PowerShellVersion      = '5.0'
 
     # Name of the Windows PowerShell host required by this module
     # PowerShellHostName = ''
@@ -51,16 +51,18 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.1'; },
-        @{ModuleName = 'Azure.Storage'; RequiredVersion = '1.0.5.4'; },
-        @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '1.2.3.4'; },
-        @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '3.4.1'; },
-        @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '3.4.1'; },
-        @{ModuleName = 'AzureRM.Network'; RequiredVersion = '1.0.5.4'; },
-        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '4.4.1'; },
-        @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '1.0.5.4'; },
-        @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '3.4.1'; },
-        @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '3.4.1'; })
+    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.5.1'; },
+        @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.1.1'; },
+        @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '4.0.2'; },
+        @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '3.5.1'; },
+        @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '4.2.0'; },
+        @{ModuleName = 'AzureRM.Network'; RequiredVersion = '5.0.1'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; },
+        @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '1.1.0.1'; },
+        @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '4.0.2'; },
+        @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '4.0.3'; },
+        @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '5.0.1'; },
+        @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '5.0.0'; })
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
@@ -116,45 +118,8 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2017.10.12 - Version 1.2.11
-            * The release 1.2.11 comes with a list of breaking changes. To upgrade from the 1.2.10 version, we have created a migration guide at https://aka.ms/azSpowershellmigration
-            * Profile
-                * Context persistence has been enabled, refer to the link for the details https://docs.microsoft.com/en-us/powershell/azure/context-persistence
-                * Add-AzureRmAccount - EnvironmentName parameter has been removed and replaced with Environment
-                * Select-AzureRmContext has been renamed to Import-AzureRmContext
-                * Save-AzureRmProfile has been renamed to Save-AzureRmContext
-                * -Force Parameter has been deprecated from Remove-AzureRmEnvironment
-                * Refer to the migration guide https://aka.ms/azSpowershellmigration for the object model changes
-            * Compute
-                * Tags parameter has been changed to Tag and the type was changed from HashTable[] to HashTable for the cmdlets New-AzureRmVM and Update-AzureRmVM
-            * Dns
-                * Tags parameter has been changed to Tag and the type was changed from HashTable[] to HashTable for the cmdlets New-AzureRmDnsZone and Set-AzureRmDnsZone
-            * KeyVault
-                * Tags parameter has been changed to Tag and the type was changed from HashTable[] to HashTable for the cmdlets New-AzureRmDnsZone and Set-AzureRmDnsZone
-            * Network
-                * Tags parameter has been changed to Tag and the type was changed from HashTable[] to HashTable for the following cmdlets
-                      - New-AzureRmApplicationGateway
-                      - New-AzureRmExpressRouteCircuit
-                      - New-AzureRmLoadBalancer
-                      - New-AzureRmLocalNetworkGateway
-                      - New-AzureRmNetworkInterface
-                      - New-AzureRmNetworkSecurityGroup
-                      - New-AzureRmPublicIpAddress
-                      - New-AzureRmRouteTable
-                      - New-AzureRmVirtualNetwork
-                      - New-AzureRmVirtualNetworkGateway
-                      - New-AzureRmVirtualNetworkGatewayConnection
-                      - New-AzureRmVirtualNetworkPeering
-            * Resources
-                * -Force parmeter has been removed from the following cmdlets
-                      - Register-AzureRmProviderFeature
-                      - Register-AzureRmResourceProvider
-                      - Remove-AzureRmADServicePrincipal
-                      - Remove-AzureRmPolicyAssignment
-                      - Remove-AzureRmResourceGroupDeployment
-                      - Remove-AzureRmRoleAssignment
-                      - Stop-AzureRmResourceGroupDeployment
-                      - Unregister-AzureRmResourceProvider
+            ReleaseNotes = '## 2018.09 - Version 2.3.0
+            * The release 2.3.0 comes with a list of breaking changes. To upgrade from the 1.2.11 version, we have created a migration guide at https://aka.ms/azspowershellmigration
             * Tag
                 * -Force parmeter has been removed from the cmdlet Remove-AzureRmTag'
 

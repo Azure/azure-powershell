@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmNetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityGroup))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmNetworkSecurityRuleConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class AddAzureNetworkSecurityRuleConfigCommand : AzureNetworkSecurityRuleConfigBase
     {
         [Parameter(
@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The NetworkSecurityGroup")]
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             // Verify if the subnet exists in the NetworkSecurityGroup
             var rule = this.NetworkSecurityGroup.SecurityRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
@@ -45,7 +45,27 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException("Rule with the specified name already exists");
             }
-            
+
+            if ((this.SourceAddressPrefix != null) && (this.SourceAddressPrefix.Count > 0) && (this.SourceApplicationSecurityGroup != null) && (this.SourceApplicationSecurityGroup.Count > 0))
+            {
+                throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroup)} cannot be used simultaneously.");
+            }
+
+            if ((this.SourceAddressPrefix != null) && (this.SourceAddressPrefix.Count > 0) && (this.SourceApplicationSecurityGroupId != null) && (this.SourceApplicationSecurityGroupId.Count > 0))
+            {
+                throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroupId)} cannot be used simultaneously.");
+            }
+
+            if ((this.DestinationAddressPrefix != null) && (this.DestinationAddressPrefix.Count > 0) && (this.DestinationApplicationSecurityGroup != null) && (this.DestinationApplicationSecurityGroup.Count > 0))
+            {
+                throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroup)} cannot be used simultaneously.");
+            }
+
+            if ((this.DestinationAddressPrefix != null) && (this.DestinationAddressPrefix.Count > 0) && (this.DestinationApplicationSecurityGroupId != null) && (this.DestinationApplicationSecurityGroupId.Count > 0))
+            {
+                throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroupId)} cannot be used simultaneously.");
+            }
+
             rule = new PSSecurityRule();
 
             rule.Name = this.Name;
@@ -58,6 +78,9 @@ namespace Microsoft.Azure.Commands.Network
             rule.Access = this.Access;
             rule.Priority = this.Priority;
             rule.Direction = this.Direction;
+
+            SetSourceApplicationSecurityGroupInRule(rule);
+            SetDestinationApplicationSecurityGroupInRule(rule);
 
             this.NetworkSecurityGroup.SecurityRules.Add(rule);
 

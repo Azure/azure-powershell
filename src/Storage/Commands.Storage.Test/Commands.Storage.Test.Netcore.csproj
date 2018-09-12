@@ -24,8 +24,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" />
-    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.1" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
+    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.8.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
   </ItemGroup>

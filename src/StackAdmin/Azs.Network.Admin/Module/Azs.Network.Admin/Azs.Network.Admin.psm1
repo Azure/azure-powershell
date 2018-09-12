@@ -5,7 +5,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 Microsoft.PowerShell.Core\Set-StrictMode -Version Latest
 
-Write-Warning "Preview version of the module Azs.Netowrk.Admin loaded. Future release of this module may have breaking changes."
+Write-Warning "Preview version of the module Azs.Network.Admin loaded. Future release of this module may have breaking changes."
 
 # We always import embedded version.
 Import-Module (Join-Path -Path $PSScriptRoot -ChildPath PSSwaggerUtility) -Force
@@ -29,5 +29,6 @@ if (Test-Path -Path $ClrPath -PathType Container) {
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Get-ApplicableFilters.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Test-FilteredResult.ps1')
 . (Join-Path -Path $PSScriptRoot -ChildPath 'Get-ArmResourceIdParameterValue.ps1')
+. (Join-Path -Path $PSScriptRoot -ChildPath 'Get-ResourceNameSuffix.ps1')
 $allPs1FilesPath = Join-Path -Path $PSScriptRoot -ChildPath 'Generated.PowerShell.Commands' | Join-Path -ChildPath '*.ps1'
 Get-ChildItem -Path $allPs1FilesPath -Recurse -File | ForEach-Object { . $_.FullName}
