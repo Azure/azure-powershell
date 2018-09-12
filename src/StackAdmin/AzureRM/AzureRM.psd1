@@ -122,7 +122,7 @@
             * The release 2.3.0 comes with a list of breaking changes. To upgrade from the 1.2.11 version, we have created a migration guide at https://aka.ms/azspowershellmigration
             * This release corresponds to the azurestack specific api profile 2018-03-01-hybrid
             * All the modules are taking greater than or equal to dependency on the AzureRm.Profile module.
-            * Api veesion suppoerted by  each of the modules are updated. 
+            * Api version suppoerted by  each of the modules are updated. 
                 * Compute - 2017-03-30
                 * Network - 2017-10-01
                 * Storage - 2016-01-01
