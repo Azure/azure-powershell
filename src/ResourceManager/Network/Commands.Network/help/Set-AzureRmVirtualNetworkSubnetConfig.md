@@ -15,7 +15,8 @@ Configures the goal state for a subnet configuration in a virtual network.
 
 ### SetByResource (Default)
 ```
-Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
+Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork>
+ -AddressPrefix <System.Collections.Generic.List`1[System.String]>
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
  [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -23,9 +24,9 @@ Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualN
 
 ### SetByResourceId
 ```
-Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
- [-NetworkSecurityGroupId <String>] [-RouteTableId <String>]
- [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
+Set-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork>
+ -AddressPrefix <System.Collections.Generic.List`1[System.String]> [-NetworkSecurityGroupId <String>]
+ [-RouteTableId <String>] [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -87,7 +88,7 @@ This example creates a resource group with one virtual network containing just o
 Specifies a range of IP addresses for a subnet configuration.
 
 ```yaml
-Type: System.String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
