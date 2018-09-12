@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string AddressPrefix { get; set; }
+        public List<string> AddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
         public List<PSIPConfiguration> IpConfigurations { get; set; }
