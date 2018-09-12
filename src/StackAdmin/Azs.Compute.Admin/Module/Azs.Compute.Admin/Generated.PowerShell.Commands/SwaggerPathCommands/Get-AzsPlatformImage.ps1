@@ -44,21 +44,26 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     Get a specific platform image.
 
 #>
+using module '..\CustomObjects\PlatformImageObject.psm1'
+
 function Get-AzsPlatformImage {
-    [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.PlatformImage])]
+    [OutputType([PlatformImageObject])]
     [CmdletBinding(DefaultParameterSetName = 'List')]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Publisher,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Offer,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Sku,
@@ -93,8 +98,6 @@ function Get-AzsPlatformImage {
 
     Process {
 
-
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
         }
@@ -109,7 +112,6 @@ function Get-AzsPlatformImage {
 
         $ComputeAdminClient = New-ServiceClient @NewServiceClient_params
 
-
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{locationName}/artifactTypes/platformImage/publishers/{publisher}/offers/{offer}/skus/{sku}/versions/{version}'
@@ -123,39 +125,10 @@ function Get-AzsPlatformImage {
             $offer = $ArmResourceIdParameterValues['offer']
             $sku = $ArmResourceIdParameterValues['sku']
             $version = $ArmResourceIdParameterValues['version']
-        } elseif ( -not $PSBoundParameters.ContainsKey('Location')) {
+        } elseif ( [System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
         }
 
-        $filterInfos = @(
-            @{
-                'Type'     = 'powershellWildcard'
-                'Value'    = $Version
-                'Property' = 'Name'
-            })
-        $applicableFilters = Get-ApplicableFilters -Filters $filterInfos
-        if ($applicableFilters | Where-Object { $_.Strict }) {
-            Write-Verbose -Message 'Performing server-side call ''Get-AzsPlatformImage -'''
-            $serverSideCall_params = @{
-
-            }
-
-            $serverSideResults = Get-AzsPlatformImage @serverSideCall_params
-            foreach ($serverSideResult in $serverSideResults) {
-                $valid = $true
-                foreach ($applicableFilter in $applicableFilters) {
-                    if (-not (Test-FilteredResult -Result $serverSideResult -Filter $applicableFilter.Filter)) {
-                        $valid = $false
-                        break
-                    }
-                }
-
-                if ($valid) {
-                    $serverSideResult
-                }
-            }
-            return
-        }
         if ('List' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $ComputeAdminClient.'
             $TaskResult = $ComputeAdminClient.PlatformImages.ListWithHttpMessagesAsync($Location)
@@ -172,8 +145,30 @@ function Get-AzsPlatformImage {
                 TaskResult = $TaskResult
             }
 
-            Get-TaskResult @GetTaskResult_params
+            [PlatformImageObject[]]$script:results = @()
+            Get-TaskResult @GetTaskResult_params | ForEach-Object {
+                [PlatformImageObject]$result = ConvertTo-PlatformImageObject -PlatformImage $_
 
+                # Filter
+                [bool]$add = $true
+                if ($add -and (-not [System.String]::IsNullOrEmpty($Publisher))) {
+                    $add = $result.Publisher -like "*$Publisher*"
+                }
+
+                if ($add -and (-not [System.String]::IsNullOrEmpty($Sku))) {
+                    $add = $result.Sku -like "*$Sku*"
+                }
+
+                if ($add -and (-not [System.String]::IsNullOrEmpty($Offer))) {
+                    $add = $result.Offer -like "*$Offer*"
+                }
+
+                if ($add) {
+                    $script:results += $result
+                }
+            }
+
+            Write-Output -InputObject $script:results
         }
     }
 

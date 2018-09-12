@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 9DDB3672-4C98-4449-9F29-DD9501ED4D3E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmdiskencryptionextension
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Removes the disk encryption extension from a virtual machine.
 
 ```
 Remove-AzureRmVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
- [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +40,21 @@ PS C:\> Remove-AzureRmVMDiskEncryptionExtension -ResourceGroupName "MyResourceGr
 This command removes the encryption extension named MyDiskEncryptionExtension from the virtual machine named MyTestVM.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.
@@ -140,10 +155,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 
