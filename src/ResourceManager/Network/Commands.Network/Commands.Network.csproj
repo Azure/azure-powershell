@@ -172,6 +172,8 @@
     <Compile Include="ApplicationGateway\UrlPathMap\NewAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="AzureFirewallFqdnTag\AzureFirewallFqdnTagHelper.cs" />
+    <Compile Include="AzureFirewallFqdnTag\GetAzureFirewallFqdnTagCmdlet.cs" />
     <Compile Include="AzureFirewall\ApplicationRuleCollection\NewAzureFirewallApplicationRuleCollectionCommand.cs" />
     <Compile Include="AzureFirewall\ApplicationRule\NewAzureFirewallApplicationRuleCommand.cs" />
     <Compile Include="AzureFirewall\AzureFirewallBaseCmdlet.cs" />
@@ -293,6 +295,7 @@
     <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
+    <Compile Include="Models\AzureFirewallFqdnTag\PSAzureFirewallFqdnTag.cs" />
     <Compile Include="Models\AzureFirewall\PSAzureFirewall.cs" />
     <Compile Include="Models\AzureFirewall\PSAzureFirewallApplicationRuleProtocol.cs" />
     <Compile Include="Models\AzureFirewall\PSAzureFirewallApplicationRule.cs" />
