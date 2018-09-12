@@ -251,14 +251,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             this.cmdlet.ExecuteCmdlet();
             this.VerifyListCallPatternAndReset();
 
-            // adding alias match of 11 should add the fourth one
+            // adding alias match of 11 should eliminate any matches
             this.cmdlet.AliasMatch = "11";
             listResult = providers.List;
             this.SetupAliasListResult(listResult);
 
             this.commandRuntimeMock
                 .Setup(m => m.WriteObject(It.IsAny<object>(), It.IsAny<bool>()))
-                .Callback((object obj, bool listAll) => { this.AssertResult(obj, listResult, 4); });
+                .Callback((object obj, bool listAll) => { this.AssertResult(obj, listResult, 0); });
 
             this.cmdlet.ExecuteCmdlet();
             this.VerifyListCallPatternAndReset();
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             int count = 0;
             foreach (var expectedProvider in expectedProviders.Where(p => string.IsNullOrEmpty(namespaceMatch) || isMatch(p.NamespaceProperty, namespaceMatch)))
             {
-                foreach (var expectedResourceType in expectedProvider.ResourceTypes)
+                foreach (var expectedResourceType in expectedProvider.ResourceTypes.Where(r => string.IsNullOrEmpty(resourceTypeMatch) || isMatch(r.ResourceType, resourceTypeMatch)))
                 {
                     if (listAvailable)
                     {
@@ -550,11 +550,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     }
                     else if (expectedResourceType.Aliases.Any())
                     {
-                        if (!string.IsNullOrEmpty(resourceTypeMatch) && isMatch(expectedResourceType.ResourceType, resourceTypeMatch))
-                        {
-                            count++;
-                        }
-                        else if (!string.IsNullOrEmpty(locationMatch) && expectedResourceType.Locations.Any(l => isMatch(l, locationMatch)))
+                        if (!string.IsNullOrEmpty(locationMatch) && expectedResourceType.Locations.Any(l => isMatch(l, locationMatch)))
                         {
                             count++;
                         }
@@ -574,7 +570,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                         {
                             count++;
                         }
-                        else if (string.IsNullOrEmpty(resourceTypeMatch) && string.IsNullOrEmpty(locationMatch) && string.IsNullOrEmpty(aliasMatch) && string.IsNullOrEmpty(pathMatch) && string.IsNullOrEmpty(apiVersionMatch))
+                        else if (string.IsNullOrEmpty(locationMatch) && string.IsNullOrEmpty(aliasMatch) && string.IsNullOrEmpty(pathMatch) && string.IsNullOrEmpty(apiVersionMatch))
                         {
                             count++;
                         }

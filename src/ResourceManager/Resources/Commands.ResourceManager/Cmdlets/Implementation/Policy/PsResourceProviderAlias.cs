@@ -16,31 +16,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Collections.Generic;
     using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
     public class PsResourceProviderAlias
     {
         /// <summary>
         /// Gets or sets the namespace of this resource type
         /// </summary>
+        [Ps1Xml(Target = ViewControl.All, Position = 0)]
         public string Namespace { get; set; }
 
         /// <summary>
         /// Gets or sets the resource type (name) of this resource type
         /// </summary>
+        [Ps1Xml(Target = ViewControl.All, Position = 1)]
         public string ResourceType { get; set; }
 
         /// <summary>
         /// Gets or sets the collection of locations where this resource type
         /// can be created.
         /// </summary>
+        [Ps1Xml(Target = ViewControl.List, Position = 4)]
         public IList<string> Locations { get; set; }
 
         /// <summary>
         /// Gets or sets the aliases that are supported by this resource type.
         /// </summary>
+        [Ps1Xml(Target = ViewControl.All, Position = 2)]
         public IList<AliasType> Aliases { get; set; }
 
         /// <summary>Gets or sets the API version collection.</summary>
+        [Ps1Xml(Target = ViewControl.List, Position = 3)]
         public IList<string> ApiVersions { get; set; }
     }
 }
