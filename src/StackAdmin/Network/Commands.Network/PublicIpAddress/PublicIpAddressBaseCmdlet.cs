@@ -13,14 +13,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-
-using Hyak.Common;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -66,8 +64,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSPublicIpAddress ToPsPublicIpAddress(PublicIPAddress publicIp)
         {
-            var psPublicIpAddress = Mapper.Map<PSPublicIpAddress>(publicIp);
-            
+            var psPublicIpAddress = NetworkResourceManagerProfile.Mapper.Map<PSPublicIpAddress>(publicIp);
+
             psPublicIpAddress.Tag = TagsConversionHelper.CreateTagHashtable(publicIp.Tags);
 
             if (string.IsNullOrEmpty(psPublicIpAddress.IpAddress))

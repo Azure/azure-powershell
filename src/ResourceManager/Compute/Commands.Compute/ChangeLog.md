@@ -20,6 +20,7 @@
 -->
 ## Current Release
 * Move dependencies on Keyvault and Storage to the common dependencies.
+* Add support for more virutal machine sizes to AEM cmdlets
 
 
 ## Version 5.5.2

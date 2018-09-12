@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    using System;
     using System.Linq;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSPeering))]
+    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuitPeeringConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSPeering))]
     public class NewAzureExpressRouteCircuitPeeringConfigCommand : AzureExpressRouteCircuitPeeringConfigBase
     {
         [Parameter(
@@ -28,16 +29,22 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
 
-            var peering = new PSPeering();
+            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            {
+                if (this.RouteFilter != null)
+                {
+                    this.RouteFilterId = this.RouteFilter.Id;
+                }
+            }
+
+           var peering = new PSPeering();
 
             peering.Name = this.Name;
             peering.PeeringType = this.PeeringType;
-            peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
-            peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
             peering.PeerASN = this.PeerASN;
             peering.VlanId = this.VlanId;
 
@@ -46,14 +53,30 @@ namespace Microsoft.Azure.Commands.Network
                 peering.SharedKey = this.SharedKey;
             }
 
-            if (this.MicrosoftConfigAdvertisedPublicPrefixes != null
-                && this.MicrosoftConfigAdvertisedPublicPrefixes.Any())
+            if (this.PeerAddressType == IPv6)
             {
-                peering.MicrosoftPeeringConfig = new PSPeeringConfig();
-                peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes;
-                peering.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
-                peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
+                peering.Ipv6PeeringConfig = new PSIpv6PeeringConfig();
+                peering.Ipv6PeeringConfig.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
+                peering.Ipv6PeeringConfig.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
+                if (!string.IsNullOrEmpty(this.RouteFilterId))
+                {
+                    peering.Ipv6PeeringConfig.RouteFilter = new PSRouteFilter();
+                    peering.Ipv6PeeringConfig.RouteFilter.Id = this.RouteFilterId;
+                }
             }
+            else
+            {
+                // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
+                peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
+                peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
+                if (!string.IsNullOrEmpty(this.RouteFilterId))
+                {
+                    peering.RouteFilter = new PSRouteFilter();
+                    peering.RouteFilter.Id = this.RouteFilterId;
+                }
+            }
+
+            this.ConstructMicrosoftConfig(peering);
 
             WriteObject(peering);
         }
