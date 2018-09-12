@@ -45,13 +45,20 @@ A connection can be set up from a branch/Site known as VPNSite to the scalable g
 
 ### Example 1
 
-```
-
+```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
 PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
 PS C:\> $vpnGateway = New-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -BGPPeeringWeight 10 -VpnGatewayScaleUnit 2
 PS C:\> Set-AzureRmVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VpnGatewayScaleUnit 3
+```
+
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in West US in "testRG" resource group in Azure. 
+A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
+
+After the gateway has been created, it uses Set-AzureRmVpnGateway to upgrade the gateway to 3 scale units.
+
+The above snippet produces the following output:
 
 ResourceGroupName   : testRG
 Name                : testvpngw
@@ -62,13 +69,6 @@ VirtualHub          : /subscriptions/{subscriptionId}/resourceGroups/Ali_pS_Test
 BgpSettings         : {}
 Type                : Microsoft.Network/vpnGateways
 ProvisioningState   : Succeeded
-
-```
-
-The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in West US in "testRG" resource group in Azure. 
-A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
-
-After the gateway has been created, it uses Set-AzureRmVpnGateway to upgrade the gateway to 3 scale units.
 
 
 ## PARAMETERS

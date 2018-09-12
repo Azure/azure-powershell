@@ -51,6 +51,19 @@ PS C:\> Update-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "tes
 
 The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have the address space "10.0.1.0/24".
 
+The above snippet produces the following output:
+
+VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+ResourceGroupName         : testRG
+Name                      : westushub
+Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+AddressPrefix             : 10.0.2.0/24
+RouteTable                : 
+VirtualNetworkConnections : {}
+Location                  : West US
+Type                      : Microsoft.Network/virtualHubs
+ProvisioningState         : Succeeded
+
 
 ### Example 2
 ```powershell
@@ -65,6 +78,20 @@ PS C:\> Update-AzureRmVirtualHub -ResourceGroupName "testRG" -Name "westushub" -
 
 The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have the address space "10.0.1.0/24".
 This example is similar to Example 1, but also attaches a route table to the virtual hub.
+
+The above snippet produces the following output:
+
+VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+ResourceGroupName         : testRG
+Name                      : westushub
+Id                        : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub
+AddressPrefix             : 192.168.2.0/24
+RouteTable                : Microsoft.Azure.Commands.Network.Models.PSVirtualHubRouteTable
+VirtualNetworkConnections : {}
+Location                  : West US
+Type                      : Microsoft.Network/virtualHubs
+ProvisioningState         : Succeeded
+
 
 ## PARAMETERS
 

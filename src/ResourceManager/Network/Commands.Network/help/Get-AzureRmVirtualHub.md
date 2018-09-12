@@ -27,17 +27,24 @@ Get-AzureRmVirtualHub [-ResourceGroupName <String>] [-Name <String>] [-DefaultPr
 ## DESCRIPTION
 Gets an Azure VirtualHub by Name and ResourceGroupName or lists all Virtual Hubs by ResourceGroupName/Subscription.
 
+
 ## EXAMPLES
 
 ### Example 1
 
-```
+```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
 PS C:\> New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
 PS C:\> Get-AzureRmVirtualHub -ResourceGroupName "testRG" -Name "westushub"
+```
 
-Output:
+The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have the address space "10.0.1.0/24".
+
+It then gets the virtual hub using its ResourceGroupName and ResourceName.
+
+The above snippet produces the following output:
+
 VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
 Name                      : westushub
@@ -49,11 +56,6 @@ Location                  : West US
 Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 
-```
-
-The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have the address space "10.0.1.0/24".
-
-It then gets the virtual hub using its ResourceGroupName and ResourceName.
 
 ## PARAMETERS
 

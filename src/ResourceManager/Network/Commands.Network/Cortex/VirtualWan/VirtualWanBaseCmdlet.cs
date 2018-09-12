@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Commands.Network
 
     public class VirtualWanBaseCmdlet : NetworkBaseCmdlet
     {
-        public IVirtualWANsOperations VirtualWanClient
+        public IVirtualWansOperations VirtualWanClient
         {
             get
             {
-                return NetworkClient.NetworkManagementClient.VirtualWANs;
+                return NetworkClient.NetworkManagementClient.VirtualWans;
             }
         }
 

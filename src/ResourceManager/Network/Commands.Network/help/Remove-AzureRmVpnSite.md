@@ -36,16 +36,14 @@ Removes an Azure VpnSite resource.
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
-
 PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
 PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
 PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
-
 PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
-
 PS C:\> Remove-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite"
 ```
 
@@ -56,16 +54,14 @@ Then it creates a VpnSite to represent a customer branch and links it to the Vir
 Once the site is created, it is immediately removed using the Remove-AzureRmVpnSite command.
 
 ### Example 2
+
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
-
 PS C:\> $vpnSiteAddressSpaces = New-Object string[] 2
 PS C:\> $vpnSiteAddressSpaces[0] = "192.168.2.0/24"
 PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
-
 PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
-
 PS C:\> Get-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" | Remove-AzureRmVpnSite
 ```
 

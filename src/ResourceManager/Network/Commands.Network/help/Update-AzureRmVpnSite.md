@@ -67,6 +67,20 @@ Then it creates a VpnSite to represent a customer branch and links it to the Vir
 
 Once the site is created, it updates the IpAddress of the site using the Set-AzureRmVpnSite command.
 
+The above snippet produces the following output:
+
+ResourceGroupName : testRG
+Name              : testVpnSite
+Id                : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnSites/testVpnSite
+Location          : eastus2euap
+IpAddress         : 2.3.4.5
+VirtualWan        : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+AddressSpace      : {192.168.2.0/24, 192.168.3.0/24}
+BgpSettings       :
+Type              : Microsoft.Network/vpnSites
+ProvisioningState : Succeeded
+
+
 ## PARAMETERS
 
 ### -AddressSpace

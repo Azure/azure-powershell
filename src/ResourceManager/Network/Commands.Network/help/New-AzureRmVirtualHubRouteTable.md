@@ -36,6 +36,8 @@ PS C:\> New-AzureRmVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "t
 
 The above will create a route table composed of multiple routes and attached to a new virtual hub.
 
+This is an in-memory object that can be used to add a Route table to a new or an existing VirtualHub.
+
 ## PARAMETERS
 
 ### -DefaultProfile

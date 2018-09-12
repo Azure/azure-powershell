@@ -60,7 +60,9 @@ Once the gateway has been created, it is connected to the VpnSite using the New-
 
 Then it removes the connection using the connection name.
 
+
 ### Example 2
+
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
 PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
@@ -79,6 +81,7 @@ PS C:\> Get-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupNam
 ```
 
 Same as example 1, but it now removes the connection using the piped object from Get-AzureRmVpnConnection.
+
 
 ## PARAMETERS
 

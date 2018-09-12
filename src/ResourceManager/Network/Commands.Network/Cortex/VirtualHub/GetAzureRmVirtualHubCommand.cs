@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (ParameterSetName.Equals("ListByResourceGroup", System.StringComparison.OrdinalIgnoreCase) && !string.IsNullOrWhiteSpace(this.Name))
+            if (ParameterSetName.Equals("ListByResourceGroupName", System.StringComparison.OrdinalIgnoreCase) && !string.IsNullOrWhiteSpace(this.Name))
             {
                 WriteObject(this.GetVirtualHub(this.ResourceGroupName, this.Name));
             }

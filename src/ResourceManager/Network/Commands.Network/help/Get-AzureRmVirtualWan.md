@@ -27,17 +27,20 @@ Get-AzureRmVirtualWan [-ResourceGroupName <String>] [-Name <String>] [-DefaultPr
 ## DESCRIPTION
 Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 
+
 ## EXAMPLES
 
 ### Example 1
 
-```
-
+```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
 PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true
 PS C:\> Get-AzureRmVirtualWan -Name "myVirtualWAN" -ResourceGroupName "testRG"
+```
 
-Output:
+This command gets the Virtual WAN named myVirtualWAN in the resource group testRG.
+
+The above snippet produces the following output:
 
 Name                       : testRG
 Id                         : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
@@ -47,9 +50,6 @@ Location                   : West US
 Type                       : Microsoft.Network/virtualWans
 ProvisioningState          : Succeeded
 
-```
-
-This command gets the Virtual WAN named myVirtualWAN in the resource group testRG.
 
 ## PARAMETERS
 
