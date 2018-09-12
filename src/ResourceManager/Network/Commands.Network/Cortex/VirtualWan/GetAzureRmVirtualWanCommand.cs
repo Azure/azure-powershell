@@ -22,14 +22,10 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet(VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualWan",
-        DefaultParameterSetName = "ListByResourceGroupName"),
+        DefaultParameterSetName = "ListBySubscriptionId"),
         OutputType(typeof(PSVirtualWan))]
     public class GetAzureRmVirtualWanCommand : VirtualWanBaseCmdlet
     {
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = "ListBySubscriptionId",
-            HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = "ListByResourceGroupName",
@@ -41,6 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "ListByResourceGroupName",
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

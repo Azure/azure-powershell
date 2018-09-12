@@ -59,13 +59,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The resource group name.")]
         public string ParentResourceName { get; set; }
 
-        [Alias("ResourceName", "HubVirtualNetworkConnectionName")]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         [Alias("VirtualHub", "ParentVirtualHub")]
         [Parameter(
             Mandatory = true,
@@ -82,16 +75,23 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("VirtualHubId", "ParentVirtualHubId")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId + CortexParameterSetNames.ByRemoteVirtualNetworkObject,
             HelpMessage = "The parent resource.")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId + CortexParameterSetNames.ByRemoteVirtualNetworkResourceId,
             HelpMessage = "The parent resource.")]
         [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
         public string ParentResourceId { get; set; }
+
+        [Alias("ResourceName", "HubVirtualNetworkConnectionName")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name,
                 () =>
                 {
-                    WriteWarning(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
+                    WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
                     this.CreateOrUpdateVirtualHub(this.ResourceGroupName, this.ParentResourceName, parentVirtualHub, parentVirtualHub.Tag);
                     var createdVirtualHub = this.GetVirtualHub(this.ResourceGroupName, this.ParentResourceName);
 

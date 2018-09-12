@@ -30,7 +30,7 @@ New-AzureRmVpnConnection -ResourceGroupName <String> -ParentResourceName <String
 
 ### ByVpnGatewayObjectByVpnSiteObject
 ```
-New-AzureRmVpnConnection -Name <String> -ParentObject <PSVpnGateway> -VpnSite <PSVpnSite>
+New-AzureRmVpnConnection -ParentObject <PSVpnGateway> -Name <String> -VpnSite <PSVpnSite>
  [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -38,7 +38,7 @@ New-AzureRmVpnConnection -Name <String> -ParentObject <PSVpnGateway> -VpnSite <P
 
 ### ByVpnGatewayObjectByVpnSiteResourceId
 ```
-New-AzureRmVpnConnection -Name <String> -ParentObject <PSVpnGateway> -VpnSiteId <String>
+New-AzureRmVpnConnection -ParentObject <PSVpnGateway> -Name <String> -VpnSiteId <String>
  [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -46,7 +46,7 @@ New-AzureRmVpnConnection -Name <String> -ParentObject <PSVpnGateway> -VpnSiteId 
 
 ### ByVpnGatewayResourceIdByVpnSiteObject
 ```
-New-AzureRmVpnConnection -Name <String> -ParentResourceId <String> -VpnSite <PSVpnSite>
+New-AzureRmVpnConnection -ParentResourceId <String> -Name <String> -VpnSite <PSVpnSite>
  [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -54,7 +54,7 @@ New-AzureRmVpnConnection -Name <String> -ParentResourceId <String> -VpnSite <PSV
 
 ### ByVpnGatewayResourceIdByVpnSiteResourceId
 ```
-New-AzureRmVpnConnection -Name <String> -ParentResourceId <String> -VpnSiteId <String>
+New-AzureRmVpnConnection -ParentResourceId <String> -Name <String> -VpnSiteId <String>
  [-SharedKey <SecureString>] [-ConnectionBandwidthInMbps <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -80,7 +80,6 @@ PS C:\> $vpnSite = New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpn
 
 PS C:\> New-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testConnection" -VpnSite $vpnSite -ConnectionBandwidth 20
 
-Output:
 RemoteVpnSite             : Microsoft.Azure.Commands.Network.Models.PSResourceId
 SharedKey                 :
 VpnConnectionProtocolType : IKEv2

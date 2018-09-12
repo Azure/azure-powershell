@@ -51,13 +51,6 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         [ValidateNotNullOrEmpty]
         public string ParentResourceName { get; set; }
 
-        [Alias("ResourceName", "VpnConnectionName")]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         [Alias("ParentVpnGateway", "VpnGateway")]
         [Parameter(
             Mandatory = true,
@@ -77,6 +70,12 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         [ResourceIdCompleter("Microsoft.Network/vpnGateways")]
         public string ParentResourceId { get; set; }
 
+        [Alias("ResourceName", "VpnConnectionName")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
         public override void Execute()
         {

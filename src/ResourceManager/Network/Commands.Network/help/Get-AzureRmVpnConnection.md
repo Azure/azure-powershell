@@ -20,13 +20,13 @@ Get-AzureRmVpnConnection -ResourceGroupName <String> -ParentResourceName <String
 
 ### ByVpnGatewayObject
 ```
-Get-AzureRmVpnConnection [-Name <String>] -ParentObject <PSVpnGateway>
+Get-AzureRmVpnConnection -ParentObject <PSVpnGateway> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVpnGatewayResourceId
 ```
-Get-AzureRmVpnConnection [-Name <String>] -ParentResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmVpnConnection -ParentResourceId <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -53,7 +53,6 @@ PS C:\> $vpnSite = New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpn
 PS C:\> New-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testConnection" -VpnSite $vpnSite
 PS C:\> Get-AzureRmVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testConnection"
 
-Output:
 RemoteVpnSite             : Microsoft.Azure.Commands.Network.Models.PSResourceId
 SharedKey                 :
 VpnConnectionProtocolType : IKEv2

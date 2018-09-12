@@ -14,15 +14,14 @@ This is an RM representation of customer branches that are uploaded to Azure for
 
 ## SYNTAX
 
-### ListByResourceGroupName (Default)
+### ListBySubscriptionId (Default)
 ```
-Get-AzureRmVpnSite -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmVpnSite [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ListBySubscriptionId
+### ListByResourceGroupName
 ```
-Get-AzureRmVpnSite [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmVpnSite -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -42,7 +41,6 @@ PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
 PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
 PS C:\> Get-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite"
 
-Output:
 ResourceGroupName : testRG
 Name              : testVpnSite
 Id                : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnSites/testVpnSite
@@ -83,7 +81,7 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListByResourceGroupName
 Aliases: ResourceName, VpnSiteName
 
 Required: False
@@ -102,18 +100,6 @@ Parameter Sets: ListByResourceGroupName
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ListBySubscriptionId
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

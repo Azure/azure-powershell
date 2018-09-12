@@ -44,13 +44,6 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         public string ParentResourceName { get; set; }
 
-        [Alias("ResourceName", "HubVirtualNetworkConnectionName")]
-        [Parameter(
-           Mandatory = false,
-           HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         [Alias("VirtualHub", "ParentVirtualHub")]
         [Parameter(
             Mandatory = true,
@@ -67,6 +60,13 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The parent resource id.")]
         [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
         public string ParentResourceId { get; set; }
+
+        [Alias("ResourceName", "HubVirtualNetworkConnectionName")]
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
         public override void Execute()
         {

@@ -58,7 +58,6 @@ PS C:\> $vpnSiteAddressSpaces[1] = "192.168.3.0/24"
 
 PS C:\> New-AzureRmVpnSite -ResourceGroupName "testRG" -Name "testVpnSite" -Location "West US" -VirtualWan $virtualWan -IpAddress "1.2.3.4" -AddressSpace $vpnSiteAddressSpaces -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -LinkSpeedInMbps "10"
 
-Output:
 ResourceGroupName : testRG
 Name              : testVpnSite
 Id                : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/vpnSites/testVpnSite
@@ -81,7 +80,6 @@ An IPSec connection can then be setup with this branch and a VpnGateway using th
 
 ### -AddressSpace
 The address prefixes of the virtual network.
-Use this or AddressSpaceObject but not both.
 
 ```yaml
 Type: System.String[]
@@ -201,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -IpAddress
-The resource name.
+The IPAddress for this VpnSite.
 
 ```yaml
 Type: System.String

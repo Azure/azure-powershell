@@ -28,28 +28,28 @@ New-AzureRmVirtualHubVnetConnection -ResourceGroupName <String> -ParentResourceN
 
 ### ByVirtualHubObjectByRemoteVirtualNetworkObject
 ```
-New-AzureRmVirtualHubVnetConnection -Name <String> -ParentObject <PSVirtualHub>
+New-AzureRmVirtualHubVnetConnection -ParentObject <PSVirtualHub> -Name <String>
  -RemoteVirtualNetwork <PSVirtualNetwork> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObjectByRemoteVirtualNetworkResourceId
 ```
-New-AzureRmVirtualHubVnetConnection -Name <String> -ParentObject <PSVirtualHub>
+New-AzureRmVirtualHubVnetConnection -ParentObject <PSVirtualHub> -Name <String>
  -RemoteVirtualNetworkId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceIdByRemoteVirtualNetworkObject
 ```
-New-AzureRmVirtualHubVnetConnection -Name <String> -ParentResourceId <String>
+New-AzureRmVirtualHubVnetConnection -ParentResourceId <String> -Name <String>
  -RemoteVirtualNetwork <PSVirtualNetwork> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceIdByRemoteVirtualNetworkResourceId
 ```
-New-AzureRmVirtualHubVnetConnection -Name <String> -ParentResourceId <String> -RemoteVirtualNetworkId <String>
+New-AzureRmVirtualHubVnetConnection -ParentResourceId <String> -Name <String> -RemoteVirtualNetworkId <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -69,7 +69,6 @@ PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "m
 PS C:\> New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
 PS C:\> New-AzureRmVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "westushub" -Name "testvnetconnection" -RemoteVirtualNetwork $remoteVirtualNetwork
 
-Output:
 Name                 : testvnetconnection
 Id                   : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/hubVirtualNetworkConnections/testvnetconnection
 RemoteVirtualNetwork : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork
@@ -77,8 +76,6 @@ ProvisioningState    : Succeeded
 ```
 
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in Central US in that resource group in Azure. A Virtual Network Connection will be created thereafter which will peer the Virtual Network to the Virtual Hub.
-
-The above snippet produces the following output:
 
 ## PARAMETERS
 
@@ -153,7 +150,7 @@ Aliases: VirtualHubId, ParentVirtualHubId
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
