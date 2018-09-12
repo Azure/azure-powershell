@@ -22,7 +22,7 @@
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
-* Added new HostedWorkloads and LinkedResrouceType properties for PSNetworkInterface
+* Added new HostedWorkloads property for PSNetworkInterface
 
 ## Version 6.6.1
 * Changed default cmdlet output presentation to table view
