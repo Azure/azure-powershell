@@ -1,34 +1,34 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
 Module Name: AzureRM.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/set-azurermeventhubconsumergroup
+online version:
 schema: 2.0.0
 ---
 
-# Set-AzureRmEventHubConsumerGroup
+# New-AzureRmEventHubVNetRule
 
 ## SYNOPSIS
-Updates the specified Event Hubs consumer group.
+Creates as new VNet(Virtual Network) Rule for given namespace
 
 ## SYNTAX
 
 ```
-Set-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-Namespace] <String> [-EventHub] <String>
- [-Name] <String> [[-UserMetadata] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzureRmEventHubVNetRule [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ -VirtualNetworkSubnetId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Set-AzureRmEventHubConsumerGroup cmdlet updates the specified Event Hubs consumer group.
+The **New-AzureRmEventHubVNetRule** cmdlet Creates a new VNet Rule for given namespace.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Set-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -ConsumerGroupName MyConsumerGroupName -UserMetadata "Testing"
+```powershell
+PS C:\> New-AzureRmEventHubIPFilterRule -ResourceGroup resourcegroup -Namespace namespacename -Name vnetrulename -VirtualNetworkSubnetId VnetsubNetId
 ```
 
-Sets the user metadata of the consumer group \`MyConsumerGroupName\` to "Testing."
+Creates a new VNet Rule for the given namespace
 
 ## PARAMETERS
 
@@ -36,7 +36,7 @@ Sets the user metadata of the consumer group \`MyConsumerGroupName\` to "Testing
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -47,28 +47,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventHub
-EventHub Name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: EventHubName
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
-ConsumerGroup Name
+Virtual Network Rule Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases: ConsumerGroupName
+Aliases:
 
 Required: True
 Position: 3
@@ -81,7 +66,7 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: NamespaceName
 
@@ -96,7 +81,7 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,16 +92,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -UserMetadata
-User Metadata for ConsumerGroup
+### -VirtualNetworkSubnetId
+ARM ID of Virtual Network Subnet
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: 4
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -126,7 +111,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -142,7 +127,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -154,15 +139,18 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSVirtualNetWorkRuleAttributes
+
 
 ## NOTES
 

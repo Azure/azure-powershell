@@ -75,8 +75,7 @@ FunctionsToExport = @()
 CmdletsToExport = 'New-AzureRmEventHubNamespace', 'Get-AzureRmEventHubNamespace', 
                'Set-AzureRmEventHubNamespace', 'Remove-AzureRmEventHubNamespace',
 			   'New-AzureRmEventHubIPFilterRule', 'Set-AzureRmEventHubIPFilterRule', 'Get-AzureRmEventHubIPFilterRule', 'Remove-AzureRmEventHubIPFilterRule',
-			   'New-AzureRmEventHubVNetRule', 'Set-AzureRmEventHubVNetRule', 'Get-AzureRmEventHubVNetRule', 'Remove-AzureRmEventHubVNetRule',
-               'Test-AzureRmEventHubName'
+			   'New-AzureRmEventHubVNetRule', 'Set-AzureRmEventHubVNetRule', 'Get-AzureRmEventHubVNetRule', 'Remove-AzureRmEventHubVNetRule'
 
 # Variables to export from this module
 # VariablesToExport = @()

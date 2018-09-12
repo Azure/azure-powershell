@@ -8,78 +8,42 @@ Locale: en-US
 
 # AzureRM.EventHub Module
 ## Description
-This topic displays help for the Azure Event Hub PowerShell resource manager cmdlets.
+This topic displays help for the Azure Event Hub Preview PowerShell resource manager cmdlets.
 
 ## AzureRM.EventHub Cmdlets
-### [Get-AzureRmEventHub](Get-AzureRmEventHub.md)
-Gets the details of a single Event Hub, or gets a list of Event Hubs.
-
-### [Get-AzureRmEventHubAuthorizationRule](Get-AzureRmEventHubAuthorizationRule.md)
-Gets the details of an authorization rule, or gets a list of authorization rules.
-
-### [Get-AzureRmEventHubConsumerGroup](Get-AzureRmEventHubConsumerGroup.md)
-Gets the details of a specified Event Hubs consumer group, or gets a list of consumer groups in an Event Hub.
-
-### [Get-AzureRmEventHubGeoDRConfiguration](Get-AzureRmEventHubGeoDRConfiguration.md)
-Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
-
-### [Get-AzureRmEventHubKey](Get-AzureRmEventHubKey.md)
-Gets the primary key details of the specified Event Hubs authorization rule.
+### [Get-AzureRmEventHubIPFilterRule](Get-AzureRmEventHubIPFilterRule.md)
+Gets the details of specified IpFilter Rule for the given Event Hubs namespace
 
 ### [Get-AzureRmEventHubNamespace](Get-AzureRmEventHubNamespace.md)
 Gets the details of an Event Hubs namespace, or gets a list of all Event Hubs namespaces in the current Azure subscription.
 
-### [New-AzureRmEventHub](New-AzureRmEventHub.md)
-Creates a new Event Hub.
+### [Get-AzureRmEventHubVNetRule](Get-AzureRmEventHubVNetRule.md)
+Gets the details of specified VNet Rule for the given Event Hubs namespace
 
-### [New-AzureRmEventHubAuthorizationRule](New-AzureRmEventHubAuthorizationRule.md)
-Creates a new Event Hubs authorization rule for namespace or eventhub.
-
-### [New-AzureRmEventHubConsumerGroup](New-AzureRmEventHubConsumerGroup.md)
-Creates a new consumer group for the specified Event Hub.
-
-### [New-AzureRmEventHubGeoDRConfiguration](New-AzureRmEventHubGeoDRConfiguration.md)
-Creates an new Alias(Disaster Recovery configuration)
-
-### [New-AzureRmEventHubKey](New-AzureRmEventHubKey.md)
-Creates a new primary or secondary key for the specified Event Hubs authorization rule.
+### [New-AzureRmEventHubIPFilterRule](New-AzureRmEventHubIPFilterRule.md)
+Creates a new IpFilter rule for the given Event Hubs namespace
 
 ### [New-AzureRmEventHubNamespace](New-AzureRmEventHubNamespace.md)
 Creates an Event Hubs namespace.
 
-### [Remove-AzureRmEventHub](Remove-AzureRmEventHub.md)
-Removes the specified Event Hub.
+### [New-AzureRmEventHubVNetRule](New-AzureRmEventHubVNetRule.md)
+Creates a new VNet rule for the given Event Hubs namespace
 
-### [Remove-AzureRmEventHubAuthorizationRule](Remove-AzureRmEventHubAuthorizationRule.md)
-Removes the specified Event Hub authorization rule.
-
-### [Remove-AzureRmEventHubConsumerGroup](Remove-AzureRmEventHubConsumerGroup.md)
-Deletes the specified Event Hubs consumer group.
-
-### [Remove-AzureRmEventHubGeoDRConfiguration](Remove-AzureRmEventHubGeoDRConfiguration.md)
-Deletes an Alias(Disaster Recovery configuration)
+### [Remove-AzureRmEventHubIPFilterRule](Remove-AzureRmEventHubIPFilterRule.md)
+Removes the specified IpFilter Rule of the given Event Hubs namespace
 
 ### [Remove-AzureRmEventHubNamespace](Remove-AzureRmEventHubNamespace.md)
 Removes the specified Event Hubs namespace.
 
-### [Set-AzureRmEventHub](Set-AzureRmEventHub.md)
-Updates the specified Event Hub.
+### [Remove-AzureRmEventHubVNetRule](Remove-AzureRmEventHubVNetRule.md)
+Removes the specified VNet Rule of the given Event Hubs namespace
 
-### [Set-AzureRmEventHubAuthorizationRule](Set-AzureRmEventHubAuthorizationRule.md)
-Updates the specified authorization rule on an Event Hub.
-
-### [Set-AzureRmEventHubConsumerGroup](Set-AzureRmEventHubConsumerGroup.md)
-Updates the specified Event Hubs consumer group.
-
-### [Set-AzureRmEventHubGeoDRConfigurationBreakPair](Set-AzureRmEventHubGeoDRConfigurationBreakPair.md)
-This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
-
-### [Set-AzureRmEventHubGeoDRConfigurationFailOver](Set-AzureRmEventHubGeoDRConfigurationFailOver.md)
-Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
+### [Set-AzureRmEventHubIPFilterRule](Set-AzureRmEventHubIPFilterRule.md)
+Updates the specified IpFilter Rule of the given Event Hubs namespace.
 
 ### [Set-AzureRmEventHubNamespace](Set-AzureRmEventHubNamespace.md)
 Updates the specified Event Hubs namespace.
 
-### [Test-AzureRmEventHubName](Test-AzureRmEventHubName.md)
-Checks the Availability of the given NameSpace Name or Alias (DR Configuration Name)
+### [Set-AzureRmEventHubVNetRule](Set-AzureRmEventHubVNetRule.md)
+Updates the specified VNet Rule of the given Event Hubs namespace.
 

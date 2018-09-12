@@ -1,42 +1,58 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
 Module Name: AzureRM.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/new-azurermeventhubconsumergroup
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/new-azurermeventhubipfilterrule
 schema: 2.0.0
 ---
 
-# New-AzureRmEventHubConsumerGroup
+# New-AzureRmEventHubIPFilterRule
 
 ## SYNOPSIS
-Creates a new consumer group for the specified Event Hub.
+Creates as new IpFilter Rule for given namespace
 
 ## SYNTAX
 
 ```
-New-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-Namespace] <String> [-EventHub] <String>
- [-Name] <String> [[-UserMetadata] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+New-AzureRmEventHubIPFilterRule [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ -IpMask <String> -Action <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new consumer group for the specified Event Hub.
+The **New-AzureRmEventHubIPFilterRule** cmdlet Creates a new Ip Filter Rule for given namespace.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -ConsumerGroupName MyConsumerGroupName
+```powershell
+PS C:\> New-AzureRmEventHubIPFilterRule -ResourceGroup resourcegroup -Namespace namespacename -Name ipfilterrulename -IpMask "13.78.143.246/32" -Action "Accept"
 ```
 
-Creates the consumer group \`MyConsumerGroupName\` in the Event Hub \`MyEventHubName\`, scoped to the namespace \`MyNamespaceName\`, with resource group \`MyResourceGroupName\`.
+The New-AzureRmEventHubIPFilterRule cmdlet Creates a new Ip Filter Rule for given namespace namespacename which accepts traffic from "13.78.143.246/32".
 
 ## PARAMETERS
+
+### -Action
+Action for the IP provided in IPMask, Possible values include: 'Accept', 'Reject'
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Accept, Reject
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -47,28 +63,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventHub
-EventHub Name
+### -IpMask
+Single IPv4 address or a block of IP addresses in CIDR notation.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases: EventHubName
+Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Name
-ConsumerGroup Name
+IP Filter Rule Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases: ConsumerGroupName
+Aliases:
 
 Required: True
 Position: 3
@@ -81,7 +97,7 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: NamespaceName
 
@@ -96,7 +112,7 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,26 +123,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -UserMetadata
-User Metadata for ConsumerGroup
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -142,7 +143,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -154,15 +155,18 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSIpFilterRuleAttributes
+
 
 ## NOTES
 

@@ -1,46 +1,60 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
 Module Name: AzureRM.EventHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/remove-azurermeventhubGeodrconfiguration
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmEventHubGeoDRConfiguration
+# Remove-AzureRmEventHubVNetRule
 
 ## SYNOPSIS
-Deletes an Alias(Disaster Recovery configuration)
+Removes the specified VNet rule for the given namespace
 
 ## SYNTAX
 
-### GeoDRParameterSet (Default)
+### VNetRulePropertiesSet (Default)
 ```
-Remove-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GeoDRConfigurationInputObjectSet
-```
-Remove-AzureRmEventHubGeoDRConfiguration [-InputObject] <PSEventHubDRConfigurationAttributes> [-PassThru]
+Remove-AzureRmEventHubVNetRule [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PassThru]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GeoDRConfigResourceIdParameterSet
+### VNetRuleInputObjectSet
 ```
-Remove-AzureRmEventHubGeoDRConfiguration [-ResourceId] <String> [-PassThru] [-AsJob]
+Remove-AzureRmEventHubVNetRule [-InputObject] <PSIpFilterRuleAttributes> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### VNetRuleResourceIdParameterSet
+```
+Remove-AzureRmEventHubVNetRule [-ResourceId] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmEventHubGeoDRConfiguration** cmdlet deletes an Alias(Disaster Recovery configuration)
+Cmdlet **Remove-AzureRmEventHubVNetRule** deletes the specified VNet Rule for the given namespace
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Remove-AzureRmEventHubGeoDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Secondary" -Name "SampleDRCongifName"
+```powershell
+PS C:\> Remove-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespaceame -Name vnetrulename
 ```
 
-Deletes an Alias (Disaster Recovery configuration)
+removes the specified VNet Rule
+
+### Example 2
+```powershell
+PS C:\> Get-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespaceame -Name vnetrulename | Remove-AzureRmEventHubVNetRule
+```
+
+removes the specified VNet Rule through piping InputObject
+
+### Example 3
+```powershell
+PS C:\> Remove-AzureRmEventHubVNetRule -ResourceId resourceIdOfVNetRule
+```
+
+removes the specified VNet Rule using resource Id
 
 ## PARAMETERS
 
@@ -48,7 +62,7 @@ Deletes an Alias (Disaster Recovery configuration)
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -63,7 +77,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,11 +89,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Eventhub GeoDR Configuration Object
+Virtual Network Rule Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes
-Parameter Sets: GeoDRConfigurationInputObjectSet
+Type: PSIpFilterRuleAttributes
+Parameter Sets: VNetRuleInputObjectSet
 Aliases:
 
 Required: True
@@ -90,11 +104,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Alias (GeoDR)
+Virtual Network Rule Name
 
 ```yaml
-Type: System.String
-Parameter Sets: GeoDRParameterSet
+Type: String
+Parameter Sets: VNetRulePropertiesSet
 Aliases:
 
 Required: True
@@ -108,9 +122,9 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: System.String
-Parameter Sets: GeoDRParameterSet
-Aliases:
+Type: String
+Parameter Sets: VNetRulePropertiesSet
+Aliases: NamespaceName
 
 Required: True
 Position: 1
@@ -120,11 +134,10 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+{{Fill PassThru Description}}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -139,8 +152,8 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: System.String
-Parameter Sets: GeoDRParameterSet
+Type: String
+Parameter Sets: VNetRulePropertiesSet
 Aliases:
 
 Required: True
@@ -151,11 +164,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-GeoDRConfiguration Resource Id
+Virtual Network Rule Resource Id
 
 ```yaml
-Type: System.String
-Parameter Sets: GeoDRConfigResourceIdParameterSet
+Type: String
+Parameter Sets: VNetRuleResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -169,7 +182,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -185,7 +198,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -197,18 +210,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.EventHub.Models.PSIpFilterRuleAttributes
 
-### Microsoft.Azure.Commands.EventHub.Models.PSEventHubDRConfigurationAttributes
-Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
 ### System.Boolean
+
 
 ## NOTES
 
