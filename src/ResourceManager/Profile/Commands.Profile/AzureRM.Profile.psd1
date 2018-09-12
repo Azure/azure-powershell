@@ -12,7 +12,6 @@
 # RootModule = ''
 
 # Version number of this module.
-
 ModuleVersion = '5.5.1'
 
 # Supported PSEditions
