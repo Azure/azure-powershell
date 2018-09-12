@@ -12,20 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
-using System;
-using AutoMapper;
-using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ProfileNouns.AzureDiskEncryptionExtension)]
+        ProfileNouns.AzureDiskEncryptionExtension,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -34,7 +33,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -56,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "To force the removal.")]
+        [Parameter(HelpMessage = "To force the removal of the extension from the virtual machine.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
@@ -78,14 +76,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 }
 
-                if (this.Force.IsPresent
-                    || this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption))
+                if (this.ShouldProcess(VMName, Properties.Resources.RemoveDiskEncryptionAction)
+                    && (this.Force.IsPresent
+                    || this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption)))
                 {
                     var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VMName,
                         this.Name).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                     WriteObject(result);
                 }
             });

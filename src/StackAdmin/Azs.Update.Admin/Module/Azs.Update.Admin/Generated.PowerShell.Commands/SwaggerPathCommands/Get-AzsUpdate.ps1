@@ -90,7 +90,11 @@ function Get-AzsUpdate {
 
     Process {
 
-
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            if ( $MyInvocation.Line -match "\s-Update\s") {
+                Write-Warning -Message "The parameter alias Update will be deprecated in future release. Please use the parameter Name instead"
+            }
+        }
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient'
@@ -162,6 +166,7 @@ function Get-AzsUpdate {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $UpdateAdminClient.'
             $TaskResult = $UpdateAdminClient.Updates.ListWithHttpMessagesAsync($ResourceGroupName, $Location)
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $UpdateAdminClient.'
             $TaskResult = $UpdateAdminClient.Updates.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $Name)
         } else {

@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,88 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected object CreateVirtualMachineRunCommandDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
-
-            var pVMName = new RuntimeDefinedParameter();
-            pVMName.Name = "VMName";
-            pVMName.ParameterType = typeof(string);
-            pVMName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pVMName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("VMName", pVMName);
-
-            var pParameters = new RuntimeDefinedParameter();
-            pParameters.Name = "RunCommandInput";
-            pParameters.ParameterType = typeof(RunCommandInput);
-            pParameters.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pParameters.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("RunCommandInput", pParameters);
-
-            var pArgumentList = new RuntimeDefinedParameter();
-            pArgumentList.Name = "ArgumentList";
-            pArgumentList.ParameterType = typeof(object[]);
-            pArgumentList.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParameters",
-                Position = 4,
-                Mandatory = true
-            });
-            pArgumentList.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ArgumentList", pArgumentList);
-
-            return dynamicParameters;
-        }
-
-        protected void ExecuteVirtualMachineRunCommandMethod(object[] invokeMethodInputParameters)
-        {
-            string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string vmName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            RunCommandInput parameters = (RunCommandInput)ParseParameter(invokeMethodInputParameters[2]);
-
-            var result = VirtualMachinesClient.RunCommand(resourceGroupName, vmName, parameters);
-            WriteObject(result);
-        }
-    }
-
-    public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected PSArgument[] CreateVirtualMachineRunCommandParameters()
-        {
-            string resourceGroupName = string.Empty;
-            string vmName = string.Empty;
-            RunCommandInput parameters = new RunCommandInput();
-
-            return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "VMName", "Parameters" },
-                 new object[] { resourceGroupName, vmName, parameters });
-        }
-    }
-
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMRunCommand", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMRunCommand", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSRunCommandResult))]
     public partial class InvokeAzureRmVMRunCommand : ComputeAutomationBaseCmdlet
     {
