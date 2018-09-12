@@ -71,27 +71,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="Microsoft.Rest.ClientRuntime">
-      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.13\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
-      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.15\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="IStorageService.cs" />
-    <Compile Include="IStorageServiceProvider.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
