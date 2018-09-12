@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = expectedParameters.DeploymentName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
-            cmdlet.RollbackAction = lastDeploymentName;
+            cmdlet.RollBackDeploymentName = lastDeploymentName;
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(expectedParameters.DeploymentName, actualParameters.DeploymentName);
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = expectedParameters.DeploymentName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
-            cmdlet.RollbackAction = string.Empty;
+            cmdlet.RollbackToLastDeployment = true;
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(expectedParameters.DeploymentName, actualParameters.DeploymentName);
