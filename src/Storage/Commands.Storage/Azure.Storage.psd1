@@ -58,7 +58,6 @@ RequiredAssemblies = '.\Microsoft.WindowsAzure.Storage.dll',
                '.\Microsoft.WindowsAzure.Storage.DataMovement.dll', 
                '.\Microsoft.Azure.KeyVault.Core.dll', 
                '.\Microsoft.WindowsAzure.Management.dll', 
-               '.\Microsoft.Azure.ResourceManager.dll', 
                '.\Microsoft.Data.Edm.dll', '.\Microsoft.Data.OData.dll', 
                '.\System.Net.Http.Formatting.dll', 
                '.\System.Spatial.dll'
@@ -126,9 +125,7 @@ CmdletsToExport = 'Get-AzureStorageTable', 'New-AzureStorageTableSASToken',
                'Stop-AzureStorageBlobCopy', 'Update-AzureStorageServiceProperty', 
                'Get-AzureStorageServiceProperty', 
                'Enable-AzureStorageDeleteRetentionPolicy', 
-               'Disable-AzureStorageDeleteRetentionPolicy',
-               'Enable-AzureStorageStaticWebsite', 
-               'Disable-AzureStorageStaticWebsite'
+               'Disable-AzureStorageDeleteRetentionPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()

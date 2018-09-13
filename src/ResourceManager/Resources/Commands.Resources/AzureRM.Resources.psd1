@@ -65,7 +65,8 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceManager.dll',
 TypesToProcess = 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Resources.format.ps1xml', 
+FormatsToProcess = '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.generated.format.ps1xml',
+               '.\Microsoft.Azure.Commands.Resources.format.ps1xml', 
                '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
@@ -129,7 +130,8 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
                'New-AzureRmDeployment', 'Get-AzureRmDeployment', 
                'Test-AzureRmDeployment', 'Remove-AzureRmDeployment', 
                'Stop-AzureRmDeployment', 'Save-AzureRmDeploymentTemplate', 
-               'Get-AzureRmDeploymentOperation'
+               'Get-AzureRmDeploymentOperation',
+               'Get-AzureRmPolicyAlias'
 
 # Variables to export from this module
 # VariablesToExport = @()

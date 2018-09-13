@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E8FFEA7F-A9CB-4FE6-A4D3-9334125B57B4}</ProjectGuid>
+    <ProjectGuid>{8058D403-06E3-4BED-8924-D166CE303961}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.ResourceManager.Cmdlets</RootNamespace>
@@ -137,9 +137,11 @@
     <Compile Include="Implementation\ManagedApplications\NewAzureManagedApplication.cs" />
     <Compile Include="Implementation\ManagedApplications\ManagedApplicationCmdletBase.cs" />
     <Compile Include="Implementation\Policy\GetAzurePolicySetDefinition.cs" />
+    <Compile Include="Implementation\Policy\GetAzurePolicyAliasCmdlet.cs" />
     <Compile Include="Implementation\Policy\PolicyHelpStrings.cs" />
     <Compile Include="Implementation\Policy\NewAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\Policy\PolicyCmdletBase.cs" />
+    <Compile Include="Implementation\Policy\PsResourceProviderAlias.cs" />
     <Compile Include="Implementation\Policy\RemoveAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\Policy\SetAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\ResourceGroups\ExportAzureResourceGroupCmdlet.cs" />
