@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -60,6 +60,7 @@
     - Cmdlets updated with optonal parameter -AutoscaleConfiguration
         - New-AzureRmApplicationGateway
         - Set-AzureRmApplicationGateway
+* Add cmdlet for Interface Endpoint Get-AzureInterfaceEndpoint
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
