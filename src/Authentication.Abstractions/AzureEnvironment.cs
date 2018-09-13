@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             };
             azureCloud.SetProperty(ExtendedEndpoint.OperationalInsightsEndpoint, AzureEnvironmentConstants.AzureOperationalInsightsEndpoint);
             azureCloud.SetProperty(ExtendedEndpoint.OperationalInsightsEndpointResourceId, AzureEnvironmentConstants.AzureOperationalInsightsEndpointResourceId);
+            azureCloud.SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.AzureAnalysisServicesEndpointSuffix);
             var azureChina = new AzureEnvironment
             {
                 Name = EnvironmentName.AzureChinaCloud,
@@ -76,6 +77,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 BatchEndpointResourceId = AzureEnvironmentConstants.ChinaBatchEndpointResourceId,
                 AdTenant = "Common"
             };
+            azureChina.SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.ChinaAnalysisServicesEndpointSuffix);
+
             var azureUSGovernment = new AzureEnvironment
             {
                 Name = EnvironmentName.AzureUSGovernment,
@@ -101,6 +104,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             };
             azureUSGovernment.SetProperty(ExtendedEndpoint.OperationalInsightsEndpoint, AzureEnvironmentConstants.USGovernmentOperationalInsightsEndpoint);
             azureUSGovernment.SetProperty(ExtendedEndpoint.OperationalInsightsEndpointResourceId, AzureEnvironmentConstants.USGovernmentOperationalInsightsEndpointResourceId);
+            azureUSGovernment.SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.USGovernmentAnalysisServicesEndpointSuffix);
             var azureGermany = new AzureEnvironment
             {
                 Name = EnvironmentName.AzureGermanCloud,
@@ -124,6 +128,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 BatchEndpointResourceId = AzureEnvironmentConstants.GermanBatchEndpointResourceId,
                 AdTenant = "Common"
             };
+            azureGermany.SetProperty(ExtendedEndpoint.AnalysisServicesEndpointSuffix, AzureEnvironmentConstants.GermanAnalysisServicesEndpointSuffix);
             var result = new ConcurrentDictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
 
             result[EnvironmentName.AzureCloud] = azureCloud;
@@ -296,7 +301,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public static class ExtendedEndpoint
         {
             public const string OperationalInsightsEndpointResourceId = "OperationalInsightsEndpointResourceId",
-                OperationalInsightsEndpoint = "OperationalInsightsEndpoint";
+                OperationalInsightsEndpoint = "OperationalInsightsEndpoint",
+                AnalysisServicesEndpointSuffix = "AzureAnalysisServicesEndpointSuffix";
         }
     }
 }
