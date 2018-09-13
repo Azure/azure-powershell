@@ -19,7 +19,17 @@
 --->
 
 ## Current Release
+* Added new HostedWorkloads property for PSNetworkInterface
 * Updated cmdlet New-AzureRmVirtualNetworkSubnetConfig, Set-AzureRmVirtualNetworkSubnetConfig, Add-AzureRmVirtualNetworkSubnetConfig, Get-AzureRmVirtualNetworkSubnetConfig, Add-AzureRmApplicationGatewayAuthenticationCertificate, Add-AzureRmApplicationGatewayFrontendIPConfig, New-AzureRmApplicationGatewayFrontendIPConfig, Set-AzureRmApplicationGatewayFrontendIPConfig, Add-AzureRmApplicationGatewayIPConfiguration, New-AzureRmApplicationGatewayIPConfiguration, Set-AzureRmApplicationGatewayIPConfiguration, Add-AzureRmNetworkInterfaceIpConfig, New-AzureRmNetworkInterfaceIpConfig, Set-AzureRmNetworkInterfaceIpConfig, New-AzureRmVirtualNetworkGatewayIpConfig, Add-AzureRmVirtualNetworkGatewayIpConfig, Set-AzureRmLoadBalancerFrontendIpConfig, Add-AzureRmLoadBalancerFrontendIpConfig, New-AzureRmLoadBalancerFrontendIpConfig and New-AzureRmNetworkInterface by adding support for multiple AddressPrefixes in subnet
+* Added new commands for feature: Azure Firewall via ARM
+    - Added Get-AzureRmFirewall
+    - Added Set-AzureRmFirewall
+    - Added New-AzureRmFirewall
+    - Added Remove-AzureRmFirewall
+    - Added New-AzureRmFirewallApplicationRuleCollection
+    - Added New-AzureRmFirewallApplicationRule
+    - Added New-AzureRmFirewallNetworkRuleCollection
+    - Added New-AzureRmFirewallNetworkRule
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
@@ -71,6 +81,7 @@
 
 ## Version 6.3.1
 * Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering
+
 
 ## Version 6.3.0
 * Expose new Skus for Zone-Redundant VirtualNetworkGateways

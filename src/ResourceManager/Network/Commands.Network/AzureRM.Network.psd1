@@ -338,20 +338,27 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmServiceEndpointPolicyDefinition', 
                'Set-AzureRmServiceEndpointPolicyDefinition', 
                'Add-AzureRmServiceEndpointPolicyDefinition', 
-               'Set-AzureRmServiceEndpointPolicy',
-               'Get-AzureRMNetworkProfile',
-               'New-AzureRMNetworkProfile',
-               'Remove-AzureRMNetworkProfile',
-               'Set-AzureRMNetworkProfile',
-               'Get-AzureRMNetworkProfileContainerNetworkInterfaceConfig',
-               'New-AzureRMNetworkProfileContainerNetworkInterfaceConfig',
-               'Remove-AzureRMNetworkProfileContainerNetworkInterfaceConfig',
-               'Set-AzureRMNetworkProfileContainerNetworkInterfaceConfig' 
-               'Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig' 
+               'Get-AzureRmNetworkProfile',
+               'New-AzureRmNetworkProfile',
+               'Remove-AzureRmNetworkProfile',
+               'Set-AzureRmNetworkProfile',
+               'Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
+               'New-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
+               'Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
+               'Set-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
+               'Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig',
                'New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig',
                'Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig',
-               'Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig' 
-
+               'Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig', 
+               'Set-AzureRmServiceEndpointPolicy', 
+               'Get-AzureRmFirewall',
+               'Set-AzureRmFirewall',
+               'New-AzureRmFirewall',
+               'Remove-AzureRmFirewall',
+               'New-AzureRmFirewallApplicationRuleCollection',
+               'New-AzureRmFirewallApplicationRule',
+               'New-AzureRmFirewallNetworkRuleCollection',
+               'New-AzureRmFirewallNetworkRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -388,7 +395,16 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass'
+        ReleaseNotes = '* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
+* Added new commands for feature: Azure Firewall via ARM
+    - Added Get-AzureRmFirewall
+    - Added Set-AzureRmFirewall
+    - Added New-AzureRmFirewall
+    - Added Remove-AzureRmFirewall
+    - Added New-AzureRmFirewallApplicationRuleCollection
+    - Added New-AzureRmFirewallApplicationRule
+    - Added New-AzureRmFirewallNetworkRuleCollection
+    - Added New-AzureRmFirewallNetworkRule'
 
         # Prerelease string of this module
         # Prerelease = ''
