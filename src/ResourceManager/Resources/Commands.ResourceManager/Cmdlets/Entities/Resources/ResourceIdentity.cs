@@ -12,44 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
-{
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Newtonsoft.Json;
+using Newtonsoft.Json;
 
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
+{
     /// <summary>
-    /// The policy assignment object.
+    /// The resource identity object that represents the resource's Managed Service Identity.
     /// </summary>
-    public class PolicyAssignment
+    public class ResourceIdentity
     {
         /// <summary>
-        /// The policy assignment properties.
-        /// </summary>
-        [JsonProperty(Required = Required.Always)]
-        public PolicyAssignmentProperties Properties { get; set; }
-
-        /// <summary>
-        /// The policy assignment name.
+        /// Gets or sets the type of identity assigned to the resource.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public string Name { get; set; }
+        public string Type { get; set; }
 
         /// <summary>
-        /// The policy sku.
-        /// </summary>
-        [JsonProperty(Required = Required.Always)]
-        public PolicySku Sku { get; set; }
-
-        /// <summary>
-        /// The resource identity assigned to the policy assignment.
+        /// Gets or sets the principal ID of the assigned identity.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public ResourceIdentity Identity { get; set; }
+        public string PrincipalId { get; set; }
 
         /// <summary>
-        /// The policy assignment's location.
+        /// Gets or sets the Azure Active Directory tenant ID that contains the assigned identity.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public string Location { get; set; }
+        public string TenantId { get; set; }
     }
 }
+
