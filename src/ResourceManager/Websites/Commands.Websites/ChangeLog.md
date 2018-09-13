@@ -21,6 +21,8 @@
 * Updating to use the latest .NET SDK version (2.0.0) https://www.nuget.org/packages/Microsoft.Azure.Management.Websites
 * New-AzureRmAppServicePlan -HyperV switch is added for create app service plan with windows container
 * New-AzureRmWebApp/ New-AzureRmWebAppSlot/ Set-AzureRmWebApp/ Set-AzureRmWebAppSlot - New parameters (–ContainerRegistryUser “<string>” -ContainerRegistryPassword “<secureString>” -EnableContainerContinuousDeployment) added for creating and managing windows container app
+* New Cmdlets Enter-AzureRmWebAppContainerPSSession, New-AzureRmWebAppContainerPSSession for entering and creating remote PSSession in container web app
+* New Cmdlet Get-AzureRMWebAppContainerContinuousDeploymentUr - Gets the Container Continuous Deployment Webhook URL
 
 
 ## Version 5.0.9
