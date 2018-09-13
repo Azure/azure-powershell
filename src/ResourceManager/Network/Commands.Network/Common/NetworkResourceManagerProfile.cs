@@ -376,6 +376,13 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.InboundNatPool, CNM.PSInboundNatPool>();
 
+                // OutboundRules
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSOutboundRule, MNM.OutboundRule>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.OutboundRule, CNM.PSOutboundRule>();
+
                 // NetworkSecurityGroups
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSNetworkSecurityGroup, MNM.NetworkSecurityGroup>();
@@ -777,6 +784,27 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSContainer, MNM.Container>();
                 cfg.CreateMap<CNM.PSContainerNetworkInterfaceConfiguration, MNM.ContainerNetworkInterfaceConfiguration>();
                 cfg.CreateMap<CNM.PSIPConfigurationProfile, MNM.IPConfigurationProfile>();
+
+                //// SDWAN
+                cfg.CreateMap<CNM.PSVirtualHub, MNM.VirtualHub>();
+                cfg.CreateMap<CNM.PSVirtualWan, MNM.VirtualWAN>();
+                cfg.CreateMap<CNM.PSHubVirtualNetworkConnection, MNM.HubVirtualNetworkConnection>();
+                cfg.CreateMap<CNM.PSVirtualHubRouteTable, MNM.VirtualHubRouteTable>();
+                cfg.CreateMap<CNM.PSVirtualHubRoute, MNM.VirtualHubRoute>();
+                cfg.CreateMap<CNM.PSVpnGateway, MNM.VpnGateway>();
+                cfg.CreateMap<CNM.PSVpnConnection, MNM.VpnConnection>();
+                cfg.CreateMap<CNM.PSVpnSite, MNM.VpnSite>();
+                cfg.CreateMap<CNM.PSVpnSiteDeviceProperties, MNM.DeviceProperties>();
+
+                cfg.CreateMap<MNM.VirtualWAN, CNM.PSVirtualWan>();
+                cfg.CreateMap<MNM.VirtualHub, CNM.PSVirtualHub>();
+                cfg.CreateMap<MNM.HubVirtualNetworkConnection, CNM.PSHubVirtualNetworkConnection>();
+                cfg.CreateMap<MNM.VirtualHubRouteTable, CNM.PSVirtualHubRouteTable>();
+                cfg.CreateMap<MNM.VirtualHubRoute, CNM.PSVirtualHubRoute>();
+                cfg.CreateMap<MNM.VpnGateway, CNM.PSVpnGateway>();
+                cfg.CreateMap<MNM.VpnConnection, CNM.PSVpnConnection>();
+                cfg.CreateMap<MNM.VpnSite, CNM.PSVpnSite>();
+                cfg.CreateMap<MNM.DeviceProperties, CNM.PSVpnSiteDeviceProperties>();
 
                 // Azure Firewalls
                 // CNM to MNM
