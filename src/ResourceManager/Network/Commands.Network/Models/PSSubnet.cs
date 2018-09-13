@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public List<PSServiceEndpoint> ServiceEndpoints { get; set; }
 
+        [JsonProperty(Order = 1)]
         public List<PSServiceEndpointPolicy> ServiceEndpointPolicies { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -76,7 +77,22 @@ namespace Microsoft.Azure.Commands.Network.Models
             return !string.IsNullOrEmpty(this.Name);
         }
 
-         [JsonIgnore]
+        public bool ShouldSerializeServiceEndpointPolicies()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeServiceEndpoints()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeResourceNavigationLinks()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        [JsonIgnore]
         public string ServiceEndpointText
         {
             get { return JsonConvert.SerializeObject(ServiceEndpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
