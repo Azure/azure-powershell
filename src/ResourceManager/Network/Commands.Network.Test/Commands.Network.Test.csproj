@@ -67,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NetworkResourcesController.cs" />
     <Compile Include="ScenarioTests\ApplicationGatewayTests.cs" />
+    <Compile Include="ScenarioTests\CortexTests.cs" />
     <Compile Include="ScenarioTests\AzureFirewallTests.cs" />
     <Compile Include="ScenarioTests\DdosProtectionPlanTests.cs" />
     <Compile Include="ScenarioTests\ApplicationSecurityGroupTests.cs" />
@@ -121,6 +122,9 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="ScenarioTests\CortexTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="ScenarioTests\Data\ApplicationGatewaySslCert1.pfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -660,6 +664,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkUsage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.CortexTests\TestCortexCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestData\Deployment.json">
