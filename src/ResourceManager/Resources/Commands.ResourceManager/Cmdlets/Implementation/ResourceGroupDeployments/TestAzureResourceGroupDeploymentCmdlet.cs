@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -35,8 +37,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
         public DeploymentMode Mode { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of a deployment to roll back to on error, or use as a flag to roll back to the last successful deployment.")]
-        public string RollbackAction { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Rollback to the last successful deployment in the resource group, should not be present if -RollBackDeploymentName is used.")]
+        public SwitchParameter RollbackToLastDeployment { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Rollback to the successful deployment with the given name in the resource group, should not be used if -RollbackToLastDeployment is used.")]
+        public string RollBackDeploymentName { get; set; }
 
         public TestAzureResourceGroupDeploymentCmdlet()
         {
@@ -45,17 +50,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
+            if (RollbackToLastDeployment && !string.IsNullOrEmpty(RollBackDeploymentName))
+            {
+                WriteExceptionError(new ArgumentException(ProjectResources.InvalidRollbackParameters));
+            }
+
             PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri,
-                OnErrorDeployment = RollbackAction != null
+                OnErrorDeployment = RollbackToLastDeployment || !string.IsNullOrEmpty(RollBackDeploymentName)
                     ? new OnErrorDeployment
                     {
-                        Type = string.IsNullOrWhiteSpace(RollbackAction) ? OnErrorDeploymentType.LastSuccessful : OnErrorDeploymentType.SpecificDeployment,
-                        DeploymentName = string.IsNullOrWhiteSpace(RollbackAction) ? null : RollbackAction
+                        Type = RollbackToLastDeployment ? OnErrorDeploymentType.LastSuccessful : OnErrorDeploymentType.SpecificDeployment,
+                        DeploymentName = RollbackToLastDeployment ? null : RollBackDeploymentName
                     }
                     : null
             };
