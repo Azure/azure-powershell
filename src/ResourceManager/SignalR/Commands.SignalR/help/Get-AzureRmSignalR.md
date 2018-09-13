@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.SignalR.dll-Help.xml
 Module Name: AzureRM.SignalR
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.signalr/get-azurermsignalrkey
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.signalr/get-azurermsignalr
 schema: 2.0.0
 ---
 
@@ -38,11 +38,12 @@ Get a specific SignalR service or all the SignalR services in a resource group o
 ```powershell
 PS C:\> Get-AzureRmSignalR
 
-HostName                                           Location       ServerPort PublicPort ProvisioningState
---------                                           --------       ---------- ---------- -----------------
-mysignalr1.servicedev.signalr.net                  eastus         5002       5001       Succeeded
-mysignalr2.servicedev.signalr.net                  eastus         5002       5001       Succeeded
-mysignalr3.servicedev.signalr.net                  eastus         5002       5001       Creating
+
+HostName                                           Location       ServerPort PublicPort ProvisioningState Version
+--------                                           --------       ---------- ---------- ----------------- -------
+mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
+mysignalr2.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
+mysignalr3.service.signalr.net                     eastus         5002       5001       Creating          1.0
 ```
 
 ### Get all SignalR services in a resource group
@@ -50,10 +51,10 @@ mysignalr3.servicedev.signalr.net                  eastus         5002       500
 ```powershell
 PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup
 
-HostName                                           Location       ServerPort PublicPort ProvisioningState
---------                                           --------       ---------- ---------- -----------------
-mysignalr1.servicedev.signalr.net                  eastus         5002       5001       Succeeded
-mysignalr2.servicedev.signalr.net                  eastus         5002       5001       Succeeded
+HostName                                           Location       ServerPort PublicPort ProvisioningState Version
+--------                                           --------       ---------- ---------- ----------------- -------
+mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
+mysignalr2.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
 ```
 
 ### Get a specific SignalR service
@@ -61,9 +62,9 @@ mysignalr2.servicedev.signalr.net                  eastus         5002       500
 ```powershell
 PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup -Name mysignalr1
 
-HostName                                           Location       ServerPort PublicPort ProvisioningState
---------                                           --------       ---------- ---------- -----------------
-mysignalr1.servicedev.signalr.net                  eastus         5002       5001       Succeeded
+HostName                                           Location       ServerPort PublicPort ProvisioningState Version
+--------                                           --------       ---------- ---------- ----------------- -------
+mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
 ```
 
 ### Get a specific SignalR service from the default resource group
@@ -71,9 +72,9 @@ mysignalr1.servicedev.signalr.net                  eastus         5002       500
 ```powershell
 PS C:\> Get-AzureRmSignalR -Name mysignalr2
 
-HostName                                           Location       ServerPort PublicPort ProvisioningState
---------                                           --------       ---------- ---------- -----------------
-mysignalr2.servicedev.signalr.net                  eastus         5002       5001       Succeeded
+HostName                                           Location       ServerPort PublicPort ProvisioningState Version
+--------                                           --------       ---------- ---------- ----------------- -------
+mysignalr2.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
 ```
 
 The default resource group can be set by `Set-AzureRmDefault -ResourceGroupName myResourceGroup`.
