@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.8.1'
+ModuleVersion = '6.9.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -161,54 +161,56 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '6.8.1 - August 2018
-General
-* Fixed issue with default resource groups not being set.
-* Updated common runtime assemblies
+        ReleaseNotes = '6.9.0 - September 2018
+AzureRM.Profile
+* Minor changes to the storage common code
+* Updated help files to include full parameter types.
+- Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set 
 
+Azure.Storage
+* Upgrade to Azure Storage Client Library 9.3.0 and Azure Storage DataMovement Library 0.8.1
+* Support create Storage Context with OAuth. 
+	- New-AzureStorageContext
 
-AzureRM.ApiManagement
-* Fixed issue https://github.com/Azure/azure-powershell/issues/6603
-    - Import-AzureRmApiManagementApi and *-AzureRmApiManagementCertificate cmdlets now handle relative Paths
-* Fixed issue https://github.com/Azure/azure-powershell/issues/6879
-    - The CertificateInformation is a settable property allowing for Set-AzureRmApiManagement cmdlet to work property. Fixed by upgrading to 
-	4.0.4-preview nuget
-* Fixed issue https://github.com/Azure/azure-powershell/issues/6853
-    - Fixed the Odata filter for Search by Name on Product
-* Fixed issue https://github.com/Azure/azure-powershell/issues/6814
-    - Fixed the Odata filter for Search by Name on Api
-* Added support for AzureMonitor logger
-
+AzureRM.Cdn
+* Added Standard_Microsoft in Cdn pricing sku. 
 
 AzureRM.Compute
-* Fixed the issue that target is missing in error output.
-* Fixed issue with storage account type for VM with managed disk
-* Fixed issue with default resource groups not being set.
-* Fix AEM Extension cmdlets for other environments, for example Azure China
+* Move dependencies on Keyvault and Storage to the common dependencies.
+* Add support for more virutal machine sizes to AEM cmdlets
+
+AzureRM.Insights
+* Fixed issues #6833 and #7102 (Diagnostic Settings area)
+    - Issues with the default name, i.e. ''service'', during creation and listing/getting of diagnostic settings
+    - Issues creating diagnostic settings with categories
+* Added deprecation message for metrics time grains parameters
+    - Timegrains parameters are still being accepted (this is a non-breaking change,) but they are ignored in the backend since only PT1M is valid
 
 AzureRM.Network
- * Changed default display format for output types to Table
+* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
 
-AzureRM.PowerBIEmbedded
-* Fix failure in Update-AzureRmPowerBIEmbeddedCapacity when trying to scale paused capacity
+AzureRM.RedisCache
+* Updated Insights dependency.
 
 AzureRM.Resources
-* Fixed issue with creating managed applications from the MarketPlace.
+* Support managed identity on policy assignments.
+* Parameters with default values are no longer requred when assigning a policy with ''New-AzureRmPolicyAssignment''
+* Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
 
-AzureRM.ServiceBus
-* Fixed issues
-	- https://github.com/Azure/azure-powershell/issues/5058
-	- https://github.com/Azure/azure-powershell/issues/5055
-	- https://github.com/Azure/azure-powershell/issues/6891
-
-AzureRM.TrafficManager
-* Added Support for the MultiValue routing method
-    - New parameter ''MaxReturn'' for MultiValue routing
-* Added Support for the Subnet routing method
-    - Support for IP address ranges (subnets) in endpoints
-* Added Support for Custom Headers in profiles
-* Added Support for Expected status code ranges in profiles
-* Added Support for Custom Headers in endpoints
+AzureRM.Storage
+* Upgrade to Azure Storage Client Library 9.3.0 
+* Support Immutability Policy in AzureRm.Storage 
+    - Remove-AzureRmStorageAccountNetworkRule
+    - Get-AzureRmStorageContainer
+    - Update-AzureRmStorageContainer
+    - New-AzureRmStorageContainer
+    - Remove-AzureRmStorageContainer
+    - Add-AzureRmStorageContainerLegalHold
+    - Remove-AzureRmStorageContainerLegalHold
+    - Set-AzureRmStorageContainerImmutabilityPolicy
+    - Get-AzureRmStorageContainerImmutabilityPolicy
+    - Remove-AzureRmStorageContainerImmutabilityPolicy
+    - Lock-AzureRmStorageContainerImmutabilityPolicy
 '
 
         # Prerelease string of this module
