@@ -78,7 +78,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Returns an object representing the item on which this operation is being performed.")]
-        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void Execute()
