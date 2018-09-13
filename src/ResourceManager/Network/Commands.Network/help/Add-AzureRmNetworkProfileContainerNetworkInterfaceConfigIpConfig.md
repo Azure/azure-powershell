@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
+# Add-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
 
 ## SYNOPSIS
 {{Fill in the Synopsis}}
@@ -13,9 +13,9 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
+Add-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -NetworkProfile <PSNetworkProfile>
  -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> -Name <String>
- [-Subnet <PSSubnet>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Subnet <PSSubnet> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,10 +33,10 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -ContainerNetworkInterfaceConfiguration
-The reference of the network profile resource.
+The reference of the container network interface configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSContainerNetworkInterfaceConfiguration
+Type: PSContainerNetworkInterfaceConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,7 +66,22 @@ Accept wildcard characters: False
 Name of the container network interface configuration.
 
 ```yaml
-Type: System.String
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfile
+The reference of the network profile.
+
+```yaml
+Type: PSNetworkProfile
 Parameter Sets: (All)
 Aliases:
 
@@ -78,14 +93,14 @@ Accept wildcard characters: False
 ```
 
 ### -Subnet
-{{Fill Subnet Description}}
+The reference to the subnet which this IP Configuration profile references.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
+Type: PSSubnet
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -96,7 +111,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -112,7 +127,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -124,7 +139,8 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
