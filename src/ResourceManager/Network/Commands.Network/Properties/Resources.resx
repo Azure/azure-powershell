@@ -136,7 +136,7 @@
   </data>
   <data name="VirtualNetworkGatewayName" xml:space="preserve">
     <value>virtualNetworkGatewayName</value>
-  </data>  
+  </data>
   <data name="LoadBalancerInBoundNatRuleName" xml:space="preserve">
     <value>inboundNatRules</value>
   </data>
@@ -263,5 +263,80 @@
   </data>
   <data name="ApplicationGatewayRedirectConfigurationName" xml:space="preserve">
     <value>redirectConfigurations</value>
+  </data>
+  <data name="HubVnetConnectionNotFound" xml:space="preserve">
+    <value>The hub virtual network connection to modify could not be found.</value>
+  </data>
+  <data name="InvalidIPAddress" xml:space="preserve">
+    <value>The IpAddress specified is invalid.</value>
+  </data>
+  <data name="ParentVirtualHubNotFound" xml:space="preserve">
+    <value>The parent virtual hub mentioned could not be found.</value>
+  </data>
+  <data name="ParentVpnGatewayDuplicateConnection" xml:space="preserve">
+    <value>The parent VpnGateway already contains a connection with this name. If you wish to change the properties of the connection, please use the SET operation instead.</value>
+  </data>
+  <data name="ParentVpnGatewayNotFound" xml:space="preserve">
+    <value>The parent VpnGateway for this connection cannot be found.</value>
+  </data>
+  <data name="RemovingVirtualHubWarning" xml:space="preserve">
+    <value>Removing a VirtualHub will also remove all HubVirtualNetworkConnections associated with it. Are you sure you want to remove resource '{0}'</value>
+  </data>
+  <data name="RemovingVpnGatewayWarning" xml:space="preserve">
+    <value>Removing a VpnGateway will also remove all VpnConnections associated with it. Are you sure you want to remove resource '{0}'</value>
+  </data>
+  <data name="ResouceGroupNameMustBeSpecified" xml:space="preserve">
+    <value>ResourceGroupName must be specified if ResourceName is specified.</value>
+  </data>
+  <data name="VirtualHubRequiredForVpnGateway" xml:space="preserve">
+    <value>A valid VirtualHub reference is required to create a VpnGateway.</value>
+  </data>
+  <data name="VirtualNetworkReferenceRequiredToCreateHubVnetConnection" xml:space="preserve">
+    <value>A remote virtual network reference is required to create a HubVirtualNetworkConnection.</value>
+  </data>
+  <data name="VirtualWanNotFound" xml:space="preserve">
+    <value>The referenced VirtualWan could not be found.</value>
+  </data>
+  <data name="VirtualWanReferenceNeededForVirtualHub" xml:space="preserve">
+    <value>A valid VirtualWan reference is required to create a VirtualHub.</value>
+  </data>
+  <data name="VirtualWanRequiredForVpnSiteConfiguration" xml:space="preserve">
+    <value>A valid Virtual WAN is required to generate a vpnSites configuration.</value>
+  </data>
+  <data name="VpnConnectionNotFound" xml:space="preserve">
+    <value>The VpnConnection could not be found.</value>
+  </data>
+  <data name="VpnGatewayNotFound" xml:space="preserve">
+    <value>The VpnGateway to modify could not be found</value>
+  </data>
+  <data name="VpnSiteListRequiredForVpnSiteConfiguration" xml:space="preserve">
+    <value>A list of connected VpnSites is required to generate a vpnSites configuration.</value>
+  </data>
+  <data name="VpnSiteNotFound" xml:space="preserve">
+    <value>The VpnSite could not be found.</value>
+  </data>
+  <data name="VpnSiteRequiredForVpnConnection" xml:space="preserve">
+    <value>A valid VpnSite is required to create a VpnConnection</value>
+  </data>
+  <data name="ChildResourceAlreadyPresentInResourceGroup" xml:space="preserve">
+    <value>A resource with the same name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead.</value>
+  </data>
+  <data name="CreatingLongRunningOperationMessage" xml:space="preserve">
+    <value>Creating resource with ResourceGroupName {0}, ResourceName {1}.</value>
+  </data>
+  <data name="ResourceAlreadyPresentInResourceGroup" xml:space="preserve">
+    <value>A resource with the same name {0} and same type already exists in ResourceGroup {1}. If you wish to modify this resource please use the Update operation instead.</value>
+  </data>
+  <data name="VirtualHubToUpdateNotFound" xml:space="preserve">
+    <value>The VirtualHub to update could not be found.</value>
+  </data>
+  <data name="VpnGatewayRequiredToCreateVpnConnection" xml:space="preserve">
+    <value>A valid VpnGateway reference is required to create a VpnConnection.</value>
+  </data>
+  <data name="UpdatingLongRunningOperationMessage" xml:space="preserve">
+    <value>Updating resource with ResourceGroupName {0}, ResourceName {1}.</value>
+  </data>
+  <data name="ApplicationGatewayTrustedRootCertificateName" xml:space="preserve">
+    <value>trustedRootCertificates</value>
   </data>
 </root>
