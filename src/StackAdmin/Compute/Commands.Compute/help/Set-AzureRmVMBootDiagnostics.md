@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 9A6F140C-9F1C-4701-9603-FC6107FCAF92
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmbootdiagnostics
 schema: 2.0.0
 ---
 
@@ -15,12 +15,13 @@ Modifies boot diagnostics properties of a virtual machine.
 ### EnableBootDiagnostics
 ```
 Set-AzureRmVMBootDiagnostics [-VM] <PSVirtualMachine> [-Enable] [-ResourceGroupName] <String>
- [[-StorageAccountName] <String>] [<CommonParameters>]
+ [[-StorageAccountName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DisableBootDiagnostics
 ```
-Set-AzureRmVMBootDiagnostics [-VM] <PSVirtualMachine> [-Disable] [<CommonParameters>]
+Set-AzureRmVMBootDiagnostics [-VM] <PSVirtualMachine> [-Disable] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +33,6 @@ The **Set-AzureRmVMBootDiagnostics** cmdlet modifies boot diagnostics properties
 ```
 PS C:\> $VM = Get-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "ContosoVM07"
 PS C:\> Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "ResourceGroup11" -StorageAccountName "DiagnosticStorage"
-PS C:\> Update-AzureRmVM -ResourceGroup "ResourceGroup11" -VM $VM
 ```
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzureRmVM**.
@@ -42,6 +42,21 @@ The second command enables boot diagnostics for the virtual machine in $VM.
 Diagnostics data is stored in the specified account.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Disable
 Indicates that this cmdlet disables the boot diagnostics for the virtual machine.
@@ -124,10 +139,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### PSVirtualMachine
+Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 
 ## NOTES
 

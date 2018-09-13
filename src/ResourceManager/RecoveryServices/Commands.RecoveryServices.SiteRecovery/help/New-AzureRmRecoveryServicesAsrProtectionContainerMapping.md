@@ -84,6 +84,7 @@ Starts the creation of the protection container mapping with the specified param
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
+
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
@@ -192,7 +193,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy
-Parameters: Policy (ByValue)
 
 ## OUTPUTS
 

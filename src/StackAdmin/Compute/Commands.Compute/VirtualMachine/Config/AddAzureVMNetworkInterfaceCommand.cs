@@ -14,9 +14,8 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.Network.Models;
-
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Network.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -71,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipeline = true,
             ParameterSetName = NicObjectParamSetName)]
         [ValidateNotNullOrEmpty]
-        public List<PSNetworkInterface> NetworkInterface { get; set; }
+        public List<INetworkInterfaceReference> NetworkInterface { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -102,7 +101,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (!this.Primary.IsPresent)
                 {
-                    if (! networkProfile.NetworkInterfaces.Any(e => e.Id.Equals(this.Id)))
+                    if (!networkProfile.NetworkInterfaces.Any(e => e.Id.Equals(this.Id)))
                     {
                         networkProfile.NetworkInterfaces.Add(new NetworkInterfaceReference
                         {
@@ -159,7 +158,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                       existingNic.Primary = nic.Primary;
+                        existingNic.Primary = nic.Primary;
                     }
                 }
             }
