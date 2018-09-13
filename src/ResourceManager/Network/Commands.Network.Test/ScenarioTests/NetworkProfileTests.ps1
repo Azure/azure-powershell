@@ -409,7 +409,7 @@ function Test-NetworkProfileEndToEndWithContainerNics
     $networkProfileName = Get-ResourceName;
     $containerNicConfigName = "cni1"
     $ipConfigProfileName = "ipconfigprofile1"
-    $location = Get-ProviderLocation "Microsoft.Network/NetworkProfiles";
+    $location = "westus";
 
     $containerGroupName = "cg1"
 
