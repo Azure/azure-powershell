@@ -790,11 +790,29 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating Azure Automation Software Update Configuration..
+        /// </summary>
+        internal static string SoftwareUpdateConfigurationCreateOperation {
+            get {
+                return ResourceManager.GetString("SoftwareUpdateConfigurationCreateOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Software update configuration has no target computers..
         /// </summary>
         internal static string SoftwareUpdateConfigurationHasNoTargetComputers {
             get {
                 return ResourceManager.GetString("SoftwareUpdateConfigurationHasNoTargetComputers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Azure Automation Software Update Configuration..
+        /// </summary>
+        internal static string SoftwareUpdateConfigurationRemoveOperation {
+            get {
+                return ResourceManager.GetString("SoftwareUpdateConfigurationRemoveOperation", resourceCulture);
             }
         }
         
@@ -813,15 +831,6 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string SourceControlRemoveAction {
             get {
                 return ResourceManager.GetString("SourceControlRemoveAction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Automation Source Control?.
-        /// </summary>
-        internal static string SourceControlRemoveWarning {
-            get {
-                return ResourceManager.GetString("SourceControlRemoveWarning", resourceCulture);
             }
         }
         

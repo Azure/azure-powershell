@@ -21,35 +21,36 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     using Microsoft.Azure.Commands.Automation.Common;
     using Microsoft.Azure.Commands.Automation.Model.UpdateManagement;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationSoftwareUpdateRun", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationSoftwareUpdateRun",
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(SoftwareUpdateRun))]
     public class GetAzureAutomationSoftwareUpdateRun : AzureAutomationBaseCmdlet
     {
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ById, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Id of the software update configuration run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ById, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Id of the software update configuration run.")]
         [ValidateNotNullOrEmpty]
         public Guid Id { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucName, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the software update configuration triggered the run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the software update configuration triggered the run.")]
         [ValidateNotNullOrEmpty]
         public string SoftwareUpdateConfigurationName { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySuc, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The software update configuration triggered the run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySuc, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The software update configuration triggered the run.")]
         [ValidateNotNull]
         public SoftwareUpdateConfiguration SoftwareUpdateConfiguration { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The operating system of the run.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySuc, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The operating system of the run.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucName, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The operating system of the run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The operating system of the run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySuc, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The operating system of the run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The operating system of the run.")]
         public OperatingSystemType? OperatingSystem { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Status of the run.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySuc, Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Status of the run.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucName, Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Status of the run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Status of the run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySuc, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Status of the run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Status of the run.")]
         public SoftwareUpdateRunStatus? Status { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Minimum start time of the run.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySuc, Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Minimum start time of the run.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucName, Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Minimum start time of the run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Minimum start time of the run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySuc, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Minimum start time of the run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Minimum start time of the run.")]
         public DateTimeOffset StartTime { get; set; }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]

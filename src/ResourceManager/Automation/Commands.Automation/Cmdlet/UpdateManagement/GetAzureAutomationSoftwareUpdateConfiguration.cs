@@ -20,15 +20,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     using Microsoft.Azure.Commands.Automation.Common;
     using Model.UpdateManagement;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationSoftwareUpdateConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationSoftwareUpdateConfiguration",
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(SoftwareUpdateConfiguration))]
     public class GetAzureAutomationSoftwareUpdateConfiguration :  AzureAutomationBaseCmdlet
     {
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the software update configuration.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the software update configuration.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByVMId, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Azure resource Id of the virtual machine.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByVMId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Azure resource Id of the virtual machine.")]
         [ValidateNotNullOrEmpty]
         public string AzureVMResourceId { get; set; }
 

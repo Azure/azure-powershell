@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Passed to indicate that the schedule object returned by the cmdlet is to be used for update management
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that this schedule object will be used for scheduling an update deployment")]
-        public SwitchParameter ForUpdate { get; set; }
+        public SwitchParameter ForUpdateConfiguration { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 
             Schedule createdSchedule = schedule;
 
-            if (!this.ForUpdate.IsPresent)
+            if (!this.ForUpdateConfiguration.IsPresent)
             {
                 createdSchedule = this.AutomationClient.CreateSchedule(this.ResourceGroupName, this.AutomationAccountName, schedule);
             }

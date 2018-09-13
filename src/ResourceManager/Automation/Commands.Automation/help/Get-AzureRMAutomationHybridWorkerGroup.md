@@ -6,7 +6,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.autom
 schema: 2.0.0
 ---
 
-# Get-AzureRMAutomationHybridWorkerGroup
+# Get-AzureRmAutomationHybridWorkerGroup
 
 ## SYNOPSIS
 Gets hybrid runbook worker groups.
@@ -15,13 +15,13 @@ Gets hybrid runbook worker groups.
 
 ### ByAll (Default)
 ```
-Get-AzureRMAutomationHybridWorkerGroup [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzureRmAutomationHybridWorkerGroup [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRMAutomationHybridWorkerGroup [[-Name] <String>] [-ResourceGroupName] <String>
+Get-AzureRmAutomationHybridWorkerGroup [[-Name] <String>] [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 

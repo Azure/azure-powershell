@@ -38,11 +38,17 @@ PS C:\> New-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
                                            -SourceType "VsoTfvc" `
                                            -FolderPath "/Runbooks" `
                                            -AccessToken $accessToken
-```
 
+Name        SourceType Branch FolderPath AutoSync PublishRunbook RepoUrl
+----        ---------- ------ ---------- -------- -------------- -------
+VSTSNative  VsoTfvc            /Runbooks True     True           https://contoso.visualstudio.com/ContosoProduc...
+
+```
 
 ### Example 2
 Create a source control configuration to link my Azure Automation account with my VSTS Git project.
+
+
 ```powershell
 PS C:\> # VSTS Personal access token
 PS C:\> $token = "vppmrabbs65axamofglyo66rjg6reddaa7xxgvaddd5555aaaaddxzbmma"
@@ -56,23 +62,32 @@ PS C:\> New-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
                                            -FolderPath "/" `
                                            -AccessToken $accessToken
 
+Name    SourceType Branch      FolderPath AutoSync PublishRunbook RepoUrl
+----    ---------- ------      ---------- -------- -------------- -------
+VSTSGit VsoGit     Development /          True     True           https://contoso.visualstudio.com/_git/Finan...
 
 ```
 
 ### Example 3
 Create a source control configuration to link my Azure Automation account with my GitHub project.
+
+
 ```powershell
 PS C:\> # GitHub access token
 PS C:\> $token = "68b08011223aac8bdd3388913a44rrsaa84fdf"
 PS C:\> $accessToken = ConvertTo-SecureString -String $token -AsPlainText -Force 
 PS C:\> New-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
-                                           -Name  "GitHub" `
+                                           -Name  "GitHub1" `
                                            -RepoUrl "https://github.com/Contoso/TestSourceControl.git" `
                                            -SourceType "GitHub" `
                                            -Branch "master" `
                                            -FolderPath "/Runbooks" `
                                            -AccessToken $accessToken
+
+Name    SourceType Branch FolderPath AutoSync PublishRunbook RepoUrl
+----    ---------- ------ ---------- -------- -------------- -------
+GitHub1 GitHub     master /Runbooks  True     True           https://github.com/Contoso/TestSourceControl...
 
 ```
 
@@ -82,7 +97,7 @@ PS C:\> New-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
 The source control access token.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -97,7 +112,7 @@ Accept wildcard characters: False
 The automation account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +127,7 @@ Accept wildcard characters: False
 The source control branch.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -123,26 +138,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 The source control description.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +173,7 @@ The publishRunbook property of the source control.
 If DoNotPublishRunbook is set, this means that user runbooks will be imported as 'Draft'.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +188,7 @@ Accept wildcard characters: False
 The autoSync property for the source control.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 The source control folder path.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 The source control name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 The source control repo url.
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
 Aliases:
 
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -263,7 +263,7 @@ Accept wildcard characters: False
 The source control type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: GitHub, VsoGit, VsoTfvc
@@ -275,12 +275,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -292,8 +307,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

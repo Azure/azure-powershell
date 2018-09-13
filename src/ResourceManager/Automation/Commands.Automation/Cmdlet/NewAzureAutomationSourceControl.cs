@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Creates an azure automation source control for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutomationSourceControl", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationSourceControl",
+        SupportsShouldProcess = true)]
     [OutputType(typeof(SourceControl))]
     public class NewAzureAutomationSourceControl : AzureAutomationBaseCmdlet
     {

@@ -59,7 +59,7 @@ Gets reports sent from a DSC node to Automation.
 ### [Get-AzureRmAutomationDscOnboardingMetaconfig](Get-AzureRmAutomationDscOnboardingMetaconfig.md)
 Creates meta-configuration .mof files.
 
-### [Get-AzureRMAutomationHybridWorkerGroup](Get-AzureRMAutomationHybridWorkerGroup.md)
+### [Get-AzureRmAutomationHybridWorkerGroup](Get-AzureRmAutomationHybridWorkerGroup.md)
 Gets hybrid runbook worker groups.
 
 ### [Get-AzureRmAutomationJob](Get-AzureRmAutomationJob.md)
@@ -85,6 +85,15 @@ Gets an Automation schedule.
 
 ### [Get-AzureRmAutomationScheduledRunbook](Get-AzureRmAutomationScheduledRunbook.md)
 Gets Automation runbooks and associated schedules.
+
+### [Get-AzureRmAutomationSourceControl](Get-AzureRmAutomationSourceControl.md)
+Gets a list of Azure Automation source controls.
+
+### [Get-AzureRmAutomationSourceControlSyncJob](Get-AzureRmAutomationSourceControlSyncJob.md)
+Gets Azure Automation source control sync jobs.
+
+### [Get-AzureRmAutomationSourceControlSyncJobOutput](Get-AzureRmAutomationSourceControlSyncJobOutput.md)
+Gets the output of an Azure Automation source control sync job.
 
 ### [Get-AzureRmAutomationVariable](Get-AzureRmAutomationVariable.md)
 Gets an Automation variable.
@@ -124,6 +133,9 @@ Creates an Automation runbook.
 
 ### [New-AzureRmAutomationSchedule](New-AzureRmAutomationSchedule.md)
 Creates an Automation schedule.
+
+### [New-AzureRmAutomationSourceControl](New-AzureRmAutomationSourceControl.md)
+Creates an A Automation source control.
 
 ### [New-AzureRmAutomationVariable](New-AzureRmAutomationVariable.md)
 Creates an Automation variable.
@@ -169,6 +181,9 @@ Removes a runbook.
 
 ### [Remove-AzureRmAutomationSchedule](Remove-AzureRmAutomationSchedule.md)
 Deletes an Automation schedule.
+
+### [Remove-AzureRmAutomationSourceControl](Remove-AzureRmAutomationSourceControl.md)
+Removes an Azure Automation source control.
 
 ### [Remove-AzureRmAutomationVariable](Remove-AzureRmAutomationVariable.md)
 Removes an Automation variable.
@@ -218,6 +233,9 @@ Deploys a DSC Node configuration in Automation.
 ### [Start-AzureRmAutomationRunbook](Start-AzureRmAutomationRunbook.md)
 Starts a runbook job.
 
+### [Start-AzureRmAutomationSourceControlSyncJob](Start-AzureRmAutomationSourceControlSyncJob.md)
+Starts an Azure Automation source control sync job.
+
 ### [Stop-AzureRmAutomationDscNodeConfigurationDeployment](Stop-AzureRmAutomationDscNodeConfigurationDeployment.md)
 Stops a DSC Node configuration deployment in Automation. It only stops the current deployment job but does not unassign already assigned node configurations.
 
@@ -232,4 +250,7 @@ Removes a DSC node from management by an Automation account.
 
 ### [Unregister-AzureRmAutomationScheduledRunbook](Unregister-AzureRmAutomationScheduledRunbook.md)
 Removes an association between a runbook and a schedule.
+
+### [Update-AzureRmAutomationSourceControl](Update-AzureRmAutomationSourceControl.md)
+Updates an Azure Automation source control.
 

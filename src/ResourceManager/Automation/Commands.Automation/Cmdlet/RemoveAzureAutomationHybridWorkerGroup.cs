@@ -23,8 +23,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes a hybridworkergroup for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMAutomationHybridWorkerGroup", SupportsShouldProcess = true, 
-        DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridWorkerGroup",
+        SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [OutputType(typeof(void))]
     public class RemoveAzureAutomationHybridWorkerGroup : AzureAutomationBaseCmdlet
     {
         /// <summary>

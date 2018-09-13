@@ -24,8 +24,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes an azure automation source control for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationSourceControl", SupportsShouldProcess = true)]
-    [OutputType(typeof(SourceControl))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationSourceControl",
+        SupportsShouldProcess = true)]
+    [OutputType(typeof(void), typeof(bool))]
     public class RemoveAzureAutomationSourceControl : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -34,12 +35,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, HelpMessage = "The source control name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the switch parameter not to confirm on removing the source control.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
-        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Gets or sets the PassThru switch parameter to force return an object when removing the source control.
@@ -54,20 +49,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(CultureInfo.CurrentCulture, Resources.SourceControlRemoveWarning),
-                string.Format(CultureInfo.CurrentCulture, Resources.SourceControlRemoveAction),
-                Name,
-                () =>
-                {
-                    this.AutomationClient.DeleteSourceControl(this.ResourceGroupName, this.AutomationAccountName, this.Name);
+            string resource = string.Format(CultureInfo.CurrentCulture, Resources.SourceControlRemoveAction);
+            if (ShouldProcess(Name, resource))
+            {
+                this.AutomationClient.DeleteSourceControl(this.ResourceGroupName, this.AutomationAccountName, this.Name);
 
-                    if (PassThru.IsPresent)
-                    {
-                        WriteObject(true);
-                    }
-                });
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
+            }
         }
     }
 }

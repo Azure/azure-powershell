@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 using System.Management.Automation;
 using System.Security;
 using System.Security.Permissions;
+using System.Globalization;
+using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Updates an azure automation source control for a given account.
     /// </summary>
-    [Cmdlet("Update", "AzureRmAutomationSourceControl")]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationSourceControl",
+        SupportsShouldProcess = true)]
     [OutputType(typeof(SourceControl))]
     public class UpdateAzureAutomationSourceControl : AzureAutomationBaseCmdlet
     {
@@ -80,18 +82,22 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            var sourceControl = this.AutomationClient.UpdateSourceControl(
-                                    this.ResourceGroupName,
-                                    this.AutomationAccountName,
-                                    this.Name,
-                                    this.Description,
-                                    this.AccessToken,
-                                    this.Branch,
-                                    this.FolderPath,
-                                    this.PublishRunbook,
-                                    this.AutoSync);
+            string resource = string.Format(CultureInfo.CurrentCulture, Resources.SourceControlUpdateAction);
+            if (ShouldProcess(Name, resource))
+            {
+                var sourceControl = this.AutomationClient.UpdateSourceControl(
+                    this.ResourceGroupName,
+                    this.AutomationAccountName,
+                    this.Name,
+                    this.Description,
+                    this.AccessToken,
+                    this.Branch,
+                    this.FolderPath,
+                    this.PublishRunbook,
+                    this.AutoSync);
 
-            this.WriteObject(sourceControl);
+                this.WriteObject(sourceControl);
+            }
         }
     }
 }

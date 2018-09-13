@@ -25,13 +25,47 @@ The **Get-AzureRmAutomationSourceControlSyncJobOutput** cmdlet gets the output f
 
 ### Example 1
 This command gets the output of source control sync job with id 08d6d266-27b6-463c-beea-bc48a67ace15 for the source control VSTSNative. 
+
+
 ```powershell
 PS C:\> Get-AzureRmAutomationSourceControlSyncJobOutput -ResourceGroupName "rg1" `
                                                         -AutomationAccountName "devAccount" `
                                                         -Name "VSTSNative"
                                                         -Id "08d6d266-27b6-463c-beea-bc48a67ace15" `
-                                                        -Stream Output
+                                                        -Stream Output | ForEach-Object {$_.summary}
 
+========================================================================================================
+
+Azure Automation Source Control Public Preview.
+Supported runbooks to sync: PowerShell Workflow, PowerShell Scripts, DSC Configurations, Graphical, and Python 2.
+Setting AzureRmEnvironment.
+Getting AzureRunAsConnection.
+Logging in to Azure...
+Source control information for syncing:
+[RepoUrl = https://contoso.visualstudio.com/_git/GitDemo] [Branch  = master] [FolderPath = /]
+Verifying url: https://fcontoso.visualstudio.com/_git/GitDemo
+Connecting to VSTS...
+
+Source Control Sync Summary:
+
+2 files synced:
+ - RunbookA.ps1
+ - RunbookB.ps1
+
+Failed to import runbook:
+ - RunbookC.ps1
+
+File is not a runbook:
+ - README.md
+ - text_file.txt
+
+File size exceeds 1Mb:
+ - RunbookD_GreatherThan1MB.ps1
+
+Invalid runbook name:
+ - RunbookZ_ĈĦŕĬŞ.ps1
+
+========================================================================================================                                  
 ```
 
 ## PARAMETERS
@@ -40,7 +74,7 @@ PS C:\> Get-AzureRmAutomationSourceControlSyncJobOutput -ResourceGroupName "rg1"
 The automation account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -55,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,7 +104,7 @@ Accept wildcard characters: False
 The source control sync job id.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: (All)
 Aliases: SourceControlSyncJobId
 
@@ -85,7 +119,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +134,7 @@ Accept wildcard characters: False
 The source control name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -116,7 +150,7 @@ The stream type.
 Defaults to Any.
 
 ```yaml
-Type: SourceControlSyncJobStreamType
+Type: Microsoft.Azure.Commands.Automation.Common.SourceControlSyncJobStreamType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Any, Output, Error
@@ -132,7 +166,7 @@ Accept wildcard characters: False
 The stream id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: SourceControlSyncJobStreamId
 
@@ -144,8 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -17,15 +17,16 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Model;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Gets a Source Control Sync Job object for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationSourceControlSyncJob")]
-    [OutputType(typeof(Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJob),
-                typeof(Microsoft.Azure.Commands.Automation.Model.SourceControlSyncJobRecord))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationSourceControlSyncJob")]
+    [OutputType(typeof(SourceControlSyncJob), 
+                typeof(SourceControlSyncJobRecord))]
     public class GetAzureAutomationSourceControlSyncJob : AzureAutomationBaseCmdlet
     {
         /// <summary> 
