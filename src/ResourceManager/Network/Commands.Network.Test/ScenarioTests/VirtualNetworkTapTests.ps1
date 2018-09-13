@@ -76,7 +76,7 @@ function Test-VirtualNetworkTapCRUDUsingIpConfig
         Assert-AreEqual $true $removeVirtualNetworkTap;
 
         # Get VirtualNetworkTap should fail
-        Assert-ThrowsContains { Get-AzureRmVirtualNetworkTap -ResourceGroupName $rgname -Name $rname } "${rname} not found";
+        Assert-ThrowsLike { Get-AzureRmVirtualNetworkTap -ResourceGroupName $rgname -Name $rname } "*${rname}*not found*";
     }
     finally
     {
