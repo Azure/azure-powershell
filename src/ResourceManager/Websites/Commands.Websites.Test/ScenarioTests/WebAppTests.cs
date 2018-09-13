@@ -47,6 +47,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableContainerContiniousDeploymentAndGetUrl()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-EnableContainerContiniousDeploymentAndGetUrl");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppOnAse()
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppOnAse");
