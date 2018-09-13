@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Commands.Network
         {
             return new List<string>
             {
-                "Windows Update",
-                "Windows Diagnostics",
-                "App Service Environment",
-                "Microsoft Active Protection Service",
-                "Azure Backup"
+                "WindowsUpdate",
+                "WindowsDiagnostics",
+                "AppServiceEnvironment",
+                "MicrosoftActiveProtectionService",
+                "AzureBackup"
             };
         }
 
@@ -42,18 +42,12 @@ namespace Microsoft.Azure.Commands.Network
 
             var allowedFqdnTags = GetAzureFirewallAllowedFqdnTags();
 
-            // Accept both the full version from user and the version without spaces, both case insensistive
+            // Accept user input case insensistive
             var userAcceptedFqdnTags = allowedFqdnTags.Aggregate(
                 new Dictionary<string, string>(),
                 (userAcceptedVersions, allowedFqdnTag) =>
                 {
                     userAcceptedVersions.Add(allowedFqdnTag.ToUpper(), allowedFqdnTag);
-
-                    if (allowedFqdnTag.Contains(" "))
-                    {
-                        var tagWithoutSpaces = allowedFqdnTag.Replace(" ", string.Empty);
-                        userAcceptedVersions.Add(tagWithoutSpaces.ToUpper(), allowedFqdnTag);
-                    }
 
                     return userAcceptedVersions;
                 });

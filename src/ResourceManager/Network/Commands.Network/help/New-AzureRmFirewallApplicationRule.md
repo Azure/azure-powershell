@@ -44,7 +44,7 @@ This example creates a rule which will allow all HTTPS traffic on port 443 from 
 
 ### 2:  Create a rule to allow WindowsUpdate for 10.0.0.0/24 subnet
 ```
-New-AzureRmFirewallApplicationRule -Name "windows-update-rule" -FqdnTag "Windows Update" -SourceAddress "10.0.0.0/24"
+New-AzureRmFirewallApplicationRule -Name "windows-update-rule" -FqdnTag WindowsUpdate -SourceAddress "10.0.0.0/24"
 ```
 
 This example creates a rule which will allow traffic for Windows Updates for 10.0.0.0/24 domain.
@@ -84,11 +84,11 @@ Accept wildcard characters: False
 ### -FqdnTag
 Specifies a list of FQDN Tags for this rule. The available tags are:
 
-- Windows Update
-- Windows Diagnostics
-- App Service Environment
-- Microsoft Active Protection Service
-- Azure Backup
+- WindowsUpdate
+- WindowsDiagnostics
+- AppServiceEnvironment
+- MicrosoftActiveProtectionService
+- AzureBackup
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
