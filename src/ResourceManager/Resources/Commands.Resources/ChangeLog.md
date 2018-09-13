@@ -20,6 +20,7 @@
 ## Current Release
 * Update New-AzureRmResourceGroupDeployment with new parameter RollbackAction
     - Add support for OnErrorDeployment with the new parameter.
+* Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
 
 ## Version 6.4.2
 * Fixed issue with creating managed applications from the MarketPlace.
