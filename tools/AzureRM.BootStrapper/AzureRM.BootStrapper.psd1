@@ -12,7 +12,7 @@
 RootModule = 'AzureRM.Bootstrapper.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.3.0'
+ModuleVersion = '0.4.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -114,7 +114,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '0.3.0: Updated for the stack release 1.2.11'
+        ReleaseNotes = '0.4.0: Updated for the stack release 2.3.0'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''

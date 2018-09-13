@@ -12,7 +12,7 @@ Describe "Get-ProfileCachePath" {
                 $result = Get-ProfileCachePath
                 $result | Should Match "(.*)ProfileCache$"
                 $result.Contains("ProgramData") | Should Be $true
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -23,7 +23,7 @@ Describe "Get-ProfileCachePath" {
                 $result = Get-ProfileCachePath
                 $result | Should Match "(.*)ProfileCache$"
                 $result.Contains("AppData\Local") | Should Be $true
-                Assert-VerifiableMocks            
+                Assert-VerifiableMock            
             }            
         }
 
@@ -34,7 +34,7 @@ Describe "Get-ProfileCachePath" {
                 $result = Get-ProfileCachePath
                 $result | Should Match "(.*)ProfileCache$"
                 $result.Contains(".config") | Should Be $true
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -66,7 +66,7 @@ Describe "Get-LatestProfileMapPath" {
             Mock Get-ChildItem -Verifiable { $null }
             It "Should return null" {
                 Get-LatestProfileMapPath | Should be $null
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -75,7 +75,7 @@ Describe "Get-LatestProfileMapPath" {
             Mock Get-ChildItem -Verifiable { "foo" }
             It "Should return null" {
                 Get-LatestProfileMapPath | Should be $null
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -88,7 +88,7 @@ Describe "Get-LatestProfileMapPath" {
             Mock Get-LargestNumber -Verifiable { 123 }
             It "Should return Latest map" {
                 Get-LatestProfileMapPath | Should Be $profilemap1
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -138,7 +138,7 @@ Describe "Get-AzureStorageBlob" {
                 $result = Get-AzureStorageBlob
                 $result.Content | Should Not Be $null
                 $result.StatusCode | Should Be "200"
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -146,7 +146,7 @@ Describe "Get-AzureStorageBlob" {
             Mock Invoke-CommandWithRetry -Verifiable { throw }
             It "Throws exception" {
                 { Get-AzureStorageBlob } | Should throw 
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -169,7 +169,7 @@ Describe "Get-AzureProfileMap" {
                 $result = Get-AzureProfileMap
                 $result.Profile1 | Should Not Be Empty
                 $result.Profile2 | Should Not Be Empty
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -187,7 +187,7 @@ Describe "Get-AzureProfileMap" {
                 $result = Get-AzureProfileMap
                 $result.Profile1 | Should Not Be Empty
                 $result.Profile2 | Should Not Be Empty
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -244,7 +244,7 @@ Describe Get-AzProfile {
                 $result = Get-AzProfile 
                 $result.Profile1 | Should Not Be Empty
                 $result.Profile2 | Should Not Be Empty
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -255,7 +255,7 @@ Describe Get-AzProfile {
                 $result = Get-AzProfile 
                 $result.Profile1 | Should Not Be Empty
                 $result.Profile2 | Should Not Be Empty
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -265,7 +265,7 @@ Describe Get-AzProfile {
 
             It "Should throw FileNotFound Exception" {
                 { Get-AzProfile } | Should Throw
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -370,7 +370,7 @@ Describe "Uninstall-ModuleHelper" {
             It "Should call Remove-Module and Uninstall-Module" {
                 Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions
                 $Script:mockCalled | Should Be 2
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             } 
         }
 
@@ -407,7 +407,7 @@ Describe "Uninstall-ModuleHelper" {
                 Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions -ErrorVariable ev -ea SilentlyContinue 
                 ($null -ne ($ev -match "If you installed the module to a custom directory in your path")) | Should be $true
                 $Script:mockCalled | Should Be 1
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -435,7 +435,7 @@ Describe "Uninstall-ModuleHelper" {
                 Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions -ErrorVariable ev -ea SilentlyContinue 
                 ($ev -match "If you installed via an MSI") | Should not be $null
                 $Script:mockCalled | Should Be 1
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             } 
         }
 
@@ -463,7 +463,7 @@ Describe "Uninstall-ModuleHelper" {
                 Uninstall-ModuleHelper -Module 'Module1' -Version '1.0' -Profile 'Profile1' -RemovePreviousVersions -ErrorVariable ev -ea SilentlyContinue 
                 ($ev -match "The module is currently in use") | Should not be $null
                 $Script:mockCalled | Should Be 1
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             } 
         }
     }
@@ -477,7 +477,7 @@ Describe "Uninstall-ProfileHelper" {
         Context "Profile associated with the module is installed" {
             It "Should call Invoke-UninstallModule: With Force param" {
                 Uninstall-ProfileHelper -Profile 'Profile1' -PMap ($global:testProfileMap | ConvertFrom-Json) -Force
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
                 Assert-MockCalled Invoke-UninstallModule -Exactly 4
             }
         }
@@ -485,7 +485,7 @@ Describe "Uninstall-ProfileHelper" {
          Context "Profile associated with the module is installed" {
            It "Should call Invoke-UninstallModule: Without Force param" {
                 Uninstall-ProfileHelper -Profile 'Profile1' -PMap ($global:testProfileMap | ConvertFrom-Json) 
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
                 Assert-MockCalled Invoke-UninstallModule -Exactly 4
             }
         }
@@ -499,7 +499,7 @@ Describe "Invoke-UninstallModule" {
             Mock Uninstall-ModuleHelper -Verifiable {}
             It "Should Call Uninstall module helper" {
                 Invoke-UninstallModule -PMap ($global:testProfileMap | ConvertFrom-Json) -Profile 'profile1' -module 'module1'
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -509,7 +509,7 @@ Describe "Invoke-UninstallModule" {
             It "Should not invoke Uninstall module helper" {
                 Invoke-UninstallModule -PMap ($global:testProfileMap | ConvertFrom-Json) -Profile 'profile1' -module 'module1'
                 Assert-MockCalled Uninstall-ModuleHelper -Exactly 0
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -527,12 +527,12 @@ Describe "Remove-PreviousVersion" {
             Mock Invoke-UninstallModule -Verifiable {}
             It "Should call Invoke-UninstallModule" {
                 Remove-PreviousVersion -Profile 'Profile1' -LatestMap ($global:testProfileMap|ConvertFrom-Json) 
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
 
             It "Invoke with Module parameter: Should call Invoke-UninstallModule" {
                 Remove-PreviousVersion -Profile 'Profile1' -Module 'Module1' -LatestMap ($global:testProfileMap|ConvertFrom-Json) 
-                Assert-VerifiableMocks                
+                Assert-VerifiableMock                
             }
         }
 
@@ -542,7 +542,7 @@ Describe "Remove-PreviousVersion" {
             Mock Invoke-UninstallModule {}
             It "Should not call Invoke-UninstallModule" {
                 Remove-PreviousVersion -Profile 'Profile1' -LatestMap ($global:testProfileMap|ConvertFrom-Json)
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
                 Assert-MockCalled Invoke-UninstallModule -Exactly 0
             }
         }
@@ -582,7 +582,7 @@ Describe "Get-AllProfilesInstalled" {
                 (Get-AllProfilesInstalled) -like $expectedResult | Should Be $true
                 Assert-MockCalled Invoke-CommandWithRetry -Exactly 1
                 Assert-MockCalled Get-ProfilesInstalled -exactly 1
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -595,7 +595,7 @@ Describe "Get-AllProfilesInstalled" {
                 $result.Count | Should Be 0
                 Assert-MockCalled Invoke-CommandWithRetry -Exactly 1
                 Assert-MockCalled Get-ProfilesInstalled -exactly 1
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }      
         }
         
@@ -608,7 +608,7 @@ Describe "Get-AllProfilesInstalled" {
                 $result.Count | Should Be 0
                 Assert-MockCalled Invoke-CommandWithRetry -Exactly 1
                 Assert-MockCalled Get-ProfilesInstalled -exactly 1
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
 
             # Cleanup
@@ -628,12 +628,12 @@ Describe "Update-ProfileHelper" {
         Context "Previous Versions were present" {
             It "Should invoke Remove-PreviousVersion" {
                 Update-ProfileHelper -profile 'Profile1'
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
             
             It "Invoke with -Module param: Should invoke Remove-PreviousVerison" {
                 Update-ProfileHelper -profile 'Profile1' -Module 'Module1' -RemovePreviousVersions
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -680,13 +680,13 @@ Describe "Invoke-InstallModule" {
            <# It "Should invoke install-module with AllowClobber: No Scope" {
                 Mock Install-Module -Verifiable {} 
                 Invoke-InstallModule -module "Module1" -version "1.0"
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
 
             It "Should invoke install-module with AllowClobber: CurrentUser Scope" {
                 Mock Install-Module -Verifiable -ParameterFilter { $Scope -eq "CurrentUser"} {}
                 Invoke-InstallModule -module "Module1" -version "1.0" -scope "CurrentUser" 
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             } #>
         }
 
@@ -697,13 +697,13 @@ Describe "Invoke-InstallModule" {
             It "Should invoke install-module with Force: No Scope" {
                 Mock Install-Module -Verifiable -ParameterFilter { '$Force'} {}
                 Invoke-InstallModule -module "Module1" -version "1.0"
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
 
             It "Should invoke install-module with Force: CurrentUser Scope" {
                 Mock Install-Module -Verifiable -ParameterFilter { '$Force' -and ($Scope -eq "CurrentUser")} {}
                 Invoke-InstallModule -module "Module1" -version "1.0" -scope "CurrentUser" 
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -720,7 +720,7 @@ Describe "Invoke-CommandWithRetry" {
             It "Should return successfully" {
                 $result = Invoke-CommandWithRetry -scriptBlock $scriptBlock
                 $result | Should Be "contents"
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -744,7 +744,7 @@ Describe "Invoke-CommandWithRetry" {
                 $result = Invoke-CommandWithRetry -scriptBlock $scriptBlock
                 $result | Should Be "contents"
                 Assert-MockCalled Get-ChildItem -Times 2
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -765,14 +765,14 @@ Describe "Select-Profile" {
             $script:IsAdmin = $true
             It "Should return AllUsersAllHosts profile" {
                 Select-Profile -scope "AllUsers" | Should Be $profile.AllUsersAllHosts 
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
         Context "Scope CurrentUser" {
             It "Should return CurrentUserAllHosts profile" {
                 Select-Profile -scope "CurrentUser" | Should Be $profile.CurrentUserAllHosts 
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -789,7 +789,7 @@ Describe "Select-Profile" {
             Mock New-Item -Verifiable {}
             It "Should create a new file for profile" {
                 Select-Profile -scope "CurrentUser" | Should Be $profile.CurrentUserAllHosts 
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -815,7 +815,7 @@ Describe "Get-ModuleVersion" {
             $RollupModule = "Azure.Module1"
             It "Should return script block" {
                 Get-ModuleVersion -armProfile "Profile1" -invocationLine "ipmo azure.module1" | Should Be "2.0"
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -827,7 +827,7 @@ Describe "Get-ScriptBlock" {
             It "Should return script block" {
                 $result = Get-ScriptBlock -ProfilePath "Profilepath"
                 $result[1].contains("Import-Module:RequiredVersion") | Should Be $true
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -849,7 +849,7 @@ Temp Line 4
             Mock Get-Content -Verifiable { $contents }
             It "Should return lines 1 and 4" {
                 Remove-ProfileSetting -profilePath "testpath"
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -874,7 +874,7 @@ Describe "Add-ProfileParam" {
         It "Should return Profile parameter object" {
             (Add-ProfileParam $params)
             $params.ContainsKey("Profile") | Should Be $true
-            Assert-VerifiableMocks
+            Assert-VerifiableMock
         }
     }
 }
@@ -921,7 +921,7 @@ Describe "Add-ModuleParam" {
             It "Should return Module parameter object" {
                 (Add-ModuleParam $params)
                 $params.ContainsKey("Module") | Should Be $true
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -931,7 +931,7 @@ Describe "Add-ModuleParam" {
             It "Should return Module parameter object" {
                 (Add-ModuleParam $params)
                 $params.ContainsKey("Module") | Should Be $true
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -946,7 +946,7 @@ Describe "Get-AzureRmModule" {
            Mock Get-Module -Verifiable { @( [PSCustomObject] @{ Name='Module1'; Version='1.0'; RepositorySourceLocation='foo\bar' }, [PSCustomObject] @{ Name='Module1'; Version='2.0'}) }
            It "Should return installed version" {
                 Get-AzureRmModule -Profile 'Profile1' -Module 'Module1' | Should Be "1.0"
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
         
@@ -954,7 +954,7 @@ Describe "Get-AzureRmModule" {
             Mock Get-Module -Verifiable {}
             It "Should return null" {
                 Get-AzureRmModule -Profile 'Profile1' -Module 'Module1' | Should be $null
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -962,7 +962,7 @@ Describe "Get-AzureRmModule" {
             Mock Get-Module -Verifiable { @( [PSCustomObject] @{ Name='Module1'; Version='1.0'; RepositorySourceLocation='foo\bar' }, [PSCustomObject] @{ Name='Module1'; Version='2.0'}) }
             It "Should return null" {
                 Get-AzureRmModule -Profile 'Profile2' -Module 'Module2' | Should be $null
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -984,7 +984,7 @@ Describe "Get-AzureRmModule" {
             Mock Get-Module -Verifiable { @( [PSCustomObject] @{ Name='Module1'; Version='1.0'; RepositorySourceLocation='foo\bar' }, [PSCustomObject] @{ Name='Module1'; Version='2.0'}) }
             It "Should return installed version" {
                 Get-AzureRmModule -Profile 'Profile1' -Module 'Module1' | Should Be "1.0"
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -1000,7 +1000,7 @@ Describe "Get-AzureRmProfile" {
                 $Result.Count | Should be 2
                 $Result.ProfileName | Should Not Be $null
                 $Result.Module1 | Should Not Be $null
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1010,7 +1010,7 @@ Describe "Get-AzureRmProfile" {
                 $Result.Count | Should be 2
                 $Result.ProfileName | Should Not Be $null
                 $Result.Module1 | Should Not Be $null
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1021,7 +1021,7 @@ Describe "Get-AzureRmProfile" {
                 $Result = (Get-AzureRmProfile)
                 $Result.ProfileName | Should Not Be $null
                 $Result.Module1 | Should Not Be $null
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1029,7 +1029,7 @@ Describe "Get-AzureRmProfile" {
             Mock Get-ProfilesInstalled -Verifiable {}
             It "Returns null" {
                 (Get-AzureRmProfile) | Should Be $null
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -1049,7 +1049,7 @@ Describe "Use-AzureRmProfile" {
                 $Result.Length | Should Be 3 # Includes "Loading module" 
                 $Result[1] | Should Be "Installing module..."
                 $Result[2] | Should Be "Importing Module..."
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
 
             It "Invoke with Module param: Should install modules" {
@@ -1057,7 +1057,7 @@ Describe "Use-AzureRmProfile" {
                 $Result.Length | Should Be 3
                 $Result[1] | Should Be "Installing module..."
                 $Result[2] | Should Be "Importing Module..."
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1073,7 +1073,7 @@ Describe "Use-AzureRmProfile" {
                 $Result[1] | Should Be "Module1 1.0 Imported"
                 Assert-MockCalled Install-Module -Exactly 0
                 Assert-MockCalled Import-Module -Exactly 2
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
 
             It "Invoke with Module param: Should skip installing modules, imports the right version module" {
@@ -1081,7 +1081,7 @@ Describe "Use-AzureRmProfile" {
                 $Result.length | Should Be 3
                 $Result[1] | Should Be "Module1 1.0 Imported"
                 Assert-MockCalled Install-Module -Exactly 0
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
                 
             }
         }
@@ -1102,7 +1102,7 @@ Describe "Use-AzureRmProfile" {
             Mock Install-Module -Verifiable {} -ParameterFilter { $Scope -eq "CurrentUser"}
             It "Should invoke Install-ModuleHelper with scope currentuser" {
                 (Use-AzureRmProfile -Profile 'Profile1' -Force -scope CurrentUser)
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
         
@@ -1111,7 +1111,7 @@ Describe "Use-AzureRmProfile" {
             Mock Install-Module -Verifiable {} -ParameterFilter { $Scope -eq "AllUsers"}
             It "Should invoke Install-ModuleHelper with scope AllUsers" {
                 (Use-AzureRmProfile -Profile 'Profile1' -Force -scope AllUsers)
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1126,7 +1126,7 @@ Describe "Use-AzureRmProfile" {
             It "Should skip installing module" {
                 $Result = (Use-AzureRmProfile -Profile 'Profile1' -Force)
                 $Result.Contains("Installing module...") | Should Be $false
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1184,7 +1184,7 @@ Describe "Install-AzureRmProfile" {
             Mock Invoke-InstallModule -Verifiable { "Installing module Module1... Version 1.0"} 
             It "Should install Module1" {
                 (Install-AzureRmProfile -Profile 'Profile1') | Should be "Installing module Module1... Version 1.0"
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
           }
         }
 
@@ -1205,7 +1205,7 @@ Describe "Install-AzureRmProfile" {
             Mock Invoke-InstallModule -Verifiable {} -ParameterFilter { $Scope -eq "CurrentUser"}
             It "Should invoke Install-ModuleHelper with scope currentuser" {
                 (Install-AzureRmProfile -Profile 'Profile1' -scope CurrentUser)
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
         
@@ -1214,7 +1214,7 @@ Describe "Install-AzureRmProfile" {
             Mock Invoke-InstallModule -Verifiable {} -ParameterFilter { $Scope -eq "AllUsers"}
             It "Should invoke Install-ModuleHelper with scope AllUsers" {
                 (Install-AzureRmProfile -Profile 'Profile1' -scope AllUsers)
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1224,7 +1224,7 @@ Describe "Install-AzureRmProfile" {
             It "Should skip installing module" {
                 Install-AzureRmProfile -Profile 'Profile1'
                 Assert-MockCalled Invoke-InstallModule -Exactly 0
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1238,7 +1238,7 @@ Describe "Uninstall-AzureRmProfile" {
         Context "Valid profile name" {
             It "Should invoke Uninstall-ProfileHelper" {
                 Uninstall-AzureRmProfile -Profile 'Profile1' -Force
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1268,12 +1268,12 @@ Describe "Update-AzureRmProfile" {
     
             It "Imports profile modules and invokes Update-ProfileHelper" {
                 Update-AzureRmProfile -Profile 'Profile2' -RemovePreviousVersions -Force
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
 
             It "Invoke with Module param: Imports profile modules and invokes Update-ProfileHelper" {
                 Update-AzureRmProfile -Profile 'Profile2' -module 'Module1' -RemovePreviousVersions -Force
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1294,7 +1294,7 @@ Describe "Update-AzureRmProfile" {
             Mock Update-ProfileHelper -Verifiable {}
             It "Should invoke Use-AzureRmProfile with scope currentuser" {
                 (Update-AzureRmProfile -Profile 'Profile1' -scope CurrentUser -Force -r)
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
         
@@ -1303,7 +1303,7 @@ Describe "Update-AzureRmProfile" {
             Mock Update-ProfileHelper -Verifiable {}
             It "Should invoke Use-AzureRmProfile with scope AllUsers" {
                 (Update-AzureRmProfile -Profile 'Profile1' -scope AllUsers -Force -r)
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
             
@@ -1353,7 +1353,7 @@ Describe "Set-AzureRmDefaultProfile" {
                 $Global:PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
                 Set-AzureRmDefaultProfile -Profile "Profile1" -Force
                 $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile1"
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1362,7 +1362,7 @@ Describe "Set-AzureRmDefaultProfile" {
                 $Global:PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
                 Set-AzureRmDefaultProfile -Profile "Profile2" -Force
                 $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile2"
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1371,7 +1371,7 @@ Describe "Set-AzureRmDefaultProfile" {
             It "Should throw for updating default profile" {
                 $Global:PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
                 { Set-AzureRmDefaultProfile -Profile "Profile1" -Force } | Should throw
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1382,7 +1382,7 @@ Describe "Set-AzureRmDefaultProfile" {
                 $Global:PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
                 Set-AzureRmDefaultProfile -Profile "Profile1" -Scope "AllUsers" -Force
                 $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be "Profile1"
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1392,7 +1392,7 @@ Describe "Set-AzureRmDefaultProfile" {
             It "Should throw for AllUsers Profile" {
                 $Global:PSDefaultParameterValues.Remove("*-AzureRmProfile:Profile")
                 { Set-AzureRmDefaultProfile -Profile "Profile2" -Scope "AllUsers" -Force } | Should throw
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
@@ -1402,7 +1402,7 @@ Describe "Set-AzureRmDefaultProfile" {
                 Set-AzureRmDefaultProfile -Profile "Profile1" -Force 
                 Set-AzureRmDefaultProfile -Profile "Profile1" -Force 
                 Assert-MockCalled Invoke-CommandWithRetry -Exactly 1
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
     }
@@ -1419,7 +1419,7 @@ Describe "Remove-AzureRmDefaultProfile" {
             It "Should successfully remove default profile from shell & profile file" {
                 Remove-AzureRmDefaultProfile -Force
                 $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be $null
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
         
@@ -1427,7 +1427,7 @@ Describe "Remove-AzureRmDefaultProfile" {
             It "Should return null for default profile" {
                 Remove-AzureRmDefaultProfile -Force
                 $Global:PSDefaultParameterValues["*-AzureRmProfile:Profile"] | Should Be $null
-                Assert-VerifiableMocks
+                Assert-VerifiableMock
             }
         }
 
