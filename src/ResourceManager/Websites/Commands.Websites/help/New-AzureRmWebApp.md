@@ -16,17 +16,28 @@ Creates an Azure Web App.
 ### SimpleParameterSet (Default)
 ```
 New-AzureRmWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <String>]
- [[-AppServicePlan] <String>] [-AsJob] [-GitRepositoryPath <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-AppServicePlan] <String>] [-ContainerImageName <String>] [-EnableContainerContinuousDeployment] [-AsJob]
+ [-GitRepositoryPath <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### PrivateRegistry
+```
+New-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>]
+ [[-AppServicePlan] <String>] -ContainerImageName <String> -ContainerRegistryUrl <String>
+ -ContainerRegistryUser <String> -ContainerRegistryPassword <SecureString>
+ [-EnableContainerContinuousDeployment] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### WebAppParameterSet
 ```
 New-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-AppServicePlan] <String>] [[-SourceWebApp] <Site>] [[-TrafficManagerProfile] <String>]
- [-IgnoreSourceControl] [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
- [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-AppServicePlan] <String>] [[-SourceWebApp] <PSSite>] [[-TrafficManagerProfile] <String>]
+ [-EnableContainerContinuousDeployment] [-IgnoreSourceControl] [-IgnoreCustomHostNames]
+ [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>] [[-AseResourceGroupName] <String>]
+ [-IncludeSourceWebAppSlots] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,6 +130,78 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ContainerImageName
+Container Image Name and optional tag, for example (image:tag)
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: PrivateRegistry
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainerRegistryPassword
+Private Container Registry Password
+
+```yaml
+Type: System.Security.SecureString
+Parameter Sets: PrivateRegistry
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainerRegistryUrl
+Private Container Registry Server Url
+
+```yaml
+Type: System.String
+Parameter Sets: PrivateRegistry
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContainerRegistryUser
+Private Container Registry Username
+
+```yaml
+Type: System.String
+Parameter Sets: PrivateRegistry
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -126,6 +209,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableContainerContinuousDeployment
+Enables/Disables container continuous deployment webhook
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -199,7 +297,7 @@ Location
 
 ```yaml
 Type: System.String
-Parameter Sets: SimpleParameterSet
+Parameter Sets: SimpleParameterSet, PrivateRegistry
 Aliases:
 
 Required: False
@@ -253,7 +351,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: WebAppParameterSet
+Parameter Sets: PrivateRegistry, WebAppParameterSet
 Aliases:
 
 Required: True
@@ -267,7 +365,7 @@ Accept wildcard characters: False
 Source WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.Site
+Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
 Parameter Sets: WebAppParameterSet
 Aliases:
 
