@@ -28,7 +28,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkTap", SupportsShouldProcess = true), OutputType(typeof(PSVirtualNetworkTap))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkTap", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSVirtualNetworkTap))]
     public partial class NewAzureRmVirtualNetworkTap : NetworkBaseCmdlet
     {
         [Parameter(
