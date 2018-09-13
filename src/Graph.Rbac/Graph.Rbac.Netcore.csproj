@@ -35,6 +35,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.Netcore.csproj" />
     <ProjectReference Include="..\Common\Common.Netcore.csproj" />
     <ProjectReference Include="..\ResourceManager\ResourceManager.Netcore.csproj" />
   </ItemGroup>

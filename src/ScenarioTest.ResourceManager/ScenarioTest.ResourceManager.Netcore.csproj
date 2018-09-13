@@ -1,4 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IncludeHyak>true</IncludeHyak>
+  </PropertyGroup>
 
   <Import Project="$(ProjectDir)..\Dependencies.Test.Netcore.targets" />
 
