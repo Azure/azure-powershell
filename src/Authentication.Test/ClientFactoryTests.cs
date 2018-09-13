@@ -35,7 +35,7 @@ namespace Common.Authentication.Test
     public class ClientFactoryTests : IDisposable
     {
         private string subscriptionId;
-        
+
         private string userAccount;
 
         private SecureString password;
@@ -64,8 +64,10 @@ namespace Common.Authentication.Test
             }
             password = password.Length == 0 ? null : password;
             runTest = true;
+            if (runTest) { return; }
         }
 
+#if !NETSTANDARD
         /// <summary>
         /// This test run live against Azure to list storage accounts under current subscription.
         /// </summary>
@@ -92,17 +94,17 @@ namespace Common.Authentication.Test
             account.SetTenants("common");
             AzureContext context = new AzureContext
             (
-                sub, 
+                sub,
                 account,
                 AzureEnvironment.PublicEnvironments["AzureCloud"]
             );
-            
+
             // Add registration action to make sure we register for the used provider (if required)
             // AzureSession.Instance.ClientFactory.AddAction(new RPRegistrationAction());
 
             // Authenticate!
             AzureSession.Instance.AuthenticationFactory.Authenticate(context.Account, context.Environment, "common", password, ShowDialog.Always, null);
-            
+
             AzureSession.Instance.ClientFactory.AddUserAgent("TestUserAgent", "1.0");
             // Create the client
             var client = AzureSession.Instance.ClientFactory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ServiceManagement);
@@ -114,6 +116,7 @@ namespace Common.Authentication.Test
                 Assert.NotNull(storageAccount);
             }
         }
+#endif
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -126,22 +129,27 @@ namespace Common.Authentication.Test
             factory.AddUserAgent("test1", "456");
             factory.AddUserAgent("test3");
             factory.AddUserAgent("tesT3");
-            
+
             Assert.Equal(4, factory.UserAgents.Length);
-            Assert.True(factory.UserAgents.Any(u => u.Product.Name == "test1" && u.Product.Version == "123"));
-            Assert.True(factory.UserAgents.Any(u => u.Product.Name == "test2" && u.Product.Version == "123"));
-            Assert.True(factory.UserAgents.Any(u => u.Product.Name == "test1" && u.Product.Version == "456"));
-            Assert.True(factory.UserAgents.Any(u => u.Product.Name == "test3" && u.Product.Version == null));
+            Assert.Contains(factory.UserAgents, u => u.Product.Name == "test1" && u.Product.Version == "123");
+            Assert.Contains(factory.UserAgents, u => u.Product.Name == "test2" && u.Product.Version == "123");
+            Assert.Contains(factory.UserAgents, u => u.Product.Name == "test1" && u.Product.Version == "456");
+            Assert.Contains(factory.UserAgents, u => u.Product.Name == "test3" && u.Product.Version == null);
         }
 
+#if !NETSTANDARD
         public virtual void Dispose(bool disposing)
-        {
+#else
+        private void Dispose(bool disposing)
+#endif
+            {
             if (disposing && password != null)
             {
                 password.Dispose();
                 password = null;
             }
         }
+
         public void Dispose()
         {
             Dispose(true);

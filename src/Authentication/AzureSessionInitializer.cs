@@ -21,6 +21,7 @@ using System.Diagnostics;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Newtonsoft.Json;
 using TraceLevel = System.Diagnostics.TraceLevel;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -29,6 +30,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// </summary>
     public static class AzureSessionInitializer
     {
+        private const string ContextAutosaveSettingFileName = ContextAutosaveSettings.AutoSaveSettingsFile;
+        private const string DataCollectionFileName = AzurePSDataCollectionProfile.DefaultFileName;
+
         /// <summary>
         /// Initialize the azure session if it is not already initialized
         /// </summary>
@@ -73,7 +77,43 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return result;
         }
 
-        static ContextAutosaveSettings InitializeSessionSettings(IDataStore store, string profileDirectory, string settingsFile)
+        static bool MigrateSettings(IDataStore store, string oldProfileDirectory, string newProfileDirectory)
+        {
+            var filesToMigrate = new string[] { ContextAutosaveSettingFileName,
+                                                DataCollectionFileName };
+            try
+            {
+                if (!store.DirectoryExists(newProfileDirectory))
+                {
+                    store.CreateDirectory(newProfileDirectory);
+                }
+
+                // Only migrate if
+                // (1) all files to migrate can be found in the old directory, and
+                // (2) none of the files to migrate can be found in the new directory
+                var oldFiles = Directory.EnumerateFiles(oldProfileDirectory).Where(f => filesToMigrate.Contains(Path.GetFileName(f)));
+                var newFiles = Directory.EnumerateFiles(newProfileDirectory).Where(f => filesToMigrate.Contains(Path.GetFileName(f)));
+                if (store.DirectoryExists(oldProfileDirectory) && oldFiles.Count() == filesToMigrate.Length && !newFiles.Any())
+                {
+                    foreach (var oldFilePath in oldFiles)
+                    {
+                        var fileName = Path.GetFileName(oldFilePath);
+                        var newFilePath = Path.Combine(newProfileDirectory, fileName);
+                        store.CopyFile(oldFilePath, newFilePath);
+                    }
+
+                    return true;
+                }
+            }
+            catch
+            {
+                // ignore exceptions in reading settings from disk
+            }
+
+            return false;
+        }
+
+        static ContextAutosaveSettings InitializeSessionSettings(IDataStore store, string profileDirectory, string settingsFile, bool migrated = false)
         {
             var result = new ContextAutosaveSettings
             {
@@ -92,11 +132,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 {
                     var settingsText = store.ReadFileAsText(settingsPath);
                     ContextAutosaveSettings settings = JsonConvert.DeserializeObject<ContextAutosaveSettings>(settingsText);
-                    result.CacheDirectory = settings.CacheDirectory ?? result.CacheDirectory;
+                    result.CacheDirectory = migrated ? profileDirectory : settings.CacheDirectory ?? result.CacheDirectory;
                     result.CacheFile = settings.CacheFile ?? result.CacheFile;
-                    result.ContextDirectory = settings.ContextDirectory ?? result.ContextDirectory;
+                    result.ContextDirectory = migrated ? profileDirectory : settings.ContextDirectory ?? result.ContextDirectory;
                     result.Mode = settings.Mode;
                     result.ContextFile = settings.ContextFile ?? result.ContextFile;
+                    if (migrated)
+                    {
+                        string autoSavePath = Path.Combine(profileDirectory, settingsFile);
+                        store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
+                    }
                 }
                 else
                 {
@@ -127,8 +172,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         static IAzureSession CreateInstance(IDataStore dataStore = null)
         {
             string profilePath = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+#if NETSTANDARD
+                    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                     Resources.AzureDirectoryName);
+            string oldProfilePath = Path.Combine(
+#endif
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    Resources.OldAzureDirectoryName);
             dataStore = dataStore ?? new DiskDataStore();
 
             var session = new AdalSession
@@ -142,7 +192,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 ProfileFile = "AzureProfile.json",
             };
 
-            var autoSave = InitializeSessionSettings(dataStore, profilePath, ContextAutosaveSettings.AutoSaveSettingsFile);
+            var migrated =
+#if !NETSTANDARD
+                false;
+#else
+                MigrateSettings(dataStore, oldProfilePath, profilePath);
+#endif
+            var autoSave = InitializeSessionSettings(dataStore, profilePath, ContextAutosaveSettings.AutoSaveSettingsFile, migrated);
             session.ARMContextSaveMode = autoSave.Mode;
             session.ARMProfileDirectory = autoSave.ContextDirectory;
             session.ARMProfileFile = autoSave.ContextFile;

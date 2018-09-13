@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             certificates = found;
             return certificates.Count > 0;
         }
-		
+
         public static void X509StoreWrapper(StoreName storeName, StoreLocation storeLocation, Action<X509Store> action)
         {
 #if !NETSTANDARD
