@@ -168,12 +168,15 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets.generated.format.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="AzureRM.Resources.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ChangeLog.md" />
     <None Include="help\*.md" />
-    <None Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets.generated.format.ps1xml" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1" />
