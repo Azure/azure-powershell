@@ -76,7 +76,9 @@
     <Compile Include="ScenarioTests\ManagementGroupsTests.cs" />
     <Compile Include="ScenarioTests\MoveResourceTest.cs" />
     <Compile Include="ScenarioTests\ManagedApplicationDefinitionTests.cs" />
+    <Compile Include="ScenarioTests\PolicyAliasTests.cs" />
     <Compile Include="ScenarioTests\ProviderFeatureTests.cs" />
+    <Compile Include="ScenarioTests\ProviderListBuilder.cs" />
     <Compile Include="ScenarioTests\ProviderTests.cs" />
     <Compile Include="ScenarioTests\ResourcesController.cs" />
     <Compile Include="ScenarioTests\DeploymentTests.cs" />

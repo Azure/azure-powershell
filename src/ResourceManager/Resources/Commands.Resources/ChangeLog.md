@@ -20,6 +20,7 @@
 ## Current Release
 * Support managed identity on policy assignments.
 * Parameters with default values are no longer requred when assigning a policy with `New-AzureRmPolicyAssignment`
+* Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
 
 ## Version 6.4.2
 * Fixed issue with creating managed applications from the MarketPlace.
