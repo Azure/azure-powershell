@@ -43,6 +43,8 @@ $ruleCollection = New-AzureRmFirewallApplicationRuleCollection -Name RC1 -Priori
 New-AzureRmFirewall -Name "azFw" -ResourceGroupName "rg" -Location centralus -VirtualNetworkName "vnet" -PublicIpName "pip-name" -ApplicationRuleCollection $ruleCollection
 ```
 
+This example creates a Firewall which allows all HTTPS traffic on port 443.
+
 ### 3:  DNAT - redirect traffic destined to 10.1.2.3:80 to 10.2.3.4:8080
 ```
 $rule = New-AzureRmFirewallNatRule -Name "natRule" -Protocol "TCP" -SourceAddress "*" -DestinationAddress "10.1.2.3" -DestinationPort "80" -TranslatedAddress "10.2.3.4" -TranslatedPort "8080"
@@ -50,7 +52,7 @@ $ruleCollection = New-AzureRmFirewallNatRuleCollection -Name "NatRuleCollection"
 New-AzureRmFirewall -Name "azFw" -ResourceGroupName "rg" -Location centralus -NatRuleCollection $ruleCollection
 ```
 
-This example creates a Firewall which allows all HTTPS traffic on port 443.
+This example created a Firewall which translated the destination IP and port of all packets destined to 10.1.2.3:80 to 10.2.3.4:8080
 
 ## PARAMETERS
 
