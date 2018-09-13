@@ -387,7 +387,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'New-AzFirewallNatRuleCollection',
     'New-AzFirewallNatRule',
     'New-AzFirewallNetworkRuleCollection',
-    'New-AzFirewallNetworkRule'
+    'New-AzFirewallNetworkRule',
+    'Get-AzInterfaceEndpoint' 
 
 # Variables to export from this module
 # VariablesToExport = @()

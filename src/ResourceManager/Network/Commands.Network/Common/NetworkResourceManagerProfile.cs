@@ -816,6 +816,19 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.AzureFirewallNatRCAction, CNM.PSAzureFirewallNatRCAction>();
                 cfg.CreateMap<MNM.AzureFirewallRCAction, CNM.PSAzureFirewallRCAction>();
                 cfg.CreateMap<MNM.AzureFirewallApplicationRuleProtocol, CNM.PSAzureFirewallApplicationRuleProtocol>();
+
+                // Interface endpoint
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSInterfaceEndpoint, MNM.InterfaceEndpoint>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.InterfaceEndpoint, CNM.PSInterfaceEndpoint>();
+
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSEndpointService, MNM.EndpointService>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.EndpointService, CNM.PSEndpointService>();
             });
 
             _mapper = config.CreateMapper();

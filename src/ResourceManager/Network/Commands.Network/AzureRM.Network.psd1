@@ -388,7 +388,8 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'New-AzureRmFirewallNatRuleCollection',
                'New-AzureRmFirewallNatRule',
                'New-AzureRmFirewallNetworkRuleCollection',
-               'New-AzureRmFirewallNetworkRule'
+               'New-AzureRmFirewallNetworkRule',
+               'Get-AzureRmInterfaceEndpoint'
 
 # Variables to export from this module
 # VariablesToExport = @()
