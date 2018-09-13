@@ -203,14 +203,23 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             expectedSettings.Logs[0].Enabled = false;
 
             VerifyCalledOnce();
-            VerifySettings(expectedSettings, this.calledSettings);
+            VerifySettings(expectedSettings, this.calledSettings, suffix: "#1");
 
             // Testing the new categories must be known before the cmdlet can add them
+            expectedSettings.Logs.Add(
+                new LogSettings()
+                {
+                    Category = "TestCategory3",
+                    RetentionPolicy = new RetentionPolicy
+                    {
+                        Days = 0,
+                        Enabled = false
+                    }
+                });
             cmdlet.Categories = new List<string> { "TestCategory3" };
             cmdlet.Enabled = false;
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
-            var argException = Assert.Throws<PSInvalidOperationException>(() => cmdlet.ExecuteCmdlet());
-            Assert.Contains("ArgumentException", argException.ToString());
+            cmdlet.ExecuteCmdlet();
 
             // Testing the new metric categories must be known before the cmdlet can add them
             expectedSettings.Metrics[0].Enabled = false;
@@ -220,14 +229,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
             cmdlet.ExecuteCmdlet();
 
-            VerifySettings(expectedSettings, this.calledSettings);
+            VerifySettings(expectedSettings, this.calledSettings, suffix: "#2");
 
             // Testing the new categories must be known before the cmdlet can add them
             cmdlet.MetricCategory = new List<string> { "MetricCat3" };
             cmdlet.Enabled = false;
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
-            argException = Assert.Throws<PSInvalidOperationException>(() => cmdlet.ExecuteCmdlet());
-            Assert.Contains("ArgumentException", argException.ToString());
+            cmdlet.ExecuteCmdlet();
         }
 
         [Fact]
@@ -310,7 +318,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
 
         private void VerifySettings(
             DiagnosticSettingsResource expectedSettings,
-            DiagnosticSettingsResource actualSettings)
+            DiagnosticSettingsResource actualSettings,
+            string suffix = "")
         {
             Assert.Equal(expectedSettings.StorageAccountId, actualSettings.StorageAccountId);
             Assert.Equal(expectedSettings.EventHubName, actualSettings.EventHubName);
@@ -321,7 +330,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             }
             else
             {
-                Assert.True(expectedSettings.Logs.Count == actualSettings.Logs.Count, string.Format("Expected: {0}, Actual: {1}, no the same number of Log settings", expectedSettings.Logs.Count, actualSettings.Logs.Count));
+                Assert.True(expectedSettings.Logs.Count == actualSettings.Logs.Count, string.Format("Expected: {0}, Actual: {1}, no the same number of Log settings {2}", expectedSettings.Logs.Count, actualSettings.Logs.Count, suffix));
                 for (int i = 0; i < expectedSettings.Logs.Count; i++)
                 {
                     var expected = expectedSettings.Logs[i];
@@ -338,7 +347,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             }
             else
             {
-                Assert.True(expectedSettings.Metrics.Count == actualSettings.Metrics.Count, string.Format("Expected: {0}, Actual: {1}, no the same number of Metric settings", expectedSettings.Metrics.Count, actualSettings.Metrics.Count));
+                Assert.True(expectedSettings.Metrics.Count == actualSettings.Metrics.Count, string.Format("Expected: {0}, Actual: {1}, no the same number of Metric settings {2}", expectedSettings.Metrics.Count, actualSettings.Metrics.Count, suffix));
                 for (int i = 0; i < expectedSettings.Metrics.Count; i++)
                 {
                     var expected = expectedSettings.Metrics[i];
