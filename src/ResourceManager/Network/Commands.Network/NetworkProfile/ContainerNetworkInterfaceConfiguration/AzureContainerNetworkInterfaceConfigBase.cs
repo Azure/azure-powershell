@@ -29,16 +29,8 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipeline = true,
-            HelpMessage ="Specifies a collection of IP configuration profiles which determine what ip configurations are created when a container nic is instantiated from this container network interface configraution")]
-        public List<string> IpConfigurationId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies a collection of IP configuration profiles which determine what ip configurations are created when a container nic is instantiated from this container network interface configraution")]
-        [Parameter(ParameterSetName = "SetByResource")]
-        [Parameter(ParameterSetName = "SetByResourceId")] 
         public List<PSIPConfigurationProfile> IpConfiguration { get; set; }
     }
 }

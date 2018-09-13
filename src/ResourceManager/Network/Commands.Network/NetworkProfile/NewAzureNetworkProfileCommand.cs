@@ -75,11 +75,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public List<PSContainerNetworkInterface> ContainerNetworkInterface { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
         public List<PSContainerNetworkInterfaceConfiguration> ContainerNetworkInterfaceConfiguration { get; set; }
 
         [Parameter(
@@ -141,7 +136,6 @@ namespace Microsoft.Azure.Commands.Network
             var vNetworkProfile = new PSNetworkProfile
             {
                 Location = this.Location,
-                ContainerNetworkInterfaces = this.ContainerNetworkInterface,
                 ContainerNetworkInterfaceConfigurations = this.ContainerNetworkInterfaceConfiguration,
             };
 
