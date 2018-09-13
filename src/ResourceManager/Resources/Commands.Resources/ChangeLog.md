@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Add new cmdlet Get-AzureRmPolicyAliases for retrieving policy aliases
+* Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
 
 ## Version 6.4.2
 * Fixed issue with creating managed applications from the MarketPlace.
