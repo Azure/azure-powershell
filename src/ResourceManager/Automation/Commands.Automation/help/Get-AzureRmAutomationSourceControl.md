@@ -32,6 +32,8 @@ To get a specific source control, specify its name.
 
 ### Example 1
 This command gets an Automation source control named VSTSNative in the account named devAccount.
+
+
 ```powershell
 PS C:\> Get-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
                                            -AutomationAccountName "devAccount" `
@@ -41,7 +43,6 @@ PS C:\> Get-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
 Name            SourceType Branch FolderPath  AutoSync PublishRunbook RepoUrl
 ----            ---------- ------ ----------  -------- -------------- -------
 VSTSNative      VsoTfvc           /MyRunbooks False    True           https://contoso.visualstudio.com/_git/Fin...
-
 ```
 
 ## PARAMETERS
@@ -50,7 +51,7 @@ VSTSNative      VsoTfvc           /MyRunbooks False    True           https://co
 The automation account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,7 +81,7 @@ Accept wildcard characters: False
 The source control name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -95,7 +96,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +111,7 @@ Accept wildcard characters: False
 The source control type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAll
 Aliases:
 Accepted values: GitHub, VsoGit, VsoTfvc
@@ -123,8 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

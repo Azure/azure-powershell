@@ -21,30 +21,31 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     using Microsoft.Azure.Commands.Automation.Common;
     using Microsoft.Azure.Commands.Automation.Model.UpdateManagement;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationSoftwareUpdateMachineRun", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationSoftwareUpdateMachineRun",
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(SoftwareUpdateMachineRun))]
     public class GetAzureAutomationSoftwareUpdateMachineRun : AzureAutomationBaseCmdlet
     {
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ById, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Id of the software update machine run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ById, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Id of the software update machine run.")]
         [ValidateNotNullOrEmpty]
         public Guid Id { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucrId, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Id of the software update run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucrId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Id of the software update run.")]
         [ValidateNotNullOrEmpty]
         public Guid SoftwareUpdateRunId { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucr, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The software update run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucr, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The software update run.")]
         [ValidateNotNull]
         public SoftwareUpdateRun SoftwareUpdateRun { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Status of the machine run.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucr, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Status of the machine run.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucrId, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Status of the machine run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Status of the machine run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucr, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Status of the machine run.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucrId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Status of the machine run.")]
         public SoftwareUpdateMachineRunStatus? Status { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "target computer for the machine run. Can be either a non-azure computer name or an azure VM resource id.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucr, Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "target computer for the machine run. Can be either a non-azure computer name or an azure VM resource id.")]
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucrId, Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "target computer for the machine run. Can be either a non-azure computer name or an azure VM resource id.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByAll, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "target computer for the machine run. Can be either a non-azure computer name or an azure VM resource id.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucr, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "target computer for the machine run. Can be either a non-azure computer name or an azure VM resource id.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucrId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "target computer for the machine run. Can be either a non-azure computer name or an azure VM resource id.")]
         public string TargetComputer { get; set; }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]

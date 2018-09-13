@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Automation.Properties;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Model.UpdateManagement;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
 {
@@ -31,11 +32,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         /// <summary>
         /// Gets or sets the certificate name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the software update configuration to remove.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySucName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the software update configuration to remove.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySuc, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The software update configuration to remove.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySuc, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The software update configuration to remove.")]
         [ValidateNotNullOrEmpty]
         public SoftwareUpdateConfiguration SoftwareUpdateConfiguration { get; set; }
 
@@ -45,15 +46,19 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            string name = this.ParameterSetName == AutomationCmdletParameterSets.BySucName ? this.Name : this.SoftwareUpdateConfiguration.Name;
-
-            ConfirmAction(
-                string.Format(Resources.RemoveAzureAutomationResourceDescription, "SoftwareUpdateConfiguration"),
+            var name = this.ParameterSetName == AutomationCmdletParameterSets.BySucName ? this.Name : this.SoftwareUpdateConfiguration.Name;
+            var resource = string.Format(CultureInfo.CurrentCulture, Resources.SoftwareUpdateConfigurationRemoveOperation);
+            if (ShouldProcess(name, resource))
+            {
+                ConfirmAction(
+                    string.Format(Resources.RemoveAzureAutomationResourceDescription, "SoftwareUpdateConfiguration"),
                     Name,
                     () =>
                     {
-                        this.AutomationClient.DeleteSoftwareUpdateConfiguration(this.ResourceGroupName, this.AutomationAccountName, name);
+                        this.AutomationClient.DeleteSoftwareUpdateConfiguration(this.ResourceGroupName,
+                            this.AutomationAccountName, name);
                     });
+            }
         }
     }
 }

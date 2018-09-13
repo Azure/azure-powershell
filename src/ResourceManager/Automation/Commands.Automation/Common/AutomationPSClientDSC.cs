@@ -1424,10 +1424,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 var nodeReport =
                     this.automationManagementClient.NodeReports.ListByNode(
-                        // .ListByAutomationAccount(
                         resourceGroupName,
                         automationAccountName, nodeId.ToString(), null
-                        //new DscNodeReportListParameters { NodeId = nodeId }
                         ).OrderByDescending(report => report.StartTime).FirstOrDefault();
 
                 return new Model.DscNodeReport(resourceGroupName, automationAccountName, nodeId.ToString("D"), nodeReport);
@@ -1463,36 +1461,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
 #region privatemethods
         
-        /// <summary>
-        /// Enumerate the list of DscNodeConfiguration for given configuration - without any rollup status
-        /// </summary>
-        /// <param name="resourceGroupName">Resource group name</param>
-        /// <param name="automationAccountName">Automation account</param>
-        /// <param name="configurationName">Name of configuration</param>
-        /// <returns>List of DscNodeConfiguration</returns>
-        // TODO: private IEnumerable<Model.NodeConfiguration> EnumerateNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName)
-        //{
-        //    using (var request = new RequestSettings(this.automationManagementClient))
-        //    {
-        //        IEnumerable<AutomationManagement.Models.DscNodeConfiguration> nodeConfigModels;
-
-        //        nodeConfigModels = AutomationManagementClient.ContinuationTokenHandler(
-        //            skipToken =>
-        //            {
-        //                var response = this.automationManagementClient.DscNodeConfiguration.ListByAutomationAccount(
-        //                    resourceGroupName,
-        //                    automationAccountName,
-        //                    new AutomationManagement.Models.DscNodeConfigurationListParameters
-        //                    {
-        //                        ConfigurationName = configurationName
-        //                    });
-        //                return new ResponseWithSkipToken<AutomationManagement.Models.DscNodeConfiguration>(response, response.DscNodeConfigurations);
-        //            });
-
-        //        return nodeConfigModels.Select(nodeConfigModel => new Commands.Automation.Model.NodeConfiguration(resourceGroupName, automationAccountName, nodeConfigModel, null));
-        //    }
-        //}
-
         private string GetRollupStatus(string resourceGroupName, string automationAccountName, string nodeConfigurationName)
         {
             var nextLink = string.Empty;
@@ -1702,25 +1670,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
             };
 
             return filter.ToString();
-            /*
-             * 
-            string filter = null;
-            List<string> odataFilter = new List<string>();
-            if (!string.IsNullOrWhiteSpace(status))
-            {
-                odataFilter.Add("properties/status eq '" + Uri.EscapeDataString(status) + "'");
-            }
-            if (!string.IsNullOrWhiteSpace(nodeConfigurationName))
-            {
-                odataFilter.Add("properties/nodeConfiguration/name eq '" + Uri.EscapeDataString(nodeConfigurationName) + "'");
-            }
-            if (odataFilter.Count > 0)
-            {// $skip=0&$top=20&$inlinecount=allpages&
-                filter = string.Join(" and ", odataFilter);
-            }
-
-            return filter;
-             */
         }
 
         private string GetNodeReportListFilterString(string type, DateTimeOffset? startTime, DateTimeOffset? endTime, DateTimeOffset? lastModifiedTime)

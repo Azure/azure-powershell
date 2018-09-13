@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Starts an azure automation source control sync job.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmAutomationSourceControlSyncJob", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsLifecycle.Start, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationSourceControlSyncJob",
+        SupportsShouldProcess = true)]
     [OutputType(typeof(SourceControlSyncJob))]
     public class StartAzureAutomationSourceControlSyncJob : AzureAutomationBaseCmdlet
     {

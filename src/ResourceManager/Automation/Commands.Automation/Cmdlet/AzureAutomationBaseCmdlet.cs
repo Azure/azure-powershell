@@ -84,21 +84,23 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 Requires.Argument("AutomationAccountName", this.AutomationAccountName).NotNull();
                 this.AutomationProcessRecord();
             }
-            catch (ErrorResponseException ErrorResponseException)
+            catch (ErrorResponseException errorResponseException)
             {
-                if (string.IsNullOrEmpty(ErrorResponseException.Body.Code) && string.IsNullOrEmpty(ErrorResponseException.Body.Message))
+                // if errorResponseException.Body.Code is null or empty, check if errorResponseException.Response.Content is available.
+                if (string.IsNullOrEmpty(errorResponseException.Body?.Code) && string.IsNullOrEmpty(errorResponseException.Body?.Message))
                 {
-                    if (!string.IsNullOrEmpty(ErrorResponseException.Response.Content))
+                    if (!string.IsNullOrEmpty(errorResponseException.Response.Content))
                     {
-                        var message = ParseJson(ErrorResponseException.Response.Content);
+                        // try to extract the error message from errorResponseException.Response.Content.
+                        var message = ParseJson(errorResponseException.Response.Content);
                         if (!string.IsNullOrEmpty(message))
                         {
-                            throw new ErrorResponseException(message, ErrorResponseException);
+                            throw new ErrorResponseException(message, errorResponseException);
                         }
                     }
                 }
 
-                throw new ErrorResponseException(ErrorResponseException.Body.Message, ErrorResponseException);
+                throw new ErrorResponseException(errorResponseException.Body?.Message, errorResponseException);
             }
         }
 

@@ -478,11 +478,16 @@
     <value>Removing the Azure Automation Source Control.</value>
     <comment>Automation</comment>
   </data>
-  <data name="SourceControlRemoveWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the Azure Automation Source Control?</value>
-  </data>
   <data name="SourceControlUpdateAction" xml:space="preserve">
     <value>Updating the Azure Automation Source Control.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="SoftwareUpdateConfigurationCreateOperation" xml:space="preserve">
+    <value>Creating Azure Automation Software Update Configuration.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="SoftwareUpdateConfigurationRemoveOperation" xml:space="preserve">
+    <value>Removing Azure Automation Software Update Configuration.</value>
     <comment>Automation</comment>
   </data>
 </root>

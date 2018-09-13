@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Globalization;
+
 namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
 {
     using System;
@@ -23,45 +25,46 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
     using System.Linq;
     using Properties;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmAutomationSoftwareUpdateConfiguration")]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationSoftwareUpdateConfiguration",
+        SupportsShouldProcess = true)]
     [OutputType(typeof(SoftwareUpdateConfiguration))]
     public class NewAzureAutomationSoftwareUpdateConfiguration : AzureAutomationBaseCmdlet
     {
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Schedule object used for software update configuration.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Schedule object used for software update configuration.")]
         [ValidateNotNull]
         public Models.Schedule Schedule { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that the software update configuration targeting windows operating system machines.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that the software update configuration targeting windows operating system machines.")]
         public SwitchParameter Windows { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that the software update configuration targeting Linux operating system machines.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that the software update configuration targeting Linux operating system machines.")]
         public SwitchParameter Linux { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Ids for azure virtual machines.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Ids for azure virtual machines.")]
         public string[] AzureVMResourceIds { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Non-Azure computer names.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Non-Azure computer names.")]
         public string[] NonAzureComputers { get; set; }
 
-        [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Maximum duration for the update.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Maximum duration for the update.")]
         public TimeSpan Duration { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Windows Update classifications.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Windows Update classifications.")]
         public WindowsUpdateClasses[] IncludedUpdateClassifications { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Position = 8, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "KB numbers of excluded updates.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "KB numbers of excluded updates.")]
         public string[] ExcludedKbNumbers { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Position = 9, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "KB numbers of included updates.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "KB numbers of included updates.")]
         public string[] IncludedKbNumbers { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Linux package classifications.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Linux package classifications.")]
         public LinuxPackageClasses[] IncludedPackageClassifications { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Position = 8, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Excluded Linux package masks.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Excluded Linux package masks.")]
         public string[] ExcludedPackageNameMasks { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Position = 9, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Linux package masks.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Linux package masks.")]
         public string[] IncludedPackageNameMasks { get; set; }
 
         private bool IsWindows { get { return this.ParameterSetName == AutomationCmdletParameterSets.Windows; } }
@@ -77,34 +80,42 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
                 throw new PSArgumentException(Resources.SoftwareUpdateConfigurationHasNoTargetComputers);
             }
 
-            var suc = new SoftwareUpdateConfiguration()
+            var resource = string.Format(CultureInfo.CurrentCulture, Resources.SourceControlCreateAction);
+            if (ShouldProcess(this.Schedule.Name, resource))
             {
-                Name = this.Schedule.Name,
-                Description = this.Schedule.Description,
-                ScheduleConfiguration = this.Schedule,
-                UpdateConfiguration = new UpdateConfiguration
+                var suc = new SoftwareUpdateConfiguration()
                 {
-                    OperatingSystem = this.IsWindows ? OperatingSystemType.Windows : OperatingSystemType.Linux,
-                    Windows = !this.IsWindows ? null : new WindowsConfiguration
+                    Name = this.Schedule.Name,
+                    Description = this.Schedule.Description,
+                    ScheduleConfiguration = this.Schedule,
+                    UpdateConfiguration = new UpdateConfiguration
                     {
-                        ExcludedKbNumbers = this.ExcludedKbNumbers,
-                        IncludedKbNumbers = this.IncludedKbNumbers,
-                        IncludedUpdateClassifications = this.IncludedUpdateClassifications
-                    },
-                    Linux = this.IsWindows ? null : new LinuxConfiguration
-                    {
-                        ExcludedPackageNameMasks = this.ExcludedPackageNameMasks,
-                        IncludedPackageClassifications = this.IncludedPackageClassifications,
-                        IncludedPackageNameMasks = this.IncludedPackageNameMasks
-                    },
-                    Duration = this.Duration,
-                    AzureVirtualMachines = this.AzureVMResourceIds,
-                    NonAzureComputers = this.NonAzureComputers
-                }
-            };
-
-            suc = this.AutomationClient.CreateSoftwareUpdateConfiguration(this.ResourceGroupName, this.AutomationAccountName, suc);
-            this.WriteObject(suc);
+                        OperatingSystem = this.IsWindows ? OperatingSystemType.Windows : OperatingSystemType.Linux,
+                        Windows = !this.IsWindows
+                            ? null
+                            : new WindowsConfiguration
+                            {
+                                ExcludedKbNumbers = this.ExcludedKbNumbers,
+                                IncludedKbNumbers = this.IncludedKbNumbers,
+                                IncludedUpdateClassifications = this.IncludedUpdateClassifications
+                            },
+                        Linux = this.IsWindows
+                            ? null
+                            : new LinuxConfiguration
+                            {
+                                ExcludedPackageNameMasks = this.ExcludedPackageNameMasks,
+                                IncludedPackageClassifications = this.IncludedPackageClassifications,
+                                IncludedPackageNameMasks = this.IncludedPackageNameMasks
+                            },
+                        Duration = this.Duration,
+                        AzureVirtualMachines = this.AzureVMResourceIds,
+                        NonAzureComputers = this.NonAzureComputers
+                    }
+                };
+                suc = this.AutomationClient.CreateSoftwareUpdateConfiguration(this.ResourceGroupName,
+                    this.AutomationAccountName, suc);
+                this.WriteObject(suc);
+            }
         }
     }
 }
