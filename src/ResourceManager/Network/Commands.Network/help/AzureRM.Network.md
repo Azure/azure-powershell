@@ -305,6 +305,12 @@ Gets routes from a route table.
 ### [Get-AzureRmRouteTable](Get-AzureRmRouteTable.md)
 Gets route tables.
 
+### [Get-AzureRmVirtualHub](Get-AzureRmVirtualHub.md)
+Gets an Azure VirtualHub by Name and ResourceGroupName or lists all Virtual Hubs by ResourceGroupName/Subscription.
+
+### [Get-AzureRmVirtualHubVnetConnection](Get-AzureRmVirtualHubVnetConnection.md)
+Gets a Virtual Network Connection in a virtual hub or lists all virtual network connections in a virtual hub.
+
 ### [Get-AzureRmServiceEndpointPolicy](Get-AzureRmServiceEndpointPolicy.md)
 {{Fill in the Synopsis}}
 
@@ -350,6 +356,13 @@ Gets a subnet in a virtual network.
 ### [Get-AzureRmVirtualNetworkUsageList](Get-AzureRmVirtualNetworkUsageList.md)
 Gets virtual network current usage.
 
+### [Get-AzureRmVirtualWan](Get-AzureRmVirtualWan.md)
+Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
+
+### [Get-AzureRmVirtualWanVpnConfiguration](Get-AzureRmVirtualWanVpnConfiguration.md)
+Gets the Vpn configuration for a subset of VpnSites connected to this WAN via VpnConnections. Uploads the generated Vpn
+configuration to a storage blob specified by the customer.
+
 ### [Get-AzureRmVpnClientConfiguration](Get-AzureRmVpnClientConfiguration.md)
 Allows users to easily download the Vpn Profile package that was generated using the New-AzureRmVpnClientConfiguration commandlet.
 
@@ -364,6 +377,17 @@ Gets information about VPN client-revocation certificates.
 
 ### [Get-AzureRmVpnClientRootCertificate](Get-AzureRmVpnClientRootCertificate.md)
 Gets information about VPN root certificates.
+
+### [Get-AzureRmVpnConnection](Get-AzureRmVpnConnection.md)
+Gets a vpn connection by name or lists all vpn connections connected to a VpnGateway.
+
+### [Get-AzureRmVpnGateway](Get-AzureRmVpnGateway.md)
+Gets a VpnGateway resource using ResourceGroupName and GatewayName OR lists all gateways by ResourceGroupName or SubscriptionId.
+
+### [Get-AzureRmVpnSite](Get-AzureRmVpnSite.md)
+Gets an Azure VpnSite resource by name OR lists all VpnSites in a ResourceGroup or SubscriptionId. 
+
+This is an RM representation of customer branches that are uploaded to Azure for S2S connectivity with a Cortex virtual hub.
 
 ### [Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
 Moves an ExpressRoute circuit from the classic deployment model to the Resource Manager deployment model.
@@ -521,6 +545,18 @@ Creates a route filter rule for a route filter.
 ### [New-AzureRmRouteTable](New-AzureRmRouteTable.md)
 Creates a route table.
 
+### [New-AzureRmVirtualHub](New-AzureRmVirtualHub.md)
+Creates an Azure VirtualHub resource.
+
+### [New-AzureRmVirtualHubRoute](New-AzureRmVirtualHubRoute.md)
+Creates an Azure Virtual Hub Route object.
+
+### [New-AzureRmVirtualHubRouteTable](New-AzureRmVirtualHubRouteTable.md)
+Creates an Azure Virtual Hub Route Table object.
+
+### [New-AzureRmVirtualHubVnetConnection](New-AzureRmVirtualHubVnetConnection.md)
+The New-AzureRmVirtualHubVnetConnection cmdlet creates a HubVirtualNetworkConnection resource that peers a Virtual Network to the Azure Virtual Hub.
+
 ### [New-AzureRmServiceEndpointPolicy](New-AzureRmServiceEndpointPolicy.md)
 {{Fill in the Synopsis}}
 
@@ -542,6 +578,9 @@ Creates an IP Configuration for a Virtual Network Gateway
 ### [New-AzureRmVirtualNetworkSubnetConfig](New-AzureRmVirtualNetworkSubnetConfig.md)
 Creates a virtual network subnet configuration.
 
+### [New-AzureRmVirtualWan](New-AzureRmVirtualWan.md)
+Creates an Azure Virtual WAN.
+
 ### [New-AzureRmVpnClientConfiguration](New-AzureRmVpnClientConfiguration.md)
 This command allows the users to create the Vpn profile package based on pre-configured vpn settings on the VPN gateway, in addition to some additional settings that users may need to configure, for e.g. some root certificates.
 
@@ -556,6 +595,16 @@ Creates a new VPN client-revocation certificate.
 
 ### [New-AzureRmVpnClientRootCertificate](New-AzureRmVpnClientRootCertificate.md)
 Creates a new VPN client root certificate.
+
+### [New-AzureRmVpnConnection](New-AzureRmVpnConnection.md)
+Creates a IPSec connection that connects a VpnGateway to a remote customer branch represented in RM as a VpnSite.
+
+### [New-AzureRmVpnGateway](New-AzureRmVpnGateway.md)
+Creates a Scalable VPN Gateway.
+
+### [New-AzureRmVpnSite](New-AzureRmVpnSite.md)
+Creates a new Azure VpnSite resource. This is an RM representation of customer branches that are uploaded to Azure
+for S2S connectivity with a Cortex virtual hub.
 
 ### [Remove-AzureRmApplicationGateway](Remove-AzureRmApplicationGateway.md)
 Removes an application gateway.
@@ -686,6 +735,12 @@ Removes a route from a route table.
 ### [Remove-AzureRmRouteTable](Remove-AzureRmRouteTable.md)
 Removes a route table.
 
+### [Remove-AzureRmVirtualHub](Remove-AzureRmVirtualHub.md)
+Removes an Azure VirtualHub resource.
+
+### [Remove-AzureRmVirtualHubVnetConnection](Remove-AzureRmVirtualHubVnetConnection.md)
+The Remove-AzureRmVirtualHubVnetConnection cmdlet removes an Azure Virtual Network Connection which peers a remote VNET to the hub VNET.
+
 ### [Remove-AzureRmServiceEndpointPolicy](Remove-AzureRmServiceEndpointPolicy.md)
 {{Fill in the Synopsis}}
 
@@ -713,6 +768,9 @@ Removes a virtual network peering.
 ### [Remove-AzureRmVirtualNetworkSubnetConfig](Remove-AzureRmVirtualNetworkSubnetConfig.md)
 Removes a subnet configuration from a virtual network.
 
+### [Remove-AzureRmVirtualWan](Remove-AzureRmVirtualWan.md)
+Removes an Azure Virtual WAN.
+
 ### [Remove-AzureRmVpnClientIpsecParameter](Remove-AzureRmVpnClientIpsecParameter.md)
 Removes Vpn custom ipsec policy set on Virtual Network Gateway resource.
 
@@ -721,6 +779,15 @@ Removes a VPN client-revocation certificate.
 
 ### [Remove-AzureRmVpnClientRootCertificate](Remove-AzureRmVpnClientRootCertificate.md)
 Removes an existing VPN client root certificate.
+
+### [Remove-AzureRmVpnConnection](Remove-AzureRmVpnConnection.md)
+Removes a VpnConnection.
+
+### [Remove-AzureRmVpnGateway](Remove-AzureRmVpnGateway.md)
+The Remove-AzureRmVpnGateway cmdlet removes an Azure VPN gateway. This is a gateway specific to Azure Virtual WAN's software defined connectivity.
+
+### [Remove-AzureRmVpnSite](Remove-AzureRmVpnSite.md)
+Removes an Azure VpnSite resource.
 
 ### [Reset-AzureRmVirtualNetworkGateway](Reset-AzureRmVirtualNetworkGateway.md)
 Resets the Virtual Network Gateway
@@ -911,3 +978,17 @@ Returns whether the packet is allowed or denied to or from a particular destinat
 ### [Test-AzureRmPrivateIPAddressAvailability](Test-AzureRmPrivateIPAddressAvailability.md)
 Test availability of a private IP address in a virtual network.
 
+### [Update-AzureRmVirtualHub](Update-AzureRmVirtualHub.md)
+Updates a Virtual Hub to an intended goal state.
+
+### [Update-AzureRmVirtualWan](Update-AzureRmVirtualWan.md)
+Updates an Azure Virtual WAN.
+
+### [Update-AzureRmVpnConnection](Update-AzureRmVpnConnection.md)
+Updates a VpnConnection object to a goal state.
+
+### [Update-AzureRmVpnGateway](Update-AzureRmVpnGateway.md)
+Update-AzureRmVpnGateway updates a scalable VPN Gateway to the appropriate goal state.
+
+### [Update-AzureRmVpnSite](Update-AzureRmVpnSite.md)
+Updates a VpnSite representing a customer branch to an intended goal state.
