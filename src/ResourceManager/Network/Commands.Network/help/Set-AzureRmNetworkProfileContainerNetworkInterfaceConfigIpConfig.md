@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkprofilecontainernetworkinterfaceconfigipconfig
 schema: 2.0.0
 ---
 
@@ -12,10 +12,18 @@ Sets the goal state for a container network interface configuration's ip configu
 
 ## SYNTAX
 
+### SetByResource (Default)
 ```
 Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
  -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> -Name <String>
  [-Subnet <PSSubnet>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceId 
+```
+Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
+ -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> -Name <String>
+ [-SubnetId <string>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
