@@ -33,6 +33,11 @@
             <Width>17</Width>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Version</Label>
+            <Width>12</Width>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -51,6 +56,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.ProvisioningState</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Version</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
