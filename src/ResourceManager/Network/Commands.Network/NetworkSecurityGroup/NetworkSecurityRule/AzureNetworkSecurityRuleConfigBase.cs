@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The prioroty of the rule")]
+            HelpMessage = "The priority of the rule")]
         [ValidateNotNullOrEmpty]
         public int Priority { get; set; }
 
