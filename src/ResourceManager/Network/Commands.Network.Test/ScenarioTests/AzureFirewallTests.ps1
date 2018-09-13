@@ -83,7 +83,7 @@ function Test-AzureFirewallCRUD
     $natRule1Desc = "desc1"
     $natRule1SourceAddress1 = "10.0.0.0"
     $natRule1SourceAddress2 = "111.1.0.0/24"
-    $natRule1DestinationAddress1 = "*"
+    $natRule1DestinationAddress1 = "1.2.3.4"
     $natRule1Protocol1 = "UDP"
     $natRule1Protocol2 = "TCP"
     $natRule1DestinationPort1 = "90"
