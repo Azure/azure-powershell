@@ -41,8 +41,8 @@ PS C:\> Get-AzureRmSignalR
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
 --------                                           --------       ---------- ---------- ----------------- -------
-mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0-preview
-mysignalr2.service.signalr.net                     eastus         5002       5001       Succeeded         1.0-preview
+mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
+mysignalr2.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
 mysignalr3.service.signalr.net                     eastus         5002       5001       Creating          1.0
 ```
 
@@ -53,8 +53,8 @@ PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
 --------                                           --------       ---------- ---------- ----------------- -------
-mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0-preview
-mysignalr2.service.signalr.net                     eastus         5002       5001       Succeeded         1.0-preview
+mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
+mysignalr2.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
 ```
 
 ### Get a specific SignalR service
@@ -64,7 +64,7 @@ PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup -Name mysignalr1
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
 --------                                           --------       ---------- ---------- ----------------- -------
-mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0-preview
+mysignalr1.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
 ```
 
 ### Get a specific SignalR service from the default resource group
@@ -74,7 +74,7 @@ PS C:\> Get-AzureRmSignalR -Name mysignalr2
 
 HostName                                           Location       ServerPort PublicPort ProvisioningState Version
 --------                                           --------       ---------- ---------- ----------------- -------
-mysignalr2.service.signalr.net                     eastus         5002       5001       Succeeded         1.0-preview
+mysignalr2.service.signalr.net                     eastus         5002       5001       Succeeded         1.0
 ```
 
 The default resource group can be set by `Set-AzureRmDefault -ResourceGroupName myResourceGroup`.
@@ -85,7 +85,7 @@ The default resource group can be set by `Set-AzureRmDefault -ResourceGroupName 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 SignalR service name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 Resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListSignalRServiceParameterSet, ResourceGroupParameterSet
 Aliases:
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 The SignalR service resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
