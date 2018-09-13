@@ -92,6 +92,11 @@ namespace Microsoft.Azure.Commands.Network
         public string[] AddressSpace { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           HelpMessage = "Indicates if this vpn site is security site or not.")]
+        public SwitchParameter IsSecuritySite { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "The device model of the remote vpn device.")]
         public string DeviceModel { get; set; }
@@ -166,6 +171,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             vpnSiteToCreate.VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id };
+            vpnSiteToCreate.IsSecuritySite = this.IsSecuritySite.IsPresent;
 
             //// Bgp Settings
             if (this.BgpAsn > 0 || this.BgpPeeringWeight > 0 || !string.IsNullOrWhiteSpace(this.BgpPeeringAddress))
