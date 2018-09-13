@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Collections;
     using System.Linq;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Creates a policy assignment.
@@ -121,6 +123,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable Sku { get; set; }
 
         /// <summary>
+        /// Gets or sets a flag indicating whether a system assigned identity should be added to the policy assignment.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = PolicyHelpStrings.PolicyAssignmentAssignIdentityHelp)]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the location of the policy assignment. Only required when assigning a resource identity to the assignment.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.PolicyAssignmentLocationHelp)]
+        [LocationCompleter("Microsoft.ManagedIdentity/userAssignedIdentities")]
+        public string Location { get; set; }
+
+        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
@@ -184,6 +199,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 Name = this.Name,
                 Sku = Sku?.ToDictionary(addValueLayer: false).ToJson().FromJson<PolicySku>(),  // only store Sku if it was provided by user
+                Identity = this.AssignIdentity.IsPresent ? new ResourceIdentity { Type = ResourceIdentityType.SystemAssigned } : null,
+                Location = this.Location,
                 Properties = new PolicyAssignmentProperties
                 {
                     DisplayName = this.DisplayName ?? null,
@@ -223,28 +240,34 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 foreach (var param in parameters.Properties)
                 {
-                    var type = (param.Value as PSObject).Properties["type"];
-                    var typeString = type != null ? type.Value.ToString() : string.Empty;
-                    var description = (param.Value as PSObject).GetPSObjectProperty("metadata.description");
-                    var helpString = description != null ? description.ToString() : string.Format("The {0} policy parameter.", param.Name);
-                    var dp = new RuntimeDefinedParameter
+                    var paramValue = param.Value as PSObject;
+                    if (paramValue != null)
                     {
-                        Name = param.Name,
-                        ParameterType = typeString.Equals("array", StringComparison.OrdinalIgnoreCase) ? typeof(string[]) : typeof(string)
-                    };
-                    dp.Attributes.Add(new ParameterAttribute
-                    {
-                        ParameterSetName = PolicyCmdletBase.DefaultParameterSet,
-                        Mandatory = true,
-                        ValueFromPipelineByPropertyName = false,
-                        HelpMessage = helpString
-                    });
-                    this.dynamicParameters.Add(param.Name, dp);
+                        var type = paramValue.Properties["type"];
+                        var typeString = type != null ? type.Value.ToString() : string.Empty;
+                        var description = paramValue.GetPSObjectProperty("metadata.description");
+                        var helpString = description != null ? description.ToString() : string.Format("The {0} policy parameter.", param.Name);
+                        var dp = new RuntimeDefinedParameter
+                        {
+                            Name = param.Name,
+                            ParameterType = typeString.Equals("array", StringComparison.OrdinalIgnoreCase) ? typeof(string[]) : typeof(string)
+                        };
+                        
+                        // Dynamic parameter should not be mandatory if it has a default value
+                        dp.Attributes.Add(new ParameterAttribute
+                        {
+                            ParameterSetName = PolicyCmdletBase.DefaultParameterSet,
+                            Mandatory = paramValue.Properties["defaultValue"] == null,
+                            ValueFromPipelineByPropertyName = false,
+                            HelpMessage = helpString
+                        });
+
+                        this.dynamicParameters.Add(param.Name, dp);
+                    }
                 }
             }
 
-            RegisterDynamicParameters(dynamicParameters);
-
+            this.RegisterDynamicParameters(this.dynamicParameters);
             return this.dynamicParameters;
         }
 

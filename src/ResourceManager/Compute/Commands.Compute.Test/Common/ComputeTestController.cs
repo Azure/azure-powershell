@@ -33,6 +33,8 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using NetworkManagementClientInternal = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient;
 using ResourceManagementClientInternal = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using System.Reflection;
+using System.Runtime.Versioning;
 using Microsoft.Azure.Management.Internal.Resources;
 using CommonStorage = Microsoft.Azure.Management.Storage.Version2017_10_01;
 using PublicStorage = Microsoft.Azure.Management.Storage;
@@ -111,7 +113,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10");
             providersToIgnore.Add("Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-09-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
-
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
@@ -141,7 +142,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 try
                 {
                     var psScripts = scriptBuilder?.Invoke();
-
                     if (psScripts != null)
                     {
                         _helper.RunPowerShellTest(psScripts);
