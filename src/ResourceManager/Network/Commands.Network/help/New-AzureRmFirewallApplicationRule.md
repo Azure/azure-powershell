@@ -13,7 +13,7 @@ Creates a Firewall Application Rule.
 
 ## SYNTAX
 
-### TargetFqdn
+### TargetFqdn (Default)
 ```
 New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>]
  [-SourceAddress <System.Collections.Generic.List`1[System.String]>]
