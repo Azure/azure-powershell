@@ -17,6 +17,7 @@ Creates a new Firewall in a resource group.
 New-AzureRmFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-VirtualNetworkName <String>] [-PublicIpName <String>]
  [-ApplicationRuleCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRuleCollection]>]
+ [-NatRuleCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRuleCollection]>]
  [-NetworkRuleCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRuleCollection]>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -130,6 +131,21 @@ Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NatRuleCollection
+The list of AzureFirewallNatRuleCollections
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRuleCollection]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -265,3 +281,9 @@ This cmdlet does not accept any input.
 [Remove-AzureRmFirewall](./Remove-AzureRmFirewall.md)
 
 [Set-AzureRmFirewall](./Set-AzureRmFirewall.md)
+
+[New-AzureRmFirewallApplicationRuleCollection](./New-AzureRmFirewallApplicationRuleCollection.md)
+
+[New-AzureRmFirewallNatRuleCollection](./New-AzureRmFirewallNatRuleCollection.md)
+
+[New-AzureRmFirewallNetworkRuleCollection](./New-AzureRmFirewallNetworkRuleCollection.md)
