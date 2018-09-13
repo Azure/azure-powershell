@@ -13,13 +13,21 @@ Creates a Firewall Application Rule.
 
 ## SYNTAX
 
+### AzureFirewall with Target FQDNs (Default)
 ```
 New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>]
  [-SourceAddress <System.Collections.Generic.List`1[System.String]>]
- [-TargetFqdn <System.Collections.Generic.List`1[System.String]>]
- [-FqdnTag <System.Collections.Generic.List`1[System.String]>]
- [-Protocol <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ -TargetFqdn <System.Collections.Generic.List`1[System.String]>
+ -Protocol <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureFirewall with FQDN Tags
+```
+New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>]
+ [-SourceAddress <System.Collections.Generic.List`1[System.String]>]
+ -FqdnTag <System.Collections.Generic.List`1[System.String]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,7 +131,6 @@ Accept wildcard characters: False
 ### -TargetFqdn
 Specifies a list of domain names filtered by this rule.
 The asterik character, '*', is accepted only as the first character of an FQDN in the list. When used, the asterik matches any number of characters. (e.g. '*msn.com' will match msn.com and all its subdomains)
-TargetFqdn and FqdnTag cannot be used together in the same rule.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
@@ -145,8 +152,6 @@ Specifies a list of FQDN Tags for this rule. The available tags are:
 - App Service Environment
 - Microsoft Active Protection Service
 - Azure Backup
-
-TargetFqdn and FqdnTag cannot be used together in the same rule. Protocol also cannot be specified for FQDN Tags.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
