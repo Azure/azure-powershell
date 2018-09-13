@@ -138,7 +138,12 @@ Accept wildcard characters: True
 ```
 
 ### -FqdnTag
-Specifies a list of FQDN Tags for this rule. The available tags can be retrieved using [Get-AzureRmFirewallFqdnTag](./Get-AzureRmFirewallFqdnTag.md)
+Specifies a list of FQDN Tags for this rule. The available tags are:
+    - Windows Update
+    - Windows Diagnostics
+    - App Service Environment
+    - Microsoft Active Protection Service
+    - Azure Backup
 TargetFqdn and FqdnTag cannot be used together in the same rule. Protocol also cannot be specified for FQDN Tags.
 
 ```yaml
