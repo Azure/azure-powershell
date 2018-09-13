@@ -66,7 +66,7 @@ foreach($RMPath in $resourceManagerPaths)
         }
         
         Write-Verbose "Removing redundant dlls in $($RMFolder.Name)"
-        $removedDlls = Get-ChildItem -Path $RMFolder.FullName -Filter "*.dll" -Recurse | where { $acceptedDlls -notcontains $_.Name}
+        $removedDlls = Get-ChildItem -Path $RMFolder.FullName -Filter "*.dll" -Recurse | where { $acceptedDlls -notcontains $_.Name -and !$_.FullName.Contains("PreloadAssemblies")}
         $removedDlls | % { Write-Verbose "Removing $($_.Name)"; Remove-Item $_.FullName -Force }
 
         Write-Verbose "Removing scripts and psd1 in $($RMFolder.FullName)"
