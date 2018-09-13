@@ -19,6 +19,8 @@
 -->
 ## Current Release
 
+## Version 5.1.4
+
 * Fixed issues #6833 and #7102 (Diagnostic Settings area)
     - Issues with the default name, i.e. "service", during creation and listing/getting of diagnostic settings
     - Issues creating diagnostic settings with categories
