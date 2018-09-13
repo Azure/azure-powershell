@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermnetworkprofilecontainernetworkinterfaceconfig
 schema: 2.0.0
 ---
 
@@ -19,7 +19,7 @@ Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile <PSNetw
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig** cmdlet adds a new container network interface configraution to an existing network profile object.
+The **Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig** cmdlet adds a new container network interface configuration to an existing network profile object.
 
 ## EXAMPLES
 
