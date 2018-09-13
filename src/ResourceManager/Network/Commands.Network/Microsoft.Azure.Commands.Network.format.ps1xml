@@ -1410,6 +1410,10 @@
                 <Label>ServiceEndpointPolicyDefinitions</Label>
                 <PropertyName>ServiceEndpointPolicyDefinitionsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Subnets</Label>
+                <PropertyName>SubnetsText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1429,24 +1433,12 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>ResourceGroupName</Label>
-                <PropertyName>ResourceGroupName</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Location</Label>
-                <PropertyName>Location</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Id</Label>
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Etag</Label>
                 <PropertyName>Etag</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>ResourceGuid</Label>
-                <PropertyName>ResourceGuid</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
