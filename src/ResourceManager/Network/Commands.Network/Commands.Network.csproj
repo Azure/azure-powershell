@@ -192,6 +192,7 @@
     <Compile Include="AzureFirewall\RemoveAzureFirewallCommand.cs" />
     <Compile Include="AzureFirewall\AzureFirewallBaseCmdlet.cs" />
     <Compile Include="AzureFirewall\SetAzureFirewallCommand.cs" />
+    <Compile Include="InterfaceEndpoint\AzureInterfaceEndpointBaseCmdlet.cs" />
     <Compile Include="Generated\ApplicationSecurityGroup\GetAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Generated\ApplicationSecurityGroup\NewAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Generated\ApplicationSecurityGroup\RemoveAzureRMApplicationSecurityGroupCommand.cs" />
@@ -355,6 +356,7 @@
     <Compile Include="Generated\Models\PSResourceNavigationLink.cs" />
     <Compile Include="Generated\Models\PSTroubleshootingDetails.cs" />
     <Compile Include="Generated\Models\PSTroubleshootingRecommendedActions.cs" />
+    <Compile Include="InterfaceEndpoint\GetAzureInterfaceEndpointCommand.cs" />
     <Compile Include="Models\PSTrafficAnalyticsConfigurationProperties.cs" />
     <Compile Include="Models\PSTrafficAnalyticsProperties.cs" />
     <Compile Include="Generated\Models\PSTunnelConnectionHealth.cs" />
@@ -539,6 +541,8 @@
     <Compile Include="NetworkWatcher\GetAzureNetworkWatcherReachabilityProvidersListCommand.cs" />
     <Compile Include="NetworkWatcher\GetAzureRMNetworkWatcherReachabilityReportCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
+    <Compile Include="Models\PSEndpointService.cs" />
+    <Compile Include="Models\PSInterfaceEndpoint.cs" />
     <Compile Include="PublicIpPrefix\GetAzurePublicIpPrefixCommand.cs" />
     <Compile Include="PublicIpPrefix\NewAzurePublicIpPrefixCommand.cs" />
     <Compile Include="PublicIpPrefix\PublicIpPrefixBaseCmdlet.cs" />
