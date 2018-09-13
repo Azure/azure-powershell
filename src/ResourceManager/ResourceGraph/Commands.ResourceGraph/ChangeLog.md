@@ -19,5 +19,5 @@
 -->
 ## Current Release
 
-## Version 0.9.0-preview
+## Version 0.1.0-preview
 * Public preview release of Resource Graph cmdlets
