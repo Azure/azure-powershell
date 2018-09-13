@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Adds a container network interface configraution to a network profile.
 
 ## SYNTAX
 
@@ -19,16 +19,20 @@ Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile <PSNetw
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig** cmdlet adds a new container network interface configraution to an existing network profile object.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$networkProfile = New-AzureRmNetworkProfile -Name np1 
+
+$networkProfile | Add-AzureRmNetworkProfileContainerNetworkInterface -Name containerNicConfig
+
+$networkProfile | Set-AzureRmNetworkProfile 
 ```
 
-{{ Add example description here }}
+The first command creates a new network profile top level resource called np1. The second command adds a new container network interface configuration to the piped-in network profile. Finally, the third command updates the network profile, saving the changes made to the network profile.
 
 ## PARAMETERS
 

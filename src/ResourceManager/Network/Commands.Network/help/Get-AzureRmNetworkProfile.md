@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmNetworkProfile
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets an existing network profile top level resource
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Get-AzureRmNetworkProfile -ResourceGroupName <String> -Name <String> -ExpandReso
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmNetworkProfile** cmdlet retrieves an existing network profile top level resource
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$networkProfile = Get-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1
 ```
 
-{{ Add example description here }}
+This retrieves the network profile np1 in resource group rg1
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmNetworkProfileContainerNetworkInterfaceConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new container network interface configuration object.
 
 ## SYNTAX
 
@@ -19,16 +19,18 @@ New-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmNetworkProfileContainerNetworkInterfaceConfig** cmdlet creates a new container network interface configuration object. This object determines the characteristics of container network interfacs created referencing the parent network profile.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$containerNicConfig = New-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name cnicConfig1
+
+$networkProfile = New-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1 -Location westus -ContainerNetworkInterfaceConfiguration $containerNicConfig
 ```
 
-{{ Add example description here }}
+The first command creates an empty container network interface configuration. The second creates a new network profile, passing the previously created container network interface configuration as an argument to the New-NetworkProfile cmdlet.
 
 ## PARAMETERS
 
