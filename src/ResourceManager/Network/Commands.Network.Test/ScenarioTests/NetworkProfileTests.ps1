@@ -56,15 +56,14 @@ function Test-NetworkProfileCRUDMinimalParameters
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
 
         # Create required dependencies
-        $ContainerNetworkInterface = New-AzureRmNetworkProfileContainerNetworkInterface -Name $ContainerNetworkInterfaceName;
         $ContainerNetworkInterfaceConfig = New-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name $ContainerNetworkInterfaceConfigName;
 
         # Create NetworkProfile
-        $vNetworkProfile = New-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $npName -Location $location -ContainerNetworkInterface $ContainerNetworkInterface -ContainerNetworkInterfaceConfig $ContainerNetworkInterfaceConfig;
+        $vNetworkProfile = New-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $npName -Location $location -ContainerNetworkInterfaceConfig $ContainerNetworkInterfaceConfig;
         Assert-NotNull $vNetworkProfile;
         Assert-True { Check-CmdletReturnType "New-AzureRmNetworkProfile" $vNetworkProfile };
         Assert-NotNull $vNetworkProfile.ContainerNetworkInterfaces;
-        Assert-True { $vNetworkProfile.ContainerNetworkInterfaces.Length -gt 0 };
+        Assert-True { $vNetworkProfile.ContainerNetworkInterfaces.Length -eq 0 };
         Assert-NotNull $vNetworkProfile.ContainerNetworkInterfaceConfigs;
         Assert-True { $vNetworkProfile.ContainerNetworkInterfaceConfigs.Length -gt 0 };
         Assert-AreEqual $npName $vNetworkProfile.Name;
@@ -107,17 +106,16 @@ function Test-NetworkProfileCRUDAllParameters
     try
     {
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
-
+           
         # Create required dependencies
-        $ContainerNetworkInterface = New-AzureRmNetworkProfileContainerNetworkInterface -Name $ContainerNetworkInterfaceName;
         $ContainerNetworkInterfaceConfig = New-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name $ContainerNetworkInterfaceConfigName;
 
         # Create NetworkProfile
-        $vNetworkProfile = New-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $npName -Location $location -ContainerNetworkInterface $ContainerNetworkInterface -ContainerNetworkInterfaceConfig $ContainerNetworkInterfaceConfig;
+        $vNetworkProfile = New-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $npName -Location $location -ContainerNetworkInterfaceConfig $ContainerNetworkInterfaceConfig;
         Assert-NotNull $vNetworkProfile;
         Assert-True { Check-CmdletReturnType "New-AzureRmNetworkProfile" $vNetworkProfile };
         Assert-NotNull $vNetworkProfile.ContainerNetworkInterfaces;
-        Assert-True { $vNetworkProfile.ContainerNetworkInterfaces.Length -gt 0 };
+        Assert-True { $vNetworkProfile.ContainerNetworkInterfaces.Length -eq 0 };
         Assert-NotNull $vNetworkProfile.ContainerNetworkInterfaceConfigs;
         Assert-True { $vNetworkProfile.ContainerNetworkInterfaceConfigs.Length -gt 0 };
         Assert-AreEqual $npName $vNetworkProfile.Name;
@@ -161,36 +159,36 @@ function Test-ContainerNetworkInterfaceCRUDMinimalParameters
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
 
         # Create ContainerNetworkInterface
-        $vContainerNetworkInterface = New-AzureRmNetworkProfileContainerNetworkInterface -Name $containerNicName;
-        Assert-NotNull $vContainerNetworkInterface;
-        Assert-True { Check-CmdletReturnType "New-AzureRmNetworkProfileContainerNetworkInterface" $vContainerNetworkInterface };
-        $vNetworkProfile = New-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $networkProfileName -ContainerNetworkInterface $vContainerNetworkInterface -Location $location;
+        $vContainerNetworkInterfaceConfig = New-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name $containerNicName;
+        Assert-NotNull $vContainerNetworkInterfaceConfig;
+        Assert-True { Check-CmdletReturnType "New-AzureRmNetworkProfileContainerNetworkInterfaceConfig" $vContainerNetworkInterfaceConfig };
+        $vNetworkProfile = New-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $networkProfileName -ContainerNetworkInterface $vContainerNetworkInterfaceConfig -Location $location;
         Assert-NotNull $vNetworkProfile;
-        Assert-AreEqual $containerNicName $vContainerNetworkInterface.Name;
+        Assert-AreEqual $containerNicName $vContainerNetworkInterfaceConfig.Name;
 
         # Get ContainerNetworkInterface
-        $vContainerNetworkInterface = Get-AzureRmNetworkProfileContainerNetworkInterface -NetworkProfile $vNetworkProfile -Name $containerNicName;
-        Assert-NotNull $vContainerNetworkInterface;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkProfileContainerNetworkInterface" $vContainerNetworkInterface };
-        Assert-AreEqual $containerNicName $vContainerNetworkInterface.Name;
+        $vContainerNetworkInterfaceConfig = Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile $vNetworkProfile -Name $containerNicName;
+        Assert-NotNull $vContainerNetworkInterfaceConfig;
+        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig" $vContainerNetworkInterfaceConfig };
+        Assert-AreEqual $containerNicName $vContainerNetworkInterfaceConfig.Name;
 
         # Add ContainerNetworkInterface
-        $vNetworkProfile = Add-AzureRmNetworkProfileContainerNetworkInterface -Name $containerNicNameAdd -NetworkProfile $vNetworkProfile;
+        $vNetworkProfile = Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name $containerNicNameAdd -NetworkProfile $vNetworkProfile;
         Assert-NotNull $vNetworkProfile;
         $vNetworkProfile = Set-AzureRmNetworkProfile -NetworkProfile $vNetworkProfile;
 
         # Get ContainerNetworkInterface
-        $vContainerNetworkInterface = Get-AzureRmNetworkProfileContainerNetworkInterface -NetworkProfile $vNetworkProfile -Name $containerNicNameAdd;
-        Assert-NotNull $vContainerNetworkInterface;
-        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkProfileContainerNetworkInterface" $vContainerNetworkInterface };
-        Assert-AreEqual $containerNicNameAdd $vContainerNetworkInterface.Name;
+        $vContainerNetworkInterfaceConfig = Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile $vNetworkProfile -Name $containerNicNameAdd;
+        Assert-NotNull $vContainerNetworkInterfaceConfig;
+        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig" $vContainerNetworkInterfaceConfig };
+        Assert-AreEqual $containerNicNameAdd $vContainerNetworkInterfaceConfig.Name;
 
         # Remove ContainerNetworkInterface
-        Remove-AzureRmNetworkProfileContainerNetworkInterface -NetworkProfile $vNetworkProfile -Name $containerNicNameAdd;
+        Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile $vNetworkProfile -Name $containerNicNameAdd;
         $vNetworkProfile = Set-AzureRmNetworkProfile -NetworkProfile $vNetworkProfile;
 
         # Get ContainerNetworkInterface should fail
-        Assert-ThrowsContains { Get-AzureRmNetworkProfileContainerNetworkInterface -NetworkProfile $vNetworkProfile -Name $containerNicNameAdd } "Sequence contains no matching element";
+        Assert-ThrowsContains { Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile $vNetworkProfile -Name $containerNicNameAdd } "Sequence contains no matching element";
     }
     finally
     {
@@ -274,7 +272,6 @@ function Test-ContainerNetworkInterfaceConfigCRUD
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
 
         # Create virtual network and subnet
-        $vnet = New-AzureRmVirtualNetwork 
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $response = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet 
         $subnet = $response.Subnets[0]
@@ -337,7 +334,7 @@ function Test-ContainerNetworkInterfaceConfigCRUD
     }
 }
 
-function Test-ContainerNetworkInterfaceConfigCRUD
+function Test-ContainerNetworkInterfaceConfigCRUDSet
 {
     # Setup
     $rgname = Get-ResourceGroupName;
@@ -355,7 +352,6 @@ function Test-ContainerNetworkInterfaceConfigCRUD
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
 
         # Create virtual network and subnet
-        $vnet = New-AzureRmVirtualNetwork 
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $response = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet 
         $subnet = $response.Subnets[0]
@@ -411,12 +407,13 @@ function Test-NetworkProfileEndToEndWithContainerNics
     $ipConfigProfileName = "ipconfigprofile1"
     $location = "westus";
 
+    $vnetName = "vnet1"
+    $subnetName = "subnet1"
     $containerGroupName = "cg1"
 
     try
     {
         # Create Virtual Network and Subnet
-        $vnet = New-AzureRmVirtualNetwork 
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $response = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet 
         $subnet = $response.Subnets[0]
