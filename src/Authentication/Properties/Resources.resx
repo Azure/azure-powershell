@@ -121,7 +121,7 @@
     <value>Account needs to be specified</value>
   </data>
   <data name="AzureDirectoryName" xml:space="preserve">
-    <value>Windows Azure Powershell</value>
+    <value>.Azure</value>
   </data>
   <data name="CertificateNotFoundInStore" xml:space="preserve">
     <value>No certificate was found in the certificate store with thumbprint {0}</value>
@@ -336,5 +336,8 @@
   </data>
   <data name="CacheHit" xml:space="preserve">
     <value>Cache Hit</value>
+  </data>
+  <data name="OldAzureDirectoryName" xml:space="preserve">
+    <value>Windows Azure Powershell</value>
   </data>
 </root>
