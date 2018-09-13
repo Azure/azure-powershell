@@ -33,11 +33,11 @@ using Xunit.Abstractions;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class NetworkProfileTestsGenerated : RMTestBase
+    public class NetworkProfileTests : RMTestBase
     {
         public XunitTracingInterceptor _logger;
 
-        public NetworkProfileTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
+        public NetworkProfileTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -70,17 +70,33 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        public void TestContainerNetworkInterfaceConfigurationCRUDMinimalParameters()
+        public void TestContainerNetworkInterfaceConfigCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ContainerNetworkInterfaceConfigurationCRUDMinimalParameters"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ContainerNetworkInterfaceConfigCRUDMinimalParameters"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        public void TestContainerNetworkInterfaceConfigurationCRUD()
+        public void TestContainerNetworkInterfaceConfigCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ContainerNEtworkInterfaceConfigurationCRUD"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ContainerNetworkInterfaceConfigCRUD"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
+        public void TestContainerNetworkInterfaceConfigCRUDSet()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ContainerNetworkInterfaceConfigCRUDSet"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
+        public void TestNetworkProfileEndToEndWithContainerNics()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-NetworkProfileEndToEndWithContainerNics"));
         }
     }
 }

@@ -351,7 +351,7 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
                'New-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
                'Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
-               'Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig'
+               'Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
                'Set-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
                'Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig',
                'New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig',
