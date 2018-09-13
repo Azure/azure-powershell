@@ -35,7 +35,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkProfileContainerNetworkInterfaceConfig"), OutputType(typeof(PSContainerNetworkInterfaceConfiguration))]
-    public partial class GetAzureNetworkProfileContainerNetworkInterfaceConfigCommand : NetworkBaseCmdlet
+    public partial class GetAzureNetworkProfileContainerNetworkInterfaceConfigCommand : AzureNetworkProfileContainerNetworkInterfaceConfigBase
     {
         [Parameter(
             Mandatory = true,
@@ -43,12 +43,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public PSNetworkProfile NetworkProfile { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Name of the container network interface configuration.")]
-        public string Name { get; set; }
-
 
         public override void Execute()
         {
