@@ -76,7 +76,6 @@ function Test-AzureFirewallCRUD
     # AzureFirewallNatRuleCollection
     $natRcName = "natRc"
     $natRcPriority = 200
-    $natRcActionType = "Dnat"
 
     # AzureFirewallNatRule 1
     $natRule1Name = "natRule"
@@ -161,7 +160,7 @@ function Test-AzureFirewallCRUD
         $natRule = New-AzureRmFirewallNatRule -Name $natRule1Name -Description $natRule1Desc -Protocol $natRule1Protocol1, $natRule1Protocol2 -SourceAddress $natRule1SourceAddress1, $natRule1SourceAddress2 -DestinationAddress $natRule1DestinationAddress1 -DestinationPort $natRule1DestinationPort1 -TranslatedAddress $natRule1TranslatedAddress -TranslatedPort $natRule1TranslatedPort
 
         # Create a NAT Rule Collection
-        $natRc = New-AzureRmFirewallNatRuleCollection -Name $natRcName -Priority $natRcPriority -Rule $natRule -ActionType $natRcActionType
+        $natRc = New-AzureRmFirewallNatRuleCollection -Name $natRcName -Priority $natRcPriority -Rule $natRule
 
         # Add ApplicationRuleCollections to the Firewall using method AddApplicationRuleCollection
         $azureFirewall.AddApplicationRuleCollection($appRc)
@@ -274,7 +273,6 @@ function Test-AzureFirewallCRUD
 
         Assert-AreEqual $natRcName $natRc.Name
         Assert-AreEqual $natRcPriority $natRc.Priority
-        Assert-AreEqual $natRcActionType $natRc.Action.Type
 
         Assert-AreEqual $natRule1Name $natRule.Name
         Assert-AreEqual $natRule1Desc $natRule.Description
