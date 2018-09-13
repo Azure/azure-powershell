@@ -376,7 +376,21 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'New-AzFirewallApplicationRuleCollection',
     'New-AzFirewallApplicationRule',
     'New-AzFirewallNetworkRuleCollection',
-    'New-AzFirewallNetworkRule'
+    'New-AzFirewallNetworkRule',
+    'Get-AzNetworkProfile',
+    'New-AzNetworkProfile',
+    'Remove-AzNetworkProfile',
+    'Set-AzNetworkProfile',
+    'Get-AzNetworkProfileContainerNetworkInterfaceConfig',
+    'New-AzNetworkProfileContainerNetworkInterfaceConfig',
+    'Remove-AzNetworkProfileContainerNetworkInterfaceConfig',
+    'Add-AzNetworkProfileContainerNetworkInterfaceConfig',
+    'Set-AzNetworkProfileContainerNetworkInterfaceConfig',
+    'Get-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig',
+    'New-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig',
+    'Add-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig',
+    'Remove-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig',
+    'Set-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig'
 
 # Variables to export from this module
 # VariablesToExport = @()
