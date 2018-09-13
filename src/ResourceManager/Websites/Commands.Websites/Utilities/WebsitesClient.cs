@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return response;
         }
 
-        public void UpdateWebAppConfiguration(string resourceGroupName, string location, string webSiteName, string slotName, SiteConfig siteConfig = null, IDictionary<string, string> appSettings = null, IDictionary<string, ConnStringValueTypePair> connectionStrings = null)
+        public void UpdateWebAppConfiguration(string resourceGroupName, string location, string webSiteName, string slotName, SiteConfig siteConfig = null, IDictionary<string, string> appSettings = null, IDictionary<string, ConnStringValueTypePair> connectionStrings = null, AzureStoragePropertyDictionaryResource azureStorageSettings = null)
         {
             string qualifiedSiteName;
             var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
@@ -394,6 +394,15 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                         new ConnectionStringDictionary { Properties = connectionStrings }, 
                         slotName);
                 }
+
+                if (azureStorageSettings != null)
+                {
+                    WrappedWebsitesClient.WebApps().UpdateAzureStorageAccountsSlot(
+                        resourceGroupName,
+                        webSiteName,
+                        azureStorageSettings,
+                        slotName);
+                }
             }
             else
             {
@@ -416,6 +425,14 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                         resourceGroupName, 
                         webSiteName, 
                         new ConnectionStringDictionary { Properties = connectionStrings });
+                }
+
+                if (azureStorageSettings != null)
+                {
+                    WrappedWebsitesClient.WebApps().UpdateAzureStorageAccounts(
+                        resourceGroupName,
+                        webSiteName,
+                        azureStorageSettings);
                 }
             }
         }
@@ -447,6 +464,12 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                         ConnectionString = s.Value.Value,
                         Type = s.Value.Type
                     }).ToList();
+
+                var azureStorageAccounts = useSlot ?
+                    WrappedWebsitesClient.WebApps().ListAzureStorageAccountsSlot(resourceGroupName, webSiteName, slotName) :
+                    WrappedWebsitesClient.WebApps().ListAzureStorageAccounts(resourceGroupName, webSiteName);
+
+                site.SiteConfig.AzureStorageAccounts = azureStorageAccounts.Properties;
             }
             catch
             {

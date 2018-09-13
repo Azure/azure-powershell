@@ -83,6 +83,28 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 });
         }
 
+        public static AzureStoragePropertyDictionaryResource ConvertToAzureStoragePropertyDictionary(this Hashtable hashtable)
+        {
+            AzureStoragePropertyDictionaryResource result = new AzureStoragePropertyDictionaryResource();
+
+            result.Properties = hashtable.Cast<DictionaryEntry>()
+                .ToDictionary(
+                kvp => kvp.Key.ToString(), kvp =>
+                {
+                    var typeValuePair = new Hashtable((Hashtable)kvp.Value, StringComparer.OrdinalIgnoreCase);
+                    return new AzureStorageInfoValue
+                    {
+                        AccessKey = typeValuePair["AccessKey"].ToString(),
+                        AccountName = typeValuePair["AccountName"].ToString(),
+                        MountPath = typeValuePair["MountPath"].ToString(),
+                        ShareName = typeValuePair["ShareName"].ToString(),
+                        Type = (AzureStorageType)Enum.Parse(typeof(AzureStorageType), typeValuePair["Type"].ToString(), true)
+                    };
+                });
+
+            return result;
+        }
+
         internal static bool ShouldUseDeploymentSlot(string webSiteName, string slotName, out string qualifiedSiteName)
         {
             bool result = false;
