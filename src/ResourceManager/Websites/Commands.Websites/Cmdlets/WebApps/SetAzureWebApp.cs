@@ -125,6 +125,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable/disable redirecting all traffic to HTTPS on an existing azure webapp")]
         public bool HttpsOnly { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Web app Azure Storage accounts. Only supported in Windows Containers and Linux Web apps. Example: -AzureStorageAccounts @{ AzureStorageAccount1 = @{ Type = \"AzureFiles\"; AccountName = \"My Azure Storage account name\"; ShareName = \"My Azure Storage account share name\"; AccessKey = \"My Azure Storage account access key\"; MountPath = \"The path to mount inside the container. For example: C:\\myfolder for Windows Containers or /myfolder for Linux Web apps\"}; AzureStorageAccount2 = @{ Type = \"AzureFiles\"; AccountName = \"My Azure Storage account name\"; ShareName = \"My Azure Storage account share name\"; AccessKey = \"My Azure Storage account access key\"; MountPath = \"The path to mount inside the container. For example: C:\\myfolder for Windows Containers or /myfolder for Linux Web apps\"} }")]
+        [ValidateNotNullOrEmpty]
+        //Add a [ValidateAzureStorageAccounts] just as [ValidateConnectionStrings]
+        public Hashtable AzureStorageAccounts { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -218,7 +223,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     }
 
                     // Update web app configuration
-                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, siteConfig, appSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
+                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, siteConfig, appSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary(), AzureStorageAccounts.ConvertToAzureStoragePropertyDictionary());
 
                     //Update WebApp object after configuration update
                     WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
