@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 	/// this commandlet will create remote ps session with site
 	/// </summary>
 	[Cmdlet("Enter", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppContainerPSSession")]
-	[OutputType(typeof(string))]
 	public class EnterAzureRmWebAppContainerPSSession : WebAppBaseCmdlet
 	{
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = false, HelpMessage = "The name of the web app slot.", ValueFromPipelineByPropertyName = true)]

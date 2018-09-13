@@ -1,40 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
-//
-// Copyright Microsoft Corporation
-// Licensed under the Apache License, Version 2.0 (the 'License');
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// http://www.apache.org/licenses/LICENSE-2.0
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an 'AS IS' BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// ----------------------------------------------------------------------------------
-
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-
-namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
-{
-    public class Mappings
-    {
-        public static Dictionary<string, object> GetCaseInsensitiveMapping()
-        {
-            string jsonmapping = jsonMappings;
-            Dictionary<string, object> caseSensitiveMapping = (Dictionary<string, object>)JsonConvert.DeserializeObject(jsonmapping, typeof(Dictionary<string, object>));
-            var mapping = new Dictionary<string, object>(StringComparer.CurrentCultureIgnoreCase);
-            foreach (var key in caseSensitiveMapping.Keys)
-            {
-                mapping.Add(key, caseSensitiveMapping[key]);
-            }
-
-            return mapping;
-        }
-
-        public static string jsonMappings = @"
-    {
+﻿{
     'Az.ApiManagement':  {
                              'Add-AzApiManagementProductToGroup':  'Add-AzureRmApiManagementProductToGroup',
                              'Get-AzApiManagementOperation':  'Get-AzureRmApiManagementOperation',
@@ -1210,7 +1174,6 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                        'Remove-AzStorageFile':  'Remove-AzureStorageFile',
                        'Set-AzCurrentStorageAccount':  'Set-AzureRmCurrentStorageAccount',
                        'Get-AzStorageUsage':  'Get-AzureRmStorageUsage',
-                       'Enable-AzStorageStaticWebsite':  'Enable-AzureStorageStaticWebsite',
                        'Get-AzStorageQueue':  'Get-AzureStorageQueue',
                        'Enable-AzStorageDeleteRetentionPolicy':  'Enable-AzureStorageDeleteRetentionPolicy',
                        'Update-AzStorageServiceProperty':  'Update-AzureStorageServiceProperty',
@@ -1266,7 +1229,6 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                        'Remove-AzStorageAccount':  'Remove-AzureRmStorageAccount',
                        'Get-AzStorageServiceMetricsProperty':  'Get-AzureStorageServiceMetricsProperty',
                        'New-AzStorageContainerStoredAccessPolicy':  'New-AzureStorageContainerStoredAccessPolicy',
-                       'Disable-AzStorageStaticWebsite':  'Disable-AzureStorageStaticWebsite',
                        'Lock-AzRmStorageContainerImmutabilityPolicy':  'Lock-AzureRmStorageContainerImmutabilityPolicy',
                        'Add-AzRmStorageContainerLegalHold':  'Add-AzureRmStorageContainerLegalHold',
                        'Remove-AzStorageBlob':  'Remove-AzureStorageBlob',
@@ -1464,6 +1426,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                         'Switch-AzWebAppSlot':  'Switch-AzureRmWebAppSlot',
                         'Get-AzAppServicePlanMetrics':  'Get-AzureRmAppServicePlanMetrics',
                         'Get-AzAppServicePlan':  'Get-AzureRmAppServicePlan',
+                        'Enter-AzWebAppContainerPSSession':  'Enter-AzureRmWebAppContainerPSSession',
                         'New-AzAppServicePlan':  'New-AzureRmAppServicePlan',
                         'Get-AzWebAppSlot':  'Get-AzureRmWebAppSlot',
                         'Reset-AzWebAppSlotPublishingProfile':  'Reset-AzureRmWebAppSlotPublishingProfile',
@@ -1473,6 +1436,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                         'Restore-AzWebAppBackup':  'Restore-AzureRmWebAppBackup',
                         'New-AzWebAppDatabaseBackupSetting':  'New-AzureRmWebAppDatabaseBackupSetting',
                         'New-AzWebApp':  'New-AzureRmWebApp',
+                        'Get-AzWebAppContainerContinuousDeploymentUrl':  'Get-AzureRMWebAppContainerContinuousDeploymentUrl',
                         'Remove-AzWebApp':  'Remove-AzureRmWebApp',
                         'Get-AzWebAppMetrics':  'Get-AzureRmWebAppMetrics',
                         'Get-AzWebAppSSLBinding':  'Get-AzureRmWebAppSSLBinding',
@@ -1485,6 +1449,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                         'Edit-AzWebAppBackupConfiguration':  'Edit-AzureRmWebAppBackupConfiguration',
                         'Restart-AzWebApp':  'Restart-AzureRmWebApp',
                         'Stop-AzWebApp':  'Stop-AzureRmWebApp',
+                        'New-AzWebAppContainerPSSession':  'New-AzureRmWebAppContainerPSSession',
                         'Stop-AzWebAppSlot':  'Stop-AzureRmWebAppSlot'
                     },
     'Az.StorageSync':  {
@@ -1829,14 +1794,18 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                    },
     'Az.IotHub':  {
                       'Get-AzIotHubValidSku':  'Get-AzureRmIotHubValidSku',
+                      'Test-AzIotHubRoute':  'Test-AzureRmIotHubRoute',
                       'Get-AzIotHub':  'Get-AzureRmIotHub',
                       'Get-AzIotHubKey':  'Get-AzureRmIotHubKey',
+                      'Add-AzIotHubRoutingEndpoint':  'Add-AzureRmIotHubRoutingEndpoint',
                       'Add-AzIotHubKey':  'Add-AzureRmIotHubKey',
                       'Set-AzIotHubVC':  'Set-AzureRmIotHubVC',
                       'Remove-AzIotHubCertificate':  'Remove-AzureRmIotHubCertificate',
                       'Set-AzIotHub':  'Set-AzureRmIotHub',
+                      'Get-AzIotHubRoutingEndpoint':  'Get-AzureRmIotHubRoutingEndpoint',
                       'Remove-AzIotHubEventHubConsumerGroup':  'Remove-AzureRmIotHubEventHubConsumerGroup',
                       'Get-AzIotHubEventHubConsumerGroup':  'Get-AzureRmIotHubEventHubConsumerGroup',
+                      'Remove-AzIotHubRoutingEndpoint':  'Remove-AzureRmIotHubRoutingEndpoint',
                       'Get-AzIotHubCertificate':  'Get-AzureRmIotHubCertificate',
                       'Get-AzIotHubQuotaMetric':  'Get-AzureRmIotHubQuotaMetric',
                       'Add-AzIotHubCertificate':  'Add-AzureRmIotHubCertificate',
@@ -1851,11 +1820,15 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                       'New-AzIotHubImportDevices':  'New-AzureRmIotHubImportDevices',
                       'New-AzIotHubExportDevices':  'New-AzureRmIotHubExportDevices',
                       'Remove-AzIotHubEHCG':  'Remove-AzureRmIotHubEHCG',
+                      'Remove-AzIotHubRoute':  'Remove-AzureRmIotHubRoute',
+                      'Add-AzIotHubRoute':  'Add-AzureRmIotHubRoute',
+                      'Get-AzIotHubRoute':  'Get-AzureRmIotHubRoute',
                       'Get-AzIotHubCVC':  'Get-AzureRmIotHubCVC',
                       'Get-AzIotHubRegistryStatistic':  'Get-AzureRmIotHubRegistryStatistic',
                       'Get-AzIotHubConnectionString':  'Get-AzureRmIotHubConnectionString',
                       'Get-AzIotHubEHCG':  'Get-AzureRmIotHubEHCG',
-                      'Remove-AzIotHub':  'Remove-AzureRmIotHub'
+                      'Remove-AzIotHub':  'Remove-AzureRmIotHub',
+                      'Set-AzIotHubRoute':  'Set-AzureRmIotHubRoute'
                   },
     'Az.Resources':  {
                          'Remove-AzPolicySetDefinition':  'Remove-AzureRmPolicySetDefinition',
@@ -2348,8 +2321,4 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                                    'Set-AzApplicationInsightsDailyCap':  'Set-AzureRmApplicationInsightsDailyCap',
                                    'Remove-AzApplicationInsightsContinuousExport':  'Remove-AzureRmApplicationInsightsContinuousExport'
                                }
-}
-
-";
-    }
 }
