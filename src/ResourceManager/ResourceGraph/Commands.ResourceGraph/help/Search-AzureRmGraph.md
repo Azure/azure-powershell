@@ -13,7 +13,7 @@ Queries the resources managed by Azure Resource Manager.
 ## SYNTAX
 
 ```
-Search-AzureRmGraph [-Query] <String> [-Subscriptions <String[]>] [-First <Int32>] [-Skip <Int32>]
+Search-AzureRmGraph [-Query] <String> [-Subscription <String[]>] [-First <Int32>] [-Skip <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -83,12 +83,12 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Subscriptions
-List of subscriptions to run query against
+### -Subscription
+Subscription(s) to run query against
 
 ```yaml
 Type: System.String[]
