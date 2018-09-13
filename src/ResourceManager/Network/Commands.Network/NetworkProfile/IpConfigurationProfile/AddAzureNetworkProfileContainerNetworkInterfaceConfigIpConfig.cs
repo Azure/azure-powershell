@@ -35,15 +35,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkProfileContainerNetworkInterfaceConfigIpConfig", SupportsShouldProcess = true), OutputType(typeof(PSNetworkProfile))]
-    public partial class AddAzureNetworkProfileContainerNetworkInterfaceConfigIpConfigCommand : NetworkBaseCmdlet
+    public partial class AddAzureNetworkProfileContainerNetworkInterfaceConfigIpConfigCommand : AzureNetworkProfileContainerNetworkInterfaceConfigIpConfigBase
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The reference of the network profile.",
-            ValueFromPipeline = false,
-            ValueFromPipelineByPropertyName = false)]
-        public PSNetworkProfile NetworkProfile { get; set; }
-
         [Parameter(
             Mandatory = true,
             HelpMessage = "The reference of the container network interface configuration.",
@@ -54,14 +47,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "Name of the container network interface configuration.")]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The reference to the subnet which this IP Configuration profile references.",
-            ValueFromPipelineByPropertyName = true)]
-        public PSSubnet Subnet { get; set; }
-
+        public override string Name { get; set; }
 
         public override void Execute()
         {
@@ -82,16 +68,23 @@ namespace Microsoft.Azure.Commands.Network
             var vIpConfigurationProfile = new PSIPConfigurationProfile();
 
             vIpConfigurationProfile.Name = this.Name;
-            vIpConfigurationProfile.Subnet = this.Subnet;
+
+            if (!string.IsNullOrEmpty(this.SubnetId))
+            {
+                vIpConfigurationProfile.Subnet = new PSSubnet();
+                vIpConfigurationProfile.Subnet.Id = this.SubnetId;
+            }
+
             var generatedId = string.Format(
                 "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/networkProfiles/{2}/{3}/{4}/{5}/{6}",
                 this.NetworkClient.NetworkManagementClient.SubscriptionId,
-                this.NetworkProfile.ResourceGroupName,
-                this.NetworkProfile.Name,
+                Microsoft.Azure.Commands.Network.Properties.Resources.ResourceGroupNotSet,
+                Microsoft.Azure.Commands.Network.Properties.Resources.NetworkProfileNameNotSet,
                 "containerNetworkInterfaceConfigurations",
                 this.ContainerNetworkInterfaceConfiguration.Name,
                 "ipConfigurations",
                 this.Name);
+
             vIpConfigurationProfile.Id = generatedId;
 
             this.ContainerNetworkInterfaceConfiguration.IpConfigurations.Add(vIpConfigurationProfile);

@@ -44,15 +44,7 @@ namespace Microsoft.Azure.Commands.Network
         public override string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ParameterSetName = "SetByResourceId",
-            HelpMessage = "SubnetId")]
-        [ValidateNotNullOrEmpty]
-        public override string SubnetId { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = "SetByResource",
+            Mandatory = true,
             HelpMessage = "Subnet")]
         public override PSSubnet Subnet { get; set; }
 
@@ -61,9 +53,6 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
 
             var vContainerNetworkInterfaceConfigurationIpConfigurationProfiles = new PSIPConfigurationProfile();
-
-            vContainerNetworkInterfaceConfigurationIpConfigurationProfiles.Name = this.Name;
-            vContainerNetworkInterfaceConfigurationIpConfigurationProfiles.Subnet = this.Subnet;
             var generatedId = string.Format(
                 "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/networkProfiles/{2}/{3}/{4}/{5}/{6}",
                 this.NetworkClient.NetworkManagementClient.SubscriptionId,

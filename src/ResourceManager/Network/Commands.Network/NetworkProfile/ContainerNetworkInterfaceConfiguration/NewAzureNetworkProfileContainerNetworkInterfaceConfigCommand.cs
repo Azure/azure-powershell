@@ -35,19 +35,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkProfileContainerNetworkInterfaceConfig", SupportsShouldProcess = true), OutputType(typeof(PSContainerNetworkInterfaceConfiguration))]
-    public partial class NewAzureNetworkProfileContainerNetworkInterfaceConfigCommand : NetworkBaseCmdlet
+    public partial class NewAzureNetworkProfileContainerNetworkInterfaceConfigCommand : AzureNetworkProfileContainerNetworkInterfaceConfigBase
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Name of the container network interface configuration.")]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public List<PSIPConfigurationProfile> IpConfiguration { get; set; }
-
-
         public override void Execute()
         {
             var vContainerNetworkInterfaceConfigurations = new PSContainerNetworkInterfaceConfiguration();

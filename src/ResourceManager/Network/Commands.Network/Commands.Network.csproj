@@ -422,6 +422,7 @@
     <Compile Include="NetworkInterface\IpConfiguration\RemoveAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\SetAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\AddAzureNetworkProfileContainerNetworkInterfaceConfigCommand.cs" />
+    <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\AzureContainerNetworkInterfaceConfigBase.cs" />
     <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\GetAzureNetworkProfileContainerNetworkInterfaceConfigCommand.cs" />
     <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\NewAzureNetworkProfileContainerNetworkInterfaceConfigCommand.cs" />
     <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\RemoveAzureNetworkProfileContainerNetworkInterfaceConfigCommand.cs" />

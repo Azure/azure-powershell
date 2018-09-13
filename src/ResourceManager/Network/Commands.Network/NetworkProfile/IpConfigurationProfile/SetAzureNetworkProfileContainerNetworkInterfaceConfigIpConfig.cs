@@ -35,7 +35,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkProfileContainerNetworkInterfaceConfigIpConfig", SupportsShouldProcess = true), OutputType(typeof(PSNetworkProfile))]
-    public partial class SetAzureNetworkProfileContainerNetworkInterfaceConfigIpConfigCommand : NetworkBaseCmdlet
+    public partial class SetAzureNetworkProfileContainerNetworkInterfaceConfigIpConfigCommand : AzureNetworkProfileContainerNetworkInterfaceConfigIpConfigBase
     {
         [Parameter(
             Mandatory = true,
@@ -47,12 +47,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "Name of the container network interface configuration.")]
-        public string Name { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        public PSSubnet Subnet { get; set; }
+        public override string Name { get; set; }
 
         public override void Execute()
         {
@@ -68,7 +63,13 @@ namespace Microsoft.Azure.Commands.Network
             var vIpConfigurationProfile = new PSIPConfigurationProfile();
 
             vIpConfigurationProfile.Name = this.Name;
-            vIpConfigurationProfile.Subnet = this.Subnet;
+
+            if (!string.IsNullOrEmpty(this.SubnetId))
+            {
+                vIpConfigurationProfile.Subnet = new PSSubnet();
+                vIpConfigurationProfile.Subnet.Id = this.SubnetId;
+            }
+
             this.ContainerNetworkInterfaceConfiguration.IpConfigurations[vIpConfigurationProfilesIndex] = vIpConfigurationProfile;
             WriteObject(this.ContainerNetworkInterfaceConfiguration, true);
         }
