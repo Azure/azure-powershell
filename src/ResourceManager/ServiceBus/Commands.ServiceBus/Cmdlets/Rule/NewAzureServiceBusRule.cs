@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
     /// <summary>
     /// 'New-AzureRmServiceBusRule' Cmdlet creates a new Rule
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusRule", SupportsShouldProcess = true), OutputType(typeof(PSRulesAttributes))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusRule", DefaultParameterSetName = RuleResourceParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSRulesAttributes))]
     public class NewAzureRmServiceBusRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
@@ -51,20 +51,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 5,
-            HelpMessage = "Sql Fillter Expression")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5, HelpMessage = "Sql Fillter Expression")]
         [ValidateNotNullOrEmpty]
         public string SqlExpression { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Action SqlFillter Expression")]
+        [Parameter(Mandatory = true, ParameterSetName = RuleResourceActionParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Action SqlFillter Expression")]
         [ValidateNotNullOrEmpty]
         public string ActionSqlExpression { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Action Requires Preprocessing")]
+        [Parameter(Mandatory = false, ParameterSetName = RuleResourceActionParameterSet, HelpMessage = "Action Requires Preprocessing")]
         public SwitchParameter RequiresPreprocessing { get; set; }
 
         public override void ExecuteCmdlet()

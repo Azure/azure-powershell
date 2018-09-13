@@ -19,7 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Fixed issues
+* Fixed issue
 	- https://github.com/Azure/azure-powershell/issues/7161
 
 ## Version 0.6.11
