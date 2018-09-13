@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Cdn.Models.Profile
         Premium_Verizon,
         Custom_Verizon,
         Standard_Akamai,
-        Standard_ChinaCdn
+        Standard_ChinaCdn,
+        Standard_Microsoft
     }
 }
