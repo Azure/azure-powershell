@@ -257,6 +257,21 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
+        /// <summary>
+        /// The domain name suffix for Azure Analysis Services
+        /// </summary>
+        public string AzureAnalysisServicesEndpointSuffix
+        {
+            get
+            {
+                return this.GetEndpointSuffix(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix, value);
+            }
+        }
+
         public IList<string> VersionProfiles { get; } = new List<string>();
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);

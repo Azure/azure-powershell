@@ -43,6 +43,12 @@ namespace Microsoft.WindowsAzure.Commands.Common
             string.Format("v{0}", AzurePowerShell.AssemblyVersion));
 
         public static string ProfileDirectory = Path.Combine(
+#if NETSTANDARD
+            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+            ".Azure");
+
+        public static string OldProfileDirectory = Path.Combine(
+#endif
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "Windows Azure PowerShell");
     }
