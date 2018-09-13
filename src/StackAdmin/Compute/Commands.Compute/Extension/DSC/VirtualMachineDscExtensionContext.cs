@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Models;
-using Newtonsoft.Json;
-using System;
 using System.Collections;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC

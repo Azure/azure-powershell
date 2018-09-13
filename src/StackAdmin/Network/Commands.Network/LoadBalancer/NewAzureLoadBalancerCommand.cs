@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-
 using MNM = Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancer"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancer", SupportsShouldProcess = true),
+        OutputType(typeof(PSLoadBalancer))]
     public class NewAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -48,8 +48,20 @@ namespace Microsoft.Azure.Commands.Network
          Mandatory = true,
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "location.")]
+        [LocationCompleter("Microsoft.Network/loadBalancers")]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The load balancer Sku name.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            MNM.LoadBalancerSkuName.Basic,
+            MNM.LoadBalancerSkuName.Standard,
+            IgnoreCase = true)]
+        public string Sku { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -85,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "An array of hashtables which represents resource tags.")]
+            HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
         [Parameter(
@@ -99,27 +111,25 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
-            if (this.IsLoadBalancerPresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => CreateLoadBalancer());
-
-                WriteObject(this.GetLoadBalancer(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var loadBalancer = this.CreateLoadBalancer();
-
-                WriteObject(loadBalancer);
-            }
+            base.Execute();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
+            var present = this.IsLoadBalancerPresent(this.ResourceGroupName, this.Name);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Properties.Resources.OverwritingResource, Name),
+                Properties.Resources.CreatingResourceMessage,
+                Name,
+                () =>
+                {
+                    var loadBalancer = this.CreateLoadBalancer();
+                    WriteObject(loadBalancer);
+                },
+                () => present);
         }
 
         private PSLoadBalancer CreateLoadBalancer()
@@ -129,47 +139,50 @@ namespace Microsoft.Azure.Commands.Network
             loadBalancer.ResourceGroupName = this.ResourceGroupName;
             loadBalancer.Location = this.Location;
 
+            if (!string.IsNullOrEmpty(this.Sku))
+            {
+                loadBalancer.Sku = new PSLoadBalancerSku();
+                loadBalancer.Sku.Name = this.Sku;
+            }
+
             if (this.FrontendIpConfiguration != null)
             {
-                loadBalancer.FrontendIpConfigurations = new List<PSFrontendIPConfiguration>();
                 loadBalancer.FrontendIpConfigurations = this.FrontendIpConfiguration;
             }
 
             if (this.BackendAddressPool != null)
             {
-                loadBalancer.BackendAddressPools = new List<PSBackendAddressPool>();
                 loadBalancer.BackendAddressPools = this.BackendAddressPool;
             }
 
             if (this.Probe != null)
             {
-                loadBalancer.Probes = new List<PSProbe>();
                 loadBalancer.Probes = this.Probe;
             }
 
             if (this.InboundNatRule != null)
             {
-                loadBalancer.InboundNatRules = new List<PSInboundNatRule>();
                 loadBalancer.InboundNatRules = this.InboundNatRule;
             }
 
             if (this.LoadBalancingRule != null)
             {
-                loadBalancer.LoadBalancingRules = new List<PSLoadBalancingRule>();
                 loadBalancer.LoadBalancingRules = this.LoadBalancingRule;
             }
 
             if (this.InboundNatPool != null)
             {
-                loadBalancer.InboundNatPools = new List<PSInboundNatPool>();
                 loadBalancer.InboundNatPools = this.InboundNatPool;
             }
 
+            loadBalancer.ResourceGroupName = this.ResourceGroupName;
+            loadBalancer.Name = this.Name;
+
             // Normalize the IDs
-            ChildResourceHelper.NormalizeChildResourcesId(loadBalancer);
+            ChildResourceHelper.NormalizeChildResourcesId(loadBalancer, this.NetworkClient.NetworkManagementClient.SubscriptionId);
 
             // Map to the sdk object
-            var lbModel = Mapper.Map<MNM.LoadBalancer>(loadBalancer);
+            var lbModel = NetworkResourceManagerProfile.Mapper.Map<MNM.LoadBalancer>(loadBalancer);
             lbModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create VirtualNetwork call

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Creates Azure Site Recovery Recovery Plan object.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan",DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise,SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrRecoveryPlan", DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise, SupportsShouldProcess = true)]
     [Alias(
         "New-ASRRP",
         "New-ASRRecoveryPlan")]
@@ -152,17 +152,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         break;
                     case ASRParameterSets.ByRPFile:
 
-                        var filePath = ResolveUserPath(this.Path);
-
-                        if (!File.Exists(filePath))
+                        if (!File.Exists(this.Path))
                         {
                             throw new FileNotFoundException(
                                 string.Format(
                                     Resources.FileNotFound,
-                                    filePath));
+                                    this.Path));
 
                             ;
                         }
+
+                        var filePath = this.Path;
 
                         using (var file = new StreamReader(filePath))
                         {
@@ -196,9 +196,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var createRecoveryPlanInputProperties = new CreateRecoveryPlanInputProperties
             {
-                FailoverDeploymentModel = (FailoverDeploymentModel)Enum.Parse(
-                    typeof(FailoverDeploymentModel),
-                    this.failoverDeploymentModel),
+                FailoverDeploymentModel = this.failoverDeploymentModel,
                 Groups = new List<RecoveryPlanGroup>(),
                 PrimaryFabricId = this.primaryserver,
                 RecoveryFabricId = this.recoveryserver
@@ -308,9 +306,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             var createRecoveryPlanInputProperties = new CreateRecoveryPlanInputProperties
             {
-                FailoverDeploymentModel = (FailoverDeploymentModel)Enum.Parse(
-                    typeof(FailoverDeploymentModel),
-                    recoveryPlan.Properties.FailoverDeploymentModel),
+                FailoverDeploymentModel = recoveryPlan.Properties.FailoverDeploymentModel,
                 Groups = recoveryPlan.Properties.Groups,
                 PrimaryFabricId = recoveryPlan.Properties.PrimaryFabricId,
                 RecoveryFabricId = recoveryPlan.Properties.RecoveryFabricId
