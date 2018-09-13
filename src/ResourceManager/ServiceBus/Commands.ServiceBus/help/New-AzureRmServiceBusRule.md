@@ -12,9 +12,17 @@ Creates a new rule for a given Subscription of Topic.
 
 ## SYNTAX
 
+### RulePropertiesSet (Default)
 ```
 New-AzureRmServiceBusRule [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [-Subscription] <String> [-Name] <String> [-SqlExpression] <String> [-ActionSqlExpression <String>]
+ [-Subscription] <String> [-Name] <String> [-SqlExpression] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RuleActionPropertiesSet
+```
+New-AzureRmServiceBusRule [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
+ [-Subscription] <String> [-Name] <String> [-SqlExpression] <String> -ActionSqlExpression <String>
  [-RequiresPreprocessing] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,10 +53,10 @@ Action SqlFillter Expression
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: RuleActionPropertiesSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -105,7 +113,7 @@ Action Requires Preprocessing
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: RuleActionPropertiesSet
 Aliases:
 
 Required: False
