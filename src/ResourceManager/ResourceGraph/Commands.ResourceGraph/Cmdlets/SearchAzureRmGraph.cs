@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the query.
         /// </summary>s
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipeline = true, HelpMessage = "Resource Graph query")]
+        [Parameter(Mandatory = true, Position = 0, HelpMessage = "Resource Graph query")]
         [AllowEmptyString]
         public string Query
         {
@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// <summary>
         /// Gets or sets the subscriptions.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "List of subscriptions to run query against")]
-        public string[] Subscriptions
+        [Parameter(Mandatory = false, HelpMessage = "Subscription(s) to run query against")]
+        public string[] Subscription
         {
             get;
             set;
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         public override void ExecuteCmdlet()
         {
             var subscriptions =
-                (this.Subscriptions ?? this.DefaultContext.Account.GetSubscriptions()).ToList();
+                (this.Subscription ?? this.DefaultContext.Account.GetSubscriptions()).ToList();
             var first = MyInvocation.BoundParameters.ContainsKey("First") ? this.First : 100;
             var skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.Skip : 0;
 
@@ -99,10 +99,15 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
             {
                 do
                 {
+                    var requestTop = Math.Min(first - results.Count, RowsPerPage);
+                    var requestSkip = skip + results.Count;
+                    var requestSkipToken = response?.SkipToken;
+                    WriteVerbose($"Sent top={requestTop} skip={requestSkip} skipToken={requestSkipToken}");
+
                     var requestOptions = new QueryRequestOptions(
-                        top: Math.Min(first - results.Count, RowsPerPage),
-                        skip: skip + results.Count,
-                        skipToken: response?.SkipToken);
+                        top: requestTop,
+                        skip: requestSkip,
+                        skipToken: requestSkipToken);
 
                     var request = new QueryRequest(subscriptions, this.Query, requestOptions);
 
@@ -110,7 +115,10 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                         .Result
                         .Body;
 
-                    results.AddRange(response.Data.ToPsObjects());
+                    var requestResults = response.Data.ToPsObjects().ToList();
+                    results.AddRange(requestResults);
+                    WriteVerbose($"Received results: {requestResults.Count}");
+
                 } while (results.Count < first && response.SkipToken != null);
             }
             catch (Exception ex)
@@ -121,8 +129,15 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                     var errorResponseEx = aggregateEx.InnerException as ErrorResponseException;
                     if (errorResponseEx != null)
                     {
-                        this.WriteError(new ErrorRecord(errorResponseEx,
-                            errorResponseEx.ToDisplayableJson(), ErrorCategory.CloseError, null));
+                        var errorRecord = new ErrorRecord(
+                            errorResponseEx, errorResponseEx.Body.Error.Code,
+                            ErrorCategory.CloseError, null)
+                        {
+                            ErrorDetails = new System.Management.Automation.ErrorDetails(
+                                errorResponseEx.ToDisplayableJson())
+                        };
+
+                        this.WriteError(errorRecord);
                         return;
                     }
                 }
