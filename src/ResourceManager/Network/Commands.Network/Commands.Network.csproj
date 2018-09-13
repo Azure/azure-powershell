@@ -72,6 +72,11 @@
     <Compile Include="ApplicationGateway\AuthenticationCertificate\NewAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\AuthenticationCertificate\RemoveAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\AuthenticationCertificate\SetAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\AutoscaleConfiguration\AzureApplicationGatewayAutoscaleConfigurationBase.cs" />
+    <Compile Include="ApplicationGateway\AutoscaleConfiguration\GetAzureApplicationGatewayAutoscaleConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\AutoscaleConfiguration\NewAzureApplicationGatewayAutoscaleConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\AutoscaleConfiguration\RemoveAzureApplicationGatewayAutoscaleConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\AutoscaleConfiguration\SetAzureApplicationGatewayAutoscaleConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\BackendAddressPool\AddAzureApplicationGatewayBackendAddressPoolCommand.cs" />
     <Compile Include="ApplicationGateway\BackendAddressPool\AzureApplicationGatewayBackendAddressPoolBase.cs" />
     <Compile Include="ApplicationGateway\BackendAddressPool\GetAzureApplicationGatewayBackendAddressPoolCommand.cs" />
@@ -166,6 +171,12 @@
     <Compile Include="ApplicationGateway\SslPolicy\SetAzureApplicationGatewaySslPolicyCommand.cs" />
     <Compile Include="ApplicationGateway\StartAzureApplicationGatewayCommand.cs" />
     <Compile Include="ApplicationGateway\StopAzureApplicationGatewayCommand.cs" />
+    <Compile Include="ApplicationGateway\TrustedRootCertificate\AddAzureApplicationGatewayTrustedRootCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\TrustedRootCertificate\AzureApplicationGatewayTrustedRootCertificateBase.cs" />
+    <Compile Include="ApplicationGateway\TrustedRootCertificate\GetAzureApplicationGatewayTrustedRootCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\TrustedRootCertificate\NewAzureApplicationGatewayTrustedRootCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\TrustedRootCertificate\RemoveAzureApplicationGatewayTrustedRootCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\TrustedRootCertificate\SetAzureApplicationGatewayTrustedRootCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\AddAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\AzureApplicationGatewayUrlPathMapConfigBase.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\GetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
@@ -382,6 +393,7 @@
     <Compile Include="Models\AzureFirewall\PSAzureFirewallNetworkRule.cs" />
     <Compile Include="Models\AzureFirewall\PSAzureFirewallNetworkRuleCollection.cs" />
     <Compile Include="Models\AzureFirewall\PSAzureFirewallRCAction.cs" />
+    <Compile Include="Models\PSApplicationGatewayAutoscaleConfiguration.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddressPool.cs" />
     <Compile Include="Models\PSApplicationGatewayFrontendIPConfiguration.cs" />
     <Compile Include="Models\PSAvailableProvidersListCity.cs" />
@@ -389,6 +401,7 @@
     <Compile Include="Models\PSAvailableProvidersListParameters.cs" />
     <Compile Include="Models\PSAvailableProvidersListState.cs" />
     <Compile Include="Models\PSAzureReachabilityReportParameters.cs" />
+    <Compile Include="Models\PSApplicationGatewayTrustedRootCertificate.cs" />
     <Compile Include="Models\PSConnectionMonitor.cs" />
     <Compile Include="Models\PSConnectionMonitorDestination.cs" />
     <Compile Include="Models\PSConnectionMonitorParameters.cs" />

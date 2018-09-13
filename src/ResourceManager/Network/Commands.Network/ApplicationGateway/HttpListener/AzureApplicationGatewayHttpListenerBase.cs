@@ -116,6 +116,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 httpListener.RequireServerNameIndication = false;
             }
+            else if (string.Equals(this.Protocol, "https", StringComparison.OrdinalIgnoreCase))
+            {
+                // Set default as true to be at parity with portal.
+                httpListener.RequireServerNameIndication = true;
+            }
 
             if (!string.IsNullOrEmpty(this.FrontendIPConfigurationId))
             {

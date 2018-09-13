@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,13 +17,9 @@ using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSApplicationGatewaySku
+    public class PSApplicationGatewayAutoscaleConfiguration
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public string Name { get; set; }
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string Tier { get; set; }
-        [Ps1Xml(Target = ViewControl.Table)]
-        public int? Capacity { get; set; }
+        public int MinCapacity { get; set; }
     }
 }
