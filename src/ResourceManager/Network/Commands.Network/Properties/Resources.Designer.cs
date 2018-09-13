@@ -630,15 +630,6 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         /// <summary>
         ///   Looks up a localized string similar to VirtualNetworkGatewayNameNotSet.
         /// </summary>
-        public static string VirtualNetworkGatewayName {
-            get {
-                return ResourceManager.GetString("VirtualNetworkGatewayName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to VirtualNetworkGatewayNameNotSet.
-        /// </summary>
         public static string VirtualNetworkGatewayNameNotSet {
             get {
                 return ResourceManager.GetString("VirtualNetworkGatewayNameNotSet", resourceCulture);
