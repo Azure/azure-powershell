@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Sets the goal state for a container network interface configuration's ip configuration.
 
 ## SYNTAX
 
@@ -19,16 +19,24 @@ Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig** cmdlet sets the goal state for a container network interface configuration's ip configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
+
+$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
+
+$containerNicConfig = New-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name cnic
+
+$containerNicConfig | Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -Name ipconfigprofile -Subnet $subnet
 ```
 
-{{ Add example description here }}
+The first two commands intialize a vnet and subnet. The third command creates an empty (i.e. no container network 
+	interface ip configurations) container network interface configuration. The fourth command sets the goal state of 
+	a desired container network interface ip configuration on the container network interface configuration.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a container network interface configuration ip configuration.
 
 ## SYNTAX
 
@@ -19,16 +19,20 @@ Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig** cmdlet retrieves a container network interface configuration ip configuration from a supplied container network interface configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$networkProfile = Get-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1
+
+$containerNicConfig = Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile $networkProfile -Name cnicConfig1
+
+$ipConfigProfile = Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -ContainerNetworkInterfaceConfiguration $containerNicConfig -Name ipProf1
 ```
 
-{{ Add example description here }}
+The first command retrieves an existing network profile named np1 in resource group rg1. The second command retrieves a container network interface configuration named cnicConfig1 from network profile np1. The third command then retrieves the ip configuration profile from the container network interface configuration.
 
 ## PARAMETERS
 

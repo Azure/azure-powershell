@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmNetworkProfileContainerNetworkInterfaceConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Sets the goal state for a container network interface configuration.
 
 ## SYNTAX
 
@@ -19,16 +19,22 @@ Set-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile <PSNetw
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmNetworkProfileContainerNetworkInterfaceConfig** cmdlet sets the goal state for a network profile's container network interface configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$containerNicConfig = New-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name cnic1
+
+$networkProfile = New-AzureRmNetworkProfile -ResourceGroupName rg -Name np1 -Location $location;
+
+$networkProfile | Set-AzureRmNetworkProfileContainerNetworkInterfaceConfig -ContainerNetworkInterfaceConfiguration $containerNicConfig
+
+$networkProfile | Set-NetworkProfile
 ```
 
-{{ Add example description here }}
+The first command creates an empty container network interface configuration. The second command creates a network profile and adds the previously created container network interface configuration to this network profile. The third command creates the container network interface configuration on the network profile. The fourth command updates the network profile. 
 
 ## PARAMETERS
 

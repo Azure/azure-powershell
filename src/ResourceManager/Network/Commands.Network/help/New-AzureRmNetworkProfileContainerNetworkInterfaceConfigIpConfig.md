@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a container nic configuration ip configuration
 
 ## SYNTAX
 
@@ -18,16 +18,24 @@ New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -Name <String> 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig** cmdlet creates a new container network interface configuration ip configuration. 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet -AddressPrefix 10.0.1.0/24
+
+$vnet = New-AzureRmVirtualNetwork -Name vnet -ResourceGroupName rg1 -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+$containerNicConfigIpConfig = New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -Name ipconfigprofile1 -Subnet $vnet.Subnets[0]
+
+$containerNicConfig = New-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name cnic -IpConfiguration containerNicConfigIpConfig
+
+$networkProfile = New-AzureRmNetworkProfile -Name np1 -Location "West US" -ResourceGroupName rg1 -ContainerNetworkInterfaceConfiguration $containerNicConfig
 ```
 
-{{ Add example description here }}
+The first two commands create and initialize a vnet and a subnet. The third command creates a container nic ip configuration profile referencing the created subnet.  The fourth command creates a container network interface configuration supplying the ip configuration profile created in the previous command. Finally, the fifth command creates a network profile initialized with the container network interface configuration stored in $containerNicConfig.
 
 ## PARAMETERS
 

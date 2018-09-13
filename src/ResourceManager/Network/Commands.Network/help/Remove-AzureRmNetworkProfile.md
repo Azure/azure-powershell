@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmNetworkProfile
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a network profile.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ Remove-AzureRmNetworkProfile -ResourceGroupName <String> -Name <String> [-Force]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmNetworkProfile** cmdlet removes a network profile if no container network interfaces (as contrasted to a container network interface **configuration**) have been created.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1
 ```
 
-{{ Add example description here }}
+This removes the network profile with name np1 from the resource group rg1.
 
 ## PARAMETERS
 

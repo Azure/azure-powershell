@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes an ip configuration from a container network interface configruation.
 
 ## SYNTAX
 
@@ -19,16 +19,20 @@ Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig** cmdlet removes an ip configuration profile from a container network interface configruation.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$networkProfile = Get-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1
+
+$containerNicConfig = Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile $networkProfile -Name cnic1
+
+Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -ContainerNetworkInterfaceConfiguration $containerNicConfig -Name ipconfigprofile1
 ```
 
-{{ Add example description here }}
+The first command retrieves an existing network profile. The second retrieves an existing container network interface configuration from the network profile retrieved in the first command. The third command removes an existing container network interface configuration ip configuration from the container nic config retrieved in the second command.
 
 ## PARAMETERS
 

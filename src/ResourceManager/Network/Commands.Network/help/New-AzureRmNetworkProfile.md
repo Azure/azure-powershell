@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmNetworkProfile
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a new network profile.
 
 ## SYNTAX
 
@@ -20,16 +20,16 @@ New-AzureRmNetworkProfile -ResourceGroupName <String> -Name <String> [-Location 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmNetworkProfile** cmdlet creates a new network profile top level resource.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$networkProfile = New-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1 -Location westus 
 ```
 
-{{ Add example description here }}
+This creates a new network profile top level resource
 
 ## PARAMETERS
 

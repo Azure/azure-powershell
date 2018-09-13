@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a container network interface configuration.
 
 ## SYNTAX
 
@@ -18,16 +18,18 @@ Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile <PSN
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig** cmdlet removes a container network interface configuration from a network profile.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$networkProfile = Get-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1
+
+Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile $networkProfile -Name containerNic1
 ```
 
-{{ Add example description here }}
+The first command retrieves an existing network profile. The second command removes a container network interface configuration from the network profile retrieved in the first command.
 
 ## PARAMETERS
 

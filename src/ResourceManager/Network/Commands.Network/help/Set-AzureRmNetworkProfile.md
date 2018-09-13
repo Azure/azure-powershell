@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmNetworkProfile
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Sets the goal state for an existing network profile
 
 ## SYNTAX
 
@@ -18,16 +18,22 @@ Set-AzureRmNetworkProfile -NetworkProfile <PSNetworkProfile> [-AsJob]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmPublicIpPrefix** cmdlet sets the goal state for a network profile.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+$networkProfile = Get-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1
+
+$networkProfile.Tags = "TestTag"
+
+$networkProfile | Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name cnicconfig1
+
+$networkProfile | Set-AzureRmNetworkProfile 
 ```
 
-{{ Add example description here }}
+The first command gets an existing network profile. The second command updates a tag and the third adds a network interface configuration on the network profile. The fourth command updates the network profile.
 
 ## PARAMETERS
 
