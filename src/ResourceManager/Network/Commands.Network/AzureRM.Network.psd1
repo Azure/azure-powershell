@@ -364,7 +364,15 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'New-AzureRmVirtualHubVnetConnection',
                'Get-AzureRmVirtualHubVnetConnection',
                'Remove-AzureRmVirtualHubVnetConnection',
-               'Get-AzureRmVirtualWanVpnConfiguration'
+               'Get-AzureRmVirtualWanVpnConfiguration',
+               'Get-AzureRmFirewall',
+               'Set-AzureRmFirewall',
+               'New-AzureRmFirewall',
+               'Remove-AzureRmFirewall',
+               'New-AzureRmFirewallApplicationRuleCollection',
+               'New-AzureRmFirewallApplicationRule',
+               'New-AzureRmFirewallNetworkRuleCollection',
+               'New-AzureRmFirewallNetworkRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -401,7 +409,16 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass'
+        ReleaseNotes = '* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
+* Added new commands for feature: Azure Firewall via ARM
+    - Added Get-AzureRmFirewall
+    - Added Set-AzureRmFirewall
+    - Added New-AzureRmFirewall
+    - Added Remove-AzureRmFirewall
+    - Added New-AzureRmFirewallApplicationRuleCollection
+    - Added New-AzureRmFirewallApplicationRule
+    - Added New-AzureRmFirewallNetworkRuleCollection
+    - Added New-AzureRmFirewallNetworkRule'
 
         # Prerelease string of this module
         # Prerelease = ''
