@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OmitJsonPackage>true</OmitJsonackage>
+    <OmitJsonPackage>true</OmitJsonPackage>
   </PropertyGroup>
 
   <Import Project="$(ProjectDir)..\Dependencies.Netcore.targets" />
