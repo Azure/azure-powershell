@@ -76,6 +76,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Delegations")]
-        public List<PSDelegation> Delegations { get; set; }
+        public List<PSDelegation> Delegation { get; set; }
     }
 }
