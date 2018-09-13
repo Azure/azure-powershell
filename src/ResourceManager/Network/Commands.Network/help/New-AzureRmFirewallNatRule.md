@@ -17,9 +17,9 @@ Creates a Firewall NAT Rule.
 New-AzureRmFirewallNatRule -Name <String> [-Description <String>]
  -SourceAddress <System.Collections.Generic.List`1[System.String]>
  -DestinationAddress <System.Collections.Generic.List`1[System.String]>
- -DestinationPort <String> -Protocol <System.Collections.Generic.List`1[System.String]>
- -TranslatedAddress <String> -TranslatedPort <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -DestinationPort <System.Collections.Generic.List`1[System.String]>
+ -Protocol <System.Collections.Generic.List`1[System.String]> -TranslatedAddress <String>
+ -TranslatedPort <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ This example creates a rule which will DNAT all traffic originating in 10.0.0.0/
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 Specifies an optional description of this rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,11 +66,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DestinationAddress
+The destination addresses of the rule.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationPort
+The destination ports of the rule```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of this NAT rule. The name must be unique inside a rule collection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,6 +118,7 @@ A special value "Any" is allowed, meaning it will match both TCP and UDP, but no
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
+Accepted values: Any, TCP, UDP
 
 Required: True
 Position: Named
@@ -113,26 +142,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DestinationAddress
-The destination addresses of the rule.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -TranslatedAddress
 Specifies the desired result of the address translation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +161,7 @@ Accept wildcard characters: False
 Specifies the desired result of the port translation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -162,7 +176,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -178,7 +192,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
