@@ -52,7 +52,7 @@
         - New-AzureRmApplicationGatewayAutoscaleConfiguration
         - Remove-AzureRmApplicationGatewayAutoscaleConfiguration
         - Set-AzureRmApplicationGatewayAutoscaleConfiguration
-    - Cmdlets updated with optonal parameter -TrustedRootCertificates
+    - Cmdlets updated with optonal parameter -TrustedRootCertificate
         - New-AzureRmApplicationGateway
         - Set-AzureRmApplicationGateway
         - New-AzureRmApplicationGatewayBackendHttpSetting
