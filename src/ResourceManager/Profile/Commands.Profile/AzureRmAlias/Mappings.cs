@@ -1045,7 +1045,21 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                        'Get-AzApplicationGatewayUrlPathMapConfig':  'Get-AzureRmApplicationGatewayUrlPathMapConfig',
                        'Get-AzNetworkWatcherConnectionMonitor':  'Get-AzureRmNetworkWatcherConnectionMonitor',
                        'Remove-AzVirtualNetworkSubnetConfig':  'Remove-AzureRmVirtualNetworkSubnetConfig',
-                       'Get-AzBgpServiceCommunity':  'Get-AzureRmBgpServiceCommunity'
+                       'Get-AzBgpServiceCommunity':  'Get-AzureRmBgpServiceCommunity',
+                       'Get-AzNetworkProfile': 'Get-AzureRmNetworkProfile',
+                       'New-AzNetworkProfile': 'New-AzureRmNetworkProfile',
+                       'Remove-AzNetworkProfile': 'Remove-AzureRmNetworkProfile',
+                       'Set-AzNetworkProfile': 'Set-AzureRmNetworkProfile',
+                       'Get-AzNetworkProfileContainerNetworkInterfaceConfig': 'Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
+                       'New-AzNetworkProfileContainerNetworkInterfaceConfig': 'New-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
+                       'Remove-AzNetworkProfileContainerNetworkInterfaceConfig': 'Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
+                       'Add-AzNetworkProfileContainerNetworkInterfaceConfig': 'Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
+                       'Set-AzNetworkProfileContainerNetworkInterfaceConfig': 'Set-AzureRmNetworkProfileContainerNetworkInterfaceConfig',
+                       'Get-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig': 'Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig',
+                       'New-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig': 'New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig',
+                       'Add-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig': 'Add-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig',
+                       'Remove-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig': 'Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig',
+                       'Set-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig': 'Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig'
                    },
     'Az.UsageAggregates':  {
 
