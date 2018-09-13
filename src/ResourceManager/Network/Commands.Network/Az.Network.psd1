@@ -399,7 +399,16 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'New-AzFirewallNatRule',
     'New-AzFirewallNetworkRuleCollection',
     'New-AzFirewallNetworkRule',
-    'Get-AzInterfaceEndpoint' 
+    'Get-AzInterfaceEndpoint',
+    'Add-AzNetworkInterfaceTapConfig',
+    'Get-AzNetworkInterfaceTapConfig',
+    'Set-AzNetworkInterfaceTapConfig',
+    'New-AzNetworkInterfaceTapConfig',
+    'Remove-AzNetworkInterfaceTapConfig',
+    'Get-AzVirtualNetworkTap',
+    'New-AzVirtualNetworkTap',
+    'Remove-AzVirtualNetworkTap',
+    'Set-AzVirtualNetworkTap'
 
 # Variables to export from this module
 # VariablesToExport = @()
