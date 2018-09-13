@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Kusto.Models;
 using Microsoft.Azure.Commands.Kusto.Utilities;
-using Microsoft.Azure.Management.Kusto;
-using Microsoft.Azure.Management.Kusto.Models;
 
 namespace Microsoft.Azure.Commands.Kusto
 {
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KustoCluster", DefaultParameterSetName = ParameterSet),
-        OutputType(typeof(Array))]
+        OutputType(typeof(PSKustoCluster[]))]
     public class GetAzureRmKustoCluster : KustoCmdletBase
     {
         protected const string ParameterSet = "ByClusterOrResourceGroupOrSubscription";
