@@ -4,22 +4,58 @@
     <OmitJsonPackage>true</OmitJsonPackage>
   </PropertyGroup>
   <Import Project="$(MSBuildThisFileDirectory)\Common.Netcore.Dependencies.targets" />
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.9.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.9.0" />
+  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" >
+      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.14.0" >
+      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.4" >
+      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.8.0" >
+      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="xunit" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager" Version="1.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager" Version="1.1.1-preview" >
+      <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.console" Version="2.4.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.TestPrerequisites" Version="*" IncludeAssets="All" PrivateAssets="none"/>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Management.Automation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(windir)\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <PackageReference Include="Microsoft.Azure.PowerShell.Storage.TestPrerequisites" Version="*" IncludeAssets="All" PrivateAssets="none" Condition="'$(UseStorageDataPlane)' == 'true'"/>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" Condition="'$(UseStorageDataPlane)' != 'true'"/>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" Condition="'$(UseStorageDataPlane)' == 'true'"/>
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.4" IncludeAssets="All" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="[10.0.3]" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.0-rc.1" IncludeAssets="All" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
+  
+  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.0-preview.3" IncludeAssets="All" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.0-preview" />
   </ItemGroup>
   <PropertyGroup>
-    <ScenarioTestToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.scenariotest.resourcemanager\1.1.0-preview\tools\</ScenarioTestToolsPath>
+    <ScenarioTestToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.scenariotest.resourcemanager\1.1.1-preview\tools\</ScenarioTestToolsPath>
   </PropertyGroup>
   <ItemGroup>
     <None Include="$(ScenarioTestToolsPath)Assert.ps1">

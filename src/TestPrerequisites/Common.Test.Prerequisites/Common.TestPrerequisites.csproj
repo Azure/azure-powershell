@@ -1,0 +1,70 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);CopyPackageReferenceContent</TargetsForTfmSpecificContentInPackage>
+    <AssemblyName>Microsoft.Azure.PowerShell.TestPrerequisites</AssemblyName>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <RootNamespace>Microsoft.Azure.PowerShell.Test</RootNamespace>
+    <OutputPath>..\..\local-artifacts</OutputPath>
+    <IsPackable>true</IsPackable>
+    <HideReferenceDependencies>true</HideReferenceDependencies>
+    <Description>Wrapper test package to enable NetStandard testing</Description>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+  </PropertyGroup>
+
+ <Import Project="$(ProjectDir)..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
+
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Batch" Version="8.1.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="1.0.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Commerce.UsageAggregates" Version="1.5.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Insights" Version="0.15.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Analysis" Version="2.0.3" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="4.0.4-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Automation" Version="2.0.6" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.8.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Batch" Version="4.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="21.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.DeviceProvisioningServices" Version="0.9.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="2.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.20.1-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.3.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.18.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.PolicyInsights" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Redis" Version="3.1.1-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.18.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="7.1.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Websites" Version="1.7.1-preview" PrivateAssets="All" />
+    <PackageReference Include="YamlDotNet.Signed" Version="4.2.4" PrivateAssets="All" />
+    <PackageReference Include="Moq" Version="4.7.145" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+  </ItemGroup>
+
+  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
+    <Message Text="1. Including File in package:%0D%0A%09@(ReferenceCopyLocalPaths->'$(OutDir)%(DestinationSubDirectory)%(Filename)%(Extension)', '%0D%0A%09')" Importance="high" />
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths)" Condition="! ($([System.String]::Copy(%(Filename)).Contains('System.')) Or $([System.String]::Copy(%(Filename)).Contains('Microsoft.CSharp')) Or $([System.String]::Copy(%(Filename)).Contains('Newtonsoft.Json')) Or $([System.String]::Copy(%(Filename)).StartsWith('xunit')))" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CopyPackageReferenceContent" DependsOnTargets="Build">
+    <ItemGroup>
+      <TfmSpecificPackageFile Include="$(OutDir)\*.ps1">
+        <BuildAction>Content</BuildAction>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </TfmSpecificPackageFile>
+    </ItemGroup>
+  </Target>
+  
+</Project>
