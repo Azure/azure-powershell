@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermnetworkprofilecontainernetworkinterfaceconfigipconfig
 schema: 2.0.0
 ---
 
@@ -12,10 +12,16 @@ Adds a container network interface ip config profile to a container nic config.
 
 ## SYNTAX
 
+### SetByResource (Default)
 ```
-Add-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -NetworkProfile <PSNetworkProfile>
- -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> -Name <String>
- -Subnet <PSSubnet> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> 
+ -Name <String> -Subnet <PSSubnet> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceId 
+```
+Add-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> 
+ -Name <String> -SubnetId <string> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
