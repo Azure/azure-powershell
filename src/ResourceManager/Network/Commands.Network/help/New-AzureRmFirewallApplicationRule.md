@@ -13,7 +13,7 @@ Creates a Firewall Application Rule.
 
 ## SYNTAX
 
-### AzureFirewall with Target FQDNs (Default)
+### TargetFqdn
 ```
 New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>]
  [-SourceAddress <System.Collections.Generic.List`1[System.String]>]
@@ -22,12 +22,12 @@ New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### AzureFirewall with FQDN Tags
+### FqdnTag
 ```
 New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>]
  [-SourceAddress <System.Collections.Generic.List`1[System.String]>]
- -FqdnTag <System.Collections.Generic.List`1[System.String]>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -FqdnTag <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +55,7 @@ This example creates a rule which will allow traffic for Windows Updates for 10.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 Specifies an optional description of this rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,11 +81,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FqdnTag
+Specifies a list of FQDN Tags for this rule. The available tags are:
+
+- Windows Update
+- Windows Diagnostics
+- App Service Environment
+- Microsoft Active Protection Service
+- Azure Backup
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: FqdnTag
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of this application rule. The name must be unique inside a rule collection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,10 +124,10 @@ Protocol is mandatory when TargetFqdn is used, but it cannot be used with FqdnTa
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
+Parameter Sets: TargetFqdn
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -134,42 +155,21 @@ The asterik character, '*', is accepted only as the first character of an FQDN i
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
+Parameter Sets: TargetFqdn
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: True
-```
-
-### -FqdnTag
-Specifies a list of FQDN Tags for this rule. The available tags are:
-
-- Windows Update
-- Windows Diagnostics
-- App Service Environment
-- Microsoft Active Protection Service
-- Azure Backup
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -185,7 +185,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
