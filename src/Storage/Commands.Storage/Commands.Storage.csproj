@@ -60,7 +60,7 @@
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Azure.PowerShell.ResourceManager.1.1.0-preview\lib\net452\Microsoft.Azure.Commands.ResourceManager.Common.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Azure.PowerShell.ResourceManager.1.1.1-preview\lib\net452\Microsoft.Azure.Commands.ResourceManager.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
