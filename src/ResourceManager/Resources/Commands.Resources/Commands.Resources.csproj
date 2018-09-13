@@ -173,6 +173,7 @@
     </None>
     <None Include="ChangeLog.md" />
     <None Include="help\*.md" />
+    <None Include="Microsoft.Azure.Commands.ResourceManager.Cmdlets.generated.format.ps1xml" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1" />
