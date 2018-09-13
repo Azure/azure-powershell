@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-<Import Project="$(ProjectDir)..\Dependencies.Test.Netcore.targets" />
+  <Import Project="$(ProjectDir)..\Dependencies.Test.Netcore.targets" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Powershell.TestFx</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.TestFx</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.TestFx</RootNamespace>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <IsTestProject>false</IsTestProject>
@@ -21,23 +21,20 @@
     <PackageLicenseUrl>https://aka.ms/azps-common-license</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Azure/azure-powershell-common</PackageProjectUrl>
     <PackageOutputPath>$(ProjectDir)..\..\artifacts\Package\$(Configuration)</PackageOutputPath>
+    <IsPackable>true</IsPackable>
     <PackageVersion>1.0.0-preview</PackageVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DelaySign>false</DelaySign>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
-    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
   </PropertyGroup>
 
   <ItemGroup>
@@ -50,8 +47,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="SessionRecords\**\*.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Remove="Properties\AssemblyInfo.cs" />
+    <None Remove="Properties\AssemblyInfo.cs" />
+    <Content Remove="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+
 </Project>
