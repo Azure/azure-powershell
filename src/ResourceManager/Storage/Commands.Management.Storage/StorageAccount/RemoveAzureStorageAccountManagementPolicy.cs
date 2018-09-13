@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
 
 
-                this.StorageClient.StorageAccounts.DeleteManagementPolicies(
+                this.StorageClient.ManagementPolicies.Delete(
                  this.ResourceGroupName,
                  this.StorageAccountName);
             }
