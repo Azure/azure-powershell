@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
+            HelpMessage = "The name of the Application Rule")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.FqdnTag,
             HelpMessage = "The name of the Application Rule")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -42,19 +47,22 @@ namespace Microsoft.Azure.Commands.Network
         public List<string> SourceAddress { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The target FQDNs of the rule")]
         [ValidateNotNullOrEmpty]
         public List<string> TargetFqdn { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.FqdnTag,
             HelpMessage = "The FQDN Tags of the rule")]
         [ValidateNotNullOrEmpty]
         public List<string> FqdnTag { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The protocols of the rule")]
         [ValidateNotNullOrEmpty]
         public List<string> Protocol { get; set; }
@@ -63,26 +71,8 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (FqdnTag == null)
+            if (FqdnTag != null)
             {
-                if (TargetFqdn == null)
-                {
-                    throw new ArgumentException($"Either {nameof(TargetFqdn)} or {nameof(FqdnTag)} must be specified for a rule.");
-                }
-            }
-            else
-            {
-                if (TargetFqdn != null)
-                {
-                    throw new ArgumentException($"{nameof(TargetFqdn)} and {nameof(FqdnTag)} cannot be specified in the same rule.");
-                }
-
-                // We do not allow user protocols in this case
-                if (Protocol != null)
-                {
-                    throw new ArgumentException($"Protocol parameter is not allowed when using {nameof(FqdnTag)}.");
-                }
-
                 this.Protocol = new List<string> { "http", "https" };
                 FqdnTag = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTag);
             }
