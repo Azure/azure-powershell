@@ -2243,7 +2243,8 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'Get-AzApplicationGatewayAvailableSslOptions': 'Get-AzureRmApplicationGatewayAvailableSslOptions',
     'New-AzNetworkInterfaceIpConfig': 'New-AzureRmNetworkInterfaceIpConfig',
     'New-AzExpressRouteCircuit': 'New-AzureRmExpressRouteCircuit',
-    'Set-AzApplicationGatewayFrontendIPConfig': 'Set-AzureRmApplicationGatewayFrontendIPConfig'
+    'Set-AzApplicationGatewayFrontendIPConfig': 'Set-AzureRmApplicationGatewayFrontendIPConfig',
+    'Get-AzInterfaceEndpoint': 'Set-AzureRmInterfaceEndpoint'
   },
   'Az.DataLakeAnalytics': {
     'New-AzDataLakeAnalyticsCatalogSecret': 'New-AzureRmDataLakeAnalyticsCatalogSecret',
