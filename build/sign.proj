@@ -25,7 +25,7 @@
     <ItemGroup>
       <Net452Files Include="$(OutputDir)Microsoft.Azure.Commands*.dll" />
       <Net452Files Include="$(OutputDir)Microsoft.WindowsAzure.Commands*.dll" />
-      <Net452Files Include="$(OutputDir)Microsoft.Azure.PowerShell*.dll" />
+      <Net452Files Include="$(OutputDir)Microsoft.Azure.PowerShell*.dll" Exclude="$(OutputDir)Microsoft.Azure.PowerShell*.Test.dll" />
     </ItemGroup>
     <CodeSigningTask
       Description="$(Description)"
