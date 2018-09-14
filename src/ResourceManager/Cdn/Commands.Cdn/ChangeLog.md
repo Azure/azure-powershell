@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added Standard_Microsoft in Cdn pricing sku. 
 
 ## Version 5.0.5
 * Fixed issue with default resource groups not being set.

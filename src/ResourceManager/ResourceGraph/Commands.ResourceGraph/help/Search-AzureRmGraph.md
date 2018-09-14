@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceGraph.dll-Help.xml
 Module Name: AzureRM.ResourceGraph
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resourcegraph/search-azurermgraph
 schema: 2.0.0
 ---
 

@@ -174,7 +174,7 @@ InModuleScope Azs.Compute.Admin {
         It "TestGetDiskInvalid" {
             $global:TestName = 'TestGetDiskInvalid'
 
-            {Get-AzsDisk -Location $global:Location -Name "454E5E28-8D5E-41F9-929E-BFF6A7E1A253"} | Should Throw
+            {Get-AzsDisk -Location $global:Location -Name "454E5E28-8D5E-41F9-929E-BFF6A7E1A253" -ErrorAction Stop} | Should Throw
         }
     }
 }

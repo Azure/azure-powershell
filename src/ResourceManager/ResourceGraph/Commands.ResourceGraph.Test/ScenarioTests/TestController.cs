@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.ResourceGraph;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -26,8 +27,6 @@ using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.
 
 namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
 {
-    using Microsoft.Azure.Management.ResourceGraph;
-
     public class TestController : RMTestBase
     {
         private readonly EnvironmentSetupHelper _helper;

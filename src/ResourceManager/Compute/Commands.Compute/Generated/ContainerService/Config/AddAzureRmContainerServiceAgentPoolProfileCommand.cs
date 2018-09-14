@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerServiceAgentPoolProfile", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerServiceAgentPoolProfile", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerService))]
     public partial class AddAzureRmContainerServiceAgentPoolProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             vAgentPoolProfiles.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
             vAgentPoolProfiles.Count = this.Count;
-            vAgentPoolProfiles.VmSize = this.MyInvocation.BoundParameters.ContainsKey("VmSize") ? (ContainerServiceVMSizeTypes) this.VmSize : null;
+            vAgentPoolProfiles.VmSize = this.MyInvocation.BoundParameters.ContainsKey("VmSize") ? (ContainerServiceVMSizeTypes)this.VmSize : null;
             vAgentPoolProfiles.DnsPrefix = this.MyInvocation.BoundParameters.ContainsKey("DnsPrefix") ? this.DnsPrefix : null;
             this.ContainerService.AgentPoolProfiles.Add(vAgentPoolProfiles);
             WriteObject(this.ContainerService);

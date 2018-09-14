@@ -16,8 +16,8 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewayBackendAddress
-    { 
+    {
         public string Fqdn { get; set; }
-        public string IpAddress { get; set; }        
-     }
+        public string IpAddress { get; set; }
+    }
 }

@@ -83,9 +83,9 @@ Run query with subscriptions explicitly passed
 #>
 function Search-AzureRmGraph-Subscriptions
 {
-	$testSubId1 = "b3f105bc-853e-4b0c-a8ec-dffd9e89e204"
-	$testSubId2 = "c1b3aa24-a329-430e-91d7-473f301521c1"
-	$mockedSubscriptionId = "d0610b27-9663-4c05-89f8-5b4be01e86a5"
+	$testSubId1 = "11111111-1111-1111-1111-111111111111"
+	$testSubId2 = "22222222-2222-2222-2222-222222222222"
+	$mockedSubscriptionId = "00000000-0000-0000-0000-000000000000"
 	$query = "distinct subscriptionId | order by subscriptionId asc"
 
 	$queryResultNoSubs = Search-AzureRmGraph $query
