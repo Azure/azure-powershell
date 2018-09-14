@@ -342,4 +342,7 @@
   <data name="UpdatingLongRunningOperationMessage" xml:space="preserve">
     <value>Updating resource with ResourceGroupName {0}, ResourceName {1}.</value>
   </data>
+  <data name="ApplicationGatewayTrustedRootCertificateName" xml:space="preserve">
+    <value>trustedRootCertificates</value>
+  </data>
 </root>

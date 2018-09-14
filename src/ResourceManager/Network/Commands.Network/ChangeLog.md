@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -55,6 +55,26 @@
     - Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
     - Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig 
 * Added service association link on Subnet Model
+* Added support for Trusted Root certificate and Autoscale configuration in Application Gateway
+    - New Cmdlets added:
+        - Add-AzureRmApplicationGatewayTrustedRootCertificate
+        - Get-AzureRmApplicationGatewayTrustedRootCertificate
+        - New-AzureRmApplicationGatewayTrustedRootCertificate
+        - Remove-AzureRmApplicationGatewayTrustedRootCertificate
+        - Set-AzureRmApplicationGatewayTrustedRootCertificate
+        - Get-AzureRmApplicationGatewayAutoscaleConfiguration
+        - New-AzureRmApplicationGatewayAutoscaleConfiguration
+        - Remove-AzureRmApplicationGatewayAutoscaleConfiguration
+        - Set-AzureRmApplicationGatewayAutoscaleConfiguration
+    - Cmdlets updated with optonal parameter -TrustedRootCertificate
+        - New-AzureRmApplicationGateway
+        - Set-AzureRmApplicationGateway
+        - New-AzureRmApplicationGatewayBackendHttpSetting
+        - Set-AzureRmApplicationGatewayBackendHttpSetting
+    - Cmdlets updated with optonal parameter -AutoscaleConfiguration
+        - New-AzureRmApplicationGateway
+        - Set-AzureRmApplicationGateway
+* Add cmdlet for Interface Endpoint Get-AzureInterfaceEndpoint
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass

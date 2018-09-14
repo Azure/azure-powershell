@@ -187,6 +187,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to trustedRootCertificates.
+        /// </summary>
+        public static string ApplicationGatewayTrustedRootCertificateName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayTrustedRootCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to urlPathMaps.
         /// </summary>
         public static string ApplicationGatewayUrlPathMapName {

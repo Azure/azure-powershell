@@ -44,6 +44,9 @@ Adds a request routing rule to an application gateway.
 ### [Add-AzureRmApplicationGatewaySslCertificate](Add-AzureRmApplicationGatewaySslCertificate.md)
 Adds an SSL certificate to an application gateway.
 
+### [Add-AzureRmApplicationGatewayTrustedRootCertificate](Add-AzureRmApplicationGatewayTrustedRootCertificate.md)
+Adds a trusted root certificate to an application gateway.
+
 ### [Add-AzureRmApplicationGatewayUrlPathMapConfig](Add-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Adds an array of URL path mappings to a backend server pool.
 
@@ -113,6 +116,9 @@ Gets an application gateway.
 ### [Get-AzureRmApplicationGatewayAuthenticationCertificate](Get-AzureRmApplicationGatewayAuthenticationCertificate.md)
 Gets an authentication certificate for an application gateway.
 
+### [Get-AzureRmApplicationGatewayAutoscaleConfiguration](Get-AzureRmApplicationGatewayAutoscaleConfiguration.md)
+Gets the autoscale configuration for an application gateway.
+
 ### [Get-AzureRmApplicationGatewayAvailableSslOptions](Get-AzureRmApplicationGatewayAvailableSslOptions.md)
 Gets all available ssl options for ssl policy for Application Gateway.
 
@@ -163,6 +169,9 @@ Gets the SSL policy of an application gateway.
 
 ### [Get-AzureRmApplicationGatewaySslPredefinedPolicy](Get-AzureRmApplicationGatewaySslPredefinedPolicy.md)
 Gets Predefined SSL Policies provided by Application Gateway.
+
+### [Get-AzureRmApplicationGatewayTrustedRootCertificate](Get-AzureRmApplicationGatewayTrustedRootCertificate.md)
+Gets Trusted Root Certificates of an application gateway.
 
 ### [Get-AzureRmApplicationGatewayUrlPathMapConfig](Get-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Gets an array of URL path mappings to a backend server pool.
@@ -407,6 +416,9 @@ Creates an application gateway.
 ### [New-AzureRmApplicationGatewayAuthenticationCertificate](New-AzureRmApplicationGatewayAuthenticationCertificate.md)
 Creates an authentication certificate for an application gateway.
 
+### [New-AzureRmApplicationGatewayAutoscaleConfiguration](New-AzureRmApplicationGatewayAutoscaleConfiguration.md)
+Creates the autoscale configuration for an application gateway.
+
 ### [New-AzureRmApplicationGatewayBackendAddressPool](New-AzureRmApplicationGatewayBackendAddressPool.md)
 Creates a back-end address pool for an application gateway.
 
@@ -454,6 +466,9 @@ Creates an SSL certificate for an Azure application gateway.
 
 ### [New-AzureRmApplicationGatewaySslPolicy](New-AzureRmApplicationGatewaySslPolicy.md)
 Creates an SSL policy for an application gateway.
+
+### [New-AzureRmApplicationGatewayTrustedRootCertificate](New-AzureRmApplicationGatewayTrustedRootCertificate.md)
+Creates a Trusted Root Certificate for an application gateway.
 
 ### [New-AzureRmApplicationGatewayUrlPathMapConfig](New-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Creates an array of URL path mappings to a backend server pool.
@@ -630,6 +645,9 @@ Removes an application gateway.
 ### [Remove-AzureRmApplicationGatewayAuthenticationCertificate](Remove-AzureRmApplicationGatewayAuthenticationCertificate.md)
 Removes an authentication certificate from an application gateway.
 
+### [Remove-AzureRmApplicationGatewayAutoscaleConfiguration](Remove-AzureRmApplicationGatewayAutoscaleConfiguration.md)
+Removes the autoscale configuration from an application gateway.
+
 ### [Remove-AzureRmApplicationGatewayBackendAddressPool](Remove-AzureRmApplicationGatewayBackendAddressPool.md)
 Removes a back-end address pool from an application gateway.
 
@@ -665,6 +683,9 @@ Removes an SSL certificate from an Azure application gateway.
 
 ### [Remove-AzureRmApplicationGatewaySslPolicy](Remove-AzureRmApplicationGatewaySslPolicy.md)
 Removes an SSL policy from an Azure application gateway.
+
+### [Remove-AzureRmApplicationGatewayTrustedRootCertificate](Remove-AzureRmApplicationGatewayTrustedRootCertificate.md)
+Removes a Trusted Root Certificate from an application gateway.
 
 ### [Remove-AzureRmApplicationGatewayUrlPathMapConfig](Remove-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Removes URL path mappings to a backend server pool.
@@ -831,6 +852,9 @@ Updates an application gateway.
 ### [Set-AzureRmApplicationGatewayAuthenticationCertificate](Set-AzureRmApplicationGatewayAuthenticationCertificate.md)
 Updates an authentication certificate for an application gateway.
 
+### [Set-AzureRmApplicationGatewayAutoscaleConfiguration](Set-AzureRmApplicationGatewayAutoscaleConfiguration.md)
+Updates the autoscale configuration for an application gateway.
+
 ### [Set-AzureRmApplicationGatewayBackendAddressPool](Set-AzureRmApplicationGatewayBackendAddressPool.md)
 Updates a back-end address pool for an application gateway.
 
@@ -869,6 +893,9 @@ Sets the goal state of an SSL certificate.
 
 ### [Set-AzureRmApplicationGatewaySslPolicy](Set-AzureRmApplicationGatewaySslPolicy.md)
 Modifies the SSL policy of an application gateway.
+
+### [Set-AzureRmApplicationGatewayTrustedRootCertificate](Set-AzureRmApplicationGatewayTrustedRootCertificate.md)
+Updates a Trusted Root Certificate for an application gateway.
 
 ### [Set-AzureRmApplicationGatewayUrlPathMapConfig](Set-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Sets configuration for an array of URL path mappings to a backend server pool.
