@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.7.0'
+ModuleVersion = '6.8.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -504,8 +504,6 @@ PrivateData = @{
   - Add-AzureRmDelegation: Takes in a subnet and adds the provided service name as a delegation to that subnet
   - Get-AzureRmDelegation
   - Get-AzureRmAvailableServiceDelegations
-* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
-* Added cmdlets for Azure SdWan
   '
 
         # Prerelease string of this module
