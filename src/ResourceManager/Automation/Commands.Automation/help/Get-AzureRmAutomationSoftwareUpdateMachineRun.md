@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationsoftwareupdatemachinerun
 schema: 2.0.0
 ---
 
 # Get-AzureRmAutomationSoftwareUpdateMachineRun
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a list of azure automation software update configuration machine runs.
 
 ## SYNTAX
 
@@ -40,16 +40,32 @@ Get-AzureRmAutomationSoftwareUpdateMachineRun [-SoftwareUpdateRun <SoftwareUpdat
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This cmdlet returns a list of machine runs. Each software update run will trigger a machine run for each of the software update configuration target machine. To get a specific machine run, pass the Id parameter. You can list all the machine runs, all runs for a specific computer, all runs with specific status by passing the corresponding parameters.
 
 ## EXAMPLES
 
 ### Example 1
+This example returns all failed machine runs for the specified azure virtual machine.
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $targetComputer = "/subscriptions/22e2445a-0984-4fa5-86a4-0280d76c4b2c/resourceGroups/compute/providers/Microsoft.Compute/virtualMachines/myvm"
+PS C:\> Get-AzureRmAutomationSoftwareUpdateMachineRun -ResourceGroupName "mygroup" `
+                                                      -AutomationAccountName "myaccount" `
+                                                      -TargetComputer $targetComputer `
+                                                      -Status Failed
+
+MachineRunId          : 0033d6d6-828d-4712-adab-293cc4fc8809
+TargetComputer        : /subscriptions/22e2445a-0984-4fa5-86a4-0280d76c4b2c/resourceGroups/compute/providers/Microsoft.Compute/virtualMachines/myvm
+TargetComputerType    : AzureVirtualMachines
+SoftwareUpdateRunId   : 46568d26-0182-49b2-8bfd-af3455780397
+OperatingSystem       : Windows
+Status                : Failed
+ResourceGroupName     : mygroup
+AutomationAccountName : myaccount
+Name                  : 0033d6d6-828d-4712-adab-293cc4fc8809
+CreationTime          : 5/17/2018 2:06:44 AM +00:00
+LastModifiedTime      : 5/17/2018 2:08:49 AM +00:00
 ```
 
-{{ Add example description here }}
 
 ## PARAMETERS
 

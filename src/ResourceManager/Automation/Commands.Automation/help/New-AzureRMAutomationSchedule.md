@@ -253,7 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -ForUpdateConfiguration
-Indicates that this schedule object will be used for scheduling an update deployment
+Indicates that this schedule object will be used for scheduling a software update configuration
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

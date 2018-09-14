@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/remove-azurermautomationsoftwareupdateconfiguration
 schema: 2.0.0
 ---
 
 # Remove-AzureRmAutomationSoftwareUpdateConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes an azure automation software update configuration.
 
 ## SYNTAX
 
@@ -27,16 +27,16 @@ Remove-AzureRmAutomationSoftwareUpdateConfiguration -SoftwareUpdateConfiguration
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This cmdlet removed an azure automation software update configuration.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
+This example shows how to remove 'MyUpdateConfiguration' from automation account
 
-{{ Add example description here }}
+```powershell
+PS C:\> Remove-AzureRmAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" -AutomationAccountName "myaccount" -Name "MyUpdateConfiguration"
+```
 
 ## PARAMETERS
 
