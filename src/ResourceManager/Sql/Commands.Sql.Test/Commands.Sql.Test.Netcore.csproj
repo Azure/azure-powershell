@@ -25,7 +25,7 @@
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.18.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.3.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.0-preview" />
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.2.0-preview" />
   </ItemGroup>
 

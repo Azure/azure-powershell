@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.WebApps
         [Parameter(ParameterSetName = ParameterSet2Name, Position = 0, Mandatory = true,
             HelpMessage = "The web app object", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public Site WebApp { get; set; }
+        public PSSite WebApp { get; set; }
 
         public override void ExecuteCmdlet()
         {
