@@ -40,7 +40,7 @@ Remove-AzureRmADAppCredential [-KeyId <Guid>] -ApplicationObject <PSADApplicatio
 ## DESCRIPTION
 The Remove-AzureRmADAppCredential cmdlet can be used to remove a credential key from an application in the case of a compromise or as part of credential key rollover expiration.
 The application is identified by supplying either the object ID or AppId.
-The credential to be removed is identified by its key ID if an individual credential is to be removed or with an 'All' switch to delete all credentials associated with the application.
+The credential to be removed is identified by its key ID.
 
 ## EXAMPLES
 

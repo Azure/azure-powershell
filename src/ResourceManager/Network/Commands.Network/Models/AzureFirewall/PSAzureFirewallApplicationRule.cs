@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> TargetFqdns { get; set; }
 
         [JsonProperty(Order = 5)]
+        public List<string> FqdnTags { get; set; }
+
+        [JsonProperty(Order = 6)]
         public List<PSAzureFirewallApplicationRuleProtocol> Protocols { get; set; }
 
         [JsonIgnore]
@@ -51,6 +54,21 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string TargetFqdnsText
         {
             get { return JsonConvert.SerializeObject(TargetFqdns, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string FqdnTagsText
+        {
+            get { return JsonConvert.SerializeObject(FqdnTags, Formatting.Indented); }
+        }
+
+        public void AddProtocol(string protocolType, uint port = 0)
+        {
+            var stringToMap = protocolType + (port == 0 ? string.Empty : ":" + port);
+
+            var protocol = PSAzureFirewallApplicationRuleProtocol.MapUserInputToApplicationRuleProtocol(stringToMap);
+
+            (this.Protocols ?? (this.Protocols = new List<PSAzureFirewallApplicationRuleProtocol>())).Add(protocol);
         }
     }
 }

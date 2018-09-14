@@ -78,6 +78,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of AzureFirewallNatRuleCollections")]
+        public List<PSAzureFirewallNatRuleCollection> NatRuleCollection { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of AzureFirewallNetworkRuleCollections")]
         public List<PSAzureFirewallNetworkRuleCollection> NetworkRuleCollection { get; set; }
 
@@ -100,19 +106,19 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             var isVnetPresent = VirtualNetworkName!=null;
-            
+
             // Get the virtual network, get the public IP address
             if (isVnetPresent)
             {
                 var vnet = this.VirtualNetworkClient.Get(this.ResourceGroupName, VirtualNetworkName);
                 this.virtualNetwork = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetwork>(vnet);
-                
+
                 var publicIp = this.PublicIPAddressesClient.Get(this.ResourceGroupName, PublicIpName);
                 this.publicIpAddress = NetworkResourceManagerProfile.Mapper.Map<PSPublicIpAddress>(publicIp);
             }
-            
+
             base.Execute();
-            
+
             var present = this.IsAzureFirewallPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
@@ -131,6 +137,7 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
                 ApplicationRuleCollections = this.ApplicationRuleCollection,
+                NatRuleCollections = this.NatRuleCollection,
                 NetworkRuleCollections = this.NetworkRuleCollection
             };
 
@@ -142,7 +149,7 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(firewall);
             azureFirewallModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
-            
+
             // Execute the Create AzureFirewall call
             this.AzureFirewallClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallModel);
             return this.GetAzureFirewall(this.ResourceGroupName, this.Name);
