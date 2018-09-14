@@ -189,6 +189,96 @@ function Test-subnetCRUD
 
 <#
 .SYNOPSIS
+Tests creating new virtualNetwork w/ delegated subnets.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-subnetDelegationCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $subnet2Name = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create a delegation
+        $delegation = New-AzureRmDelegation -Name "sqlDelegation" -ServiceName "Microsoft.Sql/servers"
+
+        # Create the Virtual Network
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24 -delegation $delegation
+        New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        
+        # Add a subnet
+        $vnet | Add-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.2.0/24
+        
+        # Set VirtualNetwork
+        $vnet | Set-AzureRmVirtualNetwork
+        
+        # Get VirtualNetwork
+        $vnetExpected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+
+        Assert-AreEqual 2 @($vnetExpected.Subnets).Count
+        Assert-AreEqual 1 @($vnetExpected.Subnets[0].Delegations).Count
+        Assert-AreEqual 0 @($vnetExpected.Subnets[1].Delegations).Count
+        
+        # Edit a subnet
+        $vnet = Get-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Set-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.2.0/24
+		
+		# Add a delegation to the subnet
+		Get-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name -VirtualNetwork $vnet | Add-AzureRmDelegation -Name "bareMetalDelegation" -ServiceName "Microsoft.Netapp/volumes"
+		Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+
+        $vnetExpected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual 2 @($vnetExpected.Subnets).Count
+        Assert-AreEqual 1 @($vnetExpected.Subnets[0].Delegations).Count
+		Assert-AreEqual "Microsoft.Sql/servers" $vnetExpected.Subnets[0].Delegations[0].ServiceName
+        Assert-AreEqual 1 @($vnetExpected.Subnets[1].Delegations).Count
+		Assert-AreEqual "Microsoft.Netapp/volumes" $vnetExpected.Subnets[1].Delegations[0].ServiceName
+
+        # Get subnet
+        $subnet2 = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name
+		Assert-AreEqual 1 @($subnet2.Delegations).Count
+        $subnetAll = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzureRmVirtualNetworkSubnetConfig
+
+        Assert-AreEqual 2 @($subnetAll).Count
+
+		# Get delegations from the subnets
+		Foreach ($sub in $subnetAll)
+		{
+			$del = Get-AzureRmDelegation -Subnet $sub
+			Assert-NotNull $del
+		}
+
+        # Remove a delegation
+        $vnetToEdit = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$subnetWithoutDelegation = Get-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name -VirtualNetwork $vnet | Remove-AzureRmDelegation -Name "bareMetalDelegation"
+		$vnetToEdit.Subnets[1] = $subnetWithoutDelegation
+		$vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnetToEdit
+        
+        $vnetExpected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual 2 @($vnetExpected.Subnets).Count
+        Assert-AreEqual 1 @($vnetExpected.Subnets[0].Delegations).Count
+		Assert-AreEqual 0 @($vnetExpected.Subnets[1].Delegations).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating new simple virtualNetwork and subnets.
 .DESCRIPTION
 SmokeTest

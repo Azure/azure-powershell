@@ -108,15 +108,15 @@ namespace Microsoft.Azure.Commands.Network
             httpListener.Protocol = this.Protocol;
             httpListener.HostName = this.HostName;
 
-            if(string.Equals(this.RequireServerNameIndication,"true", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(this.RequireServerNameIndication, "true", StringComparison.OrdinalIgnoreCase))
             {
                 httpListener.RequireServerNameIndication = true;
             }
-            else if(string.Equals(this.RequireServerNameIndication, "false", StringComparison.OrdinalIgnoreCase))
+            else if (string.Equals(this.RequireServerNameIndication, "false", StringComparison.OrdinalIgnoreCase))
             {
                 httpListener.RequireServerNameIndication = false;
             }
-            else if (string.Equals(this.Protocol, "https", StringComparison.OrdinalIgnoreCase))
+            else if (string.Equals(this.Protocol, "https", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(this.HostName))
             {
                 // Set default as true to be at parity with portal.
                 httpListener.RequireServerNameIndication = true;

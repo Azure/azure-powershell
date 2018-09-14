@@ -58,8 +58,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=19.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.4.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=19.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.5.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -183,14 +183,19 @@
     <Compile Include="ApplicationGateway\UrlPathMap\NewAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
+    <Compile Include="AzureFirewallFqdnTag\AzureFirewallFqdnTagHelper.cs" />
     <Compile Include="AzureFirewall\ApplicationRuleCollection\NewAzureFirewallApplicationRuleCollectionCommand.cs" />
+    <Compile Include="AzureFirewall\ApplicationRule\AzureFirewallApplicationRuleParameterSets.cs" />
     <Compile Include="AzureFirewall\ApplicationRule\NewAzureFirewallApplicationRuleCommand.cs" />
+    <Compile Include="AzureFirewall\AzureFirewallBaseCmdlet.cs" />
+    <Compile Include="AzureFirewall\AzureFirewallNetworkRuleProtocolHelper.cs" />
     <Compile Include="AzureFirewall\GetAzureFirewallCommand.cs" />
+    <Compile Include="AzureFirewall\NatRuleCollection\NewAzureFirewallNatRuleCollectionCommand.cs" />
+    <Compile Include="AzureFirewall\NatRule\NewAzureFirewallNatRuleCommand.cs" />
     <Compile Include="AzureFirewall\NetworkRuleCollection\NewAzureFirewallNetworkRuleCollectionCommand.cs" />
     <Compile Include="AzureFirewall\NetworkRule\NewAzureFirewallNetworkRuleCommand.cs" />
     <Compile Include="AzureFirewall\NewAzureFirewallCommand.cs" />
     <Compile Include="AzureFirewall\RemoveAzureFirewallCommand.cs" />
-    <Compile Include="AzureFirewall\AzureFirewallBaseCmdlet.cs" />
     <Compile Include="AzureFirewall\SetAzureFirewallCommand.cs" />
     <Compile Include="InterfaceEndpoint\AzureInterfaceEndpointBaseCmdlet.cs" />
     <Compile Include="Generated\ApplicationSecurityGroup\GetAzureRMApplicationSecurityGroupCommand.cs" />
@@ -392,10 +397,15 @@
     <Compile Include="Models\AzureFirewall\PSAzureFirewallApplicationRuleCollection.cs" />
     <Compile Include="Models\AzureFirewall\PSAzureFirewallBaseRuleCollection.cs" />
     <Compile Include="Models\AzureFirewall\PSAzureFirewallIpConfiguration.cs" />
+    <Compile Include="Models\AzureFirewall\PSAzureFirewallNatRCAction.cs" />
+    <Compile Include="Models\AzureFirewall\PSAzureFirewallNatRule.cs" />
+    <Compile Include="Models\AzureFirewall\PSAzureFirewallNatRuleCollection.cs" />
     <Compile Include="Models\AzureFirewall\PSAzureFirewallNetworkRule.cs" />
     <Compile Include="Models\AzureFirewall\PSAzureFirewallNetworkRuleCollection.cs" />
     <Compile Include="Models\AzureFirewall\PSAzureFirewallRCAction.cs" />
     <Compile Include="Models\PSApplicationGatewayAutoscaleConfiguration.cs" />
+    <Compile Include="Models\PSAvailableDelegation.cs" />
+    <Compile Include="Models\PSDelegation.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddressPool.cs" />
     <Compile Include="Models\PSApplicationGatewayFrontendIPConfiguration.cs" />
     <Compile Include="Models\PSAvailableProvidersListCity.cs" />
@@ -612,6 +622,11 @@
     <Compile Include="ServiceEndpointPolicy\NewAzureServiceEndpointPolicyCommand.cs" />
     <Compile Include="ServiceEndpointPolicy\RemoveAzureServiceEndpointPolicyCommand.cs" />
     <Compile Include="ServiceEndpointPolicy\SetAzureServiceEndpointPolicyCommand.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\AddAzureDelegationCommand.cs" />
+    <Compile Include="AvailableDelegation\GetAzureAvailableServiceDelegationsCommand.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\GetAzureDelegationCommand.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\RemoveAzureDelegationCommand.cs" />
+    <Compile Include="VirtualNetwork\Subnet\Delegation\NewAzureDelegationCommand.cs" />
     <Compile Include="VirtualNetwork\TestAzurePrivateIPAddressAvailabilityCmdlet.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />

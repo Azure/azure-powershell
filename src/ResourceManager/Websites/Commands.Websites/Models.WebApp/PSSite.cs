@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
@@ -55,7 +56,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   possibleOutboundIpAddresses: other.PossibleOutboundIpAddresses,
                   dailyMemoryTimeQuota: other.DailyMemoryTimeQuota,
                   suspendedTill:other.SuspendedTill,
-                  snapshotInfo: other.SnapshotInfo,
                   slotSwapStatus: other.SlotSwapStatus,
                   httpsOnly: other.HttpsOnly,
                   identity: other.Identity
@@ -67,5 +67,8 @@ namespace Microsoft.Azure.Commands.WebApps.Models
         public string GitRemoteUri { get; set; }
         public string GitRemoteUsername { get; set; }
         public SecureString  GitRemotePassword { get; set; }
+
+        [CmdletParameterBreakingChange("SnapshotInfo", ChangeDescription = "This property is deprecated and will be removed in a future releases.")]
+        public string SnapshotInfo { get; set; }
     }
 }
