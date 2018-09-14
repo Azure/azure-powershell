@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            // ContainerNetworkInterfaceConfigurations
             if (this.ContainerNetworkInterfaceConfiguration.IpConfigurations == null)
             {
                 this.ContainerNetworkInterfaceConfiguration.IpConfigurations = new List<PSIPConfigurationProfile>();

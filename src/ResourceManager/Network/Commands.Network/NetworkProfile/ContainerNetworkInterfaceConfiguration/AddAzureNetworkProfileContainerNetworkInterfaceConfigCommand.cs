@@ -34,17 +34,17 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            base.Execute();
+
+            if (this.NetworkProfile.ContainerNetworkInterfaceConfigurations == null)
+            {
+                this.NetworkProfile.ContainerNetworkInterfaceConfigurations = new List<PSContainerNetworkInterfaceConfiguration>();
+            }
 
             var existingContainerNetworkInterfaceConfiguration = this.NetworkProfile.ContainerNetworkInterfaceConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
             if (existingContainerNetworkInterfaceConfiguration != null)
             {
                 throw new ArgumentException("ContainerNetworkInterfaceConfiguration with the specified name already exists");
-            }
-
-            // ContainerNetworkInterfaceConfigurations
-            if (this.NetworkProfile.ContainerNetworkInterfaceConfigurations == null)
-            {
-                this.NetworkProfile.ContainerNetworkInterfaceConfigurations = new List<PSContainerNetworkInterfaceConfiguration>();
             }
 
             var vContainerNetworkInterfaceConfigurations = new PSContainerNetworkInterfaceConfiguration();
