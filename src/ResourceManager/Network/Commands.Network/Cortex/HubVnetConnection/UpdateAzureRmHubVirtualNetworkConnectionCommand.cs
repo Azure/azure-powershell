@@ -36,15 +36,6 @@ namespace Microsoft.Azure.Commands.Network
         OutputType(typeof(PSHubVirtualNetworkConnection))]
     public class UpdateAzureRmHubVirtualNetworkConnectionCommand : HubVnetConnectionBaseCmdlet
     {
-        [Alias("ResourceName", "HubVirtualNetworkConnectionName")]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionName,
-            HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -62,6 +53,15 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The parent resource name.")]
         [ResourceGroupCompleter]
         public string ParentResourceName { get; set; }
+
+        [Alias("ResourceName", "HubVirtualNetworkConnectionName")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionName,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
 
         [Alias("HubVirtualNetworkConnection")]
         [Parameter(

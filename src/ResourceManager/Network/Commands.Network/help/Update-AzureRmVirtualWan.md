@@ -14,21 +14,24 @@ Updates an Azure Virtual WAN.
 
 ### ByVirtualWanName (Default)
 ```
-Update-AzureRmVirtualWan -ResourceGroupName <String> -Name <String> [-AllowVnetToVnetTraffic <Boolean>]
+Update-AzureRmVirtualWan -ResourceGroupName <String> -Name <String> [-SecurityProviderName <String>]
+ [-Office365LocalBreakoutCategory <String>] [-AllowVnetToVnetTraffic <Boolean>]
  [-AllowBranchToBranchTraffic <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanObject
 ```
-Update-AzureRmVirtualWan -InputObject <PSVirtualWan> [-AllowVnetToVnetTraffic <Boolean>]
+Update-AzureRmVirtualWan -InputObject <PSVirtualWan> [-SecurityProviderName <String>]
+ [-Office365LocalBreakoutCategory <String>] [-AllowVnetToVnetTraffic <Boolean>]
  [-AllowBranchToBranchTraffic <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceId
 ```
-Update-AzureRmVirtualWan -ResourceId <String> [-AllowVnetToVnetTraffic <Boolean>]
+Update-AzureRmVirtualWan -ResourceId <String> [-SecurityProviderName <String>]
+ [-Office365LocalBreakoutCategory <String>] [-AllowVnetToVnetTraffic <Boolean>]
  [-AllowBranchToBranchTraffic <Boolean>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -42,16 +45,17 @@ Updates an Azure Virtual WAN.
 
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
-PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
-PS C:\> Update-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -AllowBranchToBranchTraffic $true -AllowVnetToVnetTraffic $false
+PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -Office365LocalBreakoutCategory "Optimize"
+PS C:\> Update-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -AllowBranchToBranchTraffic $true -AllowVnetToVnetTraffic $false -Office365LocalBreakoutCategory "None"
 
-Name                       : testRG
-Id                         : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
-AllowVnetToVnetTraffic     : False
-AllowBranchToBranchTraffic : True
-Location                   : West US
-Type                       : Microsoft.Network/virtualWans
-ProvisioningState          : Succeeded
+Name                              : testRG
+Id                                : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+AllowVnetToVnetTraffic            : False
+AllowBranchToBranchTraffic        : True
+Office365LocalBreakoutCategory    : None
+Location                          : West US
+Type                              : Microsoft.Network/virtualWans
+ProvisioningState                 : Succeeded
 ```
 
 The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN in that resource group in Azure. VirtualWan is updated with new properties.
@@ -163,6 +167,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Office365LocalBreakoutCategory
+Local breakout category for office 365 traffic.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -193,6 +212,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SecurityProviderName
+The name of the selected security provider.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
 A hashtable which represents resource tags.
 
@@ -204,7 +238,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
