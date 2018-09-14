@@ -15,7 +15,7 @@ Modifies the SKU of an application gateway.
 
 ```
 Set-AzureRmApplicationGatewaySku -ApplicationGateway <PSApplicationGateway> -Name <String> -Tier <String>
- -Capacity <Int32> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Capacity <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,11 +53,11 @@ Accept wildcard characters: False
 Specifies the instance count of the application gateway.
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
