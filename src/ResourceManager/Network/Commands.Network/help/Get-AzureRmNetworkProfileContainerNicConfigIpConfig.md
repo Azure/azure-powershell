@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkprofilecontainernetworkinterfaceconfigipconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-AzureRmNetworkProfileContainerNicconfigipconfig
 schema: 2.0.0
 ---
 
-# Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
+# Get-AzureRmNetworkProfileContainerNicConfigIpConfig
 
 ## SYNOPSIS
 Gets a container network interface configuration ip configuration.
@@ -13,13 +13,13 @@ Gets a container network interface configuration ip configuration.
 ## SYNTAX
 
 ```
-Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
+Get-AzureRmNetworkProfileContainerNicConfigIpConfig
  -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig** cmdlet retrieves a container network interface configuration ip configuration from a supplied container network interface configuration.
+The **Get-AzureRmNetworkProfileContainerNicConfigIpConfig** cmdlet retrieves a container network interface configuration ip configuration from a supplied container network interface configuration.
 
 ## EXAMPLES
 
@@ -27,9 +27,9 @@ The **Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig** cmdlet 
 ```powershell
 $networkProfile = Get-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1
 
-$containerNicConfig = Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile $networkProfile -Name cnicConfig1
+$containerNicConfig = Get-AzureRmNetworkProfileContainerNicConfig -NetworkProfile $networkProfile -Name cnicConfig1
 
-$ipConfigProfile = Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -ContainerNetworkInterfaceConfiguration $containerNicConfig -Name ipProf1
+$ipConfigProfile = Get-AzureRmNetworkProfileContainerNicConfigIpConfig -ContainerNetworkInterfaceConfiguration $containerNicConfig -Name ipProf1
 ```
 
 The first command retrieves an existing network profile named np1 in resource group rg1. The second command retrieves a container network interface configuration named cnicConfig1 from network profile np1. The third command then retrieves the ip configuration profile from the container network interface configuration.

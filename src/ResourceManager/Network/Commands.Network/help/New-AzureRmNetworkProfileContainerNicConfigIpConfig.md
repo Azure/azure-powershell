@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworkprofilecontainernetworkinterfaceconfigipconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-AzureRmNetworkProfileContainerNicconfigipconfig
 schema: 2.0.0
 ---
 
-# New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
+# New-AzureRmNetworkProfileContainerNicConfigIpConfig
 
 ## SYNOPSIS
 Creates a container nic configuration ip configuration
@@ -14,19 +14,19 @@ Creates a container nic configuration ip configuration
 
 ### SetByResource (Default)
 ```
-New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -Name <String> -Subnet <PSSubnet>
+New-AzureRmNetworkProfileContainerNicConfigIpConfig -Name <String> -Subnet <PSSubnet>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId 
 ```
-New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -Name <String> -SubnetId <String>
+New-AzureRmNetworkProfileContainerNicConfigIpConfig -Name <String> -SubnetId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 
 ## DESCRIPTION
-The **New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig** cmdlet creates a new container network interface configuration ip configuration. 
+The **New-AzureRmNetworkProfileContainerNicConfigIpConfig** cmdlet creates a new container network interface configuration ip configuration. 
 
 ## EXAMPLES
 
@@ -36,9 +36,9 @@ $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet -AddressPrefix 10.0
 
 $vnet = New-AzureRmVirtualNetwork -Name vnet -ResourceGroupName rg1 -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-$containerNicConfigIpConfig = New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -Name ipconfigprofile1 -Subnet $vnet.Subnets[0]
+$containerNicConfigIpConfig = New-AzureRmNetworkProfileContainerNicConfigIpConfig -Name ipconfigprofile1 -Subnet $vnet.Subnets[0]
 
-$containerNicConfig = New-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name cnic -IpConfiguration containerNicConfigIpConfig
+$containerNicConfig = New-AzureRmNetworkProfileContainerNicConfig -Name cnic -IpConfiguration containerNicConfigIpConfig
 
 $networkProfile = New-AzureRmNetworkProfile -Name np1 -Location "West US" -ResourceGroupName rg1 -ContainerNetworkInterfaceConfiguration $containerNicConfig
 ```

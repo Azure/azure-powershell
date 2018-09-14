@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermnetworkprofilecontainernetworkinterfaceconfigipconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-AzureRmNetworkProfileContainerNicconfigipconfig
 schema: 2.0.0
 ---
 
-# Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
+# Remove-AzureRmNetworkProfileContainerNicConfigIpConfig
 
 ## SYNOPSIS
 Removes an ip configuration from a container network interface configruation.
@@ -13,13 +13,13 @@ Removes an ip configuration from a container network interface configruation.
 ## SYNTAX
 
 ```
-Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
+Remove-AzureRmNetworkProfileContainerNicConfigIpConfig
  -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig** cmdlet removes an ip configuration profile from a container network interface configruation.
+The **Remove-AzureRmNetworkProfileContainerNicConfigIpConfig** cmdlet removes an ip configuration profile from a container network interface configruation.
 
 ## EXAMPLES
 
@@ -27,9 +27,9 @@ The **Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig** cmdl
 ```powershell
 $networkProfile = Get-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1
 
-$containerNicConfig = Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile $networkProfile -Name cnic1
+$containerNicConfig = Get-AzureRmNetworkProfileContainerNicConfig -NetworkProfile $networkProfile -Name cnic1
 
-Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -ContainerNetworkInterfaceConfiguration $containerNicConfig -Name ipconfigprofile1
+Remove-AzureRmNetworkProfileContainerNicConfigIpConfig -ContainerNetworkInterfaceConfiguration $containerNicConfig -Name ipconfigprofile1
 ```
 
 The first command retrieves an existing network profile. The second retrieves an existing container network interface configuration from the network profile retrieved in the first command. The third command removes an existing container network interface configuration ip configuration from the container nic config retrieved in the second command.

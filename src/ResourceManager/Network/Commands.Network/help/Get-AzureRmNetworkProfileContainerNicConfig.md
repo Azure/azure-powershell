@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkprofilecontainernetworkinterfaceconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-AzureRmNetworkProfileContainerNicconfig
 schema: 2.0.0
 ---
 
-# Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig
+# Get-AzureRmNetworkProfileContainerNicConfig
 
 ## SYNOPSIS
 Gets a container network interface configuration.
@@ -13,12 +13,12 @@ Gets a container network interface configuration.
 ## SYNTAX
 
 ```
-Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile <PSNetworkProfile> [-Name <String>]
+Get-AzureRmNetworkProfileContainerNicConfig -NetworkProfile <PSNetworkProfile> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig** cmdlet retrieves a specified container network interface configuration from a supplied network profile.
+The **Get-AzureRmNetworkProfileContainerNicConfig** cmdlet retrieves a specified container network interface configuration from a supplied network profile.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ The **Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig** cmdlet retrieve
 ```powershell
 $networkProfile = Get-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1
 
-$containerNicConfig = Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile $networkProfile -Name cnicConfig1
+$containerNicConfig = Get-AzureRmNetworkProfileContainerNicConfig -NetworkProfile $networkProfile -Name cnicConfig1
 ```
 
 The first command retrieves an existing network profile named np1 in resource group rg1. The second command retrieves a container network interface configuration named cnicConfig1 from network profile np1.
