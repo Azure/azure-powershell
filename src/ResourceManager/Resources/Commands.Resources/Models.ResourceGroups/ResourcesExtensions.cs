@@ -230,6 +230,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 deploymentObject.ProvisioningState = properties.ProvisioningState;
                 deploymentObject.TemplateLink = properties.TemplateLink;
                 deploymentObject.CorrelationId = properties.CorrelationId;
+                deploymentObject.OnErrorDeployment = properties.OnErrorDeployment;
 
                 if (properties.DebugSetting() != null && !string.IsNullOrEmpty(properties.DebugSetting().DetailLevel()))
                 {

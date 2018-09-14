@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,9 +19,52 @@
 --->
 
 ## Current Release
+* Replaced LoadBalancer cmdlets with generated code
+    - LoadBalancerInboundNatPoolConfig: added parameters IdleTimeoutInMinutes, EnableFloatingIp and EnableTcpReset
+    - LoadBalancerInboundNatRuleConfig: added parameter EnableTcpReset
+    - LoadBalancerRuleConfig: added parameter EnableTcpReset
+    - LoadBalancerProbeConfig: added support for value "Https" for parameter Protocol
+* Added new commands for new LoadBalancer's subresource OutboundRule
+    - Add-AzureRmLoadBalancerOutboundRuleConfig
+    - Get-AzureRmLoadBalancerOutboundRuleConfig
+    - New-AzureRmLoadBalancerOutboundRuleConfig
+    - Set-AzureRmLoadBalancerOutboundRuleConfig
+    - Remove-AzureRmLoadBalancerOutboundRuleConfig
+* Added new HostedWorkloads property for PSNetworkInterface
+* Updated cmdlet New-AzureRmVirtualNetworkSubnetConfig, Set-AzureRmVirtualNetworkSubnetConfig, Add-AzureRmVirtualNetworkSubnetConfig, Get-AzureRmVirtualNetworkSubnetConfig, Add-AzureRmApplicationGatewayAuthenticationCertificate, Add-AzureRmApplicationGatewayFrontendIPConfig, New-AzureRmApplicationGatewayFrontendIPConfig, Set-AzureRmApplicationGatewayFrontendIPConfig, Add-AzureRmApplicationGatewayIPConfiguration, New-AzureRmApplicationGatewayIPConfiguration, Set-AzureRmApplicationGatewayIPConfiguration, Add-AzureRmNetworkInterfaceIpConfig, New-AzureRmNetworkInterfaceIpConfig, Set-AzureRmNetworkInterfaceIpConfig, New-AzureRmVirtualNetworkGatewayIpConfig, Add-AzureRmVirtualNetworkGatewayIpConfig, Set-AzureRmLoadBalancerFrontendIpConfig, Add-AzureRmLoadBalancerFrontendIpConfig, New-AzureRmLoadBalancerFrontendIpConfig and New-AzureRmNetworkInterface by adding support for multiple AddressPrefixes in subnet
+* Added new commands for feature: Azure Firewall via ARM
+    - Added Get-AzureRmFirewall
+    - Added Set-AzureRmFirewall
+    - Added New-AzureRmFirewall
+    - Added Remove-AzureRmFirewall
+    - Added New-AzureRmFirewallApplicationRuleCollection
+    - Added New-AzureRmFirewallApplicationRule
+    - Added New-AzureRmFirewallNetworkRuleCollection
+    - Added New-AzureRmFirewallNetworkRule
+* Added support for Trusted Root certificate and Autoscale configuration in Application Gateway
+    - New Cmdlets added:
+        - Add-AzureRmApplicationGatewayTrustedRootCertificate
+        - Get-AzureRmApplicationGatewayTrustedRootCertificate
+        - New-AzureRmApplicationGatewayTrustedRootCertificate
+        - Remove-AzureRmApplicationGatewayTrustedRootCertificate
+        - Set-AzureRmApplicationGatewayTrustedRootCertificate
+        - Get-AzureRmApplicationGatewayAutoscaleConfiguration
+        - New-AzureRmApplicationGatewayAutoscaleConfiguration
+        - Remove-AzureRmApplicationGatewayAutoscaleConfiguration
+        - Set-AzureRmApplicationGatewayAutoscaleConfiguration
+    - Cmdlets updated with optonal parameter -TrustedRootCertificate
+        - New-AzureRmApplicationGateway
+        - Set-AzureRmApplicationGateway
+        - New-AzureRmApplicationGatewayBackendHttpSetting
+        - Set-AzureRmApplicationGatewayBackendHttpSetting
+    - Cmdlets updated with optonal parameter -AutoscaleConfiguration
+        - New-AzureRmApplicationGateway
+        - Set-AzureRmApplicationGateway
+* Add cmdlet for Interface Endpoint Get-AzureInterfaceEndpoint
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
+* Added cmdlets for Azure SdWan
 
 ## Version 6.6.1
 * Changed default cmdlet output presentation to table view
@@ -65,6 +108,7 @@
 
 ## Version 6.3.1
 * Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering
+
 
 ## Version 6.3.0
 * Expose new Skus for Zone-Redundant VirtualNetworkGateways

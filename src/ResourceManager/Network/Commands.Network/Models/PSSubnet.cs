@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public string AddressPrefix { get; set; }
+        public List<string> AddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
         public List<PSIPConfiguration> IpConfigurations { get; set; }
@@ -41,7 +41,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public List<PSServiceEndpoint> ServiceEndpoints { get; set; }
 
+        [JsonProperty(Order = 1)]
         public List<PSServiceEndpointPolicy> ServiceEndpointPolicies { get; set; }
+
+        [JsonProperty(Order = 1)]
+        public List<PSInterfaceEndpoint> InterfaceEndpoints { get; set; }
 
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
@@ -76,7 +80,27 @@ namespace Microsoft.Azure.Commands.Network.Models
             return !string.IsNullOrEmpty(this.Name);
         }
 
-         [JsonIgnore]
+        public bool ShouldSerializeServiceEndpointPolicies()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeServiceEndpoints()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeResourceNavigationLinks()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeInterfaceEndpoints()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        [JsonIgnore]
         public string ServiceEndpointText
         {
             get { return JsonConvert.SerializeObject(ServiceEndpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
@@ -86,6 +110,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string ServiceEndpointPoliciesText
         {
             get { return JsonConvert.SerializeObject(ServiceEndpointPolicies, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string InterfaceEndpointsText
+        {
+            get { return JsonConvert.SerializeObject(InterfaceEndpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
