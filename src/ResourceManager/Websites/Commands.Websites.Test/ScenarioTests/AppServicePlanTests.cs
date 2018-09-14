@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewAppServicePlanHyperV");
         }
 
-        [Fact(Skip = "This passes locally on playback mode. Should be enabled before merging & after common targets starts using the expected Client Runtime, this to test if CI passes without this test")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAppServicePlan()
         {
