@@ -133,10 +133,14 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '* Support enable or disable FilesAadIntegration for SMB when create or update Storage account
        - New-AzureRmStorageAccount
-       - Set-AzureRmStorageAccount'
+       - Set-AzureRmStorageAccount
+* Support Kind FileStorage and BlockBlobStorage when create Storage account
+       - New-AzureRmStorageAccount
+* Remove get global Storage usage function, and can only get location Storage usage, so parameter ""Location"" change from optional to required.
+       - Get-AzureRmStorageUsage'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'Preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
