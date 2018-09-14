@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceGraph.Utilities;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.ResourceGraph.Models;
 
     /// <summary>

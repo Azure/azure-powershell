@@ -14,11 +14,6 @@
 
 namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
 {
-    using System;
-    using System.Net.Http;
-    using System.Threading;
-    using System.Threading.Tasks;
-
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -44,8 +39,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
             {
                 if (this._resourceGraphClient == null)
                 {
-                    AzureSession.Instance.ClientFactory.AddHandler(new IntHandler());
-
                     this._resourceGraphClient =
                         AzureSession.Instance.ClientFactory.CreateArmClient<ResourceGraphClient>(
                             this.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
@@ -53,23 +46,6 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
 
                 return this._resourceGraphClient;
             }
-        }
-    }
-
-    public class IntHandler : DelegatingHandler, ICloneable
-    {
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            var requestString = request.RequestUri.ToString();
-            var intRequestString = requestString.Replace(
-                "Microsoft.ResourceGraph", "Microsoft.ResourceGraph.PPE");
-            request.RequestUri = new Uri(intRequestString, UriKind.Absolute);
-            return base.SendAsync(request, cancellationToken);
-        }
-
-        public object Clone()
-        {
-            return new IntHandler();
         }
     }
 }
