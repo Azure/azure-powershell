@@ -532,12 +532,12 @@
     <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\RemoveAzureNetworkProfileContainerNetworkInterfaceConfigCommand.cs" />
     <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\SetAzureNetworkProfileContainerNetworkInterfaceConfigCommand.cs" />
     <Compile Include="Generated\NetworkProfile\GetAzureNetworkProfileCommand.cs" />
-    <Compile Include="NetworkProfile\IpConfigurationProfile\AddAzureNetworkProfileContainerNetworkInterfaceConfigIpConfig.cs" />
+    <Compile Include="NetworkProfile\IpConfigurationProfile\AddAzureNetworkProfileContainerNetworkInterfaceConfigIpConfigCommand.cs" />
     <Compile Include="NetworkProfile\IpConfigurationProfile\AzureNetworkProfileContainerNetworkInterfaceConfigIpConfigBase.cs" />
-    <Compile Include="NetworkProfile\IpConfigurationProfile\GetAzureNetworkProfileContainerNetworkInterfaceConfigIpConfig.cs" />
-    <Compile Include="NetworkProfile\IpConfigurationProfile\NewAzureNetworkProfileContainerNetworkInterfaceConfigIpConfig.cs" />
-    <Compile Include="NetworkProfile\IpConfigurationProfile\RemoveAzureNetworkProfileContainerNetworkInterfaceConfigIpConfig.cs" />
-    <Compile Include="NetworkProfile\IpConfigurationProfile\SetAzureNetworkProfileContainerNetworkInterfaceConfigIpConfig.cs" />
+    <Compile Include="NetworkProfile\IpConfigurationProfile\GetAzureNetworkProfileContainerNetworkInterfaceConfigIpConfigCommand.cs" />
+    <Compile Include="NetworkProfile\IpConfigurationProfile\NewAzureNetworkProfileContainerNetworkInterfaceConfigIpConfigCommand.cs" />
+    <Compile Include="NetworkProfile\IpConfigurationProfile\RemoveAzureNetworkProfileContainerNetworkInterfaceConfigIpConfigCommand.cs" />
+    <Compile Include="NetworkProfile\IpConfigurationProfile\SetAzureNetworkProfileContainerNetworkInterfaceConfigIpConfigCommand.cs" />
     <Compile Include="Generated\NetworkProfile\NewAzureNetworkProfileCommand.cs" />
     <Compile Include="Generated\NetworkProfile\RemoveAzureNetworkProfileCommand.cs" />
     <Compile Include="Generated\NetworkProfile\SetAzureNetworkProfileCommand.cs" />
