@@ -22,8 +22,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkProfileContainerNiceConfigIpConfig", SupportsShouldProcess = true), OutputType(typeof(PSContainerNetworkInterfaceConfiguration))]
-    public partial class RemoveAzureNetworkProfileContainerNetworkInterfaceConfigIpConfigCommand : AzureNetworkProfileContainerNetworkInterfaceConfigIpConfigBase
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkProfileContainerNicConfigIpConfig", SupportsShouldProcess = true), OutputType(typeof(PSContainerNetworkInterfaceConfiguration))]
+    public partial class RemoveAzureNetworkProfileContainerNetworkInterfaceConfigIpConfigCommand : NetworkBaseCmdlet 
     {
         [Parameter(
             Mandatory = true,
@@ -31,6 +31,12 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public PSContainerNetworkInterfaceConfiguration ContainerNetworkInterfaceConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Name of the container network interface configuration ip configuration")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
         public override void Execute()
         {
