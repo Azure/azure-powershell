@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Commands.WebApps.Validations;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
@@ -61,10 +62,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         [Parameter(Position = 10, Mandatory = false, HelpMessage = "Web app settings")]
         [ValidateNotNullOrEmpty]
+        [ValidateStringDictionary]
         public Hashtable AppSettings { get; set; }
 
         [Parameter(Position = 11, Mandatory = false, HelpMessage = "Web app connection strings")]
         [ValidateNotNullOrEmpty]
+        [ValidateConnectionStrings]
         public Hashtable ConnectionStrings { get; set; }
 
         [Parameter(Position = 12, Mandatory = false, HelpMessage = "Web app handler mappings")]
@@ -108,7 +111,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [Parameter(Mandatory = false, HelpMessage = "Enables/Disables container continuous deployment webhook", ParameterSetName = ParameterSet1Name)]
         public bool EnableContainerContinuousDeployment  { get; set; }
 
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -117,6 +119,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable/disable redirecting all traffic to HTTPS on an existing azure webapp")]
         public bool HttpsOnly { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Web app Azure Storage accounts. Only supported in Windows Containers and Linux Web apps. Example: -AzureStorageAccounts @{ AzureStorageAccount1 = @{ Type = \"AzureFiles\"; AccountName = \"My Azure Storage account name\"; ShareName = \"My Azure Storage account share name\"; AccessKey = \"My Azure Storage account access key\"; MountPath = \"The path to mount inside the container. For example: C:\\myfolder for Windows Containers or /myfolder for Linux Web apps\"}; AzureStorageAccount2 = @{ Type = \"AzureFiles\"; AccountName = \"My Azure Storage account name\"; ShareName = \"My Azure Storage account share name\"; AccessKey = \"My Azure Storage account access key\"; MountPath = \"The path to mount inside the container. For example: C:\\myfolder for Windows Containers or /myfolder for Linux Web apps\"} }")]
+        [ValidateNotNullOrEmpty]
+        [ValidateAzureStorageAccounts]
+        public Hashtable AzureStorageAccounts { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
@@ -211,7 +219,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         }
                     }
                     // Update web app configuration
-                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, appSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
+                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, appSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary(), AzureStorageAccounts.ConvertToAzureStoragePropertyDictionary());
 
                     //update reference to WebApp object after site configuration update
                     WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));

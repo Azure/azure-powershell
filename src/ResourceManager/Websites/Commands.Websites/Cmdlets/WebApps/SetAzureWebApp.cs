@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Web app Azure Storage accounts. Only supported in Windows Containers and Linux Web apps. Example: -AzureStorageAccounts @{ AzureStorageAccount1 = @{ Type = \"AzureFiles\"; AccountName = \"My Azure Storage account name\"; ShareName = \"My Azure Storage account share name\"; AccessKey = \"My Azure Storage account access key\"; MountPath = \"The path to mount inside the container. For example: C:\\myfolder for Windows Containers or /myfolder for Linux Web apps\"}; AzureStorageAccount2 = @{ Type = \"AzureFiles\"; AccountName = \"My Azure Storage account name\"; ShareName = \"My Azure Storage account share name\"; AccessKey = \"My Azure Storage account access key\"; MountPath = \"The path to mount inside the container. For example: C:\\myfolder for Windows Containers or /myfolder for Linux Web apps\"} }")]
         [ValidateNotNullOrEmpty]
-        //Add a [ValidateAzureStorageAccounts] just as [ValidateConnectionStrings]
+        [ValidateAzureStorageAccounts]
         public Hashtable AzureStorageAccounts { get; set; }
 
         public override void ExecuteCmdlet()
