@@ -29,7 +29,7 @@ Server identifiers include the **ResourceGroupName** and **ServerName**.
 
 ### Example 1: Remove the auditing of an Azure SQL server
 ```
-PS C:\>Remove-AzureRmSqlDatabaseAuditing -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+PS C:\>Remove-AzureRmSqlServerAuditing -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
 
 This command removes the auditing of all the databases located on Server01 in resource group.

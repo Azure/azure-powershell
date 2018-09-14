@@ -76,6 +76,10 @@ InModuleScope Azs.AzureBridge.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         Context "Get-AzsAzureBridgeProduct" {
 
             It "TestListAzsAzureBridgeProduct" -Skip:$("TestListAzsAzureBridgeProduct" -in $global:SkippedTests) {
