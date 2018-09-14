@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSAzureFirewallApplicationRuleCollection> ApplicationRuleCollections { get; set; }
 
+        public List<PSAzureFirewallNatRuleCollection> NatRuleCollections { get; set; }
+
         public List<PSAzureFirewallNetworkRuleCollection> NetworkRuleCollections { get; set; }
 
         public string ProvisioningState { get; set; }
@@ -46,6 +48,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
+        public string NatRuleCollectionsText
+        {
+            get { return JsonConvert.SerializeObject(NatRuleCollections, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
         public string NetworkRuleCollectionsText
         {
             get { return JsonConvert.SerializeObject(NetworkRuleCollections, Formatting.Indented); }
@@ -57,12 +65,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             if (virtualNetwork == null)
             {
-                throw new ArgumentNullException(nameof(virtualNetwork), $"Virtual Network cannot be null!");
+                throw new ArgumentNullException(nameof(virtualNetwork), "Virtual Network cannot be null!");
             }
 
             if (publicIpAddress == null)
             {
-                throw new ArgumentNullException(nameof(publicIpAddress), $"Public IP Address cannot be null!");
+                throw new ArgumentNullException(nameof(publicIpAddress), "Public IP Address cannot be null!");
             }
 
             PSSubnet firewallSubnet = null;
@@ -123,6 +131,37 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         #endregion // Application Rule Collections Operations
+
+        #region NAT Rule Collections Operations
+
+        public void AddNatRuleCollection(PSAzureFirewallNatRuleCollection ruleCollection)
+        {
+            this.NatRuleCollections = AddRuleCollection(ruleCollection, this.NatRuleCollections);
+        }
+
+        public PSAzureFirewallNatRuleCollection GetNatRuleCollectionByName(string ruleCollectionName)
+        {
+            return GetRuleCollectionByName(ruleCollectionName, this.NatRuleCollections);
+        }
+
+        public PSAzureFirewallNatRuleCollection GetNatRuleCollectionByPriority(uint priority)
+        {
+            return this.NatRuleCollections?.FirstOrDefault(rc => rc.Priority == priority);
+        }
+
+        public void RemoveNatRuleCollectionByName(string ruleCollectionName)
+        {
+            var ruleCollection = this.GetNatRuleCollectionByName(ruleCollectionName);
+            this.NatRuleCollections.Remove(ruleCollection);
+        }
+
+        public void RemoveNatRuleCollectionByPriority(uint priority)
+        {
+            var ruleCollection = this.GetNatRuleCollectionByPriority(priority);
+            this.NatRuleCollections.Remove(ruleCollection);
+        }
+
+        #endregion // NAT Rule Collections Operations
 
         #region Network Rule Collections Operations
 

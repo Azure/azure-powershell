@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the 'License');
@@ -1924,6 +1924,8 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'Update-AzRecoveryServicesAsrServicesProvider': 'Update-AzureRmRecoveryServicesAsrServicesProvider'
   },
   'Az.Network': {
+    'New-AzFirewallNatRuleCollection': 'New-AzureRmFirewallNatRuleCollection',
+    'New-AzFirewallNatRule': 'New-AzureRmFirewallNatRule',
     'New-AzLoadBalancerFrontendIpConfig': 'New-AzureRmLoadBalancerFrontendIpConfig',
     'Remove-AzRouteFilterRuleConfig': 'Remove-AzureRmRouteFilterRuleConfig',
     'Add-AzApplicationGatewayFrontendIPConfig': 'Add-AzureRmApplicationGatewayFrontendIPConfig',

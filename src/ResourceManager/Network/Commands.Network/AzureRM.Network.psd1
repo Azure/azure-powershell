@@ -385,6 +385,8 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Remove-AzureRmFirewall',
                'New-AzureRmFirewallApplicationRuleCollection',
                'New-AzureRmFirewallApplicationRule',
+               'New-AzureRmFirewallNatRuleCollection',
+               'New-AzureRmFirewallNatRule',
                'New-AzureRmFirewallNetworkRuleCollection',
                'New-AzureRmFirewallNetworkRule',
                'Get-AzureRmInterfaceEndpoint'
@@ -432,6 +434,8 @@ PrivateData = @{
     - Added Remove-AzureRmFirewall
     - Added New-AzureRmFirewallApplicationRuleCollection
     - Added New-AzureRmFirewallApplicationRule
+    - Added New-AzureRmFirewallNatRuleCollection
+    - Added New-AzureRmFirewallNatRule
     - Added New-AzureRmFirewallNetworkRuleCollection
     - Added New-AzureRmFirewallNetworkRule'
 
