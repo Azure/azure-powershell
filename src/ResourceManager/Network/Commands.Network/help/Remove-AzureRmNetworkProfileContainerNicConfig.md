@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermnetworkprofilecontainernetworkinterfaceconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermnetworkprofilecontainernicconfig
 schema: 2.0.0
 ---
 
-# Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig
+# Remove-AzureRmNetworkProfileContainerNicConfig
 
 ## SYNOPSIS
 Removes a container network interface configuration.
@@ -13,12 +13,12 @@ Removes a container network interface configuration.
 ## SYNTAX
 
 ```
-Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile <PSNetworkProfile> [-Name <String>]
+Remove-AzureRmNetworkProfileContainerNicConfig -NetworkProfile <PSNetworkProfile> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig** cmdlet removes a container network interface configuration from a network profile.
+The **Remove-AzureRmNetworkProfileContainerNicConfig** cmdlet removes a container network interface configuration from a network profile.
 
 ## EXAMPLES
 
@@ -26,7 +26,7 @@ The **Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig** cmdlet remov
 ```powershell
 $networkProfile = Get-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1
 
-Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile $networkProfile -Name containerNic1
+Remove-AzureRmNetworkProfileContainerNicConfig -NetworkProfile $networkProfile -Name containerNic1
 ```
 
 The first command retrieves an existing network profile. The second command removes a container network interface configuration from the network profile retrieved in the first command.

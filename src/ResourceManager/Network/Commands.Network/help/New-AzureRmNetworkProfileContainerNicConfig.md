@@ -1,38 +1,36 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermnetworkprofilecontainernetworkinterfaceconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-AzureRmNetworkProfileContainerNicconfig
 schema: 2.0.0
 ---
 
-# Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig
+# New-AzureRmNetworkProfileContainerNicConfig
 
 ## SYNOPSIS
-Adds a container network interface configraution to a network profile.
+Creates a new container network interface configuration object.
 
 ## SYNTAX
 
 ```
-Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile <PSNetworkProfile> -Name <String>
+New-AzureRmNetworkProfileContainerNicConfig -Name <String>
  [-IpConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIPConfigurationProfile]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig** cmdlet adds a new container network interface configuration to an existing network profile object.
+The **New-AzureRmNetworkProfileContainerNicConfig** cmdlet creates a new container network interface configuration object. This object determines the characteristics of container network interfacs created referencing the parent network profile.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$networkProfile = New-AzureRmNetworkProfile -Name np1 
+$containerNicConfig = New-AzureRmNetworkProfileContainerNicConfig -Name cnicConfig1
 
-$networkProfile | Add-AzureRmNetworkProfileContainerNetworkInterface -Name containerNicConfig
-
-$networkProfile | Set-AzureRmNetworkProfile 
+$networkProfile = New-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1 -Location westus -ContainerNetworkInterfaceConfiguration $containerNicConfig
 ```
 
-The first command creates a new network profile top level resource called np1. The second command adds a new container network interface configuration to the piped-in network profile. Finally, the third command updates the network profile, saving the changes made to the network profile.
+The first command creates an empty container network interface configuration. The second creates a new network profile, passing the previously created container network interface configuration as an argument to the New-NetworkProfile cmdlet.
 
 ## PARAMETERS
 
@@ -40,7 +38,7 @@ The first command creates a new network profile top level resource called np1. T
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,7 +68,7 @@ Accept wildcard characters: False
 Name of the container network interface configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,26 +79,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkProfile
-The reference of the network profile resource.
-
-```yaml
-Type: PSNetworkProfile
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -116,7 +99,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -128,18 +111,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.Commands.Network.Models.PSNetworkProfile
 
 ### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIPConfigurationProfile, Microsoft.Azure.Commands.Network, Version=6.7.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSNetworkProfile
+### Microsoft.Azure.Commands.Network.Models.PSContainerNetworkInterfaceConfiguration
 
 ## NOTES
 

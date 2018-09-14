@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkprofilecontainernetworkinterfaceconfigipconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-AzureRmNetworkProfileContainerNicconfigipconfig
 schema: 2.0.0
 ---
 
-# Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
+# Set-AzureRmNetworkProfileContainerNicConfigIpConfig
 
 ## SYNOPSIS
 Sets the goal state for a container network interface configuration's ip configuration.
@@ -14,20 +14,20 @@ Sets the goal state for a container network interface configuration's ip configu
 
 ### SetByResource (Default)
 ```
-Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
+Set-AzureRmNetworkProfileContainerNicConfigIpConfig
  -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> -Name <String>
  [-Subnet <PSSubnet>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId 
 ```
-Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
+Set-AzureRmNetworkProfileContainerNicConfigIpConfig
  -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> -Name <String>
  [-SubnetId <string>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig** cmdlet sets the goal state for a container network interface configuration's ip configuration.
+The **Set-AzureRmNetworkProfileContainerNicConfigIpConfig** cmdlet sets the goal state for a container network interface configuration's ip configuration.
 
 ## EXAMPLES
 
@@ -37,9 +37,9 @@ $vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
 
 $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
 
-$containerNicConfig = New-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name cnic
+$containerNicConfig = New-AzureRmNetworkProfileContainerNicConfig -Name cnic
 
-$containerNicConfig | Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -Name ipconfigprofile -Subnet $subnet
+$containerNicConfig | Set-AzureRmNetworkProfileContainerNicConfigIpConfig -Name ipconfigprofile -Subnet $subnet
 ```
 
 The first two commands intialize a vnet and subnet. The third command creates an empty (i.e. no container network 

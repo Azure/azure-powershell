@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkprofilecontainernetworkinterfaceconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-AzureRmNetworkProfileContainerNicconfig
 schema: 2.0.0
 ---
 
-# Set-AzureRmNetworkProfileContainerNetworkInterfaceConfig
+# Set-AzureRmNetworkProfileContainerNicConfig
 
 ## SYNOPSIS
 Sets the goal state for a container network interface configuration.
@@ -13,23 +13,23 @@ Sets the goal state for a container network interface configuration.
 ## SYNTAX
 
 ```
-Set-AzureRmNetworkProfileContainerNetworkInterfaceConfig -NetworkProfile <PSNetworkProfile> -Name <String>
+Set-AzureRmNetworkProfileContainerNicConfig -NetworkProfile <PSNetworkProfile> -Name <String>
  [-IpConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIPConfigurationProfile]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmNetworkProfileContainerNetworkInterfaceConfig** cmdlet sets the goal state for a network profile's container network interface configuration.
+The **Set-AzureRmNetworkProfileContainerNicConfig** cmdlet sets the goal state for a network profile's container network interface configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$containerNicConfig = New-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name cnic1
+$containerNicConfig = New-AzureRmNetworkProfileContainerNicConfig -Name cnic1
 
 $networkProfile = New-AzureRmNetworkProfile -ResourceGroupName rg -Name np1 -Location $location;
 
-$networkProfile | Set-AzureRmNetworkProfileContainerNetworkInterfaceConfig -ContainerNetworkInterfaceConfiguration $containerNicConfig
+$networkProfile | Set-AzureRmNetworkProfileContainerNicConfig -ContainerNetworkInterfaceConfiguration $containerNicConfig
 
 $networkProfile | Set-NetworkProfile
 ```

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermnetworkprofilecontainernetworkinterfaceconfigipconfig
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-AzureRmNetworkProfileContainerNicconfigipconfig
 schema: 2.0.0
 ---
 
-# Add-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
+# Add-AzureRmNetworkProfileContainerNicConfigIpConfig
 
 ## SYNOPSIS
 Adds a container network interface ip config profile to a container nic config.
@@ -14,18 +14,18 @@ Adds a container network interface ip config profile to a container nic config.
 
 ### SetByResource (Default)
 ```
-Add-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> 
+Add-AzureRmNetworkProfileContainerNicConfigIpConfig -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> 
  -Name <String> -Subnet <PSSubnet> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId 
 ```
-Add-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> 
+Add-AzureRmNetworkProfileContainerNicConfigIpConfig -ContainerNetworkInterfaceConfiguration <PSContainerNetworkInterfaceConfiguration> 
  -Name <String> -SubnetId <string> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig** cmdlet adds a container network interface ip config profile to a container network interface configuration.
+The **Add-AzureRmNetworkProfileContainerNicConfigIpConfig** cmdlet adds a container network interface ip config profile to a container network interface configuration.
 
 ## EXAMPLES
 
@@ -34,9 +34,9 @@ The **Add-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig** cmdlet 
 $vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
 $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
 
-$containerNetworkInterfaceConfig = New-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name cniConfig
+$containerNetworkInterfaceConfig = New-AzureRmNetworkProfileContainerNicConfig -Name cniConfig
 
-$containerNetworkInterfaceConfig | Add-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig -Name ipconfigProfile1 -Subnet $subnet;
+$containerNetworkInterfaceConfig | Add-AzureRmNetworkProfileContainerNicConfigIpConfig -Name ipconfigProfile1 -Subnet $subnet;
 ```
 
 The first two commands get an existing vnet and subnet. The second command creates a new container network interface configuration named cniConfig. The third command adds a new container network interface ip configuration profile to the container nic config created by the second command.
