@@ -239,12 +239,13 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return WrappedWebsitesClient.AppServicePlans().ListWebApps(resourceGroupName, appServicePlanName).ToList();
         }
 
-        public string GetWebAppPublishingProfile(string resourceGroupName, string webSiteName, string slotName, string outputFile, string format)
+        public string GetWebAppPublishingProfile(string resourceGroupName, string webSiteName, string slotName, string outputFile, string format, bool? includeDRTEndpoint)
         {
             string qualifiedSiteName;
             var options = new CsmPublishingProfileOptions
             {
-                Format = format
+                Format = format,
+                IncludeDisasterRecoveryEndpoints = includeDRTEndpoint
             };
 
             var publishingXml = (CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName) ? 
@@ -306,7 +307,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             var appServicePlan = new AppServicePlan
             {
                 Location = location,
-                AppServicePlanName = appServicePlanName,
                 Sku = sku,
                 AdminSiteName = adminSiteName,
                 PerSiteScaling = perSiteScaling
@@ -597,14 +597,14 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public RestoreResponse RestoreSite(string resourceGroupName, string webSiteName, string slotName,
+        public void RestoreSite(string resourceGroupName, string webSiteName, string slotName,
             string backupId, RestoreRequest request)
         {
             string qualifiedSiteName;
             var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
             if (useSlot)
             {
-                return WrappedWebsitesClient.WebApps().RestoreSlot(
+                WrappedWebsitesClient.WebApps().RestoreSlot(
                     resourceGroupName, 
                     webSiteName, 
                     backupId, 
@@ -613,7 +613,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
             else
             {
-                return WrappedWebsitesClient.WebApps().Restore(resourceGroupName, webSiteName, backupId, request);
+                WrappedWebsitesClient.WebApps().Restore(resourceGroupName, webSiteName, backupId, request);
             }
         }
 
@@ -631,18 +631,18 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             }
         }
 
-        public void RecoverSite(string resourceGroupName, string webSiteName, string slotName,
-            SnapshotRecoveryRequest recoveryReq)
+        public void RestoreSnapshot(string resourceGroupName, string webSiteName, string slotName,
+            SnapshotRestoreRequest restoreReq)
         {
             string qualifiedSiteName;
             bool useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
             if (useSlot)
             {
-                WrappedWebsitesClient.WebApps().RecoverSlot(resourceGroupName, webSiteName, recoveryReq, slotName);
+                WrappedWebsitesClient.WebApps().RestoreSnapshotSlot(resourceGroupName, webSiteName, restoreReq, slotName);
             }
             else
             {
-                WrappedWebsitesClient.WebApps().Recover(resourceGroupName, webSiteName, recoveryReq);
+                WrappedWebsitesClient.WebApps().RestoreSnapshot(resourceGroupName, webSiteName, restoreReq);
             }
         }
 
