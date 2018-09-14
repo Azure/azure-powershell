@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
+using System;
+using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -31,18 +31,24 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The NetworkSecurityGroup")]
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
 
             if (!this.IsNetworkSecurityGroupPresent(this.NetworkSecurityGroup.ResourceGroupName, this.NetworkSecurityGroup.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
-            
+
             // Map to the sdk object
-            var nsgModel = Mapper.Map<MNM.NetworkSecurityGroup>(this.NetworkSecurityGroup);
-            nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkSecurityGroup.Tag, validate: true);
+            var nsgModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkSecurityGroup>(this.NetworkSecurityGroup);
+
+			this.NullifyApplicationSecurityGroupsIfAbsent(nsgModel);
+
+			nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.NetworkSecurityGroup.Tag, validate: true);
 
             // Execute the PUT NetworkSecurityGroup call
             this.NetworkSecurityGroupClient.CreateOrUpdate(this.NetworkSecurityGroup.ResourceGroupName, this.NetworkSecurityGroup.Name, nsgModel);

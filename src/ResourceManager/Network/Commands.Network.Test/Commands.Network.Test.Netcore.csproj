@@ -1,9 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OmitJsonPackage>true</OmitJsonPackage>
+    <UseStorageDataPlane>true</UseStorageDataPlane>
+  </PropertyGroup>
 
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
     <AssemblyName>Microsoft.Azure.Commands.Network.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Network.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -23,7 +27,7 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.3.0-preview" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.15.0-preview" />

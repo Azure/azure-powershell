@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
 
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceGraph.Utilities;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.ResourceGraph.Models;
 
     /// <summary>
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
         /// The rows per page
         /// </summary>
         private const int RowsPerPage = 1000;
-
+        
         /// <summary>
         /// Gets or sets the query.
         /// </summary>s
