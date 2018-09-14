@@ -80,8 +80,6 @@ function Get-AzsStorageQuota {
 
     Process {
 
-
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
         }
@@ -139,6 +137,7 @@ function Get-AzsStorageQuota {
             return
         }
         if ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $StorageAdminClient.'
             $TaskResult = $StorageAdminClient.StorageQuotas.GetWithHttpMessagesAsync($Location, $Name)
         } elseif ('List' -eq $PsCmdlet.ParameterSetName) {
