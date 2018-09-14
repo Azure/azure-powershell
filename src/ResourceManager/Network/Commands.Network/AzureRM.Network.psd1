@@ -77,6 +77,10 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmApplicationGatewayAuthenticationCertificate', 
                'New-AzureRmApplicationGatewayAuthenticationCertificate', 
                'Remove-AzureRmApplicationGatewayAuthenticationCertificate', 
+               'Get-AzureRmApplicationGatewayAutoscaleConfiguration', 
+               'New-AzureRmApplicationGatewayAutoscaleConfiguration', 
+               'Remove-AzureRmApplicationGatewayAutoscaleConfiguration', 
+               'Set-AzureRmApplicationGatewayAutoscaleConfiguration', 
                'Set-AzureRmApplicationGatewayAuthenticationCertificate', 
                'Get-AzureRmApplicationGatewayAvailableWafRuleSets', 
                'Get-AzureRmApplicationGatewayAvailableSslOptions', 
@@ -153,6 +157,11 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Set-AzureRmApplicationGatewaySslPolicy', 
                'Get-AzureRmApplicationGatewaySslPredefinedPolicy', 
                'Start-AzureRmApplicationGateway', 'Stop-AzureRmApplicationGateway', 
+               'Add-AzureRmApplicationGatewayTrustedRootCertificate', 
+               'Get-AzureRmApplicationGatewayTrustedRootCertificate', 
+               'New-AzureRmApplicationGatewayTrustedRootCertificate', 
+               'Remove-AzureRmApplicationGatewayTrustedRootCertificate', 
+               'Set-AzureRmApplicationGatewayTrustedRootCertificate', 
                'Add-AzureRmApplicationGatewayUrlPathMapConfig', 
                'Get-AzureRmApplicationGatewayUrlPathMapConfig', 
                'New-AzureRmApplicationGatewayUrlPathMapConfig', 
@@ -292,6 +301,11 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'New-AzureRmLoadBalancerProbeConfig', 
                'Remove-AzureRmLoadBalancerProbeConfig', 
                'Remove-AzureRmLoadBalancer', 'Set-AzureRmLoadBalancer', 
+               'Add-AzureRmLoadBalancerOutboundRuleConfig', 
+               'Get-AzureRmLoadBalancerOutboundRuleConfig', 
+               'New-AzureRmLoadBalancerOutboundRuleConfig', 
+               'Set-AzureRmLoadBalancerOutboundRuleConfig', 
+               'Remove-AzureRmLoadBalancerOutboundRuleConfig',
                'Remove-AzureRmNetworkInterface', 'Get-AzureRmNetworkInterface', 
                'New-AzureRmNetworkInterface', 'Set-AzureRmNetworkInterface', 
                'Get-AzureRmNetworkSecurityGroup', 
@@ -338,7 +352,42 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmServiceEndpointPolicyDefinition', 
                'Set-AzureRmServiceEndpointPolicyDefinition', 
                'Add-AzureRmServiceEndpointPolicyDefinition', 
-               'Set-AzureRmServiceEndpointPolicy'
+               'Set-AzureRmServiceEndpointPolicy',
+               'New-AzureRmVirtualWan',
+               'Update-AzureRmVirtualWan',
+               'Get-AzureRmVirtualWan',
+               'Remove-AzureRmVirtualWan',
+               'New-AzureRmVirtualHub',
+               'Get-AzureRmVirtualHub',
+               'Update-AzureRmVirtualHub',
+               'Remove-AzureRmVirtualHub',
+               'New-AzureRmVirtualHubRoute',
+               'New-AzureRmVirtualHubRouteTable',
+               'New-AzureRmVpnGateway',
+               'Get-AzureRmVpnGateway',
+               'Update-AzureRmVpnGateway',
+               'Remove-AzureRmVpnGateway',
+               'New-AzureRmVpnSite',
+               'Get-AzureRmVpnSite',
+               'Update-AzureRmVpnSite',
+               'Remove-AzureRmVpnSite',
+               'New-AzureRmVpnConnection',
+               'Get-AzureRmVpnConnection',
+               'Update-AzureRmVpnConnection',
+               'Remove-AzureRmVpnConnection',
+               'New-AzureRmVirtualHubVnetConnection',
+               'Get-AzureRmVirtualHubVnetConnection',
+               'Remove-AzureRmVirtualHubVnetConnection',
+               'Get-AzureRmVirtualWanVpnConfiguration',
+               'Get-AzureRmFirewall',
+               'Set-AzureRmFirewall',
+               'New-AzureRmFirewall',
+               'Remove-AzureRmFirewall',
+               'New-AzureRmFirewallApplicationRuleCollection',
+               'New-AzureRmFirewallApplicationRule',
+               'New-AzureRmFirewallNetworkRuleCollection',
+               'New-AzureRmFirewallNetworkRule',
+               'Get-AzureRmInterfaceEndpoint'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -375,7 +424,16 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass'
+        ReleaseNotes = '* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
+* Added new commands for feature: Azure Firewall via ARM
+    - Added Get-AzureRmFirewall
+    - Added Set-AzureRmFirewall
+    - Added New-AzureRmFirewall
+    - Added Remove-AzureRmFirewall
+    - Added New-AzureRmFirewallApplicationRuleCollection
+    - Added New-AzureRmFirewallApplicationRule
+    - Added New-AzureRmFirewallNetworkRuleCollection
+    - Added New-AzureRmFirewallNetworkRule'
 
         # Prerelease string of this module
         # Prerelease = ''
