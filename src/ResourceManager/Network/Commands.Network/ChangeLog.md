@@ -91,6 +91,8 @@
   - Add-AzureRmDelegation: Takes in a subnet and adds the provided service name as a delegation to that subnet
   - Get-AzureRmDelegation
   - Get-AzureRmAvailableServiceDelegations
+
+## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
 * Added cmdlets for Azure SdWan
 
