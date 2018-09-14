@@ -72,7 +72,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.6.0';
                @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '5.1.4'; }, 
                @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '6.1.2'; }, 
                @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '4.0.9'; }, 
-               @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '5.0.4'; }, 
+               @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '5.1.0'; }, 
                @{ModuleName = 'AzureRM.EventGrid'; RequiredVersion = '0.3.7'; }, 
                @{ModuleName = 'AzureRM.EventHub'; RequiredVersion = '0.6.10'; }, 
                @{ModuleName = 'AzureRM.HDInsight'; RequiredVersion = '4.1.8'; }, 
