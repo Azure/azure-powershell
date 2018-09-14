@@ -8,8 +8,7 @@ schema: 2.0.0
 # Get-AzureRmWebAppContainerContinuousDeploymentUrl
 
 ## SYNOPSIS
-AzureRmWebAppContainerPSSession will create new remote PowerShell Session into the windows container specified in a given site or slot and given resource group
-
+Get-AzureRMWebAppContainerContinuousDeploymentUrl will return container continuous deployment url
 ## SYNTAX
 
 ### S1
@@ -25,17 +24,16 @@ Get-AzureRmWebAppContainerContinuousDeploymentUrl [-WebApp] <PSSite> [-DefaultPr
 ```
 
 ## DESCRIPTION
-AzureRmWebAppContainerPSSession will create new remote PowerShell Session into the windows container specified in a given site or slot and given resource group
+Get-AzureRMWebAppContainerContinuousDeploymentUrl will return container continuous deployment url
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $s = New-AzureRmWebAppContainerPSSession -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
-PS C:\> Invoke-Command -Session $s -ScriptBlock{Get-Process}
+PS C:\> Get-AzureRmWebAppContainerContinuousDeploymentUrl -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
 ```
 
-This will create new remote PowerShell Session into the windows container app ContosoASP and show the processes that are running on the container ContosoASP
+This command will return container continuous deployment url.
 
 ## PARAMETERS
 
