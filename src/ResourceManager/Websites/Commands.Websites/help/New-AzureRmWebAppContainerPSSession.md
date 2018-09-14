@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
 Module Name: AzureRM.Websites
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/?view=azurermps-6.8.1
 schema: 2.0.0
 ---
 
 # New-AzureRmWebAppContainerPSSession
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+New-AzureRmWebAppContainerPSSession will create new remote PowerShell Session into the windows container specified in a given site or slot and given resource group
 
 ## SYNTAX
 
@@ -25,17 +25,17 @@ New-AzureRmWebAppContainerPSSession [-WebApp] <PSSite> [-DefaultProfile <IAzureC
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+New-AzureRmWebAppContainerPSSession will create new remote PowerShell Session into the windows container specified in a given site or slot and given resource group
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $s = New-AzureRmWebAppContainerPSSession -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
+PS C:\> Invoke-Command -Session $s -ScriptBlock{Get-Process}
 ```
 
-{{ Add example description here }}
-
+This will create a new remote PowerShell Session into the windows container app ContosoASP and show the processes that are running on the container ContosoASP
 ## PARAMETERS
 
 ### -DefaultProfile
