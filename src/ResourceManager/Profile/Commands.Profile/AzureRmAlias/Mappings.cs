@@ -2249,14 +2249,14 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'New-AzNetworkProfile': 'New-AzureRMNetworkProfile',
     'Remove-AzNetworkProfile': 'Remove-AzureRMNetworkProfile',
     'Set-AzNetworkProfile': 'Set-AzureRMNetworkProfile',
-    'Get-AzNetworkProfileContainerNetworkInterfaceConfig': 'Get-AzureRMNetworkProfileContainerNetworkInterfaceConfig',
-    'New-AzNetworkProfileContainerNetworkInterfaceConfig': 'New-AzureRMNetworkProfileContainerNetworkInterfaceConfig',
-    'Remove-AzNetworkProfileContainerNetworkInterfaceConfig': 'Remove-AzureRMNetworkProfileContainerNetworkInterfaceConfig',
-    'Set-AzNetworkProfileContainerNetworkInterfaceConfig': 'Set-AzureRMNetworkProfileContainerNetworkInterfaceConfig ',
-    'Get-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig': 'Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig ',
-    'New-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig': 'New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig',
-    'Remove-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig': 'Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig',
-    'Set-AzNetworkProfileContainerNetworkInterfaceConfigIpConfig': 'Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig'
+    'Get-AzNetworkProfileContainerNicConfig': 'Get-AzureRMNetworkProfileContainerNicConfig',
+    'New-AzNetworkProfileContainerNicConfig': 'New-AzureRMNetworkProfileContainerNicConfig',
+    'Remove-AzNetworkProfileContainerNicConfig': 'Remove-AzureRMNetworkProfileContainerNicConfig',
+    'Set-AzNetworkProfileContainerNicConfig': 'Set-AzureRMNetworkProfileContainerNicConfig ',
+    'Get-AzNetworkProfileContainerNicConfigIpConfig': 'Get-AzureRmNetworkProfileContainerNicConfigIpConfig ',
+    'New-AzNetworkProfileContainerNicConfigIpConfig': 'New-AzureRmNetworkProfileContainerNicConfigIpConfig',
+    'Remove-AzNetworkProfileContainerNicConfigIpConfig': 'Remove-AzureRmNetworkProfileContainerNicConfigIpConfig',
+    'Set-AzNetworkProfileContainerNicConfigIpConfig': 'Set-AzureRmNetworkProfileContainerNicConfigIpConfig'
   },
   'Az.DataLakeAnalytics': {
     'New-AzDataLakeAnalyticsCatalogSecret': 'New-AzureRmDataLakeAnalyticsCatalogSecret',
