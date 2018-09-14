@@ -3,7 +3,7 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.ResourceGraph</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ResourceGraph</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -32,13 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="AzureRM.ResourceGraph.psd1">
+    <None Include="Az.ResourceGraph.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj" />
   </ItemGroup>
 
   <ItemGroup>
