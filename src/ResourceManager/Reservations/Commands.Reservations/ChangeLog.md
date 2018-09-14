@@ -19,6 +19,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+## Version 0.1.7
+* Update to the latest .NET SDK version 1.9.0-preview.
+* Add CosmosDb type in new reserved resource enum type.
+* Add name property in PatchProperties.
 
 ## Version 0.1.6
 * Updated to the latest version of the Azure ClientRuntime.
