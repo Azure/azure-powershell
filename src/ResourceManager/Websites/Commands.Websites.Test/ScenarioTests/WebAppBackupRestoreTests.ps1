@@ -431,21 +431,31 @@ function Test-RestoreDeletedWebAppToExisting
 	$rgname = Get-ResourceGroupName
 	$wname = Get-WebsiteName
 	$slotName = "staging"
+	$appWithSlotName = "$wname/$slotName"
 	$location = Get-WebLocation
 	$whpName = Get-WebHostPlanName
 	$tier = "Standard"
 
 	try
 	{
-		#Setup
 		New-AzureRmResourceGroup -Name $rgname -Location $location
 		New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
 		New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
 		New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $wname -Slot $slotName -AppServicePlan $planName
+
 		$deletedApp = Get-AzureRmDeletedWebApp -ResourceGroupName $undeleteRgName -Name $undeleteAppName -Slot "Production"
-		$deletedSlot = Get-AzureRmDeletedWebApp -ResourceGroupName $undeleteRgName -Name $undeleteAppName -Slot $undeleteSlot
-		Restore-AzureRmDeletedWebApp $deletedApp -TargetResourceGroupName $rgname -TargetName $wname -Force
-		Restore-AzureRmDeletedWebApp $deletedSlot -TargetResourceGroupName $rgname -TargetName $wname  -TargetSlot $slotName -Force
+		# Test the InputObject parameter set
+		$restoredApp = Restore-AzureRmDeletedWebApp $deletedApp -TargetResourceGroupName $rgname -TargetName $wname -Force
+		# Test the FromDeletedResourceName parameter set
+		$restoredSlot = Restore-AzureRmDeletedWebApp -ResourceGroupName $undeleteRgName -Name $undeleteAppName -Slot $undeleteSlot -TargetResourceGroupName $rgname -TargetName $wname -TargetSlot $slotName -Force
+
+		Assert-NotNull $restoredApp
+		Assert-AreEqual $rgname $restoredApp.ResourceGroup
+		Assert-AreEqual $wname $restoredApp.Name
+
+		Assert-NotNull $restoredSlot
+		Assert-AreEqual $rgname $restoredSlot.ResourceGroup
+		Assert-AreEqual $appWithSlotName $restoredSlot.Name
 	}
 	finally
 	{
@@ -471,8 +481,15 @@ function Test-RestoreDeletedWebAppToNew
 		New-AzureRmResourceGroup -Name $rgname -Location $location
 		New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier
 		$deletedApp = Get-AzureRmDeletedWebApp -ResourceGroupName $undeleteRgName -Name $undeleteAppName -Slot "Production"
+		# Test piping the deleted app
 		$job = $deletedApp | Restore-AzureRmDeletedWebApp -TargetResourceGroupName $rgname -TargetAppServicePlanName $whpName -Force -AsJob
-		$job | Wait-Job
+		$result = $job | Wait-Job
+		Assert-AreEqual "Completed" $result.State;
+
+		$restoredApp = $job | Receive-Job
+		Assert-NotNull $restoredApp
+		Assert-AreEqual $rgname $restoredApp.ResourceGroup
+		Assert-AreEqual $undeleteAppName $restoredApp.Name
 	}
 	finally
 	{

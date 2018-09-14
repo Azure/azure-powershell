@@ -16,7 +16,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
-    public class AzureDeletedWebApp
+    public class PSAzureDeletedWebApp
     {
         public int DeletedSiteId { get; set; }
 

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 using System;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
@@ -23,29 +24,41 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
     /// <summary>
     /// Restores a deleted Azure Web App's contents and settings to an existing web app
     /// </summary>
-    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeletedWebApp"), OutputType(typeof(void))]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeletedWebApp"), OutputType(typeof(PSSite))]
     public class RestoreAzureDeletedWebApp : WebAppBaseClientCmdLet
     {
-        // Note, there can be multiple deleted web apps with the same name and resource group. Internally each deleted app has a unique ID.
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The deleted Azure Web App.", ValueFromPipeline = true)]
-        public AzureDeletedWebApp InputObject;
+        private const string FromDeletedAppParameterSet = "FromDeletedApp";
+        private const string FromDeletedResourceNameParameterSet = "FromDeletedResourceName";
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The resource group containing the new Azure Web App.", ValueFromPipelineByPropertyName = true)]
+        // Note, there can be multiple deleted web apps with the same name and resource group. Internally each deleted app has a unique ID.
+        [Parameter(Position = 0, ParameterSetName = FromDeletedAppParameterSet, Mandatory = true, HelpMessage = "The deleted Azure Web App.", ValueFromPipeline = true)]
+        public PSAzureDeletedWebApp InputObject;
+
+        [Parameter(Position = 0, ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = true, HelpMessage = "The resource group of the deleted Azure Web App.")]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Position = 1, ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = true, HelpMessage = "The name of the deleted Azure Web App.")]
+        public string Name { get; set; }
+
+        [Parameter(Position = 2, ParameterSetName = FromDeletedResourceNameParameterSet, Mandatory = false, HelpMessage = "The deleted Azure Web App slot.")]
+        public string Slot { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The resource group containing the new Azure Web App.")]
         public string TargetResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the new Azure Web App.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "The name of the new Azure Web App.")]
         public string TargetName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the new Azure Web App slot.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "The name of the new Azure Web App slot.")]
         public string TargetSlot { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The App Service Plan for the new Azure Web App.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "The App Service Plan for the new Azure Web App.")]
         public string TargetAppServicePlanName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Restore the web app's files, but do not restore the settings.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "Restore the web app's files, but do not restore the settings.")]
         public SwitchParameter RestoreContentOnly { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do the restore without prompting for confirmation.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "Do the restore without prompting for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -54,20 +67,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            string deletedSiteId = GetDeletedSiteResourceId();
+            ResolveTargetParameters();
+
             DeletedAppRestoreRequest restoreReq = new DeletedAppRestoreRequest()
             {
-                DeletedSiteId = "/subscriptions/" + InputObject.SubscriptionId + "/providers/Microsoft.Web/deletedSites/" + InputObject.DeletedSiteId,
+                DeletedSiteId = deletedSiteId,
                 RecoverConfiguration = !this.RestoreContentOnly
             };
-
-            if (string.IsNullOrEmpty(TargetName))
-            {
-                TargetName = InputObject.Name;
-            }
-            if (string.IsNullOrEmpty(TargetSlot))
-            {
-                TargetSlot = string.Empty;
-            }
 
             Action restoreAction = () => WebsitesClient.RestoreDeletedWebApp(TargetResourceGroupName, TargetName, TargetSlot, restoreReq);
 
@@ -99,6 +107,72 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
                     confirmMsg += ", Slot: " + TargetSlot;
                 }
                 ConfirmAction(this.Force.IsPresent, confirmMsg, "The deleted app has been restored.", TargetName, createRestoreAction);
+            }
+
+            PSSite restoredApp = new PSSite(WebsitesClient.GetWebApp(TargetResourceGroupName, TargetName, TargetSlot));
+            WriteObject(restoredApp);
+        }
+
+        private string GetDeletedSiteResourceId()
+        {
+            switch (ParameterSetName)
+            {
+                case FromDeletedResourceNameParameterSet:
+                    var deletedSites = WebsitesClient.GetDeletedSites().Where(ds =>
+                    {
+                        bool match = string.Equals(ds.ResourceGroup, ResourceGroupName, StringComparison.InvariantCultureIgnoreCase) &&
+                            string.Equals(ds.Name, Name, StringComparison.InvariantCultureIgnoreCase);
+                        if (!string.IsNullOrEmpty(Slot))
+                        {
+                            match = match && string.Equals(ds.Slot, Slot, StringComparison.InvariantCultureIgnoreCase);
+                        }
+                        return match;
+                    });
+                    if (!deletedSites.Any())
+                    {
+                        throw new Exception("Deleted app not found");
+                    }
+                    DeletedSite lastDeleted = deletedSites.OrderBy(ds => DateTime.Parse(ds.DeletedTimestamp)).Last();
+                    if (deletedSites.Count() > 1)
+                    {
+                        WriteWarning("Found multiple matching deleted apps. Restoring the most recently deleted app, deleted at " + lastDeleted.DeletedTimestamp);
+                    }
+                    return "/subscriptions/" + DefaultContext.Subscription.Id + "/providers/Microsoft.Web/deletedSites/" + lastDeleted.DeletedSiteId;
+                case FromDeletedAppParameterSet:
+                    return "/subscriptions/" + InputObject.SubscriptionId + "/providers/Microsoft.Web/deletedSites/" + InputObject.DeletedSiteId;
+                default:
+                    throw new Exception("Parameter set error");
+            }
+        }
+
+        private void ResolveTargetParameters()
+        {
+            switch (ParameterSetName)
+            {
+                case FromDeletedResourceNameParameterSet:
+                    if (string.IsNullOrEmpty(TargetResourceGroupName))
+                    {
+                        TargetResourceGroupName = ResourceGroupName;
+                    }
+                    if (string.IsNullOrEmpty(TargetName))
+                    {
+                        TargetName = Name;
+                    }
+                    break;
+                case FromDeletedAppParameterSet:
+                    if (string.IsNullOrEmpty(TargetResourceGroupName))
+                    {
+                        TargetResourceGroupName = InputObject.ResourceGroupName;
+                    }
+                    if (string.IsNullOrEmpty(TargetName))
+                    {
+                        TargetName = InputObject.Name;
+                    }
+                    break;
+            }
+            if (string.IsNullOrEmpty(TargetSlot))
+            {
+                TargetSlot = string.Empty;
             }
         }
     }
