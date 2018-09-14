@@ -46,14 +46,14 @@
     - New-AzureRMNetworkProfile
     - Remove-AzureRMNetworkProfile
     - Set-AzureRMNetworkProfile
-    - Get-AzureRMNetworkProfileContainerNetworkInterfaceConfig
-    - New-AzureRMNetworkProfileContainerNetworkInterfaceConfig
-    - Remove-AzureRMNetworkProfileContainerNetworkInterfaceConfig
-    - Set-AzureRMNetworkProfileContainerNetworkInterfaceConfig 
-    - Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig 
-    - New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
-    - Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig
-    - Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig 
+    - Get-AzureRMNetworkProfileContainerNicConfig
+    - New-AzureRMNetworkProfileContainerNicConfig
+    - Remove-AzureRMNetworkProfileContainerNicConfig
+    - Set-AzureRMNetworkProfileContainerNicConfig 
+    - Get-AzureRmNetworkProfileContainerNicConfigIpConfig 
+    - New-AzureRmNetworkProfileContainerNicConfigIpConfig
+    - Remove-AzureRmNetworkProfileContainerNicConfigIpConfig
+    - Set-AzureRmNetworkProfileContainerNicConfigIpConfig 
 * Added service association link on Subnet Model
 * Added support for Trusted Root certificate and Autoscale configuration in Application Gateway
     - New Cmdlets added:
