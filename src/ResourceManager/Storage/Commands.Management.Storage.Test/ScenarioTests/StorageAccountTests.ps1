@@ -774,20 +774,6 @@ function Test-AzureStorageAccountManagementPolicy
 
 <#
 .SYNOPSIS
-Test GetAzureStorageUsage with current Subscription
-.Description
-AzureAutomationTest
-#>
-function Test-GetAzureStorageSubscriptionUsage
-{
-        # Test
-        $usage = Get-AzureRmStorageUsage 
-        Assert-AreNotEqual 0 $usage.Limit;
-        Assert-AreNotEqual 0 $usage.CurrentValue;       
-}
-
-<#
-.SYNOPSIS
 Test GetAzureStorageUsage with current Location
 .Description
 AzureAutomationTest
@@ -800,4 +786,82 @@ function Test-GetAzureStorageLocationUsage
         $usage = Get-AzureRmStorageUsage -Location $loc
         Assert-AreNotEqual 0 $usage.Limit;
         Assert-AreNotEqual 0 $usage.CurrentValue;      
+}
+
+<#
+.SYNOPSIS
+Test New-AzureRmStorageAccountFileStorage
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-NewAzureStorageAccountFileStorage
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS';
+        $kind = 'FileStorage'
+
+        $loc = Get-ProviderLocation ResourceManagement;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+		
+        $loc = Get-ProviderLocation_NorthEurope ResourceManagement;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        $stotype = 'PremiumLRS';
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        
+        Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test New-AzureRmStorageAccountBlockBlobStorage
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-NewAzureStorageAccountBlockBlobStorage
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Premium_LRS';
+        $kind = 'BlockBlobStorage'
+
+        $loc = Get-ProviderLocation ResourceManagement;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+		
+        $loc = Get-ProviderLocation_NorthEurope ResourceManagement;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        $stotype = 'PremiumLRS';
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        
+        Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
 }
