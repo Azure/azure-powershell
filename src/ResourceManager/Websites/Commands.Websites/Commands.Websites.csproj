@@ -50,7 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\AppServicePlans\GetAzureAppServicePlanMetrics.cs" />
-    <Compile Include="Cmdlets\BackupRestore\AzureDeletedWebApp.cs" />
+    <Compile Include="Cmdlets\BackupRestore\PSAzureDeletedWebApp.cs" />
     <Compile Include="Cmdlets\BackupRestore\AzureWebAppBackup.cs" />
     <Compile Include="Cmdlets\BackupRestore\AzureWebAppBackupConfiguration.cs" />
     <Compile Include="Cmdlets\BackupRestore\AzureWebAppSnapshot.cs" />

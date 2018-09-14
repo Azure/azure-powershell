@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// Gets the deleted Azure Web Apps in a subscription
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeletedWebApp"), OutputType(typeof(AzureDeletedWebApp))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeletedWebApp"), OutputType(typeof(PSAzureDeletedWebApp))]
     public class GetAzureDeletedWebApp : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the resource group.")]
@@ -45,10 +45,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            IEnumerable<AzureDeletedWebApp> deletedSites = WebsitesClient.GetDeletedSites()
+            IEnumerable<PSAzureDeletedWebApp> deletedSites = WebsitesClient.GetDeletedSites()
                 .Where(ds => ds.DeletedSiteId.HasValue)
                 .Select(ds =>
-                new AzureDeletedWebApp()
+                new PSAzureDeletedWebApp()
                 {
                     DeletedSiteId = ds.DeletedSiteId.Value,
                     DeletionTime = DateTime.Parse(ds.DeletedTimestamp),
