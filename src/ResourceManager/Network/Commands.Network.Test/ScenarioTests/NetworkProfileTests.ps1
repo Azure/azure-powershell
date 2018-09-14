@@ -274,7 +274,7 @@ function Test-ContainerNetworkInterfaceConfigCRUD
 
         # Create virtual network and subnet
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $subnetAdd = New-AzureRmVirtualNetworkSubnetConfig -Name subnetNameAdd -AddressPrefix 10.0.2.0/24
+        $subnetAdd = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetNameAdd -AddressPrefix 10.0.2.0/24
         $response = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet @($subnet, $subnetAdd)
 
         $subnet = $response.Subnets[0]
@@ -293,7 +293,7 @@ function Test-ContainerNetworkInterfaceConfigCRUD
         $vContainerNetworkInterfaceConfig = New-AzureRmNetworkProfileContainerNicConfig -Name $containerNicConfigName -IPConfiguration $ipConfigProfile;
         Assert-NotNull $vContainerNetworkInterfaceConfig;
         Assert-True { Check-CmdletReturnType "New-AzureRmNetworkProfileContainerNicConfig" $vContainerNetworkInterfaceConfig };
-        Assert-True $vContainerNetworkInterfaceConfig.Name $containerNicConfigName
+        Assert-AreEqual $vContainerNetworkInterfaceConfig.Name $containerNicConfigName
 
         $vNetworkProfile = New-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $networkProfileName -ContainerNetworkInterfaceConfiguration $vContainerNetworkInterfaceConfig -Location $location;
         Assert-NotNull $vNetworkProfile;
@@ -312,7 +312,7 @@ function Test-ContainerNetworkInterfaceConfigCRUD
         Assert-AreEqual $ipConfigProfileName $ipConfigProfile.Name;
 
         # Add IPConfigurationProfile
-        $vContainerNetworkInterfaceConfig | Add-AzureRmNetworkProfileContainerNicConfigIpConfig -Name $ipConfigProfileNameAdd -Subnet $subnet;
+        $vContainerNetworkInterfaceConfig = $vContainerNetworkInterfaceConfig | Add-AzureRmNetworkProfileContainerNicConfigIpConfig -Name $ipConfigProfileNameAdd -Subnet $subnet;
         Assert-NotNull $vContainerNetworkInterfaceConfig
         Assert-True { $vContainerNetworkInterfaceConfig.IpConfigurations.Length -gt 1 }
         Assert-AreEqual  $vContainerNetworkInterfaceConfig.IpConfigurations[0].Name $ipConfigProfileName
@@ -483,7 +483,6 @@ function Test-NetworkProfileEndToEndWithContainerNics
         $vNetworkProfile = $vNetworkProfile | Set-AzureRmNetworkProfile;
 
         $removeNetworkProfile = Remove-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $networkProfileName -Force;
-        Assert-AreEqual $true $removeNetworkProfile;
     }
     finally
     {
