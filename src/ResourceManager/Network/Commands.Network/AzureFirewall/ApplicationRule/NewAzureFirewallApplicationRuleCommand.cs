@@ -16,17 +16,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallApplicationRule", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewallApplicationRule))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallApplicationRule", SupportsShouldProcess = true, DefaultParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn), OutputType(typeof(PSAzureFirewallApplicationRule))]
     public class NewAzureFirewallApplicationRuleCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
+            HelpMessage = "The name of the Application Rule")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.FqdnTag,
             HelpMessage = "The name of the Application Rule")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
@@ -45,20 +48,35 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The target FQDNs of the rule")]
         [ValidateNotNullOrEmpty]
         public List<string> TargetFqdn { get; set; }
 
         [Parameter(
             Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.FqdnTag,
+            HelpMessage = "The FQDN Tags of the rule")]
+        [ValidateNotNullOrEmpty]
+        public List<string> FqdnTag { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = AzureFirewallApplicationRuleParameterSets.TargetFqdn,
             HelpMessage = "The protocols of the rule")]
         [ValidateNotNullOrEmpty]
         public List<string> Protocol { get; set; }
-        
+
         public override void Execute()
         {
             base.Execute();
-            
+
+            if (FqdnTag != null)
+            {
+                this.Protocol = new List<string> { "http", "https" };
+                FqdnTag = AzureFirewallFqdnTagHelper.MapUserInputToAllowedFqdnTags(FqdnTag);
+            }
+
             var protocolsAsWeExpectThem = MapUserProtocolsToFirewallProtocols(Protocol);
 
             var applicationRule = new PSAzureFirewallApplicationRule
@@ -67,63 +85,15 @@ namespace Microsoft.Azure.Commands.Network
                 Description = this.Description,
                 SourceAddresses = this.SourceAddress,
                 Protocols = protocolsAsWeExpectThem,
-                TargetFqdns = this.TargetFqdn
+                TargetFqdns = this.TargetFqdn,
+                FqdnTags = this.FqdnTag
             };
             WriteObject(applicationRule);
         }
 
         private List<PSAzureFirewallApplicationRuleProtocol> MapUserProtocolsToFirewallProtocols(List<string> userProtocols)
         {
-            var protocolRegEx = new Regex("^[hH][tT][tT][pP][sS]?(:[1-9][0-9]*)?$");
-
-            var supportedProtocolsAndTheirDefaultPorts = new List<PSAzureFirewallApplicationRuleProtocol>
-            {
-                new PSAzureFirewallApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Http, Port = 80 },
-                new PSAzureFirewallApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Https, Port = 443 }
-            };
-
-            // User can pass "http", "HTtP" or "hTTp:8080"
-            var protocolsAsWeExpectThem = this.Protocol.Select(userText =>
-            {
-                //The actual validation is performed in NRP. Here we are just trying to map user info to our model
-                if (!protocolRegEx.IsMatch(userText))
-                {
-                    throw new ArgumentException($"Invalid protocol {userText}");
-                }
-
-                var userParts = userText.Split(':');
-                var userProtocolText = userParts[0];
-                var userPortText = userParts.Length == 2 ? userParts[1] : null;
-
-                PSAzureFirewallApplicationRuleProtocol supportedProtocol;
-                try
-                {
-                    supportedProtocol = supportedProtocolsAndTheirDefaultPorts.Single(protocol => protocol.ProtocolType.Equals(userProtocolText, StringComparison.InvariantCultureIgnoreCase));
-                }
-                catch
-                {
-                    throw new ArgumentException($"Unsupported protocol {userProtocolText}. Supported protocols are {string.Join(", ", supportedProtocolsAndTheirDefaultPorts.Select(proto => proto.ProtocolType))}", nameof(Protocol));
-                }
-
-                uint port;
-                if (userPortText == null)
-                {
-                    // Use default port for this protocol
-                    port = supportedProtocol.Port;
-                }
-                else if (!uint.TryParse(userPortText, out port))
-                {
-                    throw new ArgumentException($"Invalid port {userText}", nameof(Protocol));
-                }
-
-                return new PSAzureFirewallApplicationRuleProtocol
-                {
-                    ProtocolType = supportedProtocol.ProtocolType,
-                    Port = port
-                };
-            }).ToList();
-
-            return protocolsAsWeExpectThem;
+            return userProtocols.Select(PSAzureFirewallApplicationRuleProtocol.MapUserInputToApplicationRuleProtocol).ToList();
         }
     }
 }

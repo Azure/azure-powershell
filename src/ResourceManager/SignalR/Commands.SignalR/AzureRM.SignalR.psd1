@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.4'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -54,7 +54,7 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Strategies.4.dll', 
+RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Strategies.4.dll',
                '.\Microsoft.Azure.Management.SignalR.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -73,7 +73,7 @@ NestedModules = @('.\Microsoft.Azure.Commands.SignalR.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmSignalR', 'Get-AzureRmSignalR', 'Get-AzureRmSignalRKey', 
+CmdletsToExport = 'New-AzureRmSignalR', 'Get-AzureRmSignalR', 'Get-AzureRmSignalRKey',
                'New-AzureRmSignalRKey', 'Remove-AzureRmSignalR'
 
 # Variables to export from this module
@@ -112,7 +112,7 @@ PrivateData = @{
         ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime.'
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
@@ -121,7 +121,7 @@ PrivateData = @{
         # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
@@ -131,4 +131,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

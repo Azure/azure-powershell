@@ -9,6 +9,18 @@
 $PSDefaultParameterValues.Clear()
 Set-StrictMode -Version Latest
 
+$preloadPath = (Join-Path $PSScriptRoot -ChildPath "PreloadAssemblies")
+if($PSEdition -eq 'Desktop' -and (Test-Path $preloadPath))
+{
+    try 
+    {
+        Get-ChildItem -Path $preloadPath -Filter "*.dll" | ForEach-Object {  
+            [System.Reflection.Assembly]::Load([System.IO.File]::ReadAllBytes($_.FullName)) 
+        }
+    }
+    catch {}
+}
+
 %IMPORTED-DEPENDENCIES%
 
 if (Test-Path -Path "$PSScriptRoot\StartupScripts")

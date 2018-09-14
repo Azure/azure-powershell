@@ -47,6 +47,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public List<PSServiceEndpointPolicy> ServiceEndpointPolicies { get; set; }
 
+        public List<PSDelegation> Delegations { get; set; }
+
         [JsonProperty(Order = 1)]
         public List<PSInterfaceEndpoint> InterfaceEndpoints { get; set; }
 
@@ -125,6 +127,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string InterfaceEndpointsText
         {
             get { return JsonConvert.SerializeObject(InterfaceEndpoints, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string DelegationsText
+        {
+            get { return JsonConvert.SerializeObject(Delegations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
