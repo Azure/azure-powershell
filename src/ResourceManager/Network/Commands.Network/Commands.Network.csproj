@@ -403,7 +403,7 @@
     <Compile Include="Models\PSExpressRouteCircuitPeeringConfig.cs" />
     <Compile Include="Models\PSExpressRouteCrossConnectionPeering.cs" />
     <Compile Include="Models\PSIPConfigurationProfile.cs" />
-    <Compile Include="Models\PSNetworkProfile.cs" />
+    <Compile Include="Generated\Models\PSNetworkProfile.cs" />
     <Compile Include="Models\PSNetworkWatcherProtocolConfiguration.cs" />
     <Compile Include="Models\PSPublicIpPrefix.cs" />
     <Compile Include="Models\PSPublicIpPrefixSku.cs" />
@@ -506,16 +506,16 @@
     <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\NewAzureNetworkProfileContainerNetworkInterfaceConfigCommand.cs" />
     <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\RemoveAzureNetworkProfileContainerNetworkInterfaceConfigCommand.cs" />
     <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\SetAzureNetworkProfileContainerNetworkInterfaceConfigCommand.cs" />
-    <Compile Include="NetworkProfile\GetAzureNetworkProfileCommand.cs" />
+    <Compile Include="Generated\NetworkProfile\GetAzureNetworkProfileCommand.cs" />
     <Compile Include="NetworkProfile\IpConfigurationProfile\AddAzureNetworkProfileContainerNetworkInterfaceConfigIpConfig.cs" />
     <Compile Include="NetworkProfile\IpConfigurationProfile\AzureNetworkProfileContainerNetworkInterfaceConfigIpConfigBase.cs" />
     <Compile Include="NetworkProfile\IpConfigurationProfile\GetAzureNetworkProfileContainerNetworkInterfaceConfigIpConfig.cs" />
     <Compile Include="NetworkProfile\IpConfigurationProfile\NewAzureNetworkProfileContainerNetworkInterfaceConfigIpConfig.cs" />
     <Compile Include="NetworkProfile\IpConfigurationProfile\RemoveAzureNetworkProfileContainerNetworkInterfaceConfigIpConfig.cs" />
     <Compile Include="NetworkProfile\IpConfigurationProfile\SetAzureNetworkProfileContainerNetworkInterfaceConfigIpConfig.cs" />
-    <Compile Include="NetworkProfile\NewAzureNetworkProfileCommand.cs" />
-    <Compile Include="NetworkProfile\RemoveAzureNetworkProfileCommand.cs" />
-    <Compile Include="NetworkProfile\SetAzureNetworkProfileCommand.cs" />
+    <Compile Include="Generated\NetworkProfile\NewAzureNetworkProfileCommand.cs" />
+    <Compile Include="Generated\NetworkProfile\RemoveAzureNetworkProfileCommand.cs" />
+    <Compile Include="Generated\NetworkProfile\SetAzureNetworkProfileCommand.cs" />
     <Compile Include="NetworkWatcher\ConnectionMonitor\ConnectionMonitorBaseCmdlet.cs" />
     <Compile Include="NetworkWatcher\ConnectionMonitor\ConnectionMonitorDetails.cs" />
     <Compile Include="NetworkWatcher\ConnectionMonitor\GetAzureNetworkWatcherConnectionMonitorCommand.cs" />
@@ -696,6 +696,8 @@
     <Compile Include="VirtualNetwork\VirtualNetworkListUsageMethod.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Generated\NetworkProfile\ContainerNetworkInterfaceConfiguration\" />
+    <Folder Include="Generated\NetworkProfile\IpConfigurationProfile\" />
     <Folder Include="Microsoft\Azure\Commands\Network\Models\" />
   </ItemGroup>
   <ItemGroup>
