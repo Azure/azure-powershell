@@ -30,10 +30,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         private static readonly string CacheFileName = Path.Combine(
 #if !NETSTANDARD
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                Resources.OldAzureDirectoryName,
 #else
                 Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                Resources.AzureDirectoryName,
 #endif
-                Resources.AzureDirectoryName, "TokenCache.dat");
+                 "TokenCache.dat");
 
         private static readonly object fileLock = new object();
 
