@@ -1,14 +1,16 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
 Module Name: AzureRM.Websites
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/?view=azurermps-6.8.1
 schema: 2.0.0
 ---
 
 # Enter-AzureRmWebAppContainerPSSession
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+Opens a remote PowerShell session into the windows container specified in a given site or slot and given resource group
+
 
 ## SYNTAX
 
@@ -25,17 +27,16 @@ Enter-AzureRmWebAppContainerPSSession [-WebApp] <PSSite> [-DefaultProfile <IAzur
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+opens a remote PowerShell session into the windows container specified in a given site or slot and given resource group
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Enter-AzureRmWebAppContainerPSSession -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
 ```
 
-{{ Add example description here }}
-
+This command opens a remote PowerShell session into the windows container app ContosoASP
 ## PARAMETERS
 
 ### -DefaultProfile
