@@ -6,15 +6,17 @@
   <Import Project="$(MSBuildThisFileDirectory)\Dependencies.Netcore.targets" />
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.9.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.9.0" />
+    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.14.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.4" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.8.0" />
     <PackageReference Include="xunit" Version="2.4.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.0-preview.3" IncludeAssets="All" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.0-preview.3" IncludeAssets="All" />
   </ItemGroup>
 </Project>
