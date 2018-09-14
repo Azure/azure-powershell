@@ -16,11 +16,13 @@
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
@@ -87,6 +89,26 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public int NumberOfWorkers { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Container Image Name", ParameterSetName = ParameterSet1Name)]
+        [ValidateNotNullOrEmpty]
+        public string ContainerImageName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Private Container Registry Server Url", ParameterSetName = ParameterSet1Name)]
+        [ValidateNotNullOrEmpty]
+        public string ContainerRegistryUrl { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Private Container Registry Username", ParameterSetName = ParameterSet1Name)]
+        [ValidateNotNullOrEmpty]
+        public string ContainerRegistryUser { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Private Container Registry Password", ParameterSetName = ParameterSet1Name)]
+        [ValidateNotNullOrEmpty]
+        public SecureString ContainerRegistryPassword { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Enables/Disables container continuous deployment webhook", ParameterSetName = ParameterSet1Name)]
+        public bool EnableContainerContinuousDeployment  { get; set; }
+
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -133,8 +155,63 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         };
                     }
 
+                    Hashtable appSettings = AppSettings ?? new Hashtable();
+
+                    if (siteConfig == null)
+                    {
+                        siteConfig = WebApp.SiteConfig;
+                    }
+
+                    //According to current implementation if AppSettings paramter is provided we are overriding existing AppSettings
+                    if (WebApp.SiteConfig.AppSettings != null && AppSettings == null)
+                    {
+                        foreach (var setting in WebApp.SiteConfig.AppSettings)
+                        {
+                            appSettings[setting.Name] = setting.Value;
+                        }
+                    }
+
+                    if (ContainerImageName != null)
+                    {
+                        string dockerImage = CmdletHelpers.DockerImagePrefix + ContainerImageName;
+                        if (WebApp.IsXenon.GetValueOrDefault())
+                        {
+                            siteConfig.WindowsFxVersion = dockerImage;
+                        }
+                        else if (WebApp.Reserved.GetValueOrDefault())
+                        {
+                            siteConfig.LinuxFxVersion = dockerImage;
+                        }
+                    }
+                    
+
+                    if (ContainerRegistryUrl != null)
+                    {
+                        appSettings[CmdletHelpers.DocerRegistryServerUrl] = ContainerRegistryUrl;
+                    }
+                    if (ContainerRegistryUser != null)
+                    {
+                        appSettings[CmdletHelpers.DocerRegistryServerUserName] = ContainerRegistryUser;
+                    }
+                    if (ContainerRegistryPassword != null)
+                    {
+                        appSettings[CmdletHelpers.DocerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+                    }
+
+                    if (parameters.Contains("EnableContainerContinuousDeployment"))
+                    {
+                        if (EnableContainerContinuousDeployment )
+                        {
+                            appSettings[CmdletHelpers.DockerEnableCI] = "true";
+                        }
+                        else
+                        {
+                            appSettings.Remove(CmdletHelpers.DockerEnableCI);
+
+                        }
+                    }
                     // Update web app configuration
-                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, AppSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
+                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, appSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
 
                     //update reference to WebApp object after site configuration update
                     WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
