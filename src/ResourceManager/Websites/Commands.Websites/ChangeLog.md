@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.1.0
+* Updating to use the latest .NET SDK version (2.0.0)
+
 ## Version 5.0.9
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies

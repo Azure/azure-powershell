@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.0.4'
+ModuleVersion = '5.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -111,8 +111,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed issue with default resource groups not being set.
-* Updated common runtime assemblies'
+        ReleaseNotes = '* Added support for alias record during dns record creation'
 
         # Prerelease string of this module
         # Prerelease = ''

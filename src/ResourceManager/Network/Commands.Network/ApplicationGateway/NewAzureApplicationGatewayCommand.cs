@@ -86,6 +86,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of trusted root certificates")]
+        public List<PSApplicationGatewayTrustedRootCertificate> TrustedRootCertificate { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of frontend IP config")]
         public List<PSApplicationGatewayFrontendIPConfiguration> FrontendIPConfigurations { get; set; }
 
@@ -142,6 +148,12 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Firewall configuration")]
         public virtual PSApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Autoscale Configuration")]
+        public virtual PSApplicationGatewayAutoscaleConfiguration AutoscaleConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -219,6 +231,11 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.AuthenticationCertificates = this.AuthenticationCertificates;
             }
 
+            if (this.TrustedRootCertificate != null)
+            {
+                applicationGateway.TrustedRootCertificates = this.TrustedRootCertificate;
+            }
+
             if (this.FrontendIPConfigurations != null)
             {
                 applicationGateway.FrontendIPConfigurations = this.FrontendIPConfigurations;
@@ -267,6 +284,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.WebApplicationFirewallConfiguration != null)
             {
                 applicationGateway.WebApplicationFirewallConfiguration = this.WebApplicationFirewallConfiguration;
+            }
+
+            if (this.AutoscaleConfiguration != null)
+            {
+                applicationGateway.AutoscaleConfiguration = this.AutoscaleConfiguration;
             }
 
             if (this.EnableHttp2.IsPresent)

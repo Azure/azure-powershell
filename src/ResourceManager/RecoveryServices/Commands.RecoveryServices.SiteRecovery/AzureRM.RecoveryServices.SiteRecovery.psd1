@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.9'
+ModuleVersion = '0.2.10'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -206,8 +206,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed issue with default resource groups not being set.
-* Updated common runtime assemblies'
+        ReleaseNotes = '* Support for managed Managed disk'
 
         # Prerelease string of this module
         # Prerelease = ''

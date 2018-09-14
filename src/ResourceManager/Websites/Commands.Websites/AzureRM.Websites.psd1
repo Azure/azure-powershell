@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.0.9'
+ModuleVersion = '5.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -130,8 +130,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed issue with default resource groups not being set.
-* Updated common runtime assemblies'
+        ReleaseNotes = '* Updating to use the latest .NET SDK version (2.0.0)'
 
         # Prerelease string of this module
         # Prerelease = ''
