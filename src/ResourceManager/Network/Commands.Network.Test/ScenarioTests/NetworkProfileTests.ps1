@@ -434,30 +434,39 @@ function Test-NetworkProfileEndToEndWithContainerNics
     {
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation;
 
-        # Create Virtual Network and Subnet
+        # Create virtual network and subnet
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $response = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet 
         $subnet = $response.Subnets[0]
 
-        # Create IPConfigurationProfile
-        $ipConfigProfile = New-AzureRmNetworkProfileContainerNicConfigIpConfig -Name $ipConfigProfileName -Subnet $subnet
-        Assert-NotNull $ipConfigProfile
-        Assert-True { Check-CmdletReturnType "New-AzureRmNetworkProfileContainerNicConfigIpConfig" $ipConfigProfile };
-
         # Create ContainerNetworkInterfaceConfig
-        $vContainerNetworkInterfaceConfig = New-AzureRmNetworkProfileContainerNicConfig -Name $containerNicConfigName -IPConfiguration $ipConfigProfile;
+        $vContainerNetworkInterfaceConfig = New-AzureRmNetworkProfileContainerNicConfig -Name $containerNicConfigName
         Assert-NotNull $vContainerNetworkInterfaceConfig;
         Assert-True { Check-CmdletReturnType "New-AzureRmNetworkProfileContainerNicConfig" $vContainerNetworkInterfaceConfig };
+
+        # Add ContainerNetworkInterfaceConfigIpConfig
+        $vContainerNetworkInterfaceConfig | Add-AzureRmNetworkProfileContainerNicConfigIpConfig -Name $ipConfigProfileName -Subnet $subnet
+        Assert-NotNull $vContainerNetworkInterfaceConfig;
+        Assert-True { Check-CmdletReturnType "Add-AzureRmNetworkProfileContainerNicConfigIpConfig" $vContainerNetworkInterfaceConfig };
+        Assert-AreEqual $ipConfigProfileName $vContainerNetworkInterfaceConfig.IpConfigurations[0].Name;
+
+        # Get ip config profile
+        $ipConfigProfile = Get-AzureRmNetworkProfileContainerNicConfigIpConfig -ContainerNetworkInterfaceConfiguration $vContainerNetworkInterfaceConfig -Name $ipConfigProfileName;
+        Assert-NotNull $vContainerNetworkInterfaceConfig;
+        Assert-True { Check-CmdletReturnType "Get-AzureRmNetworkProfileContainerNicConfigIpConfig" $ipConfigProfile };
+        Assert-AreEqual $ipConfigProfile.Name $vContainerNetworkInterfaceConfig.IPConfigurations[0].Name;
+
+        # Create NetworkProfile
         $vNetworkProfile = New-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $networkProfileName -ContainerNetworkInterfaceConfiguration $vContainerNetworkInterfaceConfig -Location $location;
         Assert-NotNull $vNetworkProfile;
-        Assert-AreEqual $containerNicConfigName $vContainerNetworkInterfaceConfig.Name;
+        Assert-AreEqual $vNetworkProfile.ContainerNetworkInterfaceConfigurations[0].Name $vContainerNetworkInterfaceConfig.Name;
 
         # Create container group
         $containerGroup = New-AzureRmContainerGroup -ResourceGroupName  $rgname -Name $containerGroupName -Image "nginx" -OsType "Linux" -RestartPolicy "Never" -DnsNameLabel "cg1.westus.azurecontainer.io" -Port @(8000, 8001) -Cpu 1 -Memory 1.5
         Assert-NotNull $containerGroup
 
         # Get Network Profile
-        $retrievedNetworkProfile = Get-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $rname
+        $retrievedNetworkProfile = Get-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $networkProfileName
         $retrievedContainerNics = $retrievedNetworkProfile.ContainerNetworkInterfaces
         
         # Validate profile against expected
@@ -472,7 +481,7 @@ function Test-NetworkProfileEndToEndWithContainerNics
         $containerGroup | Remove-AzureRmContainerGroup -Force
 
         # Get Network Profile
-        $retrievedNetworkProfile = Get-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $rname
+        $retrievedNetworkProfile = Get-AzureRmNetworkProfile -ResourceGroupName $rgname -Name $networkProfileName
         # Validate profile against expected
         Assert-Null $retrievedNetworkProfile.ContainerNetworkInterfaces
 

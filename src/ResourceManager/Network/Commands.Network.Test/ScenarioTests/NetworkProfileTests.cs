@@ -90,13 +90,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ContainerNetworkInterfaceConfigCRUDSet"));
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
-        public void TestNetworkProfileEndToEndWithContainerNics()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-NetworkProfileEndToEndWithContainerNics"));
-        }
     }
 }
