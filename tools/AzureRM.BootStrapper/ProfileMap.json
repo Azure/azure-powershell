@@ -1,7 +1,7 @@
 {
 	"latest": {
 		"AzureRM": ["6.8.1"],
-		"AzureRM.Profile": ["5.6.0"], 
+		"AzureRM.Profile": ["5.5.2"], 
 		"Azure.Storage": ["4.5.0"],
 		"AzureRM.AnalysisServices": ["0.6.14"], 
 		"Azure.AnalysisServices": ["0.5.4"], 
@@ -71,7 +71,7 @@
 	},
 	"2018-03-01-hybrid": {
 		"AzureRM": ["2.3.0"],
-		"AzureRM.Profile": ["5.6.0"], 
+		"AzureRM.Profile": ["5.5.2"], 
 		"Azure.Storage": ["4.1.1"], 
 		"AzureRM.Compute": ["4.0.2"], 
 		"AzureRM.Dns": ["3.5.1"], 
