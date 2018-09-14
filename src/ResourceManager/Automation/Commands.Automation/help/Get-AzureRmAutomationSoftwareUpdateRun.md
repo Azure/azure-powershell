@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationsoftwareupdaterun
 schema: 2.0.0
 ---
 
 # Get-AzureRmAutomationSoftwareUpdateRun
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a list of azure automation software update runs.
 
 ## SYNTAX
 
@@ -42,16 +42,48 @@ Get-AzureRmAutomationSoftwareUpdateRun [-SoftwareUpdateConfiguration <SoftwareUp
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Get-AzureRmAutomationSoftwareUpdateRun cmdlet returns a list of software update runs. Since a software update configuration has an associated schedule, it can be triggered multiple times. Each time a schedule is triggered will result in an update run created. Update run is an aggregate of the result of all machine runs. You can get runs for specific software update configuration by passing the SoftwareUpdateConfigurationName parameter. To get a specific runs, you need to pass the name parameter. You can also list runs with specific status, runs targeting specific operatins system, or runs started after specific time by passing the appropriate parameter.
 
 ## EXAMPLES
 
 ### Example 1
+This example list all update runs triggered by a specific software update configuration.
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmAutomationSoftwareUpdateRun -ResourceGroupName "mygroup" `
+                                               -AutomationAccountName "myaccount" `
+                                               -SoftwareUpdateConfigurationName "MyUpdateConfiguration"
+
+RunId                           : ec9ce57f-da18-44be-b33b-651a0f93cb52
+SoftwareUpdateConfigurationName : MyUpdateConfiguration
+ConfiguredDuration              : 02:00:00
+OperatingSystem                 : Windows
+StartTime                       : 5/22/2018 11:37:42 PM +00:00
+EndTime                         : 5/22/2018 11:38:31 PM +00:00
+ComputerCount                   : 2
+FailedCount                     : 0
+ResourceGroupName               : mygroup
+AutomationAccountName           : myaccount
+Name                            : ec9ce57f-da18-44be-b33b-651a0f93cb52
+CreationTime                    : 5/22/2018 11:37:42 PM +00:00
+LastModifiedTime                : 5/22/2018 11:38:54 PM +00:00
+Description                     :
+
+RunId                           : ac9396c7-a837-43d4-be97-fbfe46c80baa
+SoftwareUpdateConfigurationName : MyUpdateConfiguration
+ConfiguredDuration              : 02:00:00
+OperatingSystem                 : Windows
+StartTime                       : 5/22/2018 10:00:47 PM +00:00
+EndTime                         : 5/22/2018 10:02:20 PM +00:00
+ComputerCount                   : 2
+FailedCount                     : 0
+ResourceGroupName               : mygroup
+AutomationAccountName           : myaccount
+Name                            : ac9396c7-a837-43d4-be97-fbfe46c80baa
+CreationTime                    : 5/22/2018 10:00:47 PM +00:00
+LastModifiedTime                : 5/22/2018 10:02:58 PM +00:00
 ```
 
-{{ Add example description here }}
 
 ## PARAMETERS
 

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationsoftwareupdateconfiguration
 schema: 2.0.0
 ---
 
 # Get-AzureRmAutomationSoftwareUpdateConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a list of azure automation software update configurations.
 
 ## SYNTAX
 
@@ -31,16 +31,27 @@ Get-AzureRmAutomationSoftwareUpdateConfiguration -AzureVMResourceId <String> [-R
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Get-AzureRmAutomationSoftwareUpdateConfiguration returns a list of software update configurations. To get a specific software update configuration, specify the name parameter. You can also list software update configurations targeting specific azure virtual machine by specifying the azure resource Id for this virtual machine.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
+Get an azure automation software update configuration by name.
 
-{{ Add example description here }}
+```powershell
+PS C:\> Get-AzureRmAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" -AutomationAccountName "myaccount" -Name "MyWeeklySchedule"
+
+UpdateConfiguration   : Microsoft.Azure.Commands.Automation.Model.UpdateManagement.UpdateConfiguration
+ScheduleConfiguration : Microsoft.Azure.Commands.Automation.Model.Schedule
+ProvisioningState     : Succeeded
+ErrorInfo             :
+ResourceGroupName     : mygroup
+AutomationAccountName : myaccount
+Name                  : MyWeeklySchedule
+CreationTime          : 9/14/2018 3:53:27 AM +00:00
+LastModifiedTime      : 9/14/2018 3:53:37 AM +00:00
+Description           :
+```
 
 ## PARAMETERS
 

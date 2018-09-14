@@ -57,6 +57,8 @@ namespace Microsoft.Azure.Commands.Automation.Test
 
             using (var context = MockContext.Start(callingClassType, mockName))
             {
+                SetupManagementClients();
+
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var psModuleFile = this.GetType().FullName.Contains(RootNamespace) ?

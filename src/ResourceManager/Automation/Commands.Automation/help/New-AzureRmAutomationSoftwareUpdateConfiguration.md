@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 schema: 2.0.0
 ---
 
 # New-AzureRmAutomationSoftwareUpdateConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a scheduled azure automation software update configuration.
 
 ## SYNTAX
 
@@ -31,16 +31,48 @@ New-AzureRmAutomationSoftwareUpdateConfiguration -Schedule <Schedule> [-Linux] [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Creates a software update configuration that runs on a schedule to update a list of computers. Computers include both azure virtual machines or non-azure computers.
 
 ## EXAMPLES
 
 ### Example 1
+Creates a software update configuration to install critical updates on two Windows azure virtual machines once every Saturday 9PM. Update duration is set to 2 hours in this example.
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $startTime = [DateTimeOffset]"2018-09-13T21:00"
+PS C:\> $targetMachines = @( `
+    "/subscriptions/22e2445a-0984-4fa5-86a4-0280d76c4b2c/resourceGroups/compute/providers/Microsoft.Compute/virtualMachines/vm-w-01", `
+    "/subscriptions/22e2445a-0984-4fa5-86a4-0280d76c4b2c/resourceGroups/compute/providers/Microsoft.Compute/virtualMachines/vm-w-02"
+    )
+PS C:\> $duration = New-TimeSpan -Hours 2
+PS C:\> $schedule = New-AzureRmAutomationSchedule -ResourceGroupName "mygroup" `
+                                                  -AutomationAccountName "myaccount" `
+                                                  -Name MyWeeklySchedule `
+                                                  -StartTime $startTime `
+                                                  -DaysOfWeek Saturday `
+                                                  -WeekInterval 1 `
+                                                  -ForUpdateConfiguration
+
+New-AzureRmAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" `
+                                                 -AutomationAccountName "myaccount" `
+                                                 -Schedule $schedule `
+                                                 -Windows `
+                                                 -AzureVMResourceIds $targetMachines `
+                                                 -IncludedUpdateClassifications Critical `
+                                                 -Duration $duration
+
+UpdateConfiguration   : Microsoft.Azure.Commands.Automation.Model.UpdateManagement.UpdateConfiguration
+ScheduleConfiguration : Microsoft.Azure.Commands.Automation.Model.Schedule
+ProvisioningState     : Provisioning
+ErrorInfo             :
+ResourceGroupName     : mygroup
+AutomationAccountName : myaccount
+Name                  : MyWeeklySchedule
+CreationTime          : 9/14/2018 3:53:27 AM +00:00
+LastModifiedTime      : 9/14/2018 3:53:27 AM +00:00
+Description           :
 ```
 
-{{ Add example description here }}
 
 ## PARAMETERS
 

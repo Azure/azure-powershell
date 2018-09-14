@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
     using System.Management.Automation;
     using System.Security.Permissions;
     using Microsoft.Azure.Commands.Automation.Common;
-    using Models = Microsoft.Azure.Commands.Automation.Model;
     using Microsoft.Azure.Commands.Automation.Model.UpdateManagement;
     using System.Linq;
     using Properties;
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Schedule object used for software update configuration.")]
         [ValidateNotNull]
-        public Models.Schedule Schedule { get; set; }
+        public Microsoft.Azure.Commands.Automation.Model.Schedule Schedule { get; set; }
 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates that the software update configuration targeting windows operating system machines.")]
         public SwitchParameter Windows { get; set; }
