@@ -101,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -Delegation
-Delegations
+List of services that have permission to perform operations on this subnet.
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSDelegation]
