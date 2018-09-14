@@ -57,6 +57,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
+        public void TestVirtualNetworkSubnetDelegationCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-subnetDelegationCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestVirtualNetworkMultiPrefixSubnetCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-multiPrefixSubnetCRUD");
