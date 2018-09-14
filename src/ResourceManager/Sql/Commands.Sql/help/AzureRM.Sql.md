@@ -21,9 +21,16 @@ Adds a job step to a job
 ### [Add-AzureRmSqlElasticJobTarget](Add-AzureRmSqlElasticJobTarget.md)
 Adds a target to a target group
 =======
+
+### [Add-AzureRmSqlManagedInstanceKeyVaultKey](Add-AzureRmSqlManagedInstanceKeyVaultKey.md)
+Adds a key vault key to the provided Managed Instance. 
+
 ### [Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given managed instance
 >>>>>>> 50100a495684c557703d672de3447cbdfc555842
+
+### [Add-AzureRmSqlManagedInstanceKeyVaultKey](Add-AzureRmSqlManagedInstanceKeyVaultKey.md)
+Adds a key vault key to the provided Managed Instance. 
 
 ### [Add-AzureRmSqlServerKeyVaultKey](Add-AzureRmSqlServerKeyVaultKey.md)
 Adds a Key Vault key to a SQL server.
@@ -180,6 +187,12 @@ Gets one or more managed databases.
 
 ### [Get-AzureRmSqlManagedInstance](Get-AzureRmSqlManagedInstance.md)
 Returns information about SQL Database Managed instances.
+
+### [Get-AzureRmSqlManagedInstanceKeyVaultKey](Get-AzureRmSqlManagedInstanceKeyVaultKey.md)
+Gets a SQL managed instance's Key Vault keys.
+
+### [Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector](Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector.md)
+Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
 ### [Get-AzureRmSqlServer](Get-AzureRmSqlServer.md)
 Returns information about SQL Database servers.
@@ -397,6 +410,9 @@ Removes an Azure SQL Managed database.
 ### [Remove-AzureRmSqlManagedInstance](Remove-AzureRmSqlManagedInstance.md)
 Removes an Azure SQL Database Managed instance.
 
+### [Remove-AzureRmSqlManagedInstanceKeyVaultKey](Remove-AzureRmSqlManagedInstanceKeyVaultKey.md)
+Removes a Key Vault key from a SQL managed instance
+
 ### [Remove-AzureRmSqlServer](Remove-AzureRmSqlServer.md)
 Removes an Azure SQL Database server.
 
@@ -515,6 +531,9 @@ Updates the state of an Azure SQL Elastic Pool recommended action.
 
 ### [Set-AzureRmSqlManagedInstance](Set-AzureRmSqlManagedInstance.md)
 Modifies properties of a SQL Database Managed instance. Properties that are not specified are set to their default values.
+
+### [Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector](Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector.md)
+Sets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
 ### [Set-AzureRmSqlServer](Set-AzureRmSqlServer.md)
 Modifies properties of a SQL Database server.

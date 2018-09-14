@@ -250,7 +250,12 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'Stop-AzureRmSqlElasticJob',
                'Get-AzureRmSqlElasticJobExecution',
                'Get-AzureRmSqlElasticJobStepExecution',
-               'Get-AzureRmSqlElasticJobTargetExecution'
+               'Get-AzureRmSqlElasticJobTargetExecution',
+               'Add-AzureRmSqlManagedInstanceKeyVaultKey',
+               'Get-AzureRmSqlManagedInstanceKeyVaultKey',
+               'Remove-AzureRmSqlManagedInstanceKeyVaultKey',
+               'Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector',
+               'Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector'
 
 # Variables to export from this module
 # VariablesToExport = @()

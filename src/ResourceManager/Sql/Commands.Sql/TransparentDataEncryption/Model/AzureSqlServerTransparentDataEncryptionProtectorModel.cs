@@ -15,15 +15,6 @@
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model
 {
     /// <summary>
-    /// The supported types for an Encryption Protector
-    /// </summary>
-    public enum EncryptionProtectorType 
-    {
-        AzureKeyVault,
-        ServiceManaged
-    };
-
-    /// <summary>
     /// Represents the core properties of an Azure Sql Database Transparent Data Encryption Protector
     /// </summary>
     public class AzureSqlServerTransparentDataEncryptionProtectorModel
