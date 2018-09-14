@@ -599,7 +599,6 @@
     <Compile Include="ServiceEndpointPolicy\NewAzureServiceEndpointPolicyCommand.cs" />
     <Compile Include="ServiceEndpointPolicy\RemoveAzureServiceEndpointPolicyCommand.cs" />
     <Compile Include="ServiceEndpointPolicy\SetAzureServiceEndpointPolicyCommand.cs" />
-    <Compile Include="VirtualNetwork\Subnet\Delegation\AzureDelegationBase.cs" />
     <Compile Include="VirtualNetwork\Subnet\Delegation\AddAzureDelegationCommand.cs" />
     <Compile Include="AvailableDelegation\GetAzureAvailableServiceDelegationsCommand.cs" />
     <Compile Include="VirtualNetwork\Subnet\Delegation\GetAzureDelegationCommand.cs" />
