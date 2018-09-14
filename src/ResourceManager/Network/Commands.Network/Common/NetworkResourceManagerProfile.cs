@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSIPConfiguration, MNM.IPConfiguration>();
                 cfg.CreateMap<CNM.PSResourceNavigationLink, MNM.ResourceNavigationLink>();
                 cfg.CreateMap<CNM.PSServiceEndpoint, MNM.ServiceEndpointPropertiesFormat>();
+                cfg.CreateMap<CNM.PSDelegation, MNM.Delegation>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.DhcpOptions, CNM.PSDhcpOptions>();
@@ -107,6 +108,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.IPConfiguration, CNM.PSIPConfiguration>();
                 cfg.CreateMap<MNM.ResourceNavigationLink, CNM.PSResourceNavigationLink>();
                 cfg.CreateMap<MNM.ServiceEndpointPropertiesFormat, CNM.PSServiceEndpoint>();
+                cfg.CreateMap<MNM.Delegation, CNM.PSDelegation>();
 
                 // TestPrivateIpAddressAvailability
                 // CNM to MNM
@@ -122,9 +124,18 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.EndpointServiceResult, CNM.PSEndpointServiceResult>();
 
+                // Available subnet delegations
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSAvailableDelegation, MNM.AvailableDelegation>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.AvailableDelegation, CNM.PSAvailableDelegation>();
+
                 // VirtualNetwork Peering
+                // CNM to MNM
                 cfg.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>();
 
+                // MNM to CNM
                 cfg.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>();
 
                 // VirtualNetwork
