@@ -2,6 +2,8 @@
 src/Publish/
 src/Package/
 src/Stack/
+src/local-artifacts/*
+!.placeholder
 
 obj
 TestResults
