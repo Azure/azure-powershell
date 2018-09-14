@@ -142,7 +142,9 @@ function Get-DeleteAndCreateTestNetworkWatcher($location, $nwName, $nwRgName, $t
 	# Delete Network Watcher if existing nw
 	if ($nw) 
 	{
-		Remove-AzureRmNetworkWatcher -NetworkWatcher $nw
+		$job = Remove-AzureRmNetworkWatcher -NetworkWatcher $nw -AsJob
+		$job | Wait-Job
+		$delete = $job | Receive-Job
 	}
 
 	$nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location -Tag $tags
@@ -499,7 +501,7 @@ function Test-Troubleshoot
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "centraluseuap"
+    $location = "westus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
@@ -572,7 +574,7 @@ function Test-FlowLog
     $nwName = Get-ResourceName
 	#Since Traffic Analytics is not available in all Azure regions, hardcoded locations are used
     #Once Traffic Analytics is available in all Azure regions, the below two location variables should be updated to Get-Location
-    $location = "eastus2euap"
+    $location = "westcentralus"
 	$workspaceLocation = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
@@ -723,18 +725,16 @@ function Test-ReachabilityReport
     # Setup
     $rgname = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $location = "westus"
     
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
-        
-        # Create the Network Watcher
-        $tags = @{"key1" = "value1"; "key2" = "value2"}
-		$nw = Get-DeleteAndCreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $rgname -tags $tags
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $rgName
 
         $job = Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher $nw -Location "West US" -Country "United States" -StartTime "2017-10-05" -EndTime "2017-10-10" -AsJob
         $job | Wait-Job
@@ -768,18 +768,16 @@ function Test-ProvidersList
     # Setup
     $rgname = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $location = "westcentralus"
+    $location = "westus"
     
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
-        
-        # Create the Network Watcher
-        $tags = @{"key1" = "value1"; "key2" = "value2"}
-		$nw = Get-DeleteAndCreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $rgname -tags $tags
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
+
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $rgname
 
         $job = Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher $nw -Location "West US" -Country "United States" -AsJob
         $job | Wait-Job
@@ -881,20 +879,8 @@ function Test-ConnectionMonitor
         #Query connection monitor
         Get-AzureRmNetworkWatcherConnectionMonitorReport -NetworkWatcher $nw -Name $cmName1
 
-        #Get connection monitor list
-        $cmList = Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw
-
-        #Validation
-        Assert-AreEqual $cmList.Count 2
-
         #Remove connection monitor
         Remove-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1
-
-        #Get connection monitor list
-        $cmList = Get-AzureRmNetworkWatcherConnectionMonitor -NetworkWatcher $nw
-
-        #Validation
-        Assert-AreEqual $cmList.Count 1
     }
     finally
     {
