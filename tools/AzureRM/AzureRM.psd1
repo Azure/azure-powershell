@@ -91,7 +91,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.6.0';
                @{ModuleName = 'AzureRM.PowerBIEmbedded'; RequiredVersion = '4.1.10'; }, 
                @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '4.1.8'; }, 
                @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '4.4.1'; }, 
-               @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery'; RequiredVersion = '0.2.9'; }, 
+               @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery'; RequiredVersion = '0.2.10'; }, 
                @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '5.0.6'; }, 
                @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.10'; }, 
                @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.5.0'; }, 
@@ -105,7 +105,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.6.0';
                @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '4.0.5'; }, 
                @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '4.1.1'; }, 
                @{ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '4.0.5'; }, 
-               @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '5.0.9'; })
+               @{ModuleName = 'AzureRM.Websites'; RequiredVersion = '5.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -162,6 +162,9 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '6.9.0 - September 2018
+General
+* AzureRM.SignalR was added to the AzureRM rollup module
+
 AzureRM.Profile
 * Minor changes to the storage common code
 * Updated help files to include full parameter types.
@@ -179,6 +182,9 @@ AzureRM.Compute
 * Move dependencies on Keyvault and Storage to the common dependencies.
 * Add support for more virutal machine sizes to AEM cmdlets
 
+AzureRM.Dns
+* Added support for alias record during dns record creation
+
 AzureRM.Insights
 * Fixed issues #6833 and #7102 (Diagnostic Settings area)
     - Issues with the default name, i.e. ''service'', during creation and listing/getting of diagnostic settings
@@ -187,15 +193,96 @@ AzureRM.Insights
     - Timegrains parameters are still being accepted (this is a non-breaking change,) but they are ignored in the backend since only PT1M is valid
 
 AzureRM.Network
+* Replaced LoadBalancer cmdlets with generated code
+  - LoadBalancerInboundNatPoolConfig: added parameters IdleTimeoutInMinutes, EnableFloatingIp and EnableTcpReset
+  - LoadBalancerInboundNatRuleConfig: added parameter EnableTcpReset
+  - LoadBalancerRuleConfig: added parameter EnableTcpReset
+  - LoadBalancerProbeConfig: added support for value "Https" for parameter Protocol
+* Added new commands for new LoadBalancer''s subresource OutboundRule
+  - Add-AzureRmLoadBalancerOutboundRuleConfig
+  - Get-AzureRmLoadBalancerOutboundRuleConfig
+  - New-AzureRmLoadBalancerOutboundRuleConfig
+  - Set-AzureRmLoadBalancerOutboundRuleConfig
+  - Remove-AzureRmLoadBalancerOutboundRuleConfig
+* Added new HostedWorkloads property for PSNetworkInterface
+* Added new commands for feature: Azure Firewall via ARM
+  - Added Get-AzureRmFirewall
+  - Added Set-AzureRmFirewall
+  - Added New-AzureRmFirewall
+  - Added Remove-AzureRmFirewall
+  - Added New-AzureRmFirewallApplicationRuleCollection
+  - Added New-AzureRmFirewallApplicationRule
+  - Added New-AzureRmFirewallNatRuleCollection
+  - Added New-AzureRmFirewallNatRule
+  - Added New-AzureRmFirewallNetworkRuleCollection
+  - Added New-AzureRmFirewallNetworkRule
+* Added support for Trusted Root certificate and Autoscale configuration in Application Gateway
+  - New Cmdlets added:
+      - Add-AzureRmApplicationGatewayTrustedRootCertificate
+      - Get-AzureRmApplicationGatewayTrustedRootCertificate
+      - New-AzureRmApplicationGatewayTrustedRootCertificate
+      - Remove-AzureRmApplicationGatewayTrustedRootCertificate
+      - Set-AzureRmApplicationGatewayTrustedRootCertificate
+      - Get-AzureRmApplicationGatewayAutoscaleConfiguration
+      - New-AzureRmApplicationGatewayAutoscaleConfiguration
+      - Remove-AzureRmApplicationGatewayAutoscaleConfiguration
+      - Set-AzureRmApplicationGatewayAutoscaleConfiguration
+  - Cmdlets updated with optonal parameter -TrustedRootCertificate
+      - New-AzureRmApplicationGateway
+      - Set-AzureRmApplicationGateway
+      - New-AzureRmApplicationGatewayBackendHttpSetting
+      - Set-AzureRmApplicationGatewayBackendHttpSetting
+  - Cmdlets updated with optonal parameter -AutoscaleConfiguration
+      - New-AzureRmApplicationGateway
+      - Set-AzureRmApplicationGateway
+* Add cmdlet for Interface Endpoint Get-AzureInterfaceEndpoint
+* Added support for multiple address prefixes in a subnet. Updated cmdlets:
+  - New-AzureRmVirtualNetworkSubnetConfig
+  - Set-AzureRmVirtualNetworkSubnetConfig
+  - Add-AzureRmVirtualNetworkSubnetConfig
+  - Get-AzureRmVirtualNetworkSubnetConfig
+  - Add-AzureRmApplicationGatewayAuthenticationCertificate
+  - Add-AzureRmApplicationGatewayFrontendIPConfig
+  - New-AzureRmApplicationGatewayFrontendIPConfig
+  - Set-AzureRmApplicationGatewayFrontendIPConfig
+  - Add-AzureRmApplicationGatewayIPConfiguration
+  - New-AzureRmApplicationGatewayIPConfiguration
+  - Set-AzureRmApplicationGatewayIPConfiguration
+  - Add-AzureRmNetworkInterfaceIpConfig
+  - New-AzureRmNetworkInterfaceIpConfig
+  - Set-AzureRmNetworkInterfaceIpConfig
+  - New-AzureRmVirtualNetworkGatewayIpConfig
+  - Add-AzureRmVirtualNetworkGatewayIpConfig
+  - Set-AzureRmLoadBalancerFrontendIpConfig
+  - Add-AzureRmLoadBalancerFrontendIpConfig
+  - New-AzureRmLoadBalancerFrontendIpConfig
+  - New-AzureRmNetworkInterface
+* Adding support to perform CRUD operations for subnet delegation.
+  - New-AzureRmDelegation: Creates a new delegation, which can be added to a subnet
+  - Remove-AzureRmDelegation: Takes in a subnet and removes the provided delegation name from that subnet
+  - Add-AzureRmDelegation: Takes in a subnet and adds the provided service name as a delegation to that subnet
+  - Get-AzureRmDelegation
+  - Get-AzureRmAvailableServiceDelegations
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
+* Added cmdlets for Azure SdWan
+
+AzureRM.RecoveryServices.SiteRecovery
+* Support for managed Managed disk
 
 AzureRM.RedisCache
 * Updated Insights dependency.
 
 AzureRM.Resources
+* Update New-AzureRmResourceGroupDeployment with new parameter RollbackAction
+    - Add support for OnErrorDeployment with the new parameter.
 * Support managed identity on policy assignments.
 * Parameters with default values are no longer requred when assigning a policy with ''New-AzureRmPolicyAssignment''
 * Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
+
+AzureRM.SignalR
+* Update SignalR SDK version to 0.10.0-preview
+* Update SKU names to Free_F1 and Standard_S1
+* Add version field to the PSSignalRResource object and connection string to the PSSignalRKeys object.
 
 AzureRM.Storage
 * Upgrade to Azure Storage Client Library 9.3.0 
@@ -211,6 +298,9 @@ AzureRM.Storage
     - Get-AzureRmStorageContainerImmutabilityPolicy
     - Remove-AzureRmStorageContainerImmutabilityPolicy
     - Lock-AzureRmStorageContainerImmutabilityPolicy
+
+AzureRM.Websites
+* Updating to use the latest .NET SDK version (2.0.0)
 '
 
         # Prerelease string of this module

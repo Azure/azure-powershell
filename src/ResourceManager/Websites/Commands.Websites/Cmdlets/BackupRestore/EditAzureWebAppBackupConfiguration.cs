@@ -63,7 +63,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 StorageAccountUrl = this.StorageAccountUrl,
                 BackupSchedule = schedule,
                 Databases = this.Databases,
-                BackupRequestType = BackupRestoreOperationType.Default
             };
             WebsitesClient.UpdateWebAppBackupConfiguration(ResourceGroupName, Name, Slot, request);
             var config = new AzureWebAppBackupConfiguration()
