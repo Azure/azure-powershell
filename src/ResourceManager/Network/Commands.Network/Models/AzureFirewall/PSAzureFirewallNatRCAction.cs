@@ -15,11 +15,8 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using Newtonsoft.Json;
-
-    public class PSAzureFirewallBaseRuleCollection : PSChildResource
+    public class PSAzureFirewallNatRCAction
     {
-        [JsonProperty(Order = 2)]
-        public uint Priority { get; set; }
+        public string Type { get; set; }
     }
 }

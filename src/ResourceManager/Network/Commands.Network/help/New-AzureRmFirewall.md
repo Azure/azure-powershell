@@ -17,6 +17,7 @@ Creates a new Firewall in a resource group.
 New-AzureRmFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-VirtualNetworkName <String>] [-PublicIpName <String>]
  [-ApplicationRuleCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRuleCollection]>]
+ [-NatRuleCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRuleCollection]>]
  [-NetworkRuleCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRuleCollection]>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -43,6 +44,15 @@ New-AzureRmFirewall -Name "azFw" -ResourceGroupName "rg" -Location centralus -Vi
 ```
 
 This example creates a Firewall which allows all HTTPS traffic on port 443.
+
+### 3:  DNAT - redirect traffic destined to 10.1.2.3:80 to 10.2.3.4:8080
+```
+$rule = New-AzureRmFirewallNatRule -Name "natRule" -Protocol "TCP" -SourceAddress "*" -DestinationAddress "10.1.2.3" -DestinationPort "80" -TranslatedAddress "10.2.3.4" -TranslatedPort "8080"
+$ruleCollection = New-AzureRmFirewallNatRuleCollection -Name "NatRuleCollection" -Priority 1000 -Rule $rule
+New-AzureRmFirewall -Name "azFw" -ResourceGroupName "rg" -Location centralus -NatRuleCollection $ruleCollection
+```
+
+This example created a Firewall which translated the destination IP and port of all packets destined to 10.1.2.3:80 to 10.2.3.4:8080
 
 ## PARAMETERS
 
@@ -130,6 +140,21 @@ Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NatRuleCollection
+The list of AzureFirewallNatRuleCollections
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRuleCollection]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -265,3 +290,9 @@ This cmdlet does not accept any input.
 [Remove-AzureRmFirewall](./Remove-AzureRmFirewall.md)
 
 [Set-AzureRmFirewall](./Set-AzureRmFirewall.md)
+
+[New-AzureRmFirewallApplicationRuleCollection](./New-AzureRmFirewallApplicationRuleCollection.md)
+
+[New-AzureRmFirewallNatRuleCollection](./New-AzureRmFirewallNatRuleCollection.md)
+
+[New-AzureRmFirewallNetworkRuleCollection](./New-AzureRmFirewallNetworkRuleCollection.md)

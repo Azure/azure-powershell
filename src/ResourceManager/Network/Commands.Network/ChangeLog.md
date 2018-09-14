@@ -39,6 +39,8 @@
     - Added Remove-AzureRmFirewall
     - Added New-AzureRmFirewallApplicationRuleCollection
     - Added New-AzureRmFirewallApplicationRule
+    - Added New-AzureRmFirewallNatRuleCollection
+    - Added New-AzureRmFirewallNatRule
     - Added New-AzureRmFirewallNetworkRuleCollection
     - Added New-AzureRmFirewallNetworkRule
 * Added support for Trusted Root certificate and Autoscale configuration in Application Gateway

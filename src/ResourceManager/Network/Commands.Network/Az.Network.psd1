@@ -384,6 +384,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'Remove-AzFirewall',
     'New-AzFirewallApplicationRuleCollection',
     'New-AzFirewallApplicationRule',
+    'New-AzFirewallNatRuleCollection',
+    'New-AzFirewallNatRule',
     'New-AzFirewallNetworkRuleCollection',
     'New-AzFirewallNetworkRule',
     'Get-AzInterfaceEndpoint' 
