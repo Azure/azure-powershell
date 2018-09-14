@@ -266,7 +266,9 @@ AliasesToExport = 'Get-AzureRmSqlDatabaseServerAuditingPolicy',
                'Set-AzureRmSqlDatabaseServerAuditingPolicy', 
                'Use-AzureRmSqlDatabaseServerAuditingPolicy', 
                'Get-AzureRmSqlDatabaseLongTermRetentionPolicy', 
-               'Set-AzureRmSqlDatabaseLongTermRetentionPolicy'
+               'Set-AzureRmSqlDatabaseLongTermRetentionPolicy',
+			   'Set-AzureRmSqlManagedInstanceTDEProtector',
+			   'Get-AzureRmSqlManagedInstanceTDEProtector'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
