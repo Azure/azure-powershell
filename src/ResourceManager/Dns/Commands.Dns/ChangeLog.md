@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.1.0
 * Added support for alias record during dns record creation
 
 ## Version 5.0.4
