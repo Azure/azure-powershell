@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Network
             var present = true;
             try
             {
-                this.NetworkClient.NetworkManagementClient.NetworkProfiles.Get(this.NetworkProfile.ResourceGroupName, this.NetworkProfile.Name);
+                this.NetworkClient.NetworkManagementClient.NetworkProfiles.Get(this.NetworkProfile.ResourceGroupName, this.NetworkProfile.Name, null);
             }
             catch (Microsoft.Rest.Azure.CloudException exception)
             {
