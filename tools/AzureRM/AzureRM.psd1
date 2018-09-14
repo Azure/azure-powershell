@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.8.1'
+ModuleVersion = '6.9.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,8 +51,8 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.5.1'; }, 
-               @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.5.0'; }, 
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.6.0'; }, 
+               @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.6.0'; }, 
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.6.14'; }, 
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.5.4'; }, 
                @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '6.1.5'; }, 
@@ -61,9 +61,9 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.5.1';
                @{ModuleName = 'AzureRM.Backup'; RequiredVersion = '4.0.10'; }, 
                @{ModuleName = 'AzureRM.Batch'; RequiredVersion = '4.1.5'; }, 
                @{ModuleName = 'AzureRM.Billing'; RequiredVersion = '0.14.6'; }, 
-               @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '5.0.5'; }, 
+               @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '5.0.6'; }, 
                @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.9.10'; }, 
-               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '5.5.2'; }, 
+               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '5.6.0'; }, 
                @{ModuleName = 'AzureRM.Consumption'; RequiredVersion = '0.3.7'; }, 
                @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.2.10'; }, 
                @{ModuleName = 'AzureRM.ContainerRegistry'; RequiredVersion = '1.0.10'; }, 
@@ -76,7 +76,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.5.1';
                @{ModuleName = 'AzureRM.EventGrid'; RequiredVersion = '0.3.7'; }, 
                @{ModuleName = 'AzureRM.EventHub'; RequiredVersion = '0.6.10'; }, 
                @{ModuleName = 'AzureRM.HDInsight'; RequiredVersion = '4.1.8'; }, 
-               @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '5.1.3'; }, 
+               @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '5.1.4'; }, 
                @{ModuleName = 'AzureRM.IotHub'; RequiredVersion = '3.1.8'; }, 
                @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '5.2.1'; }, 
                @{ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '4.1.4'; }, 
@@ -92,15 +92,15 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.5.1';
                @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '4.1.8'; }, 
                @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '4.4.1'; }, 
                @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery'; RequiredVersion = '0.2.9'; }, 
-               @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '5.0.5'; }, 
+               @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '5.0.6'; }, 
                @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.10'; }, 
-               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.4.2'; }, 
+               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.5.0'; }, 
                @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.16.10'; }, 
                @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.11'; }, 
                @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.12'; }, 
                @{ModuleName = 'AzureRM.SignalR'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.11.3'; }, 
-               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '5.0.4'; }, 
+               @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '5.1.0'; }, 
                @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '4.0.10'; }, 
                @{ModuleName = 'AzureRM.Tags'; RequiredVersion = '4.0.5'; }, 
                @{ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '4.1.1'; }, 
@@ -161,54 +161,56 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '6.8.1 - August 2018
-General
-* Fixed issue with default resource groups not being set.
-* Updated common runtime assemblies
+        ReleaseNotes = '6.9.0 - September 2018
+AzureRM.Profile
+* Minor changes to the storage common code
+* Updated help files to include full parameter types.
+- Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set 
 
+Azure.Storage
+* Upgrade to Azure Storage Client Library 9.3.0 and Azure Storage DataMovement Library 0.8.1
+* Support create Storage Context with OAuth. 
+	- New-AzureStorageContext
 
-AzureRM.ApiManagement
-* Fixed issue https://github.com/Azure/azure-powershell/issues/6603
-    - Import-AzureRmApiManagementApi and *-AzureRmApiManagementCertificate cmdlets now handle relative Paths
-* Fixed issue https://github.com/Azure/azure-powershell/issues/6879
-    - The CertificateInformation is a settable property allowing for Set-AzureRmApiManagement cmdlet to work property. Fixed by upgrading to 
-	4.0.4-preview nuget
-* Fixed issue https://github.com/Azure/azure-powershell/issues/6853
-    - Fixed the Odata filter for Search by Name on Product
-* Fixed issue https://github.com/Azure/azure-powershell/issues/6814
-    - Fixed the Odata filter for Search by Name on Api
-* Added support for AzureMonitor logger
-
+AzureRM.Cdn
+* Added Standard_Microsoft in Cdn pricing sku. 
 
 AzureRM.Compute
-* Fixed the issue that target is missing in error output.
-* Fixed issue with storage account type for VM with managed disk
-* Fixed issue with default resource groups not being set.
-* Fix AEM Extension cmdlets for other environments, for example Azure China
+* Move dependencies on Keyvault and Storage to the common dependencies.
+* Add support for more virutal machine sizes to AEM cmdlets
+
+AzureRM.Insights
+* Fixed issues #6833 and #7102 (Diagnostic Settings area)
+    - Issues with the default name, i.e. ''service'', during creation and listing/getting of diagnostic settings
+    - Issues creating diagnostic settings with categories
+* Added deprecation message for metrics time grains parameters
+    - Timegrains parameters are still being accepted (this is a non-breaking change,) but they are ignored in the backend since only PT1M is valid
 
 AzureRM.Network
- * Changed default display format for output types to Table
+* Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass
 
-AzureRM.PowerBIEmbedded
-* Fix failure in Update-AzureRmPowerBIEmbeddedCapacity when trying to scale paused capacity
+AzureRM.RedisCache
+* Updated Insights dependency.
 
 AzureRM.Resources
-* Fixed issue with creating managed applications from the MarketPlace.
+* Support managed identity on policy assignments.
+* Parameters with default values are no longer requred when assigning a policy with ''New-AzureRmPolicyAssignment''
+* Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
 
-AzureRM.ServiceBus
-* Fixed issues
-	- https://github.com/Azure/azure-powershell/issues/5058
-	- https://github.com/Azure/azure-powershell/issues/5055
-	- https://github.com/Azure/azure-powershell/issues/6891
-
-AzureRM.TrafficManager
-* Added Support for the MultiValue routing method
-    - New parameter ''MaxReturn'' for MultiValue routing
-* Added Support for the Subnet routing method
-    - Support for IP address ranges (subnets) in endpoints
-* Added Support for Custom Headers in profiles
-* Added Support for Expected status code ranges in profiles
-* Added Support for Custom Headers in endpoints
+AzureRM.Storage
+* Upgrade to Azure Storage Client Library 9.3.0 
+* Support Immutability Policy in AzureRm.Storage 
+    - Remove-AzureRmStorageAccountNetworkRule
+    - Get-AzureRmStorageContainer
+    - Update-AzureRmStorageContainer
+    - New-AzureRmStorageContainer
+    - Remove-AzureRmStorageContainer
+    - Add-AzureRmStorageContainerLegalHold
+    - Remove-AzureRmStorageContainerLegalHold
+    - Set-AzureRmStorageContainerImmutabilityPolicy
+    - Get-AzureRmStorageContainerImmutabilityPolicy
+    - Remove-AzureRmStorageContainerImmutabilityPolicy
+    - Lock-AzureRmStorageContainerImmutabilityPolicy
 '
 
         # Prerelease string of this module
