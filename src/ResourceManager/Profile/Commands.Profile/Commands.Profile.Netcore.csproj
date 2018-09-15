@@ -34,6 +34,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Newtonsoft.Json.9.dll"/>
+    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Newtonsoft.Json.10.dll"/>
+  </ItemGroup>
+
+    <ItemGroup>
+    <StorageDependencies Include="$(ProjectDir)..\..\..\lib\Microsoft.WindowsAzure.Storage.dll"/>
+    <StorageDependencies Include="$(ProjectDir)..\..\..\lib\Microsoft.WindowsAzure.Storage.DataMovement.dll"/>
+  </ItemGroup>
+
+
+  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -67,4 +78,9 @@
     <Content Include="*.Netcore.psd1" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.psm1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
+
+  <Target Name="CopyFiles" AfterTargets="Build">
+    <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
+    <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />
+  </Target>
 </Project>

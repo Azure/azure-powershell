@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
         {
 
             base.Execute();
-            // Verify if the subnet exists in the NetworkSecurityGroup
+            // Verify if the security rule exists in the NetworkSecurityGroup
             var rule = this.NetworkSecurityGroup.SecurityRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (rule != null)

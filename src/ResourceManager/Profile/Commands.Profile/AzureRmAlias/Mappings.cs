@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the 'License');
@@ -1924,6 +1924,12 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'Update-AzRecoveryServicesAsrServicesProvider': 'Update-AzureRmRecoveryServicesAsrServicesProvider'
   },
   'Az.Network': {
+    'New-AzFirewallNatRuleCollection': 'New-AzureRmFirewallNatRuleCollection',
+    'New-AzFirewallNatRule': 'New-AzureRmFirewallNatRule',
+    'Get-AzDelegation':  'Get-AzureRmDelegation',
+    'Add-AzDelegation':  'Add-AzureRmDelegation',
+    'Remove-AzDelegation':  'Remove-AzureRmDelegation',
+    'Get-AzAvailableServiceDelegation':  'Get-AzureRmAvailableServiceDelegation',
     'New-AzLoadBalancerFrontendIpConfig': 'New-AzureRmLoadBalancerFrontendIpConfig',
     'Remove-AzRouteFilterRuleConfig': 'Remove-AzureRmRouteFilterRuleConfig',
     'Add-AzApplicationGatewayFrontendIPConfig': 'Add-AzureRmApplicationGatewayFrontendIPConfig',
@@ -2191,6 +2197,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'Get-AzNetworkWatcherFlowLogStatus': 'Get-AzureRmNetworkWatcherFlowLogStatus',
     'New-AzFirewallNetworkRule': 'New-AzureRmFirewallNetworkRule',
     'Get-AzExpressRouteServiceProvider': 'Get-AzureRmExpressRouteServiceProvider',
+    'New-AzDelegation':  'New-AzureRmDelegation',
     'Set-AzNetworkWatcherConfigFlowLog': 'Set-AzureRmNetworkWatcherConfigFlowLog',
     'Remove-AzPublicIpPrefix': 'Remove-AzureRmPublicIpPrefix',
     'New-AzFirewallApplicationRuleCollection': 'New-AzureRmFirewallApplicationRuleCollection',
@@ -2244,7 +2251,19 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'New-AzNetworkInterfaceIpConfig': 'New-AzureRmNetworkInterfaceIpConfig',
     'New-AzExpressRouteCircuit': 'New-AzureRmExpressRouteCircuit',
     'Set-AzApplicationGatewayFrontendIPConfig': 'Set-AzureRmApplicationGatewayFrontendIPConfig',
-    'Get-AzInterfaceEndpoint': 'Set-AzureRmInterfaceEndpoint'
+    'Get-AzInterfaceEndpoint': 'Set-AzureRmInterfaceEndpoint',
+    'Get-AzNetworkProfile': 'Get-AzureRMNetworkProfile',
+    'New-AzNetworkProfile': 'New-AzureRMNetworkProfile',
+    'Remove-AzNetworkProfile': 'Remove-AzureRMNetworkProfile',
+    'Set-AzNetworkProfile': 'Set-AzureRMNetworkProfile',
+    'Get-AzNetworkProfileContainerNicConfig': 'Get-AzureRMNetworkProfileContainerNicConfig',
+    'New-AzNetworkProfileContainerNicConfig': 'New-AzureRMNetworkProfileContainerNicConfig',
+    'Remove-AzNetworkProfileContainerNicConfig': 'Remove-AzureRMNetworkProfileContainerNicConfig',
+    'Set-AzNetworkProfileContainerNicConfig': 'Set-AzureRMNetworkProfileContainerNicConfig ',
+    'Get-AzNetworkProfileContainerNicConfigIpConfig': 'Get-AzureRmNetworkProfileContainerNicConfigIpConfig ',
+    'New-AzNetworkProfileContainerNicConfigIpConfig': 'New-AzureRmNetworkProfileContainerNicConfigIpConfig',
+    'Remove-AzNetworkProfileContainerNicConfigIpConfig': 'Remove-AzureRmNetworkProfileContainerNicConfigIpConfig',
+    'Set-AzNetworkProfileContainerNicConfigIpConfig': 'Set-AzureRmNetworkProfileContainerNicConfigIpConfig'
   },
   'Az.DataLakeAnalytics': {
     'New-AzDataLakeAnalyticsCatalogSecret': 'New-AzureRmDataLakeAnalyticsCatalogSecret',
@@ -2376,7 +2395,6 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'Remove-AzNotificationHubsNamespace': 'Remove-AzureRmNotificationHubsNamespace'
   }
 }
-
 ";
     }
 }

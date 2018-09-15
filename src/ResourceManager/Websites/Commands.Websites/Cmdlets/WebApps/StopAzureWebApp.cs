@@ -14,6 +14,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using System.Management.Automation;
@@ -23,14 +24,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you stop an Azure Web app
     /// </summary>
-    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp"), OutputType(typeof(Site))]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebApp"), OutputType(typeof(PSSite))]
     public class StopAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             WebsitesClient.StopWebApp(ResourceGroupName, Name, null);
-            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
+            WriteObject(new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null)));
         }
     }
 }

@@ -789,6 +789,10 @@
                 <PropertyName>ResourceNavigationLinksText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>ServiceAssociationLinks</Label>
+                <PropertyName>ServiceAssociationLinksText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>NetworkSecurityGroup</Label>
                 <PropertyName>NetworkSecurityGroupText</PropertyName>
               </ListItem>
@@ -3017,6 +3021,10 @@
                 <PropertyName>ApplicationRuleCollectionsText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>NatRuleCollections</Label>
+                <PropertyName>NatRuleCollectionsText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>NetworkRuleCollections</Label>
                 <PropertyName>NetworkRuleCollectionsText</PropertyName>
               </ListItem>
@@ -3119,8 +3127,88 @@
                 <PropertyName>TargetFqdnsText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>FqdnTags</Label>
+                <PropertyName>FqdnTagsText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Protocols</Label>
                 <PropertyName>ProtocolsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRuleCollection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRuleCollection</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Priority</Label>
+                <PropertyName>Priority</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Action</Label>
+                <PropertyName>ActionText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Rules</Label>
+                <PropertyName>RulesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRule</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNatRule</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Description</Label>
+                <PropertyName>Description</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Protocols</Label>
+                <PropertyName>ProtocolsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SourceAddresses</Label>
+                <PropertyName>SourceAddressesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DestinationAddresses</Label>
+                <PropertyName>DestinationAddressesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DestinationPorts</Label>
+                <PropertyName>DestinationPortsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TranslatedAddress</Label>
+                <PropertyName>TranslatedAddress</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TranslatedPort</Label>
+                <PropertyName>TranslatedPort</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

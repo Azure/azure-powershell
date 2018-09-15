@@ -1,0 +1,72 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/e05dbbce-79c2-45a2-a7ef-f1058856feb3/providers/Microsoft.Network/locations/westcentralus/availableDelegations?api-version=2018-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTA1ZGJiY2UtNzljMi00NWEyLWE3ZWYtZjEwNTg4NTZmZWIzL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdGNlbnRyYWx1cy9hdmFpbGFibGVEZWxlZ2F0aW9ucz9hcGktdmVyc2lvbj0yMDE4LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c10de067-a942-4b31-af27-c70299eee8de"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3163.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.4.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Microsoft.Web.serverFarms\",\r\n      \"id\": \"/subscriptions/e05dbbce-79c2-45a2-a7ef-f1058856feb3/providers/Microsoft.Network/availableDelegations/Microsoft.Web.serverFarms\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.Web/serverFarms\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Sql.servers\",\r\n      \"id\": \"/subscriptions/e05dbbce-79c2-45a2-a7ef-f1058856feb3/providers/Microsoft.Network/availableDelegations/Microsoft.Sql.servers\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.Sql/servers\",\r\n      \"actions\": []\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.ContainerInstance.containerGroups\",\r\n      \"id\": \"/subscriptions/e05dbbce-79c2-45a2-a7ef-f1058856feb3/providers/Microsoft.Network/availableDelegations/Microsoft.ContainerInstance.containerGroups\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.ContainerInstance/containerGroups\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Netapp.volumes\",\r\n      \"id\": \"/subscriptions/e05dbbce-79c2-45a2-a7ef-f1058856feb3/providers/Microsoft.Network/availableDelegations/Microsoft.Netapp.volumes\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.Netapp/volumes\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/networkinterfaces/*\",\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.HardwareSecurityModules.dedicatedHSMs\",\r\n      \"id\": \"/subscriptions/e05dbbce-79c2-45a2-a7ef-f1058856feb3/providers/Microsoft.Network/availableDelegations/Microsoft.HardwareSecurityModules.dedicatedHSMs\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.HardwareSecurityModules/dedicatedHSMs\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/networkinterfaces/*\",\r\n        \"Microsoft.Network/virtualNetworks/subnets/join/action\"\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.ServiceFabricMesh.networks\",\r\n      \"id\": \"/subscriptions/e05dbbce-79c2-45a2-a7ef-f1058856feb3/providers/Microsoft.Network/availableDelegations/Microsoft.ServiceFabricMesh.networks\",\r\n      \"type\": \"Microsoft.Network/availableDelegations\",\r\n      \"serviceName\": \"Microsoft.ServiceFabricMesh/networks\",\r\n      \"actions\": [\r\n        \"Microsoft.Network/virtualNetworks/subnets/action\"\r\n      ]\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2596"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "584c08d1-9b2e-44c6-968c-322bdb48e783"
+        ],
+        "x-ms-correlation-request-id": [
+          "3ca1d79c-8ba7-469e-82a8-89b5d8d0e840"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180913T191723Z:3ca1d79c-8ba7-469e-82a8-89b5d8d0e840"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 13 Sep 2018 19:17:22 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "e05dbbce-79c2-45a2-a7ef-f1058856feb3"
+  }
+}
