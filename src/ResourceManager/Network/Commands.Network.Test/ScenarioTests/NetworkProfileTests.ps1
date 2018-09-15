@@ -419,13 +419,13 @@ function Test-ContainerNetworkInterfaceConfigCRUDSet
 function Test-NetworkProfileEndToEndWithContainerNics
 {
     # Setup
-    $rgname = "westus"
+    $rgname = Get-ResourceGroupName;
     $rglocation = "westus";
     $networkProfileName = "np1"
     $containerNicConfigName = Get-ResourceName;
     $ipConfigProfileName = "ipconfigprofile1"
     $ipConfigProfileNameAdd = "${ipConfigProfileName}Add"
-    $location = Get-ProviderLocation "Microsoft.Network/NetworkProfiles";
+    $location = "westus";
     $vnetName = "vnet1"
     $subnetName = "subnet1"
     $containerGroupName = "cg1"
@@ -462,7 +462,7 @@ function Test-NetworkProfileEndToEndWithContainerNics
         Assert-AreEqual $vNetworkProfile.ContainerNetworkInterfaceConfigurations[0].Name $vContainerNetworkInterfaceConfig.Name;
 
         # Create container group
-        $containerGroup = New-AzureRmContainerGroup -ResourceGroupName  $rgname -Name $containerGroupName -Image "nginx" -OsType "Linux" -RestartPolicy "Never" -DnsNameLabel "cg1.westus.azurecontainer.io" -Port @(8000, 8001) -Cpu 1 -Memory 1.5
+        $containerGroup = New-AzureRmContainerGroup -ResourceGroupName  $rgname -Name $containerGroupName -Image "nginx" -OsType "Linux" -RestartPolicy "Never" -Port @(8000, 8001) -Cpu 1 -Memory 1.5
         Assert-NotNull $containerGroup
 
         # Get Network Profile
@@ -475,7 +475,7 @@ function Test-NetworkProfileEndToEndWithContainerNics
 
         $retrievedContainerNic = $retrievedContainerNics[0]
         Assert-AreEqual $retrievedContainerNic.ContainerNetworkInterfaceConfiguration.Name $containerNicConfigName
-        Assert-AreEqual $retrievedContainerNic.Container.Name $containerGroupName
+        Assert-True {$retrievedContainerNic.Container.Id.Contains($containerGroupName)}
 
         # Remove container group
         $containerGroup | Remove-AzureRmContainerGroup -Force
