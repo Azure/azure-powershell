@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.9.11
+* Support Get-AzureRmCognitiveServicesAccountSkus without an existing account.
+
 ## Version 0.9.10
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies
