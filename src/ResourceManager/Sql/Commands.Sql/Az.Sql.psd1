@@ -239,7 +239,14 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
     'Stop-AzSqlElasticJob',
     'Get-AzSqlElasticJobExecution',
     'Get-AzSqlElasticJobStepExecution',
-    'Get-AzSqlElasticJobTargetExecution'
+    'Get-AzSqlElasticJobTargetExecution',
+    'Get-AzureRmSqlElasticJobTargetExecution'	               
+    'Get-AzureRmSqlElasticJobTargetExecution',
+    'Add-AzureRmSqlManagedInstanceKeyVaultKey',
+    'Get-AzureRmSqlManagedInstanceKeyVaultKey',
+    'Remove-AzureRmSqlManagedInstanceKeyVaultKey',
+    'Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector',
+    'Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -250,7 +257,11 @@ AliasesToExport = 'Get-AzSqlDatabaseServerAuditingPolicy',
     'Set-AzSqlDatabaseServerAuditingPolicy', 
     'Use-AzSqlDatabaseServerAuditingPolicy', 
     'Get-AzSqlDatabaseLongTermRetentionPolicy', 
-    'Set-AzSqlDatabaseLongTermRetentionPolicy'
+    'Set-AzSqlDatabaseLongTermRetentionPolicy', 
+    'Set-AzureRmSqlDatabaseLongTermRetentionPolicy'	               
+    'Set-AzureRmSqlDatabaseLongTermRetentionPolicy',
+    'Set-AzureRmSqlManagedInstanceTDEProtector',
+    'Get-AzureRmSqlManagedInstanceTDEProtector'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
