@@ -179,8 +179,12 @@ AzureRM.Cdn
 * Added Standard_Microsoft in Cdn pricing sku. 
 
 AzureRM.Compute
-* Move dependencies on Keyvault and Storage to the common dependencies.
+* Move dependencies on Keyvault and Storage to the common dependencies
 * Add support for more virutal machine sizes to AEM cmdlets
+* Add PublicIPPrefix parameter to New-AzureRmVmssIpConfig
+* Add ResourceId parameter to Invoke-AzureRmVMRunCommand cmdelt
+* Add Invoke-AzureRmVmssVMRunCommand cmdlet
+* Update the Compute client library to version 22.0.0
 
 AzureRM.Dns
 * Added support for alias record during dns record creation

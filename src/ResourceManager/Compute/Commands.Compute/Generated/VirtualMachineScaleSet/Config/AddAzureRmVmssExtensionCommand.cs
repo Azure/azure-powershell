@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vExtensions.Publisher = this.MyInvocation.BoundParameters.ContainsKey("Publisher") ? this.Publisher : null;
             vExtensions.Type = this.MyInvocation.BoundParameters.ContainsKey("Type") ? this.Type : null;
             vExtensions.TypeHandlerVersion = this.MyInvocation.BoundParameters.ContainsKey("TypeHandlerVersion") ? this.TypeHandlerVersion : null;
-            vExtensions.AutoUpgradeMinorVersion = this.MyInvocation.BoundParameters.ContainsKey("AutoUpgradeMinorVersion") ? this.AutoUpgradeMinorVersion : (bool?) null;
+            vExtensions.AutoUpgradeMinorVersion = this.MyInvocation.BoundParameters.ContainsKey("AutoUpgradeMinorVersion") ? this.AutoUpgradeMinorVersion : (bool?)null;
             vExtensions.Settings = this.MyInvocation.BoundParameters.ContainsKey("Setting") ? this.Setting : null;
             vExtensions.ProtectedSettings = this.MyInvocation.BoundParameters.ContainsKey("ProtectedSetting") ? this.ProtectedSetting : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);
