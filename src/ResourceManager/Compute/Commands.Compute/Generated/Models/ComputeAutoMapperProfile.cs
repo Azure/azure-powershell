@@ -132,6 +132,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSRunCommandDocumentBase, FROM.RunCommandDocumentBase>();
                 cfg.CreateMap<FROM.RollingUpgradeStatusInfo, TO.PSRollingUpgradeStatusInfo>();
                 cfg.CreateMap<TO.PSRollingUpgradeStatusInfo, FROM.RollingUpgradeStatusInfo>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSetIdentity, TO.PSVirtualMachineScaleSetIdentity>();
+                cfg.CreateMap<TO.PSVirtualMachineScaleSetIdentity, FROM.VirtualMachineScaleSetIdentity>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSet>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSet, FROM.VirtualMachineScaleSet>()
@@ -144,6 +146,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSUpgradeOperationHistoricalStatusInfo, FROM.UpgradeOperationHistoricalStatusInfo>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetSku, TO.PSVirtualMachineScaleSetSku>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetSku, FROM.VirtualMachineScaleSetSku>();
+                cfg.CreateMap<FROM.VirtualMachineInstanceView, FROM.VirtualMachineScaleSetVMInstanceView>();
+                cfg.CreateMap<FROM.VirtualMachineScaleSetVMInstanceView, FROM.VirtualMachineInstanceView>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVM>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVM, FROM.VirtualMachineScaleSetVM>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetVMInstanceView, TO.PSVirtualMachineScaleSetVMInstanceView>();

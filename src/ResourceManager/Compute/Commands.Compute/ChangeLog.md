@@ -19,6 +19,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add PublicIPPrefix parameter to New-AzureRmVmssIpConfig
+* Add ResourceId parameter to Invoke-AzureRmVMRunCommand cmdelt
+* Add Invoke-AzureRmVmssVMRunCommand cmdlet
+* Update the Compute client library to version 22.0.0.
 * Move dependencies on Keyvault and Storage to the common dependencies.
 * Add support for more virutal machine sizes to AEM cmdlets
 
