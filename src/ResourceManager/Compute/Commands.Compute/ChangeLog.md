@@ -23,9 +23,10 @@
 * Add ResourceId parameter to Invoke-AzureRmVMRunCommand cmdelt
 * Add Invoke-AzureRmVmssVMRunCommand cmdlet
 * Update the Compute client library to version 22.0.0.
+
+## Version 5.6.0
 * Move dependencies on Keyvault and Storage to the common dependencies.
 * Add support for more virutal machine sizes to AEM cmdlets
-
 
 ## Version 5.5.2
 * Fixed the issue that target is missing in error output.

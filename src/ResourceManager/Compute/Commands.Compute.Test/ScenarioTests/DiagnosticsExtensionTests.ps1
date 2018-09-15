@@ -237,7 +237,7 @@ function Test-VmssDiagnosticsExtension
         $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 
         $adminUsername = 'Foo12';
-        $adminPassword = $PLACEHOLDER;
+        $adminPassword = Get-PasswordForVM;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
