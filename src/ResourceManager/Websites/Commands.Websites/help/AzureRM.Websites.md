@@ -12,25 +12,25 @@ ARM (Azure Resource Manager) Web App and App Service Plan commands.
 
 ## AzureRM.Websites Cmdlets
 ### [Edit-AzureRmWebAppBackupConfiguration](Edit-AzureRmWebAppBackupConfiguration.md)
-
+Modifies an Azure Web App backup schedule.
 
 ### [Get-AzureRmAppServicePlan](Get-AzureRmAppServicePlan.md)
 Gets an Azure App Service plan in the specified resource group.
 
 ### [Get-AzureRmAppServicePlanMetrics](Get-AzureRmAppServicePlanMetrics.md)
-
+Gets usage metrics for an Azure Web App.
 
 ### [Get-AzureRmWebApp](Get-AzureRmWebApp.md)
 Gets Azure Web Apps in the specified resource group.
 
 ### [Get-AzureRmWebAppBackup](Get-AzureRmWebAppBackup.md)
-
+Gets an Azure Web App backup.
 
 ### [Get-AzureRmWebAppBackupConfiguration](Get-AzureRmWebAppBackupConfiguration.md)
-
+Gets an Azure Web App backup schedule.
 
 ### [Get-AzureRmWebAppBackupList](Get-AzureRmWebAppBackupList.md)
-
+Gets all backups of an Azure Web App.
 
 ### [Get-AzureRmWebAppCertificate](Get-AzureRmWebAppCertificate.md)
 Gets an Azure Web App certificate.
@@ -66,10 +66,10 @@ Creates an Azure App Service plan in a given Geo location.
 Creates an Azure Web App.
 
 ### [New-AzureRmWebAppBackup](New-AzureRmWebAppBackup.md)
-
+Creates an Azure Web App backup.
 
 ### [New-AzureRmWebAppDatabaseBackupSetting](New-AzureRmWebAppDatabaseBackupSetting.md)
-
+Creates an Azure Web App database backup setting to be used with New-AzureRmWebAppBackup.
 
 ### [New-AzureRmWebAppSlot](New-AzureRmWebAppSlot.md)
 Creates an Azure Web App slot.
@@ -84,28 +84,28 @@ Removes an Azure App Service plan.
 Removes an Azure Web App.
 
 ### [Remove-AzureRmWebAppBackup](Remove-AzureRmWebAppBackup.md)
-
+Removes an Azure Web App backup.
 
 ### [Remove-AzureRmWebAppSlot](Remove-AzureRmWebAppSlot.md)
-
+Removes an Azure Web App slot.
 
 ### [Remove-AzureRmWebAppSSLBinding](Remove-AzureRmWebAppSSLBinding.md)
 Removes an SSL binding from an uploaded certificate.
 
 ### [Reset-AzureRmWebAppPublishingProfile](Reset-AzureRmWebAppPublishingProfile.md)
-
+Resets the publishing credentials of an Azure Web App.
 
 ### [Reset-AzureRmWebAppSlotPublishingProfile](Reset-AzureRmWebAppSlotPublishingProfile.md)
-
+Resets the publishing credentials of an Azure Web App slot.
 
 ### [Restart-AzureRmWebApp](Restart-AzureRmWebApp.md)
 Restarts an Azure Web App.
 
 ### [Restart-AzureRmWebAppSlot](Restart-AzureRmWebAppSlot.md)
-
+Restarts an Azure Web App slot.
 
 ### [Restore-AzureRmWebAppBackup](Restore-AzureRmWebAppBackup.md)
-
+Restores an Azure Web App from a backup.
 
 ### [Restore-AzureRmWebAppSnapshot](Restore-AzureRmWebAppSnapshot.md)
 Restores a web app snapshot.
