@@ -135,6 +135,8 @@
 
 #### AzureRM.Websites
 * Updating to use the latest .NET SDK version (2.0.0)
+* New-AzureRmAppServicePlan -HyperV switch is added for create app service plan with windows container
+* New-AzureRmWebApp/ New-AzureRmWebAppSlot/ Set-AzureRmWebApp/ Set-AzureRmWebAppSlot - New parameters (–ContainerRegistryUser string -ContainerRegistryPassword secureString -EnableContainerContinuousDeployment) added for creating and managing windows container app
 
 ## 6.8.1 - August 2018
 #### General
