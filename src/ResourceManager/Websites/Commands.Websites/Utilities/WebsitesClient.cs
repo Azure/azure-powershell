@@ -221,9 +221,21 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WrappedWebsitesClient.WebApps().GetSlot(resourceGroupName, webSiteName, slotName) :
                 WrappedWebsitesClient.WebApps().Get(resourceGroupName, webSiteName);
 
-         GetWebAppConfiguration(resourceGroupName, webSiteName, slotName, site);
+            GetWebAppConfiguration(resourceGroupName, webSiteName, slotName, site);
 
             return site;
+        }
+
+        public bool WebAppExists(string resourceGroupName, string webSiteName, string slotName)
+        {
+            Site site = null;
+            string qualifiedSiteName;
+
+            site = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName) ?
+                WrappedWebsitesClient.WebApps().GetSlot(resourceGroupName, webSiteName, slotName) :
+                WrappedWebsitesClient.WebApps().Get(resourceGroupName, webSiteName);
+
+            return site != null;
         }
 
         public IEnumerable<Site> ListWebApps(string resourceGroupName, string webSiteName)
@@ -643,6 +655,26 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             else
             {
                 WrappedWebsitesClient.WebApps().RestoreSnapshot(resourceGroupName, webSiteName, restoreReq);
+            }
+        }
+
+        public IList<DeletedSite> GetDeletedSites()
+        {
+            return WrappedWebsitesClient.DeletedWebApps().List().ToList();
+        }
+
+        public void RestoreDeletedWebApp(string resourceGroupName, string webSiteName, string slotName,
+            DeletedAppRestoreRequest restoreReq)
+        {
+            string qualifiedSiteName;
+            bool useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                WrappedWebsitesClient.WebApps().BeginRestoreFromDeletedAppSlot(resourceGroupName, webSiteName, restoreReq, slotName);
+            }
+            else
+            {
+                WrappedWebsitesClient.WebApps().BeginRestoreFromDeletedApp(resourceGroupName, webSiteName, restoreReq);
             }
         }
 

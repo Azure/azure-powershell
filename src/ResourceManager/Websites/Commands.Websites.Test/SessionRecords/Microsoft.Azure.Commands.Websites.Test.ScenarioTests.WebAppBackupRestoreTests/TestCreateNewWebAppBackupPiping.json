@@ -976,7 +976,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"4CPaoIld3zA5Z43+LGkz3BgSvEUjeN03bh0zE/bheUqyXHT3cA94AL73A2DUa7pAPUnTHvrz411cswQDyjlO1Q==\",\r\n  \"key2\": \"39eqiojngsbxjUw7s3o81RwM9Ns4Tjz/t2k/Wjlj3RJ+gw3Lp5gQgMXuQ/tAjQIg6aJfwtzjrI2jZ9GG/m8B4A==\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"REDACTED\",\r\n  \"key2\": \"REDACTED\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -1024,7 +1024,7 @@
       "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps6453/providers/Microsoft.Web/sites/ps2798/backup?api-version=2018-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL3BzNjQ1My9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczI3OTgvYmFja3VwP2FwaS12ZXJzaW9uPTIwMTgtMDItMDE=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupName\": \"ps6304\",\r\n    \"storageAccountUrl\": \"https://stops6453.blob.core.windows.net/containerps6453?sv=2017-07-29&sr=b&sig=Y0kS6u5JgKJQ44dPB6GdR00jnsyL49rcx0fiumD0QyM%3D&se=2018-08-31T01%3A56%3A36Z&sp=rwdl\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupName\": \"ps6304\",\r\n    \"storageAccountUrl\": \"REDACTED\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1045,7 +1045,7 @@
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps6453/providers/Microsoft.Web/sites/ps2798\",\r\n  \"name\": \"ps2798\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"id\": 185,\r\n    \"storageAccountUrl\": \"https://stops6453.blob.core.windows.net/containerps6453?sv=2017-07-29&sr=b&sig=Y0kS6u5JgKJQ44dPB6GdR00jnsyL49rcx0fiumD0QyM%3D&se=2018-08-31T01%3A56%3A36Z&sp=rwdl\",\r\n    \"blobName\": \"ps6304\",\r\n    \"name\": \"ps6304\",\r\n    \"backupName\": \"ps6304\",\r\n    \"status\": \"Created\",\r\n    \"sizeInBytes\": 0,\r\n    \"created\": \"2018-08-30T23:56:37.1573454Z\",\r\n    \"log\": null,\r\n    \"databases\": null,\r\n    \"scheduled\": false,\r\n    \"correlationId\": \"2cac2465-2c2e-42f2-9cba-2958321ab362\",\r\n    \"websiteSizeInBytes\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps6453/providers/Microsoft.Web/sites/ps2798\",\r\n  \"name\": \"ps2798\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"id\": 185,\r\n    \"storageAccountUrl\": \"REDACTED\",\r\n    \"blobName\": \"ps6304\",\r\n    \"name\": \"ps6304\",\r\n    \"backupName\": \"ps6304\",\r\n    \"status\": \"Created\",\r\n    \"sizeInBytes\": 0,\r\n    \"created\": \"2018-08-30T23:56:37.1573454Z\",\r\n    \"log\": null,\r\n    \"databases\": null,\r\n    \"scheduled\": false,\r\n    \"correlationId\": \"2cac2465-2c2e-42f2-9cba-2958321ab362\",\r\n    \"websiteSizeInBytes\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "654"
@@ -1099,7 +1099,7 @@
       "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps6453/providers/Microsoft.Web/sites/ps2798/backup?api-version=2018-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL3BzNjQ1My9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczI3OTgvYmFja3VwP2FwaS12ZXJzaW9uPTIwMTgtMDItMDE=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupName\": \"ps4280\",\r\n    \"storageAccountUrl\": \"https://stops6453.blob.core.windows.net/containerps6453?sv=2017-07-29&sr=b&sig=Y0kS6u5JgKJQ44dPB6GdR00jnsyL49rcx0fiumD0QyM%3D&se=2018-08-31T01%3A56%3A36Z&sp=rwdl\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupName\": \"ps4280\",\r\n    \"storageAccountUrl\": \"READCTED\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1120,7 +1120,7 @@
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps6453/providers/Microsoft.Web/sites/ps2798\",\r\n  \"name\": \"ps2798\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"id\": 186,\r\n    \"storageAccountUrl\": \"https://stops6453.blob.core.windows.net/containerps6453?sv=2017-07-29&sr=b&sig=Y0kS6u5JgKJQ44dPB6GdR00jnsyL49rcx0fiumD0QyM%3D&se=2018-08-31T01%3A56%3A36Z&sp=rwdl\",\r\n    \"blobName\": \"ps4280\",\r\n    \"name\": \"ps4280\",\r\n    \"backupName\": \"ps4280\",\r\n    \"status\": \"Created\",\r\n    \"sizeInBytes\": 0,\r\n    \"created\": \"2018-08-30T23:57:09.0318409Z\",\r\n    \"log\": null,\r\n    \"databases\": null,\r\n    \"scheduled\": false,\r\n    \"correlationId\": \"c045405f-187f-4e30-88ff-a5f218e71d93\",\r\n    \"websiteSizeInBytes\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps6453/providers/Microsoft.Web/sites/ps2798\",\r\n  \"name\": \"ps2798\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"id\": 186,\r\n    \"storageAccountUrl\": \"REDACTED\",\r\n    \"blobName\": \"ps4280\",\r\n    \"name\": \"ps4280\",\r\n    \"backupName\": \"ps4280\",\r\n    \"status\": \"Created\",\r\n    \"sizeInBytes\": 0,\r\n    \"created\": \"2018-08-30T23:57:09.0318409Z\",\r\n    \"log\": null,\r\n    \"databases\": null,\r\n    \"scheduled\": false,\r\n    \"correlationId\": \"c045405f-187f-4e30-88ff-a5f218e71d93\",\r\n    \"websiteSizeInBytes\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "654"
@@ -1189,7 +1189,7 @@
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps6453/providers/Microsoft.Web/sites/ps2798/backups/185\",\r\n  \"name\": \"185\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"id\": 185,\r\n    \"storageAccountUrl\": \"https://stops6453.blob.core.windows.net/containerps6453?sv=2017-07-29&sr=b&sig=Y0kS6u5JgKJQ44dPB6GdR00jnsyL49rcx0fiumD0QyM%3D&se=2018-08-31T01%3A56%3A36Z&sp=rwdl\",\r\n    \"blobName\": \"ps6304.zip\",\r\n    \"name\": \"ps6304\",\r\n    \"backupName\": \"ps6304\",\r\n    \"status\": \"Failed\",\r\n    \"sizeInBytes\": 0,\r\n    \"created\": \"2018-08-30T23:56:37.1573454\",\r\n    \"log\": \"Storage access failed. The remote server returned an error: (403) Forbidden.. Please delete and recreate backup schedule to mitigate.\",\r\n    \"databases\": null,\r\n    \"scheduled\": false,\r\n    \"finishedTimeStamp\": \"2018-08-30T23:56:57.8254044\",\r\n    \"correlationId\": \"2cac2465-2c2e-42f2-9cba-2958321ab362\",\r\n    \"websiteSizeInBytes\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps6453/providers/Microsoft.Web/sites/ps2798/backups/185\",\r\n  \"name\": \"185\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"id\": 185,\r\n    \"storageAccountUrl\": \"REDACTED\",\r\n    \"blobName\": \"ps6304.zip\",\r\n    \"name\": \"ps6304\",\r\n    \"backupName\": \"ps6304\",\r\n    \"status\": \"Failed\",\r\n    \"sizeInBytes\": 0,\r\n    \"created\": \"2018-08-30T23:56:37.1573454\",\r\n    \"log\": \"Storage access failed. The remote server returned an error: (403) Forbidden.. Please delete and recreate backup schedule to mitigate.\",\r\n    \"databases\": null,\r\n    \"scheduled\": false,\r\n    \"finishedTimeStamp\": \"2018-08-30T23:56:57.8254044\",\r\n    \"correlationId\": \"2cac2465-2c2e-42f2-9cba-2958321ab362\",\r\n    \"websiteSizeInBytes\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "846"
