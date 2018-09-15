@@ -88,6 +88,11 @@ namespace Microsoft.Azure.Management.WebSites
             return client.WebApps;
         }
 
+        public static IDeletedWebAppsOperations DeletedWebApps(this WebSiteManagementClient client)
+        {
+            return client.DeletedWebApps;
+        }
+
         public static Site CreateOrUpdateSiteSlot(this IWebAppsOperations webApp,
             string resourceGroupName, 
             string name, 

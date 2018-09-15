@@ -1114,7 +1114,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"oETjhLEbVZGFfHVxrwze71dwdVnGvHVoSrxWQNdd3Jyd6b613VJasMBBh//HYcpJUmEnpP31EGxLsnrmcLAsqw==\",\r\n  \"key2\": \"LFiY/wawxwOozZIzTtkUCoYFBBqzM31CsrOpCbQX5MwiIUe7XvKTyuAa487whGTf8FbZ7Bu0Djo9JTZGNDcdLA==\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"REDACTED\",\r\n  \"key2\": \"REDACTED\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -1162,7 +1162,7 @@
       "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps5018/providers/Microsoft.Web/sites/ps1252/backup?api-version=2018-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL3BzNTAxOC9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczEyNTIvYmFja3VwP2FwaS12ZXJzaW9uPTIwMTgtMDItMDE=",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupName\": \"ps6228\",\r\n    \"storageAccountUrl\": \"https://stops5018.blob.core.windows.net/containerps5018?sv=2017-07-29&sr=b&sig=H2%2Bo1ctt3wReTGK2ZuxZnMlUTN9KobOk2vmDGdSqnnA%3D&se=2018-09-10T21%3A07%3A27Z&sp=rwdl\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupName\": \"ps6228\",\r\n    \"storageAccountUrl\": \"REDACTED\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1183,7 +1183,7 @@
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps5018/providers/Microsoft.Web/sites/ps1252\",\r\n  \"name\": \"ps1252\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"id\": 28,\r\n    \"storageAccountUrl\": \"https://stops5018.blob.core.windows.net/containerps5018?sv=2017-07-29&sr=b&sig=H2%2Bo1ctt3wReTGK2ZuxZnMlUTN9KobOk2vmDGdSqnnA%3D&se=2018-09-10T21%3A07%3A27Z&sp=rwdl\",\r\n    \"blobName\": \"ps6228\",\r\n    \"name\": \"ps6228\",\r\n    \"backupName\": \"ps6228\",\r\n    \"status\": \"Created\",\r\n    \"sizeInBytes\": 0,\r\n    \"created\": \"2018-09-10T19:07:27.8339617Z\",\r\n    \"log\": null,\r\n    \"databases\": null,\r\n    \"scheduled\": false,\r\n    \"correlationId\": \"3ff9d5a0-2971-4563-9c79-50563862c3ad\",\r\n    \"websiteSizeInBytes\": null\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps5018/providers/Microsoft.Web/sites/ps1252\",\r\n  \"name\": \"ps1252\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"id\": 28,\r\n    \"storageAccountUrl\": \"REDACTED\",\r\n    \"blobName\": \"ps6228\",\r\n    \"name\": \"ps6228\",\r\n    \"backupName\": \"ps6228\",\r\n    \"status\": \"Created\",\r\n    \"sizeInBytes\": 0,\r\n    \"created\": \"2018-09-10T19:07:27.8339617Z\",\r\n    \"log\": null,\r\n    \"databases\": null,\r\n    \"scheduled\": false,\r\n    \"correlationId\": \"3ff9d5a0-2971-4563-9c79-50563862c3ad\",\r\n    \"websiteSizeInBytes\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "655"
@@ -1252,7 +1252,7 @@
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps5018/providers/Microsoft.Web/sites/ps1252/backups/28\",\r\n      \"name\": \"28\",\r\n      \"type\": \"Microsoft.Web/sites/backups\",\r\n      \"location\": \"West US\",\r\n      \"properties\": {\r\n        \"id\": 28,\r\n        \"storageAccountUrl\": \"https://stops5018.blob.core.windows.net/containerps5018?sv=2017-07-29&sr=b&sig=H2%2Bo1ctt3wReTGK2ZuxZnMlUTN9KobOk2vmDGdSqnnA%3D&se=2018-09-10T21%3A07%3A27Z&sp=rwdl\",\r\n        \"blobName\": \"ps6228\",\r\n        \"name\": \"ps6228\",\r\n        \"backupName\": \"ps6228\",\r\n        \"status\": \"Created\",\r\n        \"sizeInBytes\": 0,\r\n        \"created\": \"2018-09-10T19:07:27.8339617\",\r\n        \"log\": null,\r\n        \"databases\": null,\r\n        \"scheduled\": false,\r\n        \"correlationId\": \"3ff9d5a0-2971-4563-9c79-50563862c3ad\",\r\n        \"websiteSizeInBytes\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps5018/providers/Microsoft.Web/sites/ps1252/backups/28\",\r\n      \"name\": \"28\",\r\n      \"type\": \"Microsoft.Web/sites/backups\",\r\n      \"location\": \"West US\",\r\n      \"properties\": {\r\n        \"id\": 28,\r\n        \"storageAccountUrl\": \"REDACTED\",\r\n        \"blobName\": \"ps6228\",\r\n        \"name\": \"ps6228\",\r\n        \"backupName\": \"ps6228\",\r\n        \"status\": \"Created\",\r\n        \"sizeInBytes\": 0,\r\n        \"created\": \"2018-09-10T19:07:27.8339617\",\r\n        \"log\": null,\r\n        \"databases\": null,\r\n        \"scheduled\": false,\r\n        \"correlationId\": \"3ff9d5a0-2971-4563-9c79-50563862c3ad\",\r\n        \"websiteSizeInBytes\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "707"
@@ -1321,7 +1321,7 @@
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps5018/providers/Microsoft.Web/sites/ps1252/backups/28\",\r\n      \"name\": \"28\",\r\n      \"type\": \"Microsoft.Web/sites/backups\",\r\n      \"location\": \"West US\",\r\n      \"properties\": {\r\n        \"id\": 28,\r\n        \"storageAccountUrl\": \"https://stops5018.blob.core.windows.net/containerps5018?sv=2017-07-29&sr=b&sig=H2%2Bo1ctt3wReTGK2ZuxZnMlUTN9KobOk2vmDGdSqnnA%3D&se=2018-09-10T21%3A07%3A27Z&sp=rwdl\",\r\n        \"blobName\": \"ps6228\",\r\n        \"name\": \"ps6228\",\r\n        \"backupName\": \"ps6228\",\r\n        \"status\": \"Created\",\r\n        \"sizeInBytes\": 0,\r\n        \"created\": \"2018-09-10T19:07:27.8339617\",\r\n        \"log\": null,\r\n        \"databases\": null,\r\n        \"scheduled\": false,\r\n        \"correlationId\": \"3ff9d5a0-2971-4563-9c79-50563862c3ad\",\r\n        \"websiteSizeInBytes\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps5018/providers/Microsoft.Web/sites/ps1252/backups/28\",\r\n      \"name\": \"28\",\r\n      \"type\": \"Microsoft.Web/sites/backups\",\r\n      \"location\": \"West US\",\r\n      \"properties\": {\r\n        \"id\": 28,\r\n        \"storageAccountUrl\": \"REDACTED\",\r\n        \"blobName\": \"ps6228\",\r\n        \"name\": \"ps6228\",\r\n        \"backupName\": \"ps6228\",\r\n        \"status\": \"Created\",\r\n        \"sizeInBytes\": 0,\r\n        \"created\": \"2018-09-10T19:07:27.8339617\",\r\n        \"log\": null,\r\n        \"databases\": null,\r\n        \"scheduled\": false,\r\n        \"correlationId\": \"3ff9d5a0-2971-4563-9c79-50563862c3ad\",\r\n        \"websiteSizeInBytes\": null\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "707"

@@ -1114,7 +1114,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"key1\": \"rNoBDZ1e03CSiG/H0YZBS634n66KUyL9d4mZZSo+mR3VxacdNVsltVbD+he2EkK1eerAdBM/Ijge0tQrSJY+pw==\",\r\n  \"key2\": \"sYzhkn27uF1F+nS92xPoiVNZaur5p3zCkz04wuup7Bpv/KXtKMre0epSNoGRJXRKYRviQldtzStt/EJmEnhk3A==\"\r\n}",
+      "ResponseBody": "{\r\n  \"key1\": \"REDACTED\",\r\n  \"key2\": \"REDACTED\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -1162,7 +1162,7 @@
       "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps8411/providers/Microsoft.Web/sites/ps9704/config/backup?api-version=2018-02-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL3BzODQxMS9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9wczk3MDQvY29uZmlnL2JhY2t1cD9hcGktdmVyc2lvbj0yMDE4LTAyLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"enabled\": true,\r\n    \"storageAccountUrl\": \"https://stops8411.blob.core.windows.net/containerps8411?sv=2017-07-29&sr=b&sig=zLVlJIPyWyeF2U2aP9bGOj%2B8rx5NA1MmE0s%2Bvq3L8t4%3D&se=2018-09-10T21%3A14%3A00Z&sp=rwdl\",\r\n    \"backupSchedule\": {\r\n      \"frequencyInterval\": 7,\r\n      \"frequencyUnit\": \"Day\",\r\n      \"keepAtLeastOneBackup\": true,\r\n      \"retentionPeriodInDays\": 3,\r\n      \"startTime\": \"2018-09-11T19:14:00.4105521Z\"\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"enabled\": true,\r\n    \"storageAccountUrl\": \"REDACTED\",\r\n    \"backupSchedule\": {\r\n      \"frequencyInterval\": 7,\r\n      \"frequencyUnit\": \"Day\",\r\n      \"keepAtLeastOneBackup\": true,\r\n      \"retentionPeriodInDays\": 3,\r\n      \"startTime\": \"2018-09-11T19:14:00.4105521Z\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1249,7 +1249,7 @@
           "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/2.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps8411/providers/Microsoft.Web/sites/ps9704\",\r\n  \"name\": \"ps9704\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"name\": \"ps9704\",\r\n    \"backupName\": \"ps9704\",\r\n    \"enabled\": true,\r\n    \"storageAccountUrl\": \"https://stops8411.blob.core.windows.net/containerps8411?sv=2017-07-29&sr=b&sig=zLVlJIPyWyeF2U2aP9bGOj%2B8rx5NA1MmE0s%2Bvq3L8t4%3D&se=2018-09-10T21%3A14%3A00Z&sp=rwdl\",\r\n    \"backupSchedule\": {\r\n      \"frequencyInterval\": 7,\r\n      \"frequencyUnit\": \"Day\",\r\n      \"keepAtLeastOneBackup\": true,\r\n      \"retentionPeriodInDays\": 3,\r\n      \"startTime\": \"2018-09-11T19:14:00.4105521\"\r\n    },\r\n    \"databases\": null,\r\n    \"type\": \"Default\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/ps8411/providers/Microsoft.Web/sites/ps9704\",\r\n  \"name\": \"ps9704\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"properties\": {\r\n    \"name\": \"ps9704\",\r\n    \"backupName\": \"ps9704\",\r\n    \"enabled\": true,\r\n    \"storageAccountUrl\": \"REDACTED\",\r\n    \"backupSchedule\": {\r\n      \"frequencyInterval\": 7,\r\n      \"frequencyUnit\": \"Day\",\r\n      \"keepAtLeastOneBackup\": true,\r\n      \"retentionPeriodInDays\": 3,\r\n      \"startTime\": \"2018-09-11T19:14:00.4105521\"\r\n    },\r\n    \"databases\": null,\r\n    \"type\": \"Default\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "634"
