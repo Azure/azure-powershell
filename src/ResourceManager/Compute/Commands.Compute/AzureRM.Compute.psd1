@@ -212,8 +212,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Move dependencies on Keyvault and Storage to the common dependencies.
-* Add support for more virutal machine sizes to AEM cmdlets'
+        ReleaseNotes = '* Move dependencies on Keyvault and Storage to the common dependencies
+* Add support for more virutal machine sizes to AEM cmdlets
+* Add PublicIPPrefix parameter to New-AzureRmVmssIpConfig
+* Add ResourceId parameter to Invoke-AzureRmVMRunCommand cmdelt
+* Add Invoke-AzureRmVmssVMRunCommand cmdlet
+* Update the Compute client library to version 22.0.0'
 
         # Prerelease string of this module
         # Prerelease = ''
