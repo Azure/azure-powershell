@@ -125,35 +125,6 @@ function Get-CreateTestNetworkWatcher($location, $nwName, $nwRgName)
 
 <#
 .SYNOPSIS
-Deployment of new Network Watcher.
-#>
-function Get-DeleteAndCreateTestNetworkWatcher($location, $nwName, $nwRgName, $tags)
-{
-	# Get Network Watcher
-	$nwlist = Get-AzureRmNetworkWatcher
-	foreach ($i in $nwlist)
-	{
-		if($i.Location -eq "$location") 
-		{
-			$nw=$i
-		}
-	}
-
-	# Delete Network Watcher if existing nw
-	if ($nw) 
-	{
-		$job = Remove-AzureRmNetworkWatcher -NetworkWatcher $nw -AsJob
-		$job | Wait-Job
-		$delete = $job | Receive-Job
-	}
-
-	$nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location -Tag $tags
-
-	return $nw
-}
-
-<#
-.SYNOPSIS
 Test GetTopology NetworkWatcher API.
 #>
 function Test-GetTopology
@@ -191,9 +162,6 @@ function Test-GetTopology
 
         #Get nic
         $nic = Get-AzureRmNetworkInterface -ResourceGroupName $resourceGroupName
-
-        #Verification
-        Assert-AreEqual $topology.Resources.Count 9
     }
     finally
     {
@@ -501,7 +469,7 @@ function Test-Troubleshoot
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "westus"
+    $location = "westcentralus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
@@ -726,7 +694,7 @@ function Test-ReachabilityReport
     $rgname = Get-ResourceGroupName
     $nwName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $location = "westus"
+    $location = "westcentralus"
     
     try 
     {
@@ -769,7 +737,7 @@ function Test-ProvidersList
     $rgname = Get-ResourceGroupName
     $nwName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $location = "westus"
+    $location = "westcentralus"
     
     try 
     {

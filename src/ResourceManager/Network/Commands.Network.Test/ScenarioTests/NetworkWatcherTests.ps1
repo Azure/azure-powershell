@@ -47,7 +47,7 @@ function Test-NetworkWatcherCRUD
     $nwName = Get-ResourceName
 	$rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $location = "westus"
+    $location = "westcentralus"
     
     try 
     {
