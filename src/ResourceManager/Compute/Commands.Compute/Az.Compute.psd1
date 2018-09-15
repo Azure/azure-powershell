@@ -174,7 +174,8 @@ CmdletsToExport = 'Remove-AzAvailabilitySet', 'Get-AzAvailabilitySet',
     'Export-AzLogAnalyticRequestRateByInterval', 
     'Export-AzLogAnalyticThrottledRequests', 
     'Repair-AzVmssServiceFabricUpdateDomain', 
-    'New-AzVMDataDisk', 'Update-AzVmssVM'
+    'New-AzVMDataDisk', 'Update-AzVmssVM',
+    'New-AzVmssIpTagConfig', 'Invoke-AzVmssVMRunCommand'
 
 # Variables to export from this module
 # VariablesToExport = @()

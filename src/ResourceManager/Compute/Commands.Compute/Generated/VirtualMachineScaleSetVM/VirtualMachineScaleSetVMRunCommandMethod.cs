@@ -30,16 +30,16 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVM", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSVirtualMachineScaleSetVM))]
-    public partial class UpdateAzureRmVmssVM : ComputeAutomationBaseCmdlet
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssVMRunCommand", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSRunCommandResult))]
+    public partial class InvokeAzureRmVmssVMRunCommand : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.VMScaleSetName, VerbsData.Update))
+                if (ShouldProcess(this.VMScaleSetName, VerbsLifecycle.Invoke))
                 {
                     string resourceGroupName;
                     string vmScaleSetName;
@@ -62,35 +62,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             instanceId = this.InstanceId;
                             break;
                     }
-                    VirtualMachineScaleSetVM parameters = new VirtualMachineScaleSetVM();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSetVM, VirtualMachineScaleSetVM>(this.VirtualMachineScaleSetVM, parameters);
-
-                    if (this.ParameterSetName != "ObjectParameter")
+                    RunCommandInput parameters = new RunCommandInput();
+                    parameters.CommandId = this.CommandId;
+                    if (this.ScriptPath != null)
                     {
-                        parameters = VirtualMachineScaleSetVMsClient.Get(resourceGroupName, vmScaleSetName, instanceId);
+                        parameters.Script = new List<string>();
+                        PathIntrinsics currentPath = SessionState.Path;
+                        var filePath = new System.IO.FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(this.ScriptPath));
+                        string fileContent = Commands.Common.Authentication.Abstractions.FileUtilities.DataStore.ReadFileAsText(filePath.FullName);
+                        parameters.Script = fileContent.Split(new string[] { "\r\n", "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
+                    }
+                    if (this.Parameter != null)
+                    {
+                        var vParameter = new List<RunCommandInputParameter>();
+                        foreach (var key in this.Parameter.Keys)
+                        {
+                            RunCommandInputParameter p = new RunCommandInputParameter();
+                            p.Name = key.ToString();
+                            p.Value = this.Parameter[key].ToString();
+                            vParameter.Add(p);
+                        }
+                        parameters.Parameters = vParameter;
                     }
 
-                    if (this.DataDisk != null)
-                    {
-                        if (parameters.StorageProfile == null)
-                        {
-                            parameters.StorageProfile = new StorageProfile();
-                        }
-
-                        if (parameters.StorageProfile.DataDisks == null)
-                        {
-                            parameters.StorageProfile.DataDisks = new List<DataDisk>();
-                        }
-
-                        foreach (var d in this.DataDisk)
-                        {
-                            parameters.StorageProfile.DataDisks.Add(d);
-                        }
-                    }
-
-                    var result = VirtualMachineScaleSetVMsClient.Update(resourceGroupName, vmScaleSetName, instanceId, parameters);
-                    var psObject = new PSVirtualMachineScaleSetVM();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVM>(result, psObject);
+                    var result = VirtualMachineScaleSetVMsClient.RunCommand(resourceGroupName, vmScaleSetName, instanceId, parameters);
+                    var psObject = new PSRunCommandResult();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<RunCommandResult, PSRunCommandResult>(result, psObject);
                     WriteObject(psObject);
                 }
             });
@@ -98,7 +95,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 1,
+            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
@@ -106,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 2,
+            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [Alias("Name")]
@@ -114,14 +111,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 3,
+            Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         public string InstanceId { get; set; }
 
         [Parameter(
-            ValueFromPipeline = true)]
-        public Compute.Models.PSVirtualMachineDataDisk [] DataDisk { get; set; }
+            Mandatory = true)]
+        [AllowNull]
+        public string CommandId { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        [AllowNull]
+        public string ScriptPath { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        [AllowNull]
+        public Hashtable Parameter { get; set; }
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",
@@ -134,7 +142,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "ObjectParameter",
             Position = 0,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
         public PSVirtualMachineScaleSetVM VirtualMachineScaleSetVM { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
