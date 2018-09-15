@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
     /// <summary>
     /// Restores a deleted Azure Web App's contents and settings to an existing web app
     /// </summary>
-    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeletedWebApp", DefaultParameterSetName = FromDeletedResourceNameParameterSet), OutputType(typeof(PSSite))]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeletedWebApp", SupportsShouldProcess = true, DefaultParameterSetName = FromDeletedResourceNameParameterSet), OutputType(typeof(PSSite))]
     public class RestoreAzureDeletedWebApp : WebAppBaseClientCmdLet
     {
         private const string FromDeletedAppParameterSet = "FromDeletedApp";
