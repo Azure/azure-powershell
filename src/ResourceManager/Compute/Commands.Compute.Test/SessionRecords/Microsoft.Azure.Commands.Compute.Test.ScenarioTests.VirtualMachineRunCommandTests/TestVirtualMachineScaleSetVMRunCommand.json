@@ -6678,7 +6678,8 @@
   ],
   "Names": {
     "Test-VirtualMachineScaleSetVMRunCommand": [
-      "crptestps2244"
+      "crptestps2244",
+      "ps4941"
     ]
   },
   "Variables": {

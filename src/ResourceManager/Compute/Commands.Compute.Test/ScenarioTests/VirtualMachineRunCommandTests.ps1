@@ -154,7 +154,7 @@ function Test-VirtualMachineScaleSetVMRunCommand
         $vmssName = 'vmss' + $rgname;
 
         $adminUsername = 'Foo12';
-        $adminPassword = $PLACEHOLDER;
+        $adminPassword = Get-PasswordForVM;
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
 

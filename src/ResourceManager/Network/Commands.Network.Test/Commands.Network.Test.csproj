@@ -67,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NetworkResourcesController.cs" />
     <Compile Include="ScenarioTests\ApplicationGatewayTests.cs" />
+    <Compile Include="ScenarioTests\AvailableDelegationsTests.cs" />
     <Compile Include="ScenarioTests\CortexTests.cs" />
     <Compile Include="ScenarioTests\AzureFirewallTests.cs" />
     <Compile Include="ScenarioTests\DdosProtectionPlanTests.cs" />
@@ -102,6 +103,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ScenarioTests\ApplicationGatewayTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\AvailableDelegationsTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\DdosProtectionPlanTests.ps1">
@@ -243,6 +247,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.AvailableEndpointServicesTests\TestAvailableEndpointServicesList.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.AvailableDelegationsTests\TestAvailableDelegationsList.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.AzureFirewallTests\TestAzureFirewallAllocateAndDeallocate.json">
@@ -640,6 +647,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestResourceNavigationLinksOnSubnetCRUD.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkSubnetDelegationCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkCRUD.json">
