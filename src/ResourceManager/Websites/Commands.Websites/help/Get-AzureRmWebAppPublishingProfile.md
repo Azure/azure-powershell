@@ -21,8 +21,9 @@ Get-AzureRmWebAppPublishingProfile [[-OutputFile] <String>] [[-Format] <String>]
 
 ### S2
 ```
-Get-AzureRmWebAppPublishingProfile [[-OutputFile] <String>] [[-Format] <String>] [-WebApp] <Site>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmWebAppPublishingProfile [[-OutputFile] <String>] [[-Format] <String>]
+ [-IncludeDisasterRecoveryEndpoints] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +67,21 @@ Accepted values: WebDeploy, FileZilla3, Ftp
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeDisasterRecoveryEndpoints
+Include the disaster recovery endpoints if true
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: None
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -120,7 +136,7 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.Site
+Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
 Parameter Sets: S2
 Aliases:
 
