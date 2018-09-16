@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the step {0}?.
+        /// </summary>
+        internal static string ConfirmRemoveStep {
+            get {
+                return ResourceManager.GetString("ConfirmRemoveStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the topology {0}?.
         /// </summary>
         internal static string ConfirmRemoveTopology {
@@ -169,6 +178,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create step.
+        /// </summary>
+        internal static string CreateStep {
+            get {
+                return ResourceManager.GetString("CreateStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removed artifact source {0}..
         /// </summary>
         internal static string RemovedArtifactSource {
@@ -201,6 +219,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         internal static string RemovedServiceUnit {
             get {
                 return ResourceManager.GetString("RemovedServiceUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step {0} deleted..
+        /// </summary>
+        internal static string RemovedStep {
+            get {
+                return ResourceManager.GetString("RemovedStep", resourceCulture);
             }
         }
         
@@ -246,6 +273,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         internal static string RemovingServiceUnit {
             get {
                 return ResourceManager.GetString("RemovingServiceUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing step {0}.
+        /// </summary>
+        internal static string RemovingStep {
+            get {
+                return ResourceManager.GetString("RemovingStep", resourceCulture);
             }
         }
         
@@ -300,6 +336,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         internal static string ServiceUnitAlreadyExists {
             get {
                 return ResourceManager.GetString("ServiceUnitAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified step already exists..
+        /// </summary>
+        internal static string StepAlreadyExists {
+            get {
+                return ResourceManager.GetString("StepAlreadyExists", resourceCulture);
             }
         }
         
@@ -363,6 +408,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager {
         internal static string UpdateServiceUnit {
             get {
                 return ResourceManager.GetString("UpdateServiceUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update step.
+        /// </summary>
+        internal static string UpdateStep {
+            get {
+                return ResourceManager.GetString("UpdateStep", resourceCulture);
             }
         }
     }

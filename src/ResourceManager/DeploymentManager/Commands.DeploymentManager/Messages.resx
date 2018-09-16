@@ -219,4 +219,22 @@
   <data name="RemovedServiceUnit" xml:space="preserve">
     <value>Removed service unit {0}</value>
   </data>
+  <data name="ConfirmRemoveStep" xml:space="preserve">
+    <value>Are you sure you want to remove the step {0}?</value>
+  </data>
+  <data name="CreateStep" xml:space="preserve">
+    <value>Create step</value>
+  </data>
+  <data name="RemovedStep" xml:space="preserve">
+    <value>Step {0} deleted.</value>
+  </data>
+  <data name="RemovingStep" xml:space="preserve">
+    <value>Removing step {0}</value>
+  </data>
+  <data name="StepAlreadyExists" xml:space="preserve">
+    <value>The specified step already exists.</value>
+  </data>
+  <data name="UpdateStep" xml:space="preserve">
+    <value>Update step</value>
+  </data>
 </root>

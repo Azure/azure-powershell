@@ -91,7 +91,11 @@ CmdletsToExport = 'Get-AzureRmDeploymentManagerArtifactSource',
                'Get-AzureRmDeploymentManagerServiceUnit', 
                'New-AzureRmDeploymentManagerServiceUnit', 
                'Set-AzureRmDeploymentManagerServiceUnit', 
-               'Remove-AzureRmDeploymentManagerServiceUnit'
+               'Remove-AzureRmDeploymentManagerServiceUnit',
+               'Get-AzureRmDeploymentManagerStep', 
+               'New-AzureRmDeploymentManagerStep', 
+               'Set-AzureRmDeploymentManagerStep', 
+               'Remove-AzureRmDeploymentManagerStep'
 
 # Variables to export from this module
 # VariablesToExport = @()

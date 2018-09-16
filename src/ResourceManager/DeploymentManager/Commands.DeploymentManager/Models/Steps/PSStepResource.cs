@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
         public PSStepResource(string resourceGroupName, StepResource stepResource) : base(stepResource)
         {
             this.ResourceGroupName = resourceGroupName;
-            this.StepType = stepResource.StepType;
-            this.Attributes = stepResource.Attributes;
+            this.StepProperties = new PSWaitStepProperties((WaitStepProperties)stepResource.Properties);
         }
 
         /// <summary>
@@ -37,19 +36,10 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
         public string ResourceGroupName { get; set; }
 
 		/// <summary>
-		/// Gets or sets the type of step.
-		/// </summary>
-		public string StepType
-		{
-			get;
-			set;
-		}
-
-		/// <summary>
 		/// Gets or sets provides the input parameters that correspond to the
 		/// stepType.
 		/// </summary>
-		public object Attributes
+		public PSStepProperties StepProperties 
 		{
 			get;
 			set;
@@ -59,8 +49,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
         {
             return new StepResource(
                 location: this.Location,
-                stepType: this.StepType,
-                attributes: this.Attributes,
+                properties: this.StepProperties.ToSdkType(),
                 id: this.Id,
                 name: this.Name,
                 type: this.Type,

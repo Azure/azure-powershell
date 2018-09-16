@@ -35,10 +35,10 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
             this.ServiceTopologyName = serviceTopologyName;
             this.ServiceName = serviceName;
             this.TargetResourceGroup = serviceUnitResource.TargetResourceGroup;
-            this.TemplateUri = serviceUnitResource.TemplateUri;
-            this.ParametersUri = serviceUnitResource.ParametersUri;
-            this.ParametersArtifactSourceRelativePath = serviceUnitResource.ParametersArtifactSourceRelativePath;
-            this.TemplateArtifactSourceRelativePath = serviceUnitResource.TemplateArtifactSourceRelativePath;
+            this.TemplateUri = serviceUnitResource.Artifacts.TemplateUri;
+            this.ParametersUri = serviceUnitResource.Artifacts.ParametersUri;
+            this.ParametersArtifactSourceRelativePath = serviceUnitResource.Artifacts.ParametersArtifactSourceRelativePath;
+            this.TemplateArtifactSourceRelativePath = serviceUnitResource.Artifacts.TemplateArtifactSourceRelativePath;
         }
 
         /// <summary>
@@ -61,11 +61,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
         /// </summary>
         public string TargetResourceGroup { get; set; }
 
-		/// <summary>
-		/// Gets or sets describes the type of ARM deployment to be performed
-		/// on the resource. Possible values include: 'Complete', 'Incremental'
-		/// </summary>
-		public string DeploymentMode { get; set; }
+        /// <summary>
+        /// Gets or sets describes the type of ARM deployment to be performed
+        /// on the resource. Possible values include: 'Complete', 'Incremental'
+        /// </summary>
+        public string DeploymentMode { get; set; }
 
         /// <summary>
         /// Gets or sets the SAS URI of the ARM template.
@@ -98,10 +98,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
                 type: this.Type, 
                 tags: TagsConversionHelper.CreateTagDictionary(this.Tags, validate: true))
             {
-                TemplateUri = this.TemplateUri,
-                ParametersUri = this.ParametersUri,
-                TemplateArtifactSourceRelativePath = this.TemplateArtifactSourceRelativePath,
-                ParametersArtifactSourceRelativePath = this.ParametersArtifactSourceRelativePath
+                Artifacts = new ServiceUnitArtifacts()
+                {
+                    TemplateUri = this.TemplateUri,
+                    ParametersUri = this.ParametersUri,
+                    TemplateArtifactSourceRelativePath = this.TemplateArtifactSourceRelativePath,
+                    ParametersArtifactSourceRelativePath = this.ParametersArtifactSourceRelativePath
+                }
             };
         }
     }

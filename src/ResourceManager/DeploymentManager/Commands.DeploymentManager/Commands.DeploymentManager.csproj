@@ -43,6 +43,9 @@
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.13\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\DeploymentManagerClient.cs" />
@@ -52,20 +55,24 @@
     <Compile Include="Commands\GetService.cs" />
     <Compile Include="Commands\GetServiceTopology.cs" />
     <Compile Include="Commands\GetServiceUnit.cs" />
+    <Compile Include="Commands\GetStep.cs" />
     <Compile Include="Commands\NewArtifactSource.cs" />
     <Compile Include="Commands\NewService.cs" />
     <Compile Include="Commands\NewServiceTopology.cs" />
     <Compile Include="Commands\NewServiceUnit.cs" />
+    <Compile Include="Commands\NewStep.cs" />
     <Compile Include="Commands\RemoveArtifactSource.cs" />
     <Compile Include="Commands\RemoveRollout.cs" />
     <Compile Include="Commands\RemoveService.cs" />
     <Compile Include="Commands\RemoveServiceTopology.cs" />
     <Compile Include="Commands\RemoveServiceUnit.cs" />
+    <Compile Include="Commands\RemoveStep.cs" />
     <Compile Include="Commands\RestartRollout.cs" />
     <Compile Include="Commands\SetArtifactSource.cs" />
     <Compile Include="Commands\SetService.cs" />
     <Compile Include="Commands\SetServiceTopology.cs" />
     <Compile Include="Commands\SetServiceUnit.cs" />
+    <Compile Include="Commands\SetStep.cs" />
     <Compile Include="Commands\StopRollout.cs" />
     <Compile Include="Messages.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -88,7 +95,9 @@
     <Compile Include="Models\Rollout\PSServiceUnit.cs" />
     <Compile Include="Models\ServiceTopology\PSServiceUnitResource.cs" />
     <Compile Include="Models\Rollout\PSStepOperationInfo.cs" />
+    <Compile Include="Models\Steps\PSStepProperties.cs" />
     <Compile Include="Models\Steps\PSStepResource.cs" />
+    <Compile Include="Models\Steps\PSWaitStepProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -166,18 +166,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
             return DeploymentManagerClient.ResourceExists(psServiceResource, this.GetService);
         }
 
-        internal PSStepResource PutStep(PSStepResource psStepResource)
-        {
-            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
-
-            var stepResource = _client.Steps.Create(
-                psStepResource.ResourceGroupName,
-                psStepResource.Name,
-                psStepResource.ToSdkType());
-
-            return new PSStepResource(psStepResource.ResourceGroupName, stepResource);
-        }
-
         internal PSServiceUnitResource PutServiceUnit(
             PSServiceUnitResource psServiceUnitResource)
         {
@@ -260,6 +248,39 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Client
                 psServiceUnitResource.ServiceTopologyName, 
                 psServiceUnitResource.ServiceName, 
                 psServiceUnitResource.Name).GetAwaiter().GetResult();
+            return (result.Response.StatusCode == HttpStatusCode.OK || result.Response.StatusCode == HttpStatusCode.NoContent);
+        }
+
+        internal PSStepResource PutStep(PSStepResource psStepResource)
+        {
+            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
+
+            var stepResource = _client.Steps.Create(
+                psStepResource.ResourceGroupName,
+                psStepResource.Name,
+                psStepResource.ToSdkType());
+
+            return new PSStepResource(psStepResource.ResourceGroupName, stepResource);
+        }
+
+        internal bool StepExists(PSStepResource psStepResource)
+        {
+            return DeploymentManagerClient.ResourceExists(psStepResource, this.GetStep);
+        }
+
+        internal PSStepResource GetStep(PSStepResource psStepResource)
+        {
+            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
+
+            var stepResource = _client.Steps.Get(psStepResource.ResourceGroupName, psStepResource.Name);
+            return new PSStepResource(psStepResource.ResourceGroupName, stepResource);
+        }
+
+        internal bool DeleteStep(PSStepResource psStepResource)
+        {
+            _resourceManagementClient.Providers.Register("Microsoft.DeploymentManager");
+
+            var result = _client.Steps.DeleteWithHttpMessagesAsync(psStepResource.ResourceGroupName, psStepResource.Name).GetAwaiter().GetResult();
             return (result.Response.StatusCode == HttpStatusCode.OK || result.Response.StatusCode == HttpStatusCode.NoContent);
         }
 

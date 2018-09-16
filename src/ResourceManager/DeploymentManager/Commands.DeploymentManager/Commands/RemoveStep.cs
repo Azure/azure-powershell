@@ -21,17 +21,17 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(
-        VerbsCommon.Remove, 
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerArtifactSource", 
+        VerbsCommon.Remove,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerStep",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
+        DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName),
      OutputType(typeof(bool))]
-    public class RemoveArtifactSource : DeploymentManagerBaseCmdlet
+    public class RemoveStep : DeploymentManagerBaseCmdlet
     {
         [Parameter(
             Position = 0,
-            Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
+            Mandatory = true,
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
@@ -40,16 +40,16 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Position = 1,
-            Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName, 
+            Mandatory = true,
+            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the artifact source.")]
+            HelpMessage = "The name of the step.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Position = 0,
-            Mandatory = true, 
+            Mandatory = true,
             ParameterSetName = DeploymentManagerBaseCmdlet.ResourceIdParamSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource identifier.")]
@@ -58,15 +58,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Position = 0,
-            Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName, 
-            ValueFromPipeline = true, 
-            HelpMessage = "The artifact source to be removed.")]
+            Mandatory = true,
+            ParameterSetName = DeploymentManagerBaseCmdlet.InputObjectParamSetName,
+            ValueFromPipeline = true,
+            HelpMessage = "The step to be removed.")]
         [ValidateNotNullOrEmpty]
-        public PSArtifactSource ArtifactSource { get; set; }
+        public PSStepResource Step { get; set; }
 
         [Parameter(
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -77,15 +77,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         {
             this.ConfirmAction(
                 this.Force.IsPresent,
-                string.Format(Messages.ConfirmRemoveArtifactSource, this.Name),
-                string.Format(Messages.RemovingArtifactSource, this.Name),
+                string.Format(Messages.ConfirmRemoveStep, this.Name),
+                string.Format(Messages.RemovingStep, this.Name),
                 this.Name,
                 () =>
                 {
                     var result = this.Delete();
                     if (result)
                     {
-                        this.WriteVerbose(string.Format(Messages.RemovedArtifactSource, this.Name));
+                        this.WriteVerbose(string.Format(Messages.RemovedStep, this.Name));
                     }
 
                     if (this.PassThru)
@@ -97,10 +97,10 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         private bool Delete()
         {
-            if (this.ArtifactSource != null)
+            if (this.Step != null)
             {
-                this.ResourceGroupName = this.ArtifactSource.ResourceGroupName;
-                this.Name = this.ArtifactSource.Name;
+                this.ResourceGroupName = this.Step.ResourceGroupName;
+                this.Name = this.Step.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ResourceId))
             {
@@ -109,12 +109,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 this.Name = parsedResourceId.ResourceName;
             }
 
-            var artifactSourceToDelete = new PSArtifactSource()
+            var stepToDelete = new PSStepResource()
             {
                 ResourceGroupName = this.ResourceGroupName,
                 Name = this.Name
             };
-            return this.DeploymentManagerClient.DeleteArtifactSource(artifactSourceToDelete);
+            return this.DeploymentManagerClient.DeleteStep(stepToDelete);
         }
     }
 }

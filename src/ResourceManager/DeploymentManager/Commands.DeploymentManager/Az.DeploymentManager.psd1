@@ -91,7 +91,11 @@ CmdletsToExport = 'Get-AzDeploymentManagerArtifactSource',
                'Get-AzDeploymentManagerServiceUnit', 
                'New-AzDeploymentManagerServiceUnit', 
                'Set-AzDeploymentManagerServiceUnit', 
-               'Remove-AzDeploymentManagerServiceUnit'
+               'Remove-AzDeploymentManagerServiceUnit',
+               'Get-AzDeploymentManagerStep', 
+               'New-AzDeploymentManagerStep', 
+               'Set-AzDeploymentManagerStep', 
+               'Remove-AzDeploymentManagerStep'
 
 # Variables to export from this module
 # VariablesToExport = @()
