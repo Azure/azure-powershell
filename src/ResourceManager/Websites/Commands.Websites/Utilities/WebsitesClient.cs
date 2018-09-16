@@ -314,16 +314,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return usageMetrics;
         }
 
-        public AppServicePlan CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, SkuDescription sku, string aseName = null, string aseResourceGroupName = null, bool? perSiteScaling = false)
+        public AppServicePlan CreateOrUpdateAppServicePlan(string resourceGroupName, string appServicePlanName, AppServicePlan appServicePlan, string aseName = null, string aseResourceGroupName = null)
         {
-            var appServicePlan = new AppServicePlan
-            {
-                Location = location,
-                Sku = sku,
-                AdminSiteName = adminSiteName,
-                PerSiteScaling = perSiteScaling
-            };
-
             if (!string.IsNullOrEmpty(aseName)
                 && !string.IsNullOrEmpty(aseResourceGroupName))
             {
