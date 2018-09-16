@@ -1,16 +1,6 @@
 $RollUpModule = "AzureRM"
 $PSProfileMapEndpoint = "https://azureprofile.azureedge.net/powershell/profilemap.json"
-$script:BootStrapRepo = "BootStrap"
-$RepoLocation = "https://www.powershellgallery.com/api/v2/"
-$existingRepos = Get-PSRepository | Where-Object {$_.SourceLocation -eq $RepoLocation}
-if ($null -eq $existingRepos)
-{
-  Register-PSRepository -Name $BootStrapRepo -SourceLocation $RepoLocation -PublishLocation $RepoLocation -ScriptSourceLocation $RepoLocation -ScriptPublishLocation $RepoLocation -InstallationPolicy Trusted -PackageManagementProvider NuGet
-}
-else
-{
-  $script:BootStrapRepo = $existingRepos[0].Name
-}
+$script:BootStrapRepo = "PSGallery"
 
 # Is it Powershell Core edition?
 $Script:IsCoreEdition = ($PSVersionTable.PSEdition -eq 'Core')
