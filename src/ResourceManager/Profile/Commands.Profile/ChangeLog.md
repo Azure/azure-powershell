@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 5.6.0
+## Version 5.5.2
 * Minor changes to the storage common code
 * Updated help files to include full parameter types.
 - Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set 
