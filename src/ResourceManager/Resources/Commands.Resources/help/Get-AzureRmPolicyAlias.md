@@ -376,40 +376,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-* To expand the Aliases or any other property, pipe the output to ```select -ExpandProperty <property>```. For example:
+* To expand the Aliases or any other property, pipe the output to `select -ExpandProperty <property>`. For example: `Get-AzureRmPolicyAlias -NamespaceMatch 'Microsoft.Cache' -ApiVersionMatch 'alpha' | select -ExpandProperty Aliases | select -Property Name -ExpandProperty Paths`
 
-```powershell
-PS C:\> Get-AzureRmPolicyAlias -NamespaceMatch 'Microsoft.Cache' -ApiVersionMatch 'alpha' | select -ExpandProperty Aliases | select -Property Name -ExpandProperty Paths
-
-Name                                        Path                        ApiVersions
-----                                        ----                        -----------
-Microsoft.Cache/Redis/sku.name              properties.sku.name         {2018-03-01, 2017-10-01, 2017-02-01, 2016-04-01...}
-Microsoft.Cache/Redis/sku.family            properties.sku.family       {2018-03-01, 2017-10-01, 2017-02-01, 2016-04-01...}
-Microsoft.Cache/Redis/sku.capacity          properties.sku.capacity     {2018-03-01, 2017-10-01, 2017-02-01, 2016-04-01...}
-Microsoft.Cache/Redis/enableNonSslPort      properties.enableNonSslPort {2018-03-01, 2017-10-01, 2017-02-01, 2016-04-01...}
-Microsoft.Cache/Redis/shardCount            properties.shardCount       {2018-03-01, 2017-10-01, 2017-02-01, 2016-04-01...}
-Microsoft.Cache/Redis/firewallrules/startIP properties.startIP          {2018-03-01, 2017-10-01, 2017-02-01, 2016-04-01...}
-Microsoft.Cache/Redis/firewallrules/endIP   properties.endIP            {2018-03-01, 2017-10-01, 2017-02-01, 2016-04-01...}
-
-
-PS C:\>
-```
-
-* Additional properties are available in the output and can be displayed by piping the output to ```Format-List```. For example:
-
-```powershell
-Get-AzureRmPolicyAlias -NamespaceMatch 'Web' -ResourceTypeMatch site -PathMatch cert | Format-List
-
-
-Namespace    : Microsoft.Web
-ResourceType : sites
-Aliases      : {Microsoft.Web/sites/serverFarmId, Microsoft.Web/sites/clientCertEnabled, Microsoft.Web/sites/hostNameSslStates[*].sslState,
-               Microsoft.Web/sites/httpsOnly...}
-ApiVersions  : {2018-02-01, 2016-08-01, 2016-03-01, 2015-08-01-preview...}
-Locations    : {Central US, North Europe, West Europe, Southeast Asia...}
-
-
-PS C:\>
-```
+* Additional properties are available in the output and can be displayed by piping the output to `Format-List`. For example: `Get-AzureRmPolicyAlias -NamespaceMatch 'Web' -ResourceTypeMatch site -PathMatch cert | Format-List`
 
 ## RELATED LINKS
