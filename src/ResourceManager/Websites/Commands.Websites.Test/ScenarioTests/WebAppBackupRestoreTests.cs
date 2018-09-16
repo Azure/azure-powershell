@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetDeletedWebApp");
         }
 
-        [Fact]
+        [Fact(Skip = "Needs re-recorded, Restore tests use prior webapp state on the subscription")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreDeletedWebAppToExisting()
         {
