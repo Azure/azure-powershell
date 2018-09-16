@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
+using System;
 using System.Management.Automation;
 
 #if NETSTANDARD
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         public string Location { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium|PremiumV2]")]
-        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "Isolated")]
+        [PSArgumentCompleter("Free", "Shared", "Basic", "Standard", "Premium", "PremiumV2", "Isolated", "PremiumContainer")]
         public string Tier { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
@@ -59,12 +60,24 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public bool PerSiteScaling { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+		[Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Specify this, App Service Plan will run Windows Containers")]
+		public SwitchParameter HyperV { get; set; }
+
+		[Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (string.IsNullOrWhiteSpace(Tier))
+			if (HyperV.IsPresent && Tier != "PremiumContainer")
+			{
+				throw new Exception("HyperV switch is only allowed for PremiumContainer tier");
+			}
+			if (!HyperV.IsPresent && Tier == "PremiumContainer")
+			{
+				throw new Exception("PremiumContainer tier is only allowed if HyperV switch is present");
+			}
+
+			if (string.IsNullOrWhiteSpace(Tier))
             {
                 Tier = "Free";
             }
@@ -92,7 +105,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 Capacity = capacity
             };
 
-            WriteObject(new PSAppServicePlan(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, null, sku, AseName, aseResourceGroupName, PerSiteScaling)), true);
+			var appServicePlan = new AppServicePlan
+			{
+				Location = Location,
+				Sku = sku,
+				AdminSiteName = null,
+				PerSiteScaling = PerSiteScaling,
+				IsXenon = HyperV.IsPresent
+			};
+
+
+			WriteObject(new PSAppServicePlan(WebsitesClient.CreateOrUpdateAppServicePlan(ResourceGroupName, Name, appServicePlan, AseName, aseResourceGroupName)), true);
         }
     }
 }

@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   isDefaultContainer: other.IsDefaultContainer,
                   defaultHostName: other.DefaultHostName,
                   reserved: other.Reserved,
+                  isXenon: other.IsXenon,
                   possibleOutboundIpAddresses: other.PossibleOutboundIpAddresses,
                   dailyMemoryTimeQuota: other.DailyMemoryTimeQuota,
                   suspendedTill:other.SuspendedTill,
