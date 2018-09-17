@@ -38,9 +38,13 @@ Get the access keys of a SignalR service.
 ```powershell
 PS C:\> Get-AzureRmSignalRKey -ResourceGroupName myResourceGroup -Name mysignalr1
 
-Name       PrimaryKey                                   SecondaryKey
-----       ----------                                   ------------
-mysignalr1 vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs= 2+HkuxAA34xiZFFiDsVM0uDyzCsg6GKsdXSjN4C/YFQ=
+Name                      : mysignalr1
+PrimaryKey                : vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs=
+PrimaryConnectionString   : Endpoint=https://mysignalr1.service.signalr.net;AccessKey=vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmO
+                            QNt77PovDs=;
+SecondaryKey              : 2+HkuxAA34xiZFFiDsVM0uDyzCsg6GKsdXSjN4C/YFQ=
+SecondaryConnectionString : Endpoint=https://mysignalr1.service.signalr.net;AccessKey=2+HkuxAA34xiZFFiDsVM0uDyzCsg6GKsd
+                            XSjN4C/YFQ=;
 ```
 
 ### Get access keys from a SignalR service object in pipe
@@ -48,9 +52,13 @@ mysignalr1 vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs= 2+HkuxAA34xiZFFiDsVM0uDy
 ```powershell
 PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 | Get-AzureRmSignalRKey
 
-Name       PrimaryKey                                   SecondaryKey
-----       ----------                                   ------------
-mysignalr1 vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs= 2+HkuxAA34xiZFFiDsVM0uDyzCsg6GKsdXSjN4C/YFQ=
+Name                      : mysignalr1
+PrimaryKey                : vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmOQNt77PovDs=
+PrimaryConnectionString   : Endpoint=https://mysignalr1.service.signalr.net;AccessKey=vmYRhoM62PMkNe/CSSPdMSxokn+WZEFmO
+                            QNt77PovDs=;
+SecondaryKey              : 2+HkuxAA34xiZFFiDsVM0uDyzCsg6GKsdXSjN4C/YFQ=
+SecondaryConnectionString : Endpoint=https://mysignalr1.service.signalr.net;AccessKey=2+HkuxAA34xiZFFiDsVM0uDyzCsg6GKsd
+                            XSjN4C/YFQ=;
 ```
 
 ## PARAMETERS
