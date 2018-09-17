@@ -108,7 +108,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags         = @('AzureStack', 'Compute', 'Admin', 'Azure Stack Compute', 'Virtual Machine', 'Virtual Machine', 'Platform Image', 'Extension', 'CRP')
+            Tags         = @('AzureStack', 'Compute', 'Admin', 'VirtualMachine', 'PlatformImage', 'Extension', 'CRP')
 
             # A URL to the license for this module.
             LicenseUri   = 'https://aka.ms/azps-license'

@@ -119,7 +119,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags         = @('AzureStack', 'Azure Stack', 'Admin', 'Backup', 'Azure Stack Backup and Restore', 'BRP')
+            Tags         = @('AzureStack', 'AzureStack', 'Admin', 'Backup', 'Restore', 'BRP')
 
             # A URL to the license for this module.
             LicenseUri   = 'https://aka.ms/azps-license'
