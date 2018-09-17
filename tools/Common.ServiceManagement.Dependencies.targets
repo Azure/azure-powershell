@@ -186,35 +186,35 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="WindowsBase" />
     <Reference Include="Microsoft.Azure.Commands.Common.Authentication, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Authentication.1.1.1-preview\lib\net452\Microsoft.Azure.Commands.Common.Authentication.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Authentication.1.1.2-preview\lib\net452\Microsoft.Azure.Commands.Common.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Authentication.Abstractions.1.1.1-preview\lib\net452\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Authentication.Abstractions.1.1.2-preview\lib\net452\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Commands.Common.Authorization, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Authorization.1.1.1-preview\lib\net452\Microsoft.Azure.Commands.Common.Authorization.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Authorization.1.1.2-preview\lib\net452\Microsoft.Azure.Commands.Common.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Commands.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Common.1.1.1-preview\lib\net452\Microsoft.WindowsAzure.Commands.Common.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Common.1.1.2-preview\lib\net452\Microsoft.WindowsAzure.Commands.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" Condition="'$(UseServiceManagementCommon)' != 'false'">
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ServiceManagement.1.1.1-preview\lib\net452\Microsoft.WindowsAzure.Commands.ServiceManagement.Common.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ServiceManagement.1.1.2-preview\lib\net452\Microsoft.WindowsAzure.Commands.ServiceManagement.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Commands.Common.Storage, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Storage.1.1.1-preview\lib\net452\Microsoft.WindowsAzure.Commands.Common.Storage.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Storage.1.1.2-preview\lib\net452\Microsoft.WindowsAzure.Commands.Common.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Commands.Common.Storage.Management, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Storage.Management.1.1.1-preview\lib\net452\Microsoft.Azure.Commands.Common.Storage.Management.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Storage.Management.1.1.2-preview\lib\net452\Microsoft.Azure.Commands.Common.Storage.Management.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <PropertyGroup>
-    <StorageToolsPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Storage.1.1.1-preview\tools\</StorageToolsPath>
+    <StorageToolsPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.Storage.1.1.2-preview\tools\</StorageToolsPath>
   </PropertyGroup>
  </Project>

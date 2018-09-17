@@ -7,6 +7,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using System.Management.Automation;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            var webapp = WebsitesClient.GetWebApp(resourceGroupName, webAppName, slot);
+            var webapp = new PSSite(WebsitesClient.GetWebApp(resourceGroupName, webAppName, slot));
             WriteObject(CmdletHelpers.GetHostNameSslStatesFromSiteResponse(webapp, Name));
         }
     }
