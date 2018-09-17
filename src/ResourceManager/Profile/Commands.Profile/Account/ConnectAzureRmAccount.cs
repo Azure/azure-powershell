@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("EnvironmentName")]
         [ValidateNotNullOrEmpty]
         public string Environment { get; set; }
-        
+
 #if !NETSTANDARD
-        [Parameter(ParameterSetName = UserParameterSet, 
+        [Parameter(ParameterSetName = UserParameterSet,
                     Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
 #endif
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, 
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true, HelpMessage = "Credential")]
         public PSCredential Credential { get; set; }
 
@@ -269,6 +269,20 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
             }
 
+#if NETSTANDARD
+            if (azureAccount.Type == AzureAccount.AccountType.ServicePrincipal)
+            {
+                azureAccount.SetProperty(AzureAccount.Property.ServicePrincipalSecret, password.ConvertToString());
+                if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
+                {
+                    var file = AzureSession.Instance.ARMProfileFile;
+                    var directory = AzureSession.Instance.ARMProfileDirectory;
+                    WriteWarning("The provided service principal secret will be included in the " + file + " file found in the user profile " +
+                                 "( " + directory + " ). Please ensure that this directory has appropriate protections.");
+                }
+            }
+#endif
+
             if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, _environment.Name), "log in"))
             {
                 if (AzureRmProfileProvider.Instance.Profile == null)
@@ -344,6 +358,13 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 InitializeProfileProvider(autoSaveEnabled);
+                IServicePrincipalKeyStore keyStore =
+#if NETSTANDARD
+                    new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);
+#else
+                    new AzureRmServicePrincipalKeyStore();
+#endif
+                AzureSession.Instance.RegisterComponent(ServicePrincipalKeyStore.Name, () => keyStore);
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)
