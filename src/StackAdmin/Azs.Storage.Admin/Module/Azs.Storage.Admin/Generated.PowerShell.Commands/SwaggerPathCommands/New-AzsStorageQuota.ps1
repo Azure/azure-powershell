@@ -73,16 +73,9 @@ function New-AzsStorageQuota {
             }
 
             # Validate this resource does not exist.
-            $_objectCheck = $null
-            try {
-                Write-Verbose "Checking to see if storage quota already exists."
-                $_objectCheck = Get-AzsStorageQuota -Name $Name -Location $Location
-            } catch {
-                # No op
-            } finally {
-                if ($_objectCheck -ne $null) {
-                    throw "A storage quota with name $Name at location $Location already exists."
-                }
+            if ($null -ne (Get-AzsStorageQuota -Name $Name -Location $Location -ErrorAction SilentlyContinue)) {
+                Write-Error "A storage quota with the name $Name at location $location already exists"
+                return
             }
 
             $flattenedParameters = @('NumberOfStorageAccounts', 'CapacityInGb')

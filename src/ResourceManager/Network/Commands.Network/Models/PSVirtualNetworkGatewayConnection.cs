@@ -59,6 +59,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSIpsecPolicy> IpsecPolicies { get; set; }
 
+        public bool ExpressRouteGatewayBypass { get; set; }
+
         [JsonIgnore]
         public string VirtualNetworkGateway1Text
         {

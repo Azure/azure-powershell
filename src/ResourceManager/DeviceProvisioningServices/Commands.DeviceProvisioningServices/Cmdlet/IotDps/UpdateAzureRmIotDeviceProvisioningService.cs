@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDeviceProvisioningService", DefaultParameterSetName = ResourceUpdateParameterSet, SupportsShouldProcess = true)]
-    [Alias("Update-AzureRmIoTDps")]
+    [Alias("Update-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDps")]
     [OutputType(typeof(PSProvisioningServiceDescription))]
     public class UpdateAzureRmIoTDeviceProvisioningService : IotDpsBaseCmdlet
     {

@@ -71,7 +71,7 @@ function Get-AzsStorageContainer {
 
     Process {
 
-
+        $ShareName = Get-ResourceNameSuffix -ResourceName $ShareName
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
@@ -98,9 +98,7 @@ function Get-AzsStorageContainer {
             $GetTaskResult_params = @{
                 TaskResult = $TaskResult
             }
-
             Get-TaskResult @GetTaskResult_params
-
         }
     }
 

@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Subscriptions.Admin-help.xml
 Module Name: Azs.Subscriptions.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -19,7 +19,7 @@ Get-AzsDelegatedProvider [<CommonParameters>]
 
 ### Get
 ```
-Get-AzsDelegatedProvider [-DelegatedProviderId] <String> [<CommonParameters>]
+Get-AzsDelegatedProvider [-DelegatedProviderId] <Guid> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,14 +27,14 @@ Get the list of delegatedProviders.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 Get-AzsDelegatedProvider
 ```
 
 Get a list of delegated providers.
 
-### EXAMPLE 2
+### -------------------------- EXAMPLE 2 --------------------------
 ```
 Get-AzsDelegatedProvider -DelegatedProviderId "c90173b1-de7a-4b1d-8600-b832b0e65946"
 ```
@@ -44,12 +44,12 @@ Get the a specific delegated provider.
 ## PARAMETERS
 
 ### -DelegatedProviderId
-Subscription ID of the delegated provider
+{{Fill DelegatedProviderId Description}}
 
 ```yaml
-Type: String
+Type: Guid
 Parameter Sets: Get
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -70,3 +70,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

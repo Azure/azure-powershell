@@ -82,8 +82,6 @@ function Get-AzsAzureBridgeActivation {
 
     Process {
 
-
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient'
         }

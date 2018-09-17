@@ -25,6 +25,7 @@ $updatedMetadata = "{'$metadataName':'$metadataValue', '$updatedMetadataName': '
 $parameterDisplayName = 'List of locations'
 $parameterDescription = 'An array of permitted locations for resources.'
 $parameterDefinition = "{ 'listOfAllowedLocations': { 'type': 'array', 'metadata': { 'description': '$parameterDescription', 'strongType': 'location', 'displayName': '$parameterDisplayName' } } }"
+$fullParameterDefinition = "{ 'listOfAllowedLocations': { 'type': 'array', 'metadata': { 'description': '$parameterDescription', 'strongType': 'location', 'displayName': '$parameterDisplayName' } }, 'effectParam': { 'type': 'string', 'defaultValue': 'deny' } }"
 
 <#
 .SYNOPSIS
@@ -148,6 +149,85 @@ function Test-PolicyAssignmentCRUD
 
 <#
 .SYNOPSIS
+Tests Policy assignment operations with a resource identity
+#>
+function Test-PolicyAssignmentIdentity
+{
+    # setup
+    $rgname = Get-ResourceGroupName
+    $policyName = Get-ResourceName
+    $location = "westus"
+
+    # make a new resource group and policy definition
+    $rg = New-AzureRMResourceGroup -Name $rgname -Location $location
+    $policy = New-AzureRMPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
+
+    # assign the policy definition to the resource group, get the assignment back and validate
+    $actual = New-AzureRMPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -AssignIdentity -Location $location
+    $expected = Get-AzureRMPolicyAssignment -Name testPA -Scope $rg.ResourceId
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
+    Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
+    Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
+    Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+    Assert-AreEqual "SystemAssigned" $expected.Identity.Type
+    Assert-NotNull($expected.Identity.PrincipalId)
+    Assert-NotNull($expected.Identity.TenantId)
+    Assert-AreEqual $location $actual.Location
+    Assert-AreEqual $expected.Location $actual.Location
+
+    # get it back by id and validate
+    $actualById = Get-AzureRMPolicyAssignment -Id $actual.ResourceId
+    Assert-AreEqual $actual.ResourceId $actualById.ResourceId
+    Assert-AreEqual "SystemAssigned" $actualById.Identity.Type
+    Assert-NotNull($actualById.Identity.PrincipalId)
+    Assert-NotNull($actualById.Identity.TenantId)
+    Assert-AreEqual $location $actualById.Location
+
+    # update the policy assignment, validate it still has an identity
+    $setResult = Set-AzureRMPolicyAssignment -Id $actualById.ResourceId -DisplayName "testDisplay"
+    Assert-AreEqual "testDisplay" $setResult.Properties.DisplayName
+    Assert-AreEqual "SystemAssigned" $setResult.Identity.Type
+    Assert-NotNull($setResult.Identity.PrincipalId)
+    Assert-NotNull($setResult.Identity.TenantId)
+    Assert-AreEqual $location $setResult.Location
+
+    # make another policy assignment without an identity
+    $withoutIdentityResult = New-AzureRMPolicyAssignment -Name test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description
+    Assert-Null($withoutIdentityResult.Identity)
+    Assert-Null($withoutIdentityResult.Location)
+
+    # add an identity to the new assignment using the SET cmdlet
+    $setResult = Set-AzureRMPolicyAssignment -Id $withoutIdentityResult.ResourceId -AssignIdentity -Location $location
+    Assert-AreEqual "SystemAssigned" $setResult.Identity.Type
+    Assert-NotNull($setResult.Identity.PrincipalId)
+    Assert-NotNull($setResult.Identity.TenantId)
+    Assert-AreEqual $location $setResult.Location
+
+    # verify identity is returned in collection GET
+    $list = Get-AzureRMPolicyAssignment -Scope $rg.ResourceId | ?{ $_.Name -in @('testPA', 'test2') }
+    Assert-AreEqual "SystemAssigned" ($list.Identity.Type | Select -Unique)
+    Assert-AreEqual 2 @($list.Identity.PrincipalId | Select -Unique).Count
+    Assert-AreEqual 1 @($list.Identity.TenantId | Select -Unique).Count
+    Assert-NotNull($list.Identity.TenantId | Select -Unique)
+    Assert-AreEqual $location ($list.Location | Select -Unique)
+
+    # clean up
+    $remove = Remove-AzureRMPolicyAssignment -Name testPA -Scope $rg.ResourceId
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzureRMPolicyAssignment -Name test2 -Scope $rg.ResourceId
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzureRMPolicyDefinition -Name $policyName -Force
+    Assert-AreEqual True $remove
+
+    $remove = Remove-AzureRMResourceGroup -Name $rgname -Force
+    Assert-AreEqual True $remove
+}
+
+<#
+.SYNOPSIS
 Tests Policy set definition CRUD operations
 #>
 function Test-PolicySetDefinitionCRUD
@@ -207,19 +287,31 @@ function Test-PolicyDefinitionWithParameters
     Assert-NotNull($actual.Properties.PolicyRule)
     Assert-NotNull($actual.Properties.Parameters)
     Assert-NotNull($expected.Properties.Parameters)
+    Assert-NotNull($expected.Properties.Parameters.listOfAllowedLocations)
+    Assert-AreEqual "array" $expected.Properties.Parameters.listOfAllowedLocations.type
+    Assert-AreEqual "location" $expected.Properties.Parameters.listOfAllowedLocations.metadata.strongType
+    Assert-NotNull($expected.Properties.Parameters.effectParam)
+    Assert-AreEqual "deny" $expected.Properties.Parameters.effectParam.defaultValue
+    Assert-AreEqual "string" $expected.Properties.Parameters.effectParam.type
 
     # delete the policy definition
     $remove = Remove-AzureRMPolicyDefinition -Name testPDWP -Force
     Assert-AreEqual True $remove
 
     # make a policy definition with parameters from the command line, get it back and validate
-    $actual = New-AzureRMPolicyDefinition -Name testPDWP -Policy "$TestOutputRoot\SamplePolicyDefinitionWithParameters.json" -Parameter $parameterDefinition -Description $description
+    $actual = New-AzureRMPolicyDefinition -Name testPDWP -Policy "$TestOutputRoot\SamplePolicyDefinitionWithParameters.json" -Parameter $fullParameterDefinition -Description $description
     $expected = Get-AzureRMPolicyDefinition -Name testPDWP
     Assert-AreEqual $expected.Name $actual.Name
     Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
     Assert-NotNull($actual.Properties.PolicyRule)
     Assert-NotNull($actual.Properties.Parameters)
     Assert-NotNull($expected.Properties.Parameters)
+    Assert-NotNull($expected.Properties.Parameters.listOfAllowedLocations)
+    Assert-AreEqual "array" $expected.Properties.Parameters.listOfAllowedLocations.type
+    Assert-AreEqual "location" $expected.Properties.Parameters.listOfAllowedLocations.metadata.strongType
+    Assert-NotNull($expected.Properties.Parameters.effectParam)
+    Assert-AreEqual "deny" $expected.Properties.Parameters.effectParam.defaultValue
+    Assert-AreEqual "string" $expected.Properties.Parameters.effectParam.type
 
     # delete the policy definition
     $remove = Remove-AzureRMPolicyDefinition -Name testPDWP -Force
@@ -236,7 +328,7 @@ function Test-PolicySetDefinitionWithParameters
     $policySetDefName = Get-ResourceName
 
     # make a new policy definition with parameters
-    $policyDefinition = New-AzureRmPolicyDefinition -Name $policyDefName -Policy "$TestOutputRoot\SamplePolicyDefinitionWithParameters.json" -Description $description -Parameter $parameterDefinition
+    $policyDefinition = New-AzureRmPolicyDefinition -Name $policyDefName -Policy "$TestOutputRoot\SamplePolicyDefinitionWithParameters.json" -Description $description -Parameter "$TestOutputRoot\SamplePolicyDefinitionParameters.json"
 
     # make a new policy set definition with parameters using the policy definition
     $parameters = "{ 'listOfAllowedLocations': { 'value': ""[parameters('listOfAllowedLocations')]"" } }"
@@ -290,6 +382,8 @@ function Test-PolicyAssignmentWithParameters
     Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
     Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
     Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+    Assert-AreEqual $array[0] $expected.Properties.Parameters.listOfAllowedLocations.Value[0]
+    Assert-AreEqual $array[1] $expected.Properties.Parameters.listOfAllowedLocations.Value[1]
 
     # delete the policy assignment
     $remove = Remove-AzureRMPolicyAssignment -Name testPAWP -Scope $rg.ResourceId
@@ -303,6 +397,8 @@ function Test-PolicyAssignmentWithParameters
     Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
     Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
     Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+    Assert-AreEqual $array[0] $expected.Properties.Parameters.listOfAllowedLocations.Value[0]
+    Assert-AreEqual $array[1] $expected.Properties.Parameters.listOfAllowedLocations.Value[1]
 
     # delete the policy assignment
     $remove = Remove-AzureRMPolicyAssignment -Name testPAWP -Scope $rg.ResourceId
@@ -318,6 +414,8 @@ function Test-PolicyAssignmentWithParameters
     Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
     Assert-NotNull($actual.Properties.Metadata)
     Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual $array[0] $expected.Properties.Parameters.listOfAllowedLocations.Value[0]
+    Assert-AreEqual $array[1] $expected.Properties.Parameters.listOfAllowedLocations.Value[1]
 
     # delete the policy assignment
     $remove = Remove-AzureRMPolicyAssignment -Name testPAWP -Scope $rg.ResourceId
@@ -333,6 +431,26 @@ function Test-PolicyAssignmentWithParameters
     Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
     Assert-NotNull($actual.Properties.Metadata)
     Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual $array[0] $expected.Properties.Parameters.listOfAllowedLocations.Value[0]
+    Assert-AreEqual $array[1] $expected.Properties.Parameters.listOfAllowedLocations.Value[1]
+
+    # delete the policy assignment
+    $remove = Remove-AzureRMPolicyAssignment -Name testPAWP -Scope $rg.ResourceId
+    Assert-AreEqual True $remove
+
+    # assign the policy definition to the resource group supplying Powershell parameters (including overriding a default value), get the policy assignment back and validate
+    $actual = New-AzureRMPolicyAssignment -Name testPAWP -Scope $rg.ResourceId -PolicyDefinition $policy -listOfAllowedLocations $array -effectParam "Disabled" -Description $description -Metadata $metadata
+    $expected = Get-AzureRMPolicyAssignment -Name testPAWP -Scope $rg.ResourceId
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
+    Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
+    Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
+    Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual "Disabled" $expected.Properties.Parameters.effectParam.Value
+    Assert-AreEqual $array[0] $expected.Properties.Parameters.listOfAllowedLocations.Value[0]
+    Assert-AreEqual $array[1] $expected.Properties.Parameters.listOfAllowedLocations.Value[1]
 
     # update the policy assignment (one with parameters and metadata), get it back and validate
     # this is validation for https://github.com/Azure/azure-powershell/issues/6055

@@ -117,8 +117,6 @@ function New-AzsOffer {
 
     Process {
 
-
-
         if ($PSBoundParameters.ContainsKey('State')) {
             Write-Warning -Message "The parameter State will be deprecated in a future release. The State will default to the value of Private"
         }
@@ -142,15 +140,9 @@ function New-AzsOffer {
             }
 
             # Validate this resource does not exist.
-            $_objectCheck = $null
-            try {
-                $_objectCheck = Get-AzsManagedOffer -Name $Name -Location $Location -ResourceGroupName $ResourceGroupName
-            } catch {
-                # No op
-            } finally {
-                if ($_objectCheck -ne $null) {
-                    throw "An offer with name $Name under the resource group $ResourceGroupName at location $Location already exists."
-                }
+            if ($null -ne (Get-AzsManagedOffer -Name $Name -ResourceGroupName $ResourceGroupName -ErrorAction SilentlyContinue)) {
+                Write-Error "An offer with name $Name under the resource group $ResourceGroupName at location $Location already exists."
+                return
             }
 
             $flattenedParameters = @('MaxSubscriptionsPerAccount', 'BasePlanIds', 'DisplayName', 'Name', 'Description', 'ExternalReferenceId', 'State', 'Location', 'SubscriptionCount', 'AddonPlanDefinition')

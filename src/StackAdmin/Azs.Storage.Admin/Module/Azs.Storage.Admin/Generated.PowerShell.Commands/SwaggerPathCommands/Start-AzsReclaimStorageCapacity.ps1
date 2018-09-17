@@ -66,7 +66,11 @@ function Start-AzsReclaimStorageCapacity {
 
     Process {
 
-
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            if ( $MyInvocation.Line -match "\s-FarmName\s") {
+                Write-Warning -Message "The parameter alias FarmName will be deprecated in future release. Please use the parameter Name instead"
+            }
+        }
 
         # Should process
         if ($PSCmdlet.ShouldProcess("$FarmName" , "Start garbage collection")) {

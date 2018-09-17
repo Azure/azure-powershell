@@ -10,7 +10,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .DESCRIPTION
     Get the list of delegated provider offers.
 
-.PARAMETER DelegatedProvider
+.PARAMETER DelegatedProviderId
     DelegatedProvider identifier.
 
 .PARAMETER Name
@@ -38,8 +38,9 @@ function Get-AzsDelegatedProviderManagedOffer {
         [Parameter(Mandatory = $true, ParameterSetName = 'List')]
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
         [ValidateNotNullOrEmpty()]
+        [Alias('DelegatedProvider')]
         [System.String]
-        $DelegatedProvider,
+        $DelegatedProviderId,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
         [ValidateNotNullOrEmpty()]
@@ -74,7 +75,11 @@ function Get-AzsDelegatedProviderManagedOffer {
 
     Process {
 
-
+        if ($PSBoundParameters.ContainsKey('DelegatedProviderId')) {
+            if ( $MyInvocation.Line -match "\s-DelegatedProvider\s") {
+                Write-Warning -Message "The parameter alias DelegatedProvider will be deprecated in future release. Please use the parameter DelegatedProviderId instead"
+            }
+        }
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
@@ -90,26 +95,23 @@ function Get-AzsDelegatedProviderManagedOffer {
 
         $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
 
-        $Offer = $Name
-
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProvider}/offers/{offer}'
             }
-
             $GetArmResourceIdParameterValue_params['Id'] = $ResourceId
             $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
-            $delegatedProvider = $ArmResourceIdParameterValues['delegatedProvider']
 
-            $offer = $ArmResourceIdParameterValues['offer']
+            $DelegatedProviderId = $ArmResourceIdParameterValues['delegatedProvider']
+            $Name = $ArmResourceIdParameterValues['offer']
         }
 
         if ('List' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $SubscriptionsAdminClient.'
-            $TaskResult = $SubscriptionsAdminClient.DelegatedProviderOffers.ListWithHttpMessagesAsync($DelegatedProvider)
+            $TaskResult = $SubscriptionsAdminClient.DelegatedProviderOffers.ListWithHttpMessagesAsync($DelegatedProviderId)
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $SubscriptionsAdminClient.'
-            $TaskResult = $SubscriptionsAdminClient.DelegatedProviderOffers.GetWithHttpMessagesAsync($DelegatedProvider, $Offer)
+            $TaskResult = $SubscriptionsAdminClient.DelegatedProviderOffers.GetWithHttpMessagesAsync($DelegatedProviderId, $Name)
         } else {
             Write-Verbose -Message 'Failed to map parameter set to operation method.'
             throw 'Module failed to find operation to execute.'

@@ -32,7 +32,7 @@ function Get-AzsDelegatedProvider
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Get', Position = 0)]
         [ValidateNotNullOrEmpty()]
-        [System.String]
+        [System.Guid]
         $DelegatedProviderId
     )
 

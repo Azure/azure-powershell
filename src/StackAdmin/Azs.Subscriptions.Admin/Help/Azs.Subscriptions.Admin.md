@@ -30,7 +30,7 @@ Get a list of all AzureStack location.
 Get the list of offers as the administrator.
 
 ### [Get-AzsOfferDelegation](Get-AzsOfferDelegation.md)
-
+Get the list of delegated offers.
 
 ### [Get-AzsOfferMetric](Get-AzsOfferMetric.md)
 Get the offer metrics.
@@ -51,7 +51,7 @@ Get the list of subscription resource provider quotas at a location.
 Get the list of user subscriptions as administrator.
 
 ### [Move-AzsSubscription](Move-AzsSubscription.md)
-Moves tenant subscriptions between delegated provider offers.
+Move subscriptions between delegated provider offers.
 
 ### [New-AddonPlanDefinitionObject](New-AddonPlanDefinitionObject.md)
 Contains the name of the desired plan to be linked or unlinked from an offer.
@@ -124,7 +124,7 @@ Updates the specified plan
 Updates the specified user subscription
 
 ### [Test-AzsMoveSubscription](Test-AzsMoveSubscription.md)
-Tests that tenant subscriptions can be moved between delegated provider offers.
+Validate that user subscriptions can be moved between delegated provider offers.
 
 ### [Test-AzsNameAvailability](Test-AzsNameAvailability.md)
 Returns the avaialbility of the specified subscriptions resource type and name

@@ -115,6 +115,10 @@ InModuleScope Azs.Fabric.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
 
         it "TestListLogicalNetworks" -Skip:$('TestListLogicalNetworks' -in $global:SkippedTests) {
             $global:TestName = 'TestListLogicalNetworks'
@@ -137,7 +141,7 @@ InModuleScope Azs.Fabric.Admin {
             }
         }
 
-        It "TestGetAllLogicalNetworks" {
+        It "TestGetAllLogicalNetworks" -Skip:$('TestGetAllLogicalNetworks' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllLogicalNetworks'
 
             $logicalNetworks = Get-AzsLogicalNetwork -ResourceGroupName $global:ResourceGroupName -Location $Location

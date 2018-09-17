@@ -5,10 +5,10 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Restarts the requestd infrastructure role.
+    Restarts the requested infrastructure role.
 
 .DESCRIPTION
-    Restarts the requestd infrastructure role.
+    Restarts the requested infrastructure role.
 
 .PARAMETER ResourceGroupName
     Resource group in which the resource provider has been registered.
@@ -30,7 +30,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    PS C:\> Restart-AzsInfrastructureRole -Name "Active Directory Federation Services"
+    PS C:\> Restart-AzsInfrastructureRole -Name "Compute Controller"
 
     Restart an infrastructure role which has crashed.
 
@@ -80,7 +80,6 @@ function Restart-AzsInfrastructureRole {
 
     Process {
 
-
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/infraRoles/{infraRole}'
@@ -92,6 +91,8 @@ function Restart-AzsInfrastructureRole {
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroupName']
             $location = $ArmResourceIdParameterValues['location']
             $Name = $ArmResourceIdParameterValues['infraRole']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Restart infrastructure role")) {

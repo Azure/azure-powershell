@@ -276,16 +276,6 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Virtual Network Gateway VpnType should be " + MNM.VpnType.RouteBased + " when Active-Active feature flag is set to True.");
             }
 
-            if (this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Count != 2)
-            {
-                throw new ArgumentException("Virtual Network Gateway should have 2 Gateway IpConfigurations specified when Active-Active feature flag is True.");
-            }
-
-            if (!this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Count == 2)
-            {
-                throw new ArgumentException("Virtual Network Gateway should have Active-Active feature flag set to True as there are 2 Gateway IpConfigurations specified. OR there should be only one Gateway IpConfiguration specified.");
-            }
-
             if (this.IpConfigurations != null)
             {
                 vnetGateway.IpConfigurations = this.IpConfigurations;

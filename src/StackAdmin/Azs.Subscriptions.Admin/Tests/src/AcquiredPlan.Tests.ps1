@@ -100,6 +100,10 @@ InModuleScope Azs.Subscriptions.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         it "TestListAcquiredPlans" -Skip:$('TestListAcquiredPlans' -in $global:SkippedTests) {
             $global:TestName = 'TestListAcquiredPlans'
 
@@ -125,12 +129,13 @@ InModuleScope Azs.Subscriptions.Admin {
             $global:TestName = "TestCreateThenDeleteAcquiredPlan"
 
             $plans = Get-AzsPlan
+
             $new = New-AzsSubscriptionPlan -AcquisitionId $global:acquisitionId -PlanId $plans[0].Id -TargetSubscriptionId $global:TargetSubscriptionId
             ValidatePlanAcquisition $new
 
             Remove-AzsSubscriptionPlan -AcquisitionId $global:acquisitionId -TargetSubscriptionId $global:TargetSubscriptionId -Force
 
-            { Get-AzsSubscriptionPlan -AcquisitionId $global:acquisitionId -TargetSubscriptionId $global:TargetSubscriptionId } | Should Throw
+            { Get-AzsSubscriptionPlan -AcquisitionId $global:acquisitionId -TargetSubscriptionId $global:TargetSubscriptionId -ErrorAction Stop } | Should Throw
         }
     }
 }

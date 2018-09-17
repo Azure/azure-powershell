@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssIpConfig", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssIpConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIPConfiguration))]
     public partial class NewAzureRmVmssIpConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -101,6 +101,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public VirtualMachineScaleSetIpTag[] IpTag { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string PublicIPPrefix { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -115,7 +120,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             vIpConfigurations.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
             vIpConfigurations.Primary = this.Primary.IsPresent;
-            vIpConfigurations.PrivateIPAddressVersion = this.MyInvocation.BoundParameters.ContainsKey("PrivateIPAddressVersion") ? (IPVersion?) this.PrivateIPAddressVersion : null;
+            vIpConfigurations.PrivateIPAddressVersion = this.MyInvocation.BoundParameters.ContainsKey("PrivateIPAddressVersion") ? this.PrivateIPAddressVersion : null;
             vIpConfigurations.Id = this.MyInvocation.BoundParameters.ContainsKey("Id") ? this.Id : null;
 
             // SubnetId
@@ -181,6 +186,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vIpConfigurations.PublicIPAddressConfiguration.IpTags.Add(element);
                 }
+            }
+
+            // PublicIPPrefix
+            if (this.MyInvocation.BoundParameters.ContainsKey("PublicIPPrefix"))
+            {
+                if (vIpConfigurations.PublicIPAddressConfiguration == null)
+                {
+                    vIpConfigurations.PublicIPAddressConfiguration = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetPublicIPAddressConfiguration();
+                }
+                if (vIpConfigurations.PublicIPAddressConfiguration.PublicIPPrefix == null)
+                {
+                    vIpConfigurations.PublicIPAddressConfiguration.PublicIPPrefix = new Microsoft.Azure.Management.Compute.Models.SubResource();
+                }
+
+                vIpConfigurations.PublicIPAddressConfiguration.PublicIPPrefix.Id = this.PublicIPPrefix;
             }
 
             // ApplicationGatewayBackendAddressPoolsId

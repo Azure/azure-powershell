@@ -12,10 +12,10 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core'
+CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
 GUID = '9c9b7917-1d7b-4ef2-ba49-ae1e65dc6d3d'
@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = '[PowerShell .Net Core] Microsoft Azure PowerShell - Database Migration Service cmdlets for Azure Sql'
+Description = 'Microsoft Azure PowerShell - Database Migration Service cmdlets for Azure Sql in PowerShell and PowerShell Core'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -42,7 +42,7 @@ PowerShellVersion = '5.1'
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# DotNetFrameworkVersion = ''
+DotNetFrameworkVersion = '4.7.2'
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
 # CLRVersion = ''
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.2.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataMigration.dll'
@@ -89,13 +89,13 @@ CmdletsToExport = 'New-AzDataMigrationDatabaseInfo',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AzureRmDms', 'Get-AzureRmDmsTask', 'Get-AzureRmDmsProject', 
-    'New-AzureRmDms', 'New-AzureRmDmsConnInfo', 'New-AzureRmDmsDBInfo', 
-    'New-AzureRmDmsTask', 'New-AzureRmDmsProject', 
-    'Remove-AzureRmDmsProject', 'Remove-AzureRmDms', 
-    'Remove-AzureRmDmsTask', 'Start-AzureRmDmsService', 
-    'Stop-AzureRmDmsTask', 'Stop-AzureRmDmsService', 
-    'New-AzureRmDmsSelectedDB', 'New-AzureRmDmsFileShare'
+AliasesToExport = 'Get-AzDms', 'Get-AzDmsTask', 'Get-AzDmsProject', 
+    'New-AzDms', 'New-AzDmsConnInfo', 'New-AzDmsDBInfo', 
+    'New-AzDmsTask', 'New-AzDmsProject', 
+    'Remove-AzDmsProject', 'Remove-AzDms', 
+    'Remove-AzDmsTask', 'Start-AzDmsService', 
+    'Stop-AzDmsTask', 'Stop-AzDmsService', 
+    'New-AzDmsSelectedDB', 'New-AzDmsFileShare'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -125,7 +125,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial Release'
+        ReleaseNotes = 'Initial Release with PowerShell and PowerShell Core Support'
 
         # Prerelease string of this module
         # Prerelease = ''

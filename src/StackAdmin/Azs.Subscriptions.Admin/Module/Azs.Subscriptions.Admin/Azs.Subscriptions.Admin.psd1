@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Subscriptions.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.2.0'
+    ModuleVersion     = '0.3.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -38,7 +38,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Description       = 'Subscriptions Admin Client'
 
     # Minimum version of the Windows PowerShell engine required by this module
-    # PowerShellVersion = ''
+    PowerShellVersion = '5.0'
 
     # Name of the Windows PowerShell host required by this module
     # PowerShellHostName = ''
@@ -56,11 +56,11 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules      = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.1'; },
-                             @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '4.4.1'; })
+    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; },
+        @{ModuleName = 'AzureRM.Resources'; ModuleVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
-    # RequiredAssemblies = @()
+    RequiredAssemblies = @('.\ref\fullclr\Microsoft.AzureStack.Management.Subscriptions.Admin.dll')
 
     # Script files (.ps1) that are run in the caller's environment prior to importing this module.
     # ScriptsToProcess = @()
@@ -121,19 +121,27 @@ Licensed under the MIT License. See License.txt in the project root for license 
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            # Tags = @()
+            Tags         = @('AzureStack', 'Azure Stack', 'Admin', 'Subscriptions', 'Azure Stack Admin Subscription', 'Offer', 'Plan', 'Managed')
 
             # A URL to the license for this module.
-            # LicenseUri = ''
+            LicenseUri   = 'https://aka.ms/azps-license'
 
             # A URL to the main website for this project.
-            # ProjectUri = ''
+            ProjectUri   = 'https://github.com/Azure/azure-powershell'
 
             # A URL to an icon representing this module.
             # IconUri = ''
 
             # ReleaseNotes of this module
-            # ReleaseNotes = ''
+            ReleaseNotes = '## 2018.8.12
+            * Module dependencies updated
+                * AzureRM.Profile
+                * AzureRM.Resources
+            * Deprecations
+                * Get-AzsDelegatedProviderManagedOffer, the parameter DelegatedProvider is now an alias for DelegatedProviderId
+            * Bug fixes
+                * Handle ErrrorAction correctly now
+            '
 
         } # End of PSData hashtable
 

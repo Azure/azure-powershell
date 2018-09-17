@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return (T)Enum.Parse(typeof(T), enumValue);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return default(T);
             }

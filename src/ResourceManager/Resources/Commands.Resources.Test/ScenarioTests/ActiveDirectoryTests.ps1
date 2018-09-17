@@ -663,9 +663,10 @@ Tests Creating and deleting application using Password Credentials.
 function Test-CreateDeleteAppPasswordCredentials
 {
     # Setup
-    $displayName = getAssetName
+	$getAssetName = ConvertTo-SecureString "test" -AsPlainText -Force
+    $displayName = $getAssetName
     $identifierUri = "http://" + $displayName
-    $password = getAssetName
+    $password = $getAssetName
 
     # Test - Add application with a password cred
     $application = New-AzureRmADApplication -DisplayName $displayName -IdentifierUris $identifierUri -Password $password

@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             if (ShouldProcess(Name, VerbsData.Export))
             {
                 var ret = this.AutomationClient.GetConfigurationContent(this.ResourceGroupName,
-                    this.AutomationAccountName, this.Name, isDraft, OutputFolder, this.Force);
+                    this.AutomationAccountName, this.Name, isDraft, ResolveUserPath(OutputFolder), this.Force);
 
                 this.WriteObject(ret, true);
             }

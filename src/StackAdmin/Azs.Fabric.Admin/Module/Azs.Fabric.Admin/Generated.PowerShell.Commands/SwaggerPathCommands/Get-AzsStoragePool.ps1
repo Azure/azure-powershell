@@ -106,8 +106,6 @@ function Get-AzsStoragePool {
 
     Process {
 
-
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
         }
@@ -141,6 +139,9 @@ function Get-AzsStoragePool {
             $StorageSystem = $ArmResourceIdParameterValues['storageSubSystem']
             $Name = $ArmResourceIdParameterValues['storagePool']
         } else {
+
+            $StorageSystem = Get-ResourceNameSuffix -ResourceName $StorageSystem
+
             if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
@@ -179,6 +180,7 @@ function Get-AzsStoragePool {
             return
         }
         if ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $FabricAdminClient.'
             $TaskResult = $FabricAdminClient.StoragePools.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $StorageSystem, $Name)
         } elseif ('List' -eq $PsCmdlet.ParameterSetName) {

@@ -169,12 +169,16 @@ InModuleScope Azs.Storage.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         It "TestGetFarm" -Skip:$('TestGetFarm' -in $global:SkippedTests) {
             $global:TestName = 'TestGetFarm'
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $result = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName -Name (Select-Name $farm.Name)
+                $result = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName -Name $farm.Name
                 $result  | Should Not Be $null
                 ValidateFarm -Farm $result
                 AssertAreEqual -expected $farm -found $result
@@ -195,7 +199,7 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $result = Get-AzsStorageFarmMetricDefinition -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $result = Get-AzsStorageFarmMetricDefinition -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 $result  | Should Not Be $null
             }
         }
@@ -205,7 +209,7 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $result = Get-AzsStorageFarmMetric -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $result = Get-AzsStorageFarmMetric -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 $result  | Should Not Be $null
             }
         }
@@ -216,7 +220,7 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                Start-AzsReclaimStorageCapacity -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) -Force
+                Start-AzsReclaimStorageCapacity -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name -Force
             }
         }
     }

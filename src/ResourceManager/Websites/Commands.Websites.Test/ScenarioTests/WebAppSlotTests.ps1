@@ -26,7 +26,6 @@ function Test-GetWebAppSlot
 	$location = Get-Location
 	$planName = Get-WebHostPlanName
 	$tier = "Standard"
-	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 
 	try
@@ -182,7 +181,6 @@ function Test-StartStopRestartWebAppSlot
 	$location = Get-Location
 	$planName = Get-WebHostPlanName
 	$tier = "Standard"
-	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 
 	try
@@ -265,7 +263,6 @@ function Test-CloneWebAppToSlot
 	$location = Get-Location
 	$planName = Get-WebHostPlanName
 	$tier = "Premium"
-	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 
 	try
@@ -317,7 +314,6 @@ function Test-CloneWebAppSlot
 	$planName = Get-WebHostPlanName
 	$slotname = "staging"
 	$tier = "Premium"
-	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 
 	# Destination setup
@@ -383,7 +379,6 @@ function Test-CreateNewWebAppSlot
 	$slotname = "staging"
 	$planName = Get-WebHostPlanName
 	$tier = "Standard"
-	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	try
 	{

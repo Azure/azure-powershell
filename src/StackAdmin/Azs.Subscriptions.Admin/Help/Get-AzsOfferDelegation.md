@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzsOfferDelegation
 
 ## SYNOPSIS
+Get the list of delegated offers.
 
 ## SYNTAX
 
@@ -32,7 +33,7 @@ Get the list of delegated offers.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 Get-AzsOfferDelegation -OfferName offer1 -ResourceGroupName rg1
 ```
@@ -144,3 +145,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

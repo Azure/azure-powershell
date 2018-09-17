@@ -17,9 +17,10 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+#if !NETSTANDARD
 using Security.Cryptography;
 using Security.Cryptography.X509Certificates;
-
+#endif
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
     /// <summary>
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             string issuer = DefaultIssuer,
             string password = DefaultPassword)
         {
+#if !NETSTANDARD
             string friendlyName = GenerateCertFriendlyName(subscriptionId, certificateNamePrefix);
             DateTime startTime = DateTime.UtcNow.AddMinutes(-10);
             DateTime endTime = DateTime.UtcNow.AddHours(validForHours);
@@ -108,6 +110,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             // PfxValidation is not done here because these are newly created certs and assumed valid.
             return NewX509Certificate2(bytes, password, X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.Exportable, shouldValidatePfx: false);
+#else
+            return null;
+#endif
         }
 
         /// <summary>
@@ -215,6 +220,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>A 2048 bit RSA key</returns>
         private static CngKey Create2048RsaKey()
         {
+#if !NETSTANDARD
             var keyCreationParameters = new CngKeyCreationParameters
             {
                 ExportPolicy = CngExportPolicies.AllowExport,
@@ -226,6 +232,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             keyCreationParameters.Parameters.Add(new CngProperty("Length", BitConverter.GetBytes(KeySize2048), CngPropertyOptions.None));
 
             return CngKey.Create(CngAlgorithm2.Rsa, null, keyCreationParameters);
+#else
+            return null;
+#endif
         }
 
         /// <summary>

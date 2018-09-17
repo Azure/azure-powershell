@@ -13,7 +13,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER StorageAccountName
     The name of storage account where the container locates.
 
-.PARAMETER ContainerName
+.PARAMETER Name
     The name of the container to be migrated.
 
 .PARAMETER ShareName
@@ -36,7 +36,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    PS C:\> Start-AzsStorageContainerMigration -StorageAccountName "accountTest" -ContainerName "containerTest" -ShareName "shareTest" -FarmName "10e8d576-d73c-454c-a40a-aee31a77a5f0" -DestinationShareUncPath "\\***.***.***.***\C$\Test"
+    PS C:\> Start-AzsStorageContainerMigration -StorageAccountName "accountTest" -Name "containerTest" -ShareName "shareTest" -FarmName "10e8d576-d73c-454c-a40a-aee31a77a5f0" -DestinationShareUncPath "\\***.***.***.***\C$\Test"
 
     Starts a container migration.
 
@@ -51,9 +51,9 @@ function Start-AzsStorageContainerMigration {
 
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [Alias('Name')]
+        [Alias('ContainerName')]
         [System.String]
-        $ContainerName,
+        $Name,
 
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
@@ -97,17 +97,17 @@ function Start-AzsStorageContainerMigration {
 
     Process {
 
-
-
         if ($PSBoundParameters.ContainsKey('Name')) {
             if ( $MyInvocation.Line -match "\s-ContainerName\s") {
                 Write-Warning -Message "The parameter alias ContainerName will be deprecated in future release. Please use the parameter Name instead"
             }
         }
 
+        $ShareName = Get-ResourceNameSuffix -ResourceName $ShareName
+
         # Should process
-        if ($PSCmdlet.ShouldProcess("$ContainerName" , "Start container migration")) {
-            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Start container migration?", "Performing operation migrate on container $ContainerName.")) {
+        if ($PSCmdlet.ShouldProcess("$Name" , "Start container migration")) {
+            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Start container migration?", "Performing operation migrate on container $Name.")) {
 
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'
@@ -127,7 +127,7 @@ function Start-AzsStorageContainerMigration {
                     $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
                 }
 
-                $flattenedParameters = @('ContainerName', 'StorageAccountName', 'DestinationShareUncPath')
+                $flattenedParameters = @('Name', 'StorageAccountName', 'DestinationShareUncPath')
                 $utilityCmdParams = @{}
                 $flattenedParameters | ForEach-Object {
                     if ($PSBoundParameters.ContainsKey($_)) {

@@ -5,7 +5,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-
+    Move subscriptions between delegated provider offers. This process will only perform a rebranding,
+	the underlying offer, plans, quotas for the subscriptions will not be altered.
 
 .DESCRIPTION
 	Move subscriptions between delegated provider offers. This process will only perform a rebranding,

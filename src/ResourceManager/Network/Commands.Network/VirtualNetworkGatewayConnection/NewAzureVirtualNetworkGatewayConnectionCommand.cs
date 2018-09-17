@@ -146,6 +146,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Whether to use accelerated virtual network access by bypassing gateway")]
+        public SwitchParameter ExpressRouteGatewayBypass { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -177,6 +183,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnection.SharedKey = this.SharedKey;
             vnetGatewayConnection.EnableBgp = this.EnableBgp;
             vnetGatewayConnection.UsePolicyBasedTrafficSelectors = this.UsePolicyBasedTrafficSelectors;
+            vnetGatewayConnection.ExpressRouteGatewayBypass = this.ExpressRouteGatewayBypass.IsPresent;
 
             if (!string.IsNullOrEmpty(this.AuthorizationKey))
             {

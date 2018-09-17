@@ -54,4 +54,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         public string Source { get; set; }
 
     }
+
+    public class PSRouteProperties : PSRouteMetadata
+    { }
 }

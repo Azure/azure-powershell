@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             RedisManagementClient = GetRedisManagementClient(context);
-            InsightsManagementClient = GetInsightsManagementClient();
+            InsightsManagementClient = GetInsightsManagementClient(context);
             ResourceManagementClient = GetResourceManagementClient();
             NewResourceManagementClient = GetResourceManagementClient(context);
             StorageClient = GetStorageManagementClient(context);
@@ -122,9 +122,9 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
             return context.GetServiceClient<RedisManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private InsightsManagementClient GetInsightsManagementClient()
+        private InsightsManagementClient GetInsightsManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<InsightsManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<InsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private ResourceManagementClient GetResourceManagementClient()
