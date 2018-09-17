@@ -133,7 +133,8 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '* New cmdlets: Get-AzureRmDeletedWebApp and Restore-AzureRmDeletedWebApp
 * New-AzureRmAppServicePlan -HyperV switch is added for create app service plan with windows container
-* New-AzureRmWebApp/ New-AzureRmWebAppSlot/ Set-AzureRmWebApp/ Set-AzureRmWebAppSlot - New parameters (–ContainerRegistryUser string -ContainerRegistryPassword secureString -EnableContainerContinuousDeployment) added for creating and managing windows container app'
+* New-AzureRmWebApp/ New-AzureRmWebAppSlot/ Set-AzureRmWebApp/ Set-AzureRmWebAppSlot
+ - New parameters (-ContainerRegistryUser string -ContainerRegistryPassword secureString -EnableContainerContinuousDeployment) added for creating and managing windows container app'
 
         # Prerelease string of this module
         # Prerelease = ''
