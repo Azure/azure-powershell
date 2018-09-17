@@ -77,6 +77,10 @@ InModuleScope Azs.AzureBridge.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         It "TestListAzsAzureBridgeActivation" -Skip:$('TestListAzsAzureBridgeActivation' -in $global:SkippedTests) {
             $global:TestName = "TestListAzsAzureBridgeActivation"
             $Activations = Get-AzsAzureBridgeActivation -ResourceGroupName $global:ResourceGroupName

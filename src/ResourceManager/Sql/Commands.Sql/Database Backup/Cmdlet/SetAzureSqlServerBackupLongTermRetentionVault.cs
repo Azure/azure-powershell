@@ -18,12 +18,14 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create or update a new Azure Sql Server backup archival vault
     /// </summary>
+    [CmdletDeprecation]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerBackupLongTermRetentionVault",SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(AzureSqlServerBackupLongTermRetentionVaultModel))]
     public class SetAzureSqlServerBackupLongTermRetentionVault : AzureSqlServerBackupLongTermRetentionVaultCmdletBase
     {

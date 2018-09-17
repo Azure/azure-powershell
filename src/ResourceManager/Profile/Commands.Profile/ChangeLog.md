@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 5.6.0
+* Minor changes to the storage common code
+* Updated help files to include full parameter types.
+- Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set 
+
 ## Version 5.5.1
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies

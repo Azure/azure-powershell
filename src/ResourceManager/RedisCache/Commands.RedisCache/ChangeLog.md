@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.0.6
+* Updated Insights dependency.
+
 ## Version 5.0.5
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies
