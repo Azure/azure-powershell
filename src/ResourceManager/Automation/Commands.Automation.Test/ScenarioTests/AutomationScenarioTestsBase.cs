@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Automation;
@@ -23,12 +24,8 @@ using Microsoft.Azure.Test.HttpRecorder;
 using System.Reflection;
 using Microsoft.Rest;
 using System.Net.Http;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using TestEnvironment = Microsoft.Azure.Test.TestEnvironment;
-using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 using TokenAudience = Microsoft.Azure.Test.TokenAudience;
 
 namespace Microsoft.Azure.Commands.Automation.Test
@@ -42,22 +39,24 @@ namespace Microsoft.Azure.Commands.Automation.Test
             _helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected void SetupManagementClients(MockContext context)
         {
-            var automationManagementClient = GetAutomationManagementClient();
-
+            var automationManagementClient = GetAutomationManagementClient2(context);
             _helper.SetupManagementClients(automationManagementClient);
         }
 
         protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             const string RootNamespace = "ScenarioTests";
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
+            //var callingClassType = TestUtilities.GetCallingClass(2);
+            //var mockName = TestUtilities.GetCurrentMethodName(2);
 
             using (var context = MockContext.Start(callingClassType, mockName))
             {
-                SetupManagementClients();
+                SetupManagementClients(context);
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
@@ -74,10 +73,16 @@ namespace Microsoft.Azure.Commands.Automation.Test
             }
         }
 
+        protected AutomationClient GetAutomationManagementClient2(MockContext context)
+        {
+            return context.GetServiceClient<AutomationClient>
+                (Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
         protected AutomationClient GetAutomationManagementClient()
         {
             AutomationClient client;
-            TestEnvironment currentEnvironment = new CSMTestEnvironmentFactory().GetTestEnvironment();
+            var currentEnvironment = new CSMTestEnvironmentFactory().GetTestEnvironment();
             var credentials = currentEnvironment.AuthorizationContext.TokenCredentials[TokenAudience.Management];
 
             HttpMockServer server;
