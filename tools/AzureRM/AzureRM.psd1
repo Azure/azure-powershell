@@ -96,7 +96,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.6.0';
                @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.10'; }, 
                @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.5.0'; }, 
                @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.16.10'; }, 
-               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.11'; }, 
+               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.12'; }, 
                @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.12'; }, 
                @{ModuleName = 'AzureRM.SignalR'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.11.3'; }, 
@@ -168,10 +168,9 @@ General
 AzureRM.Profile
 * Minor changes to the storage common code
 * Updated help files to include full parameter types.
-- Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set 
+* Changed -ServicePrincipal to non-mandatory in the ServicePrincipalCertificateWithSubscriptionId parameter set 
 
 Azure.Storage
-* Upgrade to Azure Storage Client Library 9.3.0 and Azure Storage DataMovement Library 0.8.1
 * Support create Storage Context with OAuth. 
 	- New-AzureStorageContext
 
@@ -184,7 +183,6 @@ AzureRM.Compute
 * Add PublicIPPrefix parameter to New-AzureRmVmssIpConfig
 * Add ResourceId parameter to Invoke-AzureRmVMRunCommand cmdelt
 * Add Invoke-AzureRmVmssVMRunCommand cmdlet
-* Update the Compute client library to version 22.0.0
 
 AzureRM.Dns
 * Added support for alias record during dns record creation
@@ -209,7 +207,7 @@ AzureRM.Network
   - Set-AzureRmLoadBalancerOutboundRuleConfig
   - Remove-AzureRmLoadBalancerOutboundRuleConfig
 * Added new HostedWorkloads property for PSNetworkInterface
-* Added new commands for feature: Azure Firewall via ARM
+* Added new cmdlets for Azure Firewall
   - Added Get-AzureRmFirewall
   - Added Set-AzureRmFirewall
   - Added New-AzureRmFirewall
@@ -240,7 +238,7 @@ AzureRM.Network
       - New-AzureRmApplicationGateway
       - Set-AzureRmApplicationGateway
 * Add cmdlet for Interface Endpoint Get-AzureInterfaceEndpoint
-* Added support for multiple address prefixes in a subnet. Updated cmdlets:
+* Updating cmdlets for multiple address prefixes:
   - New-AzureRmVirtualNetworkSubnetConfig
   - Set-AzureRmVirtualNetworkSubnetConfig
   - Add-AzureRmVirtualNetworkSubnetConfig
@@ -261,7 +259,7 @@ AzureRM.Network
   - Add-AzureRmLoadBalancerFrontendIpConfig
   - New-AzureRmLoadBalancerFrontendIpConfig
   - New-AzureRmNetworkInterface
-* Adding support to perform CRUD operations for subnet delegation.
+* Adding cmdlets for subnet delegation.
   - New-AzureRmDelegation: Creates a new delegation, which can be added to a subnet
   - Remove-AzureRmDelegation: Takes in a subnet and removes the provided delegation name from that subnet
   - Add-AzureRmDelegation: Takes in a subnet and adds the provided service name as a delegation to that subnet
@@ -281,13 +279,15 @@ AzureRM.Resources
 * Parameters with default values are no longer requred when assigning a policy with ''New-AzureRmPolicyAssignment''
 * Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
 
+AzureRM.ServiceBus
+* Fixed isssue #7161 add sql actions
+
 AzureRM.SignalR
 * Update SignalR SDK version to 0.10.0-preview
 * Update SKU names to Free_F1 and Standard_S1
 * Add version field to the PSSignalRResource object and connection string to the PSSignalRKeys object.
 
 AzureRM.Storage
-* Upgrade to Azure Storage Client Library 9.3.0 
 * Support Immutability Policy in AzureRm.Storage 
     - Remove-AzureRmStorageAccountNetworkRule
     - Get-AzureRmStorageContainer
@@ -302,9 +302,10 @@ AzureRM.Storage
     - Lock-AzureRmStorageContainerImmutabilityPolicy
 
 AzureRM.Websites
-* Updating to use the latest .NET SDK version (2.0.0)
+* New cmdlets: Get-AzureRmDeletedWebApp and Restore-AzureRmDeletedWebApp
 * New-AzureRmAppServicePlan -HyperV switch is added for create app service plan with windows container
-* New-AzureRmWebApp/ New-AzureRmWebAppSlot/ Set-AzureRmWebApp/ Set-AzureRmWebAppSlot - New parameters (–ContainerRegistryUser string -ContainerRegistryPassword secureString -EnableContainerContinuousDeployment) added for creating and managing windows container app
+* New-AzureRmWebApp/ New-AzureRmWebAppSlot/ Set-AzureRmWebApp/ Set-AzureRmWebAppSlot 
+  - Added new parameters for managing Containers
 '
 
         # Prerelease string of this module
