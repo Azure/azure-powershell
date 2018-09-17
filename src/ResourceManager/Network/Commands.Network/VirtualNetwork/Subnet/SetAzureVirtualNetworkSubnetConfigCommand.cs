@@ -101,6 +101,15 @@ namespace Microsoft.Azure.Commands.Network
                 subnet.ServiceEndpointPolicies = null;
             }
 
+            if (this.Delegation != null)
+            {
+                subnet.Delegations = this.Delegation;
+            }
+            else
+            {
+                subnet.Delegations = null;
+            }
+
             WriteObject(this.VirtualNetwork);
         }
     }

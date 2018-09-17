@@ -18,8 +18,8 @@ New-AzureRmVmssIpConfig [[-Name] <String>] [[-Id] <String>] [[-SubnetId] <String
  [[-ApplicationGatewayBackendAddressPoolsId] <String[]>] [[-LoadBalancerBackendAddressPoolsId] <String[]>]
  [[-LoadBalancerInboundNatPoolsId] <String[]>] [-Primary] [-PrivateIPAddressVersion <String>]
  [-PublicIPAddressConfigurationName <String>] [-PublicIPAddressConfigurationIdleTimeoutInMinutes <Int32>]
- [-DnsSetting <String>] [-IpTag <VirtualMachineScaleSetIpTag[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DnsSetting <String>] [-IpTag <VirtualMachineScaleSetIpTag[]>] [-PublicIPPrefix <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -229,6 +229,21 @@ The publicIP address configuration name.
 Type: System.String
 Parameter Sets: (All)
 Aliases: PublicIPAddressName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicIPPrefix
+The ID of Public IP Prefix
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
