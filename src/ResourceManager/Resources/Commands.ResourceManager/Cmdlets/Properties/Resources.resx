@@ -357,6 +357,9 @@
   <data name="WarnOnDeploymentDebugSetting" xml:space="preserve">
     <value>The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation</value>
   </data>
+  <data name="InvalidRollbackParameters" xml:space="preserve">
+    <value>The paramater -RollbackToLastDeployment and -RollBackDeploymentName can't be defined at the same time.</value>
+  </data>
   <data name="CheckingDeploymentStatus" xml:space="preserve">
     <value>Checking deployment status in {0} seconds</value>
   </data>

@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Commands.Dns
     public class DnsRecordSet : ICloneable
     {
         /// <summary>
+        /// Gets or sets the ID of the record set.
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of this record set, relative to the name of the zone to which it belongs and WITHOUT a terminating '.' (dot) character.
         /// </summary>
         public string Name { get; set; }
@@ -57,6 +62,11 @@ namespace Microsoft.Azure.Commands.Dns
         public RecordType RecordType { get; set; }
 
         /// <summary>
+        /// Gets or sets the alias target resource Id of the record set
+        /// </summary>
+        public string TargetResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the list of records in this record set.
         /// </summary>
         public List<DnsRecordBase> Records { get; set; }
@@ -67,6 +77,11 @@ namespace Microsoft.Azure.Commands.Dns
         public Hashtable Metadata { get; set; }
 
         /// <summary>
+        /// Gets or sets the provisioning state of the record set
+        /// </summary>
+        public string ProvisioningState { get; set; }
+
+        /// <summary>
         /// Returns a deep copy of this record set
         /// </summary>
         /// <returns></returns>
@@ -75,6 +90,9 @@ namespace Microsoft.Azure.Commands.Dns
             var clone = new DnsRecordSet();
 
             clone.Name = this.Name;
+            clone.TargetResourceId = this.TargetResourceId;
+            clone.ProvisioningState = this.ProvisioningState;
+            clone.Id = this.Id;
             clone.ZoneName = this.ZoneName;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Ttl = this.Ttl;

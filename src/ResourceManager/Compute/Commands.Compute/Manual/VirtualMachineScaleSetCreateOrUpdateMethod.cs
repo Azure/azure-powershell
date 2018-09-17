@@ -340,7 +340,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     Type = !isUserAssignedEnabled ?
                            ResourceIdentityType.SystemAssigned :
                            (SystemAssignedIdentity.IsPresent ? ResourceIdentityType.SystemAssignedUserAssigned : ResourceIdentityType.UserAssigned),
-                    IdentityIds = isUserAssignedEnabled ? new[] { UserAssignedIdentity } : null,
+                    UserAssignedIdentities = isUserAssignedEnabled 
+                                             ? new Dictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>()
+                                             {
+                                                 { UserAssignedIdentity, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue()}
+                                             }
+                                             : null,
                 }
                 : null;
         }
