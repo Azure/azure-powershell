@@ -60,7 +60,16 @@ PS C:\> Get-AzureRmPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceG
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdletand stores it in the $ResourceGroup variable.
-The second command get the policy assignment named PolicyAssignment07 for the scope that the **ResourceId** property of $ResourceGroup identifies.
+The second command gets the policy assignment named PolicyAssignment07 for the scope that the **ResourceId** property of $ResourceGroup identifies.
+
+### Example 3: Get all policy assignments assigned to a management group
+```
+PS C:\> $mgId = 'myManagementGroup'
+PS C:\> Get-AzureRmPolicyAssignment -Scope '/providers/Microsoft.Management/managementgroups/$mgId'
+```
+
+The first command specifies the ID of the management group to query.
+The second command gets all of the policy assignments that are assigned to the management group with ID 'myManagementGroup'.
 
 ## PARAMETERS
 

@@ -49,8 +49,6 @@ function Add-AzsGalleryItem {
 
     Process {
 
-
-
         if ($PSCmdlet.ShouldProcess("$GalleryItemUri" , "Add Gallery item")) {
             if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Gallery item could already exist, are you sure?", "Performing operation add gallery item from $GalleryItemUri")) {
 

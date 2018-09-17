@@ -94,14 +94,18 @@ InModuleScope Azs.Storage.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         it "TestListContainers" -Skip:$('TestListContainers' -in $global:SkippedTests) {
             $global:TestName = 'TestListContainers'
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 foreach ($share in $shares) {
-                    $containers = Get-AzsStorageContainer -ResourceGroupName $global:ResourceGroupName -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name) -StartIndex 0 -MaxCount 10
+                    $containers = Get-AzsStorageContainer -ResourceGroupName $global:ResourceGroupName -ShareName $share.Name -FarmName $farm.Name -StartIndex 0 -MaxCount 10
                     $containers  | Should Not Be $null
                     foreach ($container in $containers) {
                         $container  | Should Not Be $null
@@ -116,9 +120,9 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name
                 foreach ($share in $shares) {
-                    $destinationShares = Get-AzsStorageDestinationShare -ResourceGroupName $global:ResourceGroupName -SourceShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
+                    $destinationShares = Get-AzsStorageDestinationShare -ResourceGroupName $global:ResourceGroupName -SourceShareName $share.Name -FarmName $farm.Name
                     foreach ($destinationShare in $destinationShares) {
                         $destinationShare  | Should Not Be $null
                         ValidateDestinationShare -share $destinationShare

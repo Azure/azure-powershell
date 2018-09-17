@@ -98,10 +98,14 @@ InModuleScope Azs.Subscriptions.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         it "TestListDirectoryTenants" -Skip:$('TestListDirectoryTenants' -in $global:SkippedTests) {
             $global:TestName = 'TestListDirectoryTenants'
 
-            $allDirectoryTenants = Get-AzsDirectoryTenant -ResourceGroupName System.redmond
+            $allDirectoryTenants = Get-AzsDirectoryTenant -ResourceGroupName $global:ResourceGroupName
 
             foreach ($DirectoryTenant in $allDirectoryTenants) {
                 ValidateDirectoryTenant $DirectoryTenant
@@ -111,10 +115,10 @@ InModuleScope Azs.Subscriptions.Admin {
         it "TestGetAllDirectoryTenants" -Skip:$('TestGetAllDirectoryTenants' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllDirectoryTenants'
 
-            $allDirectoryTenants = Get-AzsDirectoryTenant -ResourceGroupName System.redmond
+            $allDirectoryTenants = Get-AzsDirectoryTenant -ResourceGroupName $global:ResourceGroupName
 
             foreach ($DirectoryTenant in $allDirectoryTenants) {
-                $tenant2 = Get-AzsDirectoryTenant -Name $DirectoryTenant.Name -ResourceGroupName System.redmond
+                $tenant2 = Get-AzsDirectoryTenant -Name $DirectoryTenant.Name -ResourceGroupName $global:ResourceGroupName
                 AssertDirectoryTenantsSame $DirectoryTenant $tenant2
             }
         }
@@ -122,8 +126,8 @@ InModuleScope Azs.Subscriptions.Admin {
         it "TestGetDirectoryTenant" -Skip:$('TestGetDirectoryTenant' -in $global:SkippedTests) {
             $global:TestName = 'TestGetDirectoryTenant'
 
-            $tenant = Get-AzsDirectoryTenant -ResourceGroupName System.redmond
-            $tenant2 = Get-AzsDirectoryTenant -ResourceGroupName System.redmond -Name $tenant.Name
+            $tenant = Get-AzsDirectoryTenant -ResourceGroupName $global:ResourceGroupName
+            $tenant2 = Get-AzsDirectoryTenant -ResourceGroupName $global:ResourceGroupName -Name $tenant.Name
             AssertDirectoryTenantsSame $tenant $tenant2
         }
     }

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// Sets the auditing policy properties for a specific database server.
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
-    [Alias("Set-AzureRmSqlDatabaseServerAuditingPolicy")]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseServerAuditingPolicy")]
     [Obsolete("Note that Table auditing is deprecated and this command will be removed in a future release. Please use the 'Set-AzureRmSqlServerAuditing' command to configure Blob auditing.", false)]
     public class SetAzureSqlServerAuditingPolicy : SqlDatabaseServerAuditingCmdletBase
     {

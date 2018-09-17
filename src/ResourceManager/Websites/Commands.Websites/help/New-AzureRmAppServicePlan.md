@@ -17,7 +17,7 @@ Creates an Azure App Service plan in a given Geo location.
 ```
 New-AzureRmAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
  [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
- [-AsJob] [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-HyperV] [-AsJob] [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ New-AzureRmAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWor
 ```
 New-AzureRmAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
  [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
- [-AsJob] [-AppServicePlan] <AppServicePlan> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AsJob] [-AppServicePlan] <PSAppServicePlan> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,7 +47,7 @@ The command specifies a Basic Tier and allocates two small workers.
 App Service Plan Object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.AppServicePlan
+Type: Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan
 Parameter Sets: S2
 Aliases:
 
@@ -110,6 +110,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HyperV
+Specify this, App Service Plan will run Windows Containers
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: S1
+Aliases:
 
 Required: False
 Position: Named

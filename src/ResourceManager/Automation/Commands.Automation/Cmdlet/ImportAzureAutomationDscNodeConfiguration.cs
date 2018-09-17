@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             if (ShouldProcess(Path, VerbsData.Import))
             {
+                Path = ResolveUserPath(Path);
                 var nodeName = System.IO.Path.GetFileNameWithoutExtension(Path);
                 var nodeConfigurationName = ConfigurationName + "." + nodeName;
                 NodeConfiguration nodeConfigurationModel = null;

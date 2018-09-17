@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
+        public PSResourceId PublicIpPrefix { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationText
         {
@@ -67,6 +69,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string SkuText
         {
             get { return JsonConvert.SerializeObject(Sku, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string PublicIpPrefixText
+        {
+            get { return JsonConvert.SerializeObject(PublicIpPrefix, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer"), OutputType(typeof(bool))]
-    [Alias("Test-AzureAs")]
+    [Alias("Test-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "As")]
     public class TestAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

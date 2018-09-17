@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssExtension", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssExtension", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class AddAzureRmVmssExtensionCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vExtensions.Publisher = this.MyInvocation.BoundParameters.ContainsKey("Publisher") ? this.Publisher : null;
             vExtensions.Type = this.MyInvocation.BoundParameters.ContainsKey("Type") ? this.Type : null;
             vExtensions.TypeHandlerVersion = this.MyInvocation.BoundParameters.ContainsKey("TypeHandlerVersion") ? this.TypeHandlerVersion : null;
-            vExtensions.AutoUpgradeMinorVersion = this.MyInvocation.BoundParameters.ContainsKey("AutoUpgradeMinorVersion") ? this.AutoUpgradeMinorVersion : (bool?) null;
+            vExtensions.AutoUpgradeMinorVersion = this.MyInvocation.BoundParameters.ContainsKey("AutoUpgradeMinorVersion") ? this.AutoUpgradeMinorVersion : (bool?)null;
             vExtensions.Settings = this.MyInvocation.BoundParameters.ContainsKey("Setting") ? this.Setting : null;
             vExtensions.ProtectedSettings = this.MyInvocation.BoundParameters.ContainsKey("ProtectedSetting") ? this.ProtectedSetting : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);

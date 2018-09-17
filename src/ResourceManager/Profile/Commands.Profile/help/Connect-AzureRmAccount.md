@@ -402,7 +402,19 @@ Indicates that this account authenticates by providing service principal credent
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId
+Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ServicePrincipalWithSubscriptionId
 Aliases:
 
 Required: True

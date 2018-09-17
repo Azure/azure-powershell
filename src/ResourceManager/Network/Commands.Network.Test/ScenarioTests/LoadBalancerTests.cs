@@ -40,6 +40,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.slbdev)]
+        public void TestLoadBalancerCRUDPublicTcpReset()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LoadBalancerCRUD-PublicTcpReset");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerCRUDInternalDynamic()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LoadBalancerCRUD-InternalDynamic");
@@ -222,6 +230,22 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestLoadBalancerZones()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LoadBalancerZones");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
+        public void TestOutboundRuleCRUDMinimalParameters()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-OutboundRuleCRUDMinimalParameters"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
+        public void TestOutboundRuleCRUDAllParameters()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-OutboundRuleCRUDAllParameters"));
         }
     }
 }

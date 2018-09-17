@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (ShouldProcess(VaultName, Properties.Resources.RestoreKey))
             {
-                var filePath = ResolvePath(InputFile);
+                var filePath = ResolveKeyVaultPath(InputFile);
 
                 var restoredKeyBundle = this.DataServiceClient.RestoreKey(VaultName, filePath);
 
@@ -102,9 +102,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        private string ResolvePath(string filePath)
+        private string ResolveKeyVaultPath(string filePath)
         {
-            FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(filePath));
+            FileInfo keyFile = new FileInfo(this.ResolveUserPath(filePath));
             if (!keyFile.Exists)
             {
                 throw new FileNotFoundException(string.Format(Resources.BackupKeyFileNotFound, filePath));

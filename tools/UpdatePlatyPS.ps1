@@ -17,47 +17,35 @@
 <#
 .SYNOPSIS Creates or updates markdown files for Azure Stack admin modules.
 #>
-param()
+param(
+    [ValidateNotNull()]
+    [String[]]$Modules = @(
+        "Azs.AzureBridge.Admin",
+        "Azs.Backup.Admin",
+        "Azs.Commerce.Admin",
+        "Azs.Compute.Admin",
+        "Azs.Fabric.Admin",
+        "Azs.Gallery.Admin",
+        "Azs.InfrastructureInsights.Admin",
+        "Azs.KeyVault.Admin",
+        "Azs.Network.Admin",
+        "Azs.Storage.Admin",
+        "Azs.Subscriptions.Admin",
+        "Azs.Subscriptions",
+        "Azs.Update.Admin"
+    ),
 
+    [ValidateNotNull()]
+    [String[]]$Skipped = @()
+)
 
 Import-Module AzureRM.Profile -Force
 
-# All admin modules
-$All = @(
-    "Azs.AzureBridge.Admin",
-    "Azs.Backup.Admin",
-    "Azs.Commerce.Admin",
-    "Azs.Compute.Admin",
-    "Azs.Fabric.Admin",
-    "Azs.Gallery.Admin",
-    "Azs.InfrastructureInsights.Admin",
-    "Azs.KeyVault.Admin",
-    "Azs.Network.Admin",
-    "Azs.Storage.Admin",
-    "Azs.Subscriptions.Admin",
-    "Azs.Subscriptions",
-    "Azs.Update.Admin"
-)
-
-# These are broken.
-$Ignored = @(
-    "Azs.AzureBridge.Admin",
-    "Azs.Backup.Admin",
-    "Azs.Commerce.Admin",
-    "Azs.Compute.Admin",
-    "Azs.Fabric.Admin",
-    "Azs.Gallery.Admin",
-    "Azs.InfrastructureInsights.Admin",
-    "Azs.KeyVault.Admin",
-    "Azs.Network.Admin",
-    "Azs.Storage.Admin"
-)
-
-$Scheduled = $All | Where-Object { !($_ -in $Ignored) }
+$Scheduled = $Modules | Where-Object { !($_ -in $Skipped) }
 
 # Simple test incase someone tries to get clever.
 foreach ($module in $Scheduled) {
-    if ( !($module -in $All) ) {
+    if ( !($module -in $Modules) ) {
         throw "The module '$module' is not in All."
     }
 }

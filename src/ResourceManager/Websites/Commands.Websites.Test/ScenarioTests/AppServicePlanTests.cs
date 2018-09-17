@@ -40,6 +40,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNewAppServicePlanHyperV()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewAppServicePlanHyperV");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAppServicePlan()
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-SetAppServicePlan");

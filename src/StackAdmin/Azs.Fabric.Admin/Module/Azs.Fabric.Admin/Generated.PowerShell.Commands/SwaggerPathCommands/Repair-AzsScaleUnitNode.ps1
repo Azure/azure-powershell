@@ -88,8 +88,6 @@ function Repair-AzsScaleUnitNode {
 
     Process {
 
-
-
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Fabric.Admin/fabricLocations/{location}/scaleUnitNodes/{scaleUnitNode}'
@@ -100,6 +98,8 @@ function Repair-AzsScaleUnitNode {
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroupName']
             $Location = $ArmResourceIdParameterValues['location']
             $Name = $ArmResourceIdParameterValues['scaleUnitNode']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Repair scale unit node")) {

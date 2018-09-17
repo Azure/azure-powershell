@@ -22,7 +22,7 @@ Get-AzureRmAppServicePlanMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [
 ### S2
 ```
 Get-AzureRmAppServicePlanMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [[-EndTime] <DateTime>]
- [-Granularity] <String> [-InstanceDetails] [-AppServicePlan] <AppServicePlan>
+ [-Granularity] <String> [-InstanceDetails] [-AppServicePlan] <PSAppServicePlan>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ This command gets CPU percentage of the App Service Plan
 App Service Plan Object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.AppServicePlan
+Type: Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan
 Parameter Sets: S2
 Aliases:
 

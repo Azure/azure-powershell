@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,110 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected object CreateContainerServiceGetDynamicParameters()
-        {
-            dynamicParameters = new RuntimeDefinedParameterDictionary();
-            var pResourceGroupName = new RuntimeDefinedParameter();
-            pResourceGroupName.Name = "ResourceGroupName";
-            pResourceGroupName.ParameterType = typeof(string);
-            pResourceGroupName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 1,
-                Mandatory = true
-            });
-            pResourceGroupName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
-
-            var pContainerServiceName = new RuntimeDefinedParameter();
-            pContainerServiceName.Name = "Name";
-            pContainerServiceName.ParameterType = typeof(string);
-            pContainerServiceName.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByDynamicParameters",
-                Position = 2,
-                Mandatory = true
-            });
-            pContainerServiceName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("Name", pContainerServiceName);
-
-            var pArgumentList = new RuntimeDefinedParameter();
-            pArgumentList.Name = "ArgumentList";
-            pArgumentList.ParameterType = typeof(object[]);
-            pArgumentList.Attributes.Add(new ParameterAttribute
-            {
-                ParameterSetName = "InvokeByStaticParameters",
-                Position = 3,
-                Mandatory = true
-            });
-            pArgumentList.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("ArgumentList", pArgumentList);
-
-            return dynamicParameters;
-        }
-
-        protected void ExecuteContainerServiceGetMethod(object[] invokeMethodInputParameters)
-        {
-            string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string containerServiceName = (string)ParseParameter(invokeMethodInputParameters[1]);
-
-            if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(containerServiceName))
-            {
-                var result = ContainerServicesClient.Get(resourceGroupName, containerServiceName);
-                WriteObject(result);
-            }
-            else if (!string.IsNullOrEmpty(resourceGroupName))
-            {
-                var result = ContainerServicesClient.ListByResourceGroup(resourceGroupName);
-                var resultList = result.ToList();
-                var nextPageLink = result.NextPageLink;
-                while (!string.IsNullOrEmpty(nextPageLink))
-                {
-                    var pageResult = ContainerServicesClient.ListByResourceGroupNext(nextPageLink);
-                    foreach (var pageItem in pageResult)
-                    {
-                        resultList.Add(pageItem);
-                    }
-                    nextPageLink = pageResult.NextPageLink;
-                }
-                WriteObject(resultList, true);
-            }
-            else
-            {
-                var result = ContainerServicesClient.List();
-                var resultList = result.ToList();
-                var nextPageLink = result.NextPageLink;
-                while (!string.IsNullOrEmpty(nextPageLink))
-                {
-                    var pageResult = ContainerServicesClient.ListNext(nextPageLink);
-                    foreach (var pageItem in pageResult)
-                    {
-                        resultList.Add(pageItem);
-                    }
-                    nextPageLink = pageResult.NextPageLink;
-                }
-                WriteObject(resultList, true);
-            }
-        }
-
-    }
-
-    public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
-    {
-        protected PSArgument[] CreateContainerServiceGetParameters()
-        {
-            string resourceGroupName = string.Empty;
-            string containerServiceName = string.Empty;
-
-            return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "ContainerServiceName" },
-                 new object[] { resourceGroupName, containerServiceName });
-        }
-    }
-
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerService", DefaultParameterSetName = "DefaultParameter")]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerService", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSContainerService))]
     public partial class GetAzureRmContainerService : ComputeAutomationBaseCmdlet
     {

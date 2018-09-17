@@ -97,6 +97,11 @@ function Get-AzsRPHealth {
 
     Process {
 
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            if ( $MyInvocation.Line -match "\s-ServiceHealth\s") {
+                Write-Warning -Message "The parameter alias ServiceHealth will be deprecated in future release. Please use the parameter Name instead"
+            }
+        }
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient'
@@ -128,6 +133,7 @@ function Get-AzsRPHealth {
             $Location = $ArmResourceIdParameterValues['region']
             $Name = $ArmResourceIdParameterValues['serviceHealth']
         } else {
+
             if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
@@ -171,6 +177,7 @@ function Get-AzsRPHealth {
                         $null
                     }))
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $InfrastructureInsightsAdminClient.'
             $TaskResult = $InfrastructureInsightsAdminClient.ServiceHealths.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $Name)
         } else {

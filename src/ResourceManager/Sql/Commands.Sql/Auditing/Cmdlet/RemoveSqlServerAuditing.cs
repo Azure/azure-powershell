@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// Disables auditing on a specific database server.
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAuditing", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
-    [Alias("Remove-AzureRmSqlDatabaseServerAuditing")]
+    [Alias("Remove-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseServerAuditing")]
     [Obsolete("Note that Table auditing is deprecated and this command will be removed in a future release. Please use the 'Set-AzureRmSqlServerAuditing' command to configure Blob auditing.", false)]
     public class RemoveSqlServerAuditing : SqlDatabaseServerAuditingCmdletBase
     {

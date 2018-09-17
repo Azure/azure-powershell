@@ -130,6 +130,9 @@ function Test-AzureVMProtection
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
 
+		# Sleep to give the service time to add the default policy to the vault
+        Start-TestSleep 5000
+
 		# Get default policy
 		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
@@ -357,6 +360,9 @@ function Test-AzureVMSetVaultContext
 		# Setup
 		$vm = Create-VM $resourceGroupName $location
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+
+		# Sleep to give the service time to add the default policy to the vault
+        Start-TestSleep 5000
 
 		Set-AzureRmRecoveryServicesVaultContext -Vault $vault
 

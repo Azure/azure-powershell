@@ -31,11 +31,6 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
     Remove a compute quota given all the parameters.
 
-.EXAMPLE
-
-    PS C:\> Remove-AzsComputeQuota -Name ComputeQuota
-
-    Remove a compute quota given just the name.
 
 #>
 function Remove-AzsComputeQuota {
@@ -74,8 +69,6 @@ function Remove-AzsComputeQuota {
 
     Process {
 
-
-
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{locationName}/quotas/{quotaName}'
@@ -86,6 +79,8 @@ function Remove-AzsComputeQuota {
 
             $Location = $ArmResourceIdParameterValues['locationName']
             $Name = $ArmResourceIdParameterValues['quotaName']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Delete compute quota")) {

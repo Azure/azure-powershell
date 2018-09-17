@@ -709,6 +709,12 @@ function Get-SubscriptionIdFromResourceGroup
 
     $rgid = $rg.ResourceId;
 
+	if ([string]::IsNullOrEmpty($rgid)) {
+	    #Get the subscription from the current context
+	    $context = get-azurermcontext
+		return $context.Subscription.SubscriptionId
+	}
+
     # ResouceId is a form of "/subscriptions/<subId>/resourceGroups/<resourgGroupName>"
     # So return the second part to get subscription Id
     $first = $rgid.IndexOf('/', 1);

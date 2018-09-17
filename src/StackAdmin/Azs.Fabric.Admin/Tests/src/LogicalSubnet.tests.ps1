@@ -116,6 +116,10 @@ InModuleScope Azs.Fabric.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
 
         it "TestListLogicalSubnets" -Skip:$('TestListLogicalSubnets' -in $global:SkippedTests) {
             $global:TestName = 'TestListLogicalSubnets'

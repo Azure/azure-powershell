@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Profile
             bool executionComplete = false;
             if (MyInvocation.BoundParameters.ContainsKey("Path"))
             {
+                Path = this.ResolveUserPath(Path);
                 ConfirmAction(string.Format(Resources.ProcessImportContextFromFile, Path), Resources.ImportContextTarget, () =>
                 {
                     if (!AzureSession.Instance.DataStore.FileExists(Path))

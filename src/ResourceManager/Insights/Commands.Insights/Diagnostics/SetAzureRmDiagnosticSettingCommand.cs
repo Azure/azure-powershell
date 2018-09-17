@@ -364,8 +364,13 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 throw new ArgumentException("Parameter 'Enabled' is required by 'Timegrains' parameter.");
             }
 
-            if (this.Timegrains.Count > 0)
+            if (this.Timegrains != null && this.Timegrains.Count > 0)
             {
+                if (properties.Metrics == null)
+                {
+                    properties.Metrics = new List<MetricSettings>();
+                }
+
                 WriteWarningWithTimestamp("Deprecation: The timegain argument for metrics will be deprecated since the back end supports only PT1M. Currently it is ignored for backwards compatibility.");
                 WriteDebugWithTimestamp("Setting Enabled property for metrics since timegrains argument is non-empty");
                 foreach (MetricSettings metric in properties.Metrics)
@@ -383,16 +388,35 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
 
             WriteDebugWithTimestamp("Setting log categories, including Enabled property");
+            if (properties.Logs == null)
+            {
+                properties.Logs = new List<LogSettings>();
+            }
+
             foreach (string category in this.Categories)
             {
                 LogSettings logSettings = properties.Logs.FirstOrDefault(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
-
                 if (logSettings == null)
                 {
-                    throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Log category '{0}' is not available", category));
-                }
+                    // if not there add it
+                    logSettings = new LogSettings()
+                    {
+                        Category = category,
+                        RetentionPolicy = new RetentionPolicy
+                        {
+                            Days = 0,
+                            Enabled = false
+                        },
+                        Enabled = this.Enabled
+                    };
 
-                logSettings.Enabled = this.Enabled;
+                    properties.Logs.Add(logSettings);
+                }
+                else
+                {
+                    // else update it
+                    logSettings.Enabled = this.Enabled;
+                }
             }
         }
 
@@ -404,16 +428,37 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
 
             WriteDebugWithTimestamp("Setting metric categories, including Enabled property");
+            if (properties.Metrics == null)
+            {
+                properties.Metrics = new List<MetricSettings>();
+            }
+
             foreach (string category in this.MetricCategory)
             {
                 MetricSettings metricSettings = properties.Metrics.FirstOrDefault(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
 
                 if (metricSettings == null)
                 {
-                    throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Metric category '{0}' is not available", category));
-                }
+                    // If not there add it
+                    metricSettings = new MetricSettings
+                    {
+                        Category = category,
+                        Enabled = this.Enabled,
+                        RetentionPolicy = new RetentionPolicy
+                        {
+                            Days = 0,
+                            Enabled = false
+                        },
+                        TimeGrain = null
+                    };
 
-                metricSettings.Enabled = this.Enabled;
+                    properties.Metrics.Add(metricSettings);
+                }
+                else
+                {
+                    // else update it
+                    metricSettings.Enabled = this.Enabled;
+                }
             }
         }
 
@@ -425,12 +470,22 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
 
             WriteDebugWithTimestamp("Setting Enabled property for logs");
+            if (properties.Logs == null)
+            {
+                properties.Logs = new List<LogSettings>();
+            }
+
             foreach (var log in properties.Logs)
             {
                 log.Enabled = this.Enabled;
             }
 
             WriteDebugWithTimestamp("Setting Enabled property for metrics");
+            if (properties.Metrics == null)
+            {
+                properties.Metrics = new List<MetricSettings>();
+            }
+
             foreach (var metric in properties.Metrics)
             {
                 metric.Enabled = this.Enabled;
@@ -469,7 +524,6 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 properties.EventHubAuthorizationRuleId = this.EventHubAuthorizationRuleId;
             }
         }
-
 
         private void SetStorage(DiagnosticSettingsResource properties)
         {

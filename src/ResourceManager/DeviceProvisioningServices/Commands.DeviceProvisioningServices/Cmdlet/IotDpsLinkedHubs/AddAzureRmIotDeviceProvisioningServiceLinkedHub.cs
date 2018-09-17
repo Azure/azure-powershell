@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDeviceProvisioningServiceLinkedHub", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
-    [Alias("Add-AzureRmIoTDpsHub")]
+    [Alias("Add-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "IoTDpsHub")]
     [OutputType(typeof(PSIotHubDefinitionDescription), typeof(PSIotHubDefinitions))]
     public class AddAzureRmIotDeviceProvisioningServiceLinkedHub : IotDpsBaseCmdlet
     {

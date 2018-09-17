@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
     [OutputType(typeof(PSSignalRResource))]
     public sealed class NewAzureRmSignalR : SignalRCmdletBase
     {
-        private const string DefaultSku = "Basic_DS2";
+        private const string DefaultSku = "Standard_S1";
 
         [Parameter(
             Mandatory = false,
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         [Parameter(
             Mandatory = false,
             HelpMessage = "The SignalR service SKU.")]
-        [PSArgumentCompleter("Free_DS2", "Basic_DS2")]
+        [PSArgumentCompleter("Free_F1", "Standard_S1")]
         public string Sku { get; set; } = DefaultSku;
 
         [Parameter(

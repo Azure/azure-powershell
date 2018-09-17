@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// Updates an exisitng service principal.
     /// </summary>
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipal", DefaultParameterSetName = ParameterSet.SpObjectIdWithDisplayName, SupportsShouldProcess = true), OutputType(typeof(PSADServicePrincipal))]
-    [Alias("Set-AzureRmADServicePrincipal")]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ADServicePrincipal")]
 
     public class UpdateAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {

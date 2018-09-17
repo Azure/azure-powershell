@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2042
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
@@ -35,6 +35,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources", "..\Resources\Commands.Resources\Commands.Resources.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "..\..\Storage\Commands.Storage\Commands.Storage.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.SiteRecovery", "Commands.RecoveryServices.SiteRecovery\Commands.RecoveryServices.SiteRecovery.csproj", "{7C879645-31EE-4A78-AD81-5512300FA105}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.SiteRecovery.Test", "Commands.RecoveryServices.SiteRecovery.Test\Commands.RecoveryServices.SiteRecovery.Test.csproj", "{6C7D3D81-37AB-445E-8081-78A1FEC0A774}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -106,6 +110,14 @@ Global
 		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C879645-31EE-4A78-AD81-5512300FA105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C879645-31EE-4A78-AD81-5512300FA105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C879645-31EE-4A78-AD81-5512300FA105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C879645-31EE-4A78-AD81-5512300FA105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A774}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,6 +131,7 @@ Global
 		{E8FFEA7F-A9CB-4FE6-A4D3-9334125B57B4} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{E1F5201D-6067-430E-B303-4E367652991B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A774} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB2C39D2-F569-42FF-92CC-19BD010D75D6}

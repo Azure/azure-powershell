@@ -625,3 +625,68 @@ function Test-PublicIpAddressZones
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests creating new simple publicIpAddress from a PublicIPPrefix.
+#>
+function Test-PublicIpAddressCRUD-PublicIPPrefix
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
+    $location = Get-ProviderLocation $resourceTypeParent
+   
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      
+      # Create a PublicIPPrefix
+      $prefixname = $rname + "prfx"
+      $PublicIpPrefix = New-AzureRmPublicIpPrefix -ResourceGroupName $rgname -name $prefixname -location $location -Sku Standard -prefixLength 30
+      $expectedPublicIpPrefix = Get-AzureRmPublicIpPrefix -ResourceGroupName $rgname -name $prefixname
+      Assert-AreEqual $expectedPublicIpPrefix.ResourceGroupName $PublicIpPrefix.ResourceGroupName
+      Assert-AreEqual $expectedPublicIpPrefix.Name $PublicIpPrefix.Name
+      Assert-AreEqual $expectedPublicIpPrefix.Location $PublicIpPrefix.Location
+      Assert-AreEqualObjectProperties $expectedPublicIpPrefix.Sku $PublicIpPrefix.Sku
+      Assert-NotNull $expectedPublicIpPrefix.IPPrefix
+
+      # Create publicIpAddres
+      $actual = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard -DomainNameLabel $domainNameLabel -PublicIPPrefix $expectedPublicIpPrefix
+      $expected = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $expected.Name $actual.Name
+      Assert-AreEqual $expected.Location $actual.Location
+      Assert-AreEqualObjectProperties $expected.Sku $actual.Sku
+      Assert-AreEqual "Static" $expected.PublicIpAllocationMethod
+      Assert-NotNull $expected.IpAddress
+      Assert-AreEqual "Succeeded" $expected.ProvisioningState
+
+      # list
+      $list = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname
+      Assert-AreEqual 1 @($list).Count
+      Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $list[0].Name $actual.Name
+      Assert-AreEqual $list[0].Location $actual.Location
+      Assert-AreEqualObjectProperties $list[0].Sku $actual.Sku
+      Assert-AreEqual "Static" $list[0].PublicIpAllocationMethod
+      Assert-NotNull $list[0].IpAddress
+      Assert-AreEqual "Succeeded" $list[0].ProvisioningState
+
+      # delete
+      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      Assert-AreEqual true $delete
+      
+      $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -82,8 +82,6 @@ function Get-AzsRegionHealth {
 
     Process {
 
-
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.InfrastructureInsights.Admin.InfrastructureInsightsAdminClient'
         }
@@ -119,6 +117,7 @@ function Get-AzsRegionHealth {
                 $ResourceGroupName = "System.$Location"
             }
         } else {
+
             if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
@@ -155,6 +154,7 @@ function Get-AzsRegionHealth {
             }
             return
         }
+
         if ('List' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $InfrastructureInsightsAdminClient.'
             $TaskResult = $InfrastructureInsightsAdminClient.RegionHealths.ListWithHttpMessagesAsync($ResourceGroupName, $(if ($oDataQuery) {
