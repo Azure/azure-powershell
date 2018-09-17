@@ -103,7 +103,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags         = @('AzureStack', 'Azure Stack', 'Tenant', 'Subscriptions', 'Azure Stack Tenant Subscription')
+            Tags         = @('AzureStack', 'Tenant', 'Subscriptions')
 
             # A URL to the license for this module.
             LicenseUri   = 'https://aka.ms/azps-license'
