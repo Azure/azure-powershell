@@ -117,6 +117,9 @@
 * Parameters with default values are no longer requred when assigning a policy with 'New-AzureRmPolicyAssignment'
 * Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
 
+* Fixed issue
+	- https://github.com/Azure/azure-powershell/issues/7161
+
 #### AzureRM.SignalR
 * Update SignalR SDK version to 0.10.0-preview
 * Update SKU names to Free_F1 and Standard_S1
@@ -139,8 +142,9 @@
 
 #### AzureRM.Websites
 * Updating to use the latest .NET SDK version (2.0.0)
+* Added two new cmdlets: Get-AzureRmDeletedWebApp and Restore-AzureRmDeletedWebApp
 * New-AzureRmAppServicePlan -HyperV switch is added for create app service plan with windows container
-* New-AzureRmWebApp/ New-AzureRmWebAppSlot/ Set-AzureRmWebApp/ Set-AzureRmWebAppSlot - New parameters (–ContainerRegistryUser string -ContainerRegistryPassword secureString -EnableContainerContinuousDeployment) added for creating and managing windows container app
+* New-AzureRmWebApp/ New-AzureRmWebAppSlot/ Set-AzureRmWebApp/ Set-AzureRmWebAppSlot - New parameters added for creating and managing windows container app
 
 ## 6.8.1 - August 2018
 #### General
