@@ -115,6 +115,9 @@
 * Parameters with default values are no longer requred when assigning a policy with 'New-AzureRmPolicyAssignment'
 * Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
 
+#### AzureRM.ServiceBus
+* Fixed issue #7161
+
 #### AzureRM.SignalR
 * Update SKU names to Free_F1 and Standard_S1
 * Add version field to the PSSignalRResource object and connection string to the PSSignalRKeys object.

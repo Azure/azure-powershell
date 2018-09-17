@@ -279,6 +279,9 @@ AzureRM.Resources
 * Parameters with default values are no longer requred when assigning a policy with ''New-AzureRmPolicyAssignment''
 * Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
 
+AzureRM.ServiceBus
+* Fixed isssue #7161 add sql actions
+
 AzureRM.SignalR
 * Update SignalR SDK version to 0.10.0-preview
 * Update SKU names to Free_F1 and Standard_S1
