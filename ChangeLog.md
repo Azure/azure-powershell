@@ -117,6 +117,7 @@
 * Parameters with default values are no longer requred when assigning a policy with 'New-AzureRmPolicyAssignment'
 * Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
 
+#### AzureRM.ServiceBus
 * Fixed issue
 	- https://github.com/Azure/azure-powershell/issues/7161
 
