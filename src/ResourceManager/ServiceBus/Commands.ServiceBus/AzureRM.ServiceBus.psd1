@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.6.11'
+ModuleVersion = '0.6.12'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -135,12 +135,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed issues
-	- https://github.com/Azure/azure-powershell/issues/5058
-	- https://github.com/Azure/azure-powershell/issues/5055
-	- https://github.com/Azure/azure-powershell/issues/6891
-* Fixed issue with default resource groups not being set.
-* Updated common runtime assemblies'
+        ReleaseNotes = '* Fixed issue #7161'
 
         # Prerelease string of this module
         # Prerelease = ''
