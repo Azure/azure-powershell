@@ -96,7 +96,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.6.0';
                @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.10'; }, 
                @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.5.0'; }, 
                @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.16.10'; }, 
-               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.11'; }, 
+               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.12'; }, 
                @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.12'; }, 
                @{ModuleName = 'AzureRM.SignalR'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.11.3'; }, 
@@ -281,6 +281,10 @@ AzureRM.Resources
 * Parameters with default values are no longer requred when assigning a policy with ''New-AzureRmPolicyAssignment''
 * Add new cmdlet Get-AzureRmPolicyAlias for retrieving policy aliases
 
+AzureRM.ServiceBus
+* Fixed issue
+	- https://github.com/Azure/azure-powershell/issues/7161
+
 AzureRM.SignalR
 * Update SignalR SDK version to 0.10.0-preview
 * Update SKU names to Free_F1 and Standard_S1
@@ -303,8 +307,9 @@ AzureRM.Storage
 
 AzureRM.Websites
 * Updating to use the latest .NET SDK version (2.0.0)
+* Added two new cmdlets: Get-AzureRmDeletedWebApp and Restore-AzureRmDeletedWebApp
 * New-AzureRmAppServicePlan -HyperV switch is added for create app service plan with windows container
-* New-AzureRmWebApp/ New-AzureRmWebAppSlot/ Set-AzureRmWebApp/ Set-AzureRmWebAppSlot - New parameters (–ContainerRegistryUser string -ContainerRegistryPassword secureString -EnableContainerContinuousDeployment) added for creating and managing windows container app
+* New-AzureRmWebApp/ New-AzureRmWebAppSlot/ Set-AzureRmWebApp/ Set-AzureRmWebAppSlot - New parameters added for creating and managing windows container app
 '
 
         # Prerelease string of this module
