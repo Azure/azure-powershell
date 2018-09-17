@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
     {
         public PSWaitStepProperties() : base()
         {
-
         }
 
         public PSWaitStepProperties(WaitStepProperties waitStepProperties) : base(waitStepProperties)
