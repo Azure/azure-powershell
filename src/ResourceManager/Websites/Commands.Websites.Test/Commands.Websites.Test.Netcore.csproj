@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
-    <PackageReference Include="Microsoft.Azure.Management.Websites" Version="1.7.1-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Websites" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

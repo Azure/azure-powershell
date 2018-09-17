@@ -21,7 +21,7 @@ Get-AzureRmWebAppSSLBinding [[-Name] <String>] [-ResourceGroupName] <String> [-W
 
 ### S2
 ```
-Get-AzureRmWebAppSSLBinding [[-Name] <String>] [-WebApp] <Site> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmWebAppSSLBinding [[-Name] <String>] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -119,7 +119,7 @@ Specifies a Web App.
 To get a Web App, use the Get-AzureRmWebApp cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.Site
+Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
 Parameter Sets: S2
 Aliases:
 
