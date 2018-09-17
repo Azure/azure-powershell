@@ -44,13 +44,13 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Dns, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.Dns">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Dns.2.2.0-preview\lib\net452\Microsoft.Azure.Management.Dns.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Dns.3.0.0\lib\net452\Microsoft.Azure.Management.Dns.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=19.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.3.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=19.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.5.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -90,6 +90,9 @@
     </None>
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestAliasRecordSet.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ScenarioTest.DnsTests.RecordsTests\TestRecordSetA.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

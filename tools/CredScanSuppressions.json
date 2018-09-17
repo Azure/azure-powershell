@@ -652,6 +652,62 @@
         {
             "file": "\\src\\ResourceManager\\SignalR\\Commands.SignalR.Test\\SessionRecords\\Microsoft.Azure.Commands.SignalR.Test.ScenarioTests.AzureRmSignalRTests\\TestAzureRmSignalRWithDefaultArgs.json",
             "_justification": "Legitimate test session record"
-        }
+        },
+		{
+            "file": "\\src\\StackAdmin\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.NetworkWatcherAPITests\\TestTroubleshoot.json",
+            "_justification": "Legitimate test session record"
+        },
+		{
+        "file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestCreateNewWebAppBackupPiping.json",
+        "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestCreateNewWebAppBackup.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestGetWebAppBackup.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestEditAndGetWebAppBackupConfiguration.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestEditAndGetWebAppBackupConfigurationPiping.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+            "file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestCreateNewWebAppBackupPiping.json",
+            "_justification": "Legitimate test session record, keys are deleted"
+        },
+        {
+		"file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestCreateNewWebAppBackupPiping.json",
+		"_justification": "Legitimate test session record, keys are deleted"
+		},
+		{
+			"file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestCreateNewWebAppBackup.json",
+			"_justification": "Legitimate test session record, keys are deleted"
+		},
+		{
+			"file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestGetWebAppBackup.json",
+			"_justification": "Legitimate test session record, keys are deleted"
+		},
+		{
+			"file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestEditAndGetWebAppBackupConfiguration.json",
+			"_justification": "Legitimate test session record, keys are deleted"
+		},
+		{
+			"file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestEditAndGetWebAppBackupConfigurationPiping.json",
+			"_justification": "Legitimate test session record, keys are deleted"
+		},
+		{
+			"file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestCreateNewWebAppBackupPiping.json",
+			"_justification": "Legitimate test session record, keys are deleted"
+		},
+		{
+			"file": "\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\SessionRecords\\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\\TestGetWebAppBackupList.json",
+			"_justification": "Legitimate test session record, keys are deleted"
+		}
 	]
 }

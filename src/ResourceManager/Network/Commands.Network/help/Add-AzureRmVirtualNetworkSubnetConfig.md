@@ -15,19 +15,22 @@ Adds a subnet configuration to a virtual network.
 
 ### SetByResource (Default)
 ```
-Add-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
+Add-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork>
+ -AddressPrefix <System.Collections.Generic.List`1[System.String]>
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
  [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
- [-ServiceEndpointPolicies <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]>]
+ [-ServiceEndpointPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]>]
+ [-Delegation <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSDelegation]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
 ```
-Add-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork> -AddressPrefix <String>
- [-NetworkSecurityGroupId <String>] [-RouteTableId <String>]
- [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
- [-ServiceEndpointPolicies <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]>]
+Add-AzureRmVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwork>
+ -AddressPrefix <System.Collections.Generic.List`1[System.String]> [-NetworkSecurityGroupId <String>]
+ [-RouteTableId <String>] [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
+ [-ServiceEndpointPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]>]
+ [-Delegation <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSDelegation]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -49,13 +52,24 @@ New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
     Add-AzureRmVirtualNetworkSubnetConfig is then used to add a subnet to the in-memory representation of the virtual network. The Set-AzureRmVirtualNetwork command updates the existing virtual 
     network with the new subnet.
 
+### 2: Add a delegation to a subnet being added to an existing virtual network
+```powershell
+PS C:\> $vnet = Get-AzureRmVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
+PS C:\> $delegation = New-AzureRmDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/servers"
+PS C:\> Add-AzureRmVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet -AddressPrefix "10.0.2.0/24" -Delegation $delegation | Set-AzureRmVirtualNetwork
+```
+
+This example first gets an existing vnet.
+Then, it creates a delegation object in memory.
+Finally, it creates a new subnet with that delegation that is added to the vnet. The modified configuration is then sent to the server.
+
 ## PARAMETERS
 
 ### -AddressPrefix
 Specifies a range of IP addresses for a subnet configuration.
 
 ```yaml
-Type: System.String
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 
@@ -78,6 +92,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Delegation
+List of services that have permission to perform operations on this subnet.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSDelegation]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -168,7 +197,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ServiceEndpointPolicies
+### -ServiceEndpointPolicy
 Service Endpoint Policies
 
 ```yaml
@@ -204,7 +233,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
-Parameters: VirtualNetwork (ByValue)
 
 ### System.String
 
@@ -213,6 +241,10 @@ Parameters: VirtualNetwork (ByValue)
 ### Microsoft.Azure.Commands.Network.Models.PSRouteTable
 
 ### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy, Microsoft.Azure.Commands.Network, Version=6.7.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSDelegation, Microsoft.Azure.Commands.Network, Version=6.7.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

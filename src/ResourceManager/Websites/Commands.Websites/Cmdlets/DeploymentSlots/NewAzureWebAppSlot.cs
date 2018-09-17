@@ -15,21 +15,27 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Commands.WebApps.Models.WebApp;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
     /// <summary>
     /// this commandlet will let you create a new Azure Web app slot using ARM APIs
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlot"), OutputType(typeof(Site))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSlot"), OutputType(typeof(PSSite))]
     public class NewAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+
+		[Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -47,7 +53,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The source web app to clone", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public Site SourceWebApp { get; set; }
+        public PSSite SourceWebApp { get; set; }
 
         [Parameter(Position = 6, Mandatory = false, HelpMessage = "Ignore source control on source web app")]
         [ValidateNotNullOrEmpty]
@@ -69,12 +75,94 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public string AseResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+		[Parameter(Mandatory = false, HelpMessage = "Container Image Name and optional tag, for example (image:tag)")]
+		[ValidateNotNullOrEmpty]
+		public string ContainerImageName { get; set; }
+
+		[Parameter(Mandatory = false, HelpMessage = "Private Container Registry Server Url")]
+		[ValidateNotNullOrEmpty]
+		public string ContainerRegistryUrl { get; set; }
+
+		[Parameter(Mandatory = false, HelpMessage = "Private Container Registry Username")]
+		[ValidateNotNullOrEmpty]
+		public string ContainerRegistryUser { get; set; }
+
+		[Parameter(Mandatory = false, HelpMessage = "Private Container Registry Password")]
+		[ValidateNotNullOrEmpty]
+		public SecureString ContainerRegistryPassword { get; set; }
+
+		[Parameter(Mandatory = false, HelpMessage = "Enables/Disables container continuous deployment webhook")]
+		public SwitchParameter EnableContainerContinuousDeployment { get; set; }
+
+
+		[Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        public override void ExecuteCmdlet()
+		private Hashtable GetAppSettingsToUpdate()
+		{
+			Hashtable appSettings = new Hashtable();
+			if (ContainerRegistryUrl != null)
+			{
+				appSettings[CmdletHelpers.DocerRegistryServerUrl] = ContainerRegistryUrl;
+			}
+			if (ContainerRegistryUser != null)
+			{
+				appSettings[CmdletHelpers.DocerRegistryServerUserName] = ContainerRegistryUser;
+			}
+			if (ContainerRegistryPassword != null)
+			{
+				appSettings[CmdletHelpers.DocerRegistryServerPassword] = ContainerRegistryPassword.ConvertToString();
+			}
+			if (EnableContainerContinuousDeployment.IsPresent)
+			{
+				appSettings[CmdletHelpers.DockerEnableCI] = "true";
+			}
+			return appSettings;
+		}
+
+		private void UpdateConfigIfNeeded(Site site)
+		{
+			SiteConfig siteConfig = site.SiteConfig;
+
+			bool configUpdateRequired = false;
+			
+			if (ContainerImageName != null)
+			{
+				if (site.IsXenon.GetValueOrDefault())
+				{
+					siteConfig.WindowsFxVersion = CmdletHelpers.DockerImagePrefix + ContainerImageName;
+					configUpdateRequired = true;
+				}
+			}
+
+			Hashtable appSettings = GetAppSettingsToUpdate();
+			if (appSettings.Count > 0)
+			{
+				configUpdateRequired = true;
+			}
+
+			if (configUpdateRequired && siteConfig.AppSettings != null)
+			{
+				foreach (NameValuePair nameValuePair in siteConfig.AppSettings)
+				{
+					if (!appSettings.ContainsKey(nameValuePair.Name))
+					{
+						appSettings[nameValuePair.Name] = nameValuePair.Value;
+					}
+				}
+			}
+
+			if (configUpdateRequired)
+			{
+				WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, site.Location, Name, Slot, siteConfig, appSettings.ConvertToStringDictionary());
+				site = WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot);
+			}
+			WriteObject(site);
+		}
+		public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            
             CloningInfo cloningInfo = null;
             if (SourceWebApp != null)
             {
@@ -86,11 +174,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     ConfigureLoadBalancing = false,
                     AppSettingsOverrides = AppSettingsOverrides == null ? null : AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
                 };
+                cloningInfo = new PSCloningInfo(cloningInfo);
             }
 
-            var webApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, null);
-
-            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan==null?webApp.ServerFarmId : AppServicePlan, cloningInfo, AseName, AseResourceGroupName));
+            var webApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
+			var site = new PSSite(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan==null?webApp.ServerFarmId : AppServicePlan, cloningInfo, AseName, AseResourceGroupName));
+			UpdateConfigIfNeeded(site);
         }
     }
 }

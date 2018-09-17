@@ -12,10 +12,10 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core'
+CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
 GUID = 'f554cfcd-9cbb-4021-b158-fe20f0497f82'
@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = '[PowerShell .Net Core] Microsoft Azure PowerShell - Network service cmdlets for Azure Resource Manager'
+Description = 'Microsoft Azure PowerShell - Network service cmdlets for Azure Resource Manager in PowerShell and PowerShell Core'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -42,7 +42,7 @@ PowerShellVersion = '5.1'
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# DotNetFrameworkVersion = ''
+DotNetFrameworkVersion = '4.7.2'
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
 # CLRVersion = ''
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.2.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Network.dll'
@@ -77,6 +77,10 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'New-AzApplicationGatewayAuthenticationCertificate', 
     'Remove-AzApplicationGatewayAuthenticationCertificate', 
     'Set-AzApplicationGatewayAuthenticationCertificate', 
+    'Get-AzApplicationGatewayAutoscaleConfiguration', 
+    'New-AzApplicationGatewayAutoscaleConfiguration', 
+    'Remove-AzApplicationGatewayAutoscaleConfiguration', 
+    'Set-AzApplicationGatewayAutoscaleConfiguration', 
     'Get-AzApplicationGatewayAvailableWafRuleSets', 
     'Get-AzApplicationGatewayAvailableSslOptions', 
     'Add-AzApplicationGatewayBackendAddressPool', 
@@ -152,6 +156,11 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'Set-AzApplicationGatewaySslPolicy', 
     'Get-AzApplicationGatewaySslPredefinedPolicy', 
     'Start-AzApplicationGateway', 'Stop-AzApplicationGateway', 
+    'Add-AzApplicationGatewayTrustedRootCertificate', 
+    'Get-AzApplicationGatewayTrustedRootCertificate', 
+    'New-AzApplicationGatewayTrustedRootCertificate', 
+    'Remove-AzApplicationGatewayTrustedRootCertificate', 
+    'Set-AzApplicationGatewayTrustedRootCertificate', 
     'Add-AzApplicationGatewayUrlPathMapConfig', 
     'Get-AzApplicationGatewayUrlPathMapConfig', 
     'New-AzApplicationGatewayUrlPathMapConfig', 
@@ -291,6 +300,11 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'New-AzLoadBalancerProbeConfig', 
     'Remove-AzLoadBalancerProbeConfig', 
     'Remove-AzLoadBalancer', 'Set-AzLoadBalancer', 
+    'Add-AzLoadBalancerOutboundRuleConfig', 
+    'Get-AzLoadBalancerOutboundRuleConfig', 
+    'New-AzLoadBalancerOutboundRuleConfig', 
+    'Set-AzLoadBalancerOutboundRuleConfig', 
+    'Remove-AzLoadBalancerOutboundRuleConfig',
     'Remove-AzNetworkInterface', 'Get-AzNetworkInterface', 
     'New-AzNetworkInterface', 'Set-AzNetworkInterface', 
     'Get-AzNetworkSecurityGroup', 
@@ -301,29 +315,40 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'Add-AzNetworkSecurityRuleConfig', 
     'New-AzNetworkSecurityGroup', 
     'Remove-AzNetworkSecurityGroup', 
-    'Set-AzNetworkSecurityGroup', 'Test-AzDnsAvailability', 
+    'Set-AzNetworkSecurityGroup',
+    'Test-AzDnsAvailability', 
     'Add-AzVirtualNetworkPeering', 
     'Get-AzVirtualNetworkPeering', 
     'Remove-AzVirtualNetworkPeering', 
-    'Set-AzVirtualNetworkPeering', 'Remove-AzVirtualNetwork', 
+    'Set-AzVirtualNetworkPeering',
+    'Remove-AzVirtualNetwork', 
     'Set-AzVirtualNetwork', 
     'Remove-AzVirtualNetworkSubnetConfig', 
     'Set-AzVirtualNetworkSubnetConfig', 
     'Get-AzVirtualNetworkSubnetConfig', 
     'Add-AzVirtualNetworkSubnetConfig', 
-    'New-AzVirtualNetworkSubnetConfig', 'Get-AzVirtualNetwork', 
+    'New-AzVirtualNetworkSubnetConfig',
+    'New-AzDelegation',
+    'Add-AzDelegation',
+    'Get-AzDelegation',
+    'Remove-AzDelegation',
+    'Get-AzAvailableServiceDelegation',
+    'Get-AzVirtualNetwork', 
     'New-AzVirtualNetwork', 
     'Get-AzVirtualNetworkGatewayBgpPeerStatus', 
     'Get-AzVirtualNetworkGatewayAdvertisedRoute', 
     'Get-AzVirtualNetworkGatewayLearnedRoute', 
-    'Get-AzNetworkUsage', 'Get-AzVirtualNetworkUsageList', 
+    'Get-AzNetworkUsage',
+    'Get-AzVirtualNetworkUsageList', 
     'Get-AzVirtualNetworkAvailableEndpointService', 
     'Get-AzVirtualNetworkGatewaySupportedVpnDevice', 
     'Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript', 
     'New-AzApplicationSecurityGroup', 
     'Remove-AzApplicationSecurityGroup', 
-    'Get-AzApplicationSecurityGroup', 'New-AzPublicIpTag', 
-    'New-AzDdosProtectionPlan', 'Get-AzDdosProtectionPlan', 
+    'Get-AzApplicationSecurityGroup',
+    'New-AzPublicIpTag', 
+    'New-AzDdosProtectionPlan',
+    'Get-AzDdosProtectionPlan', 
     'Remove-AzDdosProtectionPlan', 
     'New-AzNetworkWatcherProtocolConfiguration', 
     'Add-AzExpressRouteCircuitConnectionConfig', 
@@ -337,7 +362,44 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'Get-AzServiceEndpointPolicyDefinition',
     'Set-AzServiceEndpointPolicyDefinition',
     'Add-AzServiceEndpointPolicyDefinition',
-    'Set-AzServiceEndpointPolicy'
+    'Set-AzServiceEndpointPolicy',
+    'New-AzVirtualWan',
+    'Update-AzVirtualWan',
+    'Get-AzVirtualWan',
+    'Remove-AzVirtualWan',
+    'New-AzVirtualHub',
+    'Get-AzVirtualHub',
+    'Update-AzVirtualHub',
+    'Remove-AzVirtualHub',
+    'New-AzVirtualHubRoute',
+    'New-AzVirtualHubRouteTable',
+    'New-AzVpnGateway',
+    'Get-AzVpnGateway',
+    'Update-AzVpnGateway',
+    'Remove-AzVpnGateway',
+    'New-AzVpnSite',
+    'Get-AzVpnSite',
+    'Update-AzVpnSite',
+    'Remove-AzVpnSite',
+    'New-AzVpnConnection',
+    'Get-AzVpnConnection',
+    'Update-AzVpnConnection',
+    'Remove-AzVpnConnection',
+    'New-AzVirtualHubVnetConnection',
+    'Get-AzVirtualHubVnetConnection',
+    'Remove-AzVirtualHubVnetConnection',
+    'Get-AzVirtualWanVpnConfiguration',
+    'Get-AzFirewall',
+    'Set-AzFirewall',
+    'New-AzFirewall',
+    'Remove-AzFirewall',
+    'New-AzFirewallApplicationRuleCollection',
+    'New-AzFirewallApplicationRule',
+    'New-AzFirewallNatRuleCollection',
+    'New-AzFirewallNatRule',
+    'New-AzFirewallNetworkRuleCollection',
+    'New-AzFirewallNetworkRule',
+    'Get-AzInterfaceEndpoint' 
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -374,7 +436,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial Release'
+        ReleaseNotes = 'Initial Release with PowerShell and PowerShell Core Support'
 
         # Prerelease string of this module
         # Prerelease = ''

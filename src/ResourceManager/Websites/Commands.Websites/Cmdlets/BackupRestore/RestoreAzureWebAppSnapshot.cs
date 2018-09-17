@@ -48,23 +48,23 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            Site targetApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot);
-            SnapshotRecoveryTarget target = new SnapshotRecoveryTarget()
+            var sourceApp = new PSSite(WebsitesClient.GetWebApp(InputObject.ResourceGroupName, InputObject.Name, InputObject.Slot));
+            SnapshotRecoverySource source = new SnapshotRecoverySource()
             {
-                Location = targetApp.Location,
-                Id = targetApp.Id
+                Location = sourceApp.Location,
+                Id = sourceApp.Id
             };
-            SnapshotRecoveryRequest recoveryReq = new SnapshotRecoveryRequest()
+            SnapshotRestoreRequest recoveryReq = new SnapshotRestoreRequest()
             {
                 Overwrite = true,
                 SnapshotTime = this.InputObject.SnapshotTime.ToString("o"),
                 RecoverConfiguration = this.RecoverConfiguration,
                 IgnoreConflictingHostNames = true,
-                RecoveryTarget = target
+                RecoverySource = source
             };
-            Action recoverAction = () => WebsitesClient.RecoverSite(InputObject.ResourceGroupName, InputObject.Name, InputObject.Slot, recoveryReq);
+            Action recoverAction = () => WebsitesClient.RestoreSnapshot(ResourceGroupName, Name, Slot, recoveryReq);
             ConfirmAction(this.Force.IsPresent, "Web app contents will be overwritten with the contents of the snapshot.",
-                "The snapshot has been restored.", InputObject.Name, recoverAction);
+                "The snapshot has been restored.", Name, recoverAction);
         }
     }
 }
