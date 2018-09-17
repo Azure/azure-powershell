@@ -12,8 +12,21 @@ Gets a Virtual Network Connection in a virtual hub or lists all virtual network 
 
 ## SYNTAX
 
+### ByVirtualHubName (Default)
 ```
 Get-AzureRmVirtualHubVnetConnection [-Name <String>] -ResourceGroupName <String> -ParentResourceName <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByVirtualHubObject
+```
+Get-AzureRmVirtualHubVnetConnection [-Name <String>] -ParentObject <PSVirtualHub>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByVirtualHubResourceId
+```
+Get-AzureRmVirtualHubVnetConnection [-Name <String>] -ParentResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -90,12 +103,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ParentObject
+The parent resource.```yaml
+Type: PSVirtualHub
+Parameter Sets: ByVirtualHubObject
+Aliases: VirtualHub, ParentVirtualHub
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourceId
+The parent resource id.```yaml
+Type: String
+Parameter Sets: ByVirtualHubResourceId
+Aliases: VirtualHubId, ParentVirtualHubId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ParentResourceName
 The parent resource name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByVirtualHubName
 Aliases: VirtualHubName, ParentVirtualHubName
 
 Required: True
@@ -110,7 +149,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByVirtualHubName
 Aliases:
 
 Required: True

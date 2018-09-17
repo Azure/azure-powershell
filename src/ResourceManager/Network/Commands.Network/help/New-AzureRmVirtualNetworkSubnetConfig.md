@@ -18,6 +18,7 @@ Creates a virtual network subnet configuration.
 New-AzureRmVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String>
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>]
  [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
+ [-ServiceEndpointPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,6 +26,7 @@ New-AzureRmVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String>
 ```
 New-AzureRmVirtualNetworkSubnetConfig -Name <String> -AddressPrefix <String> [-NetworkSecurityGroupId <String>]
  [-RouteTableId <String>] [-ServiceEndpoint <System.Collections.Generic.List`1[System.String]>]
+ [-ServiceEndpointPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -68,7 +70,7 @@ This example creates two new subnet configurations using the
 Specifies a range of IP addresses for a subnet configuration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -98,7 +100,7 @@ Accept wildcard characters: False
 Specifies the name of the subnet configuration to create.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +115,7 @@ Accept wildcard characters: False
 Specifies a NetworkSecurityGroup object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
+Type: PSNetworkSecurityGroup
 Parameter Sets: SetByResource
 Aliases:
 
@@ -128,7 +130,7 @@ Accept wildcard characters: False
 Specifies the ID of a network security group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -143,7 +145,7 @@ Accept wildcard characters: False
 Specifies the route table associated with the subnet configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRouteTable
+Type: PSRouteTable
 Parameter Sets: SetByResource
 Aliases:
 
@@ -158,7 +160,7 @@ Accept wildcard characters: False
 Specifies the ID of the route table associated with the subnet configuration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -174,6 +176,19 @@ Service Endpoint Value
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceEndpointPolicy
+Service Endpoint Policies```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSServiceEndpointPolicy]
 Parameter Sets: (All)
 Aliases:
 

@@ -63,7 +63,7 @@ After the gateway has been created, it uses Set-AzureRmVpnGateway to upgrade the
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The BgpPeering weight for this VpnGateway.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 The virtual wan object to be modified
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVpnGateway
+Type: PSVpnGateway
 Parameter Sets: ByVpnGatewayObject
 Aliases: VpnGateway
 
@@ -123,14 +123,14 @@ Accept wildcard characters: False
 The virtual wan name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnGatewayName
 Aliases: ResourceName, VpnGatewayName, GatewayName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnGatewayName
 Aliases:
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 The Azure resource ID of the VpnGateway to be modified.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByVpnGatewayResourceId
 Aliases:
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 The scale unit for this VpnGateway.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -229,7 +229,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

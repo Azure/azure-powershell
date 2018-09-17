@@ -118,7 +118,7 @@ The gateway will be called "myNGW" within the resource group "vnet-gateway" in t
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ### -Asn
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 Enables the active-active feature.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 ### -EnableBgp
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 ### -GatewayDefaultSite
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
+Type: PSLocalNetworkGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -219,7 +219,7 @@ Accept wildcard characters: False
 ### -GatewaySku
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 ### -GatewayType
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Vpn, ExpressRoute
@@ -263,7 +263,7 @@ Accept wildcard characters: False
 ### -Location
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -277,7 +277,7 @@ Accept wildcard characters: False
 ### -Name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -291,7 +291,7 @@ Accept wildcard characters: False
 ### -PeerWeight
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -306,7 +306,7 @@ Accept wildcard characters: False
 P2S External Radius server address.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: RadiusServerConfiguration
 Aliases:
 
@@ -321,7 +321,7 @@ Accept wildcard characters: False
 P2S External Radius server secret.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: RadiusServerConfiguration
 Aliases:
 
@@ -335,7 +335,7 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -351,7 +351,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -438,7 +438,7 @@ Accept wildcard characters: False
 ### -VpnType
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: PolicyBased, RouteBased
@@ -454,7 +454,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -470,7 +470,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

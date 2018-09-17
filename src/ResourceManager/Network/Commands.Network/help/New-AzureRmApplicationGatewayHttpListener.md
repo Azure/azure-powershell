@@ -56,7 +56,7 @@ The command stores the result in the variable named $Listener.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Specifies front-end IP configuration object for the HTTP listener.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendIPConfiguration
+Type: PSApplicationGatewayFrontendIPConfiguration
 Parameter Sets: SetByResource
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 Specifies the ID of the front-end IP configuration for the HTTP listener.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Specifies the front-end port for the HTTP listener.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFrontendPort
+Type: PSApplicationGatewayFrontendPort
 Parameter Sets: SetByResource
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Specifies the ID of the front-end port object for the HTTP listener.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 Specifies the host name of the application gateway HTTP listener.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 Specifies the name of the HTTP listener that this cmdlet creates.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 Specifies the protocol that the HTTP listener uses.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Http, Https
@@ -175,7 +175,7 @@ Accept wildcard characters: False
 
 ### -RequireServerNameIndication
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: true, false
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 Specifies the SSL certificate object for  the HTTP listener.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslCertificate
+Type: PSApplicationGatewaySslCertificate
 Parameter Sets: SetByResource
 Aliases:
 
@@ -206,7 +206,7 @@ Accept wildcard characters: False
 Specifies the ID of the SSL certificate for the HTTP listener.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 

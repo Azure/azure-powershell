@@ -11,11 +11,11 @@
 
     public class P2SVpnGatewayBaseCmdlet : NetworkBaseCmdlet
     {
-        public IP2SVpnGatewaysOperations P2SVpnGatewayClient
+        public IP2sVpnGatewaysOperations P2SVpnGatewayClient
         {
             get
             {
-                return NetworkClient.NetworkManagementClient.P2SVpnGateways;
+                return NetworkClient.NetworkManagementClient.P2sVpnGateways;
             }
         }
 

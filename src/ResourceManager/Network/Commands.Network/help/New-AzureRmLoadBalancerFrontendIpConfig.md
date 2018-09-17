@@ -61,7 +61,7 @@ The second command creates a front-end IP configuration named FrontendIpConfig01
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Specifies the front-end IP configuration that this cmdlet creates.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +92,7 @@ Specifies the private IP address of the load balancer.
 Specify this parameter only if you also specify the *Subnet* parameter.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceSubnet, SetByResourceIdSubnet
 Aliases:
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 Specifies the **PublicIpAddress** object to associate with a front-end IP configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
+Type: PSPublicIpAddress
 Parameter Sets: SetByResourcePublicIpAddress
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 Specifies the ID of the **PublicIpAddress** object to associate with a front-end IP configuration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceIdPublicIpAddress
 Aliases:
 
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 Specifies the **Subnet** object in which to create a front-end IP configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
+Type: PSSubnet
 Parameter Sets: SetByResourceSubnet
 Aliases:
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 Specifies the ID of the subnet in which to create a front-end IP configuration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceIdSubnet
 Aliases:
 

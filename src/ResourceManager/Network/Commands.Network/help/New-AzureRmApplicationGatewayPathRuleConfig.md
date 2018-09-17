@@ -68,7 +68,7 @@ These IP addresses should either belong to the virtual network subnet or should 
 If you use this parameter you cannot use the *DefaultBackendAddressPoolId* parameter in the same command.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool
+Type: PSApplicationGatewayBackendAddressPool
 Parameter Sets: SetByResource
 Aliases:
 
@@ -89,7 +89,7 @@ The backend address pool represents the IP addresses on the backend servers.
 These IP addresses should either belong to the virtual network subnet or should be public IP addresses.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -110,7 +110,7 @@ The backend HTTP settings configure properties such as port, protocol, and cooki
 If you use this parameter you cannot use the *DefaultBackendHttpSettingsId* parameter in the same command.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings
+Type: PSApplicationGatewayBackendHttpSettings
 Parameter Sets: SetByResource
 Aliases:
 
@@ -131,7 +131,7 @@ The backend HTTP settings configure properties such as port, protocol, and cooki
 If you use this parameter you cannot use the *DefaultBackendHttpSettings* parameter in the same command.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 Specifies the name of the path rule configuration that this cmdlet creates.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 Application gateway RedirectConfiguration
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration
+Type: PSApplicationGatewayRedirectConfiguration
 Parameter Sets: SetByResource
 Aliases:
 
@@ -206,7 +206,7 @@ Accept wildcard characters: False
 ID of the application gateway RedirectConfiguration
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 

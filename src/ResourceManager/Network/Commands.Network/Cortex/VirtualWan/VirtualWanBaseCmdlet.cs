@@ -22,17 +22,22 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Management.Network.Models;
     using Rest.Azure;
     using MNM = Microsoft.Azure.Management.Network.Models;
+    using System.Security;
+    using System;
+    using WindowsAzure.Commands.Common;
+    using System.Security.Cryptography.X509Certificates;
+    using System.IO;
 
     public class VirtualWanBaseCmdlet : NetworkBaseCmdlet
     {
 
         #region VirtualWan
 
-        public IVirtualWANsOperations VirtualWanClient
+        public IVirtualWansOperations VirtualWanClient
         {
             get
             {
-                return NetworkClient.NetworkManagementClient.VirtualWANs;
+                return NetworkClient.NetworkManagementClient.VirtualWans;
             }
         }
 
@@ -69,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
             var virtualWan = this.VirtualWanClient.Get(resourceGroupName, name);
 
             var psVirtualWan = ToPsVirtualWan(virtualWan);
-            
+
             psVirtualWan.ResourceGroupName = resourceGroupName;
 
             return psVirtualWan;
@@ -132,11 +137,11 @@ namespace Microsoft.Azure.Commands.Network
 
         #region VirtualWan P2SVpnServerConfiguration
 
-        public IP2SVpnServerConfigurationsOperations P2SVpnServerConfigurationClient
+        public IP2sVpnServerConfigurationsOperations P2SVpnServerConfigurationClient
         {
             get
             {
-                return NetworkClient.NetworkManagementClient.P2SVpnServerConfigurations;
+                return NetworkClient.NetworkManagementClient.P2sVpnServerConfigurations;
             }
         }
 
@@ -215,6 +220,146 @@ namespace Microsoft.Azure.Commands.Network
         public void DeleteVirtualWanP2SVpnServerConfiguration(string resourceGroupName, string virtualWanName, string p2sVpnServerConfigurationName)
         {
             this.P2SVpnServerConfigurationClient.Delete(resourceGroupName, virtualWanName, p2sVpnServerConfigurationName);
+        }
+
+        public PSP2SVpnServerConfiguration CreateP2sVpnServerConfigurationObject(
+            PSP2SVpnServerConfiguration p2SVpnServerConfiguration,
+            string[] vpnProtocol,
+            string[] vpnClientRootCertificateFilesList,
+            string[] vpnClientRevokedCertificateFilesList,
+            PSIpsecPolicy[] vpnClientIpsecPolicy,
+            string radiusServerAddress,
+            SecureString radiusServerSecret,
+            string[] radiusServerRootCertificateFilesList,
+            string[] radiusClientRootCertificateFilesList)
+        {
+            if (vpnProtocol != null)
+            {
+                p2SVpnServerConfiguration.VpnProtocols = new List<string>(vpnProtocol);
+            }
+
+            if (vpnClientIpsecPolicy != null && vpnClientIpsecPolicy.Length != 0)
+            {
+                p2SVpnServerConfiguration.VpnClientIpsecPolicies = new List<PSIpsecPolicy>(vpnClientIpsecPolicy);
+            }
+
+            if ((radiusServerAddress != null && radiusServerSecret == null) ||
+                (radiusServerAddress == null && radiusServerSecret != null))
+            {
+                throw new ArgumentException("Both radius server address and secret must be specified if external radius is being configured");
+            }
+
+            if (radiusServerAddress != null)
+            {
+                p2SVpnServerConfiguration.RadiusServerAddress = radiusServerAddress;
+                p2SVpnServerConfiguration.RadiusServerSecret = SecureStringExtensions.ConvertToString(radiusServerSecret);
+            }
+
+            // Read the VpnClientRootCertificates if present
+            if (vpnClientRootCertificateFilesList != null)
+            {
+                p2SVpnServerConfiguration.P2SVpnServerConfigVpnClientRootCertificates = new List<PSP2SVpnServerConfigVpnClientRootCertificate>();
+
+                foreach (string vpnClientRootCertPath in vpnClientRootCertificateFilesList)
+                {
+                    X509Certificate2 VpnClientRootCertificate = new X509Certificate2(vpnClientRootCertPath);
+
+                    PSP2SVpnServerConfigVpnClientRootCertificate vpnClientRootCert = new PSP2SVpnServerConfigVpnClientRootCertificate()
+                    {
+                        Name = Path.GetFileNameWithoutExtension(vpnClientRootCertPath),
+                        PublicCertData = Convert.ToBase64String(VpnClientRootCertificate.Export(X509ContentType.Cert)),
+                        Id = GetResourceNotSetId(
+                            this.NetworkClient.NetworkManagementClient.SubscriptionId,
+                            Properties.Resources.P2SVpnServerConfigVpnClientRootCertificateName,
+                            p2SVpnServerConfiguration.Name)
+                    };
+
+                    p2SVpnServerConfiguration.P2SVpnServerConfigVpnClientRootCertificates.Add(vpnClientRootCert);
+                }
+            }
+
+            // Read the VpnClientRevokedCertificates if present
+            if (vpnClientRevokedCertificateFilesList != null)
+            {
+                p2SVpnServerConfiguration.P2SVpnServerConfigVpnClientRevokedCertificates = new List<PSP2SVpnServerConfigVpnClientRevokedCertificate>();
+
+                foreach (string vpnClientRevokedCertPath in vpnClientRevokedCertificateFilesList)
+                {
+                    X509Certificate2 vpnClientRevokedCertificate = new X509Certificate2(vpnClientRevokedCertPath);
+
+                    PSP2SVpnServerConfigVpnClientRevokedCertificate vpnClientRevokedCert = new PSP2SVpnServerConfigVpnClientRevokedCertificate()
+                    {
+                        Name = Path.GetFileNameWithoutExtension(vpnClientRevokedCertPath),
+                        Thumbprint = vpnClientRevokedCertificate.Thumbprint,
+                        Id = GetResourceNotSetId(
+                            this.NetworkClient.NetworkManagementClient.SubscriptionId,
+                            Properties.Resources.P2SVpnServerConfigVpnClientRevokedCertificateName,
+                            p2SVpnServerConfiguration.Name)
+                    };
+
+                    p2SVpnServerConfiguration.P2SVpnServerConfigVpnClientRevokedCertificates.Add(vpnClientRevokedCert);
+                }
+            }
+
+            // Read the RadiusServerRootCertificates if present
+            if (radiusServerRootCertificateFilesList != null)
+            {
+                p2SVpnServerConfiguration.P2SVpnServerConfigRadiusServerRootCertificates = new List<PSP2SVpnServerConfigRadiusServerRootCertificate>();
+
+                foreach (string radiusServerRootCertPath in radiusServerRootCertificateFilesList)
+                {
+                    X509Certificate2 RadiusServerRootCertificate = new X509Certificate2(radiusServerRootCertPath);
+
+                    PSP2SVpnServerConfigRadiusServerRootCertificate radiusServerRootCert = new PSP2SVpnServerConfigRadiusServerRootCertificate()
+                    {
+                        Name = Path.GetFileNameWithoutExtension(radiusServerRootCertPath),
+                        PublicCertData = Convert.ToBase64String(RadiusServerRootCertificate.Export(X509ContentType.Cert)),
+                        Id = GetResourceNotSetId(
+                            this.NetworkClient.NetworkManagementClient.SubscriptionId,
+                            Properties.Resources.P2SVpnServerConfigRadiusServerRootCertificateName,
+                            p2SVpnServerConfiguration.Name)
+                    };
+
+                    p2SVpnServerConfiguration.P2SVpnServerConfigRadiusServerRootCertificates.Add(radiusServerRootCert);
+                }
+            }
+
+            // Read the RadiusClientRootCertificates if present
+            if (radiusClientRootCertificateFilesList != null)
+            {
+                p2SVpnServerConfiguration.P2SVpnServerConfigRadiusClientRootCertificates = new List<PSP2SVpnServerConfigRadiusClientRootCertificate>();
+
+                foreach (string radiusClientRootCertPath in radiusClientRootCertificateFilesList)
+                {
+                    X509Certificate2 radiusClientRootCertificate = new X509Certificate2(radiusClientRootCertPath);
+
+                    PSP2SVpnServerConfigRadiusClientRootCertificate radiusClientRootCert = new PSP2SVpnServerConfigRadiusClientRootCertificate()
+                    {
+                        Name = Path.GetFileNameWithoutExtension(radiusClientRootCertPath),
+                        Thumbprint = radiusClientRootCertificate.Thumbprint,
+                        Id = GetResourceNotSetId(
+                            this.NetworkClient.NetworkManagementClient.SubscriptionId,
+                            Properties.Resources.P2SVpnServerConfigRadiusClientRootCertificateName,
+                            p2SVpnServerConfiguration.Name)
+                    };
+
+                    p2SVpnServerConfiguration.P2SVpnServerConfigRadiusClientRootCertificates.Add(radiusClientRootCert);
+                }
+            }
+
+            return p2SVpnServerConfiguration;
+        }
+
+        public string GetResourceNotSetId(string subscriptionId, string resource, string resourceName)
+        {
+            return string.Format(
+                Properties.Resources.P2SVpnServerConfigurationResourceId,
+                subscriptionId,
+                Properties.Resources.ResourceGroupNotSet,
+                Properties.Resources.VirtualWanNameNotSet,
+                Properties.Resources.P2SVpnServerConfigurationNameNotSet,
+                resource,
+                resourceName);
         }
 
         #endregion

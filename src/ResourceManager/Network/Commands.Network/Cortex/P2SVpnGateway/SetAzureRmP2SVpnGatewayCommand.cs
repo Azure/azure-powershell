@@ -121,7 +121,10 @@
             }
 
             //// Update P2SVpnServerConfiguration to be attached
-            existingP2SVpnGateway.P2SVpnServerConfiguration = this.P2SVpnServerConfiguration;
+            if(this.P2SVpnServerConfiguration != null)
+            {
+                existingP2SVpnGateway.P2SVpnServerConfiguration = this.P2SVpnServerConfiguration;
+            }            
 
             //// Modify the VpnClientAddressPool if specified
             if (this.VpnClientAddressPool != null)

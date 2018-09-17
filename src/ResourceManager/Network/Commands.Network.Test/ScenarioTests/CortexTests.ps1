@@ -141,7 +141,7 @@ function Test-CortexCRUD
                 Assert-AreEqual $p2sVpnServerConfiguration1Name $virtualWan.P2SVpnServerConfigurations[0].Name
  
                 # Get created P2SVpnServerConfiguration using Get-AzureRmVirtualWanP2SVpnServerConfiguration
-                $p2sVpnServerConfig1 = Get-AzureRmVirtualWanP2SVpnServerConfiguration -VirtualWanName $virtualWanName -ResourceGroupName $rgName -Name $p2sVpnServerConfiguration1Name
+                $p2sVpnServerConfig1 = Get-AzureRmP2SVpnServerConfiguration -VirtualWanName $virtualWanName -ResourceGroupName $rgName -Name $p2sVpnServerConfiguration1Name
 				Assert-AreEqual $p2sVpnServerConfiguration1Name $p2sVpnServerConfig1.Name
                 $protocols = $p2sVpnServerConfig1.VpnProtocols
                 Assert-AreEqual 1 @($protocols).Count

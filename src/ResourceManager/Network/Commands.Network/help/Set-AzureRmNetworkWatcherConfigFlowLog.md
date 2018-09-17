@@ -146,7 +146,7 @@ In this example we configure flow logging status and Traffic Analytics for a Net
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 Flag to enable/disable flow logging.
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 Flag to enable/disable retention.
 
 ```yaml
-Type: System.Boolean
+Type: Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -206,7 +206,7 @@ Accept wildcard characters: False
 Flag to enable/disable retention.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: SetFlowlogByResourceWithTAByResource, SetFlowlogByResourceWithTAByDetails, SetFlowlogByNameWithTAByResource, SetFlowlogByNameWithTAByDetails, SetFlowlogByLocationWithTAByResource, SetFlowlogByLocationWithTAByDetails
 Aliases: EnableTA
 
@@ -221,7 +221,7 @@ Accept wildcard characters: False
 Location of the network watcher.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetFlowlogByLocationWithTAByResource, SetFlowlogByLocationWithTAByDetails, SetFlowlogByLocationWithoutTA
 Aliases:
 
@@ -236,7 +236,7 @@ Accept wildcard characters: False
 The network watcher resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
+Type: PSNetworkWatcher
 Parameter Sets: SetFlowlogByResourceWithoutTA, SetFlowlogByResourceWithTAByResource, SetFlowlogByResourceWithTAByDetails
 Aliases:
 
@@ -251,7 +251,7 @@ Accept wildcard characters: False
 The name of network watcher.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetFlowlogByNameWithTAByResource, SetFlowlogByNameWithTAByDetails, SetFlowlogByNameWithoutTA
 Aliases: Name
 
@@ -266,7 +266,7 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetFlowlogByNameWithTAByResource, SetFlowlogByNameWithTAByDetails, SetFlowlogByNameWithoutTA
 Aliases:
 
@@ -281,7 +281,7 @@ Accept wildcard characters: False
 Number of days to retain flow log records.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -296,7 +296,7 @@ Accept wildcard characters: False
 ID of the storage account which is used to store the flow log.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -311,7 +311,7 @@ Accept wildcard characters: False
 The target resource ID.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -326,7 +326,7 @@ Accept wildcard characters: False
 The WS object which is used to store the traffic analytics data.
 
 ```yaml
-Type: Microsoft.Azure.Management.Internal.Network.Common.IOperationalInsightWorkspace
+Type: IOperationalInsightWorkspace
 Parameter Sets: SetFlowlogByResourceWithTAByResource
 Aliases:
 
@@ -338,7 +338,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Microsoft.Azure.Management.Internal.Network.Common.IOperationalInsightWorkspace
+Type: IOperationalInsightWorkspace
 Parameter Sets: SetFlowlogByNameWithTAByResource, SetFlowlogByLocationWithTAByResource
 Aliases:
 
@@ -353,7 +353,7 @@ Accept wildcard characters: False
 GUID of the WS which is used to store the traffic analytics data.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetFlowlogByResourceWithTAByDetails, SetFlowlogByNameWithTAByDetails, SetFlowlogByLocationWithTAByDetails
 Aliases:
 
@@ -368,7 +368,7 @@ Accept wildcard characters: False
 Azure Region of the WS which is used to store the traffic analytics data.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetFlowlogByResourceWithTAByDetails, SetFlowlogByNameWithTAByDetails, SetFlowlogByLocationWithTAByDetails
 Aliases:
 
@@ -383,7 +383,7 @@ Accept wildcard characters: False
 Subscription of the WS which is used to store the traffic analytics data.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetFlowlogByResourceWithTAByDetails, SetFlowlogByNameWithTAByDetails, SetFlowlogByLocationWithTAByDetails
 Aliases:
 
@@ -398,7 +398,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -413,7 +413,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

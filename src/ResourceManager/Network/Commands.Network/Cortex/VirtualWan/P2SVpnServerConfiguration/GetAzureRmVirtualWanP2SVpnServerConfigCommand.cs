@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVirtualWanP2SVpnServerConfiguration"), OutputType(typeof(PSP2SVpnServerConfiguration))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmP2SVpnServerConfiguration"), OutputType(typeof(PSP2SVpnServerConfiguration))]
     public class GetAzureRmVirtualWanP2SVpnServerConfigCommand : VirtualWanBaseCmdlet
     {
         [Parameter(

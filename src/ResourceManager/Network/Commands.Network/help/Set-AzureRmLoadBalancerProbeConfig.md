@@ -42,7 +42,7 @@ Note that it is necessary to specify several of the same parameters that were sp
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 Specifies the interval, in seconds, between probes to each instance of the load-balanced service.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +73,7 @@ Specifies a load balancer.
 This cmdlet sets the goal state for a probe configuration for the load balancer that this parameter specifies.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Type: PSLoadBalancer
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Specifies the name of the probe configuration that this cmdlet sets.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 Specifies the port on which probes should connect to a load-balanced service.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Specifies the number of per-instance consecutive failures for an instance to be considered unhealthy.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +134,7 @@ Specifies the protocol to use for the probing.
 The acceptable values for this parameter are: Tcp or Http.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Tcp, Http
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 Specifies the path in the load-balanced service to probe to determine health.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

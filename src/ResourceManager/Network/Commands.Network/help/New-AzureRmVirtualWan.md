@@ -13,7 +13,8 @@ Creates an Azure Virtual WAN.
 ## SYNTAX
 
 ```
-New-AzureRmVirtualWan -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzureRmVirtualWan -Name <String> -ResourceGroupName <String>
+ [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration[]>] -Location <String>
  [-AllowVnetToVnetTraffic <Boolean>] [-AllowBranchToBranchTraffic <Boolean>] [-Tag <Hashtable>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -32,6 +33,36 @@ PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -
 The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN with branch to branch traffic allowed in that resource group in Azure.
 
 ## PARAMETERS
+
+### -AllowBranchToBranchTraffic
+Allow branch to branch traffic for VirtualWan.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AllowVnetToVnetTraffic
+Allow vnet to vnet traffic for VirtualWan.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run cmdlet in the background
@@ -87,6 +118,19 @@ Parameter Sets: (All)
 Aliases: ResourceName, VirtualWanName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -P2SVpnServerConfiguration
+The list of PSP2SVpnServerConfigurations that are associated with this VirtualWan.```yaml
+Type: PSP2SVpnServerConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -151,36 +195,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AllowBranchToBranchTraffic
-Allow branch to branch traffic for VirtualWan.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -AllowVnetToVnetTraffic
-Allow vnet to vnet traffic for VirtualWan.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

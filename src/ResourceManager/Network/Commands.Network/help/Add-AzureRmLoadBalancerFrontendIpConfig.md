@@ -81,7 +81,7 @@ The second command gets the load balancer named MyLB and passes the result to th
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -97,7 +97,7 @@ Specifies a **LoadBalancer** object.
 This cmdlet adds a front-end IP configuration to the load balancer that this parameter specifies.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Type: PSLoadBalancer
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 Specifies the name of the front-end IP configuration to add.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 Specifies the private IP address to associate with a front-end IP configuration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceSubnet, SetByResourceIdSubnet
 Aliases:
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 Specifies the public IP address to associate with a front-end IP configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
+Type: PSPublicIpAddress
 Parameter Sets: SetByResourcePublicIpAddress
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 Specifes the ID of the public IP address in which to add a front-end IP configuration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceIdPublicIpAddress
 Aliases:
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 Specifies the subnet object in which to add a front-end IP configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
+Type: PSSubnet
 Parameter Sets: SetByResourceSubnet
 Aliases:
 
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 Specifies the ID of the subnet in which to add a front-end IP configuration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceIdSubnet
 Aliases:
 

@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove,
-        "AzureRmVirtualWanP2SVpnServerConfiguration",
+        "AzureRmP2SVpnServerConfiguration",
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
     public class RemoveAzureRmVirtualWanP2SVpnServerConfigCommand : VirtualWanBaseCmdlet

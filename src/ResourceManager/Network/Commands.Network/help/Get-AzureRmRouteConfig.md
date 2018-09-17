@@ -46,7 +46,7 @@ The current cmdlet gets the route named Route07 in the route table named RouteTa
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 Specifies the name of the route that this cmdlet gets.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 Specifies the route table from which this cmdlet gets routes.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRouteTable
+Type: PSRouteTable
 Parameter Sets: (All)
 Aliases:
 

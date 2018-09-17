@@ -3454,11 +3454,7 @@
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>Address Space</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
-            <Label>Attached P2SVpnServerConfiguration</Label>
-          </TableColumnHeader>		  
+          </TableColumnHeader> 
           <TableColumnHeader>
             <Alignment>Left</Alignment>
             <Label>Virtual Hub</Label>
@@ -3482,7 +3478,11 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <ScriptBlock>$_.VpnClientAddressPool.AddressPrefixes</ScriptBlock>
-              </TableColumnItem>              
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.VirtualHub.Id</ScriptBlock>
+              </TableColumnItem>			  
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>VpnGatewayScaleUnit</PropertyName>

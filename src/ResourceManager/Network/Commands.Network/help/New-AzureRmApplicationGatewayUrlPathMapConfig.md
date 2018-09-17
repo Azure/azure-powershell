@@ -49,7 +49,7 @@ This command creates an array of URL path mappings to a backend server pool.
 Specifies the default backend address pool to route in case none of the rules specified in the *pathRules* parameter match.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool
+Type: PSApplicationGatewayBackendAddressPool
 Parameter Sets: SetByResource
 Aliases:
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 Specifies the default backend address pool ID.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 Specifies the default backend HTTP settings to use in case none of the rules specified in the *pathRules* parameter match.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings
+Type: PSApplicationGatewayBackendHttpSettings
 Parameter Sets: SetByResource
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Specifies the default backend HTTP settings ID.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Application gateway default RedirectConfiguration
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration
+Type: PSApplicationGatewayRedirectConfiguration
 Parameter Sets: SetByResource
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ID of the application gateway default RedirectConfiguration
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 Specifies the URL path map name that this cmdlet creates.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
