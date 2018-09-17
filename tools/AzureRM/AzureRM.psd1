@@ -96,7 +96,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.6.0';
                @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.10'; }, 
                @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.5.0'; }, 
                @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.16.10'; }, 
-               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.11'; }, 
+               @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.12'; }, 
                @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.12'; }, 
                @{ModuleName = 'AzureRM.SignalR'; RequiredVersion = '1.0.0'; }, 
                @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.11.3'; }, 
