@@ -208,7 +208,49 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline', 
                'Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan', 
                'Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord', 
-               'Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan'
+               'Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan',
+               'Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy', 
+               'Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy',
+               'Get-AzureRmSqlDatabaseInstanceFailoverGroup', 
+               'New-AzureRmSqlDatabaseInstanceFailoverGroup', 
+               'Remove-AzureRmSqlDatabaseInstanceFailoverGroup', 
+               'Set-AzureRmSqlDatabaseInstanceFailoverGroup', 
+               'Switch-AzureRmSqlDatabaseInstanceFailoverGroup',
+               'Get-AzureRmSqlManagedInstance',
+               'New-AzureRmSqlManagedInstance',
+               'Remove-AzureRmSqlManagedInstance',
+               'Set-AzureRmSqlManagedInstance',
+               'Update-AzureRmSqlManagedInstance',
+               'Get-AzureRmSqlManagedDatabase',
+               'New-AzureRmSqlManagedDatabase',
+               'Remove-AzureRmSqlManagedDatabase',
+               'Restore-AzureRmSqlManagedDatabase',
+               'New-AzureRmSqlElasticJobAgent',
+               'Remove-AzureRmSqlElasticJobAgent',
+               'Get-AzureRmSqlElasticJobAgent',
+               'Set-AzureRmSqlElasticJobAgent',
+               'New-AzureRmSqlElasticJobCredential',
+               'Get-AzureRmSqlElasticJobCredential',
+               'Set-AzureRmSqlElasticJobCredential',
+               'Remove-AzureRmSqlElasticJobCredential',
+               'New-AzureRmSqlElasticJobTargetGroup',
+               'Get-AzureRmSqlElasticJobTargetGroup',
+               'Remove-AzureRmSqlElasticJobTargetGroup',
+               'Add-AzureRmSqlElasticJobTarget',
+               'Remove-AzureRmSqlElasticJobTarget',
+               'New-AzureRmSqlElasticJob',
+               'Get-AzureRmSqlElasticJob',
+               'Set-AzureRmSqlElasticJob',
+               'Remove-AzureRmSqlElasticJob',
+               'Add-AzureRmSqlElasticJobStep',
+               'Get-AzureRmSqlElasticJobStep',
+               'Remove-AzureRmSqlElasticJobStep',
+               'Set-AzureRmSqlElasticJobStep',
+               'Start-AzureRmSqlElasticJob',
+               'Stop-AzureRmSqlElasticJob',
+               'Get-AzureRmSqlElasticJobExecution',
+               'Get-AzureRmSqlElasticJobStepExecution',
+               'Get-AzureRmSqlElasticJobTargetExecution'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -252,7 +294,7 @@ PrivateData = @{
 * Updated common runtime assemblies'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false

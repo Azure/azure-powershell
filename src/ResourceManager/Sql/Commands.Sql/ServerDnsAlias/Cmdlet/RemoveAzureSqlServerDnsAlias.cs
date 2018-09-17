@@ -24,13 +24,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 	public class RemoveAzureSqlServerDNSAlias : AzureSqlServerDnsAliasCmdletBase
 	{
 		protected const string RemoveByNameAndResourceGroupParameterSet =
-			"Remove a Server Dns Alias from cmdlet input parameters";
+            "RemoveServerDnsAliasByInputParameters";
 
-		protected const string RemoveByInputObjectParameterSet =
-			"Remove a Server Dns Alias from AzureSqlServerDnsAliasModel instance definition";
+        protected const string RemoveByInputObjectParameterSet =
+            "RemoveServerDnsAliasByAzureSqlServerDnsAliasModel";
 
-		protected const string RemoveByResourceIdParameterSet =
-			"Remove a Server Dns Alias from an Azure resource id";
+        protected const string RemoveByResourceIdParameterSet =
+            "RemoveServerDnsAliasByResourceId";
 
 		/// <summary>
 		/// Gets or sets the name of the server dns alias to remove
@@ -98,69 +98,69 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
         /// </summary>
         /// <returns>The entity going to be deleted</returns>
         protected override IEnumerable<Model.AzureSqlServerDnsAliasModel> GetEntity()
-		{
-			return new List<Model.AzureSqlServerDnsAliasModel>()
-			{
-				ModelAdapter.GetServerDnsAlias(this.ResourceGroupName, this.ServerName, this.Name)
-			};
-		}
+        {
+            return new List<Model.AzureSqlServerDnsAliasModel>()
+            {
+                ModelAdapter.GetServerDnsAlias(this.ResourceGroupName, this.ServerName, this.Name)
+            };
+        }
 
-		/// <summary>
-		/// Apply user input.  Here nothing to apply
-		/// </summary>
-		/// <param name="model">The result of GetEntity</param>
-		/// <returns>The input model</returns>
-		protected override IEnumerable<Model.AzureSqlServerDnsAliasModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlServerDnsAliasModel> model)
-		{
-			return model;
-		}
+        /// <summary>
+        /// Apply user input.  Here nothing to apply
+        /// </summary>
+        /// <param name="model">The result of GetEntity</param>
+        /// <returns>The input model</returns>
+        protected override IEnumerable<Model.AzureSqlServerDnsAliasModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlServerDnsAliasModel> model)
+        {
+            return model;
+        }
 
-		/// <summary>
-		/// Deletes server dns alias
-		/// </summary>
-		protected override IEnumerable<Model.AzureSqlServerDnsAliasModel> PersistChanges(IEnumerable<Model.AzureSqlServerDnsAliasModel> entity)
-		{
-			ModelAdapter.RemoveServerDnsAlias(this.ResourceGroupName, this.ServerName, this.Name);
-			return entity;
-		}
+        /// <summary>
+        /// Deletes server dns alias
+        /// </summary>
+        protected override IEnumerable<Model.AzureSqlServerDnsAliasModel> PersistChanges(IEnumerable<Model.AzureSqlServerDnsAliasModel> entity)
+        {
+            ModelAdapter.RemoveServerDnsAlias(this.ResourceGroupName, this.ServerName, this.Name);
+            return entity;
+        }
 
-		/// <summary>
-		/// Entry point for the cmdlet
-		/// </summary>
-		public override void ExecuteCmdlet()
-		{
-			if (ShouldProcess(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDnsAliasDescription, this.Name),
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            if (ShouldProcess(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDnsAliasDescription, this.Name),
  string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDnsAliasWarning, this.Name),
  Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
-			{
-				if (Force || ShouldContinue(string.Format(CultureInfo.InvariantCulture,
-						Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDnsAliasWarning, this.Name),
-					Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
-				{
-					if (string.Equals(this.ParameterSetName, RemoveByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
-					{
-						var resourceInfo = new ResourceIdentifier(InputObject.Id);
-						ResourceGroupName = resourceInfo.ResourceGroupName;
+            {
+                if (Force || ShouldContinue(string.Format(CultureInfo.InvariantCulture,
+                        Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDnsAliasWarning, this.Name),
+                    Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+                {
+                    if (string.Equals(this.ParameterSetName, RemoveByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
+                    {
+                        var resourceInfo = new ResourceIdentifier(InputObject.Id);
+                        ResourceGroupName = resourceInfo.ResourceGroupName;
 
-						var serverResourceInfo = new ResourceIdentifier(resourceInfo.ParentResource);
-						ServerName = serverResourceInfo.ResourceName;
+                        var serverResourceInfo = new ResourceIdentifier(resourceInfo.ParentResource);
+                        ServerName = serverResourceInfo.ResourceName;
 
-						Name = resourceInfo.ResourceName;
-					}
-					else if (string.Equals(this.ParameterSetName, RemoveByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
-					{
-						var resourceInfo = new ResourceIdentifier(ResourceId);
-						ResourceGroupName = resourceInfo.ResourceGroupName;
+                        Name = resourceInfo.ResourceName;
+                    }
+                    else if (string.Equals(this.ParameterSetName, RemoveByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+                    {
+                        var resourceInfo = new ResourceIdentifier(ResourceId);
+                        ResourceGroupName = resourceInfo.ResourceGroupName;
 
-						var serverResourceInfo = new ResourceIdentifier(resourceInfo.ParentResource);
-						ServerName = serverResourceInfo.ResourceName;
+                        var serverResourceInfo = new ResourceIdentifier(resourceInfo.ParentResource);
+                        ServerName = serverResourceInfo.ResourceName;
 
-						Name = resourceInfo.ResourceName;
-					}
+                        Name = resourceInfo.ResourceName;
+                    }
 
-					base.ExecuteCmdlet();
-				}
-			}
-		}
-	}
+                    base.ExecuteCmdlet();
+                }
+            }
+        }
+    }
 }

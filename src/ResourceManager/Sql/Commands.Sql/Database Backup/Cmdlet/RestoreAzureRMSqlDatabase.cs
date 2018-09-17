@@ -24,7 +24,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabase",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlDatabaseModel))]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabase",
+        DefaultParameterSetName = FromPointInTimeBackupSetName,
+        ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlDatabaseModel))]
     public class RestoreAzureRmSqlDatabase
         : AzureSqlCmdletBase<Database.Model.AzureSqlDatabaseModel, AzureSqlDatabaseBackupAdapter>
     {
