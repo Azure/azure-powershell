@@ -123,6 +123,11 @@ function Get-CreateTestNetworkWatcher($location, $nwName, $nwRgName)
 	return $nw
 }
 
+function Get-CanaryLocation
+{
+    Get-Location "Microsoft.Network" "networkWatchers" "centraluseuap";
+}
+
 <#
 .SYNOPSIS
 Test GetTopology NetworkWatcher API.
@@ -180,7 +185,7 @@ function Test-GetSecurityGroupView
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "centraluseuap"
+    $location = Get-CanaryLocation
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
@@ -372,7 +377,7 @@ function Test-PacketCapture
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "centraluseuap"
+    $location = Get-CanaryLocation
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
@@ -773,7 +778,7 @@ function Test-ConnectionMonitor
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "centraluseuap"
+    $location = Get-CanaryLocation
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
