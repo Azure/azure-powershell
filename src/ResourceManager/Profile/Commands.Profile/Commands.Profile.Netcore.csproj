@@ -43,6 +43,10 @@
     <StorageDependencies Include="$(ProjectDir)..\..\..\lib\Microsoft.WindowsAzure.Storage.DataMovement.dll"/>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory"  Version="3.19.2" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
