@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureServiceEndpointPolicyDefinitionCommand : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The name of the service endpoint policy definition")]
         public string Name { get; set; }
 
@@ -34,8 +35,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The Service endpoint policy")]
         public PSServiceEndpointPolicy ServiceEndpointPolicy { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "Parameter is being deprecated without being replaced")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "GetByResourceIdParameterSet")]
         [ValidateNotNullOrEmpty]
@@ -45,12 +47,6 @@ namespace Microsoft.Azure.Commands.Network
         {
             if (this.ShouldProcess(Name, VerbsLifecycle.Restart))
             {
-                if (this.IsParameterBound(c => c.ResourceId))
-                {
-                    var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                    this.Name = resourceIdentifier.ResourceName;
-                }
-
                 base.Execute();
                 var definitions = this.ServiceEndpointPolicy.ServiceEndpointPolicyDefinitions;
 
