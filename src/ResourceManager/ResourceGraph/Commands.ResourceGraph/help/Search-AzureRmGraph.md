@@ -73,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -Query
-Resource Graph query
+Resource Graph query.
 
 ```yaml
 Type: System.String
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -Subscription
-Subscription(s) to run query against
+Subscription(s) to run query against.
 
 ```yaml
 Type: System.String[]
@@ -103,10 +103,10 @@ Accept wildcard characters: False
 ```
 
 ### -Skip
-Ignores the first N objects and then gets the remaining objects
+Ignores the first N objects and then gets the remaining objects.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -118,11 +118,11 @@ Accept wildcard characters: False
 ```
 
 ### -First
-The maximum number of objects to return.
+The maximum number of objects to return. Allowed values: 1-5000.
 Default value is 100.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
