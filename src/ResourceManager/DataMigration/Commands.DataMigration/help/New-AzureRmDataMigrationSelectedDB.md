@@ -56,9 +56,9 @@ Use this setting to override file share information for each database.
 Use fully qualified domain name for the server.
 
 ```yaml
-Type: Microsoft.Azure.Management.DataMigration.Models.FileShare
+Type: FileShare
 Parameter Sets: MigrateSqlServerSqlDbMi
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -86,9 +86,9 @@ Accept wildcard characters: False
 Set Database to readonly before migration
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: MigrateSqlServerSqlDb
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -101,9 +101,9 @@ Accept wildcard characters: False
 Set migration type to SQL Server to SQL DB Migration.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: MigrateSqlServerSqlDb
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -116,9 +116,9 @@ Accept wildcard characters: False
 Set migration type to SQL Server to SQL DB MI Migration.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: MigrateSqlServerSqlDbMi
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -131,9 +131,9 @@ Accept wildcard characters: False
 The name of the source database.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -148,7 +148,7 @@ mapping of source to target tables
 ```yaml
 Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
 Parameter Sets: MigrateSqlServerSqlDb
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -161,9 +161,9 @@ Accept wildcard characters: False
 The name of the target database.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -187,3 +187,4 @@ Parameters: BackupFileShare (ByValue)
 ## NOTES
 
 ## RELATED LINKS
+

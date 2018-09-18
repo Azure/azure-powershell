@@ -20,6 +20,9 @@ Retrieves the properties associated with an instance of the Azure Database Migra
 ### [Get-AzureRmDataMigrationTask](Get-AzureRmDataMigrationTask.md)
 Retrieves the PSProjectTask object associated with an Azure Database Migration Service migration task.
 
+### [New-AzureRmDataMigrationCommand(Get-AzureRmDataMigrationCommand.md)
+Creates a new command to be executed on an existing Azure Database Migration Service migration task.
+
 ### [New-AzureRmDataMigrationConnectionInfo](New-AzureRmDataMigrationConnectionInfo.md)
 Creates a new Connection Info object specifying the server type and name for connection.
 
@@ -37,6 +40,9 @@ Creates a database input object that contains information about source and targe
 
 ### [New-AzureRmDataMigrationService](New-AzureRmDataMigrationService.md)
 Creates a new instance of the Azure Database Migration Service.
+
+### [New-AzureRmDataMigrationSyncSelectedDB](New-AzureRmDataMigrationSyncSelectedDB.md)
+Creates a database input object for sync scenarios that contains information about source and target databases for migration.
 
 ### [New-AzureRmDataMigrationTask](New-AzureRmDataMigrationTask.md)
 Creates and starts a data migration task in the Azure Database Migration Service.
