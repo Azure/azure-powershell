@@ -30,6 +30,8 @@
   - New Cmdlets added:
 	- Get-AzureRmVirtualWanSupportedSecurityProvider
 	- Update-AzureRmVirtualHubVnetConnection
+
+## Version 6.8.0
 * Replaced LoadBalancer cmdlets with generated code
   - LoadBalancerInboundNatPoolConfig: added parameters IdleTimeoutInMinutes, EnableFloatingIp and EnableTcpReset
   - LoadBalancerInboundNatRuleConfig: added parameter EnableTcpReset
