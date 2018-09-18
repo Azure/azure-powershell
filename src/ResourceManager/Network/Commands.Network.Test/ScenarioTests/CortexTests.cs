@@ -30,7 +30,7 @@ namespace Commands.Network.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "TODO, #7260: needs to be re-recorded")]
+        [Fact]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestCortexCRUD()
         {
@@ -39,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexCRUD");
         }
 
-        [Fact(Skip = "Needs ignite changes to be rolled out to all NRPs.")]
+        [Fact(Skip = "Will include the recording before merging this PR.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestP2SCortexCRUD()

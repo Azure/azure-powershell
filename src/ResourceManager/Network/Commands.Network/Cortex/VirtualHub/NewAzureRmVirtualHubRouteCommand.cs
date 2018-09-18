@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-
             var virtualHubRoute = new PSVirtualHubRoute
             {
                 AddressPrefixes = this.AddressPrefix.ToList(),

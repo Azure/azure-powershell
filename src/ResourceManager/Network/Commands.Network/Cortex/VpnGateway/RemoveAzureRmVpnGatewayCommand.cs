@@ -95,7 +95,6 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             base.Execute();
-
             ConfirmAction(
                     this.Force.IsPresent,
                     string.Format(Properties.Resources.RemovingVpnGatewayWarning, this.Name),
