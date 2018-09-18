@@ -12,10 +12,10 @@
         # RootModule = ''
 
         # Version number of this module.
-        ModuleVersion = '0.1.0'
+        ModuleVersion = '0.2.0'
 
         # Supported PSEditions
-        CompatiblePSEditions = 'Core'
+        CompatiblePSEditions = 'Core', 'Desktop'
 
         # ID used to uniquely identify this module
         GUID = 'a153eead-f293-4588-b61e-b465b237591e'
@@ -42,7 +42,7 @@
         # PowerShellHostVersion = ''
 
         # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-        # DotNetFrameworkVersion = ''
+        DotNetFrameworkVersion = '4.7.2'
 
         # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
         # CLRVersion = ''
@@ -51,7 +51,7 @@
         # ProcessorArchitecture = ''
 
         # Modules that must be imported into the global environment prior to importing this module
-        RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
+        RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.2.0'; })
 
         # Assemblies that must be loaded prior to importing this module
         RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceGraph.dll'
