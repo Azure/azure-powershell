@@ -40,6 +40,9 @@ Get the supported security providers for the virtual wan.
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
 PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true
 PS C:\> Get-AzureRmVirtualWanSupportedSecurityProvider -ResourceGroupName "testRG" -Name "myVirtualWAN"
+
+Name : AzureFirewall
+Type : Native
 ```
 
 The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN with branch to branch traffic allowed in that resource group in Azure. It gets the supported security providers for the wan.
