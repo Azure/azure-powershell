@@ -14,6 +14,49 @@
 
 <#
 .SYNOPSIS
+Create Profile with different Sku
+#>
+function Test-SkuCreate
+{
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $profileLocation = "EastUS"
+    $profileSku = "Standard_Microsoft"
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku
+
+    Assert-NotNull $createdProfile
+    Assert-AreEqual $profileName $createdProfile.Name
+    Assert-AreEqual $resourceGroup.ResourceGroupName $createdProfile.ResourceGroupName
+    Assert-AreEqual $profileSku $createdProfile.Sku.Name
+
+	$profileSku = "Standard_Verizon"
+    $profileName = getAssetName
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku 
+    Assert-NotNull $createdProfile
+    Assert-AreEqual $profileName $createdProfile.Name
+    Assert-AreEqual $resourceGroup.ResourceGroupName $createdProfile.ResourceGroupName
+    Assert-AreEqual $profileSku $createdProfile.Sku.Name
+
+	$profileSku = "Premium_Verizon"
+    $profileName = getAssetName
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku 
+    Assert-NotNull $createdProfile
+    Assert-AreEqual $profileName $createdProfile.Name
+    Assert-AreEqual $resourceGroup.ResourceGroupName $createdProfile.ResourceGroupName
+    Assert-AreEqual $profileSku $createdProfile.Sku.Name
+	
+	$profileSku = "Standard_Akamai"
+    $profileName = getAssetName
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku 
+    Assert-NotNull $createdProfile
+    Assert-AreEqual $profileName $createdProfile.Name
+    Assert-AreEqual $resourceGroup.ResourceGroupName $createdProfile.ResourceGroupName
+    Assert-AreEqual $profileSku $createdProfile.Sku.Name
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+<#
+.SYNOPSIS
 Full Profile CRUD cycle
 #>
 function Test-ProfileCrud
