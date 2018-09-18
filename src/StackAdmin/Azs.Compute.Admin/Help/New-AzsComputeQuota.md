@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Compute.Admin-help.xml
 Module Name: Azs.Compute.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ Create a new compute quota.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 New-AzsComputeQuota -Name testQuota5 -AvailabilitySetCount 1000 -CoresCount 1000 -VmScaleSetCount 1000 -VirtualMachineCount 1000 -StandardManagedDiskAndSnapshotSize 1024 -PremiumManagedDiskAndSnapshotSize 1024
 ```
@@ -39,7 +39,7 @@ Number  of availability sets allowed.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 2
@@ -69,7 +69,7 @@ Location of the resource.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 8
@@ -84,7 +84,7 @@ Name of the quota.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -99,7 +99,7 @@ Size for standard managed disks and snapshots allowed.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 7
@@ -114,7 +114,7 @@ Size for standard managed disks and snapshots allowed.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 6
@@ -129,7 +129,7 @@ Number  of virtual machines allowed.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 5
@@ -144,7 +144,7 @@ Number  of scale sets allowed.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 4
@@ -192,6 +192,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### ComputeQuotaObject
+
 ## NOTES
 
 ## RELATED LINKS
+

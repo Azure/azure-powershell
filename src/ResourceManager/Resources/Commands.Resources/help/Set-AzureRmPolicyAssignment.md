@@ -16,15 +16,15 @@ Modifies a policy assignment.
 ### NameParameterSet (Default)
 ```
 Set-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Metadata <String>] [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+ [-Description <String>] [-Metadata <String>] [-Sku <Hashtable>] [-AssignIdentity] [-Location <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
 Set-AzureRmPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
- [-Metadata <String>] [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ [-Metadata <String>] [-Sku <Hashtable>] [-AssignIdentity] [-Location <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
@@ -48,6 +48,16 @@ The second command gets the policy assignment named PolicyAssignment by using th
 The command stores that object in the $PolicyAssignment variable.
 The final command updates the display name on the policy assignment on the resource group identified by the **ResourceId** property of $ResourceGroup.
 
+### Example 2: Add a managed identity to the policy assignment
+```
+PS C:\> $PolicyAssignment = Get-AzureRmPolicyAssignment -Name 'PolicyAssignment'
+PS C:\> Set-AzureRmPolicyAssignment -Id $PolicyAssignment.ResourceId -AssignIdentity -Location 'westus'
+```
+
+The first command gets the policy assignment named PolicyAssignment from the current subscription by using the Get-AzureRmPolicyAssignment cmdlet.
+The command stores that object in the $PolicyAssignment variable.
+The final command assigns a managed identity to the policy assignment.
+
 ## PARAMETERS
 
 ### -ApiVersion
@@ -56,6 +66,21 @@ If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssignIdentity
+Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' policies.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -160,6 +185,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The location of the policy assignment. This is only required when the policy assignment has a resource identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

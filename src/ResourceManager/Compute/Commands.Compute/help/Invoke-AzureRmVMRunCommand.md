@@ -19,6 +19,13 @@ Invoke-AzureRmVMRunCommand [-ResourceGroupName] <String> [-VMName] <String> -Com
  [-Confirm] [<CommonParameters>]
 ```
 
+### ResourceIdParameter
+```
+Invoke-AzureRmVMRunCommand -CommandId <String> [-ScriptPath <String>] [-Parameter <Hashtable>]
+ -ResourceId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### VMParameter
 ```
 Invoke-AzureRmVMRunCommand -CommandId <String> [-ScriptPath <String>] [-Parameter <Hashtable>]
@@ -110,6 +117,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource id for the VM
+
+```yaml
+Type: System.String
+Parameter Sets: ResourceIdParameter
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

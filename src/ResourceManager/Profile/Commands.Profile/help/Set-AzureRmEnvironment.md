@@ -24,7 +24,7 @@ Set-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-
  [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [-EnableAdfsAuthentication]
  [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
  [[-BatchEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>]
- [[-AzureOperationalInsightsEndpoint] <String>] [-Scope <ContextModificationScope>]
+ [[-AzureOperationalInsightsEndpoint] <String>] [[-AzureAnalysisServicesEndpointSuffix] <String>] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -162,6 +162,21 @@ Aliases: ArmUrl
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AzureAnalysisServicesEndpointSuffix
+Dns Suffix of Azure Analysis Services service endpoints
+
+```yaml
+Type: System.String
+Parameter Sets: Name
+Aliases:
+
+Required: False
+Position: 15
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -115,6 +115,10 @@ InModuleScope Azs.Fabric.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         It "TestListInfraRoleInstances" -Skip:$('TestListInfraRoleInstances' -in $global:SkippedTests) {
             $global:TestName = 'TestListInfraRoleInstances'
             $InfrastructureRoleInstances = Get-AzsInfrastructureRoleInstance -ResourceGroupName $global:ResourceGroupName -Location $global:Location
@@ -170,27 +174,27 @@ InModuleScope Azs.Fabric.Admin {
         It "TestGetInfrastructureRoleInstanceOnTenantVM" -Skip:$('TestGetInfrastructureRoleInstanceOnTenantVM' -in $global:SkippedTests) {
             $global:TestName = 'TestGetInfrastructureRoleInstanceOnTenantVM'
 
-            { Get-AzsInfrastructureRoleInstance -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Name $global:TenantVMName } | Should Throw
+            { Get-AzsInfrastructureRoleInstance -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Name $global:TenantVMName -ErrorAction Stop } | Should Throw
         }
 
         It "TestInfrastructureRoleInstanceShutdownOnTenantVM" -Skip:$('TestInfrastructureRoleInstanceShutdownOnTenantVM' -in $global:SkippedTests) {
             $global:TestName = 'TestInfrastructureRoleInstanceShutdownOnTenantVM'
             {
-                Disable-AzsInfrastructureRoleInstance -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Name $global:TenantVMName -Force
+                Disable-AzsInfrastructureRoleInstance -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Name $global:TenantVMName -Force -ErrorAction Stop
             } | Should Throw
         }
 
         It "TestInfrastructureRoleInstanceRebootOnTenantVM" -Skip:$('TestInfrastructureRoleInstanceRebootOnTenantVM' -in $global:SkippedTests) {
             $global:TestName = 'TestInfrastructureRoleInstanceRebootOnTenantVM'
             {
-                Restart-AzsInfrastructureRoleInstance -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Name $global:TenantVMName -Force
+                Restart-AzsInfrastructureRoleInstance -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Name $global:TenantVMName -Force -ErrorAction Stop
             } | Should Throw
         }
 
         It "TestInfrastructureRoleInstancePowerOffOnTenantVM" -Skip:$('TestInfrastructureRoleInstancePowerOffOnTenantVM' -in $global:SkippedTests) {
             $global:TestName = 'TestInfrastructureRoleInstancePowerOffOnTenantVM'
             {
-                Stop-AzsInfrastructureRoleInstance -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Name $global:TenantVMName -Force
+                Stop-AzsInfrastructureRoleInstance -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Name $global:TenantVMName -Force -ErrorAction Stop
             } | Should Throw
         }
 

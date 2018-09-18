@@ -462,10 +462,10 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   <data name="ImproperFabricWithNetwork" xml:space="preserve">
     <value>Please pass a valid VMM fabric with fabric network or pass only Azure fabric to check networkmapping for primary Azure fabric. </value>
   </data>
-  <data name="TryDownloadingVaultFile" xml:space="preserve">
-    <value>Message: For newly created vault download vault creds file and retry.
-Recommended Action: Install module AzureRm.RecoveryServices if not installed. And execute below cmdlets
-$path = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $Vault
-Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $path.filepath</value>
+  <data name="InvalidRecoveryTargetDiskAccountType" xml:space="preserve">
+    <value>Please pass a valid RecoveryTargetDiskAccountType as input for disk URI "{0}"</value>
+  </data>
+  <data name="InvalidRecoveryDiskResourceGroup" xml:space="preserve">
+    <value>Please pass a valid RecoveryResourceGroupId as input for disk URI "{0}"</value>
   </data>
 </root>
