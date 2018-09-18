@@ -339,4 +339,25 @@
   <data name="ApplicationGatewayTrustedRootCertificateName" xml:space="preserve">
     <value>trustedRootCertificates</value>
   </data>
+  <data name="P2SVpnServerConfigVpnClientRevokedCertificateName" xml:space="preserve">
+    <value>p2sVpnServerConfigVpnClientRevokedCertificates</value>
+  </data>
+  <data name="P2SVpnServerConfigVpnClientRootCertificateName" xml:space="preserve">
+    <value>p2sVpnServerConfigVpnClientRootCertificates</value>
+  </data>
+  <data name="P2SVpnServerConfigRadiusClientRootCertificateName" xml:space="preserve">
+    <value>p2sVpnServerConfigRadiusClientRootCertificates</value>
+  </data>
+  <data name="P2SVpnServerConfigRadiusServerRootCertificateName" xml:space="preserve">
+    <value>p2sVpnServerConfigRadiusServerRootCertificates</value>
+  </data>
+  <data name="VirtualWanNameNotSet" xml:space="preserve">
+    <value>VirtualWanNameNotSet</value>
+  </data>  
+  <data name="P2SVpnServerConfigurationNameNotSet" xml:space="preserve">
+    <value>P2SVpnServerConfigurationNameNotSet</value>
+  </data>
+  <data name="P2SVpnServerConfigurationResourceId" xml:space="preserve">
+    <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualWans/{2}/p2sVpnServerConfigurations/{3}/{4}/{5}</value>
+  </data>
 </root>

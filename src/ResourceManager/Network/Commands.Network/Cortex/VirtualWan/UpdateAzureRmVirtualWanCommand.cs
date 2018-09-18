@@ -82,6 +82,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The list of PSP2sVpnServerConfigurations that are associated with this VirtualWan.")]
+        public PSP2SVpnServerConfiguration[] P2sVpnServerConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -143,6 +148,13 @@ namespace Microsoft.Azure.Commands.Network
             if (this.AllowVnetToVnetTraffic.HasValue)
             {
                 virtualWanToUpdate.AllowVnetToVnetTraffic = this.AllowVnetToVnetTraffic.Value;
+            }
+
+            // Modify the P2SVpnServerConfigurations if present
+            if (this.P2sVpnServerConfiguration != null && this.P2sVpnServerConfiguration.Any())
+
+            {
+                virtualWanToUpdate.P2sVpnServerConfigurations = new List<PSP2SVpnServerConfiguration>(this.P2sVpnServerConfiguration);
             }
 
             var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWAN>(virtualWanToUpdate);

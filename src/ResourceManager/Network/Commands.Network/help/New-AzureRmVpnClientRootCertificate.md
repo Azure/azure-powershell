@@ -50,7 +50,7 @@ The third command uses the **New-AzureRmVpnClientRootCertificate** cmdlet to cre
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 Specifies a name for the new client root certificate.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +89,7 @@ $Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
 $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text\[$i\]}
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

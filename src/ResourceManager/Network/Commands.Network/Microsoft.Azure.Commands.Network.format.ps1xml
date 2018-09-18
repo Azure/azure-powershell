@@ -636,13 +636,13 @@
               </ListItem> 
               <ListItem> 
                 <Label>VpnClientRevokedCertificates</Label> 
-                <PropertyName>VpnClientRevokedCertificatesText</PropertyName> 
+                <PropertyName>VpnClientRevokedCertificatesText</PropertyName>
               </ListItem> 
               <ListItem> 
                 <Label>VpnClientRootCertificates</Label> 
                 <PropertyName>VpnClientRootCertificatesText</PropertyName> 
               </ListItem>
-        <ListItem> 
+	           <ListItem> 
                  <Label>VpnClientIpsecPolicies</Label> 
                 <PropertyName>VpnClientIpsecPoliciesText</PropertyName>
               </ListItem> 
@@ -3381,6 +3381,10 @@
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Number of attached P2sVpnServerConfigurations</Label>
+                <ScriptBlock>$_.P2sVpnServerConfigurations.Count</ScriptBlock>
+              </ListItem>	  
+              <ListItem>
                 <Label>AllowVnetToVnetTraffic</Label>
                 <PropertyName>AllowVnetToVnetTraffic</PropertyName>
               </ListItem>
@@ -3509,5 +3513,285 @@
         </ListEntries>
       </ListControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>        
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>          
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>VpnProtocols</Label>
+          </TableColumnHeader>  
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Provisioning State</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name</ScriptBlock>                
+              </TableColumnItem>              
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>VpnProtocols</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>	  
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVpnProfileResponse</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVpnProfileResponse</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>P2SVpnGateway Client Profile SASUrl</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProfileUrl</PropertyName>
+              </TableColumnItem>			  
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfigVpnClientRootCertificate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfigVpnClientRootCertificate</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>          
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PublicCertData</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name</ScriptBlock>                
+              </TableColumnItem>               
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PublicCertData</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>			  
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>	  			  
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfigVpnClientRevokedCertificate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfigVpnClientRevokedCertificate</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>          
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Thumbprint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>		  
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name</ScriptBlock>                
+              </TableColumnItem>               
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Thumbprint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>			  
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfigRadiusServerRootCertificate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfigRadiusServerRootCertificate</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>          
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>PublicCertData</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>		  
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name</ScriptBlock>                
+              </TableColumnItem>               
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>PublicCertData</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>			  
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfigRadiusClientRootCertificate</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfigRadiusClientRootCertificate</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>          
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Thumbprint</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>		  
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name</ScriptBlock>                
+              </TableColumnItem>               
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>Thumbprint</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>			  
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>		
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSP2SVpnGateway</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSP2SVpnGateway</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Name</Label>
+          </TableColumnHeader>          
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Address Space</Label>
+          </TableColumnHeader> 
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Virtual Hub</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>Scale Unit</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.Name</ScriptBlock>                
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.VpnClientAddressPool.AddressPrefixes</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <ScriptBlock>$_.VirtualHub.Id</ScriptBlock>
+              </TableColumnItem>			  
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>VpnGatewayScaleUnit</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>	
   </ViewDefinitions>
 </Configuration>

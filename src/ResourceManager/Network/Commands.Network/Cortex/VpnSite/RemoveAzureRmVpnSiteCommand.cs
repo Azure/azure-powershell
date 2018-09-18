@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             base.Execute();
-            
+
             ConfirmAction(
                     this.Force.IsPresent,
                     string.Format(Properties.Resources.RemovingResource, this.Name),

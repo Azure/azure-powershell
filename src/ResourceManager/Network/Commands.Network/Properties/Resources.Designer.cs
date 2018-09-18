@@ -358,6 +358,60 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to p2sVpnServerConfigRadiusClientRootCertificates.
+        /// </summary>
+        public static string P2SVpnServerConfigRadiusClientRootCertificateName {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigRadiusClientRootCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p2sVpnServerConfigRadiusServerRootCertificates.
+        /// </summary>
+        public static string P2SVpnServerConfigRadiusServerRootCertificateName {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigRadiusServerRootCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to P2SVpnServerConfigurationNameNotSet.
+        /// </summary>
+        public static string P2SVpnServerConfigurationNameNotSet {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigurationNameNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualWans/{2}/p2sVpnServerConfigurations/{3}/{4}/{5}.
+        /// </summary>
+        public static string P2SVpnServerConfigurationResourceId {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigurationResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p2sVpnServerConfigVpnClientRevokedCertificates.
+        /// </summary>
+        public static string P2SVpnServerConfigVpnClientRevokedCertificateName {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigVpnClientRevokedCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p2sVpnServerConfigVpnClientRootCertificates.
+        /// </summary>
+        public static string P2SVpnServerConfigVpnClientRootCertificateName {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigVpnClientRootCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The parent virtual hub mentioned could not be found..
         /// </summary>
         public static string ParentVirtualHubNotFound {
@@ -403,7 +457,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing a VirtualHub will also remove all HubVirtualNetworkConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Removing a VirtualHub will also remove all HubVirtualNetworkConnections associated with it..
         /// </summary>
         public static string RemovingVirtualHubWarning {
             get {
@@ -635,7 +689,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VirtualNetworkReferenceRequiredToCreateHubVnetConnection", resourceCulture);
             }
         }
-        
+		
         /// <summary>
         ///   Looks up a localized string similar to The referenced VirtualWan could not be found..
         /// </summary>

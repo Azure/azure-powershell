@@ -49,7 +49,7 @@ The second command uses the pipeline operator to pass the load balancer in $slb 
 Specifies the backend port for traffic matched by a rule configuration.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet enables a floating IP address for a rule configuration.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Specifies a list of front-end IP addresses to associate with an inbound NAT rule configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
+Type: PSFrontendIPConfiguration
 Parameter Sets: SetByResource
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Specifies an ID for a front-end IP address configuration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 Specifies the front-end port that is matched by a rule configuration.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 Specifies the length of time, in minutes, that the state of conversations is maintained in a load balancer.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +170,7 @@ Specifies a **LoadBalancer** object.
 This cmdlet adds an inbound NAT rule configuration to the load balancer that this parameter specifies.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Type: PSLoadBalancer
 Parameter Sets: (All)
 Aliases:
 
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 Specifies the name of the inbound NAT rule configuration to add.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -201,7 +201,7 @@ Specifies the protocol that is matched by an inbound NAT rule.
 The acceptable values for this parameter are: Tcp or Udp.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

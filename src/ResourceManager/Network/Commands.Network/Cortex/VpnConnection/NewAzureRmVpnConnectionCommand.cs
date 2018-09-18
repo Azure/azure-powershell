@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            
+
             WriteObject(this.CreateVpnConnection());
         }
 

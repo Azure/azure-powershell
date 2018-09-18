@@ -43,7 +43,7 @@ This command returns contents of Azure network security group "nsg1" in resource
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 
 ### -ExpandResource
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Expand
 Aliases:
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Specifies the name of the network security group that this cmdlet gets.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that the network security group belongs to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: NoExpand
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Expand
 Aliases:
 

@@ -140,4 +140,3 @@ Parameters: ApplicationGateway (ByValue)
 
 [New-AzureRmApplicationGatewaySku](./New-AzureRmApplicationGatewaySku.md)
 
-

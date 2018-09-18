@@ -66,11 +66,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The list of P2sVpnServerConfigurations that are associated with this VirtualWan.")]
+        public PSP2SVpnServerConfiguration[] P2sVpnServerConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
         [Parameter(
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -101,6 +106,13 @@ namespace Microsoft.Azure.Commands.Network
             virtualWan.Location = this.Location;
             virtualWan.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.IsPresent;
             virtualWan.AllowVnetToVnetTraffic = this.AllowVnetToVnetTraffic.IsPresent;
+
+            // P2sVpnServerConfigurations, if specified
+            virtualWan.P2sVpnServerConfigurations = new List<PSP2SVpnServerConfiguration>();
+            if (this.P2sVpnServerConfiguration != null && this.P2sVpnServerConfiguration.Any())
+            {
+                virtualWan.P2sVpnServerConfigurations.AddRange(this.P2sVpnServerConfiguration);
+            }
 
             var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWAN>(virtualWan);
             virtualWanModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);

@@ -1,4 +1,4 @@
-﻿<!--
+﻿--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,8 @@
 --->
 
 ## Current Release
+
+## Version 6.8.0
 * Replaced LoadBalancer cmdlets with generated code
   - LoadBalancerInboundNatPoolConfig: added parameters IdleTimeoutInMinutes, EnableFloatingIp and EnableTcpReset
   - LoadBalancerInboundNatRuleConfig: added parameter EnableTcpReset
@@ -89,6 +91,19 @@
   - Add-AzureRmDelegation: Takes in a subnet and adds the provided service name as a delegation to that subnet
   - Get-AzureRmDelegation
   - Get-AzureRmAvailableServiceDelegations
+* Expose new Powershell commandlets and models for SdWan.
+    - Added New, Get, Set, Remove for VirtualWan.
+    - Added New-AzP2sVpnServerConfigurationObject to create in-memory P2sVpnServerConfiguration object which can be passed in New/Update-VirtualWan
+    - Added New, Get, Update, Remove for P2sVpnServerConfiguration into VirtualWan.
+    - Added New for VirtualHubRoute and VirtualHubRouteTable.
+    - Added New, Get, Set, Remove for VirtualHub.
+    - Added New, Get, Set, Remove for HubVirtualNetworkConnection.
+    - Added New, Get, Set, Remove for VpnGateway.
+    - Added New, Get, Set, Remove for VpnSite.
+    - Added New, Get, Set, Remove for VpnConnection.
+    - Added Get-AzureRmVirtualWanVpnSitesConfigurationCommand to allow download of SdWan configuration.    
+    - Added New, Get, Update, Remove for P2sVpnGateway.
+    - Added Get-AzureRmP2sVpnGatewayVpnProfile to generate VpnProfile and download Sas-Url where it can be downloaded from.
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass

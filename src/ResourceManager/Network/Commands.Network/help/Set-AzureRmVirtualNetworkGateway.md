@@ -73,7 +73,7 @@ The command also sets the custom vpn ipsec policy specified in the $vpnclientips
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Specifies the virtual network gateway Autonomous System Number (ASN) that is used to set up Border Gateway Protocol (BGP) sessions inside IPsec tunnels.
 
 ```yaml
-Type: System.UInt32
+Type: UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Disables the active-active feature.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 Enables the active-active feature.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +149,7 @@ Specifies the default site to use for force tunneling.
 If a default site is specified, all internet traffic from the gateway's Virtual Private Network (VPN) is routed to that site.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
+Type: PSLocalNetworkGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +177,7 @@ The acceptable values for this parameter are:
 - ErGw3AZ
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 Specifies the weight added to routes learned over BGP from this virtual network gateway
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 P2S External Radius server address.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: RadiusServerConfiguration
 Aliases:
 
@@ -223,7 +223,7 @@ Accept wildcard characters: False
 P2S External Radius server secret.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: RadiusServerConfiguration
 Aliases:
 
@@ -239,7 +239,7 @@ Specifies the virtual network gateway object to base modifications off of.
 You can use the Get-AzureRmVirtualNetworkGateway cmdlet to get the virtual network gateway object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Type: PSVirtualNetworkGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -333,7 +333,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -348,7 +348,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -41,7 +41,7 @@ Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 The ExpressRoute circuit object containing the circuit connection configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+Type: PSExpressRouteCircuit
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 The name of the circuit connection configuration to be retrieved.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

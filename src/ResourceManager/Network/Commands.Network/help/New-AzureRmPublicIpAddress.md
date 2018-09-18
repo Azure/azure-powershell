@@ -17,8 +17,7 @@ Creates a public IP address.
 New-AzureRmPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-Sku <String>]
  -AllocationMethod <String> [-IpAddressVersion <String>] [-DomainNameLabel <String>]
  [-IpTag <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPublicIpTag]>]
- [-PublicIpPrefix <Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix>]
- [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>]
+ [-PublicIpPrefix <PSPublicIpPrefix>] [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -82,7 +81,7 @@ Specifies the method with which to allocate the public IP address.
 The acceptable values for this parameter are: Static or Dynamic.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Dynamic, Static
@@ -98,7 +97,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +112,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -128,7 +127,7 @@ Accept wildcard characters: False
 Specifies the relative DNS name for a public IP address.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +142,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +157,7 @@ Accept wildcard characters: False
 Specifies the idle time-out, in minutes.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +172,7 @@ Accept wildcard characters: False
 Specifies the version of the IP address.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: IPv4, IPv6
@@ -204,22 +203,7 @@ Accept wildcard characters: False
 Specifies the region in which to create a public IP address.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PublicIpPrefix
-Specifies the PSPublicIpPrefix from which to allocate the public IP address.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -234,9 +218,24 @@ Accept wildcard characters: False
 Specifies the name of the public IP address that this cmdlet creates.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ResourceName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicIpPrefix
+Specifies the PSPublicIpPrefix from which to allocate the public IP address.
+
+```yaml
+Type: PSPublicIpPrefix
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -249,7 +248,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group in which to create a public IP address.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -264,7 +263,7 @@ Accept wildcard characters: False
 Specifies a reverse fully qualified domain name (FQDN).
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -279,7 +278,7 @@ Accept wildcard characters: False
 The public IP Sku name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Basic, Standard
@@ -296,7 +295,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -326,7 +325,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -342,7 +341,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

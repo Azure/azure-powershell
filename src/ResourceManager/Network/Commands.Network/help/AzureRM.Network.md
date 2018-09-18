@@ -560,6 +560,12 @@ Creates a route filter rule for a route filter.
 ### [New-AzureRmRouteTable](New-AzureRmRouteTable.md)
 Creates a route table.
 
+### [New-AzureRmServiceEndpointPolicy](New-AzureRmServiceEndpointPolicy.md)
+{{Fill in the Synopsis}}
+
+### [New-AzureRmServiceEndpointPolicyDefinition](New-AzureRmServiceEndpointPolicyDefinition.md)
+{{Fill in the Synopsis}}
+
 ### [New-AzureRmVirtualHub](New-AzureRmVirtualHub.md)
 Creates an Azure VirtualHub resource.
 

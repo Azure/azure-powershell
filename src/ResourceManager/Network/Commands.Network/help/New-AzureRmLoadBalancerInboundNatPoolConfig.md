@@ -43,7 +43,7 @@ PS C:\> New-AzureRmLoadBalancerInboundNatPoolConfig -Name "myInboundNatPool" -Fr
 
 ### -BackendPort
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 
 ### -FrontendIpConfiguration
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
+Type: PSFrontendIPConfiguration
 Parameter Sets: SetByResource
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 
 ### -FrontendIpConfigurationId
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 
 ### -FrontendPortRangeEnd
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 
 ### -FrontendPortRangeStart
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 
 ### -Name
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 
 ### -Protocol
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

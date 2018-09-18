@@ -20,6 +20,10 @@ namespace Microsoft.Azure.Commands.Network
         internal const string ByVirtualWanResourceId = "ByVirtualWanResourceId";
         internal const string ByVirtualWanName = "ByVirtualWanName";
 
+        internal const string ByP2sVpnServerConfigurationObject = "ByP2sVpnServerConfigurationObject";
+        internal const string ByP2sVpnServerConfigurationResourceId = "ByP2sVpnServerConfigurationResourceId";
+        internal const string ByP2sVpnServerConfigurationName = "ByP2sVpnServerConfigurationName";
+
         internal const string ByVirtualHubObject = "ByVirtualHubObject";
         internal const string ByVirtualHubResourceId = "ByVirtualHubResourceId";
         internal const string ByVirtualHubName = "ByVirtualHubName";
@@ -27,6 +31,10 @@ namespace Microsoft.Azure.Commands.Network
         internal const string ByVpnGatewayObject = "ByVpnGatewayObject";
         internal const string ByVpnGatewayResourceId = "ByVpnGatewayResourceId";
         internal const string ByVpnGatewayName = "ByVpnGatewayName";
+
+        internal const string ByP2sVpnGatewayObject = "ByP2sVpnGatewayObject";
+        internal const string ByP2sVpnGatewayResourceId = "ByP2sVpnGatewayResourceId";
+        internal const string ByP2sVpnGatewayName = "ByP2sVpnGatewayName";
 
         internal const string ByVpnSiteObject = "ByVpnSiteObject";
         internal const string ByVpnSiteResourceId = "ByVpnSiteResourceId";
@@ -42,5 +50,6 @@ namespace Microsoft.Azure.Commands.Network
 
         internal const string ByRemoteVirtualNetworkObject = "ByRemoteVirtualNetworkObject";
         internal const string ByRemoteVirtualNetworkResourceId = "ByRemoteVirtualNetworkResourceId";
+
     }
 }

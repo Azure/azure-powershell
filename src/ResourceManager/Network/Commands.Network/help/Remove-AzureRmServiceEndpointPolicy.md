@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermserviceendpointpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermserviceendpointpolicy
 schema: 2.0.0
 ---
 
@@ -12,8 +12,21 @@ schema: 2.0.0
 
 ## SYNTAX
 
+### RemoveByNameParameterSet (Default)
 ```
 Remove-AzureRmServiceEndpointPolicy -Name <String> -ResourceGroupName <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteByResourceIdParameterSet
+```
+Remove-AzureRmServiceEndpointPolicy -ResourceId <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteByInputObjectParameterSet
+```
+Remove-AzureRmServiceEndpointPolicy -InputObject <PSServiceEndpointPolicy> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -68,18 +81,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the service endpoint policy
+### -InputObject
+{{Fill InputObject Description}}
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: PSServiceEndpointPolicy
+Parameter Sets: DeleteByInputObjectParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the service endpoint policy
+
+```yaml
+Type: String
+Parameter Sets: RemoveByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -103,7 +131,22 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: RemoveByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+{{Fill ResourceId Description}}
+
+```yaml
+Type: String
+Parameter Sets: DeleteByResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -145,13 +188,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-
 
 ## OUTPUTS
 
