@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Websites\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
@@ -49,18 +49,16 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Websites.1.7.1-preview\lib\net452\Microsoft.Azure.Management.Websites.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Cmdlets\AppServicePlans\GetAzureAppServicePlanMetrics.cs" />
+    <Compile Include="Cmdlets\BackupRestore\PSAzureDeletedWebApp.cs" />
     <Compile Include="Cmdlets\BackupRestore\AzureWebAppBackup.cs" />
     <Compile Include="Cmdlets\BackupRestore\AzureWebAppBackupConfiguration.cs" />
     <Compile Include="Cmdlets\BackupRestore\AzureWebAppSnapshot.cs" />
     <Compile Include="Cmdlets\BackupRestore\BackupRestoreUtils.cs" />
+    <Compile Include="Cmdlets\BackupRestore\GetAzureDeletedWebApp.cs" />
     <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppSnapshot.cs" />
     <Compile Include="Cmdlets\BackupRestore\NewAzureRmWebAppDatabaseBackupSetting.cs" />
+    <Compile Include="Cmdlets\BackupRestore\RestoreAzureDeletedWebApp.cs" />
     <Compile Include="Cmdlets\BackupRestore\RestoreAzureWebAppBackup.cs" />
     <Compile Include="Cmdlets\BackupRestore\RestoreAzureWebAppSnapshot.cs" />
     <Compile Include="Cmdlets\Certificates\GetAzureWebAppCertificate.cs" />
@@ -102,6 +100,9 @@
     <Compile Include="Cmdlets\AppServicePlans\RemoveAppServicePlan.cs" />
     <Compile Include="Models.WebApp\AppServicePlanBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\DeploymentTemplate.cs" />
+    <Compile Include="Models.WebApp\PSAppServicePlan.cs" />
+    <Compile Include="Models.WebApp\PSCertificate.cs" />
+    <Compile Include="Models.WebApp\PSCloningInfo.cs" />
     <Compile Include="Models.WebApp\PSSite.cs" />
     <Compile Include="Models.WebApp\ResourceClient.cs" />
     <Compile Include="Models.WebApp\WebAppBaseCmdlet.cs" />
@@ -154,6 +155,11 @@
       <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
       <Name>Commands.Profile</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.Websites, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Websites.2.0.0\lib\net452\Microsoft.Azure.Management.Websites.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">

@@ -522,17 +522,87 @@ function Test-CreateNewWebApp
 
 <#
 .SYNOPSIS
+Tests creating a new windows continer app.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-CreateNewWebAppHyperV
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$wname = Get-WebsiteName
+	$location = Get-WebLocation
+	$whpName = Get-WebHostPlanName
+	$tier = "PremiumContainer"
+	$apiversion = "2015-08-01"
+	$resourceType = "Microsoft.Web/sites"
+    $containerImageName = "testcontainer.io/paltest/iis"
+    $containerRegistryUrl = "https://testcontainer.azurecr.io"
+    $ontainerRegistryUser = "testregistry"
+    $pass = "7Dxo9p79Ins2K3ZU"
+    $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
+    $dockerPrefix = "DOCKER|" 
+
+
+	try
+	{
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Small -HyperV
+		
+		# Create new web app
+		$job = New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $ontainerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
+		$job | Wait-Job
+		$actual = $job | Receive-Job
+		
+		# Assert
+		Assert-AreEqual $wname $actual.Name
+		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
+
+		# Get new web app
+		$result = Get-AzureRmWebApp -ResourceGroupName $rgname -Name $wname
+		
+		# Assert
+		Assert-AreEqual $wname $result.Name
+		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
+        Assert-AreEqual $true $result.IsXenon
+        Assert-AreEqual ($dockerPrefix + $containerImageName)  $result.SiteConfig.WindowsFxVersion
+
+        $appSettings = @{
+        "DOCKER_REGISTRY_SERVER_URL" = $containerRegistryUrl;
+        "DOCKER_REGISTRY_SERVER_USERNAME" = $ontainerRegistryUser;
+        "DOCKER_REGISTRY_SERVER_PASSWORD" = $pass;}
+
+        foreach($nvp in $webApp.SiteConfig.AppSettings)
+		{
+			Assert-True { $appSettings.Keys -contains $nvp.Name }
+			Assert-True { $appSettings[$nvp.Name] -match $nvp.Value }
+		}
+
+
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+	}
+}
+<#
+.SYNOPSIS
 Tests creating a new website on an ase
 #>
 function Test-CreateNewWebAppOnAse
 {
 	# Setup
+	# Creating and provisioning an ASE currently takes 30 mins to an hour, hence this test requires that the ASE & ASP are already created 
+	# before creating the app on the ASE
 	$rgname = "appdemorg"
 	$wname = Get-WebsiteName
 	$location = "West US"
 	$whpName = "travelproductionplan"
 	$aseName = "asedemops"
-	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	try
 	{

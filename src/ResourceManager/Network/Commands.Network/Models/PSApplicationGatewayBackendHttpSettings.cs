@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSApplicationGatewayConnectionDraining ConnectionDraining { get; set; }
         public PSResourceId Probe { get; set; }
         public List<PSResourceId> AuthenticationCertificates { get; set; }
+        public List<PSResourceId> TrustedRootCertificates { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string HostName { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
