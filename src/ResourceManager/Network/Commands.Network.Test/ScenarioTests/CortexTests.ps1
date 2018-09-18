@@ -46,6 +46,10 @@ function Test-CortexCRUD
 		Assert-AreEqual $false $virtualWan.AllowVnetToVnetTraffic
 		Assert-AreEqual $false $virtualWan.AllowBranchToBranchTraffic
 
+		# Get Supported SecurityProvider
+		$supportedSecurityProvider = Get-AzureRmVirtualWanSupportedSecurityProvider -ResourceGroupName $rgName -VirtualWan $virtualWan
+		Assert-NotNull $supportedSecurityProvider
+
 		# Create the Virtual Hub
 		$createdVirtualHub = New-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
 		$virtualHub = Get-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
@@ -94,6 +98,11 @@ function Test-CortexCRUD
 		$createdHubVnetConnection = New-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName -RemoteVirtualNetwork $remoteVirtualNetwork
 		$hubVnetConnection = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName
 		Assert-AreEqual $hubVnetConnectionName $hubVnetConnection.Name
+
+		# Update a HubVirtualNetworkConnection
+		Update-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName -EnableInternetSecurity
+		$hubVnetConnection = Get-AzureRmVirtualHubVnetConnection -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $hubVnetConnectionName
+		Assert-True $hubVnetConnection.EnableInternetSecurity
 
 		# Download config
 		$storetype = 'Standard_GRS'
