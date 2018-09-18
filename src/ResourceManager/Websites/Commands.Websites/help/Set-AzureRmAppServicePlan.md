@@ -22,7 +22,7 @@ Set-AzureRmAppServicePlan [[-AdminSiteName] <String>] [[-Tier] <String>] [[-Numb
 
 ### S2
 ```
-Set-AzureRmAppServicePlan [-AsJob] [-AppServicePlan] <AppServicePlan>
+Set-AzureRmAppServicePlan [-AsJob] [-AppServicePlan] <PSAppServicePlan>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 App Service Plan Object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.AppServicePlan
+Type: Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan
 Parameter Sets: S2
 Aliases:
 

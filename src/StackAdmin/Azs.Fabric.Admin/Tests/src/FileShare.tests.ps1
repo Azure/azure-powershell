@@ -84,8 +84,7 @@ InModuleScope Azs.Fabric.Admin {
                 )
                 if ($Expected -eq $null) {
                     $Found | Should Be $null
-                }
-                else {
+                } else {
                     $Found                  | Should Not Be $null
 
                     # Resource
@@ -100,6 +99,10 @@ InModuleScope Azs.Fabric.Admin {
 
                 }
             }
+        }
+
+        AfterEach {
+            $global:Client = $null
         }
 
         It "TestListFileShares" -Skip:$('TestListFileShares' -in $global:SkippedTests) {

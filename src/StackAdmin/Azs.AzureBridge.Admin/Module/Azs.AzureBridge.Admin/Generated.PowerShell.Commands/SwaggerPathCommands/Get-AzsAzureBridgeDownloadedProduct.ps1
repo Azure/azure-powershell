@@ -91,8 +91,6 @@ function Get-AzsAzureBridgeDownloadedProduct {
 
     Process {
 
-
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient'
         }
@@ -123,6 +121,7 @@ function Get-AzsAzureBridgeDownloadedProduct {
             Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $AzureBridgeAdminClient.'
             $TaskResult = $AzureBridgeAdminClient.DownloadedProducts.ListWithHttpMessagesAsync($ResourceGroupName, $ActivationName)
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $AzureBridgeAdminClient.'
             $TaskResult = $AzureBridgeAdminClient.DownloadedProducts.GetWithHttpMessagesAsync($ResourceGroupName, $ActivationName, $Name)
         } else {

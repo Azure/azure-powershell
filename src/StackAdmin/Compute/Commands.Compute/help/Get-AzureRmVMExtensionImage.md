@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: F46041A3-355F-4449-B582-4D2F7314CA05
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmextensionimage
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Gets all versions for an Azure extension.
 
 ```
 Get-AzureRmVMExtensionImage -Location <String> -PublisherName <String> -Type <String>
- [-FilterExpression <String>] [-Version <String>] [<CommonParameters>]
+ [-FilterExpression <String>] [-Version <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ PS C:\> Get-AzureRmVMExtensionImage -Location "Central US" -PublisherName "Fabri
 This command gets all the versions of the extension image for the specified location, publisher, and type.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -FilterExpression
 Specifies a filter expression.
@@ -113,10 +129,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineExtensionImage
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineExtensionImageDetails
 
 ## NOTES
 

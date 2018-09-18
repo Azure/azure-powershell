@@ -100,10 +100,14 @@ InModuleScope Azs.Fabric.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
 
         It "TestListEdgeGatewayPools" -Skip:$('TestListEdgeGatewayPools' -in $global:SkippedTests) {
             $global:TestName = 'TestListEdgeGatewayPools'
-            $edgeGatewayPools = Get-AzsEdgeGatewayPool -ResourceGroupName $global:ResourceGroupName -Location $Location
+            $edgeGatewayPools = Get-AzsEdgeGatewayPool -ResourceGroupName $global:ResourceGroupName -Location $global:Location
             $edgeGatewayPools | Should Not Be $null
             foreach ($edgeGatewayPool in $edgeGatewayPools) {
                 ValidateEdgeGatewayPool -EdgeGatewayPool $edgeGatewayPool

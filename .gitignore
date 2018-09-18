@@ -2,6 +2,8 @@
 src/Publish/
 src/Package/
 src/Stack/
+src/local-artifacts/*
+!.placeholder
 
 obj
 TestResults
@@ -238,3 +240,4 @@ launchSettings.json
 /ModuleMappings.json
 /SolutionMappings.json
 /TestMappings.json
+/tools/Modules/tmp

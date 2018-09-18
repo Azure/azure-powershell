@@ -38,52 +38,58 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     The disk guid as identity.
 
 .EXAMPLE
+    PS C:\> $disks = Get-AzsDisk -location local
 
-	PS C:\> $disks = Get-AzsDisk -location local
+    Returns a list of managed disks at the location local. By default, it will the first 100 disks
+
+.EXAMPLE
     PS C:\> $disk = Get-AzsDisk -location local -name $DiskId
+
+    Get a specific managed disk.
+
 #>
 function Get-AzsDisk
 {
     [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.Disk])]
     [CmdletBinding(DefaultParameterSetName='List')]
-    param(    
+    param(
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
         [System.String]
 		[Alias('Id')]
         $ResourceId,
-    
+
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
         [System.String]
         $Location,
-    
+
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [System.Nullable`1[System.Int32]]
         $Start = $null,
-    
+
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [System.String]
         $SharePath,
-    
+
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [System.Nullable`1[System.Int32]]
         $Count = $null,
-    
+
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [System.String]
         $UserSubscriptionId,
-    
+
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [System.String]
         $Status,
-    
+
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
         [Alias('DiskId')]
         [System.String]
         $Name
     )
 
-    Begin 
+    Begin
     {
 	    Initialize-PSSwaggerDependencies -Azure
         $tracerObject = $null
@@ -96,14 +102,14 @@ function Get-AzsDisk
 	}
 
     Process {
-    
+
 		$NewServiceClient_params = @{
 			FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
 		}
 
 		$GlobalParameterHashtable = @{}
 		$NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-     
+
 		$GlobalParameterHashtable['SubscriptionId'] = $null
 		if($PSBoundParameters.ContainsKey('SubscriptionId')) {
 			$GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
@@ -113,13 +119,13 @@ function Get-AzsDisk
 
 		$DiskId = $Name
 
- 
+
 		if('ResourceId' -eq $PsCmdlet.ParameterSetName) {
 			$GetArmResourceIdParameterValue_params = @{
 				IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/disks/{DiskId}'
 			}
 			$GetArmResourceIdParameterValue_params['Id'] = $ResourceId
-        
+
 			$ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
 			$location = $ArmResourceIdParameterValues['location']
 
@@ -132,7 +138,7 @@ function Get-AzsDisk
 		@{
 			'Type' = 'powershellWildcard'
 			'Value' = $DiskId
-			'Property' = 'Name' 
+			'Property' = 'Name'
 		})
 		$applicableFilters = Get-ApplicableFilters -Filters $filterInfos
 		if ($applicableFilters | Where-Object { $_.Strict }) {
@@ -172,9 +178,9 @@ function Get-AzsDisk
 			$GetTaskResult_params = @{
 				TaskResult = $TaskResult
 			}
-            
+
 			Get-TaskResult @GetTaskResult_params
-        
+
 		}
     }
 

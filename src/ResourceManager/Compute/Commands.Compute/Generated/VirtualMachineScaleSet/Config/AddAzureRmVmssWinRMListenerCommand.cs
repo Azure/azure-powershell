@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssWinRMListener", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssWinRMListener", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class AddAzureRmVmssWinRMListenerCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vListeners = new Microsoft.Azure.Management.Compute.Models.WinRMListener();
 
-            vListeners.Protocol = this.MyInvocation.BoundParameters.ContainsKey("Protocol") ? this.Protocol : (ProtocolTypes?) null;
+            vListeners.Protocol = this.MyInvocation.BoundParameters.ContainsKey("Protocol") ? this.Protocol : (ProtocolTypes?)null;
             vListeners.CertificateUrl = this.MyInvocation.BoundParameters.ContainsKey("CertificateUrl") ? this.CertificateUrl : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.WinRM.Listeners.Add(vListeners);
             WriteObject(this.VirtualMachineScaleSet);

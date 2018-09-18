@@ -1,7 +1,7 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: C7FCF2CA-2C8D-4280-BF68-10DEA96642A5
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmdscextension
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Removes a DSC extension handler from a virtual machine in a resource group.
 ## SYNTAX
 
 ```
-Remove-AzureRmVMDscExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmVMDscExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,12 +24,27 @@ The **Remove-AzureRmVMDscExtension** cmdlet removes a Desired State Configuratio
 
 ### Example 1: Remove a DSC extension
 ```
-PS C:\> Remove-AzureRmVMDscExtension -ResouceGroupName "ResourceGroup001" -VMName "VM07" -Name "DSC"
+PS C:\> Remove-AzureRmVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM07" -Name "DSC"
 ```
 
 This command removes the extension named DSC on virtual machine named VM07.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the DSC extension that this cmdlet removes.
@@ -114,10 +129,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 

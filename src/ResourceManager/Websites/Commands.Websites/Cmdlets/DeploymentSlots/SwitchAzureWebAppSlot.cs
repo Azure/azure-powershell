@@ -14,15 +14,8 @@
 // ----------------------------------------------------------------------------------
 
 
-using System.IO;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using System.Management.Automation;
-using System.Reflection;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Common;
-using System;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {

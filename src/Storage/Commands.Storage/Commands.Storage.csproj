@@ -5,6 +5,7 @@
     <UseWebDeployment>false</UseWebDeployment>
     <UseNewtonsoftJson>false</UseNewtonsoftJson>
     <UseWindowsAzureStorage>false</UseWindowsAzureStorage>
+    <UseServiceManagementCommon>false</UseServiceManagementCommon>
   </PropertyGroup>
   <Import Project="..\..\..\tools\Common.ServiceManagement.Dependencies.targets" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -47,18 +48,19 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\WindowsAzure.Storage.9.0.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=9.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WindowsAzure.Storage.9.3.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement, Version=0.7.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Azure.Storage.DataMovement.0.7.1\lib\net45\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement, Version=0.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Azure.Storage.DataMovement.0.8.1\lib\net45\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Azure.PowerShell.ResourceManager.1.0.94-preview\lib\net452\Microsoft.Azure.Commands.ResourceManager.Common.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Azure.PowerShell.ResourceManager.1.1.2-preview\lib\net452\Microsoft.Azure.Commands.ResourceManager.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -105,6 +107,8 @@
     <Compile Include="Common\BlobToFileSystemNameResolver.cs" />
     <Compile Include="Blob\Cmdlet\StartAzureStorageBlobCopy.cs" />
     <Compile Include="Blob\Cmdlet\StopAzureStorageBlobCopy.cs" />
+    <Compile Include="Common\Cmdlet\DisableAzureStorageStaticWebsite.cs" />
+    <Compile Include="Common\Cmdlet\EnableAzureStorageStaticWebsite.cs" />
     <Compile Include="Common\Cmdlet\GetAzureStorageServiceProperties.cs" />
     <Compile Include="Common\Cmdlet\DisableAzureStorageDeleteRetentionPolicy.cs" />
     <Compile Include="Common\Cmdlet\NewAzureStorageAccountSasToken.cs" />

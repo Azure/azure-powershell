@@ -21,7 +21,7 @@ Remove-AzureRmAppServicePlan [-Force] [-AsJob] [-ResourceGroupName] <String> [-N
 
 ### S2
 ```
-Remove-AzureRmAppServicePlan [-Force] [-AsJob] [-AppServicePlan] <AppServicePlan>
+Remove-AzureRmAppServicePlan [-Force] [-AsJob] [-AppServicePlan] <PSAppServicePlan>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ This command removes the Azure App Service plan named ContosoASP that belongs to
 App Service Plan Object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.AppServicePlan
+Type: Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan
 Parameter Sets: S2
 Aliases:
 
