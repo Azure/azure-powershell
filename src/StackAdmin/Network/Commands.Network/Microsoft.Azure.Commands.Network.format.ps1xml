@@ -117,6 +117,14 @@
               <ListItem>
                 <Label>VirtualNetworkPeerings</Label>
                 <PropertyName>VirtualNetworkPeeringsText</PropertyName>
+              </ListItem> 
+              <ListItem>
+                <Label>EnableDDoSProtection</Label>
+                <PropertyName>EnableDDoSProtectionText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EnableVmProtection</Label>
+                <PropertyName>EnableVmProtectionText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -155,6 +163,90 @@
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Source</Label>
+                <PropertyName>SourceText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Destination</Label>
+                <PropertyName>DestinationText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MonitoringIntervalInSeconds</Label>
+                <PropertyName>MonitoringIntervalInSeconds</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AutoStart</Label>
+                <PropertyName>AutoStart</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StartTime</Label>
+                <PropertyName>StartTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MonitoringStatus</Label>
+                <PropertyName>MonitoringStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorQueryResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorQueryResult</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>States</Label>
+                <PropertyName>StatesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -245,11 +337,7 @@
               <ListItem> 
                 <Label>TunnelConnectionStatus</Label> 
                 <PropertyName>TunnelConnectionStatusText</PropertyName> 
-              </ListItem>
-              <ListItem>
-                <Label>ExpressRouteGatewayBypass</Label>
-                <PropertyName>ExpressRouteGatewayBypass</PropertyName>
-              </ListItem>
+              </ListItem>		 
             </ListItems> 
           </ListEntry> 
         </ListEntries> 
@@ -355,6 +443,50 @@
               <ListItem>
                 <Label>Results</Label>
                 <PropertyName>ResultsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureReachabilityReport</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureReachabilityReport</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>AggregationLevel</Label>
+                <PropertyName>AggregationLevel</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProviderLocation</Label>
+                <PropertyName>ProviderLocationText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ReachabilityReport</Label>
+                <PropertyName>ReachabilityReportText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAvailableProvidersList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAvailableProvidersList</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Countries</Label>
+                <PropertyName>CountriesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -656,6 +788,10 @@
                 <Label>RouteTable</Label>
                 <PropertyName>RouteTableText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ServiceEndpoints</Label>
+                <PropertyName>ServiceEndpointText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -795,6 +931,14 @@
               <ListItem>
                 <Label>DnsSettings</Label>
                 <PropertyName>DnsSettingsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Zones</Label>
+                <PropertyName>Zones</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Sku</Label>
+                <PropertyName>SkuText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -940,6 +1084,10 @@
                 <Label>LoadBalancerInboundNatRules</Label>
                 <PropertyName>LoadBalancerInboundNatRulesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ApplicationSecurityGroups</Label>
+                <PropertyName>ApplicationSecurityGroupsText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1011,6 +1159,10 @@
               <ListItem>
                 <Label>EffectiveSecurityRules</Label>
                 <PropertyName>EffectiveSecurityRulesText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TagMap</Label>
+                <PropertyName>TagMapText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1127,6 +1279,14 @@
               <ListItem>
                 <Label>DestinationAddressPrefix</Label>
                 <PropertyName>DestinationAddressPrefix</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SourceApplicationSecurityGroups</Label>
+                <PropertyName>SourceApplicationSecurityGroupsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DestinationApplicationSecurityGroups</Label>
+                <PropertyName>DestinationApplicationSecurityGroupsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Access</Label>
@@ -1376,6 +1536,10 @@
                 <Label>InboundNatPools</Label>
                 <PropertyName>InboundNatPoolsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>Sku</Label>
+                <PropertyName>SkuText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1481,6 +1645,10 @@
               <ListItem>
                 <Label>InboundNatPools</Label>
                 <PropertyName>InboundNatPoolsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Zones</Label>
+                <PropertyName>ZonesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

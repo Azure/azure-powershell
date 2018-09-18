@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+
 namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class PSVirtualMachineImageResource : PSOperation

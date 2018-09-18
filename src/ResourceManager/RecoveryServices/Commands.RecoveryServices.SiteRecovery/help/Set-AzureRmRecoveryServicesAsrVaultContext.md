@@ -12,8 +12,15 @@ Sets the Recovery Services vault context to be used for subsequent Azure Site Re
 
 ## SYNTAX
 
+### AzureRecoveryServicesVault (Default)
 ```
 Set-AzureRmRecoveryServicesAsrVaultContext -Vault <ARSVault> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Set-AzureRmRecoveryServicesAsrVaultContext -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,12 +53,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+Specifies the recoveryservices vault resource id to be set as Vault context.
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Vault
 The Recovery Services vault object corresponding to the Recovery Services vault.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.ARSVault
-Parameter Sets: (All)
+Parameter Sets: AzureRecoveryServicesVault
 Aliases:
 
 Required: True
@@ -98,7 +120,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.ARSVault
-Parameters: Vault (ByValue)
 
 ## OUTPUTS
 

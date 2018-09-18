@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             BackupRequest request = new BackupRequest()
             {
                 StorageAccountUrl = this.StorageAccountUrl,
-                BackupRequestName = this.BackupName,
+                BackupName = this.BackupName,
                 Databases = this.Databases
             };
             var backup = WebsitesClient.BackupSite(ResourceGroupName, Name, Slot, request);

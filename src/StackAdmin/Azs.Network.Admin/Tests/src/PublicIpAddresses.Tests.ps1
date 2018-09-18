@@ -55,6 +55,11 @@ InModuleScope Azs.Network.Admin {
         BeforeEach {
 
         }
+
+        AfterEach {
+            $global:Client = $null
+        }
+
         It "TestGetAllPublicIpAddresses" -Skip:$('TestGetAllPublicIpAddresses' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllPublicIpAddresses'
 
