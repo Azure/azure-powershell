@@ -23,6 +23,9 @@ Gets usage metrics for an Azure Web App.
 ### [Get-AzureRmWebApp](Get-AzureRmWebApp.md)
 Gets Azure Web Apps in the specified resource group.
 
+### [Get-AzureRmDeletedWebApp](Get-AzureRmDeletedWebApp.md)
+Gets deleted web apps in the subscription.
+
 ### [Get-AzureRmWebAppBackup](Get-AzureRmWebAppBackup.md)
 Gets an Azure Web App backup.
 
@@ -107,6 +110,8 @@ Restarts an Azure Web App slot.
 ### [Restore-AzureRmWebAppBackup](Restore-AzureRmWebAppBackup.md)
 Restores an Azure Web App from a backup.
 
+### [Restore-AzureRmDeletedWebApp](Restore-AzureRmDeletedWebApp.md)
+Restores a deleted web app to a new or existing web app.
 
 ### [Restore-AzureRmWebAppSnapshot](Restore-AzureRmWebAppSnapshot.md)
 Restores a web app snapshot.

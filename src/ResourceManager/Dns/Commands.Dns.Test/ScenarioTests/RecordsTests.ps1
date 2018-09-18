@@ -87,6 +87,51 @@ function Test-RecordSetCrud
 
 <#
 .SYNOPSIS
+Test Alias Record Set
+#>
+function Test-AliasRecordSet
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+	$subscription = getSubscription
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$recordType = "A"
+	$zone = $resourceGroup | New-AzureRmDnsZone -Name $zoneName 
+
+	# non alias record
+	$record = $zone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType $recordType -DnsRecords @()
+	$record = $record | Add-AzureRmDnsRecordConfig -Ipv4Address 1.1.1.1
+	$record = $record | Set-AzureRmDnsRecordSet
+	
+	# alias record pointing to non-alias record
+	$aliasRecordName = "alias" + $(getAssetname)
+	$createdRecord = New-AzureRmDnsRecordSet -Name $aliasRecordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType -TargetResourceId $record.Id
+
+	Assert-NotNull $createdRecord
+	Assert-AreEqual $zoneName $createdRecord.ZoneName 
+	Assert-AreEqual $aliasRecordName $createdRecord.Name 
+	Assert-AreEqual $resourceGroup.ResourceGroupName $createdRecord.ResourceGroupName
+
+	$aliasRecord = $zone | Get-AzureRmDnsRecordSet -Name $aliasRecordName -RecordType $recordType
+	$nonaliasRecord = $zone | Get-AzureRmDnsRecordSet -Name $recordName -RecordType $recordType
+	Assert-AreEqual $record.Id $aliasRecord.TargetResourceId
+
+	$nonaliasRecord | Remove-AzureRmDnsRecordSet
+
+	Assert-ThrowsLike { Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType } "*does not exist*"
+
+	$aliasRecord = $zone | Get-AzureRmDnsRecordSet -Name $aliasRecordName -RecordType $recordType
+	Assert-Null $nonaliasRecord.TargetResourceId
+	$aliasRecord | Remove-AzureRmDnsRecordSet
+
+	Assert-ThrowsLike { Get-AzureRmDnsRecordSet -Name $aliasRecordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType $recordType } "*does not exist*"
+
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
 Full Record Set CRUD cycle trims terminating dot from zone name
 #>
 function Test-RecordSetCrudTrimsDotFromZoneName

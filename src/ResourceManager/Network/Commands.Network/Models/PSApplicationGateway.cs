@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSApplicationGatewaySslCertificate> SslCertificates { get; set; }
 
+        public List<PSApplicationGatewayTrustedRootCertificate> TrustedRootCertificates { get; set; }
+
         public List<PSApplicationGatewayFrontendIPConfiguration> FrontendIPConfigurations { get; set; }
 
         public List<PSApplicationGatewayFrontendPort> FrontendPorts { get; set; }
@@ -52,6 +54,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSApplicationGatewayRedirectConfiguration> RedirectConfigurations { get; set; }
 
         public PSApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; set; }
+
+        public PSApplicationGatewayAutoscaleConfiguration AutoscaleConfiguration { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableHttp2 { get; set; }
