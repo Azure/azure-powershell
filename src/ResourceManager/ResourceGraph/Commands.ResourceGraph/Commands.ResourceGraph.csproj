@@ -33,6 +33,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.ResourceGraph</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
     <CodeAnalysisLogFile>bin\Release\Microsoft.Azure.Commands.Management.AzureResourceManager.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
