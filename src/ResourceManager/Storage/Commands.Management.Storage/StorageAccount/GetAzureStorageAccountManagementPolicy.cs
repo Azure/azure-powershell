@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 this.StorageAccountName = StorageAccount.StorageAccountName;
             }
 
-            StorageAccountManagementPolicies managementPolicy = this.StorageClient.StorageAccounts.GetManagementPolicies(
+            StorageAccountManagementPolicies managementPolicy = this.StorageClient.ManagementPolicies.Get(
                  this.ResourceGroupName,
                  this.StorageAccountName);
 

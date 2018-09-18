@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
 
                 JObject jsonRules = JObject.Parse(this.Policy);
-                StorageAccountManagementPolicies managementPolicy = this.StorageClient.StorageAccounts.CreateOrUpdateManagementPolicies(
+                StorageAccountManagementPolicies managementPolicy = this.StorageClient.ManagementPolicies.CreateOrUpdate(
                  this.ResourceGroupName,
                  this.StorageAccountName,
                 jsonRules);
