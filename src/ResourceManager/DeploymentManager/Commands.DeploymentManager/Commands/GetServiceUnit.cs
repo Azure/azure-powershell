@@ -228,7 +228,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceResourceId);
                 this.ServiceName = parsedResourceId.ResourceName;
-                this.ServiceTopologyName = parsedResourceId.ParentResource;
+                string[] tokens = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                if (tokens.Length < 2)
+                {
+                    throw new ArgumentException($"Invalid Service resource identifier: {this.ServiceResourceId}");
+                }
+
+                this.ServiceTopologyName = tokens[1];
             }
             else if (this.ServiceTopology != null)
             {

@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
+    using System;
     using System.Management.Automation;
 
     using Microsoft.Azure.Commands.DeploymentManager.Models;
@@ -37,18 +38,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
-        [Parameter(
-            Position = 0,
-            Mandatory = true, 
-            ParameterSetName = RemoveService.ByServiceTopologyObjectParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group.")]
-        [Parameter(
-            Position = 0,
-            Mandatory = true, 
-            ParameterSetName = RemoveService.ByServiceTopologyResourceIdParamSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
@@ -69,13 +58,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service.")]
         [Parameter(
-            Position = 2,
+            Position = 1,
             Mandatory = true, 
             ParameterSetName = RemoveService.ByServiceTopologyObjectParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the service.")]
         [Parameter(
-            Position = 2,
+            Position = 1,
             Mandatory = true, 
             ParameterSetName = RemoveService.ByServiceTopologyResourceIdParamSet,
             ValueFromPipelineByPropertyName = true,
@@ -102,7 +91,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public PSServiceResource Service { get; set; }
 
         [Parameter(
-            Position = 1,
+            Position = 0,
             Mandatory = true, 
             ParameterSetName = RemoveService.ByServiceTopologyObjectParameterSet,
             HelpMessage = "The service topology object in which the service should be created.")]
@@ -110,7 +99,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         public PSServiceTopologyResource ServiceTopology { get; set; }
 
         [Parameter(
-            Position = 1,
+            Position = 0,
             Mandatory = true, 
             ParameterSetName = RemoveService.ByServiceTopologyResourceIdParamSet,
             HelpMessage = "The service topology resource identifier in which the service should be created.")]
@@ -172,16 +161,25 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             {
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ServiceTopologyName = parsedResourceId.ParentResource;
                 this.Name = parsedResourceId.ResourceName;
+
+                string[] tokens = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                if (tokens.Length < 2)
+                {
+                    throw new ArgumentException($"Invalid Service resource identifier: {this.ResourceId}");
+                }
+
+                this.ServiceTopologyName = tokens[1];
             }
             else if (this.ServiceTopology != null)
             {
+                this.ResourceGroupName = this.ServiceTopology.ResourceGroupName;
                 this.ServiceTopologyName = this.ServiceTopology.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceTopologyResourceId);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 this.ServiceTopologyName = parsedResourceId.ResourceName;
             }
         }

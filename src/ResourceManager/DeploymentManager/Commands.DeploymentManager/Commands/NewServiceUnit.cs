@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
+    using System;
     using System.Collections;
     using System.Management.Automation;
 
@@ -166,7 +167,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         {
             if (this.ShouldProcess(this.Name, Messages.CreateServiceUnit))
             {
-                this.ValidateArguments();
                 this.ResolveParameters();
                 var psServiceUnitResource = new PSServiceUnitResource()
                 {
@@ -205,7 +205,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceResourceId);
                 this.ServiceName = parsedResourceId.ResourceName;
-                this.ServiceTopologyName = parsedResourceId.ParentResource;
+                string[] tokens = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                if (tokens.Length < 2)
+                {
+                    throw new ArgumentException($"Invalid Service resource identifier: {this.ServiceResourceId}");
+                }
+
+                this.ServiceTopologyName = tokens[1];
             }
             else if (this.ServiceTopology != null)
             {
@@ -215,24 +221,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceTopologyResourceId);
                 this.ServiceTopologyName = parsedResourceId.ResourceName;
-            }
-        }
-        
-        private void ValidateArguments()
-        {
-            if (string.IsNullOrWhiteSpace(this.ParametersUri) || string.IsNullOrWhiteSpace(this.TemplateUri))
-            {
-                if (string.IsNullOrWhiteSpace(this.ParametersArtifactSourceRelativePath) || string.IsNullOrWhiteSpace(this.TemplateArtifactSourceRelativePath))
-                {
-                    throw new PSArgumentException(Messages.TemplateParametersMissing);
-                }
-            }
-            else if (string.IsNullOrWhiteSpace(this.ParametersArtifactSourceRelativePath) || string.IsNullOrWhiteSpace(this.TemplateArtifactSourceRelativePath))
-            {
-                if (string.IsNullOrWhiteSpace(this.ParametersUri) || string.IsNullOrWhiteSpace(this.TemplateUri))
-                {
-                    throw new PSArgumentException(Messages.TemplateParametersMissing);
-                }
             }
         }
     }

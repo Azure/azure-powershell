@@ -18,3 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
+Add support for creating and managing rollouts and other supporting scenarios.

@@ -35,11 +35,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [ValidateNotNullOrEmpty]
         public PSServiceResource Service { get; set; }
 
-        [Parameter(
-            Mandatory = false, 
-            HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(this.Service.Name, Messages.UpdateService))

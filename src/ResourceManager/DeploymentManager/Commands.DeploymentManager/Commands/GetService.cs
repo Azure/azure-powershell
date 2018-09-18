@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 {
+    using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.DeploymentManager.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -142,8 +143,15 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             {
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ServiceTopologyName = parsedResourceId.ParentResource;
                 this.Name = parsedResourceId.ResourceName;
+
+                string[] tokens = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                if (tokens.Length < 2)
+                {
+                    throw new ArgumentException($"Invalid Service resource identifier: {this.ResourceId}");
+                }
+
+                this.ServiceTopologyName = tokens[1];
             }
             else if (this.ServiceTopology != null)
             {

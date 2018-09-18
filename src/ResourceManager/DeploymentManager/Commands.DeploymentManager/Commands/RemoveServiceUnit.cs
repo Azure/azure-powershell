@@ -40,30 +40,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group.")]
-        [Parameter(
-            Position = 0,
-            Mandatory = true, 
-            ParameterSetName = RemoveServiceUnit.ByServiceObjectParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group.")]
-        [Parameter(
-            Position = 0,
-            Mandatory = true, 
-            ParameterSetName = RemoveServiceUnit.ByServiceResourceIdParamSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group.")]
-        [Parameter(
-            Position = 0,
-            Mandatory = true, 
-            ParameterSetName = RemoveServiceUnit.ByTopologyObjectAndServiceNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group.")]
-        [Parameter(
-            Position = 0,
-            Mandatory = true, 
-            ParameterSetName = RemoveServiceUnit.ByTopologyResourceIdAndServiceNameParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
@@ -252,22 +228,32 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             }
             else if (this.Service != null)
             {
+                this.ResourceGroupName = this.Service.ResourceGroupName;
                 this.ServiceTopologyName = this.Service.ServiceTopologyName;
                 this.ServiceName = this.Service.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceResourceId);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 this.ServiceName = parsedResourceId.ResourceName;
-                this.ServiceTopologyName = parsedResourceId.ParentResource;
+                string[] tokens = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                if (tokens.Length < 2)
+                {
+                    throw new ArgumentException($"Invalid Service resource identifier: {this.ResourceId}");
+                }
+
+                this.ServiceTopologyName = tokens[1];
             }
             else if (this.ServiceTopology != null)
             {
+                this.ResourceGroupName = this.ServiceTopology.ResourceGroupName;
                 this.ServiceTopologyName = this.ServiceTopology.Name;
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceTopologyResourceId);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
                 this.ServiceTopologyName = parsedResourceId.ResourceName;
             }
         }
