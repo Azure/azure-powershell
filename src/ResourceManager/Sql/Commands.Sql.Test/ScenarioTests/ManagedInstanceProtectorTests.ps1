@@ -22,6 +22,43 @@ $tdeKeyName = $keyVaultName + "_" + $keyName + "_" + $keyVersion
 
 <#
 	.SYNOPSIS
+	Tests setting and getting encryption protector to service managed key for CI
+#>
+function Test-SetGetManagedInstanceEncryptionProtectorCI
+{
+	$managedInstance = Get-AzureRmSqlManagedInstance -Name $managedInstanceName -ResourceGroupName $mangedInstanceRg
+
+	# ServiceManaged with ResourceGroupName and ManagedInstanceName & ResourceId
+	$encryptionProtector = Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector  -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -Type ServiceManaged
+	
+	Assert-AreEqual ServiceManaged $encryptionProtector.Type "Protector type mismatch after setting managed instance TDE protector"
+	Assert-AreEqual ServiceManaged $encryptionProtector.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after setting managed instance TDE protector"
+
+	$encryptionProtector2 = Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector  -ManagedInstanceResourceId $managedInstance.ResourceId
+	
+	Assert-AreEqual ServiceManaged $encryptionProtector2.Type "Protector type mismatch after getting managed instance TDE protector"
+	Assert-AreEqual ServiceManaged $encryptionProtector2.ManagedInstanceKeyVaultKeyName "ManagedInstanceKeyVaultKeyName mismatch after getting managed instance TDE protector"
+
+	$keyResult = Add-AzureRmSqlManagedInstanceKeyVaultKey -ResourceGroupName $mangedInstanceRg -ManagedInstanceName $managedInstanceName -KeyId $keyId
+
+	Assert-AreEqual $keyId $keyResult.KeyId "KeyId mismatch after adding managed instance key vault key"
+	Assert-AreEqual $tdeKeyName $keyResult.ManagedInstanceKeyName "ManagedInstanceKeyVaultKeyName mismatch after adding managed instance key vault key"
+	
+	# Byok with piping & inputobject
+
+	$byokEncryptionProtector = $managedInstance | Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -Type AzureKeyVault -KeyId $keyResult.KeyId -Force
+	
+	Assert-AreEqual AzureKeyVault $byokEncryptionProtector.Type "BYOK: Protector type mismatch after setting managed instance TDE protector"
+	Assert-AreEqual $keyResult.ManagedInstanceKeyName $byokEncryptionProtector.ManagedInstanceKeyVaultKeyName "BYOK:  mismatch after setting managed instance TDE protector"
+
+	$byokEncryptionProtector2 = Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstance $managedInstance
+	
+	Assert-AreEqual AzureKeyVault $byokEncryptionProtector2.Type "BYOK: Protector type mismatch after getting managed instance TDE protector"
+	Assert-AreEqual $keyResult.ManagedInstanceKeyName $byokEncryptionProtector2.ManagedInstanceKeyVaultKeyName "BYOK: ManagedInstanceKeyVaultKeyName mismatch after getting managed instance TDE protector"
+}
+
+<#
+	.SYNOPSIS
 	Tests setting and getting encryption protector to service managed key 
 #>
 function Test-SetGetManagedInstanceEncryptionProtectorServiceManaged

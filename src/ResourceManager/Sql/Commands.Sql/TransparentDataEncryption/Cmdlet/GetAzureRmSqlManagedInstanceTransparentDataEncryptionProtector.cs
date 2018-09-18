@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlServerTransparentDataEncryptionProtector cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlManagedInstanceTransparentDataEncryptionProtector", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceTransparentDataEncryptionProtector", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [Alias("Get-AzureRmSqlManagedInstanceTDEProtector")]
     [OutputType(typeof(AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel))]
     public class GetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector : AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorBase

@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             Position = 0,
             HelpMessage = "The managed instance resource id")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceId")]
         public string ManagedInstanceResourceId { get; set; }
 
         /// <summary>
@@ -77,6 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             ParameterSetName = DefaultParameterSet,
             Position = 1,
             HelpMessage = "The managed instance name")]
+        [Alias("InputObject")]
         [ValidateNotNullOrEmpty]
         public string ManagedInstanceName { get; set; }
         

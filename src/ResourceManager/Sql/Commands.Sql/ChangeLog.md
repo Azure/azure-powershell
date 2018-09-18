@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New Cmdlets for Management.Sql to allow customers to add TDE keys and set TDE protector for managed instances
+   - Add-AzureRmSqlManagedInstanceKeyVaultKey
+   - Get-AzureRmSqlManagedInstanceKeyVaultKey
+   - Remove-AzureRmSqlManagedInstanceKeyVaultKey
+   - Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector
+   - Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector
 
 ## Version 4.11.3
 * Fixed issue with default resource groups not being set.
@@ -36,12 +42,6 @@
 
 ## Version 4.11.1
 * Updated to the latest version of the Azure ClientRuntime.
-* New Cmdlets for Management.Sql to allow customers to add TDE keys and set TDE protector for managed instances
-   - Add-AzureRmSqlManagedInstanceKeyVaultKey
-   - Get-AzureRmSqlManagedInstanceKeyVaultKey
-   - Remove-AzureRmSqlManagedInstanceKeyVaultKey
-   - Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector
-   - Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector
 	
 
 ## Version 4.11.0

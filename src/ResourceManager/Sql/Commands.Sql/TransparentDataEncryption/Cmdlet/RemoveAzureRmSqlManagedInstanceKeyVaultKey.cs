@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// <summary>
     /// Defines the Remove-AzureRmSqlManagedInstanceKeyVaultKey cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlManagedInstanceKeyVaultKey", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceKeyVaultKey", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureRmSqlManagedInstanceKeyVaultKeyModel))]
     public class RemoveAzureRmSqlManagedInstanceKeyVaultKey : AzureRmSqlManagedInstanceKeyVaultKeyBase
     {
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
                 managedInstanceName: this.ManagedInstanceName,
                 keyId: this.KeyId);
 
-            ModelAdapter.AddAzureRmSqlManagedInstanceKeyVaultKey(azureRmSqlManagedInstanceKeyVaultKeyModel);
+            ModelAdapter.RemoveAzureRmSqlManagedInstanceKeyVaultKey(azureRmSqlManagedInstanceKeyVaultKeyModel);
             return entity;
         }
     }

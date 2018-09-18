@@ -26,32 +26,40 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        //[Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Fact]
+        [Fact(Skip = "Skip due to long setup time for managed instance")]
+        //[Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceKeyVaultKeyCI()
+        {
+            RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyCI");
+        }
+
+        [Fact(Skip = "Skipped based on azure team's recommendation to reduce CI build time")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKey()
         {
             RunPowerShellTest("Test-ManagedInstanceKeyVaultKey");
         }
 
-        //[Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Fact]
+        [Fact(Skip = "Skipped based on azure team's recommendation to reduce CI build time")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKeyInputObject()
         {
             RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyInputObject");
         }
 
-        //[Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Fact]
+        [Fact(Skip = "Skipped based on azure team's recommendation to reduce CI build time")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKeyResourceId()
         {
             RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyResourceId");
         }
 
-        //[Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Fact]
+        [Fact(Skip = "Skipped based on azure team's recommendation to reduce CI build time")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKeyPiping()
         {

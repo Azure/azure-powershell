@@ -9,11 +9,25 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Adds a key vault key to the provided Managed Instance. 
+
 ## SYNTAX
 
+### AddAzureRmSqlManagedInstanceKeyVaultKeyDefaultParameterSet (Default)
 ```
 Add-AzureRmSqlManagedInstanceKeyVaultKey [-ResourceGroupName] <String> [-ManagedInstanceName] <String>
  [-KeyId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddAzureRmSqlManagedInstanceKeyVaultKeyInputObjectParameterSet
+```
+Add-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstance <AzureSqlManagedInstanceModel> [-KeyId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet
+```
+Add-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstanceResourceId <String> [-KeyId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +50,53 @@ Type                   : AzureKeyVault
 
 This command adds the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' to the SQL managed instance named 'ContosoManagedInstanceName' in the resource group 'ContosoResourceGroup'. 
 
+### Example 2: Using managed instance object
+```powershell
+PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> Add-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstance $managedInstance -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+
+ResourceGroupName      : ContosoResourceGroup
+ManagedInstanceName    : ContosoManagedInstanceName
+KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
+ManagedInstanceKeyName : contoso_contosokey_01234567890123456789012345678901
+CreationDate           : 9/1/2018 12:11:49 AM
+Thumbprint             : 6AB10000F99E1B6A22222F39E3F11CB5DC5A55A1
+Type                   : AzureKeyVault
+```
+
+This command adds the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' to the SQL managed instance named 'ContosoManagedInstanceName' in the resource group 'ContosoResourceGroup'. 
+
+### Example 3: Using managed instance resource id
+```powershell
+PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> Add-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstanceResourceId $managedInstance.ResourceId -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+
+ResourceGroupName      : ContosoResourceGroup
+ManagedInstanceName    : ContosoManagedInstanceName
+KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
+ManagedInstanceKeyName : contoso_contosokey_01234567890123456789012345678901
+CreationDate           : 9/1/2018 12:11:49 AM
+Thumbprint             : 6AB10000F99E1B6A22222F39E3F11CB5DC5A55A1
+Type                   : AzureKeyVault
+```
+
+This command adds the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' to the SQL managed instance named 'ContosoManagedInstanceName' in the resource group 'ContosoResourceGroup'. 
+
+### Example 4: Using piping
+```powershell
+PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+PS C:\> $managedInstance | Add-AzureRmSqlManagedInstanceKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+
+ResourceGroupName      : ContosoResourceGroup
+ManagedInstanceName    : ContosoManagedInstanceName
+KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
+ManagedInstanceKeyName : contoso_contosokey_01234567890123456789012345678901
+CreationDate           : 9/1/2018 12:11:49 AM
+Thumbprint             : 6AB10000F99E1B6A22222F39E3F11CB5DC5A55A1
+Type                   : AzureKeyVault
+```
+
+This command adds the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' to the SQL managed instance named 'ContosoManagedInstanceName' in the resource group 'ContosoResourceGroup'. 
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -68,13 +129,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedInstance
+The managed instance input object
+
+```yaml
+Type: AzureSqlManagedInstanceModel
+Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ManagedInstanceName
 The managed instance name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyDefaultParameterSet
+Aliases: InputObject
 
 Required: True
 Position: 1
@@ -83,12 +159,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagedInstanceResourceId
+The managed instance resource id
+
+```yaml
+Type: String
+Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyDefaultParameterSet
 Aliases:
 
 Required: True
@@ -130,8 +221,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -26,76 +26,84 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        //[Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Fact]
+        [Fact(Skip = "Skip due to long setup time for managed instance")]
+        //[Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetGetManagedInstanceEncryptionProtectorCI()
+        {
+            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorCI");
+        }
+
+        [Fact(Skip = "Skip due to long setup time for managed instance")]
+        //[Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetGetManagedInstanceEncryptionProtectorByokFailsWithoutKeyId()
+        {
+            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokFailsWithoutKeyId");
+        }
+
+        [Fact(Skip = "Skipped based on azure team's recommendation to reduce CI build time")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorServiceManaged()
         {
             RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManaged");
         }
 
-        //[Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Fact]
+        [Fact(Skip = "Skipped based on azure team's recommendation to reduce CI build time")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorServiceManagedInputObject()
         {
             RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedInputObject");
         }
 
-        //[Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Fact]
+        [Fact(Skip = "Skipped based on azure team's recommendation to reduce CI build time")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorServiceManagedResourceId()
         {
             RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedResourceId");
         }
 
-        //[Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Fact]
+        [Fact(Skip = "Skipped based on azure team's recommendation to reduce CI build time")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorServiceManagedPiping()
         {
             RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedPiping");
         }
 
-        //[Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Fact]
+        [Fact(Skip = "Skipped based on azure team's recommendation to reduce CI build time")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorByok()
         {
             RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByok");
         }
 
-        //[Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Fact]
+        [Fact(Skip = "Skipped based on azure team's recommendation to reduce CI build time")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorByokInputObject()
         {
             RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokInputObject");
         }
 
-        //[Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Fact]
+        [Fact(Skip = "Skipped based on azure team's recommendation to reduce CI build time")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorByokResourceId()
         {
             RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokResourceId");
         }
 
-        //[Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Fact]
+        [Fact(Skip = "Skipped based on azure team's recommendation to reduce CI build time")]
+        //[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetManagedInstanceEncryptionProtectorByokPiping()
         {
             RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokPiping");
-        }
-
-        //[Fact(Skip = "Skip due to long setup time for managed instance")]
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetGetManagedInstanceEncryptionProtectorByokFailsWithoutKeyId()
-        {
-            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokFailsWithoutKeyId");
         }
     }
 }
