@@ -128,6 +128,11 @@ function Get-CanaryLocation
     Get-Location "Microsoft.Network" "networkWatchers" "centraluseuap";
 }
 
+function Get-PilotLocation
+{
+    Get-Location "Microsoft.Network" "networkWatchers" "westcentralus";
+}
+
 <#
 .SYNOPSIS
 Test GetTopology NetworkWatcher API.
@@ -474,7 +479,7 @@ function Test-Troubleshoot
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "westcentralus"
+    $location = Get-PilotLocation
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
