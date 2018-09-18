@@ -35,7 +35,6 @@ function Test-StorageBlobContainer
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        $loc = Get-ProviderLocation_Stage;
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
 
@@ -115,7 +114,6 @@ function Test-StorageBlobContainerLegalHold
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        $loc = Get-ProviderLocation_Stage;
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
 
@@ -197,7 +195,6 @@ function Test-StorageBlobContainerImmutabilityPolicy
         Write-Verbose "RGName: $rgname | Loc: $loc"
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
-        $loc = Get-ProviderLocation_Stage;
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind 
         $stos = Get-AzureRmStorageAccount -ResourceGroupName $rgname;
 
