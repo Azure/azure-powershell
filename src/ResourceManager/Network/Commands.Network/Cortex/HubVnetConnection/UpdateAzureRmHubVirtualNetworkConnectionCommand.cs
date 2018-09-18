@@ -47,8 +47,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("VirtualHubName", "ParentVirtualHubName")]
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionName,
             HelpMessage = "The parent resource name.")]
         [ResourceGroupCompleter]
@@ -57,7 +56,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ResourceName", "HubVirtualNetworkConnectionName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionName,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
@@ -65,15 +63,14 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("HubVirtualNetworkConnection")]
         [Parameter(
-            Mandatory = false,
-            ValueFromPipeline = true,
+            Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionObject,
             HelpMessage = "The hubvirtualnetworkconnection resource to modify.")]
         public PSHubVirtualNetworkConnection InputObject { get; set; }
 
         [Alias("HubVirtualNetworkConnectionId")]
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionResourceId,
             HelpMessage = "The resource id of the hubvirtualnetworkconnection resource to modify.")]
@@ -89,15 +86,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
-
         public override void Execute()
         {
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
             //// Resolve the VirtualHub
             if (ParameterSetName.Equals(CortexParameterSetNames.ByHubVirtualNetworkConnectionObject, StringComparison.OrdinalIgnoreCase))

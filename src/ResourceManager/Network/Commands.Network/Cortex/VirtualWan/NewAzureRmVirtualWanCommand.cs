@@ -56,13 +56,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the selected security provider.")]
         public string SecurityProviderName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Local breakout category for office 365 traffic.")]
         [ValidateSet(MNM.OfficeTrafficCategory.All, MNM.OfficeTrafficCategory.None, MNM.OfficeTrafficCategory.Optimize, MNM.OfficeTrafficCategory.OptimizeAndAllow)]
         public string Office365LocalBreakoutCategory { get; set; }
