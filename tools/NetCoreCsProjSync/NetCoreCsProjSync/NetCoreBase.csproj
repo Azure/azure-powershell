@@ -3,7 +3,7 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
     <AssemblyName></AssemblyName>
     <RootNamespace></RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
