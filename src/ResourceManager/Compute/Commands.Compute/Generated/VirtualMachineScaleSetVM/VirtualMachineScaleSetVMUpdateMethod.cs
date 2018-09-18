@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName;
                     string vmScaleSetName;
                     string instanceId;
-                    switch(this.ParameterSetName)
+                    switch (this.ParameterSetName)
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
@@ -124,13 +124,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public Compute.Models.PSVirtualMachineDataDisk [] DataDisk { get; set; }
 
         [Parameter(
-           ParameterSetName = "ResourceIdParameter",
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = "ResourceIdParameter",
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true)]
         public string ResourceId { get; set; }
 
         [Parameter(
             ParameterSetName = "ObjectParameter",
+            Position = 0,
             Mandatory = true,
             ValueFromPipeline = true)]
         public PSVirtualMachineScaleSetVM VirtualMachineScaleSetVM { get; set; }

@@ -113,14 +113,86 @@ function Test-VirtualMachineSetRunCommand
         $st = $job | Receive-Job;
         Assert-NotNull $st.Value;
 
-        # Remove All VMs
-        Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -Force;
-        $vms = Get-AzureRmVM -ResourceGroupName $rgname;
-        Assert-AreEqual $vms $null; 
+        $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
+        $result = Invoke-AzureRmVMRunCommand -ResourceId $vm.Id -CommandId $commandId -ScriptPath $path -Parameter $param;
+        Assert-NotNull $result.Value;
+
+        $result = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname | Invoke-AzureRmVMRunCommand -CommandId $commandId -ScriptPath $path -Parameter $param;
+        Assert-NotNull $result.Value;
+
+        $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
     }
     finally
     {
         # Cleanup
         Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set VM Run Command Set
+#>
+function Test-VirtualMachineScaleSetVMRunCommand
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = Get-Location "Microsoft.Compute" "virtualMachines";
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+
+        # NRP
+        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        # New VMSS Parameters
+        $vmssName = 'vmss' + $rgname;
+
+        $adminUsername = 'Foo12';
+        $adminPassword = Get-PasswordForVM;
+        $imgRef = Get-DefaultCRPImage -loc $loc;
+        $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
+
+        $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Automatic' `
+            | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzureRmVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzureRmVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName;
+
+        $result = New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+        $vmssVMs = Get-AzureRmVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $vmssId = $vmssVMs[0].InstanceId;
+
+        $commandId = "RunPowerShellScript"
+        $param = @{"first" = "var1";"second" = "var2"};
+        $path = 'ScenarioTests\test.ps1';
+
+        $job = Invoke-AzureRmVmssVMRunCommand -ResourceGroupName $rgname -Name $vmssName -InstanceId $vmssId -CommandId $commandId -ScriptPath $path -Parameter $param -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Assert-NotNull $st.Value;
+
+        $vmssVM = Get-AzureRmVmssVM -ResourceGroupName $rgname -Name $vmssName -InstanceId $vmssId;
+
+        $result = Invoke-AzureRmVmssVMRunCommand -ResourceId $vmssVM.Id -CommandId $commandId -ScriptPath $path -Parameter $param;
+        Assert-NotNull $result.Value;
+
+        $result = Get-AzureRmVmssVM -ResourceGroupName $rgname -Name $vmssName -InstanceId $vmssId | Invoke-AzureRmVmssVMRunCommand -CommandId $commandId -ScriptPath $path -Parameter $param;
+        Assert-NotNull $result.Value;
+
+        $vmssVM = Get-AzureRmVmssVM -ResourceGroupName $rgname -Name $vmssName -InstanceId $vmssId;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
     }
 }
