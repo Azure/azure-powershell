@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
