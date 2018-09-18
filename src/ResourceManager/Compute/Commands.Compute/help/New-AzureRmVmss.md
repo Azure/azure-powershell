@@ -36,7 +36,7 @@ New-AzureRmVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJ
 
 ## DESCRIPTION
 The **New-AzureRmVmss** cmdlet creates a Virtual Machine Scale Set (VMSS) in Azure.
-This cmdlet takes a **VirtualMachineScaleSet** object as input or the **`SimpleParameterSet`** can be used to create the vmss with a pre-set configuration which along with the vmss creates other resources required by the vmss as well.
+Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set VMSS and associated resources. Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the the VMSS and each associated resource before creation.
 
 ## EXAMPLES
 
@@ -49,20 +49,20 @@ $vmPassword = ConvertTo-SecureString <PASSWORD_HERE> -AsPlainText -Force
 $vmCred = New-Object System.Management.Automation.PSCredential(<USERNAME_HERE>, $vmPassword)
 
 #Create a VMSS using the default settings
-new-azurermvmss -Credential $vmCred -VMScaleSetName $vmssName 
+New-AzureRmVmss -Credential $vmCred -VMScaleSetName $vmssName 
 ```
 
-The command above creates the following with the name`$vmssName` :
-* A ResourceGroup
+The command above creates the following with the name `$vmssName` :
+* A Resource Group
 * A virtual network
 * A load balancer
 * A public IP
 * the VMSS with 2 instances
 
-The default image chosen for the vms in the vmss is `2016-Datacenter Windows Server` and the SKU is `Standard_DS1_v2`
+The default image chosen for the VMs in the VMSS is `2016-Datacenter Windows Server` and the SKU is `Standard_DS1_v2`
 
 
-### Example 2: Create a VMSS
+### Example 2: Create a VMSS using the **`DefaultParameterSet`**
 ``` powershell
 # Common
 $LOC = "WestUs";
