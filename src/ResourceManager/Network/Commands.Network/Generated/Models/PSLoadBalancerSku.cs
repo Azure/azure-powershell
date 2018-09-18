@@ -28,7 +28,6 @@ using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
 
-
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public partial class PSLoadBalancerSku

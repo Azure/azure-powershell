@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.2.10
+* Support for managed Managed disk
+
 ## Version 0.2.9
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies

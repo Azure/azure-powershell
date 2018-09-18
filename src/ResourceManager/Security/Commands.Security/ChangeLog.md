@@ -19,4 +19,6 @@
 -->
 ## Current Release
 
+## Version 0.1.0
+
 * Public preview release of Security Center cmdlets
