@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Network
             var connectionToModify = parentVirtualHub.VirtualNetworkConnections.FirstOrDefault(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase));
             if (connectionToModify == null)
             {
-                throw new PSArgumentException("The hub virtual network connection to modify could not be found");
+                throw new PSArgumentException(Properties.Resources.HubVnetConnectionNotFound);
             }
 
             if (this.EnableInternetSecurity.HasValue)
