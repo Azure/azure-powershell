@@ -31,7 +31,12 @@ Add-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstanceResourceId <String> [-K
 ```
 
 ## DESCRIPTION
-The Add-AzureRmSqlManagedInstanceKeyVaultKey cmdlet adds a key vault key to the provided Managed Instance. The managed instance must have 'get, wrapKey, unwrapKey' permissions to the vault.
+The Add-AzureRmSqlManagedInstanceKeyVaultKey cmdlet adds a key vault key to the provided Managed Instance. The managed instance must have 'get, wrapKey, unwrapKey' permissions to the vault, use the following script to grant permission to the managed instance.
+
+```powershell
+PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $managedInstance.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
+```
 
 ## EXAMPLES
 

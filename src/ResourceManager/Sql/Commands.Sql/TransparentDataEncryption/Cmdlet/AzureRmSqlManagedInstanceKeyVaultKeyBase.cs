@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             Position = 0,
             HelpMessage = "The managed instance input object")]
         [ValidateNotNullOrEmpty]
+        [Alias("InputObject")]
         public AzureSqlManagedInstanceModel ManagedInstance { get; set; }
 
         /// <summary>
@@ -87,7 +88,6 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             Position = 1,
             HelpMessage = "The managed instance name")]
         [ValidateNotNullOrEmpty]
-        [Alias("InputObject")]
         public string ManagedInstanceName { get; set; }
 
         /// <summary>

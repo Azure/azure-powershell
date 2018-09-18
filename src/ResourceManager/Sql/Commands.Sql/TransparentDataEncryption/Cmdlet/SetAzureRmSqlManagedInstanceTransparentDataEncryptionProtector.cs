@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// <summary>
     /// Defines the Set-AzureRmSqlServerTransparentDataEncryptionProtector cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceTransparentDataEncryptionProtector", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Set-", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlManagedInstanceTransparentDataEncryptionProtector", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [Alias("Set-AzureRmSqlManagedInstanceTDEProtector")]
     [OutputType(typeof(AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel))]
     public class SetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector : AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorBase
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 
             if (ShouldProcess(this.KeyId))
             {
-                if (Force || this.Type == EncryptionProtectorType.ServiceManaged || ShouldContinue(
+                if (Force || this.Type != EncryptionProtectorType.AzureKeyVault || ShouldContinue(
                         string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlManagedInstanceTransparentDataEncryptionProtectorWarning, this.KeyId), ""))
                 {
                     base.ExecuteCmdlet();

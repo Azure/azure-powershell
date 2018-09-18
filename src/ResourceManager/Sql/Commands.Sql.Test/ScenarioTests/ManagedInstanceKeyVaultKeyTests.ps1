@@ -12,6 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 		
+# A managed instance can be provisioned using instructions here https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-get-started
+# currently this takes about 2-3 hours
 $mangedInstanceRg = "MlAndzic_RG"
 $managedInstanceName = "midemoinstancebc"
 $keyVaultName = "mitest-doNotDelete"
