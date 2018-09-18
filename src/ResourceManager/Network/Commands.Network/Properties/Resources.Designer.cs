@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -187,11 +187,38 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to trustedRootCertificates.
+        /// </summary>
+        public static string ApplicationGatewayTrustedRootCertificateName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayTrustedRootCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to urlPathMaps.
         /// </summary>
         public static string ApplicationGatewayUrlPathMapName {
             get {
                 return ResourceManager.GetString("ApplicationGatewayUrlPathMapName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A resource with the same name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead..
+        /// </summary>
+        public static string ChildResourceAlreadyPresentInResourceGroup {
+            get {
+                return ResourceManager.GetString("ChildResourceAlreadyPresentInResourceGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating resource with ResourceGroupName {0}, ResourceName {1}..
+        /// </summary>
+        public static string CreatingLongRunningOperationMessage {
+            get {
+                return ResourceManager.GetString("CreatingLongRunningOperationMessage", resourceCulture);
             }
         }
         
@@ -210,6 +237,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string EmptyEffectiveNetworkSecurityGroupOnNic {
             get {
                 return ResourceManager.GetString("EmptyEffectiveNetworkSecurityGroupOnNic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The hub virtual network connection to modify could not be found..
+        /// </summary>
+        public static string HubVnetConnectionNotFound {
+            get {
+                return ResourceManager.GetString("HubVnetConnectionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The IpAddress specified is invalid..
+        /// </summary>
+        public static string InvalidIPAddress {
+            get {
+                return ResourceManager.GetString("InvalidIPAddress", resourceCulture);
             }
         }
         
@@ -313,6 +358,33 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The parent virtual hub mentioned could not be found..
+        /// </summary>
+        public static string ParentVirtualHubNotFound {
+            get {
+                return ResourceManager.GetString("ParentVirtualHubNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parent VpnGateway already contains a connection with this name. If you wish to change the properties of the connection, please use the SET operation instead..
+        /// </summary>
+        public static string ParentVpnGatewayDuplicateConnection {
+            get {
+                return ResourceManager.GetString("ParentVpnGatewayDuplicateConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parent VpnGateway for this connection cannot be found..
+        /// </summary>
+        public static string ParentVpnGatewayNotFound {
+            get {
+                return ResourceManager.GetString("ParentVpnGatewayNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing resource ....
         /// </summary>
         public static string RemoveResourceMessage {
@@ -331,6 +403,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing a VirtualHub will also remove all HubVirtualNetworkConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        /// </summary>
+        public static string RemovingVirtualHubWarning {
+            get {
+                return ResourceManager.GetString("RemovingVirtualHubWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing a VpnGateway will also remove all VpnConnections associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
+        /// </summary>
+        public static string RemovingVpnGatewayWarning {
+            get {
+                return ResourceManager.GetString("RemovingVpnGatewayWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resetting Resource.
         /// </summary>
         public static string ResettingResourceMessage {
@@ -340,11 +430,29 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ResourceGroupName must be specified if ResourceName is specified..
+        /// </summary>
+        public static string ResouceGroupNameMustBeSpecified {
+            get {
+                return ResourceManager.GetString("ResouceGroupNameMustBeSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resource : {0}, Already present.
         /// </summary>
         public static string ResourceAlreadyPresent {
             get {
                 return ResourceManager.GetString("ResourceAlreadyPresent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A resource with the same name {0} and same type already exists in ResourceGroup {1}. If you wish to modify this resource please use the Update operation instead..
+        /// </summary>
+        public static string ResourceAlreadyPresentInResourceGroup {
+            get {
+                return ResourceManager.GetString("ResourceAlreadyPresentInResourceGroup", resourceCulture);
             }
         }
         
@@ -457,6 +565,33 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating resource with ResourceGroupName {0}, ResourceName {1}..
+        /// </summary>
+        public static string UpdatingLongRunningOperationMessage {
+            get {
+                return ResourceManager.GetString("UpdatingLongRunningOperationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VirtualHub reference is required to create a VpnGateway..
+        /// </summary>
+        public static string VirtualHubRequiredForVpnGateway {
+            get {
+                return ResourceManager.GetString("VirtualHubRequiredForVpnGateway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The VirtualHub to update could not be found..
+        /// </summary>
+        public static string VirtualHubToUpdateNotFound {
+            get {
+                return ResourceManager.GetString("VirtualHubToUpdateNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworkGateways/{2}/{3}/{4}.
         /// </summary>
         public static string VirtualNetworkGatewayChildResourceId {
@@ -475,6 +610,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to virtualNetworkGatewayName.
+        /// </summary>
+        public static string VirtualNetworkGatewayName {
+            get {
+                return ResourceManager.GetString("VirtualNetworkGatewayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VirtualNetworkGatewayNameNotSet.
         /// </summary>
         public static string VirtualNetworkGatewayNameNotSet {
@@ -482,15 +626,94 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VirtualNetworkGatewayNameNotSet", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to virtualNetworkGateway name.
+        ///   Looks up a localized string similar to A remote virtual network reference is required to create a HubVirtualNetworkConnection..
         /// </summary>
-        public static string VirtualNetworkGatewayName
-        {
-            get
-            {
-                return ResourceManager.GetString("VirtualNetworkGatewayName", resourceCulture);
+        public static string VirtualNetworkReferenceRequiredToCreateHubVnetConnection {
+            get {
+                return ResourceManager.GetString("VirtualNetworkReferenceRequiredToCreateHubVnetConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The referenced VirtualWan could not be found..
+        /// </summary>
+        public static string VirtualWanNotFound {
+            get {
+                return ResourceManager.GetString("VirtualWanNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VirtualWan reference is required to create a VirtualHub..
+        /// </summary>
+        public static string VirtualWanReferenceNeededForVirtualHub {
+            get {
+                return ResourceManager.GetString("VirtualWanReferenceNeededForVirtualHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid Virtual WAN is required to generate a vpnSites configuration..
+        /// </summary>
+        public static string VirtualWanRequiredForVpnSiteConfiguration {
+            get {
+                return ResourceManager.GetString("VirtualWanRequiredForVpnSiteConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The VpnConnection could not be found..
+        /// </summary>
+        public static string VpnConnectionNotFound {
+            get {
+                return ResourceManager.GetString("VpnConnectionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The VpnGateway to modify could not be found.
+        /// </summary>
+        public static string VpnGatewayNotFound {
+            get {
+                return ResourceManager.GetString("VpnGatewayNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VpnGateway reference is required to create a VpnConnection..
+        /// </summary>
+        public static string VpnGatewayRequiredToCreateVpnConnection {
+            get {
+                return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A list of connected VpnSites is required to generate a vpnSites configuration..
+        /// </summary>
+        public static string VpnSiteListRequiredForVpnSiteConfiguration {
+            get {
+                return ResourceManager.GetString("VpnSiteListRequiredForVpnSiteConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The VpnSite could not be found..
+        /// </summary>
+        public static string VpnSiteNotFound {
+            get {
+                return ResourceManager.GetString("VpnSiteNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VpnSite is required to create a VpnConnection.
+        /// </summary>
+        public static string VpnSiteRequiredForVpnConnection {
+            get {
+                return ResourceManager.GetString("VpnSiteRequiredForVpnConnection", resourceCulture);
             }
         }
     }

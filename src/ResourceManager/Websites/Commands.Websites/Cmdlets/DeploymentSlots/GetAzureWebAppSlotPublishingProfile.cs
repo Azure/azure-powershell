@@ -36,15 +36,19 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateSet("WebDeploy", "FileZilla3", "Ftp", IgnoreCase = true)]
         public string Format { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Include the disaster recovery endpoints if true")]
+        public SwitchParameter IncludeDisasterRecoveryEndpoints { get; set; }
+
         public GetAzureWebAppSlotPublishingProfileCmdlet()
         {
             Format = Format ?? DefaultFormat;
+            IncludeDisasterRecoveryEndpoints = IncludeDisasterRecoveryEndpoints.IsPresent;
         }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            WriteObject(WebsitesClient.GetWebAppPublishingProfile(ResourceGroupName, Name, Slot, OutputFile, Format));
+            WriteObject(WebsitesClient.GetWebAppPublishingProfile(ResourceGroupName, Name, Slot, OutputFile, Format, IncludeDisasterRecoveryEndpoints));
         }
 
     }

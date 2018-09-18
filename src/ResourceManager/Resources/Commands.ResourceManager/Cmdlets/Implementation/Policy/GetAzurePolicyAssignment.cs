@@ -118,6 +118,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         cancellationToken: this.CancellationToken.Value,
                         odataQuery: null)
                     .ConfigureAwait(continueOnCapturedContext: false);
+
                 ResponseWithContinuation<JObject[]> retVal;
                 return resource.TryConvertTo(out retVal) && retVal.Value != null
                     ? retVal

@@ -237,7 +237,7 @@ function Test-VmssDiagnosticsExtension
         $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
 
         $adminUsername = 'Foo12';
-        $adminPassword = "BaR@123" + $rgname;
+        $adminPassword = Get-PasswordForVM;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
@@ -306,7 +306,10 @@ function Test-VmssDiagnosticsExtension
         $settings = $vmssDiagExtension.Settings;
         Assert-AreEqual $storagename $settings.storageAccount.Value;
 
-        Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname;
+        $vmss = Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname;
+        $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
+        Assert-Null $vmssDiagExtensions;
+
         Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         $vmss = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;

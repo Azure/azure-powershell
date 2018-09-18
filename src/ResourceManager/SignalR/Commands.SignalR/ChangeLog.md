@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 1.0.0
+* Update SignalR SDK version to 0.10.0-preview
+* Update SKU names to Free_F1 and Standard_S1
+* Add version field to the PSSignalRResource object and connection string to the PSSignalRKeys object.
+
 ## Version 0.1.4
 * Updated to the latest version of the Azure ClientRuntime.
 

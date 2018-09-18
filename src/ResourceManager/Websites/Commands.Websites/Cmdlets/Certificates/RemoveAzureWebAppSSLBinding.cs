@@ -14,6 +14,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using Microsoft.Azure.Commands.WebApps.Properties;
+using Microsoft.Azure.Commands.WebApps.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 Name,
                 () =>
                 {
-                    var webapp = WebsitesClient.GetWebApp(resourceGroupName, webAppName, slot);
+                    var webapp = new PSSite(WebsitesClient.GetWebApp(resourceGroupName, webAppName, slot));
                     var hostNameSslStates = CmdletHelpers.GetHostNameSslStatesFromSiteResponse(webapp, Name).ToList();
                     if (hostNameSslStates.Count > 0)
                     {

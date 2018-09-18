@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.1.0
 * Upgrade to Azure Storage Client Library 9.3.0 
 * Support Immutability Policy in AzureRm.Storage 
     - Remove-AzureRmStorageAccountNetworkRule
