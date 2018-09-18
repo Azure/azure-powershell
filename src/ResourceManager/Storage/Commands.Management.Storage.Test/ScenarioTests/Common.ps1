@@ -179,13 +179,3 @@ function Get-ProviderLocation_Stage($provider)
 {
     "eastus2(stage)"
 }
-
-
-<#
-.SYNOPSIS
-Gets the North Europe location for a provider
-#>
-function Get-ProviderLocation_NorthEurope($provider)
-{
-    "North Europe"
-}

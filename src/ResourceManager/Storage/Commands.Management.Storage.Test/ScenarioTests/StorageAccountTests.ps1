@@ -809,7 +809,6 @@ function Test-NewAzureStorageAccountFileStorage
         $loc = Get-ProviderLocation ResourceManagement;
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 		
-        $loc = Get-ProviderLocation_NorthEurope ResourceManagement;
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
         $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         $stotype = 'PremiumLRS';
@@ -848,7 +847,6 @@ function Test-NewAzureStorageAccountBlockBlobStorage
         $loc = Get-ProviderLocation ResourceManagement;
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 		
-        $loc = Get-ProviderLocation_NorthEurope ResourceManagement;
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
         $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
         $stotype = 'PremiumLRS';
