@@ -1,0 +1,531 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourcegroups/AdamTest?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlZ3JvdXBzL0FkYW1UZXN0P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4feb96b8-345b-4927-8a42-97a97dd40543"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest\",\r\n  \"name\": \"AdamTest\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "177"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "x-ms-request-id": [
+          "1f5805bd-487f-4009-943c-4b1839dd398d"
+        ],
+        "x-ms-correlation-request-id": [
+          "1f5805bd-487f-4009-943c-4b1839dd398d"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223917Z:1f5805bd-487f-4009-943c-4b1839dd398d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:39:17 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11?api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExP2FwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "999574e5-6d31-41d8-81c8-1481b27e0f0b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"virtualNicId\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.Network/networkInterfaces/NIC-sz4rgcnnbskpv2v5d6gphk29\",\r\n    \"virtualSubnetId\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-6617/subnets/Subnet-1\"\r\n  },\r\n  \"etag\": \"3wfdSOJEYHZVgWVzOKGLgCTrj5UkotRuABKe6HjJw3Q=\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"shuhuan_PPE_9-11\",\r\n  \"sku\": {\r\n    \"name\": \"BusinessCritical_4vCores\",\r\n    \"size\": \"4 vCores\",\r\n    \"tier\": \"Business Critical\"\r\n  },\r\n  \"type\": \"Microsoft.DataMigration/services\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "777"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c3f2e7ba-6323-4f2a-bce0-616f17459167"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "d284c153-cc5c-4a74-9636-49be137884c3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223918Z:d284c153-cc5c-4a74-9636-49be137884c3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:39:17 GMT"
+        ],
+        "ETag": [
+          "\"3wfdSOJEYHZVgWVzOKGLgCTrj5UkotRuABKe6HjJw3Q=\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun4255?api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExL3Byb2plY3RzL0RtUHJvamVjdC1Qc1Rlc3RSdW40MjU1P2FwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sourcePlatform\": \"SQL\",\r\n    \"targetPlatform\": \"SQLDB\",\r\n    \"sourceConnectionInfo\": {\r\n      \"type\": \"SqlConnectionInfo\",\r\n      \"dataSource\": \"steven-work.redmond.corp.microsoft.com\\\\stevenf16,12345\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"encryptConnection\": true,\r\n      \"trustServerCertificate\": true\r\n    },\r\n    \"targetConnectionInfo\": {\r\n      \"type\": \"SqlConnectionInfo\",\r\n      \"dataSource\": \"shuhuandmsdbs.database.windows.net\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"encryptConnection\": true,\r\n      \"trustServerCertificate\": true\r\n    },\r\n    \"databasesInfo\": [\r\n      {\r\n        \"sourceDatabaseName\": \"DmDbName-PsTestRun7378\"\r\n      },\r\n      {\r\n        \"sourceDatabaseName\": \"DmDbName-PsTestRun9599\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"centralus\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "823"
+        ],
+        "x-ms-client-request-id": [
+          "89230c0c-9ab6-4ff5-be42-45580571ed8b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sourcePlatform\": \"SQL\",\r\n    \"targetPlatform\": \"SQLDB\",\r\n    \"creationTime\": \"2018-09-11T15:39:18.9268725-07:00\",\r\n    \"sourceConnectionInfo\": {\r\n      \"type\": \"SqlConnectionInfo\",\r\n      \"dataSource\": \"steven-work.redmond.corp.microsoft.com\\\\stevenf16,12345\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"encryptConnection\": true,\r\n      \"trustServerCertificate\": true\r\n    },\r\n    \"targetConnectionInfo\": {\r\n      \"type\": \"SqlConnectionInfo\",\r\n      \"dataSource\": \"shuhuandmsdbs.database.windows.net\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"encryptConnection\": true,\r\n      \"trustServerCertificate\": true\r\n    },\r\n    \"databasesInfo\": [\r\n      {\r\n        \"sourceDatabaseName\": \"DmDbName-PsTestRun7378\"\r\n      },\r\n      {\r\n        \"sourceDatabaseName\": \"DmDbName-PsTestRun9599\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"etag\": \"0u2xK+PZjENmFBFPArM1YtGoZHpQFv1xFPvi2CKciPk=\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun4255\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"DmProject-PsTestRun4255\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1007"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "2aeca1c0-3d7e-4a3e-816e-8c56d4d14d2d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "d9b0394c-5180-440e-aaf0-50c63a125fc2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223919Z:d9b0394c-5180-440e-aaf0-50c63a125fc2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:39:19 GMT"
+        ],
+        "ETag": [
+          "\"0u2xK+PZjENmFBFPArM1YtGoZHpQFv1xFPvi2CKciPk=\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun4255/tasks/DmTask-PsTestRun9348?api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExL3Byb2plY3RzL0RtUHJvamVjdC1Qc1Rlc3RSdW40MjU1L3Rhc2tzL0RtVGFzay1Qc1Rlc3RSdW45MzQ4P2FwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"taskType\": \"ConnectToTarget.SqlDb.Sync\",\r\n    \"input\": {\r\n      \"sourceConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"steven-work.redmond.corp.microsoft.com\\\\stevenf16,12345\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\",\r\n        \"password\": \"Pass\"\r\n      },\r\n      \"targetConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"shuhuandmsdbs.database.windows.net\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\",\r\n        \"password\": \"Pass\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "790"
+        ],
+        "x-ms-client-request-id": [
+          "a40c48ee-4ae9-4fd3-816d-7ed95b9ffff5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"input\": {\r\n      \"sourceConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"steven-work.redmond.corp.microsoft.com\\\\stevenf16,12345\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\"\r\n      },\r\n      \"targetConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"shuhuandmsdbs.database.windows.net\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\"\r\n      }\r\n    },\r\n    \"taskType\": \"ConnectToTarget.SqlDb.Sync\",\r\n    \"state\": \"Queued\"\r\n  },\r\n  \"etag\": \"Cf9rDJ5jCjnGkbM2qPghfJY/vaMuVmV6w66EL3Jvk64=\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun4255/tasks/DmTask-PsTestRun9348\",\r\n  \"name\": \"DmTask-PsTestRun9348\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects/tasks\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "880"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7381558d-6b1a-4ce8-9d10-4f7d5bb9152b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "c143ddce-b9e3-4459-97a5-468f1f55488e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223919Z:c143ddce-b9e3-4459-97a5-468f1f55488e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:39:19 GMT"
+        ],
+        "ETag": [
+          "\"Cf9rDJ5jCjnGkbM2qPghfJY/vaMuVmV6w66EL3Jvk64=\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun4255/tasks/DmTask-PsTestRun9348?$expand=output&api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExL3Byb2plY3RzL0RtUHJvamVjdC1Qc1Rlc3RSdW40MjU1L3Rhc2tzL0RtVGFzay1Qc1Rlc3RSdW45MzQ4PyRleHBhbmQ9b3V0cHV0JmFwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "06cb17c2-ffdf-404a-ac96-c0f66e5b42f1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"input\": {\r\n      \"sourceConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"steven-work.redmond.corp.microsoft.com\\\\stevenf16,12345\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\"\r\n      },\r\n      \"targetConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"shuhuandmsdbs.database.windows.net\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\"\r\n      }\r\n    },\r\n    \"output\": [],\r\n    \"taskType\": \"ConnectToTarget.SqlDb.Sync\",\r\n    \"state\": \"Queued\"\r\n  },\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun4255/tasks/DmTask-PsTestRun9348\",\r\n  \"name\": \"DmTask-PsTestRun9348\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects/tasks\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "838"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "e8c6ec4c-ca4c-4ffa-8019-1aa3c75d9dd3"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "50cdcec2-3b65-428d-aefe-002b1b8fce32"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223920Z:50cdcec2-3b65-428d-aefe-002b1b8fce32"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:39:19 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun4255/tasks/DmTask-PsTestRun9348?$expand=output&api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExL3Byb2plY3RzL0RtUHJvamVjdC1Qc1Rlc3RSdW40MjU1L3Rhc2tzL0RtVGFzay1Qc1Rlc3RSdW45MzQ4PyRleHBhbmQ9b3V0cHV0JmFwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "57888f78-54c4-4b58-b050-83034b571a8f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"input\": {\r\n      \"sourceConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"steven-work.redmond.corp.microsoft.com\\\\stevenf16,12345\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\"\r\n      },\r\n      \"targetConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"shuhuandmsdbs.database.windows.net\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\"\r\n      }\r\n    },\r\n    \"output\": [\r\n      {\r\n        \"databases\": {\r\n          \"JasmineTest\": \"91250e0a-26f5-450a-b368-4b6ac66821ab\",\r\n          \"NoCdcTest\": \"6b47d0f0-5ba4-4a5f-969b-af1107a07f6d\",\r\n          \"shuhuanAttunity\": \"94d186d7-2450-4ba7-87f4-d350b24f981b\",\r\n          \"shuhuanAttunity2\": \"08d611a6-4f03-4e8b-b415-146c1decc2d2\",\r\n          \"shuhuanAttunity3\": \"eaf5cad6-543a-445a-b49d-19d1b6efe248\"\r\n        },\r\n        \"targetServerVersion\": \"12.0.2000.8\",\r\n        \"targetServerBrandVersion\": \"Azure SQL Database\",\r\n        \"validationErrors\": null,\r\n        \"objectCounts\": null\r\n      }\r\n    ],\r\n    \"taskType\": \"ConnectToTarget.SqlDb.Sync\",\r\n    \"state\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun4255/tasks/DmTask-PsTestRun9348\",\r\n  \"name\": \"DmTask-PsTestRun9348\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects/tasks\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1261"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4653e446-da5b-4f3e-922a-7e1a0ca5b12a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "de926b22-40d6-4149-bf7f-c075ca3aa6d2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223935Z:de926b22-40d6-4149-bf7f-c075ca3aa6d2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:39:34 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun4255/tasks/DmTask-PsTestRun9348?$expand=output&api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExL3Byb2plY3RzL0RtUHJvamVjdC1Qc1Rlc3RSdW40MjU1L3Rhc2tzL0RtVGFzay1Qc1Rlc3RSdW45MzQ4PyRleHBhbmQ9b3V0cHV0JmFwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "576e41fc-0a32-43b2-83d6-df4aaba2185c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "9f1dfcf4-edd0-4001-9b01-0be898b49a8d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "57bcdde2-663d-447c-a143-829835e58846"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223935Z:57bcdde2-663d-447c-a143-829835e58846"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:39:35 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun4255/tasks/DmTask-PsTestRun9348?api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExL3Byb2plY3RzL0RtUHJvamVjdC1Qc1Rlc3RSdW40MjU1L3Rhc2tzL0RtVGFzay1Qc1Rlc3RSdW45MzQ4P2FwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldw==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0a7a229a-c7f7-4d9d-b23f-470746e1325c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5ee17a81-7911-466b-abb3-35eaf50518b1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "b3e8f963-cdfc-420d-8920-f3602acc5254"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223935Z:b3e8f963-cdfc-420d-8920-f3602acc5254"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:39:35 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "testName": [
+      "DmProject-PsTestRun4255",
+      "DmDbName-PsTestRun7378",
+      "DmDbName-PsTestRun9599",
+      "DmTask-PsTestRun9348"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "fc04246f-04c5-437e-ac5e-206a19e7193f"
+  }
+}

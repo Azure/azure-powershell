@@ -54,9 +54,9 @@ The above example shows how to create new project named MyDMSProject located in 
 Database Infos.
 
 ```yaml
-Type: Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[]
+Type: DatabaseInfo[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 PSDataMigrationService Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService
+Type: PSDataMigrationService
 Parameter Sets: ComponentObjectParameterSet
 Aliases: DataMigrationService
 
@@ -99,9 +99,9 @@ Accept wildcard characters: False
 The location of the Azure Database Migration Service instance.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 The name of the project.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ProjectName
 
@@ -129,9 +129,9 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ComponentNameParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -144,9 +144,9 @@ Accept wildcard characters: False
 DataMigrationService Resource Id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -159,9 +159,9 @@ Accept wildcard characters: False
 The name of the Azure Database Migration Service instance.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ComponentNameParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -174,9 +174,9 @@ Accept wildcard characters: False
 Source Connection Info.
 
 ```yaml
-Type: Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo
+Type: ConnectionInfo
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -189,9 +189,9 @@ Accept wildcard characters: False
 Source platform type for project.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -204,9 +204,9 @@ Accept wildcard characters: False
 Target connection information.
 
 ```yaml
-Type: Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo
+Type: ConnectionInfo
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -219,9 +219,9 @@ Accept wildcard characters: False
 Target platform type for project.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -249,7 +249,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -277,3 +277,4 @@ Parameters: InputObject (ByValue)
 ## NOTES
 
 ## RELATED LINKS
+

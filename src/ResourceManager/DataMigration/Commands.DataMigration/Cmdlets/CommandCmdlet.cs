@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.DataMigration.Models
+using Microsoft.Azure.Management.DataMigration.Models;
+using System.Management.Automation;
+
+namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public enum ResultTypeEnum
+    public abstract class CommandCmdlet : DynamicCmdlet
     {
-        MigrationLevelOutput,
-        DatabaseLevelOutput,
-        TableLevelOutput,
-        MigrationValidationOutput,
-        MigrationValidationDatabaseLevelOutput,
-        LoginLevelOutput,
-        AgentJobLevelOutput,
-        Command
+        public CommandCmdlet(InvocationInfo myInvocation) : base(myInvocation)
+        {
+        }
+
+        public abstract CommandProperties ProcessCommandCmdlet();
     }
 }

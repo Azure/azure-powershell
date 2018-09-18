@@ -1,0 +1,531 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourcegroups/AdamTest?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlZ3JvdXBzL0FkYW1UZXN0P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a722fb57-c052-4cf1-b54c-d8c0b9bebc8c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest\",\r\n  \"name\": \"AdamTest\",\r\n  \"location\": \"southcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "177"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "d24cc740-8e8f-429a-b683-727c327ff363"
+        ],
+        "x-ms-correlation-request-id": [
+          "d24cc740-8e8f-429a-b683-727c327ff363"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223014Z:d24cc740-8e8f-429a-b683-727c327ff363"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:30:14 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11?api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExP2FwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d1c32993-3f23-46cf-b718-394a132725cd"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"virtualNicId\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.Network/networkInterfaces/NIC-sz4rgcnnbskpv2v5d6gphk29\",\r\n    \"virtualSubnetId\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-6617/subnets/Subnet-1\"\r\n  },\r\n  \"etag\": \"3wfdSOJEYHZVgWVzOKGLgCTrj5UkotRuABKe6HjJw3Q=\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"shuhuan_PPE_9-11\",\r\n  \"sku\": {\r\n    \"name\": \"BusinessCritical_4vCores\",\r\n    \"size\": \"4 vCores\",\r\n    \"tier\": \"Business Critical\"\r\n  },\r\n  \"type\": \"Microsoft.DataMigration/services\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "777"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ab52c031-2905-485d-9fdf-10517fed4b2f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "619ba398-db23-4ca6-a77d-0ff04d4fa8fb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223015Z:619ba398-db23-4ca6-a77d-0ff04d4fa8fb"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:30:14 GMT"
+        ],
+        "ETag": [
+          "\"3wfdSOJEYHZVgWVzOKGLgCTrj5UkotRuABKe6HjJw3Q=\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun7416?api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExL3Byb2plY3RzL0RtUHJvamVjdC1Qc1Rlc3RSdW43NDE2P2FwaS12ZXJzaW9uPTIwMTgtMDctMTUtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sourcePlatform\": \"SQL\",\r\n    \"targetPlatform\": \"SQLDB\",\r\n    \"sourceConnectionInfo\": {\r\n      \"type\": \"SqlConnectionInfo\",\r\n      \"dataSource\": \"steven-work.redmond.corp.microsoft.com\\\\stevenf16,12345\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"encryptConnection\": true,\r\n      \"trustServerCertificate\": true\r\n    },\r\n    \"targetConnectionInfo\": {\r\n      \"type\": \"SqlConnectionInfo\",\r\n      \"dataSource\": \"shuhuandmsdbs.database.windows.net\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"encryptConnection\": true,\r\n      \"trustServerCertificate\": true\r\n    },\r\n    \"databasesInfo\": [\r\n      {\r\n        \"sourceDatabaseName\": \"DmDbName-PsTestRun5244\"\r\n      },\r\n      {\r\n        \"sourceDatabaseName\": \"DmDbName-PsTestRun5354\"\r\n      }\r\n    ]\r\n  },\r\n  \"location\": \"centralus\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "823"
+        ],
+        "x-ms-client-request-id": [
+          "bdd31934-c2a6-48cc-9c88-bb598396eaa5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"sourcePlatform\": \"SQL\",\r\n    \"targetPlatform\": \"SQLDB\",\r\n    \"creationTime\": \"2018-09-11T15:30:16.2231284-07:00\",\r\n    \"sourceConnectionInfo\": {\r\n      \"type\": \"SqlConnectionInfo\",\r\n      \"dataSource\": \"steven-work.redmond.corp.microsoft.com\\\\stevenf16,12345\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"encryptConnection\": true,\r\n      \"trustServerCertificate\": true\r\n    },\r\n    \"targetConnectionInfo\": {\r\n      \"type\": \"SqlConnectionInfo\",\r\n      \"dataSource\": \"shuhuandmsdbs.database.windows.net\",\r\n      \"authentication\": \"SqlAuthentication\",\r\n      \"encryptConnection\": true,\r\n      \"trustServerCertificate\": true\r\n    },\r\n    \"databasesInfo\": [\r\n      {\r\n        \"sourceDatabaseName\": \"DmDbName-PsTestRun5244\"\r\n      },\r\n      {\r\n        \"sourceDatabaseName\": \"DmDbName-PsTestRun5354\"\r\n      }\r\n    ],\r\n    \"provisioningState\": \"Succeeded\"\r\n  },\r\n  \"etag\": \"V811OWJgr0tdQYBD1qijvHj95jUVaDO1ZE4a/6gTVfk=\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun7416\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"DmProject-PsTestRun7416\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1007"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c52c5e65-bc75-4640-9644-9e9a025dfae4"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "055ed1ac-03c0-4566-8e8c-5d3c1da4f501"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223016Z:055ed1ac-03c0-4566-8e8c-5d3c1da4f501"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:30:16 GMT"
+        ],
+        "ETag": [
+          "\"V811OWJgr0tdQYBD1qijvHj95jUVaDO1ZE4a/6gTVfk=\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun7416/tasks/DmTask-PsTestRun535?api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExL3Byb2plY3RzL0RtUHJvamVjdC1Qc1Rlc3RSdW43NDE2L3Rhc2tzL0RtVGFzay1Qc1Rlc3RSdW41MzU/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"taskType\": \"ConnectToSource.SqlServer.Sync\",\r\n    \"input\": {\r\n      \"sourceConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"steven-work.redmond.corp.microsoft.com\\\\stevenf16,12345\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\",\r\n        \"password\": \"Pass\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "458"
+        ],
+        "x-ms-client-request-id": [
+          "8b43a7b0-749f-4190-b87b-9dcebaf92c27"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"input\": {\r\n      \"sourceConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"steven-work.redmond.corp.microsoft.com\\\\stevenf16,12345\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\"\r\n      }\r\n    },\r\n    \"taskType\": \"ConnectToSource.SqlServer.Sync\",\r\n    \"state\": \"Queued\"\r\n  },\r\n  \"etag\": \"5+5dAV9cZxxiN6QTIMNHHVnbQArCRuZfDvK+hUv1Q0c=\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun7416/tasks/DmTask-PsTestRun535\",\r\n  \"name\": \"DmTask-PsTestRun535\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects/tasks\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "666"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "9717b1fe-583f-425d-b18b-43c301049177"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "03320471-5613-4d22-bc2e-c140fdbc81f2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223017Z:03320471-5613-4d22-bc2e-c140fdbc81f2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:30:17 GMT"
+        ],
+        "ETag": [
+          "\"5+5dAV9cZxxiN6QTIMNHHVnbQArCRuZfDvK+hUv1Q0c=\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun7416/tasks/DmTask-PsTestRun535?$expand=output&api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExL3Byb2plY3RzL0RtUHJvamVjdC1Qc1Rlc3RSdW43NDE2L3Rhc2tzL0RtVGFzay1Qc1Rlc3RSdW41MzU/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ee5b80c4-c190-4b22-be35-954aed06556f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"input\": {\r\n      \"sourceConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"steven-work.redmond.corp.microsoft.com\\\\stevenf16,12345\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\"\r\n      }\r\n    },\r\n    \"output\": [],\r\n    \"taskType\": \"ConnectToSource.SqlServer.Sync\",\r\n    \"state\": \"Queued\"\r\n  },\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun7416/tasks/DmTask-PsTestRun535\",\r\n  \"name\": \"DmTask-PsTestRun535\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects/tasks\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "624"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "9ebbdab3-85fd-46ff-8685-9dc6cd8b6962"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "388cd95c-21ee-485f-82fd-bfb83c2ad422"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223017Z:388cd95c-21ee-485f-82fd-bfb83c2ad422"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:30:17 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun7416/tasks/DmTask-PsTestRun535?$expand=output&api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExL3Byb2plY3RzL0RtUHJvamVjdC1Qc1Rlc3RSdW43NDE2L3Rhc2tzL0RtVGFzay1Qc1Rlc3RSdW41MzU/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "655cec9c-7986-4e05-b190-0a49bd80affa"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"input\": {\r\n      \"sourceConnectionInfo\": {\r\n        \"type\": \"SqlConnectionInfo\",\r\n        \"dataSource\": \"steven-work.redmond.corp.microsoft.com\\\\stevenf16,12345\",\r\n        \"authentication\": \"SqlAuthentication\",\r\n        \"encryptConnection\": true,\r\n        \"trustServerCertificate\": true,\r\n        \"userName\": \"testuser\"\r\n      }\r\n    },\r\n    \"output\": [\r\n      {\r\n        \"id\": \"039e4c0e-aa9e-410a-aa90-e25eea8ba622\",\r\n        \"name\": \"tpcc_9168MB\",\r\n        \"sizeMB\": 9168.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"382b0aa4-6249-45f9-a7a4-c5904c7c2d7a\",\r\n            \"logicalName\": \"tpcc_75\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\tpcc_75.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 7432.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"9da03bd7-9703-42cb-a7a2-e0bbc9227577\",\r\n            \"logicalName\": \"tpcc_75_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\tpcc_75_log.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 1736.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"13a287a9-47cd-4236-bee9-1fbde4fe309e\",\r\n        \"name\": \"shuhuanTest\",\r\n        \"sizeMB\": 42.375,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"ed718294-c204-448d-9cc6-40f4ad29007e\",\r\n            \"logicalName\": \"shuhuanTest\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\shuhuanTest.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 4.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"68a69e2f-d26c-4a9d-8b1d-30b2825e1599\",\r\n            \"logicalName\": \"shuhuanTest_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\shuhuanTest_log.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 38.375\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel120\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"3023717d-f422-4da4-b2fc-4d10b99c809e\",\r\n        \"name\": \"TestMultipleLog\",\r\n        \"sizeMB\": 24.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"43354b9c-cecc-4069-8844-33f231e9a767\",\r\n            \"logicalName\": \"TestMultipleLog\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\TestMultipleLog.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 8.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"9dffe130-1c0a-4361-82d6-6b5fcf1139c2\",\r\n            \"logicalName\": \"TestMultipleLog_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\TestMultipleLog_log.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 8.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"ac005c3f-27c9-4e32-8103-f67fadfc162c\",\r\n            \"logicalName\": \"TestMultipleLog_log2\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\TestMultipleLog_log2.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 8.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"314d8ac5-aa9c-4e7c-b75d-42e1fb1a182a\",\r\n        \"name\": \"NoCdcTest\",\r\n        \"sizeMB\": 16.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"e208a446-f24c-491f-85bb-a4bb232990d4\",\r\n            \"logicalName\": \"NoCdcTest\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\NoCdcTest.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 8.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"8da4df85-b440-4287-8d7a-135de0f6d25e\",\r\n            \"logicalName\": \"NoCdcTest_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\NoCdcTest_log.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 8.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"694499e5-8348-4c21-935a-dc65d63fa429\",\r\n        \"name\": \"ThousandTableLoad\",\r\n        \"sizeMB\": 336.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"5d7ad0aa-22c3-4e4e-9f1c-437e9209ddee\",\r\n            \"logicalName\": \"ThousandTableLoad\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\ThousandTableLoad.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 136.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"5f8432ee-bb08-44b8-b8c1-c1c4870ca38e\",\r\n            \"logicalName\": \"ThousandTableLoad_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\ThousandTableLoad_log.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 200.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"7e4a62e3-5879-40dd-a083-8685a5e4adbf\",\r\n        \"name\": \"TestDb_shuhuan_1_KFTQ4\",\r\n        \"sizeMB\": 16.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"ca823c66-bab2-48fd-aeb8-cc15804d44ab\",\r\n            \"logicalName\": \"TestDb_shuhuan_1_KFTQ4\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\TestDb_shuhuan_1_KFTQ4.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 8.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"ad1c5d5d-d9ab-417b-a45c-78119f63e8ed\",\r\n            \"logicalName\": \"TestDb_shuhuan_1_KFTQ4_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\TestDb_shuhuan_1_KFTQ4_log.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 8.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"834914e9-21e7-4c0b-9cf2-77f5667bf759\",\r\n        \"name\": \"Base0625\",\r\n        \"sizeMB\": 16.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"8619ca60-dc4c-4f0a-958b-51db1ae63b9a\",\r\n            \"logicalName\": \"Base0625\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\Base0625_Primary.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 8.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"8356f69f-3bc5-48da-8512-d7f60c71310d\",\r\n            \"logicalName\": \"Base0625_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\Base0625_Primary.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 8.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"8b91f3e6-e7fa-485a-91e1-5adb695c59a1\",\r\n        \"name\": \"tpcc27Gb_222Wh\",\r\n        \"sizeMB\": 27536.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"81903fa7-32da-459c-837a-8be49d1d7bf7\",\r\n            \"logicalName\": \"tpcc\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\tpcc2.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 22600.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"d80ed27c-852c-492e-b9dd-2ec65d4cc3ec\",\r\n            \"logicalName\": \"tpcc_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\tpcc2_log.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 4936.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"98e3daac-7491-4df3-8643-43dfa0da80bb\",\r\n        \"name\": \"BaseSw\",\r\n        \"sizeMB\": 16.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"e71ed985-fa4f-4ab8-a9c8-3080b94507f4\",\r\n            \"logicalName\": \"BaseSw\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\BaseSw.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 8.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"36802e9a-60ab-47aa-b905-b70b62291275\",\r\n            \"logicalName\": \"BaseSw_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\BaseSw_log.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 8.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"databases\": {\r\n          \"Base0625\": \"834914e9-21e7-4c0b-9cf2-77f5667bf759\",\r\n          \"BaseSw\": \"98e3daac-7491-4df3-8643-43dfa0da80bb\",\r\n          \"JasmineTest\": \"e2c6c77f-435a-4cb0-bdcb-d1cafc54f6fb\",\r\n          \"NoCdcTest\": \"314d8ac5-aa9c-4e7c-b75d-42e1fb1a182a\",\r\n          \"shuhuanTest\": \"13a287a9-47cd-4236-bee9-1fbde4fe309e\",\r\n          \"shuhuanTest2\": \"dec0f3eb-2f91-4369-807b-2806be905d96\",\r\n          \"TestDb_shuhuan_1_KFTQ4\": \"7e4a62e3-5879-40dd-a083-8685a5e4adbf\",\r\n          \"TestDb_shuhuan_1_RPRZP\": \"d4cda5d4-4a01-43e2-a5c3-976ed3f299cf\",\r\n          \"TestMI\": \"e39af459-b014-465f-b711-36da18b0df31\",\r\n          \"TestMultipleLog\": \"3023717d-f422-4da4-b2fc-4d10b99c809e\",\r\n          \"ThousandTableLoad\": \"694499e5-8348-4c21-935a-dc65d63fa429\",\r\n          \"tpcc\": \"ff47f021-1c37-4523-a018-d55b525e8fce\",\r\n          \"tpcc_9168MB\": \"039e4c0e-aa9e-410a-aa90-e25eea8ba622\",\r\n          \"tpcc24\": \"b5e56880-4456-457c-b2ab-83f96a152fdc\",\r\n          \"tpcc27Gb_222Wh\": \"8b91f3e6-e7fa-485a-91e1-5adb695c59a1\"\r\n        },\r\n        \"agentJobs\": {},\r\n        \"logins\": {},\r\n        \"databaseTdeCertificateMapping\": {},\r\n        \"sourceServerVersion\": \"13.0.1745.2\",\r\n        \"sourceServerBrandVersion\": \"SQL Server 2016\",\r\n        \"validationErrors\": null,\r\n        \"resultType\": \"TaskLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"b5e56880-4456-457c-b2ab-83f96a152fdc\",\r\n        \"name\": \"tpcc24\",\r\n        \"sizeMB\": 16.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"9d152801-9af1-42e2-9b7e-4c892e770515\",\r\n            \"logicalName\": \"tpcc24\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\tpcc24.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 8.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"af88ec8d-0ee4-47eb-a63f-c5117b74c48e\",\r\n            \"logicalName\": \"tpcc24_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\tpcc24_log.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 8.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"d4cda5d4-4a01-43e2-a5c3-976ed3f299cf\",\r\n        \"name\": \"TestDb_shuhuan_1_RPRZP\",\r\n        \"sizeMB\": 16.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"47c92ae7-b7d0-453c-85f2-9412d774dff0\",\r\n            \"logicalName\": \"TestDb_shuhuan_1_RPRZP\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\TestDb_shuhuan_1_RPRZP_Primary.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 8.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"2cff330f-218d-4de2-b6b7-9bdc2d9f3048\",\r\n            \"logicalName\": \"TestDb_shuhuan_1_RPRZP_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\TestDb_shuhuan_1_RPRZP_Primary.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 8.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"dec0f3eb-2f91-4369-807b-2806be905d96\",\r\n        \"name\": \"shuhuanTest2\",\r\n        \"sizeMB\": 336.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"f9e7238d-ce89-45ab-b0be-fc346c7ccb92\",\r\n            \"logicalName\": \"shuhuanTest2\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\shuhuanTest2.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 8.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"614c3f65-35f9-4c51-99fb-ec857e8bfd01\",\r\n            \"logicalName\": \"shuhuanTest2_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\shuhuanTest2_log.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 328.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"e2c6c77f-435a-4cb0-bdcb-d1cafc54f6fb\",\r\n        \"name\": \"JasmineTest\",\r\n        \"sizeMB\": 208.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"8f614af3-a950-4590-9dc6-977f4634e797\",\r\n            \"logicalName\": \"JasmineTest\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\JasmineTest.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 8.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"cd992671-b715-4d6d-88fd-ecdff06bbc01\",\r\n            \"logicalName\": \"JasmineTest_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\JasmineTest_log.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 200.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"e39af459-b014-465f-b711-36da18b0df31\",\r\n        \"name\": \"TestMI\",\r\n        \"sizeMB\": 16.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"8f4a0c13-dbed-4850-8ad0-90976639a314\",\r\n            \"logicalName\": \"TestMI\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\TestMI.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 8.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"c9793a21-f948-49f1-8fb5-587076569205\",\r\n            \"logicalName\": \"TestMI_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\TestMI_log.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 8.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      },\r\n      {\r\n        \"id\": \"ff47f021-1c37-4523-a018-d55b525e8fce\",\r\n        \"name\": \"tpcc\",\r\n        \"sizeMB\": 72016.0,\r\n        \"databaseFiles\": [\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"a6abd39a-f940-467f-9aa0-af3997b4146d\",\r\n            \"logicalName\": \"tpcc\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\tpcc.mdf\",\r\n            \"fileType\": \"Rows\",\r\n            \"sizeMB\": 58952.0\r\n          },\r\n          {\r\n            \"$type\": \"Microsoft.SqlServer.Migration.Service.Scenarios.Contracts.Migration.DatabaseFileInfo, Microsoft.SqlServer.Migration.Service.Scenarios.Contracts\",\r\n            \"restoreFullName\": null,\r\n            \"databaseName\": null,\r\n            \"id\": \"64438f91-ce74-4693-a171-be75e3cfe021\",\r\n            \"logicalName\": \"tpcc_log\",\r\n            \"physicalFullName\": \"F:\\\\Program Files\\\\Microsoft SQL Server\\\\MSSQL13.STEVENF16\\\\MSSQL\\\\DATA\\\\tpcc_log.ldf\",\r\n            \"fileType\": \"Log\",\r\n            \"sizeMB\": 13064.0\r\n          }\r\n        ],\r\n        \"compatibilityLevel\": \"CompatLevel130\",\r\n        \"databaseState\": \"Online\",\r\n        \"resultType\": \"DatabaseLevelOutput\"\r\n      }\r\n    ],\r\n    \"taskType\": \"ConnectToSource.SqlServer.Sync\",\r\n    \"state\": \"Succeeded\"\r\n  },\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun7416/tasks/DmTask-PsTestRun535\",\r\n  \"name\": \"DmTask-PsTestRun535\",\r\n  \"type\": \"Microsoft.DataMigration/services/projects/tasks\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "17553"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1d66f1b8-3d29-4c15-a35f-9350ded0c621"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "038db02e-d6ad-4d7f-9452-3ead8acdf5aa"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223032Z:038db02e-d6ad-4d7f-9452-3ead8acdf5aa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:30:32 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun7416/tasks/DmTask-PsTestRun535?$expand=output&api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExL3Byb2plY3RzL0RtUHJvamVjdC1Qc1Rlc3RSdW43NDE2L3Rhc2tzL0RtVGFzay1Qc1Rlc3RSdW41MzU/JGV4cGFuZD1vdXRwdXQmYXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ca3eae4b-d557-4a00-8b60-6cc0c727cf54"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5e7be768-a8bb-460e-91fc-9075df64646d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "76f813c1-acbe-466f-a638-e808590d61c5"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223033Z:76f813c1-acbe-466f-a638-e808590d61c5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:30:32 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/AdamTest/providers/Microsoft.DataMigration/services/shuhuan_PPE_9-11/projects/DmProject-PsTestRun7416/tasks/DmTask-PsTestRun535?api-version=2018-07-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmMwNDI0NmYtMDRjNS00MzdlLWFjNWUtMjA2YTE5ZTcxOTNmL3Jlc291cmNlR3JvdXBzL0FkYW1UZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRGF0YU1pZ3JhdGlvbi9zZXJ2aWNlcy9zaHVodWFuX1BQRV85LTExL3Byb2plY3RzL0RtUHJvamVjdC1Qc1Rlc3RSdW43NDE2L3Rhc2tzL0RtVGFzay1Qc1Rlc3RSdW41MzU/YXBpLXZlcnNpb249MjAxOC0wNy0xNS1wcmV2aWV3",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9c530d54-8468-4170-a7a1-017566a79434"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3132.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c8d8dd49-c73a-4475-8c36-29e703dcd3b4"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "ec10770a-b94d-44fb-82a1-4df707b14eb9"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180911T223032Z:ec10770a-b94d-44fb-82a1-4df707b14eb9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 11 Sep 2018 22:30:32 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "testName": [
+      "DmProject-PsTestRun7416",
+      "DmDbName-PsTestRun5244",
+      "DmDbName-PsTestRun5354",
+      "DmTask-PsTestRun535"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "fc04246f-04c5-437e-ac5e-206a19e7193f"
+  }
+}

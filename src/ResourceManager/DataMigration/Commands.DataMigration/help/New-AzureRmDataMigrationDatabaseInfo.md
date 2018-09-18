@@ -36,7 +36,7 @@ This script assumes that you are already logged into your Azure account. You can
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 Source Database Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: SourceDBName
 
@@ -76,3 +76,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

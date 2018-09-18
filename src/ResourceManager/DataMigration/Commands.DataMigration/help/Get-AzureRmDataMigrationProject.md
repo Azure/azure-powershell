@@ -55,7 +55,7 @@ The above example retrieves the  Azure Database Migration project based on PSPro
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 PSDataMigrationService Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService
+Type: PSDataMigrationService
 Parameter Sets: ComponentObjectParameterSet
 Aliases: DataMigrationService
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The name of the project.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: ProjectName
 
@@ -100,9 +100,9 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ComponentNameParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -115,9 +115,9 @@ Accept wildcard characters: False
 DataMigrationService Resource Id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ResourceIdParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -130,9 +130,9 @@ Accept wildcard characters: False
 Database Migration Service Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ComponentNameParameterSet
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -158,3 +158,4 @@ Parameters: InputObject (ByValue)
 ## NOTES
 
 ## RELATED LINKS
+

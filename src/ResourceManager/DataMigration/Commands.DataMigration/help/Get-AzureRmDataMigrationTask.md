@@ -92,7 +92,7 @@ The above example illustrates the use of Get-AzureRmDataMigrationTask cmdlet to 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -107,9 +107,9 @@ Accept wildcard characters: False
 Expand output
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: GetByInputObject, GetByResourceId, GetByComponent
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -119,9 +119,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: GetByInputObjectResultType, GetByResourceIdResultType, GetByComponentResultType
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 PSProject Object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataMigration.Models.PSProject
+Type: PSProject
 Parameter Sets: ListByInputObject
 Aliases: Project
 
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataMigration.Models.PSProject
+Type: PSProject
 Parameter Sets: GetByInputObject, GetByInputObjectResultType
 Aliases: Project
 
@@ -161,7 +161,7 @@ Accept wildcard characters: False
 The name of the task.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByInputObject, GetByInputObjectResultType, GetByResourceId, GetByResourceIdResultType, GetByComponentResultType
 Aliases: TaskName
 
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByComponent
 Aliases: TaskName
 
@@ -188,9 +188,9 @@ Accept wildcard characters: False
 The name of the project.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ListByComponent, GetByComponent, GetByComponentResultType
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -203,9 +203,9 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ListByComponent, GetByComponent, GetByComponentResultType
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -218,9 +218,9 @@ Accept wildcard characters: False
 Project Resource Id.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ListByResourceId
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -230,9 +230,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByResourceId, GetByResourceIdResultType
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -245,9 +245,9 @@ Accept wildcard characters: False
 Expand output of given result type.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum
+Type: ResultTypeEnum
 Parameter Sets: GetByInputObjectResultType, GetByResourceIdResultType, GetByComponentResultType
-Aliases:
+Aliases: 
 Accepted values: MigrationLevelOutput, DatabaseLevelOutput, TableLevelOutput, MigrationValidationOutput, MigrationValidationDatabaseLevelOutput, LoginLevelOutput, AgentJobLevelOutput
 
 Required: True
@@ -261,9 +261,9 @@ Accept wildcard characters: False
 Database Migration Service Name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ListByComponent, GetByComponent, GetByComponentResultType
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -276,9 +276,9 @@ Accept wildcard characters: False
 Filter by TaskType.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]
+Type: TaskTypeEnum
 Parameter Sets: ListByComponent, ListByInputObject, ListByResourceId
-Aliases:
+Aliases: 
 Accepted values: MigrateSqlServerSqlDb, ConnectToSourceSqlServer, ConnectToTargetSqlDb, GetUserTablesSql, ConnectToTargetSqlDbMi, MigrateSqlServerSqlDbMi, ValidateSqlServerSqlDbMi
 
 Required: False
@@ -305,3 +305,4 @@ Parameters: InputObject (ByValue)
 ## NOTES
 
 ## RELATED LINKS
+

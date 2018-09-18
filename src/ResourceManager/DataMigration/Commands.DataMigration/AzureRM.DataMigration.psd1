@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.6'
+ModuleVersion = '0.1.7'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -84,8 +84,10 @@ CmdletsToExport = 'New-AzureRmDataMigrationDatabaseInfo',
                'Remove-AzureRmDataMigrationTask', 
                'Start-AzureRmDataMigrationService', 
                'Stop-AzureRmDataMigrationService', 'Stop-AzureRmDataMigrationTask', 
-               'New-AzureRmDataMigrationSelectedDB', 
-               'New-AzureRmDataMigrationFileShare'
+               'New-AzureRmDataMigrationSelectedDB',
+               'New-AzureRmDataMigrationFileShare',
+               'New-AzureRmDataMigrationSyncSelectedDB',
+               'Invoke-AzureRmDataMigrationCommand'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -97,7 +99,8 @@ AliasesToExport = 'Get-AzureRmDms', 'Get-AzureRmDmsTask', 'Get-AzureRmDmsProject
                'Remove-AzureRmDmsProject', 'Remove-AzureRmDms', 
                'Remove-AzureRmDmsTask', 'Start-AzureRmDmsService', 
                'Stop-AzureRmDmsTask', 'Stop-AzureRmDmsService', 
-               'New-AzureRmDmsSelectedDB', 'New-AzureRmDmsFileShare'
+               'New-AzureRmDmsSelectedDB', 'New-AzureRmDmsSyncSelectedDB', 'New-AzureRmDmsFileShare',
+               'Invoke-AzureRmDmsCommand'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
