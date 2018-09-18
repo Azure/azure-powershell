@@ -21,13 +21,14 @@ Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector [-ResourceGroupN
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorInputObjectParameterSet
 ```
-Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstance <AzureSqlManagedInstanceModel>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector
+ [-ManagedInstance] <AzureSqlManagedInstanceModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorResourceIdParameterSet
 ```
-Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector -ManagedInstanceResourceId <String>
+Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector [-ManagedInstanceResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -114,10 +115,10 @@ The managed instance input object
 ```yaml
 Type: AzureSqlManagedInstanceModel
 Parameter Sets: AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorInputObjectParameterSet
-Aliases:
+Aliases: InputObject
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -129,7 +130,7 @@ The managed instance name
 ```yaml
 Type: String
 Parameter Sets: AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorDefaultParameterSet
-Aliases: InputObject
+Aliases:
 
 Required: True
 Position: 1
@@ -147,7 +148,7 @@ Parameter Sets: AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorResou
 Aliases: ResourceId
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

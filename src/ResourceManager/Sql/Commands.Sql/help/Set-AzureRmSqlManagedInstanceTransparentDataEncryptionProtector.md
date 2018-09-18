@@ -22,14 +22,14 @@ Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector [-Type] <Encrypt
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorInputObjectParameterSet
 ```
 Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector [-Type] <EncryptionProtectorType>
- [[-KeyId] <String>] [-Force] -ManagedInstance <AzureSqlManagedInstanceModel>
+ [[-KeyId] <String>] [-Force] [-ManagedInstance] <AzureSqlManagedInstanceModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorResourceIdParameterSet
 ```
 Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector [-Type] <EncryptionProtectorType>
- [[-KeyId] <String>] [-Force] -ManagedInstanceResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [[-KeyId] <String>] [-Force] [-ManagedInstanceResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -147,7 +147,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -159,10 +159,10 @@ The managed instance input object
 ```yaml
 Type: AzureSqlManagedInstanceModel
 Parameter Sets: AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorInputObjectParameterSet
-Aliases:
+Aliases: InputObject
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -174,7 +174,7 @@ The managed instance name
 ```yaml
 Type: String
 Parameter Sets: AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorDefaultParameterSet
-Aliases: InputObject
+Aliases:
 
 Required: True
 Position: 1
@@ -192,7 +192,7 @@ Parameter Sets: AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorResou
 Aliases: ResourceId
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -223,7 +223,7 @@ Aliases:
 Accepted values: AzureKeyVault, ServiceManaged
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -20,13 +20,13 @@ Remove-AzureRmSqlManagedInstanceKeyVaultKey [-ResourceGroupName] <String> [-Mana
 
 ### AddAzureRmSqlManagedInstanceKeyVaultKeyInputObjectParameterSet
 ```
-Remove-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstance <AzureSqlManagedInstanceModel> [-KeyId] <String>
+Remove-AzureRmSqlManagedInstanceKeyVaultKey [-ManagedInstance] <AzureSqlManagedInstanceModel> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet
 ```
-Remove-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstanceResourceId <String> [-KeyId] <String>
+Remove-AzureRmSqlManagedInstanceKeyVaultKey [-ManagedInstanceResourceId] <String> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -124,7 +124,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -136,10 +136,10 @@ The managed instance input object
 ```yaml
 Type: AzureSqlManagedInstanceModel
 Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyInputObjectParameterSet
-Aliases:
+Aliases: InputObject
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -151,7 +151,7 @@ The managed instance name
 ```yaml
 Type: String
 Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyDefaultParameterSet
-Aliases: InputObject
+Aliases:
 
 Required: True
 Position: 1
@@ -169,7 +169,7 @@ Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet
 Aliases: ResourceId
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

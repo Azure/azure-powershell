@@ -21,13 +21,13 @@ Get-AzureRmSqlManagedInstanceKeyVaultKey [[-KeyId] <String>] [-ResourceGroupName
 
 ### AddAzureRmSqlManagedInstanceKeyVaultKeyInputObjectParameterSet
 ```
-Get-AzureRmSqlManagedInstanceKeyVaultKey [[-KeyId] <String>] -ManagedInstance <AzureSqlManagedInstanceModel>
+Get-AzureRmSqlManagedInstanceKeyVaultKey [[-KeyId] <String>] [-ManagedInstance] <AzureSqlManagedInstanceModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet
 ```
-Get-AzureRmSqlManagedInstanceKeyVaultKey [[-KeyId] <String>] -ManagedInstanceResourceId <String>
+Get-AzureRmSqlManagedInstanceKeyVaultKey [[-KeyId] <String>] [-ManagedInstanceResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -66,7 +66,6 @@ Type                   : AzureKeyVault
 
 This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'.
 
-
 ### Example 3: Using managed instance object
 ```powershell
 PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
@@ -82,7 +81,6 @@ Type                   : AzureKeyVault
 ```
 
 This command gets the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'.
-
 
 ### Example 4: Using managed instance resource id
 ```powershell
@@ -142,7 +140,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -154,10 +152,10 @@ The managed instance input object
 ```yaml
 Type: AzureSqlManagedInstanceModel
 Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyInputObjectParameterSet
-Aliases:
+Aliases: InputObject
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -169,7 +167,7 @@ The managed instance name
 ```yaml
 Type: String
 Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyDefaultParameterSet
-Aliases: InputObject
+Aliases:
 
 Required: True
 Position: 1
@@ -187,7 +185,7 @@ Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet
 Aliases: ResourceId
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
