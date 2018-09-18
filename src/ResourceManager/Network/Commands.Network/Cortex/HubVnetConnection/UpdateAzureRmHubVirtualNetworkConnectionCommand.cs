@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("HubVirtualNetworkConnection")]
         [Parameter(
             Mandatory = true,
+            ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByHubVirtualNetworkConnectionObject,
             HelpMessage = "The hubvirtualnetworkconnection resource to modify.")]
         public PSHubVirtualNetworkConnection InputObject { get; set; }
@@ -120,7 +121,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             ConfirmAction(
-                    Force.IsPresent,
+                    false,
                     string.Format(Properties.Resources.SettingResourceMessage, this.Name),
                     Properties.Resources.SettingResourceMessage,
                     this.Name,
