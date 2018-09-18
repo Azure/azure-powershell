@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             vAgentPoolProfiles.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
             vAgentPoolProfiles.Count = this.Count;
-            vAgentPoolProfiles.VmSize = this.MyInvocation.BoundParameters.ContainsKey("VmSize") ? (ContainerServiceVMSizeTypes)this.VmSize : null;
+            vAgentPoolProfiles.VmSize = this.MyInvocation.BoundParameters.ContainsKey("VmSize") ? this.VmSize : null;
             vAgentPoolProfiles.DnsPrefix = this.MyInvocation.BoundParameters.ContainsKey("DnsPrefix") ? this.DnsPrefix : null;
             this.ContainerService.AgentPoolProfiles.Add(vAgentPoolProfiles);
             WriteObject(this.ContainerService);
