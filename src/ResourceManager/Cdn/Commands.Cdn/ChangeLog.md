@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.0.6
 * Added Standard_Microsoft in Cdn pricing sku. 
 
 ## Version 5.0.5

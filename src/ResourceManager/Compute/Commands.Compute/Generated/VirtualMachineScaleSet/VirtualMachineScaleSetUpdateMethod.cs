@@ -299,7 +299,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
                 }
-                this.VirtualMachineScaleSetUpdate.Identity.IdentityIds = this.IdentityId;
+
+                this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>();
+
+                foreach (var id in this.IdentityId)
+                {
+                    if (!this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities.ContainsKey(id))
+                    {
+                        this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities.Add(id, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue());
+                    }
+                }
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("ManagedDiskStorageAccountType"))
@@ -930,9 +939,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.VirtualMachineScaleSet.Identity == null)
                 {
-                    this.VirtualMachineScaleSet.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                    this.VirtualMachineScaleSet.Identity = new PSVirtualMachineScaleSetIdentity();
                 }
-                this.VirtualMachineScaleSet.Identity.IdentityIds = this.IdentityId;
+
+                this.VirtualMachineScaleSet.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>();
+
+                foreach (var id in this.IdentityId)
+                {
+                    if (!this.VirtualMachineScaleSet.Identity.UserAssignedIdentities.ContainsKey(id))
+                    {
+                        this.VirtualMachineScaleSet.Identity.UserAssignedIdentities.Add(id, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue());
+                    }
+                }
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("ManagedDiskStorageAccountType"))
@@ -1266,7 +1284,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (this.VirtualMachineScaleSet.Identity == null)
                 {
-                    this.VirtualMachineScaleSet.Identity = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIdentity();
+                    this.VirtualMachineScaleSet.Identity = new PSVirtualMachineScaleSetIdentity();
                 }
                 this.VirtualMachineScaleSet.Identity.Type = this.IdentityType;
             }
