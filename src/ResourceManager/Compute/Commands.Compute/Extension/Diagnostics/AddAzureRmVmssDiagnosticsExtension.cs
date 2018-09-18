@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
@@ -26,7 +27,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 {
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmssDiagnosticsExtension",SupportsShouldProcess = true)]
-    [OutputType(typeof(VirtualMachineScaleSet))]
+    [OutputType(typeof(PSVirtualMachineScaleSet))]
     public class AddAzureRmVmssDiagnosticsExtension : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private string extensionName = DiagnosticsExtensionConstants.ExtensionDefaultName;
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
+        public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -174,7 +175,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
                 }
             }
 
-            WriteObject(this.VirtualMachineScaleSet);
+            WriteObject(ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet>(this.VirtualMachineScaleSet));
         }
     }
 }

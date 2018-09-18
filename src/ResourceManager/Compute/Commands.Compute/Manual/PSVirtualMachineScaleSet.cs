@@ -19,13 +19,50 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using System.Collections.Generic;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSVirtualMachineScaleSet : VirtualMachineScaleSet
+    public partial class PSVirtualMachineScaleSet
     {
         // Gets or sets the FQDN.
         public string FullyQualifiedDomainName { get; set; }
+
+        public string Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Type { get; set; }
+
+        public string Location { get; set; }
+
+        public IDictionary<string, string> Tags { get; set; }
+
+        public Sku Sku { get; set; }
+
+        public Plan Plan { get; set; }
+
+        public UpgradePolicy UpgradePolicy { get; set; }
+
+        public VirtualMachineScaleSetVMProfile VirtualMachineProfile { get; set; }
+
+        public string ProvisioningState { get; set; }
+
+        public bool? Overprovision { get; set; }
+
+        public string UniqueId { get; set; }
+
+        public bool? SinglePlacementGroup { get; set; }
+
+        public bool? ZoneBalance { get; set; }
+
+        public int? PlatformFaultDomainCount { get; set; }
+
+        public IList<string> Zones { get; set; }
+
+        public PSVirtualMachineScaleSetIdentity Identity { get; set; }
+
+        public PSVirtualMachineScaleSet() { }
     }
 }

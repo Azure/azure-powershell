@@ -32,19 +32,19 @@
     <PackageReference Include="Microsoft.Azure.Management.Authorization" Version="2.8.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ManagementGroups" Version="1.1.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Batch" Version="4.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="21.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="22.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.DeviceProvisioningServices" Version="0.9.0-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="2.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="2.1.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.20.1-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.3.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.18.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.PolicyInsights" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="3.1.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.18.0-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="7.1.0-preview" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.Azure.Management.Websites" Version="1.7.1-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.Websites" Version="2.0.0-preview" PrivateAssets="All" />
     <PackageReference Include="YamlDotNet.Signed" Version="4.2.4" PrivateAssets="All" />
     <PackageReference Include="Moq" Version="4.7.145" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
