@@ -22,5 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     public class PSResourceGroupDeployment: PSDeploymentObject
     { 
         public string ResourceGroupName { get; set; }
+
+        public OnErrorDeploymentExtended OnErrorDeployment { get; set; }
     }
 }

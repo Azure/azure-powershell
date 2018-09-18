@@ -21,11 +21,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Commands.ScenarioTest.Common, Version=1.0.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.94-preview\lib\net452\Microsoft.Azure.Commands.ScenarioTest.Common.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.1.2-preview\lib\net452\Microsoft.Azure.Commands.ScenarioTest.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ServiceManagement.1.0.94-preview\lib\net452\Microsoft.WindowsAzure.Commands.ServiceManagement.Common.dll</HintPath>
+      <HintPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ServiceManagement.1.1.2-preview\lib\net452\Microsoft.WindowsAzure.Commands.ServiceManagement.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -66,7 +66,7 @@
     </Reference>
   </ItemGroup>
   <PropertyGroup>
-    <ScenarioTestToolsPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.94-preview\tools\</ScenarioTestToolsPath>
+    <ScenarioTestToolsPath>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.1.2-preview\tools\</ScenarioTestToolsPath>
   </PropertyGroup>
   <ItemGroup>
     <None Include="$(ScenarioTestToolsPath)Assert.ps1">

@@ -69,8 +69,8 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PacketCapture");
         }
 
-        [Fact(Skip = "Rerecord tests")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestTroubleshoot()
         {
@@ -88,6 +88,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.netanalyticsdev)]
+        [Trait(Category.RunType, Category.DesktopOnly)]
         public void TestConnectivityCheck()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ConnectivityCheck");

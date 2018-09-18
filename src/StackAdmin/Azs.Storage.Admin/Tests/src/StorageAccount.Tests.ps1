@@ -106,12 +106,16 @@ InModuleScope Azs.Storage.Admin {
             }
         }
 
+        AfterEach {
+            $global:Client = $null
+        }
+
         it "TestListAllStorageAccounts" -Skip:$('TestListAllStorageAccounts' -in $global:SkippedTests) {
             $global:TestName = 'TestListAllStorageAccounts'
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) -Summary:$false
+                $storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name -Summary:$false
                 foreach ($storageAccount in $storageAccounts) {
                     ValidateStorageAccount -storageAccount $storageAccount
                 }
@@ -123,9 +127,9 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) -Summary:$false
+                $storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name -Summary:$false
                 foreach ($storageAccount in $storageAccounts) {
-                    $result = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) -Name (Select-Name $storageAccount.Name)
+                    $result = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name -Name $storageAccount.Name
                     ValidateStorageAccount -storageAccount $result
                     AssertAreEqual -expected $storageAccount -found $result
                     return
@@ -138,9 +142,9 @@ InModuleScope Azs.Storage.Admin {
 
             $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
             foreach ($farm in $farms) {
-                $storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) -Summary:$false
+                $storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name -Summary:$false
                 foreach ($storageAccount in $storageAccounts) {
-                    $result = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) -Name (Select-Name $storageAccount.Name)
+                    $result = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName $farm.Name -Name $storageAccount.Name
                     ValidateStorageAccount -storageAccount $result
                     AssertAreEqual -expected $storageAccount -found $result
                 }

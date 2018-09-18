@@ -12,10 +12,10 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core'
+CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
 GUID = '5af71f43-17ca-45bd-b534-34524b801ade'
@@ -30,7 +30,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = '[PowerShell .Net Core] Microsoft Azure PowerShell - RecoveryServices cmdlets for Azure Resource Manager'
+Description = 'Microsoft Azure PowerShell - RecoveryServices cmdlets for Azure Resource Manager in PowerShell and PowerShell Core'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -42,7 +42,7 @@ PowerShellVersion = '5.1'
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# DotNetFrameworkVersion = ''
+DotNetFrameworkVersion = '4.7.2'
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
 # CLRVersion = ''
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.1.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Profile'; ModuleVersion = '0.2.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Models.dll', 
@@ -61,7 +61,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Models.
     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Providers.dll', 
     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.ServiceClientAdapter.dll',
     '.\Microsoft.Azure.Management.RecoveryServices.dll', 
-    '.\Security.Cryptography.dll'
+    '.\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -74,7 +74,8 @@ FormatsToProcess = '.\Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.RecoveryServices.ARM.dll',
-    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.dll')
+    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.dll',
+	'.\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -84,7 +85,69 @@ CmdletsToExport = 'Get-AzRecoveryServicesBackupProperty',
     'Get-AzRecoveryServicesVault', 
     'Get-AzRecoveryServicesVaultSettingsFile', 
     'New-AzRecoveryServicesVault', 
-    'Remove-AzRecoveryServicesVault', 
+    'Remove-AzRecoveryServicesVault',
+    'Edit-AzRecoveryServicesAsrRecoveryPlan', 
+    'Get-AzRecoveryServicesAsrAlertSetting', 
+    'Get-AzRecoveryServicesAsrEvent', 
+    'Get-AzRecoveryServicesAsrFabric', 
+    'Get-AzRecoveryServicesAsrJob', 
+    'Get-AzRecoveryServicesAsrNetwork', 
+    'Get-AzRecoveryServicesAsrNetworkMapping', 
+    'Get-AzRecoveryServicesAsrPolicy', 
+    'Get-AzRecoveryServicesAsrProtectableItem', 
+    'Get-AzRecoveryServicesAsrProtectionContainer', 
+    'Get-AzRecoveryServicesAsrProtectionContainerMapping', 
+    'Get-AzRecoveryServicesAsrRecoveryPlan', 
+    'Get-AzRecoveryServicesAsrRecoveryPoint', 
+    'Get-AzRecoveryServicesAsrReplicationProtectedItem', 
+    'Get-AzRecoveryServicesAsrServicesProvider', 
+    'Get-AzRecoveryServicesAsrStorageClassification', 
+    'Get-AzRecoveryServicesAsrStorageClassificationMapping', 
+    'Get-AzRecoveryServicesAsrVaultContext', 
+    'Get-AzRecoveryServicesAsrvCenter', 
+    'Import-AzRecoveryServicesAsrVaultSettingsFile', 
+    'New-AzRecoveryServicesAsrFabric', 
+    'New-AzRecoveryServicesAsrNetworkMapping', 
+    'New-AzRecoveryServicesAsrPolicy', 
+    'New-AzRecoveryServicesAsrProtectableItem', 
+    'New-AzRecoveryServicesAsrProtectionContainer', 
+    'New-AzRecoveryServicesAsrProtectionContainerMapping', 
+    'New-AzRecoveryServicesAsrRecoveryPlan', 
+    'New-AzRecoveryServicesAsrReplicationProtectedItem', 
+    'New-AzRecoveryServicesAsrStorageClassificationMapping', 
+    'New-AzRecoveryServicesAsrvCenter', 
+    'New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig', 
+    'Remove-AzRecoveryServicesAsrFabric', 
+    'Remove-AzRecoveryServicesAsrNetworkMapping', 
+    'Remove-AzRecoveryServicesAsrPolicy', 
+    'Remove-AzRecoveryServicesAsrProtectionContainer', 
+    'Remove-AzRecoveryServicesAsrProtectionContainerMapping', 
+    'Remove-AzRecoveryServicesAsrRecoveryPlan', 
+    'Remove-AzRecoveryServicesAsrReplicationProtectedItem', 
+    'Remove-AzRecoveryServicesAsrServicesProvider', 
+    'Remove-AzRecoveryServicesAsrStorageClassificationMapping', 
+    'Remove-AzRecoveryServicesAsrvCenter', 
+    'Restart-AzRecoveryServicesAsrJob', 
+    'Resume-AzRecoveryServicesAsrJob', 
+    'Set-AzRecoveryServicesAsrAlertSetting', 
+    'Set-AzRecoveryServicesAsrReplicationProtectedItem', 
+    'Set-AzRecoveryServicesAsrVaultContext', 
+    'Start-AzRecoveryServicesAsrApplyRecoveryPoint', 
+    'Start-AzRecoveryServicesAsrCommitFailoverJob', 
+    'Start-AzRecoveryServicesAsrPlannedFailoverJob', 
+    'Start-AzRecoveryServicesAsrResynchronizeReplicationJob', 
+    'Start-AzRecoveryServicesAsrSwitchProcessServerJob', 
+    'Start-AzRecoveryServicesAsrTestFailoverCleanupJob', 
+    'Start-AzRecoveryServicesAsrTestFailoverJob', 
+    'Start-AzRecoveryServicesAsrUnplannedFailoverJob', 
+    'Stop-AzRecoveryServicesAsrJob', 
+    'Update-AzRecoveryServicesAsrMobilityService', 
+    'Update-AzRecoveryServicesAsrNetworkMapping', 
+    'Update-AzRecoveryServicesAsrPolicy', 
+    'Update-AzRecoveryServicesAsrProtectionDirection', 
+    'Update-AzRecoveryServicesAsrRecoveryPlan', 
+    'Update-AzRecoveryServicesAsrServicesProvider', 
+    'Update-AzRecoveryServicesAsrvCenter', 
     'Set-AzRecoveryServicesBackupProperties', 
     'Set-AzRecoveryServicesVaultContext',
     'Backup-AzRecoveryServicesBackupItem', 
@@ -143,7 +206,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Initial Release'
+        ReleaseNotes = 'Initial Release with PowerShell and PowerShell Core Support'
 
         # Prerelease string of this module
         # Prerelease = ''

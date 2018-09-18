@@ -28,12 +28,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="2.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="3.0.0-preview" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Helpers\Commands.RecoveryServices.Backup.Helpers.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

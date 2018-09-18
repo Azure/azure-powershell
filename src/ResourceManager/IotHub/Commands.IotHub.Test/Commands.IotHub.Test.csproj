@@ -42,12 +42,13 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.IotHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.IotHub.2.0.0\lib\net452\Microsoft.Azure.Management.IotHub.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.IotHub.2.1.0\lib\net452\Microsoft.Azure.Management.IotHub.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ScenarioTests\IotHubController.cs" />
+    <Compile Include="ScenarioTests\IotHubRoutingTests.cs" />
     <Compile Include="ScenarioTests\IotHubTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,7 +58,13 @@
     </None>
     <None Include="ScenarioTests\Assert.ps1" />
     <None Include="ScenarioTests\Common.ps1" />
+    <None Include="ScenarioTests\IotHubRoutingTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\IotHubTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubRoutingTests\TestAzureIotHubRoutingLifeCycle.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubTests\TestAzureIotHubCertificateLifeCycle.json">

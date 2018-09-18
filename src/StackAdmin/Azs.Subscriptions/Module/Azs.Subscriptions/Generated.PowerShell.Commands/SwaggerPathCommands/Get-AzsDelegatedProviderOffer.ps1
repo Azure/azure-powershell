@@ -10,7 +10,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .DESCRIPTION
     Get the list of offers for the specified delegated provider.
 
-.PARAMETER OfferName
+.PARAMETER Name
     Name of the offer.
 
 .PARAMETER Skip
@@ -28,15 +28,15 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
     Get the list of offers for the specified delegated provider.
 #>
-function Get-AzsDelegatedProviderOffer
-{
+function Get-AzsDelegatedProviderOffer {
     [OutputType([Microsoft.AzureStack.Management.Subscription.Models.Offer])]
-    [CmdletBinding(DefaultParameterSetName='List')]
+    [CmdletBinding(DefaultParameterSetName = 'List')]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
         [ValidateNotNullOrEmpty()]
+        [Alias('OfferName')]
         [System.String]
-        $OfferName,
+        $Name,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'List')]
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
@@ -55,75 +55,78 @@ function Get-AzsDelegatedProviderOffer
         $Top = -1
     )
 
-    Begin
-    {
-	    Initialize-PSSwaggerDependencies -Azure
+    Begin {
+        Initialize-PSSwaggerDependencies -Azure
         $tracerObject = $null
         if (('continue' -eq $DebugPreference) -or ('inquire' -eq $DebugPreference)) {
             $oldDebugPreference = $global:DebugPreference
-			$global:DebugPreference = "continue"
+            $global:DebugPreference = "continue"
             $tracerObject = New-PSSwaggerClientTracing
             Register-PSSwaggerClientTracing -TracerObject $tracerObject
         }
-	}
+    }
 
     Process {
 
-
-
-    $NewServiceClient_params = @{
-        FullClientTypeName = 'Microsoft.AzureStack.Management.Subscription.SubscriptionClient'
-    }
-
-    $GlobalParameterHashtable = @{}
-    $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-
-    $SubscriptionClient = New-ServiceClient @NewServiceClient_params
-
-
-    if ('List' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $SubscriptionClient.'
-        $TaskResult = $SubscriptionClient.DelegatedProviderOffers.ListWithHttpMessagesAsync($DelegatedProviderId)
-    } elseif ('Get' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $SubscriptionClient.'
-        $TaskResult = $SubscriptionClient.DelegatedProviderOffers.GetWithHttpMessagesAsync($DelegatedProviderId, $OfferName)
-    } else {
-        Write-Verbose -Message 'Failed to map parameter set to operation method.'
-        throw 'Module failed to find operation to execute.'
-    }
-
-    if ($TaskResult) {
-        $GetTaskResult_params = @{
-            TaskResult = $TaskResult
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            if ( $MyInvocation.Line -match "\s-OfferName\s") {
+                Write-Warning -Message "The parameter alias OfferName will be deprecated in future release. Please use the parameter Name instead"
+            }
         }
 
-        $TopInfo = @{
-            'Count' = 0
-            'Max' = $Top
+        $NewServiceClient_params = @{
+            FullClientTypeName = 'Microsoft.AzureStack.Management.Subscription.SubscriptionClient'
         }
-        $GetTaskResult_params['TopInfo'] = $TopInfo
-        $SkipInfo = @{
-            'Count' = 0
-            'Max' = $Skip
-        }
-        $GetTaskResult_params['SkipInfo'] = $SkipInfo
-        $PageResult = @{
-            'Result' = $null
-        }
-        $GetTaskResult_params['PageResult'] = $PageResult
-        $GetTaskResult_params['PageType'] = 'Array' -as [Type]
-        Get-TaskResult @GetTaskResult_params
 
-        Write-Verbose -Message 'Flattening paged results.'
-        while ($PageResult -and ($PageResult.ContainsKey('Page')) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
-            Write-Debug -Message "Retrieving next page: $($PageResult.Page.'nextPageLink')"
-            $TaskResult = $SubscriptionClient.DelegatedProviderOffers.ListNextWithHttpMessagesAsync($PageResult.Page.'nextPageLink')
-            $PageResult.Page = $null
-            $GetTaskResult_params['TaskResult'] = $TaskResult
+        $GlobalParameterHashtable = @{}
+        $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+
+        $SubscriptionClient = New-ServiceClient @NewServiceClient_params
+
+
+        if ('List' -eq $PsCmdlet.ParameterSetName) {
+            Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $SubscriptionClient.'
+            $TaskResult = $SubscriptionClient.DelegatedProviderOffers.ListWithHttpMessagesAsync($DelegatedProviderId)
+        } elseif ('Get' -eq $PsCmdlet.ParameterSetName) {
+            Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $SubscriptionClient.'
+            $TaskResult = $SubscriptionClient.DelegatedProviderOffers.GetWithHttpMessagesAsync($DelegatedProviderId, $Name)
+        } else {
+            Write-Verbose -Message 'Failed to map parameter set to operation method.'
+            throw 'Module failed to find operation to execute.'
+        }
+
+        if ($TaskResult) {
+            $GetTaskResult_params = @{
+                TaskResult = $TaskResult
+            }
+
+            $TopInfo = @{
+                'Count' = 0
+                'Max'   = $Top
+            }
+            $GetTaskResult_params['TopInfo'] = $TopInfo
+            $SkipInfo = @{
+                'Count' = 0
+                'Max'   = $Skip
+            }
+            $GetTaskResult_params['SkipInfo'] = $SkipInfo
+            $PageResult = @{
+                'Result' = $null
+            }
             $GetTaskResult_params['PageResult'] = $PageResult
+            $GetTaskResult_params['PageType'] = 'Array' -as [Type]
             Get-TaskResult @GetTaskResult_params
+
+            Write-Verbose -Message 'Flattening paged results.'
+            while ($PageResult -and ($PageResult.ContainsKey('Page')) -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
+                Write-Debug -Message "Retrieving next page: $($PageResult.Page.'nextPageLink')"
+                $TaskResult = $SubscriptionClient.DelegatedProviderOffers.ListNextWithHttpMessagesAsync($PageResult.Page.'nextPageLink')
+                $PageResult.Page = $null
+                $GetTaskResult_params['TaskResult'] = $TaskResult
+                $GetTaskResult_params['PageResult'] = $PageResult
+                Get-TaskResult @GetTaskResult_params
+            }
         }
-    }
     }
 
     End {

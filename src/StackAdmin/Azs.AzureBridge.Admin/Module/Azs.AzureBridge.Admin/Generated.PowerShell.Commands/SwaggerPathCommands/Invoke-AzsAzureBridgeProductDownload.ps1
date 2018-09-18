@@ -75,8 +75,6 @@ function Invoke-AzsAzureBridgeProductDownload {
 
     Process {
 
-
-
         if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}/Products/{productName}'
@@ -87,6 +85,8 @@ function Invoke-AzsAzureBridgeProductDownload {
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroup']
             $activationName = $ArmResourceIdParameterValues['activationName']
             $Name = $ArmResourceIdParameterValues['productName']
+        } else {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Start product download")) {

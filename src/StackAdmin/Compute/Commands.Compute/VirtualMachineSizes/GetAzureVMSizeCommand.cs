@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = ListAvailableSizesForVirtualMachine,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -80,7 +79,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                AzureOperationResponse<IPage<VirtualMachineSize>> result = null;
+                AzureOperationResponse<IEnumerable<VirtualMachineSize>> result = null;
 
                 if (!string.IsNullOrEmpty(this.VMName))
                 {
@@ -102,8 +101,8 @@ namespace Microsoft.Azure.Commands.Compute
                 List<PSVirtualMachineSize> psResultList = new List<PSVirtualMachineSize>();
                 foreach (var item in result.Body)
                 {
-                    var psItem = Mapper.Map<PSVirtualMachineSize>(result);
-                    psItem = Mapper.Map(item, psItem);
+                    var psItem = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachineSize>(result);
+                    psItem = ComputeAutoMapperProfile.Mapper.Map(item, psItem);
                     psResultList.Add(psItem);
                 }
 

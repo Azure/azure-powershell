@@ -19,6 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
@@ -28,16 +29,16 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Add", "AzureRmVmssWinRMListener")]
-    [OutputType(typeof(VirtualMachineScaleSet))]
-    public class AddAzureRmVmssWinRMListenerCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    [Cmdlet("Add", "AzureRmVmssWinRMListener", SupportsShouldProcess = true)]
+    [OutputType(typeof(PSVirtualMachineScaleSet))]
+    public partial class AddAzureRmVmssWinRMListenerCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
+        public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -52,6 +53,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string CertificateUrl { get; set; }
 
         protected override void ProcessRecord()
+        {
+            if (ShouldProcess("VirtualMachineScaleSet", "Add"))
+            {
+                Run();
+            }
+        }
+
+        private void Run()
         {
             // VirtualMachineProfile
             if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
