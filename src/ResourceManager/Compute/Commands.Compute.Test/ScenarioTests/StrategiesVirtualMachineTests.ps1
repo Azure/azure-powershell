@@ -26,17 +26,17 @@ function Test-SimpleNewVm
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$vmname-$vmname".tolower();
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-		$x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel
+        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel
 
         Assert-AreEqual $vmname $x.Name;
-		Assert-Null $x.Identity
+        Assert-Null $x.Identity
 
-		$nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
-		Assert-NotNull $nic
-		Assert-False { $nic.EnableAcceleratedNetworking }
+        $nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
+        Assert-NotNull $nic
+        Assert-False { $nic.EnableAcceleratedNetworking }
     }
     finally
     {
@@ -59,17 +59,17 @@ function Test-SimpleNewVmWithAccelNet
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$vmname-$vmname".tolower();
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-		$x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size "Standard_D12_v2"
+        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size "Standard_D12_v2"
 
         Assert-AreEqual $vmname $x.Name;
-		Assert-Null $x.Identity
+        Assert-Null $x.Identity
 
-		$nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
-		Assert-NotNull $nic
-		Assert-True { $nic.EnableAcceleratedNetworking }
+        $nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
+        Assert-NotNull $nic
+        Assert-True { $nic.EnableAcceleratedNetworking }
     }
     finally
     {
@@ -92,16 +92,16 @@ function Test-SimpleNewVmSystemAssignedIdentity
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$vmname-$vmname".tolower();
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-		$x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SystemAssignedIdentity
+        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SystemAssignedIdentity
 
         Assert-AreEqual $vmname $x.Name;
-		Assert-AreEqual "SystemAssigned" $x.Identity.Type     
-		Assert-NotNull  $x.Identity.PrincipalId
-		Assert-NotNull  $x.Identity.TenantId
-		Assert-Null $x.Identity.IdentityIds     
+        Assert-AreEqual "SystemAssigned" $x.Identity.Type     
+        Assert-NotNull  $x.Identity.PrincipalId
+        Assert-NotNull  $x.Identity.TenantId
+        Assert-Null $x.Identity.IdentityIds     
     }
     finally
     {
@@ -122,15 +122,15 @@ function Test-NewVmWin10
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		    [string]$domainNameLabel = "$vmname-$vmname".tolower();
+            [string]$domainNameLabel = "$vmname-$vmname".tolower();
         $x = New-AzureRmVM `
-			      -Name $vmname `
-			      -Credential $cred `
-			      -DomainNameLabel $domainNameLabel `
-			      -ImageName "Win10" `
-			      -DataDiskSizeInGb 32,64
+                  -Name $vmname `
+                  -Credential $cred `
+                  -DomainNameLabel $domainNameLabel `
+                  -ImageName "Win10" `
+                  -DataDiskSizeInGb 32,64
 
-		    Assert-AreEqual 2 $x.StorageProfile.DataDisks.Count
+            Assert-AreEqual 2 $x.StorageProfile.DataDisks.Count
         Assert-AreEqual $vmname $x.Name; 
         Assert-Null $x.Identity
     }
@@ -152,38 +152,38 @@ function Test-SimpleNewVmUserAssignedIdentitySystemAssignedIdentity
 
     try
     {
-       # To record this test run these commands first :
-       # New-AzureRmResourceGroup -Name UAITG123456 -Location 'Central US'
-       # New-AzureRmUserAssignedIdentity -ResourceGroupName  UAITG123456 -Name UAITG123456Identity
-       # 
-       # Now get the identity :
-       # 
-       # Get-AzureRmUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
-        #Nore down the Id and use it in the PS code
-		#$identityName = $vmname + "Identity1"
-		#$newUserIdentity =  New-AzureRmUserAssignedIdentity -ResourceGroupName $vmname -Name $identityName
-
-		#$newUserId = $newUserIdentity.Id
-
-		$newUserId = "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/UAITG123456/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UAITG123456Identity"
+        # To record this test run these commands first :
+        # New-AzureRmResourceGroup -Name UAITG123456 -Location 'Central US'
+        # New-AzureRmUserAssignedIdentity -ResourceGroupName  UAITG123456 -Name UAITG123456Identity
+        # 
+        # Now get the identity :
+        # 
+        # Get-AzureRmUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
+        # Note down the Id and use it in the PS code
+        # $identityName = $vmname + "Identity"
+        # $newUserIdentity =  New-AzureRmUserAssignedIdentity -ResourceGroupName $vmname -Name $identityName
+        # $newUserId = $newUserIdentity.Id
+        $newUserId = "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/resourcegroups/UAITG123456/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UAITG123456Identity"
 
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$vmname-$vmname".tolower();
+        [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-		$x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId -SystemAssignedIdentity
+        $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId -SystemAssignedIdentity
 
         Assert-AreEqual $vmname $x.Name;
-		Assert-AreEqual "UserAssigned" $x.Identity.Type     
-		Assert-NotNull  $x.Identity.PrincipalId
-		Assert-NotNull  $x.Identity.TenantId
-		Assert-NotNull $x.Identity.IdentityIds
-		Assert-AreEqual 1 $x.Identity.IdentityIds.Count
-		Assert-AreEqual $newUserId  $x.Identity.IdentityIds[0]
-	}
-	finally
+        Assert-AreEqual "UserAssigned" $x.Identity.Type     
+        Assert-NotNull  $x.Identity.PrincipalId
+        Assert-NotNull  $x.Identity.TenantId
+        Assert-NotNull $x.Identity.UserAssignedIdentities
+        Assert-AreEqual 1 $x.Identity.UserAssignedIdentities.Count
+        Assert-True { $x.Identity.UserAssignedIdentities.ContainsKey($newUserId) }
+        Assert-NotNull  $x.Identity.UserAssignedIdentities[$newUserId].PrincipalId
+        Assert-NotNull  $x.Identity.UserAssignedIdentities[$newUserId].ClientId
+    }
+    finally
     {
         # Cleanup
         Clean-ResourceGroup $vmname
@@ -201,32 +201,32 @@ function Test-SimpleNewVmWithAvailabilitySet
 
     try
     {
-		$username = "admin01"
-		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
-		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$vmname = $rgname
-		[string]$asname = $rgname
-		[string]$domainNameLabel = "$vmname-$rgname".tolower();
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$vmname = $rgname
+        [string]$asname = $rgname
+        [string]$domainNameLabel = "$vmname-$rgname".tolower();
 
         # Common
-		$r = New-AzureRmResourceGroup -Name $rgname -Location "eastus"
-		$a = New-AzureRmAvailabilitySet `
-			-ResourceGroupName $rgname `
-			-Name $asname `
-			-Location "eastus" `
-			-Sku "Aligned" `
-			-PlatformUpdateDomainCount 2 `
-			-PlatformFaultDomainCount 2
+        $r = New-AzureRmResourceGroup -Name $rgname -Location "eastus"
+        $a = New-AzureRmAvailabilitySet `
+            -ResourceGroupName $rgname `
+            -Name $asname `
+            -Location "eastus" `
+            -Sku "Aligned" `
+            -PlatformUpdateDomainCount 2 `
+            -PlatformFaultDomainCount 2
 
-		$x = New-AzureRmVM `
-			-ResourceGroupName $rgname `
-			-Name $vmname `
-			-Credential $cred `
-			-DomainNameLabel $domainNameLabel `
-			-AvailabilitySetName $asname
+        $x = New-AzureRmVM `
+            -ResourceGroupName $rgname `
+            -Name $vmname `
+            -Credential $cred `
+            -DomainNameLabel $domainNameLabel `
+            -AvailabilitySetName $asname
 
-		Assert-AreEqual $vmname $x.Name;		
-		Assert-AreEqual $a.Id $x.AvailabilitySetReference.Id
+        Assert-AreEqual $vmname $x.Name;        
+        Assert-AreEqual $a.Id $x.AvailabilitySetReference.Id
     }
     finally
     {
@@ -246,21 +246,21 @@ function Test-SimpleNewVmWithDefaultDomainName
 
     try
     {
-		$username = "admin01"
-		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
-		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string] $vmname = "ps9301"
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string] $vmname = "ps9301"
 
         # Common
-		$x = New-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Credential $cred
+        $x = New-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Credential $cred
 
-		Assert-AreEqual $vmname $x.Name
-		$fqdn = $x.FullyQualifiedDomainName
-		$split = $fqdn.Split(".")
-		Assert-AreEqual "eastus" $split[1] 
-		Assert-AreEqual "cloudapp" $split[2]
-		Assert-AreEqual "azure" $split[3]
-		Assert-AreEqual "com" $split[4]
+        Assert-AreEqual $vmname $x.Name
+        $fqdn = $x.FullyQualifiedDomainName
+        $split = $fqdn.Split(".")
+        Assert-AreEqual "eastus" $split[1] 
+        Assert-AreEqual "cloudapp" $split[2]
+        Assert-AreEqual "azure" $split[3]
+        Assert-AreEqual "com" $split[4]
     }
     finally
     {
@@ -277,34 +277,34 @@ function Test-SimpleNewVmWithDefaultDomainName2
 {
     # Setup
     $rgname = Get-ResourceName
-	$rgname2 = Get-ResourceName
+    $rgname2 = Get-ResourceName
 
     try
     {
-		$username = "admin01"
-		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
-		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string] $vmname = "vm"
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string] $vmname = "vm"
 
         # Common
-		$x = New-AzureRmVM `
-			-ResourceGroupName $rgname `
-			-Name $vmname `
-			-Credential $cred `
-			-ImageName "ubuntults"
+        $x = New-AzureRmVM `
+            -ResourceGroupName $rgname `
+            -Name $vmname `
+            -Credential $cred `
+            -ImageName "ubuntults"
 
-		# second VM
-		$x2 = New-AzureRmVM `
-			-ResourceGroupName $rgname2 `
-			-Name $vmname `
-			-Credential $cred `
-			-ImageName "ubuntults"
+        # second VM
+        $x2 = New-AzureRmVM `
+            -ResourceGroupName $rgname2 `
+            -Name $vmname `
+            -Credential $cred `
+            -ImageName "ubuntults"
     }
     finally
     {
         # Cleanup
         Clean-ResourceGroup $rgname
-		Clean-ResourceGroup $rgname2
+        Clean-ResourceGroup $rgname2
     }
 }
 
@@ -319,36 +319,36 @@ function Test-SimpleNewVmWithAvailabilitySet2
 
     try
     {
-		$username = "admin01"
-		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
-		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$vmname = "myVM"
-		[string]$asname = "myAvailabilitySet"
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$vmname = "myVM"
+        [string]$asname = "myAvailabilitySet"
 
         # Common
-		$r = New-AzureRmResourceGroup -Name $rgname -Location "eastus"
-		$a = New-AzureRmAvailabilitySet `
-			-ResourceGroupName $rgname `
-			-Name $asname `
-			-Location "eastus" `
-			-Sku "Aligned" `
-			-PlatformUpdateDomainCount 2 `
-			-PlatformFaultDomainCount 2
+        $r = New-AzureRmResourceGroup -Name $rgname -Location "eastus"
+        $a = New-AzureRmAvailabilitySet `
+            -ResourceGroupName $rgname `
+            -Name $asname `
+            -Location "eastus" `
+            -Sku "Aligned" `
+            -PlatformUpdateDomainCount 2 `
+            -PlatformFaultDomainCount 2
 
-		$x = New-AzureRmVM `
-			-ResourceGroupName $rgname `
-			-Name $vmname `
-			-Credential $cred `
-		    -VirtualNetworkName "myVnet" `
-			-SubnetName "mySubnet" `
-		    -OpenPorts 80,3389 `
-			-PublicIpAddressName "myPublicIpAddress" `
-			-SecurityGroupName "myNetworkSecurityGroup" `
-			-AvailabilitySetName $asname `
-			-DomainNameLabel "myvm-ad9300"
+        $x = New-AzureRmVM `
+            -ResourceGroupName $rgname `
+            -Name $vmname `
+            -Credential $cred `
+            -VirtualNetworkName "myVnet" `
+            -SubnetName "mySubnet" `
+            -OpenPorts 80,3389 `
+            -PublicIpAddressName "myPublicIpAddress" `
+            -SecurityGroupName "myNetworkSecurityGroup" `
+            -AvailabilitySetName $asname `
+            -DomainNameLabel "myvm-ad9300"
 
-		Assert-AreEqual $vmname $x.Name;		
-		Assert-AreEqual $a.Id $x.AvailabilitySetReference.Id
+        Assert-AreEqual $vmname $x.Name;        
+        Assert-AreEqual $a.Id $x.AvailabilitySetReference.Id
     }
     finally
     {
@@ -369,19 +369,19 @@ function Test-SimpleNewVmImageName
 
     try
     {
-		$username = "admin01"
-		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
-		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$vmname-$vmname".tolower()
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "$vmname-$vmname".tolower()
 
         # Common
-		$x = New-AzureRmVM `
-			-Name $vmname `
-			-Credential $cred `
-			-DomainNameLabel $domainNameLabel `
-			-ImageName "MicrosoftWindowsServer:WindowsServer:2016-Datacenter:2016.127.20170406"
+        $x = New-AzureRmVM `
+            -Name $vmname `
+            -Credential $cred `
+            -DomainNameLabel $domainNameLabel `
+            -ImageName "MicrosoftWindowsServer:WindowsServer:2016-Datacenter:2016.127.20170406"
 
-		Assert-AreEqual $vmname $x.Name
+        Assert-AreEqual $vmname $x.Name
     }
     finally
     {
@@ -402,19 +402,19 @@ function Test-SimpleNewVmImageNameMicrosoftSqlUbuntu
 
     try
     {
-		$username = "admin01"
-		$password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
-		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "xsd3490285".tolower()
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        [string]$domainNameLabel = "xsd3490285".tolower()
 
         # Common
-		$x = New-AzureRmVM `
-			-Name $vmname `
-			-Credential $cred `
-			-DomainNameLabel $domainNameLabel `
-			-ImageName "MicrosoftSQLServer:SQL2017-Ubuntu1604:Enterprise:latest"
+        $x = New-AzureRmVM `
+            -Name $vmname `
+            -Credential $cred `
+            -DomainNameLabel $domainNameLabel `
+            -ImageName "MicrosoftSQLServer:SQL2017-Ubuntu1604:Enterprise:latest"
 
-		Assert-AreEqual $vmname $x.Name
+        Assert-AreEqual $vmname $x.Name
     }
     finally
     {
