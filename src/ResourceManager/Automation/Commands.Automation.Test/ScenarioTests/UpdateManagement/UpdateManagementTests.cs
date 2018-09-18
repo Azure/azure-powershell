@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(logger);
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void CreateWindowsOneTimeSUCWithDefaults()
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithDefaults");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxOneTimeSUCWithDefaults()
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithDefaults");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void CreateWindowsOneTimeSUCWithAllOption()
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-CreateWindowsOneTimeSoftwareUpdateConfigurationWithAllOption");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxOneTimeSUCWithAllOption()
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-CreateLinuxOneTimeSoftwareUpdateConfigurationWithAllOption");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxOneTimeSUCNonAzureOnly()
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-CreateLinuxOneTimeSoftwareUpdateConfigurationNoTargets");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllSUCs()
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateConfigurations");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllSUCsForVM()
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-GetSoftwareUpdateConfigurationsForVM");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void DeleteSUC()
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-DeleteSoftwareUpdateConfiguration");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRuns()
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateRuns");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRunsWithFilters()
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateRunsWithFilters");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllRunsWithFiltersNoResults()
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateRunsWithFiltersNoResults");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllMachineRuns()
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateMachineRuns");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllMachineRunsWithFilters()
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateMachineRunsWithFilters");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void GetAllMachineRunsWithFiltersNoResults()
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-GetAllSoftwareUpdateMachineRunsWithFiltersNoResults");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void CreateLinuxWeeklySUC()
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest(logger, "Test-CreateLinuxWeeklySoftwareUpdateConfiguration");
         }
 
-        [Fact]
+        [Fact(Skip = "Test needs to be re-recorded.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void CreateWindowsMonthlySUC()
