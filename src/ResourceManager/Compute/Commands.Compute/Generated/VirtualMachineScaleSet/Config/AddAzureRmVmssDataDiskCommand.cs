@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             vDataDisks.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
             vDataDisks.Lun = this.Lun;
-            vDataDisks.Caching = this.MyInvocation.BoundParameters.ContainsKey("Caching") ? this.Caching : (CachingTypes?) null;
+            vDataDisks.Caching = this.MyInvocation.BoundParameters.ContainsKey("Caching") ? this.Caching : (CachingTypes?)null;
             vDataDisks.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
             vDataDisks.CreateOption = this.MyInvocation.BoundParameters.ContainsKey("CreateOption") ? this.CreateOption : null;
             vDataDisks.DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?)null;

@@ -1,5 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <OmitJsonPackage>true</OmitJsonPackage>
+  </PropertyGroup>
+  
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
@@ -14,6 +18,10 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" PrivateAssets="all"/>
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DelaySign>false</DelaySign>
