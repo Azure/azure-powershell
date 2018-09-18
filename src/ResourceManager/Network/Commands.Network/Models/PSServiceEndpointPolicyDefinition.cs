@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using Microsoft.WindowsAzure.Commands.Common.Attributes;
     using Newtonsoft.Json;
     using System.Collections.Generic;
 
@@ -27,5 +28,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 1)]
         public List<string> serviceResources { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ProvisioningState { get; set; }
     }
 }

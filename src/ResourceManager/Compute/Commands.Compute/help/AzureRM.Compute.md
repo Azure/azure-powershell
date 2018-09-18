@@ -188,6 +188,9 @@ Grants an access to a snapshot.
 ### [Invoke-AzureRmVMRunCommand](Invoke-AzureRmVMRunCommand.md)
 Run command on the VM.
 
+### [Invoke-AzureRmVmssVMRunCommand](Invoke-AzureRmVmssVMRunCommand.md)
+Run command on the Virtual Machine Scale Set VM.
+
 ### [New-AzureRmAvailabilitySet](New-AzureRmAvailabilitySet.md)
 Creates an Azure availability set.
 

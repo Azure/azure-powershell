@@ -43,8 +43,8 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=19.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.3.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=19.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.5.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.OperationalInsights, Version=0.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.18.0-preview\lib\net45\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
@@ -55,7 +55,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.21.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.22.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Redis">
@@ -67,11 +67,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NetworkResourcesController.cs" />
     <Compile Include="ScenarioTests\ApplicationGatewayTests.cs" />
+    <Compile Include="ScenarioTests\AvailableDelegationsTests.cs" />
+    <Compile Include="ScenarioTests\CortexTests.cs" />
+    <Compile Include="ScenarioTests\AzureFirewallTests.cs" />
     <Compile Include="ScenarioTests\DdosProtectionPlanTests.cs" />
     <Compile Include="ScenarioTests\ApplicationSecurityGroupTests.cs" />
     <Compile Include="ScenarioTests\AvailableEndpointServicesTests.cs" />
     <Compile Include="ScenarioTests\ExpressRouteCrossConnectionTests.cs" />
     <Compile Include="ScenarioTests\Generated\ApplicationSecurityGroupTestsGenerated.cs" />
+    <Compile Include="ScenarioTests\Generated\LoadBalancerTestsGenerated.cs" />
     <Compile Include="ScenarioTests\Generated\UsageTestsGenerated.cs" />
     <Compile Include="ScenarioTests\MultiIpConfigOnNicTests.cs" />
     <Compile Include="ScenarioTests\ExpressRouteServiceProviderTests.cs" />
@@ -101,6 +105,9 @@
     <None Include="ScenarioTests\ApplicationGatewayTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\AvailableDelegationsTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\DdosProtectionPlanTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -110,12 +117,18 @@
     <None Include="ScenarioTests\AvailableEndpointServicesTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\AzureFirewallTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\Data\ApplicationGatewayAuthCert.cer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="ScenarioTests\CortexTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="ScenarioTests\Data\ApplicationGatewaySslCert1.pfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -132,6 +145,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Generated\ApplicationSecurityGroupTestsGenerated.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\Generated\LoadBalancerTestsGenerated.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\Generated\UsageTestsGenerated.ps1">
@@ -233,6 +249,15 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.AvailableEndpointServicesTests\TestAvailableEndpointServicesList.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.AvailableDelegationsTests\TestAvailableDelegationsList.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.AzureFirewallTests\TestAzureFirewallAllocateAndDeallocate.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.AzureFirewallTests\TestAzureFirewallCRUD.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.DdosProtectionPlanTests\TestDdosProtectionPlanCollections.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -246,13 +271,61 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTests\TestExpressRouteCircuitConnectionCRUD.json" />
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestBackendAddressPoolCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestFrontendIPConfigurationCRUDAllParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestFrontendIPConfigurationCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestInboundNatPoolCRUDAllParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestInboundNatPoolCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestInboundNatRuleCRUDAllParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestInboundNatRuleCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestLoadBalancerCRUDAllParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestLoadBalancerCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestLoadBalancingRuleCRUDAllParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestLoadBalancingRuleCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestProbeCRUDAllParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTestsGenerated\TestProbeCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalHighlyAvailableBasicSku.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDInternalHighlyAvailableStandardSku.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublicTcpReset.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerZones.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestOutboundRuleCRUDAllParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestOutboundRuleCRUDMinimalParameters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestSetLoadBalancerCRUDInternalBasicSku.json">
@@ -576,10 +649,16 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestResourceNavigationLinksOnSubnetCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkSubnetDelegationCRUD.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkCRUDWithDDoSProtection.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkMultiPrefixSubnetCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkPeeringCRUD.json">
@@ -595,6 +674,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestVirtualNetworkUsage.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.CortexTests\TestCortexCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="TestData\Deployment.json">
@@ -633,6 +715,5 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

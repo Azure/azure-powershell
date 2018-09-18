@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableIPForwarding { get; set; }
 
+        public List<string> HostedWorkloads { get; set; }
+
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
