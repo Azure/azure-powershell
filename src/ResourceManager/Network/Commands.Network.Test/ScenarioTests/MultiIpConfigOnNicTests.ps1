@@ -264,8 +264,7 @@ function Test-LBWithMultiIpConfigMultiNIC
         Assert-AreEqual $nic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
         Assert-AreEqual $nic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
 		Assert-AreEqual $nic.IpConfigurations[1].Subnet.Id $vnet.Subnets[0].Id
-        Assert-AreEqual $nic.IpConfigurations[1].Id $vnet.Subnets[0].IpConfigurations[0].Id
-
+        Assert-AreEqual $nic.IpConfigurations[1].Id $vnet.Subnets[0].IpConfigurations[1].Id
 
 		# Verify ipconfigs
 		Assert-AreEqual 2 @($nic.IpConfigurations).Count
@@ -277,11 +276,7 @@ function Test-LBWithMultiIpConfigMultiNIC
         Assert-AreEqual "Dynamic" $nic.IpConfigurations[0].PrivateIpAllocationMethod
 		Assert-AreEqual $nic.IpConfigurations[0].PrivateIpAddressVersion IPv4
 		Assert-AreEqual $nic.IpConfigurations[1].PrivateIpAddressVersion IPv4
-
 		Assert-AreEqual $ipconfig2Name $nic.IpConfigurations[1].Name
-        Assert-Null $nic.IpConfigurations[1].PublicIpAddress
-        Assert-Null $nic.IpConfigurations[1].Subnet
-        Assert-AreEqual $nic.IpConfigurations[1].PrivateIpAddressVersion IPv6
 
         # Delete NetworkInterface
         $delete = Remove-AzureRmNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
