@@ -46,6 +46,8 @@ This cmdlet returns a list of machine runs. Each software update run will trigge
 
 ### Example 1
 This example returns all failed machine runs for the specified azure virtual machine.
+
+
 ```powershell
 PS C:\> $targetComputer = "/subscriptions/22e2445a-0984-4fa5-86a4-0280d76c4b2c/resourceGroups/compute/providers/Microsoft.Compute/virtualMachines/myvm"
 PS C:\> Get-AzureRmAutomationSoftwareUpdateMachineRun -ResourceGroupName "mygroup" `
@@ -66,14 +68,13 @@ CreationTime          : 5/17/2018 2:06:44 AM +00:00
 LastModifiedTime      : 5/17/2018 2:08:49 AM +00:00
 ```
 
-
 ## PARAMETERS
 
 ### -AutomationAccountName
 The automation account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -103,7 +104,7 @@ Accept wildcard characters: False
 Id of the software update machine run.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ById
 Aliases:
 
@@ -118,7 +119,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +134,7 @@ Accept wildcard characters: False
 The software update run.
 
 ```yaml
-Type: SoftwareUpdateRun
+Type: Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRun
 Parameter Sets: BySucr
 Aliases:
 
@@ -148,7 +149,7 @@ Accept wildcard characters: False
 Id of the software update run.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: BySucrId
 Aliases:
 
@@ -163,7 +164,7 @@ Accept wildcard characters: False
 Status of the machine run.
 
 ```yaml
-Type: SoftwareUpdateMachineRunStatus
+Type: System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateMachineRunStatus]
 Parameter Sets: ByAll, BySucrId, BySucr
 Aliases:
 Accepted values: NotStarted, InProgress, Succeeded, Failed, MaintenanceWindowExceeded, FailedToStart
@@ -180,7 +181,7 @@ target computer for the machine run.
 Can be either a non-azure computer name or an azure VM resource id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAll, BySucrId, BySucr
 Aliases:
 
@@ -192,8 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

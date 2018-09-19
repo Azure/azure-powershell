@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Swagger based Azure Automation cmdlets
+* Added Update Management cmdlets
+* Added Source Control cmdlets
+* Added Remove-AzureRmAutomationHybridWorkerGroup  cmdlet
+
+## Version 5.1.1
+* Fixed issue with default resource groups not being set.
+* Updated common runtime assemblies
+
+## Version 5.1.0
 * Fixed issue with default resource groups not being set.
 
 ## Version 5.0.4

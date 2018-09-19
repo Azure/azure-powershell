@@ -84,14 +84,13 @@ CreationTime                    : 5/22/2018 10:00:47 PM +00:00
 LastModifiedTime                : 5/22/2018 10:02:58 PM +00:00
 ```
 
-
 ## PARAMETERS
 
 ### -AutomationAccountName
 The automation account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +105,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -121,7 +120,7 @@ Accept wildcard characters: False
 Id of the software update configuration run.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ById
 Aliases:
 
@@ -136,7 +135,7 @@ Accept wildcard characters: False
 The operating system of the run.
 
 ```yaml
-Type: OperatingSystemType
+Type: System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.OperatingSystemType]
 Parameter Sets: ByAll, BySucName, BySuc
 Aliases:
 Accepted values: Windows, Linux
@@ -152,7 +151,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +166,7 @@ Accept wildcard characters: False
 The software update configuration triggered the run.
 
 ```yaml
-Type: SoftwareUpdateConfiguration
+Type: Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateConfiguration
 Parameter Sets: BySuc
 Aliases:
 
@@ -182,7 +181,7 @@ Accept wildcard characters: False
 Name of the software update configuration triggered the run.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySucName
 Aliases:
 
@@ -197,7 +196,7 @@ Accept wildcard characters: False
 Minimum start time of the run.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.DateTimeOffset
 Parameter Sets: ByAll, BySucName, BySuc
 Aliases:
 
@@ -212,7 +211,7 @@ Accept wildcard characters: False
 Status of the run.
 
 ```yaml
-Type: SoftwareUpdateRunStatus
+Type: System.Nullable`1[Microsoft.Azure.Commands.Automation.Model.UpdateManagement.SoftwareUpdateRunStatus]
 Parameter Sets: ByAll, BySucName, BySuc
 Aliases:
 Accepted values: NotStarted, InProgress, Succeeded, Failed, MaintenanceWindowExceeded
@@ -225,8 +224,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

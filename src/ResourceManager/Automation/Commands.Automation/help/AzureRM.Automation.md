@@ -86,6 +86,15 @@ Gets an Automation schedule.
 ### [Get-AzureRmAutomationScheduledRunbook](Get-AzureRmAutomationScheduledRunbook.md)
 Gets Automation runbooks and associated schedules.
 
+### [Get-AzureRmAutomationSoftwareUpdateConfiguration](Get-AzureRmAutomationSoftwareUpdateConfiguration.md)
+Gets a list of azure automation software update configurations.
+
+### [Get-AzureRmAutomationSoftwareUpdateMachineRun](Get-AzureRmAutomationSoftwareUpdateMachineRun.md)
+Gets a list of azure automation software update configuration machine runs.
+
+### [Get-AzureRmAutomationSoftwareUpdateRun](Get-AzureRmAutomationSoftwareUpdateRun.md)
+Gets a list of azure automation software update runs.
+
 ### [Get-AzureRmAutomationSourceControl](Get-AzureRmAutomationSourceControl.md)
 Gets a list of Azure Automation source controls.
 
@@ -134,6 +143,9 @@ Creates an Automation runbook.
 ### [New-AzureRmAutomationSchedule](New-AzureRmAutomationSchedule.md)
 Creates an Automation schedule.
 
+### [New-AzureRmAutomationSoftwareUpdateConfiguration](New-AzureRmAutomationSoftwareUpdateConfiguration.md)
+Creates a scheduled azure automation software update configuration.
+
 ### [New-AzureRmAutomationSourceControl](New-AzureRmAutomationSourceControl.md)
 Creates an A Automation source control.
 
@@ -173,6 +185,9 @@ Removes DSC configurations from Automation.
 ### [Remove-AzureRmAutomationDscNodeConfiguration](Remove-AzureRmAutomationDscNodeConfiguration.md)
 Removes metadata from DSC node configurations in Automation.
 
+### [Remove-AzureRmAutomationHybridWorkerGroup](Remove-AzureRmAutomationHybridWorkerGroup.md)
+Removes hybrid worker group from Automation.
+
 ### [Remove-AzureRmAutomationModule](Remove-AzureRmAutomationModule.md)
 Removes a module from Automation.
 
@@ -181,6 +196,9 @@ Removes a runbook.
 
 ### [Remove-AzureRmAutomationSchedule](Remove-AzureRmAutomationSchedule.md)
 Deletes an Automation schedule.
+
+### [Remove-AzureRmAutomationSoftwareUpdateConfiguration](Remove-AzureRmAutomationSoftwareUpdateConfiguration.md)
+Removes an azure automation software update configuration.
 
 ### [Remove-AzureRmAutomationSourceControl](Remove-AzureRmAutomationSourceControl.md)
 Removes an Azure Automation source control.

@@ -42,7 +42,6 @@ PS C:\> New-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
 Name        SourceType Branch FolderPath AutoSync PublishRunbook RepoUrl
 ----        ---------- ------ ---------- -------- -------------- -------
 VSTSNative  VsoTfvc            /Runbooks True     True           https://contoso.visualstudio.com/ContosoProduc...
-
 ```
 
 ### Example 2
@@ -65,7 +64,6 @@ PS C:\> New-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
 Name    SourceType Branch      FolderPath AutoSync PublishRunbook RepoUrl
 ----    ---------- ------      ---------- -------- -------------- -------
 VSTSGit VsoGit     Development /          True     True           https://contoso.visualstudio.com/_git/Finan...
-
 ```
 
 ### Example 3
@@ -88,7 +86,6 @@ PS C:\> New-AzureRmAutomationSourceControl -ResourceGroupName "rg1" `
 Name    SourceType Branch FolderPath AutoSync PublishRunbook RepoUrl
 ----    ---------- ------ ---------- -------- -------------- -------
 GitHub1 GitHub     master /Runbooks  True     True           https://github.com/Contoso/TestSourceControl...
-
 ```
 
 ## PARAMETERS
