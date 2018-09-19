@@ -151,9 +151,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.Endpoint.BatchEndpointResourceId:
                         propertyValue = environment.BatchEndpointResourceId;
                         break;
-                    case AzureEnvironment.Endpoint.AzureAnalysisServicesEndpointSuffix:
-                        propertyValue = environment.AzureAnalysisServicesEndpointSuffix;
-                        break;
                     default:
                         // get property from the extended properties of the environment
                         propertyValue = environment.GetProperty(endpointName);
@@ -267,9 +264,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                         break;
                     case AzureEnvironment.Endpoint.ServiceManagement:
                         environment.ServiceManagementUrl = propertyValue;
-                        break;
-                    case AzureEnvironment.Endpoint.AzureAnalysisServicesEndpointSuffix:
-                        environment.AzureAnalysisServicesEndpointSuffix = propertyValue;
                         break;
                     case AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId:
                         environment.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId, propertyValue);
@@ -490,10 +484,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 {
                     environment.BatchEndpointResourceId = other.BatchEndpointResourceId;
                 }
-                if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureAnalysisServicesEndpointSuffix))
-                {
-                    environment.AzureAnalysisServicesEndpointSuffix = other.AzureAnalysisServicesEndpointSuffix;
-                }
 
                 environment.VersionProfiles.Clear();
                 foreach (var profile in other.VersionProfiles)
@@ -584,10 +574,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 if (other.IsEndpointSet(AzureEnvironment.Endpoint.DataLakeEndpointResourceId))
                 {
                     environment.DataLakeEndpointResourceId = other.DataLakeEndpointResourceId;
-                }
-                if (other.IsEndpointSet(AzureEnvironment.Endpoint.AzureAnalysisServicesEndpointSuffix))
-                {
-                    environment.AzureAnalysisServicesEndpointSuffix = other.AzureAnalysisServicesEndpointSuffix;
                 }
 
                 foreach (var profile in other.VersionProfiles)

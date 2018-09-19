@@ -110,7 +110,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
             AzureOperationalInsightsEndpointResourceId =
                 other.GetProperty<string>(nameof(AzureOperationalInsightsEndpointResourceId));
             AzureOperationalInsightsEndpoint = other.GetProperty<string>(nameof(AzureOperationalInsightsEndpoint));
-            AzureAnalysisServicesEndpointSuffix = other.GetProperty<string>(nameof(AzureAnalysisServicesEndpointSuffix));
             VersionProfiles.Populate(nameof(VersionProfiles), other);
             this.PopulateExtensions(other);
         }
@@ -268,11 +267,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string BatchEndpointResourceId { get; set; }
 
         /// <summary>
-        /// The domain name suffix for Azure Analysis Services
-        /// </summary>
-        public string AzureAnalysisServicesEndpointSuffix { get; set; }
-
-        /// <summary>
         /// Determine equality of two PSAzureEnvironment instances.
         /// </summary>
         /// <param name="obj">The instance to compare.</param>
@@ -302,7 +296,6 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix
                        && BatchEndpointResourceId == other.BatchEndpointResourceId
                        && AzureOperationalInsightsEndpointResourceId == other.AzureOperationalInsightsEndpointResourceId
-                       && AzureAnalysisServicesEndpointSuffix == other.AzureAnalysisServicesEndpointSuffix
                        && AzureOperationalInsightsEndpoint == other.AzureOperationalInsightsEndpoint;
             }
 
