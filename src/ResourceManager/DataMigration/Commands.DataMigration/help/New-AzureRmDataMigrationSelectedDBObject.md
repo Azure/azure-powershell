@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
 Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/New-AzureRmDataMigrationSelectedDB
+online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmDataMigrationSelectedDB
+# New-AzureRmDataMigrationSelectedDBObject
 
 ## SYNOPSIS
 Creates a database input object that contains information about source and target databases for migration.
@@ -14,15 +14,17 @@ Creates a database input object that contains information about source and targe
 
 ### MigrateSqlServerSqlDb (Default)
 ```
-New-AzureRmDataMigrationSelectedDB -Name <String> -TargetDatabaseName <String> [-MigrateSqlServerSqlDb]
- [-MakeSourceDbReadOnly] [-TableMap <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
+New-AzureRmDataMigrationSelectedDBObject -SourceDatabaseName <String> -TargetDatabaseName <String>
+ [-MigrateSqlServerSqlDb] [-MakeSourceDbReadOnly]
+ [-TableMap <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### MigrateSqlServerSqlDbMi
 ```
-New-AzureRmDataMigrationSelectedDB -Name <String> -TargetDatabaseName <String> [-MigrateSqlServerSqlDbMi]
- [-BackupFileShare <FileShare>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmDataMigrationSelectedDBObject -SourceDatabaseName <String> -TargetDatabaseName <String>
+ [-MigrateSqlServerSqlDbMi] [-BackupFileShare <FileShare>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +41,7 @@ Name TargetDatabaseName MakeSourceDbReadOnly TableMap
 HR   HR_PSTEST                         False {[HR.COUNTRIES, HR.COUNTRIES]}
 ```
 
+
 ### Example 2
 ```
 PS C:\> New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name "HR" -TargetDatabaseName "HR_PSTEST" -BackupFileShare $backupFileShare
@@ -48,6 +51,7 @@ Name RestoreDatabaseName BackupFileShare
 HR   HRTest              Microsoft.Azure.Management.DataMigration.Models.FileShare
 ```
 
+
 ## PARAMETERS
 
 ### -BackupFileShare
@@ -56,9 +60,9 @@ Use this setting to override file share information for each database.
 Use fully qualified domain name for the server.
 
 ```yaml
-Type: FileShare
+Type: Microsoft.Azure.Management.DataMigration.Models.FileShare
 Parameter Sets: MigrateSqlServerSqlDbMi
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -71,7 +75,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -86,9 +90,9 @@ Accept wildcard characters: False
 Set Database to readonly before migration
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: MigrateSqlServerSqlDb
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -101,9 +105,9 @@ Accept wildcard characters: False
 Set migration type to SQL Server to SQL DB Migration.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: MigrateSqlServerSqlDb
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -116,9 +120,9 @@ Accept wildcard characters: False
 Set migration type to SQL Server to SQL DB MI Migration.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: MigrateSqlServerSqlDbMi
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -127,13 +131,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
+### -SourceDatabaseName
 The name of the source database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases: Name
 
 Required: True
 Position: Named
@@ -148,7 +152,7 @@ mapping of source to target tables
 ```yaml
 Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
 Parameter Sets: MigrateSqlServerSqlDb
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -161,9 +165,9 @@ Accept wildcard characters: False
 The name of the target database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -178,7 +182,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Management.DataMigration.Models.FileShare
-Parameters: BackupFileShare (ByValue)
 
 ## OUTPUTS
 
@@ -187,4 +190,3 @@ Parameters: BackupFileShare (ByValue)
 ## NOTES
 
 ## RELATED LINKS
-

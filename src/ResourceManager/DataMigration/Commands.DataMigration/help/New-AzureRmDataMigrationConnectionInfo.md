@@ -35,7 +35,7 @@ The preceding example creates a new Connection Info object providing SQL as Serv
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,9 +50,9 @@ Accept wildcard characters: False
 Enum that describes server type to connect to. Currently supported values are SQL for SQL Server, Azure SQL Managed Instance and Azure SQL Database. 
 
 ```yaml
-Type: ServerTypeEnum
+Type: Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: SQL
 
 Required: True
@@ -76,4 +76,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
