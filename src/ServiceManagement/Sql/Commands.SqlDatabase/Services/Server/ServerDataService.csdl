@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="Microsoft.SqlServer.Management.Server.Domain" xmlns="http://schemas.microsoft.com/ado/2008/01/edm">
+      <EntityType Name="Server" OpenType="true">
+        <Key>
+          <PropertyRef Name="Name" />
+        </Key>
+        <Property Name="Name" Type="Edm.String" Nullable="false" />
+        <Property Name="SubscriptionId" Type="Edm.Guid" />
+        <Property Name="Version" Type="Edm.String" />
+        <NavigationProperty Name="Databases" Relationship="Microsoft.SqlServer.Management.Server.Domain.Server_Databases_Database_Server" ToRole="Database_Server" FromRole="Server_Databases" />
+        <NavigationProperty Name="ServerMetrics" Relationship="Microsoft.SqlServer.Management.Server.Domain.Server_ServerMetrics_ServerMetrics_Server" ToRole="ServerMetrics_Server" FromRole="Server_ServerMetrics" />
+        <NavigationProperty Name="ServerQuotas" Relationship="Microsoft.SqlServer.Management.Server.Domain.Server_ServerQuotas_ServerQuota_Server" ToRole="ServerQuota_Server" FromRole="Server_ServerQuotas" />
+        <NavigationProperty Name="DatabaseOperations" Relationship="Microsoft.SqlServer.Management.Server.Domain.Server_DatabaseOperations_DatabaseOperation_Server" ToRole="DatabaseOperation_Server" FromRole="Server_DatabaseOperations" />
+      </EntityType>
+      <EntityType Name="Database" OpenType="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="ServiceObjectiveId" Type="Edm.Guid" />
+        <Property Name="AssignedServiceObjectiveId" Type="Edm.Guid" />
+        <Property Name="ServiceObjectiveAssignmentState" Type="Edm.Byte" />
+        <Property Name="ServiceObjectiveAssignmentStateDescription" Type="Edm.String" />
+        <Property Name="ServiceObjectiveAssignmentErrorCode" Type="Edm.Int32" />
+        <Property Name="ServiceObjectiveAssignmentErrorDescription" Type="Edm.String" />
+        <Property Name="ServiceObjectiveAssignmentSuccessDate" Type="Edm.DateTime" />
+        <Property Name="Edition" Type="Edm.String" />
+        <Property Name="MaxSizeGB" Type="Edm.Int32" />
+        <Property Name="MaxSizeBytes" Type="Edm.Int64" />
+        <Property Name="CollationName" Type="Edm.String" />
+        <Property Name="CreationDate" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="RecoveryPeriodStartDate" Type="Edm.DateTime" />
+        <Property Name="IsSystemObject" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="Status" Type="Edm.Int32" Nullable="false" />
+        <Property Name="IsFederationRoot" Type="Edm.Boolean" />
+        <Property Name="SizeMB" Type="Edm.Decimal" Nullable="false" />
+        <Property Name="IsRecursiveTriggersOn" Type="Edm.Boolean" />
+        <Property Name="IsReadOnly" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="IsFederationMember" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="IsQueryStoreOn" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="IsQueryStoreReadOnly" Type="Edm.Boolean" />
+        <Property Name="QueryStoreMaxSizeMB" Type="Edm.Int32" />
+        <Property Name="QueryStoreFlushPeriodSeconds" Type="Edm.Int32" />
+        <Property Name="QueryStoreIntervalLengthMinutes" Type="Edm.Int32" />
+        <Property Name="QueryStoreClearAll" Type="Edm.Boolean" />
+        <Property Name="QueryStoreStaleQueryThresholdDays" Type="Edm.Int32" />
+        <Property Name="IsSuspended" Type="Edm.Boolean" />
+        <NavigationProperty Name="Server" Relationship="Microsoft.SqlServer.Management.Server.Domain.Server_Databases_Database_Server" ToRole="Server_Databases" FromRole="Database_Server" />
+        <NavigationProperty Name="ServiceObjective" Relationship="Microsoft.SqlServer.Management.Server.Domain.Database_ServiceObjective" ToRole="ServiceObjective" FromRole="Database" />
+        <NavigationProperty Name="DatabaseMetrics" Relationship="Microsoft.SqlServer.Management.Server.Domain.Database_DatabaseMetrics_DatabaseMetrics_Database" ToRole="DatabaseMetrics_Database" FromRole="Database_DatabaseMetrics" />
+        <NavigationProperty Name="DatabaseCopies" Relationship="Microsoft.SqlServer.Management.Server.Domain.Database_DatabaseCopies_DatabaseCopy_Database" ToRole="DatabaseCopy_Database" FromRole="Database_DatabaseCopies" />
+      </EntityType>
+      <EntityType Name="RecoverableDatabase" OpenType="true">
+        <Key>
+          <PropertyRef Name="EntityId" />
+        </Key>
+        <Property Name="EntityId" Type="Edm.String" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="ServerName" Type="Edm.String" />
+        <Property Name="Edition" Type="Edm.String" />
+        <Property Name="LastAvailableBackupDate" Type="Edm.DateTime" Nullable="false" />
+      </EntityType>
+      <EntityType Name="RestorableDroppedDatabase" OpenType="true">
+        <Key>
+          <PropertyRef Name="EntityId" />
+        </Key>
+        <Property Name="EntityId" Type="Edm.String" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="ServerName" Type="Edm.String" />
+        <Property Name="Edition" Type="Edm.String" />
+        <Property Name="MaxSizeBytes" Type="Edm.Int64" Nullable="false" />
+        <Property Name="CreationDate" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="DeletionDate" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="RecoveryPeriodStartDate" Type="Edm.DateTime" />
+      </EntityType>
+      <EntityType Name="DimensionSetting" OpenType="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="Ordinal" Type="Edm.Byte" Nullable="false" />
+        <Property Name="IsDefault" Type="Edm.Boolean" Nullable="false" />
+      </EntityType>
+      <EntityType Name="ServiceObjective" OpenType="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="IsDefault" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="IsSystem" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="Enabled" Type="Edm.Boolean" Nullable="false" />
+        <NavigationProperty Name="DimensionSettings" Relationship="Microsoft.SqlServer.Management.Server.Domain.ServiceObjective_DimensionSettings" ToRole="DimensionSettings" FromRole="ServiceObjective" />
+      </EntityType>
+      <EntityType Name="Operation" OpenType="true">
+        <Key>
+          <PropertyRef Name="ActionId" />
+        </Key>
+        <Property Name="ActionTypeName" Type="Edm.String" />
+        <Property Name="ActionStatusName" Type="Edm.String" />
+        <Property Name="DacDatabaseName" Type="Edm.String" />
+        <Property Name="CreatedBy" Type="Edm.String" />
+        <Property Name="DateCreated" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="DateModified" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Comments" Type="Edm.String" />
+        <Property Name="Error" Type="Edm.String" />
+        <Property Name="ActionId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="CompletedSteps" Type="Edm.Int32" Nullable="false" />
+        <Property Name="TotalSteps" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DacObjectTypeName" Type="Edm.String" />
+        <NavigationProperty Name="OperationDetails" Relationship="Microsoft.SqlServer.Management.Server.Domain.Operation_OperationDetails_OperationDetail_Operation" ToRole="OperationDetail_Operation" FromRole="Operation_OperationDetails" />
+      </EntityType>
+      <EntityType Name="OperationDetail" OpenType="true">
+        <Key>
+          <PropertyRef Name="EntityId" />
+        </Key>
+        <Property Name="ActionTypeName" Type="Edm.String" />
+        <Property Name="ActionStatusName" Type="Edm.String" />
+        <Property Name="DacDatabaseName" Type="Edm.String" />
+        <Property Name="CreatedBy" Type="Edm.String" />
+        <Property Name="DateCreated" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="DateModified" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Comments" Type="Edm.String" />
+        <Property Name="Error" Type="Edm.String" />
+        <Property Name="SequenceId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="EntityId" Type="Edm.String" Nullable="false" />
+        <Property Name="ActionId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DacObjectTypeName" Type="Edm.String" />
+        <NavigationProperty Name="Operation" Relationship="Microsoft.SqlServer.Management.Server.Domain.Operation_OperationDetails_OperationDetail_Operation" ToRole="Operation_OperationDetails" FromRole="OperationDetail_Operation" />
+      </EntityType>
+      <EntityType Name="CreateDatabaseFromDacPacOperation" OpenType="true">
+        <Key>
+          <PropertyRef Name="OperationGuid" />
+        </Key>
+        <Property Name="OperationGuid" Type="Edm.Guid" Nullable="false" />
+        <Property Name="DatabaseName" Type="Edm.String" />
+        <Property Name="Edition" Type="Edm.String" />
+        <Property Name="MaxSizeGB" Type="Edm.Int32" />
+        <Property Name="OperationId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DacPac" Type="Edm.Binary" />
+      </EntityType>
+      <EntityType Name="ExtractDacPacOperation" OpenType="true">
+        <Key>
+          <PropertyRef Name="OperationGuid" />
+        </Key>
+        <Property Name="OperationGuid" Type="Edm.Guid" Nullable="false" />
+        <Property Name="DatabaseName" Type="Edm.String" />
+        <Property Name="DacTypeName" Type="Edm.String" />
+        <Property Name="Version" Type="Edm.String" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="DacPac" Type="Edm.Binary" />
+      </EntityType>
+      <EntityType Name="UpgradeDatabaseFromDacPacOperation" OpenType="true">
+        <Key>
+          <PropertyRef Name="OperationGuid" />
+        </Key>
+        <Property Name="OperationGuid" Type="Edm.Guid" Nullable="false" />
+        <Property Name="DatabaseName" Type="Edm.String" />
+        <Property Name="DacPac" Type="Edm.Binary" />
+        <Property Name="RollbackOnFailure" Type="Edm.Boolean" />
+        <Property Name="OperationId" Type="Edm.Int32" Nullable="false" />
+      </EntityType>
+      <EntityType Name="ViewDatabaseChangesOperation" OpenType="true">
+        <Key>
+          <PropertyRef Name="OperationGuid" />
+        </Key>
+        <Property Name="OperationGuid" Type="Edm.Guid" Nullable="false" />
+        <Property Name="DatabaseName" Type="Edm.String" />
+        <Property Name="ChangeResult" Type="Edm.String" />
+        <Property Name="IsRegisteredDac" Type="Edm.Boolean" Nullable="false" />
+      </EntityType>
+      <EntityType Name="ViewUpgradePlanOperation" OpenType="true">
+        <Key>
+          <PropertyRef Name="OperationGuid" />
+        </Key>
+        <Property Name="OperationGuid" Type="Edm.Guid" Nullable="false" />
+        <Property Name="DatabaseName" Type="Edm.String" />
+        <Property Name="DacPac" Type="Edm.Binary" />
+        <Property Name="RollbackOnFailure" Type="Edm.Boolean" />
+        <Property Name="UpgradePlan" Type="Edm.String" />
+        <Property Name="UpgradeScript" Type="Edm.String" />
+      </EntityType>
+      <EntityType Name="DatabaseRestoreStatus" OpenType="true">
+        <Key>
+          <PropertyRef Name="RequestID" />
+        </Key>
+        <Property Name="RequestID" Type="Edm.Guid" Nullable="false" />
+        <Property Name="SourceServerName" Type="Edm.String" />
+        <Property Name="SourceDatabaseName" Type="Edm.String" />
+        <Property Name="SourceDatabaseDeletionDate" Type="Edm.DateTime" />
+        <Property Name="TargetServerName" Type="Edm.String" />
+        <Property Name="TargetDatabaseName" Type="Edm.String" />
+        <Property Name="TargetUtcPointInTime" Type="Edm.DateTime" />
+        <Property Name="State" Type="Edm.String" />
+        <Property Name="Error" Type="Edm.String" />
+        <Property Name="IsCancelled" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="CreatedBy" Type="Edm.String" />
+        <Property Name="CreatedDate" Type="Edm.DateTime" Nullable="false" />
+      </EntityType>
+      <EntityType Name="RestoreDatabaseOperation" OpenType="true">
+        <Key>
+          <PropertyRef Name="RequestID" />
+        </Key>
+        <Property Name="RequestID" Type="Edm.Guid" Nullable="false" />
+        <Property Name="SourceDatabaseName" Type="Edm.String" />
+        <Property Name="SourceDatabaseDeletionDate" Type="Edm.DateTime" />
+        <Property Name="TargetServerName" Type="Edm.String" />
+        <Property Name="TargetDatabaseName" Type="Edm.String" />
+        <Property Name="TargetUtcPointInTime" Type="Edm.DateTime" />
+      </EntityType>
+      <EntityType Name="RecoverDatabaseOperation" OpenType="true">
+        <Key>
+          <PropertyRef Name="RequestID" />
+        </Key>
+        <Property Name="RequestID" Type="Edm.Guid" Nullable="false" />
+        <Property Name="SourceDatabaseName" Type="Edm.String" />
+        <Property Name="SourceServerName" Type="Edm.String" />
+        <Property Name="TargetDatabaseName" Type="Edm.String" />
+      </EntityType>
+      <EntityType Name="DatabaseCopy" OpenType="true">
+        <Key>
+          <PropertyRef Name="EntityId" />
+        </Key>
+        <Property Name="LocalDatabaseId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DestinationServerName" Type="Edm.String" />
+        <Property Name="DestinationDatabaseName" Type="Edm.String" />
+        <Property Name="SourceServerName" Type="Edm.String" />
+        <Property Name="SourceDatabaseName" Type="Edm.String" />
+        <Property Name="IsContinuous" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="TextStartDate" Type="Edm.String" />
+        <Property Name="TextModifyDate" Type="Edm.String" />
+        <Property Name="PercentComplete" Type="Edm.Single" />
+        <Property Name="IsLocalDatabaseReplicationTarget" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="ReplicationState" Type="Edm.Byte" Nullable="false" />
+        <Property Name="ReplicationStateDescription" Type="Edm.String" />
+        <Property Name="IsInterlinkConnected" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="IsForcedTerminate" Type="Edm.Boolean" />
+        <Property Name="MaximumLag" Type="Edm.Int32" />
+        <Property Name="EntityId" Type="Edm.Guid" Nullable="false" />
+        <Property Name="IsOfflineSecondary" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="IsTerminationAllowed" Type="Edm.Boolean" Nullable="false" />
+        <NavigationProperty Name="Database" Relationship="Microsoft.SqlServer.Management.Server.Domain.Database_DatabaseCopies_DatabaseCopy_Database" ToRole="Database_DatabaseCopies" FromRole="DatabaseCopy_Database" />
+      </EntityType>
+      <EntityType Name="DatabaseCopyValidationOperation" OpenType="true">
+        <Key>
+          <PropertyRef Name="DatabaseName" />
+        </Key>
+        <Property Name="DatabaseName" Type="Edm.String" Nullable="false" />
+        <Property Name="Action" Type="Edm.Int32" Nullable="false" />
+        <Property Name="LoginSid" Type="Edm.String" />
+      </EntityType>
+      <EntityType Name="FirewallRule" OpenType="true">
+        <Key>
+          <PropertyRef Name="Name" />
+        </Key>
+        <Property Name="Name" Type="Edm.String" Nullable="false" />
+        <Property Name="StartIPAddress" Type="Edm.String" />
+        <Property Name="EndIPAddress" Type="Edm.String" />
+        <Property Name="CreateDate" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="ModifyDate" Type="Edm.DateTime" Nullable="false" />
+      </EntityType>
+      <EntityType Name="DatabaseMetrics" OpenType="true">
+        <Key>
+          <PropertyRef Name="DatabaseId" />
+        </Key>
+        <Property Name="DatabaseId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DatabaseName" Type="Edm.String" />
+        <Property Name="NumberOfLoginSuccessEvents" Type="Edm.Int64" Nullable="false" />
+        <Property Name="NumberOfLoginFailureEvents" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="Database" Relationship="Microsoft.SqlServer.Management.Server.Domain.Database_DatabaseMetrics_DatabaseMetrics_Database" ToRole="Database_DatabaseMetrics" FromRole="DatabaseMetrics_Database" />
+      </EntityType>
+      <EntityType Name="ServerMetrics" OpenType="true">
+        <Key>
+          <PropertyRef Name="ServerName" />
+        </Key>
+        <Property Name="ServerName" Type="Edm.String" Nullable="false" />
+        <Property Name="NumberOfFailedEvents" Type="Edm.Int64" Nullable="false" />
+        <Property Name="NumberOfLoginSuccessEvents" Type="Edm.Int64" Nullable="false" />
+        <Property Name="NumberOfLoginFailureEvents" Type="Edm.Int64" Nullable="false" />
+        <Property Name="NumberOfTerminatedConnectionEvents" Type="Edm.Int64" Nullable="false" />
+        <Property Name="NumberOfThrottledEvents" Type="Edm.Int64" Nullable="false" />
+        <Property Name="NumberOfDeadlockEvents" Type="Edm.Int64" Nullable="false" />
+        <Property Name="NumberOfReconfiguredEvents" Type="Edm.Int64" Nullable="false" />
+        <NavigationProperty Name="Server" Relationship="Microsoft.SqlServer.Management.Server.Domain.Server_ServerMetrics_ServerMetrics_Server" ToRole="Server_ServerMetrics" FromRole="ServerMetrics_Server" />
+      </EntityType>
+      <EntityType Name="EventLog" OpenType="true">
+        <Key>
+          <PropertyRef Name="EntityId" />
+        </Key>
+        <Property Name="EntityId" Type="Edm.String" Nullable="false" />
+        <Property Name="DatabaseName" Type="Edm.String" />
+        <Property Name="StartTimeUtc" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="IntervalSizeInMinutes" Type="Edm.Int32" Nullable="false" />
+        <Property Name="EventCategory" Type="Edm.String" />
+        <Property Name="EventType" Type="Edm.String" />
+        <Property Name="EventSubtype" Type="Edm.Int32" Nullable="false" />
+        <Property Name="EventSubtypeDescription" Type="Edm.String" />
+        <Property Name="Severity" Type="Edm.Int32" />
+        <Property Name="NumberOfEvents" Type="Edm.Int64" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="AdditionalData" Type="Edm.String" />
+      </EntityType>
+      <EntityType Name="ServerQuota" OpenType="true">
+        <Key>
+          <PropertyRef Name="Name" />
+        </Key>
+        <Property Name="Name" Type="Edm.String" Nullable="false" />
+        <Property Name="Value" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Server" Relationship="Microsoft.SqlServer.Management.Server.Domain.Server_ServerQuotas_ServerQuota_Server" ToRole="Server_ServerQuotas" FromRole="ServerQuota_Server" />
+      </EntityType>
+      <EntityType Name="DatabaseOperation" OpenType="true">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" />
+        <Property Name="State" Type="Edm.String" />
+        <Property Name="StateId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="SessionActivityId" Type="Edm.Guid" Nullable="false" />
+        <Property Name="DatabaseName" Type="Edm.String" />
+        <Property Name="PercentComplete" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Error.Code" Type="Edm.Int32" />
+        <Property Name="Error" Type="Edm.String" />
+        <Property Name="ErrorSeverity" Type="Edm.Int32" />
+        <Property Name="ErrorState" Type="Edm.Int32" />
+        <Property Name="StartTime" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="LastModifyTime" Type="Edm.DateTime" Nullable="false" />
+        <NavigationProperty Name="Server" Relationship="Microsoft.SqlServer.Management.Server.Domain.Server_DatabaseOperations_DatabaseOperation_Server" ToRole="Server_DatabaseOperations" FromRole="DatabaseOperation_Server" />
+      </EntityType>
+      <Association Name="Server_Databases_Database_Server">
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.Database" Role="Database_Server" Multiplicity="*" />
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.Server" Role="Server_Databases" Multiplicity="0..1" />
+      </Association>
+      <Association Name="Server_ServerMetrics_ServerMetrics_Server">
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.ServerMetrics" Role="ServerMetrics_Server" Multiplicity="0..1" />
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.Server" Role="Server_ServerMetrics" Multiplicity="0..1" />
+      </Association>
+      <Association Name="Server_ServerQuotas_ServerQuota_Server">
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.ServerQuota" Role="ServerQuota_Server" Multiplicity="*" />
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.Server" Role="Server_ServerQuotas" Multiplicity="0..1" />
+      </Association>
+      <Association Name="Server_DatabaseOperations_DatabaseOperation_Server">
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.DatabaseOperation" Role="DatabaseOperation_Server" Multiplicity="*" />
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.Server" Role="Server_DatabaseOperations" Multiplicity="0..1" />
+      </Association>
+      <Association Name="Database_ServiceObjective">
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.Database" Role="Database" Multiplicity="*" />
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.ServiceObjective" Role="ServiceObjective" Multiplicity="0..1" />
+      </Association>
+      <Association Name="Database_DatabaseMetrics_DatabaseMetrics_Database">
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.DatabaseMetrics" Role="DatabaseMetrics_Database" Multiplicity="0..1" />
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.Database" Role="Database_DatabaseMetrics" Multiplicity="0..1" />
+      </Association>
+      <Association Name="Database_DatabaseCopies_DatabaseCopy_Database">
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.DatabaseCopy" Role="DatabaseCopy_Database" Multiplicity="*" />
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.Database" Role="Database_DatabaseCopies" Multiplicity="0..1" />
+      </Association>
+      <Association Name="ServiceObjective_DimensionSettings">
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.ServiceObjective" Role="ServiceObjective" Multiplicity="*" />
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.DimensionSetting" Role="DimensionSettings" Multiplicity="*" />
+      </Association>
+      <Association Name="Operation_OperationDetails_OperationDetail_Operation">
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.OperationDetail" Role="OperationDetail_Operation" Multiplicity="*" />
+        <End Type="Microsoft.SqlServer.Management.Server.Domain.Operation" Role="Operation_OperationDetails" Multiplicity="0..1" />
+      </Association>
+      <EntityContainer Name="ServerContextInternal" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Servers" EntityType="Microsoft.SqlServer.Management.Server.Domain.Server" />
+        <EntitySet Name="Databases" EntityType="Microsoft.SqlServer.Management.Server.Domain.Database" />
+        <EntitySet Name="RecoverableDatabases" EntityType="Microsoft.SqlServer.Management.Server.Domain.RecoverableDatabase" />
+        <EntitySet Name="RestorableDroppedDatabases" EntityType="Microsoft.SqlServer.Management.Server.Domain.RestorableDroppedDatabase" />
+        <EntitySet Name="DimensionSettings" EntityType="Microsoft.SqlServer.Management.Server.Domain.DimensionSetting" />
+        <EntitySet Name="ServiceObjectives" EntityType="Microsoft.SqlServer.Management.Server.Domain.ServiceObjective" />
+        <EntitySet Name="Operations" EntityType="Microsoft.SqlServer.Management.Server.Domain.Operation" />
+        <EntitySet Name="OperationDetails" EntityType="Microsoft.SqlServer.Management.Server.Domain.OperationDetail" />
+        <EntitySet Name="CreateDatabaseFromDacPacOperations" EntityType="Microsoft.SqlServer.Management.Server.Domain.CreateDatabaseFromDacPacOperation" />
+        <EntitySet Name="ExtractDacPacOperations" EntityType="Microsoft.SqlServer.Management.Server.Domain.ExtractDacPacOperation" />
+        <EntitySet Name="UpgradeDatabaseFromDacPacOperations" EntityType="Microsoft.SqlServer.Management.Server.Domain.UpgradeDatabaseFromDacPacOperation" />
+        <EntitySet Name="ViewDatabaseChangesOperations" EntityType="Microsoft.SqlServer.Management.Server.Domain.ViewDatabaseChangesOperation" />
+        <EntitySet Name="ViewUpgradePlanOperations" EntityType="Microsoft.SqlServer.Management.Server.Domain.ViewUpgradePlanOperation" />
+        <EntitySet Name="DatabaseRestoreStatus" EntityType="Microsoft.SqlServer.Management.Server.Domain.DatabaseRestoreStatus" />
+        <EntitySet Name="RestoreDatabaseOperations" EntityType="Microsoft.SqlServer.Management.Server.Domain.RestoreDatabaseOperation" />
+        <EntitySet Name="RecoverDatabaseOperations" EntityType="Microsoft.SqlServer.Management.Server.Domain.RecoverDatabaseOperation" />
+        <EntitySet Name="DatabaseCopies" EntityType="Microsoft.SqlServer.Management.Server.Domain.DatabaseCopy" />
+        <EntitySet Name="DatabaseCopyValidationOperations" EntityType="Microsoft.SqlServer.Management.Server.Domain.DatabaseCopyValidationOperation" />
+        <EntitySet Name="FirewallRules" EntityType="Microsoft.SqlServer.Management.Server.Domain.FirewallRule" />
+        <EntitySet Name="DatabaseMetrics" EntityType="Microsoft.SqlServer.Management.Server.Domain.DatabaseMetrics" />
+        <EntitySet Name="ServerMetrics" EntityType="Microsoft.SqlServer.Management.Server.Domain.ServerMetrics" />
+        <EntitySet Name="EventLogs" EntityType="Microsoft.SqlServer.Management.Server.Domain.EventLog" />
+        <EntitySet Name="ServerQuotas" EntityType="Microsoft.SqlServer.Management.Server.Domain.ServerQuota" />
+        <EntitySet Name="DatabaseOperations" EntityType="Microsoft.SqlServer.Management.Server.Domain.DatabaseOperation" />
+        <AssociationSet Name="ServerDatabase" Association="Microsoft.SqlServer.Management.Server.Domain.Server_Databases_Database_Server">
+          <End Role="Server_Databases" EntitySet="Servers" />
+          <End Role="Database_Server" EntitySet="Databases" />
+        </AssociationSet>
+        <AssociationSet Name="ServerServerMetrics" Association="Microsoft.SqlServer.Management.Server.Domain.Server_ServerMetrics_ServerMetrics_Server">
+          <End Role="Server_ServerMetrics" EntitySet="Servers" />
+          <End Role="ServerMetrics_Server" EntitySet="ServerMetrics" />
+        </AssociationSet>
+        <AssociationSet Name="ServerServerQuota" Association="Microsoft.SqlServer.Management.Server.Domain.Server_ServerQuotas_ServerQuota_Server">
+          <End Role="Server_ServerQuotas" EntitySet="Servers" />
+          <End Role="ServerQuota_Server" EntitySet="ServerQuotas" />
+        </AssociationSet>
+        <AssociationSet Name="ServerDatabaseOperation" Association="Microsoft.SqlServer.Management.Server.Domain.Server_DatabaseOperations_DatabaseOperation_Server">
+          <End Role="Server_DatabaseOperations" EntitySet="Servers" />
+          <End Role="DatabaseOperation_Server" EntitySet="DatabaseOperations" />
+        </AssociationSet>
+        <AssociationSet Name="fk_slo_database_objective_selections_objective_id" Association="Microsoft.SqlServer.Management.Server.Domain.Database_ServiceObjective">
+          <End Role="Database" EntitySet="Databases" />
+          <End Role="ServiceObjective" EntitySet="ServiceObjectives" />
+        </AssociationSet>
+        <AssociationSet Name="DatabaseDatabaseMetrics" Association="Microsoft.SqlServer.Management.Server.Domain.Database_DatabaseMetrics_DatabaseMetrics_Database">
+          <End Role="Database_DatabaseMetrics" EntitySet="Databases" />
+          <End Role="DatabaseMetrics_Database" EntitySet="DatabaseMetrics" />
+        </AssociationSet>
+        <AssociationSet Name="DatabaseDatabaseCopy" Association="Microsoft.SqlServer.Management.Server.Domain.Database_DatabaseCopies_DatabaseCopy_Database">
+          <End Role="Database_DatabaseCopies" EntitySet="Databases" />
+          <End Role="DatabaseCopy_Database" EntitySet="DatabaseCopies" />
+        </AssociationSet>
+        <AssociationSet Name="slo_objective_setting_selections" Association="Microsoft.SqlServer.Management.Server.Domain.ServiceObjective_DimensionSettings">
+          <End Role="ServiceObjective" EntitySet="ServiceObjectives" />
+          <End Role="DimensionSettings" EntitySet="DimensionSettings" />
+        </AssociationSet>
+        <AssociationSet Name="OperationOperationDetail" Association="Microsoft.SqlServer.Management.Server.Domain.Operation_OperationDetails_OperationDetail_Operation">
+          <End Role="Operation_OperationDetails" EntitySet="Operations" />
+          <End Role="OperationDetail_Operation" EntitySet="OperationDetails" />
+        </AssociationSet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

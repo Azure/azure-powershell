@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "type": "AzureBlob",
+    "typeProperties": {
+      "folderPath": "entitylogs",
+      "fileName": {
+        "value": "@concat('variant0_0_', parameters('OutputBlobName'))",
+        "type": "Expression"
+      },
+      "format": {
+        "type": "TextFormat"
+      }
+    },
+    "linkedServiceName": {
+      "referenceName": "foo1",
+      "type": "LinkedServiceReference"
+    }
+  }
+}

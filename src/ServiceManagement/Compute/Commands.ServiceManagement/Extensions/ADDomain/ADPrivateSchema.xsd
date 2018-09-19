@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PrivateConfig">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="Password" type="xs:string" minOccurs="0"/>
+        <xs:element name="UnjoinDomainPassword" type="xs:string" minOccurs="0"/>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,449 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/Subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resources?$filter=resourceType%20eq%20'Microsoft.Backup/BackupVault'&$top=100&api-version=2013-03-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5CYWNrdXAvQmFja3VwVmF1bHQnJiR0b3A9MTAwJmFwaS12ZXJzaW9uPTIwMTMtMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-us"
+        ],
+        "x-ms-client-request-id": [
+          "1408d91a-43a4-44f1-bda7-844b095e3227-2015-09-24 14:11:42Z-PS"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.BackupServices.BackupVaultServicesManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn\",\r\n      \"name\": \"backuprn\",\r\n      \"type\": \"Microsoft.Backup/BackupVault\",\r\n      \"location\": \"southeastasia\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn2\",\r\n      \"name\": \"backuprn2\",\r\n      \"type\": \"Microsoft.Backup/BackupVault\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {}\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "458"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14986"
+        ],
+        "x-ms-request-id": [
+          "00f129c4-0e0c-4218-8f8f-4b616076bb19"
+        ],
+        "x-ms-correlation-request-id": [
+          "00f129c4-0e0c-4218-8f8f-4b616076bb19"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150924T141143Z:00f129c4-0e0c-4218-8f8f-4b616076bb19"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 24 Sep 2015 14:11:43 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn2/storageconfig/vaultstorageconfig?api-version=2015-03-15",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3VwL0JhY2t1cFZhdWx0L2JhY2t1cHJuMi9zdG9yYWdlY29uZmlnL3ZhdWx0c3RvcmFnZWNvbmZpZz9hcGktdmVyc2lvbj0yMDE1LTAzLTE1",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-us"
+        ],
+        "x-ms-client-request-id": [
+          "1408d91a-43a4-44f1-bda7-844b095e3227-2015-09-24 14:11:42Z-PS"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.BackupServices.BackupVaultServicesManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"resourceId\": 7916423987828749042,\r\n  \"properties\": {\r\n    \"storageType\": \"GeoRedundant\",\r\n    \"storageTypeState\": \"Locked\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "106"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "dc155ed1-917e-4674-a8fb-0b481ca89153"
+        ],
+        "x-ms-client-request-id": [
+          "1408d91a-43a4-44f1-bda7-844b095e3227-2015-09-24 14:11:42Z-PS",
+          "1408d91a-43a4-44f1-bda7-844b095e3227-2015-09-24 14:11:42Z-PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14985"
+        ],
+        "x-ms-correlation-request-id": [
+          "dc155ed1-917e-4674-a8fb-0b481ca89153"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150924T141145Z:dc155ed1-917e-4674-a8fb-0b481ca89153"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 24 Sep 2015 14:11:45 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/Subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn2/protectionPolicies?api-version=2014-09-01",
+      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3VwL0JhY2t1cFZhdWx0L2JhY2t1cHJuMi9wcm90ZWN0aW9uUG9saWNpZXM/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-us"
+        ],
+        "x-ms-client-request-id": [
+          "41166413-fd83-4d01-950f-e250d357aecc-2015-09-24 14:11:45Z-PS"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"workloadType\": \"IaasVM\",\r\n        \"policyName\": \"DefaultPolicy\",\r\n        \"backupSchedule\": {\r\n          \"backupType\": \"Full\",\r\n          \"scheduleRun\": \"Daily\",\r\n          \"scheduleRunDays\": null,\r\n          \"scheduleRunTimes\": [\r\n            \"2015-09-24T23:30:00\"\r\n          ]\r\n        },\r\n        \"ltrRetentionPolicy\": {\r\n          \"DailySchedule\": {\r\n            \"RetentionTimes\": [\r\n              \"2015-09-24T23:30:00\"\r\n            ],\r\n            \"CSMRetentionDuration\": {\r\n              \"Count\": 30,\r\n              \"DurationType\": 1\r\n            }\r\n          },\r\n          \"WeeklySchedule\": null,\r\n          \"MonthlySchedule\": null,\r\n          \"YearlySchedule\": null\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn2/protectionPolicies/DefaultPolicy\",\r\n      \"name\": \"DefaultPolicy\",\r\n      \"type\": \"Microsoft.Backup/BackupVault/protectionPolicies\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"workloadType\": \"IaasVM\",\r\n        \"policyName\": \"policy09-new\",\r\n        \"backupSchedule\": {\r\n          \"backupType\": \"Full\",\r\n          \"scheduleRun\": \"Daily\",\r\n          \"scheduleRunDays\": null,\r\n          \"scheduleRunTimes\": [\r\n            \"2015-06-13T20:30:00\"\r\n          ]\r\n        },\r\n        \"ltrRetentionPolicy\": {\r\n          \"DailySchedule\": {\r\n            \"RetentionTimes\": [\r\n              \"2015-06-13T20:30:00\"\r\n            ],\r\n            \"CSMRetentionDuration\": {\r\n              \"Count\": 20,\r\n              \"DurationType\": 1\r\n            }\r\n          },\r\n          \"WeeklySchedule\": {\r\n            \"DaysOfTheWeek\": [\r\n              1\r\n            ],\r\n            \"RetentionTimes\": [\r\n              \"2015-06-13T20:30:00\"\r\n            ],\r\n            \"CSMRetentionDuration\": {\r\n              \"Count\": 10,\r\n              \"DurationType\": 2\r\n            }\r\n          },\r\n          \"MonthlySchedule\": null,\r\n          \"YearlySchedule\": null\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn2/protectionPolicies/policy09-new\",\r\n      \"name\": \"policy09-new\",\r\n      \"type\": \"Microsoft.Backup/BackupVault/protectionPolicies\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"workloadType\": \"IaasVM\",\r\n        \"policyName\": \"Policy10\",\r\n        \"backupSchedule\": {\r\n          \"backupType\": \"Full\",\r\n          \"scheduleRun\": \"Daily\",\r\n          \"scheduleRunDays\": null,\r\n          \"scheduleRunTimes\": [\r\n            \"2015-06-13T20:30:00\"\r\n          ]\r\n        },\r\n        \"ltrRetentionPolicy\": {\r\n          \"DailySchedule\": {\r\n            \"RetentionTimes\": [\r\n              \"2015-06-13T20:30:00\"\r\n            ],\r\n            \"CSMRetentionDuration\": {\r\n              \"Count\": 20,\r\n              \"DurationType\": 1\r\n            }\r\n          },\r\n          \"WeeklySchedule\": {\r\n            \"DaysOfTheWeek\": [\r\n              1\r\n            ],\r\n            \"RetentionTimes\": [\r\n              \"2015-06-13T20:30:00\"\r\n            ],\r\n            \"CSMRetentionDuration\": {\r\n              \"Count\": 10,\r\n              \"DurationType\": 2\r\n            }\r\n          },\r\n          \"MonthlySchedule\": null,\r\n          \"YearlySchedule\": null\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn2/protectionPolicies/Policy10\",\r\n      \"name\": \"Policy10\",\r\n      \"type\": \"Microsoft.Backup/BackupVault/protectionPolicies\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2163"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1d4bae54-166e-48d9-a530-c599051e774c"
+        ],
+        "x-ms-client-request-id": [
+          "41166413-fd83-4d01-950f-e250d357aecc-2015-09-24 14:11:45Z-PS",
+          "41166413-fd83-4d01-950f-e250d357aecc-2015-09-24 14:11:45Z-PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-correlation-request-id": [
+          "1d4bae54-166e-48d9-a530-c599051e774c"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150924T141147Z:1d4bae54-166e-48d9-a530-c599051e774c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 24 Sep 2015 14:11:46 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn2/registeredContainers/iaasvmcontainer%3Bpowershellbvt1%3Bpowershellbvt1/protectedItems/iaasvmcontainer%3Bpowershellbvt1%3Bpowershellbvt1?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3VwL0JhY2t1cFZhdWx0L2JhY2t1cHJuMi9yZWdpc3RlcmVkQ29udGFpbmVycy9pYWFzdm1jb250YWluZXIlM0Jwb3dlcnNoZWxsYnZ0MSUzQnBvd2Vyc2hlbGxidnQxL3Byb3RlY3RlZEl0ZW1zL2lhYXN2bWNvbnRhaW5lciUzQnBvd2Vyc2hlbGxidnQxJTNCcG93ZXJzaGVsbGJ2dDE/YXBpLXZlcnNpb249MjAxNC0wOS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policyId\": \"/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn2/protectionPolicies/DefaultPolicy\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "205"
+        ],
+        "Accept-Language": [
+          "en-us"
+        ],
+        "x-ms-client-request-id": [
+          "0475308e-7d36-408f-9815-a36dd27be9dc-2015-09-24 14:11:47Z-PS"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "\"cb78f383-104c-4d18-b240-526caf9a610f\"",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "38"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "ae23e590-f6b0-400e-bba4-690d6573081c"
+        ],
+        "x-ms-client-request-id": [
+          "0475308e-7d36-408f-9815-a36dd27be9dc-2015-09-24 14:11:47Z-PS",
+          "0475308e-7d36-408f-9815-a36dd27be9dc-2015-09-24 14:11:47Z-PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "ae23e590-f6b0-400e-bba4-690d6573081c"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150924T141149Z:ae23e590-f6b0-400e-bba4-690d6573081c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 24 Sep 2015 14:11:48 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn2/operationResults/cb78f383-104c-4d18-b240-526caf9a610f?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3VwL0JhY2t1cFZhdWx0L2JhY2t1cHJuMi9vcGVyYXRpb25SZXN1bHRzL2NiNzhmMzgzLTEwNGMtNGQxOC1iMjQwLTUyNmNhZjlhNjEwZj9hcGktdmVyc2lvbj0yMDE0LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-us"
+        ],
+        "x-ms-client-request-id": [
+          "0475308e-7d36-408f-9815-a36dd27be9dc-2015-09-24 14:11:47Z-PS"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"InProgress\",\r\n  \"error\": {\r\n    \"code\": \"\",\r\n    \"message\": \"\"\r\n  },\r\n  \"jobList\": [\r\n    \"0310712a-eda3-44b9-a06c-bd949f6dbce4\"\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4f8b7f5f-1531-4295-9a70-21a498b1875c"
+        ],
+        "x-ms-client-request-id": [
+          "0475308e-7d36-408f-9815-a36dd27be9dc-2015-09-24 14:11:47Z-PS",
+          "0475308e-7d36-408f-9815-a36dd27be9dc-2015-09-24 14:11:47Z-PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14992"
+        ],
+        "x-ms-correlation-request-id": [
+          "4f8b7f5f-1531-4295-9a70-21a498b1875c"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150924T141150Z:4f8b7f5f-1531-4295-9a70-21a498b1875c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 24 Sep 2015 14:11:49 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn2/operationResults/cb78f383-104c-4d18-b240-526caf9a610f?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3VwL0JhY2t1cFZhdWx0L2JhY2t1cHJuMi9vcGVyYXRpb25SZXN1bHRzL2NiNzhmMzgzLTEwNGMtNGQxOC1iMjQwLTUyNmNhZjlhNjEwZj9hcGktdmVyc2lvbj0yMDE0LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-us"
+        ],
+        "x-ms-client-request-id": [
+          "0475308e-7d36-408f-9815-a36dd27be9dc-2015-09-24 14:11:47Z-PS"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\",\r\n  \"error\": {\r\n    \"code\": \"\",\r\n    \"message\": \"\"\r\n  },\r\n  \"jobList\": [\r\n    \"0310712a-eda3-44b9-a06c-bd949f6dbce4\"\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "106"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "542143b7-2c60-48b9-bb59-f7218fc7460e"
+        ],
+        "x-ms-client-request-id": [
+          "0475308e-7d36-408f-9815-a36dd27be9dc-2015-09-24 14:11:47Z-PS",
+          "0475308e-7d36-408f-9815-a36dd27be9dc-2015-09-24 14:11:47Z-PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-correlation-request-id": [
+          "542143b7-2c60-48b9-bb59-f7218fc7460e"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150924T141200Z:542143b7-2c60-48b9-bb59-f7218fc7460e"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 24 Sep 2015 14:12:00 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn2/jobs/0310712a-eda3-44b9-a06c-bd949f6dbce4?api-version=2014-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3VwL0JhY2t1cFZhdWx0L2JhY2t1cHJuMi9qb2JzLzAzMTA3MTJhLWVkYTMtNDRiOS1hMDZjLWJkOTQ5ZjZkYmNlND9hcGktdmVyc2lvbj0yMDE0LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept-Language": [
+          "en-us"
+        ],
+        "x-ms-client-request-id": [
+          "0475308e-7d36-408f-9815-a36dd27be9dc-2015-09-24 14:11:47Z-PS"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.BackupServices.BackupServicesManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"tasksList\": [],\r\n    \"propertyBag\": {\r\n      \"VM Name\": \"powershellbvt1\",\r\n      \"Policy Name\": \"DefaultPolicy\"\r\n    },\r\n    \"progressPercentage\": null,\r\n    \"dynamicErrorMessage\": null,\r\n    \"workloadType\": \"IaasVM\",\r\n    \"operation\": \"ConfigureBackup\",\r\n    \"status\": \"Completed\",\r\n    \"startTimestamp\": \"2015-09-24T14:11:49.2905888Z\",\r\n    \"endTimestamp\": \"2015-09-24T14:11:54.5337533Z\",\r\n    \"duration\": \"00:00:05.2431645\",\r\n    \"entityFriendlyName\": \"powershellbvt1\",\r\n    \"actionsInfo\": null,\r\n    \"errorDetails\": null\r\n  },\r\n  \"id\": \"/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn2/jobs/0310712a-eda3-44b9-a06c-bd949f6dbce4\",\r\n  \"name\": \"0310712a-eda3-44b9-a06c-bd949f6dbce4\",\r\n  \"type\": \"Microsoft.Backup/BackupVault/jobs\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "696"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "44c1fc6c-3e7c-4c55-9b61-534b2adf4e4d"
+        ],
+        "x-ms-client-request-id": [
+          "0475308e-7d36-408f-9815-a36dd27be9dc-2015-09-24 14:11:47Z-PS",
+          "0475308e-7d36-408f-9815-a36dd27be9dc-2015-09-24 14:11:47Z-PS"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-correlation-request-id": [
+          "44c1fc6c-3e7c-4c55-9b61-534b2adf4e4d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150924T141201Z:44c1fc6c-3e7c-4c55-9b61-534b2adf4e4d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 24 Sep 2015 14:12:01 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "f5303a0b-fae4-4cdb-b44d-0e4c032dde26"
+  }
+}

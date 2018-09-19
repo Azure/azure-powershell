@@ -1,0 +1,7 @@
+{
+      "name": "transform1",
+      "properties": {
+        "streamingUnits": 1,
+        "query":  "select Id, Name from Input TIMESTAMP BY TimeCreated"
+	  }
+}

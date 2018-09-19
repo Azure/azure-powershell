@@ -1,0 +1,2 @@
+path, packageName,configName,upgradePackage,upgradeConfig,upgradeConfig2
+.\, OneWebOneWorker.cspkg,OneWebOneWorker.cscfg,SampleAppV2.cspkg,SampleAppV2.cscfg,SampleAppV3.cscfg

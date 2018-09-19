@@ -1,0 +1,27 @@
+clone_folder: c:\ps
+clone_depth: 1
+branches:
+  only:
+    - master
+environment:
+  github_access_token:
+    secure: VMFbecLLHzDq/09YDPbcM0VDDSwwgY57vr5GXK6cZZ4Ti/Xs5RZoylzV8MMr1350
+
+before_build:
+  - git config --global credential.helper store
+  - ps: ac "$env:USERPROFILE\.git-credentials" "https://$($env:github_access_token):x-oauth-basic@github.com`n"
+  - git config --global user.email %email%
+  - git config --global user.name %name%
+  - cd ..
+  - git clone -q https://github.com/MicrosoftDocs/azure-psdocs-ciscripts azpsci
+  - dotnet publish azpsci -c Release -o ../ci
+build_script:
+  - dotnet ./ci/azpsci.dll docs
+
+test: off
+on_success:
+  - git clone -q --branch=%source_branch% %content_repo% %TEMP%\Azure
+  - cd %TEMP%\Azure
+  - ps: ls C:\docs -dir | % { copy $_.FullName . -Recurse -Force }
+  - git add -A
+  - git diff --quiet --exit-code --cached || git commit -m "Sync docs from source code repo to content repo." && git push origin %source_branch%:%target_branch% -f && appveyor AddMessage "Content Updated"

@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BothDatabaseNameAndDeletionDateNeedToBeSpecified" xml:space="preserve">
+    <value>Invalid Parameter combination: Both "DatabaseName" and "DatabaseDeletionDate" need to be specified to get a restorable dropped database.</value>
+    <comment>Parameter validation</comment>
+  </data>
+  <data name="CreateServerServerNotFound" xml:space="preserve">
+    <value>Unable to retrieve newly created server '{0}'.</value>
+  </data>
+  <data name="CredentialNotSpecified" xml:space="preserve">
+    <value>The Sql Authenticate Credential was not specified.</value>
+    <comment>Parameter validation</comment>
+  </data>
+  <data name="DatabaseCopyNotFound" xml:space="preserve">
+    <value>Database Copy from '{0}.{1}' to '{2}.{3}' not found.</value>
+    <comment>Parameter Validation</comment>
+  </data>
+  <data name="DatabaseCopyNotFoundGeneric" xml:space="preserve">
+    <value>There is no database copy matching the specified filter. Please revise the filter criteria to specify one existing database copy.</value>
+  </data>
+  <data name="DatabaseManagementErrorFormat" xml:space="preserve">
+    <value>{1}
+Error Code: {0}</value>
+    <comment>Generic</comment>
+  </data>
+  <data name="DatabaseNotFound" xml:space="preserve">
+    <value>Database '{0}.{1}' not found.</value>
+    <comment>Parameter Validation</comment>
+  </data>
+  <data name="DatabaseOperationNotFoundOnDatabase" xml:space="preserve">
+    <value>Could not found operations on Database '{0}.{1}'.</value>
+    <comment>Parameter validation</comment>
+  </data>
+  <data name="ErrorRefreshingDatabase" xml:space="preserve">
+    <value>An error occurred while refreshing database.</value>
+  </data>
+  <data name="ErrorRefreshingDatabaseCopy" xml:space="preserve">
+    <value>An error occurred while refreshing database copy status.</value>
+  </data>
+  <data name="ExceptionClientRequestId" xml:space="preserve">
+    <value>Client Request Id: '{0}'</value>
+    <comment>Tracing IDs</comment>
+  </data>
+  <data name="ExceptionClientSessionId" xml:space="preserve">
+    <value>Client Session Id: '{0}'</value>
+    <comment>Tracing IDs</comment>
+  </data>
+  <data name="ExceptionRequestId" xml:space="preserve">
+    <value>Request Id: '{0}'</value>
+    <comment>Tracing IDs</comment>
+  </data>
+  <data name="GetAzureSqlDatabaseServerFirewallRuleNotFound" xml:space="preserve">
+    <value>The firewall rule "{0}" could not be found in the Microsoft Azure Sql Database server "{1}".</value>
+  </data>
+  <data name="GetAzureSqlDatabaseServerNotFound" xml:space="preserve">
+    <value>The Microsoft Azure Sql Database server "{0}" could not be found in the currently selected subscription.</value>
+  </data>
+  <data name="GetAzureSqlRestorableDroppedDatabaseDatabaseNotFound" xml:space="preserve">
+    <value>Database '{0}.{1}' with deletion date '{2}' not found.</value>
+  </data>
+  <data name="InvalidAuthentication" xml:space="preserve">
+    <value>Invalid authentication for '{0}'.</value>
+    <comment>Bad operation workflow or sequencing</comment>
+  </data>
+  <data name="InvalidErrorInResponse" xml:space="preserve">
+    <value>Invalid error object in the response.</value>
+    <comment>Bad operation workflow or sequencing</comment>
+  </data>
+  <data name="InvalidExceptionMessageFormat" xml:space="preserve">
+    <value>Invalid exception message format.</value>
+    <comment>Bad operation workflow or sequencing</comment>
+  </data>
+  <data name="InvalidParameterCombination" xml:space="preserve">
+    <value>Invalid Parameter combination: {0} and {1} parameters cannot be used together.</value>
+  </data>
+  <data name="MoreThanOneDatabaseCopyFound" xml:space="preserve">
+    <value>There are more than one database copy matching the specified filter. Please revise the filter criteria to specify only one database copy.</value>
+    <comment>Parameter validation</comment>
+  </data>
+  <data name="NewAzureSqlDatabaseDescription" xml:space="preserve">
+    <value>Creating a new Microsoft Azure Sql Database.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="NewAzureSqlDatabaseServerDescription" xml:space="preserve">
+    <value>Creating a new Microsoft Azure Sql Database server.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="NewAzureSqlDatabaseServerFirewallRuleDescription" xml:space="preserve">
+    <value>Adding firewall rule "{0}" for Microsoft Azure Sql Database server "{1}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="NewAzureSqlDatabaseServerFirewallRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to add the firewall rule "{0}" for Microsoft Azure Sql Database server "{1}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="NewAzureSqlDatabaseServerWarning" xml:space="preserve">
+    <value>Are you sure you want to create a new Microsoft Azure Sql Database server?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="NewAzureSqlDatabaseWarning" xml:space="preserve">
+    <value>Are you sure you want to create a new Microsoft Azure Sql Database?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="RemoveAzureSqlDatabaseDescription" xml:space="preserve">
+    <value>Removing Microsoft Azure Sql Database "{0}.{1}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="RemoveAzureSqlDatabaseServerDescription" xml:space="preserve">
+    <value>Removing Microsoft Azure Sql Database server "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="RemoveAzureSqlDatabaseServerFirewallRuleDescription" xml:space="preserve">
+    <value>Removing firewall rule "{0}" for Microsoft Azure Sql Database server "{1}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="RemoveAzureSqlDatabaseServerFirewallRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the firewall rule "{0}" for Microsoft Azure Sql Database server "{1}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="RemoveAzureSqlDatabaseServerWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Microsoft Azure Sql Database server "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="RemoveAzureSqlDatabaseWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Microsoft Azure Sql Database "{0}.{1}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="RestorableDroppedSwitchNotSpecified" xml:space="preserve">
+    <value>Invalid parameters: The RestorableDropped switch must be specified to use the parameter {0}.</value>
+    <comment>Parameter validation</comment>
+  </data>
+  <data name="ServiceObjectiveNotFound" xml:space="preserve">
+    <value>Service objective '{1}' was not found on server '{0}'.</value>
+  </data>
+  <data name="SetAzureSqlDatabaseDescription" xml:space="preserve">
+    <value>Updating database "{1}" for Microsoft Azure Sql Database server "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetAzureSqlDatabaseServerAdminPasswordDescription" xml:space="preserve">
+    <value>Resetting administrator password for Microsoft Azure Sql Database server "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetAzureSqlDatabaseServerAdminPasswordWarning" xml:space="preserve">
+    <value>Are you sure you want to reset the administrator password for Microsoft Azure Sql Database server "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetAzureSqlDatabaseServerFirewallRuleDescription" xml:space="preserve">
+    <value>Updating firewall rule "{0}" for Microsoft Azure Sql Database server "{1}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetAzureSqlDatabaseServerFirewallRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to update the firewall rule "{0}" for Microsoft Azure Sql Database server "{1}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetAzureSqlDatabaseServiceObjectiveWarning" xml:space="preserve">
+    <value>Are you sure you want to change the service objective for database "{1}" in Microsoft Azure Sql Database server "{0}"? A change to the service objective will significantly change the cost of this database.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SetAzureSqlDatabaseWarning" xml:space="preserve">
+    <value>Are you sure you want to update database "{1}" for Microsoft Azure Sql Database server "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ShouldProcessCaption" xml:space="preserve">
+    <value>Confirm</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SqlAuthNotSupported" xml:space="preserve">
+    <value>This operation does not support SQL authentication.</value>
+  </data>
+  <data name="StartAzureSqlDatabaseCopyDescription" xml:space="preserve">
+    <value>Copying Microsoft Azure Sql Database "{0}.{1}" to "{2}.{3}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="StartAzureSqlDatabaseCopyWarning" xml:space="preserve">
+    <value>Are you sure you want to copy Microsoft Azure Sql Database "{0}.{1}" to "{2}.{3}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="StopAzureSqlDatabaseCopyDescription" xml:space="preserve">
+    <value>Terminating the database copy from "{0}.{1}" to "{2}.{3}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="StopAzureSqlDatabaseCopyWarning" xml:space="preserve">
+    <value>Are you sure you want to terminate the database copy from "{0}.{1}" to "{2}.{3}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="UnknownParameterSet" xml:space="preserve">
+    <value>Unknown ParameterSet specified.</value>
+    <comment>Parameter Validation</comment>
+  </data>
+  <data name="UriDoesNotExist" xml:space="preserve">
+    <value>{0} does not exist.</value>
+    <comment>Generic</comment>
+  </data>
+  <data name="WarningModelOutOfDate" xml:space="preserve">
+    <value>The client model does not match the server model. While the current set of Cmdlets may continue to work, it is recommended that you update to the latest version of Microsoft Azure PowerShell to ensure full compatibility.</value>
+  </data>
+  <data name="WrongAsyncResultForCreate" xml:space="preserve">
+    <value>The asyncResult object was not created by a preceding call of the BeginCreate method from the same control.</value>
+    <comment>Parameter validation</comment>
+  </data>
+  <data name="WrongAsyncResultForGetAccessToken" xml:space="preserve">
+    <value>The asyncResult object was not created by a preceding call of the BeginGetAccessToken method from the same control.</value>
+    <comment>Parameter validation</comment>
+  </data>
+</root>

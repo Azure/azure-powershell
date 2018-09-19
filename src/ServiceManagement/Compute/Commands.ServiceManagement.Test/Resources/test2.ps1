@@ -1,0 +1,1 @@
+Set-Content -Path 'C:\test2.txt' -Value 'test2'

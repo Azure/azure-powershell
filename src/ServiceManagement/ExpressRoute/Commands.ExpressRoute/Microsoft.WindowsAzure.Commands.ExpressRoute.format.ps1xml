@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>Microsoft.WindowsAzure.Management.ExpressRoute.Models.AzureDedicatedCircuitServiceProvider</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.WindowsAzure.Management.ExpressRoute.Models.AzureDedicatedCircuitServiceProvider</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DedicatedCircuitLocations</Label>
+            <Width>30</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DedicatedCircuitBandwidths</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap/>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.DedicatedCircuitLocations</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $bandwidths = @()
+                  foreach ($bandwidth in $_.DedicatedCircuitBandwidths)
+                  {
+                  $bandwidths += $bandwidth.Label.Trim() + ":"+ $bandwidth.Bandwidth
+                  }
+                  $string = $bandwidths -join ', '
+                  $string
+                </ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

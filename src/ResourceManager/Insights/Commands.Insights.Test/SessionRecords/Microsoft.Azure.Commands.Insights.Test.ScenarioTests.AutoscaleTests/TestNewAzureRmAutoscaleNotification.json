@@ -1,0 +1,11 @@
+{
+    "Entries": [],
+  "Names": {
+    "Test-NewAzureRmAlertRuleEmail": [
+      ""
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+  }
+}

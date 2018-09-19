@@ -1,0 +1,7 @@
+Size,vhdName,vhdBlobName,type,md5hash
+50MB,dynamic_50.vhd,vhdstore/$guid$.vhd,dynamic,Cc4UKKQx+ggpvIqx4Y2WxQ==
+50MB,dynamic_50_child01.vhd,vhdstore/$guid$.vhd,diff,b9+NUodTwPLQSVzBr6e4kA==
+50MB,dynamic_50_child02.vhd,vhdstore/$guid$.vhd,diff,UCW28a3cwPYrauvHsiGutA==
+50MB,fixed_50.vhd,vhdstore/$guid$.vhd,fixed,lX67MyV6qURNTCWHDyg8Uw==
+50MB,fixed_50_child01.vhd,vhdstore/$guid$.vhd,diff,7VPoBzInrqpZFdaNr9DEtA==
+50MB,fixed_50_child02.vhd,vhdstore/$guid$.vhd,diff,VjlKD6vJXUsbQTVy8Bydjg==

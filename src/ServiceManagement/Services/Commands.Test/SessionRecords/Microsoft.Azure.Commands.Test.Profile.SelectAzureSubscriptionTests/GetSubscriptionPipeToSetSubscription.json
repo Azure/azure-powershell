@@ -1,0 +1,90 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/storageservices/teststorage1220",
+      "EncodedRequestUri": "LzJjMjI0ZTdlLTNlZjUtNDMxZC1hNTdiLWU3MWY0NjYyZTNhNi9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXMvdGVzdHN0b3JhZ2UxMjIw",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/5.0.0.0"
+        ]
+      },
+      "ResponseBody": "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/storageservices/teststorage1220</Url>\r\n  <ServiceName>teststorage1220</ServiceName>\r\n  <StorageServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>West US</Location>\r\n    <Label>dGVzdHN0b3JhZ2UxMjIw</Label>\r\n    <Status>Created</Status>\r\n    <Endpoints>\r\n      <Endpoint>https://teststorage1220.blob.core.windows.net/</Endpoint>\r\n      <Endpoint>https://teststorage1220.queue.core.windows.net/</Endpoint>\r\n      <Endpoint>https://teststorage1220.table.core.windows.net/</Endpoint>\r\n      <Endpoint>https://teststorage1220.file.core.windows.net/</Endpoint>\r\n    </Endpoints>\r\n    <GeoPrimaryRegion>West US</GeoPrimaryRegion>\r\n    <StatusOfPrimary>Available</StatusOfPrimary>\r\n    <GeoSecondaryRegion />\r\n    <StatusOfSecondary />\r\n    <CreationTime>2014-07-09T19:35:26Z</CreationTime>\r\n    <CustomDomains />\r\n    <AccountType>Standard_LRS</AccountType>\r\n  </StorageServiceProperties>\r\n  <ExtendedProperties>\r\n    <ExtendedProperty>\r\n      <Name>ResourceGroup</Name>\r\n      <Value>Default-Storage-WestUS</Value>\r\n    </ExtendedProperty>\r\n    <ExtendedProperty>\r\n      <Name>ResourceLocation</Name>\r\n      <Value>West US</Value>\r\n    </ExtendedProperty>\r\n  </ExtendedProperties>\r\n  <Capabilities>\r\n    <Capability>PersistentVMRole</Capability>\r\n  </Capabilities>\r\n</StorageService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1293"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "64a608392568aa4b8597f8e1c1de417e"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sat, 14 May 2016 00:43:05 GMT"
+        ],
+        "Server": [
+          "1.0.6198.373",
+          "(rd_rdfe_stable.160510-1522)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/storageservices/teststorage1220/keys",
+      "EncodedRequestUri": "LzJjMjI0ZTdlLTNlZjUtNDMxZC1hNTdiLWU3MWY0NjYyZTNhNi9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXMvdGVzdHN0b3JhZ2UxMjIwL2tleXM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/5.0.0.0"
+        ]
+      },
+      "ResponseBody": "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/2c224e7e-3ef5-431d-a57b-e71f4662e3a6/services/storageservices/teststorage1220</Url>\r\n  <StorageServiceKeys>\r\n    <Primary>/hYt36JRM3StLgfEuTa4IOi9yWzKhBKhRY3V3WZjq97Fv/84wToozLuT0aVqioUtreSTBJMD+LXI4g5jI5MGWA==</Primary>\r\n    <Secondary>R1oLky011b/RZa9K6qVWKpnSsLjHMqvupJfg+DsbAZJxi1nN6Toc9ZNUQjMskDxQkdHaXmYY00jVxr86v4QPww==</Secondary>\r\n  </StorageServiceKeys>\r\n</StorageService>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "518"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "e3954c128b6ba0c9955b90b86900f4af"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Sat, 14 May 2016 00:43:05 GMT"
+        ],
+        "Server": [
+          "1.0.6198.373",
+          "(rd_rdfe_stable.160510-1522)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "2c224e7e-3ef5-431d-a57b-e71f4662e3a6"
+  }
+}

@@ -1,0 +1,53 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
+{
+    using System.Collections.Generic;
+
+    public class RoleInstanceContext : ServiceOperationContext
+    {
+        public InstanceEndpointList InstanceEndpoints { get; set; } 
+
+        public string InstanceErrorCode { get; set; }
+
+        public int? InstanceFaultDomain { get; set; }
+
+        public string InstanceName { get; set; }
+
+        public string InstanceSize { get; set; }
+
+        public string InstanceStateDetails { get; set; }
+
+        public string InstanceStatus { get; set; }
+
+        public int? InstanceUpgradeDomain { get; set; }
+
+        public string RoleName { get; set; }
+
+        public string DeploymentID { get; set; }
+
+        public string IPAddress { get; set; }
+
+        public string PublicIPAddress { get; set; }
+
+        public string PublicIPName { get; set; }
+
+        public int? PublicIPIdleTimeoutInMinutes { get; set; }
+
+        public string PublicIPDomainNameLabel { get; set; }
+
+        public List<string> PublicIPFqdns { get; set; }
+    }
+}

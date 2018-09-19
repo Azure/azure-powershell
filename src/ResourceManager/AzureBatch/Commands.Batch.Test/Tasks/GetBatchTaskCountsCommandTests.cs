@@ -1,0 +1,87 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Protocol;
+using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Moq;
+using System.Collections.Generic;
+using System.Management.Automation;
+using Xunit;
+using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
+
+namespace Microsoft.Azure.Commands.Batch.Test.Tasks
+{
+    public class GetBatchTaskCountsCommandTests
+    {
+        private GetBatchTaskCountsCommand cmdlet;
+        private Mock<BatchClient> batchClientMock;
+        private Mock<ICommandRuntime> commandRuntimeMock;
+
+        public GetBatchTaskCountsCommandTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            batchClientMock = new Mock<BatchClient>();
+            commandRuntimeMock = new Mock<ICommandRuntime>();
+            cmdlet = new GetBatchTaskCountsCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                BatchClient = batchClientMock.Object,
+            };
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetBatchTaskCountsTest()
+        {
+            // Setup cmdlet to get task counts by job id
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.JobId = "job-1";
+
+            const int active = 3;
+            const int running = 5;
+            const int succeeded = 2;
+            const int failed = 1;
+            const ProxyModels.TaskCountValidationStatus validationStatus = ProxyModels.TaskCountValidationStatus.Validated;
+
+            // Build a TaskCounts instead of querying the service on a Get TaskCounts call
+            AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders> response =
+                BatchTestHelpers.CreateTaskCountsGetResponse(active, running, succeeded, failed, validationStatus);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.JobGetTaskCountsOptions,
+                AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders>>(response);
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Setup the cmdlet to write pipeline output to a list that can be examined later
+            PSTaskCounts taskCounts = null;
+            commandRuntimeMock.Setup(r =>
+                    r.WriteObject(It.IsAny<PSTaskCounts>()))
+                .Callback<object>(p => taskCounts = (PSTaskCounts)p);
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(active, taskCounts.Active);
+            Assert.Equal(running, taskCounts.Running);
+            Assert.Equal(succeeded + failed, taskCounts.Completed);
+            Assert.Equal(succeeded, taskCounts.Succeeded);
+            Assert.Equal(failed, taskCounts.Failed);
+            Assert.Equal(validationStatus.ToString(), taskCounts.ValidationStatus.ToString());
+        }
+    }
+}

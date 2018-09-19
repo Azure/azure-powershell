@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SqlDatabaseSetting>
+  <ServerLocation>East Asia</ServerLocation>
+  <SubscriptionId>f41585e6-5717-4b9b-b600-d3220c5f3d8d</SubscriptionId>
+  <!-- Needs to be a V1 Server-->
+  <ManageUrl>https://myserver01.windows.database.net</ManageUrl>
+  <ServerV2>myserver01</ServerV2>
+  <SqlAuthUserName>mylogin</SqlAuthUserName>
+  <SqlAuthPassword>Pa$$w0rd!</SqlAuthPassword>
+  <SourceDatabaseName>testdb1</SourceDatabaseName>
+  <TargetDatabaseName>testdb2</TargetDatabaseName>
+  <StorageName>teststore001</StorageName>
+  <ContainerName>testcontainer001</ContainerName>
+  <!--[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]-->
+  <AccessKey>MBa5B5VhKcnx/tJlPfIOB44BiAfTkFYBb1uyMVzNFJN2S7FW10dxcC0ScfoPQJKIIi3dFaeLTuc39vATKlDrLA==</AccessKey>
+  <SerializedCert>AgAAAAEAAAC8AAAAHAAAAGwAAAABAAAAAAAAAAAAAAAAAAAAAQAAAHsANQA2AEUARAA2ADkAMQA5AC0AQwAxADUARQAtADQARAAwADQALQBBAEEAOABFAC0AOQBEADUARgBDAEQAQQA3AEMARgA5ADgAfQAAAAAATQBpAGMAcgBvAHMAbwBmAHQAIABTAHQAcgBvAG4AZwAgAEMAcgB5AHAAdABvAGcAcgBhAHAAaABpAGMAIABQAHIAbwB2AGkAZABlAHIAAAAgAAAAAQAAABgDAAAwggMUMIICAKADAgECAhAmnynD41waqEZbF7fAcQ5vMAkGBSsOAwIdBQAwHzEdMBsGA1UEAxMUVGVzdEF6dXJlQ2VydGlmaWNhdGUwHhcNMTMwNTE1MTYzNDA3WhcNMzkxMjMxMjM1OTU5WjAfMR0wGwYDVQQDExRUZXN0QXp1cmVDZXJ0aWZpY2F0ZTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL577A8CERReaiR+mslM5+1TrtOXIdRvpypcgBxBEcxh3VFvxTyWEKmd1U+we8shcarCRAEtf3jbvp+OY+nYANChKzQCZBafEIiqHP7BT4biA4RGVToxetYmu4S0NbC6yapQtQCevsGy5jaiX4mJVsZe0sQIHUMtxiazKbHWhkEXq6/GaIvx0KyVcM7pWpfefzMnJNDtqPuES9cGruaXIFsod9/W2mZf525/KV69JmatNOyW9C7uLZE8F4p8bCu0+LcVndDCjDASSPz5GQcTGUo9jncglWE4WTCl+M7cuZIhRouVg3+kousu6Gd+0d7YhfhPyac3V62TP9QGHPVEaf8CAwEAAaNUMFIwUAYDVR0BBEkwR4AQyRtCycb6fog5uWTB/AE5EaEhMB8xHTAbBgNVBAMTFFRlc3RBenVyZUNlcnRpZmljYXRlghAmnynD41waqEZbF7fAcQ5vMAkGBSsOAwIdBQADggEBAEcSu4mu16PuCW8DbUudCPaNtWDnV0T2M9xMZDZAQbL4uSphyIKL42mjFiUhblRsd7WbYJ4b9e3yuAYEMg3FhyJhxuiGrvh4Hvr0+M+tSk0VDCheGpnTpsrBIHSMY53udXctL0Pc6cOWFnga2G3MbrpSEpKtdCGH5vU+TJAARwT6eIvNBhliw8aRG30xYlfvlsUCxqm6ik4NhQJSq+HyVZjRfwu7eyY4zFEVpKAO7cCgm56fTdcfVtNwKCN2S8IaceFyN7KhsJE1LKCX9s5EKGQel58HDU06R0+ADp2Z53NZqcKVap4dsZQdB0fTPfpsLnjiAC9QeUBmZYNPzP/ISKY=</SerializedCert>
+</SqlDatabaseSetting>

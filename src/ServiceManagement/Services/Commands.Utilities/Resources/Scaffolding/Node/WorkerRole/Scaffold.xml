@@ -1,0 +1,15 @@
+﻿<Scaffold>
+  <ScaffoldFile Path="download.ps1" />
+  <ScaffoldFile Path="node.cmd" />
+  <ScaffoldFile Path="startup.js" />
+  <ScaffoldFile Path="setup_worker.cmd" />
+  <ScaffoldFile Path="server.js" />
+  <ScaffoldFile Path="RoleSettings.xml" Copy="false">
+    <Scaffold.ReplaceParameterRule />
+    <NodeRules.AddRoleToConfig />
+  </ScaffoldFile>
+  <ScaffoldFile Path="WorkerRole.xml" Copy="false">
+    <Scaffold.ReplaceParameterRule />
+    <NodeRules.AddWorkerRoleToDef />
+  </ScaffoldFile>
+</Scaffold>

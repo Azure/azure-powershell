@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestConfig>
+  <!-- //TODO clean this file-->
+  <wttlogger>true</wttlogger>
+  <consolelogger>true</consolelogger>
+  <filelogger>true</filelogger>
+  <logfilename>storage__PowerShellBVT__</logfilename>
+  <loginfo>true</loginfo>
+  <logverbose>true</logverbose>
+  <logwarning>true</logwarning>
+  <logerror>true</logerror>
+  <AzureSubscriptionPath>
+      <!--Azure subscription file path-->
+  </AzureSubscriptionPath>
+  <AzureSubscriptionName>
+      <!--Azure subscription name on the specified azure subscription file-->
+  </AzureSubscriptionName>
+  <StorageAccountName>
+      <!--Storage Account name-->
+      <!--Please make sure this storage account is available in azure subscription-->
+  </StorageAccountName>
+  <StorageAccountKey>
+      <!--Storage Account Key-->
+  </StorageAccountKey>
+  <StorageEndPoint>
+      <!--Storage End Point-->
+      core.windows.net
+  </StorageEndPoint>
+  <SecondaryStorageAccountName>
+      <!--Storage Account name-->
+  </SecondaryStorageAccountName>
+  <SecondaryStorageAccountKey>
+      <!--Storage Account Key-->
+  </SecondaryStorageAccountKey>
+  <SecondaryStorageEndPoint>
+      <!--Storage End Point-->
+      core.windows.net
+  </SecondaryStorageEndPoint>
+  <BigFileUri>
+      <!--A big file uri on the public web which could make azure take serveral(at least 3) minutes to copy.-->
+  </BigFileUri>
+  <HttpsCopyHosts>
+    <!--Azure will use https to copy blob no matter what you set, please split your host using space.-->
+    windows.net
+  </HttpsCopyHosts>
+  <ModuleFilePath>
+    <!--Custom Module File Path-->
+    <!--Our tests run against the current powershell environment and this module file. Please make sure storage powershell could be reached in one of them-->
+    <!--For example, C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\Azure\Azure.psd1-->
+  </ModuleFilePath>
+  <DownloadDir>.\Data\download\</DownloadDir>
+  <UploadDir>.\Data\upload\</UploadDir>
+  <TempDir>.\Data\temp\</TempDir>
+  <EnvContextKey>AZURE_STORAGE_CONNECTION_STRING</EnvContextKey>
+</TestConfig>

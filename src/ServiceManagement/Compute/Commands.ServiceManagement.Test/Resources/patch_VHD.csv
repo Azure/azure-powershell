@@ -1,0 +1,2 @@
+vhdName,baseImage,childvhdBlobName,basevhdBlobName,NoOfTimes,MD5hash,MD5hashBase
+fixed_50_child01.vhd,fixed_50.vhd,vhdstore/$guid$.vhd,vhdstore/$guid$.vhd,1,7VPoBzInrqpZFdaNr9DEtA==,lX67MyV6qURNTCWHDyg8Uw==

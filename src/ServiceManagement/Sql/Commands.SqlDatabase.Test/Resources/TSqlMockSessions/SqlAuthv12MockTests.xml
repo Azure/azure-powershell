@@ -1,0 +1,2079 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MockQueryResultSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb1 OR testdb1 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb1</name>
+          <database_id>5</database_id>
+          <create_date>2014-12-22T16:56:09.243-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb1</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb1, 'Edition') as edition,  DatabasePropertyEx(testdb1, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb1, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Basic</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Basic</serviceObjective>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">1073741824</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb2 OR testdb2 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb2</name>
+          <database_id>6</database_id>
+          <create_date>2014-12-22T16:57:51.347-08:00</create_date>
+          <collation_name>Japanese_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb2</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb2, 'Edition') as edition,  DatabasePropertyEx(testdb2, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb2, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">S0</serviceObjective>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">107374182400</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb3alt OR testdb3alt IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb3alt</name>
+          <database_id>7</database_id>
+          <create_date>2014-12-22T15:51:45.7-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb3alt</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb3alt, 'Edition') as edition,  DatabasePropertyEx(testdb3alt, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb3alt, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">S0</serviceObjective>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">107374182400</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb4 OR testdb4 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb4</name>
+          <database_id>8</database_id>
+          <create_date>2014-12-22T16:56:31.85-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb4</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb4, 'Edition') as edition,  DatabasePropertyEx(testdb4, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb4, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" msdata:DataType="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" msdata:DataType="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" msdata:DataType="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">S0</serviceObjective>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">268435456000</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.GetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb1 OR testdb1 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb1</name>
+          <database_id>5</database_id>
+          <create_date>2014-12-05T15:52:35.953-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.GetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb1</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb1, 'Edition') as edition,  DatabasePropertyEx(testdb1, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb1, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">S0</serviceObjective>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">268435456000</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.GetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] =  OR  IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>master</name>
+          <database_id>1</database_id>
+          <create_date>2014-12-05T12:35:00.73-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>true</is_system_object>
+          <status>1</status>
+        </Table>
+        <Table>
+          <name>testdb1</name>
+          <database_id>5</database_id>
+          <create_date>2014-12-05T15:52:35.953-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+        <Table>
+          <name>testdb2</name>
+          <database_id>6</database_id>
+          <create_date>2014-12-05T15:54:56.603-08:00</create_date>
+          <collation_name>Japanese_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+        <Table>
+          <name>testdb3</name>
+          <database_id>7</database_id>
+          <create_date>2014-12-05T15:55:29.173-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+        <Table>
+          <name>testdb4</name>
+          <database_id>8</database_id>
+          <create_date>2014-12-05T15:57:43.137-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.GetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(master, 'Edition') as edition,  DatabasePropertyEx(master, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(master, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">System</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">System2</serviceObjective>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">5368709120</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.GetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb2</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb2, 'Edition') as edition,  DatabasePropertyEx(testdb2, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb2, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Basic</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Basic</serviceObjective>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">2147483648</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.GetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb3</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb3, 'Edition') as edition,  DatabasePropertyEx(testdb3, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb3, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">S0</serviceObjective>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">107374182400</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.GetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb4</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb4, 'Edition') as edition,  DatabasePropertyEx(testdb4, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb4, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">S2</serviceObjective>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">268435456000</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb1 OR testdb1 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb1</name>
+          <database_id>5</database_id>
+          <create_date>2014-12-06T12:25:52.49-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb1</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb1, 'Edition') as edition,  DatabasePropertyEx(testdb1, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">268435456000</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb2 OR testdb2 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb2</name>
+          <database_id>6</database_id>
+          <create_date>2014-12-06T12:27:55.997-08:00</create_date>
+          <collation_name>Japanese_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb2</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb2, 'Edition') as edition,  DatabasePropertyEx(testdb2, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Basic</edition>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">2147483648</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb3 OR testdb3 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb3</name>
+          <database_id>7</database_id>
+          <create_date>2014-12-06T12:28:28.81-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb3</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb3, 'Edition') as edition,  DatabasePropertyEx(testdb3, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">107374182400</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb4 OR testdb4 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb4</name>
+          <database_id>8</database_id>
+          <create_date>2014-12-06T12:31:55.247-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb1 OR testdb1 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb1</name>
+          <database_id>5</database_id>
+          <create_date>2014-12-22T15:49:15.387-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb1</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb1, 'Edition') as edition,  DatabasePropertyEx(testdb1, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb1, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">S0</serviceObjective>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">268435456000</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb2 OR testdb2 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb2</name>
+          <database_id>6</database_id>
+          <create_date>2014-12-22T15:51:10.693-08:00</create_date>
+          <collation_name>Japanese_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb2</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb2, 'Edition') as edition,  DatabasePropertyEx(testdb2, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb2, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Basic</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Basic</serviceObjective>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">2147483648</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb3 OR testdb3 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb3</name>
+          <database_id>7</database_id>
+          <create_date>2014-12-22T15:51:45.7-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb3</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb3, 'Edition') as edition,  DatabasePropertyEx(testdb3, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb3, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">S0</serviceObjective>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">107374182400</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb4 OR testdb4 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb4</name>
+          <database_id>8</database_id>
+          <create_date>2014-12-22T15:53:51.507-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.NewAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb4</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb4, 'Edition') as edition,  DatabasePropertyEx(testdb4, 'ServiceObjective') as serviceObjective,  DatabasePropertyEx(testdb4, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" msdata:DataType="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="serviceObjective" msdata:DataType="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" msdata:DataType="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <serviceObjective xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">S2</serviceObjective>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">268435456000</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb1 OR testdb1 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb1</name>
+          <database_id>5</database_id>
+          <create_date>2014-12-06T13:39:04.633-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb1</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb1, 'Edition') as edition,  DatabasePropertyEx(testdb1, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Basic</edition>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">1073741824</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb2 OR testdb2 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb2</name>
+          <database_id>6</database_id>
+          <create_date>2014-12-06T13:50:00.72-08:00</create_date>
+          <collation_name>Japanese_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb2</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb2, 'Edition') as edition,  DatabasePropertyEx(testdb2, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" msdata:DataType="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" msdata:DataType="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">107374182400</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb3alt OR testdb3alt IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb3alt</name>
+          <database_id>7</database_id>
+          <create_date>2014-12-06T13:41:09.09-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb3alt</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb3alt, 'Edition') as edition,  DatabasePropertyEx(testdb3alt, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">107374182400</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>master</DatabaseName>
+    <CommandText>
+                SELECT 
+                    [db].[name], 
+                    [db].[database_id], 
+                    [db].[create_date], 
+                    [db].[collation_name], 
+                    [db].[is_read_only],
+                    [db].[is_query_store_on], 
+                    [db].[is_recursive_triggers_on],
+                    [db].[is_federation_member],
+                    CONVERT (bit, CASE WHEN [db].[name] in ('master') THEN 1 ELSE [db].[is_distributor] END) AS [is_system_object],
+                    CONVERT (int,
+                        CASE
+                            WHEN [db].[is_in_standby] = 1 THEN 0x0040
+                            ELSE 0
+                        END |
+                        CASE
+                            WHEN [db].[is_cleanly_shutdown] = 1 THEN 0x0080
+                            ELSE 0
+                        END |
+                        CASE [db].[state]
+                            WHEN 0 THEN 0x0001  -- NORMAL
+                            WHEN 1 THEN 0x0002  -- RESTORING
+                            WHEN 2 THEN 0x0008  -- RECOVERING
+                            WHEN 3 THEN 0x0004  -- RECOVERY_PENDING
+                            WHEN 4 THEN 0x0010  -- SUSPECT
+                            WHEN 5 THEN 0x0100  -- EMERGENCY
+                            WHEN 6 THEN 0x0020  -- OFFLINE
+                            WHEN 7 THEN 0x0400  -- COPYING
+                            WHEN 9 THEN 0x0800  -- CREATING
+                            WHEN 10 THEN 0x1000 -- OFFLINE_SECONDARY
+                            ELSE 0x0010         -- SUSPECT
+                        END) AS [status]
+                    FROM [sys].[databases] AS [db]
+                    WHERE ([db].[name] = testdb4 OR testdb4 IS NULL)</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="name" type="xs:string" minOccurs="0" />
+                      <xs:element name="database_id" type="xs:int" minOccurs="0" />
+                      <xs:element name="create_date" type="xs:dateTime" minOccurs="0" />
+                      <xs:element name="collation_name" type="xs:string" minOccurs="0" />
+                      <xs:element name="is_read_only" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_query_store_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_recursive_triggers_on" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_federation_member" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="is_system_object" type="xs:boolean" minOccurs="0" />
+                      <xs:element name="status" type="xs:int" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <name>testdb4</name>
+          <database_id>8</database_id>
+          <create_date>2014-12-06T13:50:25.71-08:00</create_date>
+          <collation_name>SQL_Latin1_General_CP1_CI_AS</collation_name>
+          <is_read_only>false</is_read_only>
+          <is_query_store_on>false</is_query_store_on>
+          <is_recursive_triggers_on>false</is_recursive_triggers_on>
+          <is_federation_member>false</is_federation_member>
+          <is_system_object>false</is_system_object>
+          <status>1</status>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+  <MockQueryResult>
+    <MockId>SqlAuthv12MockTests.SetAzureSqlDatabaseWithSqlAuthv12</MockId>
+    <DatabaseName>testdb4</DatabaseName>
+    <CommandText>SELECT DatabasePropertyEx(testdb4, 'Edition') as edition,  DatabasePropertyEx(testdb4, 'MaxSizeInBytes') as maxSizeBytes</CommandText>
+    <DataSetResult>
+      <NewDataSet>
+        <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+          <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+            <xs:complexType>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Table">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="edition" type="xs:anyType" minOccurs="0" />
+                      <xs:element name="maxSizeBytes" type="xs:anyType" minOccurs="0" />
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:complexType>
+          </xs:element>
+        </xs:schema>
+        <Table>
+          <edition xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema">Standard</edition>
+          <maxSizeBytes xsi:type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema">268435456000</maxSizeBytes>
+        </Table>
+      </NewDataSet>
+    </DataSetResult>
+  </MockQueryResult>
+</MockQueryResultSet>
