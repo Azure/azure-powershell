@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.2.0'
+ModuleVersion = '6.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -52,7 +52,7 @@ CLRVersion = '4.0'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.6.0'; }, 
-               @{ModuleName = 'Azure.Storage'; ModuleVersion = '4.6.0'; })
+               @{ModuleName = 'Azure.Storage'; ModuleVersion = '4.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll', 
@@ -131,16 +131,16 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Support enable or disable FilesAadIntegration for SMB when create or update Storage account
+        ReleaseNotes = '* Support enable or disable FilesAadIntegration for SMB when creating or updating Storage account
        - New-AzureRmStorageAccount
        - Set-AzureRmStorageAccount
-* Support Kind FileStorage and BlockBlobStorage when create Storage account
+* Support Kind FileStorage and BlockBlobStorage when creating Storage account
        - New-AzureRmStorageAccount
-* Remove get global Storage usage function, and can only get location Storage usage, so parameter ""Location"" change from optional to required.
+* Remove get global Storage usage function, and can only get location Storage usage, so parameter "Location" changes from optional to required.
        - Get-AzureRmStorageUsage'
 
         # Prerelease string of this module
-        Prerelease = 'Preview'
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
