@@ -23,7 +23,7 @@ Edit-AzureRmWebAppBackupConfiguration [-FrequencyInterval] <Int32> [-FrequencyUn
 ### FromWebApp
 ```
 Edit-AzureRmWebAppBackupConfiguration [-FrequencyInterval] <Int32> [-FrequencyUnit] <String>
- [-RetentionPeriodInDays] <Int32> [[-StartTime] <DateTime>] [-KeepAtLeastOneBackup] [-WebApp] <Site>
+ [-RetentionPeriodInDays] <Int32> [[-StartTime] <DateTime>] [-KeepAtLeastOneBackup] [-WebApp] <PSSite>
  [-DefaultProfile <IAzureContextContainer>] [-StorageAccountUrl] <String>
  [[-Databases] <DatabaseBackupSetting[]>] [<CommonParameters>]
 ```
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.Site
+Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
 Parameter Sets: FromWebApp
 Aliases:
 

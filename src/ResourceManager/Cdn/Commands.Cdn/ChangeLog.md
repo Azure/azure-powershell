@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.0.6
+* Added Standard_Microsoft in Cdn pricing sku. 
+
 ## Version 5.0.5
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies

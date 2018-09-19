@@ -3,7 +3,7 @@
   <Import Project="$(ProjectDir)..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp2.0;net472</TargetFrameworks>
     <AssemblyName>Microsoft.Azure.Commands.Media.Test.ScenarioTests</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Media.Test.ScenarioTests</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
