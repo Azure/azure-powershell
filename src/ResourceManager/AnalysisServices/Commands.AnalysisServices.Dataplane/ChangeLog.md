@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Support sovereign clouds
 
 ## Version 0.5.4
 * Updated to the latest version of the Azure ClientRuntime.
-* Support sovereign clouds
 
 ## Version 0.5.3
 * Updated help files to include full parameter types and correct input/output types.
