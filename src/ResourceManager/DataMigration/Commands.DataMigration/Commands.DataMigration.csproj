@@ -110,6 +110,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="help\Invoke-AzureRmDataMigrationCommand.md" />
+    <None Include="help\New-AzureRmDataMigrationSyncSelectedDB.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="AzureRM.DataMigration.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
