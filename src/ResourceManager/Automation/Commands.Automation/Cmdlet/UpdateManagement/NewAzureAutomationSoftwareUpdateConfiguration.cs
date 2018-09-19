@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
     using Properties;
 
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationSoftwareUpdateConfiguration",
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.Windows)]
     [OutputType(typeof(SoftwareUpdateConfiguration))]
     public class NewAzureAutomationSoftwareUpdateConfiguration : AzureAutomationBaseCmdlet
     {
@@ -41,31 +41,31 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         public SwitchParameter Linux { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Ids for azure virtual machines.")]
-        public string[] AzureVMResourceIds { get; set; }
+        public string[] AzureVMResourceId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Non-Azure computer names.")]
-        public string[] NonAzureComputers { get; set; }
+        public string[] NonAzureComputer { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Maximum duration for the update.")]
         public TimeSpan Duration { get; set; }
 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Windows Update classifications.")]
-        public WindowsUpdateClasses[] IncludedUpdateClassifications { get; set; }
+        public WindowsUpdateClasses[] IncludedUpdateClassification { get; set; }
 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "KB numbers of excluded updates.")]
-        public string[] ExcludedKbNumbers { get; set; }
+        public string[] ExcludedKbNumber { get; set; }
 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.Windows, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "KB numbers of included updates.")]
-        public string[] IncludedKbNumbers { get; set; }
+        public string[] IncludedKbNumber { get; set; }
 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Linux package classifications.")]
-        public LinuxPackageClasses[] IncludedPackageClassifications { get; set; }
+        public LinuxPackageClasses[] IncludedPackageClassification { get; set; }
 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Excluded Linux package masks.")]
-        public string[] ExcludedPackageNameMasks { get; set; }
+        public string[] ExcludedPackageNameMask { get; set; }
 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.Linux, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Included Linux package masks.")]
-        public string[] IncludedPackageNameMasks { get; set; }
+        public string[] IncludedPackageNameMask { get; set; }
 
         private bool IsWindows { get { return this.ParameterSetName == AutomationCmdletParameterSets.Windows; } }
 
@@ -75,12 +75,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            if((this.AzureVMResourceIds == null || !this.AzureVMResourceIds.Any()) && (this.NonAzureComputers == null || !this.NonAzureComputers.Any()))
+            if((this.AzureVMResourceId == null || !this.AzureVMResourceId.Any()) && (this.NonAzureComputer == null || !this.NonAzureComputer.Any()))
             {
                 throw new PSArgumentException(Resources.SoftwareUpdateConfigurationHasNoTargetComputers);
             }
 
-            var resource = string.Format(CultureInfo.CurrentCulture, Resources.SourceControlCreateAction);
+            var resource = string.Format(CultureInfo.CurrentCulture, Resources.SoftwareUpdateConfigurationCreateOperation);
             if (ShouldProcess(this.Schedule.Name, resource))
             {
                 var suc = new SoftwareUpdateConfiguration()
@@ -95,21 +95,21 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
                             ? null
                             : new WindowsConfiguration
                             {
-                                ExcludedKbNumbers = this.ExcludedKbNumbers,
-                                IncludedKbNumbers = this.IncludedKbNumbers,
-                                IncludedUpdateClassifications = this.IncludedUpdateClassifications
+                                ExcludedKbNumbers = this.ExcludedKbNumber,
+                                IncludedKbNumbers = this.IncludedKbNumber,
+                                IncludedUpdateClassifications = this.IncludedUpdateClassification
                             },
                         Linux = this.IsWindows
                             ? null
                             : new LinuxConfiguration
                             {
-                                ExcludedPackageNameMasks = this.ExcludedPackageNameMasks,
-                                IncludedPackageClassifications = this.IncludedPackageClassifications,
-                                IncludedPackageNameMasks = this.IncludedPackageNameMasks
+                                ExcludedPackageNameMasks = this.ExcludedPackageNameMask,
+                                IncludedPackageClassifications = this.IncludedPackageClassification,
+                                IncludedPackageNameMasks = this.IncludedPackageNameMask
                             },
                         Duration = this.Duration,
-                        AzureVirtualMachines = this.AzureVMResourceIds,
-                        NonAzureComputers = this.NonAzureComputers
+                        AzureVirtualMachines = this.AzureVMResourceId,
+                        NonAzureComputers = this.NonAzureComputer
                     }
                 };
                 suc = this.AutomationClient.CreateSoftwareUpdateConfiguration(this.ResourceGroupName,

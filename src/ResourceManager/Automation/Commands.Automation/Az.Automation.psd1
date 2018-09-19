@@ -15,7 +15,7 @@
 ModuleVersion = '0.2.0'
 
 # Supported PSEditions
-CompatiblePSEditions = 'Core'
+CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
 GUID = 'ef36c942-4a71-4e19-9450-05a35843deb6'
@@ -73,6 +73,7 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzureRMAutomationHybridWorkerGroup', 
+               'Remove-AzureRmAutomationHybridWorkerGroup', 
                'Get-AzureRmAutomationJobOutputRecord', 
                'Import-AzureRmAutomationDscNodeConfiguration', 
                'Export-AzureRmAutomationDscConfiguration', 

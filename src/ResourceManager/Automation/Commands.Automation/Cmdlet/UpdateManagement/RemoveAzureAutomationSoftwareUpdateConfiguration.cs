@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationSoftwareUpdateConfiguration", SupportsShouldProcess = true,
         DefaultParameterSetName = AutomationCmdletParameterSets.BySucName)]
+    [OutputType(typeof(void), typeof(bool))]
     public class RemoveAzureAutomationSoftwareUpdateConfiguration : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -39,6 +40,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.BySuc, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The software update configuration to remove.")]
         [ValidateNotNullOrEmpty]
         public SoftwareUpdateConfiguration SoftwareUpdateConfiguration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the PassThru switch parameter to force return an object when removing the software update configuration.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "PassThru returns an object representing the item with which you are working." +
+                                                    " By default, this cmdlet does not generate any output.")]
+        public SwitchParameter PassThru { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -58,6 +66,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet.UpdateManagement
                         this.AutomationClient.DeleteSoftwareUpdateConfiguration(this.ResourceGroupName,
                             this.AutomationAccountName, name);
                     });
+
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
             }
         }
     }

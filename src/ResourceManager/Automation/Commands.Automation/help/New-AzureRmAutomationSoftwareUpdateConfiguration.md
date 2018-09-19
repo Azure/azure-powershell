@@ -12,22 +12,22 @@ Creates a scheduled azure automation software update configuration.
 
 ## SYNTAX
 
-### Windows
+### Windows (Default)
 ```
 New-AzureRmAutomationSoftwareUpdateConfiguration -Schedule <Schedule> [-Windows]
- [-AzureVMResourceIds <String[]>] [-NonAzureComputers <String[]>] [-Duration <TimeSpan>]
- [-IncludedUpdateClassifications <WindowsUpdateClasses[]>] [-ExcludedKbNumbers <String[]>]
- [-IncludedKbNumbers <String[]>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-AzureVMResourceId <String[]>] [-NonAzureComputer <String[]>] [-Duration <TimeSpan>]
+ [-IncludedUpdateClassification <WindowsUpdateClasses[]>] [-ExcludedKbNumber <String[]>]
+ [-IncludedKbNumber <String[]>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Linux
 ```
-New-AzureRmAutomationSoftwareUpdateConfiguration -Schedule <Schedule> [-Linux] [-AzureVMResourceIds <String[]>]
- [-NonAzureComputers <String[]>] [-Duration <TimeSpan>]
- [-IncludedPackageClassifications <LinuxPackageClasses[]>] [-ExcludedPackageNameMasks <String[]>]
- [-IncludedPackageNameMasks <String[]>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmAutomationSoftwareUpdateConfiguration -Schedule <Schedule> [-Linux] [-AzureVMResourceId <String[]>]
+ [-NonAzureComputer <String[]>] [-Duration <TimeSpan>] [-IncludedPackageClassification <LinuxPackageClasses[]>]
+ [-ExcludedPackageNameMask <String[]>] [-IncludedPackageNameMask <String[]>] [-ResourceGroupName] <String>
+ [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,14 +73,13 @@ LastModifiedTime      : 9/14/2018 3:53:27 AM +00:00
 Description           :
 ```
 
-
 ## PARAMETERS
 
 ### -AutomationAccountName
 The automation account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,11 +90,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AzureVMResourceIds
+### -AzureVMResourceId
 Resource Ids for azure virtual machines.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +109,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -125,7 +124,7 @@ Accept wildcard characters: False
 Maximum duration for the update.
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: (All)
 Aliases:
 
@@ -136,11 +135,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ExcludedKbNumbers
+### -ExcludedKbNumber
 KB numbers of excluded updates.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Windows
 Aliases:
 
@@ -151,11 +150,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ExcludedPackageNameMasks
+### -ExcludedPackageNameMask
 Excluded Linux package masks.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Linux
 Aliases:
 
@@ -166,11 +165,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IncludedKbNumbers
+### -IncludedKbNumber
 KB numbers of included updates.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Windows
 Aliases:
 
@@ -181,11 +180,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IncludedPackageClassifications
+### -IncludedPackageClassification
 Included Linux package classifications.
 
 ```yaml
-Type: LinuxPackageClasses[]
+Type: Microsoft.Azure.Commands.Automation.Model.UpdateManagement.LinuxPackageClasses[]
 Parameter Sets: Linux
 Aliases:
 Accepted values: Unclassified, Critical, Security, Other
@@ -197,11 +196,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IncludedPackageNameMasks
+### -IncludedPackageNameMask
 Included Linux package masks.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: Linux
 Aliases:
 
@@ -212,11 +211,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IncludedUpdateClassifications
+### -IncludedUpdateClassification
 Included Windows Update classifications.
 
 ```yaml
-Type: WindowsUpdateClasses[]
+Type: Microsoft.Azure.Commands.Automation.Model.UpdateManagement.WindowsUpdateClasses[]
 Parameter Sets: Windows
 Aliases:
 Accepted values: Unclassified, Critical, Security, UpdateRollup, FeaturePack, ServicePack, Definition, Tools, Updates
@@ -232,7 +231,7 @@ Accept wildcard characters: False
 Indicates that the software update configuration targeting Linux operating system machines.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Linux
 Aliases:
 
@@ -243,11 +242,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NonAzureComputers
+### -NonAzureComputer
 Non-Azure computer names.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -262,7 +261,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -277,7 +276,7 @@ Accept wildcard characters: False
 Schedule object used for software update configuration.
 
 ```yaml
-Type: Schedule
+Type: Microsoft.Azure.Commands.Automation.Model.Schedule
 Parameter Sets: (All)
 Aliases:
 
@@ -292,7 +291,7 @@ Accept wildcard characters: False
 Indicates that the software update configuration targeting windows operating system machines.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Windows
 Aliases:
 
@@ -307,7 +306,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -323,7 +322,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -335,8 +334,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
