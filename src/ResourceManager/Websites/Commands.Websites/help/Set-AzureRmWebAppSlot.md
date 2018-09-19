@@ -23,8 +23,9 @@ Set-AzureRmWebAppSlot [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[
  [[-ManagedPipelineMode] <String>] [[-WebSocketsEnabled] <Boolean>] [[-Use32BitWorkerProcess] <Boolean>]
  [-AutoSwapSlotName <String>] [-NumberOfWorkers <Int32>] [-ContainerImageName <String>]
  [-ContainerRegistryUrl <String>] [-ContainerRegistryUser <String>] [-ContainerRegistryPassword <SecureString>]
- [-EnableContainerContinuousDeployment <Boolean>] [-AsJob] [-AssignIdentity <Boolean>] [-HttpsOnly <Boolean>]
- [-ResourceGroupName] <String> [-Name] <String> [-Slot] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-EnableContainerContinuousDeployment <Boolean>] [-AsJob] [-AssignIdentity <Boolean>] [-HttpsOnly <Boolean>] 
+ [-AzureStorageAccounts <Hashtable>] [-ResourceGroupName] <String> [-Name] <String> 
+ [-Slot] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -470,6 +471,25 @@ Aliases:
 
 Required: False
 Position: 14
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureStorageAccounts
+Web app Azure Storage accounts.
+Only supported in Windows Containers and Linux Web apps.
+Example: -AzureStorageAccounts @{ AzureStorageAccount1 = @{ Type = "AzureFiles"; AccountName = "My Azure Storage account name"; ShareName = "My Azure Storage account share name"; AccessKey = "My Azure Storage account access key"; MountPath = "The path to mount inside the container.
+For example: C:\myfolder for Windows Containers or /myfolder for Linux Web apps"}; AzureStorageAccount2 = @{ Type = "AzureFiles"; AccountName = "My Azure Storage account name"; ShareName = "My Azure Storage account share name"; AccessKey = "My Azure Storage account access key"; MountPath = "The path to mount inside the container.
+For example: C:\myfolder for Windows Containers or /myfolder for Linux Web apps"} }
+
+```yaml
+Type: Hashtable
+Parameter Sets: S1
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
