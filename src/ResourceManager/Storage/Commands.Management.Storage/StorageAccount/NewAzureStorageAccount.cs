@@ -74,6 +74,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateSet(AccountKind.Storage,
             AccountKind.StorageV2,
             AccountKind.BlobStorage,
+            AccountKind.FileStorage,
+            AccountKind.BlockBlobStorage,
             IgnoreCase = true)]
         public string Kind { get; set; }
 
@@ -133,6 +135,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             get; set;
         }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable Azure Files AAD Integration for the Storage account.")]
+        [ValidateNotNullOrEmpty]
+        [Alias(EnableFilesAadIntegrationAlias)]
+        public bool EnableAzureFilesAadIntegrationForSMB
+        {
+            get
+            {
+                return enableAzureFilesAadIntegrationForSMB.Value;
+            }
+            set
+            {
+                enableAzureFilesAadIntegrationForSMB = value;
+            }
+        }
+        private bool? enableAzureFilesAadIntegrationForSMB = null;
 
         [Parameter(
             Mandatory = false,
@@ -205,6 +225,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (NetworkRuleSet != null)
             {
                 createParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
+            }
+            if (enableAzureFilesAadIntegrationForSMB != null)
+            {
+                createParameters.EnableAzureFilesAadIntegration = enableAzureFilesAadIntegrationForSMB;
             }
             if (enableHierarchicalNamespace != null)
             {

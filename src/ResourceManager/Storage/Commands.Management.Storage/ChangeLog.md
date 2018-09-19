@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Support enable or disable FilesAadIntegration for SMB when create or update Storage account
+       - New-AzureRmStorageAccount
+       - Set-AzureRmStorageAccount
+* Support Kind FileStorage and BlockBlobStorage when create Storage account
+       - New-AzureRmStorageAccount
+* Remove get global Storage usage function, and can only get location Storage usage, so parameter "-Location" change from optional to required.
+       - Get-AzureRmStorageUsage
 
 ## Version 5.1.0
 * Upgrade to Azure Storage Client Library 9.3.0 
