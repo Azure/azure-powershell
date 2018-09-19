@@ -140,6 +140,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StaticAnalysis.Netcore", "t
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.RedisCache.Netcore", "src\ResourceManager\RedisCache\Commands.RedisCache\Commands.RedisCache.Netcore.csproj", "{06B4370D-D375-482C-AD23-CFDAC0176147}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ResourceGraph.Netcore", "src\ResourceManager\ResourceGraph\Commands.ResourceGraph\Commands.ResourceGraph.Netcore.csproj", "{7254D970-9EEF-4DF1-958F-51003F46736E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -977,6 +979,18 @@ Global
 		{06B4370D-D375-482C-AD23-CFDAC0176147}.Release|x64.ActiveCfg = Release|Any CPU
 		{06B4370D-D375-482C-AD23-CFDAC0176147}.Release|x64.Build.0 = Release|Any CPU
 		{06B4370D-D375-482C-AD23-CFDAC0176147}.Release|x86.ActiveCfg = Release|Any CPU
+		{7254D970-9EEF-4DF1-958F-51003F46736E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7254D970-9EEF-4DF1-958F-51003F46736E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7254D970-9EEF-4DF1-958F-51003F46736E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7254D970-9EEF-4DF1-958F-51003F46736E}.Debug|x64.Build.0 = Debug|Any CPU
+		{7254D970-9EEF-4DF1-958F-51003F46736E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7254D970-9EEF-4DF1-958F-51003F46736E}.Debug|x86.Build.0 = Debug|Any CPU
+		{7254D970-9EEF-4DF1-958F-51003F46736E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7254D970-9EEF-4DF1-958F-51003F46736E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7254D970-9EEF-4DF1-958F-51003F46736E}.Release|x64.ActiveCfg = Release|Any CPU
+		{7254D970-9EEF-4DF1-958F-51003F46736E}.Release|x64.Build.0 = Release|Any CPU
+		{7254D970-9EEF-4DF1-958F-51003F46736E}.Release|x86.ActiveCfg = Release|Any CPU
+		{7254D970-9EEF-4DF1-958F-51003F46736E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
