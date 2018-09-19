@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DeploymentManager.dll-Help.xml
-Module Name: Microsoft.Azure.Commands.DeploymentManager
+Module Name: AzureRM.DeploymentManager
 online version:
 schema: 2.0.0
 ---
@@ -53,11 +53,10 @@ This command restarts a rollout named ContosoRollout in the ContosoResourceGroup
 
 ### Example 3: Restart a rollout using the rollout object.
 ```powershell
-PS C:\> Get-AzureRmDeploymentManagerRollout -Rollout $rolloutObject 
+PS C:\> Get-AzureRmDeploymentManagerRollout -Rollout $rolloutObject
 ```
 
 This command restarts a rollout whose name and ResourceGroup match the Name and ResourceGroupName properties of the $rolloutObject, respectively.
-
 
 ## PARAMETERS
 
@@ -87,7 +86,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -102,7 +101,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -117,7 +116,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

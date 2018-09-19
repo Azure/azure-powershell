@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DeploymentManager.dll-Help.xml
-Module Name: Microsoft.Azure.Commands.DeploymentManager
+Module Name: AzureRM.DeploymentManager
 online version:
 schema: 2.0.0
 ---
@@ -17,6 +17,18 @@ Deletes a service in a service topology.
 Remove-AzureRmDeploymentManagerService [-ResourceGroupName] <String> [-ServiceTopologyName] <String>
  [-Name] <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ByServiceTopologyObject
+```
+Remove-AzureRmDeploymentManagerService [-Name] <String> [-ServiceTopology] <PSServiceTopologyResource> [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByServiceTopologyResourceId
+```
+Remove-AzureRmDeploymentManagerService [-Name] <String> [-ServiceTopologyResourceId] <String> [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -53,7 +65,7 @@ This command deletes a service named ContosoService1 in a service topology named
 
 ### Example 3: Delete a service using the service object.
 ```powershell
-PS C:\> Remove-AzureRmDeploymentManagerService -Service $serviceObject 
+PS C:\> Remove-AzureRmDeploymentManagerService -Service $serviceObject
 ```
 
 This command deletes a service whose name, service topology name and ResourceGroup match the Name, ServiceTopologyName and ResourceGroupName properties of the $serviceObject, respectively.
@@ -95,13 +107,13 @@ The name of the service.
 
 ```yaml
 Type: System.String
-Parameter Sets: Interactive
+Parameter Sets: Interactive, ByServiceTopologyObject, ByServiceTopologyResourceId
 Aliases:
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -131,7 +143,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -146,7 +158,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -165,6 +177,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ServiceTopology
+The service topology object in which the service should be created.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
+Parameter Sets: ByServiceTopologyObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServiceTopologyName
 The name of the service topology the service belongs to.
 
@@ -175,6 +202,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceTopologyResourceId
+The service topology resource identifier in which the service should be created.
+
+```yaml
+Type: System.String
+Parameter Sets: ByServiceTopologyResourceId
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

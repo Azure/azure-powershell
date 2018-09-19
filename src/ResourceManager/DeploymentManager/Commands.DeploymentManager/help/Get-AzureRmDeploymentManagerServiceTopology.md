@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DeploymentManager.dll-Help.xml
-Module Name: Microsoft.Azure.Commands.DeploymentManager
+Module Name: AzureRM.DeploymentManager
 online version:
 schema: 2.0.0
 ---
@@ -38,9 +38,9 @@ Specify the service topology by its name and the resource group name. Alternatel
 
 ## EXAMPLES
 
-### Example 1 
+### Example 1
 ```powershell
-PS C:\> Get-AzureRmDeploymentManagerServiceTopology -ResourceGroupName ContosoResourceGroup -Name ContosoServiceTopology 
+PS C:\> Get-AzureRmDeploymentManagerServiceTopology -ResourceGroupName ContosoResourceGroup -Name ContosoServiceTopology
 ```
 
 This command gets a service topology named ContosoServiceTopology in the ContosoResourceGroup.
@@ -54,7 +54,7 @@ This command gets a service topology named ContosoServiceTopology in the Contoso
 
 ### Example 3: Get a service topology using the service topology object.
 ```powershell
-PS C:\> Get-AzureRmDeploymentManagerService -ServiceTopology $serviceTopologyObject 
+PS C:\> Get-AzureRmDeploymentManagerService -ServiceTopology $serviceTopologyObject
 ```
 
 This command gets a service topology whose name and ResourceGroup match the Name and ResourceGroupName properties of the $serviceTopologyObject, respectively.
@@ -87,7 +87,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -102,7 +102,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -117,7 +117,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -132,7 +132,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

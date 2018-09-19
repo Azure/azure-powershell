@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DeploymentManager.dll-Help.xml
-Module Name: Microsoft.Azure.Commands.DeploymentManager
+Module Name: AzureRM.DeploymentManager
 online version:
 schema: 2.0.0
 ---
@@ -12,10 +12,25 @@ Creates a service in a service topology.
 
 ## SYNTAX
 
+### Interactive (Default)
 ```
-New-AzureRmDeploymentManagerService -ResourceGroupName <String> -Name <String> -ServiceTopologyName <String>
- -Location <String> -TargetLocation <String> -TargetSubscriptionId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmDeploymentManagerService [-ResourceGroupName] <String> [-ServiceTopologyName] <String>
+ -Name <String> -Location <String> -TargetLocation <String> -TargetSubscriptionId <String> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByServiceTopologyObject
+```
+New-AzureRmDeploymentManagerService [-ResourceGroupName] <String> -Name <String> -Location <String>
+ -TargetLocation <String> -TargetSubscriptionId <String> [-ServiceTopology] <PSServiceTopologyResource>
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByServiceTopologyResourceId
+```
+New-AzureRmDeploymentManagerService [-ResourceGroupName] <String> -Name <String> -Location <String>
+ -TargetLocation <String> -TargetSubscriptionId <String> [-ServiceTopologyId] <String> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,8 +43,9 @@ The cmdlet returns a Service object. You can modify this object locally, and the
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmDeploymentManagerService -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology -Name ContosoService1 -Location "Central US" -TargetLocation "East US" -TargetSubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
+PS C:\> New-AzureRmDeploymentManagerService -ResourceGroupName ContosoResourceGroup -ServiceTopologyName ContosoServiceTopology -Name ContosoService1 -Location "Central US" -TargetLocation "East US" -TargetSubscriptionId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ```
+
 Creates a new service with name ContosoService1 under service topology ContosoServiceTopology in Resource Group ContosoResourceGroup, in the location Central US. The TargetLocation property indicates that the service ContosoService1 should be deployed to the East US region in the subscription specified.
 
 ## PARAMETERS
@@ -88,7 +104,37 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceTopology
+The service topology object in which the service should be created.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
+Parameter Sets: ByServiceTopologyObject
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceTopologyId
+The service topology resource identifier in which the service should be created.
+
+```yaml
+Type: System.String
+Parameter Sets: ByServiceTopologyResourceId
+Aliases:
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -99,13 +145,28 @@ The name of the service topology this service belongs to.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Interactive
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+A hash table which represents resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -133,6 +194,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

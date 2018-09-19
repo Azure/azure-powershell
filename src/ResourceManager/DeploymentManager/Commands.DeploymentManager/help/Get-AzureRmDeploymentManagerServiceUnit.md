@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DeploymentManager.dll-Help.xml
-Module Name: Microsoft.Azure.Commands.DeploymentManager
+Module Name: AzureRM.DeploymentManager
 online version:
 schema: 2.0.0
 ---
@@ -16,6 +16,30 @@ Gets a service unit.
 ```
 Get-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceTopologyName] <String>
  [-ServiceName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByServiceObject
+```
+Get-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String>
+ [-Service] <PSServiceResource> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByServiceResourceId
+```
+Get-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String>
+ [-ServiceResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTopologyObjectAndServiceName
+```
+Get-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
+ [-ServiceTopology] <PSServiceTopologyResource> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByTopologyResourceAndServiceName
+```
+Get-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
+ [-ServiceTopologyResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -55,7 +79,7 @@ This command gets a service unit named ContosoService1Storage under a service Co
 
 ### Example 3: Get a service unit using the service unit object.
 ```powershell
-PS C:\> Get-AzureRmDeploymentManagerServiceUnit -ServiceUnit $serviceUnitObject 
+PS C:\> Get-AzureRmDeploymentManagerServiceUnit -ServiceUnit $serviceUnitObject
 ```
 
 This command gets a service unit whose name, service name, service topology name and ResourceGroup match the Name, ServiceName, ServiceTopologyName and ResourceGroupName properties of the $serviceUnitObject, respectively.
@@ -82,13 +106,13 @@ The name of the service unit.
 
 ```yaml
 Type: System.String
-Parameter Sets: Interactive
+Parameter Sets: Interactive, ByServiceObject, ByServiceResourceId, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName
 Aliases:
 
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -97,13 +121,13 @@ The resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Interactive
+Parameter Sets: Interactive, ByServiceObject, ByServiceResourceId, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -118,6 +142,21 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Service
+The service object in which the service unit should be created.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource
+Parameter Sets: ByServiceObject
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -127,11 +166,41 @@ The name of the service the service unit is part of.
 
 ```yaml
 Type: System.String
-Parameter Sets: Interactive
+Parameter Sets: Interactive, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName
 Aliases:
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceResourceId
+The service resource identifier in which the service unit should be created.
+
+```yaml
+Type: System.String
+Parameter Sets: ByServiceResourceId
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceTopology
+The service topology object in which the service unit should be created.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
+Parameter Sets: ByTopologyObjectAndServiceName
+Aliases:
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -143,6 +212,21 @@ The name of the service topology the service unit is part of.
 ```yaml
 Type: System.String
 Parameter Sets: Interactive
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceTopologyResourceId
+The service topology resource identifier in which the service unit should be created.
+
+```yaml
+Type: System.String
+Parameter Sets: ByTopologyResourceAndServiceName
 Aliases:
 
 Required: True
@@ -163,7 +247,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

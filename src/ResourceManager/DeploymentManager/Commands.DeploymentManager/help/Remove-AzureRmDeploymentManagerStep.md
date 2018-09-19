@@ -5,58 +5,56 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-AzureRmDeploymentManagerServiceTopology
+# Remove-AzureRmDeploymentManagerStep
 
 ## SYNOPSIS
-Deletes a service topology and all its resources.
+Deletes a step.
 
 ## SYNTAX
 
 ### Interactive (Default)
 ```
-Remove-AzureRmDeploymentManagerServiceTopology [-ResourceGroupName] <String> [-Name] <String> [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmDeploymentManagerStep [-ResourceGroupName] <String> [-Name] <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Remove-AzureRmDeploymentManagerServiceTopology [-ResourceId] <String> [-Force] [-PassThru]
+Remove-AzureRmDeploymentManagerStep [-ResourceId] <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Remove-AzureRmDeploymentManagerServiceTopology [-ServiceTopology] <PSServiceTopologyResource> [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmDeploymentManagerStep [-Step] <PSStepResource> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmDeploymentManagerServiceTopology** cmdlet deletes a service topology.
-
-Specify the service topology by its name and the resource group name. Alternately, you can provide the ServiceTopology object or the ResourceId.
+The **Remove-AzureRmDeploymentManagerStep** cmdlet deletes a step.
+Specify the step by its name and the resource group name. Alternately, you can provide the Step object or the ResourceId.
 
 ## EXAMPLES
-
-### Example 1
+### Example 1: Remove a step
 ```powershell
-PS C:\> Remove-AzureRmDeploymentManagerServiceTopology -ResourceGroupName ContosoResourceGroup -Name ContosoServiceTopology
+PS C:\> Remove-AzureRmDeploymentManagerStep -ResourceGroupName ContosoResourceGroup -Name ContosoService1WaitStep
 ```
 
-This command deletes a service topology named ContosoServiceTopology in the ContosoResourceGroup.
+This command deletes a step named ContosoService1WaitStep in ContosoResourceGroup.
 
-### Example 2: Delete a service topology using the resource identifier.
+### Example 2: Remove a step using the resource identifier
 ```powershell
-PS C:\> Remove-AzureRmDeploymentManagerServiceTopology -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/serviceTopologies/ContosoServiceTopology"
+PS C:\> Remove-AzureRmDeploymentManagerStep -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/steps/ContosoService1WaitStep"
 ```
 
-This command deletes a service topology named ContosoServiceTopology in the ContosoResourceGroup.
+This command deletes a step named ContosoService1WaitStep in ContosoResourceGroup.
 
-### Example 3: Delete a service topology using the service topology object.
+### Example 3: Remove a step using an object returned by New-AzureRmDeploymentManagerStep
 ```powershell
-PS C:\> Remove-AzureRmDeploymentManagerService -ServiceTopology $serviceTopologyObject
+PS C:\> Remove-AzureRmDeploymentManagerStep -Step $stepObject
 ```
 
-This command deletes a service topology whose name and ResourceGroup match the Name and ResourceGroupName properties of the $serviceTopologyObject, respectively.
+ This command deletes a step whose name and ResourceGroup match the Name and ResourceGroupName properties of the $stepObject, respectively.
 
 ## PARAMETERS
 
@@ -91,7 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the service topology.
+The name of the step.
 
 ```yaml
 Type: System.String
@@ -150,11 +148,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ServiceTopology
-The resource to be removed.
+### -Step
+The step to be removed.
 
 ```yaml
-Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource
 Parameter Sets: InputObject
 Aliases:
 
@@ -197,11 +195,14 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
+### System.String
+
+### Microsoft.Azure.Commands.DeploymentManager.Models.PSStepResource
 
 ## OUTPUTS
 
@@ -210,9 +211,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzureRmDeploymentManagerServiceTopology](./New-AzureRmDeploymentManagerServiceTopology.md)
-
-[Get-AzureRmDeploymentManagerServiceTopology](./Get-AzureRmDeploymentManagerServiceTopology.md)
-
-[Set-AzureRmDeploymentManagerServiceTopology](./Set-AzureRmDeploymentManagerServiceTopology.md)

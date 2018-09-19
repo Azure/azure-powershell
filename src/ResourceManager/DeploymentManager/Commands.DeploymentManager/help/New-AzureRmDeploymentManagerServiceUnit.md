@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DeploymentManager.dll-Help.xml
-Module Name: Microsoft.Azure.Commands.DeploymentManager
+Module Name: AzureRM.DeploymentManager
 online version:
 schema: 2.0.0
 ---
@@ -12,12 +12,51 @@ Creates a new service unit under a service in a service topology.
 
 ## SYNTAX
 
+### ByTopologyAndServiceNames (Default)
 ```
-New-AzureRmDeploymentManagerServiceUnit -ResourceGroupName <String> -ServiceTopologyName <String>
- -ServiceName <String> -Name <String> -Location <String> -TargetResourceGroup <String> -DeploymentMode <String>
- [-ParametersUri <String>] [-TemplateUri <String>] [-TemplateArtifactSourceRelativePath <String>]
- [-ParametersArtifactSourceRelativePath <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceTopologyName] <String>
+ [-ServiceName] <String> [-Name] <String> -Location <String> -TargetResourceGroup <String>
+ -DeploymentMode <String> [-ParametersUri <String>] [-TemplateUri <String>]
+ [-TemplateArtifactSourceRelativePath <String>] [-ParametersArtifactSourceRelativePath <String>]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### ByTopologyObjectAndServiceName
+```
+New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
+ -Location <String> -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>]
+ [-TemplateUri <String>] [-TemplateArtifactSourceRelativePath <String>]
+ [-ParametersArtifactSourceRelativePath <String>] [-Tag <Hashtable>]
+ [-ServiceTopology] <PSServiceTopologyResource> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByTopologyResourceAndServiceName
+```
+New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-ServiceName] <String> [-Name] <String>
+ -Location <String> -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>]
+ [-TemplateUri <String>] [-TemplateArtifactSourceRelativePath <String>]
+ [-ParametersArtifactSourceRelativePath <String>] [-Tag <Hashtable>] [-ServiceTopologyResourceId] <String>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByServiceObject
+```
+New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String> -Location <String>
+ -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>] [-TemplateUri <String>]
+ [-TemplateArtifactSourceRelativePath <String>] [-ParametersArtifactSourceRelativePath <String>]
+ [-Tag <Hashtable>] [-Service] <PSServiceResource> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByServiceResourceId
+```
+New-AzureRmDeploymentManagerServiceUnit [-ResourceGroupName] <String> [-Name] <String> -Location <String>
+ -TargetResourceGroup <String> -DeploymentMode <String> [-ParametersUri <String>] [-TemplateUri <String>]
+ [-TemplateArtifactSourceRelativePath <String>] [-ParametersArtifactSourceRelativePath <String>]
+ [-Tag <Hashtable>] [-ServiceResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,7 +153,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -159,7 +198,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Service
+The service object in which the service unit should be created.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceResource
+Parameter Sets: ByServiceObject
+Aliases:
+
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -170,11 +224,41 @@ The name of the service this service unit is a part of.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByTopologyAndServiceNames, ByTopologyObjectAndServiceName, ByTopologyResourceAndServiceName
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceResourceId
+The service resource identifier in which the service unit should be created.
+
+```yaml
+Type: System.String
+Parameter Sets: ByServiceResourceId
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceTopology
+The service topology object in which the service unit should be created.
+
+```yaml
+Type: Microsoft.Azure.Commands.DeploymentManager.Models.PSServiceTopologyResource
+Parameter Sets: ByTopologyObjectAndServiceName
+Aliases:
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -185,13 +269,43 @@ The name of the serivce topology this service unit is a part of.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByTopologyAndServiceNames
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceTopologyResourceId
+The service topology resource identifier in which the service unit should be created.
+
+```yaml
+Type: System.String
+Parameter Sets: ByTopologyResourceAndServiceName
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+A hash table which represents resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -232,6 +346,36 @@ The deployment mode to use when deploying the resources in the service unit.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
