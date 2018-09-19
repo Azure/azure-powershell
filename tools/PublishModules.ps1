@@ -156,7 +156,7 @@ function Get-RollupModules {
         if ($Scope -eq 'All' -or $Scope -eq 'Latest' -or $Scope -eq 'NetCore') {
             if ($IsNetCore) {
                 # For .NetCore publish AzureRM.Netcore
-                $targets += "$PSScriptRoot\AzureRM.Netcore"
+                $targets += "$PSScriptRoot\Az"
             } else {
                 $targets += "$PSScriptRoot\AzureRM"
             }
@@ -237,20 +237,22 @@ function Get-ClientModules {
 
         $packageFolder, $resourceManagerRootFolder = Get-Directories -BuildConfig $BuildConfig -Scope $Scope
 
-        $NetSuffix = "";
-        if ($IsNetCore) {
-            $NetSuffix = ".Netcore"
-        }
-
         # Everyone but Storage
         $AllScopes = @('Stack', 'All', 'Latest', 'NetCore')
         if ($Scope -in $AllScopes -or $PublishLocal) {
-            $targets += "$resourceManagerRootFolder\AzureRM.Profile$NetSuffix"
+            if ($Scope -eq "Netcore")
+            {
+                $targets += "$resourceManagerRootFolder\Az.Profile"
+            }
+            else
+            {
+                $targets += "$resourceManagerRootFolder\AzureRM.Profile"
+            }
         }
 
-        $StorageScopes = @('All', 'Latest', 'Stack', 'AzureStorage', 'NetCore')
+        $StorageScopes = @('All', 'Latest', 'Stack', 'AzureStorage')
         if ($Scope -in $StorageScopes) {
-            $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage$NetSuffix"
+            $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
         }
 
         # Handle things which don't support netcore yet.
@@ -266,13 +268,13 @@ function Get-ClientModules {
 
             # Get all module directories
             if ($IsNetCore) {
-                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.FullName.EndsWith(".Netcore")}
+                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.Name -like "*Az.*"}
             } else {
-                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.*, *.Netcore
+                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.Name -like "*Azure*"}
             }
 
             # We should ignore these, they are handled separatly.
-            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'AzureRM.Profile.Netcore', 'Azure.Storage.Netcore', 'AzureRM.Netcore')
+            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'Az.Profile', 'Az')
 
             # Add all modules for AzureRM for Azure
             foreach ($module in $resourceManagerModules) {
@@ -668,7 +670,20 @@ function Add-Module {
         $moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
         $file = Get-Item $moduleSourcePath
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
+        
+        $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
+        if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null) {
+            $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
+        }
 
+        if (Find-Module -Name $moduleName -Repository $TempRepo -RequiredVersion $moduleVersion -AllowPrerelease -ErrorAction SilentlyContinue)
+        {
+            Write-Output "Existing module found: $moduleName"
+            $moduleNupkgPath = Join-Path -Path $TempRepoPath -ChildPath ($moduleName + "." + $moduleVersion + ".nupkg")
+            Write-Output "Deleting the module: $moduleNupkgPath"
+            Remove-Item -Path $moduleNupkgPath -Force
+        }
+        
         Write-Output "Publishing the module $moduleName"
         Publish-Module -Path $Path -Repository $TempRepo -Force | Out-Null
         Write-Output "$moduleName published"
@@ -680,11 +695,6 @@ function Add-Module {
             return
         }
         Write-Output "No root module found, creating"
-
-        $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
-        if ((!$IsNetCore) -and ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null)) {
-            $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
-        }
 
         Write-Output "Changing to local repository directory for module modifications $TempRepoPath"
         Push-Location $TempRepoPath

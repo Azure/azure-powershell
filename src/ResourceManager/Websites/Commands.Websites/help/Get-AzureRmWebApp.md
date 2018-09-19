@@ -21,7 +21,7 @@ Get-AzureRmWebApp [[-ResourceGroupName] <String>] [[-Name] <String>] [-DefaultPr
 
 ### S2
 ```
-Get-AzureRmWebApp [-AppServicePlan] <AppServicePlan> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmWebApp [-AppServicePlan] <PSAppServicePlan> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ This command gets the Web App named ContosoSite that belongs to the resource gro
 App Service Plan object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.AppServicePlan
+Type: Microsoft.Azure.Commands.WebApps.Models.WebApp.PSAppServicePlan
 Parameter Sets: S2
 Aliases:
 
@@ -125,7 +125,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

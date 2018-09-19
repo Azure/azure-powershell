@@ -29,6 +29,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Internal.Subscriptions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Commands.Network.Test
 {
@@ -122,12 +123,15 @@ namespace Commands.Network.Test
                     "ScenarioTests\\Common.ps1",
                     psScriptPath,
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
                     _helper.GetRMModulePath("AzureRM.Insights.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"),
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     _helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
+#if !NETSTANDARD
                     _helper.RMStorageDataPlaneModule,
+#else
+                    _helper.RMStorageModule,
+#endif
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 

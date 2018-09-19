@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// Returns the auditing policy of a specific server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerThreatDetectionPolicy", SupportsShouldProcess = true), 
-        OutputType(typeof(ServerThreatDetectionPolicyModel))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerThreatDetectionPolicy", SupportsShouldProcess = true), OutputType(typeof(ServerThreatDetectionPolicyModel))]
     public class AzureRmSqlServerThreatDetectionPolicy : SqlServerThreatDetectionCmdletBase
     {
         /// <summary>

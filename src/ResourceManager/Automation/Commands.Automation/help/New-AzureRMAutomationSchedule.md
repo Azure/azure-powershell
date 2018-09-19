@@ -379,10 +379,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), Description (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), TimeZone (ByPropertyName)
 
 ### System.DateTimeOffset
-Parameters: StartTime (ByPropertyName)
 
 ## OUTPUTS
 

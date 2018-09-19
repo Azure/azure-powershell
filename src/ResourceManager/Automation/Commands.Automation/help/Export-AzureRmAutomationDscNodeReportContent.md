@@ -180,10 +180,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Guid
-Parameters: NodeId (ByPropertyName), ReportId (ByPropertyName)
 
 ### System.String
-Parameters: AutomationAccountName (ByPropertyName), OutputFolder (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

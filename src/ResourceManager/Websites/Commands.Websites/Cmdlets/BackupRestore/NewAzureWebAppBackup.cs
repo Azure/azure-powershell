@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// Creates a backup of an Azure Web App
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmWebAppBackup"), OutputType(typeof(AzureWebAppBackup))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppBackup"), OutputType(typeof(AzureWebAppBackup))]
     public class NewAzureWebAppBackup : WebAppOptionalSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.", ValueFromPipelineByPropertyName = true)]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             BackupRequest request = new BackupRequest()
             {
                 StorageAccountUrl = this.StorageAccountUrl,
-                BackupRequestName = this.BackupName,
+                BackupName = this.BackupName,
                 Databases = this.Databases
             };
             var backup = WebsitesClient.BackupSite(ResourceGroupName, Name, Slot, request);

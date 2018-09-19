@@ -77,17 +77,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The default policy definition API version.
         /// </summary>
-        public static readonly string PolicyDefinitionApiVersion = "2018-03-01";
+        public static readonly string PolicyDefinitionApiVersion = "2018-05-01";
 
         /// <summary>
         /// The default policy set definition API version.
         /// </summary>
-        public static readonly string PolicySetDefintionApiVersion = "2018-03-01";
+        public static readonly string PolicySetDefintionApiVersion = "2018-05-01";
 
         /// <summary>
         /// The default policy assignment API version.
         /// </summary>
-        public static readonly string PolicyAssignmentApiVersion = "2018-03-01";
+        public static readonly string PolicyAssignmentApiVersion = "2018-05-01";
 
         /// <summary>
         /// The default providers API version.
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The default deployment operation API version.
         /// </summary>
-        public static readonly string DeploymentOperationApiVersion = "2016-02-01";
+        public static readonly string DeploymentOperationApiVersion = "2018-05-01";
 
         /// <summary>
         /// The move action.

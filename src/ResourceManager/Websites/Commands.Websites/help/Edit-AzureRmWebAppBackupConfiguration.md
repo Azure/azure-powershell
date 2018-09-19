@@ -23,7 +23,7 @@ Edit-AzureRmWebAppBackupConfiguration [-FrequencyInterval] <Int32> [-FrequencyUn
 ### FromWebApp
 ```
 Edit-AzureRmWebAppBackupConfiguration [-FrequencyInterval] <Int32> [-FrequencyUnit] <String>
- [-RetentionPeriodInDays] <Int32> [[-StartTime] <DateTime>] [-KeepAtLeastOneBackup] [-WebApp] <Site>
+ [-RetentionPeriodInDays] <Int32> [[-StartTime] <DateTime>] [-KeepAtLeastOneBackup] [-WebApp] <PSSite>
  [-DefaultProfile <IAzureContextContainer>] [-StorageAccountUrl] <String>
  [[-Databases] <DatabaseBackupSetting[]>] [<CommonParameters>]
 ```
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Microsoft.Azure.Management.WebSites.Models.Site
+Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
 Parameter Sets: FromWebApp
 Aliases:
 
@@ -221,22 +221,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Int32
-Parameters: FrequencyInterval (ByPropertyName), RetentionPeriodInDays (ByPropertyName)
 
 ### System.String
-Parameters: FrequencyUnit (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Slot (ByPropertyName), StorageAccountUrl (ByPropertyName)
 
 ### System.DateTime
-Parameters: StartTime (ByPropertyName)
 
 ### System.Management.Automation.SwitchParameter
-Parameters: KeepAtLeastOneBackup (ByPropertyName)
 
 ### Microsoft.Azure.Management.WebSites.Models.Site
 Parameters: WebApp (ByValue)
 
 ### Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]
-Parameters: Databases (ByPropertyName)
 
 ## OUTPUTS
 

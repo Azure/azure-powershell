@@ -22,10 +22,8 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Update attribute of a key vault key.
     /// </summary>
-    [Alias("Set-AzureKeyVaultKey", "Set-AzureKeyVaultKeyAttribute")]
-    [Cmdlet(VerbsData.Update, "AzureKeyVaultKey",
-        SupportsShouldProcess = true, 
-        DefaultParameterSetName = DefaultParameterSet)]
+    [Alias("Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey", "Set-" + ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKeyAttribute")]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultKey",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
     public class UpdateAzureKeyVaultKey : KeyVaultCmdletBase
     {

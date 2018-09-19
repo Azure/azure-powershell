@@ -13,15 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSnapshot"), OutputType(typeof(AzureWebAppSnapshot))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppSnapshot"), OutputType(typeof(AzureWebAppSnapshot))]
     public class GetAzureWebAppSnapshot : WebAppOptionalSlotBaseCmdlet
     {
         public override void ExecuteCmdlet()

@@ -24,7 +24,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
 .EXAMPLE
 
-    PS C:\> Get-AzsComputeQuota
+    PS C:\> Get-AzsComputeQuota -Location 'local'
 
     Get all compute quotas at the specified location.
 
@@ -35,8 +35,10 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     Get a specific compute quota.
 
 #>
+using module '..\CustomObjects\ComputeQuotaObject.psm1'
+
 function Get-AzsComputeQuota {
-    [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.Quota])]
+    [OutputType([ComputeQuotaObject])]
     [CmdletBinding(DefaultParameterSetName = 'List')]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Get', Position = 0)]
@@ -69,8 +71,6 @@ function Get-AzsComputeQuota {
 
     Process {
 
-
-
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
         }
@@ -95,40 +95,12 @@ function Get-AzsComputeQuota {
 
             $Location = $ArmResourceIdParameterValues['locationName']
             $Name = $ArmResourceIdParameterValues['quotaName']
-        } elseif ( -not $PSBoundParameters.ContainsKey('Location')) {
+        } elseif ([System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
         }
 
-        $filterInfos = @(
-            @{
-                'Type'     = 'powershellWildcard'
-                'Value'    = $Name
-                'Property' = 'Name'
-            })
-        $applicableFilters = Get-ApplicableFilters -Filters $filterInfos
-        if ($applicableFilters | Where-Object { $_.Strict }) {
-            Write-Verbose -Message 'Performing server-side call ''Get-AzsComputeQuota -'''
-            $serverSideCall_params = @{
-
-            }
-
-            $serverSideResults = Get-AzsComputeQuota @serverSideCall_params
-            foreach ($serverSideResult in $serverSideResults) {
-                $valid = $true
-                foreach ($applicableFilter in $applicableFilters) {
-                    if (-not (Test-FilteredResult -Result $serverSideResult -Filter $applicableFilter.Filter)) {
-                        $valid = $false
-                        break
-                    }
-                }
-                if ($valid) {
-                    $serverSideResult
-                }
-            }
-            return
-        }
-
         if ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+            $Name = Get-ResourceNameSuffix -ResourceName $Name
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $ComputeAdminClient.'
             $TaskResult = $ComputeAdminClient.Quotas.GetWithHttpMessagesAsync($Location, $Name)
         } elseif ('List' -eq $PsCmdlet.ParameterSetName) {
@@ -143,7 +115,7 @@ function Get-AzsComputeQuota {
             $GetTaskResult_params = @{
                 TaskResult = $TaskResult
             }
-            Get-TaskResult @GetTaskResult_params
+            Get-TaskResult @GetTaskResult_params | ForEach-Object { ConvertTo-ComputeQuota -Quota $_ }
         }
     }
 
@@ -154,4 +126,3 @@ function Get-AzsComputeQuota {
         }
     }
 }
-

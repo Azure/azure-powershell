@@ -35,7 +35,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmRouteConfig", SupportsShouldProcess = true), OutputType(typeof(PSRoute))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteConfig", SupportsShouldProcess = true), OutputType(typeof(PSRoute))]
     public partial class NewAzureRmRouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -81,4 +81,3 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
-
