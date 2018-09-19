@@ -82,6 +82,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.MultiInstanceSettings", "PSMultiInstanceSettings"},
             {"Microsoft.Azure.Batch.NameValuePair", "PSNameValuePair"},
             {"Microsoft.Azure.Batch.NetworkConfiguration", "PSNetworkConfiguration"},
+            {"Microsoft.Azure.Batch.NodeAgentInformation", "PSNodeAgentInformation"},
             {"Microsoft.Azure.Batch.NetworkSecurityGroupRule", "PSNetworkSecurityGroupRule"},
             {"Microsoft.Azure.Batch.NodeAgentSku", "PSNodeAgentSku"},
             {"Microsoft.Azure.Batch.NodeCounts", "PSNodeCounts"},

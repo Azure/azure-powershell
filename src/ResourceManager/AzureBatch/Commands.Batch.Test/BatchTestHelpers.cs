@@ -694,7 +694,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// Builds a TaskCountsGetResponse object
         /// </summary>
         public static AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders> CreateTaskCountsGetResponse(
-            int active, int running, int succeeded, int failed, ProxyModels.TaskCountValidationStatus validationStatus)
+            int active, int running, int succeeded, int failed)
         {
             var response = new AzureOperationResponse<ProxyModels.TaskCounts, ProxyModels.JobGetTaskCountsHeaders>();
             response.Response = new HttpResponseMessage(HttpStatusCode.OK);
@@ -705,7 +705,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
             taskCounts.Succeeded = succeeded;
             taskCounts.Failed = failed;
             taskCounts.Completed = succeeded + failed;
-            taskCounts.ValidationStatus = validationStatus;
 
             response.Body = taskCounts;
 

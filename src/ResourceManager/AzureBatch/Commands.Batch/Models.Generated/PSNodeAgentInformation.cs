@@ -29,12 +29,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSTaskCounts
+    public partial class PSNodeAgentInformation
     {
         
-        internal Microsoft.Azure.Batch.TaskCounts omObject;
+        internal Microsoft.Azure.Batch.NodeAgentInformation omObject;
         
-        internal PSTaskCounts(Microsoft.Azure.Batch.TaskCounts omObject)
+        internal PSNodeAgentInformation(Microsoft.Azure.Batch.NodeAgentInformation omObject)
         {
             if ((omObject == null))
             {
@@ -43,43 +43,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public int Active
+        public System.DateTime LastUpdateTime
         {
             get
             {
-                return this.omObject.Active;
+                return this.omObject.LastUpdateTime;
             }
         }
         
-        public int Completed
+        public string Version
         {
             get
             {
-                return this.omObject.Completed;
-            }
-        }
-        
-        public int Failed
-        {
-            get
-            {
-                return this.omObject.Failed;
-            }
-        }
-        
-        public int Running
-        {
-            get
-            {
-                return this.omObject.Running;
-            }
-        }
-        
-        public int Succeeded
-        {
-            get
-            {
-                return this.omObject.Succeeded;
+                return this.omObject.Version;
             }
         }
     }
