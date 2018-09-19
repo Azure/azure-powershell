@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.1.0'
+ModuleVersion = '5.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -131,22 +131,16 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Upgrade to Azure Storage Client Library 9.3.0 
-* Support Immutability Policy in AzureRm.Storage 
-    - Remove-AzureRmStorageAccountNetworkRule
-    - Get-AzureRmStorageContainer
-    - Update-AzureRmStorageContainer
-    - New-AzureRmStorageContainer
-    - Remove-AzureRmStorageContainer
-    - Add-AzureRmStorageContainerLegalHold
-    - Remove-AzureRmStorageContainerLegalHold
-    - Set-AzureRmStorageContainerImmutabilityPolicy
-    - Get-AzureRmStorageContainerImmutabilityPolicy
-    - Remove-AzureRmStorageContainerImmutabilityPolicy
-    - Lock-AzureRmStorageContainerImmutabilityPolicy'
+        ReleaseNotes = '* Support enable or disable FilesAadIntegration for SMB when create or update Storage account
+       - New-AzureRmStorageAccount
+       - Set-AzureRmStorageAccount
+* Support Kind FileStorage and BlockBlobStorage when create Storage account
+       - New-AzureRmStorageAccount
+* Remove get global Storage usage function, and can only get location Storage usage, so parameter ""Location"" change from optional to required.
+       - Get-AzureRmStorageUsage'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'Preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false

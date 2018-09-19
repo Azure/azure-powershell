@@ -124,13 +124,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAzureStorageSubscriptionUsage()
-        {
-            TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureStorageSubscriptionUsage");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureStorageLocationUsage()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureStorageLocationUsage");
@@ -141,6 +134,20 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestAzureStorageAccountManagementPolicy()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-AzureStorageAccountManagementPolicy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountFileStorage()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureStorageAccountFileStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureStorageAccountBlockBlobStorage()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureStorageAccountBlockBlobStorage");
         }
     }
 }
