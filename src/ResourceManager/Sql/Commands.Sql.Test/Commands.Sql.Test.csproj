@@ -984,6 +984,9 @@
     <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceProtectorTests\TestSetGetManagedInstanceEncryptionProtectorServiceManagedPiping.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceProtectorTests\TestSetGetManagedInstanceEncryptionProtectorByokFailsWithoutKeyId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
