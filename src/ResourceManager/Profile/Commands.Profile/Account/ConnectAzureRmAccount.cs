@@ -277,8 +277,7 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     var file = AzureSession.Instance.ARMProfileFile;
                     var directory = AzureSession.Instance.ARMProfileDirectory;
-                    WriteWarning("The provided service principal secret will be included in the " + file + " file found in the user profile " +
-                                 "( " + directory + " ). Please ensure that this directory has appropriate protections.");
+                    WriteWarning(string.Format(Resources.ServicePrincipalWarning, file, directory));
                 }
             }
 #endif
