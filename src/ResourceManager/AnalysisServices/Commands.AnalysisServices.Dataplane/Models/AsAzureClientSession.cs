@@ -124,7 +124,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
 
             foreach (var env in availableEnvironments)
             {
-                if (environment.Name.EndsWith(env.AzureAnalysisServicesEndpointSuffix))
+                var endpointSuffix = env.GetEndpoint(AzureEnvironment.ExtendedEndpoint.AnalysisServicesEndpointSuffix);
+
+                if (environment.Name.EndsWith(endpointSuffix))
                 {
                     return env.ActiveDirectoryAuthority;
                 }
