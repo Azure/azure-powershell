@@ -20,23 +20,20 @@ Add-AzureRmSqlManagedInstanceKeyVaultKey [-ResourceGroupName] <String> [-Managed
 
 ### AddAzureRmSqlManagedInstanceKeyVaultKeyInputObjectParameterSet
 ```
-Add-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstance <AzureSqlManagedInstanceModel> [-KeyId] <String>
+Add-AzureRmSqlManagedInstanceKeyVaultKey [-ManagedInstance] <AzureSqlManagedInstanceModel> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet
 ```
-Add-AzureRmSqlManagedInstanceKeyVaultKey -ManagedInstanceResourceId <String> [-KeyId] <String>
+Add-AzureRmSqlManagedInstanceKeyVaultKey [-ManagedInstanceResourceId] <String> [-KeyId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Add-AzureRmSqlManagedInstanceKeyVaultKey cmdlet adds a key vault key to the provided Managed Instance. The managed instance must have 'get, wrapKey, unwrapKey' permissions to the vault, use the following script to grant permission to the managed instance.
-
-```powershell
-PS C:\> $managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $managedInstance.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
-```
+$managedInstance = Get-AzureRmSqlManagedInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoVault -ObjectId $managedInstance.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
 
 ## EXAMPLES
 
@@ -102,6 +99,7 @@ Type                   : AzureKeyVault
 ```
 
 This command adds the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' to the SQL managed instance named 'ContosoManagedInstanceName' in the resource group 'ContosoResourceGroup'. 
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -128,7 +126,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -140,10 +138,10 @@ The managed instance input object
 ```yaml
 Type: AzureSqlManagedInstanceModel
 Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyInputObjectParameterSet
-Aliases:
+Aliases: InputObject
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -155,7 +153,7 @@ The managed instance name
 ```yaml
 Type: String
 Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyDefaultParameterSet
-Aliases: InputObject
+Aliases:
 
 Required: True
 Position: 1
@@ -173,7 +171,7 @@ Parameter Sets: AddAzureRmSqlManagedInstanceKeyVaultKeyResourceIdParameterSet
 Aliases: ResourceId
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

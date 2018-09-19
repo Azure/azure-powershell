@@ -945,6 +945,9 @@
     <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceKeyVaultKeyTests\TestManagedInstanceKeyVaultKey.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceKeyVaultKeyTests\TestManagedInstanceKeyVaultKeyCI.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceKeyVaultKeyTests\TestManagedInstanceKeyVaultKeyInputObject.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -952,6 +955,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceKeyVaultKeyTests\TestManagedInstanceKeyVaultKeyPiping.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceProtectorTests\TestSetGetManagedInstanceEncryptionProtectorCI.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceProtectorTests\TestSetGetManagedInstanceEncryptionProtectorByok.json">

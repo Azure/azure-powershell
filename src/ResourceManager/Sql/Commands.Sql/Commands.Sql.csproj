@@ -312,7 +312,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TransparentDataEncryption\Cmdlet\AddAzureRmRmSqlManagedInstanceKeyVaultKey.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\AddAzureRmSqlManagedInstanceKeyVaultKey.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlRmManagedInstanceTransparentDataEncryptionProtectorBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureRmSqlManagedInstanceKeyVaultKey.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\SetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector.cs" />
