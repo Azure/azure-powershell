@@ -21,6 +21,25 @@ if($PSEdition -eq 'Desktop' -and (Test-Path $preloadPath))
     catch {}
 }
 
+$netCorePath = (Join-Path $PSScriptRoot -ChildPath "NetCoreAssemblies")
+if($PSEdition -eq 'Core' -and (Test-Path $netCorePath))
+{
+    try 
+    {
+        $loadedAssemblies = ([System.AppDomain]::CurrentDomain.GetAssemblies() | %{New-Object -TypeName System.Reflection.AssemblyName -ArgumentList $_.FullName} )
+        Get-ChildItem -Path $netCorePath -Filter "*.dll" | ForEach-Object {  
+            $assemblyName = ([System.Reflection.AssemblyName]::GetAssemblyName($_.FullName))
+            $matches = ($loadedAssemblies | Where-Object {$_.Name -eq $assemblyName.Name})
+            if (-not $matches)
+            {
+                [System.Reflection.Assembly]::Load([System.IO.File]::ReadAllBytes($_.FullName))
+            }
+        }
+    }
+    catch {}
+}
+
+
 %IMPORTED-DEPENDENCIES%
 
 if (Test-Path -Path "$PSScriptRoot\StartupScripts")

@@ -36,9 +36,17 @@
   <ItemGroup>
     <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Newtonsoft.Json.9.dll"/>
     <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Newtonsoft.Json.10.dll"/>
+    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"/>
+    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"/>
   </ItemGroup>
 
-    <ItemGroup>
+  <ItemGroup>
+    <NetCoreAssemblies Include="$(ProjectDir)..\..\..\lib\netcore\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"/>
+    <NetCoreAssemblies Include="$(ProjectDir)..\..\..\lib\netcore\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"/>
+  </ItemGroup>
+
+
+  <ItemGroup>
     <StorageDependencies Include="$(ProjectDir)..\..\..\lib\Microsoft.WindowsAzure.Storage.dll"/>
     <StorageDependencies Include="$(ProjectDir)..\..\..\lib\Microsoft.WindowsAzure.Storage.DataMovement.dll"/>
   </ItemGroup>
@@ -81,6 +89,7 @@
 
   <Target Name="CopyFiles" AfterTargets="Build">
     <Copy SourceFiles="@(PreLoadAssemblies)" DestinationFolder="$(TargetDir)\PreloadAssemblies" />
+    <Copy SourceFiles="@(NetCoreAssemblies)" DestinationFolder="$(TargetDir)\NetCoreAssemblies" />
     <Copy SourceFiles="@(StorageDependencies)" DestinationFolder="$(TargetDir)" />
   </Target>
 </Project>

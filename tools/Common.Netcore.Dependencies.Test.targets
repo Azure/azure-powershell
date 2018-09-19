@@ -42,13 +42,15 @@
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.4" IncludeAssets="All" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="[10.0.3]" />
-  </ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Client.ActiveDirectory" Version="3.19.2">
+</ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.0-rc.1" IncludeAssets="All" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-  </ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Client.ActiveDirectory" Version="3.19.2">
+ </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
