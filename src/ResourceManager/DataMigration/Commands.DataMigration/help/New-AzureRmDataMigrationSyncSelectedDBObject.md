@@ -1,38 +1,41 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/New-AzureRmDataMigrationService
+Module Name: AzureRM.DataMigration
+online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmDataMigrationSyncSelectedDB
+# New-AzureRmDataMigrationSyncSelectedDBObject
 
 ## SYNOPSIS
-Creates a database input object for the sync scenarios with information about source nad target databases.
+Creates a database info object specific to the sync scenario to be used for a migration task.
 
 ## SYNTAX
 
 ```
-New-AzureRmDataMigrationSyncSelectedDB -TargetDatabaseName <String> -SchemaName <String> -TableMap <Hashtable>
- [-MigrationSetting <Hashtable>] [-SourceSetting <Hashtable>] [-TargetSetting <Hashtable>]
- -SourceDatabaseName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmDataMigrationSyncSelectedDBObject -TargetDatabaseName <String> -SchemaName <String>
+ -TableMap <Hashtable> [-MigrationSetting <Hashtable>] [-SourceSetting <Hashtable>]
+ [-TargetSetting <Hashtable>] -SourceDatabaseName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmDataMigrationSyncSelectedDB cmdlet creates a database info object specific to the sync scenario which contains information about source and target databases.  
+
+The New-AzureRmDataMigrationSyncSelectedDB cmdlet creates a database info object specific to the sync scenario which contains information about source and target databases.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $tableMap = New-Object 'system.collections.generic.dictionary[string,string]'
+PS C:\> $tableMap = New-Object 'system.collections.hashtable'
 	$tableMap.Add("dbo.TestTable1", "dbo.TestTable1")
 	$tableMap.Add("dbo.TestTable2","dbo.TestTable2")
 
-	$selectedDbs = New-AzureRmDmsSqlServerSqlDbSyncSelectedDB 
+	$selectedDbs = New-AzureRmDmsSyncSelectedDBObject 
 		-TargetDatabaseName DatabaseName `
 		-SchemaName dbo `
 		-TableMap $tableMap `
-		-Name DatabaseName
+		-SourceDatabaseName DatabaseName
 ```
 
 This example creates a database metadata object describing the migrating settings for $DatabaseName to database $DatabaseName.  
@@ -43,7 +46,7 @@ This example creates a database metadata object describing the migrating setting
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -58,9 +61,9 @@ Accept wildcard characters: False
 Migration settings which tune the migration behavior
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -73,9 +76,9 @@ Accept wildcard characters: False
 Schema name to be migrated
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -85,10 +88,12 @@ Accept wildcard characters: False
 ```
 
 ### -SourceDatabaseName
-The name of the source database.```yaml
-Type: String
+The name of the source database.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -101,9 +106,9 @@ Accept wildcard characters: False
 Source settings to tune source endpoint migration behavior
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -116,9 +121,9 @@ Accept wildcard characters: False
 Mapping of source to target tables
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -131,9 +136,9 @@ Accept wildcard characters: False
 The name of the target database
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -146,9 +151,9 @@ Accept wildcard characters: False
 Target settings to tune target endpoint migration behavior
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -171,4 +176,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -20,9 +20,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationSyncSelectedDB"), OutputType(typeof(MigrateSqlServerSqlDbSyncTaskInput))]
-    [Alias("New-AzureRmDmsSyncSelectedDB")]
-    public class NewDataMigrationSyncSelectedDB : DataMigrationCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationSyncSelectedDBObject"), OutputType(typeof(MigrateSqlServerSqlDbSyncTaskInput))]
+    [Alias("New-AzureRmDmsSyncSelectedDBObject", "New-AzureRmDmsSyncSelectedDB", "New-AzureRmDataMigrationSyncSelectedDB")]
+    public class NewDataMigrationSyncSelectedDBObject : DataMigrationCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             HelpMessage = "The name of the source database."
         )]
         [ValidateNotNullOrEmpty]
+        [Alias("Name")]
         public string SourceDatabaseName { get; set; }
 
         public override void ExecuteCmdlet()
