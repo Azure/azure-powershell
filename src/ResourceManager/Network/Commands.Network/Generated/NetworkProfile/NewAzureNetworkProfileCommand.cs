@@ -72,10 +72,11 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
 
+        [Alias("ContainerNetworkInterfaceConfiguration")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public List<PSContainerNetworkInterfaceConfiguration> ContainerNetworkInterfaceConfiguration { get; set; }
+        public PSContainerNetworkInterfaceConfiguration[] ContainerNicConfig { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -136,7 +137,7 @@ namespace Microsoft.Azure.Commands.Network
             var vNetworkProfile = new PSNetworkProfile
             {
                 Location = this.Location,
-                ContainerNetworkInterfaceConfigurations = this.ContainerNetworkInterfaceConfiguration,
+                ContainerNetworkInterfaceConfigurations = new List<PSContainerNetworkInterfaceConfiguration>(this.ContainerNicConfig),
             };
 
             NormalizeChildIds(vNetworkProfile);

@@ -24,25 +24,23 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-
 namespace Microsoft.Azure.Commands.Network
 {
+    using Microsoft.Azure.Commands.Network.Models;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.Management.Network;
+    using System.Linq;
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkProfile", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public partial class RemoveAzureNetworkProfile : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             HelpMessage = "The resource group name of the network profile.",
+            ParameterSetName = "RemoveByName",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -52,16 +50,35 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the network profile.",
+            ParameterSetName = "RemoveByNameParameterSet",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            HelpMessage = "The Azure resource manager resource ID of the network profile.",
+            ParameterSetName = "RemoveByResourceIdParameterSet",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Network profile object.",
+            ParameterSetName = "RemoveByInputObjectParameterSet",
+            ValueFromPipeline = true)]
+        [ValidateNotNull]
+        public PSNetworkProfile InputObject { get; set; }
+
+        [Parameter(
             Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to delete resource")]
+            HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        [Parameter(
+            Mandatory = false, 
+            HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(
@@ -71,6 +88,19 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            if (this.IsParameterBound(p => p.InputObject))
+            {
+                this.ResourceGroupName = InputObject.ResourceGroupName;
+                this.Name = InputObject.Name;
+            }
+
+            if (this.IsParameterBound(p => p.ResourceId))
+            {
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
+            }
 
             ConfirmAction(
                 Force.IsPresent,
