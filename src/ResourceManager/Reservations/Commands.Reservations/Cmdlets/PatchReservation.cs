@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [ValidateNotNull]
         public PSReservation Reservation { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = "Name of Reservation")]
         [ValidateNotNull]
         public string Name { get; set; }
 
