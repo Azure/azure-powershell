@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationService", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Stop-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsService")]
-    public class StopDataMingrationService : DataMigrationCmdlet
+    public class StopDataMigrationService : DataMigrationCmdlet
     {
         [Parameter(
             Position = 0,

@@ -404,11 +404,12 @@ function Test-MigrateSqlSqlDBMi
 		Assert-AreEqual $targetDbName $selectedDbs[0].RestoreDatabaseName
 		Assert-AreEqual $backupFileShare.Path $selectedDbs[0].BackupFileShare.Path
 
-        $selectedLogins = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MI_LOGINS")
-        $selectedLogins = $selectedLogins -split ","
+        #Migrating Logins and AgentJobs
+        #$selectedLogins = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MI_LOGINS")
+        #$selectedLogins = $selectedLogins -split ","
 
-        $selectedJobs = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MI_AGENTJOBS")
-        $selectedJobs = $selectedJobs -split ","
+        #$selectedJobs = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MI_AGENTJOBS")
+        #$selectedJobs = $selectedJobs -split ","
 
 		$migTask = New-AzureRmDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
 		  -ResourceGroupName $rg.ResourceGroupName `
@@ -428,8 +429,8 @@ function Test-MigrateSqlSqlDBMi
 
 		Assert-AreEqual $taskName $task[0].Name
 		Assert-AreEqual $backupFileShare.Path $task.ProjectTask.Properties.Input.BackupFileShare.Path
-		Assert-AreEqual $selectedJobs[0] $task.ProjectTask.Properties.Input.SelectedAgentJobs[0]
-		Assert-AreEqual $selectedLogins[0] $task.ProjectTask.Properties.Input.SelectedLogins[0]
+		#Assert-AreEqual $selectedJobs[0] $task.ProjectTask.Properties.Input.SelectedAgentJobs[0]
+		#Assert-AreEqual $selectedLogins[0] $task.ProjectTask.Properties.Input.SelectedLogins[0]
 		Assert-AreEqual $sourceDbName $task.ProjectTask.Properties.Input.SelectedDatabases[0].Name
 		Assert-AreEqual $targetDbName $task.ProjectTask.Properties.Input.SelectedDatabases[0].RestoreDatabaseName
 
