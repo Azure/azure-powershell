@@ -42,7 +42,7 @@ PS C:\>New-AzureRmVirtualNetworkTap -Name "VirtualNetworkTap1" -ResourceGroupNam
 This command creates a virtual network tap named "VirtualNetworkTap1" which has destination VM configuration details (DestinationIpConfiguration, DestinationPort).
 All the source tap configured VM's traffic will be routed to this Destination IP + Port.
 
-### Example 2: Create n Azure virtual network tap using LoadBalancer IP
+### Example 2: Create an Azure virtual network tap using LoadBalancer IP
 ```
 # Create LoadBalancer
 PS C:\>$frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationPort
-{{Fill DestinationPort Description}}
+The Destination Port of the packet collector
 
 ```yaml
 Type: Int32
