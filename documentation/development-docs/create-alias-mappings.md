@@ -6,4 +6,4 @@ In the new Az Netstandard module, the default prefix for all cmdlets is "Az".  H
 
 3.) Run the script to create alias mapping.  This can be found in [tools/CreateAliasMappings.ps1](https://github.com/Azure/azure-powershell/blob/preview/tools/CreateAliasMapping.ps1).
 
-4.) Copy the output contents from [tools/AliasMappings.json](https://github.com/Azure/azure-powershell/blob/preview/tools/AliasMapping.json) into the mapping variable in [src/ResourceManager/Profile/Commands.Profile/AzureRmAlias/Mappings.cs](https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Profile/Commands.Profile/AzureRmAlias/Mappings.cs#L36).
+4.) Check that the correct changes have been made to src/ResourceManager/Profile/Commands.Profile/AzureRmAlias/Mappings.cs.
