@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermvirtualnetworktap
 schema: 2.0.0
 ---
 
 # New-AzureRmVirtualNetworkTap
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a VirtualNetworkTap resource.
 
 ## SYNTAX
 
@@ -30,16 +30,27 @@ New-AzureRmVirtualNetworkTap -ResourceGroupName <String> -Name <String> [-Destin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmVirtualNetworkTap** cmdlet creates an Azure virtual network tap resource.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Create an Azure virtual network tap
+```
+PS C:\>New-AzureRmVirtualNetworkTap -Name "VirtualNetworkTap1" -ResourceGroupName "ResourceGroup1" -Location "centralus" -DestinationPort 8888 -DestinationNetworkInterfaceIPConfiguration $destinationNic.IpConfigurations[0]
 ```
 
-{{ Add example description here }}
+This command creates a virtual network tap named "VirtualNetworkTap1" which has destination VM configuration details (DestinationIpConfiguration, DestinationPort).
+All the source tap configured VM's traffic will be routed to this Destination IP + Port.
+
+### Example 2: Create n Azure virtual network tap using LoadBalancer IP
+```
+# Create LoadBalancer
+PS C:\>$frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
+PS C:\>New-AzureRmVirtualNetworkTap -Name "VirtualNetworkTap1" -ResourceGroupName "ResourceGroup1" -Location "centralus" -DestinationLoadBalancerFrontEndIPConfiguration $frontend
+```
+
+This command creates a virtual network tap named "VirtualNetworkTap1" which has destination VM configuration details (FrontEndIpConfiguration).
+All the source tap configured VM's traffic will be routed to this LoadBalancer IpConfiguration. Default Destination Port is 4789.
 
 ## PARAMETERS
 
@@ -47,7 +58,7 @@ PS C:\> {{ Add example code here }}
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -62,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,7 +88,7 @@ Accept wildcard characters: False
 The reference of the destination load balancer front end IP configuration resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
+Type: PSFrontendIPConfiguration
 Parameter Sets: SetByResource
 Aliases:
 
@@ -92,7 +103,7 @@ Accept wildcard characters: False
 The reference of the destination load balancer front end IP configuration resource.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -107,7 +118,7 @@ Accept wildcard characters: False
 The reference of the destination network interface IP configuration resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceIPConfiguration
+Type: PSNetworkInterfaceIPConfiguration
 Parameter Sets: SetByResource
 Aliases:
 
@@ -122,7 +133,7 @@ Accept wildcard characters: False
 The reference of the destination network interface IP configuration resource.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -137,7 +148,7 @@ Accept wildcard characters: False
 {{Fill DestinationPort Description}}
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +163,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +178,7 @@ Accept wildcard characters: False
 The location.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -182,7 +193,7 @@ Accept wildcard characters: False
 The name of the tap.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -197,7 +208,7 @@ Accept wildcard characters: False
 The resource group name of the virtual network tap.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -212,7 +223,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -227,7 +238,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -243,7 +254,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
