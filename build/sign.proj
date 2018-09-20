@@ -33,7 +33,7 @@
     </ItemGroup>
   </Target>
 
-  <Target Name="SignFiles" AfterTargets="net452;netstandard20" Condition="'$(DisableSigning)' != 'true'">
+  <Target Name="SignFiles" AfterTargets="net452;netstandard20;All" Condition="'$(DisableSigning)' != 'true'">
     <Message Importance="high" Text="Sign: task started" />
     <CodeSigningTask
       Description="$(Description)"
@@ -58,6 +58,5 @@
     <PropertyGroup>
       <DisableSigning>false</DisableSigning>
     </PropertyGroup>
-    <CallTarget Targets="SignFiles"/>
   </Target>
 </Project>
