@@ -19,7 +19,6 @@
 --->
 
 ## Current Release
-* Added WhatIf support to Get-AzureRmNetworkSecurityGroup
 * Added WhatIf support to Set-AzureRmNetworkSecurityGroup 
 
 ## Version 6.8.0
