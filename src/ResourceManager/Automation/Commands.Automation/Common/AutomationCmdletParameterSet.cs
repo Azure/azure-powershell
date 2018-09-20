@@ -68,6 +68,66 @@ namespace Microsoft.Azure.Commands.Automation.Common
         internal const string ByMonthlyDayOfWeek = "ByMonthlyDayOfWeek";
 
         /// <summary>
+        /// The one time schedule parameter set.
+        /// </summary>
+        internal const string ByOneTimeWindows = "ByOneTimeWindows";
+
+        /// <summary>
+        /// The daily schedule parameter set.
+        /// </summary>
+        internal const string ByDailyWindows = "ByDailyWindows";
+
+        /// <summary>
+        /// The hourly schedule parameter set.
+        /// </summary>
+        internal const string ByHourlyWindows = "ByHourlyWindows";
+
+        /// <summary>
+        /// The weekly schedule parameter set.
+        /// </summary>
+        internal const string ByWeeklyWindows = "ByWeeklyWindows";
+
+        /// <summary>
+        /// The monthly schedule parameter set.
+        /// </summary>
+        internal const string ByMonthlyDaysOfMonthWindows = "ByMonthlyDaysOfMonthWindows";
+
+        /// <summary>
+        /// The monthly schedule parameter set.
+        /// </summary>
+        internal const string ByMonthlyDayOfWeekWindows = "ByMonthlyDayOfWeekWindows";
+        
+        /// <summary>
+        /// The one time schedule parameter set.
+        /// </summary>
+        internal const string ByOneTimeLinux = "ByOneTimeLinux";
+
+        /// <summary>
+        /// The daily schedule parameter set.
+        /// </summary>
+        internal const string ByDailyLinux = "ByDailyLinux";
+
+        /// <summary>
+        /// The hourly schedule parameter set.
+        /// </summary>
+        internal const string ByHourlyLinux = "ByHourlyLinux";
+
+        /// <summary>
+        /// The weekly schedule parameter set.
+        /// </summary>
+        internal const string ByWeeklyLinux = "ByWeeklyLinux";
+
+        /// <summary>
+        /// The monthly schedule parameter set.
+        /// </summary>
+        internal const string ByMonthlyDaysOfMonthLinux = "ByMonthlyDaysOfMonthLinux";
+
+        /// <summary>
+        /// The monthly schedule parameter set.
+        /// </summary>
+        internal const string ByMonthlyDayOfWeekLinux = "ByMonthlyDayOfWeekLinux";
+
+        /// <summary>
         /// The Job Id parameter set.
         /// </summary>
         internal const string ByJobId = "ByJobId";
@@ -166,5 +226,40 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// Parameter set for ByInputObject
         /// </summary>
         internal const string ByInputObject = "ByInputObject";
+
+        /// <summary>
+        /// Parameter set for ByVMId
+        /// </summary>
+        internal const string ByVMId = "ByVMId";
+
+        /// <summary>
+        /// Parameter set for By SoftwareUpdateConfiguration Name
+        /// </summary>
+        internal const string BySucName = "BySucName";
+
+        /// <summary>
+        /// Parameter set for By SoftwareUpdateConfiguration object
+        /// </summary>
+        internal const string BySuc = "BySuc";
+
+        /// <summary>
+        /// Parameter set for By SoftwareUpdateConfigurationRun Id
+        /// </summary>
+        internal const string BySucrId = "BySucrId";
+
+        /// <summary>
+        /// Parameter set for By SoftwareUpdateConfigurationRun object
+        /// </summary>
+        internal const string BySucr = "BySucr";
+
+        /// <summary>
+        /// Parameter set for By SoftwareUpdateConfiguration targeting windows
+        /// </summary>
+        internal const string Windows = "Windows";
+
+        /// <summary>
+        /// Parameter set for By SoftwareUpdateConfiguration targeting Linux
+        /// </summary>
+        internal const string Linux = "Linux";
     }
 }

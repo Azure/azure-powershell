@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.DataContract;
-using Microsoft.Azure.Commands.Automation.Properties;
+using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Collections.Generic;
@@ -26,6 +25,8 @@ using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Xml.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -37,16 +38,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// The automation client.
         /// </summary>
-        private IAutomationClient automationClient;
+        private IAutomationPSClient automationClient;
 
         /// <summary>
         /// Gets or sets the automation client base.
         /// </summary>
-        public IAutomationClient AutomationClient
+        public IAutomationPSClient AutomationClient
         {
             get
             {
-                return this.automationClient = this.automationClient ?? new AutomationClient(DefaultProfile.DefaultContext);
+                return this.automationClient = this.automationClient ?? new AutomationPSClient(DefaultProfile.DefaultContext);
             }
 
             set
@@ -83,24 +84,53 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 Requires.Argument("AutomationAccountName", this.AutomationAccountName).NotNull();
                 this.AutomationProcessRecord();
             }
-            catch (CloudException cloudException)
+            catch (ErrorResponseException errorResponseException)
             {
-                if (string.IsNullOrEmpty(cloudException.Error.Code) && string.IsNullOrEmpty(cloudException.Error.Message))
+                // if errorResponseException.Body.Code is null or empty, check if errorResponseException.Response.Content is available.
+                if (string.IsNullOrEmpty(errorResponseException.Body?.Code) && string.IsNullOrEmpty(errorResponseException.Body?.Message))
                 {
-                    string message = this.ParseErrorMessage(cloudException.Response.Content);
-                    if (!string.IsNullOrEmpty(message))
+                    if (!string.IsNullOrEmpty(errorResponseException.Response.Content))
                     {
-                        throw new CloudException(message, cloudException);
+                        // try to extract the error message from errorResponseException.Response.Content.
+                        var message = ParseJson(errorResponseException.Response.Content);
+                        if (!string.IsNullOrEmpty(message))
+                        {
+                            throw new ErrorResponseException(message, errorResponseException);
+                        }
                     }
                 }
 
-                if (cloudException.Response.StatusCode == HttpStatusCode.NotFound)
-                {
-                    throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.AutomationAccountNotFound), cloudException);
-                }
-
-                throw;
+                throw new ErrorResponseException(errorResponseException.Body?.Message, errorResponseException);
             }
+        }
+
+        // This function parses two type of Json contents:
+        // 1) "{\"error\":{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'foobar' could not be found.\"}}"
+        // 2)            "{\"code\":\"ResourceGroupNotFound\",\"message\":\"Resource group 'foobar' could not be found.\"}"
+        private string ParseJson(string value)
+        {
+            value = value.Trim();
+            try
+            {
+                var nestedError = JsonConvert.DeserializeObject<AzureAutomationErrorResponseMessage>(value);
+                return nestedError.Error.Message;
+            }
+            catch
+            {
+                // Ignore the parsing error.
+            }
+
+            try
+            {
+                var error = JsonConvert.DeserializeObject<AzureAutomationErrorInfo>(value);
+                return error.Message;
+            }
+            catch
+            {
+                // Ignore the parsing error.
+            }
+
+            return null;
         }
 
         protected bool GenerateCmdletOutput(object result)
@@ -135,31 +165,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             }
 
             return ret;
-        }
-
-        private string ParseErrorMessage(string errorMessage)
-        {
-            // The errorMessage is expected to be the error details in JSON format.
-            // e.g. <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">{"code":"NotFound","message":"Certificate not found."}</string>
-            try
-            {
-                using (var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(XDocument.Load(new StringReader(errorMessage)).Root.Value)))
-                {
-                    var serializer = new DataContractJsonSerializer(typeof(ErrorResponse));
-                    var errorResponse = (ErrorResponse)serializer.ReadObject(memoryStream);
-
-                    if (!string.IsNullOrWhiteSpace(errorResponse.Message))
-                    {
-                        return errorResponse.Message;
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                // swallow the exception as we cannot parse the error message
-            }
-
-            return null;
         }
     }
 }
