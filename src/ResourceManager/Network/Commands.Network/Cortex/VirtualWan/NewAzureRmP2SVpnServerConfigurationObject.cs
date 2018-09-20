@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                throw new ArgumentException("Either VpnClient settings or RadiusClient settings should be specified!");
+                throw new PSArgumentException(Properties.Resources.VpnClientOrRadiusClientSettingsRequiredForP2SVpnServerConfig);
             }
         }
     }

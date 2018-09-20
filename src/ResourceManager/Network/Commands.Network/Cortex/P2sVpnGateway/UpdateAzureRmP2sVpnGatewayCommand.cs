@@ -24,6 +24,7 @@
     {
         [Parameter(
             Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -32,6 +33,7 @@
         [Alias("ResourceName", "P2SVpnGatewayName", "GatewayName")]
         [Parameter(
             Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
             HelpMessage = "The P2SVpnGateway name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }

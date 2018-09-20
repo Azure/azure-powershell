@@ -8,7 +8,7 @@
 
     [Cmdlet(VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2SVpnGateway",
-        DefaultParameterSetName = "ListBySubscriptionId"),
+        DefaultParameterSetName = "ListByResourceGroupName"),
         OutputType(typeof(PSP2SVpnGateway))]
     public class GetAzureRmP2SVpnGatewayCommand : P2SVpnGatewayBaseCmdlet
     {

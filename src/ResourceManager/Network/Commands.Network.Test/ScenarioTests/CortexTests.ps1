@@ -241,11 +241,6 @@ function Test-CortexCRUD
 		# Update existing P2SVpnGateway to attach P2SVpnServerConfiguration2 using Update-AzureRmP2SVpnGateway
 		$updatedP2SVpnGateway = Update-AzureRmP2SVpnGateway -Name $P2SvpnGatewayName -ResourceGroupName $rgName -P2SVpnServerConfiguration $P2SVpnServerConfig2Get
 		Assert.AreEqual $P2SVpnServerConfig2Get.Id $updatedP2SVpnGateway.P2SVpnServerConfiguration.Id
-
-		# Generate vpn profile again using Get-AzureRmP2SVpnGatewayVpnProfile
-		#$vpnProfileResponse = Get-AzureRmP2SVpnGatewayVpnProfile -Name $P2SVpnGatewayName -ResourceGroupName $rgName -AuthenticationMethod $vpnclientAuthMethod
-		#Assert-NotNull $vpnProfileResponse.ProfileUrl
-		#Assert-ThrowsContains { $vpnProfileResponse.ProfileUrl } ".zip"
      }
      finally
      {

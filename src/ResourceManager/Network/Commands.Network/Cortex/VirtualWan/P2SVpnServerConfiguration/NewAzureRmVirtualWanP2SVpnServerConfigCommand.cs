@@ -91,51 +91,45 @@
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName + P2SVpnServerConfigurationParameterSets.Default,
             HelpMessage = "A list of VpnClientRootCertificates to be added files' paths")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + P2SVpnServerConfigurationParameterSets.Default,
             HelpMessage = "A list of VpnClientRootCertificates to be added files' paths")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + P2SVpnServerConfigurationParameterSets.Default,
             HelpMessage = "A list of VpnClientRootCertificates to be added files' paths")]
         public string[] VpnClientRootCertificateFilesList { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName + P2SVpnServerConfigurationParameterSets.Default,
             HelpMessage = "A list of VpnClientCertificates to be revoked files' paths")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + P2SVpnServerConfigurationParameterSets.Default,
             HelpMessage = "A list of VpnClientCertificates to be revoked files' paths")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + P2SVpnServerConfigurationParameterSets.Default,
             HelpMessage = "A list of VpnClientCertificates to be revoked files' paths")]
         public string[] VpnClientRevokedCertificateFilesList { get; set; }
 
         [Parameter(
              Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName + P2SVpnServerConfigurationParameterSets.Default,
              HelpMessage = "A list of IPSec policies for P2SVpnServerConfiguration.")]
         [Parameter(
              Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + P2SVpnServerConfigurationParameterSets.Default,
              HelpMessage = "A list of IPSec policies for P2SVpnServerConfiguration.")]
         [Parameter(
              Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + P2SVpnServerConfigurationParameterSets.Default,
              HelpMessage = "A list of IPSec policies for P2SVpnServerConfiguration.")]
         public PSIpsecPolicy[] VpnClientIpsecPolicy { get; set; }
@@ -172,34 +166,28 @@
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         public string[] RadiusServerRootCertificateFilesList { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanObject + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         public string[] RadiusClientRootCertificateFilesList { get; set; }

@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ParentVirtualWanName", "VirtualWanName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName,
             HelpMessage = "The parent resource name.")]
         [ValidateNotNullOrEmpty]
