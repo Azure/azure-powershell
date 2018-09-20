@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermvirtualnetworktap
 schema: 2.0.0
 ---
 
 # Remove-AzureRmVirtualNetworkTap
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a virtual network tap.
 
 ## SYNTAX
 
@@ -18,16 +18,17 @@ Remove-AzureRmVirtualNetworkTap -ResourceGroupName <String> -Name <String> [-For
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmVirtualNetworkTap** cmdlet removes an Azure virtual network tap.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Remove a virtuak network tap
+```
+PS C:\>Remove-AzureRmNetworkInterface -Name "VirtualNetworkTap1" -ResourceGroup "ResourceGroup1"
 ```
 
-{{ Add example description here }}
+This command removes the VirtualNetworkTap1 in resource group ResourceGroup1.
+Because the *Force* parameter is not used, the user will be prompted to confirm this action.
 
 ## PARAMETERS
 
@@ -35,7 +36,7 @@ PS C:\> {{ Add example code here }}
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -50,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,7 +66,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to delete resource
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +81,7 @@ Accept wildcard characters: False
 The name of the tap.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +96,7 @@ Accept wildcard characters: False
 {{Fill PassThru Description}}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +111,7 @@ Accept wildcard characters: False
 The resource group name of the virtual network tap.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +126,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -141,7 +142,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

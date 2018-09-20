@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkinterfacetapconfig
 schema: 2.0.0
 ---
 
 # Get-AzureRmNetworkInterfaceTapConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a Tap configuration resource.
 
 ## SYNTAX
 
@@ -18,16 +18,22 @@ Get-AzureRmNetworkInterfaceTapConfig -ResourceGroupName <String> -NetworkInterfa
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmNetworkInterfaceTapConfig** cmdlet gets an Azure Tap Configuration for a given resource group, network interface and tap configuration name or list of tap configurations in a resource group and network interface.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get all tap configurations for a given network interface
+```
+PS C:\>Get-AzureRmNetworkInterfaceTapConfig -ResourceGroupName "ResourceGroup1" -NetworkInterface "sourceNicName"
+```
+This command gets tap configurations added for the given network interface.
+
+### Example 2: Get a given tap configuration
+```
+PS C:\>Get-AzureRmNetworkInterface -ResourceGroupName "ResourceGroup1" -NetworkInterface "sourceNicName" -Name "tapconfigName"
 ```
 
-{{ Add example description here }}
+This command gets specific tap configuration added for the given network interface.
 
 ## PARAMETERS
 
@@ -35,7 +41,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,7 +56,7 @@ Accept wildcard characters: False
 Name of the specific tap configuration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +71,7 @@ Accept wildcard characters: False
 The Network Interface name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +86,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvirtualnetworktap
 schema: 2.0.0
 ---
 
 # Get-AzureRmVirtualNetworkTap
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a virtual network tap
 
 ## SYNTAX
 
@@ -18,16 +18,17 @@ Get-AzureRmVirtualNetworkTap [-ResourceGroupName <String>] [-Name <String>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmVirtualNetworkTap** cmdlet gets an Azure virtual network tap or a list of Azure virtual network taps in a resource group.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get a virtual network tap
+```
+PS C:\>Get-AzureRmVirtualNetworkTap -ResourceGroupName "ResourceGroup1" -Name "VirtualTap1"
 ```
 
-{{ Add example description here }}
+This command gets a VirtualNetwork tap reference for given "VirtualTap1" in "ResourceGroup1".
+
 
 ## PARAMETERS
 
@@ -35,7 +36,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,7 +51,7 @@ Accept wildcard characters: False
 The name of the tap.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +66,7 @@ Accept wildcard characters: False
 The resource group name of the virtual network tap.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

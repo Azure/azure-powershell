@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermvirtualnetworktap
 schema: 2.0.0
 ---
 
 # Set-AzureRmVirtualNetworkTap
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Sets the goal state for a virtual network tap.
 
 ## SYNTAX
 
@@ -18,16 +18,19 @@ Set-AzureRmVirtualNetworkTap -VirtualNetworkTap <PSVirtualNetworkTap> [-AsJob]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmVirtualNetworkTap** sets the goal state for an Azure virtual network tap.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Configure a Virtual network tap
+```
+PS C:\>$vTap = Get-AzureRmVirtualNetworkTap -ResourceGroupName "ResourceGroup1" -Name "VirtualTap1"
+PS C:\>$vTap.DestinationNetworkInterfaceIPConfiguration = $newDestinationNic.IpConfigurations[0]
+PS C:\>Set-AzureRmVirtualNetworkTap -VirtualNetworkTap $vTap
 ```
 
-{{ Add example description here }}
+The command updates the Destination IpConfiguration and updates the Virtual network tap.
+If there are any tap configurations referencing it, then all the source traffic will not start be mirrored to new destination ip configuration post update.
 
 ## PARAMETERS
 
@@ -35,7 +38,7 @@ PS C:\> {{ Add example code here }}
 Run cmdlet in the background
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -50,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,7 +68,7 @@ Accept wildcard characters: False
 The virtual network tap
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkTap
+Type: PSVirtualNetworkTap
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +83,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -96,7 +99,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

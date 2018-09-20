@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermnetworkinterfacetapconfig
 schema: 2.0.0
 ---
 
 # Add-AzureRmNetworkInterfaceTapConfig
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a TapConfiguration resource associated to a NetworkInterface. This will reference to an existing VirtualNetworkTap resource.
 
 ## SYNTAX
 
@@ -27,16 +27,18 @@ Add-AzureRmNetworkInterfaceTapConfig -NetworkInterface <PSNetworkInterface> -Nam
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Add-AzureRmNetworkInterfaceTapConfig** cmdlet creates a TapConfiguration resource associated to a NetworkInterface. This will reference to an existing VirtualNetworkTap resource.
+
 
 ## EXAMPLES
-
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+]
+### Example 1: Add TapConfiguration to a given NetworkInterface
 ```
-
-{{ Add example description here }}
+PS C:\>Add-AzureRmNetworkInterfaceTapConfig -NetworkInterface $sourceNic -VirtualNetworkTap $vVirtualNetworkTap -Name 'myTapConfig'
+```
+# where 
+# - $sourceNic is the source NetworkInterface resource which is getting tapped
+# - $vVirtualNetworkTap is the VirtualNetworkTap which configures the destination details where the source VM traffic gets tapped to.
 
 ## PARAMETERS
 
@@ -44,7 +46,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -59,7 +61,7 @@ Accept wildcard characters: False
 Name of the tap configuration.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +76,7 @@ Accept wildcard characters: False
 The reference of the network interface resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSNetworkInterface
+Type: PSNetworkInterface
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +91,7 @@ Accept wildcard characters: False
 The reference of the virtual network tap resource.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkTap
+Type: PSVirtualNetworkTap
 Parameter Sets: SetByResource
 Aliases:
 
@@ -104,7 +106,7 @@ Accept wildcard characters: False
 The reference of the virtual network tap resource.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -119,7 +121,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -135,7 +137,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
