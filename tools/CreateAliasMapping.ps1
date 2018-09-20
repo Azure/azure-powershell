@@ -76,4 +76,4 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
             return mapping;
         }
 
-        public static string jsonMappings = @`"`r`n" + ($json -replace "`"", "`'") + "`r`n`r`n`";`r`n`r`n    }`r`n}" | Out-File $PSScriptRoot/../src/ResourceManager/Profile/Commands.Profile/AzureRmAlias/Mappings.cs
+        public static string jsonMappings = @`"`r`n" + ($json -replace "`"", "`'") + "`r`n`r`n`";`r`n`r`n    }`r`n}" | Set-Content -Path $PSScriptRoot/../src/ResourceManager/Profile/Commands.Profile/AzureRmAlias/Mappings.cs
