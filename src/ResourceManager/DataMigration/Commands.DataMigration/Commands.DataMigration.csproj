@@ -70,7 +70,7 @@
     <Compile Include="Cmdlets\SqlConnectionInfoCmdlet.cs" />
     <Compile Include="Cmdlets\StartDataMigrationService.cs" />
     <Compile Include="Cmdlets\StopDataMigrationTask.cs" />
-    <Compile Include="Cmdlets\StopDataMingrationService.cs" />
+    <Compile Include="Cmdlets\StopDataMigrationService.cs" />
     <Compile Include="Cmdlets\TaskCmdlet.cs" />
     <Compile Include="Cmdlets\ValidateSqlServerSqlDbSyncTaskCmdlet.cs" />
     <Compile Include="Common\DmsClient.cs" />
@@ -111,7 +111,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="help\Invoke-AzureRmDataMigrationCommand.md" />
-    <None Include="help\New-AzureRmDataMigrationSyncSelectedDB.md" />
+    <None Include="help\New-AzureRmDataMigrationSelectedDBObject.md" />
+    <None Include="help\New-AzureRmDataMigrationSyncSelectedDBObject.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="AzureRM.DataMigration.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -135,7 +136,6 @@
     <None Include="help\Start-AzureRmDataMigrationService.md" />
     <None Include="help\Stop-AzureRmDataMigrationService.md" />
     <None Include="help\Stop-AzureRmDataMigrationTask.md" />
-    <None Include="help\New-AzureRmDataMigrationSelectedDB.md" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DataMigration, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
