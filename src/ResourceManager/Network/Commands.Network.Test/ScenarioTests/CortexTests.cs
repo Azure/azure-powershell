@@ -30,7 +30,7 @@ namespace Commands.Network.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact( Skip = "TODO, #7260: needs to be re-recorded")]
+        [Fact(Skip = "TODO, #7260: needs to be re-recorded")]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestCortexCRUD()
         {
