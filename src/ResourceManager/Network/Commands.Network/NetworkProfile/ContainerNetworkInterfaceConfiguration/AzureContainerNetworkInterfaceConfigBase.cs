@@ -27,10 +27,11 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
+        [Alias("IpConfig")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies a collection of IP configuration profiles which determine what ip configurations are created when a container nic is instantiated from this container network interface configraution")]
-        public List<PSIPConfigurationProfile> IpConfiguration { get; set; }
+        public PSIPConfigurationProfile[] IpConfiguration { get; set; }
     }
 }

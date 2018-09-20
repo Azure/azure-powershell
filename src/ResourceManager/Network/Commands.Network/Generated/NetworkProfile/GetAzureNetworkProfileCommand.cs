@@ -24,34 +24,32 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Rest.Azure;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using AutoMapper;
-using CNM = Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-
 namespace Microsoft.Azure.Commands.Network
 {
+    using Microsoft.Azure.Commands.Network.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+    using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+    using Microsoft.Azure.Management.Network;
+    using Microsoft.Azure.Management.Network.Models;
+    using Microsoft.Rest.Azure;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System.Collections.Generic;
+    using System.Management.Automation;
+    using CNM = Microsoft.Azure.Commands.Network.Models;
+
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkProfile", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSNetworkProfile))]
     public partial class GetAzureNetworkProfile : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             HelpMessage = "The resource group name of the network profile.",
-            ParameterSetName = "Expand",
+            ParameterSetName = "GetByResourceNameExpandParameterSet",
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The resource group name of the network profile.",
-            ParameterSetName = "NoExpand",
+            ParameterSetName = "GetByResourceNameNoExpandParameterSet",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -61,20 +59,47 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the network profile.",
-            ParameterSetName = "Expand",
+            ParameterSetName = "GetByResourceNameExpandParameterSet",
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "The name of the network profile.",
-            ParameterSetName = "NoExpand",
+            ParameterSetName = "GetByResourceNameNoExpandParameterSet",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "The Azure resource manager id of the network profile.",
+            ParameterSetName = "GetByResourceIdExpandParameterSet",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The Azure resource manager id of the network profile.",
+            ParameterSetName = "GetByResourceIdNoExpandParameterSet",
+            ValueFromPipelineByPropertyName = true)]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "The resource reference to be expanded.",
-            ParameterSetName = "Expand",
+            ParameterSetName = "GetByResourceIdExpandParameterSet",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource reference to be expanded.",
+            ParameterSetName = "GetByResourceIdNoExpandParameterSet",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource reference to be expanded.",
+            ParameterSetName = "GetByResourceNameNoExpandParameterSet",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource reference to be expanded.",
+            ParameterSetName = "GetByResourceNameExpandParameterSet",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ExpandResource { get; set; }
@@ -82,6 +107,13 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            if (this.IsParameterBound(p => p.ResourceId))
+            {
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
+            }
 
             if(!string.IsNullOrEmpty(this.Name))
             {

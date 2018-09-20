@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             var vContainerNetworkInterfaceConfigurations = new PSContainerNetworkInterfaceConfiguration();
 
             vContainerNetworkInterfaceConfigurations.Name = this.Name;
-            vContainerNetworkInterfaceConfigurations.IpConfigurations = this.IpConfiguration;
+            vContainerNetworkInterfaceConfigurations.IpConfigurations = new List<PSIPConfigurationProfile>(this.IpConfiguration);
             var generatedId = string.Format(
                 "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/networkProfiles/{2}/{3}/{4}",
                 this.NetworkClient.NetworkManagementClient.SubscriptionId,
