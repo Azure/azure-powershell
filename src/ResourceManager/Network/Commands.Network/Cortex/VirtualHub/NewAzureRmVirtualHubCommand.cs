@@ -106,6 +106,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new PSArgumentException(string.Format(Properties.Resources.ResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName));
             }
+
             string virtualWanRGName = null;
             string virtualWanName = null;
 

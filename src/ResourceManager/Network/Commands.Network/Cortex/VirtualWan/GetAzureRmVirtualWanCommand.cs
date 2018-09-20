@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
             if (!string.IsNullOrEmpty(this.Name) && ParameterSetName.Equals("ListByResourceGroupName"))
             {
                 var virtualWan = this.GetVirtualWan(this.ResourceGroupName, this.Name);

@@ -131,6 +131,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
             if (ParameterSetName.Contains(CortexParameterSetNames.ByVirtualHubObject))
             {
                 this.ResourceGroupName = this.ParentObject.ResourceGroupName;
@@ -168,12 +169,14 @@ namespace Microsoft.Azure.Commands.Network
             {
                 hubVnetConnection.RemoteVirtualNetwork = new PSResourceId() { Id = this.RemoteVirtualNetworkId };
             }
+
             if (parentVirtualHub.VirtualNetworkConnections == null)
             {
                 parentVirtualHub.VirtualNetworkConnections = new List<PSHubVirtualNetworkConnection>();
             }
 
             parentVirtualHub.VirtualNetworkConnections.Add(hubVnetConnection);
+
             ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,
                 this.Name,
