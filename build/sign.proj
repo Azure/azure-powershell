@@ -46,13 +46,14 @@
       ToolsPath="$(SigningToolsPath)" />
   </Target>
 
-  <Target Name="BeforeAll" BeforeTargets="All">
+  <Target Name="BeforeAll">
+    <Message Importance="high" Text="Sign: BeforeAll started" />
     <PropertyGroup>
       <DisableSigning>true</DisableSigning>
     </PropertyGroup>
   </Target>
 
-  <Target Name="All" DependsOnTargets="net452;netstandard20">
+  <Target Name="All" DependsOnTargets="BeforeAll;net452;netstandard20">
     <Message Importance="high" Text="Sign: All started" />
     <PropertyGroup>
       <DisableSigning>false</DisableSigning>
