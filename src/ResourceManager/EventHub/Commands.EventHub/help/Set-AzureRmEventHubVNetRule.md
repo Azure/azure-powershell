@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
 Module Name: AzureRM.EventHub
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/Set-AzureRmEventHubVNetRule
 schema: 2.0.0
 ---
 
@@ -40,8 +40,7 @@ command **Set-AzureRmEventHubVNetRule** will update the specified VNet Rule desc
 ```powershell
 PS C:\> $updatedVNetRule = Set-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespacename -Name vnetrulename -VirtualNetworkSubnetId vNetsubnetId
 ```
-
-update the VNet Rule using parameters
+Update the VNet Rule using parameters
 
 ### Example 2
 ```powershell
@@ -50,8 +49,15 @@ PS C:\> $createdVNetRule = Get-AzureRmEventHubVNetRule -ResourceGroup resourcegr
 PS C:\> $createdVNetRule.VirtualNetworkSubnetId = vNetsubnetId
 PS C:\> $updatedVNetRule = Set-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespacename -Name vnetrulename -InputObject $createdVNetRule
 ```
+Update the VNet Rule using InputObject
 
-update the VNet Rule using InputObject
+### Example 3
+```powershell
+
+PS C:\> $createdVNetRule = Get-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespaceame -Name vnetrulename
+PS C:\> $updatedVNetRule = Set-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespacename -Name vnetrulename -InputObject $createdVNetRule -VirtualNetworkSubnetId vNetsubnetId
+```
+update the VNet Rule using InputObject with paramter VirtualNetworkSubnetId
 
 ## PARAMETERS
 
@@ -59,7 +65,7 @@ update the VNet Rule using InputObject
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,14 +80,14 @@ Accept wildcard characters: False
 Virtual Network Rule Object
 
 ```yaml
-Type: PSVirtualNetWorkRuleAttributes
-Parameter Sets: IpFilterRuleInputObjectSet
+Type: Microsoft.Azure.Commands.EventHub.Models.PSVirtualNetWorkRuleAttributes
+Parameter Sets: VNetRuleInputObjectSet
 Aliases: EventHubObj
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -89,14 +95,14 @@ Accept wildcard characters: False
 Virtual Network Rule Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VNetRulePropertiesSet
 Aliases:
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -104,14 +110,14 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VNetRulePropertiesSet
 Aliases: NamespaceName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -119,14 +125,14 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VNetRulePropertiesSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -134,7 +140,7 @@ Accept wildcard characters: False
 Virtual Network Rule Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VNetRuleResourceIdParameterSet
 Aliases:
 
@@ -149,14 +155,14 @@ Accept wildcard characters: False
 ARM ID of Virtual Network Subnet
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -164,7 +170,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -180,7 +186,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -197,8 +203,8 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.EventHub.Models.PSVirtualNetWorkRuleAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSVirtualNetWorkRuleAttributes
+System.String
 
 
 ## OUTPUTS

@@ -24,21 +24,21 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubIPFilterRule", SupportsShouldProcess = true, DefaultParameterSetName = IpFilterRulePropertiesParameterSet), OutputType(typeof(PSIpFilterRuleAttributes))]
     public class SetAzureEventHubIpFilterRule : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = IpFilterRulePropertiesParameterSet,  ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = IpFilterRulePropertiesParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = IpFilterRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = IpFilterRulePropertiesParameterSet, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = IpFilterRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Ip Filter Rule Name")]
+        [Parameter(Mandatory = true, ParameterSetName = IpFilterRulePropertiesParameterSet, Position = 2, HelpMessage = "Ip Filter Rule Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = IpFilterRuleInputObjectParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Ip Filter Rule Object")]
+        [Parameter(Mandatory = true, ParameterSetName = IpFilterRuleInputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "Ip Filter Rule Object")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubObj)]
         public PSIpFilterRuleAttributes InputObject { get; set; }
@@ -47,22 +47,27 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "IP Filter Action. Possible values include: 'Accept', 'Reject'")]
+        [Parameter(Mandatory = false, HelpMessage = "IP Filter Action. Possible values include: 'Accept', 'Reject'")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Accept", "Reject", IgnoreCase = true)]
         public string Action { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Single IPv4 address or a block of IP addresses in CIDR notation.")]
+        [Parameter(Mandatory = false, HelpMessage = "Single IPv4 address or a block of IP addresses in CIDR notation.")]
         [ValidateNotNullOrEmpty]
         public string IpMask { get; set; }
         
         public override void ExecuteCmdlet()
         {
             PSIpFilterRuleAttributes ipfilterrule = new PSIpFilterRuleAttributes();
-            
-            if (InputObject != null)
+                        
+            if (ParameterSetName.Equals(IpFilterRuleInputObjectParameterSet))
             {
-                ipfilterrule = InputObject;
+                LocalResourceIdentifier identifier = new LocalResourceIdentifier(InputObject.Id);
+                ResourceGroupName = identifier.ResourceGroupName;
+                Namespace = identifier.ParentResource;
+                Name = identifier.ResourceName;
+                Action = InputObject.Action;
+                IpMask = InputObject.IpMask;
             }
             else if (ParameterSetName.Equals(IpFilterRuleResourceIdParameterSet))
             {
@@ -79,9 +84,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
             if (!string.IsNullOrEmpty(Action))
                 ipfilterrule.Action = Action;
+            else
+                ipfilterrule.Action = InputObject.Action;
 
             if (!string.IsNullOrEmpty(IpMask))
                 ipfilterrule.IpMask = IpMask;
+            else
+                ipfilterrule.IpMask = InputObject.IpMask;
 
 
             if (ShouldProcess(target:Name, action: string.Format(Resources.UpdateIpFilterRule,Name,Namespace)))

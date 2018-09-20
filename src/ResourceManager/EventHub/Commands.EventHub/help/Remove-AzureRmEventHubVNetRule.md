@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
 Module Name: AzureRM.EventHub
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/Remove-AzureRmEventHubVNetRule
 schema: 2.0.0
 ---
 
@@ -39,21 +39,18 @@ Cmdlet **Remove-AzureRmEventHubVNetRule** deletes the specified VNet Rule for th
 ```powershell
 PS C:\> Remove-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespaceame -Name vnetrulename
 ```
-
 removes the specified VNet Rule
 
 ### Example 2
 ```powershell
 PS C:\> Get-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespaceame -Name vnetrulename | Remove-AzureRmEventHubVNetRule
 ```
-
 removes the specified VNet Rule through piping InputObject
 
 ### Example 3
 ```powershell
 PS C:\> Remove-AzureRmEventHubVNetRule -ResourceId resourceIdOfVNetRule
 ```
-
 removes the specified VNet Rule using resource Id
 
 ## PARAMETERS
@@ -62,7 +59,7 @@ removes the specified VNet Rule using resource Id
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +74,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,7 +89,7 @@ Accept wildcard characters: False
 Virtual Network Rule Object
 
 ```yaml
-Type: PSIpFilterRuleAttributes
+Type: Microsoft.Azure.Commands.EventHub.Models.PSIpFilterRuleAttributes
 Parameter Sets: VNetRuleInputObjectSet
 Aliases:
 
@@ -107,7 +104,7 @@ Accept wildcard characters: False
 Virtual Network Rule Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VNetRulePropertiesSet
 Aliases:
 
@@ -122,7 +119,7 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VNetRulePropertiesSet
 Aliases: NamespaceName
 
@@ -137,7 +134,7 @@ Accept wildcard characters: False
 {{Fill PassThru Description}}
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +149,7 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VNetRulePropertiesSet
 Aliases:
 
@@ -167,7 +164,7 @@ Accept wildcard characters: False
 Virtual Network Rule Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VNetRuleResourceIdParameterSet
 Aliases:
 
@@ -182,7 +179,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -198,7 +195,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

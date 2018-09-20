@@ -26,49 +26,58 @@ function NamespaceTests
     $resourceGroupName = getAssetName "RGName1-"
 	$secondResourceGroup = getAssetName "RGName2-"
 
-    Write-Debug "Create resource group"
-    Write-Debug "ResourceGroup name : $resourceGroupName"
-	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force 
+    Try
+	{
+		Write-Debug "Create resource group"
+		Write-Debug "ResourceGroup name : $resourceGroupName"
+		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force 
 
-    Write-Debug "Create resource group"
-    Write-Debug "ResourceGroup name : $secondResourceGroup"
-	New-AzureRmResourceGroup -Name $secondResourceGroup -Location $location -Force 
-
-	# Check Namespace Name Availability
-
-	$checkNameResult = Test-AzureRmEventHubName -Namespace $namespaceName 
-	Assert-True {$checkNameResult.NameAvailable}
-     
-    Write-Debug " Create new eventHub namespace"
-    Write-Debug "NamespaceName : $namespaceName" 
-    $result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location -SkuName "Standard" -SkuCapacity "1" -EnableAutoInflate -MaximumThroughputUnits 10
+		Write-Debug "Create resource group"
+		Write-Debug "ResourceGroup name : $secondResourceGroup"
+		New-AzureRmResourceGroup -Name $secondResourceGroup -Location $location -Force 
+				
+		Write-Debug " Create new eventHub namespace"
+		Write-Debug "NamespaceName : $namespaceName" 
+		$result = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName -Location $location -SkuName "Standard" -SkuCapacity "1" -EnableAutoInflate -MaximumThroughputUnits 10
 	
-	# Assert 
-	Assert-AreEqual $result.ProvisioningState "Succeeded"
+		# Assert 
+		Assert-AreEqual $result.ProvisioningState "Succeeded"
 
-    Write-Debug "Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+		Write-Debug "Get the created namespace within the resource group"
+		$createdNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
 
-    Assert-AreEqual $createdNamespace.Name $namespaceName "Namespace created earlier is not found."	  
+		Assert-AreEqual $createdNamespace.Name $namespaceName "Namespace created earlier is not found."	  
     
-    Write-Debug "Namespace name : $namespaceName2"
-    $result = New-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2 -Location $location
+		Write-Debug "Namespace name : $namespaceName2"
+		$result = New-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2 -Location $location
 
-    Write-Debug "Get all the namespaces created in the resourceGroup"
-    $allCreatedNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup
+		Write-Debug "Get all the namespaces created in the resourceGroup"
+		$allCreatedNamespace = Get-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup
 	
-	#Assert
-    Assert-True {$allCreatedNamespace.Count -ge 0 } "Namespace created earlier is not found. in list"
+		#Assert
+		Assert-True {$allCreatedNamespace.Count -ge 0 } "Namespace created earlier is not found. in list"
     
-    Write-Debug "Get all the namespaces created in the subscription"
-    $allCreatedNamespace = Get-AzureRmEventHubNamespace
+		Write-Debug "Get all the namespaces created in the subscription"
+		$allCreatedNamespace = Get-AzureRmEventHubNamespace
 	
-    Assert-True {$allCreatedNamespace.Count -ge 0} "Namespaces created earlier is not found."
+		Assert-True {$allCreatedNamespace.Count -ge 0} "Namespaces created earlier is not found."
+	}
+	Finally
+	{
+		$getnamespace2 = Get-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2
+		if($getnamespace2 -ne $null)
+		{
+			Write-Debug " Delete namespaces"
+			Remove-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2
+		}
+		$getnamespace = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+		if($getnamespace -ne $null)
+		{
+			Write-Debug " Delete namespaces"
+			Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
+		}
 
-    Write-Debug " Delete namespaces"
-    Remove-AzureRmEventHubNamespace -ResourceGroup $secondResourceGroup -Name $namespaceName2
-    Remove-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -Name $namespaceName
-
-	Write-Debug " Delete resourcegroup"
-	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+		Write-Debug " Delete resourcegroup"
+		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+	}    
 }

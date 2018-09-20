@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
 Module Name: AzureRM.EventHub
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/set-azurermeventhubipfilterrule
 schema: 2.0.0
 ---
 
@@ -53,6 +53,15 @@ PS C:\> $updatedIpfilterRule = Set-AzureRmEventHubIPFilterRule -ResourceGroup re
 
 update the Ip Filter rule using InputObject
 
+### Example 3
+```powershell
+
+PS C:\> $createdIpfilterRule = Get-AzureRmEventHubIPFilterRule -ResourceGroup resourcegroup -Namespace namespaceame -Name ipfilterrulename
+PS C:\> $updatedIpfilterRule = Set-AzureRmEventHubIPFilterRule -ResourceGroup resourcegroup -Namespace namespacename -Name ipfilterrulename -InputObject $createdIpfilterRule -IpMask "13.78.143.219/32"
+```
+
+update the Ip Filter rule using InputObject and -IpMask
+
 ## PARAMETERS
 
 ### -Action
@@ -60,7 +69,7 @@ IP Filter Action.
 Possible values include: 'Accept', 'Reject'
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Accept, Reject
@@ -68,7 +77,7 @@ Accepted values: Accept, Reject
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -76,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,14 +100,14 @@ Accept wildcard characters: False
 Ip Filter Rule Object
 
 ```yaml
-Type: PSIpFilterRuleAttributes
+Type: Microsoft.Azure.Commands.EventHub.Models.PSIpFilterRuleAttributes
 Parameter Sets: IpFilterRuleInputObjectSet
 Aliases: EventHubObj
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -106,14 +115,14 @@ Accept wildcard characters: False
 Single IPv4 address or a block of IP addresses in CIDR notation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -121,14 +130,14 @@ Accept wildcard characters: False
 Ip Filter Rule Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpFilterRulePropertiesSet
 Aliases:
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -136,14 +145,14 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpFilterRulePropertiesSet
 Aliases: NamespaceName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -151,14 +160,14 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpFilterRulePropertiesSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -166,7 +175,7 @@ Accept wildcard characters: False
 Ip Filter Rule Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpFilterRuleResourceIdParameterSet
 Aliases:
 
@@ -181,7 +190,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -197,7 +206,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -214,8 +223,8 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.EventHub.Models.PSIpFilterRuleAttributes
+### Microsoft.Azure.Commands.EventHub.Models.PSIpFilterRuleAttributes
+System.String
 
 
 ## OUTPUTS

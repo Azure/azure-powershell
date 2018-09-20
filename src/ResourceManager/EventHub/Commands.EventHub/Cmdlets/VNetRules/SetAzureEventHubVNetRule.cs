@@ -24,21 +24,21 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubVNetRule", DefaultParameterSetName = VnetRulePropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSVirtualNetWorkRuleAttributes))]
     public class SetAzureEventHubVNetRule : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = VnetRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = VnetRulePropertiesParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = VnetRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = VnetRulePropertiesParameterSet, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = VnetRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Virtual Network Rule Name")]
+        [Parameter(Mandatory = true, ParameterSetName = VnetRulePropertiesParameterSet, Position = 2, HelpMessage = "Virtual Network Rule Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = IpFilterRuleInputObjectParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Virtual Network Rule Object")]
+        [Parameter(Mandatory = true, ParameterSetName = VnetRuleInputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "Virtual Network Rule Object")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubObj)]
         public PSVirtualNetWorkRuleAttributes InputObject { get; set; }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "ARM ID of Virtual Network Subnet")]
+        [Parameter(Mandatory = false, HelpMessage = "ARM ID of Virtual Network Subnet")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkSubnetId { get; set; }
 
@@ -73,6 +73,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             if (!string.IsNullOrEmpty(VirtualNetworkSubnetId))
             {
                 vnetrule.VirtualNetworkSubnetId = VirtualNetworkSubnetId;
+            }
+            else
+            {
+                vnetrule.VirtualNetworkSubnetId = InputObject.VirtualNetworkSubnetId;
             }
 
             if (ShouldProcess(target:Name, action: string.Format(Resources.UpdateIpVNetRule,Name,Namespace)))

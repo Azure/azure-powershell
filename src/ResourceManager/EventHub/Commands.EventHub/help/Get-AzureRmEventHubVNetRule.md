@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
 Module Name: AzureRM.EventHub
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.eventhub/Get-AzureRmEventHubVNetRule
 schema: 2.0.0
 ---
 
@@ -43,13 +43,20 @@ PS C:\> Get-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace name
 
 Get-AzureRmEventHubVNetRule cmdlet without specific VNet Rule name will return the list of rule description
 
+### Example 3
+```powershell
+PS C:\> Get-AzureRmEventHubVNetRule -ResourceId vnetrule_resourceid
+```
+
+Get-AzureRmEventHubVNetRule cmdlet without specific VNet Rule ResourceId
+
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -64,14 +71,14 @@ Accept wildcard characters: False
 Virtual Network Rule Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VNetRulePropertiesSet
 Aliases:
 
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -79,14 +86,14 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VNetRulePropertiesSet
 Aliases: NamespaceName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -94,14 +101,14 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VNetRulePropertiesSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -109,7 +116,7 @@ Accept wildcard characters: False
 Virtual Network Rule Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VNetRuleResourceIdParameterSet
 Aliases:
 

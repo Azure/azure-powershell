@@ -47,6 +47,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy
         public const string SetPolicyAssignmentDescriptionHelp = "The description of the updated policy assignment";
         public const string SetPolicyAssignmentMetadataHelp = "The updated metadata for the policy assignment. This can either be a path to a file name containing the metadata, or the metadata as a string.";
         public const string SetPolicyAssignmentSkuHelp = "A hash table which specifies sku properties. This parameter is deprecated and ignored.";
+        public const string PolicyAssignmentAssignIdentityHelp = "Generate and assign an Azure Active Directory Identity for this policy assignment. The identity will be used when executing deployments for 'deployIfNotExists' policies.";
+        public const string PolicyAssignmentLocationHelp = "The location of the policy assignment. This is only required when the policy assignment has a resource identity.";
 
         /// <summary>
         /// Policy definition cmdlet parameter help strings

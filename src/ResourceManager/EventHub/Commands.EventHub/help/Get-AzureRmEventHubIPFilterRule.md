@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.EventHub.dll-Help.xml
 Module Name: AzureRM.EventHub
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermeventhubipfilterrule
 schema: 2.0.0
 ---
 
@@ -49,7 +49,7 @@ Get-AzureRmEventHubIPFilterRule cmdlet without specific Ip Filter Rule name will
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -64,14 +64,14 @@ Accept wildcard characters: False
 IP Filter Rule Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpFilterRulePropertiesSet
 Aliases:
 
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -79,14 +79,14 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpFilterRulePropertiesSet
 Aliases: NamespaceName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -94,14 +94,14 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpFilterRulePropertiesSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Ip Filter Rule Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpFilterRuleResourceIdParameterSet
 Aliases:
 

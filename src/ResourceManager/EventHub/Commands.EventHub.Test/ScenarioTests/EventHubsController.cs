@@ -122,10 +122,6 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    string test = ex.Message;
-                }
                 finally
                 {
                     if (cleanup != null)
