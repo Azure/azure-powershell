@@ -68,7 +68,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 
 ### -Asn
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 
 ### -BgpPeeringAddress
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 
 ### -LocalNetworkGateway
 ```yaml
-Type: PSLocalNetworkGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 
 ### -PeerWeight
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

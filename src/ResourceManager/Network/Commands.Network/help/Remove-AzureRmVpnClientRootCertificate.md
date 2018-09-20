@@ -47,7 +47,7 @@ The third command uses the information stored in the $CertificateText variable a
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,7 +71,7 @@ $Text = Get-Content -Path "C:\Azure\Certificates\ExportedCertficate.cer"
 $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text\[$i\]}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +87,7 @@ Specifies the name of the resource group that the virtual network gateway is ass
 Resource groups categorize items to help simplify inventory management and general Azure administration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual network gateway that the certificate is removed from.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 Specifies the name of the client root certificate that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 

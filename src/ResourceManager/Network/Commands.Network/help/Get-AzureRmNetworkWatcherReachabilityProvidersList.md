@@ -26,13 +26,6 @@ Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher <PSNetworkWat
  [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### SetByLocation
-```
-Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcherLocation <String>
- [-Location <System.Collections.Generic.List`1[System.String]>] [-Country <String>] [-State <String>]
- [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ### SetByResourceId
 ```
 Get-AzureRmNetworkWatcherReachabilityProvidersList -ResourceId <String>
@@ -81,7 +74,7 @@ Lists all available providers in Seattle, WA for Azure Data Center in West US.
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +89,7 @@ Accept wildcard characters: False
 The name of the city.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +104,7 @@ Accept wildcard characters: False
 The name of the country.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +119,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -156,7 +149,7 @@ Accept wildcard characters: False
 The network watcher resource.
 
 ```yaml
-Type: PSNetworkWatcher
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
 Parameter Sets: SetByResource
 Aliases:
 
@@ -167,26 +160,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NetworkWatcherLocation
-Location of the network watcher.
-
-```yaml
-Type: String
-Parameter Sets: SetByLocation
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NetworkWatcherName
 The name of network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases: ResourceName, Name
 
@@ -201,7 +179,7 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases:
 
@@ -216,7 +194,7 @@ Accept wildcard characters: False
 The Id of network watcher resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -231,7 +209,7 @@ Accept wildcard characters: False
 The name of the state.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

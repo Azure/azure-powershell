@@ -21,7 +21,6 @@ Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway
  [-VpnClientProtocol <System.Collections.Generic.List`1[System.String]>]
  [-VpnClientRootCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]>]
  [-VpnClientRevokedCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]>]
- [-VpnClientIpsecPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>] [-EnableActiveActiveFeature] [-DisableActiveActiveFeature] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -34,7 +33,6 @@ Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway
  [-VpnClientProtocol <System.Collections.Generic.List`1[System.String]>]
  [-VpnClientRootCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]>]
  [-VpnClientRevokedCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]>]
- [-VpnClientIpsecPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]>]
  [-Asn <UInt32>] [-PeerWeight <Int32>] [-EnableActiveActiveFeature] [-DisableActiveActiveFeature]
  -RadiusServerAddress <String> -RadiusServerSecret <SecureString> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -73,7 +71,7 @@ The command also sets the custom vpn ipsec policy specified in the $vpnclientips
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +86,7 @@ Accept wildcard characters: False
 Specifies the virtual network gateway Autonomous System Number (ASN) that is used to set up Border Gateway Protocol (BGP) sessions inside IPsec tunnels.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +101,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -118,7 +116,7 @@ Accept wildcard characters: False
 Disables the active-active feature.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +131,7 @@ Accept wildcard characters: False
 Enables the active-active feature.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +147,7 @@ Specifies the default site to use for force tunneling.
 If a default site is specified, all internet traffic from the gateway's Virtual Private Network (VPN) is routed to that site.
 
 ```yaml
-Type: PSLocalNetworkGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -177,10 +175,10 @@ The acceptable values for this parameter are:
 - ErGw3AZ
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3, VpnGw1AZ, VpnGw2AZ, VpnGw3AZ, ErGw1AZ, ErGw2AZ, ErGw3AZ
+Accepted values: Basic, Standard, HighPerformance, UltraPerformance, VpnGw1, VpnGw2, VpnGw3
 
 Required: False
 Position: Named
@@ -193,7 +191,7 @@ Accept wildcard characters: False
 Specifies the weight added to routes learned over BGP from this virtual network gateway
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -208,7 +206,7 @@ Accept wildcard characters: False
 P2S External Radius server address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RadiusServerConfiguration
 Aliases:
 
@@ -223,7 +221,7 @@ Accept wildcard characters: False
 P2S External Radius server secret.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: RadiusServerConfiguration
 Aliases:
 
@@ -239,7 +237,7 @@ Specifies the virtual network gateway object to base modifications off of.
 You can use the Get-AzureRmVirtualNetworkGateway cmdlet to get the virtual network gateway object.
 
 ```yaml
-Type: PSVirtualNetworkGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -266,21 +264,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VpnClientIpsecPolicy
-A list of IPSec policies for P2S VPN client tunneling protocols.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -VpnClientProtocol
 A list of P2S VPN client tunneling protocols
 
@@ -288,7 +271,7 @@ A list of P2S VPN client tunneling protocols
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
-Accepted values: SSTP, IkeV2, OpenVPN
+Accepted values: SSTP, IkeV2
 
 Required: False
 Position: Named
@@ -333,7 +316,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -348,7 +331,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

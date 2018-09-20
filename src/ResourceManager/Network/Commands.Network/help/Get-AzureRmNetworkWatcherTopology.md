@@ -24,12 +24,6 @@ Get-AzureRmNetworkWatcherTopology -NetworkWatcherName <String> -ResourceGroupNam
  -TargetResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### SetByLocation
-```
-Get-AzureRmNetworkWatcherTopology -Location <String> -TargetResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The Get-AzureRmNetworkWatcherTopology cmdlet a network level view of resources and their relationships in a resource group. 
 Note: If resources from multiple regions reside in the resource group, only the resources in the same region as the Network Watcher will be included in the JSON output.
@@ -142,7 +136,7 @@ In this example we run the Get-AzureRmNetworkWatcherTopology cmdlet on a resourc
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -153,26 +147,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of the network watcher.
-
-```yaml
-Type: String
-Parameter Sets: SetByLocation
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NetworkWatcher
 The network watcher resource.
 
 ```yaml
-Type: PSNetworkWatcher
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
 Parameter Sets: SetByResource
 Aliases:
 
@@ -187,7 +166,7 @@ Accept wildcard characters: False
 The name of network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases: Name
 
@@ -202,7 +181,7 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases:
 
@@ -217,7 +196,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

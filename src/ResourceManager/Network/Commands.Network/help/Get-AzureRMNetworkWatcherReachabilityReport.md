@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.netwo
 schema: 2.0.0
 ---
 
-# Get-AzureRmNetworkWatcherReachabilityReport
+# Get-AzureRMNetworkWatcherReachabilityReport
 
 ## SYNOPSIS
 Gets the relative latency score for internet service providers from a specified location to Azure regions.
@@ -14,7 +14,7 @@ Gets the relative latency score for internet service providers from a specified 
 
 ### SetByName (Default)
 ```
-Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
+Get-AzureRMNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
  [-Provider <System.Collections.Generic.List`1[System.String]>]
  [-Location <System.Collections.Generic.List`1[System.String]>] -StartTime <DateTime> -EndTime <DateTime>
  [-Country <String>] [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
@@ -23,7 +23,7 @@ Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcherName <String> -Resour
 
 ### SetByResource
 ```
-Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher <PSNetworkWatcher>
+Get-AzureRMNetworkWatcherReachabilityReport -NetworkWatcher <PSNetworkWatcher>
  [-Provider <System.Collections.Generic.List`1[System.String]>]
  [-Location <System.Collections.Generic.List`1[System.String]>] -StartTime <DateTime> -EndTime <DateTime>
  [-Country <String>] [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
@@ -32,16 +32,7 @@ Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher <PSNetworkWatcher>
 
 ### SetByResourceId
 ```
-Get-AzureRmNetworkWatcherReachabilityReport -ResourceId <String>
- [-Provider <System.Collections.Generic.List`1[System.String]>]
- [-Location <System.Collections.Generic.List`1[System.String]>] -StartTime <DateTime> -EndTime <DateTime>
- [-Country <String>] [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### SetByLocation
-```
-Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcherLocation <String>
+Get-AzureRMNetworkWatcherReachabilityReport -ResourceId <String>
  [-Provider <System.Collections.Generic.List`1[System.String]>]
  [-Location <System.Collections.Generic.List`1[System.String]>] -StartTime <DateTime> -EndTime <DateTime>
  [-Country <String>] [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
@@ -92,7 +83,7 @@ Gets relative latencies to Azure Data Center in West US from 2017-10-10 to 2017-
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +98,7 @@ Accept wildcard characters: False
 The name of the city.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +113,7 @@ Accept wildcard characters: False
 The name of the country.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -137,7 +128,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -152,7 +143,7 @@ Accept wildcard characters: False
 The end time for the Azure reachability report.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -182,7 +173,7 @@ Accept wildcard characters: False
 The network watcher resource
 
 ```yaml
-Type: PSNetworkWatcher
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
 Parameter Sets: SetByResource
 Aliases:
 
@@ -193,26 +184,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NetworkWatcherLocation
-Location of the network watcher.
-
-```yaml
-Type: String
-Parameter Sets: SetByLocation
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NetworkWatcherName
 The name of network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases: ResourceName, Name
 
@@ -242,7 +218,7 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases:
 
@@ -257,7 +233,7 @@ Accept wildcard characters: False
 The Id of network watcher resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -272,7 +248,7 @@ Accept wildcard characters: False
 The start time for the Azure reachability report.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -287,7 +263,7 @@ Accept wildcard characters: False
 The name of the state.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

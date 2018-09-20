@@ -185,7 +185,7 @@ function Test-CortexCRUD
 		Assert-AreEqual $P2SVpnServerConfiguration1Name $virtualWan.P2SVpnServerConfigurations[0].Name
 
 		# Get created P2SVpnServerConfiguration using Get-AzureRmP2SVpnServerConfiguration
-		$P2SVpnServerConfig1 = Get-AzureRmP2SVpnServerConfiguration -VirtualWanName ParentResourceName -ResourceGroupName $rgName -Name $P2SVpnServerConfiguration1Name
+		$P2SVpnServerConfig1 = Get-AzureRmP2SVpnServerConfiguration -ParentResourceName $virtualWanName -ResourceGroupName $rgName -Name $P2SVpnServerConfiguration1Name
 		Assert-AreEqual $P2SVpnServerConfiguration1Name $P2SVpnServerConfig1.Name
 		$protocols = $P2SVpnServerConfig1.VpnProtocols
 		Assert-AreEqual 1 @($protocols).Count
@@ -196,6 +196,7 @@ function Test-CortexCRUD
 		$vpnClientAddressSpaces[0] = "192.168.2.0/24"
 		$vpnClientAddressSpaces[1] = "192.168.3.0/24"
 		$createdP2SVpnGateway = New-AzureRmP2SVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -P2SVpnServerConfiguration $P2SVpnServerConfig1 -Location $rglocation                
+		Assert.AreEqual "Succeeded" $createdP2SVpnGateway.ProvisioningState
 
 		# Get the created P2SVpnGateway using Get-AzureRmP2SVpnGateway
 		$P2SVpnGateway = Get-AzureRmP2SVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
@@ -206,14 +207,15 @@ function Test-CortexCRUD
 		# Generate vpn profile using Get-AzureRmP2SVpnGatewayVpnProfile
 		$vpnProfileResponse = Get-AzureRmP2SVpnGatewayVpnProfile -Name $P2SVpnGatewayName -ResourceGroupName $rgName -AuthenticationMethod $vpnclientAuthMethod
 		Assert-NotNull $vpnProfileResponse.ProfileUrl
+		Assert-ThrowsContains { $vpnProfileResponse.ProfileUrl } ".zip"
 
 		# Create the P2SVpnServerConfiguration2 with RadiusClient settings and associate it with the Virtual wan using New-AzureRmVirtualWanP2SVpnServerConfiguration
 		$Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -AsPlainText -Force
-		$P2SVpnServerConfigObject2 = New-AzureRmP2SVpnServerConfigurationObject -Name $P2SVpnServerConfiguration2Name -VpnProtocol IkeV2 -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd -RadiusServerRootCertificateFilesList $listOfCerts -RadiusClientRootCertificateFilesList $listOfCerts
-		$createdP2SVpnServerConfig2 = New-AzureRmVirtualWanP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ResourceGroupName $rgName -ParentResourceName $virtualWanName -P2SVpnServerConfiguration $P2SVpnServerConfigObject2
+		$createdP2SVpnServerConfig2 = New-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ResourceGroupName $rgName -ParentResourceName $virtualWanName -VpnProtocol IkeV2 -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd -RadiusServerRootCertificateFilesList $listOfCerts -RadiusClientRootCertificateFilesList $listOfCerts
+		Assert.AreEqual "Succeeded" $createdP2SVpnServerConfig2.ProvisioningState
 
 		$virtualWan = Get-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
-		Assert-AreEqual 2 $createdVirtualWan.Name $virtualWan.P2SVpnServerConfigurations.Count
+		Assert-AreEqual 2 $virtualWan.P2SVpnServerConfigurations.Count
 		$P2SVpnServerConfig2 = Get-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ParentResourceId $virtualWan.Id
 		Assert-AreEqual $P2SVpnServerConfiguration2Name $P2SVpnServerConfig2.Name
 		Assert-AreEqual "TestRadiusServer" $P2SVpnServerConfig2.RadiusServerAddress
@@ -223,25 +225,27 @@ function Test-CortexCRUD
 		Assert-AreEqual "TestRadiusServer" $P2SVpnServerConfig2.RadiusServerAddress
 		
 		# Update existing P2SVpnServerConfiguration using Update-AzureRmVirtualWanP2SVpnServerConfiguration
-		$updatedP2SVpnServerConfig2 = Update-AzureRmVirtualWanP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ResourceGroupName $rgName -VirtualWanName $virtualWanName -RadiusServerAddress "TestRadiusServer1" -Force
+		$updatedP2SVpnServerConfig2 = Update-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ResourceGroupName $rgName -VirtualWanName $virtualWanName -RadiusServerAddress "TestRadiusServer1"
 		$P2SVpnServerConfig2 = Get-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ParentResourceName $virtualWanName -ResourceGroupName $rgName
 		Assert-AreEqual $P2SVpnServerConfiguration2Name $P2SVpnServerConfig2.Name
 		Assert-AreEqual "TestRadiusServer1" $P2SVpnServerConfig2.RadiusServerAddress
 		
-		$updatedP2SVpnServerConfig2 = Update-AzureRmVirtualWanP2SVpnServerConfiguration -ResourceId  $P2SVpnServerConfig2.Id -RadiusServerAddress "TestRadiusServer2" -Force			
+		$updatedP2SVpnServerConfig2 = Update-AzureRmP2SVpnServerConfiguration -ResourceId  $P2SVpnServerConfig2.Id -RadiusServerAddress "TestRadiusServer2"			
 		$P2SVpnServerConfig2Get = Get-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ParentResourceId $virtualWan.Id
 		Assert-AreEqual "TestRadiusServer2" $P2SVpnServerConfig2Get.RadiusServerAddress
 						
-		$updatedP2SVpnServerConfig2 = Update-AzureRmVirtualWanP2SVpnServerConfiguration -InputObject P2SVpnServerConfig2Get -RadiusServerAddress "TestRadiusServer3" -Force
-		Assert-AreEqual "TestRadiusServer3" $P2SVpnServerConfig2.RadiusServerAddress
+		$updatedP2SVpnServerConfig2 = Update-AzureRmP2SVpnServerConfiguration -InputObject $P2SVpnServerConfig2Get -RadiusServerAddress "TestRadiusServer3"
+		Assert-AreEqual "TestRadiusServer3" $updatedP2SVpnServerConfig2.RadiusServerAddress
+		$P2SVpnServerConfig2Get = Get-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ParentResourceId $virtualWan.Id
 
 		# Update existing P2SVpnGateway to attach P2SVpnServerConfiguration2 using Update-AzureRmP2SVpnGateway
-		$updatedP2SVpnGateway = Update-AzureRmP2SVpnGateway -Name $P2SvpnGatewayName -ResourceGroupName $rgName -P2SVpnServerConfiguration $P2SVpnServerConfig2 -Force
-		Assert.AreEqual $P2SVpnServerConfig2.Id $updatedP2SVpnGateway.P2SVpnServerConfiguration.Id
+		$updatedP2SVpnGateway = Update-AzureRmP2SVpnGateway -Name $P2SvpnGatewayName -ResourceGroupName $rgName -P2SVpnServerConfiguration $P2SVpnServerConfig2Get
+		Assert.AreEqual $P2SVpnServerConfig2Get.Id $updatedP2SVpnGateway.P2SVpnServerConfiguration.Id
 
 		# Generate vpn profile again using Get-AzureRmP2SVpnGatewayVpnProfile
-		$vpnProfileResponse = Get-AzureRmP2SVpnGatewayVpnProfile -Name $P2SVpnGatewayName -ResourceGroupName $rgName -AuthenticationMethod $vpnclientAuthMethod
-		Assert-NotNull $vpnProfileResponse.ProfileUrl
+		#$vpnProfileResponse = Get-AzureRmP2SVpnGatewayVpnProfile -Name $P2SVpnGatewayName -ResourceGroupName $rgName -AuthenticationMethod $vpnclientAuthMethod
+		#Assert-NotNull $vpnProfileResponse.ProfileUrl
+		#Assert-ThrowsContains { $vpnProfileResponse.ProfileUrl } ".zip"
      }
      finally
      {
@@ -251,7 +255,7 @@ function Test-CortexCRUD
 		Assert-ThrowsContains { Get-AzureRmP2SVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName } "NotFound";
 
 		# Delete P2SVpnServerConfiguration2 using Remove-AzureRmVirtualWanP2SVpnServerConfiguration
-		$delete = Remove-AzureRmVirtualWanP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ResourceGroupName $rgName -ParentResourceName $virtualWanName -Force -PassThru
+		$delete = Remove-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ResourceGroupName $rgName -ParentResourceName $virtualWanName -Force -PassThru
 		Assert-AreEqual $True $delete
 		Assert-ThrowsContains { Get-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ParentResourceId $virtualWan.Id } "NotFound";
 
@@ -270,5 +274,7 @@ function Test-CortexCRUD
 		Assert-AreEqual $True $delete
 		Assert-ThrowsContains { Get-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration1Name -ParentResourceId $virtualWan.Id } "NotFound";
 		Assert-ThrowsContains { Get-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName } "NotFound";
+
+		Clean-ResourceGroup $rgname
      }
 }

@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = P2SVpnServerConfigurationParameterSets.Default + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationObject + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "The P2SVpnServerConfiguration object to update.")]
         public PSP2SVpnServerConfiguration InputObject { get; set; }
 
@@ -228,9 +228,9 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (!ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnServerConfigurationName, StringComparison.OrdinalIgnoreCase))
+            if (!ParameterSetName.Contains(CortexParameterSetNames.ByP2SVpnServerConfigurationName))
             {
-                if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnServerConfigurationObject, StringComparison.OrdinalIgnoreCase))
+                if (ParameterSetName.Contains(CortexParameterSetNames.ByP2SVpnServerConfigurationObject))
                 {
                     this.ResourceId = this.InputObject.Id;
                 }

@@ -14,7 +14,7 @@ Creates a SKU for an application gateway.
 ## SYNTAX
 
 ```
-New-AzureRmApplicationGatewaySku -Name <String> -Tier <String> [-Capacity <Int32>]
+New-AzureRmApplicationGatewaySku -Name <String> -Tier <String> -Capacity <Int32>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -36,11 +36,11 @@ This command creates a SKU named Standard_Small for an Azure application gateway
 Specifies the number of instances of an application gateway.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -75,7 +75,7 @@ The acceptable values for this parameter are:
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large, Standard_v2, WAF_v2
+Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large
 
 Required: True
 Position: Named
@@ -94,7 +94,7 @@ The acceptable values for this parameter are:
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard, WAF, Standard_v2, WAF_v2
+Accepted values: Standard, WAF
 
 Required: True
 Position: Named
