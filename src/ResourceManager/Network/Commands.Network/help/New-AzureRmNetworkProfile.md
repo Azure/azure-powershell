@@ -14,9 +14,8 @@ Creates a new network profile.
 
 ```
 New-AzureRmNetworkProfile -ResourceGroupName <String> -Name <String> [-Location <String>] [-Tag <Hashtable>]
- [-ContainerNetworkInterface <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSContainerNetworkInterface]>]
- [-ContainerNetworkInterfaceConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSContainerNetworkInterfaceConfiguration]>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ContainerNicConfig <PSContainerNetworkInterfaceConfiguration[]>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +25,7 @@ The **New-AzureRmNetworkProfile** cmdlet creates a new network profile top level
 
 ### Example 1
 ```powershell
-$networkProfile = New-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1 -Location westus 
+$networkProfile = New-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1 -Location westus
 ```
 
 This creates a new network profile top level resource
@@ -48,28 +47,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ContainerNetworkInterface
-{{Fill ContainerNetworkInterface Description}}
+### -ContainerNicConfig
+The container network interface configurations to add to this network profile.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSContainerNetworkInterface]
+Type: Microsoft.Azure.Commands.Network.Models.PSContainerNetworkInterfaceConfiguration[]
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ContainerNetworkInterfaceConfiguration
-{{Fill ContainerNetworkInterfaceConfiguration Description}}
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSContainerNetworkInterfaceConfiguration]
-Parameter Sets: (All)
-Aliases:
+Aliases: ContainerNetworkInterfaceConfiguration
 
 Required: False
 Position: Named

@@ -12,8 +12,27 @@ Removes a network profile.
 
 ## SYNTAX
 
+### RemoveByName
 ```
-Remove-AzureRmNetworkProfile -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
+Remove-AzureRmNetworkProfile -ResourceGroupName <String> [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveByNameParameterSet
+```
+Remove-AzureRmNetworkProfile -Name <String> [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveByResourceIdParameterSet
+```
+Remove-AzureRmNetworkProfile -ResourceId <String> [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveByInputObjectParameterSet
+```
+Remove-AzureRmNetworkProfile -InputObject <PSNetworkProfile> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -76,12 +95,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Network profile object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkProfile
+Parameter Sets: RemoveByInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the network profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveByNameParameterSet
 Aliases: ResourceName
 
 Required: True
@@ -111,7 +145,22 @@ The resource group name of the network profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveByName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The Azure resource manager resource ID of the network profile.
+
+```yaml
+Type: System.String
+Parameter Sets: RemoveByResourceIdParameterSet
 Aliases:
 
 Required: True

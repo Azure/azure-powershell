@@ -8,22 +8,14 @@ schema: 2.0.0
 # New-AzureRmNetworkProfileContainerNicConfigIpConfig
 
 ## SYNOPSIS
-Creates a container nic configuration ip configuration
+Creates a container nic configuration ip configuration object.
 
 ## SYNTAX
 
-### SetByResource (Default)
 ```
-New-AzureRmNetworkProfileContainerNicConfigIpConfig -Name <String> -Subnet <PSSubnet>
+New-AzureRmNetworkProfileContainerNicConfigIpConfig -Name <String> -Subnet <PSSubnet> [-SubnetId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
-
-### SetByResourceId 
-```
-New-AzureRmNetworkProfileContainerNicConfigIpConfig -Name <String> -SubnetId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 
 ## DESCRIPTION
 The **New-AzureRmNetworkProfileContainerNicConfigIpConfig** cmdlet creates a new container network interface configuration ip configuration. 

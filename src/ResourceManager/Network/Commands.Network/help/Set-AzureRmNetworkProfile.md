@@ -28,9 +28,9 @@ $networkProfile = Get-AzureRmNetworkProfile -Name np1 -ResourceGroupName rg1
 
 $networkProfile.Tags = "TestTag"
 
-$networkProfile | Add-AzureRmNetworkProfileContainerNetworkInterfaceConfig -Name cnicconfig1
+$networkProfile.ContainerNetworkInterfaceConfigurations = New-AzureRmNetworkProfileContainerNicConfig -Name cnicconfig1
 
-$networkProfile | Set-AzureRmNetworkProfile 
+$networkProfile | Set-AzureRmNetworkProfile
 ```
 
 The first command gets an existing network profile. The second command updates a tag and the third adds a network interface configuration on the network profile. The fourth command updates the network profile.
