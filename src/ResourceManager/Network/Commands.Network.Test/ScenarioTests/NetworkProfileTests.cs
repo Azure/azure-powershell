@@ -62,14 +62,6 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
-        public void TestContainerNetworkInterfaceCRUDMinimalParameters()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ContainerNetworkInterfaceCRUDMinimalParameters"));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestContainerNetworkInterfaceConfigCRUDMinimalParameters()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ContainerNetworkInterfaceConfigCRUDMinimalParameters"));
@@ -81,22 +73,6 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestContainerNetworkInterfaceConfigCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ContainerNetworkInterfaceConfigCRUD"));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
-        public void TestContainerNetworkInterfaceConfigCRUDSet()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ContainerNetworkInterfaceConfigCRUDSet"));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, Category.sdnnrp)]
-        public void TestNetworkProfileEndToEndWithContainerNics()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-NetworkProfileEndToEndWithContainerNics"));
         }
     }
 }
