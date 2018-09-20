@@ -105,6 +105,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         public override void Execute()
         {
             base.Execute();
+
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnConnectionName, StringComparison.OrdinalIgnoreCase))
             {
                 this.ResourceGroupName = this.ResourceGroupName;

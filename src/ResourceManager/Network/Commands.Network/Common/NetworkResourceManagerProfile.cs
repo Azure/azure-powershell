@@ -767,7 +767,7 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.DdosProtectionPlan, CNM.PSDdosProtectionPlan>();
 
-		// Service Endpoint Policy
+		        // Service Endpoint Policy
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSServiceEndpointPolicy, MNM.ServiceEndpointPolicy>();
 

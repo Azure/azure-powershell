@@ -171,6 +171,7 @@ namespace Microsoft.Azure.Commands.Network
         private PSVpnConnection CreateVpnConnection()
         {
             base.Execute();
+
             PSVpnGateway parentVpnGateway = null;
 
             //// Resolve the VpnGateway

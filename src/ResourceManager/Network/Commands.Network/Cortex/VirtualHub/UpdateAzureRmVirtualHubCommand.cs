@@ -118,6 +118,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 virtualHubToUpdate = this.GetVirtualHub(this.ResourceGroupName, this.Name);
             }
+
             if (virtualHubToUpdate == null)
             {
                 throw new PSArgumentException(Properties.Resources.VirtualHubToUpdateNotFound);
