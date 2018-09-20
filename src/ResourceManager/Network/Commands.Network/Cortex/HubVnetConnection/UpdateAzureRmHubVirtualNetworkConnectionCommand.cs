@@ -128,8 +128,6 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             ConfirmAction(
-                    false,
-                    string.Format(Properties.Resources.SettingResourceMessage, this.Name),
                     Properties.Resources.SettingResourceMessage,
                     this.Name,
                     () =>
