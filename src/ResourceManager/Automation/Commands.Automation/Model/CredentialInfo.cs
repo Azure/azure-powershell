@@ -37,12 +37,12 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.AutomationAccountName = accountAcccountName;
             this.Name = credential.Name;
 
-            if (credential.Properties == null) return;
+            if (credential == null) return;
 
-            this.Description = credential.Properties.Description;
-            this.CreationTime = credential.Properties.CreationTime.ToLocalTime();
-            this.LastModifiedTime = credential.Properties.LastModifiedTime.ToLocalTime();
-            this.UserName = credential.Properties.UserName;
+            this.Description = credential.Description;
+            this.CreationTime = credential.CreationTime.ToLocalTime();
+            this.LastModifiedTime = credential.LastModifiedTime.ToLocalTime();
+            this.UserName = credential.UserName;
         }
 
         /// <summary>

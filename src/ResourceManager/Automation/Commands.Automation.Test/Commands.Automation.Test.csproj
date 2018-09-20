@@ -51,17 +51,16 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\MSTest.TestFramework.1.3.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\MSTest.TestFramework.1.3.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" /> 
+    <Reference Include="Microsoft.Azure.Management.Automation">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.3.4.0-preview\lib\net452\Microsoft.Azure.Management.Automation.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\AutomationScenarioTestsBase.cs" />
     <Compile Include="ScenarioTests\AutomationTests.cs" />
+    <Compile Include="ScenarioTests\UpdateManagement\UpdateManagementTests.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeConfigurationDeploymentSchedulesTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeConfigurationTest.cs" />
     <Compile Include="UnitTests\GetAzureAutomationDscNodeReportTest.cs" />
@@ -144,8 +143,57 @@
     <None Include="ScenarioTests\Resources\Write-DebugAndVerboseOutput.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\UpdateManagement\UpdateManagementTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateLinuxWeeklySUC.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateWindowsMonthlySUC.json" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateLinuxOneTimeSUCNonAzureOnly.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateLinuxOneTimeSUCWithAllOption.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateLinuxOneTimeSUCWithDefaults.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateWindowsOneTimeSUCWithAllOption.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\CreateWindowsOneTimeSUCWithDefaults.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\DeleteSUC.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllMachineRuns.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllMachineRunsWithFilters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllMachineRunsWithFiltersNoResults.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllRuns.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllRunsWithFilters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllRunsWithFiltersNoResults.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllSUCs.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SessionRecords\Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests.UpdateManagement.UpdateManagementTests\GetAllSUCsForVM.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const string PsCommandParamDepth = "Depth";
 
-        public const int PsCommandValueDepth = 10;
+        public const int PsCommandValueDepth = 2;
 
         public const int JobSummaryLength = 80;
 
@@ -96,6 +96,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
             public const string Graph = ".graphrunbook";
 
             public const string Python = ".py";
+        }
+
+        internal static class SupportedSourceType
+        {
+            public const string GitHub = "GitHub";
+            public const string VsoGit = "VsoGit";
+            public const string VsoTfvc = "VsoTfvc";
         }
     }
 }
