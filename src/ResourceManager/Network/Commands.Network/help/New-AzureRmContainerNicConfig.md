@@ -13,8 +13,7 @@ Creates a new container network interface configuration object.
 ## SYNTAX
 
 ```
-New-AzureRmNetworkProfileContainerNicConfig -Name <String>
- [-IpConfiguration <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIPConfigurationProfile]>]
+New-AzureRmNetworkProfileContainerNicConfig [-Name <String>] [-IpConfiguration <PSIPConfigurationProfile[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -53,9 +52,9 @@ Accept wildcard characters: False
 {{Fill IpConfiguration Description}}
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIPConfigurationProfile]
+Type: Microsoft.Azure.Commands.Network.Models.PSIPConfigurationProfile[]
 Parameter Sets: (All)
-Aliases:
+Aliases: IpConfig
 
 Required: False
 Position: Named
@@ -72,7 +71,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

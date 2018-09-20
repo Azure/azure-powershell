@@ -257,12 +257,6 @@ Gets a network interface IP configuration for a network interface.
 ### [Get-AzureRmNetworkProfile](Get-AzureRmNetworkProfile.md)
 Gets an existing network profile top level resource
 
-### [Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig](Get-AzureRmNetworkProfileContainerNetworkInterfaceConfig.md)
-Gets a container network interface configuration.
-
-### [Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig](Get-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig.md)
-Gets a container network interface configuration ip configuration.
-
 ### [Get-AzureRmNetworkSecurityGroup](Get-AzureRmNetworkSecurityGroup.md)
 Gets a network security group.
 
@@ -479,6 +473,12 @@ Creates a WAF configuration for an application gateway.
 ### [New-AzureRmApplicationSecurityGroup](New-AzureRmApplicationSecurityGroup.md)
 Creates an application security group.
 
+### [New-AzureRmContainerNicConfig](New-AzureRmContainerNicConfig.md)
+Creates a new container network interface configuration object.
+
+### [New-AzureRmContainerNicConfigIpConfig](New-AzureRmContainerNicConfigIpConfig.md)
+Creates a container nic configuration ip configuration object.
+
 ### [New-AzureRmDdosProtectionPlan](New-AzureRmDdosProtectionPlan.md)
 Creates a DDoS protection plan.
 
@@ -529,12 +529,6 @@ Creates a network interface IP configuration.
 
 ### [New-AzureRmNetworkProfile](New-AzureRmNetworkProfile.md)
 Creates a new network profile.
-
-### [New-AzureRmNetworkProfileContainerNetworkInterfaceConfig](New-AzureRmNetworkProfileContainerNetworkInterfaceConfig.md)
-Creates a new container network interface configuration object.
-
-### [New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig](New-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig.md)
-Creates a container nic configuration ip configuration
 
 ### [New-AzureRmNetworkSecurityGroup](New-AzureRmNetworkSecurityGroup.md)
 Creates a network security group.
@@ -744,12 +738,6 @@ Removes a network interface IP configuration from a network interface.
 ### [Remove-AzureRmNetworkProfile](Remove-AzureRmNetworkProfile.md)
 Removes a network profile.
 
-### [Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig](Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfig.md)
-Removes a container network interface configuration.
-
-### [Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig](Remove-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig.md)
-Removes an ip configuration from a container network interface configruation.
-
 ### [Remove-AzureRmNetworkSecurityGroup](Remove-AzureRmNetworkSecurityGroup.md)
 Removes a network security group.
 
@@ -941,12 +929,6 @@ Sets the goal state for an Azure network interface IP configuration.
 
 ### [Set-AzureRmNetworkProfile](Set-AzureRmNetworkProfile.md)
 Sets the goal state for an existing network profile
-
-### [Set-AzureRmNetworkProfileContainerNetworkInterfaceConfig](Set-AzureRmNetworkProfileContainerNetworkInterfaceConfig.md)
-Sets the goal state for a container network interface configuration.
-
-### [Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig](Set-AzureRmNetworkProfileContainerNetworkInterfaceConfigIpConfig.md)
-Sets the goal state for a container network interface configuration's ip configuration.
 
 ### [Set-AzureRmNetworkSecurityGroup](Set-AzureRmNetworkSecurityGroup.md)
 Sets the goal state for a network security group.
