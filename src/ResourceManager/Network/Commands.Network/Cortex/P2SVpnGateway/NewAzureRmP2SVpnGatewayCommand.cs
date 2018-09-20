@@ -16,49 +16,43 @@
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.New,
-        "AzureRmP2sVpnGateway",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2SVpnGateway",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSP2SVpnGateway))]
-    public class NewAzureRmP2sVpnGatewayCommand : P2sVpnGatewayBaseCmdlet
+    public class NewAzureRmP2SVpnGatewayCommand : P2SVpnGatewayBaseCmdlet
     {
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceGroupName { get; set; }
+
         [Alias("ResourceName", "P2SVpnGatewayName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource location.")]
-        [LocationCompleter]
+        [LocationCompleter("Microsoft.Network/p2sVpnGateways")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The scale unit for this P2SVpnGateway.")]
-        public uint VpnGatewayScaleUnit { get; set; }
-
-        [Parameter(
             Mandatory = true,
+            ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The VirtualHub this P2SVpnGateway needs to be associated with.")]
         public PSVirtualHub VirtualHub { get; set; }
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId,
             HelpMessage = "The Id of the VirtualHub this P2SVpnGateway needs to be associated with.")]
         [ResourceIdCompleter("Microsoft.Network/virtualHubs")]
@@ -67,22 +61,26 @@
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The name of the VirtualHub this P2SVpnGateway needs to be associated with.")]
         public string VirtualHubName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The VirtualWan PSP2SVpnServerConfiguration to be attached to this P2SVpnGateway. This is optional parameter.")]
-        public PSP2SVpnServerConfiguration P2SVpnServerConfiguration { get; set; }
+            HelpMessage = "The scale unit for this P2SVpnGateway.")]
+        public uint VpnGatewayScaleUnit { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "P2S VpnClient AddressPool for this P2SVpnGateway.")]
         [ValidateNotNullOrEmpty]
         public string[] VpnClientAddressPool { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "The VirtualWan PSP2SVpnServerConfiguration to be attached to this P2SVpnGateway. This is optional parameter.")]
+        public PSP2SVpnServerConfiguration P2SVpnServerConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -93,11 +91,6 @@
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         public override void Execute()
         {
@@ -122,7 +115,7 @@
             //// At this point, we should have the virtual hub name resolved. Fail this operation if it is not.
             if (string.IsNullOrWhiteSpace(this.VirtualHubName))
             {
-                throw new PSArgumentException("A valid VirtualHub reference is required to create a P2SVpnGateway");
+                throw new PSArgumentException(Properties.Resources.VirtualHubRequiredForP2SVpnGateway);
             }
 
             var resolvedVirtualHub = new VirtualHubBaseCmdlet().GetVirtualHub(this.ResourceGroupName, this.VirtualHubName);
@@ -133,15 +126,8 @@
             p2sVpnGateway.P2SVpnServerConfiguration = this.P2SVpnServerConfiguration;
 
             //// Set the VpnClientAddressPool
-            if (this.VpnClientAddressPool == null)
-            {
-                throw new PSArgumentException("A valid VpnClientAddressPool is required to create a P2SVpnGateway");
-            }
-            else
-            {
-                p2sVpnGateway.VpnClientAddressPool = new PSAddressSpace();
-                p2sVpnGateway.VpnClientAddressPool.AddressPrefixes = new List<string>(this.VpnClientAddressPool);
-            }
+            p2sVpnGateway.VpnClientAddressPool = new PSAddressSpace();
+            p2sVpnGateway.VpnClientAddressPool.AddressPrefixes = new List<string>(this.VpnClientAddressPool);
 
             //// Scale unit, if specified
             p2sVpnGateway.VpnGatewayScaleUnit = 0;
@@ -150,15 +136,9 @@
                 p2sVpnGateway.VpnGatewayScaleUnit = Convert.ToInt32(this.VpnGatewayScaleUnit);
             }
 
-            bool shouldProcess = this.Force.IsPresent;
-
-            if (!shouldProcess)
+            if (ShouldProcess(this.Name, Properties.Resources.CreatingResourceMessage))
             {
-                shouldProcess = ShouldProcess(this.Name, Properties.Resources.CreatingResourceMessage);
-            }
-
-            if (shouldProcess)
-            {
+                WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
                 WriteObject(this.CreateOrUpdateP2SVpnGateway(this.ResourceGroupName, this.Name, p2sVpnGateway, this.Tag));
             }
         }

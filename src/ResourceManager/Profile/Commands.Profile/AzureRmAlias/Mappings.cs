@@ -2253,7 +2253,17 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'New-AzNetworkInterfaceIpConfig': 'New-AzureRmNetworkInterfaceIpConfig',
     'New-AzExpressRouteCircuit': 'New-AzureRmExpressRouteCircuit',
     'Set-AzApplicationGatewayFrontendIPConfig': 'Set-AzureRmApplicationGatewayFrontendIPConfig',
-    'Get-AzInterfaceEndpoint': 'Set-AzureRmInterfaceEndpoint'
+    'Get-AzInterfaceEndpoint': 'Set-AzureRmInterfaceEndpoint',
+	'New-AzP2SVpnServerConfigurationObject':  'New-AzureRmP2SVpnServerConfigurationObject',	
+    'New-AzP2SVpnServerConfiguration':  'New-AzureRmP2SVpnServerConfiguration',	
+    'Update-AzP2SVpnServerConfiguration':  'Update-AzureRmP2SVpnServerConfiguration',
+	'Get-AzP2SVpnServerConfiguration':  'Get-AzureRmP2SVpnServerConfiguration',	
+	'Remove-AzP2SVpnServerConfiguration':  'Remove-AzureRmP2SVpnServerConfiguration',	
+	'New-AzP2SVpnGateway':  'New-AzureRmP2SVpnGateway',	
+	'Update-AzP2SVpnGateway':  'Update-AzureRmP2SVpnGateway',	
+	'Get-AzP2SVpnGateway':  'Get-AzureRmP2SVpnGateway',
+    'Get-AzP2SVpnGatewayVpnProfile':  'Get-AzureRmP2SVpnGatewayVpnProfile',	
+	'Remove-AzP2SVpnGateway':  'Remove-AzureRmP2SVpnGateway'
   },
   'Az.DataLakeAnalytics': {
     'New-AzDataLakeAnalyticsCatalogSecret': 'New-AzureRmDataLakeAnalyticsCatalogSecret',

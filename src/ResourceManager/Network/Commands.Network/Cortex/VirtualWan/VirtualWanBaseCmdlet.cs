@@ -20,11 +20,13 @@ namespace Microsoft.Azure.Commands.Network
     using System.IO;
     using System.Net;
     using System.Security;
-    using System.Security.Cryptography.X509Certificates;    
+    using System.Security.Cryptography.X509Certificates;
+    using Management.Network;
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+    using Models;
     using Rest.Azure;
     using WindowsAzure.Commands.Common;
-    using MNM = Microsoft.Azure.Management.Network.Models;
+    using Management.Network.Models;
 
     public class VirtualWanBaseCmdlet : NetworkBaseCmdlet
     {
@@ -103,7 +105,7 @@ namespace Microsoft.Azure.Commands.Network
             List<PSVirtualWan> wansToReturn = new List<PSVirtualWan>();
             if (virtualWans != null)
             {
-                foreach (MNM.VirtualWAN virtualWan in virtualWans)
+                foreach (VirtualWAN virtualWan in virtualWans)
                 {
                     PSVirtualWan wanToReturn = ToPsVirtualWan(virtualWan);
                     wanToReturn.ResourceGroupName = resourceGroupName;

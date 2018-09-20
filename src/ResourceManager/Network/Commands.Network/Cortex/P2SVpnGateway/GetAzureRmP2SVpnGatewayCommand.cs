@@ -7,32 +7,32 @@
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get,
-        "AzureRmP2sVpnGateway",
-        SupportsShouldProcess = true),
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2SVpnGateway",
+        DefaultParameterSetName = "ListBySubscriptionId"),
         OutputType(typeof(PSP2SVpnGateway))]
-    public class GetAzureRmP2sVpnGatewayCommand : P2sVpnGatewayBaseCmdlet
+    public class GetAzureRmP2SVpnGatewayCommand : P2SVpnGatewayBaseCmdlet
     {
-        [Alias("ResourceName", "P2SVpnGatewayName")]
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            ParameterSetName = "ListByResourceGroupName",
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Alias("ResourceName", "P2SVpnGatewayName")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "ListByResourceGroupName",
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
+
         public override void Execute()
         {
             base.Execute();
 
-            if (!string.IsNullOrEmpty(this.Name))
+            if (ParameterSetName.Equals("ListByResourceGroupName") && !string.IsNullOrEmpty(this.Name))
             {
                 var p2sVpnGateway = this.GetP2SVpnGateway(this.ResourceGroupName, this.Name);
 
@@ -40,11 +40,8 @@
             }
             else
             {
-                // Get the list of all P2SVpnGateways under Resource Group (if specified) else under Subscription
-                var psP2SVpnGateways = new List<PSP2SVpnGateway>();
-                psP2SVpnGateways = this.ListP2SVpnGateways(this.ResourceGroupName);
-
-                WriteObject(psP2SVpnGateways, true);
+                //// ResourceName has not been specified - List all gateways
+                WriteObject(this.ListP2SVpnGateways(this.ResourceGroupName), true);
             }
         }
     }

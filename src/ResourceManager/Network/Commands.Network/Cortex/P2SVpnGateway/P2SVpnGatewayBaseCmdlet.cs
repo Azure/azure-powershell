@@ -9,7 +9,7 @@
     using System.Net;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
-    public class P2sVpnGatewayBaseCmdlet : NetworkBaseCmdlet
+    public class P2SVpnGatewayBaseCmdlet : NetworkBaseCmdlet
     {
         public IP2sVpnGatewaysOperations P2SVpnGatewayClient
         {

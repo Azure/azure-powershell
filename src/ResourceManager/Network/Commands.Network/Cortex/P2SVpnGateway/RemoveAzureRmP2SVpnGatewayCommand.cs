@@ -15,20 +15,12 @@
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
     [Cmdlet(VerbsCommon.Remove,
-        "AzureRmP2sVpnGateway",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2SVpnGateway",
         DefaultParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
-    public class RemoveAzureRmP2sVpnGatewayCommand : P2sVpnGatewayBaseCmdlet
+    public class RemoveAzureRmP2SVpnGatewayCommand : P2SVpnGatewayBaseCmdlet
     {
-        [Alias("ResourceName", "P2SVpnGatewayName")]
-        [Parameter(
-            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
-            Mandatory = true,
-            HelpMessage = "The P2SVpnGateway name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
         [Parameter(
             ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
             Mandatory = true,
@@ -36,6 +28,14 @@
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        [Alias("ResourceName", "P2SVpnGatewayName")]
+        [Parameter(
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnGatewayName,
+            Mandatory = true,
+            HelpMessage = "The P2SVpnGateway name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
 
         [Alias("P2SVpnGateway")]
         [Parameter(
@@ -55,6 +55,11 @@
         [ResourceIdCompleter("Microsoft.Network/p2sVpnGateways")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Returns an object representing the item on which this operation is being performed.")]
+        public SwitchParameter PassThru { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -85,7 +90,11 @@
                     () =>
                     {
                         this.P2SVpnGatewayClient.Delete(this.ResourceGroupName, this.Name);
-                        WriteObject(true);
+
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
                     });
         }
     }

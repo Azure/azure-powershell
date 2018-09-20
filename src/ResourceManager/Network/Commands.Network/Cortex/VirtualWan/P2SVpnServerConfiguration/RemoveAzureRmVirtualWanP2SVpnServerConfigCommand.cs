@@ -22,23 +22,14 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove,
-        "AzureRmP2sVpnServerConfiguration",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2SVpnServerConfiguration",
+        DefaultParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName,
         SupportsShouldProcess = true),
         OutputType(typeof(bool))]
-    public class RemoveAzureRmVirtualWanP2sVpnServerConfigCommand : VirtualWanBaseCmdlet
+    public class RemoveAzureRmVirtualWanP2SVpnServerConfigCommand : VirtualWanBaseCmdlet
     {
-        [Alias("ResourceName", "P2SVpnServerConfigurationName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName,
-            HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -53,6 +44,14 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The parent resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string ParentResourceName { get; set; }
+
+        [Alias("ResourceName", "P2SVpnServerConfigurationName")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
 
         [Alias("P2SVpnServerConfigurationId")]
         [Parameter(
@@ -72,19 +71,18 @@ namespace Microsoft.Azure.Commands.Network
         public PSP2SVpnServerConfiguration InputObject { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "Returns an object representing the item on which this operation is being performed.")]
+        public SwitchParameter PassThru { get; set; }
+
+        [Parameter(
            Mandatory = false,
            HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         public override void Execute()
         {
-            if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnServerConfigurationName, StringComparison.OrdinalIgnoreCase))
-            {
-                this.ResourceGroupName = this.ResourceGroupName;
-                this.ParentResourceName = this.ParentResourceName;
-                this.Name = this.Name;
-            }
-            else
+            if (!ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnServerConfigurationName, StringComparison.OrdinalIgnoreCase))
             {
                 if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnServerConfigurationObject, StringComparison.OrdinalIgnoreCase))
                 {
@@ -94,7 +92,7 @@ namespace Microsoft.Azure.Commands.Network
                 //// At this point, the resource id should not be null. If it is, customer did not specify a valid resource to delete.
                 if (string.IsNullOrWhiteSpace(this.ResourceId))
                 {
-                    throw new PSArgumentException("No P2SVpnServerConfiguration specified. Nothing will be deleted.");
+                    throw new PSArgumentException(Properties.Resources.P2SVpnServerConfigurationNotSpecified);
                 }
 
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
@@ -107,10 +105,10 @@ namespace Microsoft.Azure.Commands.Network
             PSVirtualWan parentVirtualWan = this.GetVirtualWan(this.ResourceGroupName, this.ParentResourceName);
 
             if (parentVirtualWan == null ||
-                parentVirtualWan.P2sVpnServerConfigurations == null ||
-                !parentVirtualWan.P2sVpnServerConfigurations.Any(p2sVpnServerConfiguration => p2sVpnServerConfiguration.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
+                parentVirtualWan.P2SVpnServerConfigurations == null ||
+                !parentVirtualWan.P2SVpnServerConfigurations.Any(p2sVpnServerConfiguration => p2sVpnServerConfiguration.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
             {
-                throw new PSArgumentException("The P2SVpnServerConfiguration to delete and/or Parent VirtualWan could not be found.");
+                throw new PSArgumentException(Properties.Resources.ParentWanOrP2SVpnServerConfigurationNotFound);
             }
 
             base.Execute();
@@ -123,9 +121,12 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     this.DeleteVirtualWanP2SVpnServerConfiguration(this.ResourceGroupName, this.ParentResourceName, this.Name);
-                });
 
-            WriteObject(true);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

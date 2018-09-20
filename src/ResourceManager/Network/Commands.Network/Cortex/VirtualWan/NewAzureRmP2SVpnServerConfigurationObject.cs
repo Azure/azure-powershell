@@ -25,29 +25,20 @@ using System.IO;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New,
-        "AzureRmP2sVpnServerConfigurationObject",
-        SupportsShouldProcess = true,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2SVpnServerConfigurationObject",
         DefaultParameterSetName = P2SVpnServerConfigurationParameterSets.Default),
         OutputType(typeof(PSP2SVpnServerConfiguration))]
-    public class NewAzureRmP2sVpnServerConfigurationObject : VirtualWanBaseCmdlet
+    public class NewAzureRmP2SVpnServerConfigurationObject : VirtualWanBaseCmdlet
     {
         [Alias("ResourceName", "P2SVpnServerConfigurationName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource name.")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = P2SVpnServerConfigurationParameterSets.Default,
-            HelpMessage = "The list of P2S VPN client tunneling protocols")]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "The list of P2S VPN client tunneling protocols")]
         [ValidateSet(
             MNM.VpnGatewayTunnelingProtocol.IkeV2,
@@ -56,8 +47,8 @@ namespace Microsoft.Azure.Commands.Network
         public string[] VpnProtocol { get; set; }
 
         [Parameter(
-            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             ParameterSetName = P2SVpnServerConfigurationParameterSets.Default,
             HelpMessage = "A list of VpnClientRootCertificates to be added files' paths")]
         public string[] VpnClientRootCertificateFilesList { get; set; }
@@ -78,7 +69,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server address.")]
         [ValidateNotNullOrEmpty]
@@ -86,7 +76,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server secret.")]
         [ValidateNotNullOrEmpty]

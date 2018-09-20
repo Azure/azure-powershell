@@ -4,18 +4,12 @@
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
 
     ## Current Release
-    * Overview of change #1
-        - Additional information about change #1
-    * Overview of change #2
-        - Additional information about change #2
-        - Additional information about change #2
-    * Overview of change #3
-    * Overview of change #4
-        - Additional information about change #4
-
-    ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
-    * Overview of change #1
-        - Additional information about change #1
+    * Expose new Powershell commandlets and models for SdWan P2S cortex feature.
+        - Updated New, Get, Set, Remove for VirtualWan.
+        - Added New-AzureRmP2SVpnServerConfigurationObject to create in-memory P2SVpnServerConfiguration object which can be passed as a list in New/Update-VirtualWan.
+        - Added New, Get, Update, Remove for P2SVpnServerConfiguration into VirtualWan.
+        - Added New, Get, Update, Remove for P2SVpnGateway.
+        - Added Get-AzureRmP2SVpnGatewayVpnProfile to generate VpnProfile package and return Sas-Url where it can be downloaded from.
 --->
 
 ## Current Release
@@ -93,17 +87,13 @@
   - Get-AzureRmAvailableServiceDelegations
 * Expose new Powershell commandlets and models for SdWan.
     - Added New, Get, Set, Remove for VirtualWan.
-    - Added New-AzP2sVpnServerConfigurationObject to create in-memory P2sVpnServerConfiguration object which can be passed in New/Update-VirtualWan
-    - Added New, Get, Update, Remove for P2sVpnServerConfiguration into VirtualWan.
     - Added New for VirtualHubRoute and VirtualHubRouteTable.
     - Added New, Get, Set, Remove for VirtualHub.
     - Added New, Get, Set, Remove for HubVirtualNetworkConnection.
     - Added New, Get, Set, Remove for VpnGateway.
     - Added New, Get, Set, Remove for VpnSite.
     - Added New, Get, Set, Remove for VpnConnection.
-    - Added Get-AzureRmVirtualWanVpnSitesConfigurationCommand to allow download of SdWan configuration.    
-    - Added New, Get, Update, Remove for P2sVpnGateway.
-    - Added Get-AzureRmP2sVpnGatewayVpnProfile to generate VpnProfile and download Sas-Url where it can be downloaded from.
+    - Added Get-AzureRmVirtualWanVpnSitesConfigurationCommand to allow download of SdWan configuration.
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass

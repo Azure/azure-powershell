@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class P2sVpnServerConfigurationParameterSets
+    public class P2SVpnServerConfigurationParameterSets
     {
         public const string Default = @"Default";
 

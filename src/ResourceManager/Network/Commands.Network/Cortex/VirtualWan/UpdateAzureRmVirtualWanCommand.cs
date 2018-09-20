@@ -82,8 +82,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of PSP2sVpnServerConfigurations that are associated with this VirtualWan.")]
-        public PSP2SVpnServerConfiguration[] P2sVpnServerConfiguration { get; set; }
+            ValueFromPipeline = true,
+            HelpMessage = "The list of PSP2SVpnServerConfigurations that are associated with this VirtualWan.")]
+        public PSP2SVpnServerConfiguration[] P2SVpnServerConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -151,10 +152,10 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Modify the P2SVpnServerConfigurations if present
-            if (this.P2sVpnServerConfiguration != null && this.P2sVpnServerConfiguration.Any())
+            if (this.P2SVpnServerConfiguration != null && this.P2SVpnServerConfiguration.Length != 0)
 
             {
-                virtualWanToUpdate.P2sVpnServerConfigurations = new List<PSP2SVpnServerConfiguration>(this.P2sVpnServerConfiguration);
+                virtualWanToUpdate.P2SVpnServerConfigurations = new List<PSP2SVpnServerConfiguration>(this.P2SVpnServerConfiguration);
             }
 
             var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWAN>(virtualWanToUpdate);

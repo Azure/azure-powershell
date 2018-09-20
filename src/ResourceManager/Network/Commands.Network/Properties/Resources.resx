@@ -291,6 +291,18 @@
   <data name="VirtualHubRequiredForVpnGateway" xml:space="preserve">
     <value>A valid VirtualHub reference is required to create a VpnGateway.</value>
   </data>
+  <data name="VirtualHubRequiredForP2SVpnGateway" xml:space="preserve">
+    <value>A valid VirtualHub reference is required to create a P2SVpnGateway.</value>
+  </data>
+  <data name="ParentVirtualWanRequiredForP2SVpnServerConfig" xml:space="preserve">
+    <value>A valid Parent VirtualWan reference is required to do operations on child P2SVpnServerConfiguration.</value>
+  </data>
+  <data name="VpnClientOrRadiusClientSettingsRequiredForP2SVpnServerConfig" xml:space="preserve">
+    <value>Either VpnClient settings or RadiusClient settings should be specified for creating P2SVpnServerConfiguration.</value>
+  </data>
+  <data name="P2SVpnServerConfigurationAlreadyExists" xml:space="preserve">
+    <value>P2SVpnServerConfiguration with the specified name already exists.</value>
+  </data>  
   <data name="VirtualNetworkReferenceRequiredToCreateHubVnetConnection" xml:space="preserve">
     <value>A remote virtual network reference is required to create a HubVirtualNetworkConnection.</value>
   </data>
@@ -308,6 +320,9 @@
   </data>
   <data name="VpnGatewayNotFound" xml:space="preserve">
     <value>The VpnGateway to modify could not be found</value>
+  </data>
+  <data name="P2SVpnGatewayNotFound" xml:space="preserve">
+    <value>The P2SVpnGateway to modify could not be found</value>
   </data>
   <data name="VpnSiteListRequiredForVpnSiteConfiguration" xml:space="preserve">
     <value>A list of connected VpnSites is required to generate a vpnSites configuration.</value>
@@ -359,5 +374,11 @@
   </data>
   <data name="P2SVpnServerConfigurationResourceId" xml:space="preserve">
     <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualWans/{2}/p2sVpnServerConfigurations/{3}/{4}/{5}</value>
+  </data>
+  <data name="P2SVpnServerConfigurationNotSpecified" xml:space="preserve">
+    <value>No Valid P2SVpnServerConfiguration specified. No action will be taken.</value>
+  </data>
+  <data name="ParentWanOrP2SVpnServerConfigurationNotFound" xml:space="preserve">
+    <value>The P2SVpnServerConfiguration and/or Parent VirtualWan could not be found.</value>
   </data>
 </root>

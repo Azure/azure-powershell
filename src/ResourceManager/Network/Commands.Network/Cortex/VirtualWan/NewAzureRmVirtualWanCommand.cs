@@ -66,8 +66,9 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The list of P2sVpnServerConfigurations that are associated with this VirtualWan.")]
-        public PSP2SVpnServerConfiguration[] P2sVpnServerConfiguration { get; set; }
+            ValueFromPipeline = true,
+            HelpMessage = "The list of P2SVpnServerConfigurations that are associated with this VirtualWan.")]
+        public PSP2SVpnServerConfiguration[] P2SVpnServerConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -107,11 +108,11 @@ namespace Microsoft.Azure.Commands.Network
             virtualWan.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.IsPresent;
             virtualWan.AllowVnetToVnetTraffic = this.AllowVnetToVnetTraffic.IsPresent;
 
-            // P2sVpnServerConfigurations, if specified
-            virtualWan.P2sVpnServerConfigurations = new List<PSP2SVpnServerConfiguration>();
-            if (this.P2sVpnServerConfiguration != null && this.P2sVpnServerConfiguration.Any())
+            // P2SVpnServerConfigurations, if specified
+            virtualWan.P2SVpnServerConfigurations = new List<PSP2SVpnServerConfiguration>();
+            if (this.P2SVpnServerConfiguration != null && this.P2SVpnServerConfiguration.Length != 0)
             {
-                virtualWan.P2sVpnServerConfigurations.AddRange(this.P2sVpnServerConfiguration);
+                virtualWan.P2SVpnServerConfigurations.AddRange(this.P2SVpnServerConfiguration);
             }
 
             var virtualWanModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualWAN>(virtualWan);

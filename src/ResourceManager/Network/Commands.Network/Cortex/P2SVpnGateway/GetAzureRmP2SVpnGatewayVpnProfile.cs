@@ -21,27 +21,27 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmP2sVpnGatewayVpnProfile"), OutputType(typeof(PSVpnProfileResponse))]
-    public class GetAzureRmP2sVpnGatewayVpnProfile : P2sVpnGatewayBaseCmdlet
+    [Cmdlet(VerbsCommon.Get,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2SVpnGatewayVpnProfile"),
+        OutputType(typeof(PSVpnProfileResponse))]
+    public class GetAzureRmP2SVpnGatewayVpnProfile : P2SVpnGatewayBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
             HelpMessage = "ResourceGroup name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Alias("ResourceName", "P2SVpnGatewayName", "GatewayName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipeline = true,
             HelpMessage = "P2SVpnGateway name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "AuthenticationMethod")]
         [ValidateSet(
         MNM.AuthenticationMethod.EAPTLS,

@@ -22,43 +22,49 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmP2sVpnServerConfiguration"), OutputType(typeof(PSP2SVpnServerConfiguration))]
-    public class GetAzureRmVirtualWanP2sVpnServerConfigCommand : VirtualWanBaseCmdlet
+    [Cmdlet(VerbsCommon.Get,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2SVpnServerConfiguration",
+        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName),
+        OutputType(typeof(PSP2SVpnServerConfiguration))]
+    public class GetAzureRmVirtualWanP2SVpnServerConfigCommand : VirtualWanBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
-            HelpMessage = "The name of the parent VirtualWan this P2SVpnServerConfiguration is associated with.")]
-        public string VirtualWanName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        [Alias("VirtualWan")]
+        [Alias("ParentVirtualWanName", "VirtualWanName")]
         [Parameter(
             Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByVirtualWanName,
+            HelpMessage = "The name of the parent VirtualWan this P2SVpnServerConfiguration is associated with.")]
+        public string ParentResourceName { get; set; }
+
+        [Alias("ParentVirtualWan", "VirtualWan")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanObject,
             HelpMessage = "The VirtualWan this P2SVpnServerConfiguration is associated with.")]
-        public PSVirtualWan InputObject { get; set; }
+        public PSVirtualWan ParentObject { get; set; }
 
-        [Alias("VirtualWanId")]
+        [Alias("ParentVirtualWanId", "VirtualWanId")]
         [Parameter(
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualWanResourceId,
             HelpMessage = "The Id of the parent VirtualWan this P2SVpnServerConfiguration is associated with.")]
         [ResourceIdCompleter("Microsoft.Network/virtualWans")]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string ParentResourceId { get; set; }
 
+        [Alias("ResourceName", "P2SVpnServerConfigurationName")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the p2sVpnServerConfiguration")]
+            HelpMessage = "The name of the P2SVpnServerConfiguration")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -69,35 +75,29 @@ namespace Microsoft.Azure.Commands.Network
             //// Verify the parent virtual wan exists
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanObject, StringComparison.OrdinalIgnoreCase))
             {
-                this.VirtualWanName = this.InputObject.Name;
+                this.ResourceGroupName = this.ParentObject.ResourceGroupName;
+                this.ParentResourceName = this.ParentObject.Name;
             }
             else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualWanResourceId, StringComparison.OrdinalIgnoreCase))
             {
-                var parsedResourceId = new ResourceIdentifier(this.ResourceId);
-                this.VirtualWanName = parsedResourceId.ResourceName;
+                var parsedResourceId = new ResourceIdentifier(this.ParentResourceId);
+                this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                this.ParentResourceName = parsedResourceId.ResourceName;
             }
 
             //// At this point, we should have the virtual Wan name resolved. Fail this operation if it is not.
-            if (string.IsNullOrWhiteSpace(this.VirtualWanName))
+            if (string.IsNullOrWhiteSpace(this.ParentResourceName))
             {
-                throw new PSArgumentException("A valid Parent VirtualWan reference is required to get the associated P2SVpnServerConfiguration.");
+                throw new PSArgumentException(Properties.Resources.ParentVirtualWanRequiredForP2SVpnServerConfig);
             }
 
-            var parentVirtualWan = new VirtualWanBaseCmdlet().GetVirtualWan(this.ResourceGroupName, this.VirtualWanName);
-
-            if (!string.IsNullOrEmpty(this.Name))
+            if (!string.IsNullOrWhiteSpace(this.Name))
             {
-                var p2sVpnServerConfig = this.GetVirtualWanP2SVpnServerConfiguration(parentVirtualWan.ResourceGroupName, parentVirtualWan.Name, this.Name);
-
-                WriteObject(p2sVpnServerConfig);
+                WriteObject(this.GetVirtualWanP2SVpnServerConfiguration(this.ResourceGroupName, this.ParentResourceName, this.Name));
             }
             else
             {
-                // Get the list of all P2SVpnserverConfigurations associated with Virtual Wan
-                var psP2SVpnServerConfigurations = new List<PSP2SVpnServerConfiguration>();
-                psP2SVpnServerConfigurations = this.ListVirtualWanP2SVpnServerConfigurations(parentVirtualWan.ResourceGroupName, parentVirtualWan.Name);
-
-                WriteObject(psP2SVpnServerConfigurations, true);
+                WriteObject(this.ListVirtualWanP2SVpnServerConfigurations(this.ResourceGroupName, this.ParentResourceName), true);
             }
         }
     }

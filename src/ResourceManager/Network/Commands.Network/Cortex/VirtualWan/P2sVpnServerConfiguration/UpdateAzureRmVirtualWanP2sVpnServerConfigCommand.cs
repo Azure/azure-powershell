@@ -26,24 +26,19 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Update",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2sVpnServerConfiguration",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2SVpnServerConfiguration",
+        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName + P2SVpnServerConfigurationParameterSets.Default,
         SupportsShouldProcess = true),
         OutputType(typeof(PSP2SVpnServerConfiguration))]
-    public class SetAzureRmVirtualWanP2sVpnServerConfigCommand : VirtualWanBaseCmdlet
+    public class UpdateAzureRmVirtualWanP2SVpnServerConfigCommand : VirtualWanBaseCmdlet
     {
-        [Alias("ResourceName", "P2sVpnServerConfigurationName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CortexParameterSetNames.ByP2sVpnServerConfigurationName,
-            HelpMessage = "The resource name.")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
-
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.Default,
+            HelpMessage = "The resource group name.")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CortexParameterSetNames.ByP2sVpnServerConfigurationName,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -52,38 +47,56 @@ namespace Microsoft.Azure.Commands.Network
         [Alias("ParentVirtualWanName", "VirtualWanName")]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CortexParameterSetNames.ByP2sVpnServerConfigurationName,
-            HelpMessage = "The parent resource name.")]
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.Default,
+            HelpMessage = "The name of the parent VirtualWan this P2SVpnServerConfiguration needs to be associated with.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            HelpMessage = "The name of the parent VirtualWan this P2SVpnServerConfiguration needs to be associated with.")]
         [ValidateNotNullOrEmpty]
         public virtual string ParentResourceName { get; set; }
 
-        [Alias("P2sVpnServerConfigurationId")]
+        [Alias("ResourceName", "P2SVpnServerConfigurationName")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.Default,
+            HelpMessage = "The resource name.")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            HelpMessage = "The resource name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Name { get; set; }
+
+        [Alias("P2SVpnServerConfigurationId")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = CortexParameterSetNames.ByP2sVpnServerConfigurationResourceId,
-            HelpMessage = "The resource id of the P2sVpnServerConfiguration object to delete.")]
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationResourceId + P2SVpnServerConfigurationParameterSets.Default,
+            HelpMessage = "The resource id of the P2SVpnServerConfiguration object to delete.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationResourceId + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            HelpMessage = "The resource id of the P2SVpnServerConfiguration object to delete.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Alias("P2sVpnServerConfiguration")]
+        [Alias("P2SVpnServerConfiguration")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = CortexParameterSetNames.ByP2sVpnServerConfigurationObject,
-            HelpMessage = "The P2sVpnServerConfiguration object to update.")]
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationObject + P2SVpnServerConfigurationParameterSets.Default,
+            HelpMessage = "The P2SVpnServerConfiguration object to update.")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = P2SVpnServerConfigurationParameterSets.Default + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            HelpMessage = "The P2SVpnServerConfiguration object to update.")]
         public PSP2SVpnServerConfiguration InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = P2sVpnServerConfigurationParameterSets.Default,
-            HelpMessage = "The list of P2S VPN client tunneling protocols")]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = P2sVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "The list of P2S VPN client tunneling protocols")]
         [ValidateSet(
             MNM.VpnGatewayTunnelingProtocol.IkeV2,
@@ -94,36 +107,80 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = P2sVpnServerConfigurationParameterSets.Default,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.Default,
+            HelpMessage = "A list of VpnClientRootCertificates to be added files' paths")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationResourceId + P2SVpnServerConfigurationParameterSets.Default,
+            HelpMessage = "A list of VpnClientRootCertificates to be added files' paths")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationObject + P2SVpnServerConfigurationParameterSets.Default,
             HelpMessage = "A list of VpnClientRootCertificates to be added files' paths")]
         public string[] VpnClientRootCertificateFilesList { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = P2sVpnServerConfigurationParameterSets.Default,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.Default,
+            HelpMessage = "A list of VpnClientCertificates to be revoked files' paths")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationResourceId + P2SVpnServerConfigurationParameterSets.Default,
+            HelpMessage = "A list of VpnClientCertificates to be revoked files' paths")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationObject + P2SVpnServerConfigurationParameterSets.Default,
             HelpMessage = "A list of VpnClientCertificates to be revoked files' paths")]
         public string[] VpnClientRevokedCertificateFilesList { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-            ParameterSetName = P2sVpnServerConfigurationParameterSets.Default,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.Default,
+             HelpMessage = "A list of IPSec policies for P2SVpnServerConfiguration.")]
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationResourceId + P2SVpnServerConfigurationParameterSets.Default,
+             HelpMessage = "A list of IPSec policies for P2SVpnServerConfiguration.")]
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationObject + P2SVpnServerConfigurationParameterSets.Default,
              HelpMessage = "A list of IPSec policies for P2SVpnServerConfiguration.")]
         public PSIpsecPolicy[] VpnClientIpsecPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = P2sVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            HelpMessage = "P2S External Radius server address.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationResourceId + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            HelpMessage = "P2S External Radius server address.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationObject + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server address.")]
         [ValidateNotNullOrEmpty]
         public string RadiusServerAddress { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = P2sVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            HelpMessage = "P2S External Radius server secret.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationResourceId + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            HelpMessage = "P2S External Radius server secret.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationObject + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "P2S External Radius server secret.")]
         [ValidateNotNullOrEmpty]
         public SecureString RadiusServerSecret { get; set; }
@@ -131,21 +188,36 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = P2sVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationResourceId + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationObject + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
         public string[] RadiusServerRootCertificateFilesList { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = P2sVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
             HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
-        public string[] RadiusClientRootCertificateFilesList { get; set; }
-
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
-        public SwitchParameter Force { get; set; }
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationResourceId + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationObject + P2SVpnServerConfigurationParameterSets.RadiusServerConfiguration,
+            HelpMessage = "A list of RadiusClientRootCertificate files' paths")]
+        public string[] RadiusClientRootCertificateFilesList { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -156,15 +228,9 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (ParameterSetName.Equals(CortexParameterSetNames.ByP2sVpnServerConfigurationName, StringComparison.OrdinalIgnoreCase))
+            if (!ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnServerConfigurationName, StringComparison.OrdinalIgnoreCase))
             {
-                this.ResourceGroupName = this.ResourceGroupName;
-                this.ParentResourceName = this.ParentResourceName;
-                this.Name = this.Name;
-            }
-            else
-            {
-                if (ParameterSetName.Equals(CortexParameterSetNames.ByP2sVpnServerConfigurationObject, StringComparison.OrdinalIgnoreCase))
+                if (ParameterSetName.Equals(CortexParameterSetNames.ByP2SVpnServerConfigurationObject, StringComparison.OrdinalIgnoreCase))
                 {
                     this.ResourceId = this.InputObject.Id;
                 }
@@ -172,7 +238,7 @@ namespace Microsoft.Azure.Commands.Network
                 //// At this point, the resource id should not be null. If it is, customer did not specify a valid resource to modify.
                 if (string.IsNullOrWhiteSpace(this.ResourceId))
                 {
-                    throw new PSArgumentException("No P2sVpnServerConfiguration specified. Nothing will be modified.");
+                    throw new PSArgumentException(Properties.Resources.P2SVpnServerConfigurationNotSpecified);
                 }
 
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
@@ -188,7 +254,7 @@ namespace Microsoft.Azure.Commands.Network
                 parentVirtualWan.P2SVpnServerConfigurations == null ||
                 !parentVirtualWan.P2SVpnServerConfigurations.Any(p2sVpnServerConfiguration => p2sVpnServerConfiguration.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
             {
-                throw new PSArgumentException("The P2SVpnServerConfiguration and/or Parent VirtualWan to modify could not be found.");
+                throw new PSArgumentException(Properties.Resources.ParentWanOrP2SVpnServerConfigurationNotFound);
             }
 
             //// Get existing P2SVpnServerConfiguration to modify
@@ -211,17 +277,11 @@ namespace Microsoft.Azure.Commands.Network
                 this.RadiusServerRootCertificateFilesList,
                 this.RadiusClientRootCertificateFilesList);
 
-            ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Properties.Resources.SettingResourceMessage, this.Name),
-                    Properties.Resources.SettingResourceMessage,
-                    this.Name,
-                    () =>
-                    {
-                        var createdOrUpdatedP2SVpnServerConfiguration = this.CreateOrUpdateVirtualWanP2SVpnServerConfiguration(this.ResourceGroupName, parentVirtualWan.Name, this.Name, p2sVpnServerConfigurationToModify);
-
-                        WriteObject(createdOrUpdatedP2SVpnServerConfiguration);
-                    });
+            if (ShouldProcess(this.Name, Properties.Resources.SettingResourceMessage))
+            {
+                WriteVerbose(String.Format(Properties.Resources.UpdatingLongRunningOperationMessage, this.ResourceGroupName, this.Name + "under parent Virtual Wan:" + parentVirtualWan.Name));
+                WriteObject(this.CreateOrUpdateVirtualWanP2SVpnServerConfiguration(this.ResourceGroupName, parentVirtualWan.Name, this.Name, p2sVpnServerConfigurationToModify));
+            }
         }
     }
 }

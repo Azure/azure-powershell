@@ -3381,8 +3381,8 @@
                 <PropertyName>Id</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Number of attached P2sVpnServerConfigurations</Label>
-                <ScriptBlock>$_.P2sVpnServerConfigurations.Count</ScriptBlock>
+                <Label>Number of attached P2SVpnServerConfigurations</Label>
+                <ScriptBlock>$_.P2SVpnServerConfigurations.Count</ScriptBlock>
               </ListItem>	  
               <ListItem>
                 <Label>AllowVnetToVnetTraffic</Label>
