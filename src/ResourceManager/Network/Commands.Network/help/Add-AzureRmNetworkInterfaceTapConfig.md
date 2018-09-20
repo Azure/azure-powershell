@@ -31,14 +31,12 @@ The **Add-AzureRmNetworkInterfaceTapConfig** cmdlet creates a TapConfiguration r
 
 
 ## EXAMPLES
-]
+
 ### Example 1: Add TapConfiguration to a given NetworkInterface
 ```
 PS C:\>Add-AzureRmNetworkInterfaceTapConfig -NetworkInterface $sourceNic -VirtualNetworkTap $vVirtualNetworkTap -Name 'myTapConfig'
 ```
-# where 
-# - $sourceNic is the source NetworkInterface resource which is getting tapped
-# - $vVirtualNetworkTap is the VirtualNetworkTap which configures the destination details where the source VM traffic gets tapped to.
+Add the TapConfiguration to a sourceNic. The traffic from sourceNic VM will be mirrored to destination VM referred in vVirtualNetworkTap resource.
 
 ## PARAMETERS
 
