@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{Fill Name Description}}
+Name of Reservation
 
 ```yaml
 Type: System.String
