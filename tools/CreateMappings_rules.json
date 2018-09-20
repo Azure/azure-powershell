@@ -139,4 +139,5 @@
     { "regex": "SignalR", "alias": "SignalR" },
     { "regex": "Search", "alias": "Search" },
     { "regex": "Security", "alias": "Security" }
+    { "regex": "DeploymentManager", "alias": "Deployment Manager" }
 ]
