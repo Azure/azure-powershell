@@ -14,8 +14,8 @@ Creates an Azure Virtual WAN.
 
 ```
 New-AzureRmVirtualWan -ResourceGroupName <String> -Name <String> -Location <String> [-AllowVnetToVnetTraffic]
- [-AllowBranchToBranchTraffic] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AllowBranchToBranchTraffic] [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration[]>] [-Tag <Hashtable>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,6 +132,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -P2SVpnServerConfiguration
+The list of P2SVpnServerConfigurations that are associated with this VirtualWan.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -207,5 +222,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualWan
 
 ## NOTES
+
+## RELATED LINKS
 
 ## RELATED LINKS

@@ -25,6 +25,12 @@ Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcherName <String> -Resource
  [-Confirm] [<CommonParameters>]
 ```
 
+### SetByLocation
+```
+Remove-AzureRmNetworkWatcherPacketCapture -Location <String> -PacketCaptureName <String> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Remove-AzureRmNetworkWatcherPacketCapture removes a packet capture resource. 
 It is recommended to call Stop-AzureRmNetworkWatcherPacketCapture before calling Remove-AzureRmNetworkWatcherPacketCapture. 
@@ -65,6 +71,21 @@ Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the network watcher.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByLocation
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

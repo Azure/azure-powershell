@@ -24,6 +24,12 @@ Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcherName <String> -ResourceGro
  [-PacketCaptureName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### SetByLocation
+```
+Get-AzureRmNetworkWatcherPacketCapture -Location <String> [-PacketCaptureName <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Get-AzureRmNetworkWatcherPacketCapture gets the properties and status of a packet capture resource.
 
@@ -73,6 +79,21 @@ Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the network watcher.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByLocation
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

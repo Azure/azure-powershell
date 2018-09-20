@@ -16,8 +16,8 @@ Adds a peering configuration to an ExpressRoute circuit.
 ### SetByResource (Default)
 ```
 Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
- -PeeringType <String> -PeerASN <Int32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
- -VlanId <Int32> [-SharedKey <String>]
+ -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
+ -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
  [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
  [-PeerAddressType <String>] [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>]
@@ -27,8 +27,8 @@ Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
 ### MicrosoftPeeringConfigRoutFilterId
 ```
 Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
- -PeeringType <String> -PeerASN <Int32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
- -VlanId <Int32> [-SharedKey <String>]
+ -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
+ -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
  [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>] -RouteFilterId <String>
  [-PeerAddressType <String>] [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>]
@@ -38,8 +38,8 @@ Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
 ### MicrosoftPeeringConfigRoutFilter
 ```
 Add-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
- -PeeringType <String> -PeerASN <Int32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
- -VlanId <Int32> [-SharedKey <String>]
+ -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
+ -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
  [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
  -RouteFilter <PSRouteFilter> [-PeerAddressType <String>] [-LegacyMode <Boolean>]
@@ -204,7 +204,7 @@ The AS number of your ExpressRoute circuit. This must be a Public ASN when the P
 AzurePublicPeering.
 
 ```yaml
-Type: System.Int32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 

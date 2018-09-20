@@ -25,6 +25,12 @@ Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcherName <String> -ResourceGr
  [-Confirm] [<CommonParameters>]
 ```
 
+### SetByLocation
+```
+Stop-AzureRmNetworkWatcherPacketCapture -Location <String> -PacketCaptureName <String> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Stop-AzureRmNetworkWatcherPacketCapture stops a running packet capture session. After the session is stopped, the packet capture file is uploaded to storage and/or saved locally on the VM depending on its configuration.
 
@@ -63,6 +69,21 @@ Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the network watcher.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByLocation
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

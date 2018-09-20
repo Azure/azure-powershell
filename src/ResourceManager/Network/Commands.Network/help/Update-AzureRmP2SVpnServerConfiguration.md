@@ -58,18 +58,12 @@ Update-AzureRmP2SVpnServerConfiguration -InputObject <PSP2SVpnServerConfiguratio
  [-Confirm] [<CommonParameters>]
 ```
 
-### DefaultRadiusServerConfiguration
-```
-Update-AzureRmP2SVpnServerConfiguration -InputObject <PSP2SVpnServerConfiguration> [-VpnProtocol <String[]>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ByP2SVpnServerConfigurationObjectRadiusServerConfiguration
 ```
-Update-AzureRmP2SVpnServerConfiguration [-VpnProtocol <String[]>] [-RadiusServerAddress <String>]
- [-RadiusServerSecret <SecureString>] [-RadiusServerRootCertificateFilesList <String[]>]
- [-RadiusClientRootCertificateFilesList <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmP2SVpnServerConfiguration -InputObject <PSP2SVpnServerConfiguration> [-VpnProtocol <String[]>]
+ [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>]
+ [-RadiusServerRootCertificateFilesList <String[]>] [-RadiusClientRootCertificateFilesList <String[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +84,7 @@ PS C:\> {{ Add example code here }}
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +99,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -120,8 +114,8 @@ Accept wildcard characters: False
 The P2SVpnServerConfiguration object to update.
 
 ```yaml
-Type: PSP2SVpnServerConfiguration
-Parameter Sets: ByP2SVpnServerConfigurationObjectDefault, DefaultRadiusServerConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration
+Parameter Sets: ByP2SVpnServerConfigurationObjectDefault, ByP2SVpnServerConfigurationObjectRadiusServerConfiguration
 Aliases: P2SVpnServerConfiguration
 
 Required: True
@@ -135,7 +129,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnServerConfigurationNameDefault, ByP2SVpnServerConfigurationNameRadiusServerConfiguration
 Aliases: ResourceName, P2SVpnServerConfigurationName
 
@@ -150,7 +144,7 @@ Accept wildcard characters: False
 The name of the parent VirtualWan this P2SVpnServerConfiguration needs to be associated with.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnServerConfigurationNameDefault, ByP2SVpnServerConfigurationNameRadiusServerConfiguration
 Aliases: ParentVirtualWanName, VirtualWanName
 
@@ -165,7 +159,7 @@ Accept wildcard characters: False
 A list of RadiusClientRootCertificate files' paths
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByP2SVpnServerConfigurationNameRadiusServerConfiguration, ByP2SVpnServerConfigurationResourceIdRadiusServerConfiguration, ByP2SVpnServerConfigurationObjectRadiusServerConfiguration
 Aliases:
 
@@ -180,7 +174,7 @@ Accept wildcard characters: False
 P2S External Radius server address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnServerConfigurationNameRadiusServerConfiguration, ByP2SVpnServerConfigurationResourceIdRadiusServerConfiguration, ByP2SVpnServerConfigurationObjectRadiusServerConfiguration
 Aliases:
 
@@ -195,7 +189,7 @@ Accept wildcard characters: False
 A list of RadiusClientRootCertificate files' paths
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByP2SVpnServerConfigurationNameRadiusServerConfiguration, ByP2SVpnServerConfigurationResourceIdRadiusServerConfiguration, ByP2SVpnServerConfigurationObjectRadiusServerConfiguration
 Aliases:
 
@@ -210,7 +204,7 @@ Accept wildcard characters: False
 P2S External Radius server secret.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: ByP2SVpnServerConfigurationNameRadiusServerConfiguration, ByP2SVpnServerConfigurationResourceIdRadiusServerConfiguration, ByP2SVpnServerConfigurationObjectRadiusServerConfiguration
 Aliases:
 
@@ -225,7 +219,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnServerConfigurationNameDefault, ByP2SVpnServerConfigurationNameRadiusServerConfiguration
 Aliases:
 
@@ -240,7 +234,7 @@ Accept wildcard characters: False
 The resource id of the P2SVpnServerConfiguration object to delete.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnServerConfigurationResourceIdDefault, ByP2SVpnServerConfigurationResourceIdRadiusServerConfiguration
 Aliases: P2SVpnServerConfigurationId
 
@@ -255,7 +249,7 @@ Accept wildcard characters: False
 A list of IPSec policies for P2SVpnServerConfiguration.
 
 ```yaml
-Type: PSIpsecPolicy[]
+Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
 Parameter Sets: ByP2SVpnServerConfigurationNameDefault, ByP2SVpnServerConfigurationResourceIdDefault, ByP2SVpnServerConfigurationObjectDefault
 Aliases:
 
@@ -270,7 +264,7 @@ Accept wildcard characters: False
 A list of VpnClientCertificates to be revoked files' paths
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByP2SVpnServerConfigurationNameDefault, ByP2SVpnServerConfigurationResourceIdDefault, ByP2SVpnServerConfigurationObjectDefault
 Aliases:
 
@@ -285,7 +279,7 @@ Accept wildcard characters: False
 A list of VpnClientRootCertificates to be added files' paths
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByP2SVpnServerConfigurationNameDefault, ByP2SVpnServerConfigurationResourceIdDefault, ByP2SVpnServerConfigurationObjectDefault
 Aliases:
 
@@ -300,7 +294,7 @@ Accept wildcard characters: False
 The list of P2S VPN client tunneling protocols
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: IkeV2, OpenVPN
@@ -316,7 +310,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -332,7 +326,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -344,8 +338,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -354,11 +347,9 @@ Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration
 System.String[]
 Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration
-
 
 ## NOTES
 
