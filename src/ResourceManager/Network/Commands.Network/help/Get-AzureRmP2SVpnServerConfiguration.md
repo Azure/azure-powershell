@@ -12,21 +12,21 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### ByVirtualWanName
+### ByVirtualWanName (Default)
 ```
-Get-AzureRmP2SVpnServerConfiguration -VirtualWanName <String> -ResourceGroupName <String> [-Name <String>]
+Get-AzureRmP2SVpnServerConfiguration -ResourceGroupName <String> -ParentResourceName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVirtualWanObject
 ```
-Get-AzureRmP2SVpnServerConfiguration -ResourceGroupName <String> -InputObject <PSVirtualWan> [-Name <String>]
+Get-AzureRmP2SVpnServerConfiguration -ParentObject <PSVirtualWan> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceId
 ```
-Get-AzureRmP2SVpnServerConfiguration -ResourceGroupName <String> -ResourceId <String> [-Name <String>]
+Get-AzureRmP2SVpnServerConfiguration -ParentResourceId <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -59,30 +59,60 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The VirtualWan this P2SVpnServerConfiguration is associated with.
+### -Name
+The name of the p2sVpnServerConfiguration
 
 ```yaml
-Type: PSVirtualWan
-Parameter Sets: ByVirtualWanObject
-Aliases: VirtualWan
+Type: System.String
+Parameter Sets: (All)
+Aliases: ResourceName, P2SVpnServerConfigurationName
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the p2sVpnServerConfiguration
+### -ParentObject
+The VirtualWan this P2SVpnServerConfiguration is associated with.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
+Parameter Sets: ByVirtualWanObject
+Aliases: ParentVirtualWan, VirtualWan
 
-Required: False
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourceId
+The Id of the parent VirtualWan this P2SVpnServerConfiguration is associated with.
+
+```yaml
+Type: System.String
+Parameter Sets: ByVirtualWanResourceId
+Aliases: ParentVirtualWanId, VirtualWanId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ParentResourceName
+The name of the parent VirtualWan this P2SVpnServerConfiguration is associated with.
+
+```yaml
+Type: System.String
+Parameter Sets: ByVirtualWanName
+Aliases: ParentVirtualWanName, VirtualWanName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -93,24 +123,9 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ByVirtualWanName
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The Id of the parent VirtualWan this P2SVpnServerConfiguration is associated with.
-
-```yaml
-Type: String
-Parameter Sets: ByVirtualWanResourceId
-Aliases: VirtualWanId
 
 Required: True
 Position: Named
@@ -119,34 +134,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualWanName
-The name of the parent VirtualWan this P2SVpnServerConfiguration is associated with.
-
-```yaml
-Type: String
-Parameter Sets: ByVirtualWanName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration
-
 
 ## NOTES
 

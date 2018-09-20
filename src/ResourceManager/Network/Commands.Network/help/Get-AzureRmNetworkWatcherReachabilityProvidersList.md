@@ -26,6 +26,13 @@ Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher <PSNetworkWat
  [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### SetByLocation
+```
+Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcherLocation <String>
+ [-Location <System.Collections.Generic.List`1[System.String]>] [-Country <String>] [-State <String>]
+ [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### SetByResourceId
 ```
 Get-AzureRmNetworkWatcherReachabilityProvidersList -ResourceId <String>
@@ -157,6 +164,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NetworkWatcherLocation
+Location of the network watcher.
+
+```yaml
+Type: System.String
+Parameter Sets: SetByLocation
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

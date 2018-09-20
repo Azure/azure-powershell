@@ -57,7 +57,7 @@ This cmdlet returns virtual network gateway object.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The Vpnclient DH Groups used in IKE Phase 1 for initial SA
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: DHGroup24, ECP384, ECP256, DHGroup14, DHGroup2
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 The Vpnclient IKE encryption algorithm (IKE Phase 2)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: GCMAES256, GCMAES128, AES256, AES128
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The Vpnclient IKE integrity algorithm (IKE Phase 2)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: SHA384, SHA256
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 The Vpnclient IPSec encryption algorithm (IKE Phase 1)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: GCMAES256, GCMAES128, AES256, AES128, None
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 The Vpnclient IPSec integrity algorithm (IKE Phase 1)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: GCMAES256, GCMAES128, SHA256
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 The Vpnclient PFS Groups used in IKE Phase 2 for new child SA
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: PFS24, PFSMM, ECP384, ECP256, PFS14, PFS2, None
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 

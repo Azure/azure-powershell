@@ -12,37 +12,51 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### ByVirtualWanName
+### ByVirtualWanNameDefault (Default)
 ```
-New-AzureRmP2SVpnServerConfiguration -VirtualWanName <String> -ResourceGroupName <String> -Name <String>
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByVirtualWanObject
-```
-New-AzureRmP2SVpnServerConfiguration -InputObject <PSVirtualWan> -Name <String> [-Force] [-AsJob]
+New-AzureRmP2SVpnServerConfiguration -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
+ [-VpnProtocol <String[]>] [-VpnClientRootCertificateFilesList <String[]>]
+ [-VpnClientRevokedCertificateFilesList <String[]>] [-VpnClientIpsecPolicy <PSIpsecPolicy[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByVirtualWanResourceId
+### ByVirtualWanNameRadiusServerConfiguration
 ```
-New-AzureRmP2SVpnServerConfiguration -ResourceId <String> -Name <String> [-Force] [-AsJob]
+New-AzureRmP2SVpnServerConfiguration -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
+ [-VpnProtocol <String[]>] [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>]
+ [-RadiusServerRootCertificateFilesList <String[]>] [-RadiusClientRootCertificateFilesList <String[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Default
+### ByVirtualWanObjectDefault
 ```
-New-AzureRmP2SVpnServerConfiguration -Name <String> [-VpnProtocol <String[]>]
+New-AzureRmP2SVpnServerConfiguration -ParentObject <PSVirtualWan> -Name <String> [-VpnProtocol <String[]>]
  [-VpnClientRootCertificateFilesList <String[]>] [-VpnClientRevokedCertificateFilesList <String[]>]
- [-VpnClientIpsecPolicy <PSIpsecPolicy[]>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VpnClientIpsecPolicy <PSIpsecPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### RadiusServerConfiguration
+### ByVirtualWanObjectRadiusServerConfiguration
 ```
-New-AzureRmP2SVpnServerConfiguration -Name <String> [-VpnProtocol <String[]>] [-RadiusServerAddress <String>]
- [-RadiusServerSecret <SecureString>] [-RadiusServerRootCertificateFilesList <String[]>]
- [-RadiusClientRootCertificateFilesList <String[]>] [-Force] [-AsJob]
+New-AzureRmP2SVpnServerConfiguration -ParentObject <PSVirtualWan> -Name <String> [-VpnProtocol <String[]>]
+ [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>]
+ [-RadiusServerRootCertificateFilesList <String[]>] [-RadiusClientRootCertificateFilesList <String[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByVirtualWanResourceIdDefault
+```
+New-AzureRmP2SVpnServerConfiguration -ParentResourceId <String> -Name <String> [-VpnProtocol <String[]>]
+ [-VpnClientRootCertificateFilesList <String[]>] [-VpnClientRevokedCertificateFilesList <String[]>]
+ [-VpnClientIpsecPolicy <PSIpsecPolicy[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByVirtualWanResourceIdRadiusServerConfiguration
+```
+New-AzureRmP2SVpnServerConfiguration -ParentResourceId <String> -Name <String> [-VpnProtocol <String[]>]
+ [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>]
+ [-RadiusServerRootCertificateFilesList <String[]>] [-RadiusClientRootCertificateFilesList <String[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -64,7 +78,7 @@ PS C:\> {{ Add example code here }}
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -90,28 +104,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Do not ask for confirmation if you want to create a resource
+### -Name
+The resource name.
 
 ```yaml
-Type: SwitchParameter
+Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The VirtualWan this P2SVpnServerConfiguration needs to be associated with.
-
-```yaml
-Type: PSVirtualWan
-Parameter Sets: ByVirtualWanObject
-Aliases: VirtualWan
+Aliases: ResourceName, P2SVpnServerConfigurationName
 
 Required: True
 Position: Named
@@ -120,13 +119,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The resource name.
+### -ParentObject
+The VirtualWan this P2SVpnServerConfiguration needs to be associated with.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName, P2SVpnServerConfigurationName
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualWan
+Parameter Sets: ByVirtualWanObjectDefault, ByVirtualWanObjectRadiusServerConfiguration
+Aliases: ParentVirtualWan, VirtualWan
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourceId
+The Id of the parent VirtualWan this P2SVpnServerConfiguration needs to be associated with.
+
+```yaml
+Type: System.String
+Parameter Sets: ByVirtualWanResourceIdDefault, ByVirtualWanResourceIdRadiusServerConfiguration
+Aliases: ParentVirtualWanId, VirtualWanId
 
 Required: True
 Position: Named
@@ -135,12 +149,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ParentResourceName
+The name of the parent VirtualWan this P2SVpnServerConfiguration needs to be associated with.
+
+```yaml
+Type: System.String
+Parameter Sets: ByVirtualWanNameDefault, ByVirtualWanNameRadiusServerConfiguration
+Aliases: ParentVirtualWanName, VirtualWanName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RadiusClientRootCertificateFilesList
 A list of RadiusClientRootCertificate files' paths
 
 ```yaml
-Type: String[]
-Parameter Sets: RadiusServerConfiguration
+Type: System.String[]
+Parameter Sets: ByVirtualWanNameRadiusServerConfiguration, ByVirtualWanObjectRadiusServerConfiguration, ByVirtualWanResourceIdRadiusServerConfiguration
 Aliases:
 
 Required: False
@@ -154,14 +183,14 @@ Accept wildcard characters: False
 P2S External Radius server address.
 
 ```yaml
-Type: String
-Parameter Sets: RadiusServerConfiguration
+Type: System.String
+Parameter Sets: ByVirtualWanNameRadiusServerConfiguration, ByVirtualWanObjectRadiusServerConfiguration, ByVirtualWanResourceIdRadiusServerConfiguration
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -169,8 +198,8 @@ Accept wildcard characters: False
 A list of RadiusClientRootCertificate files' paths
 
 ```yaml
-Type: String[]
-Parameter Sets: RadiusServerConfiguration
+Type: System.String[]
+Parameter Sets: ByVirtualWanNameRadiusServerConfiguration, ByVirtualWanObjectRadiusServerConfiguration, ByVirtualWanResourceIdRadiusServerConfiguration
 Aliases:
 
 Required: False
@@ -184,14 +213,14 @@ Accept wildcard characters: False
 P2S External Radius server secret.
 
 ```yaml
-Type: SecureString
-Parameter Sets: RadiusServerConfiguration
+Type: System.Security.SecureString
+Parameter Sets: ByVirtualWanNameRadiusServerConfiguration, ByVirtualWanObjectRadiusServerConfiguration, ByVirtualWanResourceIdRadiusServerConfiguration
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -199,24 +228,9 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
-Parameter Sets: ByVirtualWanName
+Type: System.String
+Parameter Sets: ByVirtualWanNameDefault, ByVirtualWanNameRadiusServerConfiguration
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The Id of the parent VirtualWan this P2SVpnServerConfiguration needs to be associated with.
-
-```yaml
-Type: String
-Parameter Sets: ByVirtualWanResourceId
-Aliases: VirtualWanId
 
 Required: True
 Position: Named
@@ -225,27 +239,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualWanName
-The name of the parent VirtualWan this P2SVpnServerConfiguration needs to be associated with.
-
-```yaml
-Type: String
-Parameter Sets: ByVirtualWanName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -VpnClientIpsecPolicy
 A list of IPSec policies for P2SVpnServerConfiguration.
 
 ```yaml
-Type: PSIpsecPolicy[]
-Parameter Sets: Default
+Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
+Parameter Sets: ByVirtualWanNameDefault, ByVirtualWanObjectDefault, ByVirtualWanResourceIdDefault
 Aliases:
 
 Required: False
@@ -259,8 +258,8 @@ Accept wildcard characters: False
 A list of VpnClientCertificates to be revoked files' paths
 
 ```yaml
-Type: String[]
-Parameter Sets: Default
+Type: System.String[]
+Parameter Sets: ByVirtualWanNameDefault, ByVirtualWanObjectDefault, ByVirtualWanResourceIdDefault
 Aliases:
 
 Required: False
@@ -274,8 +273,8 @@ Accept wildcard characters: False
 A list of VpnClientRootCertificates to be added files' paths
 
 ```yaml
-Type: String[]
-Parameter Sets: Default
+Type: System.String[]
+Parameter Sets: ByVirtualWanNameDefault, ByVirtualWanObjectDefault, ByVirtualWanResourceIdDefault
 Aliases:
 
 Required: False
@@ -289,15 +288,15 @@ Accept wildcard characters: False
 The list of P2S VPN client tunneling protocols
 
 ```yaml
-Type: String[]
-Parameter Sets: Default, RadiusServerConfiguration
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 Accepted values: IkeV2, OpenVPN
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -305,7 +304,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -321,7 +320,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -333,8 +332,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -343,11 +341,9 @@ System.String[]
 Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
 System.Security.SecureString
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration
-
 
 ## NOTES
 

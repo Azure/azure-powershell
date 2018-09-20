@@ -12,21 +12,21 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### ByP2SVpnServerConfigurationName
+### ByP2SVpnServerConfigurationName (Default)
 ```
-Remove-AzureRmP2SVpnServerConfiguration -Name <String> -ResourceGroupName <String> -ParentResourceName <String>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmP2SVpnServerConfiguration -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
+ [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByP2SVpnServerConfigurationResourceId
 ```
-Remove-AzureRmP2SVpnServerConfiguration -ResourceId <String> [-Force]
+Remove-AzureRmP2SVpnServerConfiguration -ResourceId <String> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByP2SVpnServerConfigurationObject
 ```
-Remove-AzureRmP2SVpnServerConfiguration -InputObject <PSP2SVpnServerConfiguration> [-Force]
+Remove-AzureRmP2SVpnServerConfiguration -InputObject <PSP2SVpnServerConfiguration> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ PS C:\> {{ Add example code here }}
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The P2SVpnServerConfiguration object to update.
 
 ```yaml
-Type: PSP2SVpnServerConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration
 Parameter Sets: ByP2SVpnServerConfigurationObject
 Aliases: P2SVpnServerConfiguration
 
@@ -93,14 +93,14 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnServerConfigurationName
 Aliases: ResourceName, P2SVpnServerConfigurationName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnServerConfigurationName
 Aliases: ParentVirtualWanName, VirtualWanName
 
@@ -119,18 +119,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Returns an object representing the item on which this operation is being performed.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnServerConfigurationName
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -138,7 +153,7 @@ Accept wildcard characters: False
 The resource id of the P2SVpnServerConfiguration object to delete.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnServerConfigurationResourceId
 Aliases: P2SVpnServerConfigurationId
 
@@ -153,7 +168,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -169,7 +184,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -181,19 +196,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration
 
-
 ## OUTPUTS
 
 ### System.Boolean
-
 
 ## NOTES
 

@@ -14,26 +14,26 @@ schema: 2.0.0
 
 ### ByVirtualHubName (Default)
 ```
-New-AzureRmP2SVpnGateway -Name <String> -ResourceGroupName <String> -Location <String>
- [-VpnGatewayScaleUnit <UInt32>] -VirtualHubName <String>
- [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration>] -VpnClientAddressPool <String[]> [-Tag <Hashtable>]
- [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmP2SVpnGateway -ResourceGroupName <String> -Name <String> -Location <String> -VirtualHubName <String>
+ [-VpnGatewayScaleUnit <UInt32>] -VpnClientAddressPool <String[]>
+ [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
 ```
-New-AzureRmP2SVpnGateway -Name <String> -ResourceGroupName <String> -Location <String>
- [-VpnGatewayScaleUnit <UInt32>] -VirtualHub <PSVirtualHub>
- [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration>] -VpnClientAddressPool <String[]> [-Tag <Hashtable>]
- [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmP2SVpnGateway -ResourceGroupName <String> -Name <String> -Location <String>
+ -VirtualHub <PSVirtualHub> [-VpnGatewayScaleUnit <UInt32>] -VpnClientAddressPool <String[]>
+ [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubResourceId
 ```
-New-AzureRmP2SVpnGateway -Name <String> -ResourceGroupName <String> -Location <String>
- [-VpnGatewayScaleUnit <UInt32>] -VirtualHubId <String>
- [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration>] -VpnClientAddressPool <String[]> [-Tag <Hashtable>]
- [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmP2SVpnGateway -ResourceGroupName <String> -Name <String> -Location <String> -VirtualHubId <String>
+ [-VpnGatewayScaleUnit <UInt32>] -VpnClientAddressPool <String[]>
+ [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration>] [-Tag <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,7 +54,7 @@ PS C:\> {{ Add example code here }}
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -69,24 +69,9 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Do not ask for confirmation if you want to overrite a resource
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -99,14 +84,14 @@ Accept wildcard characters: False
 The resource location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -114,14 +99,14 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, P2SVpnGatewayName
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -130,14 +115,14 @@ The VirtualWan PSP2SVpnServerConfiguration to be attached to this P2SVpnGateway.
 This is optional parameter.
 
 ```yaml
-Type: PSP2SVpnServerConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -145,14 +130,14 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -160,7 +145,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -175,14 +160,14 @@ Accept wildcard characters: False
 The VirtualHub this P2SVpnGateway needs to be associated with.
 
 ```yaml
-Type: PSVirtualHub
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
 Parameter Sets: ByVirtualHubObject
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -190,8 +175,23 @@ Accept wildcard characters: False
 The Id of the VirtualHub this P2SVpnGateway needs to be associated with.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVirtualHubResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualHubName
+The name of the VirtualHub this P2SVpnGateway needs to be associated with.
+
+```yaml
+Type: System.String
+Parameter Sets: ByVirtualHubName
 Aliases:
 
 Required: True
@@ -201,33 +201,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualHubName
-The name of the VirtualHub this P2SVpnGateway needs to be associated with.
-
-```yaml
-Type: String
-Parameter Sets: ByVirtualHubName
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -VpnClientAddressPool
 P2S VpnClient AddressPool for this P2SVpnGateway.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -235,7 +220,7 @@ Accept wildcard characters: False
 The scale unit for this P2SVpnGateway.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -250,7 +235,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -266,7 +251,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -278,19 +263,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 System.String[]
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSP2SVpnGateway
-
 
 ## NOTES
 
