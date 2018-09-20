@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network
         public string ResourceId { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Enable internet security for this connection.")]
         public bool? EnableInternetSecurity { get; set; }
 
