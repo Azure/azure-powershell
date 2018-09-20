@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.5.0
 * Update New-AzureRmResourceGroupDeployment with new parameter RollbackAction
     - Add support for OnErrorDeployment with the new parameter.
 * Support managed identity on policy assignments.

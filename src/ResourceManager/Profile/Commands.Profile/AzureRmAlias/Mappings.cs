@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the 'License');
@@ -768,7 +768,9 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'New-AzWebAppDatabaseBackupSetting': 'New-AzureRmWebAppDatabaseBackupSetting',
     'Get-AzWebAppSSLBinding': 'Get-AzureRmWebAppSSLBinding',
     'Get-AzWebAppSlot': 'Get-AzureRmWebAppSlot',
-    'New-AzWebApp': 'New-AzureRmWebApp'
+    'New-AzWebApp': 'New-AzureRmWebApp',
+    'Restore-AzDeletedWebApp':  'Restore-AzureRmDeletedWebApp',
+    'Get-AzDeletedWebApp':  'Get-AzureRmDeletedWebApp'
   },
   'Az.Maps': {
     'Get-AzMapsAccountKey': 'Get-AzureRmMapsAccountKey',
@@ -2395,6 +2397,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'Remove-AzNotificationHubsNamespace': 'Remove-AzureRmNotificationHubsNamespace'
   }
 }
+
 ";
     }
 }
