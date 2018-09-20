@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkSecurityGroup", SupportsShouldProcess = true), OutputType(typeof(PSNetworkSecurityGroup))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class GetAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -63,41 +63,38 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            if (this.ShouldProcess(Name, VerbsLifecycle.Restart))
+            base.Execute();
+            if (!string.IsNullOrEmpty(this.Name))
             {
-                base.Execute();
-                if (!string.IsNullOrEmpty(this.Name))
-                {
-                    var nsg = this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name, this.ExpandResource);
+                var nsg = this.GetNetworkSecurityGroup(this.ResourceGroupName, this.Name, this.ExpandResource);
 
-                    WriteObject(nsg);
+                WriteObject(nsg);
+            }
+            else
+            {
+                IPage<NetworkSecurityGroup> nsgPage;
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
+                {
+                    nsgPage = this.NetworkSecurityGroupClient.List(this.ResourceGroupName);
                 }
                 else
                 {
-                    IPage<NetworkSecurityGroup> nsgPage;
-                    if (!string.IsNullOrEmpty(this.ResourceGroupName))
-                    {
-                        nsgPage = this.NetworkSecurityGroupClient.List(this.ResourceGroupName);
-                    }
-                    else
-                    {
-                        nsgPage = this.NetworkSecurityGroupClient.ListAll();
-                    }
-
-                    // Get all resources by polling on next page link
-                    var nsgList = ListNextLink<NetworkSecurityGroup>.GetAllResourcesByPollingNextLink(nsgPage, this.NetworkSecurityGroupClient.ListNext);
-
-                    var psNsgs = new List<PSNetworkSecurityGroup>();
-
-                    foreach (var networkSecurityGroup in nsgList)
-                    {
-                        var psNsg = this.ToPsNetworkSecurityGroup(networkSecurityGroup);
-                        psNsg.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkSecurityGroup.Id);
-                        psNsgs.Add(psNsg);
-                    }
-
-                    WriteObject(psNsgs, true);
+                    nsgPage = this.NetworkSecurityGroupClient.ListAll();                    
                 }
+
+                // Get all resources by polling on next page link
+                var nsgList = ListNextLink<NetworkSecurityGroup>.GetAllResourcesByPollingNextLink(nsgPage, this.NetworkSecurityGroupClient.ListNext);
+
+                var psNsgs = new List<PSNetworkSecurityGroup>();
+
+                foreach (var networkSecurityGroup in nsgList)
+                {
+                    var psNsg = this.ToPsNetworkSecurityGroup(networkSecurityGroup);
+                    psNsg.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkSecurityGroup.Id);
+                    psNsgs.Add(psNsg);
+                }
+
+                WriteObject(psNsgs, true);
             }
         }
     }
