@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(
         VerbsCommon.Get,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualWanSupportedSecurityProvider",
-        SupportsShouldProcess = true,
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName),
         OutputType(typeof(PSVirtualWanSecurityProvider))]
     public class GetAzureRmVirtualWanSupportedSecurityProviderCommand : VirtualWanBaseCmdlet
