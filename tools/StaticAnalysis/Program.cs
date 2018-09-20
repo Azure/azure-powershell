@@ -100,18 +100,12 @@ namespace StaticAnalysis
                     int idx = Array.FindIndex(args, a => a == "--modules-to-analyze" || a == "-m");
                     if (idx + 1 == args.Length)
                     {
-                        Console.WriteLine("No value provided for the --modules-to-analyze parameter.");
+                        Console.WriteLine("No value provided for the --modules-to-analyze parameter. Filtering over all built modules.");
                     }
                     else
                     {
                         modulesToAnalyze = args[idx + 1].Split(';').ToList();
                     }
-                }
-
-                if (!modulesToAnalyze.Any())
-                {
-                    Console.WriteLine("No modules were found to analyze -- skipping Static Analysis check.");
-                    return;
                 }
 
                 bool useNetcore = args.Any(a => a == "--use-netcore" || a == "-u");
