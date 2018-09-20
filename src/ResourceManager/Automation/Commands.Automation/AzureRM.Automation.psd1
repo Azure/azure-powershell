@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.1.1'
+ModuleVersion = '6.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -177,11 +177,13 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed issue with default resource groups not being set.
-* Updated common runtime assemblies'
+        ReleaseNotes = '* Swagger based Azure Automation cmdlets
+* Added Update Management cmdlets
+* Added Source Control cmdlets
+* Added Remove-AzureRmAutomationHybridWorkerGroup  cmdlet'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
