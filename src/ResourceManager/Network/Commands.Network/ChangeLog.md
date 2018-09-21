@@ -19,6 +19,13 @@
 --->
 
 ## Current Release
+* Added NetworkProfile functionality. new cmdlets added
+    - Get-AzureRMNetworkProfile
+    - New-AzureRMNetworkProfile
+    - Remove-AzureRMNetworkProfile
+    - Set-AzureRMNetworkProfile
+    - New-AzureRMContainerNicConfig
+    - New-AzureRmContainerNicConfigIpConfig
 
 ## Version 6.8.0
 * Replaced LoadBalancer cmdlets with generated code
@@ -44,19 +51,6 @@
   - Added New-AzureRmFirewallNatRule
   - Added New-AzureRmFirewallNetworkRuleCollection
   - Added New-AzureRmFirewallNetworkRule
-* Added NetworkProfile functionality. new cmdlets added
-    - Get-AzureRMNetworkProfile
-    - New-AzureRMNetworkProfile
-    - Remove-AzureRMNetworkProfile
-    - Set-AzureRMNetworkProfile
-    - Get-AzureRMNetworkProfileContainerNicConfig
-    - New-AzureRMNetworkProfileContainerNicConfig
-    - Remove-AzureRMNetworkProfileContainerNicConfig
-    - Set-AzureRMNetworkProfileContainerNicConfig 
-    - Get-AzureRmNetworkProfileContainerNicConfigIpConfig 
-    - New-AzureRmNetworkProfileContainerNicConfigIpConfig
-    - Remove-AzureRmNetworkProfileContainerNicConfigIpConfig
-    - Set-AzureRmNetworkProfileContainerNicConfigIpConfig 
 * Added service association link on Subnet Model
 * Added support for Trusted Root certificate and Autoscale configuration in Application Gateway
   - New Cmdlets added:
