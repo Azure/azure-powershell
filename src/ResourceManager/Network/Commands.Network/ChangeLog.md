@@ -26,6 +26,7 @@
     - Set-AzureRMNetworkProfile
     - New-AzureRMContainerNicConfig
     - New-AzureRmContainerNicConfigIpConfig
+* Added service association link on Subnet Model
 
 ## Version 6.8.0
 * Replaced LoadBalancer cmdlets with generated code
@@ -51,7 +52,6 @@
   - Added New-AzureRmFirewallNatRule
   - Added New-AzureRmFirewallNetworkRuleCollection
   - Added New-AzureRmFirewallNetworkRule
-* Added service association link on Subnet Model
 * Added support for Trusted Root certificate and Autoscale configuration in Application Gateway
   - New Cmdlets added:
       - Add-AzureRmApplicationGatewayTrustedRootCertificate
