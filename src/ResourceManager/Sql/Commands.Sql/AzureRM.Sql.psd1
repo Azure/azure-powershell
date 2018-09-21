@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.11.3'
+ModuleVersion = '4.11.4'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -297,8 +297,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed issue with default resource groups not being set.
-* Updated common runtime assemblies'
+        ReleaseNotes = '* New Cmdlets for Management.Sql to allow customers to add TDE keys and set TDE protector for managed instances
+   - Add-AzureRmSqlManagedInstanceKeyVaultKey
+   - Get-AzureRmSqlManagedInstanceKeyVaultKey
+   - Remove-AzureRmSqlManagedInstanceKeyVaultKey
+   - Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector
+   - Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector'
 
         # Prerelease string of this module
         Prerelease = 'preview'
