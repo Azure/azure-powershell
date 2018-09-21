@@ -12,10 +12,23 @@ Removes a tap configuration from given network interface
 
 ## SYNTAX
 
+### RemoveByNameParameterSet (Default)
 ```
 Remove-AzureRmNetworkInterfaceTapConfig -ResourceGroupName <String> -NetworkInterfaceName <String>
  -Name <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### DeleteByResourceIdParameterSet
+```
+Remove-AzureRmNetworkInterfaceTapConfig -ResourceId <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteByInputObjectParameterSet
+```
+Remove-AzureRmNetworkInterfaceTapConfig -InputObject <PSNetworkInterfaceTapConfiguration> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,12 +84,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Reference to NetworkInterfaceTapConfig.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkInterfaceTapConfiguration
+Parameter Sets: DeleteByInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The virtual network peering name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveByNameParameterSet
 Aliases:
 
 Required: True
@@ -91,7 +119,7 @@ The virtual network name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveByNameParameterSet
 Aliases:
 
 Required: True
@@ -122,7 +150,22 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveByNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+NetworkInterfaceTapConfig resource id.
+
+```yaml
+Type: System.String
+Parameter Sets: DeleteByResourceIdParameterSet
 Aliases:
 
 Required: True
