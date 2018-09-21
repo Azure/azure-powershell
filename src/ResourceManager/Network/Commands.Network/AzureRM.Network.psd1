@@ -403,7 +403,16 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'New-AzureRmFirewallNatRule',
                'New-AzureRmFirewallNetworkRuleCollection',
                'New-AzureRmFirewallNetworkRule',
-               'Get-AzureRmInterfaceEndpoint'
+               'Get-AzureRmInterfaceEndpoint',
+               'Add-AzureRmNetworkInterfaceTapConfig',
+               'Get-AzureRmNetworkInterfaceTapConfig',
+               'Set-AzureRmNetworkInterfaceTapConfig',
+               'New-AzureRmNetworkInterfaceTapConfig',
+               'Remove-AzureRmNetworkInterfaceTapConfig',
+               'Get-AzureRmVirtualNetworkTap', 
+               'New-AzureRmVirtualNetworkTap', 
+               'Remove-AzureRmVirtualNetworkTap', 
+               'Set-AzureRmVirtualNetworkTap'
 
 # Variables to export from this module
 # VariablesToExport = @()
