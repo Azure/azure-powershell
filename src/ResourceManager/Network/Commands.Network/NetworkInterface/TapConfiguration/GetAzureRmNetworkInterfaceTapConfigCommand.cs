@@ -67,8 +67,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                var parentResource = resourceIdentifier.ParentResource.Split(new[] { '/' });
-                this.NetworkInterfaceName = parentResource[parentResource.Length - 1];
+                this.NetworkInterfaceName = resourceIdentifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
                 this.Name = resourceIdentifier.ResourceName;
             }
 

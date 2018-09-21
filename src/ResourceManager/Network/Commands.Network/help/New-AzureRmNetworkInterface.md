@@ -153,7 +153,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 Enables accelerated networking.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +214,7 @@ Indicates that this cmdlet enables IP forwarding for the network interface.
 IP forwarding allows a virtual machine to receive traffic addressed to other destinations.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 Forces the creation of the network interface even if a network interface with the same name already exists.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -244,7 +244,7 @@ Accept wildcard characters: False
 Specifies the internal DNS name label for the new network interface.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -274,7 +274,7 @@ Accept wildcard characters: False
 Specifies the name of an IP configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId, SetByResource
 Aliases:
 
@@ -349,7 +349,7 @@ Accept wildcard characters: False
 Specifies the region for a network interface.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -364,7 +364,7 @@ Accept wildcard characters: False
 Specifies the name of the network interface to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -379,7 +379,7 @@ Accept wildcard characters: False
 Specifies a **NetworkSecurityGroup** object.
 
 ```yaml
-Type: PSNetworkSecurityGroup
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
 Parameter Sets: SetByIpConfigurationResourceId, SetByResource
 Aliases:
 
@@ -394,7 +394,7 @@ Accept wildcard characters: False
 Specifies the ID of a network security group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByIpConfigurationResourceId, SetByResourceId
 Aliases:
 
@@ -409,7 +409,7 @@ Accept wildcard characters: False
 Specifies a static IPv4 IP address to assign to this network interface.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId, SetByResource
 Aliases:
 
@@ -424,7 +424,7 @@ Accept wildcard characters: False
 Specifies a **PublicIPAddress** object to assign to a network interface.
 
 ```yaml
-Type: PSPublicIpAddress
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 Parameter Sets: SetByResource
 Aliases:
 
@@ -439,7 +439,7 @@ Accept wildcard characters: False
 Specifies the ID of a **PublicIPAddress** object to assign to a network interface.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -454,7 +454,7 @@ Accept wildcard characters: False
 Specifies the name of a resource group that the network interface belongs to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -470,7 +470,7 @@ Specifies a **Subnet** object.
 This cmdlet creates a network interface for the subnet that this parameter specifies.
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: SetByResource
 Aliases:
 
@@ -485,7 +485,7 @@ Accept wildcard characters: False
 Specifies the ID of the subnet for which to create a network interface.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -501,7 +501,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -516,7 +516,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -532,7 +532,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
