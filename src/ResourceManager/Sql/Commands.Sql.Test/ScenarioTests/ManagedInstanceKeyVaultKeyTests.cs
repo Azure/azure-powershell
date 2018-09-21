@@ -34,29 +34,22 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        //"Skipped based on azure team's recommendation to reduce CI build time"
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKey()
         {
             RunPowerShellTest("Test-ManagedInstanceKeyVaultKey");
         }
 
-        [Fact]
-        //"Skipped CI based on azure team's recommendation to reduce CI build time"
         public void TestManagedInstanceKeyVaultKeyInputObject()
         {
             RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyInputObject");
         }
 
-        [Fact]
-        //"Skipped CI based on azure team's recommendation to reduce CI build time"
         public void TestManagedInstanceKeyVaultKeyResourceId()
         {
             RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyResourceId");
         }
-
-        [Fact]
-        //"Skipped CI based on azure team's recommendation to reduce CI build time"
+        
         public void TestManagedInstanceKeyVaultKeyPiping()
         {
             RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyPiping");
