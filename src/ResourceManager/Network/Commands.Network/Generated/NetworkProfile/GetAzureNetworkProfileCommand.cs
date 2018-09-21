@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
     using CNM = Microsoft.Azure.Commands.Network.Models;
 
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkProfile", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSNetworkProfile))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkProfile", DefaultParameterSetName = "GetByResourceNameNoExpandParameterSet"), OutputType(typeof(PSNetworkProfile))]
     public partial class GetAzureNetworkProfile : NetworkBaseCmdlet
     {
         [Parameter(
@@ -85,16 +85,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The resource reference to be expanded.",
             ParameterSetName = "GetByResourceIdExpandParameterSet",
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The resource reference to be expanded.",
-            ParameterSetName = "GetByResourceIdNoExpandParameterSet",
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The resource reference to be expanded.",
-            ParameterSetName = "GetByResourceNameNoExpandParameterSet",
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
             Mandatory = true,
