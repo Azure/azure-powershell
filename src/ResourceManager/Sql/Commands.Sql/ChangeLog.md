@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added support for disabling new algorithms for Server Advanced Threat Protection
 
 ## Version 4.11.3
 * Fixed issue with default resource groups not being set.
