@@ -18,4 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.9.0
 Add support for creating and managing rollouts and other supporting scenarios.
