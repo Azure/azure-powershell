@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyCI");
         }
-        
-        //[Fact]
+
+        [Fact]
         //"Skipped based on azure team's recommendation to reduce CI build time"
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedInstanceKeyVaultKey()
