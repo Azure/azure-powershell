@@ -17,7 +17,7 @@
     * Overview of change #1
         - Additional information about change #1
 -->
-## Current Release
+## Version 6.0.0-preview
 * Support enable or disable FilesAadIntegration for SMB when create or update Storage account
        - New-AzureRmStorageAccount
        - Set-AzureRmStorageAccount
