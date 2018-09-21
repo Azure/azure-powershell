@@ -65,6 +65,7 @@
     <Reference Include="Microsoft.Azure.Management.ContainerInstance">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerInstance.1.1.0\lib\net452\Microsoft.Azure.Management.ContainerInstance.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="ScenarioTests\Generated\RouteTableTestsGenerated.cs" />
     <Compile Include="ScenarioTests\TestDnsAvailabilityTest.cs" />
     <Compile Include="ScenarioTests\UsageTests.cs" />
+    <Compile Include="ScenarioTests\VirtualNetworkTapTests.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkTests.cs" />
     <Compile Include="ScenarioTests\PublicIpAddressTests.cs" />
     <Compile Include="ScenarioTests\VirtualNetworkGatewayTests.cs" />
@@ -191,6 +193,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\UsageTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\VirtualNetworkTapTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\VirtualNetworkTests.ps1">
@@ -370,6 +375,9 @@
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkProfileTests\TestNetworkProfileCRUDMinimalParameters.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceTapConfigurationCRUD.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkSecurityGroupTests\TestNetworkSecurityGroupMultiValuedRules.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -663,6 +671,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\VirtualNetworkGatewayVpnCustomIpsecPolicySetTest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTapTests\TestVirtualNetworkTapCRUDUsingIpConfig.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestResourceNavigationLinksOnSubnetCRUD.json">

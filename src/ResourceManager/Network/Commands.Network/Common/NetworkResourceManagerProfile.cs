@@ -184,11 +184,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSNetworkInterface, MNM.NetworkInterface>();
                 cfg.CreateMap<CNM.PSNetworkInterfaceDnsSettings, MNM.NetworkInterfaceDnsSettings>();
                 cfg.CreateMap<CNM.PSNetworkInterfaceIPConfiguration, MNM.NetworkInterfaceIPConfiguration>();
+                cfg.CreateMap<CNM.PSNetworkInterfaceTapConfiguration, MNM.NetworkInterfaceTapConfiguration>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>();
                 cfg.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
                 cfg.CreateMap<MNM.NetworkInterfaceIPConfiguration, CNM.PSNetworkInterfaceIPConfiguration>();
+                cfg.CreateMap<MNM.NetworkInterfaceTapConfiguration, CNM.PSNetworkInterfaceTapConfiguration>();
 
                 // Usage
                 cfg.CreateMap<CNM.PSUsage, MNM.Usage>();
@@ -860,6 +862,13 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.EndpointService, CNM.PSEndpointService>();
+
+                // Virtual Network Tap
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSVirtualNetworkTap, MNM.VirtualNetworkTap>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.VirtualNetworkTap, CNM.PSVirtualNetworkTap>();
             });
 
             _mapper = config.CreateMapper();
