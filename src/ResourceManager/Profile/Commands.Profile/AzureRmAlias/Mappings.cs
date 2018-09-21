@@ -556,6 +556,9 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'Remove-AzDataFactoryV2Pipeline': 'Remove-AzureRmDataFactoryV2Pipeline',
     'Remove-AzDataFactoryV2IntegrationRuntimeNode': 'Remove-AzureRmDataFactoryV2IntegrationRuntimeNode'
   },
+  'Az.ResourceGraph': {
+    'Search-AzGraph': 'Search-AzureRmGraph'
+  },
   'Az.PolicyInsights': {
     'Get-AzPolicyEvent': 'Get-AzureRmPolicyEvent',
     'Get-AzPolicyState': 'Get-AzureRmPolicyState',
