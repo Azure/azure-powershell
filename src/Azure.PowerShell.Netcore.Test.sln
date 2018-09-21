@@ -39,6 +39,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Cdn.Test.Netcore",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Management.CognitiveServices.Test.Netcore", "ResourceManager\CognitiveServices\CognitiveServices.Test\Commands.Management.CognitiveServices.Test.Netcore.csproj", "{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Dns.Test.Netcore", "ResourceManager\Dns\Commands.Dns.Test\Commands.Dns.Test.Netcore.csproj", "{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -265,6 +267,18 @@ Global
 		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Release|x64.Build.0 = Release|Any CPU
 		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Release|x86.ActiveCfg = Release|Any CPU
 		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Release|x86.Build.0 = Release|Any CPU
+		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Debug|x64.Build.0 = Debug|Any CPU
+		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Debug|x86.Build.0 = Debug|Any CPU
+		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Release|x64.ActiveCfg = Release|Any CPU
+		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Release|x64.Build.0 = Release|Any CPU
+		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Release|x86.ActiveCfg = Release|Any CPU
+		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

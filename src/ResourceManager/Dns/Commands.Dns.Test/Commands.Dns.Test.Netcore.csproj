@@ -9,6 +9,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,10 +24,16 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
     <PackageReference Include="Microsoft.Azure.Management.Dns" Version="3.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.5.0-preview" />
-    <PackageReference Include="Moq" Version="4.2.1510.2205" />
+    <!-- <PackageReference Include="Moq" Version="4.2.1510.2205" /> -->
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Commands.Dns">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.Dns\Microsoft.Azure.Commands.Dns.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
