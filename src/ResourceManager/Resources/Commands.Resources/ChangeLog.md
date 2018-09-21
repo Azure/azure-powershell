@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add missing -Mode parameter to Set-AzureRmPolicyDefinition
 
 ## Version 6.5.0
 * Update New-AzureRmResourceGroupDeployment with new parameter RollbackAction
