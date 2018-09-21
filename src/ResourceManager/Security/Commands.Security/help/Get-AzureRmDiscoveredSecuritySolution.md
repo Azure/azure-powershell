@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
 Module Name: AzureRM.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.security/get-azureiscoveredsecuritysolution
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzureRmDiscoveredSecuritySolution.md
 schema: 2.0.0
 ---
 
@@ -30,7 +30,7 @@ Get-AzureRmDiscoveredSecuritySolution -ResourceId <String> [-DefaultProfile <IAz
 ```
 
 ## DESCRIPTION
-Security solutions are automatcally discovered by Azure Security Center, use this cmdlet to view the discovered security solutions
+Security solutions are automatically discovered by Azure Security Center, use this cmdlet to view the discovered security solutions
 
 ## EXAMPLES
 
