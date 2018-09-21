@@ -40,44 +40,44 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokFailsWithoutKeyId");
         }
         
-        public void TestSetGetManagedInstanceEncryptionProtectorServiceManaged()
-        {
-            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManaged");
-        }
+        //public void TestSetGetManagedInstanceEncryptionProtectorServiceManaged()
+        //{
+        //    RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManaged");
+        //}
 
-        public void TestSetGetManagedInstanceEncryptionProtectorServiceManagedInputObject()
-        {
-            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedInputObject");
-        }
+        //public void TestSetGetManagedInstanceEncryptionProtectorServiceManagedInputObject()
+        //{
+        //    RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedInputObject");
+        //}
 
-        public void TestSetGetManagedInstanceEncryptionProtectorServiceManagedResourceId()
-        {
-            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedResourceId");
-        }
+        //public void TestSetGetManagedInstanceEncryptionProtectorServiceManagedResourceId()
+        //{
+        //    RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedResourceId");
+        //}
 
-        public void TestSetGetManagedInstanceEncryptionProtectorServiceManagedPiping()
-        {
-            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedPiping");
-        }
+        //public void TestSetGetManagedInstanceEncryptionProtectorServiceManagedPiping()
+        //{
+        //    RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorServiceManagedPiping");
+        //}
 
-        public void TestSetGetManagedInstanceEncryptionProtectorByok()
-        {
-            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByok");
-        }
+        //public void TestSetGetManagedInstanceEncryptionProtectorByok()
+        //{
+        //    RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByok");
+        //}
         
-        public void TestSetGetManagedInstanceEncryptionProtectorByokInputObject()
-        {
-            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokInputObject");
-        }
+        //public void TestSetGetManagedInstanceEncryptionProtectorByokInputObject()
+        //{
+        //    RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokInputObject");
+        //}
 
-        public void TestSetGetManagedInstanceEncryptionProtectorByokResourceId()
-        {
-            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokResourceId");
-        }
+        //public void TestSetGetManagedInstanceEncryptionProtectorByokResourceId()
+        //{
+        //    RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokResourceId");
+        //}
         
-        public void TestSetGetManagedInstanceEncryptionProtectorByokPiping()
-        {
-            RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokPiping");
-        }
+        //public void TestSetGetManagedInstanceEncryptionProtectorByokPiping()
+        //{
+        //    RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokPiping");
+        //}
     }
 }

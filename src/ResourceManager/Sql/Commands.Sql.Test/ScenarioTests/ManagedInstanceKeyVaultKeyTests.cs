@@ -40,19 +40,19 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ManagedInstanceKeyVaultKey");
         }
 
-        public void TestManagedInstanceKeyVaultKeyInputObject()
-        {
-            RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyInputObject");
-        }
+        //public void TestManagedInstanceKeyVaultKeyInputObject()
+        //{
+        //    RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyInputObject");
+        //}
 
-        public void TestManagedInstanceKeyVaultKeyResourceId()
-        {
-            RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyResourceId");
-        }
+        //public void TestManagedInstanceKeyVaultKeyResourceId()
+        //{
+        //    RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyResourceId");
+        //}
         
-        public void TestManagedInstanceKeyVaultKeyPiping()
-        {
-            RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyPiping");
-        }
+        //public void TestManagedInstanceKeyVaultKeyPiping()
+        //{
+        //    RunPowerShellTest("Test-ManagedInstanceKeyVaultKeyPiping");
+        //}
     }
 }
