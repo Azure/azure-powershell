@@ -145,7 +145,7 @@ The resource group name of the network profile.
 
 ```yaml
 Type: System.String
-Parameter Sets: RemoveByName
+Parameter Sets: RemoveByNameParameterSet
 Aliases:
 
 Required: True
