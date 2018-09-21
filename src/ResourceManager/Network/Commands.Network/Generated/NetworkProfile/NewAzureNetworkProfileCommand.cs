@@ -137,7 +137,9 @@ namespace Microsoft.Azure.Commands.Network
             var vNetworkProfile = new PSNetworkProfile
             {
                 Location = this.Location,
-                ContainerNetworkInterfaceConfigurations = new List<PSContainerNetworkInterfaceConfiguration>(this.ContainerNicConfig),
+                ContainerNetworkInterfaceConfigurations = this.ContainerNicConfig == null ? 
+                    new List<PSContainerNetworkInterfaceConfiguration>() :
+                    new List<PSContainerNetworkInterfaceConfiguration>(this.ContainerNicConfig),
             };
 
             NormalizeChildIds(vNetworkProfile);

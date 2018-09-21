@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The resource group name of the network profile.",
-            ParameterSetName = "RemoveByName",
+            ParameterSetName = "RemoveByNameParameterSet",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
