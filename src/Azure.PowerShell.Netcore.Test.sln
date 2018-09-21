@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Resources.Test.Net
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Cdn.Test.Netcore", "ResourceManager\Cdn\Commands.Cdn.Test\Commands.Cdn.Test.Netcore.csproj", "{014C108A-C306-4CC3-BED4-82C052211507}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Management.CognitiveServices.Test.Netcore", "ResourceManager\CognitiveServices\CognitiveServices.Test\Commands.Management.CognitiveServices.Test.Netcore.csproj", "{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -251,6 +253,18 @@ Global
 		{014C108A-C306-4CC3-BED4-82C052211507}.Release|x64.Build.0 = Release|Any CPU
 		{014C108A-C306-4CC3-BED4-82C052211507}.Release|x86.ActiveCfg = Release|Any CPU
 		{014C108A-C306-4CC3-BED4-82C052211507}.Release|x86.Build.0 = Release|Any CPU
+		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Debug|x64.Build.0 = Debug|Any CPU
+		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Debug|x86.Build.0 = Debug|Any CPU
+		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Release|x64.ActiveCfg = Release|Any CPU
+		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Release|x64.Build.0 = Release|Any CPU
+		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Release|x86.ActiveCfg = Release|Any CPU
+		{BE6AFE15-973B-4FE5-A6C7-64FCBF7EA950}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
