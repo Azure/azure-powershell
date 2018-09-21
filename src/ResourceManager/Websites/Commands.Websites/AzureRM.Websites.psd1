@@ -97,7 +97,7 @@ CmdletsToExport = 'Get-AzureRmAppServicePlan', 'Set-AzureRmAppServicePlan',
                'Set-AzureRmWebApp', 'Start-AzureRmWebApp', 'Stop-AzureRmWebApp', 
                'Get-AzureRmWebAppSnapshot', 'Restore-AzureRmWebAppSnapshot',
                'Get-AzureRmDeletedWebApp', 'Restore-AzureRmDeletedWebApp',
-               'Enter-AzureRmWebAppContainerPSSession', 'Get-AzureRMWebAppContainerContinuousDeploymentUrl',
+               'Enter-AzureRmWebAppContainerPSSession', 'Get-AzureRmWebAppContainerContinuousDeploymentUrl',
                'New-AzureRmWebAppContainerPSSession'
 
 # Variables to export from this module
