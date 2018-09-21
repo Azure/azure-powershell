@@ -359,10 +359,18 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkCloudExceptionTests\TestNotFound.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkProfileTests\TestContainerNetworkInterfaceConfigCRUD.json" />
-    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkProfileTests\TestContainerNetworkInterfaceConfigCRUDMinimalParameters.json" />
-    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkProfileTests\TestNetworkProfileCRUDAllParameters.json" />
-    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkProfileTests\TestNetworkProfileCRUDMinimalParameters.json" />
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkProfileTests\TestContainerNetworkInterfaceConfigCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkProfileTests\TestContainerNetworkInterfaceConfigCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkProfileTests\TestNetworkProfileCRUDAllParameters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkProfileTests\TestNetworkProfileCRUDMinimalParameters.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkSecurityGroupTests\TestNetworkSecurityGroupMultiValuedRules.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
