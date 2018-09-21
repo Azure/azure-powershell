@@ -18,9 +18,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will create remote ps session with site
     /// </summary>
-    [Cmdlet("Enter", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppContainerPSSession")]
+    [Cmdlet("Enter", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppContainerPSSession", DefaultParameterSetName = ParameterSet1Name, SupportsShouldProcess = true)]
+    [OutputType(typeof(void))]
     public class EnterAzureRmWebAppContainerPSSession : WebAppBaseCmdlet
     {
+        [Parameter(Mandatory = false, HelpMessage = "Return a value indicating success or failure")]
+        public SwitchParameter PassThru { get; set; }
+
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = false, HelpMessage = "The name of the web app slot.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string SlotName { get; set; }
@@ -34,7 +38,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 Name = name;
                 SlotName = slot;
             }
-            WebsitesClient.RunWebAppContainerPSSessionScript(this, ResourceGroupName, Name, SlotName);
+            if (ShouldProcess(Properties.Resources.EnterPSSessionWarning))
+            {
+                WebsitesClient.RunWebAppContainerPSSessionScript(this, ResourceGroupName, Name, SlotName);
+            }
         }
     }
 }

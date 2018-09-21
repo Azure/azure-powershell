@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will return ContainerContinuousDeploymentUrl
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppContainerContinuousDeploymentUrl")]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppContainerContinuousDeploymentUrl", DefaultParameterSetName = ParameterSet1Name)]
     [OutputType(typeof(string))]
     public class GetAzureRMWebAppContainerContinuousDeploymentUrl : WebAppBaseCmdlet
     {
