@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if (this.IsParameterBound(c => c.ResourceId))
+            if (ParameterSetName.Equals("GetByResourceIdParameterSet", StringComparison.OrdinalIgnoreCase))
             {
                 var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
