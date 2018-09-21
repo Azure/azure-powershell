@@ -257,6 +257,8 @@
     <!-- Investigate why the ChangeLogCheck target removes the 8080th character -->
     <!-- <CallTarget targets="ChangeLogCheck" ContinueOnError="false" /> -->
 
+    <Exec Command="$(PowerShellCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\CreateAliasMapping.ps1 &quot;"/>
+
     <MakeDir  Directories="$(PackageDirectory)"
               Condition="'$(Scope)' != 'Stack'" />
     <MakeDir  Directories="$(StackPackageFolder)"
