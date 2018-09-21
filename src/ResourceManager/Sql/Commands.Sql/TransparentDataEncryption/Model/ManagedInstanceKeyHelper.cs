@@ -46,9 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model
             {
                 // Throw an error here, since we don't want to use a non keyvault url
                 //
-                throw new ArgumentException(String.Format("Invalid parameter format for keyId: {0}."
-                                                          + " It should be a well formed Azure Key Vault KeyId like: https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901", keyId)
-                    , "KeyId");
+                throw new ArgumentException(message:String.Format(Properties.Resources.InvalidKeyId, keyId), paramName:"KeyId");
             }
 
             var uri = new Uri(keyId);
