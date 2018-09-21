@@ -14,22 +14,22 @@ Updates an existing HubVirtualNetworkConnection.
 
 ### ByHubVirtualNetworkConnectionName (Default)
 ```
-Update-AzureRmVirtualHubVnetConnection -ResourceGroupName <String> [-ParentResourceName <String>]
- -Name <String> [-EnableInternetSecurity <Boolean>] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmVirtualHubVnetConnection -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
+ -EnableInternetSecurity <Boolean> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByHubVirtualNetworkConnectionObject
 ```
-Update-AzureRmVirtualHubVnetConnection [-InputObject <PSHubVirtualNetworkConnection>]
- [-EnableInternetSecurity <Boolean>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzureRmVirtualHubVnetConnection -InputObject <PSHubVirtualNetworkConnection>
+ -EnableInternetSecurity <Boolean> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByHubVirtualNetworkConnectionResourceId
 ```
-Update-AzureRmVirtualHubVnetConnection [-ResourceId <String>] [-EnableInternetSecurity <Boolean>] [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmVirtualHubVnetConnection -ResourceId <String> -EnableInternetSecurity <Boolean> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,22 +97,7 @@ Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Do not ask for confirmation if you want to overrite a resource
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -127,7 +112,7 @@ Type: Microsoft.Azure.Commands.Network.Models.PSHubVirtualNetworkConnection
 Parameter Sets: ByHubVirtualNetworkConnectionObject
 Aliases: HubVirtualNetworkConnection
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
@@ -145,7 +130,7 @@ Aliases: ResourceName, HubVirtualNetworkConnectionName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -157,10 +142,10 @@ Type: System.String
 Parameter Sets: ByHubVirtualNetworkConnectionName
 Aliases: VirtualHubName, ParentVirtualHubName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -175,7 +160,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -187,7 +172,7 @@ Type: System.String
 Parameter Sets: ByHubVirtualNetworkConnectionResourceId
 Aliases: HubVirtualNetworkConnectionId
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -226,8 +211,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
