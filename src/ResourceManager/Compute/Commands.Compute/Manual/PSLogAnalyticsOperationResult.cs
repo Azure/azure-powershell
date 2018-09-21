@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSLogAnalyticsOperationResult : LogAnalyticsOperationResult
+    public partial class PSLogAnalyticsOperationResult
     {
 		public string Name { get; set; }
         public DateTime? StartTime { get; set; }
