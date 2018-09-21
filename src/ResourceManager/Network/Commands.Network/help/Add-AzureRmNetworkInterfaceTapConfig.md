@@ -29,13 +29,13 @@ Add-AzureRmNetworkInterfaceTapConfig -NetworkInterface <PSNetworkInterface> -Nam
 ## DESCRIPTION
 The **Add-AzureRmNetworkInterfaceTapConfig** cmdlet creates a TapConfiguration resource associated to a NetworkInterface. This will reference to an existing VirtualNetworkTap resource.
 
-
 ## EXAMPLES
 
 ### Example 1: Add TapConfiguration to a given NetworkInterface
 ```
 PS C:\>Add-AzureRmNetworkInterfaceTapConfig -NetworkInterface $sourceNic -VirtualNetworkTap $vVirtualNetworkTap -Name 'myTapConfig'
 ```
+
 Add the TapConfiguration to a sourceNic. The traffic from sourceNic VM will be mirrored to destination VM referred in vVirtualNetworkTap resource.
 
 ## PARAMETERS
@@ -44,7 +44,7 @@ Add the TapConfiguration to a sourceNic. The traffic from sourceNic VM will be m
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 Name of the tap configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 The reference of the network interface resource.
 
 ```yaml
-Type: PSNetworkInterface
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkInterface
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The reference of the virtual network tap resource.
 
 ```yaml
-Type: PSVirtualNetworkTap
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkTap
 Parameter Sets: SetByResource
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The reference of the virtual network tap resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -135,7 +135,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -12,9 +12,16 @@ Gets a Tap configuration resource.
 
 ## SYNTAX
 
+### GetByNameParameterSet (Default)
 ```
 Get-AzureRmNetworkInterfaceTapConfig -ResourceGroupName <String> -NetworkInterfaceName <String>
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetByResourceIdParameterSet
+```
+Get-AzureRmNetworkInterfaceTapConfig -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,6 +33,7 @@ The **Get-AzureRmNetworkInterfaceTapConfig** cmdlet gets an Azure Tap Configurat
 ```
 PS C:\>Get-AzureRmNetworkInterfaceTapConfig -ResourceGroupName "ResourceGroup1" -NetworkInterface "sourceNicName"
 ```
+
 This command gets tap configurations added for the given network interface.
 
 ### Example 2: Get a given tap configuration
@@ -41,7 +49,7 @@ This command gets specific tap configuration added for the given network interfa
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,8 +64,8 @@ Accept wildcard characters: False
 Name of the specific tap configuration.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: GetByNameParameterSet
 Aliases:
 
 Required: False
@@ -71,8 +79,8 @@ Accept wildcard characters: False
 The Network Interface name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: GetByNameParameterSet
 Aliases:
 
 Required: True
@@ -86,14 +94,59 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: GetByNameParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ResourceId of the TapConfiguration resource
+
+```yaml
+Type: System.String
+Parameter Sets: GetByResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
