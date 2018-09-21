@@ -63,19 +63,6 @@ namespace Microsoft.Azure.Commands.Network
                     // Map to the sdk object
                     var tapConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterfaceTapConfiguration>(this.NetworkInterfaceTapConfig);
 
-                    //var remoteVirtualNetworkTap = this.NetworkInterfaceTapConfig.VirtualNetworkTap;
-                    //Dictionary<string, List<string>> auxAuthHeader = null;
-                    //if (remoteVirtualNetworkTap != null)
-                    //{
-                    //    List<string> resourceIds = new List<string>();
-                    //    resourceIds.Add(remoteVirtualNetworkTap.Id);
-                    //    var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
-                    //    if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
-                    //    {
-                    //        auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
-                    //    }
-                    //}
-
                     // Execute the Create VirtualNetwork call
                     this.NetworkInterfaceTapClient.CreateOrUpdateWithHttpMessagesAsync(this.NetworkInterfaceTapConfig.ResourceGroupName, this.NetworkInterfaceTapConfig.NetworkInterfaceName, this.NetworkInterfaceTapConfig.Name, tapConfigModel).GetAwaiter().GetResult();
                     var getTapconfig = this.GetNetworkInterfaceTapConfiguration(this.NetworkInterfaceTapConfig.ResourceGroupName, this.NetworkInterfaceTapConfig.NetworkInterfaceName, this.NetworkInterfaceTapConfig.Name);

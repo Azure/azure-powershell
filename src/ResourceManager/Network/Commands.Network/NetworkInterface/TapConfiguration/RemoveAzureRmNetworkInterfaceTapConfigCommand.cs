@@ -16,14 +16,18 @@ using Microsoft.Azure.Commands.Network.Models;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkInterfaceTapConfig", SupportsShouldProcess = true), OutputType(typeof(PSNetworkInterface))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkInterfaceTapConfig", SupportsShouldProcess = true, DefaultParameterSetName = "RemoveByNameParameterSet"), OutputType(typeof(PSNetworkInterface))]
     public partial class RemoveAzureRmNetworkInterfaceTapConfigCommand : NetworkInterfaceTapConfigBase
     {
         [Parameter(
             Mandatory = true,
+            ParameterSetName = "RemoveByNameParameterSet",
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -32,6 +36,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ParameterSetName = "RemoveByNameParameterSet",
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network name.")]
         [ValidateNotNullOrEmpty]
@@ -39,10 +44,28 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ParameterSetName = "RemoveByNameParameterSet",
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network peering name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "DeleteByResourceIdParameterSet")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = "DeleteByInputObjectParameterSet")]
+        [ValidateNotNullOrEmpty]
+        public PSNetworkInterfaceTapConfiguration InputObject
+        {
+            get; set;
+        }
 
         [Parameter(
            Mandatory = false,
@@ -54,6 +77,21 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
+                this.NetworkInterfaceName = this.InputObject.NetworkInterfaceName;
+            }
+
+            if (ParameterSetName.Equals("DeleteByResourceIdParameterSet", StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.NetworkInterfaceName = resourceIdentifier.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
             base.Execute();
             ConfirmAction(
                 Force.IsPresent,
