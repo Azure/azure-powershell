@@ -22,14 +22,17 @@ using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkTap", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkTap", SupportsShouldProcess = true, DefaultParameterSetName = "RemoveByNameParameterSet"), OutputType(typeof(bool))]
     public partial class RemoveAzureRmVirtualNetworkTap : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
+            ParameterSetName = "RemoveByNameParameterSet",
             HelpMessage = "The resource group name of the virtual network tap.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -38,10 +41,28 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            ParameterSetName = "RemoveByNameParameterSet",
             HelpMessage = "The name of the tap.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "DeleteByResourceIdParameterSet")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            ParameterSetName = "DeleteByInputObjectParameterSet")]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualNetworkTap InputObject
+        {
+            get; set;
+        }
 
         [Parameter(
             Mandatory = false,
@@ -57,6 +78,19 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                this.Name = this.InputObject.Name;
+            }
+
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
             base.Execute();
 
             ConfirmAction(
