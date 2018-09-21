@@ -2392,7 +2392,8 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'Remove-AzNotificationHubsNamespaceAuthorizationRules': 'Remove-AzureRmNotificationHubsNamespaceAuthorizationRules',
     'Get-AzNotificationHubPNSCredentials': 'Get-AzureRmNotificationHubPNSCredentials',
     'Remove-AzNotificationHubsNamespace': 'Remove-AzureRmNotificationHubsNamespace'
-  }    
+  }
+}  
 
 ";
     }
