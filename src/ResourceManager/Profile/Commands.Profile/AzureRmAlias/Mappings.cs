@@ -770,7 +770,10 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'Get-AzWebAppSlot': 'Get-AzureRmWebAppSlot',
     'New-AzWebApp': 'New-AzureRmWebApp',
     'Restore-AzDeletedWebApp':  'Restore-AzureRmDeletedWebApp',
-    'Get-AzDeletedWebApp':  'Get-AzureRmDeletedWebApp'
+    'Get-AzDeletedWebApp':  'Get-AzureRmDeletedWebApp',
+    'Enter-AzWebAppContainerPSSession': 'Enter-AzureRmWebAppContainerPSSession',
+    'Get-AzWebAppContainerContinuousDeploymentUrl': 'Get-AzureRmWebAppContainerContinuousDeploymentUrl',
+    'New-AzWebAppContainerPSSession': 'New-AzureRmWebAppContainerPSSession'
   },
   'Az.Maps': {
     'Get-AzMapsAccountKey': 'Get-AzureRmMapsAccountKey',
