@@ -14,16 +14,17 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 ### [Add-AzureRmSqlDatabaseToFailoverGroup](Add-AzureRmSqlDatabaseToFailoverGroup.md)
 Adds one or more databases to an Azure SQL Database Failover Group.
 
-<<<<<<< HEAD
 ### [Add-AzureRmSqlElasticJobStep](Add-AzureRmSqlElasticJobStep.md)
 Adds a job step to a job
 
 ### [Add-AzureRmSqlElasticJobTarget](Add-AzureRmSqlElasticJobTarget.md)
 Adds a target to a target group
-=======
+
+### [Add-AzureRmSqlManagedInstanceKeyVaultKey](Add-AzureRmSqlManagedInstanceKeyVaultKey.md)
+Adds a key vault key to the provided Managed Instance. 
+
 ### [Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate.md)
 Adds a Transparent Data Encryption Certificate for the given managed instance
->>>>>>> 50100a495684c557703d672de3447cbdfc555842
 
 ### [Add-AzureRmSqlServerKeyVaultKey](Add-AzureRmSqlServerKeyVaultKey.md)
 Adds a Key Vault key to a SQL server.
@@ -66,6 +67,9 @@ Gets the auditing policy of a database.
 
 ### [Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy.md)
 Gets a database long term retention policy.
+
+### [Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy](Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy.md)
+Gets a backup short term retention policy.
 
 ### [Get-AzureRmSqlDatabaseDataMaskingPolicy](Get-AzureRmSqlDatabaseDataMaskingPolicy.md)
 Gets the data masking policy for a database.
@@ -149,7 +153,7 @@ Gets one or more job executions
 Gets one or more job steps
 
 ### [Get-AzureRmSqlElasticJobStepExecution](Get-AzureRmSqlElasticJobStepExecution.md)
-{{Fill in the Synopsis}}
+Gets one or more job step executions
 
 ### [Get-AzureRmSqlElasticJobTargetExecution](Get-AzureRmSqlElasticJobTargetExecution.md)
 Gets one or more job target executions
@@ -180,6 +184,12 @@ Gets one or more managed databases.
 
 ### [Get-AzureRmSqlManagedInstance](Get-AzureRmSqlManagedInstance.md)
 Returns information about SQL Database Managed instances.
+
+### [Get-AzureRmSqlManagedInstanceKeyVaultKey](Get-AzureRmSqlManagedInstanceKeyVaultKey.md)
+Gets a SQL managed instance's Key Vault keys.
+
+### [Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector](Get-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector.md)
+Gets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
 ### [Get-AzureRmSqlServer](Get-AzureRmSqlServer.md)
 Returns information about SQL Database servers.
@@ -277,12 +287,9 @@ This command creates a new Azure SQL Database Failover Group.
 ### [New-AzureRmSqlDatabaseImport](New-AzureRmSqlDatabaseImport.md)
 Imports a .bacpac file and create a new database on the server.
 
-<<<<<<< HEAD
 ### [New-AzureRmSqlDatabaseInstanceFailoverGroup](New-AzureRmSqlDatabaseInstanceFailoverGroup.md)
 This command creates a new Azure SQL Database Instance Failover Group.
 
-=======
->>>>>>> 50100a495684c557703d672de3447cbdfc555842
 ### [New-AzureRmSqlDatabaseRestorePoint](New-AzureRmSqlDatabaseRestorePoint.md)
 Creates a new restore point from which a SQL Database can be restored.
 
@@ -397,6 +404,9 @@ Removes an Azure SQL Managed database.
 ### [Remove-AzureRmSqlManagedInstance](Remove-AzureRmSqlManagedInstance.md)
 Removes an Azure SQL Database Managed instance.
 
+### [Remove-AzureRmSqlManagedInstanceKeyVaultKey](Remove-AzureRmSqlManagedInstanceKeyVaultKey.md)
+Removes a Key Vault key from a SQL managed instance
+
 ### [Remove-AzureRmSqlServer](Remove-AzureRmSqlServer.md)
 Removes an Azure SQL Database server.
 
@@ -460,6 +470,9 @@ Sets the auditing policy for a database.
 ### [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy.md)
 Sets a server long term retention policy.
 
+### [Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy](Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy.md)
+Sets a backup short term retention policy.
+
 ### [Set-AzureRmSqlDatabaseDataMaskingPolicy](Set-AzureRmSqlDatabaseDataMaskingPolicy.md)
 Sets data masking for a database.
 
@@ -487,7 +500,9 @@ Sets a threat detection policy on a database.
 ### [Set-AzureRmSqlDatabaseTransparentDataEncryption](Set-AzureRmSqlDatabaseTransparentDataEncryption.md)
 Modifies TDE property for a database.
 
-<<<<<<< HEAD
+### [Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
+Sets the vulnerability assessment rule baseline.
+
 ### [Set-AzureRmSqlElasticJob](Set-AzureRmSqlElasticJob.md)
 Updates a job
 
@@ -499,10 +514,6 @@ Updates a job credential
 
 ### [Set-AzureRmSqlElasticJobStep](Set-AzureRmSqlElasticJobStep.md)
 Updates a job step
-=======
-### [Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
-Sets the vulnerability assessment rule baseline.
->>>>>>> 50100a495684c557703d672de3447cbdfc555842
 
 ### [Set-AzureRmSqlElasticPool](Set-AzureRmSqlElasticPool.md)
 Modifies properties of an elastic database pool in Azure SQL Database.
@@ -515,6 +526,9 @@ Updates the state of an Azure SQL Elastic Pool recommended action.
 
 ### [Set-AzureRmSqlManagedInstance](Set-AzureRmSqlManagedInstance.md)
 Modifies properties of a SQL Database Managed instance. Properties that are not specified are set to their default values.
+
+### [Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector](Set-AzureRmSqlManagedInstanceTransparentDataEncryptionProtector.md)
+Sets the Transparent Data Encryption (TDE) protector for a SQL managed instance.
 
 ### [Set-AzureRmSqlServer](Set-AzureRmSqlServer.md)
 Modifies properties of a SQL Database server.
@@ -558,13 +572,11 @@ Modifies the configuration of an Azure SQL Server Virtual Network Rule.
 ### [Start-AzureRmSqlDatabaseExecuteIndexRecommendation](Start-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Starts the workflow that runs a recommended index operation.
 
-<<<<<<< HEAD
-### [Start-AzureRmSqlElasticJob](Start-AzureRmSqlElasticJob.md)
-Starts a job, returning a job execution id that can be polled to view it's status
-=======
 ### [Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan](Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan.md)
 Starts a vulnerability assessment scan.
->>>>>>> 50100a495684c557703d672de3447cbdfc555842
+
+### [Start-AzureRmSqlElasticJob](Start-AzureRmSqlElasticJob.md)
+Starts a job, returning a job execution id that can be polled to view it's status
 
 ### [Start-AzureRmSqlServerUpgrade](Start-AzureRmSqlServerUpgrade.md)
 Starts the upgrade of a SQL Database server.
@@ -596,16 +608,14 @@ Suspends a SQL Data Warehouse database.
 ### [Switch-AzureRmSqlDatabaseFailoverGroup](Switch-AzureRmSqlDatabaseFailoverGroup.md)
 Executes a failover of an Azure SQL Database Failover Group.
 
-<<<<<<< HEAD
 ### [Switch-AzureRmSqlDatabaseInstanceFailoverGroup](Switch-AzureRmSqlDatabaseInstanceFailoverGroup.md)
 Executes a failover of an Instance Failover Group.
 
-### [Update-AzureRmSqlManagedInstance](Update-AzureRmSqlManagedInstance.md)
-Modifies properties of a SQL Database Managed instance. Only properties that are explicitly set will be updated.
-=======
 ### [Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
 Updates the vulnerability assessment settings of a database.
->>>>>>> 50100a495684c557703d672de3447cbdfc555842
+
+### [Update-AzureRmSqlManagedInstance](Update-AzureRmSqlManagedInstance.md)
+Modifies properties of a SQL Database Managed instance. Only properties that are explicitly set will be updated.
 
 ### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
 Updates an Azure SQL Database Sync Group.

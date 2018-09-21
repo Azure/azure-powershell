@@ -384,6 +384,9 @@
   <data name="SetAzureSqlServerTransparentDataEncryptionProtectorWarning" xml:space="preserve">
     <value>Warning: This command sets the key '{0}' as the protector, removing access to this key in the future may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?</value>
   </data>
+  <data name="SetAzureSqlManagedInstanceTransparentDataEncryptionProtectorWarning" xml:space="preserve">
+    <value>Warning: This command sets the key '{0}' as the protector, removing access to this key in the future may result in data loss on this managed instance. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?</value>
+  </data>
   <data name="ElasticPoolDatabaseActivityCancelNotSupported" xml:space="preserve">
     <value>Azure Sql Database Elastic Pool name cannot be specified for this operation</value>
   </data>
@@ -513,5 +516,11 @@
   </data>
   <data name="VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase" xml:space="preserve">
     <value>Vulnerability Assessment operation is not available on master database. Skipping...</value>
+  </data>
+  <data name="KeyIdNotFoundForAzureKeyVaultEncryptionProtectorError" xml:space="preserve">
+    <value>KeyId parameter is required for encryption protector type AzureKeyVault</value>
+  </data>
+  <data name="InvalidKeyId" xml:space="preserve">
+    <value>Invalid parameter format for keyId: '{0}'. It should be a well formed Azure Key Vault KeyId like: https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901</value>
   </data>
 </root>

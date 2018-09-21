@@ -457,6 +457,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid parameter format for keyId: &apos;{0}&apos;. It should be a well formed Azure Key Vault KeyId like: https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901.
+        /// </summary>
+        internal static string InvalidKeyId {
+            get {
+                return ResourceManager.GetString("InvalidKeyId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot use audit table retention without specifying TableIdentifier. You may want to use &apos;{0}&apos;..
         /// </summary>
         internal static string InvalidRetentionTypeSet {
@@ -471,6 +480,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string InvalidTenantId {
             get {
                 return ResourceManager.GetString("InvalidTenantId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to KeyId parameter is required for encryption protector type AzureKeyVault.
+        /// </summary>
+        internal static string KeyIdNotFoundForAzureKeyVaultEncryptionProtectorError {
+            get {
+                return ResourceManager.GetString("KeyIdNotFoundForAzureKeyVaultEncryptionProtectorError", resourceCulture);
             }
         }
         
@@ -860,15 +878,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveElasticJobAgentWarning", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Failed retrieving id of storage account &apos;{0}&apos; under subscription &apos;{1}&apos;..
-        /// </summary>
-        internal static string RetrievingStorageAccountIdUnderSubscriptionFailed {
-            get {
-                return ResourceManager.GetString("RetrievingStorageAccountIdUnderSubscriptionFailed", resourceCulture);
-            }
-        }
         
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the target group &apos;{0}&apos; from agent &apos;{1}&apos;.
@@ -876,15 +885,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveElasticJobTargetGroupWarning {
             get {
                 return ResourceManager.GetString("RemoveElasticJobTargetGroupWarning", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Failed retrieving keys of storage &apos;{0}&apos;..
-        /// </summary>
-        internal static string RetrievingStorageAccountKeysFailed {
-            get {
-                return ResourceManager.GetString("RetrievingStorageAccountKeysFailed", resourceCulture);
             }
         }
         
@@ -896,7 +896,25 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveElasticJobWarning", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed retrieving id of storage account &apos;{0}&apos; under subscription &apos;{1}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountIdUnderSubscriptionFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountIdUnderSubscriptionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed retrieving keys of storage &apos;{0}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountKeysFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountKeysFailed", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings first..
         /// </summary>
@@ -1020,6 +1038,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SetAdvisorAutoExecuteStatusWarning {
             get {
                 return ResourceManager.GetString("SetAdvisorAutoExecuteStatusWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning: This command sets the key &apos;{0}&apos; as the protector, removing access to this key in the future may result in data loss on this managed instance. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?.
+        /// </summary>
+        internal static string SetAzureSqlManagedInstanceTransparentDataEncryptionProtectorWarning {
+            get {
+                return ResourceManager.GetString("SetAzureSqlManagedInstanceTransparentDataEncryptionProtectorWarning", resourceCulture);
             }
         }
         
