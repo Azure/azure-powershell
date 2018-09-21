@@ -4,97 +4,126 @@ Module Name: AzureRM.Websites
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/?view=azurermps-6.8.1
 schema: 2.0.0
 ---
- # New-AzureRmWebAppContainerPSSession
- ## SYNOPSIS
+
+# New-AzureRmWebAppContainerPSSession
+
+## SYNOPSIS
 New-AzureRmWebAppContainerPSSession will create new remote PowerShell Session into the windows container specified in a given site or slot and given resource group
- ## SYNTAX
- ### S1
+
+## SYNTAX
+
+### S1
 ```
 New-AzureRmWebAppContainerPSSession [[-SlotName] <String>] [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
- ### S2
+
+### S2
 ```
 New-AzureRmWebAppContainerPSSession [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
- ## DESCRIPTION
+
+## DESCRIPTION
 New-AzureRmWebAppContainerPSSession will create new remote PowerShell Session into the windows container specified in a given site or slot and given resource group
- ## EXAMPLES
- ### Example 1
-```powershell
+
+## EXAMPLES
+
+### Example 1
+```
 PS C:\> $s = New-AzureRmWebAppContainerPSSession -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
 PS C:\> Invoke-Command -Session $s -ScriptBlock{Get-Process}
 ```
- This will create a new remote PowerShell Session into the windows container app ContosoASP and show the processes that are running on the container ContosoASP
+
+This will create a new remote PowerShell Session into the windows container app ContosoASP and show the processes that are running on the container ContosoASP
+
 ## PARAMETERS
- ### -DefaultProfile
+
+### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
- ```yaml
-Type: IAzureContextContainer
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
- Required: False
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
- ### -Name
+
+### -Name
 The name of the web app.
- ```yaml
-Type: String
+
+```yaml
+Type: System.String
 Parameter Sets: S1
 Aliases:
- Required: True
+
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
- ### -ResourceGroupName
+
+### -ResourceGroupName
 The name of the resource group.
- ```yaml
-Type: String
+
+```yaml
+Type: System.String
 Parameter Sets: S1
 Aliases:
- Required: True
+
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
- ### -SlotName
+
+### -SlotName
 The name of the web app slot.
- ```yaml
-Type: String
+
+```yaml
+Type: System.String
 Parameter Sets: S1
 Aliases:
- Required: False
+
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
- ### -WebApp
+
+### -WebApp
 The web app object
- ```yaml
-Type: PSSite
+
+```yaml
+Type: Microsoft.Azure.Commands.WebApps.Models.PSSite
 Parameter Sets: S2
 Aliases:
- Required: True
+
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
- ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
- ## INPUTS
- ### System.String
- ### Microsoft.Azure.Commands.WebApps.Models.PSSite
- ## OUTPUTS
- ### System.String
- ## NOTES
- ## RELATED LINKS
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### System.String
+### Microsoft.Azure.Commands.WebApps.Models.PSSite
+## OUTPUTS
+
+### System.String
+## NOTES
+
+## RELATED LINKS
