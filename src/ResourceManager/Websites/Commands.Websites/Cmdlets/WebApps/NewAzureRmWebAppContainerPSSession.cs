@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will create remote ps session with site
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppContainerPSSession")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppContainerPSSession", DefaultParameterSetName = ParameterSet1Name, SupportsShouldProcess = true)]
     [OutputType(typeof(System.Management.Automation.Runspaces.PSSession))]
     public class NewAzureRmWebAppContainerPSSession : WebAppBaseCmdlet
     {
@@ -35,7 +35,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 Name = name;
                 SlotName = slot;
             }
-            WebsitesClient.RunWebAppContainerPSSessionScript(this, ResourceGroupName, Name, SlotName, true);
+            if (ShouldProcess(Properties.Resources.EnterPSSessionWarning))
+            {
+                WebsitesClient.RunWebAppContainerPSSessionScript(this, ResourceGroupName, Name, SlotName, true);
+            }
         }
     }
 }
