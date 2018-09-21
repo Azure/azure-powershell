@@ -85,6 +85,10 @@
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Authentication.Abstractions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj">
+      <Project>{69c2eb6b-cd63-480a-89a0-c489706e9299}</Project>
+      <Name>Authentication.ResourceManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Authentication\Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
       <Name>Authentication</Name>

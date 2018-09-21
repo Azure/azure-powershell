@@ -51,7 +51,9 @@ namespace Common.Authentication.Test
         public LoginTests()
         {
             AzureSessionInitializer.InitializeAzureSession();
-            ResourceManagerProfileProvider.InitializeResourceManagerProfile();
+            ProtectedProfileProvider.InitializeResourceManagerProfile();
+            IServicePrincipalKeyStore keyStore = new AzureRmServicePrincipalKeyStore(AzureRmProfileProvider.Instance.Profile);
+            AzureSession.Instance.RegisterComponent(ServicePrincipalKeyStore.Name, () => keyStore);
 
             ContextAutosaveSettings settings = null;
             AzureSession.Modify((session) => EnableAutosave(session, true, out settings));

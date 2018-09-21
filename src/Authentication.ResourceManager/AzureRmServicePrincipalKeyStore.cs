@@ -12,23 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
 using FILETIME = System.Runtime.InteropServices.ComTypes.FILETIME;
 
-namespace Microsoft.Azure.Commands.Common.Authentication
+namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     /// <summary>
     /// Helper class to store service principal keys and retrieve them
     /// from the Windows Credential Store.
     /// </summary>
-    public static class ServicePrincipalKeyStore
+    public class AzureRmServicePrincipalKeyStore : IServicePrincipalKeyStore
     {
+        public const string Name = "ServicePrincipalKeyStore";
         private const string keyStoreUserName = "PowerShellServicePrincipalKey";
         private const string targetNamePrefix = "AzureSession:target=";
 
-        public static void SaveKey(string appId, string tenantId, SecureString serviceKey)
+        public void SaveKey(string appId, string tenantId, SecureString serviceKey)
         {
             var credential = new CredStore.NativeMethods.Credential
             {
@@ -68,7 +70,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        public static SecureString GetKey(string appId, string tenantId)
+        public SecureString GetKey(string appId, string tenantId)
         {
             IntPtr pCredential = IntPtr.Zero;
             try
@@ -104,7 +106,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         }
 
 
-        public static void DeleteKey(string appId, string tenantId)
+        public void DeleteKey(string appId, string tenantId)
         {
             CredStore.NativeMethods.CredDelete(CreateKey(appId, tenantId), CredStore.CredentialType.Generic, 0);
         }

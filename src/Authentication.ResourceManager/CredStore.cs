@@ -16,7 +16,7 @@ using System;
 using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.Azure.Commands.Common.Authentication
+namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     /// <summary>
     /// Class wrapping PInvoke signatures for Windows Credential store
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     this.flags = 0;
                     this.type = CredentialType.Generic;
 
-                    // set the key in the targetName 
+                    // set the key in the targetName
                     this.targetName = key;
 
                     this.targetAlias = null;
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     this.lastWritten.dwHighDateTime = 0;
                     this.lastWritten.dwLowDateTime = 0;
 
-                    // set the value in credentialBlob. 
+                    // set the value in credentialBlob.
                     this.credentialBlob = Marshal.StringToHGlobalUni(value);
                     this.credentialBlobSize = (uint)((value.Length + 1) * 2);
 

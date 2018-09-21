@@ -28,6 +28,7 @@
     <WarningLevel>4</WarningLevel>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -46,6 +47,7 @@
     <DelaySign>true</DelaySign>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AzureRmAutosaveProfile.cs" />
@@ -53,6 +55,7 @@
     <Compile Include="AzureRmProfileConverter.cs" />
     <Compile Include="Common\PSObjectExtensions.cs" />
     <Compile Include="ContextModelExtensions.cs" />
+    <Compile Include="CredStore.cs" />
     <Compile Include="IProfileOperations.cs" />
     <Compile Include="Models\AzureContextConverter.cs" />
     <Compile Include="Models\PSAzureContext.cs" />
@@ -76,6 +79,7 @@
     <Compile Include="Serialization\LegacyAzureRMProfile.cs" />
     <Compile Include="Serialization\LegacyAzureTenant.cs" />
     <Compile Include="Serialization\ModelConversionExtensions.cs" />
+    <Compile Include="AzureRmServicePrincipalKeyStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
