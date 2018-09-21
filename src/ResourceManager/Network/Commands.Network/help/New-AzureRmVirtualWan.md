@@ -13,7 +13,8 @@ Creates an Azure Virtual WAN.
 ## SYNTAX
 
 ```
-New-AzureRmVirtualWan -ResourceGroupName <String> -Name <String> -Location <String> [-AllowVnetToVnetTraffic]
+New-AzureRmVirtualWan -ResourceGroupName <String> -Name <String> -Location <String>
+ [-SecurityProviderName <String>] [-Office365LocalBreakoutCategory <String>] [-AllowVnetToVnetTraffic]
  [-AllowBranchToBranchTraffic] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -27,15 +28,16 @@ Creates a new Azure VirtualWAN resource.
 
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
-PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true
+PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true -Office365LocalBreakoutCategory "Optimize"
 
-Name                       : testRG
-Id                         : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
-AllowVnetToVnetTraffic     : False
-AllowBranchToBranchTraffic : True
-Location                   : West US
-Type                       : Microsoft.Network/virtualWans
-ProvisioningState          : Succeeded
+Name                              : testRG
+Id                                : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+AllowVnetToVnetTraffic            : False
+AllowBranchToBranchTraffic        : True
+Office365LocalBreakoutCategory    : Optimize
+Location                          : West US
+Type                              : Microsoft.Network/virtualWans
+ProvisioningState                 : Succeeded
 ```
 
 The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN with branch to branch traffic allowed in that resource group in Azure.
@@ -132,6 +134,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Office365LocalBreakoutCategory
+Local breakout category for office 365 traffic.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -144,6 +161,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityProviderName
+The name of the selected security provider.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

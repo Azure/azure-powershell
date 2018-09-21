@@ -55,6 +55,17 @@ namespace Microsoft.Azure.Commands.Network
         public string Location { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "The name of the selected security provider.")]
+        public string SecurityProviderName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Local breakout category for office 365 traffic.")]
+        [ValidateSet(MNM.OfficeTrafficCategory.All, MNM.OfficeTrafficCategory.None, MNM.OfficeTrafficCategory.Optimize, MNM.OfficeTrafficCategory.OptimizeAndAllow)]
+        public string Office365LocalBreakoutCategory { get; set; }
+
+        [Parameter(
            Mandatory = false,
            HelpMessage = "Allow vnet to vnet traffic for VirtualWan.")]
         public SwitchParameter AllowVnetToVnetTraffic { get; set; }
@@ -99,6 +110,8 @@ namespace Microsoft.Azure.Commands.Network
             virtualWan.Name = this.Name;
             virtualWan.ResourceGroupName = this.ResourceGroupName;
             virtualWan.Location = this.Location;
+            virtualWan.SecurityProviderName = this.SecurityProviderName;
+            virtualWan.Office365LocalBreakoutCategory = this.Office365LocalBreakoutCategory;
             virtualWan.AllowBranchToBranchTraffic = this.AllowBranchToBranchTraffic.IsPresent;
             virtualWan.AllowVnetToVnetTraffic = this.AllowVnetToVnetTraffic.IsPresent;
 

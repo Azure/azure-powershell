@@ -16,25 +16,15 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
-    public class PSVpnSite : PSTopLevelResource
+    public class PSVirtualWanSecurityProvider
     {
-        [Ps1Xml(Label = "Address Space", Target = ViewControl.Table, ScriptBlock = "$_.AddressSpace.AddressPrefixes")]
-        public PSAddressSpace AddressSpace { get; set; }
+        [Ps1Xml(Label = "Security Provider Name", Target = ViewControl.Table)]
+        public string Name { get; set; }
 
-        [Ps1Xml(Label = "IsSecuritySite", Target = ViewControl.Table)]
-        public bool IsSecuritySite { get; set; }
+        [Ps1Xml(Label = "Type", Target = ViewControl.Table)]
+        public string Type { get; set; }
 
-        public PSBgpSettings BgpSettings { get; set; }
-
-        public PSVpnSiteDeviceProperties DeviceProperties { get; set; }
-
-        [Ps1Xml(Label = "Ip Address", Target = ViewControl.Table)]
-        public string IpAddress { get; set; }
-
-        [Ps1Xml(Label = "Virtual WAN Id", Target = ViewControl.Table, ScriptBlock = "$_.VirtualWan.Id")]
-        public PSResourceId VirtualWan { get; set; }
-
-        [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
-        public string ProvisioningState { get; set; }
+        [Ps1Xml(Label = "Url", Target = ViewControl.Table)]
+        public string Url { get; set; }
     }
 }

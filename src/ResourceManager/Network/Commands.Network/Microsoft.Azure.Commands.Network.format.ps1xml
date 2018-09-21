@@ -3354,6 +3354,10 @@
                 <Label>RemoteVirtualNetwork</Label>
                 <ScriptBlock>$_.RemoteVirtualNetwork.Id</ScriptBlock>
               </ListItem>
+			  <ListItem>
+                <Label>EnableInternetSecurity</Label>
+                <PropertyName>EnableInternetSecurity</PropertyName>
+              </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
@@ -3387,6 +3391,14 @@
               <ListItem>
                 <Label>AllowBranchToBranchTraffic</Label>
                 <PropertyName>AllowBranchToBranchTraffic</PropertyName>
+              </ListItem>
+			  <ListItem>
+                <Label>SecurityProviderName</Label>
+                <PropertyName>SecurityProviderName</PropertyName>
+              </ListItem>
+			  <ListItem>
+                <Label>Office365LocalBreakoutCategory</Label>
+                <PropertyName>Office365LocalBreakoutCategory</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Location</Label>
@@ -3495,6 +3507,10 @@
               <ListItem>
                 <Label>BgpSettings</Label>
                 <PropertyName>BgpSettings</PropertyName>
+              </ListItem>
+			  <ListItem>
+                <Label>IsSecuritySite</Label>
+                <PropertyName>IsSecuritySite</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Type</Label>

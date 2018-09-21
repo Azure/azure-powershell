@@ -19,6 +19,17 @@
 --->
 
 ## Current Release
+* Added cmdlets to integrate security provider in cortex
+  - Cmdlets updated with optonal parameters
+	- New-AzureRmVirtualWan : added parameters SecurityProviderName, Office365LocalBreakoutCategory
+	- Update-AzureRmVirtualWan : added parameters SecurityProviderName, Office365LocalBreakoutCategory
+	- New-AzureRmVpnSite : added parameter IsSecuritySite
+	- New-AzureRmVpnConnection : added parameter EnableInternetSecurity
+	- Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
+	- New-AzureRmVirtualHubVnetConnection : added parameter EnableInternetSecurity
+  - New Cmdlets added:
+	- Get-AzureRmVirtualWanSupportedSecurityProvider
+	- Update-AzureRmVirtualHubVnetConnection
 
 ## Version 6.8.0
 * Replaced LoadBalancer cmdlets with generated code
