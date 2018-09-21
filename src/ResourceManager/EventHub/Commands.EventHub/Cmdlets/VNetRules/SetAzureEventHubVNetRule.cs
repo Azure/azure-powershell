@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                 ResourceGroupName = identifier.ResourceGroupName;
                 Namespace = identifier.ParentResource;
                 Name = identifier.ResourceName;
+                VirtualNetworkSubnetId = InputObject.VirtualNetworkSubnetId;
             }
             else if (ParameterSetName.Equals(VnetRuleResourceIdParameterSet))
             {
@@ -73,10 +74,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             if (!string.IsNullOrEmpty(VirtualNetworkSubnetId))
             {
                 vnetrule.VirtualNetworkSubnetId = VirtualNetworkSubnetId;
-            }
-            else
-            {
-                vnetrule.VirtualNetworkSubnetId = InputObject.VirtualNetworkSubnetId;
             }
 
             if (ShouldProcess(target:Name, action: string.Format(Resources.UpdateIpVNetRule,Name,Namespace)))

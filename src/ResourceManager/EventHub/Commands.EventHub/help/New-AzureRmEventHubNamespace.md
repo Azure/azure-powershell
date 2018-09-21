@@ -35,6 +35,20 @@ The New-AzureRmEventHubNamespace cmdlet creates a new namespace of type Event Hu
 ### Example 1
 ```
 PS C:\> New-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation
+Name                   : MyNamespaceName
+Id                     : /subscriptions/XXXXXXXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+Location               : MyLocation
+ResourceGroup          : MyResourceGroupName
+Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
+ProvisioningState      : Succeeded
+Status                 : Active
+CreatedAt              : X/XX/XXXX 11:54:52 PM
+UpdatedAt              : X/XX/XXXX 11:55:17 PM
+ServiceBusEndpoint     : https://MyNamespaceName.servicebus.windows.net:443/
+Enabled                : True
+IsAutoInflateEnabled   : False
+MaximumThroughputUnits : 0
+ZoneRedundant          : False
 ```
 
 Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic location \`MyLocation\`, in resource group \`MyResourceGroupName\`.
@@ -42,6 +56,21 @@ Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic 
 ### Example 2
 ```
 PS C:\> New-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location MyLocation -EnableAutoInflate -MaximumThroughputUnits 10
+
+Name                   : MyNamespaceName
+Id                     : /subscriptions/XXXXXXXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+Location               : MyLocation
+ResourceGroup          : MyResourceGroupName
+Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
+ProvisioningState      : Succeeded
+Status                 : Active
+CreatedAt              : X/XX/XXXX 11:54:52 PM
+UpdatedAt              : X/XX/XXXX 11:55:17 PM
+ServiceBusEndpoint     : https://MyNamespaceName.servicebus.windows.net:443/
+Enabled                : True
+IsAutoInflateEnabled   : True
+MaximumThroughputUnits : 10
+ZoneRedundant          : False
 ```
 
 Creates an Event Hubs namespace \`MyNamespaceName\` in the specified geographic location \`MyLocation\`, in resource group \`MyResourceGroupName\` and AutoInflate is enabled with MaximumThroughputUnits 10.

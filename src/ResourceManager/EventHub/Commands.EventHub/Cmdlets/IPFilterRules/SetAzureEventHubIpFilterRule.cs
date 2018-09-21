@@ -59,15 +59,18 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         public override void ExecuteCmdlet()
         {
             PSIpFilterRuleAttributes ipfilterrule = new PSIpFilterRuleAttributes();
-                        
+
             if (ParameterSetName.Equals(IpFilterRuleInputObjectParameterSet))
             {
                 LocalResourceIdentifier identifier = new LocalResourceIdentifier(InputObject.Id);
                 ResourceGroupName = identifier.ResourceGroupName;
                 Namespace = identifier.ParentResource;
                 Name = identifier.ResourceName;
-                Action = InputObject.Action;
-                IpMask = InputObject.IpMask;
+                if (string.IsNullOrEmpty(Action))
+                    Action = InputObject.Action;
+
+                if (string.IsNullOrEmpty(IpMask))
+                    IpMask = InputObject.IpMask;
             }
             else if (ParameterSetName.Equals(IpFilterRuleResourceIdParameterSet))
             {
@@ -84,13 +87,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
             if (!string.IsNullOrEmpty(Action))
                 ipfilterrule.Action = Action;
-            else
-                ipfilterrule.Action = InputObject.Action;
 
             if (!string.IsNullOrEmpty(IpMask))
                 ipfilterrule.IpMask = IpMask;
-            else
-                ipfilterrule.IpMask = InputObject.IpMask;
 
 
             if (ShouldProcess(target:Name, action: string.Format(Resources.UpdateIpFilterRule,Name,Namespace)))

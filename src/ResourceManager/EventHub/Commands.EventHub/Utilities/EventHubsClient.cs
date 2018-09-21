@@ -105,6 +105,8 @@ namespace Microsoft.Azure.Commands.Eventhub
 
         public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, NamespaceState? state, Dictionary<string, string> tags, bool? isAutoInflateEnabled, int? maximumThroughputUnits, bool? zoneRedundant)
         {
+            EHNamespace responseGet = new EHNamespace();
+            responseGet = Client.Namespaces.Get(resourceGroupName, namespaceName);
 
             var parameter = new EHNamespace()
             {
@@ -117,6 +119,11 @@ namespace Microsoft.Azure.Commands.Eventhub
             {
                 tempSku.Name = skuName;
                 tempSku.Tier = skuName;
+            }
+            else
+            {
+                tempSku.Name = responseGet.Sku.Name;
+                tempSku.Tier = responseGet.Sku.Tier;
             }
 
             if (skuCapacity.HasValue)

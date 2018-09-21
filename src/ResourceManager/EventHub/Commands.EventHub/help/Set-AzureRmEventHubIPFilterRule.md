@@ -38,7 +38,13 @@ command **Set-AzureRmEventHubIPFilterRule** will update the specified Ip Filter 
 
 ### Example 1
 ```powershell
-PS C:\> $updatedIpfilterRule = Set-AzureRmEventHubIPFilterRule -ResourceGroup resourcegroup -Namespace namespacename -Name ipfilterrulename -IpMask "13.78.143.219/32" -Action "Accept"
+PS C:\> $updatedIpfilterRule = Set-AzureRmEventHubIPFilterRule -ResourceGroup MyResourceGroup -Namespace MYNamespace -Name TestingIpFilterRule -IpMask "13.78.143.219/32" -Action "Reject"
+
+Id         : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/namespaces/MYNamespace/ipfilterrules/TestingIpFilterRule
+Name       : TestingIpFilterRule
+IpMask     : 13.78.143.219/32
+FilterName : TestingIpFilterRule
+Action     : Reject
 ```
 
 update the Ip Filter rule using parameters
@@ -46,9 +52,15 @@ update the Ip Filter rule using parameters
 ### Example 2
 ```powershell
 
-PS C:\> $createdIpfilterRule = Get-AzureRmEventHubIPFilterRule -ResourceGroup resourcegroup -Namespace namespaceame -Name ipfilterrulename
-PS C:\> $createdIpfilterRule.IpMask = "13.78.143.219/32"
-PS C:\> $updatedIpfilterRule = Set-AzureRmEventHubIPFilterRule -ResourceGroup resourcegroup -Namespace namespacename -Name ipfilterrulename -InputObject $createdIpfilterRule
+PS C:\> $createdIpfilterRule = Get-AzureRmEventHubIPFilterRule -ResourceGroup MyResourceGroup -Namespace MYNamespace -Name TestingIpFilterRule
+PS C:\> $createdIpfilterRule.IpMask = "XX.XX.XX.XX/32"
+PS C:\> $updatedIpfilterRule = Set-AzureRmEventHubIPFilterRule -InputObject $createdIpfilterRule
+
+Id         : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/namespaces/MYNamespace/ipfilterrules/TestingIpFilterRule
+Name       : TestingIpFilterRule
+IpMask     : XX.XX.XX.XX/32
+FilterName : TestingIpFilterRule
+Action     : Reject
 ```
 
 update the Ip Filter rule using InputObject
@@ -56,8 +68,14 @@ update the Ip Filter rule using InputObject
 ### Example 3
 ```powershell
 
-PS C:\> $createdIpfilterRule = Get-AzureRmEventHubIPFilterRule -ResourceGroup resourcegroup -Namespace namespaceame -Name ipfilterrulename
-PS C:\> $updatedIpfilterRule = Set-AzureRmEventHubIPFilterRule -ResourceGroup resourcegroup -Namespace namespacename -Name ipfilterrulename -InputObject $createdIpfilterRule -IpMask "13.78.143.219/32"
+PS C:\> $createdIpfilterRule = Get-AzureRmEventHubIPFilterRule -ResourceGroup MyResourceGroup -Namespace MYNamespace -Name TestingIpFilterRule
+PS C:\> $updatedIpfilterRule = Set-AzureRmEventHubIPFilterRule -InputObject $createdIpfilterRule -IpMask "XX.XX.XX.XX/32"
+
+Id         : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/namespaces/MYNamespace/ipfilterrules/TestingIpFilterRule
+Name       : TestingIpFilterRule
+IpMask     : XX.XX.XX.XX/32
+FilterName : TestingIpFilterRule
+Action     : Reject
 ```
 
 update the Ip Filter rule using InputObject and -IpMask

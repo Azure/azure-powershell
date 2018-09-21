@@ -38,7 +38,12 @@ command **Set-AzureRmEventHubVNetRule** will update the specified VNet Rule desc
 
 ### Example 1
 ```powershell
-PS C:\> $updatedVNetRule = Set-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespacename -Name vnetrulename -VirtualNetworkSubnetId vNetsubnetId
+PS C:\> $updatedVNetRule = Set-AzureRmEventHubVNetRule -ResourceGroup MyResourceGroup -Namespace MyNamespace -Name TestingVNetRule -VirtualNetworkSubnetId vNetsubnetId
+
+Id                     : /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/namespaces/MyNamespace/virtualnetworkrules/TestingVNetRule
+Name                   : TestingVNetRule
+VirtualNetworkSubnetId : /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVirtualNetworks/subnets/Mydefault
+
 ```
 Update the VNet Rule using parameters
 
@@ -47,15 +52,24 @@ Update the VNet Rule using parameters
 
 PS C:\> $createdVNetRule = Get-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespaceame -Name vnetrulename
 PS C:\> $createdVNetRule.VirtualNetworkSubnetId = vNetsubnetId
-PS C:\> $updatedVNetRule = Set-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespacename -Name vnetrulename -InputObject $createdVNetRule
+PS C:\> $updatedVNetRule = Set-AzureRmEventHubVNetRule -InputObject $createdVNetRule
+
+Id                     : /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/namespaces/MyNamespace/virtualnetworkrules/TestingVNetRule
+Name                   : TestingVNetRule
+VirtualNetworkSubnetId : /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVirtualNetworks/subnets/Mydefault
 ```
 Update the VNet Rule using InputObject
 
 ### Example 3
 ```powershell
 
-PS C:\> $createdVNetRule = Get-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespaceame -Name vnetrulename
-PS C:\> $updatedVNetRule = Set-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespacename -Name vnetrulename -InputObject $createdVNetRule -VirtualNetworkSubnetId vNetsubnetId
+PS C:\> $createdVNetRule = Get-AzureRmEventHubVNetRule -ResourceGroup MyResourceGroup -Namespace MyNamespace -Name TestingVNetRule
+PS C:\> $updatedVNetRule = Set-AzureRmEventHubVNetRule -InputObject $createdVNetRule -VirtualNetworkSubnetId vNetsubnetId
+
+
+Id                     : /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/namespaces/MyNamespace/virtualnetworkrules/TestingVNetRule
+Name                   : TestingVNetRule
+VirtualNetworkSubnetId : /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVirtualNetworks/subnets/Mydefault
 ```
 update the VNet Rule using InputObject with paramter VirtualNetworkSubnetId
 

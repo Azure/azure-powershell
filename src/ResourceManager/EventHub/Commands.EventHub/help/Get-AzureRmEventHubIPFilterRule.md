@@ -31,7 +31,13 @@ The **Get-AzureRmEventHubIPFilterRule** cmdlet returns the description of the sp
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmEventHubIPFilterRule -ResourceGroup resourcegroup -Namespace namespaceame -Name ipfilterrulename
+PS C:\> Get-AzureRmEventHubIPFilterRule -ResourceGroup MyResourceGroup -Namespace MyNamespace -Name TestingIpFilterRule
+
+Id         : /subscriptions/XXXX-XXXX-XXXX-XXXX-XXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/MyNamespace/TestingpreviewNS1/ipfilterrules/TestingIpFilterRule
+Name       : TestingIpFilterRule
+IpMask     : 13.78.143.221/32
+FilterName : TestingIpFilterRule
+Action     : Accept
 ```
 
 Get-AzureRmEventHubIPFilterRule cmdlet with the name of the Ip Filter Rule will return the rule description
@@ -39,6 +45,19 @@ Get-AzureRmEventHubIPFilterRule cmdlet with the name of the Ip Filter Rule will 
 ### Example 2
 ```powershell
 PS C:\> Get-AzureRmEventHubIPFilterRule -ResourceGroup resourcegroup -Namespace namespaceame
+
+Id         : /subscriptions/XXXX-XXXX-XXXX-XXXX-XXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/MyNamespace/TestingpreviewNS1/ipfilterrules/TestingIpFilterRule
+Name       : TestingIpFilterRule
+IpMask     : 13.78.143.221/32
+FilterName : TestingIpFilterRule
+Action     : Accept
+
+Id         : /subscriptions/XXXX-XXXX-XXXX-XXXX-XXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/MyNamespace/TestingpreviewNS1/ipfilterrules/TestingIpFilterRule1
+Name       : TestingIpFilterRule1
+IpMask     : 10.12.12.221/32
+FilterName : TestingIpFilterRule1
+Action     : Accept
+
 ```
 
 Get-AzureRmEventHubIPFilterRule cmdlet without specific Ip Filter Rule name will return the list of rule description

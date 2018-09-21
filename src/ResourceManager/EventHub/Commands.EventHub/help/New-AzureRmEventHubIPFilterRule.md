@@ -25,7 +25,13 @@ The **New-AzureRmEventHubIPFilterRule** cmdlet Creates a new Ip Filter Rule for 
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmEventHubIPFilterRule -ResourceGroup resourcegroup -Namespace namespacename -Name ipfilterrulename -IpMask "13.78.143.246/32" -Action "Accept"
+PS C:\> New-AzureRmEventHubIPFilterRule -ResourceGroup MyResourceGroup -Namespace MyNamespace -Name ipfilterrulename -IpMask "13.78.143.246/32" -Action "Accept"
+
+Id         : /subscriptions/XXXX-XXXX-XXXX-XXXX-XXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.EventHub/MyNamespace/TestingpreviewNS1/ipfilterrules/ipfilterrulename
+Name       : ipfilterrulename
+IpMask     : 13.78.143.221/32
+FilterName : ipfilterrulename
+Action     : Accept
 ```
 
 The New-AzureRmEventHubIPFilterRule cmdlet Creates a new Ip Filter Rule for given namespace namespacename which accepts traffic from "13.78.143.246/32".

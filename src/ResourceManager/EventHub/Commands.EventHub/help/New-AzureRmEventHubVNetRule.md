@@ -25,7 +25,11 @@ The **New-AzureRmEventHubVNetRule** cmdlet Creates a new VNet Rule for given nam
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmEventHubIPFilterRule -ResourceGroup resourcegroup -Namespace namespacename -Name vnetrulename -VirtualNetworkSubnetId VnetsubNetId
+PS C:\> New-AzureRmEventHubIPFilterRule -ResourceGroup MyResourceGroup -Namespace MyNamespace -Name TestingVNetRule -VirtualNetworkSubnetId VnetsubNetId
+
+Id                     : /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXX/resourceGroups/v-ajnavtest/providers/Microsoft.EventHub/namespaces/TestingpreviewNS1/virtualnetworkrules/TestingVNetRule
+Name                   : TestingVNetRule
+VirtualNetworkSubnetId : /subscriptions/XXXXX-XXXX-XXXX-XXXX-XXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVirtualNetworks/subnets/Mydefault
 ```
 
 Creates a new VNet Rule for the given namespace

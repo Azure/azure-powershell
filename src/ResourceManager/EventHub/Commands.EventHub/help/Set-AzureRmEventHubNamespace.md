@@ -15,14 +15,14 @@ Updates the specified Event Hubs namespace.
 ### NamespaceParameterSet (Default)
 ```
 Set-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>]
+ [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>]
  [-EnableZoneRedundant] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AutoInflateParameterSet
 ```
 Set-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>]
+ [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>]
  [-EnableAutoInflate] [-MaximumThroughputUnits <Int32>] [-EnableZoneRedundant] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -34,17 +34,24 @@ The Set-AzureRmEventHubNamespace cmdlet updates the properties of the specified 
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created
+PS C:\> Set-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -EnableAutoInflate -MaximumThroughputUnits 11
+Name                   : MyNamespaceName
+Id                     : /subscriptions/XXXXXXXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+Location               : MyLocation
+ResourceGroup          : MyResourceGroupName
+Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
+ProvisioningState      : Succeeded
+Status                 : Active
+CreatedAt              : X/XX/XXXX XX:XX:XX XX
+UpdatedAt              : X/XX/XXXX XX:XX:XX XX
+ServiceBusEndpoint     : https://MyNamespaceName.servicebus.windows.net:443/
+Enabled                : True
+IsAutoInflateEnabled   : True
+MaximumThroughputUnits : 11
+ZoneRedundant          : False
 ```
 
-Updates the state of namespace \`MyNamespaceName\` to Created .
-
-### Example 2
-```
-PS C:\> Set-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created -EnableAutoInflate -MaximumThroughputUnits 10
-```
-
-Updates the state of namespace \`MyNamespaceName\` with AutoInflate = enabled and MaximumThroughputUnits = 10
+Updates  namespace \`MyNamespaceName\` with AutoInflate = enabled and MaximumThroughputUnits = 10
 
 ## PARAMETERS
 
@@ -184,22 +191,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -State
-Disable/Enable Namespace.
-
-```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]
-Parameter Sets: (All)
-Aliases:
-Accepted values: Unknown, Active, Disabled
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Tag
 Hashtables which represents resource Tag.
 
@@ -254,7 +245,6 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.String
 System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.Commands.EventHub, Version=0.6.9.0, Culture=neutral, PublicKeyToken=null]]
 System.Collections.Hashtable
 
 

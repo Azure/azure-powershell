@@ -24,17 +24,17 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubVNetRule", DefaultParameterSetName = VnetRulePropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureEventHubVNetRule : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = VnetRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = VnetRulePropertiesParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = VnetRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = VnetRulePropertiesParameterSet, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = VnetRulePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Virtual Network Rule Name")]
+        [Parameter(Mandatory = true, ParameterSetName = VnetRulePropertiesParameterSet, Position = 2, HelpMessage = "Virtual Network Rule Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

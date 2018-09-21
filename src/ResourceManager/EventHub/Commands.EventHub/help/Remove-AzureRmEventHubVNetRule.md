@@ -37,13 +37,13 @@ Cmdlet **Remove-AzureRmEventHubVNetRule** deletes the specified VNet Rule for th
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespaceame -Name vnetrulename
+PS C:\> Remove-AzureRmEventHubVNetRule -ResourceGroup MyResourceGroup -Namespace MyNamespace -Name TestingVNetRule
 ```
 removes the specified VNet Rule
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzureRmEventHubVNetRule -ResourceGroup resourcegroup -Namespace namespaceame -Name vnetrulename | Remove-AzureRmEventHubVNetRule
+PS C:\> Get-AzureRmEventHubVNetRule -ResourceGroup MyResourceGroup -Namespace MyNamespace -Name TestingVNetRule | Remove-AzureRmEventHubVNetRule
 ```
 removes the specified VNet Rule through piping InputObject
 
