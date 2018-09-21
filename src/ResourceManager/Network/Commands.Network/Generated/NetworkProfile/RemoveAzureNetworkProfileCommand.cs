@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkProfile", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkProfile", DefaultParameterSetName = "RemoveByNameParameterSet", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public partial class RemoveAzureNetworkProfile : NetworkBaseCmdlet
     {
         [Parameter(
