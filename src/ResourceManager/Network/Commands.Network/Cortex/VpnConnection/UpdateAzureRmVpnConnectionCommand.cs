@@ -99,6 +99,11 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable internet security for this connection")]
+        public bool? EnableInternetSecurity { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -156,6 +161,11 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             if (this.EnableBgp.HasValue)
             {
                 vpnConnectionToModify.EnableBgp = this.EnableBgp.Value;
+            }
+
+            if (this.EnableInternetSecurity.HasValue)
+            {
+                vpnConnectionToModify.EnableInternetSecurity = this.EnableInternetSecurity.Value;
             }
 
             if (this.IpSecPolicy != null)

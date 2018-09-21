@@ -198,6 +198,8 @@
     <Compile Include="AzureFirewall\RemoveAzureFirewallCommand.cs" />
     <Compile Include="AzureFirewall\SetAzureFirewallCommand.cs" />
     <Compile Include="InterfaceEndpoint\AzureInterfaceEndpointBaseCmdlet.cs" />
+    <Compile Include="Cortex\HubVnetConnection\UpdateAzureRmHubVirtualNetworkConnectionCommand.cs" />
+    <Compile Include="Cortex\VirtualWan\GetAzureRmVirtualWanSupportedSecurityProviderCommand.cs" />
     <Compile Include="Generated\ApplicationSecurityGroup\GetAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Generated\ApplicationSecurityGroup\NewAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Generated\ApplicationSecurityGroup\RemoveAzureRMApplicationSecurityGroupCommand.cs" />
@@ -374,6 +376,7 @@
     <Compile Include="Generated\Models\PSTroubleshootingDetails.cs" />
     <Compile Include="Generated\Models\PSTroubleshootingRecommendedActions.cs" />
     <Compile Include="InterfaceEndpoint\GetAzureInterfaceEndpointCommand.cs" />
+    <Compile Include="Models\Cortex\PSVirtualWanSecurityProvider.cs" />
     <Compile Include="Models\PSTrafficAnalyticsConfigurationProperties.cs" />
     <Compile Include="Models\PSTrafficAnalyticsProperties.cs" />
     <Compile Include="Generated\Models\PSTunnelConnectionHealth.cs" />

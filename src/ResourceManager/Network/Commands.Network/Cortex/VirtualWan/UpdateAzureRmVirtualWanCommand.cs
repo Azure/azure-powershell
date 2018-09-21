@@ -71,6 +71,17 @@ namespace Microsoft.Azure.Commands.Network
         public string ResourceId { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           HelpMessage = "The name of the selected security provider.")]
+        public string SecurityProviderName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Local breakout category for office 365 traffic.")]
+        [ValidateSet(MNM.OfficeTrafficCategory.All, MNM.OfficeTrafficCategory.None, MNM.OfficeTrafficCategory.Optimize, MNM.OfficeTrafficCategory.OptimizeAndAllow)]
+        public string Office365LocalBreakoutCategory { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Allow vnet to vnet traffic for VirtualWan.")]
         public bool? AllowVnetToVnetTraffic { get; set; }
@@ -139,6 +150,16 @@ namespace Microsoft.Azure.Commands.Network
             if (virtualWanToUpdate == null)
             {
                 throw new PSArgumentException(Properties.Resources.VirtualWanNotFound);
+            }
+
+            if (this.SecurityProviderName != null)
+            {
+                virtualWanToUpdate.SecurityProviderName = this.SecurityProviderName;
+            }
+
+            if (this.Office365LocalBreakoutCategory != null)
+            {
+                virtualWanToUpdate.Office365LocalBreakoutCategory = this.Office365LocalBreakoutCategory;
             }
 
             if (this.AllowBranchToBranchTraffic.HasValue)
