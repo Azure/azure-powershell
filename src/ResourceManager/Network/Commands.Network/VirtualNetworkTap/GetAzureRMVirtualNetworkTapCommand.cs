@@ -14,24 +14,21 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using AutoMapper;
 using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkTap"), OutputType(typeof(PSVirtualNetworkTap))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkTap", SupportsShouldProcess = true, DefaultParameterSetName = "GetByNameParameterSet"), OutputType(typeof(PSVirtualNetworkTap))]
     public partial class GetAzureRmVirtualNetworkTap : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
+            ParameterSetName = "GetByNameParameterSet",
             HelpMessage = "The resource group name of the virtual network tap.",
             ValueFromPipelineByPropertyName = true)]
         [ResourceGroupCompleter]
@@ -40,16 +37,31 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "GetByNameParameterSet",
             HelpMessage = "The name of the tap.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "GetByResourceIdParameterSet",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceId { get; set; }
+
         public override void Execute()
         {
             base.Execute();
 
-            if(!string.IsNullOrEmpty(this.Name))
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
+            if (!string.IsNullOrEmpty(this.Name))
             {
                 var vVirtualNetworkTap = this.NetworkClient.NetworkManagementClient.VirtualNetworkTaps.Get(ResourceGroupName, Name);
                 var vVirtualNetworkTapModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSVirtualNetworkTap>(vVirtualNetworkTap);
