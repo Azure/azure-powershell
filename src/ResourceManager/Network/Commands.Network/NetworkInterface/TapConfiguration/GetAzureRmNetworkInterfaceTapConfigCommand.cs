@@ -13,21 +13,23 @@
 // limitations under the License.
 
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkInterfaceTapConfig"), OutputType(typeof(PSNetworkInterfaceTapConfiguration))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkInterfaceTapConfig", SupportsShouldProcess = true, DefaultParameterSetName = "GetByNameParameterSet"), OutputType(typeof(PSNetworkInterfaceTapConfiguration))]
     public partial class GetAzureRmNetworkInterfaceTapConfigCommand : NetworkInterfaceTapConfigBase
     {
         [Parameter(
             Mandatory = true,
+            ParameterSetName = "GetByNameParameterSet",
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -36,6 +38,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
            Mandatory = true,
+           ParameterSetName = "GetByNameParameterSet",
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The Network Interface name.")]
         [ValidateNotNullOrEmpty]
@@ -43,33 +46,40 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "GetByNameParameterSet",
             HelpMessage = "Name of the specific tap configuration.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "GetByResourceIdParameterSet",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceId { get; set; }
+
         public override void Execute()
         {
             base.Execute();
+
+            if (this.IsParameterBound(c => c.ResourceId))
+            {
+                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
+                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
+                var parentResource = resourceIdentifier.ParentResource.Split(new[] { '/' });
+                this.NetworkInterfaceName = parentResource[parentResource.Length - 1];
+                this.Name = resourceIdentifier.ResourceName;
+            }
+
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var vnet = this.GetNetworkInterfaceTapConfiguration(this.ResourceGroupName, this.NetworkInterfaceName, this.Name);
+                var tapConfig = this.GetNetworkInterfaceTapConfiguration(this.ResourceGroupName, this.NetworkInterfaceName, this.Name);
 
-                WriteObject(vnet);
+                WriteObject(tapConfig);
             }
             else
             {
-                // Uncomments this when GetEnumerator operation works on NetworkInterfaceTapConfig
-                //var tapConfigList = this.NetworkInterfaceTapClient.ListWithHttpMessagesAsync(this.ResourceGroupName, this.NetworkInterfaceName).GetAwaiter().GetResult();
-
-                //var psTapConfigs = new List<PSNetworkInterfaceTapConfiguration>();
-                //foreach (var tapConfig in tapConfigList)
-                //{
-                //    var psTapConfig = this.ToPSNetworkInterfaceTapConfiguration(tapConfig);
-                //    psTapConfig.ResourceGroupName = this.ResourceGroupName;
-                //    psTapConfig.NetworkInterfaceName = this.NetworkInterfaceName;
-                //    psTapConfigs.Add(psTapConfig);
-                //}
-
                 var networkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.NetworkInterfaceName);
                 var psTapConfigs = new List<PSNetworkInterfaceTapConfiguration>();
                 if (networkInterface != null)
