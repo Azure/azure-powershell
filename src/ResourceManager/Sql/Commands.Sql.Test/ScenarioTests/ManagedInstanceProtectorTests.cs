@@ -39,6 +39,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-SetGetManagedInstanceEncryptionProtectorByokFailsWithoutKeyId");
         }
+
+        // Commenting out these tests because automated checks are failing when there 
+        //is [fact] tag even when there is no trait tag 
         
         //public void TestSetGetManagedInstanceEncryptionProtectorServiceManaged()
         //{
