@@ -403,16 +403,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
     'New-AzNetworkProfile',
     'Remove-AzNetworkProfile',
     'Set-AzNetworkProfile',
-    'Get-AzNetworkProfileContainerNicConfig',
-    'New-AzNetworkProfileContainerNicConfig',
-    'Remove-AzNetworkProfileContainerNicConfig',
-    'Add-AzNetworkProfileContainerNicConfig',
-    'Set-AzNetworkProfileContainerNicConfig',
-    'Get-AzNetworkProfileContainerNicConfigIpConfig',
-    'New-AzNetworkProfileContainerNicConfigIpConfig',
-    'Add-AzNetworkProfileContainerNicConfigIpConfig',
-    'Remove-AzNetworkProfileContainerNicConfigIpConfig',
-    'Set-AzNetworkProfileContainerNicConfigIpConfig',
+    'New-AzContainerNicConfig',
+    'New-AzContainerNicConfigIpConfig',
     'Get-AzInterfaceEndpoint' 
 
 # Variables to export from this module
