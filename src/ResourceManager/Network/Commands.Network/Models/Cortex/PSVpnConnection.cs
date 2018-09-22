@@ -44,6 +44,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "BGP Enabled", Target = ViewControl.Table)]
         public bool EnableBgp { get; set; }
 
+        [Ps1Xml(Label = "Internet Security Enabled", Target = ViewControl.Table)]
+        public bool EnableInternetSecurity { get; set; }
+
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
     }
