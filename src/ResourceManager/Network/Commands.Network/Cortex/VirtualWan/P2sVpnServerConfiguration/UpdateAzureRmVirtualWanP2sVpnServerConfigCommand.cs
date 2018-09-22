@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "P2SVpnServerConfiguration",
-        DefaultParameterSetName = CortexParameterSetNames.ByVirtualWanName + P2SVpnServerConfigurationParameterSets.Default,
+        DefaultParameterSetName = CortexParameterSetNames.ByP2SVpnServerConfigurationName + P2SVpnServerConfigurationParameterSets.Default,
         SupportsShouldProcess = true),
         OutputType(typeof(PSP2SVpnServerConfiguration))]
     public class UpdateAzureRmVirtualWanP2SVpnServerConfigCommand : VirtualWanBaseCmdlet

@@ -108,15 +108,6 @@
   - Add-AzureRmDelegation: Takes in a subnet and adds the provided service name as a delegation to that subnet
   - Get-AzureRmDelegation
   - Get-AzureRmAvailableServiceDelegations
-* Expose new Powershell commandlets and models for SdWan.
-    - Added New, Get, Set, Remove for VirtualWan.
-    - Added New for VirtualHubRoute and VirtualHubRouteTable.
-    - Added New, Get, Set, Remove for VirtualHub.
-    - Added New, Get, Set, Remove for HubVirtualNetworkConnection.
-    - Added New, Get, Set, Remove for VpnGateway.
-    - Added New, Get, Set, Remove for VpnSite.
-    - Added New, Get, Set, Remove for VpnConnection.
-    - Added Get-AzureRmVirtualWanVpnSitesConfigurationCommand to allow download of SdWan configuration.
 
 ## Version 6.7.0
 * Updated cmdlet New-AzureRmVirtualNetworkGatewayConnection with support for switch ExpressRouteGatewayBypass

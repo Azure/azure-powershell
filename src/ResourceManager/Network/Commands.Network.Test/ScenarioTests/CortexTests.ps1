@@ -251,10 +251,6 @@ function Test-CortexCRUD
 		$updatedP2SVpnServerConfig2 = Update-AzureRmP2SVpnServerConfiguration -InputObject $P2SVpnServerConfig2Get -RadiusServerAddress "TestRadiusServer3"
 		Assert-AreEqual "TestRadiusServer3" $updatedP2SVpnServerConfig2.RadiusServerAddress
 		$P2SVpnServerConfig2Get = Get-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ParentResourceId $virtualWan.Id
-
-		# Update existing P2SVpnGateway to attach P2SVpnServerConfiguration2 using Update-AzureRmP2SVpnGateway
-		$updatedP2SVpnGateway = Update-AzureRmP2SVpnGateway -Name $P2SvpnGatewayName -ResourceGroupName $rgName -P2SVpnServerConfiguration $P2SVpnServerConfig2Get
-		Assert-AreEqual $P2SVpnServerConfig2Get.Id $updatedP2SVpnGateway.P2SVpnServerConfiguration.Id
      }
      finally
      {
