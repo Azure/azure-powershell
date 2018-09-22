@@ -14702,6 +14702,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/19.5.0.0"
         ]
       },
+	  //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test SAS Url only valid for the duration of the test")]
       "ResponseBody": "{\r\n  \"profileUrl\": \"https://cy0nfvetwgwmprod.blob.core.windows.net/cmakexe/cc5ea13a-6eaf-435c-8def-e8301dc046ad/vpnclientconfiguration.zip?sv=2017-04-17&sr=b&sig=GfjTzt62TZwI7fKKYamh4PGAR8UcMrF2%2FZwAJ32oNIk%3D&st=2018-09-22T04%3A23%3A58Z&se=2018-09-22T05%3A23%3A58Z&sp=r&fileExtension=.zip\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [

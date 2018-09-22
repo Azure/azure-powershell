@@ -224,6 +224,7 @@ function Test-CortexCRUD
 		Assert-AreEqual True ($vpnProfileResponse.ProfileUrl -Match "zip")
 
 		# Create the P2SVpnServerConfiguration2 with RadiusClient settings and associate it with the Virtual wan using New-AzureRmVirtualWanP2SVpnServerConfiguration
+		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Test passwords only valid for the duration of the test")]
 		$Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -AsPlainText -Force
 		$createdP2SVpnServerConfig2 = New-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ResourceGroupName $rgName -ParentResourceName $virtualWanName -VpnProtocol IkeV2 -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd -RadiusServerRootCertificateFilesList $listOfCerts -RadiusClientRootCertificateFilesList $listOfCerts
 		Assert-AreEqual "Succeeded" $createdP2SVpnServerConfig2.ProvisioningState
