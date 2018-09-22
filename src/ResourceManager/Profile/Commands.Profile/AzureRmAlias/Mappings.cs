@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
 
         public static string jsonMappings = @"
 {
-	'Az.ApiManagement':  {
+    'Az.ApiManagement':  {
                              'Add-AzApiManagementProductToGroup':  'Add-AzureRmApiManagementProductToGroup',
                              'Get-AzApiManagementOperation':  'Get-AzureRmApiManagementOperation',
                              'New-AzApiManagementIdentityProvider':  'New-AzureRmApiManagementIdentityProvider',
