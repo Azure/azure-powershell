@@ -61,15 +61,6 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This will modify LocalHost\Client\TrustedHosts and LocalHost\Client\Auth policy. Continue?.
-        /// </summary>
-        internal static string EnterPSSessionWarning {
-            get {
-                return ResourceManager.GetString("EnterPSSessionWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Directory &apos;{0}&apos; does not exist, please check the directory path and try again..
         /// </summary>
         internal static string GitDirectoryDoesNotExist {

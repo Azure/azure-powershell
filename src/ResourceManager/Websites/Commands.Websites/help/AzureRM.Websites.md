@@ -14,9 +14,6 @@ ARM (Azure Resource Manager) Web App and App Service Plan commands.
 ### [Edit-AzureRmWebAppBackupConfiguration](Edit-AzureRmWebAppBackupConfiguration.md)
 Modifies an Azure Web App backup schedule.
 
-### [Enter-AzureRmWebAppContainerPSSession](Enter-AzureRmWebAppContainerPSSession.md)
-Creates and enters a remote PowerShell session into a container web app
-
 ### [Get-AzureRmAppServicePlan](Get-AzureRmAppServicePlan.md)
 Gets an Azure App Service plan in the specified resource group.
 
@@ -76,9 +73,6 @@ Creates an Azure Web App.
 
 ### [New-AzureRmWebAppBackup](New-AzureRmWebAppBackup.md)
 Creates an Azure Web App backup.
-
-### [New-AzureRmWebAppContainerPSSession](New-AzureRmWebAppContainerPSSession.md)
-Creates a new remote PowerShell session into a container app
 
 ### [New-AzureRmWebAppDatabaseBackupSetting](New-AzureRmWebAppDatabaseBackupSetting.md)
 Creates an Azure Web App database backup setting to be used with New-AzureRmWebAppBackup.

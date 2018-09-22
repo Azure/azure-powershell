@@ -162,7 +162,4 @@
     <value>Failed to add git remote to directory '{0}' with error '{1}'</value>
     <comment>{0} = directory, {1} = error message</comment>
   </data>
-  <data name="EnterPSSessionWarning" xml:space="preserve">
-    <value>This will modify LocalHost\Client\TrustedHosts and LocalHost\Client\Auth policy. Continue?</value>
-  </data>
 </root>

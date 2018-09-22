@@ -280,24 +280,6 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                WrappedWebsitesClient.WebApps().ListPublishingCredentialsSlot(resourceGroupName, webSiteName, slotName)
                : WrappedWebsitesClient.WebApps().ListPublishingCredentials(resourceGroupName, webSiteName);
         }
-        public void RunWebAppContainerPSSessionScript(PSCmdlet cmdlet, string resourceGroupName, string webSiteName, string slotName = null, bool newPSSession = false)
-        {
-            Site site = GetWebApp(resourceGroupName, webSiteName, slotName);
-            User user = GetPublishingCredentials(resourceGroupName, webSiteName, slotName);
-            const string webAppContainerPSSessionVarPrefix = "webAppPSSession";
-            string publishingUserName = user.PublishingUserName.Length <= 20 ? user.PublishingUserName : user.PublishingUserName.Substring(0, 20);
-            string psSessionScript = string.Format("${3}User = '{0}' \n${3}Password = ConvertTo-SecureString -String '{1}' -AsPlainText -Force \n" +
-                "${3}Credential = New-Object -TypeName PSCredential -ArgumentList ${3}User, ${3}Password\nSet-Item WSMAN:\\LocalHost\\Client\\Auth\\Basic -Value $true \n" +
-                "Set-Item WSMAN:\\LocalHost\\Client\\TrustedHosts -Value {2} -Force\n" +
-                (newPSSession ? "${3}NewPsSession = New-PSSession" : "Enter-PSSession") + " -ConnectionUri https://{2}/WSMAN -Authentication Basic -Credential ${3}Credential \n",
-                publishingUserName, user.PublishingPassword, site.DefaultHostName, webAppContainerPSSessionVarPrefix);
-            cmdlet.ExecuteScript<object>(psSessionScript);
-            if (newPSSession)
-            {
-                cmdlet.WriteObject(cmdlet.GetVariableValue(string.Format("{0}NewPsSession", webAppContainerPSSessionVarPrefix)));
-            }
-            cmdlet.ExecuteScript<object>(string.Format("Clear-Variable {0}*", webAppContainerPSSessionVarPrefix)); //Clearing session variable
-        }
 
         public string ResetWebAppPublishingCredentials(string resourceGroupName, string webSiteName, string slotName)
         {
