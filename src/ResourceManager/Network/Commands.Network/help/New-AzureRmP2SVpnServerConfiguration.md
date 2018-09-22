@@ -76,7 +76,7 @@ PS C:\> $Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -
 PS C:\> New-AzureRmP2SVpnServerConfiguration -Name "P2SVpnServerConfiguration2Name" -ResourceGroupName "testRG" -ParentResourceName "myVirtualWAN" -VpnProtocol IkeV2 -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd -RadiusServerRootCertificateFilesList $listOfCerts -RadiusClientRootCertificateFilesList $listOfCerts
 Name                           VpnProtocols Provisioning State
 ----                           ------------ ------------------
-P2SVpnServerConfiguration2Name {IkeV2}      Succeeded         
+P2SVpnServerConfiguration2Name {IkeV2}      Succeeded
 ```
 
 The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN in that resource group in Azure. 

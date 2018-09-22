@@ -84,7 +84,7 @@ PS C:\> $vpnclientipsecpolicy1 = New-AzureRmVpnClientIpsecPolicy -IpsecEncryptio
 PS C:\> Update-AzureRmP2SVpnServerConfiguration -ResourceGroupName "testRG" -ParentResourceName "myVirtualWAN" -Name "P2SVpnServerConfiguration2Name" -VpnClientIpsecPolicy $vpnclientipsecpolicy1
 Name                           VpnProtocols Provisioning State
 ----                           ------------ ------------------
-P2SVpnServerConfiguration2Name {IkeV2}      Succeeded    
+P2SVpnServerConfiguration2Name {IkeV2}      Succeeded
 ```
 
 The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN, creates and associates P2SVpnServerConfiguration with Azure Virtual WAN in that resource group in Azure. 

@@ -318,7 +318,7 @@ Gets a P2SVpnGateway resource using ResourceGroupName and GatewayName OR lists a
 Generates VPN profile for P2S client of the P2SVpnGateway in the specified resource group.
 
 ### [Get-AzureRmP2SVpnServerConfiguration](Get-AzureRmP2SVpnServerConfiguration.md)
-Retrieves the details of a P2SVpnServerConfiguration.
+Retrieves the details of a P2SVpnServerConfiguration associated with Virtual WAN.
 
 ### [Get-AzureRmPublicIpAddress](Get-AzureRmPublicIpAddress.md)
 Gets a public IP address.
@@ -392,8 +392,12 @@ Gets virtual network current usage.
 ### [Get-AzureRmVirtualWan](Get-AzureRmVirtualWan.md)
 Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 
+### [Get-AzureRmVirtualWanSupportedSecurityProvider](Get-AzureRmVirtualWanSupportedSecurityProvider.md)
+Get the supported security providers for the virtual wan.
+
 ### [Get-AzureRmVirtualWanVpnConfiguration](Get-AzureRmVirtualWanVpnConfiguration.md)
--Gets the Vpn configuration for a subset of VpnSites connected to this WAN via VpnConnections. Uploads the generated Vpn configuration to a storage blob specified by the customer.
+Gets the Vpn configuration for a subset of VpnSites connected to this WAN via VpnConnections. Uploads the generated Vpn
+configuration to a storage blob specified by the customer.
 
 ### [Get-AzureRmVpnClientConfiguration](Get-AzureRmVpnClientConfiguration.md)
 Allows users to easily download the Vpn Profile package that was generated using the New-AzureRmVpnClientConfiguration commandlet.
@@ -584,13 +588,13 @@ Creates a new packet capture resource and starts a packet capture session on a V
 Creates a new protocol configuration object.
 
 ### [New-AzureRmP2SVpnGateway](New-AzureRmP2SVpnGateway.md)
-Creates a virtual wan p2s vpn gateway if it doesn't exist.
+Creates a Scalable P2S VPN Gateway.
 
 ### [New-AzureRmP2SVpnServerConfiguration](New-AzureRmP2SVpnServerConfiguration.md)
-Creates a P2SVpnServerConfiguration to associate with a VirtualWan if it doesn't exist.
+Creates a P2SVpnServerConfiguration and associates it with an existing VirtualWan.
 
 ### [New-AzureRmP2SVpnServerConfigurationObject](New-AzureRmP2SVpnServerConfigurationObject.md)
-Creates a P2SVpnServerConfiguration in-memory object to associate with a VirtualWan using New/Update-AzureRmVirtualWan command let.
+Creates a P2SVpnServerConfiguration in-memory object to associate with a VirtualWan in New/Update-AzureRmVirtualWan command let.
 
 ### [New-AzureRmPacketCaptureFilterConfig](New-AzureRmPacketCaptureFilterConfig.md)
 Creates a new packet capture filter object.
@@ -650,7 +654,7 @@ Creates an IP Configuration for a Virtual Network Gateway
 Creates a virtual network subnet configuration.
 
 ### [New-AzureRmVirtualWan](New-AzureRmVirtualWan.md)
-Creates an Azure Virtual WAN.
+-Creates an Azure Virtual WAN.
 
 ### [New-AzureRmVpnClientConfiguration](New-AzureRmVpnClientConfiguration.md)
 This command allows the users to create the Vpn profile package based on pre-configured vpn settings on the VPN gateway, in addition to some additional settings that users may need to configure, for e.g. some root certificates.
@@ -801,10 +805,10 @@ Remove connection monitor.
 Removes a packet capture resource.
 
 ### [Remove-AzureRmP2SVpnGateway](Remove-AzureRmP2SVpnGateway.md)
-Deletes a virtual wan p2s vpn gateway.
+The Remove-AzureRmP2SVpnGateway cmdlet removes an Azure P2S VPN gateway. This is a gateway specific to Azure Virtual WAN's software defined Point to site connectivity.
 
 ### [Remove-AzureRmP2SVpnServerConfiguration](Remove-AzureRmP2SVpnServerConfiguration.md)
-Deletes a P2SVpnServerConfiguration.
+Deletes a P2SVpnServerConfiguration associated with Azure Virtual WAN.
 
 ### [Remove-AzureRmPublicIpAddress](Remove-AzureRmPublicIpAddress.md)
 Removes a public IP address.
@@ -858,7 +862,7 @@ Removes a virtual network peering.
 Removes a subnet configuration from a virtual network.
 
 ### [Remove-AzureRmVirtualWan](Remove-AzureRmVirtualWan.md)
-Deletes a Virtual WAN and attached P2SVpnServerConfigurations if any.
+Removes an Azure Virtual WAN and all associated P2SVpnServerConfigurations if any.
 
 ### [Remove-AzureRmVpnClientIpsecParameter](Remove-AzureRmVpnClientIpsecParameter.md)
 Removes Vpn custom ipsec policy set on Virtual Network Gateway resource.
@@ -1077,13 +1081,16 @@ Returns whether the packet is allowed or denied to or from a particular destinat
 Test availability of a private IP address in a virtual network.
 
 ### [Update-AzureRmP2SVpnGateway](Update-AzureRmP2SVpnGateway.md)
-Updates an existing virtual wan p2s vpn gateway.
+Update-AzureRmP2SVpnGateway updates a scalable P2S VPN Gateway to the appropriate goal state.
 
 ### [Update-AzureRmP2SVpnServerConfiguration](Update-AzureRmP2SVpnServerConfiguration.md)
 Updates an existing P2SVpnServerConfiguration associated with a VirtualWan.
 
 ### [Update-AzureRmVirtualHub](Update-AzureRmVirtualHub.md)
 Updates a Virtual Hub to an intended goal state.
+
+### [Update-AzureRmVirtualHubVnetConnection](Update-AzureRmVirtualHubVnetConnection.md)
+Updates an existing HubVirtualNetworkConnection.
 
 ### [Update-AzureRmVirtualWan](Update-AzureRmVirtualWan.md)
 Updates an Azure Virtual WAN.
@@ -1096,3 +1103,4 @@ Update-AzureRmVpnGateway updates a scalable VPN Gateway to the appropriate goal 
 
 ### [Update-AzureRmVpnSite](Update-AzureRmVpnSite.md)
 Updates a VpnSite representing a customer branch to an intended goal state.
+
