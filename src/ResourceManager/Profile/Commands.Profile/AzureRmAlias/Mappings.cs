@@ -871,7 +871,6 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
                        'Remove-AzApplicationGatewayIPConfiguration':  'Remove-AzureRmApplicationGatewayIPConfiguration',
                        'Remove-AzVpnClientRootCertificate':  'Remove-AzureRmVpnClientRootCertificate',
                        'List-AzApplicationGatewaySslPredefinedPolicy':  'List-AzureRmApplicationGatewaySslPredefinedPolicy',
-                       'New-AzNetworkInterfaceTapConfig':  'New-AzureRmNetworkInterfaceTapConfig',
                        'New-AzVirtualNetworkGatewayConnection':  'New-AzureRmVirtualNetworkGatewayConnection',
                        'Add-AzApplicationGatewayAuthenticationCertificate':  'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                        'Add-AzRouteConfig':  'Add-AzureRmRouteConfig',
