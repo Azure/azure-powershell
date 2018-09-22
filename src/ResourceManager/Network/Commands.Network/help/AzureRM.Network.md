@@ -86,6 +86,9 @@ Adds a rule configuration to a load balancer.
 ### [Add-AzureRmNetworkInterfaceIpConfig](Add-AzureRmNetworkInterfaceIpConfig.md)
 Adds a network interface IP configuration to a network interface.
 
+### [Add-AzureRmNetworkInterfaceTapConfig](Add-AzureRmNetworkInterfaceTapConfig.md)
+{{Fill in the Synopsis}}
+
 ### [Add-AzureRmNetworkSecurityRuleConfig](Add-AzureRmNetworkSecurityRuleConfig.md)
 Adds a network security rule configuration to a network security group.
 
@@ -269,6 +272,12 @@ Gets a network interface.
 ### [Get-AzureRmNetworkInterfaceIpConfig](Get-AzureRmNetworkInterfaceIpConfig.md)
 Gets a network interface IP configuration for a network interface.
 
+### [Get-AzureRmNetworkProfile](Get-AzureRmNetworkProfile.md)
+Gets an existing network profile top level resource
+
+### [Get-AzureRmNetworkInterfaceTapConfig](Get-AzureRmNetworkInterfaceTapConfig.md)
+{{Fill in the Synopsis}}
+
 ### [Get-AzureRmNetworkSecurityGroup](Get-AzureRmNetworkSecurityGroup.md)
 Gets a network security group.
 
@@ -386,6 +395,9 @@ Gets the virtual network peering.
 ### [Get-AzureRmVirtualNetworkSubnetConfig](Get-AzureRmVirtualNetworkSubnetConfig.md)
 Gets a subnet in a virtual network.
 
+### [Get-AzureRmVirtualNetworkTap](Get-AzureRmVirtualNetworkTap.md)
+{{Fill in the Synopsis}}
+
 ### [Get-AzureRmVirtualNetworkUsageList](Get-AzureRmVirtualNetworkUsageList.md)
 Gets virtual network current usage.
 
@@ -497,6 +509,12 @@ Creates a WAF configuration for an application gateway.
 ### [New-AzureRmApplicationSecurityGroup](New-AzureRmApplicationSecurityGroup.md)
 Creates an application security group.
 
+### [New-AzureRmContainerNicConfig](New-AzureRmContainerNicConfig.md)
+Creates a new container network interface configuration object.
+
+### [New-AzureRmContainerNicConfigIpConfig](New-AzureRmContainerNicConfigIpConfig.md)
+Creates a container nic configuration ip configuration object.
+
 ### [New-AzureRmDdosProtectionPlan](New-AzureRmDdosProtectionPlan.md)
 Creates a DDoS protection plan.
 
@@ -568,6 +586,9 @@ Creates a network interface.
 
 ### [New-AzureRmNetworkInterfaceIpConfig](New-AzureRmNetworkInterfaceIpConfig.md)
 Creates a network interface IP configuration.
+
+### [New-AzureRmNetworkProfile](New-AzureRmNetworkProfile.md)
+Creates a new network profile.
 
 ### [New-AzureRmNetworkSecurityGroup](New-AzureRmNetworkSecurityGroup.md)
 Creates a network security group.
@@ -652,6 +673,9 @@ Creates an IP Configuration for a Virtual Network Gateway
 
 ### [New-AzureRmVirtualNetworkSubnetConfig](New-AzureRmVirtualNetworkSubnetConfig.md)
 Creates a virtual network subnet configuration.
+
+### [New-AzureRmVirtualNetworkTap](New-AzureRmVirtualNetworkTap.md)
+{{Fill in the Synopsis}}
 
 ### [New-AzureRmVirtualWan](New-AzureRmVirtualWan.md)
 -Creates an Azure Virtual WAN.
@@ -789,6 +813,12 @@ Removes a network interface.
 ### [Remove-AzureRmNetworkInterfaceIpConfig](Remove-AzureRmNetworkInterfaceIpConfig.md)
 Removes a network interface IP configuration from a network interface.
 
+### [Remove-AzureRmNetworkProfile](Remove-AzureRmNetworkProfile.md)
+Removes a network profile.
+
+### [Remove-AzureRmNetworkInterfaceTapConfig](Remove-AzureRmNetworkInterfaceTapConfig.md)
+{{Fill in the Synopsis}}
+
 ### [Remove-AzureRmNetworkSecurityGroup](Remove-AzureRmNetworkSecurityGroup.md)
 Removes a network security group.
 
@@ -860,6 +890,9 @@ Removes a virtual network peering.
 
 ### [Remove-AzureRmVirtualNetworkSubnetConfig](Remove-AzureRmVirtualNetworkSubnetConfig.md)
 Removes a subnet configuration from a virtual network.
+
+### [Remove-AzureRmVirtualNetworkTap](Remove-AzureRmVirtualNetworkTap.md)
+{{Fill in the Synopsis}}
 
 ### [Remove-AzureRmVirtualWan](Remove-AzureRmVirtualWan.md)
 Removes an Azure Virtual WAN and all associated P2SVpnServerConfigurations if any.
@@ -987,6 +1020,12 @@ Sets the goal state for a network interface.
 ### [Set-AzureRmNetworkInterfaceIpConfig](Set-AzureRmNetworkInterfaceIpConfig.md)
 Sets the goal state for an Azure network interface IP configuration.
 
+### [Set-AzureRmNetworkProfile](Set-AzureRmNetworkProfile.md)
+Sets the goal state for an existing network profile
+
+### [Set-AzureRmNetworkInterfaceTapConfig](Set-AzureRmNetworkInterfaceTapConfig.md)
+{{Fill in the Synopsis}}
+
 ### [Set-AzureRmNetworkSecurityGroup](Set-AzureRmNetworkSecurityGroup.md)
 Sets the goal state for a network security group.
 
@@ -1046,6 +1085,9 @@ Configures a virtual network peering.
 
 ### [Set-AzureRmVirtualNetworkSubnetConfig](Set-AzureRmVirtualNetworkSubnetConfig.md)
 Configures the goal state for a subnet configuration in a virtual network.
+
+### [Set-AzureRmVirtualNetworkTap](Set-AzureRmVirtualNetworkTap.md)
+{{Fill in the Synopsis}}
 
 ### [Set-AzureRmVpnClientIpsecParameter](Set-AzureRmVpnClientIpsecParameter.md)
 Sets the vpn ipsec parameters for existing virtual network gateway.
