@@ -257,28 +257,22 @@ function Test-CortexCRUD
 		# Delete P2SVpnGateway using Remove-AzureRmP2SVpnGateway
 		$delete = Remove-AzureRmP2SVpnGateway -Name $P2SVpnGatewayName -ResourceGroupName $rgName -Force -PassThru
 		Assert-AreEqual $True $delete
-		Assert-ThrowsContains { Get-AzureRmP2SVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName } "NotFound";
 
 		# Delete P2SVpnServerConfiguration2 using Remove-AzureRmVirtualWanP2SVpnServerConfiguration
 		$delete = Remove-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ResourceGroupName $rgName -ParentResourceName $virtualWanName -Force -PassThru
 		Assert-AreEqual $True $delete
-		Assert-ThrowsContains { Get-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration2Name -ParentResourceId $virtualWan.Id } "NotFound";
 
 		# Verify P2SVpnServerConfiguration1 is still associated with the Virtual wan
 		$virtualWan = Get-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
 		$P2SVpnServerConfig1 = Get-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration1Name -ParentObject $virtualWan
-		Assert-AreEqual $P2SVpnServerConfiguration1Name $P2SVpnServerConfig1.Name
 
 		# Delete Virtual hub
 		$delete = Remove-AzureRmVirtualHub -ResourceGroupName $rgname -Name $virtualHubName -Force -PassThru
 		Assert-AreEqual $True $delete
-        Assert-ThrowsContains { Get-AzureRmVirtualHub -ResourceGroupName $rgName -Name $virtualHubName } "NotFound";
 
 		# Delete Virtual wan and check associated P2SVpnServerConfiguration1 also gets deleted.
 		$delete = Remove-AzureRmVirtualWan -InputObject $virtualWan -Force -PassThru
 		Assert-AreEqual $True $delete
-		Assert-ThrowsContains { Get-AzureRmP2SVpnServerConfiguration -Name $P2SVpnServerConfiguration1Name -ParentResourceId $virtualWan.Id } "NotFound";
-		Assert-ThrowsContains { Get-AzureRmVirtualWan -ResourceGroupName $rgName -Name $virtualWanName } "NotFound";
 
 		Clean-ResourceGroup $rgname
      }
