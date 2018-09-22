@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.8.0'
+ModuleVersion = '6.8.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -451,80 +451,30 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Replaced LoadBalancer cmdlets with generated code
-  - LoadBalancerInboundNatPoolConfig: added parameters IdleTimeoutInMinutes, EnableFloatingIp and EnableTcpReset
-  - LoadBalancerInboundNatRuleConfig: added parameter EnableTcpReset
-  - LoadBalancerRuleConfig: added parameter EnableTcpReset
-  - LoadBalancerProbeConfig: added support for value "Https" for parameter Protocol
-* Added new commands for new LoadBalancer''s subresource OutboundRule
-  - Add-AzureRmLoadBalancerOutboundRuleConfig
-  - Get-AzureRmLoadBalancerOutboundRuleConfig
-  - New-AzureRmLoadBalancerOutboundRuleConfig
-  - Set-AzureRmLoadBalancerOutboundRuleConfig
-  - Remove-AzureRmLoadBalancerOutboundRuleConfig
-* Added new HostedWorkloads property for PSNetworkInterface
-* Added new commands for feature: Azure Firewall via ARM
-  - Added Get-AzureRmFirewall
-  - Added Set-AzureRmFirewall
-  - Added New-AzureRmFirewall
-  - Added Remove-AzureRmFirewall
-  - Added New-AzureRmFirewallApplicationRuleCollection
-  - Added New-AzureRmFirewallApplicationRule
-  - Added New-AzureRmFirewallNatRuleCollection
-  - Added New-AzureRmFirewallNatRule
-  - Added New-AzureRmFirewallNetworkRuleCollection
-  - Added New-AzureRmFirewallNetworkRule
-* Added support for Trusted Root certificate and Autoscale configuration in Application Gateway
+        ReleaseNotes = '* Added NetworkProfile functionality. new cmdlets added
+    - Get-AzureRMNetworkProfile
+    - New-AzureRMNetworkProfile
+    - Remove-AzureRMNetworkProfile
+    - Set-AzureRMNetworkProfile
+    - New-AzureRMContainerNicConfig
+    - New-AzureRmContainerNicConfigIpConfig
+* Added service association link on Subnet Model
+* Added cmdlet New-AzureRmVirtualNetworkTap, Get-AzureRmVirtualNetworkTap, Set-AzureRmVirtualNetworkTap, Remove-AzureRmVirtualNetworkTap
+* Added cmdlet Set-AzureRmNEtworkInterfaceTapConfig, Get-AzureRmNEtworkInterfaceTapConfig, Remove-AzureRmNEtworkInterfaceTapConfig
+* Added cmdlets to integrate security provider in cortex
+  - Cmdlets updated with optonal parameters
+	- New-AzureRmVirtualWan : added parameters SecurityProviderName, Office365LocalBreakoutCategory
+	- Update-AzureRmVirtualWan : added parameters SecurityProviderName, Office365LocalBreakoutCategory
+	- New-AzureRmVpnSite : added parameter IsSecuritySite
+	- New-AzureRmVpnConnection : added parameter EnableInternetSecurity
+	- Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
+	- New-AzureRmVirtualHubVnetConnection : added parameter EnableInternetSecurity
   - New Cmdlets added:
-      - Add-AzureRmApplicationGatewayTrustedRootCertificate
-      - Get-AzureRmApplicationGatewayTrustedRootCertificate
-      - New-AzureRmApplicationGatewayTrustedRootCertificate
-      - Remove-AzureRmApplicationGatewayTrustedRootCertificate
-      - Set-AzureRmApplicationGatewayTrustedRootCertificate
-      - Get-AzureRmApplicationGatewayAutoscaleConfiguration
-      - New-AzureRmApplicationGatewayAutoscaleConfiguration
-      - Remove-AzureRmApplicationGatewayAutoscaleConfiguration
-      - Set-AzureRmApplicationGatewayAutoscaleConfiguration
-  - Cmdlets updated with optonal parameter -TrustedRootCertificate
-      - New-AzureRmApplicationGateway
-      - Set-AzureRmApplicationGateway
-      - New-AzureRmApplicationGatewayBackendHttpSetting
-      - Set-AzureRmApplicationGatewayBackendHttpSetting
-  - Cmdlets updated with optonal parameter -AutoscaleConfiguration
-      - New-AzureRmApplicationGateway
-      - Set-AzureRmApplicationGateway
-* Add cmdlet for Interface Endpoint Get-AzureInterfaceEndpoint
-* Added support for multiple address prefixes in a subnet. Updated cmdlets:
-  - New-AzureRmVirtualNetworkSubnetConfig
-  - Set-AzureRmVirtualNetworkSubnetConfig
-  - Add-AzureRmVirtualNetworkSubnetConfig
-  - Get-AzureRmVirtualNetworkSubnetConfig
-  - Add-AzureRmApplicationGatewayAuthenticationCertificate
-  - Add-AzureRmApplicationGatewayFrontendIPConfig
-  - New-AzureRmApplicationGatewayFrontendIPConfig
-  - Set-AzureRmApplicationGatewayFrontendIPConfig
-  - Add-AzureRmApplicationGatewayIPConfiguration
-  - New-AzureRmApplicationGatewayIPConfiguration
-  - Set-AzureRmApplicationGatewayIPConfiguration
-  - Add-AzureRmNetworkInterfaceIpConfig
-  - New-AzureRmNetworkInterfaceIpConfig
-  - Set-AzureRmNetworkInterfaceIpConfig
-  - New-AzureRmVirtualNetworkGatewayIpConfig
-  - Add-AzureRmVirtualNetworkGatewayIpConfig
-  - Set-AzureRmLoadBalancerFrontendIpConfig
-  - Add-AzureRmLoadBalancerFrontendIpConfig
-  - New-AzureRmLoadBalancerFrontendIpConfig
-  - New-AzureRmNetworkInterface
-* Adding support to perform CRUD operations for subnet delegation.
-  - New-AzureRmDelegation: Creates a new delegation, which can be added to a subnet
-  - Remove-AzureRmDelegation: Takes in a subnet and removes the provided delegation name from that subnet
-  - Add-AzureRmDelegation: Takes in a subnet and adds the provided service name as a delegation to that subnet
-  - Get-AzureRmDelegation
-  - Get-AzureRmAvailableServiceDelegations
-  '
+	- Get-AzureRmVirtualWanSupportedSecurityProvider
+	- Update-AzureRmVirtualHubVnetConnection'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
