@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'Remove-AzDataFactoryV2IntegrationRuntimeNode': 'Remove-AzureRmDataFactoryV2IntegrationRuntimeNode'
   },
   'Az.ResourceGraph': {
-    'Search-AzGraph':  'Search-AzureRmGraph'
+    'Search-AzGraph': 'Search-AzureRmGraph'
   },
   'Az.PolicyInsights': {
     'Get-AzPolicyEvent': 'Get-AzureRmPolicyEvent',
@@ -2265,7 +2265,13 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     'New-AzNetworkInterfaceIpConfig': 'New-AzureRmNetworkInterfaceIpConfig',
     'New-AzExpressRouteCircuit': 'New-AzureRmExpressRouteCircuit',
     'Set-AzApplicationGatewayFrontendIPConfig': 'Set-AzureRmApplicationGatewayFrontendIPConfig',
-    'Get-AzInterfaceEndpoint': 'Set-AzureRmInterfaceEndpoint'
+    'Get-AzInterfaceEndpoint': 'Set-AzureRmInterfaceEndpoint',
+    'Get-AzNetworkProfile': 'Get-AzureRMNetworkProfile',
+    'New-AzNetworkProfile': 'New-AzureRMNetworkProfile',
+    'Remove-AzNetworkProfile': 'Remove-AzureRMNetworkProfile',
+    'Set-AzNetworkProfile': 'Set-AzureRMNetworkProfile',
+    'New-AzContainerNicConfig': 'New-AzureRMContainerNicConfig',
+    'New-AzContainerNicConfigIpConfig': 'New-AzureRmContainerNicConfigIpConfig',
   },
   'Az.DataLakeAnalytics': {
     'New-AzDataLakeAnalyticsCatalogSecret': 'New-AzureRmDataLakeAnalyticsCatalogSecret',
