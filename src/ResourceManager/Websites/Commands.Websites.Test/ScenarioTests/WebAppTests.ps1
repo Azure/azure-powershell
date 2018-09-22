@@ -611,8 +611,7 @@ function Test-EnableContainerContiniousDeploymentAndGetUrl
     $ontainerRegistryUser = "testregistry"
     $pass = "7Dxo9p79Ins2K3ZU"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
-    $dockerPrefix = "DOCKER|" 
-    $expected_ci_url = "https://`$ps7234:dBm0r9w8PeZiv0rPyteQdmgrjCgljKz0QzDk448zg61gfgG90vdfoEuB2kSh@ps7234.scm.azurewebsites.net/docker/hook"
+    $dockerPrefix = "DOCKER|"
  	try
 	{
 		#Setup
