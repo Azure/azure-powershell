@@ -420,14 +420,21 @@
     <Compile Include="Models\PSConnectionMonitorQueryResult.cs" />
     <Compile Include="Models\PSConnectionMonitorResult.cs" />
     <Compile Include="Models\PSConnectionStateSnapshot.cs" />
+    <Compile Include="Models\PSContainer.cs" />
+    <Compile Include="Models\PSContainerNetworkInterface.cs" />
+    <Compile Include="Models\PSContainerNetworkInterfaceConfiguration.cs" />
+    <Compile Include="Models\PSContainerNetworkInterfaceIPConfiguration.cs" />
     <Compile Include="Models\PSEndpointServiceResult.cs" />
     <Compile Include="Models\PSExpressRouteCircuitPeeringConfig.cs" />
     <Compile Include="Models\PSExpressRouteCrossConnectionPeering.cs" />
+    <Compile Include="Models\PSIPConfigurationProfile.cs" />
+    <Compile Include="Generated\Models\PSNetworkProfile.cs" />
     <Compile Include="Models\PSNetworkInterfaceTapConfiguration.cs" />
     <Compile Include="Models\PSNetworkWatcherProtocolConfiguration.cs" />
     <Compile Include="Models\PSPublicIpPrefix.cs" />
     <Compile Include="Models\PSPublicIpPrefixSku.cs" />
     <Compile Include="Models\PSPublicIpPrefixTag.cs" />
+    <Compile Include="Generated\Models\PSServiceAssocationLink.cs" />
     <Compile Include="Models\PSServiceEndpoint.cs" />
     <Compile Include="Models\PSServiceEndpointPolicy.cs" />
     <Compile Include="Models\PSServiceEndpointPolicyDefinition.cs" />
@@ -520,6 +527,14 @@
     <Compile Include="NetworkInterface\IpConfiguration\NewAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\RemoveAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\SetAzureNetworkInterfaceIpConfigCommand.cs" />
+    <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\AzureContainerNetworkInterfaceConfigBase.cs" />
+    <Compile Include="NetworkProfile\ContainerNetworkInterfaceConfiguration\NewAzureNetworkProfileContainerNetworkInterfaceConfigCommand.cs" />
+    <Compile Include="Generated\NetworkProfile\GetAzureNetworkProfileCommand.cs" />
+    <Compile Include="NetworkProfile\IpConfigurationProfile\AzureNetworkProfileContainerNetworkInterfaceConfigIpConfigBase.cs" />
+    <Compile Include="NetworkProfile\IpConfigurationProfile\NewAzureNetworkProfileContainerNetworkInterfaceConfigIpConfigCommand.cs" />
+    <Compile Include="Generated\NetworkProfile\NewAzureNetworkProfileCommand.cs" />
+    <Compile Include="Generated\NetworkProfile\RemoveAzureNetworkProfileCommand.cs" />
+    <Compile Include="Generated\NetworkProfile\SetAzureNetworkProfileCommand.cs" />
     <Compile Include="NetworkInterface\TapConfiguration\AddAzureRmNetworkInterfaceTapConfigCommand.cs" />
     <Compile Include="NetworkInterface\TapConfiguration\GetAzureRmNetworkInterfaceTapConfigCommand.cs" />
     <Compile Include="NetworkInterface\TapConfiguration\RemoveAzureRmNetworkInterfaceTapConfigCommand.cs" />
@@ -716,6 +731,8 @@
     <Compile Include="VirtualNetwork\VirtualNetworkListUsageMethod.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Generated\NetworkProfile\ContainerNetworkInterfaceConfiguration\" />
+    <Folder Include="Generated\NetworkProfile\IpConfigurationProfile\" />
     <Folder Include="Microsoft\Azure\Commands\Network\Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -260,6 +260,9 @@ Gets a network interface.
 ### [Get-AzureRmNetworkInterfaceIpConfig](Get-AzureRmNetworkInterfaceIpConfig.md)
 Gets a network interface IP configuration for a network interface.
 
+### [Get-AzureRmNetworkProfile](Get-AzureRmNetworkProfile.md)
+Gets an existing network profile top level resource
+
 ### [Get-AzureRmNetworkInterfaceTapConfig](Get-AzureRmNetworkInterfaceTapConfig.md)
 {{Fill in the Synopsis}}
 
@@ -482,6 +485,12 @@ Creates a WAF configuration for an application gateway.
 ### [New-AzureRmApplicationSecurityGroup](New-AzureRmApplicationSecurityGroup.md)
 Creates an application security group.
 
+### [New-AzureRmContainerNicConfig](New-AzureRmContainerNicConfig.md)
+Creates a new container network interface configuration object.
+
+### [New-AzureRmContainerNicConfigIpConfig](New-AzureRmContainerNicConfigIpConfig.md)
+Creates a container nic configuration ip configuration object.
+
 ### [New-AzureRmDdosProtectionPlan](New-AzureRmDdosProtectionPlan.md)
 Creates a DDoS protection plan.
 
@@ -544,6 +553,9 @@ Creates a network interface.
 
 ### [New-AzureRmNetworkInterfaceIpConfig](New-AzureRmNetworkInterfaceIpConfig.md)
 Creates a network interface IP configuration.
+
+### [New-AzureRmNetworkProfile](New-AzureRmNetworkProfile.md)
+Creates a new network profile.
 
 ### [New-AzureRmNetworkSecurityGroup](New-AzureRmNetworkSecurityGroup.md)
 Creates a network security group.
@@ -756,6 +768,9 @@ Removes a network interface.
 ### [Remove-AzureRmNetworkInterfaceIpConfig](Remove-AzureRmNetworkInterfaceIpConfig.md)
 Removes a network interface IP configuration from a network interface.
 
+### [Remove-AzureRmNetworkProfile](Remove-AzureRmNetworkProfile.md)
+Removes a network profile.
+
 ### [Remove-AzureRmNetworkInterfaceTapConfig](Remove-AzureRmNetworkInterfaceTapConfig.md)
 {{Fill in the Synopsis}}
 
@@ -953,6 +968,9 @@ Sets the goal state for a network interface.
 
 ### [Set-AzureRmNetworkInterfaceIpConfig](Set-AzureRmNetworkInterfaceIpConfig.md)
 Sets the goal state for an Azure network interface IP configuration.
+
+### [Set-AzureRmNetworkProfile](Set-AzureRmNetworkProfile.md)
+Sets the goal state for an existing network profile
 
 ### [Set-AzureRmNetworkInterfaceTapConfig](Set-AzureRmNetworkInterfaceTapConfig.md)
 {{Fill in the Synopsis}}
