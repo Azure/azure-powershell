@@ -38,13 +38,6 @@
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The resource location.")]
-        [LocationCompleter("Microsoft.Network/p2sVpnGateways")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        [Parameter(
-            Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The VirtualHub this P2SVpnGateway needs to be associated with.")]

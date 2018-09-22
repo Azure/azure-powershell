@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermp2svpngatewayvpnprofile
 schema: 2.0.0
 ---
 
 # Get-AzureRmP2SVpnServerConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Retrieves the details of a P2SVpnServerConfiguration associated with Virtual WAN.
 
 ## SYNTAX
 
@@ -31,16 +31,27 @@ Get-AzureRmP2SVpnServerConfiguration -ParentResourceId <String> [-Name <String>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Retrieves the details of a P2SVpnServerConfiguration associated with Virtual WAN.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
+PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true -Office365LocalBreakoutCategory "Optimize"
+PS C:\> $p2sVpnServerConfigCertFilePath = "PathToCertFile.cer"
+PS C:\> $listOfCerts = New-Object "System.Collections.Generic.List[String]"
+PS C:\> $listOfCerts.Add($p2sVpnServerConfigCertFilePath)
+PS C:\> $Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -AsPlainText -Force
+PS C:\> New-AzureRmP2SVpnServerConfiguration -Name "P2SVpnServerConfiguration2Name" -ResourceGroupName "testRG" -ParentResourceName "myVirtualWAN" -VpnProtocol IkeV2 -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd -RadiusServerRootCertificateFilesList $listOfCerts -RadiusClientRootCertificateFilesList $listOfCerts
+PS C:\> Get-AzureRmP2SVpnServerConfiguration -ResourceGroupName "testRG" -ParentResourceName "myVirtualWAN" -Name "P2SVpnServerConfiguration2Name"
+Name                           VpnProtocols Provisioning State
+----                           ------------ ------------------
+P2SVpnServerConfiguration2Name {IkeV2}      Succeeded       
 ```
 
-{{ Add example description here }}
+The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN, creates and associates P2SVpnServerConfiguration with Azure Virtual WAN in that resource group in Azure. 
+Get-AzureRmP2SVpnServerConfiguration will get P2SVpnServerConfiguration "P2SVpnServerConfiguration2Name" associated with an existing Virtual WAN.
 
 ## PARAMETERS
 

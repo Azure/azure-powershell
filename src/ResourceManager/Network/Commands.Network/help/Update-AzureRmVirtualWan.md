@@ -17,7 +17,7 @@ Updates an Azure Virtual WAN.
 Update-AzureRmVirtualWan -ResourceGroupName <String> -Name <String> [-SecurityProviderName <String>]
  [-Office365LocalBreakoutCategory <String>] [-AllowVnetToVnetTraffic <Boolean>]
  [-AllowBranchToBranchTraffic <Boolean>] [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration[]>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] 
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzureRmVirtualWan -ResourceGroupName <String> -Name <String> [-SecurityPr
 Update-AzureRmVirtualWan -InputObject <PSVirtualWan> [-SecurityProviderName <String>]
  [-Office365LocalBreakoutCategory <String>] [-AllowVnetToVnetTraffic <Boolean>]
  [-AllowBranchToBranchTraffic <Boolean>] [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration[]>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] 
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Update-AzureRmVirtualWan -InputObject <PSVirtualWan> [-SecurityProviderName <Str
 Update-AzureRmVirtualWan -ResourceId <String> [-SecurityProviderName <String>]
  [-Office365LocalBreakoutCategory <String>] [-AllowVnetToVnetTraffic <Boolean>]
  [-AllowBranchToBranchTraffic <Boolean>] [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration[]>]
- [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] 
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -45,20 +45,24 @@ Updates an Azure Virtual WAN.
 ## EXAMPLES
 
 ### Example 1
-
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
 PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -Office365LocalBreakoutCategory "Optimize"
-PS C:\> Update-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -AllowBranchToBranchTraffic $true -AllowVnetToVnetTraffic $false -Office365LocalBreakoutCategory "None"
+PS C:\> $p2sVpnServerConfigCertFilePath = "PathToCertFile.cer"
+PS C:\> $listOfCerts = New-Object "System.Collections.Generic.List[String]"
+PS C:\> $listOfCerts.Add($p2sVpnServerConfigCertFilePath)
+PS C:\> $p2sVpnServerConfigObject1 = New-AzureRmP2SVpnServerConfigurationObject -Name "p2sVpnServerConfiguration1Name" -VpnProtocol IkeV2 -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts
+PS C:\> Update-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -AllowBranchToBranchTraffic $true -AllowVnetToVnetTraffic $false -Office365LocalBreakoutCategory "None" -P2SVpnServerConfiguration $P2SVpnServerConfigObject1
 
-Name                              : testRG
-Id                                : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
-AllowVnetToVnetTraffic            : False
-AllowBranchToBranchTraffic        : True
-Office365LocalBreakoutCategory    : None
-Location                          : West US
-Type                              : Microsoft.Network/virtualWans
-ProvisioningState                 : Succeeded
+Name                              				: testRG
+Id                                				: /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+Number of attached P2SVpnServerConfigurations 	: 1
+AllowVnetToVnetTraffic            				: False
+AllowBranchToBranchTraffic        				: True
+Office365LocalBreakoutCategory    				: Optimize
+Location                          				: West US
+Type                              				: Microsoft.Network/virtualWans
+ProvisioningState                 				: Succeeded
 ```
 
 The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN in that resource group in Azure. VirtualWan is updated with new properties.
@@ -170,26 +174,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -P2SVpnServerConfiguration
-The list of PSP2SVpnServerConfigurations that are associated with this VirtualWan.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration[]
-
-
 ### -Office365LocalBreakoutCategory
 Local breakout category for office 365 traffic.
 
 ```yaml
 Type: System.String
->>>>>>> 8e11016fce847244d0ff085c8c4c4af64541b31d
+Parameter Sets: (All)
+Aliases:
+Accepted values: All, None, Optimize, OptimizeAndAllow
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -P2SVpnServerConfiguration
+The list of PSP2SVpnServerConfigurations that are associated with this VirtualWan.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-<<<<<<< HEAD
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
@@ -290,11 +301,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualWan
 
-### System.Collections.Hashtable
+### System.String
+
+### Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration[]
 
 ## OUTPUTS
 

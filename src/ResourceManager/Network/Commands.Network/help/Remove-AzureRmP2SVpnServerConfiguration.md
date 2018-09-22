@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermp2svpnserverconfiguration
 schema: 2.0.0
 ---
 
 # Remove-AzureRmP2SVpnServerConfiguration
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Deletes a P2SVpnServerConfiguration associated with Azure Virtual WAN.
 
 ## SYNTAX
 
@@ -31,16 +31,25 @@ Remove-AzureRmP2SVpnServerConfiguration -InputObject <PSP2SVpnServerConfiguratio
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Deletes a P2SVpnServerConfiguration associated with Azure Virtual WAN.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
+PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true -Office365LocalBreakoutCategory "Optimize"
+PS C:\> $p2sVpnServerConfigCertFilePath = "PathToCertFile.cer"
+PS C:\> $listOfCerts = New-Object "System.Collections.Generic.List[String]"
+PS C:\> $listOfCerts.Add($p2sVpnServerConfigCertFilePath)
+PS C:\> $Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -AsPlainText -Force
+PS C:\> New-AzureRmP2SVpnServerConfiguration -Name "P2SVpnServerConfiguration2Name" -ResourceGroupName "testRG" -ParentResourceName "myVirtualWAN" -VpnProtocol IkeV2 -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd -RadiusServerRootCertificateFilesList $listOfCerts -RadiusClientRootCertificateFilesList $listOfCerts
+PS C:\> Remove-AzureRmP2SVpnServerConfiguration -ResourceGroupName "testRG" -ParentResourceName "myVirtualWAN" -Name "P2SVpnServerConfiguration2Name"
 ```
 
-{{ Add example description here }}
+The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN in that resource group in Azure. 
+Then, it will create create P2SVpnServerConfiguration "P2SVpnServerConfiguration2Name" and associates it with an existing Virtual WAN.
+Remove-AzureRmP2SVpnServerConfiguration will remove the P2SVpnServerConfiguration "P2SVpnServerConfiguration2Name" associated with Azure Virtual WAN.
 
 ## PARAMETERS
 
@@ -115,7 +124,7 @@ Aliases: ParentVirtualWanName, VirtualWanName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

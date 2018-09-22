@@ -1,39 +1,52 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermp2svpngateway
 schema: 2.0.0
 ---
 
 # Get-AzureRmP2SVpnGateway
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets a P2SVpnGateway resource using ResourceGroupName and GatewayName OR lists all gateways by ResourceGroupName.
 
 ## SYNTAX
 
-### ListBySubscriptionId (Default)
-```
-Get-AzureRmP2SVpnGateway [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ListByResourceGroupName
 ```
 Get-AzureRmP2SVpnGateway -ResourceGroupName <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets a P2SVpnGateway resource using ResourceGroupName and GatewayName OR lists all gateways by ResourceGroupName.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+PS C:\> $p2sVpnServerConfigCertFilePath = "PathToCertificate.cer"
+PS C:\> $listOfCerts = New-Object "System.Collections.Generic.List[String]"
+PS C:\> $listOfCerts.Add($p2sVpnServerConfigCertFilePath)
+PS C:\> $p2sVpnServerConfigObject1 = New-AzureRmP2SVpnServerConfigurationObject -Name $p2sVpnServerConfiguration1Name -VpnProtocol IkeV2 -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts
+PS C:\> Update-AzureRmVirtualWan -Name $virtualWanName -ResourceGroupName $rgName -P2SVpnServerConfiguration $p2sVpnServerConfigObject1 -Force
+PS C:\> $p2sVpnServerConfig1 = Get-AzureRmP2SVpnServerConfiguration -ParentResourceName $virtualWanName -ResourceGroupName $rgName -Name $P2SVpnServerConfiguration1Name
+PS C:\> $vpnClientAddressSpaces = New-Object string[] 2
+PS C:\> $vpnClientAddressSpaces[0] = "192.168.2.0/24"
+PS C:\> New-AzureRmP2SVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHub $virtualHub -VpnGatewayScaleUnit 1 -VpnClientAddressPool $vpnClientAddressSpaces -P2SVpnServerConfiguration $p2sVpnServerConfig1
+PS C:\> Get-AzureRmP2SVpnGateway -ResourceGroupName "testRG" -Name "testvpngw"
+Name   		Address Space                    Virtual Hub                                                                                             Scale Unit ProvisioningState
+----   		-------------                    -----------                                                                                             ---------- -----------------
+testvpngw 	{192.168.2.0/24, 192.168.3.0/24} /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub 1          Succeeded
 ```
 
-{{ Add example description here }}
+The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub in West US in "testRG" resource group in Azure. 
+A VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
+
+It then gets the VpnGateway using its resourceGroupName and the gateway name.
 
 ## PARAMETERS
 
@@ -57,7 +70,7 @@ The resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByResourceGroupName
+Parameter Sets: (All)
 Aliases: ResourceName, P2SVpnGatewayName
 
 Required: False
@@ -72,7 +85,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListByResourceGroupName
+Parameter Sets: (All)
 Aliases:
 
 Required: True

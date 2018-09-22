@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermp2svpnserverconfigurationobject
 schema: 2.0.0
 ---
 
 # New-AzureRmP2SVpnServerConfigurationObject
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a P2SVpnServerConfiguration in-memory object to associate with a VirtualWan in New/Update-AzureRmVirtualWan command let.
 
 ## SYNTAX
 
@@ -28,16 +28,26 @@ New-AzureRmP2SVpnServerConfigurationObject -Name <String> [-VpnProtocol <String[
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Creates a P2SVpnServerConfiguration in-memory object to associate with a VirtualWan in New/Update-AzureRmVirtualWan command let.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
+PS C:\> $p2sVpnServerConfigCertFilePath = "PathToCertFile.cer"
+PS C:\> $listOfCerts = New-Object "System.Collections.Generic.List[String]"
+PS C:\> $listOfCerts.Add($p2sVpnServerConfigCertFilePath)
+PS C:\> $vpnclientipsecpolicy1 = New-AzureRmVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86471 -SADataSize 429496 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup14 -PfsGroup PFS14
+PS C:\> New-AzureRmP2SVpnServerConfigurationObject -Name "p2sVpnServerConfiguration1Name" -VpnProtocol IkeV2 -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts -VpnClientIpsecPolicy $vpnclientipsecpolicy1
+
+Name                           VpnProtocols Provisioning State
+----                           ------------ ------------------
+p2sVpnServerConfiguration1Name {IkeV2}
 ```
 
-{{ Add example description here }}
+The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN in that resource group in Azure. 
+New-AzureRmP2SVpnServerConfigurationObject will create in-memory P2SVpnServerConfiguration object to be used in command lets: New/Update-AzureRmVirtualWan to create & associate the P2SVpnServerConfiguration "P2SVpnServerConfiguration2Name" to Virtual WAN.
 
 ## PARAMETERS
 

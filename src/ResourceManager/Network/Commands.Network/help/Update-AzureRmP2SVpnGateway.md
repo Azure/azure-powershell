@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/update-azurermp2svpngateway
 schema: 2.0.0
 ---
 
 # Update-AzureRmP2SVpnGateway
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Update-AzureRmP2SVpnGateway updates a scalable P2S VPN Gateway to the appropriate goal state.
 
 ## SYNTAX
 
@@ -22,31 +22,53 @@ Update-AzureRmP2SVpnGateway -ResourceGroupName <String> -Name <String> [-VpnGate
 
 ### ByP2SVpnGatewayObject
 ```
-Update-AzureRmP2SVpnGateway -ResourceGroupName <String> -Name <String> -InputObject <PSP2SVpnGateway>
- [-VpnGatewayScaleUnit <UInt32>] [-VpnClientAddressPool <String[]>]
- [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmP2SVpnGateway -InputObject <PSP2SVpnGateway> [-VpnGatewayScaleUnit <UInt32>]
+ [-VpnClientAddressPool <String[]>] [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration>]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayResourceId
 ```
-Update-AzureRmP2SVpnGateway -ResourceGroupName <String> -Name <String> -ResourceId <String>
- [-VpnGatewayScaleUnit <UInt32>] [-VpnClientAddressPool <String[]>]
- [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmP2SVpnGateway -ResourceId <String> [-VpnGatewayScaleUnit <UInt32>]
+ [-VpnClientAddressPool <String[]>] [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration>]
+ [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Update-AzureRmP2SVpnGateway updates a scalable P2S VPN Gateway to the appropriate goal state. An AzureRmP2SVpnGateway is a software defined connectivity for point to site connections inside the VirtualHub. 
+This gateway resizes and scales based on the scale unit specified by the user. 
+A connection is set up from many remote VpnClients to the scalable gateway.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $p2sVpnServerConfigCertFilePath = "PathToCertFile.cer"
+PS C:\> $listOfCerts = New-Object "System.Collections.Generic.List[String]"
+PS C:\> $listOfCerts.Add($p2sVpnServerConfigCertFilePath)
+PS C:\> $p2sVpnServerConfigObject1 = New-AzureRmP2SVpnServerConfigurationObject -Name "p2sVpnServerConfiguration1Name" -VpnProtocol IkeV2 -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts
+PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -P2SVpnServerConfiguration $p2sVpnServerConfigs
+$P2SVpnServerConfig1 = Get-AzureRmP2SVpnServerConfiguration -ParentResourceName "myVirtualWAN" -ResourceGroupName "testRG" -Name "p2sVpnServerConfiguration1Name"
+PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+$vpnClientAddressSpaces = New-Object string[] 2
+$vpnClientAddressSpaces[0] = "192.168.2.0/24"
+$vpnClientAddressSpaces[1] = "192.168.3.0/24"
+PS C:\> New-AzureRmP2SVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -VpnGatewayScaleUnit 2 -VpnClientAddressPool $vpnClientAddressSpaces -P2SVpnServerConfiguration $P2SVpnServerConfig1
+PS C:\> Update-AzureRmVpnP2SGateway -ResourceGroupName "testRG" -Name "testvpngw" -VpnGatewayScaleUnit 3
+
+Name   		Address Space                    Virtual Hub                                                                                                   Scale Unit ProvisioningState
+----   		-------------                    -----------                                                                                                   ---------- -----------------
+testvpngw {192.168.2.0/24, 192.168.3.0/24} 	 /subscriptions/{subscriptionId}/resourceGroups/Ali_pS_Test/providers/Microsoft.Network/virtualHubs/westushub  3          Succeeded
 ```
 
-{{ Add example description here }}
+The above will create a resource group, Virtual WAN, associates P2SVpnServerConfiguration to it, Virtual Network, Virtual Hub in West US in "testRG" resource group in Azure. 
+A P2S VPN gateway will be created thereafter in the Virtual Hub with 2 scale units.
+
+After the gateway has been created, it uses Set-AzureRmP2SVpnGateway to upgrade the gateway to 3 scale units.
 
 ## PARAMETERS
 
@@ -100,7 +122,7 @@ The P2SVpnGateway name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByP2SVpnGatewayName
 Aliases: ResourceName, P2SVpnGatewayName, GatewayName
 
 Required: True
@@ -130,7 +152,7 @@ The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ByP2SVpnGatewayName
 Aliases:
 
 Required: True

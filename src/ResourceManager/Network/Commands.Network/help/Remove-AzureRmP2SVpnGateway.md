@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermp2svpngateway
 schema: 2.0.0
 ---
 
 # Remove-AzureRmP2SVpnGateway
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+The Remove-AzureRmP2SVpnGateway cmdlet removes an Azure P2S VPN gateway. This is a gateway specific to Azure Virtual WAN's software defined Point to site connectivity.
 
 ## SYNTAX
 
@@ -31,16 +31,53 @@ Remove-AzureRmP2SVpnGateway -ResourceId <String> [-PassThru] [-Force]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Remove-AzureRmP2SVpnGateway cmdlet removes an Azure P2S VPN gateway. This is a gateway specific to Azure Virtual WAN's software defined Point to site connectivity.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+PS C:\> $p2sVpnServerConfigCertFilePath = "PathToCertificate.cer"
+PS C:\> $listOfCerts = New-Object "System.Collections.Generic.List[String]"
+PS C:\> $listOfCerts.Add($p2sVpnServerConfigCertFilePath)
+PS C:\> $p2sVpnServerConfigObject1 = New-AzureRmP2SVpnServerConfigurationObject -Name $p2sVpnServerConfiguration1Name -VpnProtocol IkeV2 -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts
+PS C:\> Update-AzureRmVirtualWan -Name $virtualWanName -ResourceGroupName $rgName -P2SVpnServerConfiguration $p2sVpnServerConfigObject1 -Force
+PS C:\> $p2sVpnServerConfig1 = Get-AzureRmP2SVpnServerConfiguration -ParentResourceName $virtualWanName -ResourceGroupName $rgName -Name $P2SVpnServerConfiguration1Name
+PS C:\> $vpnClientAddressSpaces = New-Object string[] 2
+PS C:\> $vpnClientAddressSpaces[0] = "192.168.2.0/24"
+PS C:\> New-AzureRmP2SVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHub $virtualHub -VpnGatewayScaleUnit 2 -VpnClientAddressPool $vpnClientAddressSpaces -P2SVpnServerConfiguration $p2sVpnServerConfig1
+PS C:\> Remove-AzureRmP2SVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -Passthru
 ```
 
-{{ Add example description here }}
+This example creates a Resource group, Virtual WAN, associates P2SVpnServerConfiguration to it, Virtual Hub, scalable VPN P2S gateway in Central US and then immediately deletes it. 
+To suppress the prompt when deleting the Virtual Gateway, use the -Force flag.
+This will delete the P2SVpnGateway.
+
+### Example 2
+
+```powershell
+PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG"
+PS C:\> $virtualWan = New-AzureRmVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+PS C:\> $virtualHub = New-AzureRmVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+PS C:\> $p2sVpnServerConfigCertFilePath = "PathToCertificate.cer"
+PS C:\> $listOfCerts = New-Object "System.Collections.Generic.List[String]"
+PS C:\> $listOfCerts.Add($p2sVpnServerConfigCertFilePath)
+PS C:\> $p2sVpnServerConfigObject1 = New-AzureRmP2SVpnServerConfigurationObject -Name $p2sVpnServerConfiguration1Name -VpnProtocol IkeV2 -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts
+PS C:\> Update-AzureRmVirtualWan -Name $virtualWanName -ResourceGroupName $rgName -P2SVpnServerConfiguration $p2sVpnServerConfigObject1 -Force
+PS C:\> $p2sVpnServerConfig1 = Get-AzureRmP2SVpnServerConfiguration -ParentResourceName $virtualWanName -ResourceGroupName $rgName -Name $P2SVpnServerConfiguration1Name
+PS C:\> $vpnClientAddressSpaces = New-Object string[] 2
+PS C:\> $vpnClientAddressSpaces[0] = "192.168.2.0/24"
+PS C:\> New-AzureRmP2SVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -VpnGatewayScaleUnit 2 -VpnClientAddressPool $vpnClientAddressSpaces -P2SVpnServerConfiguration $p2sVpnServerConfig1
+PS C:\> Get-AzureRmP2SVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" | Remove-AzureRmP2SVpnGateway -Passthru
+```
+
+This example creates a Resource group, Virtual WAN, associates P2SVpnServerConfiguration to it, Virtual Hub, scalable VPN P2S gateway in Central US and then immediately deletes it.
+To suppress the prompt when deleting the Virtual Gateway, use the -Force flag.
+This will delete the P2SVpnGateway.
 
 ## PARAMETERS
 
