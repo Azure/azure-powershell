@@ -12,13 +12,7 @@ Updates an existing P2SVpnServerConfiguration associated with a VirtualWan.
 
 ## SYNTAX
 
-### ByVirtualWanNameDefault (Default)
-```
-Update-AzureRmP2SVpnServerConfiguration [-VpnProtocol <String[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByP2SVpnServerConfigurationNameDefault
+### ByP2SVpnServerConfigurationNameDefault (Default)
 ```
 Update-AzureRmP2SVpnServerConfiguration -ResourceGroupName <String> -ParentResourceName <String> -Name <String>
  [-VpnProtocol <String[]>] [-VpnClientRootCertificateFilesList <String[]>]
@@ -178,7 +172,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -208,7 +202,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -262,13 +256,25 @@ A list of IPSec policies for P2SVpnServerConfiguration.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
-Parameter Sets: ByP2SVpnServerConfigurationNameDefault, ByP2SVpnServerConfigurationResourceIdDefault, ByP2SVpnServerConfigurationObjectDefault
+Parameter Sets: ByP2SVpnServerConfigurationNameDefault, ByP2SVpnServerConfigurationResourceIdDefault
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy[]
+Parameter Sets: ByP2SVpnServerConfigurationObjectDefault
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -283,7 +289,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -298,7 +304,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
