@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.Network.Models;
     using System.Linq;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-    
+
     [Cmdlet(
         VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubRoute",
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            
+
             var virtualHubRoute = new PSVirtualHubRoute
             {
                 AddressPrefixes = this.AddressPrefix.ToList(),

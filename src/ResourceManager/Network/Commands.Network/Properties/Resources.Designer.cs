@@ -376,11 +376,101 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The P2SVpnGateway to modify could not be found.
+        /// </summary>
+        public static string P2SVpnGatewayNotFound {
+            get {
+                return ResourceManager.GetString("P2SVpnGatewayNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p2sVpnServerConfigRadiusClientRootCertificates.
+        /// </summary>
+        public static string P2SVpnServerConfigRadiusClientRootCertificateName {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigRadiusClientRootCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p2sVpnServerConfigRadiusServerRootCertificates.
+        /// </summary>
+        public static string P2SVpnServerConfigRadiusServerRootCertificateName {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigRadiusServerRootCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to P2SVpnServerConfiguration with the specified name already exists..
+        /// </summary>
+        public static string P2SVpnServerConfigurationAlreadyExists {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigurationAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to P2SVpnServerConfigurationNameNotSet.
+        /// </summary>
+        public static string P2SVpnServerConfigurationNameNotSet {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigurationNameNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Valid P2SVpnServerConfiguration specified. No action will be taken..
+        /// </summary>
+        public static string P2SVpnServerConfigurationNotSpecified {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigurationNotSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualWans/{2}/p2sVpnServerConfigurations/{3}/{4}/{5}.
+        /// </summary>
+        public static string P2SVpnServerConfigurationResourceId {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigurationResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p2sVpnServerConfigVpnClientRevokedCertificates.
+        /// </summary>
+        public static string P2SVpnServerConfigVpnClientRevokedCertificateName {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigVpnClientRevokedCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to p2sVpnServerConfigVpnClientRootCertificates.
+        /// </summary>
+        public static string P2SVpnServerConfigVpnClientRootCertificateName {
+            get {
+                return ResourceManager.GetString("P2SVpnServerConfigVpnClientRootCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The parent virtual hub mentioned could not be found..
         /// </summary>
         public static string ParentVirtualHubNotFound {
             get {
                 return ResourceManager.GetString("ParentVirtualHubNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid Parent VirtualWan reference is required to do operations on child P2SVpnServerConfiguration..
+        /// </summary>
+        public static string ParentVirtualWanRequiredForP2SVpnServerConfig {
+            get {
+                return ResourceManager.GetString("ParentVirtualWanRequiredForP2SVpnServerConfig", resourceCulture);
             }
         }
         
@@ -399,6 +489,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string ParentVpnGatewayNotFound {
             get {
                 return ResourceManager.GetString("ParentVpnGatewayNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The P2SVpnServerConfiguration and/or Parent VirtualWan could not be found..
+        /// </summary>
+        public static string ParentWanOrP2SVpnServerConfigurationNotFound {
+            get {
+                return ResourceManager.GetString("ParentWanOrP2SVpnServerConfigurationNotFound", resourceCulture);
             }
         }
         
@@ -592,6 +691,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A valid VirtualHub reference is required to create a P2SVpnGateway..
+        /// </summary>
+        public static string VirtualHubRequiredForP2SVpnGateway {
+            get {
+                return ResourceManager.GetString("VirtualHubRequiredForP2SVpnGateway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A valid VirtualHub reference is required to create a VpnGateway..
         /// </summary>
         public static string VirtualHubRequiredForVpnGateway {
@@ -654,6 +762,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VirtualWanNameNotSet.
+        /// </summary>
+        public static string VirtualWanNameNotSet {
+            get {
+                return ResourceManager.GetString("VirtualWanNameNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The referenced VirtualWan could not be found..
         /// </summary>
         public static string VirtualWanNotFound {
@@ -677,6 +794,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string VirtualWanRequiredForVpnSiteConfiguration {
             get {
                 return ResourceManager.GetString("VirtualWanRequiredForVpnSiteConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Either VpnClient settings or RadiusClient settings should be specified for creating P2SVpnServerConfiguration..
+        /// </summary>
+        public static string VpnClientOrRadiusClientSettingsRequiredForP2SVpnServerConfig {
+            get {
+                return ResourceManager.GetString("VpnClientOrRadiusClientSettingsRequiredForP2SVpnServerConfig", resourceCulture);
             }
         }
         

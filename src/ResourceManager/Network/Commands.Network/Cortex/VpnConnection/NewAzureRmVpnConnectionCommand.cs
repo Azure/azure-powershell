@@ -170,13 +170,13 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            
             WriteObject(this.CreateVpnConnection());
         }
 
         private PSVpnConnection CreateVpnConnection()
         {
             base.Execute();
+
             PSVpnGateway parentVpnGateway = null;
 
             //// Resolve the VpnGateway

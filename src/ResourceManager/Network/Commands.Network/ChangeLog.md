@@ -1,4 +1,4 @@
-﻿<!--
+﻿﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -31,7 +31,7 @@
 * Added cmdlet New-AzureRmVirtualNetworkTap, Get-AzureRmVirtualNetworkTap, Set-AzureRmVirtualNetworkTap, Remove-AzureRmVirtualNetworkTap
 * Added cmdlet Set-AzureRmNEtworkInterfaceTapConfig, Get-AzureRmNEtworkInterfaceTapConfig, Remove-AzureRmNEtworkInterfaceTapConfig
 * Added cmdlets to integrate security provider in cortex
-  - Cmdlets updated with optonal parameters
+  - Cmdlets updated with optional parameters
 	- New-AzureRmVirtualWan : added parameters SecurityProviderName, Office365LocalBreakoutCategory
 	- Update-AzureRmVirtualWan : added parameters SecurityProviderName, Office365LocalBreakoutCategory
 	- New-AzureRmVpnSite : added parameter IsSecuritySite
@@ -41,6 +41,12 @@
   - New Cmdlets added:
 	- Get-AzureRmVirtualWanSupportedSecurityProvider
 	- Update-AzureRmVirtualHubVnetConnection
+* Expose new Powershell commandlets and models for SdWan P2S cortex feature.
+        - Updated New, Get, Set, Remove for VirtualWan.
+        - Added New-AzureRmP2SVpnServerConfigurationObject to create in-memory P2SVpnServerConfiguration object which can be passed as a list in New/Update-VirtualWan.
+        - Added New, Get, Update, Remove for P2SVpnServerConfiguration into VirtualWan.
+        - Added New, Get, Update, Remove for P2SVpnGateway.
+        - Added Get-AzureRmP2SVpnGatewayVpnProfile to generate VpnProfile package and return Sas-Url where it can be downloaded from.
 
 ## Version 6.8.0
 * Replaced LoadBalancer cmdlets with generated code

@@ -123,7 +123,7 @@ The Vpnclient IPSec encryption algorithm (IKE Phase 1)
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: GCMAES256, GCMAES128, AES256, AES128
+Accepted values: GCMAES256, GCMAES128, AES256, AES128, None
 
 Required: False
 Position: Named

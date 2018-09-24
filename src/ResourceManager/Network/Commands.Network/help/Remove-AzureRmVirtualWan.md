@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmVirtualWan
 
 ## SYNOPSIS
-Removes an Azure Virtual WAN.
+Removes an Azure Virtual WAN and all associated P2SVpnServerConfigurations if any.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Remove-AzureRmVirtualWan -ResourceId <String> [-Force] [-PassThru] [-DefaultProf
 ```
 
 ## DESCRIPTION
-Removes an Azure Virtual WAN.
+Removes an Azure Virtual WAN and all associated P2SVpnServerConfigurations if any.
 
 ## EXAMPLES
 
@@ -39,11 +39,15 @@ Removes an Azure Virtual WAN.
 
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Name "TestResourceGroup" -Location "Central US"
-PS C:\> New-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Location "Central US"
+PS C:\> $p2sVpnServerConfigCertFilePath = "PathToCertFile.cer"
+PS C:\> $listOfCerts = New-Object "System.Collections.Generic.List[String]"
+PS C:\> $listOfCerts.Add($p2sVpnServerConfigCertFilePath)
+PS C:\> $p2sVpnServerConfigObject1 = New-AzureRmP2SVpnServerConfigurationObject -Name "p2sVpnServerConfiguration1Name" -VpnProtocol IkeV2 -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts
+PS C:\> New-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Location "Central US" -P2SVpnServerConfiguration $p2sVpnServerConfigs
 PS C:\> Remove-AzureRmVirtualWan -Name "MyVirtualWan" -ResourceGroupName "TestResourceGroup" -Passthru
 ```
 
-This example creates a Virtual WAN in a resource group and then immediately deletes it. 
+This example creates a Virtual WAN in a resource group. Also creates a P2SVpnServerConfiguration and associates it with created Virtual WAN and then immediately deletes it. 
 To suppress the prompt when deleting the Virtual WAN, use the -Force flag.
 
 ### Example 2
@@ -131,8 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+Returns an object representing the item on which this operation is being performed.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

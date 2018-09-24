@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
 
             PSVpnSite vpnSiteToUpdate = null;
-            
+
             if (ParameterSetName.Contains(CortexParameterSetNames.ByVpnSiteObject))
             {
                 vpnSiteToUpdate = this.InputObject;
@@ -322,8 +322,8 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrWhiteSpace(this.DeviceModel) || !string.IsNullOrWhiteSpace(this.DeviceVendor))
             {
                 vpnSiteToUpdate.DeviceProperties = this.ValidateAndCreateVpnSiteDeviceProperties(
-                    this.DeviceModel ?? string.Empty, 
-                    this.DeviceVendor ?? string.Empty, 
+                    this.DeviceModel ?? string.Empty,
+                    this.DeviceVendor ?? string.Empty,
                     this.LinkSpeedInMbps);
             }
 
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     vpnSiteToUpdate.AddressSpace = new PSAddressSpace();
                 }
-                
+
                 vpnSiteToUpdate.AddressSpace.AddressPrefixes.AddRange(this.AddressSpace);
             }
 

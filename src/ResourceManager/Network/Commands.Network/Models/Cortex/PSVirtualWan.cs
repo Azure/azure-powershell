@@ -14,11 +14,15 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
     using Newtonsoft.Json;
 
     public class PSVirtualWan : PSTopLevelResource
     {
+        [Ps1Xml(Label = "Number of attached P2SVpnServerConfigurations", Target = ViewControl.Table, ScriptBlock = "$_.Count")]
+        public List<PSP2SVpnServerConfiguration> P2SVpnServerConfigurations { get; set; }
+
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 

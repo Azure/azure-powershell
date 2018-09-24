@@ -115,7 +115,6 @@ namespace Microsoft.Azure.Commands.Network
                 var parsedResourceId = new ResourceIdentifier(this.VirtualHubId);
                 this.VirtualHubName = parsedResourceId.ResourceName;
             }
-            
             //// At this point, we should have the virtual hub name resolved. Fail this operation if it is not.
             if (string.IsNullOrWhiteSpace(this.VirtualHubName))
             {

@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.ResourceGroupName = this.InputObject.ResourceGroupName;
                 this.Name = this.InputObject.Name;
             }
-            else 
+            else
             {
                 if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnGatewayResourceId))
                 {

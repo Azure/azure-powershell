@@ -50,6 +50,9 @@ Adds a trusted root certificate to an application gateway.
 ### [Add-AzureRmApplicationGatewayUrlPathMapConfig](Add-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Adds an array of URL path mappings to a backend server pool.
 
+### [Add-AzureRmDelegation](Add-AzureRmDelegation.md)
+Adds a delegation to a subnet.
+
 ### [Add-AzureRmExpressRouteCircuitAuthorization](Add-AzureRmExpressRouteCircuitAuthorization.md)
 Adds an ExpressRoute circuit authorization.
 
@@ -120,7 +123,7 @@ Gets an application gateway.
 Gets an authentication certificate for an application gateway.
 
 ### [Get-AzureRmApplicationGatewayAutoscaleConfiguration](Get-AzureRmApplicationGatewayAutoscaleConfiguration.md)
-Gets the autoscale configuration for an application gateway.
+Gets the Autoscale Configuration of the Application Gateway.
 
 ### [Get-AzureRmApplicationGatewayAvailableSslOptions](Get-AzureRmApplicationGatewayAvailableSslOptions.md)
 Gets all available ssl options for ssl policy for Application Gateway.
@@ -174,7 +177,7 @@ Gets the SSL policy of an application gateway.
 Gets Predefined SSL Policies provided by Application Gateway.
 
 ### [Get-AzureRmApplicationGatewayTrustedRootCertificate](Get-AzureRmApplicationGatewayTrustedRootCertificate.md)
-Gets Trusted Root Certificates of an application gateway.
+Gets the Trusted Root Certificate with a specific name from the Application Gateway.
 
 ### [Get-AzureRmApplicationGatewayUrlPathMapConfig](Get-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Gets an array of URL path mappings to a backend server pool.
@@ -185,11 +188,17 @@ Gets the WAF configuration of an application gateway.
 ### [Get-AzureRmApplicationSecurityGroup](Get-AzureRmApplicationSecurityGroup.md)
 Gets an application security group.
 
+### [Get-AzureRmAvailableServiceDelegation](Get-AzureRmAvailableServiceDelegation.md)
+Get available service delegations in the region.
+
 ### [Get-AzureRmBgpServiceCommunity](Get-AzureRmBgpServiceCommunity.md)
 Provides a list of all services / regions, BGP communities, and associated prefixes.
 
 ### [Get-AzureRmDdosProtectionPlan](Get-AzureRmDdosProtectionPlan.md)
 Gets a DDoS protection plan.
+
+### [Get-AzureRmDelegation](Get-AzureRmDelegation.md)
+Get a delegation (or all of the delegations) on a given subnet.
 
 ### [Get-AzureRmEffectiveNetworkSecurityGroup](Get-AzureRmEffectiveNetworkSecurityGroup.md)
 Gets the effective network security group of a network interface.
@@ -226,6 +235,9 @@ Gets a list ExpressRoute service providers and their attributes.
 
 ### [Get-AzureRmFirewall](Get-AzureRmFirewall.md)
 Gets a Azure Firewall.
+
+### [Get-AzureRmInterfaceEndpoint](Get-AzureRmInterfaceEndpoint.md)
+The Get-AzureRmInterfaceEndpoint cmdlet gets a Interface Endpoint.
 
 ### [Get-AzureRmLoadBalancer](Get-AzureRmLoadBalancer.md)
 Gets a load balancer.
@@ -308,6 +320,15 @@ Gets a network level view of resources and their relationships in a resource gro
 ### [Get-AzureRmNetworkWatcherTroubleshootingResult](Get-AzureRmNetworkWatcherTroubleshootingResult.md)
 Gets the troubleshooting result from the previously run or currently running troubleshooting operation.
 
+### [Get-AzureRmP2SVpnGateway](Get-AzureRmP2SVpnGateway.md)
+Gets a P2SVpnGateway resource using ResourceGroupName and GatewayName OR lists all gateways by ResourceGroupName.
+
+### [Get-AzureRmP2SVpnGatewayVpnProfile](Get-AzureRmP2SVpnGatewayVpnProfile.md)
+Generates VPN profile for P2S client of the P2SVpnGateway in the specified resource group.
+
+### [Get-AzureRmP2SVpnServerConfiguration](Get-AzureRmP2SVpnServerConfiguration.md)
+Retrieves the details of a P2SVpnServerConfiguration associated with Virtual WAN.
+
 ### [Get-AzureRmPublicIpAddress](Get-AzureRmPublicIpAddress.md)
 Gets a public IP address.
 
@@ -383,6 +404,9 @@ Gets virtual network current usage.
 ### [Get-AzureRmVirtualWan](Get-AzureRmVirtualWan.md)
 Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 
+### [Get-AzureRmVirtualWanSupportedSecurityProvider](Get-AzureRmVirtualWanSupportedSecurityProvider.md)
+Get the supported security providers for the virtual wan.
+
 ### [Get-AzureRmVirtualWanVpnConfiguration](Get-AzureRmVirtualWanVpnConfiguration.md)
 Gets the Vpn configuration for a subset of VpnSites connected to this WAN via VpnConnections. Uploads the generated Vpn
 configuration to a storage blob specified by the customer.
@@ -423,7 +447,7 @@ Creates an application gateway.
 Creates an authentication certificate for an application gateway.
 
 ### [New-AzureRmApplicationGatewayAutoscaleConfiguration](New-AzureRmApplicationGatewayAutoscaleConfiguration.md)
-Creates the autoscale configuration for an application gateway.
+Creates a Autoscale Configuration for the Application Gateway.
 
 ### [New-AzureRmApplicationGatewayBackendAddressPool](New-AzureRmApplicationGatewayBackendAddressPool.md)
 Creates a back-end address pool for an application gateway.
@@ -494,6 +518,9 @@ Creates a container nic configuration ip configuration object.
 ### [New-AzureRmDdosProtectionPlan](New-AzureRmDdosProtectionPlan.md)
 Creates a DDoS protection plan.
 
+### [New-AzureRmDelegation](New-AzureRmDelegation.md)
+Creates a service delegation.
+
 ### [New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
 Creates an Azure express route circuit.
 
@@ -511,6 +538,12 @@ Creates a Firewall Application Rule.
 
 ### [New-AzureRmFirewallApplicationRuleCollection](New-AzureRmFirewallApplicationRuleCollection.md)
 Creates a collection of Firewall application rules.
+
+### [New-AzureRmFirewallNatRule](New-AzureRmFirewallNatRule.md)
+Creates a Firewall NAT Rule.
+
+### [New-AzureRmFirewallNatRuleCollection](New-AzureRmFirewallNatRuleCollection.md)
+Creates a collection of Firewall NAT rules.
 
 ### [New-AzureRmFirewallNetworkRule](New-AzureRmFirewallNetworkRule.md)
 Creates a Firewall Network Rule.
@@ -575,6 +608,15 @@ Creates a new packet capture resource and starts a packet capture session on a V
 ### [New-AzureRmNetworkWatcherProtocolConfiguration](New-AzureRmNetworkWatcherProtocolConfiguration.md)
 Creates a new protocol configuration object.
 
+### [New-AzureRmP2SVpnGateway](New-AzureRmP2SVpnGateway.md)
+Creates a Scalable P2S VPN Gateway.
+
+### [New-AzureRmP2SVpnServerConfiguration](New-AzureRmP2SVpnServerConfiguration.md)
+Creates a P2SVpnServerConfiguration and associates it with an existing VirtualWan.
+
+### [New-AzureRmP2SVpnServerConfigurationObject](New-AzureRmP2SVpnServerConfigurationObject.md)
+Creates a P2SVpnServerConfiguration in-memory object to associate with a VirtualWan in New/Update-AzureRmVirtualWan command let.
+
 ### [New-AzureRmPacketCaptureFilterConfig](New-AzureRmPacketCaptureFilterConfig.md)
 Creates a new packet capture filter object.
 
@@ -636,7 +678,7 @@ Creates a virtual network subnet configuration.
 {{Fill in the Synopsis}}
 
 ### [New-AzureRmVirtualWan](New-AzureRmVirtualWan.md)
-Creates an Azure Virtual WAN.
+-Creates an Azure Virtual WAN.
 
 ### [New-AzureRmVpnClientConfiguration](New-AzureRmVpnClientConfiguration.md)
 This command allows the users to create the Vpn profile package based on pre-configured vpn settings on the VPN gateway, in addition to some additional settings that users may need to configure, for e.g. some root certificates.
@@ -670,7 +712,7 @@ Removes an application gateway.
 Removes an authentication certificate from an application gateway.
 
 ### [Remove-AzureRmApplicationGatewayAutoscaleConfiguration](Remove-AzureRmApplicationGatewayAutoscaleConfiguration.md)
-Removes the autoscale configuration from an application gateway.
+Removes Autoscale Configuration from an application gateway.
 
 ### [Remove-AzureRmApplicationGatewayBackendAddressPool](Remove-AzureRmApplicationGatewayBackendAddressPool.md)
 Removes a back-end address pool from an application gateway.
@@ -719,6 +761,9 @@ Removes an application security group.
 
 ### [Remove-AzureRmDdosProtectionPlan](Remove-AzureRmDdosProtectionPlan.md)
 Removes a DDoS protection plan.
+
+### [Remove-AzureRmDelegation](Remove-AzureRmDelegation.md)
+Removes a service delegation from the provided subnet.
 
 ### [Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
 Removes an ExpressRoute circuit.
@@ -789,6 +834,12 @@ Remove connection monitor.
 ### [Remove-AzureRmNetworkWatcherPacketCapture](Remove-AzureRmNetworkWatcherPacketCapture.md)
 Removes a packet capture resource.
 
+### [Remove-AzureRmP2SVpnGateway](Remove-AzureRmP2SVpnGateway.md)
+The Remove-AzureRmP2SVpnGateway cmdlet removes an Azure P2S VPN gateway. This is a gateway specific to Azure Virtual WAN's software defined Point to site connectivity.
+
+### [Remove-AzureRmP2SVpnServerConfiguration](Remove-AzureRmP2SVpnServerConfiguration.md)
+Deletes a P2SVpnServerConfiguration associated with Azure Virtual WAN.
+
 ### [Remove-AzureRmPublicIpAddress](Remove-AzureRmPublicIpAddress.md)
 Removes a public IP address.
 
@@ -844,7 +895,7 @@ Removes a subnet configuration from a virtual network.
 {{Fill in the Synopsis}}
 
 ### [Remove-AzureRmVirtualWan](Remove-AzureRmVirtualWan.md)
-Removes an Azure Virtual WAN.
+Removes an Azure Virtual WAN and all associated P2SVpnServerConfigurations if any.
 
 ### [Remove-AzureRmVpnClientIpsecParameter](Remove-AzureRmVpnClientIpsecParameter.md)
 Removes Vpn custom ipsec policy set on Virtual Network Gateway resource.
@@ -880,7 +931,7 @@ Updates an application gateway.
 Updates an authentication certificate for an application gateway.
 
 ### [Set-AzureRmApplicationGatewayAutoscaleConfiguration](Set-AzureRmApplicationGatewayAutoscaleConfiguration.md)
-Updates the autoscale configuration for an application gateway.
+Updates Autoscale Configuration of an application gateway.
 
 ### [Set-AzureRmApplicationGatewayBackendAddressPool](Set-AzureRmApplicationGatewayBackendAddressPool.md)
 Updates a back-end address pool for an application gateway.
@@ -922,7 +973,7 @@ Sets the goal state of an SSL certificate.
 Modifies the SSL policy of an application gateway.
 
 ### [Set-AzureRmApplicationGatewayTrustedRootCertificate](Set-AzureRmApplicationGatewayTrustedRootCertificate.md)
-Updates a Trusted Root Certificate for an application gateway.
+Updates a Trusted Root Certificate of an application gateway.
 
 ### [Set-AzureRmApplicationGatewayUrlPathMapConfig](Set-AzureRmApplicationGatewayUrlPathMapConfig.md)
 Sets configuration for an array of URL path mappings to a backend server pool.
@@ -1071,8 +1122,17 @@ Returns whether the packet is allowed or denied to or from a particular destinat
 ### [Test-AzureRmPrivateIPAddressAvailability](Test-AzureRmPrivateIPAddressAvailability.md)
 Test availability of a private IP address in a virtual network.
 
+### [Update-AzureRmP2SVpnGateway](Update-AzureRmP2SVpnGateway.md)
+Update-AzureRmP2SVpnGateway updates a scalable P2S VPN Gateway to the appropriate goal state.
+
+### [Update-AzureRmP2SVpnServerConfiguration](Update-AzureRmP2SVpnServerConfiguration.md)
+Updates an existing P2SVpnServerConfiguration associated with a VirtualWan.
+
 ### [Update-AzureRmVirtualHub](Update-AzureRmVirtualHub.md)
 Updates a Virtual Hub to an intended goal state.
+
+### [Update-AzureRmVirtualHubVnetConnection](Update-AzureRmVirtualHubVnetConnection.md)
+Updates an existing HubVirtualNetworkConnection.
 
 ### [Update-AzureRmVirtualWan](Update-AzureRmVirtualWan.md)
 Updates an Azure Virtual WAN.

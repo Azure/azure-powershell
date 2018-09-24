@@ -8,15 +8,15 @@ schema: 2.0.0
 # New-AzureRmVirtualWan
 
 ## SYNOPSIS
-Creates an Azure Virtual WAN.
+-Creates an Azure Virtual WAN.
 
 ## SYNTAX
 
 ```
 New-AzureRmVirtualWan -ResourceGroupName <String> -Name <String> -Location <String>
  [-SecurityProviderName <String>] [-Office365LocalBreakoutCategory <String>] [-AllowVnetToVnetTraffic]
- [-AllowBranchToBranchTraffic] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AllowBranchToBranchTraffic] [-P2SVpnServerConfiguration <PSP2SVpnServerConfiguration[]>] [-Tag <Hashtable>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,22 +25,26 @@ Creates a new Azure VirtualWAN resource.
 ## EXAMPLES
 
 ### Example 1
-
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
-PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true -Office365LocalBreakoutCategory "Optimize"
+PS C:\> $p2sVpnServerConfigCertFilePath = "PathToCertFile.cer"
+PS C:\> $listOfCerts = New-Object "System.Collections.Generic.List[String]"
+PS C:\> $listOfCerts.Add($p2sVpnServerConfigCertFilePath)
+PS C:\> $p2sVpnServerConfigObject1 = New-AzureRmP2SVpnServerConfigurationObject -Name "p2sVpnServerConfiguration1Name" -VpnProtocol IkeV2 -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts
+PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true -Office365LocalBreakoutCategory "Optimize" -P2SVpnServerConfiguration $p2sVpnServerConfigs
 
-Name                              : testRG
-Id                                : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
-AllowVnetToVnetTraffic            : False
-AllowBranchToBranchTraffic        : True
-Office365LocalBreakoutCategory    : Optimize
-Location                          : West US
-Type                              : Microsoft.Network/virtualWans
-ProvisioningState                 : Succeeded
+Name                              				: testRG
+Id                                				: /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+Number of attached P2SVpnServerConfigurations 	: 1
+AllowVnetToVnetTraffic            				: False
+AllowBranchToBranchTraffic        				: True
+Office365LocalBreakoutCategory    				: Optimize
+Location                          				: West US
+Type                              				: Microsoft.Network/virtualWans
+ProvisioningState                 				: Succeeded
 ```
 
-The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN with branch to branch traffic allowed in that resource group in Azure.
+The above will create a resource group "testRG" in region "West US" and an Azure Virtual WAN with branch to branch traffic allowed in that resource group in Azure. It also creates P2SVpnServerConfiguration and associate with created Virtual WAN.
 
 ## PARAMETERS
 
@@ -105,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The location of the VirtualWAN resource.
+The Location for this resource.
 
 ```yaml
 Type: System.String
@@ -141,11 +145,27 @@ Local breakout category for office 365 traffic.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: All, None, Optimize, OptimizeAndAllow
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -P2SVpnServerConfiguration
+The list of P2SVpnServerConfigurations that are associated with this VirtualWan.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -175,7 +195,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -230,9 +250,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Collections.Hashtable
+### Microsoft.Azure.Commands.Network.Models.PSP2SVpnServerConfiguration[]
 
 ## OUTPUTS
 

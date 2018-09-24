@@ -32,16 +32,22 @@ Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 
 ```powershell
 PS C:\> New-AzureRmResourceGroup -Location "West US" -Name "testRG" 
-PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true
+PS C:\> $p2sVpnServerConfigCertFilePath = "PathToCertFile.cer"
+PS C:\> $listOfCerts = New-Object "System.Collections.Generic.List[String]"
+PS C:\> $listOfCerts.Add($p2sVpnServerConfigCertFilePath)
+PS C:\> $p2sVpnServerConfigObject1 = New-AzureRmP2SVpnServerConfigurationObject -Name "p2sVpnServerConfiguration1Name" -VpnProtocol IkeV2 -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts
+PS C:\> New-AzureRmVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true -P2SVpnServerConfiguration $P2SVpnServerConfigObject1
 PS C:\> Get-AzureRmVirtualWan -Name "myVirtualWAN" -ResourceGroupName "testRG"
 
-Name                       : testRG
-Id                         : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
-AllowVnetToVnetTraffic     : False
-AllowBranchToBranchTraffic : True
-Location                   : West US
-Type                       : Microsoft.Network/virtualWans
-ProvisioningState          : Succeeded
+Name                              				: testRG
+Id                                				: /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
+Number of attached P2SVpnServerConfigurations 	: 1
+AllowVnetToVnetTraffic            				: False
+AllowBranchToBranchTraffic        				: True
+Office365LocalBreakoutCategory    				: Optimize
+Location                          				: West US
+Type                              				: Microsoft.Network/virtualWans
+ProvisioningState                 				: Succeeded
 ```
 
 This command gets the Virtual WAN named myVirtualWAN in the resource group testRG.

@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.netwo
 schema: 2.0.0
 ---
 
-# Get-AzureRMNetworkWatcherReachabilityReport
+# Get-AzureRmNetworkWatcherReachabilityReport
 
 ## SYNOPSIS
 Gets the relative latency score for internet service providers from a specified location to Azure regions.
@@ -14,7 +14,7 @@ Gets the relative latency score for internet service providers from a specified 
 
 ### SetByName (Default)
 ```
-Get-AzureRMNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
+Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcherName <String> -ResourceGroupName <String>
  [-Provider <System.Collections.Generic.List`1[System.String]>]
  [-Location <System.Collections.Generic.List`1[System.String]>] -StartTime <DateTime> -EndTime <DateTime>
  [-Country <String>] [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
@@ -23,7 +23,7 @@ Get-AzureRMNetworkWatcherReachabilityReport -NetworkWatcherName <String> -Resour
 
 ### SetByResource
 ```
-Get-AzureRMNetworkWatcherReachabilityReport -NetworkWatcher <PSNetworkWatcher>
+Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcher <PSNetworkWatcher>
  [-Provider <System.Collections.Generic.List`1[System.String]>]
  [-Location <System.Collections.Generic.List`1[System.String]>] -StartTime <DateTime> -EndTime <DateTime>
  [-Country <String>] [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
@@ -32,7 +32,7 @@ Get-AzureRMNetworkWatcherReachabilityReport -NetworkWatcher <PSNetworkWatcher>
 
 ### SetByResourceId
 ```
-Get-AzureRMNetworkWatcherReachabilityReport -ResourceId <String>
+Get-AzureRmNetworkWatcherReachabilityReport -ResourceId <String>
  [-Provider <System.Collections.Generic.List`1[System.String]>]
  [-Location <System.Collections.Generic.List`1[System.String]>] -StartTime <DateTime> -EndTime <DateTime>
  [-Country <String>] [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
@@ -41,7 +41,7 @@ Get-AzureRMNetworkWatcherReachabilityReport -ResourceId <String>
 
 ### SetByLocation
 ```
-Get-AzureRMNetworkWatcherReachabilityReport -NetworkWatcherLocation <String>
+Get-AzureRmNetworkWatcherReachabilityReport -NetworkWatcherLocation <String>
  [-Provider <System.Collections.Generic.List`1[System.String]>]
  [-Location <System.Collections.Generic.List`1[System.String]>] -StartTime <DateTime> -EndTime <DateTime>
  [-Country <String>] [-State <String>] [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]

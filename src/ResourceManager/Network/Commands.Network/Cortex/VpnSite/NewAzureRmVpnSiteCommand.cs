@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            
+
             PSVpnSite vpnSiteToCreate = new PSVpnSite();
             vpnSiteToCreate.ResourceGroupName = this.ResourceGroupName;
             vpnSiteToCreate.Name = this.Name;
@@ -183,8 +183,8 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrWhiteSpace(this.DeviceModel) || !string.IsNullOrWhiteSpace(this.DeviceVendor))
             {
                 vpnSiteToCreate.DeviceProperties = this.ValidateAndCreateVpnSiteDeviceProperties(
-                    this.DeviceModel??string.Empty, 
-                    this.DeviceVendor??string.Empty, 
+                    this.DeviceModel ?? string.Empty,
+                    this.DeviceVendor ?? string.Empty,
                     this.LinkSpeedInMbps);
             }
 

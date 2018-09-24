@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
         public override void Execute()
         {
             base.Execute();
-            
+
             if (ParameterSetName.Equals(CortexParameterSetNames.ByVpnConnectionName, StringComparison.OrdinalIgnoreCase))
             {
                 this.ResourceGroupName = this.ResourceGroupName;
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Network.Cortex.VpnGateway
             //// Get the vpngateway object - this will throw not found if the object is not found
             PSVpnGateway parentGateway = this.GetVpnGateway(this.ResourceGroupName, this.ParentResourceName);
 
-            if (parentGateway == null || 
+            if (parentGateway == null ||
                 parentGateway.Connections == null ||
                 !parentGateway.Connections.Any(connection => connection.Name.Equals(this.Name, StringComparison.OrdinalIgnoreCase)))
             {

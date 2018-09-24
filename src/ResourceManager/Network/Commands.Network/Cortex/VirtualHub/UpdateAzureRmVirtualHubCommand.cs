@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 virtualHubToUpdate = this.GetVirtualHub(this.ResourceGroupName, this.Name);
             }
-            
+
             if (virtualHubToUpdate == null)
             {
                 throw new PSArgumentException(Properties.Resources.VirtualHubToUpdateNotFound);
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             //// VirtualHubRouteTable
-            if(this.RouteTable != null)
+            if (this.RouteTable != null)
             {
                 virtualHubToUpdate.RouteTable = this.RouteTable;
             }
