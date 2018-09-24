@@ -60,9 +60,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="AzureRmAlias\Mappings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="AzureRmProfileStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -80,7 +77,10 @@
     <Content Include="*.ps1" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.Netcore.psd1" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.psm1" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="*.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="AzureRmAlias\Mappings.json" />
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">

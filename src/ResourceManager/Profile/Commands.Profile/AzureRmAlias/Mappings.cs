@@ -16,6 +16,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
 {
@@ -23,10 +24,13 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     {
         public static Dictionary<string, object> GetCaseInsensitiveMapping()
         {
-            using (StreamReader r = new StreamReader(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + 
-                Path.DirectorySeparatorChar + "AzureRmAlias" + Path.DirectorySeparatorChar + "Mappings.json"))
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "Microsoft.Azure.Commands.Profile.AzureRmAlias.Mappings.json";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
             {
-                Dictionary<string, object> caseSensitiveMapping = (Dictionary<string, object>)JsonConvert.DeserializeObject(r.ReadToEnd(), typeof(Dictionary<string, object>));
+                Dictionary<string, object> caseSensitiveMapping = (Dictionary<string, object>)JsonConvert.DeserializeObject(reader.ReadToEnd(), typeof(Dictionary<string, object>));
                 var mapping = new Dictionary<string, object>(StringComparer.CurrentCultureIgnoreCase);
                 foreach (var key in caseSensitiveMapping.Keys)
                 {
