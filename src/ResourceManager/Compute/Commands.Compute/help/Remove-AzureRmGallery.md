@@ -14,20 +14,20 @@ Delete a gallery.
 
 ### DefaultParameter (Default)
 ```
-Remove-AzureRmGallery [-ResourceGroupName] <String> [-GalleryName] <String> [-Force] [-AsJob]
+Remove-AzureRmGallery [-ResourceGroupName] <String> -Name <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
-Remove-AzureRmGallery [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmGallery [-Force] [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
-Remove-AzureRmGallery [-Gallery] <PSGallery> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmGallery [-Force] -InputObject <PSGallery> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +79,7 @@ Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -89,31 +89,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Gallery
+### -InputObject
 The PS Gallery Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSGallery
 Parameter Sets: ObjectParameter
-Aliases:
+Aliases: Gallery
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -GalleryName
+### -Name
 The name of the gallery.
 
 ```yaml
 Type: System.String
 Parameter Sets: DefaultParameter
-Aliases: Name
+Aliases: GalleryName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

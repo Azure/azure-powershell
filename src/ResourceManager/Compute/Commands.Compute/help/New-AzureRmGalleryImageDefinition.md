@@ -13,14 +13,13 @@ Create a gallery image definition.
 ## SYNTAX
 
 ```
-New-AzureRmGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <String>
- [-GalleryImageDefinitionName] <String> [-AsJob] [-Location] <String> -Publisher <String> -Offer <String>
- -Sku <String> -OsState <OperatingSystemStateTypes> -OsType <OperatingSystemTypes> [-Description <String>]
- [-Eula <String>] [-PrivacyStatementUri <String>] [-ReleaseNoteUri <String>] [-EndOfLifeDate <DateTime>]
- [-Tag <Hashtable>] [-MinimumVCPU <Int32>] [-MaximumVCPU <Int32>] [-MinimumMemory <Int32>]
- [-MaximumMemory <Int32>] [-DisallowedDiskType <String[]>] [-PurchasePlanName <String>]
- [-PurchasePlanPublisher <String>] [-PurchasePlanProduct <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <String> -Name <String> [-AsJob]
+ [-Location] <String> -Publisher <String> -Offer <String> -Sku <String> -OsState <OperatingSystemStateTypes>
+ -OsType <OperatingSystemTypes> [-Description <String>] [-Eula <String>] [-PrivacyStatementUri <String>]
+ [-ReleaseNoteUri <String>] [-EndOfLifeDate <DateTime>] [-Tag <Hashtable>] [-MinimumVCPU <Int32>]
+ [-MaximumVCPU <Int32>] [-MinimumMemory <Int32>] [-MaximumMemory <Int32>] [-DisallowedDiskType <String[]>]
+ [-PurchasePlanName <String>] [-PurchasePlanPublisher <String>] [-PurchasePlanProduct <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,21 +126,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -GalleryImageDefinitionName
-The name of the gallery image definition.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: Name
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -GalleryName
 The name of the gallery.
 
@@ -226,6 +210,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the gallery image definition.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: GalleryImageDefinitionName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -15,8 +15,8 @@ Get or list gallery image versions.
 ### DefaultParameter (Default)
 ```
 Get-AzureRmGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
- -GalleryImageDefinitionName <String> [[-GalleryImageVersionName] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -GalleryImageDefinitionName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
@@ -69,21 +69,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -GalleryImageVersionName
-The name of the gallery image version.
-
-```yaml
-Type: System.String
-Parameter Sets: DefaultParameter
-Aliases: Name
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -GalleryName
 The name of the gallery.
 
@@ -94,6 +79,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the gallery image version.
+
+```yaml
+Type: System.String
+Parameter Sets: DefaultParameter
+Aliases: GalleryImageVersionName
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

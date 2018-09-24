@@ -14,8 +14,8 @@ Get or list galleries.
 
 ### DefaultParameter (Default)
 ```
-Get-AzureRmGallery [[-ResourceGroupName] <String>] [[-GalleryName] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmGallery [[-ResourceGroupName] <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
@@ -31,6 +31,17 @@ Get or list galleries.
 ### Example 1
 ```powershell
 PS C:\> Get-AzureRmGallery -ResourceGroupName $rgname -GalleryName $galleryName
+
+ResourceGroupName : rg1
+Description       : Gallery created by Powershell.
+Identifier        : 
+  UniqueName      : 00000000-0000-0000-0000-000000000000-gallery1
+ProvisioningState : Succeeded
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/galleries/gallery1
+Name              : gallery1
+Type              : Microsoft.Compute/galleries
+Location          : southcentralus
+Tags              : {}
 ```
 
 Get the gallery.
@@ -52,16 +63,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GalleryName
+### -Name
 The name of the gallery.
 
 ```yaml
 Type: System.String
 Parameter Sets: DefaultParameter
-Aliases: Name
+Aliases: GalleryName
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -14,8 +14,8 @@ Create a gallery image version.
 
 ```
 New-AzureRmGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
- -GallleryImageDefinitionName <String> [-GalleryImageVersionName] <String> [-AsJob] [-Location] <String>
- [-SourceImageId] <String> [-Tag <Hashtable>] [-ReplicaCount <Int32>] [-PublishingProfileExcludeFromLatest]
+ -GallleryImageDefinitionName <String> -Name <String> [-AsJob] -Location <String> -SourceImageId <String>
+ [-Tag <Hashtable>] [-ReplicaCount <Int32>] [-PublishingProfileExcludeFromLatest]
  [-PublishingProfileEndOfLifeDate <DateTime>] [-TargetRegion <Hashtable[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -68,21 +68,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GalleryImageVersionName
-The name of the gallery image version
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: Name
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -GalleryName
 The name of the gallery.
 
@@ -120,6 +105,21 @@ Resource location
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the gallery image version.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: GalleryImageVersionName
 
 Required: True
 Position: Named

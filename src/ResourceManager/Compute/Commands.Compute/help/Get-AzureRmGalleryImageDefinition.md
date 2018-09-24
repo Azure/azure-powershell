@@ -14,8 +14,8 @@ Get or list gallery image definitions.
 
 ### DefaultParameter (Default)
 ```
-Get-AzureRmGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <String>
- [[-GalleryImageDefinitionName] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <String> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
@@ -53,21 +53,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GalleryImageDefinitionName
-The name of the gallery image definition
-
-```yaml
-Type: System.String
-Parameter Sets: DefaultParameter
-Aliases: Name
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -GalleryName
 The name of the gallery.
 
@@ -78,6 +63,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the gallery image definition.
+
+```yaml
+Type: System.String
+Parameter Sets: DefaultParameter
+Aliases: GalleryImageDefinitionName
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

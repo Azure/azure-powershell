@@ -14,7 +14,7 @@ Update a gallery.
 
 ### DefaultParameter (Default)
 ```
-Update-AzureRmGallery [-ResourceGroupName] <String> [-GalleryName] <String> [-AsJob] [-Description <String>]
+Update-AzureRmGallery [-ResourceGroupName] <String> -Name <String> [-AsJob] [-Description <String>]
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzureRmGallery [-ResourceId] <String> [-AsJob] [-Description <String>] [-
 
 ### ObjectParameter
 ```
-Update-AzureRmGallery [-Gallery] <PSGallery> [-AsJob] [-Description <String>] [-Tag <Hashtable>]
+Update-AzureRmGallery -InputObject <PSGallery> [-AsJob] [-Description <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -89,31 +89,31 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Gallery
-The PS Gallery Object
+### -InputObject
+The PS Gallery Object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSGallery
 Parameter Sets: ObjectParameter
-Aliases:
+Aliases: Gallery
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -GalleryName
+### -Name
 The name of the gallery.
 
 ```yaml
 Type: System.String
 Parameter Sets: DefaultParameter
-Aliases: Name
+Aliases: GalleryName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

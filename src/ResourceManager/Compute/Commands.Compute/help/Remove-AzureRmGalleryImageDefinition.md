@@ -14,20 +14,19 @@ Delete a gallery image definition.
 
 ### DefaultParameter (Default)
 ```
-Remove-AzureRmGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <String>
- [-GalleryImageDefinitionName] <String> [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <String> -Name <String>
+ [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
-Remove-AzureRmGalleryImageDefinition [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmGalleryImageDefinition [-Force] [-ResourceId] <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
-Remove-AzureRmGalleryImageDefinition [-GalleryImageDefinition] <PSGalleryImage> [-AsJob]
+Remove-AzureRmGalleryImageDefinition [-Force] -InputObject <PSGalleryImage> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -80,43 +79,13 @@ Forces the command to run without asking for user confirmation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DefaultParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GalleryImageDefinition
-The PS Gallery Image Definition Object
-
-```yaml
-Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryImage
-Parameter Sets: ObjectParameter
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -GalleryImageDefinitionName
-The name of the gallery image definition
-
-```yaml
-Type: System.String
-Parameter Sets: DefaultParameter
-Aliases: Name
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -130,6 +99,36 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+The PS Gallery Image Definition Object
+
+```yaml
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryImage
+Parameter Sets: ObjectParameter
+Aliases: GalleryImageDefinition
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the gallery image definition.
+
+```yaml
+Type: System.String
+Parameter Sets: DefaultParameter
+Aliases: GalleryImageDefinitionName
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

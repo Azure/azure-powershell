@@ -15,8 +15,8 @@ Update a gallery image version.
 ### DefaultParameter (Default)
 ```
 Update-AzureRmGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
- -GalleryImageDefinitionName <String> [-GalleryImageVersionName] <String> [-AsJob] [-Tag <Hashtable>]
- [-ReplicaCount <Int32>] [-PublishingProfileExcludeFromLatest] [-PublishingProfileEndOfLifeDate <DateTime>]
+ -GalleryImageDefinitionName <String> -Name <String> [-AsJob] [-Tag <Hashtable>] [-ReplicaCount <Int32>]
+ [-PublishingProfileExcludeFromLatest] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-TargetRegion <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -31,7 +31,7 @@ Update-AzureRmGalleryImageVersion [-ResourceId] <String> [-AsJob] [-Tag <Hashtab
 
 ### ObjectParameter
 ```
-Update-AzureRmGalleryImageVersion [-GalleryImageVersion] <PSGalleryImageVersion> [-AsJob] [-Tag <Hashtable>]
+Update-AzureRmGalleryImageVersion -InputObject <PSGalleryImageVersion> [-AsJob] [-Tag <Hashtable>]
  [-ReplicaCount <Int32>] [-PublishingProfileExcludeFromLatest] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-TargetRegion <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -100,36 +100,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -GalleryImageVersion
-The PS Galley Image Version Object
-
-```yaml
-Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryImageVersion
-Parameter Sets: ObjectParameter
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -GalleryImageVersionName
-The name of the gallery image version
-
-```yaml
-Type: System.String
-Parameter Sets: DefaultParameter
-Aliases: Name
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -GalleryName
 The name of the gallery.
 
@@ -140,6 +110,36 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+The PS Gallery Image Version Object.
+
+```yaml
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryImageVersion
+Parameter Sets: ObjectParameter
+Aliases: GalleryImageVersion
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the gallery image version.
+
+```yaml
+Type: System.String
+Parameter Sets: DefaultParameter
+Aliases: GalleryImageVersionName
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

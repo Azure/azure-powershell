@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         resourceGroupName = this.ResourceGroupName;
                         galleryName = this.GalleryName;
                         galleryImageName = this.GalleryImageDefinitionName;
-                        galleryImageVersionName = this.GalleryImageVersionName;
+                        galleryImageVersionName = this.Name;
                         break;
                 }
 
@@ -112,13 +112,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string GalleryImageDefinitionName { get; set; }
 
-        [Alias("Name")]
+        [Alias("GalleryImageVersionName")]
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 3,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public string GalleryImageVersionName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",

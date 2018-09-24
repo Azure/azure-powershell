@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.GalleryImageDefinitionName, VerbsCommon.New))
+                if (ShouldProcess(this.Name, VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string galleryName = this.GalleryName;
-                    string galleryImageName = this.GalleryImageDefinitionName;
+                    string galleryImageName = this.Name;
 
                     GalleryImage galleryImage = new GalleryImage();
                     galleryImage.Location = this.Location;
@@ -193,13 +193,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string GalleryName { get; set; }
 
-        [Alias("Name")]
+        [Alias("GalleryImageDefinitionName")]
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        public string GalleryImageDefinitionName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (ShouldProcess(this.GalleryImageDefinitionName, VerbsData.Update))
+                if (ShouldProcess(this.Name, VerbsData.Update))
                 {
                     string resourceGroupName;
                     string galleryName;
@@ -329,14 +329,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             galleryImageName = GetInstanceId(this.ResourceId, "Microsoft.Compute/Galleries", "virtualMachines");
                             break;
                         case "ObjectParameter":
-                            resourceGroupName = GetResourceGroupName(this.GalleryImageDefinition.Id);
-                            galleryName = GetResourceName(this.GalleryImageDefinition.Id, "Microsoft.Compute/Galleries");
-                            galleryImageName = GetInstanceId(this.GalleryImageDefinition.Id, "Microsoft.Compute/Galleries", "virtualMachines");
+                            resourceGroupName = GetResourceGroupName(this.InputObject.Id);
+                            galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/Galleries");
+                            galleryImageName = GetInstanceId(this.InputObject.Id, "Microsoft.Compute/Galleries", "virtualMachines");
                             break;
                         default:
                             resourceGroupName = this.ResourceGroupName;
                             galleryName = this.GalleryName;
-                            galleryImageName = this.GalleryImageDefinitionName;
+                            galleryImageName = this.Name;
                             break;
                     }
 
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     if (this.ParameterSetName == "ObjectParameter")
                     {
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<PSGalleryImage, GalleryImage>(this.GalleryImageDefinition, galleryImage);
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<PSGalleryImage, GalleryImage>(this.InputObject, galleryImage);
                     }
                     else
                     {
@@ -492,13 +492,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string GalleryName { get; set; }
 
-        [Alias("Name")]
+        [Alias("GalleryImageDefinitionName")]
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        public string GalleryImageDefinitionName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = "ResourceIdParameter",
@@ -507,12 +507,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ValueFromPipelineByPropertyName = true)]
         public string ResourceId { get; set; }
 
+        [Alias("GalleryImageDefinition")]
         [Parameter(
             ParameterSetName = "ObjectParameter",
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true)]
-        public PSGalleryImage GalleryImageDefinition { get; set; }
+        public PSGalleryImage InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
