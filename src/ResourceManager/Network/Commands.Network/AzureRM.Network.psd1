@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.8.1'
+ModuleVersion = '6.8.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -460,27 +460,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added NetworkProfile functionality. new cmdlets added
-    - Get-AzureRMNetworkProfile
-    - New-AzureRMNetworkProfile
-    - Remove-AzureRMNetworkProfile
-    - Set-AzureRMNetworkProfile
-    - New-AzureRMContainerNicConfig
-    - New-AzureRmContainerNicConfigIpConfig
-* Added service association link on Subnet Model
-* Added cmdlet New-AzureRmVirtualNetworkTap, Get-AzureRmVirtualNetworkTap, Set-AzureRmVirtualNetworkTap, Remove-AzureRmVirtualNetworkTap
-* Added cmdlet Set-AzureRmNEtworkInterfaceTapConfig, Get-AzureRmNEtworkInterfaceTapConfig, Remove-AzureRmNEtworkInterfaceTapConfig
-* Added cmdlets to integrate security provider in cortex
-  - Cmdlets updated with optonal parameters
-	- New-AzureRmVirtualWan : added parameters SecurityProviderName, Office365LocalBreakoutCategory
-	- Update-AzureRmVirtualWan : added parameters SecurityProviderName, Office365LocalBreakoutCategory
-	- New-AzureRmVpnSite : added parameter IsSecuritySite
-	- New-AzureRmVpnConnection : added parameter EnableInternetSecurity
-	- Update-AzureRmVpnConnection : added parameter EnableInternetSecurity
-	- New-AzureRmVirtualHubVnetConnection : added parameter EnableInternetSecurity
-  - New Cmdlets added:
-	- Get-AzureRmVirtualWanSupportedSecurityProvider
-	- Update-AzureRmVirtualHubVnetConnection'
+        ReleaseNotes = '* Expose new Powershell commandlets and models for SdWan P2S cortex feature.
+        - Updated New, Get, Set, Remove for VirtualWan.
+        - Added New-AzureRmP2SVpnServerConfigurationObject to create in-memory P2SVpnServerConfiguration object which can be passed as a list in New/Update-VirtualWan.
+        - Added New, Get, Update, Remove for P2SVpnServerConfiguration into VirtualWan.
+        - Added New, Get, Update, Remove for P2SVpnGateway.
+        - Added Get-AzureRmP2SVpnGatewayVpnProfile to generate VpnProfile package and return Sas-Url where it can be downloaded from.'
 
         # Prerelease string of this module
         Prerelease = 'preview'
