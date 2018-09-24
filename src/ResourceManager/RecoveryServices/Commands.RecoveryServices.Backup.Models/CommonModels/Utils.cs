@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         // month constants
         public const int NumOfMonthsInYear = 12;
 
+        // SQL constants
         public const int MaxAllowedRetentionDurationCountWeeklySql = 520;
         public const int MaxAllowedRetentionDurationCountMonthlySql = 120;
         public const int MaxAllowedRetentionDurationCountYearlySql = 10;
@@ -271,6 +272,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             if (workloadType == ServiceClientModel.WorkloadType.AzureFileShare)
             {
                 return WorkloadType.AzureFiles;
+            }
+            else
+            {
+                throw new Exception("Unsupported WorkloadType: " + workloadType);
+            }
+        }
+
+        /// <summary>
+        /// Returns the Service Client backup management type given the PS workload type.
+        /// </summary>
+        /// <param name="workloadType">PS workload type</param>
+        /// <returns>Service Client workload type</returns>
+        public static string GetServiceClientWorkloadType(string workloadType)
+        {
+            if (workloadType == WorkloadType.AzureVM.ToString())
+            {
+                return ServiceClientModel.WorkloadType.VM;
+            }
+            if (workloadType == WorkloadType.AzureSQLDatabase.ToString())
+            {
+                return ServiceClientModel.WorkloadType.AzureSqlDb;
+            }
+            if (workloadType == WorkloadType.AzureFiles.ToString())
+            {
+                return ServiceClientModel.WorkloadType.AzureFileShare;
             }
             else
             {

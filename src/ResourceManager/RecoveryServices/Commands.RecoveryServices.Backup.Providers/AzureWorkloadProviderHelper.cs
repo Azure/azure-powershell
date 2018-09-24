@@ -235,6 +235,73 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return ConversionHelpers.GetContainerModelList(listResponse);
         }
 
+        public void ValidateSimpleSchedulePolicy(CmdletModel.SchedulePolicyBase policy)
+        {
+            if (policy == null || policy.GetType() != typeof(CmdletModel.SimpleSchedulePolicy))
+            {
+                throw new ArgumentException(string.Format(Resources.InvalidSchedulePolicyException,
+                                            typeof(CmdletModel.SimpleSchedulePolicy).ToString()));
+            }
+
+            // call validation
+            policy.Validate();
+        }
+
+        public void ValidateLongTermRetentionPolicy(CmdletModel.RetentionPolicyBase policy)
+        {
+            if (policy == null || policy.GetType() != typeof(CmdletModel.LongTermRetentionPolicy))
+            {
+                throw new ArgumentException(
+                    string.Format(
+                        Resources.InvalidRetentionPolicyException,
+                        typeof(CmdletModel.LongTermRetentionPolicy).ToString()));
+            }
+
+            // perform validation
+            policy.Validate();
+        }
+
+        public DateTime GenerateRandomScheduleTime()
+        {
+            //Schedule time will be random to avoid the load in service (same is in portal as well)
+            Random rand = new Random();
+            int hour = rand.Next(0, 24);
+            int minute = (rand.Next(0, 2) == 0) ? 0 : 30;
+            return new DateTime(DateTime.Now.Year,
+                DateTime.Now.Month,
+                DateTime.Now.Day,
+                hour,
+                minute,
+                00,
+                DateTimeKind.Utc);
+        }
+
+        public void CopyScheduleTimeToRetentionTimes(CmdletModel.LongTermRetentionPolicy retPolicy,
+                                                      CmdletModel.SimpleSchedulePolicy schPolicy)
+        {
+            // schedule runTimes is already validated if in UTC/not during validate()
+            // now copy times from schedule to retention policy
+            if (retPolicy.IsDailyScheduleEnabled && retPolicy.DailySchedule != null)
+            {
+                retPolicy.DailySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
+            }
+
+            if (retPolicy.IsWeeklyScheduleEnabled && retPolicy.WeeklySchedule != null)
+            {
+                retPolicy.WeeklySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
+            }
+
+            if (retPolicy.IsMonthlyScheduleEnabled && retPolicy.MonthlySchedule != null)
+            {
+                retPolicy.MonthlySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
+            }
+
+            if (retPolicy.IsYearlyScheduleEnabled && retPolicy.YearlySchedule != null)
+            {
+                retPolicy.YearlySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
+            }
+        }
+
         public List<CmdletModel.RecoveryPointBase> ListRecoveryPoints(Dictionary<Enum, object> ProviderData)
         {
             string vaultName = (string)ProviderData[CmdletModel.VaultParams.VaultName];
