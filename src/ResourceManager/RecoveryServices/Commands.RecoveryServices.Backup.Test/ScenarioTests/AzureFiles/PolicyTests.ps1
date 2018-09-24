@@ -24,12 +24,49 @@ function Test-AzureFilePolicy
 	try
 	{
 		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
-		$policyName = "AFSBackupPolicy";
-		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+
+		# Get default policy objects
+		$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+		Assert-NotNull $schedulePolicy
+		$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+		Assert-NotNull $retentionPolicy
+
+		# Create policy
+		$policyName = "newFilePolicy1"
+		$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy `
 			-VaultId $vault.ID `
-			-WorkloadType "AzureFiles"
+			-Name $policyName `
+			-WorkloadType AzureFiles `
+			-RetentionPolicy $retentionPolicy `
+			-SchedulePolicy $schedulePolicy
 		Assert-NotNull $policy
 		Assert-AreEqual $policy.Name $policyName
+
+		#Get Policy
+		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName
+		Assert-NotNull $policy
+		Assert-AreEqual $policy.Name $policyName
+
+		# Get default policy objects (this data is generated partially at random. So, running this again gives different values)
+		$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+		Assert-NotNull $schedulePolicy
+		$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+		Assert-NotNull $retentionPolicy
+
+		# Update policy
+		Set-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-RetentionPolicy $retentionPolicy `
+			-SchedulePolicy $schedulePolicy `
+			-Policy $policy
+
+		# Delete policy
+		Remove-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Force
 	}
 	finally
 	{

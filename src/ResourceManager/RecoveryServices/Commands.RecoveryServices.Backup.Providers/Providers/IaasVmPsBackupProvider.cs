@@ -465,15 +465,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             // do validations
             ValidateAzureVMWorkloadType(workloadType);
-            ValidateAzureVMSchedulePolicy(schedulePolicy);
+            AzureWorkloadProviderHelper.ValidateSimpleSchedulePolicy(schedulePolicy);
             Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
 
             // validate RetentionPolicy
-            ValidateAzureVMRetentionPolicy(retentionPolicy);
+            AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy);
             Logger.Instance.WriteDebug("Validation of Retention policy is successful");
 
             // update the retention times from backupSchedule to retentionPolicy after converting to UTC           
-            CopyScheduleTimeToRetentionTimes((CmdletModel.LongTermRetentionPolicy)retentionPolicy,
+            AzureWorkloadProviderHelper.CopyScheduleTimeToRetentionTimes((CmdletModel.LongTermRetentionPolicy)retentionPolicy,
                                              (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
             Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
 
@@ -539,19 +539,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // validate RetentionPolicy and SchedulePolicy
             if (schedulePolicy != null)
             {
-                ValidateAzureVMSchedulePolicy(schedulePolicy);
+                AzureWorkloadProviderHelper.ValidateSimpleSchedulePolicy(schedulePolicy);
                 ((AzureVmPolicy)policy).SchedulePolicy = schedulePolicy;
                 Logger.Instance.WriteDebug("Validation of Schedule policy is successful");
             }
             if (retentionPolicy != null)
             {
-                ValidateAzureVMRetentionPolicy(retentionPolicy);
+                AzureWorkloadProviderHelper.ValidateLongTermRetentionPolicy(retentionPolicy);
                 ((AzureVmPolicy)policy).RetentionPolicy = retentionPolicy;
                 Logger.Instance.WriteDebug("Validation of Retention policy is successful");
             }
 
             // copy the backupSchedule time to retentionPolicy after converting to UTC
-            CopyScheduleTimeToRetentionTimes(
+            AzureWorkloadProviderHelper.CopyScheduleTimeToRetentionTimes(
                 (CmdletModel.LongTermRetentionPolicy)((AzureVmPolicy)policy).RetentionPolicy,
                 (CmdletModel.SimpleSchedulePolicy)((AzureVmPolicy)policy).SchedulePolicy);
             Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             //Default is daily scedule at 10:30 AM local time
             defaultSchedule.ScheduleRunFrequency = CmdletModel.ScheduleRunType.Daily;
 
-            DateTime scheduleTime = GenerateRandomTime();
+            DateTime scheduleTime = AzureWorkloadProviderHelper.GenerateRandomScheduleTime();
             defaultSchedule.ScheduleRunTimes = new List<DateTime>();
             defaultSchedule.ScheduleRunTimes.Add(scheduleTime);
 
@@ -731,7 +731,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             CmdletModel.LongTermRetentionPolicy defaultRetention = new CmdletModel.LongTermRetentionPolicy();
 
             //Default time is 10:30 local time
-            DateTime retentionTime = GenerateRandomTime();
+            DateTime retentionTime = AzureWorkloadProviderHelper.GenerateRandomScheduleTime();
 
             //Daily Retention policy
             defaultRetention.IsDailyScheduleEnabled = true;
@@ -855,21 +855,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return weeklyRetention;
         }
 
-        private static DateTime GenerateRandomTime()
-        {
-            //Schedule time will be random to avoid the load in service (same is in portal as well)
-            Random rand = new Random();
-            int hour = rand.Next(0, 24);
-            int minute = (rand.Next(0, 2) == 0) ? 0 : 30;
-            return new DateTime(DateTime.Now.Year,
-                DateTime.Now.Month,
-                DateTime.Now.Day,
-                hour,
-                minute,
-                00,
-                DateTimeKind.Utc);
-        }
-
         private void ValidateAzureVMWorkloadType(CmdletModel.WorkloadType type)
         {
             if (type != CmdletModel.WorkloadType.AzureVM)
@@ -923,30 +908,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             ValidateAzureVMWorkloadType(policy.WorkloadType);
-
-            // call validation
-            policy.Validate();
-        }
-
-        private void ValidateAzureVMSchedulePolicy(SchedulePolicyBase policy)
-        {
-            if (policy == null || policy.GetType() != typeof(CmdletModel.SimpleSchedulePolicy))
-            {
-                throw new ArgumentException(string.Format(Resources.InvalidSchedulePolicyException,
-                                            typeof(CmdletModel.SimpleSchedulePolicy).ToString()));
-            }
-
-            // call validation
-            policy.Validate();
-        }
-
-        private void ValidateAzureVMRetentionPolicy(RetentionPolicyBase policy)
-        {
-            if (policy == null || policy.GetType() != typeof(CmdletModel.LongTermRetentionPolicy))
-            {
-                throw new ArgumentException(string.Format(Resources.InvalidRetentionPolicyException,
-                                            typeof(CmdletModel.LongTermRetentionPolicy).ToString()));
-            }
 
             // call validation
             policy.Validate();
@@ -1139,32 +1100,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string IaasVMIdFormat = "/resourceGroups/{0}/providers/{1}/virtualMachines/{2}";
             return string.Format(IaasVMIdFormat, resourceGroup, vmVersion, name);
-        }
-
-        private void CopyScheduleTimeToRetentionTimes(CmdletModel.LongTermRetentionPolicy retPolicy,
-                                                      CmdletModel.SimpleSchedulePolicy schPolicy)
-        {
-            // schedule runTimes is already validated if in UTC/not during validate()
-            // now copy times from schedule to retention policy
-            if (retPolicy.IsDailyScheduleEnabled && retPolicy.DailySchedule != null)
-            {
-                retPolicy.DailySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
-            }
-
-            if (retPolicy.IsWeeklyScheduleEnabled && retPolicy.WeeklySchedule != null)
-            {
-                retPolicy.WeeklySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
-            }
-
-            if (retPolicy.IsMonthlyScheduleEnabled && retPolicy.MonthlySchedule != null)
-            {
-                retPolicy.MonthlySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
-            }
-
-            if (retPolicy.IsYearlyScheduleEnabled && retPolicy.YearlySchedule != null)
-            {
-                retPolicy.YearlySchedule.RetentionTimes = schPolicy.ScheduleRunTimes;
-            }
         }
 
         /// <summary>
