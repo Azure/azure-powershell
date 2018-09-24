@@ -42,8 +42,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string userId,
             SecureString password,
             string credentialType);
-			
-#if !NETSTANDARD
+
         /// <summary>
         /// Get a new authentication token for the given environment
         /// </summary>
@@ -57,6 +56,5 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             string principalId,
             string certificateThumbprint,
             string credentialType);
-#endif	
     }
 }

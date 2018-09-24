@@ -58,6 +58,12 @@ namespace Common.Authentication.Test.Cmdlets
         [Parameter(Mandatory = false)]
         public string Password { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public string ApplicationId { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public string CertificateThumbprint { get; set; }
+
         protected override void BeginProcessing()
         {
             _profile = new AzureRmAutosaveProfile(
@@ -87,6 +93,16 @@ namespace Common.Authentication.Test.Cmdlets
             {
                 Account.Id = _credential.UserName;
                 password = _credential.Password;
+            }
+
+            if (!string.IsNullOrEmpty(ApplicationId))
+            {
+                Account.Id = ApplicationId;
+            }
+
+            if (!string.IsNullOrEmpty(CertificateThumbprint))
+            {
+                Account.SetThumbprint(CertificateThumbprint);
             }
 
             if (!string.IsNullOrEmpty(TenantId))

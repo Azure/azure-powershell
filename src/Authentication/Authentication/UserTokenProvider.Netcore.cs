@@ -106,13 +106,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private AuthenticationContext CreateContext(AdalConfiguration config)
         {
-            return new AuthenticationContext(config.AdEndpoint + config.AdDomain, 
+            return new AuthenticationContext(config.AdEndpoint + config.AdDomain,
                 config.ValidateAuthority, config.TokenCache);
         }
 
         // We have to run this in a separate thread to guarantee that it's STA. This method
         // handles the threading details.
-        private AuthenticationResult AcquireToken(AdalConfiguration config, Action<string> promptAction, 
+        private AuthenticationResult AcquireToken(AdalConfiguration config, Action<string> promptAction,
             string userId, SecureString password, bool renew = false)
         {
             AuthenticationResult result = null;
@@ -235,6 +235,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 message += ": " + ex.InnerException.Message;
             }
             return message;
+        }
+
+        public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint, string credentialType)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
