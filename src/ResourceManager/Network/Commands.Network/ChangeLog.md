@@ -18,6 +18,8 @@
         - Additional information about change #1
 --->
 ## Current Release
+
+## Version 6.8.1-preview
 * Added NetworkProfile functionality. new cmdlets added
     - Get-AzureRMNetworkProfile
     - New-AzureRMNetworkProfile
