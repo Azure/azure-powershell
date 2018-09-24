@@ -642,7 +642,7 @@ function Test-ExpressRouteCircuitConnectionCRUD
         Assert-AreEqual true $deleteinit
 
         $deletepeer = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $peerCircuitName -PassThru -Force
-        Assert-AreEqual true $deleteinit
+        Assert-AreEqual true $deletepeer
 		    
         $list = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count	
