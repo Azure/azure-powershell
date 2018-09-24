@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The SKU for DataMigration service instance, possible values are Basic_1vCore, Basic_2vCores, GeneralPurpose_4vCores"
+            HelpMessage = "The SKU for DataMigration service instance, possible values are GeneralPurpose_1vCore, GeneralPurpose_2vCores, GeneralPurpose_4vCores, BusinessCritical_4vCores"
         )]
         [ValidateNotNullOrEmpty]
-        [PSArgumentCompleter("Basic_1vCore", "Basic_2vCores", "GeneralPurpose_4vCores")]
+        [PSArgumentCompleter("GeneralPurpose_1vCore", "GeneralPurpose_2vCores", "GeneralPurpose_4vCores", "BusinessCritical_4vCores")]
         public string Sku { get; set; }
 
         [Parameter(
