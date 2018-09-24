@@ -33,10 +33,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// The Sql client to be used by this end points communicator
         /// </summary>
         private static Management.Sql.LegacySdk.SqlManagementClient LegacyClient { get; set; }
-        /// <summary>
-        /// The Sql client to be used by this end points communicator
-        /// </summary>
-        private static Management.Sql.SqlManagementClient SqlClient { get; set; }
 
         /// <summary>
         /// The resources management client used by this communicator
@@ -400,11 +396,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         private Management.Sql.SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
-            if (SqlClient == null)
-            {
-                SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            }
-            return SqlClient;
+            // Note: client is not cached in static field because that causes ObjectDisposedException in functional tests.
+            return AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>
