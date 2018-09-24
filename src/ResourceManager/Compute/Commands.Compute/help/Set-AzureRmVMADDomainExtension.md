@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -JoinOption
-Specifies the join option.
+Specifies the join option. For join options see [fJoinOptions](https://docs.microsoft.com/en-us/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)
 
 ```yaml
 Type: System.Nullable`1[System.UInt32]
@@ -121,7 +121,6 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-For join options see [fJoinOptions](https://docs.microsoft.com/en-us/windows/desktop/api/lmjoin/nf-lmjoin-netjoindomain)
 
 ### -Location
 Specifies the location of the virtual machine.
