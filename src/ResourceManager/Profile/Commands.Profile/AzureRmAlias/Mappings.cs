@@ -23,22 +23,17 @@ namespace Microsoft.Azure.Commands.Profile.AzureRmAlias
     {
         public static Dictionary<string, object> GetCaseInsensitiveMapping()
         {
-            string jsonmapping = GetJsonMapping();
-            Dictionary<string, object> caseSensitiveMapping = (Dictionary<string, object>)JsonConvert.DeserializeObject(jsonmapping, typeof(Dictionary<string, object>));
-            var mapping = new Dictionary<string, object>(StringComparer.CurrentCultureIgnoreCase);
-            foreach (var key in caseSensitiveMapping.Keys)
+            using (StreamReader r = new StreamReader(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + 
+                Path.DirectorySeparatorChar + "AzureRmAlias" + Path.DirectorySeparatorChar + "Mappings.json"))
             {
-                mapping.Add(key, caseSensitiveMapping[key]);
-            }
+                Dictionary<string, object> caseSensitiveMapping = (Dictionary<string, object>)JsonConvert.DeserializeObject(r.ReadToEnd(), typeof(Dictionary<string, object>));
+                var mapping = new Dictionary<string, object>(StringComparer.CurrentCultureIgnoreCase);
+                foreach (var key in caseSensitiveMapping.Keys)
+                {
+                    mapping.Add(key, caseSensitiveMapping[key]);
+                }
 
-            return mapping;
-        }
-
-        public static string GetJsonMapping()
-        {
-            using (StreamReader r = new StreamReader("./Mappings.json"))
-            {
-                return r.ReadToEnd();
+                return mapping;
             }
         }
     }

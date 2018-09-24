@@ -34,13 +34,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Newtonsoft.Json.9.dll"/>
-    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Newtonsoft.Json.10.dll"/>
+    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Newtonsoft.Json.9.dll" />
+    <PreLoadAssemblies Include="$(ProjectDir)..\..\..\lib\Newtonsoft.Json.10.dll" />
   </ItemGroup>
 
     <ItemGroup>
-    <StorageDependencies Include="$(ProjectDir)..\..\..\lib\Microsoft.WindowsAzure.Storage.dll"/>
-    <StorageDependencies Include="$(ProjectDir)..\..\..\lib\Microsoft.WindowsAzure.Storage.DataMovement.dll"/>
+    <StorageDependencies Include="$(ProjectDir)..\..\..\lib\Microsoft.WindowsAzure.Storage.dll" />
+    <StorageDependencies Include="$(ProjectDir)..\..\..\lib\Microsoft.WindowsAzure.Storage.DataMovement.dll" />
   </ItemGroup>
 
 
@@ -60,6 +60,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="AzureRmAlias\Mappings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="AzureRmProfileStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -77,6 +80,7 @@
     <Content Include="*.ps1" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.Netcore.psd1" CopyToOutputDirectory="PreserveNewest" />
     <Content Include="*.psm1" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="*.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
