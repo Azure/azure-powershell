@@ -110,11 +110,7 @@
 		$job | Wait-Job
 		$sa = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $name
 	}
- 	#return $name
-	Assert-NotNull $name
-	Assert-NotNull $sa
-	Assert-NotNull $sa.Context
-	return $sa
+ 	return $name
 }
  function Backup-Item(
 	$vault,
