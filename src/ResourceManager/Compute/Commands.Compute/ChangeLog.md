@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix Get-AzureRmVM -ResourceGroupName <rg> to return more than 50 results if needed
 
 ## Version 5.6.0
 * Move dependencies on Keyvault and Storage to the common dependencies
