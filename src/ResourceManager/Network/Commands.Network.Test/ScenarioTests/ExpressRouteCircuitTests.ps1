@@ -576,8 +576,8 @@ function Test-ExpressRouteCircuitConnectionCRUD
         Assert-NotNull $initckt.Location
         Assert-NotNull $initckt.Etag
         Assert-AreEqual 1 @($initckt.Peerings).Count
-        Assert-AreEqual "Premium_MeteredData" $initckt.Sku.Name
-        Assert-AreEqual "Premium" $initckt.Sku.Tier
+        Assert-AreEqual "Standard_MeteredData" $initckt.Sku.Name
+        Assert-AreEqual "Standard" $initckt.Sku.Tier
         Assert-AreEqual "MeteredData" $initckt.Sku.Family
         Assert-AreEqual "equinix" $initckt.ServiceProviderProperties.ServiceProviderName
         Assert-AreEqual "Silicon Valley" $initckt.ServiceProviderProperties.PeeringLocation
@@ -598,8 +598,8 @@ function Test-ExpressRouteCircuitConnectionCRUD
         Assert-NotNull $peerckt.Location
         Assert-NotNull $peerckt.Etag
         Assert-AreEqual 1 @($peerckt.Peerings).Count
-        Assert-AreEqual "Premium_MeteredData" $peerckt.Sku.Name
-        Assert-AreEqual "Premium" $peerckt.Sku.Tier
+        Assert-AreEqual "Standard_MeteredData" $peerckt.Sku.Name
+        Assert-AreEqual "Standard" $peerckt.Sku.Tier
         Assert-AreEqual "MeteredData" $peerckt.Sku.Family
         Assert-AreEqual "equinix" $peerckt.ServiceProviderProperties.ServiceProviderName
         Assert-AreEqual "Chicago" $peerckt.ServiceProviderProperties.PeeringLocation
