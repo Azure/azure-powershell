@@ -763,6 +763,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided service principal secret will be included in the &apos;{0}&apos; file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections..
+        /// </summary>
+        internal static string ServicePrincipalWarning {
+            get {
+                return ResourceManager.GetString("ServicePrincipalWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Setting property &apos;{0}&apos;=&apos;{1}&apos;.
         /// </summary>
         internal static string SetPropertyAction {
