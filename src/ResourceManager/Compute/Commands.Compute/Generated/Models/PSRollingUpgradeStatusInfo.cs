@@ -19,11 +19,23 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSRollingUpgradeStatusInfo : RollingUpgradeStatusInfo
+    public partial class PSRollingUpgradeStatusInfo
     {
+        public RollingUpgradePolicy Policy { get; set; }
+        public RollingUpgradeRunningStatus RunningStatus { get; set; }
+        public RollingUpgradeProgressInfo Progress { get; set; }
+        public ApiError Error { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Location { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
+
     }
 }

@@ -19,12 +19,14 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Management.Compute.Models;
+using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSSnapshot : Snapshot
+    public partial class PSSnapshot
     {
         // Gets or sets the property of 'ResourceGroupName'
         public string ResourceGroupName
@@ -37,5 +39,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 return m.Success ? m.Groups["rgname"].Value : null;
             }
         }
+
+        public string ManagedBy { get; set; }
+        public SnapshotSku Sku { get; set; }
+        public DateTime? TimeCreated { get; set; }
+        public OperatingSystemTypes? OsType { get; set; }
+        public CreationData CreationData { get; set; }
+        public int? DiskSizeGB { get; set; }
+        public EncryptionSettings EncryptionSettings { get; set; }
+        public string ProvisioningState { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Location { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
+
     }
 }

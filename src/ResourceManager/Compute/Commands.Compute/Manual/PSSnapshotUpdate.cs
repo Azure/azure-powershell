@@ -18,8 +18,8 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSSnapshotUpdate : SnapshotUpdate
+    public partial class PSSnapshotUpdate
     {
-        public new Microsoft.Azure.Management.Compute.Models.DiskSku Sku { get; set; }
+        public DiskSku Sku { get; set; }
     }
 }
