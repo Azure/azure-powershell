@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
             this.Name = serviceUnit.Name;
             this.TargetResourceGroup = serviceUnit.TargetResourceGroup;
             this.DeploymentMode = serviceUnit.DeploymentMode;
-            this.ParametersArtifactSourceRelativePath = serviceUnit.Artifacts.ParametersArtifactSourceRelativePath;
-            this.ParametersUri = serviceUnit.Artifacts.ParametersUri;
-            this.TemplateArtifactSourceRelativePath = serviceUnit.Artifacts.TemplateArtifactSourceRelativePath;
-            this.TemplateUri = serviceUnit.Artifacts.TemplateUri;
+            this.ParametersArtifactSourceRelativePath = serviceUnit.Artifacts?.ParametersArtifactSourceRelativePath;
+            this.ParametersUri = serviceUnit.Artifacts?.ParametersUri;
+            this.TemplateArtifactSourceRelativePath = serviceUnit.Artifacts?.TemplateArtifactSourceRelativePath;
+            this.TemplateUri = serviceUnit.Artifacts?.TemplateUri;
             this.Steps = serviceUnit.Steps?.Select(s => new PSRolloutStep(s)).ToList();
         }
 		/// <summary>

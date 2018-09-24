@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 Name = this.Name
             };
 
-            return this.DeploymentManagerClient.DeleteRollout(Rollout);
+            return this.DeploymentManagerClient.DeleteRollout(rolloutToDelete);
         }
     }
 }
