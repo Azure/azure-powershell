@@ -228,7 +228,7 @@ function Test-GetUserTableTask
 		$userName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_USERNAME")
 		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_PASSWORD")
 		$cred = Get-Creds $userName $password
-		$selectedDbs = @("TestDb")
+		$selectedDbs = @("JasmineTest")
 
 		$task = New-AzureRmDataMigrationTask -TaskType GetUserTablesSql -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo -SourceCred $cred -SelectedDatabase $selectedDbs
 
@@ -280,13 +280,9 @@ function Test-MigrateSqlSqlDB
 		$tableMap = New-Object 'system.collections.generic.dictionary[string,string]'
 		$tableMap.Add("dbo.TestTable1", "dbo.TestTable1")
 		$tableMap.Add("dbo.TestTable2","dbo.TestTable2")
-		$tableMap.Add("HR.EMPLOYEES","HR.EMPLOYEES")
-		$tableMap.Add("HR.JOBS","HR.JOBS")
-		$tableMap.Add("HR.LOCATIONS","HR.LOCATIONS")
-		$tableMap.Add("HR.REGIONS","HR.REGIONS")
 
 		$sourceDbName = "MigrateOneTime"
-		$targetDbName = "MigrateOneTime"
+		$targetDbName = "JasmineTest"
 
 		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDb -Name $sourceDbName -TargetDatabaseName $targetDbName -TableMap $tableMap
 		Assert-AreEqual $sourceDbName $selectedDbs[0].Name
@@ -395,7 +391,7 @@ function Test-MigrateSqlSqlDBMi
 		Assert-AreEqual $fileSharePassword $backupFileShare.Password
 
 		$sourceDbName = "TestMI"
-		$targetDbName = "TestMI"
+		$targetDbName = "TestMI6"
         $backupMode = "CreateBackup"
 
 		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name $sourceDbName -TargetDatabaseName $targetDbName -BackupFileShare $backupFileShare
@@ -631,8 +627,8 @@ function Test-GetUserTableSyncTask
 		$targetPassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDB_PASSWORD")
 		$targetCred = Get-Creds $targetUserName $targetPassword
 
-		$selectedSourceDb = @("TestSource")
-		$selectedTargetDb = @("TestTarget")
+		$selectedSourceDb = @("MigrateOneTime")
+		$selectedTargetDb = @("JasmineTest")
 
 		$task = New-AzureRmDataMigrationTask -TaskType GetUserTablesSqlSync `
 			-ResourceGroupName $rg.ResourceGroupName `
@@ -693,8 +689,8 @@ function Test-ValidateMigrationInputSqlSqlDbSync
 		$tableMap.Add("dbo.TestTable1", "dbo.TestTable1")
 		$tableMap.Add("dbo.TestTable2","dbo.TestTable2")
 
-        $sourceDb = "TestSource"
-        $targetDb = "TestTarget"
+        $sourceDb = "MigrateOneTime"
+        $targetDb = "JasmineTest"
 
 		$selectedDbs = New-AzureRmDmsSyncSelectedDB -TargetDatabaseName $targetDb `
 		  -SchemaName dbo `
@@ -759,8 +755,8 @@ function Test-MigrateSqlSqlDBSync
 		$tableMap.Add("dbo.TestTable1", "dbo.TestTable1")
 		$tableMap.Add("dbo.TestTable2","dbo.TestTable2")
 
-        $sourceDb = "TestSource"
-        $targetDb = "TestTarget"
+        $sourceDb = "MigrateOneTime"
+        $targetDb = "JasmineTest"
 
 		$selectedDbs = New-AzureRmDmsSyncSelectedDB -TargetDatabaseName $targetDb `
 		  -SchemaName dbo `
