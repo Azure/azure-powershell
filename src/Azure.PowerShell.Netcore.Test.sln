@@ -41,6 +41,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Management.Cogniti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Dns.Test.Netcore", "ResourceManager\Dns\Commands.Dns.Test\Commands.Dns.Test.Netcore.csproj", "{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.MachineLearning.Test.Netcore", "ResourceManager\MachineLearning\Commands.MachineLearning.Test\Commands.MachineLearning.Test.Netcore.csproj", "{CB3C4F1E-B502-4CC4-A2AD-EEC77BAA1838}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -279,6 +281,18 @@ Global
 		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Release|x64.Build.0 = Release|Any CPU
 		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Release|x86.ActiveCfg = Release|Any CPU
 		{7502C17A-88F8-4852-9E1D-7E9FA30D1B9C}.Release|x86.Build.0 = Release|Any CPU
+		{CB3C4F1E-B502-4CC4-A2AD-EEC77BAA1838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB3C4F1E-B502-4CC4-A2AD-EEC77BAA1838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB3C4F1E-B502-4CC4-A2AD-EEC77BAA1838}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CB3C4F1E-B502-4CC4-A2AD-EEC77BAA1838}.Debug|x64.Build.0 = Debug|Any CPU
+		{CB3C4F1E-B502-4CC4-A2AD-EEC77BAA1838}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CB3C4F1E-B502-4CC4-A2AD-EEC77BAA1838}.Debug|x86.Build.0 = Debug|Any CPU
+		{CB3C4F1E-B502-4CC4-A2AD-EEC77BAA1838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB3C4F1E-B502-4CC4-A2AD-EEC77BAA1838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB3C4F1E-B502-4CC4-A2AD-EEC77BAA1838}.Release|x64.ActiveCfg = Release|Any CPU
+		{CB3C4F1E-B502-4CC4-A2AD-EEC77BAA1838}.Release|x64.Build.0 = Release|Any CPU
+		{CB3C4F1E-B502-4CC4-A2AD-EEC77BAA1838}.Release|x86.ActiveCfg = Release|Any CPU
+		{CB3C4F1E-B502-4CC4-A2AD-EEC77BAA1838}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
