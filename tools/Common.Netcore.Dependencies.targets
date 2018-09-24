@@ -7,49 +7,49 @@
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.15" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Aks" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.Aks" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.ResourceManager" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.ResourceManager" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Authorization" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.Authorization" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Common" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.Common" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Compute" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.Compute" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Graph.Rbac" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.Graph.Rbac" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.KeyVault" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.KeyVault" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Network" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.Network" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.ResourceManager" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.ResourceManager" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Storage" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.Storage" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Storage.Management" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.Storage.Management" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Strategies" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.Strategies" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Azure.PowerShell.Websites" Version="1.1.2-preview" >
+    <PackageReference Include="Microsoft.Azure.PowerShell.Websites" Version="1.1.3-preview" >
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
@@ -66,7 +66,7 @@
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.0-preview-06" PrivateAssets="All" />
   </ItemGroup>
   <PropertyGroup>
-    <StorageToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.storage\1.1.2-preview\tools\</StorageToolsPath>
+    <StorageToolsPath>$(NugetPackageRoot)microsoft.azure.powershell.storage\1.1.3-preview\tools\</StorageToolsPath>
   </PropertyGroup>
   <ItemGroup Condition="'$(OmitJsonPackage)' != 'true'">
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" >

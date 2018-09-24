@@ -15,11 +15,30 @@ if($PSEdition -eq 'Desktop' -and (Test-Path $preloadPath))
     try 
     {
         Get-ChildItem -Path $preloadPath -Filter "*.dll" | ForEach-Object {  
-            [System.Reflection.Assembly]::Load([System.IO.File]::ReadAllBytes($_.FullName)) 
+            Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
         }
     }
     catch {}
 }
+
+$netCorePath = (Join-Path $PSScriptRoot -ChildPath "NetCoreAssemblies")
+if($PSEdition -eq 'Core' -and (Test-Path $netCorePath))
+{
+    try 
+    {
+        $loadedAssemblies = ([System.AppDomain]::CurrentDomain.GetAssemblies() | %{New-Object -TypeName System.Reflection.AssemblyName -ArgumentList $_.FullName} )
+        Get-ChildItem -Path $netCorePath -Filter "*.dll" | ForEach-Object {  
+            $assemblyName = ([System.Reflection.AssemblyName]::GetAssemblyName($_.FullName))
+            $matches = ($loadedAssemblies | Where-Object {$_.Name -eq $assemblyName.Name})
+            if (-not $matches)
+            {
+                Add-Type -Path $_.FullName -ErrorAction Ignore | Out-Null
+            }
+        }
+    }
+    catch {}
+}
+
 
 %IMPORTED-DEPENDENCIES%
 
