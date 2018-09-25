@@ -46,6 +46,7 @@
     <PackageReference Include="Microsoft.Azure.Management.PolicyInsights" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="3.1.1-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.9.0-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.ServiceBus" Version="1.4.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.18.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="8.1.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Websites" Version="2.0.0" PrivateAssets="All" />
