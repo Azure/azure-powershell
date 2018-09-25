@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
 Module Name: AzureRM.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.security/set-azurermsecuritypricing
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Set-AzureRmSecurityPricing.md
 schema: 2.0.0
 ---
 
