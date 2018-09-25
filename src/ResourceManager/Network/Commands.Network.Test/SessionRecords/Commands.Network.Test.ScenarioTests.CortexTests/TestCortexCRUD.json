@@ -19095,6 +19095,7 @@
           "Microsoft.Azure.Management.Storage.StorageManagementClient/6.1.0.0"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"keys\": [\r\n    {\r\n      \"keyName\": \"key1\",\r\n      \"value\": \"4zPKtgEUI6mwS/pH0zlqX/VGnBx2VjhpfkRCsfyplog8YAYFp7p1vIAleTd7lY1B+Y4ltJ4+MnGwVZVtk56hjg==\",\r\n      \"permissions\": \"FULL\"\r\n    },\r\n    {\r\n      \"keyName\": \"key2\",\r\n      \"value\": \"c2H2VOPdV2GDV3Pj7av6H7U2oGC3V4686R9kjxBimr1WIRFsp+stuT9Mm5wZ+Cga7Nb3ouJ06jYnIhuG65glLg==\",\r\n      \"permissions\": \"FULL\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -19143,6 +19144,7 @@
       "RequestUri": "/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps4043/providers/Microsoft.Network/virtualWans/ps9127/vpnConfiguration?api-version=2018-08-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOTQ3ZDQ3YjQtNzg4My00YmI5LTlkODUtYzVlOGUyZjU3MmNlL3Jlc291cmNlR3JvdXBzL3BzNDA0My9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvdmlydHVhbFdhbnMvcHM5MTI3L3ZwbkNvbmZpZ3VyYXRpb24/YXBpLXZlcnNpb249MjAxOC0wOC0wMQ==",
       "RequestMethod": "POST",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"vpnSites\": [\r\n    \"/subscriptions/947d47b4-7883-4bb9-9d85-c5e8e2f572ce/resourceGroups/ps4043/providers/Microsoft.Network/vpnSites/ps5945\"\r\n  ],\r\n  \"outputBlobSasUrl\": \"https://blobps4043.blob.core.windows.net/contps4043/emptyfile.txt?sv=2018-03-28&sr=b&sig=xv9rOeguVf5keADB1HMYSkp%2BRhjiYa6wEdl2ihHniEE%3D&st=2018-09-21T05%3A33%3A39Z&se=2018-09-22T06%3A33%3A39Z&sp=rwd\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
@@ -19228,6 +19230,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/19.5.0.0"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"sasUrl\": \"https://blobps4043.blob.core.windows.net/contps4043/emptyfile.txt?sv=2018-03-28&sr=b&sig=xv9rOeguVf5keADB1HMYSkp%2BRhjiYa6wEdl2ihHniEE%3D&st=2018-09-21T05%3A33%3A39Z&se=2018-09-22T06%3A33%3A39Z&sp=rwd\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -19289,6 +19292,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/19.5.0.0"
         ]
       },
+       //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"sasUrl\": \"https://blobps4043.blob.core.windows.net/contps4043/emptyfile.txt?sv=2018-03-28&sr=b&sig=xv9rOeguVf5keADB1HMYSkp%2BRhjiYa6wEdl2ihHniEE%3D&st=2018-09-21T05%3A33%3A39Z&se=2018-09-22T06%3A33%3A39Z&sp=rwd\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
