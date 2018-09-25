@@ -320,7 +320,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-      <ProjectReference Include="..\..\..\ResourceManager\Profile\Commands.Profile\Commands.Profile.csproj">
+    <ProjectReference Include="..\..\..\ResourceManager\Profile\Commands.Profile\Commands.Profile.csproj">
       <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
       <Name>Commands.Profile</Name>
     </ProjectReference>
@@ -338,9 +338,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Compute.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="AzureRM.Compute.psd1" />
     <None Include="Extension\AzureDiskEncryption\Scripts\AzureDiskEncryptionPreRequisiteSetup.ps1" />
     <None Include="Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
