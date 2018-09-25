@@ -19,6 +19,16 @@
 -->
 ## Current Release
 
-## Version 3.5.1
-DNS module supporting the api vesrsion 2016-04-01 and common run time of azurerm.profile
-The module is exact copy of 3.4.1 version with updated common dependencies
+## Version 0.2.0
+* Module dependencies updated
+	* AzureRM.Profile
+	* AzureRM.Resources
+* Support handling names of nested resources
+	* Get-AzsUpdate
+	* Get-UpdateRun
+	* Install-AzsUpdate
+	* Resume-AzsUpdate
+* Deprecations
+	* Get-AzsBackup, the parameter Update is now an alias for Name
+* Bug fixes
+	* Handle ErrrorAction correctly now
