@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestEnableContainerContiniousDeploymentAndGetUrl()
+        public void TestEnableContainerContinuousDeploymentAndGetUrl()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-EnableContainerContiniousDeploymentAndGetUrl");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-EnableContainerContinuousDeploymentAndGetUrl");
         }
 
         [Fact]

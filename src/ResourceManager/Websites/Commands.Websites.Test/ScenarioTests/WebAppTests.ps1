@@ -592,11 +592,11 @@ function Test-CreateNewWebAppHyperV
 
 <#
 .SYNOPSIS
-Tests enagbling continious deployment for container and getting continious deployment url.
+Tests enagbling continuous deployment for container and getting continuous deployment url.
 .DESCRIPTION
 SmokeTest
 #>
-function Test-EnableContainerContiniousDeploymentAndGetUrl
+function Test-EnableContainerContinuousDeploymentAndGetUrl
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
