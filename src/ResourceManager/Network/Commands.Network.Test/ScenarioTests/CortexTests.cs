@@ -31,6 +31,8 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestCortexCRUD()
         {
@@ -40,6 +42,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestP2SCortexCRUD()
         {
