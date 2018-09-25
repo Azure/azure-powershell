@@ -18,16 +18,16 @@ Set-AzureRmDataLakeStoreVirtualNetworkRule [-Account] <String> [-Name] <String> 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmDataLakeStoreVirtualNetworkRule** cmdlet modifies the specified virtual network rule in the specified Data Lake Store.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRmDataLakeStoreVirtualNetworkRule -Account "dls" -VirtualNetworkRuleName "myVNET" -VirtualNetworkSubnetId "subnetId"
 ```
 
-{{ Add example description here }}
+Updates the subnet id of virtual network rule "myVNET" in account "dls" to "subnetId"
 
 ## PARAMETERS
 

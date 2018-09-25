@@ -18,16 +18,16 @@ Remove-AzureRmDataLakeStoreVirtualNetworkRule [-Account] <String> -Name <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmDataLakeStoreVirtualNetworkRule** cmdlet removes the specified virtual network rule in the specified Data Lake Store.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmDataLakeStoreVirtualNetworkRule -Account "dls" -VirtualNetworkRuleName "myVNET"
 ```
 
-{{ Add example description here }}
+Removes virtual network rule "myVNET" from account "dls"
 
 ## PARAMETERS
 

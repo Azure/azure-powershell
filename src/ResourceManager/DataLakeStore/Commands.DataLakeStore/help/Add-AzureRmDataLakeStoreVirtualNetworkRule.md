@@ -18,16 +18,16 @@ Add-AzureRmDataLakeStoreVirtualNetworkRule [-Account] <String> [-Name] <String> 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Add-AzureRmDataLakeStoreVirtualNetworkRule** cmdlet adds a virtual network rule to the specified Data Lake Store account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Add-AzureRmDataLakeStoreVirtualNetworkRule -Account "dls" -VirtualNetworkRuleName "myVNET" -VirtualNetworkSubnetId "subnetId"
 ```
 
-{{ Add example description here }}
+This creates a new virtual network rule called "myVNET" in account "dls" with a subnet id "subnetId"
 
 ## PARAMETERS
 

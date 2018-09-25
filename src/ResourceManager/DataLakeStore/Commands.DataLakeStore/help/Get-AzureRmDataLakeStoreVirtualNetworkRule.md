@@ -19,16 +19,17 @@ Get-AzureRmDataLakeStoreVirtualNetworkRule [-Account] <String> [-Name <String>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Get-AzureRmDataLakeStoreVirtualNetworkRule cmdlet gets the specified virtual network rules in the specified Data Lake Store.
+If no virtual network rule is specified, then lists all virtual network rules for the account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmDataLakeStoreVirtualNetworkRule -Account "dls" -VirtualNetworkRuleName "myVNET"
 ```
 
-{{ Add example description here }}
+Returns the virtual network rule named "myVNET" from account "dls"
 
 ## PARAMETERS
 
