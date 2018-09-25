@@ -108,7 +108,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // If the cmdlet cannot be found, log an issue
                 else
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: oldCmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedCmdlet,
@@ -145,7 +145,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // If the alias cannot be found, log an issue
                 if (!aliasSet.Contains(oldAlias))
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: oldCmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.RemovedCmdletAlias,
@@ -171,7 +171,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             // If the old cmdlet implements SupportsShouldProcess and the new cmdlet does not, log an issue
             if (oldCmdlet.SupportsShouldProcess && !newCmdlet.SupportsShouldProcess)
             {
-                issueLogger.LogBreakingChangeIssue(
+                issueLogger?.LogBreakingChangeIssue(
                     cmdlet: oldCmdlet,
                     severity: 0,
                     problemId: ProblemIds.BreakingChangeProblemId.RemovedShouldProcess,
@@ -194,7 +194,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             // If the old cmdlet implements SupportsPaging and the new cmdlet does not, log an issue
             if (oldCmdlet.SupportsPaging && !newCmdlet.SupportsPaging)
             {
-                issueLogger.LogBreakingChangeIssue(
+                issueLogger?.LogBreakingChangeIssue(
                     cmdlet: oldCmdlet,
                     severity: 0,
                     problemId: ProblemIds.BreakingChangeProblemId.RemovedPaging,
@@ -239,17 +239,22 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                     _typeMetadataHelper.CheckOutputType(oldCmdlet, oldOutput.Type, newOutputType, issueLogger);
                 }
-                // If the output cannot be found, log an issue
+                // If the output cannot be found by name, check if the old output can be mapped
+                // to any of the new output types
                 else
                 {
-                    issueLogger.LogBreakingChangeIssue(
-                        cmdlet: oldCmdlet,
-                        severity: 0,
-                        problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputType,
-                        description: string.Format(Properties.Resources.ChangedOutputTypeDescription,
-                            oldCmdlet.Name, oldOutput.Type.Name),
-                        remediation: string.Format(Properties.Resources.ChangedOutputTypeRemediation,
-                            oldCmdlet.Name, oldOutput.Type.Name));
+                    var foundOutput = outputDictionary.Values.Any(o => _typeMetadataHelper.CompareTypeMetadata(oldCmdlet, oldOutput.Type, o, null));
+                    if (!foundOutput)
+                    {
+                        issueLogger?.LogBreakingChangeIssue(
+                            cmdlet: oldCmdlet,
+                            severity: 0,
+                            problemId: ProblemIds.BreakingChangeProblemId.ChangedOutputType,
+                            description: string.Format(Properties.Resources.ChangedOutputTypeDescription,
+                                oldCmdlet.Name, oldOutput.Type.Name),
+                            remediation: string.Format(Properties.Resources.ChangedOutputTypeRemediation,
+                                oldCmdlet.Name, oldOutput.Type.Name));
+                    }
                 }
             }
         }
@@ -302,7 +307,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 // If the parameter cannot be found, log an issue
                 if (!parameterDictionary.ContainsKey(oldParameter.ParameterMetadata.Name))
                 {
-                    issueLogger.LogBreakingChangeIssue(
+                    issueLogger?.LogBreakingChangeIssue(
                         cmdlet: oldCmdlet,
                         severity: 0,
                         problemId: ProblemIds.BreakingChangeProblemId.ChangeDefaultParameter,
