@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 5.0.0-preview
+* Added the ability to see what version of the Azure Batch Node Agent is running on each of the VMs in a pool, via the new `NodeAgentInformation` property on `PSComputeNode`.
+* Removed the `ValidationStatus` property from `PSTaskCounts`.
+* The `Caching` default for `PSDataDisk` is now `ReadWrite` instead of `None`.
+
 ## Version 4.1.5
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies
