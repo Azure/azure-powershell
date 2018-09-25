@@ -56,8 +56,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1'; },
-        @{ModuleName = 'AzureRM.Resources'; ModuleVersion = '6.0.2'; })
+    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.2'; },
+        @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; })
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @('.\ref\fullclr\Microsoft.AzureStack.Management.Subscriptions.Admin.dll')
@@ -91,11 +91,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
     'Get-AzsDirectoryTenant', 'New-AzsPlan', 'Get-AzsPlan',
     'Remove-AzsOfferDelegation', 'Get-AzsOfferDelegation',
     'Get-AzsUserSubscription', 'Set-AzsOffer',
-    'Remove-AzsPlan', 'Set-AzsPlan', 'New-OfferObject',
-    'New-CheckNameAvailabilityDefinitionObject',
-    'New-DirectoryTenantObject', 'New-AddonPlanDefinitionObject',
-    'New-OfferDelegationObject', 'New-PlanAcquisitionPropertiesObject',
-    'New-PlanObject', 'New-SubscriptionObject'
+    'Remove-AzsPlan', 'Set-AzsPlan',
+    'New-AddonPlanDefinitionObject'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()
@@ -121,7 +118,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags         = @('AzureStack', 'Azure Stack', 'Admin', 'Subscriptions', 'Azure Stack Admin Subscription', 'Offer', 'Plan', 'Managed')
+            Tags         = @('AzureStack', 'Admin', 'Subscriptions', 'Offer', 'Plan', 'Managed')
 
             # A URL to the license for this module.
             LicenseUri   = 'https://aka.ms/azps-license'
@@ -133,7 +130,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.8.12
+            ReleaseNotes = '## 2018.9.10
             * Module dependencies updated
                 * AzureRM.Profile
                 * AzureRM.Resources

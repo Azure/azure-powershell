@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.1' })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.5.2' })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Dns.dll'
@@ -111,7 +111,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Updated for common code changes'
+        ReleaseNotes = '* Dns module supported for the profile 2018-03-01-hybrid
+* This version supports azure stack with the update 1808
+* Api version supported by the module is 2016-04-01
+* This module includes functionalities up to the existing AzureRm.Dns module version 3.4.1 with the changes for azure powershell common dependencies'        
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
