@@ -75,10 +75,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EventHub\Commands.EventHub\Commands.EventHub.csproj">
-      <Project>{1e60d2ac-dea7-403c-86dc-7b8c47f54668}</Project>
-      <Name>Commands.EventHub</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Commands.IotHub\Commands.IotHub.csproj">
       <Project>{78770a60-b18a-4442-a982-0cee0356f8db}</Project>
       <Name>Commands.IotHub</Name>
