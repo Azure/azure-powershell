@@ -1,4 +1,4 @@
-$mapping = @{}
+$mapping = [ordered]@{}
 
 $psd1s = Get-ChildItem -Path $PSScriptRoot/../src -Recurse | `
     Where-Object {($_.Name -like "*AzureRM*psd1"  -or $_.Name -eq "Azure.AnalysisServices.psd1" -or $_.Name -eq "Azure.Storage.psd1") `
@@ -8,7 +8,7 @@ $psd1s | ForEach-Object {
     $name = (($_.Name -replace "AzureRM", "Az") -replace "Azure", "Az") -replace ".psd1", ""
     if (!($mapping.Contains($name)))
     {
-        $mapping.Add($name, @{})
+        $mapping.Add($name, [ordered]@{})
     }
     Import-LocalizedData -BindingVariable psd1info -BaseDirectory $_.DirectoryName -FileName $_.Name
     $psd1info.CmdletsToExport | ForEach-Object {
@@ -40,5 +40,4 @@ $psd1s | ForEach-Object {
     }
 }
 
-$json = ConvertTo-Json $mapping
-$json -replace "`"", "`'" | Out-File $PSScriptRoot/AliasMapping.json
+ConvertTo-Json $mapping | Set-Content -Path $PSScriptRoot/../src/ResourceManager/Profile/Commands.Profile/AzureRmAlias/Mappings.json
