@@ -103,7 +103,6 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
             public Task<ResourceConfig<SignalRResource>> CreateConfigAsync()
             {
-                _cmdlet.ResolveResourceGroupName(required: false);
                 _cmdlet.ResourceGroupName = _cmdlet.ResourceGroupName ?? _cmdlet.Name;
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(

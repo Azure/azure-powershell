@@ -14,7 +14,7 @@ Regenerate an access key for a SignalR service.
 
 ### ResourceGroupParameterSet (Default)
 ```
-New-AzureRmSignalRKey [-ResourceGroupName <String>] [-Name] <String> [-KeyType] <String> [-PassThru]
+New-AzureRmSignalRKey -ResourceGroupName <String> [-Name] <String> [-KeyType] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -128,7 +128,7 @@ Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

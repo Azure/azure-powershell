@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
     public class GetAzureRmSignalRKey : SignalRCmdletBase, IWithInputObject, IWithResourceId
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "The resource group name. The default one will be used if not specified.")]
         [ResourceGroupCompleter()]
@@ -63,7 +63,6 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 switch (ParameterSetName)
                 {
                     case ResourceGroupParameterSet:
-                        ResolveResourceGroupName();
                         break;
                     case ResourceIdParameterSet:
                         this.LoadFromResourceId();
