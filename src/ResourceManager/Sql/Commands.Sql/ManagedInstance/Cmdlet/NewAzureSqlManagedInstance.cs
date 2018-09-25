@@ -139,6 +139,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public string ComputeGeneration { get; set; }
 
         /// <summary>
+        /// Gets or sets the managed instance compute generation
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The Dns Zone Partner Resource ID for the Sql Azure Managed Instance.")]
+        public string DnsZonePartner { get; set; }
+
+        /// <summary>
         /// Gets or sets the tags to associate with the Azure Sql Managed Instance
         /// </summary>
         [Parameter(Mandatory = false,
@@ -228,7 +235,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 StorageSizeInGB = this.StorageSizeInGB,
                 SubnetId = this.SubnetId,
                 VCores = this.VCore,
-                Sku = Sku
+                Sku = Sku,
+                DnsZonePartner = this.DnsZonePartner
             });
             return newEntity;
         }

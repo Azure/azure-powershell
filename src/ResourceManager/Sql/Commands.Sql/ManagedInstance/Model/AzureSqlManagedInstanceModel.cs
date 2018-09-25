@@ -97,5 +97,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets the resource id of the managed instance
         /// </summary>
         public string ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id of the dns zone partner of the managed instance
+        /// </summary>
+        public string DnsZonePartner { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dns zone of the managed instance
+        /// </summary>
+        public string DnsZone { get; set; }
     }
 }
