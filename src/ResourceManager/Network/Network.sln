@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.OperationalInsight
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "..\..\Storage\Commands.Storage\Commands.Storage.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ContainerInstance", "..\ContainerInstance\Commands.ContainerInstance\Commands.ContainerInstance.csproj", "{0E11B67A-1257-40D0-BD33-8315759FDB01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E11B67A-1257-40D0-BD33-8315759FDB01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E11B67A-1257-40D0-BD33-8315759FDB01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E11B67A-1257-40D0-BD33-8315759FDB01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E11B67A-1257-40D0-BD33-8315759FDB01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{E1F5201D-6067-430E-B303-4E367652991B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{0E11B67A-1257-40D0-BD33-8315759FDB01} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81FE5D8D-D707-4DBC-9782-95E44EA873C3}

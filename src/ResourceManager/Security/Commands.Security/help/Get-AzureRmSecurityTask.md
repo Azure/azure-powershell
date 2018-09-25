@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
 Module Name: AzureRM.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.security/get-azurermsecuritytask
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Get-AzureRmSecurityTask.md
 schema: 2.0.0
 ---
 
 # Get-AzureRmSecurityTask
 
 ## SYNOPSIS
-Gets the security tasks that Azure Security Center recommands you to do in order to strengthen your security posture.
+Gets the security tasks that Azure Security Center recommends you to do in order to strengthen your security posture.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Get-AzureRmSecurityTask -ResourceId <String> [-DefaultProfile <IAzureContextCont
 
 ## DESCRIPTION
 Azure Security Center scans your resources to detect potential security issues.
-This cmdlet lets you dicover the security tasks that Azure Security Center recommands you to do.
+This cmdlet lets you discover the security tasks that Azure Security Center recommends you to do.
 
 ## EXAMPLES
 
