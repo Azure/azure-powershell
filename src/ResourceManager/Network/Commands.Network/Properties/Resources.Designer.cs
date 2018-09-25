@@ -205,6 +205,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ContainerNetworkInterfaceConfigurationNameNotSet.
+        /// </summary>
+        public static string ContainerNetworkInterfaceConfigurationNameNotSet {
+            get {
+                return ResourceManager.GetString("ContainerNetworkInterfaceConfigurationNameNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A resource with the same name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead..
         /// </summary>
         public static string ChildResourceAlreadyPresentInResourceGroup {
@@ -336,6 +345,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string MovingExpressRoutCircuitMessage {
             get {
                 return ResourceManager.GetString("MovingExpressRoutCircuitMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NetworkProfileNameNotSet.
+        /// </summary>
+        public static string NetworkProfileNameNotSet {
+            get {
+                return ResourceManager.GetString("NetworkProfileNameNotSet", resourceCulture);
             }
         }
         
@@ -626,8 +644,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VirtualNetworkGatewayNameNotSet", resourceCulture);
             }
         }
-        
-        /// <summary>
+
         ///   Looks up a localized string similar to A remote virtual network reference is required to create a HubVirtualNetworkConnection..
         /// </summary>
         public static string VirtualNetworkReferenceRequiredToCreateHubVnetConnection {

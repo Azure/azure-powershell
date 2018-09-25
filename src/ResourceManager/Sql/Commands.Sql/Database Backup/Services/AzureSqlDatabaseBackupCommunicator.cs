@@ -432,8 +432,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         {
             // Get the SQL management client for the current subscription
             // Note: client is not cached in static field because that causes ObjectDisposedException in functional tests.
-            var sqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            return sqlClient;
+            return AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>
