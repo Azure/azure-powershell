@@ -546,13 +546,13 @@ Tests ExpressRouteCircuitConnectionCRUD.
 #>
 function Test-ExpressRouteCircuitConnectionCRUD
 {
-	$initCircuitName = "init_ckt"
-    $peerCircuitName = "peer_ckt"
-    $rgname = "globalreach"
+	$initCircuitName = Get-ResourceName
+    $peerCircuitName = Get-ResourceName
+    $rgname = Get-ResourceGroupName
     $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
     $rglocation = Get-ProviderLocation $resourceTypeParent
     $rglocation = "brazilSouth"
-    $connectionName = "transit"
+    $connectionName = Get-ResourceName
     $addressPrefix = "30.0.0.0/29"
 	
 
@@ -616,7 +616,7 @@ function Test-ExpressRouteCircuitConnectionCRUD
 		$initckt
 
 		#Verify Circuit Connection fields
-		Assert-AreEqual "transit" $initckt.Peerings[0].Connections[0].Name
+		Assert-AreEqual $connectionName $initckt.Peerings[0].Connections[0].Name
 		Assert-AreEqual "Succeeded" $initckt.Peerings[0].Connections[0].ProvisioningState
 		Assert-AreEqual "Connected" $initckt.Peerings[0].Connections[0].CircuitConnectionStatus
         Assert-AreEqual 1 $initckt.Peerings[0].Connections.Count
