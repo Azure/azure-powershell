@@ -23,14 +23,16 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' != 'net472'">
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.0" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.1.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.0.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="6.5.0-preview" />
-    <PackageReference Include="Moq" Version="4.2.1510.2205" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Commands.ServiceFabric">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Az.ServiceFabric\Microsoft.Azure.Commands.ServiceFabric.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +40,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="ScenarioTests\*.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
