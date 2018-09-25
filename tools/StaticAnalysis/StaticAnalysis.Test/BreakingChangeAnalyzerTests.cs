@@ -319,8 +319,7 @@ namespace StaticAnalysis.Test
 
             xunitOutput.WriteLine(output);
 
-            Assert.Equal(1, testReport.ProblemIdList.Count);
-            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ChangedOutputType)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.ChangedOutputType));
+            Assert.Equal(0, testReport.ProblemIdList.Count);
         }
 
         [Fact]
