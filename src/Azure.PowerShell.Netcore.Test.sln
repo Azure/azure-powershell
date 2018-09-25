@@ -49,6 +49,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ServiceBus.Test.Ne
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ServiceFabric.Test.Netcore", "ResourceManager\ServiceFabric\Commands.ServiceFabric.Test\Commands.ServiceFabric.Test.Netcore.csproj", "{7D025377-637F-4F3D-9657-5079045AEBFB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.TrafficManager.Test.Netcore", "ResourceManager\TrafficManager\Commands.TrafficManager2.Test\Commands.TrafficManager.Test.Netcore.csproj", "{9AB72517-E580-430C-9284-8EB271093CEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -335,6 +337,18 @@ Global
 		{7D025377-637F-4F3D-9657-5079045AEBFB}.Release|x64.Build.0 = Release|Any CPU
 		{7D025377-637F-4F3D-9657-5079045AEBFB}.Release|x86.ActiveCfg = Release|Any CPU
 		{7D025377-637F-4F3D-9657-5079045AEBFB}.Release|x86.Build.0 = Release|Any CPU
+		{9AB72517-E580-430C-9284-8EB271093CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AB72517-E580-430C-9284-8EB271093CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AB72517-E580-430C-9284-8EB271093CEA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9AB72517-E580-430C-9284-8EB271093CEA}.Debug|x64.Build.0 = Debug|Any CPU
+		{9AB72517-E580-430C-9284-8EB271093CEA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9AB72517-E580-430C-9284-8EB271093CEA}.Debug|x86.Build.0 = Debug|Any CPU
+		{9AB72517-E580-430C-9284-8EB271093CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AB72517-E580-430C-9284-8EB271093CEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AB72517-E580-430C-9284-8EB271093CEA}.Release|x64.ActiveCfg = Release|Any CPU
+		{9AB72517-E580-430C-9284-8EB271093CEA}.Release|x64.Build.0 = Release|Any CPU
+		{9AB72517-E580-430C-9284-8EB271093CEA}.Release|x86.ActiveCfg = Release|Any CPU
+		{9AB72517-E580-430C-9284-8EB271093CEA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
