@@ -56,10 +56,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "The eventhub throughput units.")]
         public int? SkuCapacity { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 5, HelpMessage = "Disable/Enable Namespace.")]
-        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 5, HelpMessage = "Disable/Enable Namespace.")]
-        public Models.NamespaceState? State { get; set; }
-
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 6, HelpMessage = "Hashtables which represents resource Tag.")]
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 6, HelpMessage = "Hashtables which represents resource Tag.")]
         public Hashtable Tag { get; set; }
@@ -67,7 +63,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         /// <summary>
         /// Indicates whether AutoInflate is enabled.
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, HelpMessage = "Indicates whether AutoInflate is enabled")]
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "Indicates whether AutoInflate is enabled")]
         public SwitchParameter EnableAutoInflate { get; set; }
 
         /// <summary>
@@ -76,6 +72,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.")]        
         [ValidateRange(0,20)]        
         public int? MaximumThroughputUnits { get; set; }
+
+        /// <summary>
+        /// Indicates whether ZoneRedundant is enabled.
+        /// </summary>
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "Indicates whether ZoneRedundant is enabled")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "Indicates whether ZoneRedundant is enabled")]
+        public SwitchParameter EnableZoneRedundant { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -87,9 +90,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
                 try
                 {
                     if (EnableAutoInflate.IsPresent)
-                        WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, State, tagDictionary, true, MaximumThroughputUnits));
+                        WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, true, MaximumThroughputUnits, EnableZoneRedundant));
                     else
-                        WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, State, tagDictionary, false, MaximumThroughputUnits));
+                        WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, false, MaximumThroughputUnits, EnableZoneRedundant));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

@@ -67,6 +67,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string ConsumergroupInputObjectParameterSet = "ConsumergroupInputObjectSet";
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
         protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
+        protected const string IpFilterRuleInputObjectParameterSet = "IpFilterRuleInputObjectSet";
+        protected const string VnetRuleInputObjectParameterSet = "VNetRuleInputObjectSet";
 
         //Parameter sets for ResourceID
         protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
@@ -74,12 +76,16 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
         protected const string EventhubResourceIdParameterSet = "EventhubResourceIdParameterSet";
         protected const string ConsumergroupResourceIdParameterSet = "ConsumergroupResourceIdParameterSet";
+        protected const string IpFilterRuleResourceIdParameterSet = "IpFilterRuleResourceIdParameterSet";
+        protected const string VnetRuleResourceIdParameterSet = "VNetRuleResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
         protected const string EventhubPropertiesParameterSet = "EventhubPropertiesSet";
         protected const string ConsumergroupPropertiesParameterSet = "ConsumergroupPropertiesSet";
         protected const string GeoDRParameterSet = "GeoDRParameterSet";
+        protected const string IpFilterRulePropertiesParameterSet = "IpFilterRulePropertiesSet";
+        protected const string VnetRulePropertiesParameterSet = "VNetRulePropertiesSet";
 
         protected const string EventhubDefaultParameterSet = "EventhubDefaultSet";
 

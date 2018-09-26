@@ -73,23 +73,9 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'New-AzureRmEventHubNamespace', 'Get-AzureRmEventHubNamespace', 
-               'Set-AzureRmEventHubNamespace', 'Remove-AzureRmEventHubNamespace', 
-               'New-AzureRmEventHubAuthorizationRule', 
-               'Get-AzureRmEventHubAuthorizationRule', 
-               'Set-AzureRmEventHubAuthorizationRule', 
-               'Remove-AzureRmEventHubAuthorizationRule', 'Get-AzureRmEventHubKey', 
-               'New-AzureRmEventHubKey', 'New-AzureRmEventHub', 
-               'Get-AzureRmEventHub', 'Set-AzureRmEventHub', 
-               'Remove-AzureRmEventHub', 'New-AzureRmEventHubConsumerGroup', 
-               'Get-AzureRmEventHubConsumerGroup', 
-               'Set-AzureRmEventHubConsumerGroup', 
-               'Remove-AzureRmEventHubConsumerGroup', 
-               'New-AzureRmEventHubGeoDRConfiguration', 
-               'Get-AzureRmEventHubGeoDRConfiguration', 
-               'Remove-AzureRmEventHubGeoDRConfiguration', 
-               'Set-AzureRmEventHubGeoDRConfigurationBreakPair', 
-               'Set-AzureRmEventHubGeoDRConfigurationFailOver', 
-               'Test-AzureRmEventHubName'
+               'Set-AzureRmEventHubNamespace', 'Remove-AzureRmEventHubNamespace',
+			   'New-AzureRmEventHubIPFilterRule', 'Set-AzureRmEventHubIPFilterRule', 'Get-AzureRmEventHubIPFilterRule', 'Remove-AzureRmEventHubIPFilterRule',
+			   'New-AzureRmEventHubVNetRule', 'Set-AzureRmEventHubVNetRule', 'Get-AzureRmEventHubVNetRule', 'Remove-AzureRmEventHubVNetRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -147,4 +133,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-
