@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [Parameter(
             Position = 0,
             Mandatory = true, 
-            ParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -103,19 +102,11 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 if (this.ServiceTopology != null)
                 {
                     this.ServiceTopologyName = this.ServiceTopology.Name;
-                    if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
-                    {
-                        this.ResourceGroupName = this.ServiceTopology.ResourceGroupName;
-                    }
                 }
                 else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyId))
                 {
                     var parsedResource = new ResourceIdentifier(this.ServiceTopologyId);
                     this.ServiceTopologyName = parsedResource.ResourceName;
-                    if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
-                    {
-                        this.ResourceGroupName = parsedResource.ResourceGroupName;
-                    }
                 }
 
                 var serviceResource = new PSServiceResource()
