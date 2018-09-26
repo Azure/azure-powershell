@@ -19,9 +19,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Utilities
     using System.Linq;
     using System.Text;
 
-    /// <summary>
-    /// Helper functions for manipulating strings.
-    /// </summary>
     internal static class StringUtilities
     {
         private const int DefaultIndentLength = 4;

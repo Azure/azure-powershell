@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Models
 {
-    using System;
     using Microsoft.Azure.Management.DeploymentManager.Models;
 
     public class PSStepOperationInfo : PSBaseOperationInfo
@@ -29,20 +28,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
             this.CorrelationId = stepOperationInfo?.CorrelationId;
         }
 
-		/// <summary>
-		/// Gets the name of the Azure Resource Manager deployment initiated as
-		/// part of the step.
-		/// </summary>
 		public string DeploymentName
 		{
 			get;
 			private set;
 		}
 
-		/// <summary>
-		/// Gets unique identifier to track the request for ARM-based
-		/// resources.
-		/// </summary>
 		public string CorrelationId
 		{
 			get;

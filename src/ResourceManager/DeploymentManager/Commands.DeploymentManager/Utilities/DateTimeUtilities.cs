@@ -18,10 +18,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Utilities
 
     internal static class DateTimeUtilities
     {
-        /// <summary>
-        /// Gets the current date time with abbreviated time zone.
-        /// </summary>
-        /// <returns>The current date time with time zone.</returns>
         internal static string GetCurrentDateTimeWithTimeZone()
         {
             const string Format = "{0:MM/dd/yy H:mm:ss} {1}";
@@ -30,12 +26,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Utilities
             return StringUtilities.SafeInvariantFormat(Format, current, DateTimeUtilities.GetAbbreviatedTimeZone(current));
         }
 
-
-        /// <summary>
-        /// Gets the abbreviated time zone for the specified date time.
-        /// </summary>
-        /// <param name="dateTime">The date time.</param>
-        /// <returns>The abbreviated time zone.</returns>
         internal static string GetAbbreviatedTimeZone(DateTime dateTime)
         {
             string timeZoneName = string.Empty;
@@ -60,6 +50,5 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Utilities
 
             return abbreviated;
         }
-
     }
 }
