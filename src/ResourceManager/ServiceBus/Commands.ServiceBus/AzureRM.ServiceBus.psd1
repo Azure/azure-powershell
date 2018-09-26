@@ -73,34 +73,9 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'New-AzureRmServiceBusNamespace', 'Get-AzureRmServiceBusNamespace', 
-               'Set-AzureRmServiceBusNamespace', 
-               'Remove-AzureRmServiceBusNamespace', 'New-AzureRmServiceBusQueue', 
-               'Get-AzureRmServiceBusQueue', 'Set-AzureRmServiceBusQueue', 
-               'Remove-AzureRmServiceBusQueue', 'New-AzureRmServiceBusTopic', 
-               'Get-AzureRmServiceBusTopic', 'Set-AzureRmServiceBusTopic', 
-               'Remove-AzureRmServiceBusTopic', 
-               'New-AzureRmServiceBusSubscription', 
-               'Get-AzureRmServiceBusSubscription', 
-               'Set-AzureRmServiceBusSubscription', 
-               'Remove-AzureRmServiceBusSubscription', 
-               'New-AzureRmServiceBusAuthorizationRule', 
-               'Get-AzureRmServiceBusAuthorizationRule', 
-               'Set-AzureRmServiceBusAuthorizationRule', 
-               'Remove-AzureRmServiceBusAuthorizationRule', 
-               'New-AzureRmServiceBusKey', 'Get-AzureRmServiceBusKey', 
-               'Get-AzureRmServiceBusOperation', 'New-AzureRmServiceBusRule', 
-               'Get-AzureRmServiceBusRule', 'Set-AzureRmServiceBusRule', 
-               'Remove-AzureRmServiceBusRule', 
-               'New-AzureRmServiceBusGeoDRConfiguration', 
-               'Get-AzureRmServiceBusGeoDRConfiguration', 
-               'Remove-AzureRmServiceBusGeoDRConfiguration', 
-               'Set-AzureRmServiceBusGeoDRConfigurationBreakPair', 
-               'Set-AzureRmServiceBusGeoDRConfigurationFailOver', 
-               'Test-AzureRmServiceBusName', 'Get-AzureRmServiceBusMigration', 
-               'Stop-AzureRmServiceBusMigration', 
-               'Start-AzureRmServiceBusMigration', 
-               'Complete-AzureRmServiceBusMigration', 
-               'Remove-AzureRmServiceBusMigration'
+               'Set-AzureRmServiceBusNamespace', 'Remove-AzureRmServiceBusNamespace',
+			   'New-AzureRmServiceBusIPFilterRule', 'Set-AzureRmServiceBusIPFilterRule', 'Get-AzureRmServiceBusIPFilterRule', 'Remove-AzureRmServiceBusIPFilterRule',
+			   'New-AzureRmServiceBusVNetRule', 'Set-AzureRmServiceBusVNetRule', 'Get-AzureRmServiceBusVNetRule', 'Remove-AzureRmServiceBusVNetRule'
 
 # Variables to export from this module
 # VariablesToExport = @()

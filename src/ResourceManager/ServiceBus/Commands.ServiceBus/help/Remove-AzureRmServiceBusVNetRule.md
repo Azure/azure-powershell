@@ -1,73 +1,57 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.ServiceBus/remove-azurermServiceBusnamespace
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.ServiceBus/Remove-AzureRmServiceBusVNetRule
 schema: 2.0.0
 ---
 
-# Remove-AzureRmServiceBusNamespace
+# Remove-AzureRmServiceBusVNetRule
 
 ## SYNOPSIS
-Removes the specified Event Hubs namespace.
+Removes the specified VNet rule for the given namespace
 
 ## SYNTAX
 
-### NamespaceParameterSet (Default)
+### VNetRulePropertiesSet (Default)
 ```
-Remove-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Name] <String> [-PassThru] [-AsJob]
+Remove-AzureRmServiceBusVNetRule [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PassThru]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### VNetRuleInputObjectSet
+```
+Remove-AzureRmServiceBusVNetRule [-InputObject] <PSIpFilterRuleAttributes> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### NamespaceInputObjectSet
+### VNetRuleResourceIdParameterSet
 ```
-Remove-AzureRmServiceBusNamespace [-InputObject] <PSNamespaceAttributes> [-PassThru] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### NamespaceResourceIdParameterSet
-```
-Remove-AzureRmServiceBusNamespace [-ResourceId] <String> [-PassThru] [-AsJob]
+Remove-AzureRmServiceBusVNetRule [-ResourceId] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzureRmServiceBusNamespace cmdlet removes and deletes the specified Event Hubs namespace.
+Cmdlet **Remove-AzureRmServiceBusVNetRule** deletes the specified VNet Rule for the given namespace
 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+PS C:\> Remove-AzureRmServiceBusVNetRule -ResourceGroup MyResourceGroup -Namespace MyNamespace -Name TestingVNetRule
 ```
-PS C:\> Remove-AzureRmServiceBusNamespace -ResourceGroupName MyResourceGroupName -Name MyNamespaceName
-```
+removes the specified VNet Rule
 
-Removes the Event Hubs namespace \`MyNamespaceName\` in resource group \`MyResourceGroupName\`.
+### Example 2
+```powershell
+PS C:\> Get-AzureRmServiceBusVNetRule -ResourceGroup MyResourceGroup -Namespace MyNamespace -Name TestingVNetRule | Remove-AzureRmServiceBusVNetRule
+```
+removes the specified VNet Rule through piping InputObject
 
-### Example 2.1 - InputObject - Using Variable:
+### Example 3
+```powershell
+PS C:\> Remove-AzureRmServiceBusVNetRule -ResourceId resourceIdOfVNetRule
 ```
-PS C:\> $inputObject = Get-AzureRmServiceBusNamespace <params> 
-PS C:\> Remove-AzureRmServiceBusNamespace -InputObject $inputObject
-```
-
-### Example 2.1 - InputObject - Using Piping:
-```
-PS C:\> Get-AzureRmServiceBusNamespace <params> | Remove-AzureRmServiceBusNamespace
-```
-
-### Example 3.1 - ResourceId - Using Variable
-```
-PS C:\> $resourceid = Get-AzureRmServiceBusNamespace <params>
-PS C:\> Remove-AzureRmServiceBusNamespace -ResourceId $resourceid.Id
-```
-
-### Example 3.2 - ResourceId - Using Piping:
-```
-PS C:\> Get-AzureRmResource -ResourceType Microsoft.ServiceBus/Namespaces | Remove-AzureRmServiceBusNamespace
-```
-
-### Example 3.3 - ResourceId - Using String:
-```
-PS C:\> Remove-AzureRmServiceBusNamespace -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName"
-```
+removes the specified VNet Rule using resource Id
 
 ## PARAMETERS
 
@@ -102,11 +86,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-ServiceBuss Namespace Object
+Virtual Network Rule Object
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
-Parameter Sets: NamespaceInputObjectSet
+Type: Microsoft.Azure.Commands.ServiceBus.Models.PSIpFilterRuleAttributes
+Parameter Sets: VNetRuleInputObjectSet
 Aliases:
 
 Required: True
@@ -117,11 +101,26 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-ServiceBus Namespace Name
+Virtual Network Rule Name
 
 ```yaml
 Type: System.String
-Parameter Sets: NamespaceParameterSet
+Parameter Sets: VNetRulePropertiesSet
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Namespace
+Namespace Name
+
+```yaml
+Type: System.String
+Parameter Sets: VNetRulePropertiesSet
 Aliases: NamespaceName
 
 Required: True
@@ -151,7 +150,7 @@ Resource Group Name
 
 ```yaml
 Type: System.String
-Parameter Sets: NamespaceParameterSet
+Parameter Sets: VNetRulePropertiesSet
 Aliases:
 
 Required: True
@@ -162,11 +161,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-ServiceBuss Namespace Resource Id
+Virtual Network Rule Resource Id
 
 ```yaml
 Type: System.String
-Parameter Sets: NamespaceResourceIdParameterSet
+Parameter Sets: VNetRuleResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -214,12 +213,12 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
+Microsoft.Azure.Commands.ServiceBus.Models.PSIpFilterRuleAttributes
 
 
 ## OUTPUTS
 
-### System.Void
+### System.Boolean
 
 
 ## NOTES

@@ -120,6 +120,9 @@
   <data name="CompleteMigrationConfiguration" xml:space="preserve">
     <value>Complete the Standard to Premium migration</value>
   </data>
+  <data name="CreateIpFilterRule" xml:space="preserve">
+    <value>Create new IPFilter Rule : {0} under Namepsace {1}</value>
+  </data>
   <data name="CreateNamesapce" xml:space="preserve">
     <value>Create New Namespace:{0} for ResourceGroup:{1}</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="CreateTopicAuthorizationrule" xml:space="preserve">
     <value>Creating new AuthorizationRule named:{0} for Topic: {1}</value>
   </data>
+  <data name="CreateVNetRule" xml:space="preserve">
+    <value>Create new VNet Rule : {0} under Namepsace {1}</value>
+  </data>
   <data name="DRBreakPairing" xml:space="preserve">
     <value>Disabling the Disaster Recovery and stops replicating changes from primary namespace {0} to secondary namespace {1}</value>
   </data>
@@ -159,6 +165,12 @@
   <data name="FileDoesNotExist" xml:space="preserve">
     <value>File {0} does not exist</value>
   </data>
+  <data name="GetIPfilterRule" xml:space="preserve">
+    <value>Get IPFilter Rule: {0} under Namespace: {1}</value>
+  </data>
+  <data name="GetVNetRule" xml:space="preserve">
+    <value>Get VNet Rule: {0} under Namespace: {1}</value>
+  </data>
   <data name="RegenerateKeyNamesapce" xml:space="preserve">
     <value>Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of Namespace:{1}</value>
   </data>
@@ -167,6 +179,9 @@
   </data>
   <data name="RegenerateKeyTopic" xml:space="preserve">
     <value>Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of Topic:{1}</value>
+  </data>
+  <data name="RemoveIpFilterRule" xml:space="preserve">
+    <value>Deleting IPFilterRule:{0} from Namepaces: {1}</value>
   </data>
   <data name="RemoveMigrationConfiguration" xml:space="preserve">
     <value>Delete the Migration Configuration</value>
@@ -195,6 +210,9 @@
   <data name="RemoveTopicAuthorizationRule" xml:space="preserve">
     <value>Removeing AtuhorizationRule:{0} from Topic: {1} of Namespace: {2}</value>
   </data>
+  <data name="RemoveVNetRule" xml:space="preserve">
+    <value>Deleting VNetRule: {0} from Namepaces: {1}</value>
+  </data>
   <data name="RemovingNamespaceAuthorizationRule" xml:space="preserve">
     <value>Removing AtuhorizationRule:{0} of Namespace: {1}</value>
   </data>
@@ -210,10 +228,22 @@
   <data name="StartMigrationConfiguration" xml:space="preserve">
     <value>Start Standard to Premium Migration</value>
   </data>
+  <data name="UpdateIpFilterRule" xml:space="preserve">
+    <value>Update IPFilter Rule: {0} under Namespace: {1}</value>
+  </data>
+  <data name="UpdateIpVNetRule" xml:space="preserve">
+    <value>Update VNet Rule: {0} under Namespace: {1}</value>
+  </data>
   <data name="UpdateNamespace" xml:space="preserve">
     <value>Update Namespace:{0} of the ResorceGroup:{1}</value>
   </data>
+  <data name="UpdateNamespace1" xml:space="preserve">
+    <value>Update Namespace:{0} from ResourceGroup:{1}</value>
+  </data>
   <data name="UpdateNamespaceAuthorizationrule" xml:space="preserve">
+    <value>Updating  AuthorizationRule named:{0} for Namespace: {1}</value>
+  </data>
+  <data name="UpdateNamespaceAuthorizationrule1" xml:space="preserve">
     <value>Updating  AuthorizationRule named:{0} for Namespace: {1}</value>
   </data>
   <data name="UpdateQueue" xml:space="preserve">

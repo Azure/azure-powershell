@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         [Parameter(
           Mandatory = false,
           ValueFromPipelineByPropertyName = true,
-          HelpMessage = "Namespace Sku Capacity.")]        
+          HelpMessage = "Namespace Sku Capacity.")]
         public int? SkuCapacity { get; set; }
 
         /// <summary>
@@ -72,7 +72,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         /// </summary>
         [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Hashtables which represents resource Tags")]
         public Hashtable Tag { get; set; }
-        
+
+        /// <summary>
+        /// Indicates whether ZoneRedundant is enabled.
+        /// </summary>        
+        [Parameter(Mandatory = false, HelpMessage = "Indicates whether ZoneRedundant is enabled")]
+        public SwitchParameter EnableZoneRedundant { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -85,7 +91,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             {
                 try
                 {
-                    WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary));
+                    if (EnableZoneRedundant.IsPresent)
+                    {
+                        WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, SkuCapacity, EnableZoneRedundant));
+                    }
+                    else
+                    {
+                        WriteObject(Client.BeginCreateNamespace(ResourceGroupName, Name, Location, SkuName, tagDictionary, SkuCapacity));
+                    }
                 }
                 catch (Management.ServiceBus.Models.ErrorResponseException ex)
                 {

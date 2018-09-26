@@ -23,50 +23,60 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
     /// <summary>
     /// Represents the properties of a Namespace of type ServiceBus
     /// </summary>
-    public class PSNamespaceAttributes 
+    public class PSNamespaceAttributes
     {
-        public PSNamespaceAttributes()
-        { }
-
         public PSNamespaceAttributes(SBNamespace evResource)
         {
             if (evResource != null)
             {
-                Sku = new SBSku { Capacity = evResource.Sku.Capacity,
-                                Name = evResource.Sku.Name,
-                                Tier = evResource.Sku.Tier};
-                if(evResource.ProvisioningState != null)
-                ProvisioningState = evResource.ProvisioningState;                
-                if(evResource.CreatedAt.HasValue)
-                CreatedAt = evResource.CreatedAt;
+                
+                Sku = new SBSku
+                {
+                    Capacity = evResource.Sku.Capacity,
+                    Name = evResource.Sku.Name,
+                    Tier = evResource.Sku.Tier
+                };
+                if (evResource.ProvisioningState != null)
+                    ProvisioningState = evResource.ProvisioningState;
+
+                if (evResource.CreatedAt.HasValue)
+                    CreatedAt = evResource.CreatedAt;
+
                 if(evResource.UpdatedAt.HasValue)
-                UpdatedAt = evResource.UpdatedAt;
+                    UpdatedAt = evResource.UpdatedAt;
+
                 if(evResource.ServiceBusEndpoint != null)
-                ServiceBusEndpoint = evResource.ServiceBusEndpoint;
-                if(evResource.Location != null)
-                Location = evResource.Location;
-                if(evResource.Name != null)
-                Name = evResource.Name;
+                    ServiceBusEndpoint = evResource.ServiceBusEndpoint;
+                if (evResource.Location != null)
+                    Location = evResource.Location;
+
                 if(evResource.Id != null)
-                Id = evResource.Id;
+                    Id = evResource.Id;
+
+                if (evResource.Name != null)
+                    Name = evResource.Name;                
+
+                if (evResource.ZoneRedundant.HasValue)
+                    ZoneRedundant = evResource.ZoneRedundant;
+
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
+
             }
         }
-
+        
         /// <summary>
         /// Gets the resourcegroup name
         /// </summary>
         public string ResourceGroup { get; }
-
-        /// <summary>
-        /// Gets or sets the name of the resource group the Namespace is in
-        /// </summary>
-        public string Name { get; set; }       
-
         /// <summary>
         /// Gets or sets the Id of the Namespace
         /// </summary>
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Name of the Namespace
+        /// </summary>
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the Id of the Namespace
@@ -80,8 +90,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Provisioning state of the Namespace.
         /// </summary>
-        public string ProvisioningState { get; set; }        
-
+        public string ProvisioningState { get; set; }
+                
         /// <summary>
         /// The time the namespace was created.
         /// </summary>
@@ -95,7 +105,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Endpoint you can use to perform ServiceBus operations.
         /// </summary>
-        public string ServiceBusEndpoint { get; set; }      
+        public string ServiceBusEndpoint { get; set; }
         
+        /// <summary>
+        /// Gets or sets enabling this property creates a Standard Event Hubs
+        /// Namespace in regions supported availability zones.
+        /// </summary>
+        public bool? ZoneRedundant { get; set; }
+
     }
 }

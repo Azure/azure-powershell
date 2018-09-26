@@ -42,68 +42,25 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Cmdlets\AuthorizationRule\GetAzureServiceBusAuthorizationRule.cs" />
-    <Compile Include="Cmdlets\AuthorizationRule\GetAzureServiceBusKey.cs" />
-    <Compile Include="Cmdlets\AuthorizationRule\NewAzureServiceBusAuthorizationRule.cs" />
-    <Compile Include="Cmdlets\AuthorizationRule\NewAzureServiceBusKey.cs" />
-    <Compile Include="Cmdlets\AuthorizationRule\RemoveAzureServiceBusAuthorizationRule.cs" />
-    <Compile Include="Cmdlets\AuthorizationRule\SetAzureServiceBusAuthorizationRule.cs" />
     <Compile Include="Cmdlets\AzureServiceBusCmdletBase.cs" />
-    <Compile Include="Cmdlets\CheckNameAvailability\TestAzureServiceBusCheckNameAvailability.cs" />
-    <Compile Include="Cmdlets\MigrationConfiguration\GetAzureServiceBusMigrationConfiguration.cs" />
-    <Compile Include="Cmdlets\MigrationConfiguration\StartAzureServiceBusMigrationConfiguration.cs" />
-    <Compile Include="Cmdlets\MigrationConfiguration\RemoveAzureServiceBusMigrationConfiguration.cs" />
-    <Compile Include="Cmdlets\MigrationConfiguration\StopAzureServiceBusMigrationConfiguration.cs" />
-    <Compile Include="Cmdlets\MigrationConfiguration\CompleteAzureServiceBusMigrationConfiguration.cs" />
-    <Compile Include="Cmdlets\DRConfig\GetAzureServiceBusGeoDRConfiguration.cs" />
-    <Compile Include="Cmdlets\DRConfig\NewAzureServiceBusGeoDRConfiguration.cs" />
-    <Compile Include="Cmdlets\DRConfig\RemoveAzureServiceBusGeoDRConfiguration.cs" />
-    <Compile Include="Cmdlets\DRConfig\SetAzureServiceBusGeoDRConfigurationBreakPair.cs" />
-    <Compile Include="Cmdlets\DRConfig\SetAzureServiceBusGeoDRConfigurationFailOver.cs" />
+    <Compile Include="Cmdlets\IPFilterRules\GetAzureServiceBusIpFilterRule.cs" />
+    <Compile Include="Cmdlets\IPFilterRules\NewAzureServiceBusIpFilterRule.cs" />
+    <Compile Include="Cmdlets\IPFilterRules\RemoveAzureServiceBusIpFilterRule.cs" />
+    <Compile Include="Cmdlets\IPFilterRules\SetAzureServiceBusIpFilterRule.cs" />
     <Compile Include="Cmdlets\Namespace\GetAzureServiceBusNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\NewAzureServiceBusNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\RemoveAzureServiceBusNamespace.cs" />
     <Compile Include="Cmdlets\Namespace\SetAzureServiceBusNamespace.cs" />
-    <Compile Include="Cmdlets\Operations\GetAzureServiceBusOperations.cs" />
-    <Compile Include="Cmdlets\Queue\GetAzureServiceBusQueue.cs" />
-    <Compile Include="Cmdlets\Queue\NewAzureServiceBusQueue.cs" />
-    <Compile Include="Cmdlets\Queue\RemoveAzureServiceBusQueue.cs" />
-    <Compile Include="Cmdlets\Queue\SetAzureServiceBusQueue.cs" />
-    <Compile Include="Cmdlets\Rule\GetAzureServiceBusRule.cs" />
-    <Compile Include="Cmdlets\Rule\NewAzureServiceBusRule.cs" />
-    <Compile Include="Cmdlets\Rule\RemoveAzureServiceBusRule.cs" />
-    <Compile Include="Cmdlets\Rule\SetAzureServiceBusRule.cs" />
-    <Compile Include="Cmdlets\Subscription\GetAzureServiceBusSubscription.cs" />
-    <Compile Include="Cmdlets\Subscription\NewAzureServiceBusSubscription.cs" />
-    <Compile Include="Cmdlets\Subscription\RemoveAzureServiceBusSubscription.cs" />
-    <Compile Include="Cmdlets\Subscription\SetAzureServiceBusSubscription.cs" />
-    <Compile Include="Cmdlets\Topic\GetAzureServiceBusTopic.cs" />
-    <Compile Include="Cmdlets\Topic\NewAzureServiceBusTopic.cs" />
-    <Compile Include="Cmdlets\Topic\RemoveAzureServiceBusTopic.cs" />
-    <Compile Include="Cmdlets\Topic\SetAzureServiceBusTopic.cs" />
+    <Compile Include="Cmdlets\VNetRules\GetAzureServiceBusVNetRule.cs" />
+    <Compile Include="Cmdlets\VNetRules\NewAzureServiceBusVNetRule.cs" />
+    <Compile Include="Cmdlets\VNetRules\RemoveAzureServiceBusVNetRule.cs" />
+    <Compile Include="Cmdlets\VNetRules\SetAzureServiceBusVNetRule.cs" />
     <Compile Include="Models\ErrorResponseContent.cs" />
-    <Compile Include="Models\PSActionAttributes.cs" />
-    <Compile Include="Models\PSCheckNameAvailabilityAttributes.cs" />
-    <Compile Include="Models\PSCheckNameAvailabilityResultAttributes.cs" />
-    <Compile Include="Models\PSCorrelationFilterAttributes.cs" />
-    <Compile Include="Models\FilterTypeEnum.cs" />
-    <Compile Include="Models\PSListKeysAttributes.cs" />
+    <Compile Include="Models\PSIpFilterRuleAttributes.cs" />
     <Compile Include="Models\PSNamespaceAttributes.cs" />
     <Compile Include="Models\PSNamespaceLongRunningOperation.cs" />
-    <Compile Include="Models\NamespaceState.cs" />
-    <Compile Include="Models\PSOperationAttributes.cs" />
-    <Compile Include="Models\PSOperationDisplayAttributes.cs" />
-    <Compile Include="Models\PSQueueAttributes.cs" />
-    <Compile Include="Models\PSRegenerateKeysAttributes.cs" />
     <Compile Include="Models\PSResourceAttributes.cs" />
-    <Compile Include="Models\PSRulesAttributes.cs" />
-    <Compile Include="Models\PSServiceBusMigrationConfigurationAttributes.cs" />
-    <Compile Include="Models\PSServiceBusDRConfigurationAttributes.cs" />
-    <Compile Include="Models\PSSharedAccessAuthorizationRuleAttributes.cs" />
-    <Compile Include="Models\PSSQLFilterAttributes.cs" />
-    <Compile Include="Models\PSSubscriptionAttributes.cs" />
-    <Compile Include="Models\PSTopicAttributes.cs" />
-    <Compile Include="Models\UnavailableReasonAttributes.cs" />
+    <Compile Include="Models\PSVirtualNetWorkRuleAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -137,10 +94,11 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.ServiceBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.4.0\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.8.0-preview\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="help\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">

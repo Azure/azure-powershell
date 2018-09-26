@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ServiceBus {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -66,6 +66,15 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         internal static string CompleteMigrationConfiguration {
             get {
                 return ResourceManager.GetString("CompleteMigrationConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new IPFilter Rule : {0} under Namepsace {1}.
+        /// </summary>
+        internal static string CreateIpFilterRule {
+            get {
+                return ResourceManager.GetString("CreateIpFilterRule", resourceCulture);
             }
         }
         
@@ -142,6 +151,15 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create new VNet Rule : {0} under Namepsace {1}.
+        /// </summary>
+        internal static string CreateVNetRule {
+            get {
+                return ResourceManager.GetString("CreateVNetRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disabling the Disaster Recovery and stops replicating changes from primary namespace {0} to secondary namespace {1}.
         /// </summary>
         internal static string DRBreakPairing {
@@ -187,6 +205,24 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get IPFilter Rule: {0} under Namespace: {1}.
+        /// </summary>
+        internal static string GetIPfilterRule {
+            get {
+                return ResourceManager.GetString("GetIPfilterRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get VNet Rule: {0} under Namespace: {1}.
+        /// </summary>
+        internal static string GetVNetRule {
+            get {
+                return ResourceManager.GetString("GetVNetRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of Namespace:{1}.
         /// </summary>
         internal static string RegenerateKeyNamesapce {
@@ -210,6 +246,15 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         internal static string RegenerateKeyTopic {
             get {
                 return ResourceManager.GetString("RegenerateKeyTopic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting IPFilterRule:{0} from Namepaces: {1}.
+        /// </summary>
+        internal static string RemoveIpFilterRule {
+            get {
+                return ResourceManager.GetString("RemoveIpFilterRule", resourceCulture);
             }
         }
         
@@ -295,6 +340,15 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting VNetRule: {0} from Namepaces: {1}.
+        /// </summary>
+        internal static string RemoveVNetRule {
+            get {
+                return ResourceManager.GetString("RemoveVNetRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing AtuhorizationRule:{0} of Namespace: {1}.
         /// </summary>
         internal static string RemovingNamespaceAuthorizationRule {
@@ -340,6 +394,24 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update IPFilter Rule: {0} under Namespace: {1}.
+        /// </summary>
+        internal static string UpdateIpFilterRule {
+            get {
+                return ResourceManager.GetString("UpdateIpFilterRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update VNet Rule: {0} under Namespace: {1}.
+        /// </summary>
+        internal static string UpdateIpVNetRule {
+            get {
+                return ResourceManager.GetString("UpdateIpVNetRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update Namespace:{0} of the ResorceGroup:{1}.
         /// </summary>
         internal static string UpdateNamespace {
@@ -349,11 +421,29 @@ namespace Microsoft.Azure.Commands.ServiceBus {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update Namespace:{0} from ResourceGroup:{1}.
+        /// </summary>
+        internal static string UpdateNamespace1 {
+            get {
+                return ResourceManager.GetString("UpdateNamespace1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updating  AuthorizationRule named:{0} for Namespace: {1}.
         /// </summary>
         internal static string UpdateNamespaceAuthorizationrule {
             get {
                 return ResourceManager.GetString("UpdateNamespaceAuthorizationrule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating  AuthorizationRule named:{0} for Namespace: {1}.
+        /// </summary>
+        internal static string UpdateNamespaceAuthorizationrule1 {
+            get {
+                return ResourceManager.GetString("UpdateNamespaceAuthorizationrule1", resourceCulture);
             }
         }
         
