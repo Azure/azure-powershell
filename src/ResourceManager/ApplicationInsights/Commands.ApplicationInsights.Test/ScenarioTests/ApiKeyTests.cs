@@ -33,21 +33,21 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetApplicationInsightsApiKey()
+        public void TestGetAppInsightsApiKey()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-GetApplicationInsightsApiKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewApplicationInsightsApiKey()
+        public void TestNewAppInsightsApiKey()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-NewApplicationInsightsApiKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveApplicationInsightsApiKey()
+        public void TestRemoveAppInsightsApiKey()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-RemoveApplicationInsightsApiKey");
         }
