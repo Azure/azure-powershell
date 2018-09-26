@@ -28,29 +28,14 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     {
         private const string FailedStatus = "Failed";
 
-        /// <summary>
-        /// A constant which indicates there is no indentation required.
-        /// </summary>
         private const int NoIndent = 0;
 
-        /// <summary>
-        /// The indentation factor to be used for Resources for User Display.
-        /// </summary>
         private const int ServiceUnitIndentFactor = 1;
 
-        /// <summary>
-        /// The indentation factor to be used for Actions for User Display.
-        /// </summary>
         private const int StepIndentFactor = 2;
 
-        /// <summary>
-        /// The indentation factor to be used for Resource Operations for User Display.
-        /// </summary>
         private const int StepPropertiesIndentFactor = 3;
 
-        /// <summary>
-        /// The indentation factor to be used for Resource Operations for User Display.
-        /// </summary>
         private const int ResourceOperationsIndentFactor = 4;
 
         protected static void PrintVerbose(string message)

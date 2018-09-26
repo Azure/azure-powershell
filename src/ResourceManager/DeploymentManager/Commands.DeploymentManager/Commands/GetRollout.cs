@@ -75,7 +75,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Mandatory = false, 
-            ValueFromPipeline = true,
             HelpMessage = "Displays a detailed output")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter ShowDetails { get; set; }
