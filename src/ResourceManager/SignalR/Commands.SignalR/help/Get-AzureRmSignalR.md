@@ -20,7 +20,7 @@ Get-AzureRmSignalR [-ResourceGroupName <String>] [-DefaultProfile <IAzureContext
 
 ### ResourceGroupParameterSet
 ```
-Get-AzureRmSignalR -ResourceGroupName <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmSignalR [-ResourceGroupName <String>] [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -116,22 +116,10 @@ Resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListSignalRServiceParameterSet
+Parameter Sets: ListSignalRServiceParameterSet, ResourceGroupParameterSet
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
-Parameter Sets: ResourceGroupParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

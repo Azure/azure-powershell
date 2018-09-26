@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             ParameterSetName = ListSignalRServiceParameterSet,
             HelpMessage = "The resource group name.")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "The resource group name. The default one will be used if not specified.")]
         [ResourceGroupCompleter()]
@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                         WriteObject(new PSSignalRResource(signalrById));
                         break;
                     case ResourceGroupParameterSet:
+                        ResolveResourceGroupName();
                         var signalr = Client.SignalR.Get(ResourceGroupName, Name);
                         WriteObject(new PSSignalRResource(signalr));
                         break;
