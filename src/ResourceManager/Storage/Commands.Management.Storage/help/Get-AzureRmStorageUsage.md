@@ -14,7 +14,7 @@ Gets the Storage resource usage of the current subscription.
 ## SYNTAX
 
 ```
-Get-AzureRmStorageUsage [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmStorageUsage [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,6 +28,20 @@ PS C:\>Get-AzureRmStorageUsage
 ```
 
 This command gets the Storage resources usage of the current subscription.
+ 
+
+### Example 2: Get the storage resources usage of specified location
+```
+PS C:\>Get-AzureRmStorageUsage -Location 'West US'
+
+LocalizedName : Storage Accounts
+Name          : StorageAccounts
+Unit          : Count
+CurrentValue  : 18
+Limit         : 250
+```
+
+This command gets the Storage resources usage of of specified location under the current subscription.
 
 ## PARAMETERS
 
@@ -43,6 +57,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Indicate to get Storage resources usage on the specified location.
+If not specified, will get Storage resources usage on all locations under the subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
