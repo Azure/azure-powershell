@@ -168,7 +168,7 @@ function Test-CortexCRUD
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 
 		# Create the P2SVpnServerConfiguration1 with VpnClient settings and associate it with Virtual wan using Update-AzureRmVirtualWan
-		$P2SVpnServerConfigCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
+		$P2SVpnServerConfigCertFilePath = Join-Path -Path $basedir -ChildPath "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
 		$listOfCerts = New-Object "System.Collections.Generic.List[String]"
 		$listOfCerts.Add($P2SVpnServerConfigCertFilePath)
 		$vpnclientipsecpolicy1 = New-AzureRmVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86471 -SADataSize 429496 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup14 -PfsGroup PFS14
