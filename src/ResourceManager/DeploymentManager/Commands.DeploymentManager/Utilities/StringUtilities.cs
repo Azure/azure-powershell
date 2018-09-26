@@ -116,12 +116,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Utilities
             return false;
         }
 
-        /// <summary>
-        /// Prints DateTime in the long format in the user's time zone.
-        /// Refer: https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx
-        /// </summary>
-        /// <param name="dateTime">The date time object.</param>
-        /// <returns>A string representing the time the local (current) time zone.</returns>
         internal static string ToLocalTimeForUserDisplay(this DateTime dateTime)
         {
             return dateTime.ToLocalTime().ToString("G", CultureInfo.InvariantCulture);

@@ -20,10 +20,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
 
     public class PSRolloutStep
     {
-        public PSRolloutStep()
-        {
-        }
-
         public PSRolloutStep(RolloutStep rolloutStep)
         {
             this.Name = rolloutStep.Name;

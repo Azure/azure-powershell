@@ -15,7 +15,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
         {
             this.RetryAttempt = rolloutOperationInfo.RetryAttempt;
             this.SkipSucceededOnRetry = rolloutOperationInfo.SkipSucceededOnRetry;
-            this.Error = rolloutOperationInfo.Error;
         }
 
 		/// <summary>
