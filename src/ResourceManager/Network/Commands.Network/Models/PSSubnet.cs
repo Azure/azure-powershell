@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSIPConfiguration> IpConfigurations { get; set; }
 
         [JsonProperty(Order = 1)]
+        public List<PSServiceAssocationLink> ServiceAssociationLinks { get; set; }
+
+        [JsonProperty(Order = 1)]
         public List<PSResourceNavigationLink> ResourceNavigationLinks { get; set; }
 
         [JsonProperty(Order = 1)]
@@ -57,6 +60,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string IpConfigurationsText
         {
             get { return JsonConvert.SerializeObject(IpConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ServiceAssociationLinksText
+        {
+            get { return JsonConvert.SerializeObject(ServiceAssociationLinks, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
