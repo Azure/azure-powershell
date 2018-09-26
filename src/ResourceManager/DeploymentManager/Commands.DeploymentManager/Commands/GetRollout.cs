@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DeploymentManagerRollout",
         DefaultParameterSetName = DeploymentManagerBaseCmdlet.InteractiveParamSetName), 
      OutputType(typeof(PSRollout))]
-    public class GetRollout : DeploymentManagerBaseCmdlet
+    public class GetRollout : RolloutCmdletBase
     {
         [Parameter(
             Position = 0,
@@ -73,6 +73,13 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [ValidateNotNullOrEmpty]
         public PSRollout Rollout { get; set; }
 
+        [Parameter(
+            Mandatory = false, 
+            ValueFromPipeline = true,
+            HelpMessage = "Displays a detailed output")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter ShowDetails { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.Rollout != null)
@@ -88,6 +95,12 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             }
 
             var rollout = this.DeploymentManagerClient.GetRollout(this.ResourceGroupName, this.Name, this.RetryAttempt);
+
+            if (this.ShowDetails)
+            {
+                RolloutCmdletBase.PrintRollout(rollout);
+            }
+
             this.WriteObject(rollout);
         }
     }

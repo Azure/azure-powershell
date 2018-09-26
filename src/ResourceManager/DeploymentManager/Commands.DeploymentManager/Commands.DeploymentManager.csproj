@@ -59,6 +59,7 @@
     <Compile Include="Commands\RemoveServiceUnit.cs" />
     <Compile Include="Commands\RemoveStep.cs" />
     <Compile Include="Commands\RestartRollout.cs" />
+    <Compile Include="Commands\RolloutCmdletBase.cs" />
     <Compile Include="Commands\SetArtifactSource.cs" />
     <Compile Include="Commands\SetService.cs" />
     <Compile Include="Commands\SetServiceTopology.cs" />
@@ -72,6 +73,7 @@
     </Compile>
     <Compile Include="Models\ArtifactSource\PSArtifactSource.cs" />
     <Compile Include="Models\ArtifactSource\PSAuthentication.cs" />
+    <Compile Include="Models\Rollout\PSBaseOperationInfo.cs" />
     <Compile Include="Models\PSIdentity.cs" />
     <Compile Include="Models\Rollout\PSMessage.cs" />
     <Compile Include="Models\Rollout\PSResource.cs" />
@@ -90,6 +92,9 @@
     <Compile Include="Models\Steps\PSStepResource.cs" />
     <Compile Include="Models\Steps\PSWaitStepProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\DateTimeUtilities.cs" />
+    <Compile Include="Utilities\EnumerationUtilities.cs" />
+    <Compile Include="Utilities\StringUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AzureRM.DeploymentManager.psd1">

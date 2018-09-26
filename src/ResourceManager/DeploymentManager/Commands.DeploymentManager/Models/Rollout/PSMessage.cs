@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Models
     {
         public PSMessage(Message message)
         {
-            this.TimeStamp = message.TimeStamp;
-            this.MessageProperty = message.MessageProperty;
+            this.TimeStamp = message?.TimeStamp;
+            this.MessageProperty = message?.MessageProperty;
         }
 
 		/// <summary>

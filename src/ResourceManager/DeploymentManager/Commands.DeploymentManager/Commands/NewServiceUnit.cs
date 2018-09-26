@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [Parameter(
             Position = 0,
             Mandatory = true, 
+            ParameterSetName = NewServiceUnit.ByTopologyAndServiceNamesParameterSet,
             HelpMessage = "The resource group.")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
@@ -200,10 +201,19 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             {
                 this.ServiceTopologyName = this.Service.ServiceTopologyName;
                 this.ServiceName = this.Service.Name;
+                if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                {
+                    this.ResourceGroupName = this.Service.ResourceGroupName;
+                }
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceResourceId);
+                if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                {
+                    this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                }
+
                 this.ServiceName = parsedResourceId.ResourceName;
                 string[] tokens = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
                 if (tokens.Length < 2)
@@ -216,11 +226,19 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             else if (this.ServiceTopology != null)
             {
                 this.ServiceTopologyName = this.ServiceTopology.Name;
+                if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                {
+                    this.ResourceGroupName = this.ServiceTopology.ResourceGroupName;
+                }
             }
             else if (!string.IsNullOrWhiteSpace(this.ServiceTopologyResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(this.ServiceTopologyResourceId);
                 this.ServiceTopologyName = parsedResourceId.ResourceName;
+                if (string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                {
+                    this.ResourceGroupName = parsedResourceId.ResourceGroupName;
+                }
             }
         }
     }
