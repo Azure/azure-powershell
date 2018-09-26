@@ -338,7 +338,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="AzureRM.Compute.psd1" />
+    <None Include="AzureRM.Compute.psd1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Extension\AzureDiskEncryption\Scripts\AzureDiskEncryptionPreRequisiteSetup.ps1" />
     <None Include="Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
