@@ -1,16 +1,18 @@
 # Announcing New Module 'Az'
-In August 2018 we released a new module, 'Az' which combines the functionality of the AzureRM and AzureRM.Netcore modules.  Az runs on both PowerShell 5.1 and PowerShell Core.  'Az' ensures that the PowerShell and PowerShell core cmdlets for managing Azure resources will always be in sync and up to date.  In addition, Az will simplify and regularize the naming of Azure cmdlets, and the organization of Azure modules.  Az is intended as a replacement for the AzureRM.Netcore and AzureRM modules.
+In August 2018 we released a new module, 'Az' which combines the functionality of the AzureRM and AzureRM.Netcore modules.  Az runs on both PowerShell 5.1 and PowerShell Core.  'Az' ensures that the PowerShell and PowerShell Core cmdlets for managing Azure resources will always be in sync and up to date.  In addition, Az will simplify and regularize the naming of Azure cmdlets, and the organization of Azure modules.  Az is intended as a replacement for the AzureRM.Netcore and AzureRM modules.
 
 Az currently ships in CloudShell, and can be found on the PowerShell Gallery [here](https://www.powershellgallery.com/packages/Az/0.2.2)
 
 Az is a new module, and reorganizing and simplifying cmdlet names involves breaking changes, so we have [added features to Az to make it easier to transition to the simplified, normalized names in your existing scripts](#migrating-from-azurerm). 
 
 ## New Features
-  - PowerShell and PowerShell Core support in the same module
+  - PowerShell 5.1 and PowerShell Core support in the same module
   - PowerShell Core Edition and PowerShell Desktop Edition cmdlets always in sync and up to date with latest Azure capabilities
-  - Shortened and Normalized cmdlet names - all cmdlets use the noun 'Az'
+  - Shortened and Normalized cmdlet names - all cmdlets use the noun prefix 'Az'
   - Normalized module Organization - data plane and management plane cmdlets in the same module for each service
   - Enhanced authentication for Netcore
+    * Self-renewing Service Princpal Authentication
+    * Service Principal Certificate Authentication (in the future)
   - Enable/Disable-AzureRmAlias cmdlets to manage compatibility with scripts based on AzureRM
 
 ## Suppoted Platforms
@@ -29,7 +31,7 @@ Azure RM will continue to be supported, and important bugs will be fixed, but ne
 
 ## Migrating From AzureRM
 
-To make it easier for existing scripts to migrate to AzureRM, we have provided cmdlets to create aliases that map the cmdlet names in AzureRM into the appropriate cmdlets in Az.  When the aliases are enabled, any script that uses AzureRM cmdlet names should run against Az without modification.
+To make it easier for existing scripts to migrate from AzureRM to Az, we have provided cmdlets to create aliases that map the cmdlet names in AzureRM into the appropriate cmdlets in Az.  When the aliases are enabled, any script that uses AzureRM cmdlet names should run against Az without modification.
 
 ```powershell
 PS C:\> Enable-AzureRmAlias
@@ -48,13 +50,13 @@ Sets up AzureRM cmdlet name aliases in the Az module for all sessions started by
 PS C:\> Enable-AzureRmAlias -Scope LocalMachine
 ```
 
-Sets up AzureRM Cmdlet aliases in the Az module for all sessiosn staretd on this machine for any user.  You can turn aliases off similarly using the ```Disable-AzureRmAlias``` cmdlet
+Sets up AzureRM Cmdlet aliases in the Az module for all sessions started on this machine for any user.  You can turn aliases off similarly using the ```Disable-AzureRmAlias``` cmdlet
 
 ```powershell
 PS C:\> Disable-AzureRmAlias
 ```
 
-Turns off aliases in the current session.  The ```Scope``` parameter allows you to remove the aliases for PowerShell sessions started by the curreent user
+Turns off aliases in the current session.  The ```Scope``` parameter allows you to remove the aliases for PowerShell sessions started by the current user
 
 ```powershell
 PS C:\> Disable-AzureRmAlias -Scope CurrentUser
@@ -155,7 +157,8 @@ For scripts that import modules directly, or use ```#Requires``` statements to s
 It is discouraged for AzureRM and Az to be installed on the same machine, but there may be limited circumstances where this is needed for certain older scripts.
 
 If you need to have both modules installed:
-- Do not use the Enable-AzureRmAlias cmdlet with -Scope CurrentUser ot LocalMachine
+- Do not use the Enable-AzureRmAlias cmdlet with -Scope CurrentUser or LocalMachine
+- When installing Az on a machine with AzureRM previously installed, you must specify ```AllowClobber``` in the Install-Module cmdlet invocation.
 - You cannot load Az and AzureRM modules in the same PowerShell session, but they can be used in seperate sessions as follows
   - In AzureRM session:  Import-Module AzureRM
   - In Az session:  Use cmdlets with Az noun, do not use cmdlets with AzureRM noun
