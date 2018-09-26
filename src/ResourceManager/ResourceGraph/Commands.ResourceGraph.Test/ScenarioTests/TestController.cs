@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Management.ResourceGraph;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -32,6 +33,8 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
         private readonly EnvironmentSetupHelper _helper;
 
         public ResourceGraphClient ResourceGraphClient { get; private set; }
+
+        public SubscriptionClient SubscriptionClient { get; private set; }
 
         public static TestController NewInstance => new TestController();
 
@@ -78,12 +81,18 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Test.ScenarioTests
         protected void SetupManagementClients(MockContext context)
         {
             ResourceGraphClient = GetResourceGraphClient(context);
-            _helper.SetupManagementClients(ResourceGraphClient);
+            SubscriptionClient = GetSubscriptionClient(context);
+            _helper.SetupManagementClients(ResourceGraphClient, SubscriptionClient);
         }
 
         private static ResourceGraphClient GetResourceGraphClient(MockContext context)
         {
             return context.GetServiceClient<ResourceGraphClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static SubscriptionClient GetSubscriptionClient(MockContext context)
+        {
+            return context.GetServiceClient<SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
