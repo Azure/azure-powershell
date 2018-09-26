@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         [Parameter(
             Mandatory = false, 
-            HelpMessage = "Displays a detailed output")]
+            HelpMessage = "Displays the rollout details to standard output.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter ShowDetails { get; set; }
 

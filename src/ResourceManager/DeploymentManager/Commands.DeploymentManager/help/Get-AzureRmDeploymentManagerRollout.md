@@ -15,19 +15,19 @@ Gets a rollout.
 ### Interactive (Default)
 ```
 Get-AzureRmDeploymentManagerRollout [-ResourceGroupName] <String> [-Name] <String> [[-RetryAttempt] <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ShowDetails] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Get-AzureRmDeploymentManagerRollout [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmDeploymentManagerRollout [-ResourceId] <String> [-ShowDetails]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Get-AzureRmDeploymentManagerRollout [-Rollout] <PSRollout> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmDeploymentManagerRollout [-Rollout] <PSRollout> [-ShowDetails]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,17 +38,18 @@ Specify the rollout by its name and resource group name. Alternately, you can pr
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout
+PS C:\> Get-AzureRmDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout -ShowDetails
 ```
-
-This command gets a rollout named ContosoRollout in the ContosoResourceGroup.
+This command gets a rollout named ContosoRollout in the ContosoResourceGroup. 
+The -ShowDetails switch will display all the rollout details: Services, ServiceUnits and the various steps that make up the rollout.
 
 ### Example 2: Get a rollout using the resource identifier
 ```powershell
-PS C:\> Get-AzureRmDeploymentManagerRollout -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/rollouts/ContosoRollout"
+PS C:\> Get-AzureRmDeploymentManagerRollout -ResourceId "/subscriptions/subscriptionId/resourcegroups/ContosoResourceGroup/providers/Microsoft.DeploymentManager/rollouts/ContosoRollout" -ShowDetails
 ```
 
 This command gets a rollout named ContosoRollout in the ContosoResourceGroup.
+The -ShowDetails switch will display all the rollout details: Services, ServiceUnits and the various steps that make up the rollout.
 
 ### Example 3: Get a rollout using the rollout object.
 ```powershell
@@ -146,6 +147,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ShowDetails
+Displays a detailed output
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
