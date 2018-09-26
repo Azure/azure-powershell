@@ -33,21 +33,21 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewApplicationInsights()
+        public void TestNewAppInsights()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-NewApplicationInsights");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetApplicationInsights()
+        public void TestGetAppInsights()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-GetApplicationInsights");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveApplicationInsights()
+        public void TestRemoveAppInsights()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-RemoveApplicationInsights");
         }

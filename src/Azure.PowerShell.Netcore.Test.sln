@@ -51,6 +51,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ServiceFabric.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.TrafficManager.Test.Netcore", "ResourceManager\TrafficManager\Commands.TrafficManager2.Test\Commands.TrafficManager.Test.Netcore.csproj", "{9AB72517-E580-430C-9284-8EB271093CEA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ApplicationInsights.Test.Netcore", "ResourceManager\ApplicationInsights\Commands.ApplicationInsights.Test\Commands.ApplicationInsights.Test.Netcore.csproj", "{F4EFBD30-73CB-417F-869C-6A62E2F01E1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -349,6 +351,18 @@ Global
 		{9AB72517-E580-430C-9284-8EB271093CEA}.Release|x64.Build.0 = Release|Any CPU
 		{9AB72517-E580-430C-9284-8EB271093CEA}.Release|x86.ActiveCfg = Release|Any CPU
 		{9AB72517-E580-430C-9284-8EB271093CEA}.Release|x86.Build.0 = Release|Any CPU
+		{F4EFBD30-73CB-417F-869C-6A62E2F01E1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4EFBD30-73CB-417F-869C-6A62E2F01E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4EFBD30-73CB-417F-869C-6A62E2F01E1E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F4EFBD30-73CB-417F-869C-6A62E2F01E1E}.Debug|x64.Build.0 = Debug|Any CPU
+		{F4EFBD30-73CB-417F-869C-6A62E2F01E1E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F4EFBD30-73CB-417F-869C-6A62E2F01E1E}.Debug|x86.Build.0 = Debug|Any CPU
+		{F4EFBD30-73CB-417F-869C-6A62E2F01E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4EFBD30-73CB-417F-869C-6A62E2F01E1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4EFBD30-73CB-417F-869C-6A62E2F01E1E}.Release|x64.ActiveCfg = Release|Any CPU
+		{F4EFBD30-73CB-417F-869C-6A62E2F01E1E}.Release|x64.Build.0 = Release|Any CPU
+		{F4EFBD30-73CB-417F-869C-6A62E2F01E1E}.Release|x86.ActiveCfg = Release|Any CPU
+		{F4EFBD30-73CB-417F-869C-6A62E2F01E1E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
