@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.SecurityCenter.dll-Help.xml
 Module Name: AzureRM.Security
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.security/set-azurermsecurityautoprovisioningsetting
+online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/Security/Commands.Security/help/Set-AzureRmSecurityAutoProvisioningSetting.md
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Set-AzureRmSecurityAutoProvisioningSetting -InputObject <PSSecurityAutoProvision
 
 ## DESCRIPTION
 Turns on or off automatic provisioning settings for a subscription.
-Automatic Provisioning Settings let you decide whether you want Azure Security Cetner to automatically proviosion a security agent that will be installed on your VMs.
+Automatic Provisioning Settings let you decide whether you want Azure Security Center to automatically provision a security agent that will be installed on your VMs.
 The security agent will monitor your VM to create security alerts and monitor the security compliance of the VM.
 
 ## EXAMPLES
