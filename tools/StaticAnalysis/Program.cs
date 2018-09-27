@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +52,7 @@ namespace StaticAnalysis
                 if (args.Any(a => a == "--package-directory" || a == "-p"))
                 {
                     int idx = Array.FindIndex(args, a => a == "--package-directory" || a == "-p");
-                    if (idx == args.Length)
+                    if (idx + 1 == args.Length)
                     {
                         throw new ArgumentException("No value provided for the --package-directory parameter.");
                     }
@@ -81,7 +81,7 @@ namespace StaticAnalysis
                 if (args.Any(a => a == "--reports-directory" || a == "-r"))
                 {
                     int idx = Array.FindIndex(args, a => a == "--reports-directory" || a == "-r");
-                    if (idx == args.Length)
+                    if (idx + 1 == args.Length)
                     {
                         throw new ArgumentException("No value provided for the --reports-directory parameter.");
                     }
@@ -98,12 +98,14 @@ namespace StaticAnalysis
                 if (args.Any(a => a == "--modules-to-analyze" || a == "-m"))
                 {
                     int idx = Array.FindIndex(args, a => a == "--modules-to-analyze" || a == "-m");
-                    if (idx == args.Length)
+                    if (idx + 1 == args.Length)
                     {
-                        throw new ArgumentException("No value provided for the --modules-to-analyze parameter.");
+                        Console.WriteLine("No value provided for the --modules-to-analyze parameter. Filtering over all built modules.");
                     }
-
-                    modulesToAnalyze = args[idx + 1].Split(';').ToList();
+                    else
+                    {
+                        modulesToAnalyze = args[idx + 1].Split(';').ToList();
+                    }
                 }
 
                 bool useNetcore = args.Any(a => a == "--use-netcore" || a == "-u");
