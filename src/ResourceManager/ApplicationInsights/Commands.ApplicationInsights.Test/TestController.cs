@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
                 var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                    _helper.GetRMModulePath("AzureRm.ApplicationInsights.psd1"),
+                    _helper.GetRMModulePath("AzureRM.ApplicationInsights.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Resources.ps1");
