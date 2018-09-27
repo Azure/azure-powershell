@@ -5,7 +5,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Get the list of offers as the administrator.
+    Get the list of offers as the operator.
 
 .DESCRIPTION
     Get the list of offers.
@@ -29,7 +29,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
     PS C:\> Get-AzsManagedOffer -Name offer -ResourceGroupName offerrg
 
-    Get the list of offers as the administrator.
+    Get the list of offers as the operator.
 #>
 function Get-AzsManagedOffer {
     [OutputType([Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Offer])]
