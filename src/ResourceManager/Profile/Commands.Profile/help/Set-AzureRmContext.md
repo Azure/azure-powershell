@@ -164,7 +164,8 @@ Accept wildcard characters: False
 ```
 
 ### -Subscription
-Subscription Name or Id
+Subscription Name or Id 
+Whie using subscription Id as the parameter, this parameter is alias as -SubscriptionId 
 
 ```yaml
 Type: System.String
