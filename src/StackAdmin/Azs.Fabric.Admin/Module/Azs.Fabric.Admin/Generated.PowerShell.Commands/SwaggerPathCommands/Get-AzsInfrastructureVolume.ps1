@@ -16,8 +16,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER StoragePool
     Storage pool name.
 
-.PARAMETER StorageSubSystem
-    Resource group in which the resource provider has been registered.
+.PARAMETER StorageSystem
+    Storage system in which the infrastructure volume is located.
 
 .PARAMETER Location
     Location of the resource.
