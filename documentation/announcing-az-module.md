@@ -1,7 +1,7 @@
 # Announcing New Module 'Az'
 In August 2018 we released a new module, 'Az' which combines the functionality of the AzureRM and AzureRM.Netcore modules.  Az runs on both PowerShell 5.1 and PowerShell Core.  'Az' ensures that the PowerShell and PowerShell Core cmdlets for managing Azure resources will always be in sync and up to date.  In addition, Az will simplify and regularize the naming of Azure cmdlets, and the organization of Azure modules.  Az is intended as a replacement for the AzureRM.Netcore and AzureRM modules.
 
-Az currently ships in CloudShell, and can be found on the PowerShell Gallery [here](https://www.powershellgallery.com/packages/Az/0.2.2)
+Az currently ships in CloudShell, and can be found on the PowerShell Gallery [here](https://www.powershellgallery.com/packages/Az/)
 
 Az is a new module, and reorganizing and simplifying cmdlet names involves breaking changes, so we have [added features to Az to make it easier to transition to the simplified, normalized names in your existing scripts](#migrating-from-azurerm). 
 
@@ -74,10 +74,8 @@ For scripts that import modules directly, or use ```#Requires``` statements to s
 | Azure RM Module Name | Az Module Name|
 | -------------------------------------- | ------------------------------- |
 | AzureRM | Az |
-| AzureRM.Profile | Az.Profile |
-| Azure.Storage | Az.Storage |
-| AzureRM.Storage | Az.Storage |
 | Azure.AnalysisServices | Az.AnalysisServices |
+| Azure.Storage | Az.Storage |
 | AzureRM.Aks | Az.Aks |
 | AzureRM.AnalysisServices | Az.AnalysisServices |
 | AzureRM.ApiManagement | Az.ApiManagement |
@@ -121,7 +119,7 @@ For scripts that import modules directly, or use ```#Requires``` statements to s
 | AzureRM.OperationalInsights | Az.OperationalIsights |
 | AzureRM.PolicyInsights | Az.PolicyInsights *|
 | AzureRM.PowerBIEmbedded | Az.PowerBIEmbedded* |
-| AzureRM.Profile | Az.Profile * |
+| AzureRM.Profile | Az.Profile* |
 | AzureRM.RecoveryServices | Az.RecoveryServices**|
 | AzureRM.RecoveryServices.Backup | Az.RecoveryServices**|
 | AzureRM.RecoveryServices.SiteRecovery | Az.RecoveryServices**|
@@ -136,6 +134,7 @@ For scripts that import modules directly, or use ```#Requires``` statements to s
 | AzureRM.ServiceFabric | Az.ServiceFabric** |
 | AzureRM.SignalR | Az.SignalR |
 | AzureRM.Sql | Az.Sql |
+| AzureRM.Storage | Az.Storage |
 | AzureRM.StorageSync | Az.StorageSync |
 | AzureRM.StreamAnalytics | Az.StreamAnalytics |
 | AzureRM.Subscription | Az.Subscription* |
@@ -159,8 +158,13 @@ It is discouraged for AzureRM and Az to be installed on the same machine, but th
 If you need to have both modules installed:
 - Do not use the Enable-AzureRmAlias cmdlet with -Scope CurrentUser or LocalMachine
 - When installing Az on a machine with AzureRM previously installed, you must specify ```AllowClobber``` in the Install-Module cmdlet invocation.
+
+  ```powershell
+  PS C:\> Install-Module -Name Az -AllowClobber
+  ```
+
 - You cannot load Az and AzureRM modules in the same PowerShell session, but they can be used in seperate sessions as follows
-  - In AzureRM session:  Import-Module AzureRM
+  - In AzureRM session:  ```Import-Module AzureRM```
   - In Az session:  Use cmdlets with Az noun, do not use cmdlets with AzureRM noun
 
 
