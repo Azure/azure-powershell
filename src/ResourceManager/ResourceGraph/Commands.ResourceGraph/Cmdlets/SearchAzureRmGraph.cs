@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.ResourceGraph.Cmdlets
                 return accountSubscriptions;
             }
 
-            return SubscriptionCache.GetSubscriptions(this, this.DefaultContext);
+            return SubscriptionCache.GetSubscriptions(this.DefaultContext);
         }
     }
 }

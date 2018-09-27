@@ -1,14 +1,24 @@
-﻿namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+namespace Microsoft.Azure.Commands.ResourceGraph.Utilities
 {
     using System.Collections.Generic;
     using System.Linq;
-    using System.Management.Automation;
-    using System.Threading;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Internal.Subscriptions;
-    using Microsoft.Azure.Internal.Subscriptions.Models;
-    using Microsoft.Rest.Azure;
 
     /// <summary>
     /// Subscriptions cache
@@ -28,10 +38,9 @@
         /// <summary>
         /// Gets the subscriptions.
         /// </summary>
-        /// <param name="parent">The parent.</param>
         /// <param name="azureContext">The azure context.</param>
         /// <returns></returns>
-        public static List<string> GetSubscriptions(Cmdlet parent, IAzureContext azureContext)
+        public static List<string> GetSubscriptions(IAzureContext azureContext)
         {
             if (_subscriptions == null)
             {
@@ -39,55 +48,17 @@
                 {
                     if (_subscriptions == null)
                     {
-                        _subscriptions = GetSubscriptionsWithProgressInternal(parent, azureContext);
+                        var subscriptionsClient =
+                            AzureSession.Instance.ClientFactory.CreateArmClient<SubscriptionClient>(
+                                azureContext, AzureEnvironment.Endpoint.ResourceManager);
+
+                        _subscriptions = subscriptionsClient.ListAllSubscriptions()
+                            .Select(sub => sub.SubscriptionId).ToList();
                     }
                 }
             }
 
             return _subscriptions;
-        }
-
-        /// <summary>
-        /// Refreshes the subscriptions with progress.
-        /// </summary>
-        /// <param name="parent">The parent.</param>
-        /// <param name="azureContext">The azure context.</param>
-        private static List<string> GetSubscriptionsWithProgressInternal(
-            Cmdlet parent, IAzureContext azureContext)
-        {
-            var subscriptionsClient =
-                AzureSession.Instance.ClientFactory.CreateArmClient<SubscriptionClient>(
-                    azureContext, AzureEnvironment.Endpoint.ResourceManager);
-
-            var progressRecord = new ProgressRecord(0, "Fetching subscriptions", "Loading...")
-            {
-                RecordType = ProgressRecordType.Processing
-            };
-            parent.WriteProgress(progressRecord);
-
-            var subscriptions = new List<Subscription>();
-            IPage<Subscription> page = null;
-
-            do
-            {
-                page = page == null
-                    ? subscriptionsClient.Subscriptions.List()
-                    : subscriptionsClient.Subscriptions.ListNext(page.NextPageLink);
-
-                subscriptions.AddRange(page);
-
-                progressRecord.StatusDescription = $"Loading... {subscriptions.Count}";
-                parent.WriteProgress(progressRecord);
-            }
-            while (!string.IsNullOrEmpty(page.NextPageLink));
-            
-            // Making the total count visible
-            Thread.Sleep(100);
-
-            progressRecord.RecordType = ProgressRecordType.Completed;
-            parent.WriteProgress(progressRecord);
-
-            return subscriptions.Select(sub => sub.SubscriptionId).ToList();
         }
     }
 }
