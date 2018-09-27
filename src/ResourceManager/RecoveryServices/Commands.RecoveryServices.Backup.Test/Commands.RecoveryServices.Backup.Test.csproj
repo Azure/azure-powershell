@@ -129,6 +129,12 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ContainerTests\TestAzureVMGetContainers.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ContainerTests\TestAzureFileContainer.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ContainerTests\TestAzureFileUnregisterContainer.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ContainerTests\TestAzureSqlGetContainers.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -145,6 +151,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ContainerTests\TestMabUnregisterContainer.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureFileItem.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureFileProtection.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureFileShareBackup.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureVMBackup.json">
@@ -177,6 +192,12 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ItemTests\TestAzureVMSetVaultContext.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.JobTests\TestAzureFileJob.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.JobTests\TestAzureFileWaitJob.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.JobTests\TestAzureVMCancelJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -189,10 +210,16 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.JobTests\TestAzureVMWaitJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.PolicyTests\TestAzureFilePolicy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.PolicyTests\TestAzureSqlPolicy.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.PolicyTests\TestAzureVMPolicy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ProtectionCheckTests\TestAzureFileProtectionCheck.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ProtectionCheckTests\TestAzureVMProtectionCheck.json">

@@ -12,24 +12,54 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+#Setup Instructions:
+#1. Create a resource group
+#2. Create a storage account and a recovery services vault
+#3. Create a file share in the storage account
+#4. Fill the below global variables accordingly
+
+$location = "westus"
+$resourceGroupName = "sisi-RSV"
+$vaultName = "sisi-RSV-29-6"
+$fileShareName = "pstestfileshare"
+$fileShareFullName = "AzureFileShare;pstestfileshare"
+$saName = "pstestsaa"
+
 function Test-AzureFileProtectionCheck
 {
-	$resourceGroupName = "sisi-RSV"
+	$status = Get-AzureRmRecoveryServicesBackupStatus `
+		-Name $saName `
+		-ResourceGroupName $resourceGroupName `
+		-Type AzureFiles
 
-	try
-	{
-		# Setup
+	Assert-NotNull $status
+	Assert-False { $status.BackedUp }
 
-		$status = Get-AzureRmRecoveryServicesBackupStatus `
-			-Name "sisisa" `
-			-ResourceGroupName $resourceGroupName `
-			-Type AzureFiles
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+	$item = Enable-Protection $vault $fileShareName $saName
+		
+	$status = Get-AzureRmRecoveryServicesBackupStatus `
+		-Name $saName `
+		-ResourceGroupName $resourceGroupName `
+		-Type AzureFiles
 
-		Assert-NotNull $status
-		Assert-True { $status.BackedUp }
-	}
-	finally
-	{
-		# Cleanup
-	}
+	Assert-NotNull $status
+	Assert-True { $status.BackedUp }
+	Assert-True { $status.VaultId -eq $vault.ID }
+
+	$container = Get-AzureRmRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-ContainerType AzureStorage `
+		-Status Registered `
+		-Name $saName
+	
+	# Disable protection
+	Disable-AzureRmRecoveryServicesBackupProtection `
+		-VaultId $vault.ID `
+		-Item $item `
+		-RemoveRecoveryPoints `
+		-Force;
+	Unregister-AzureRmRecoveryServicesBackupContainer `
+	-VaultId $vault.ID `
+	-Container $container
 }
