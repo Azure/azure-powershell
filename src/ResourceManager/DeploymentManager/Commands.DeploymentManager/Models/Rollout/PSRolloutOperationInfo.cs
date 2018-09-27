@@ -14,64 +14,27 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Models
 {
-    using System;
     using Microsoft.Azure.Management.DeploymentManager.Models;
 
-    public class PSRolloutOperationInfo
+    public class PSRolloutOperationInfo : PSBaseOperationInfo
     {
-        public PSRolloutOperationInfo(RolloutOperationInfo rolloutOperationInfo)
+        public PSRolloutOperationInfo(RolloutOperationInfo rolloutOperationInfo) : base(
+            rolloutOperationInfo?.StartTime,
+            rolloutOperationInfo?.EndTime,
+            null,
+            rolloutOperationInfo?.Error)
         {
             this.RetryAttempt = rolloutOperationInfo.RetryAttempt;
             this.SkipSucceededOnRetry = rolloutOperationInfo.SkipSucceededOnRetry;
-            this.StartTime = rolloutOperationInfo.StartTime;
-            this.EndTime = rolloutOperationInfo.EndTime;
-            this.Error = rolloutOperationInfo.Error;
         }
 
-		/// <summary>
-		/// Gets or sets the ordinal count of retry attempt. 0 if no retries of
-		/// the rollout have been performed.
-		/// </summary>
 		public int? RetryAttempt
 		{
 			get;
 			set;
 		}
 
-		/// <summary>
-		/// Gets or sets true if skipping all successful steps in the given
-		/// retry attempt was chosen. False otherwise.
-		/// </summary>
 		public bool? SkipSucceededOnRetry
-		{
-			get;
-			set;
-		}
-
-		/// <summary>
-		/// Gets the start time of the rollout in UTC.
-		/// </summary>
-		public DateTime? StartTime
-		{
-			get;
-			private set;
-		}
-
-		/// <summary>
-		/// Gets the start time of the rollout in UTC. This property will not
-		/// be set if the rollout has not completed yet.
-		/// </summary>
-		public DateTime? EndTime
-		{
-			get;
-			private set;
-		}
-
-		/// <summary>
-		/// Gets the start time of the rollout in UTC. This property will not
-		/// be set if the rollout has not completed yet.
-		/// </summary>
-		public CloudErrorBody Error
 		{
 			get;
 			set;

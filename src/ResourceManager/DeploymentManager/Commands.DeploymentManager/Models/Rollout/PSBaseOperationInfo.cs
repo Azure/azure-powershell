@@ -14,30 +14,45 @@
 
 namespace Microsoft.Azure.Commands.DeploymentManager.Models
 {
+    using System;
     using Microsoft.Azure.Management.DeploymentManager.Models;
 
-    public class PSStepOperationInfo : PSBaseOperationInfo
+    public class PSBaseOperationInfo
     {
-        public PSStepOperationInfo(StepOperationInfo stepOperationInfo) : base(
-            stepOperationInfo?.StartTime,
-            stepOperationInfo?.EndTime,
-            stepOperationInfo?.LastUpdatedTime,
-            stepOperationInfo?.Error)
+        public PSBaseOperationInfo(
+            DateTime? startTime,
+            DateTime? endTime,
+            DateTime? lastUpdateTime,
+            CloudErrorBody error)
         {
-            this.DeploymentName = stepOperationInfo?.DeploymentName;
-            this.CorrelationId = stepOperationInfo?.CorrelationId;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
+            this.LastUpdatedTime = lastUpdateTime;
+            this.Error = error;
         }
 
-		public string DeploymentName
+        public DateTime? StartTime
 		{
 			get;
 			private set;
 		}
 
-		public string CorrelationId
+		public DateTime? EndTime
 		{
 			get;
 			private set;
+		}
+
+		public DateTime? LastUpdatedTime
+		{
+			get;
+			private set;
+		}
+
+		public CloudErrorBody Error
+		{
+			get;
+			set;
 		}
     }
 }
