@@ -17,8 +17,8 @@ Az is a new module, and reorganizing and simplifying cmdlet names involves break
 
 ## Supported Platforms
   - PowerShell 5.1 with .Net Framework 4.7.2 or later [Windows only]
-  - PowerShell Core 6.0 - Windows, linux, MacOS
-  - PowerShell Core 6.1 - Windows, linux, MacOS
+  - PowerShell Core 6.0 - Windows, Linux, MacOS
+  - PowerShell Core 6.1 - Windows, Linux, MacOS
 
 ## Timeline
   - Initial Release - August 2018
