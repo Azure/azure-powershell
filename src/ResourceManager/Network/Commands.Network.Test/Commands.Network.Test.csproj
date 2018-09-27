@@ -711,7 +711,10 @@
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.CortexTests\TestP2SCortexCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>	
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.CortexTests\TestCortexDownloadConfig.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestData\Deployment.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

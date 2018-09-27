@@ -31,6 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestCortexCRUD()
         {
@@ -40,10 +41,21 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestP2SCortexCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-P2SCortexCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.Owner, Category.brooklynft)]
+        public void TestCortexDownloadConfig()
+        {
+            //// WARNING - Until Ignite, please use only the Jenkins sub c9cbd920-c00c-427c-852b-8aaf38badaeb to record this test case
+            //// If using any other sub, please reach out to Brooklyn team.
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-CortexDownloadConfig");
         }
     }
 }
