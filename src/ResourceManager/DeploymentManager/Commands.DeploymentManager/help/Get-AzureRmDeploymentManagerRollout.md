@@ -45,7 +45,7 @@ PS C:\> Get-AzureRmDeploymentManagerRollout -ResourceGroupName ContosoResourceGr
 
 This command gets a rollout named ContosoRollout in the ContosoResourceGroup. 
 
-### Example 2 Get and display the rollout hierarchically
+### Example 2 Get and display the rollout details
 ```powershell
 PS C:\> Get-AzureRmDeploymentManagerRollout -ResourceGroupName ContosoResourceGroup -Name ContosoRollout -Verbose
 ```
