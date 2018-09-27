@@ -887,3 +887,98 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test creating new NetworkInterfaceTapConfiguration using minimal set of parameters
+#>
+function Test-NetworkInterfaceTapConfigurationCRUD
+{
+    # Setup
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $nicName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
+    $location = Get-ProviderLocation $resourceTypeParent
+    $rname = Get-ResourceName
+    $vtapName = Get-ResourceName
+    $vtapName2 = Get-ResourceName
+    $sourceIpConfigName = Get-ResourceName
+    $sourceNicName = Get-ResourceName
+
+    try
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create the Virtual Network
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        
+        # Create the publicip
+        $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+
+        # Create NetworkInterface
+        $job = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AsJob
+        $job | Wait-Job
+        $expectedNic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname
+
+        # Create required dependencies (Vtap)
+        $DestinationEndpoint = $expectedNic.IpConfigurations[0]
+        $actualVtap = New-AzureRmVirtualNetworkTap -ResourceGroupName $rgname -Name $vtapName -Location $location -DestinationNetworkInterfaceIPConfiguration $DestinationEndpoint  -Force
+        $vVirtualNetworkTap = Get-AzureRmVirtualNetworkTap -ResourceGroupName $rgname -Name $vtapName;
+
+        # Create source Nic which is getting tapped
+        $sourceIpConfig = New-AzureRmNetworkInterfaceIpConfig -Name $sourceIpConfigName -Subnet $vnet.Subnets[0]
+        $sourceNic = New-AzureRmNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname -Location $location -IpConfiguration $sourceIpConfig -Tag @{ testtag = "testval" }
+
+        # Add tap configuration
+        Add-AzureRmNetworkInterfaceTapConfig -NetworkInterface $sourceNic -VirtualNetworkTap $vVirtualNetworkTap -Name $rname
+
+        #get tap configuration
+        $tapConfig = Get-AzureRmNetworkInterfaceTapConfig -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName -Name $rname
+        Assert-NotNull $tapConfig
+        Assert-AreEqual $tapConfig.ResourceGroupName $rgname
+        Assert-AreEqual $tapConfig.NetworkInterfaceName $sourceNicName
+        Assert-AreEqual $tapConfig.Name $rname
+
+        # get nic and check back reference        
+        $sourceNic = Get-AzureRmNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname
+        Assert-NotNull $sourceNic.TapConfigurations
+        Assert-NotNull $sourceNic.TapConfigurations[0]
+        Assert-AreEqual $sourceNic.TapConfigurations[0].Id $tapConfig.Id
+
+        # get vtap and check back reference
+        $vVirtualNetworkTap = Get-AzureRmVirtualNetworkTap -ResourceGroupName $rgname -Name $vtapName;
+        Assert-NotNull $vVirtualNetworkTap.NetworkInterfaceTapConfigurations
+        Assert-NotNull $vVirtualNetworkTap.NetworkInterfaceTapConfigurations[0]
+        Assert-AreEqual $vVirtualNetworkTap.NetworkInterfaceTapConfigurations[0].Id $tapConfig.Id
+
+   
+        # Remove NetworkInterfaceTapConfiguration
+        $removeNetworkInterfaceTapConfiguration = Remove-AzureRmNetworkInterfaceTapConfig -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName -Name $rname -PassThru -Force;
+        Assert-AreEqual $true $removeNetworkInterfaceTapConfiguration;
+
+        $sourceNic = Get-AzureRmNetworkInterface -Name $sourceNicName -ResourceGroupName $rgname
+        Assert-NotNull $sourceNic.TapConfigurations
+        Assert-Null $sourceNic.TapConfigurations[0]
+
+        # get vtap and check back reference
+        $vVirtualNetworkTap = Get-AzureRmVirtualNetworkTap -ResourceGroupName $rgname -Name $vtapName;
+        Assert-NotNull $vVirtualNetworkTap.NetworkInterfaceTapConfigurations
+        Assert-Null $vVirtualNetworkTap.NetworkInterfaceTapConfigurations[0]
+
+        # Get NetworkInterfaceTapConfiguration should fail
+        Assert-ThrowsContains { Get-AzureRmNetworkInterfaceTapConfig  -ResourceGroupName $rgname -NetworkInterfaceName $sourceNicName -Name $rname } "not found";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
