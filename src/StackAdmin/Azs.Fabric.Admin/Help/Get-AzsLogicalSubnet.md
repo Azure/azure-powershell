@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Fabric.Admin-help.xml
 Module Name: Azs.Fabric.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -34,14 +34,14 @@ Returns a list of all logical subnets.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 Get-AzsLogicalSubnet -LogicalNetwork "00000000-2222-1111-9999-000000000001"
 ```
 
 Get a list of all logical subnets for a given logical network and location.
 
-### EXAMPLE 2
+### -------------------------- EXAMPLE 2 --------------------------
 ```
 Get-AzsLogicalSubnet -LogicalNetwork "00000000-2222-1111-9999-000000000001" -Name "d8cfef2d-c0c8-4cdb-b0a8-fb1bdf3f2ad7"
 ```
@@ -50,30 +50,15 @@ Get a specific logical subnet for a given logical network and location based on 
 
 ## PARAMETERS
 
-### -Name
-Name of the logical subnet.
+### -Filter
+OData filter parameter.
 
 ```yaml
 Type: String
-Parameter Sets: Get
-Aliases:
+Parameter Sets: List
+Aliases: 
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LogicalNetwork
-Name of the logical network.
-
-```yaml
-Type: String
-Parameter Sets: List, Get
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -86,9 +71,39 @@ Location of the resource.
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases:
+Aliases: 
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogicalNetwork
+Name of the logical network.
+
+```yaml
+Type: String
+Parameter Sets: List, Get
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the logical subnet.
+
+```yaml
+Type: String
+Parameter Sets: Get
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,7 +116,7 @@ Resource group in which the resource provider has been registered.
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -125,28 +140,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Filter
-OData filter parameter.
-
-```yaml
-Type: String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Skip
 Skip the first N items as specified by the parameter value.
 
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -162,7 +162,7 @@ Applies after the -Skip parameter.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -183,3 +183,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

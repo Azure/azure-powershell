@@ -10,7 +10,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .DESCRIPTION
     Get the list of delegatedProviders.
 
-.PARAMETER DelegatedProvider
+.PARAMETER DelegatedProviderId
     DelegatedProvider identifier.
 
 .EXAMPLE
