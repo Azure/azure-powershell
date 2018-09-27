@@ -34,13 +34,6 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         public void NamespaceCRUD()
         {
             EventHubsController.NewInstance.RunPsTest(_logger, "NamespaceTests");
-        }
-        
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NamespaceAuthorizationRulesCRUD()
-        {
-            EventHubsController.NewInstance.RunPsTest(_logger, "NamespaceAuthTests");
-        }
+        }        
     }
 }

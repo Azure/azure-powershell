@@ -27,6 +27,21 @@ If the namespace name is not provided, a list of namespaces is returned.
 ### Example 1
 ```
 PS C:\> Get-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName
+
+Name                   : MyNamespaceName
+Id                     : /subscriptions/XXXXXXXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+Location               : West US
+ResourceGroup          : MyResourceGroupName
+Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
+ProvisioningState      : Succeeded
+Status                 : Active
+CreatedAt              : X/XX/XXXX 11:54:52 PM
+UpdatedAt              : X/XX/XXXX 11:55:17 PM
+ServiceBusEndpoint     : https://MyNamespaceName.servicebus.windows.net:443/
+Enabled                : True
+IsAutoInflateEnabled   : False
+MaximumThroughputUnits : 0
+ZoneRedundant          : False
 ```
 
 Gets the details of namespace \`MyNamespaceName\` in the resource group \`MyResourceGroupName\`.
@@ -79,15 +94,18 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes
+
 
 ## NOTES
 

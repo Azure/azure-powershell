@@ -15,15 +15,15 @@ Updates the specified Event Hubs namespace.
 ### NamespaceParameterSet (Default)
 ```
 Set-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>]
+ [-EnableZoneRedundant] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AutoInflateParameterSet
 ```
 Set-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-State] <NamespaceState>] [[-Tag] <Hashtable>]
- [-EnableAutoInflate] [-MaximumThroughputUnits <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>]
+ [-EnableAutoInflate] [-MaximumThroughputUnits <Int32>] [-EnableZoneRedundant] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,17 +34,24 @@ The Set-AzureRmEventHubNamespace cmdlet updates the properties of the specified 
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created
+PS C:\> Set-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -EnableAutoInflate -MaximumThroughputUnits 11
+Name                   : MyNamespaceName
+Id                     : /subscriptions/XXXXXXXXXXXXXXXXX/resourceGroups/MyResourceGroupName/providers/Microsoft.EventHub/namespaces/MyNamespaceName
+Location               : MyLocation
+ResourceGroup          : MyResourceGroupName
+Sku                    : Name : Standard , Capacity : 1 , Tier : Standard
+ProvisioningState      : Succeeded
+Status                 : Active
+CreatedAt              : X/XX/XXXX XX:XX:XX XX
+UpdatedAt              : X/XX/XXXX XX:XX:XX XX
+ServiceBusEndpoint     : https://MyNamespaceName.servicebus.windows.net:443/
+Enabled                : True
+IsAutoInflateEnabled   : True
+MaximumThroughputUnits : 11
+ZoneRedundant          : False
 ```
 
-Updates the state of namespace \`MyNamespaceName\` to Created .
-
-### Example 2
-```
-PS C:\> Set-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created -EnableAutoInflate -MaximumThroughputUnits 10
-```
-
-Updates the state of namespace \`MyNamespaceName\` with AutoInflate = enabled and MaximumThroughputUnits = 10
+Updates  namespace \`MyNamespaceName\` with AutoInflate = enabled and MaximumThroughputUnits = 10
 
 ## PARAMETERS
 
@@ -72,6 +79,21 @@ Parameter Sets: AutoInflateParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableZoneRedundant
+Indicates whether ZoneRedundant is enabled
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -169,22 +191,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -State
-Disable/Enable Namespace.
-
-```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.EventHub.Models.NamespaceState]
-Parameter Sets: (All)
-Aliases:
-Accepted values: Unknown, Active, Disabled
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Tag
 Hashtables which represents resource Tag.
 
@@ -232,21 +238,20 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
+System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+System.Collections.Hashtable
 
-### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-
-### System.Nullable`1[[Microsoft.Azure.Commands.EventHub.Models.NamespaceState, Microsoft.Azure.Commands.EventHub, Version=0.6.7.0, Culture=neutral, PublicKeyToken=null]]
-
-### System.Collections.Hashtable
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes
+
 
 ## NOTES
 

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
 
         public EventGridManagementClient EventGridManagementClient { get; private set; }
 
-        public EventHubManagementClient EventHubClient { get; private set; }
+        public EventHub2018PreviewManagementClient EventHubClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -155,9 +155,9 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
             return context.GetServiceClient<EventGridManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private EventHubManagementClient GetEHClient(MockContext context)
+        private EventHub2018PreviewManagementClient GetEHClient(MockContext context)
         {
-            return context.GetServiceClient<EventHubManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<EventHub2018PreviewManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private SubscriptionClient GetSubscriptionClient()

@@ -61,6 +61,9 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 if (evResource.MaximumThroughputUnits.HasValue)
                     MaximumThroughputUnits = evResource.MaximumThroughputUnits;
 
+                if (evResource.ZoneRedundant.HasValue)
+                    ZoneRedundant = evResource.ZoneRedundant;
+
                 ResourceGroup = Regex.Split(evResource.Id, @"/")[4];
 
             }
@@ -121,6 +124,12 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// AutoInflateEnabled = true)
         /// </summary>
         public int? MaximumThroughputUnits { get; set; }
+
+        /// <summary>
+        /// Gets or sets enabling this property creates a Standard Event Hubs
+        /// Namespace in regions supported availability zones.
+        /// </summary>
+        public bool? ZoneRedundant { get; set; }
 
     }
 }

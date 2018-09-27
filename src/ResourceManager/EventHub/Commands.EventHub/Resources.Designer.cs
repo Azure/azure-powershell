@@ -88,6 +88,15 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create new IPFilter Rule : {0} under Namepsace {1}.
+        /// </summary>
+        internal static string CreateIpFilterRule {
+            get {
+                return ResourceManager.GetString("CreateIpFilterRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new EvetntHub-Namespace:{0} under Resource Group:{1}.
         /// </summary>
         internal static string CreateNamespace {
@@ -102,6 +111,15 @@ namespace Microsoft.Azure.Commands.EventHub {
         internal static string CreateNamespaceAuthorizationrule {
             get {
                 return ResourceManager.GetString("CreateNamespaceAuthorizationrule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new VNet Rule : {0} under Namepsace {1}.
+        /// </summary>
+        internal static string CreateVNetRule {
+            get {
+                return ResourceManager.GetString("CreateVNetRule", resourceCulture);
             }
         }
         
@@ -151,6 +169,24 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get IPFilter Rule: {0} under Namespace: {1}.
+        /// </summary>
+        internal static string GetIPfilterRule {
+            get {
+                return ResourceManager.GetString("GetIPfilterRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get VNet Rule: {0} under Namespace: {1}.
+        /// </summary>
+        internal static string GetVNetRule {
+            get {
+                return ResourceManager.GetString("GetVNetRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generating PrimaryKey/SecondaryKey for AuthorizationRule: {0} of EventHub: {1}.
         /// </summary>
         internal static string RegenerateKeyEventHub {
@@ -187,6 +223,15 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleting IPFilterRule:{0} from Namepaces: {1}.
+        /// </summary>
+        internal static string RemoveIpFilterRule {
+            get {
+                return ResourceManager.GetString("RemoveIpFilterRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing AtuhorizationRule:{0} of Namespace: {1}.
         /// </summary>
         internal static string RemoveNamespaceAuthorizationRule {
@@ -201,6 +246,15 @@ namespace Microsoft.Azure.Commands.EventHub {
         internal static string RemoveNamespaces {
             get {
                 return ResourceManager.GetString("RemoveNamespaces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting VNetRule: {0} from Namepaces: {1}.
+        /// </summary>
+        internal static string RemoveVNetRule {
+            get {
+                return ResourceManager.GetString("RemoveVNetRule", resourceCulture);
             }
         }
         
@@ -255,6 +309,24 @@ namespace Microsoft.Azure.Commands.EventHub {
         internal static string UpdateEventHubAuthorizationrule {
             get {
                 return ResourceManager.GetString("UpdateEventHubAuthorizationrule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update IPFilter Rule: {0} under Namespace: {1}.
+        /// </summary>
+        internal static string UpdateIpFilterRule {
+            get {
+                return ResourceManager.GetString("UpdateIpFilterRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update VNet Rule: {0} under Namespace: {1}.
+        /// </summary>
+        internal static string UpdateIpVNetRule {
+            get {
+                return ResourceManager.GetString("UpdateIpVNetRule", resourceCulture);
             }
         }
         

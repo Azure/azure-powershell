@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 
         public IotHubClient IotHubClient { get; private set; }
 
-        public EventHubManagementClient EHClient { get; private set; }
+        public EventHub2018PreviewManagementClient EHClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -183,9 +183,9 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         {
             return context.GetServiceClient<IotHubClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
-        private EventHubManagementClient GetEHClient(MockContext context)
+        private EventHub2018PreviewManagementClient GetEHClient(MockContext context)
         {
-            return context.GetServiceClient<EventHubManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<EventHub2018PreviewManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

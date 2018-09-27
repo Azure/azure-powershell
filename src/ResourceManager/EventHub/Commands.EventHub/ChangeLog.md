@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 0.7.0-preview
+* Cmdlets for Namespace CRUD operations
+* ZoneRedundant property to enable Zone Redundant feature for namespaces
+* Added CRUD cmdlets for Virtual NetworkRules for namespaces
+* Added CRUD cmdlets for Network IPFilterRules for namespaces
+
 ## Version 0.6.10
 * Fixed issue with default resource groups not being set.
 * Updated common runtime assemblies

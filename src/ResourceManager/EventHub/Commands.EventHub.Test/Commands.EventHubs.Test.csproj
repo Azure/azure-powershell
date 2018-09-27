@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2DA1C063-AA27-4BBC-BE25-E3C7D008B6CF}</ProjectGuid>
+    <ProjectGuid>{6F39A4DB-AE22-4105-8C6A-8DBB8FE90DFC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.EventHubs.Test</RootNamespace>
@@ -40,20 +40,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.2.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ScenarioTests\ConsumerGroups.cs" />
-    <Compile Include="ScenarioTests\DRConfigurations.cs" />
-    <Compile Include="ScenarioTests\EventHubsConsumerGroupsSkipTopTests.cs" />
+    <Compile Include="ScenarioTests\IpFilterRule.cs" />
+    <Compile Include="ScenarioTests\VNetRule.cs" />
     <Compile Include="ScenarioTests\Namespace.cs" />
     <Compile Include="ScenarioTests\EventHubsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScenarioTests\EventHubs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
@@ -72,43 +63,22 @@
     <None Include="Resources\NewEventHub.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\ConsumerGroupsTests.ps1">
+    <None Include="ScenarioTests\IpFilterRuleTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\DRConfigurationTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\EventHubsConsumerGroupsSkipTopTests.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\NamespaceTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\EventHubsTests.ps1">
+    <None Include="ScenarioTests\VNetRuleTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.ConsumerGroupsTests\ConsumerGroupsCRUD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.DRConfigurationTests\DRConfigurationsCURD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.DRConfigurationTests\DRConfigurationsCURDAlternateName.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.EventHubsConsumerGroupsSkipTopTests\EventHubsConsumerGroupsskiptop.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.EventHubsTests\EventHubsAuthorizationRulesCRUD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.EventHubsTests\EventHubsCRUD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceTests\NamespaceAuthorizationRulesCRUD.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.IpFilterRuleTests\IpFilterRuleCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.NamespaceTests\NamespaceCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.VNetRuleTests\VnetRuleCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -120,6 +90,11 @@
       <Project>{1e60d2ac-dea7-403c-86dc-7b8c47f54668}</Project>
       <Name>Commands.EventHub</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.8.0-preview\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

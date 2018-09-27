@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
-        public EventHubManagementClient EventHubsManagementClient { get; private set; }
+        public EventHub2018PreviewManagementClient EventHubsManagementClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -150,9 +150,9 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private EventHubManagementClient GetEventHubsManagementClient(MockContext context)
+        private EventHub2018PreviewManagementClient GetEventHubsManagementClient(MockContext context)
         {
-            return context.GetServiceClient<EventHubManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<EventHub2018PreviewManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
         private SubscriptionClient GetSubscriptionClient()
         {
