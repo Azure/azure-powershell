@@ -49,7 +49,7 @@ Get a specific compute quota.
 ## PARAMETERS
 
 ### -Location
-{{Fill Location Description}}
+Location of the resource.
 
 ```yaml
 Type: String

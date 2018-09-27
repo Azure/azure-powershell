@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Commerce.Admin-help.xml
 Module Name: Azs.Commerce.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
@@ -23,7 +23,7 @@ Get usage data from during the specified timespan.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
 Get-AzsSubscriberUsage -ReportedStartTime "2017-09-06T00:00:00Z" -ReportedEndTime "2017-09-07T00:00:00Z"
 ```
@@ -32,76 +32,16 @@ Get usage data from the last 24 hours.
 
 ## PARAMETERS
 
-### -SubscriberId
-The tenant subscription identifier.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReportedStartTime
-The reported start time (inclusive).
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AggregationGranularity
 The aggregation granularity.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Skip
-Skip the first N items as specified by the parameter value.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
-Default value: -1
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReportedEndTime
-The reported end time (exclusive).
-
-```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -113,10 +53,70 @@ The continuation token.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReportedEndTime
+The reported end time (exclusive).
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReportedStartTime
+The reported start time (inclusive).
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Skip
+Skip the first N items as specified by the parameter value.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 4
+Default value: -1
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriberId
+The tenant subscription identifier.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -129,7 +129,7 @@ Applies after the -Skip parameter.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: 7
@@ -150,3 +150,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

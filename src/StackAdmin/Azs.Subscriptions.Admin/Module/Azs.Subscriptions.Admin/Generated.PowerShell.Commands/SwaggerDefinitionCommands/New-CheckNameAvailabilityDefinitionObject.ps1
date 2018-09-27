@@ -16,19 +16,24 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ResourceType
     The resource type to verify.
 
+.EXAMPLE
+
+    New-CheckNameAvailabilityDefinitionObject -Name 'MyPlan' -ResourceType 'Microsoft.Subscriptions.Admin/plans'
+
+    Create an object to test if
 #>
 function New-CheckNameAvailabilityDefinitionObject
 {
-    param(    
+    param(
         [Parameter(Mandatory = $false)]
         [string]
         $Name,
-    
+
         [Parameter(Mandatory = $false)]
         [string]
         $ResourceType
     )
-    
+
     $Object = New-Object -TypeName Microsoft.AzureStack.Management.Subscriptions.Admin.Models.CheckNameAvailabilityDefinition -ArgumentList @($name,$resourceType)
 
     if(Get-Member -InputObject $Object -Name Validate -MemberType Method)
