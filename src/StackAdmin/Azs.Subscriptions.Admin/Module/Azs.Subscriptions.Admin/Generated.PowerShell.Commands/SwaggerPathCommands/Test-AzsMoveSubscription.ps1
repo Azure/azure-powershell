@@ -5,7 +5,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-
+    Validate that user subscriptions can be moved between delegated provider offers.
 
 .DESCRIPTION
 	Validate that user subscriptions can be moved between delegated provider offers.
