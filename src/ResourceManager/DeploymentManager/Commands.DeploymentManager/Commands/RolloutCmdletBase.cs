@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
+    using System.Management.Automation;
     using System.Text;
 
     using Microsoft.Azure.Commands.DeploymentManager.Models;
@@ -38,23 +39,30 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
         private const int ResourceOperationsIndentFactor = 4;
 
-        protected static void PrintVerbose(string message)
+        StringBuilder verboseBuilder = new StringBuilder();
+
+        StringBuilder errorBuilder = new StringBuilder();
+
+        protected void PrintError()
         {
-            Console.WriteLine(message);
+            if (this.errorBuilder.Length > 0)
+            {
+                var exception = new Exception(this.errorBuilder.ToString());
+                var errorRecord = new ErrorRecord(exception, "RolloutFailed", ErrorCategory.NotSpecified, null);
+                this.WriteError(errorRecord);
+            }
         }
 
-        protected static void PrintError(string message)
+        protected void PrintRollout(PSRollout rollout)
         {
-            ConsoleColor currentColor = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(message);
-            Console.ForegroundColor = currentColor;
-        }
+            if (rollout != null)
+            {
+                verboseBuilder.InvariantAppend(this.FormatRolloutInfoHeader(rollout));
+                this.PrintDetails(rollout);
 
-        protected static void PrintRollout(PSRollout rollout)
-        {
-            RolloutCmdletBase.PrintVerbose(RolloutCmdletBase.FormatRolloutInfoHeader(rollout));
-            RolloutCmdletBase.PrintDetails(rollout);
+                this.WriteVerbose(verboseBuilder.ToString());
+                this.PrintError();
+            }
         }
 
         protected static string FormatOperationInfo(PSBaseOperationInfo operationInfo, int indentFactor)
@@ -79,18 +87,21 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                     sb.AppendFormatWithLeftIndentAndNewLineIfNotNull(indentFactorForDetails, "CorrelationId", stepOperationInfo.CorrelationId);
                 }
 
-                if (operationInfo.StartTime != null)
+                if (operationInfo?.StartTime != null && operationInfo.StartTime.HasValue)
                 {
                     sb.AppendFormatWithLeftIndentAndNewLine(indentFactorForDetails, $"Start Time: {operationInfo.StartTime.Value.ToLocalTimeForUserDisplay()}");
                 }
 
-                if (operationInfo.EndTime != null)
+                if (operationInfo?.EndTime != null && operationInfo.EndTime.HasValue)
                 {
                     sb.AppendFormatWithLeftIndentAndNewLine(indentFactorForDetails, $"End Time: {operationInfo.EndTime.Value.ToLocalTimeForUserDisplay()}");
 
-                    if (operationInfo.StartTime != null)
+                    if (operationInfo?.StartTime != null && operationInfo.StartTime.HasValue)
                     {
-                        sb.AppendFormatWithLeftIndentAndNewLine(indentFactorForDetails, "Total Duration: {0}", (operationInfo.EndTime.Value - operationInfo.StartTime.Value).ToDisplayFormat());
+                        sb.AppendFormatWithLeftIndentAndNewLine(
+                            indentFactorForDetails, 
+                            "Total Duration: {0}", 
+                            (operationInfo.EndTime.Value - operationInfo.StartTime.Value).ToDisplayFormat());
                     }
                 }
 
@@ -108,7 +119,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
             return formattedString;
         }
 
-        protected static void PrintResourceOperations(IList<PSResourceOperation> resourceOperations)
+        protected void PrintResourceOperations(IList<PSResourceOperation> resourceOperations, StringBuilder eb)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -118,9 +129,10 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 int i = 0;
                 foreach (var resourceOperation in resourceOperations)
                 {
-                    if (resourceOperation.ProvisioningState.Equals(RolloutCmdletBase.FailedStatus, StringComparison.OrdinalIgnoreCase))
+                    if (resourceOperation.ProvisioningState != null && 
+                        resourceOperation.ProvisioningState.Equals(RolloutCmdletBase.FailedStatus, StringComparison.OrdinalIgnoreCase))
                     {
-                        RolloutCmdletBase.PrintVerbose(sb.ToString());
+                        verboseBuilder.InvariantAppend(sb.ToString());
                         sb.Clear();
                     }
 
@@ -133,60 +145,79 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                     sb.AppendFormatWithLeftIndentAndNewLineIfNotNull(RolloutCmdletBase.ResourceOperationsIndentFactor, "StatusCode", resourceOperation.StatusCode);
                     sb.AppendFormatWithLeftIndentAndNewLineIfNotNull(RolloutCmdletBase.ResourceOperationsIndentFactor, "OperationId", resourceOperation.OperationId);
 
-                    if (resourceOperation.ProvisioningState.Equals("Failed", StringComparison.OrdinalIgnoreCase))
+                    if (resourceOperation.ProvisioningState != null && 
+                        resourceOperation.ProvisioningState.Equals(RolloutCmdletBase.FailedStatus, StringComparison.OrdinalIgnoreCase))
                     {
-                        RolloutCmdletBase.PrintError(sb.ToString());
+                        eb.InvariantAppend(sb.ToString());
+                        verboseBuilder.InvariantAppend(sb.ToString());
                         sb.Clear();
                     }
                 }
             }
 
-            RolloutCmdletBase.PrintVerbose(sb.ToString());
+            verboseBuilder.InvariantAppend(sb.ToString());
         }
 
-        private static void PrintDetails(PSRollout rollout)
+        private void PrintDetails(PSRollout rollout)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             if (rollout != null && rollout.Services != null)
             {
-                RolloutCmdletBase.PrintServices(rollout.Services);
+                this.PrintServices(rollout.Services);
             }
         }
 
-        private static void PrintServices(IList<PSService> services)
+        private void PrintServices(IList<PSService> services)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
+            var serviceErrors = new StringBuilder();
 
             foreach (var service in services)
             {
-                string location = !StringUtilities.IsNullOrWhiteSpace(service.TargetLocation)
-                    ? StringUtilities.SafeInvariantFormat("TargetLocation: {0}", service.TargetLocation)
-                    : string.Empty;
-
-                string subscriptionId = service.TargetSubscriptionId != null
-                    ? StringUtilities.SafeInvariantFormat("TargetSubscriptionId: {0}", service.TargetSubscriptionId)
-                    : string.Empty;
-
                 sb.AppendLine();
-                sb.InvariantAppend("Service: {0} ", service.Name);
-                sb.AppendFormatWithLeftIndentAndNewLine(RolloutCmdletBase.ServiceUnitIndentFactor, location);
-                sb.AppendFormatWithLeftIndentAndNewLine(RolloutCmdletBase.ServiceUnitIndentFactor, subscriptionId);
+                sb.AppendLine();
+                sb.InvariantAppend($"Service: {service.Name}");
+                sb.AppendFormatWithLeftIndentAndNewLineIfNotNull(RolloutCmdletBase.ServiceUnitIndentFactor, "TargetLocation", service.TargetLocation);
+                sb.AppendFormatWithLeftIndentAndNewLineIfNotNull(RolloutCmdletBase.ServiceUnitIndentFactor, "TargetSubscriptionId", service.TargetSubscriptionId);
 
-                RolloutCmdletBase.PrintVerbose(sb.ToString());
+                verboseBuilder.InvariantAppend(sb.ToString());
                 sb.Clear();
 
-                foreach (var serviceUnit in service.ServiceUnits)
+                serviceErrors.Clear();
+                if (service.ServiceUnits != null)
                 {
-                    RolloutCmdletBase.PrintServiceUnits(serviceUnit);
+                    var suErrors = new StringBuilder();
+                    foreach (var serviceUnit in service.ServiceUnits)
+                    {
+                        suErrors.Clear();
+                        this.PrintServiceUnits(serviceUnit, suErrors);
+
+                        if (suErrors.Length > 0)
+                        {
+                            serviceErrors.AppendLine();
+                            serviceErrors.AppendFormatWithLeftIndentAndNewLine(
+                                RolloutCmdletBase.ServiceUnitIndentFactor,
+                                $"ServiceUnit: {serviceUnit.Name}");
+                            serviceErrors.InvariantAppend(suErrors.ToString());
+                        }
+                    }
+                }
+
+                if (serviceErrors.Length > 0)
+                {
+                    this.errorBuilder.AppendLine();
+                    this.errorBuilder.InvariantAppend($"Service: {service.Name}");
+                    this.errorBuilder.InvariantAppend(serviceErrors.ToString());
                 }
             }
         }
 
-        private static void PrintServiceUnits(PSServiceUnit serviceUnit)
+        private void PrintServiceUnits(PSServiceUnit serviceUnit, StringBuilder eb)
         {
             StringBuilder sb = new StringBuilder();
             if (serviceUnit != null)
             {
+                sb.AppendLine();
                 sb.AppendFormatWithLeftIndentAndNewLine(
                     RolloutCmdletBase.ServiceUnitIndentFactor,
                     $"ServiceUnit: {serviceUnit.Name}");
@@ -198,9 +229,9 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
                 foreach (var step in serviceUnit.Steps)
                 {
-                    if (step.Status.Equals("Failed", StringComparison.OrdinalIgnoreCase))
+                    if (step.Status != null && step.Status.Equals("Failed", StringComparison.OrdinalIgnoreCase))
                     {
-                        RolloutCmdletBase.PrintVerbose(sb.ToString());
+                        verboseBuilder.InvariantAppend(sb.ToString());
                         sb.Clear();
                     }
 
@@ -219,30 +250,31 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                         sb.Append(formatOperationInfo);
                     }
 
-                    if (step.Status.Equals("Failed", StringComparison.OrdinalIgnoreCase))
+                    if (step.Status != null && step.Status.Equals("Failed", StringComparison.OrdinalIgnoreCase))
                     {
-                        RolloutCmdletBase.PrintError(sb.ToString());
+                        verboseBuilder.InvariantAppend(sb.ToString());
+                        eb.InvariantAppend(sb.ToString());
                     }
                     else
                     {
-                        RolloutCmdletBase.PrintVerbose(sb.ToString());
+                        verboseBuilder.InvariantAppend(sb.ToString());
                     }
 
                     sb.Clear();
 
-                    RolloutCmdletBase.PrintResourceOperations(step.ResourceOperations);
+                    this.PrintResourceOperations(step.ResourceOperations, eb);
                 }
             }
         }
 
-        private static string FormatRolloutInfoHeader(PSRollout rollout)
+        private string FormatRolloutInfoHeader(PSRollout rollout)
         {
             StringBuilder sb = new StringBuilder();
             sb.InvariantAppend($"\n\nStatus: {rollout.Status}");
 
             if (rollout.Status == RolloutCmdletBase.FailedStatus)
             {
-                RolloutCmdletBase.PrintError(sb.ToString());
+                verboseBuilder.InvariantAppend(sb.ToString());
                 sb.Clear();
             }
 
@@ -279,8 +311,8 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
                 Environment.NewLine,
                 messages.Select(
                     m => StringUtilities.SafeInvariantFormat(
-                        "{0}: {1}",
-                        m.TimeStamp.Value.ToLocalTimeForUserDisplay(),
+                        "{0}{1}",
+                        m.TimeStamp.HasValue ? $"{m.TimeStamp.Value.ToLocalTimeForUserDisplay()}: "  : string.Empty,
                         m.MessageProperty)));
         }
 

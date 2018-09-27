@@ -73,12 +73,6 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
         [ValidateNotNullOrEmpty]
         public PSRollout Rollout { get; set; }
 
-        [Parameter(
-            Mandatory = false, 
-            HelpMessage = "Displays the rollout details to standard output.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter ShowDetails { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (this.Rollout != null)
@@ -95,11 +89,7 @@ namespace Microsoft.Azure.Commands.DeploymentManager.Commands
 
             var rollout = this.DeploymentManagerClient.GetRollout(this.ResourceGroupName, this.Name, this.RetryAttempt);
 
-            if (this.ShowDetails)
-            {
-                RolloutCmdletBase.PrintRollout(rollout);
-            }
-
+            this.PrintRollout(rollout);
             this.WriteObject(rollout);
         }
     }
