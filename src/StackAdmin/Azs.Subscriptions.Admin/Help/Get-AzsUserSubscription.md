@@ -1,14 +1,14 @@
 ---
 external help file: Azs.Subscriptions.Admin-help.xml
 Module Name: Azs.Subscriptions.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
 # Get-AzsUserSubscription
 
 ## SYNOPSIS
-Get the list of user subscriptions as administrator.
+Get the list of user subscriptions as operator.
 
 ## SYNTAX
 
@@ -23,7 +23,7 @@ Get-AzsUserSubscription -SubscriptionId <Guid> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the list of user subscriptions as administrator.
+Get the list of user subscriptions as operator.
 
 ## EXAMPLES
 
@@ -32,7 +32,7 @@ Get the list of user subscriptions as administrator.
 Get-AzsUserSubscription
 ```
 
-Get the list of user subscriptions as administrator.
+Get the list of user subscriptions as operator.
 
 ## PARAMETERS
 
@@ -42,7 +42,7 @@ OData filter parameter.
 ```yaml
 Type: String
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -57,7 +57,7 @@ Subscription Id parameter.
 ```yaml
 Type: Guid
 Parameter Sets: Get
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

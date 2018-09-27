@@ -51,7 +51,7 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.5.1'; },
+    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.5.2'; },
         @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.2'; },
         @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.2.0'; },
@@ -122,8 +122,23 @@
 
             # ReleaseNotes of this module
             ReleaseNotes = '## 2018.09 - Version 1.5.0
-            * Azurestack 1.5.0 version has no breaking changes from the previous release 1.4.0
-            - Bug fix where ErrorActionPreference is being overridden to be Stop'
+            * All the Azure Stack Admin modules are updated for greater than or equal to dependency on the AzureRm.Profile module
+            * Support for handling nested resource names in all the modules
+            * Bug fix in all the modules where ErrorActionPreference is being overridden to be Stop
+            * Azs.Compute.Admin Module
+                * New quota properties added for the support of manged disk
+                * Addition of disk migration related cmdlets
+                * Additional properties in the Platform Image and VM extesnion objects
+            * Azs.Fabric.Admin 
+                * New cmdlet for adding scale unit node
+            * Azs.Backup.Admin
+                * Set-AzsBackupShare is an alias now to the cmdlet Set-AzsBackupConfiguration
+                * Get-AzsBackupLocation is an alias now to the cmdlet Get-AzsBackupConfiguration
+                * Set-AzsBackupConfiguration, the parameter BackupShare is an alias now for the parameter path
+            * Azs.Subscriptions
+                * Get-AzsDelegatedProviderOffer, the parameter OfferName is now an alias for Offer
+            * Azs.Subscriptions.Admin
+                * Get-AzsDelegatedProviderOffer, the parameter OfferName is now an alias for Offer'
 
 
             # External dependent modules of this module
