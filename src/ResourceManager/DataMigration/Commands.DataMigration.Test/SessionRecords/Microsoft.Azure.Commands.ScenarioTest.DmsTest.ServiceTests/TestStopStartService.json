@@ -1736,6 +1736,7 @@
           "Sat, 22 Sep 2018 01:07:36 GMT"
         ],
         "ETag": [
+          //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]
           "\"F2Bli+6s525zZgWboAAWzkEYM5LGkAOfcqHuv3er4ks=\""
         ],
         "Server": [
@@ -1829,6 +1830,7 @@
           "Microsoft.Azure.Management.DataMigration.DataMigrationServiceClient/0.4.0"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"virtualNicId\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun5170/providers/Microsoft.Network/networkInterfaces/NIC-bw77i4mgbff2gs3jywyfi3qb\",\r\n    \"virtualSubnetId\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-6617/subnets/Subnet-1\"\r\n  },\r\n  \"etag\": \"F2Bli+6s525zZgWboAAWzkEYM5LGkAOfcqHuv3er4ks=\",\r\n  \"id\": \"/subscriptions/fc04246f-04c5-437e-ac5e-206a19e7193f/resourceGroups/DmResource-PsTestRun5170/providers/Microsoft.DataMigration/services/DmService-PsTestRun782\",\r\n  \"location\": \"centralus\",\r\n  \"name\": \"DmService-PsTestRun782\",\r\n  \"sku\": {\r\n    \"name\": \"BusinessCritical_4vCores\",\r\n    \"size\": \"4 vCores\",\r\n    \"tier\": \"Business Critical\"\r\n  },\r\n  \"type\": \"Microsoft.DataMigration/services\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
@@ -1868,6 +1870,7 @@
           "Sat, 22 Sep 2018 01:13:09 GMT"
         ],
         "ETag": [
+          //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]
           "\"F2Bli+6s525zZgWboAAWzkEYM5LGkAOfcqHuv3er4ks=\""
         ],
         "Server": [
