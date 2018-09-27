@@ -5,10 +5,10 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-
+    Scale out a scale unit.
 
 .DESCRIPTION
-    Scale out a scale unit.
+    Add a new scale unit node to your scale unit cluster.
 
 .PARAMETER NodeList
     A list of input data that allows for adding a set of scale unit nodes.
@@ -21,6 +21,18 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .PARAMETER Location
     Location of the resource.
+
+.PARAMETER AwaitStorageConvergence
+    Wait for storage replication to complete before returning success.
+
+.PARAMETER AsJob
+    Run asynchronous as a job and return the job object.
+
+.EXAMPLE
+
+    Add-AzsScaleUnitNode -NodeList $Nodes -ScaleUnit $ScaleUnitName
+
+    Adds a list of nodes to the scale unit.
 
 #>
 function Add-AzsScaleUnitNode
