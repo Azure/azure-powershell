@@ -20,6 +20,9 @@ Adds content to an item in a Data Lake Store.
 ### [Add-AzureRmDataLakeStoreTrustedIdProvider](Add-AzureRmDataLakeStoreTrustedIdProvider.md)
 Adds a trusted identity provider to the specified Data Lake Store account.
 
+### [Add-AzureRmDataLakeStoreVirtualNetworkRule](Add-AzureRmDataLakeStoreVirtualNetworkRule.md)
+Adds a virtual network rule to the specified Data Lake Store account.
+
 ### [Enable-AzureRmDataLakeStoreKeyVault](Enable-AzureRmDataLakeStoreKeyVault.md)
 Attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
 
@@ -61,6 +64,10 @@ Gets the permission octal of a file or folder in Data Lake Store.
 Gets the specified trusted identity provider in the specified Data Lake Store.
 If no provider is specified, then lists all providers for the account.
 
+### [Get-AzureRmDataLakeStoreVirtualNetworkRule](Get-AzureRmDataLakeStoreVirtualNetworkRule.md)
+Gets the specified virtual network rules in the specified Data Lake Store.
+If no virtual network rule is specified, then lists all virtual network rules for the account.
+
 ### [Import-AzureRmDataLakeStoreItem](Import-AzureRmDataLakeStoreItem.md)
 Uploads a local file or directory to a Data Lake Store.
 
@@ -94,6 +101,9 @@ Removes an entry from the ACL of a file or folder in Data Lake Store.
 ### [Remove-AzureRmDataLakeStoreTrustedIdProvider](Remove-AzureRmDataLakeStoreTrustedIdProvider.md)
 Removes the specified trusted identity provider in the specified Data Lake Store.
 
+### [Remove-AzureRmDataLakeStoreVirtualNetworkRule](Remove-AzureRmDataLakeStoreVirtualNetworkRule.md)
+Removes the specified virtual network rule in the specified Data Lake Store.
+
 ### [Set-AzureRmDataLakeStoreAccount](Set-AzureRmDataLakeStoreAccount.md)
 Modifies a Data Lake Store account.
 
@@ -117,6 +127,9 @@ Modifies the permission octal of a file or folder in Data Lake Store.
 
 ### [Set-AzureRmDataLakeStoreTrustedIdProvider](Set-AzureRmDataLakeStoreTrustedIdProvider.md)
 Modifies the specified trusted identity provider in the specified Data Lake Store.
+
+### [Set-AzureRmDataLakeStoreVirtualNetworkRule](Set-AzureRmDataLakeStoreVirtualNetworkRule.md)
+Modifies the specified virtual network rule in the specified Data Lake Store.
 
 ### [Test-AzureRmDataLakeStoreAccount](Test-AzureRmDataLakeStoreAccount.md)
 Tests the existence of a Data Lake Store account.
