@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileJob");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(TestConstants.Workload, TestConstants.AzureFile)]
-        public void TestAzureFileCancelJob()
-        {
-            TestController.NewInstance.RunPsTest(
-                _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileCancelJob");
-        }
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //[Trait(TestConstants.Workload, TestConstants.AzureFile)]
+        //public void TestAzureFileCancelJob()
+        //{
+        //    TestController.NewInstance.RunPsTest(
+        //        _logger, PsBackupProviderTypes.AzureFiles, "Test-AzureFileCancelJob");
+        //}
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

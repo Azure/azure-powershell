@@ -12,88 +12,63 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$resourceGroupName = "RecoveryServicesBackupTestRg";
-$resourceName = "PsTestRsVault";
-$policyName = "PsTestPolicy";
+#Setup Instructions:
+#1. Create a resource group
+#2. Create a storage account and a recovery services vault
+#3. Create a file share in the storage account
+#4. Fill the below global variables accordingly
+
+$location = "westus"
+$resourceGroupName = "sisi-RSV"
+$vaultName = "sisi-RSV-29-6"
+$fileShareName = "pstestfileshare"
+$fileShareFullName = "AzureFileShare;pstestfileshare"
+$saName = "pstestsaa"
 
 function Test-AzureFilePolicy
 {
-	$location = "westus"
-	$resourceGroupName = "sisi-RSV"
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		
+	# Get default policy objects
+	$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+	Assert-NotNull $schedulePolicy
+	$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+	Assert-NotNull $retentionPolicy
 
-	try
-	{
-		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
+	# Create policy
+	$policyName = "newFilePolicy"
+	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy `
+		-VaultId $vault.ID `
+		-Name $policyName `
+		-WorkloadType AzureFiles `
+		-RetentionPolicy $retentionPolicy `
+		-SchedulePolicy $schedulePolicy
+	Assert-NotNull $policy
+	Assert-AreEqual $policy.Name $policyName
 
-		# Get default policy objects
-		$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
-		Assert-NotNull $schedulePolicy
-		$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
-		Assert-NotNull $retentionPolicy
+	# Get policy
+	$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+		-VaultId $vault.ID `
+		-Name $policyName
+	Assert-NotNull $policy
+	Assert-AreEqual $policy.Name $policyName
 
-		# Create policy
-		$policyName = "newFilePolicy1"
-		$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy `
-			-VaultId $vault.ID `
-			-Name $policyName `
-			-WorkloadType AzureFiles `
-			-RetentionPolicy $retentionPolicy `
-			-SchedulePolicy $schedulePolicy
-		Assert-NotNull $policy
-		Assert-AreEqual $policy.Name $policyName
+	# Get default policy objects (this data is generated partially at random. So, running this again gives different values)
+	$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
+	Assert-NotNull $schedulePolicy
+	$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
+	Assert-NotNull $retentionPolicy
 
-		#Get Policy
-		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
-			-VaultId $vault.ID `
-			-Name $policyName
-		Assert-NotNull $policy
-		Assert-AreEqual $policy.Name $policyName
+	# Update policy
+	Set-AzureRmRecoveryServicesBackupProtectionPolicy `
+		-VaultId $vault.ID `
+		-RetentionPolicy $retentionPolicy `
+		-SchedulePolicy $schedulePolicy `
+		-Policy $policy
 
-		# Get default policy objects (this data is generated partially at random. So, running this again gives different values)
-		$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles
-		Assert-NotNull $schedulePolicy
-		$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles
-		Assert-NotNull $retentionPolicy
-
-		# Update policy
-		Set-AzureRmRecoveryServicesBackupProtectionPolicy `
-			-VaultId $vault.ID `
-			-RetentionPolicy $retentionPolicy `
-			-SchedulePolicy $schedulePolicy `
-			-Policy $policy
-
-		# Delete policy
-		Remove-AzureRmRecoveryServicesBackupProtectionPolicy `
-			-VaultId $vault.ID `
-			-Policy $policy `
-			-Force
-	}
-	finally
-	{
-		# Cleanup
-	}
-}
-
-function Test-AzureFileProtection
-{
-	$location = "westus"
-	$resourceGroupName = "sisi-RSV"
-
-	try
-	{
-		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
-		$policyName = "AFSBackupPolicy";
-		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
-			-VaultId $vault.ID `
-			-WorkloadType "AzureFiles"
-		$enableJob = Enable-AzureRmRecoveryServicesBackupProtection `
-			-VaultId $vault.ID `
-			-Policy $Policy `
-			-Name "test" `
-			-StorageAccountName "sisitestaccount"
-	}
-	finally
-	{
-		# Cleanup
-	}
+	# Delete policy
+	Remove-AzureRmRecoveryServicesBackupProtectionPolicy `
+		-VaultId $vault.ID `
+		-Policy $policy `
+		-Force
 }

@@ -11,62 +11,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
- function Create-FileShare($sa)
-{
-	$suffix = $(Get-RandomSuffix 5)
-	$fileshareName = "PSTestFileShare" + $suffix
-	$fileshareName = $fileshareName.ToLower()
- 	Assert-NotNull $sa
-	$fileShare = Get-AzureStorageShare -Context $sa.Context -Name $fileshareName
- 	if ($fileShare -eq $null)
-	{
-		New-AzureStorageShare -Name $fileshareName -Context $sa.Context
-		New-AzureStorageDirectory -Context $sa.Context -ShareName $fileshareName -Path "myDirectory" -ErrorAction Ignore
-		
-		$sourceDir = "C:\Users\Public\"
-		echo "This is a sample text file" > $sourceDir + $fileShareName + ".txt"
-		$sourceFile = $sourceDir + $fileShareName + ".txt"
-		
-		Set-AzureStorageFileContent `
-			-Context $sa.Context `
-			-ShareName $fileshareName `
-			-Source $sourceFile `
-			-Path "myDirectory\SampleUpload.txt"
-		
-		$fileShare = Get-AzureStorageShare -Context $sa.Context -Name $fileshareName
-	}
-	return $fileShare
-}
- function Delete-Vault($vault)
-{
-	$containers = Get-AzureRmRecoveryServicesBackupContainer `
-		-VaultId $vault.ID `
-		-ContainerType AzureStorage
-	foreach ($container in $containers)
-	{
-		$items = Get-AzureRmRecoveryServicesBackupItem `
-			-VaultId $vault.ID `
-			-Container $container `
-			-WorkloadType AzureFiles
-		foreach ($item in $items)
-		{
-			Disable-AzureRmRecoveryServicesBackupProtection `
-				-VaultId $vault.ID `
-				-Item $item `
-				-RemoveRecoveryPoints -Force
-		}
-	}
- 	Remove-AzureRmRecoveryServicesVault -Vault $vault
-}
+
  function Enable-Protection(
 	$vault, 
-	$file,
+	$fileShareName,
 	$saName)
 {
 	$container = Get-AzureRmRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType AzureStorage `
 		-FriendlyName $saName;
+
  	if ($container -eq $null)
 	{
 		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
@@ -76,7 +31,7 @@
 		Enable-AzureRmRecoveryServicesBackupProtection `
 			-VaultId $vault.ID `
 			-Policy $policy `
-			-Name $file.Name `
+			-Name $fileShareName `
 			-storageAccountName $saName | Out-Null
  		$container = Get-AzureRmRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
@@ -88,6 +43,6 @@
 		-VaultId $vault.ID `
 		-Container $container `
 		-WorkloadType AzureFiles `
-		-Name $file.Name
+		-Name $fileShareName
  	return $item
 }
