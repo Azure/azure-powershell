@@ -19,5 +19,8 @@
 -->
 ## Current Release
 
-## Version 0.9.0
-Add support for creating and managing rollouts and other supporting scenarios.
+## Version 0.9.1-preview
+* Enhance the discoverability of information provided by `Get-AzureRmDeploymentManagerRollout` when using the `-Verbose` and `-Error` switch parameters
+
+## Version 0.9.0-preview
+* Add support for creating and managing rollouts and other supporting scenarios.
