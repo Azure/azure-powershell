@@ -867,6 +867,9 @@
                         "Set-AzEventHubGeoDRConfigurationFailOver":  "Set-AzureRmEventHubGeoDRConfigurationFailOver",
                         "Test-AzEventHubName":  "Test-AzureRmEventHubName"
                     },
+    "Az.GuestConfiguration":  {
+                                  "Get-AzVMGuestPolicyReport":  "Get-AzureRmVMGuestPolicyReport"
+                              },
     "Az.HDInsight":  {
                          "Get-AzHDInsightJob":  "Get-AzureRmHDInsightJob",
                          "New-AzHDInsightSqoopJobDefinition":  "New-AzureRmHDInsightSqoopJobDefinition",
