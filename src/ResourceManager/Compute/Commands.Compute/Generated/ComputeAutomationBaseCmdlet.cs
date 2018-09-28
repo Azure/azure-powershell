@@ -316,10 +316,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             return m.Success ? m.Groups["rgname"].Value : null;
         }
 
-        public static string GetResourceName(string resourceId, string resourceName, string instanceName = null)
+        public static string GetResourceName(string resourceId, string resourceName, string instanceName = null, string version = null)
         {
             if (string.IsNullOrEmpty(resourceId)) { return null; }
-            Regex r = (instanceName == null)
+            Regex r = (instanceName == null && version == null)
                       ? new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)", RegexOptions.IgnoreCase)
                       : new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)/" + instanceName + @"/(?<instanceId>\S+)", RegexOptions.IgnoreCase);
             Match m = r.Match(resourceId);

@@ -14,7 +14,7 @@ Get or list gallery image definitions.
 
 ### DefaultParameter (Default)
 ```
-Get-AzureRmGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <String> [-Name <String>]
+Get-AzureRmGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -77,7 +77,7 @@ Parameter Sets: DefaultParameter
 Aliases: GalleryImageDefinitionName
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

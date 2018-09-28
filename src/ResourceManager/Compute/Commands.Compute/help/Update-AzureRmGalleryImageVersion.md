@@ -15,7 +15,7 @@ Update a gallery image version.
 ### DefaultParameter (Default)
 ```
 Update-AzureRmGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
- -GalleryImageDefinitionName <String> -Name <String> [-AsJob] [-Tag <Hashtable>] [-ReplicaCount <Int32>]
+ [-GalleryImageDefinitionName] <String> [-Name] <String> [-AsJob] [-Tag <Hashtable>] [-ReplicaCount <Int32>]
  [-PublishingProfileExcludeFromLatest] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-TargetRegion <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -31,7 +31,7 @@ Update-AzureRmGalleryImageVersion [-ResourceId] <String> [-AsJob] [-Tag <Hashtab
 
 ### ObjectParameter
 ```
-Update-AzureRmGalleryImageVersion -InputObject <PSGalleryImageVersion> [-AsJob] [-Tag <Hashtable>]
+Update-AzureRmGalleryImageVersion [-InputObject] <PSGalleryImageVersion> [-AsJob] [-Tag <Hashtable>]
  [-ReplicaCount <Int32>] [-PublishingProfileExcludeFromLatest] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-TargetRegion <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -94,7 +94,7 @@ Parameter Sets: DefaultParameter
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -124,7 +124,7 @@ Parameter Sets: ObjectParameter
 Aliases: GalleryImageVersion
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -139,7 +139,7 @@ Parameter Sets: DefaultParameter
 Aliases: GalleryImageVersionName
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

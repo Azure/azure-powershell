@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     string resourceGroupName = this.ResourceGroupName;
                     string galleryName = this.GalleryName;
-                    string galleryImageName = this.GallleryImageDefinitionName;
+                    string galleryImageName = this.GalleryImageDefinitionName;
                     string galleryImageVersionName = this.Name;
                     GalleryImageVersion galleryImageVersion = new GalleryImageVersion();
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
-        public string GallleryImageDefinitionName { get; set; }
+        public string GalleryImageDefinitionName { get; set; }
 
         [Alias("GalleryImageVersionName")]
         [Parameter(
@@ -196,15 +196,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
-                            galleryName = GetResourceName(this.ResourceId, "Microsoft.Compute/Galleries", "Images");
+                            galleryName = GetResourceName(this.ResourceId, "Microsoft.Compute/Galleries", "Images", "Versions");
                             galleryImageName = GetInstanceId(this.ResourceId, "Microsoft.Compute/Galleries", "Images", "Versions");
                             galleryImageVersionName = GetVersion(this.ResourceId, "Microsoft.Compute/Galleries", "Images", "Versions");
                             break;
                         case "ObjectParameter":
                             resourceGroupName = GetResourceGroupName(this.InputObject.Id);
-                            galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/Galleries", "Images");
+                            galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/Galleries", "Images", "Versions");
                             galleryImageName = GetInstanceId(this.InputObject.Id, "Microsoft.Compute/Galleries", "Images", "Versions");
-                            galleryImageVersionName = GetVersion(this.ResourceId, "Microsoft.Compute/Galleries", "Images", "Versions");
+                            galleryImageVersionName = GetVersion(this.InputObject.Id, "Microsoft.Compute/Galleries", "Images", "Versions");
                             break;
                         default:
                             resourceGroupName = this.ResourceGroupName;

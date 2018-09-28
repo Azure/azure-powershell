@@ -13,7 +13,7 @@ Create a gallery.
 ## SYNTAX
 
 ```
-New-AzureRmGallery [-ResourceGroupName] <String> -Name <String> [-AsJob] [-Location] <String>
+New-AzureRmGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Location] <String>
  [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -101,7 +101,7 @@ Parameter Sets: (All)
 Aliases: GalleryName
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
