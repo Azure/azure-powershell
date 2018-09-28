@@ -65,19 +65,19 @@
     <None Include="ScenarioTests\ContainerRegistryTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests.ContainerRegistryTests\TestAzureContainerRegistry.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests.ContainerRegistryTests\TestContainerReg.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests.ContainerRegistryTests\TestAzureContainerRegistryCredential.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests.ContainerRegistryTests\TestContainerRegCredential.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests.ContainerRegistryTests\TestAzureContainerRegistryNameAvailability.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests.ContainerRegistryTests\TestContainerRegNameAvailability.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests.ContainerRegistryTests\TestAzureContainerRegistryReplication.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests.ContainerRegistryTests\TestContainerRegReplication.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests.ContainerRegistryTests\TestAzureContainerRegistryWebhook.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests.ContainerRegistryTests\TestContainerRegWebhook.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
