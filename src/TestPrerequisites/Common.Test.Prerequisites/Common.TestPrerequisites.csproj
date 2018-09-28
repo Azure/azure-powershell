@@ -9,6 +9,8 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <RootNamespace>Microsoft.Azure.PowerShell.Test</RootNamespace>
     <OutputPath>..\..\local-artifacts</OutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
     <IsPackable>true</IsPackable>
     <NoPackageAnalysis>true</NoPackageAnalysis>
     <HideReferenceDependencies>true</HideReferenceDependencies>
@@ -37,6 +39,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="22.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Consumption" Version="3.0.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.ContainerInstance" Version="1.0.2-preview" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.Management.ContainerRegistry" Version="2.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.DeviceProvisioningServices" Version="0.9.0-preview" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.Dns" Version="3.0.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.Management.IotHub" Version="2.1.0" PrivateAssets="All" />

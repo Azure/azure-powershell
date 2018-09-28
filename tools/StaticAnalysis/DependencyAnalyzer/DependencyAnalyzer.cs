@@ -55,7 +55,9 @@ namespace StaticAnalysis.DependencyAnalyzer
         private Dictionary<string, AssemblyRecord> _identicalSharedAssemblies =
             new Dictionary<string, AssemblyRecord>(StringComparer.OrdinalIgnoreCase);
 
+#if !NETSTANDARD
         private AppDomain _testDomain;
+#endif
         private AssemblyLoader _loader;
         private ReportLogger<AssemblyVersionConflict> _versionConflictLogger;
         private ReportLogger<SharedAssemblyConflict> _sharedConflictLogger;

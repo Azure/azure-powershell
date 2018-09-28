@@ -38,7 +38,9 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
         public string OutputFilePath { get; set; }
         public string BreakingChangeAttributeReportLoggerName { get; protected set; }
 
+#if !NETSTANDARD
         private AppDomain _appDomain;
+#endif
 
         public BreakingChangeAttributesAnalyzer()
         {
@@ -166,6 +168,9 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
                                     }
 
                                     LogBreakingChangesInModule(cmdletDataForModule, logger);
+#if !NETSTANDARD
+                                    AppDomain.Unload(_appDomain);
+#endif
                                 }
                             }
                         }
