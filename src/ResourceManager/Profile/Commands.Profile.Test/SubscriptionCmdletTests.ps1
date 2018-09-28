@@ -86,12 +86,11 @@ function Test-SetAzureRmContextEndToEnd
 {
     # This test requires that the tenant contains atleast two subscriptions
 	$allSubscriptions = Get-AzureRmSubscription
-    $secondSubscription = $allSubscriptions[1]
+    $subscription = $allSubscriptions[0]
     Assert-True { $allSubscriptions[0] -ne $null }
-	Assert-True { $secondSubscription -ne $null }
-    Set-AzureRmContext -SubscriptionId $secondSubscription.Id
+    Set-AzureRmContext -SubscriptionId $subscription.Id
     $context = Get-AzureRmContext
-    Assert-AreEqual $context.Subscription.Id $secondSubscription.Id
+    Assert-AreEqual $context.Subscription.Id $subscription.Id
     $junkSubscriptionId = "49BC3D95-9A30-40F8-81E0-3CDEF0C3F8A5"
     Assert-ThrowsContains {Set-AzureRmContext -SubscriptionId $junkSubscriptionId} "provide a valid"
 }
