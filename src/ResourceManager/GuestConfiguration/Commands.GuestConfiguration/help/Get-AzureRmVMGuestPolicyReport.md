@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.GuestConfiguration.dll-Help.xml
 Module Name: AzureRM.GuestConfiguration
 online version: https://github.com/Azure/azure-powershell/blob/preview/src/ResourceManager/GuestConfiguration/Commands.GuestConfiguration/help/Get-AzureRmVMGuestPolicyReport.md
@@ -14,25 +14,25 @@ Gets guest configuration policy reports for an initiative of type "Guest Configu
 
 ### VmScope (Default)
 ```
-Get-AzureRmVMGuestPolicyReport -ResourceGroupName <String> -VMName <String> [-Detailed] [-Latest]
+Get-AzureRmVMGuestPolicyReport [-ResourceGroupName] <String> [-VMName] <String> [-Detailed] [-Latest]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InitiativeIdScope
 ```
-Get-AzureRmVMGuestPolicyReport -ResourceGroupName <String> -VMName <String> -InitiativeId <String> [-Detailed]
- [-Latest] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmVMGuestPolicyReport [-ResourceGroupName] <String> [-VMName] <String> [-InitiativeId] <String>
+ [-Detailed] [-Latest] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InitiativeNameScope
 ```
-Get-AzureRmVMGuestPolicyReport -ResourceGroupName <String> -VMName <String> -InitiativeName <String>
+Get-AzureRmVMGuestPolicyReport [-ResourceGroupName] <String> [-VMName] <String> [-InitiativeName] <String>
  [-Detailed] [-Latest] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ReportIdScope
 ```
-Get-AzureRmVMGuestPolicyReport -ReportId <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmVMGuestPolicyReport [-ReportId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -132,7 +132,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -145,9 +145,9 @@ Parameter Sets: InitiativeIdScope
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -160,9 +160,9 @@ Parameter Sets: InitiativeNameScope
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -177,7 +177,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -191,9 +191,9 @@ Parameter Sets: ReportIdScope
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -206,9 +206,9 @@ Parameter Sets: VmScope, InitiativeIdScope, InitiativeNameScope
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -221,9 +221,9 @@ Parameter Sets: VmScope, InitiativeIdScope, InitiativeNameScope
 Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
