@@ -55,6 +55,16 @@ function Test-GetCatalog
 		Assert-True { $item.Terms.Count -gt 0 }
 		Assert-True { $item.Locations.Count -gt 0 }
 	}
+
+    # Get CosmosDb catalog
+	$catalog = Get-AzureRmReservationCatalog -SubscriptionId $subscriptionId -ReservedResourceType CosmosDb
+	Foreach ($item in $catalog)
+	{
+		Assert-NotNull $item.ResourceType
+		Assert-NotNull $item.Name
+		Assert-True { $item.Terms.Count -gt 0 }
+		Assert-Null $item.Locations
+	}
 }
 
 <#
