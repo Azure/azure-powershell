@@ -108,7 +108,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
@@ -146,7 +150,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
             commandRuntimeMock.Verify(f => f.WriteObject(AsAzureClientSession.Instance.Profile));
             mockAuthenticationProvider.Verify(authProvider => authProvider.GetAadAuthenticatedToken(It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>()), Times.Once);
@@ -165,7 +173,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
@@ -222,7 +234,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
@@ -255,7 +271,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
@@ -287,7 +307,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
@@ -361,7 +385,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
@@ -473,7 +501,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
                 authProvider => authProvider.GetAadAuthenticatedToken(
                     It.IsAny<AsAzureContext>(),
                     It.IsAny<SecureString>(),
+#if NETSTANDARD
+                    It.IsAny<Action<string>>(),
+#else
                     It.IsAny<PromptBehavior>(),
+#endif
                     It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<Uri>())).Returns(testToken);
