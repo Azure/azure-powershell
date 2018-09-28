@@ -15,7 +15,7 @@ Delete a gallery image version.
 ### DefaultParameter (Default)
 ```
 Remove-AzureRmGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
- -GalleryImageDefinitionName <String> -Name <String> [-Force] [-AsJob]
+ [-GalleryImageDefinitionName] <String> [-Name] <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Remove-AzureRmGalleryImageVersion [-Force] [-ResourceId] <String> [-AsJob]
 
 ### ObjectParameter
 ```
-Remove-AzureRmGalleryImageVersion [-Force] -InputObject <PSGalleryImageVersion> [-AsJob]
+Remove-AzureRmGalleryImageVersion [-Force] [-InputObject] <PSGalleryImageVersion> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -99,7 +99,7 @@ Parameter Sets: DefaultParameter
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -129,7 +129,7 @@ Parameter Sets: ObjectParameter
 Aliases: GalleryImageVersion
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -144,7 +144,7 @@ Parameter Sets: DefaultParameter
 Aliases: GalleryImageVersionName
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
