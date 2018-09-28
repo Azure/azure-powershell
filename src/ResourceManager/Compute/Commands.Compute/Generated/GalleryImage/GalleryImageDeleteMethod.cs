@@ -51,12 +51,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
-                            galleryName = GetResourceName(this.ResourceId, "Microsoft.Compute/Galleries");
+                            galleryName = GetResourceName(this.ResourceId, "Microsoft.Compute/Galleries", "Images");
                             galleryImageName = GetInstanceId(this.ResourceId, "Microsoft.Compute/Galleries", "Images");
                             break;
                         case "ObjectParameter":
                             resourceGroupName = GetResourceGroupName(this.InputObject.Id);
-                            galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/Galleries");
+                            galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/Galleries", "Images");
                             galleryImageName = GetInstanceId(this.InputObject.Id, "Microsoft.Compute/Galleries", "Images");
                             break;
                         default:

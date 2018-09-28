@@ -14,7 +14,7 @@ Delete a gallery.
 
 ### DefaultParameter (Default)
 ```
-Remove-AzureRmGallery [-ResourceGroupName] <String> -Name <String> [-Force] [-AsJob]
+Remove-AzureRmGallery [-ResourceGroupName] <String> [-Name] <String> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Remove-AzureRmGallery [-Force] [-ResourceId] <String> [-AsJob] [-DefaultProfile 
 
 ### ObjectParameter
 ```
-Remove-AzureRmGallery [-Force] -InputObject <PSGallery> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzureRmGallery [-Force] [-InputObject] <PSGallery> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -98,7 +98,7 @@ Parameter Sets: ObjectParameter
 Aliases: Gallery
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -113,7 +113,7 @@ Parameter Sets: DefaultParameter
 Aliases: GalleryName
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

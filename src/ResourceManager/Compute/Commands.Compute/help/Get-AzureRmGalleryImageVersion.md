@@ -15,7 +15,7 @@ Get or list gallery image versions.
 ### DefaultParameter (Default)
 ```
 Get-AzureRmGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
- -GalleryImageDefinitionName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-GalleryImageDefinitionName] <String> [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -63,7 +63,7 @@ Parameter Sets: DefaultParameter
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -93,7 +93,7 @@ Parameter Sets: DefaultParameter
 Aliases: GalleryImageVersionName
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

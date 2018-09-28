@@ -14,8 +14,8 @@ Get or list galleries.
 
 ### DefaultParameter (Default)
 ```
-Get-AzureRmGallery [[-ResourceGroupName] <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmGallery [[-ResourceGroupName] <String>] [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
@@ -72,7 +72,7 @@ Parameter Sets: DefaultParameter
 Aliases: GalleryName
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

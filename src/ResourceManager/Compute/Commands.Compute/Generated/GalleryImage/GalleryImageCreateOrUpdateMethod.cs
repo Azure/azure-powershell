@@ -325,13 +325,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         case "ResourceIdParameter":
                             resourceGroupName = GetResourceGroupName(this.ResourceId);
-                            galleryName = GetResourceName(this.ResourceId, "Microsoft.Compute/Galleries");
-                            galleryImageName = GetInstanceId(this.ResourceId, "Microsoft.Compute/Galleries", "virtualMachines");
+                            galleryName = GetResourceName(this.ResourceId, "Microsoft.Compute/Galleries", "Images");
+                            galleryImageName = GetInstanceId(this.ResourceId, "Microsoft.Compute/Galleries", "Images");
                             break;
                         case "ObjectParameter":
                             resourceGroupName = GetResourceGroupName(this.InputObject.Id);
-                            galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/Galleries");
-                            galleryImageName = GetInstanceId(this.InputObject.Id, "Microsoft.Compute/Galleries", "virtualMachines");
+                            galleryName = GetResourceName(this.InputObject.Id, "Microsoft.Compute/Galleries", "Images");
+                            galleryImageName = GetInstanceId(this.InputObject.Id, "Microsoft.Compute/Galleries", "Images");
                             break;
                         default:
                             resourceGroupName = this.ResourceGroupName;

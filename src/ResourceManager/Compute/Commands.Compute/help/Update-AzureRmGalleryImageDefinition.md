@@ -14,7 +14,7 @@ Update a gallery image definition.
 
 ### DefaultParameter (Default)
 ```
-Update-AzureRmGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <String> -Name <String>
+Update-AzureRmGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <String> [-Name] <String>
  [-AsJob] [-Description <String>] [-Eula <String>] [-PrivacyStatementUri <String>] [-ReleaseNoteUri <String>]
  [-EndOfLifeDate <DateTime>] [-Tag <Hashtable>] [-MinimumVCPU <Int32>] [-MaximumVCPU <Int32>]
  [-MinimumMemory <Int32>] [-MaximumMemory <Int32>] [-DisallowedDiskType <String[]>]
@@ -34,7 +34,7 @@ Update-AzureRmGalleryImageDefinition [-ResourceId] <String> [-AsJob] [-Descripti
 
 ### ObjectParameter
 ```
-Update-AzureRmGalleryImageDefinition -InputObject <PSGalleryImage> [-AsJob] [-Description <String>]
+Update-AzureRmGalleryImageDefinition [-InputObject] <PSGalleryImage> [-AsJob] [-Description <String>]
  [-Eula <String>] [-PrivacyStatementUri <String>] [-ReleaseNoteUri <String>] [-EndOfLifeDate <DateTime>]
  [-Tag <Hashtable>] [-MinimumVCPU <Int32>] [-MaximumVCPU <Int32>] [-MinimumMemory <Int32>]
  [-MaximumMemory <Int32>] [-DisallowedDiskType <String[]>] [-PurchasePlanName <String>]
@@ -170,7 +170,7 @@ Parameter Sets: ObjectParameter
 Aliases: GalleryImageDefinition
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -245,7 +245,7 @@ Parameter Sets: DefaultParameter
 Aliases: GalleryImageDefinitionName
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

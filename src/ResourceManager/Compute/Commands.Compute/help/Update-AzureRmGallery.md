@@ -14,7 +14,7 @@ Update a gallery.
 
 ### DefaultParameter (Default)
 ```
-Update-AzureRmGallery [-ResourceGroupName] <String> -Name <String> [-AsJob] [-Description <String>]
+Update-AzureRmGallery [-ResourceGroupName] <String> [-Name] <String> [-AsJob] [-Description <String>]
  [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzureRmGallery [-ResourceId] <String> [-AsJob] [-Description <String>] [-
 
 ### ObjectParameter
 ```
-Update-AzureRmGallery -InputObject <PSGallery> [-AsJob] [-Description <String>] [-Tag <Hashtable>]
+Update-AzureRmGallery [-InputObject] <PSGallery> [-AsJob] [-Description <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -98,7 +98,7 @@ Parameter Sets: ObjectParameter
 Aliases: Gallery
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -113,7 +113,7 @@ Parameter Sets: DefaultParameter
 Aliases: GalleryName
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

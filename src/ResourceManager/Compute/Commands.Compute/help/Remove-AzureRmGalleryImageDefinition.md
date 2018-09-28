@@ -14,7 +14,7 @@ Delete a gallery image definition.
 
 ### DefaultParameter (Default)
 ```
-Remove-AzureRmGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <String> -Name <String>
+Remove-AzureRmGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <String> [-Name] <String>
  [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Remove-AzureRmGalleryImageDefinition [-Force] [-ResourceId] <String> [-AsJob]
 
 ### ObjectParameter
 ```
-Remove-AzureRmGalleryImageDefinition [-Force] -InputObject <PSGalleryImage> [-AsJob]
+Remove-AzureRmGalleryImageDefinition [-Force] [-InputObject] <PSGalleryImage> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -113,7 +113,7 @@ Parameter Sets: ObjectParameter
 Aliases: GalleryImageDefinition
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -128,7 +128,7 @@ Parameter Sets: DefaultParameter
 Aliases: GalleryImageDefinitionName
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
