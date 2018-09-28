@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
         [Parameter(
             ParameterSetName = GetSkusWithFilterParamSetName,
-            Position = 0,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Type.")]
@@ -43,7 +42,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
         [Parameter(
             ParameterSetName = GetSkusWithFilterParamSetName,
-            Position = 1,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Location.")]
@@ -57,6 +55,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter()]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -66,6 +65,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Cognitive Services Account Name.")]
         [Alias(CognitiveServicesAccountNameAlias, AccountNameAlias)]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         public override void ExecuteCmdlet()
@@ -73,31 +73,28 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             base.ExecuteCmdlet();
             RunCmdLet(() =>
             {
-                if (!string.IsNullOrEmpty(this.Name))
+                switch(ParameterSetName)
                 {
-                    if (string.IsNullOrEmpty(this.ResourceGroupName))
-                    {
-                        throw new ErrorException("ResourceGroupName must present when Name is indicated.");
-                    }
+                    case GetSkusWithAccountParamSetName:
+                        // keep compatibility with old behavior but give warnings.
+                        WriteWarningWithTimestamp("Get Available Skus with an existing Cognitive Services Account is deprecated and will be removed in a future version.");
 
-                    // keep compatibility with old behavior but give warnings.
-                    WriteWarningWithTimestamp("Get Available Skus with an existing Cognitive Services Account is deprecated and will be removed in a future version.");
+                        var cognitiveServicesSkus = this.CognitiveServicesClient.Accounts.ListSkus(
+                             this.ResourceGroupName,
+                             this.Name);
 
-                    var cognitiveServicesSkus = this.CognitiveServicesClient.Accounts.ListSkus(
-                         this.ResourceGroupName,
-                         this.Name);
+                        // cognitiveServicesSkus is not a list
+                        WriteObject(cognitiveServicesSkus);
+                        break;
+                    case GetSkusWithFilterParamSetName:
+                        var resourceSkus = this.CognitiveServicesClient.ResourceSkus.List().Where(
+                            resourceSku =>
+                            (string.IsNullOrWhiteSpace(this.Type) || resourceSku.Kind == this.Type)
+                            && (string.IsNullOrWhiteSpace(this.Location) || resourceSku.Locations.Any(x => string.Compare(x, this.Location, StringComparison.OrdinalIgnoreCase) == 0))
+                        );
 
-                    WriteObject(cognitiveServicesSkus);
-                }
-                else
-                {
-                    var cognitiveServicesSkus = this.CognitiveServicesClient.ResourceSkus.List().Where(
-                        resourceSku =>
-                        (string.IsNullOrWhiteSpace(this.Type) || resourceSku.Kind == this.Type)
-                        && (string.IsNullOrWhiteSpace(this.Location) || resourceSku.Locations.Any(x => string.Compare(x, this.Location, StringComparison.OrdinalIgnoreCase) == 0))
-                    );
-
-                    WriteObject(cognitiveServicesSkus);
+                        WriteObject(resourceSkus, true);
+                        break;
                 }
             });
         }
