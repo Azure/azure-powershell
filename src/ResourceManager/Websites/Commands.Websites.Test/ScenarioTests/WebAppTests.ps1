@@ -770,6 +770,7 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 			# Message for Recording mode
 			$message = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The connection to the specified remote host was refused."
 			$resultError = $Error[0] -like "*$($message)*"
+			Write-Debug "Expected Message: $message"
 		}
 		else
 		{
@@ -777,9 +778,12 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 			$messageDNS = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client cannot process the request because the server name cannot be resolved"
 			$messageUnavailable = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client sent a request to an HTTP server and got a response saying the requested HTTP URL was not available."
 			$resultError = ($Error[0] -like "*$($messageDNS)*") -or ($Error[0] -like "*$($messageUnavailable)*")
+			Write-Debug "Expected Message 1: $messageDNS"
+			Write-Debug "Expected Message 2: $messageUnavailable"
 		}
 
-		Write-Debug "Message: $message"
+		Write-Debug $PsVersionTable
+		
 		Write-Debug "Error: $Error[0]"
 		Write-Debug "Warnings: $wv"
 		
