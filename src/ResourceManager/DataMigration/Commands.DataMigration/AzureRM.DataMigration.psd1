@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.7'
+ModuleVersion = '0.1.6'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -84,9 +84,9 @@ CmdletsToExport = 'New-AzureRmDataMigrationDatabaseInfo',
                'Remove-AzureRmDataMigrationTask', 
                'Start-AzureRmDataMigrationService', 
                'Stop-AzureRmDataMigrationService', 'Stop-AzureRmDataMigrationTask', 
-               'New-AzureRmDataMigrationSelectedDBObject',
-               'New-AzureRmDataMigrationFileShare',
-               'New-AzureRmDataMigrationSyncSelectedDBObject',
+               'New-AzureRmDataMigrationSelectedDBObject', 
+               'New-AzureRmDataMigrationFileShare', 
+               'New-AzureRmDataMigrationSyncSelectedDBObject', 
                'Invoke-AzureRmDataMigrationCommand'
 
 # Variables to export from this module
@@ -99,9 +99,10 @@ AliasesToExport = 'Get-AzureRmDms', 'Get-AzureRmDmsTask', 'Get-AzureRmDmsProject
                'Remove-AzureRmDmsProject', 'Remove-AzureRmDms', 
                'Remove-AzureRmDmsTask', 'Start-AzureRmDmsService', 
                'Stop-AzureRmDmsTask', 'Stop-AzureRmDmsService', 
-               'New-AzureRmDmsSelectedDB', 'New-AzureRmDmsSyncSelectedDB', 'New-AzureRmDmsFileShare',
-               'Invoke-AzureRmDmsCommand',
-               'New-AzureRmDataMigrationSelectedDB', 'New-AzureRmDataMigrationSyncSelectedDB', 'New-AzureRmDmsSelectedDBObject', 'New-AzureRmDmsSyncSelectedDBObject'
+               'New-AzureRmDmsSelectedDB', 'New-AzureRmDmsSyncSelectedDB', 
+               'New-AzureRmDmsFileShare', 'Invoke-AzureRmDmsCommand', 
+               'New-AzureRmDataMigrationSelectedDB', 'New-AzureRmDataMigrationSyncSelectedDB', 
+               'New-AzureRmDmsSelectedDBObject', 'New-AzureRmDmsSyncSelectedDBObject'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
