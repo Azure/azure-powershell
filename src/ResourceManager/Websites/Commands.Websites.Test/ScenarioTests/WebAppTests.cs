@@ -132,9 +132,16 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestWindowsContainerWebAppPSSession()
+        public void TestWindowsContainerWebAppCanIssuePSSession()
         {
-            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WindowsContainerWebAppPSSession");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WindowsContainerCanIssueWebAppPSSession");
+        }
+
+        [Fact(Skip = "Expected to fail during playback because it validates that a PsSession into a real container web app can be established")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWindowsContainerWebAppPSSessionOpened()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WindowsContainerWebAppPSSessionOpened");
         }
     }
 }
