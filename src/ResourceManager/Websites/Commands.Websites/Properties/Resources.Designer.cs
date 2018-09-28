@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating a new remote PowerShell session. Confirm?.
+        /// </summary>
+        internal static string EnterContainerPSSessionConfirmation {
+            get {
+                return ResourceManager.GetString("EnterContainerPSSessionConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add your Container Web App to the trusted hosts. For example: &quot;Set-Item WSMAN:\\LocalHost\\Client\\TrustedHosts -Value &apos;{0}{1}.azurewebsites.net&apos;&quot;.
         /// </summary>
         internal static string EnterContainerPSSessionFormatForTrustedHostsSuggestion {

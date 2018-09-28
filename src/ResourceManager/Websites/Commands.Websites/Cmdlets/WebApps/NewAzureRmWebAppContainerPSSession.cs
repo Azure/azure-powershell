@@ -18,13 +18,16 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will create remote ps session with site
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppContainerPSSession")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "WebAppContainerPSSession", DefaultParameterSetName = ParameterSet1Name, SupportsShouldProcess = true)]
     [OutputType(typeof(System.Management.Automation.Runspaces.PSSession))]
     public class NewAzureRmWebAppContainerPSSession : WebAppBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 1, Mandatory = false, HelpMessage = "The name of the web app slot.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string SlotName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Create the PowerShell session without prompting for confirmation.")]
+        public SwitchParameter Force { get; set; }
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ParameterSet2Name)
@@ -35,7 +38,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 Name = name;
                 SlotName = slot;
             }
-            WebsitesClient.RunWebAppContainerPSSessionScript(this, ResourceGroupName, Name, SlotName, true);
+
+            if (this.Force.IsPresent || ShouldProcess(Properties.Resources.EnterContainerPSSessionConfirmation))
+            {
+                WebsitesClient.RunWebAppContainerPSSessionScript(this, ResourceGroupName, Name, SlotName, true);
+            }
         }
     }
 }

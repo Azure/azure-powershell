@@ -762,7 +762,7 @@ function Test-WindowsContainerCanIssueWebAppPSSession
 		#
 		# This assert at least verifies that the EnterPsSession command is attempted and that the behavior is the expected in
 		# Windows PowerShell and PowerShell Core.
-		New-AzureRmWebAppContainerPSSession -ResourceGroupName $rgname -Name $wname -WarningVariable wv -WarningAction SilentlyContinue -ErrorAction SilentlyContinue
+		New-AzureRmWebAppContainerPSSession -ResourceGroupName $rgname -Name $wname -WarningVariable wv -WarningAction SilentlyContinue -ErrorAction SilentlyContinue -Force
 		
 
 		if ((Get-WebsitesTestMode) -ne 'Playback') 
@@ -905,7 +905,7 @@ function Test-WindowsContainerWebAppPSSessionOpened
 		# Asserting status of the last ping to the web app
 		Assert-AreEqual $status "200"
 
-		$ps_session = New-AzureRmWebAppContainerPSSession -ResourceGroupName $rgname -Name $wname
+		$ps_session = New-AzureRmWebAppContainerPSSession -ResourceGroupName $rgname -Name $wname -Force
 
 		Write-Debug "After PSSession"
 
