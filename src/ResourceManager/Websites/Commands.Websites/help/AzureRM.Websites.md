@@ -38,6 +38,9 @@ Gets all backups of an Azure Web App.
 ### [Get-AzureRmWebAppCertificate](Get-AzureRmWebAppCertificate.md)
 Gets an Azure Web App certificate.
 
+### [Get-AzureRmWebAppContainerContinuousDeploymentUrl](Get-AzureRmWebAppContainerContinuousDeploymentUrl.md)
+Gets the continuous deployment url for a container web app
+
 ### [Get-AzureRmWebAppMetrics](Get-AzureRmWebAppMetrics.md)
 Gets Azure Web App metrics.
 

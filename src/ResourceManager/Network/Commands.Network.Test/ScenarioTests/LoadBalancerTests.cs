@@ -189,19 +189,17 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LoadBalancerCRUD-InternalBasicSku");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.slbdev)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestSetLoadBalancerCRUDPublicStandardSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LoadBalancerCRUD-PublicStandardSku");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.slbdev)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestSetLoadBalancerCRUDInternalStandardSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LoadBalancerCRUD-InternalStandardSku");
@@ -215,10 +213,9 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LoadBalancerCRUD-InternalHighlyAvailableBasicSku");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.slbdev)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestLoadBalancerCRUDInternalHighlyAvailableStandardSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LoadBalancerCRUD-InternalHighlyAvailableStandardSku");
