@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 try
                 {
-                    var subscriptions = _client.ListSubscriptions(tenant);
+                    var subscriptions = _client.ListSubscriptions(tenant ?? DefaultContext.Tenant.Id);
                     WriteObject(subscriptions.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
                 }
                 catch (AadAuthenticationException exception)
