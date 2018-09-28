@@ -665,11 +665,11 @@ function Test-EnableContainerContinuousDeploymentAndGetUrl
 
 <#
 .SYNOPSIS
-Tests enagbling continuous deployment for container and getting continuous deployment url.
+Tests issuing an EnterPsSession command to a Windows container web app.
 .DESCRIPTION
 SmokeTest
 #>
-function Test-WindowsContainerWebAppPSSession
+function Test-WindowsContainerCanIssueWebAppPSSession
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
@@ -763,12 +763,26 @@ function Test-WindowsContainerWebAppPSSession
 		# This assert at least verifies that the EnterPsSession command is attempted and that the behavior is the expected in
 		# Windows PowerShell and PowerShell Core.
 		New-AzureRmWebAppContainerPSSession -ResourceGroupName $rgname -Name $wname -WarningVariable wv -WarningAction SilentlyContinue -ErrorAction SilentlyContinue
-		$message = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The connection to the specified remote host was refused."
+		
+
+		if ((Get-WebsitesTestMode) -ne 'Playback') 
+		{
+			# Message for Recording mode
+			$message = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The connection to the specified remote host was refused."
+			$resultError = $Error[0] -like "*$($message)*"
+		}
+		else
+		{
+			# Two possible messages in Playback mode since the site will not exist.
+			$messageDNS = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client cannot process the request because the server name cannot be resolved"
+			$messageUnavailable = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The WinRM client sent a request to an HTTP server and got a response saying the requested HTTP URL was not available."
+			$resultError = ($Error[0] -like "*$($messageDNS)*") -or ($Error[0] -like "*$($messageUnavailable)*")
+		}
 
 		Write-Debug "Message: $message"
 		Write-Debug "Error: $Error[0]"
 		Write-Debug "Warnings: $wv"
-		$resultError = $Error[0] -like "*$($message)*"
+		
 		
 		If(!$resultError)
 		{
@@ -776,6 +790,127 @@ function Test-WindowsContainerWebAppPSSession
 			Write-Output "Warnings: $wv"
 		}
 		Assert-True {$resultError}
+ 	}
+	finally
+	{
+		# Cleanup
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+	}
+}
+
+<#
+.SYNOPSIS
+Tests that a PsSession can be established to a Windows Container App. It is expected to fail in Playback mode
+.DESCRIPTION
+SmokeTest
+#>
+function Test-WindowsContainerWebAppPSSessionOpened
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$wname = Get-WebsiteName
+	$location = Get-WebLocation
+	$whpName = Get-WebHostPlanName
+	$tier = "PremiumContainer"
+	$apiversion = "2015-08-01"
+	$resourceType = "Microsoft.Web/sites"
+    $containerImageName = "mcr.microsoft.com/azure-app-service/samples/aspnethelloworld:latest"
+    $containerRegistryUrl = "https://mcr.microsoft.com"
+	$containerRegistryUser = "testregistry"
+    $pass = "7Dxo9p79Ins2K3ZU"
+    $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
+	$dockerPrefix = "DOCKER|"
+
+ 	try
+	{
+
+		Write-Debug "Creating app service plan..."
+
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Large -HyperV
+
+		Write-Debug "App service plan created"
+
+		Write-Debug "Creating web app plan..."
+
+		# Create new web app
+		$job = New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
+		$job | Wait-Job
+		$actual = $job | Receive-Job
+		
+		Write-Debug "Webapp created"
+
+		# Assert
+		Assert-AreEqual $wname $actual.Name
+		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
+ 		# Get new web app
+		$result = Get-AzureRmWebApp -ResourceGroupName $rgname -Name $wname
+
+		Write-Debug "Webapp retrieved"
+
+		Write-Debug "Validating web app properties..."
+
+		# Assert
+		Assert-AreEqual $wname $result.Name
+		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
+        Assert-AreEqual $true $result.IsXenon
+        Assert-AreEqual ($dockerPrefix + $containerImageName)  $result.SiteConfig.WindowsFxVersion
+
+		$actualAppSettings = @{}
+
+		foreach ($kvp in $result.SiteConfig.AppSettings)
+		{
+			$actualAppSettings[$kvp.Name] = $kvp.Value
+		}
+
+		# Validate Appsettings
+
+		$expectedAppSettings = @{}
+		$expectedAppSettings["DOCKER_REGISTRY_SERVER_URL"] = $containerRegistryUrl;
+		$expectedAppSettings["DOCKER_REGISTRY_SERVER_USERNAME"] = $containerRegistryUser;
+		$expectedAppSettings["DOCKER_REGISTRY_SERVER_PASSWORD"] = $pass;
+
+		foreach ($key in $expectedAppSettings.Keys)
+		{
+			Assert-True {$actualAppSettings.Keys -contains $key}
+			Assert-AreEqual $actualAppSettings[$key] $expectedAppSettings[$key]
+		}
+
+		Write-Debug "Enabling Win-RM..."
+
+		# Adding Appsetting: enabling WinRM
+		$actualAppSettings["CONTAINER_WINRM_ENABLED"] = "1"
+        $webApp = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $wName -AppSettings $actualAppSettings
+
+		$status = PingWebApp($webApp)
+		Write-Debug "Just pinged the web app"
+		Write-Debug "Status: $status"
+
+		# Wait for the container app to return 200.
+		# Windows Container apps return 503 when starting up. Usualy takes 8-9 minutes.
+		# Timing out at 15 minutes
+
+		$count=0
+		while (($status -like "ServiceUnavailable") -and $count -le 15)
+		{
+			Wait-Seconds 60
+		    $status = PingWebApp($webApp)
+			Write-Debug $count
+			$count++
+		}
+
+		# Asserting status of the last ping to the web app
+		Assert-AreEqual $status "200"
+
+		$ps_session = New-AzureRmWebAppContainerPSSession -ResourceGroupName $rgname -Name $wname
+
+		Write-Debug "After PSSession"
+
+		Assert-AreEqual $ps_session.ComputerName $wname".azurewebsites.net"
+		Assert-AreEqual $ps_session.State "Opened"
  	}
 	finally
 	{
