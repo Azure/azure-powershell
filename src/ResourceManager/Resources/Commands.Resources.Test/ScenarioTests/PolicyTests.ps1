@@ -68,6 +68,154 @@ function Test-PolicyDefinitionCRUD
 
 <#
 .SYNOPSIS
+Tests Policy definition CRUD operations
+#>
+function Test-PolicyDefinitionMode
+{
+    # setup
+    $policyName = Get-ResourceName
+
+    # make a policy definition with non-default mode, get it back and validate
+    $expected = New-AzureRMPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Mode All -Description $description
+    $actual = Get-AzureRMPolicyDefinition -Name $policyName
+    Assert-NotNull $actual
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
+    Assert-NotNull($actual.Properties.PolicyRule)
+    Assert-AreEqual 'All' $actual.Properties.Mode
+    Assert-AreEqual 'All' $expected.Properties.Mode
+
+    # update the same policy definition without touching mode, get it back and validate
+    $actual = Set-AzureRMPolicyDefinition -Name $policyName -DisplayName testDisplay -Description $updatedDescription -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Metadata $metadata
+    $expected = Get-AzureRMPolicyDefinition -Name $policyName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual 'All' $actual.Properties.Mode
+    Assert-AreEqual 'All' $expected.Properties.Mode
+
+    # update the same policy definition explicitly providing the same mode, get it back and validate
+    $actual = Set-AzureRMPolicyDefinition -Name $policyName -DisplayName testDisplay -Mode 'All' -Description $updatedDescription -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Metadata $metadata
+    $expected = Get-AzureRMPolicyDefinition -Name $policyName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual 'All' $actual.Properties.Mode
+    Assert-AreEqual 'All' $expected.Properties.Mode
+
+    # update the same policy definition explicitly providing a different mode, get it back and validate
+    $actual = Set-AzureRMPolicyDefinition -Name $policyName -DisplayName testDisplay -Mode 'Indexed' -Description $updatedDescription -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Metadata $metadata
+    $expected = Get-AzureRMPolicyDefinition -Name $policyName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual 'Indexed' $actual.Properties.Mode
+    Assert-AreEqual 'Indexed' $expected.Properties.Mode
+
+    # clean up
+    $remove = Remove-AzureRMPolicyDefinition -Name $policyName -Force
+    Assert-AreEqual True $remove
+
+    # repeat the same four tests at management group
+    $managementGroup = 'AzGovTest8'
+
+    # make a policy definition with non-default mode, get it back and validate
+    $expected = New-AzureRMPolicyDefinition -ManagementGroupName $managementGroup -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Mode All -Description $description
+    $actual = Get-AzureRMPolicyDefinition -ManagementGroupName $managementGroup -Name $policyName
+    Assert-NotNull $actual
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
+    Assert-NotNull($actual.Properties.PolicyRule)
+    Assert-AreEqual 'All' $actual.Properties.Mode
+    Assert-AreEqual 'All' $expected.Properties.Mode
+
+    # update the same policy definition without touching mode, get it back and validate
+    $actual = Set-AzureRMPolicyDefinition -ManagementGroupName $managementGroup -Name $policyName -DisplayName testDisplay -Description $updatedDescription -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Metadata $metadata
+    $expected = Get-AzureRMPolicyDefinition -ManagementGroupName $managementGroup -Name $policyName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual 'All' $actual.Properties.Mode
+    Assert-AreEqual 'All' $expected.Properties.Mode
+
+    # update the same policy definition explicitly providing the same mode, get it back and validate
+    $actual = Set-AzureRMPolicyDefinition -ManagementGroupName $managementGroup -Name $policyName -DisplayName testDisplay -Mode 'All' -Description $updatedDescription -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Metadata $metadata
+    $expected = Get-AzureRMPolicyDefinition -ManagementGroupName $managementGroup -Name $policyName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual 'All' $actual.Properties.Mode
+    Assert-AreEqual 'All' $expected.Properties.Mode
+
+    # update the same policy definition explicitly providing a different mode, get it back and validate
+    $actual = Set-AzureRMPolicyDefinition -ManagementGroupName $managementGroup -Name $policyName -DisplayName testDisplay -Mode 'Indexed' -Description $updatedDescription -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Metadata $metadata
+    $expected = Get-AzureRMPolicyDefinition -ManagementGroupName $managementGroup -Name $policyName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual 'Indexed' $actual.Properties.Mode
+    Assert-AreEqual 'Indexed' $expected.Properties.Mode
+
+    # clean up
+    $remove = Remove-AzureRMPolicyDefinition -ManagementGroupName $managementGroup -Name $policyName -Force
+    Assert-AreEqual True $remove
+
+    # repeat the same four tests at subscription id
+    $subscriptionId = 'e8a0d3c2-c26a-4363-ba6b-f56ac74c5ae0'  # AIMES Deployment Test
+
+    # make a policy definition with non-default mode, get it back and validate
+    $expected = New-AzureRMPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Mode All -Description $description
+    $actual = Get-AzureRMPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName
+    Assert-NotNull $actual
+    Assert-AreEqual $expected.Name $actual.Name
+    Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
+    Assert-NotNull($actual.Properties.PolicyRule)
+    Assert-AreEqual 'All' $actual.Properties.Mode
+    Assert-AreEqual 'All' $expected.Properties.Mode
+
+    # update the same policy definition without touching mode, get it back and validate
+    $actual = Set-AzureRMPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -DisplayName testDisplay -Description $updatedDescription -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Metadata $metadata
+    $expected = Get-AzureRMPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual 'All' $actual.Properties.Mode
+    Assert-AreEqual 'All' $expected.Properties.Mode
+
+    # update the same policy definition explicitly providing the same mode, get it back and validate
+    $actual = Set-AzureRMPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -DisplayName testDisplay -Mode 'All' -Description $updatedDescription -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Metadata $metadata
+    $expected = Get-AzureRMPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual 'All' $actual.Properties.Mode
+    Assert-AreEqual 'All' $expected.Properties.Mode
+
+    # update the same policy definition explicitly providing a different mode, get it back and validate
+    $actual = Set-AzureRMPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -DisplayName testDisplay -Mode 'Indexed' -Description $updatedDescription -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Metadata $metadata
+    $expected = Get-AzureRMPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName
+    Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
+    Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
+    Assert-NotNull($actual.Properties.Metadata)
+    Assert-AreEqual $metadataValue $actual.Properties.Metadata.$metadataName
+    Assert-AreEqual 'Indexed' $actual.Properties.Mode
+    Assert-AreEqual 'Indexed' $expected.Properties.Mode
+
+    # clean up
+    $remove = Remove-AzureRMPolicyDefinition -SubscriptionId $subscriptionId -Name $policyName -Force
+    Assert-AreEqual True $remove
+}
+
+<#
+.SYNOPSIS
 Tests Policy definition with uri
 #>
 function Test-PolicyDefinitionWithUri
