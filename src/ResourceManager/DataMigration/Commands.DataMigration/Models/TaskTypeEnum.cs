@@ -22,6 +22,11 @@ namespace Microsoft.Azure.Commands.DataMigration.Models
         GetUserTablesSql,
         ConnectToTargetSqlDbMi,
         MigrateSqlServerSqlDbMi,
-        ValidateSqlServerSqlDbMi
+        ValidateSqlServerSqlDbMi,
+        MigrateSqlServerSqlDbSync,
+        ConnectToSourceSqlServerSync,
+        ConnectToTargetSqlSync,
+        GetUserTablesSqlSync,
+        ValidateSqlServerSqlDbSync,
     }
 }

@@ -18,14 +18,14 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class MigrateSqlServerSqlDbTaskCmdlet : TaskCmdlet
+    public class MigrateSqlServerSqlDbSyncTaskCmdlet : TaskCmdlet
     {
         private readonly string SchemaValidation = "SchemaValidation";
         private readonly string DataIntegrityValidation = "DataIntegrityValidation";
         private readonly string QueryAnalysisValidation = "QueryAnalysisValidation";
         private readonly string SelectedDatabase = "SelectedDatabase";
 
-        public MigrateSqlServerSqlDbTaskCmdlet(InvocationInfo myInvocation) : base(myInvocation)
+        public MigrateSqlServerSqlDbSyncTaskCmdlet(InvocationInfo myInvocation) : base(myInvocation)
         {
         }
 
@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             this.SimpleParam(SchemaValidation, typeof(SwitchParameter), "Allows to compare the schema information between source and target.");
             this.SimpleParam(DataIntegrityValidation, typeof(SwitchParameter), "Allows to perform a checksum based data integrity validation between source and target.");
             this.SimpleParam(QueryAnalysisValidation, typeof(SwitchParameter), "Allows to perform a quick and intelligent query analysis by retrieving queries from the source database and executes them in the target.");
-            this.SimpleParam(SelectedDatabase, typeof(MigrateSqlServerSqlDbDatabaseInput[]), "Selected database to migrate", true, true);
+            this.SimpleParam(SelectedDatabase, typeof(MigrateSqlServerSqlDbSyncDatabaseInput[]), "Selected database to migrate", true, true);
         }
 
         public override ProjectTaskProperties ProcessTaskCmdlet()
         {
-            MigrateSqlServerSqlDbTaskProperties properties = new MigrateSqlServerSqlDbTaskProperties();
+            MigrateSqlServerSqlDbSyncTaskProperties properties = new MigrateSqlServerSqlDbSyncTaskProperties();
 
             SqlConnectionInfo source = new SqlConnectionInfo();
             SqlConnectionInfo target = new SqlConnectionInfo();
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             target.UserName = targetCred.UserName;
             target.Password = Decrypt(targetCred.Password);
 
-            MigrateSqlServerSqlDbTaskInput input = new MigrateSqlServerSqlDbTaskInput
+            MigrateSqlServerSqlDbSyncTaskInput input = new MigrateSqlServerSqlDbSyncTaskInput
             {
                 SourceConnectionInfo = source,
                 TargetConnectionInfo = target
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
             if (MyInvocation.BoundParameters.ContainsKey(SelectedDatabase))
             {
-                input.SelectedDatabases = ((MigrateSqlServerSqlDbDatabaseInput[])MyInvocation.BoundParameters[SelectedDatabase]).ToList();
+                input.SelectedDatabases = ((MigrateSqlServerSqlDbSyncDatabaseInput[])MyInvocation.BoundParameters[SelectedDatabase]).ToList();
             }
 
             MigrationValidationOptions options = new MigrationValidationOptions();

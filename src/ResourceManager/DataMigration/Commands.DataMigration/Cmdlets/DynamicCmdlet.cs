@@ -39,11 +39,17 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         public RuntimeDefinedParameterDictionary RuntimeDefinedParams { get; private set; }
 
-        public void SimpleParam(string paramName, Type type, string helpMessage, bool mandatory = false, params string[] argumentCompleterList)
+        public void SimpleParam(
+            string paramName, 
+            Type type, 
+            string helpMessage, 
+            bool mandatory = false, 
+            bool usePipeline = false, 
+            params string[] argumentCompleterList)
         {
             RuntimeDefinedParameter param = new RuntimeDefinedParameter(paramName, type, new Collection<Attribute>()
                 {
-                    new ParameterAttribute { Mandatory=mandatory, HelpMessage = helpMessage },
+                    new ParameterAttribute { Mandatory=mandatory, HelpMessage = helpMessage, ValueFromPipeline = usePipeline },
                     new ValidateNotNullOrEmptyAttribute(),
                     new PSArgumentCompleterAttribute(argumentCompleterList)
                 });

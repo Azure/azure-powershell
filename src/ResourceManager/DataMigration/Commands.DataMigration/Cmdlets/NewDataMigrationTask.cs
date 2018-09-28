@@ -104,7 +104,6 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
             if (taskTypeSet)
             {
-
                 switch (taskType)
                 {
                     case TaskTypeEnum.ConnectToSourceSqlServer:
@@ -127,6 +126,21 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         break;
                     case TaskTypeEnum.ValidateSqlServerSqlDbMi:
                         taskCmdlet = new ValidateSqlServerSqlDbMiTaskCmdlet(this.MyInvocation);
+                        break;
+                    case TaskTypeEnum.ConnectToSourceSqlServerSync:
+                        taskCmdlet = new ConnectToSourceSqlServerSyncTaskCmdlet(this.MyInvocation);
+                        break;
+                    case TaskTypeEnum.MigrateSqlServerSqlDbSync:
+                        taskCmdlet = new MigrateSqlServerSqlDbSyncTaskCmdlet(this.MyInvocation);
+                        break;
+                    case TaskTypeEnum.ConnectToTargetSqlSync:
+                        taskCmdlet = new ConnectToTargetSqlSqlDbSyncTaskCmdlet(this.MyInvocation);
+                        break;
+                    case TaskTypeEnum.GetUserTablesSqlSync:
+                        taskCmdlet = new GetUserTableSqlSyncCmdlet(this.MyInvocation);
+                        break;
+                    case TaskTypeEnum.ValidateSqlServerSqlDbSync:
+                        taskCmdlet = new ValidateSqlServerSqlDbSyncTaskCmdlet(this.MyInvocation);
                         break;
                     default:
                         throw new PSArgumentException();
