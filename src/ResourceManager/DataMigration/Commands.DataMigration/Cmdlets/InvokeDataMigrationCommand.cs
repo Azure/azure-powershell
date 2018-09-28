@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// Class for the cmdlet to create task.
     /// </summary>
     [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationCommand", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(CommandProperties))]
-    [Alias("Invoke-AzureRmDmsCommand")]
+    [Alias("Invoke-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsCommand")]
     public class InvokeDataMigrationCommand : DataMigrationCmdlet, IDynamicParameters
     {
         [Parameter(

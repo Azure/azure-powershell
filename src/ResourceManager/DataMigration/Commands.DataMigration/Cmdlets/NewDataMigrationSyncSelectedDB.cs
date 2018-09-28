@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationSyncSelectedDBObject"), OutputType(typeof(MigrateSqlServerSqlDbSyncTaskInput))]
-    [Alias("New-AzureRmDmsSyncSelectedDBObject", "New-AzureRmDmsSyncSelectedDB", "New-AzureRmDataMigrationSyncSelectedDB")]
+    [Alias("New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsSyncSelectedDBObject", "New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DmsSyncSelectedDB", "New-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataMigrationSyncSelectedDB")]
     public class NewDataMigrationSyncSelectedDBObject : DataMigrationCmdlet
     {
         [Parameter(
