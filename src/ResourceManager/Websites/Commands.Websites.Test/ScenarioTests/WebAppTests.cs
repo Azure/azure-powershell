@@ -129,5 +129,12 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveWebApp");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWindowsContainerWebAppPSSession()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WindowsContainerWebAppPSSession");
+        }
     }
 }

@@ -665,6 +665,129 @@ function Test-EnableContainerContinuousDeploymentAndGetUrl
 
 <#
 .SYNOPSIS
+Tests enagbling continuous deployment for container and getting continuous deployment url.
+.DESCRIPTION
+SmokeTest
+#>
+function Test-WindowsContainerWebAppPSSession
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$wname = Get-WebsiteName
+	$location = Get-WebLocation
+	$whpName = Get-WebHostPlanName
+	$tier = "PremiumContainer"
+	$apiversion = "2015-08-01"
+	$resourceType = "Microsoft.Web/sites"
+    $containerImageName = "mcr.microsoft.com/azure-app-service/samples/aspnethelloworld:latest"
+    $containerRegistryUrl = "https://mcr.microsoft.com"
+	$containerRegistryUser = "testregistry"
+    $pass = "7Dxo9p79Ins2K3ZU"
+    $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
+	$dockerPrefix = "DOCKER|"
+
+ 	try
+	{
+
+		Write-Debug "Creating app service plan..."
+
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $tier -WorkerSize Large -HyperV
+
+		Write-Debug "App service plan created"
+
+		Write-Debug "Creating web app plan..."
+
+		# Create new web app
+		$job = New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -ContainerImageName $containerImageName -ContainerRegistryUrl $containerRegistryUrl -ContainerRegistryUser $containerRegistryUser -ContainerRegistryPassword $containerRegistryPassword -AsJob
+		$job | Wait-Job
+		$actual = $job | Receive-Job
+		
+		Write-Debug "Webapp created"
+
+		# Assert
+		Assert-AreEqual $wname $actual.Name
+		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
+ 		# Get new web app
+		$result = Get-AzureRmWebApp -ResourceGroupName $rgname -Name $wname
+
+		Write-Debug "Webapp retrieved"
+
+		Write-Debug "Validating web app properties..."
+
+		# Assert
+		Assert-AreEqual $wname $result.Name
+		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
+        Assert-AreEqual $true $result.IsXenon
+        Assert-AreEqual ($dockerPrefix + $containerImageName)  $result.SiteConfig.WindowsFxVersion
+
+		$actualAppSettings = @{}
+
+		foreach ($kvp in $result.SiteConfig.AppSettings)
+		{
+			$actualAppSettings[$kvp.Name] = $kvp.Value
+		}
+
+		# Validate Appsettings
+
+		$expectedAppSettings = @{}
+		$expectedAppSettings["DOCKER_REGISTRY_SERVER_URL"] = $containerRegistryUrl;
+		$expectedAppSettings["DOCKER_REGISTRY_SERVER_USERNAME"] = $containerRegistryUser;
+		$expectedAppSettings["DOCKER_REGISTRY_SERVER_PASSWORD"] = $pass;
+
+		foreach ($key in $expectedAppSettings.Keys)
+		{
+			Assert-True {$actualAppSettings.Keys -contains $key}
+			Assert-AreEqual $actualAppSettings[$key] $expectedAppSettings[$key]
+		}
+
+		Write-Debug "Enabling Win-RM..."
+
+		# Adding Appsetting: enabling WinRM
+		$actualAppSettings["CONTAINER_WINRM_ENABLED"] = "1"
+        $webApp = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $wName -AppSettings $actualAppSettings
+
+		# Validating that the client can at least issue the EnterPsSession command.
+		# This will validate that this cmdlet will run succesfully in Cloud Shell.
+		# If the current PsVersion is 5.1 or less (Windows PowerShell) and the current WSMAN settings will not allow the user
+		# to connect (for example: invalid Trusted Hosts, Basic Auth not enabled) this command will issue a Warning instructing the user
+		# to fix WSMAN settings. It will not attempt to run EnterPsSession.
+		#
+		# If the current version is 6.0 (PowerShell Core) this command will not attempt to validate WSMAN settings and 
+		# just try to run EnterPsSession. EnterPsSession is available in Cloud Shell
+		#
+		# We need an real Windows Container app running to fully validate the returned PsSession object, which is not 
+		# possible in 'Playback' mode.
+		#
+		# This assert at least verifies that the EnterPsSession command is attempted and that the behavior is the expected in
+		# Windows PowerShell and PowerShell Core.
+		New-AzureRmWebAppContainerPSSession -ResourceGroupName $rgname -Name $wname -WarningVariable wv -WarningAction SilentlyContinue -ErrorAction SilentlyContinue
+		$message = "Connecting to remote server $wname.azurewebsites.net failed with the following error message : The connection to the specified remote host was refused."
+
+		Write-Debug "Message: $message"
+		Write-Debug "Error: $Error[0]"
+		Write-Debug "Warnings: $wv"
+		$resultError = $Error[0] -like "*$($message)*"
+		
+		If(!$resultError)
+		{
+			Write-Output "expected error $($message), actual error $($Error[0])"
+			Write-Output "Warnings: $wv"
+		}
+		Assert-True {$resultError}
+ 	}
+	finally
+	{
+		# Cleanup
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+	}
+}
+
+<#
+.SYNOPSIS
 Tests creating a new website on an ase
 #>
 function Test-CreateNewWebAppOnAse
